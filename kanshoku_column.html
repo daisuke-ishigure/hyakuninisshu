@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="百人一首の歌人名の由来とは？官職や位階に由来する名前の意味や、平安時代の呼び名の特徴をわかりやすく解説します。">
+  <!-- スタイルシート -->
+  <link rel="stylesheet" href="../css/style.css?20260908-16">
+  <link rel="stylesheet" href="https://unpkg.com/scroll-hint@latest/css/scroll-hint.css">
+  <link rel="stylesheet" href="../css/showtooltips-blue-kanshoku.css">
+  <!-- フォント -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@500&family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap"
+    rel="stylesheet">
+  <script src="https://unpkg.com/scroll-hint@latest/js/scroll-hint.min.js"></script>
+  <!-- アップルタッチアイコン -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <!-- ogp設定 -->
+  <meta property="og:locale" content="ja">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="コラム：官職が映す平安の世界 | 平安時代の位階・官職 | 時雨の百人一首">
+  <meta property="og:description" content="百人一首の歌人名の由来とは？官職や位階に由来する名前の意味や、平安時代の呼び名の特徴をわかりやすく解説します。">
+  <meta property="og:image" content="https://hyakuninisshu.com/img/ogp_name.webp">
+  <meta property="og:url" content="https://hyakuninisshu.com/kanshoku_column.html">
+  <meta property="og:site_name" content="時雨の百人一首">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://hyakuninisshu.com/kanshoku_column.html">
+  <!-- ファビコン -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="shortcut icon" href="https://hyakuninisshu.com/favicon.ico">
+
+  <style>
+    .kanshoku-intro {
+      margin-bottom: 2em;
+      line-height: 1.95;
+      color: #444;
+    }
+
+    /* ── Cards grid ── */
+    .kanshoku-toc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1em;
+      margin-bottom: 1.4em;
+    }
+
+    .kanshoku-card {
+      display: block;
+      border: 1px solid #c8b89a;
+      border-radius: 4px;
+      padding: 1em 1.2em 0.9em;
+      background: #fdf8f2;
+      text-decoration: none !important;
+      color: inherit;
+      transition: box-shadow 0.18s, transform 0.18s;
+    }
+
+    .kanshoku-card:hover {
+      box-shadow: 0 2px 8px rgba(120, 80, 30, 0.13);
+    }
+
+    /* コラムカード */
+    .kanshoku-card.is-column {
+      background: #f7f4f0;
+      border-color: #d9d0c4;
+    }
+
+    a.kanshoku-card {
+      text-decoration: none;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    a.kanshoku-card:hover {
+      transform: scale(1.05);
+      text-underline-offset: 3px;
+    }
+
+    .kanshoku-card-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 0.97em;
+      font-weight: 700;
+      color: #333;
+      margin: 0 0 0.4em;
+    }
+
+    .kanshoku-card-desc {
+      font-size: 0.855em;
+      color: #555;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .kanshoku-card-tags {
+      margin-top: 0.55em;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3em;
+    }
+
+    .kanshoku-tag {
+      font-size: 0.75em;
+      background: #e8ddd0;
+      color: #7a5c3a;
+      border-radius: 2px;
+      padding: 0.12em 0.5em;
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+
+    /* ── Callout boxes ── */
+    .callout {
+      background: #fdf5e4;
+      border-left: 3px solid #c8a870;
+      border-radius: 0 4px 4px 0;
+      padding: 0.85em 1.1em;
+      margin: 1.1em 0;
+      font-size: 0.9em;
+      color: #444;
+      line-height: 1.8;
+    }
+
+    .callout-rust {
+      background: #fdf0ec;
+      border-left-color: #b05a40;
+    }
+
+    .callout-green {
+      background: #eef4ec;
+      border-left-color: #5a8050;
+    }
+
+    .callout p {
+      margin-bottom: 0.5em;
+    }
+
+    .callout p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ── Prose ── */
+    .section p {
+      margin: 0.5em 0 0;
+      line-height: 1.95;
+    }
+
+    /* ── Inline highlight ── */
+    .kanshoku-inline {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.82em;
+      background: #e8ddd0;
+      color: #5a3a1a;
+      border-radius: 2px;
+      padding: 0.1em 0.45em;
+      white-space: nowrap;
+    }
+
+    .kajin {
+      font-weight: 700;
+      color: #6b3f1a;
+    }
+
+    /* ── Ornament ── */
+    .ornament {
+      text-align: center;
+      color: #c8a870;
+      letter-spacing: 0.6em;
+      font-size: 0.85em;
+      margin: 2.8em 0;
+      opacity: 0.7;
+    }
+
+    #page-top {
+      text-align: right;
+      margin-top: 2.5em;
+      font-size: 0.85em;
+    }
+
+    @media (max-width: 600px) {
+      .kanshoku-toc-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .ason-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0rem 2rem;
+      margin-top: 1em;
+    }
+
+    @media (min-width: 550px) {
+      .ason-list {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (min-width: 750px) {
+      .ason-list {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+
+    .ason-list li {
+      background: none !important;
+      position: relative;
+      padding-left: 1.2em;
+      line-height: 1.8;
+    }
+
+    .ason-list li::before {
+      content: "●";
+      position: absolute;
+      left: 0;
+      top: 0.65em;
+      font-size: 0.6em;
+      color: #6b3f1a;
+    }
+
+    .ason-list li::after {
+      content: none !important;
+    }
+
+    /* ── タグ絞り込みバー ── */
+    #kanshoku-filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 1em 0 1.4em;
+    }
+
+    .kf-btn {
+      font-size: 0.78em;
+      padding: 4px 12px;
+      border: 1px solid #c8b89a;
+      border-radius: 12px;
+      background: #fdf8f2;
+      color: #7a5c3a;
+      cursor: pointer;
+      font-family: 'Noto Sans JP', sans-serif;
+      transition: background 0.15s, color 0.15s;
+      line-height: 1.5;
+    }
+
+    .kf-btn:hover {
+      background: #e8ddd0;
+    }
+
+    .kf-btn--active {
+      background: #c8a870;
+      color: #fff;
+      border-color: #a07830;
+    }
+  </style>
+
+  <title>百人一首の歌人名の由来 | 平安時代の位階・官職 | 時雨の百人一首</title>
+  <!-- 構造化データ -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://hyakuninisshu.com/kanshoku_column.html"
+      },
+      "headline": "百人一首の歌人名の由来｜平安時代の位階・官職",
+      "description": "百人一首の歌人名の由来とは？官職や位階に由来する名前の意味や、平安時代の呼び名の特徴をわかりやすく解説します。",
+      "image": "https://hyakuninisshu.com/img/ogp_name.webp",
+      "author": {
+        "@type": "Person",
+        "name": "石槫大輔",
+        "url": "https://hyakuninisshu.com/"
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "時雨の百人一首",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://hyakuninisshu.com/apple-touch-icon.png"
+        }
+      },
+      "genre": "日本の伝統文化 / 百人一首 / 古典文学",
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "平安時代の官職"
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "百人一首"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "時雨の百人一首 TOP",
+          "item": "https://hyakuninisshu.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "百人一首のコラム",
+          "item": "https://hyakuninisshu.com/introduction.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "平安時代の位階と官職",
+          "item": "https://hyakuninisshu.com/kanshoku.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "百人一首の歌人名の由来"
+        }
+      ]
+    }
+  ]
+  </script>
+</head>
+
+<body>
+
+  <header class="header">
+    <p class="site-title">
+      <a href="https://hyakuninisshu.com/">時雨の百人一首</a>
+    </p>
+    <div class="header_list">
+      <a href="../index.html"><img src="../img/icon_top.svg?ver-02" alt="トップ" class="icon"></a>
+      <a href="../introduction.html" style="color:#333"><img src="/img/icon_column.svg?ver-02" alt="コラム"
+          class="icon"></a>
+      <a href="../introduction-app.html" style="color:#333"><img src="/img/icon_app.svg?ver-02" alt="アプリ"
+          class="icon"></a>
+      <a href="kanshoku_column_en.html"><img src="/img/icon_lang.svg?ver-01" alt="English" class="icon"></a>
+      <a href="../list.html"><img src="/img/icon_search.svg?ver-04" alt="和歌の一覧・検索" class="icon"></a>
+    </div>
+  </header>
+
+  <main class="main_about-main">
+    <div class="about-main">
+      <div class="section">
+
+        <nav>
+          <ol class="breadcrumb">
+            <li><a href="../index.html">トップ</a></li>
+            <li><a href="../introduction.html">コラム</a></li>
+            <li><a href="../kanshoku.html">平安時代の位階と官職</a></li>
+            <li>百人一首の歌人名の由来</li>
+          </ol>
+        </nav>
+        <hr>
+
+        <h1>百人一首の歌人名の由来</h1>
+        <p class="kanshoku-intro">
+          百人一首の歌人の名前には、官職や位階が組み込まれているものが多く見られます。
+          <br class="br-pc">平安時代の貴族社会では、役職や位階で人物を呼ぶことが一般的だったためです。
+          <br class="br-pc">ここでは、そうした呼び名を持つ歌人を紹介します。
+        </p>
+
+        <div id="kanshoku-filter-bar"></div>
+
+        <h2>官職名に由来する歌人名</h2>
+        <div class="kanshoku-toc-grid">
+
+          <a href="/6.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>中納言家持<rt>ちゅうなごんやかもち</rt></ruby>（6番）</p>
+            <p class="kanshoku-card-desc">中納言家持（大伴家持）は、太政官の「中納言」を務めたことに由来します。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">太政官</span>
+              <span class="kanshoku-tag">中納言</span>
+            </div>
+          </a>
+
+          <a href="/11.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>参議篁<rt>さんぎたかむら</rt></ruby>（11番）</p>
+            <p class="kanshoku-card-desc">参議篁（小野篁）は、太政官の「参議」を務めたことに由来します。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">太政官</span>
+              <span class="kanshoku-tag">参議</span>
+            </div>
+          </a>
+
+          <a href="/14.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>河原左大臣<rt>かわらのさだいじん</rt></ruby>（14番）</p>
+            <p class="kanshoku-card-desc">河原左大臣（源融）は、太政官の「左大臣」を務めたことに由来します。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">太政官</span>
+              <span class="kanshoku-tag">左大臣</span>
+            </div>
+          </a>
+
+          <a href="/16.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>中納言行平<rt>ちゅうなごんゆきひら</rt></ruby>（16番）</p>
+            <p class="kanshoku-card-desc">中納言行平（在原行平）は、太政官の「中納言」を務めたことに由来します。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">中納言</span>
+              <span class="kanshoku-tag">太政官</span>
+            </div>
+          </a>
+
+          <a href="/25.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>三条右大臣<rt>さんじょうのうだいじん</rt></ruby>（25番）</p>
+            <p class="kanshoku-card-desc">三条右大臣（藤原定方）は、太政官の「右大臣」を務めたことに由来します。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">右大臣</span>
+              <span class="kanshoku-tag">太政官</span>
+            </div>
+          </a>
+
+          <a href="/27.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>中納言兼輔<rt>ちゅうなごんかねすけ</rt></ruby>（27番）</p>
+            <p class="kanshoku-card-desc">中納言兼輔（藤原兼輔）は、太政官の「中納言」を務めたことに由来します。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">中納言</span>
+              <span class="kanshoku-tag">太政官</span>
+            </div>
+          </a>
+
+          <a href="/39.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>参議等<rt>さんぎひとし</rt></ruby>（39番）</p>
+            <p class="kanshoku-card-desc">参議等（源等）は、太政官の「参議」を務めたことに由来します。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">参議</span>
+              <span class="kanshoku-tag">太政官</span>
+            </div>
+          </a>
+
+          <a href="/43.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>権中納言敦忠<rt>ごんちゅうなごんあつただ</rt></ruby>（43番）</p>
+            <p class="kanshoku-card-desc">権中納言敦忠（藤原敦忠）は、中納言の補佐的な官職である「権中納言」を務めたことに由来します。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">権中納言</span>
+              <span class="kanshoku-tag">太政官</span>
+            </div>
+          </a>
+
+          <a href="/44.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>中納言朝忠<rt>ちゅうなごんあさただ</rt></ruby>（44番）</p>
+            <p class="kanshoku-card-desc">中納言朝忠（藤原朝忠）は、太政官の「中納言」を務めたことに由来します。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">中納言</span>
+              <span class="kanshoku-tag">太政官</span>
+            </div>
+          </a>
+
+          <a href="/60.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>小式部内侍<rt>こしきぶのないし</rt></ruby>（60番）</p>
+            <p class="kanshoku-card-desc">小式部内侍は、<ruby>内侍司<rt>ないしのつかさ</rt>
+              </ruby>という役所に仕えていました。なお「小式部」は、母・和泉式部の名にちなみ、娘であることを示す呼び名です。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">内侍司</span>
+              <span class="kanshoku-tag">内侍</span>
+            </div>
+          </a>
+
+          <a href="/63.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>左京大夫道雅<rt>さきょうのだいぶみちまさ</rt></ruby>（63番）</p>
+            <p class="kanshoku-card-desc">左京大夫道雅（藤原道雅）は、左京職の長官「左京大夫」を務めたことに由来します。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">左京職</span>
+              <span class="kanshoku-tag">左京大夫</span>
+            </div>
+          </a>
+
+          <a href="/67.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>周防内侍<rt>すおうのないし</rt></ruby>（67番）</p>
+            <p class="kanshoku-card-desc">周防内侍は、<ruby>内侍司<rt>ないしのつかさ</rt>
+              </ruby>という役所に仕えていました。なお「周防」は、父・平棟仲が周防守（現在の山口県知事に相当）を務めたことに由来します。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">内侍司</span>
+              <span class="kanshoku-tag">内侍</span>
+            </div>
+          </a>
+
+          <a href="/73.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>権中納言匡房<rt>ごんちゅうなごんまさふさ</rt></ruby>（73番）</p>
+            <p class="kanshoku-card-desc">権中納言匡房（大江匡房）は、太政官の「権中納言」を務めたことに由来します。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">中納言</span>
+              <span class="kanshoku-tag">太政官</span>
+            </div>
+          </a>
+
+          <a href="/76.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>法性寺入道前関白太政大臣<rt>ほっしょうじのにゅうどうさきのかんぱくだじょうだいじん</rt></ruby>（76番）</p>
+            <p class="kanshoku-card-desc">藤原忠通は、関白・太政大臣を歴任した後、法性寺で出家したことから、この名で呼ばれます。権力の頂点を極めた後の出家という、異色の経歴です。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">関白</span>
+              <span class="kanshoku-tag">太政大臣</span>
+              <span class="kanshoku-tag">入道</span>
+            </div>
+          </a>
+
+          <a href="/79.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>左京大夫顕輔<rt>さきょうのだいぶあきすけ</rt></ruby>（79番）</p>
+            <p class="kanshoku-card-desc">左京大夫顕輔（藤原顕輔）は、左京職の長官「左京大夫」を務めたことに由来します。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">左京職</span>
+              <span class="kanshoku-tag">左京大夫</span>
+            </div>
+          </a>
+
+          <a href="/81.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>後徳大寺左大臣<rt>ごとくたいじのさだいじん</rt></ruby>（81番）</p>
+            <p class="kanshoku-card-desc">後徳大寺左大臣（藤原実定）は、太政官の「左大臣」を務めたことに由来します。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">左大臣</span>
+              <span class="kanshoku-tag">太政官</span>
+            </div>
+          </a>
+
+          <a href="/83.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>皇太后宮大夫俊成<rt>こうたいごうぐうのだいぶしゅんぜい</rt></ruby>（83番）</p>
+            <p class="kanshoku-card-desc">皇太后宮大夫俊成（藤原俊成）は、皇太后宮職の長官「大夫」を務めたことに由来します。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">皇太后宮職</span>
+              <span class="kanshoku-tag">皇太后宮大夫</span>
+            </div>
+          </a>
+
+          <a href="/91.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>後京極摂政前太政大臣<rt>ごきょうごくせっしょうさきのだじょうだいじん</rt></ruby>（91番）</p>
+            <p class="kanshoku-card-desc">後京極摂政前太政大臣（九条良経）は、摂政・太政大臣を務めた九条良経が、後京極邸に住んでいたことからこの名で呼ばれます。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">摂政</span>
+              <span class="kanshoku-tag">太政大臣</span>
+            </div>
+          </a>
+
+          <a href="/93.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>鎌倉右大臣<rt>かまくらのうだいじん</rt></ruby>（93番）</p>
+            <p class="kanshoku-card-desc">鎌倉右大臣（源実朝）は、源頼朝の二男で征夷大将軍です。朝廷からも重用され、武士として初めて公卿の高位である「右大臣」に任じられました。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">右大臣</span>
+              <span class="kanshoku-tag">太政官</span>
+            </div>
+          </a>
+
+          <a href="/94.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>参議雅経<rt>さんぎまさつね</rt></ruby>（94番）</p>
+            <p class="kanshoku-card-desc">参議雅経（藤原雅経）は、太政官の「参議」を務めたことに由来します。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">参議</span>
+              <span class="kanshoku-tag">太政官</span>
+            </div>
+          </a>
+
+          <a href="/95.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>前大僧正慈円<rt>さきのだいそうじょうじえん</rt></ruby>（95番）</p>
+            <p class="kanshoku-card-desc">前大僧正慈円は、僧侶の最高位の一つである「大僧正」を務めたことに由来します。「前」はその役職を退いた後であることを示しています。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">大僧正</span>
+              <span class="kanshoku-tag">僧官</span>
+            </div>
+          </a>
+
+          <a href="/97.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>権中納言定家<rt>ごんちゅうなごんていか</rt></ruby>（97番）</p>
+            <p class="kanshoku-card-desc">権中納言定家（藤原定家）は、中納言の補佐的な官職である「権中納言」を務めたことに由来します。百人一首の選者としても知られています。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">権中納言</span>
+              <span class="kanshoku-tag">太政官</span>
+            </div>
+          </a>
+
+        </div>
+
+        <!-- 家族の官職から呼ばれた女性歌人 -->
+        <h2>家族の官職に由来する女性歌人</h2>
+        <div class="kanshoku-toc-grid">
+
+          <a href="/53.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>右大将道綱母<rt>うだいしょうみちつなのはは</rt></ruby>（53番）</p>
+            <p class="kanshoku-card-desc">息子の藤原道綱が右近衛大将（右大将）となったことから、「右大将道綱母」と呼ばれました。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">右近衛府</span>
+              <span class="kanshoku-tag">右近衛大将</span>
+            </div>
+          </a>
+
+          <a href="/54.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>儀同三司母<rt>ぎどうさんしのはは</rt></ruby>（54番）</p>
+            <p class="kanshoku-card-desc">儀同三司母（高階貴子）は、息子の藤原伊周が内大臣となり、中国風の官名「儀同三司」を名乗ったことに由来します。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">儀同三司</span>
+              <span class="kanshoku-tag">内大臣</span>
+            </div>
+          </a>
+
+          <a href="/56.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>和泉式部<rt>いずみしきぶ</rt></ruby>（56番）</p>
+            <p class="kanshoku-card-desc">和泉式部の「和泉」は夫・橘道貞が和泉国の国司だったことから、「式部」は父が式部丞だったことに由来すると言われています。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">和泉守</span>
+              <span class="kanshoku-tag">式部省</span>
+            </div>
+          </a>
+
+          <a href="/57.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>紫式部<rt>むらさきしきぶ</rt></ruby>（57番）</p>
+            <p class="kanshoku-card-desc">紫式部の「紫」は『源氏物語』の登場人物「紫の上」に由来するといわれており、「式部」は父・藤原為時が式部省の文官だったことに由来すると言われています。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">式部省</span>
+            </div>
+          </a>
+
+          <a href="/58.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>大弐三位<rt>だいにのさんみ</rt></ruby>（58番）</p>
+            <p class="kanshoku-card-desc">夫・高階成章が大宰府の次官「大宰大弐」を務め、後冷泉天皇の乳母を務めたことなどから自身が従三位であったことに由来します。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">大宰大弐</span>
+              <span class="kanshoku-tag">従三位（位階）</span>
+            </div>
+          </a>
+
+          <a href="/67.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>周防内侍<rt>すおうのないし</rt></ruby>（67番）</p>
+            <p class="kanshoku-card-desc">周防内侍は、<ruby>内侍司<rt>ないしのつかさ</rt>
+              </ruby>という役所に仕えていました。なお「周防」は、父・平棟仲が周防守（現在の山口県知事に相当）を務めていたことに由来します。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">内侍司</span>
+              <span class="kanshoku-tag">内侍</span>
+            </div>
+          </a>
+        </div>
+
+        <h2>位階で呼ばれた歌人</h2>
+        <div class="kanshoku-toc-grid">
+
+          <a href="/58.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>大弐三位<rt>だいにのさんみ</rt></ruby>（58番）</p>
+            <p class="kanshoku-card-desc">夫・高階成章が大宰府の次官「大宰大弐」を務め、自身が従三位であったことに由来します。中流階級の女性でしたが、母譲りの知性を持ち、後冷泉天皇の乳母を務めるきっかけをつかみ、女房歌人として異例の大出世を遂げました。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">従三位（位階）</span>
+            </div>
+          </a>
+          <a href="/98.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>従二位家隆<rt>じゅにいいえたか</rt></ruby>（98番）</p>
+            <p class="kanshoku-card-desc">従二位家隆（藤原家隆）は、従二位の位階を有した歌人です。家隆の位階は、百人秀歌では正三位、百人一首では従二位となっており、この位階の違いにより、百人秀歌の方が百人一首より先に編まれたと考えられる理由になっています。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">従二位（位階）</span>
+            </div>
+          </a>
+
+        </div>
+
+
+        <!-- 朝臣姓 -->
+        <h2>「<ruby>朝臣<rt>あそん</rt></ruby>」姓と「<ruby>位階<rt>いかい</rt></ruby>」という序列</h2>
+
+        <p>
+          百人一首の歌人たちに「朝臣（あそん）」という姓を持つ人物が多いことに気づいた方もいらっしゃると思います。
+          古代の八色の姓は平安時代になると実質的に上位のいくつかに集約され、「朝臣」は由緒正しい家格を表す称号として定着しました。
+          この「姓」を土台として、個人の実績や君主の信頼によって積み上げられたものが「位階」という序列です。
+          家柄が出発点となり、そこに本人の能力が加味されて官途が定まる——それが平安貴族の世界のルールでした。
+        </p>
+
+        <ul class="ason-list">
+          <li><a href="/17.html"><ruby>在原業平朝臣<rt>ありわらのなりひらあそん</rt></ruby>（17番）</a></li>
+          <li><a href="/18.html"><ruby>藤原敏行朝臣<rt>ふじわらのとしゆきあそん</rt></ruby>（18番）</a></li>
+          <li><a href="/28.html"><ruby>源宗于朝臣<rt>みなもとのむねゆきあそん</rt></ruby>（28番）</a></li>
+          <li><a href="/49.html"><ruby>大中臣能宣朝臣<rt>おおなかとみのよしのぶあそん</rt></ruby>（49番）</a></li>
+          <li><a href="/51.html"><ruby>藤原実方朝臣<rt>ふじわらのさねかたあそん</rt></ruby>（51番）</a></li>
+          <li><a href="/52.html"><ruby>藤原道信朝臣<rt>ふじわらのみちのぶあそん</rt></ruby>（52番）</a></li>
+          <li><a href="/74.html"><ruby>源俊頼朝臣<rt>みなもとのとしよりあそん</rt></ruby>（74番）</a></li>
+          <li><a href="/84.html"><ruby>藤原清輔朝臣<rt>ふじわらのきよすけあそん</rt></ruby>（84番）</a></li>
+        </ul>
+        <p class="kome" style="margin-left:1em;">「位階」については<a href="/kanshoku_ikai.html#ikai">こちら</a>をご参照ください。</p>
+        <p class="kome" style="margin:0 0 0 1em;">「八色の姓」については<a
+            href="/kanshoku_ikai.html#yakusanokabane">こちら</a>をご参照ください。</p>
+
+        <!-- 遣唐使 -->
+        <!-- <h2><ruby>遣唐使<rt>けんとうし</rt></ruby>と百人一首の歌人たち</h2>
+
+        <p>命がけの航海として知られる遣唐使。その運命と交差した歌人が、百人一首にも複数登場します。</p>
+
+        <div class="kanshoku-toc-grid">
+
+          <a href="/7.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>阿倍仲麻呂<rt>あべのなかまろ</rt></ruby>（7番）</p>
+            <p class="kanshoku-card-desc">遣唐留学生として唐に渡りました。帰国の途中で難破し、ついに帰国を果たせず唐の地で生涯を終えました。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">遣唐留学生</span>
+            </div>
+          </a>
+
+          <a href="/11.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>参議篁<rt>さんぎたかむら</rt></ruby>（11番）</p>
+            <p class="kanshoku-card-desc">遣唐副使に任じられましたが、諸々の事情により乗船を拒否し、唐には渡りませんでした。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">遣唐副使</span>
+            </div>
+          </a>
+
+          <a href="/24.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>菅原道真<rt>すがわらのみちざね</rt></ruby>（24番）</p>
+            <p class="kanshoku-card-desc">遣唐大使に任じられながらも、唐の衰退と航海の危険性を理由に廃止を建議。894年に遣唐使の停止が認められ、長年にわたる国家プロジェクトに終止符を打ちました。
+            </p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">遣唐大使</span>
+              <span class="kanshoku-tag">遣唐使廃止</span>
+            </div>
+          </a>
+
+        </div> -->
+
+        <h2>「<ruby>前<rt>さきの</rt></ruby>」の付く呼び名の歌人</h2>
+        <p>
+          平安時代、官職を退いた人物に対し、かつての地位を冠して「<ruby>前<rt>さきの</rt>
+          </ruby>〇〇」と呼ぶ習慣がありました。これは単なる元職の表示ではなく、その地位にあった経歴を尊重する敬称としての意味合いを持っています。
+        </p>
+        <div class="kanshoku-toc-grid">
+
+          <a href="/66.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>前大僧正行尊<rt>さきのだいそうじょうぎょうそん</rt></ruby>（66番）</p>
+            <p class="kanshoku-card-desc">修験道の修行や諸国行脚の旅の中で多くの和歌を詠みました。厳しい修行と歌道を両立させた僧侶歌人です。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">大僧正</span>
+              <span class="kanshoku-tag">山伏修行</span>
+            </div>
+          </a>
+
+          <a href="/76.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>法性寺入道前関白太政大臣<rt>ほっしょうじのにゅうどうさきのかんぱくだじょうだいじん</rt></ruby>（76番）</p>
+            <p class="kanshoku-card-desc">藤原忠通は、関白・太政大臣を歴任した後、法性寺で出家したことから、この名で呼ばれます。権力の頂点を極めた後の出家という、異色の経歴です。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">関白</span>
+              <span class="kanshoku-tag">太政大臣</span>
+              <span class="kanshoku-tag">入道</span>
+            </div>
+          </a>
+
+          <a href="/91.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>後京極摂政前太政大臣<rt>ごきょうごくせっしょうさきのだじょうだいじん</rt></ruby>（91番）</p>
+            <p class="kanshoku-card-desc">後京極摂政前太政大臣（九条良経）は、摂政・太政大臣を務めた九条良経が、後京極邸に住んでいたことに由来する呼び名です。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">摂政</span>
+              <span class="kanshoku-tag">太政大臣</span>
+            </div>
+          </a>
+
+          <a href="/95.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>前大僧正慈円<rt>さきのだいそうじょうじえん</rt></ruby>（95番）</p>
+            <p class="kanshoku-card-desc">比叡山延暦寺の天台座主を四度務めました。歴史書『愚管抄』の著者としても知られます。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">大僧正</span>
+              <span class="kanshoku-tag">天台座主</span>
+            </div>
+          </a>
+
+        </div>
+
+        <!-- 出家した歌人 -->
+        <h2>出家した歌人たち—僧侶と官職</h2>
+
+        <p>百人一首には、俗世を離れた<ruby>僧侶<rt>そうりょ</rt></ruby>の歌人も名を連ねています。<br class="br-pc">ここでは僧侶の位や称号を名前に持つ歌人をご紹介します。</p>
+
+        <div class="kanshoku-toc-grid">
+          <a href="/12.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>僧正遍昭<rt>そうじょうへんじょう</rt></ruby>（12番）</p>
+            <p class="kanshoku-card-desc">僧正遍昭は、桓武天皇の孫でしたが、仁明天皇の崩御後、出家しました。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">僧正</span>
+              <span class="kanshoku-tag">僧侶</span>
+            </div>
+          </a>
+          <a href="/66.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>前大僧正行尊<rt>さきのだいそうじょうぎょうそん</rt></ruby>（66番）</p>
+            <p class="kanshoku-card-desc">修験道の修行や諸国行脚の旅の中で多くの和歌を詠みました。厳しい修行と歌道を両立させた僧侶歌人です。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">大僧正</span>
+              <span class="kanshoku-tag">僧侶</span>
+            </div>
+          </a>
+          <a href="/76.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>法性寺入道前関白太政大臣<rt>ほっしょうじのにゅうどうさきのかんぱくだじょうだいじん</rt></ruby>（76番）</p>
+            <p class="kanshoku-card-desc">藤原忠通は、関白・太政大臣を歴任した後、法性寺で出家したことから、この名で呼ばれます。権力の頂点を極めた後の出家という、異色の経歴です。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">関白</span>
+              <span class="kanshoku-tag">太政大臣</span>
+              <span class="kanshoku-tag">入道</span>
+            </div>
+          </a>
+          <a href="/95.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>前大僧正慈円<rt>さきのだいそうじょうじえん</rt></ruby>（95番）</p>
+            <p class="kanshoku-card-desc">比叡山延暦寺の天台座主を四度務めました。歴史書『愚管抄』の著者としても知られます。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">大僧正</span>
+              <span class="kanshoku-tag">僧侶</span>
+            </div>
+          </a>
+
+          <a href="/96.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>入道前太政大臣<rt>にゅうどうさきのだじょうだいじん</rt></ruby>（96番）</p>
+            <p class="kanshoku-card-desc">入道前太政大臣（藤原公経）は、承久の乱で幕府側に立った人物で、後の政治の実権を握りました。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">入道</span>
+              <span class="kanshoku-tag">太政大臣</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- 出家した歌人 -->
+        <!-- <h2>武士から僧になった歌人</h2>
+        <div class="kanshoku-toc-grid">
+          <a href="/86.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title"><ruby>西行<rt>さいぎょう</rt></ruby>（86番）</p>
+            <p class="kanshoku-card-desc">左兵衛尉として朝廷に仕え、鳥羽院の北面の武士も務めていましたが、23歳ごろ突然出家し、旅する僧侶となり「西行」と名乗りました。</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">北面武士</span>
+              <span class="kanshoku-tag">左兵衛尉</span>
+              <span class="kanshoku-tag">僧侶</span>
+            </div>
+          </a>
+        </div> -->
+
+
+      </div><!-- /.section -->
+    </div><!-- /.about-main -->
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-copy">&copy;2023 時雨の百人一首</span>
+      <ul>
+        <li><a href="../policy.html">プライバシーポリシー</a></li>
+        <li>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXx7TKlqnTfKrw2Nuh4f37swVwFH-RFDsNkTGQ4JEF50q2wQ/viewform?usp=header"
+            target="_blank" rel="noopener">お問い合わせフォーム</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="../js/move_script.js?20260729"></script>
+  <script src="js/showtooltiplink.js"></script>
+
+  <script>
+  (function () {
+    var bar = document.getElementById('kanshoku-filter-bar');
+    var allCards = document.querySelectorAll('.kanshoku-card');
+
+    // タグを出現順に収集（重複なし）
+    var tagList = [];
+    allCards.forEach(function (card) {
+      card.querySelectorAll('.kanshoku-tag').forEach(function (tag) {
+        var t = tag.textContent.trim();
+        if (tagList.indexOf(t) === -1) tagList.push(t);
+      });
+    });
+
+    function makeBtn(label, tag) {
+      var btn = document.createElement('button');
+      btn.className = 'kf-btn';
+      btn.textContent = label;
+      btn.dataset.tag = tag;
+      return btn;
+    }
+
+    var allBtn = makeBtn('すべて表示', '');
+    allBtn.classList.add('kf-btn--active');
+    bar.appendChild(allBtn);
+    tagList.forEach(function (t) { bar.appendChild(makeBtn(t, t)); });
+
+    // 各グリッドに対して「h2 + 中間要素 + grid」のグループを構築
+    var grids = document.querySelectorAll('.kanshoku-toc-grid');
+    var sectionGroups = [];
+    grids.forEach(function (grid) {
+      var group = [grid];
+      var el = grid.previousElementSibling;
+      while (el && el.tagName !== 'H2') {
+        group.unshift(el);
+        el = el.previousElementSibling;
+      }
+      if (el && el.tagName === 'H2') group.unshift(el);
+      sectionGroups.push({ group: group, grid: grid });
+    });
+
+    bar.addEventListener('click', function (e) {
+      var btn = e.target.closest('.kf-btn');
+      if (!btn) return;
+      var activeTag = btn.dataset.tag;
+
+      bar.querySelectorAll('.kf-btn').forEach(function (b) {
+        b.classList.toggle('kf-btn--active', b === btn);
+      });
+
+      allCards.forEach(function (card) {
+        if (!activeTag) {
+          card.style.display = '';
+        } else {
+          var tags = Array.from(card.querySelectorAll('.kanshoku-tag')).map(function (t) { return t.textContent.trim(); });
+          card.style.display = (tags.indexOf(activeTag) !== -1) ? '' : 'none';
+        }
+      });
+
+      sectionGroups.forEach(function (s) {
+        if (!activeTag) {
+          s.group.forEach(function (el) { el.style.display = ''; });
+        } else {
+          var hasVisible = Array.from(s.grid.querySelectorAll('.kanshoku-card')).some(function (c) { return c.style.display !== 'none'; });
+          s.group.forEach(function (el) { el.style.display = hasVisible ? '' : 'none'; });
+        }
+      });
+    });
+  })();
+  </script>
+  <script src="../js/back-to-top.js?20260908-02"></script>
+
+</body>
+
+</html>

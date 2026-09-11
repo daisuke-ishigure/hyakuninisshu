@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="Keywords" content="Heian nobles, annual income, iden, ifu, shikiden, shikifu, Engishiki, Heian period, court offices, Hyakunin Isshu">
+  <meta name="description" content="What would a Heian noble's annual income be worth today? Using the rules of the Engishiki and academic research, we estimate Heian aristocrats' annual income in modern yen.">
+  <!-- スタイルシート -->
+  <link rel="stylesheet" href="../css/style.css?20260908-16">
+  <link rel="stylesheet" href="https://unpkg.com/scroll-hint@latest/css/scroll-hint.css">
+  <script src="https://unpkg.com/scroll-hint@latest/js/scroll-hint.min.js"></script>
+  <!-- フォント -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@500&family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap"
+    rel="stylesheet">
+  <!-- アップルタッチアイコン -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <!-- canonical -->
+  <link rel="canonical" href="https://hyakuninisshu.com/kanshoku_salary_en.html">
+  <!-- ogp設定 -->
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Estimated Annual Income of Heian Nobles | Heian Court Ranks &amp; Offices | Shigure's Hyakunin Isshu">
+  <meta property="og:description" content="What would a Heian noble's annual income be worth today? Using the rules of the Engishiki and academic research, we estimate Heian aristocrats' annual income in modern yen.">
+  <meta property="og:image" content="https://hyakuninisshu.com/img/thumb_salary.webp">
+  <meta property="og:url" content="https://hyakuninisshu.com/kanshoku_salary_en.html">
+  <meta property="og:site_name" content="Shigure's Hyakunin Isshu">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- 構造化データ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://hyakuninisshu.com/kanshoku_salary_en.html"
+    },
+    "headline": "Estimated Annual Income of Heian Nobles | Heian Court Ranks & Offices | Shigure's Hyakunin Isshu",
+    "description": "What would a Heian noble's annual income be worth today? Using the rules of the Engishiki and academic research, we estimate Heian aristocrats' annual income in modern yen.",
+    "image": "https://hyakuninisshu.com/img/thumb_kanshoku.webp",
+    "dateModified": "2026-07-26",
+    "author": {
+      "@type": "Person",
+      "name": "石槫大輔",
+      "url": "https://hyakuninisshu.com/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Shigure no Hyakunin Isshu",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://hyakuninisshu.com/apple-touch-icon.png"
+      }
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Shigure's Hyakunin Isshu",
+        "item": "https://hyakuninisshu.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Columns",
+        "item": "https://hyakuninisshu.com/introduction.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Heian Court Ranks & Offices",
+        "item": "https://hyakuninisshu.com/kanshoku_en.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Estimated Annual Income of Heian Nobles",
+        "item": "https://hyakuninisshu.com/kanshoku_salary_en.html"
+      }
+    ]
+  }
+  </script>
+  <!-- ファビコン -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="shortcut icon" href="https://hyakuninisshu.com/favicon.ico">
+
+  <style>
+    .salary-table {
+      margin-top: 10px;
+      border-collapse: collapse;
+      border: 1px solid #333;
+      width: 100%;
+    }
+
+    .salary-table th,
+    .salary-table td {
+      border: 1px solid #333;
+      background-color: #fff;
+      padding: 0.6em 0.8em;
+      font-size: 1em;
+      line-height: 1.7;
+      text-align: left;
+    }
+
+    .salary-table th {
+      background-color: #e8e3d3;
+      color: #333;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .salary-table td.num,
+    .salary-table th.num {
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .salary-table tr:nth-child(even) td {
+      background-color: #f7f4ee;
+    }
+
+    @media (max-width: 600px) {
+      .salary-table {
+        width: 600px;
+      }
+
+      .salary-table.wide {
+        width: 1400px;
+      }
+    }
+
+    .salary-table.wide {
+      width: 1400px;
+    }
+
+    .toggle-bar {
+      display: flex;
+      gap: 0.6em;
+      margin: 1em 0;
+      flex-wrap: wrap;
+    }
+
+    .toggle-btn {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.85em;
+      padding: 0.5em 1.2em;
+      border: 1px solid #b82343;
+      border-radius: 20px;
+      background: #fdf1f4;
+      color: #b82343;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .toggle-btn:hover {
+      background: #f6dde3;
+    }
+
+    .toggle-btn.is-active {
+      background: #b82343;
+      color: #fff;
+      border-color: #b82343;
+    }
+
+    .note {
+      background: #fdf5e4;
+      border: 1px solid #c8a870;
+      border-radius: 4px;
+      padding: 1em 1.2em;
+      margin: 1.2em 0;
+      line-height: 1.9;
+    }
+
+    .note h3 {
+      margin: 0 0 0.5em;
+      font-size: 1.3rem;
+      color: #4a2d1f;
+    }
+
+    .note p {
+      margin: 0 0 0.3em;
+    }
+
+    .note ul {
+      margin: 0.5em 0 0;
+      padding-left: 1.4em;
+      line-height: 1.9;
+    }
+
+    .note ul li {
+      background-position: 0 6px;
+    }
+
+    .calc {
+      background: #f7f4ee;
+      border: 1px solid #d9d0c4;
+      border-radius: 6px;
+      padding: 1.2em 1.4em;
+      margin: 1.2em 0;
+      font-family: 'Noto Sans JP', sans-serif;
+      line-height: 2;
+      color: #333;
+    }
+
+    .calc .formula {
+      text-align: center;
+      font-size: 1.05em;
+      font-weight: 700;
+    }
+
+    .calc .step {
+      margin: 0.2em 0;
+    }
+
+    .calc .total {
+      margin-top: 0.8em;
+      padding-top: 0.6em;
+      border-top: 1px dashed #c8b89a;
+      text-align: center;
+      font-size: 1.15em;
+      font-weight: 700;
+      color: #8a4a1f;
+    }
+
+    p.ref {
+      font-size: 0.85em;
+      color: #666;
+      line-height: 1.8;
+    }
+  </style>
+
+  <title>Estimated Annual Income of Heian Nobles | Heian Court Ranks &amp; Offices | Shigure's Hyakunin Isshu</title>
+</head>
+
+<body>
+  <!-- ヘッダーここから -->
+  <header class="header">
+    <p class="site-title">
+      <a href="https://hyakuninisshu.com/">Shigure no Hyakunin Isshu</a>
+    </p>
+    <div class="header_list">
+      <a href="../index_en.html"><img src="../img/icon_top_en.svg?ver-01" alt="Top" class="icon"></a>
+      <a href="../introduction_en.html" style="color:#333"><img src="/img/icon_column_en.svg?ver-01" alt="Columns" class="icon"></a>
+      <a href="../introduction-app_en.html" style="color:#333"><img src="/img/icon_app_en.svg?ver-01" alt="Apps" class="icon"></a>
+      <a href="kanshoku_salary.html"><img src="/img/icon_lang.svg?ver-01" alt="Japanese" class="icon"></a>
+      <a href="../list.html"><img src="/img/icon_list_en.svg?ver-01" alt="Poem list &amp; search" class="icon"></a>
+    </div>
+  </header>
+  <!-- ヘッダーここまで・メインここから -->
+  <main class="main_about-main">
+    <div class="about-main">
+      <div class="section">
+        <nav>
+          <ol class="breadcrumb">
+            <li><a href="../index_en.html">Top</a></li>
+            <li><a href="../introduction_en.html">Columns</a></li>
+            <li><a href="../kanshoku_en.html">Heian Court Ranks &amp; Offices</a></li>
+            <li>Estimated Annual Income of Heian Nobles</li>
+          </ol>
+        </nav>
+        <hr>
+
+        <h1>Estimated Annual Income of Heian Nobles</h1>
+
+
+        <p>
+          Heian-period nobles had no concept of a modern "monthly salary."
+          <br class="br-pc">Their income instead came from a combination of land, tax revenue, and goods such as silk and cloth, granted according to their court rank and office.
+        </p>
+        <p>
+          Those holding Sixth Rank or below were not considered nobility (<em>kizoku</em>) but were instead called <em>jigebito</em> ("lower officials"). Compared with nobles of Fifth Rank and above, they faced a wide gap not only in social standing but also in pay and treatment.
+        </p>
+        <p>Using academic research on the salaries paid to <em>ritsuryō</em> officials by court rank and office (Takashima Masanori, 2020), this page estimates annual incomes in modern yen — based on today's rice prices — to see just how large that gap really was.
+        </p>
+        <p>
+          This research focuses on the economics of the Nara period, but the <em>iden</em> and <em>ifu</em> systems were largely carried over into the early and middle Heian period, so it serves as a useful reference here.
+          <br class="br-pc">Note, however, that by the late Heian period, once <em>shōen</em> (private estates) had spread widely, nobles' actual income was likely far more complex than these figures suggest.
+        </p>
+
+        <h2>Main Sources of Income for Heian Nobles</h2>
+        <div class="js-table">
+          <table class="salary-table">
+            <tr>
+              <th>Item</th>
+              <th>Description</th>
+              <th>Modern Equivalent</th>
+            </tr>
+            <tr>
+              <td>Iden</td>
+              <td>Farmland granted according to court rank</td>
+              <td>Base salary</td>
+            </tr>
+            <tr>
+              <td>Ifu</td>
+              <td>Tax revenue granted according to court rank</td>
+              <td>Base allowance</td>
+            </tr>
+            <tr>
+              <td>Shikiden</td>
+              <td>Farmland granted according to office held</td>
+              <td>Position allowance</td>
+            </tr>
+            <tr>
+              <td>Shikifu</td>
+              <td>Tax revenue granted according to office held</td>
+              <td>Operating funds for the office (not personal salary)</td>
+            </tr>
+            <tr>
+              <td>Iroku / Kiroku</td>
+              <td>Payments in silk, cloth, silk floss, and similar goods</td>
+              <td>Bonus</td>
+            </tr>
+          </table>
+        </div>
+        <p class="kome">Iroku was paid only to those of Fourth and Fifth Rank; iden, ifu, and similar grants were not paid to those of Sixth Rank or below.</p>
+        <p class="kome">Ifu was granted according to court rank (social standing), while shikifu was granted according to the office held (position). Because shikifu is considered primarily a financial base for running that office rather than personal income, it is not included in the total annual income figures on this page.</p>
+        <p class="kome">Both ifu and shikifu were granted in the form of "<em>fuko</em>" (sealed households) — households whose tax obligations to the state were redirected to the recipient instead.
+        </p>
+
+        <h2>Salary by Court Rank (Capital Officials)</h2>
+        <p>
+          This table lists the <em>iden</em>, <em>shikiden</em>, <em>ifu</em>, <em>shikifu</em>, <em>iroku</em>, <em>kiroku</em>, and <em>shijin</em> (retainers) granted by court rank, based on academic research covering officials who served in the capital (<em>kyōkan</em>).
+          <br class="br-pc">Use the buttons below to switch between the raw in-kind amounts and their modern yen equivalent, calculated using the method described on this page.
+        </p>
+
+        <div class="toggle-bar" role="group" aria-label="Display mode">
+          <button type="button" class="toggle-btn is-active" data-mode="genbutsu">Show Raw Amounts</button>
+          <button type="button" class="toggle-btn" data-mode="gendai">Show Modern Yen Value</button>
+        </div>
+
+        <div class="js-table">
+          <table class="salary-table wide" id="rank-table"></table>
+        </div>
+        <p class="kome">The source research covers Nara-period official salaries, and no capital office corresponding to Junior Third Rank existed at the time — so Junior Third Rank is excluded from this table.</p>
+        <p class="kome"><em>Iden</em>, <em>shikiden</em>, <em>ifu</em>, <em>shikifu</em>, and <em>shijin</em> were not granted to those of Sixth Rank or below.</p>
+
+        <div class="note">
+          <h3>Notes</h3>
+          <p>The figures shown on this page are not values recorded directly in historical sources.</p>
+          <p>The content of this page uses the provisions of the '<span class="tippy engishiki">Engishiki</span>', and the conversion to modern values is an estimate based on the rice-conversion method presented in Nara-period research.</p>
+          <ul>
+            <li>1 <em>chō</em> = 380 bundles of rice per year (the noble's actual share, after subtracting 120 bundles of <em>eiryō</em> — mainly the farmer's share — from the 500 bundles harvested from the paddy. Farmers were left with barely 25% of the harvest.)</li>
+            <li>1 <em>fuko</em> household = 356.35 bundles (the combined rice-equivalent of the "<em>so</em>" tax on harvested rice, the "<em>yō</em>" tax paid in lieu of labor, and the "<em>chō</em>" tax paid in silk and local products, owed to the state by a single household.)</li>
+            <li><em>Iroku</em> and <em>kiroku</em> payments in kind are converted into bundles of rice.</li>
+            <li>All bundles of rice are converted into <em>koku</em> at a rate of 1 <em>koku</em> = 20 bundles. (This ratio is not stated explicitly in the source; it was independently back-calculated from another table in the same source.)</li>
+            <li>Conversion to modern yen assumes rice at ¥400/kg (1 <em>koku</em> ≈ ¥60,000), based on typical retail prices before the 2024 rice-price surge. If converted at the roughly ¥800/kg level seen as of July 2026, the figures on this page would be about twice as high. To keep a consistent basis for comparison, this page uses the ¥400/kg standard for the time being.</li>
+            <li><em>Shijin</em> (retainers — a count of people, not goods) are not included in the modern-yen total.</li>
+            <li><em>Shikifu</em> was a substantial source of tax revenue tied to an office, believed to have also funded official duties and the upkeep of <em>keishi</em> (staff who managed a noble's household affairs) and retainers. Since it cannot be considered straightforward personal disposable income, it has been excluded from the total annual income figures.</li>
+          </ul>
+        </div>
+
+        <div class="note">
+          <h3>Why Higher Ranks Show Such Large Figures</h3>
+          <p>The main reason annual income appears so extremely high at the upper ranks is <em>ifu</em>. Ifu is included in the total as income granted according to court rank (personal standing), but its source was tax revenue from <em>fuko</em> households, and in practice it was likely also used to maintain a noble's household and retainers. With this question of disposable income in mind, the table also shows a reference total that excludes ifu. The figures on this page do not correspond precisely to a "modern annual income" — please treat them as a rough guide to the economic scale of the time. When reading these figures, please also keep the following in mind:
+          </p>
+          <ul>
+            <li>Senior First Rank and Junior First Rank were, in most actual cases, granted posthumously rather than during a person's lifetime — these figures were not received by any real individual over their lifetime.</li>
+            <li>Because the modern-yen conversion is based on rice prices, the margin of error tends to widen at higher ranks — treat these figures as a rough approximation only.</li>
+          </ul>
+        </div>
+
+        <h2>References</h2>
+        <p class="ref">
+          Takashima, Masanori (2020). "On Income Disparity in the Nara Period," <em>Keizai Kenkyū</em> (The Economic Review), Vol. 71, No. 1, pp. 63–82. Table 9 (p. 72) was used as a reference.
+        </p>
+        <p class="ref">
+          Murai, Yasuhiko (1968). <em>Heian Kizoku no Sekai</em> (The World of the Heian Nobility). Tokuma Shoten.
+        </p>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-copy">&copy;2023 Shigure no Hyakunin Isshu</span>
+      <ul>
+        <li><a href="../policy.html">Privacy Policy</a></li>
+        <li>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXx7TKlqnTfKrw2Nuh4f37swVwFH-RFDsNkTGQ4JEF50q2wQ/viewform?usp=header"
+            target="_blank" rel="noopener">Contact Form</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+  <!-- フッターここまで -->
+  <script>new ScrollHint(".js-table");</script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="../js/move_script.js?20260729"></script>
+  <!-- ▼▼▼ tippy.js ▼▼▼▼ -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/tooltips.js?20260725-03"></script>
+  <!-- ▲▲▲ tippy.js ▲▲▲ -->
+  <!-- 位階ごとの支給一覧テーブル -->
+  <script>
+    (function () {
+      // Source: salary by rank and office for ritsuryō officials, capital officials (Keizai Kenkyū, Table 9)
+      // Junior Third Rank has no corresponding capital office, so it is excluded
+      const RANKS = [
+        { name: '正一位', nameEn: 'Sr. 1st', iden: 80, shokuden: 40, ifu: 300, shokufu: 3000, iroku: null, k2: { kinu: 30, sub: 30, nuno: 100, d: 140 }, k8: { kinu: 30, sub: 30, nuno: 100, d: 56 }, shijinI: 100, shijinS: 300 },
+        { name: '従一位', nameEn: 'Jr. 1st', iden: 74, shokuden: 40, ifu: 260, shokufu: 3000, iroku: null, k2: { kinu: 30, sub: 30, nuno: 100, d: 140 }, k8: { kinu: 30, sub: 30, nuno: 100, d: 56 }, shijinI: 100, shijinS: 300 },
+        { name: '正二位', nameEn: 'Sr. 2nd', iden: 60, shokuden: 30, ifu: 200, shokufu: 2000, iroku: null, k2: { kinu: 20, sub: 20, nuno: 60, d: 100 }, k8: { kinu: 20, sub: 20, nuno: 60, d: 40 }, shijinI: 80, shijinS: 200 },
+        { name: '従二位', nameEn: 'Jr. 2nd', iden: 54, shokuden: 30, ifu: 170, shokufu: 2000, iroku: null, k2: { kinu: 20, sub: 20, nuno: 60, d: 100 }, k8: { kinu: 20, sub: 20, nuno: 60, d: 40 }, shijinI: 80, shijinS: 200 },
+        { name: '正三位', nameEn: 'Sr. 3rd', iden: 40, shokuden: 20, ifu: 130, shokufu: 800, iroku: null, k2: { kinu: 14, sub: 14, nuno: 42, d: 80 }, k8: { kinu: 14, sub: 14, nuno: 42, d: 32 }, shijinI: 60, shijinS: 100 },
+        { name: '従三位', nameEn: 'Jr. 3rd', excluded: true },
+        { name: '正四位', nameEn: 'Sr. 4th', iden: 24, iroku: { kinu: 10, wata: 10, nuno: 50, youfu: 360 }, k2: { kinu: 8, sub: 8, nuno: 22, d: 40 }, k8: { kinu: 8, sub: 8, nuno: 22, d: 16 }, shijinI: 40 },
+        { name: '従四位', nameEn: 'Jr. 4th', iden: 20, iroku: { kinu: 8, wata: 8, nuno: 43, youfu: 300 }, k2: { kinu: 7, sub: 7, nuno: 18, d: 30 }, k8: { kinu: 7, sub: 7, nuno: 18, d: 12 }, shijinI: 35 },
+        { name: '正五位', nameEn: 'Sr. 5th', iden: 12, iroku: { kinu: 6, wata: 6, nuno: 36, youfu: 240 }, k2: { kinu: 5, sub: 5, nuno: 12, d: 20 }, k8: { kinu: 5, sub: 5, nuno: 12, d: 8 }, shijinI: 25 },
+        { name: '従五位', nameEn: 'Jr. 5th', iden: 8, iroku: { kinu: 4, wata: 4, nuno: 29, youfu: 180 }, k2: { kinu: 4, sub: 4, nuno: 10, d: 20 }, k8: { kinu: 4, sub: 4, nuno: 10, d: 8 }, shijinI: 20 },
+        { name: '正六位', nameEn: 'Sr. 6th', k2: { kinu: 3, sub: 3, nuno: 5, d: 15 }, k8: { kinu: 3, sub: 3, nuno: 5, d: 6 } },
+        { name: '従六位', nameEn: 'Jr. 6th', k2: { kinu: 3, sub: 3, nuno: 4, d: 15 }, k8: { kinu: 3, sub: 3, nuno: 4, d: 6 } },
+        { name: '正七位', nameEn: 'Sr. 7th', k2: { kinu: 2, sub: 2, nuno: 4, d: 15 }, k8: { kinu: 2, sub: 2, nuno: 3, d: 6 } },
+        { name: '従七位', nameEn: 'Jr. 7th', k2: { kinu: 2, sub: 2, nuno: 3, d: 15 }, k8: { kinu: 2, sub: 2, nuno: 3, d: 6 } },
+        { name: '正八位', nameEn: 'Sr. 8th', k2: { kinu: 1, sub: 1, nuno: 3, d: 15 }, k8: { kinu: 1, sub: 1, nuno: 3, d: 6 } },
+        { name: '従八位', nameEn: 'Jr. 8th', k2: { kinu: 1, sub: 1, nuno: 3, d: 10 }, k8: { kinu: 1, sub: 1, nuno: 3, d: 4 } },
+        { name: '大初位', nameEn: 'Daishōi', k2: { kinu: 1, sub: 1, nuno: 2, d: 10 }, k8: { kinu: 1, sub: 1, nuno: 2, d: 4 } },
+        { name: '少初位', nameEn: 'Shōshōi', k2: { kinu: 1, sub: 1, nuno: 2, d: 5 }, k8: { kinu: 1, sub: 1, nuno: 2, d: 2 } },
+      ];
+
+      const TAN_SOKU = 380;     // 1 chō = 380 bundles (500 harvested − 120 for eiryō, etc.)
+      const FUKO_SOKU = 356.35; // 1 fuko household = 356.35 bundles (so + yō + chō taxes combined)
+      const KOKU_YEN = 60000;   // 1 koku = ¥60,000 (based on a peacetime rice price of ¥400/kg)
+      const SOKU_KOKU = 20;     // 1 koku = 20 bundles
+
+      const TERM_DEFS = {
+        kinu: '<h3>Ashiginu (絁)</h3>A type of silk fabric known as ashiginu. Used for clothing and as gifts.',
+        wata: '<h3>Mawata (綿)</h3>Not cotton, but silk floss made from silkworm cocoons.',
+        nuno: '<h3>Chōfu (調布)</h3>Cloth paid as the "chō" tax. Mainly hemp cloth, used for clothing and everyday items.',
+        youfu: '<h3>Yōfu (庸布)</h3>Cloth paid as the "yō" tax, redistributed as salary.',
+        kuwa: '<h3>Fu (譜)</h3>Shown here exactly as it appears in the source material. Counted as an item worth 3 bundles of rice within the seasonal stipend (kiroku), but the source does not specify exactly what it was or how it was read.',
+        ito: '<h3>Ito (糸)</h3>Raw silk thread, the raw material for silk textiles.',
+        tetsu: '<h3>Tetsu (鉄)</h3>Iron, a valuable resource used for weapons and farming tools.',
+      };
+
+      function irokuSoku(r) {
+        if (!r.iroku) return 0;
+        return r.iroku.kinu * 30 + r.iroku.wata * 3 + r.iroku.nuno * 15 + r.iroku.youfu * 9;
+      }
+      function k2Soku(r) {
+        if (!r.k2) return 0;
+        return r.k2.kinu * 30 + r.k2.sub * 6 + r.k2.nuno * 15 + r.k2.d * 3;
+      }
+      function k8Soku(r) {
+        if (!r.k8) return 0;
+        return r.k8.kinu * 30 + r.k8.sub * 3 + r.k8.nuno * 15 + r.k8.d * 5;
+      }
+      function yen(koku) { return Math.round(koku * KOKU_YEN); }
+      function fmtYen(v) { return `¥${Math.round(v).toLocaleString('en-US')}`; }
+      function num(v) { return (v === undefined || v === null) ? '—' : v.toLocaleString('en-US'); }
+      function rankLabel(r) { return `${r.nameEn}<br>(${r.name})`; }
+
+      function renderHead(mode) {
+        if (mode === 'genbutsu') {
+          return `<tr>
+              <th rowspan="2">Rank</th>
+              <th rowspan="2" class="num">Iden<br>(chō)</th>
+              <th rowspan="2" class="num">Shikiden<br>(chō)</th>
+              <th rowspan="2" class="num">Ifu<br>(households)</th>
+              <th rowspan="2" class="num">Shikifu<br>(households)</th>
+              <th colspan="4">Iroku</th>
+              <th colspan="4">Kiroku (Spring)</th>
+              <th colspan="4">Kiroku (Autumn)</th>
+              <th rowspan="2" class="num">Shijin<br>Rank quota (people)</th>
+              <th rowspan="2" class="num">Shijin<br>Office quota (people)</th>
+            </tr>
+            <tr>
+              <th class="num"><span class="tippy kinu">Ashiginu</span> (疋)</th>
+              <th class="num"><span class="tippy wata">Mawata</span> (屯)</th>
+              <th class="num"><span class="tippy nuno">Chōfu</span> (端)</th>
+              <th class="num"><span class="tippy youfu">Yōfu</span> (常)</th>
+              <th class="num"><span class="tippy kinu">Ashiginu</span> (疋)</th>
+              <th class="num"><span class="tippy ito">Ito</span> (絇)</th>
+              <th class="num"><span class="tippy nuno">Chōfu</span> (端)</th>
+              <th class="num"><span class="tippy kuwa">Fu</span> (口)</th>
+              <th class="num"><span class="tippy kinu">Ashiginu</span> (疋)</th>
+              <th class="num"><span class="tippy wata">Mawata</span> (屯)</th>
+              <th class="num"><span class="tippy nuno">Chōfu</span> (端)</th>
+              <th class="num"><span class="tippy tetsu">Tetsu</span> (廷)</th>
+            </tr>`;
+        }
+        return `<tr>
+            <th>Rank</th>
+            <th class="num">Iden<br><small>(base pay)</small></th>
+            <th class="num">Shikiden<br><small>(office allowance)</small></th>
+            <th class="num">Ifu<br><small>(base allowance)</small></th>
+            <th class="num">Shikifu<br><small><span style="color:#b82343;">(operating funds — excl. from total)</span></small></th>
+            <th class="num">Iroku<br><small>(bonus)</small></th>
+            <th class="num">Kiroku, Spring<br><small>(bonus)</small></th>
+            <th class="num">Kiroku, Autumn<br><small>(bonus)</small></th>
+            <th class="num">Total</th>
+            <th class="num">Reference total<br><small>excl. Ifu</small></th>
+          </tr>`;
+      }
+
+      function renderRow(r, mode) {
+        const colCount = mode === 'genbutsu' ? 18 : 9;
+        if (r.excluded) {
+          return `<tr><td>${rankLabel(r)}</td><td colspan="${colCount}" style="text-align:center; color:#888;">No corresponding capital office existed for this rank, so it is excluded</td></tr>`;
+        }
+        if (mode === 'genbutsu') {
+          const c = r.iroku || {};
+          const k2 = r.k2 || {};
+          const k8 = r.k8 || {};
+          return `<tr>
+              <td>${rankLabel(r)}</td>
+              <td class="num">${num(r.iden)}</td>
+              <td class="num">${num(r.shokuden)}</td>
+              <td class="num">${num(r.ifu)}</td>
+              <td class="num">${num(r.shokufu)}</td>
+              <td class="num">${num(c.kinu)}</td>
+              <td class="num">${num(c.wata)}</td>
+              <td class="num">${num(c.nuno)}</td>
+              <td class="num">${num(c.youfu)}</td>
+              <td class="num">${num(k2.kinu)}</td>
+              <td class="num">${num(k2.sub)}</td>
+              <td class="num">${num(k2.nuno)}</td>
+              <td class="num">${num(k2.d)}</td>
+              <td class="num">${num(k8.kinu)}</td>
+              <td class="num">${num(k8.sub)}</td>
+              <td class="num">${num(k8.nuno)}</td>
+              <td class="num">${num(k8.d)}</td>
+              <td class="num">${num(r.shijinI)}</td>
+              <td class="num">${num(r.shijinS)}</td>
+            </tr>`;
+        }
+        const idenYen = yen((r.iden || 0) * TAN_SOKU / SOKU_KOKU);
+        const shokudenYen = yen((r.shokuden || 0) * TAN_SOKU / SOKU_KOKU);
+        const ifuYen = yen((r.ifu || 0) * FUKO_SOKU / SOKU_KOKU);
+        const shokufuYen = yen((r.shokufu || 0) * FUKO_SOKU / SOKU_KOKU);
+        const irokuYen = yen(irokuSoku(r) / SOKU_KOKU);
+        const k2Yen = yen(k2Soku(r) / SOKU_KOKU);
+        const k8Yen = yen(k8Soku(r) / SOKU_KOKU);
+        const total = idenYen + shokudenYen + ifuYen + irokuYen + k2Yen + k8Yen;
+        const refTotal = total - ifuYen;
+        return `<tr>
+            <td>${rankLabel(r)}</td>
+            <td class="num">${fmtYen(idenYen)}</td>
+            <td class="num">${fmtYen(shokudenYen)}</td>
+            <td class="num">${fmtYen(ifuYen)}</td>
+            <td class="num">${fmtYen(shokufuYen)}</td>
+            <td class="num">${fmtYen(irokuYen)}</td>
+            <td class="num">${fmtYen(k2Yen)}</td>
+            <td class="num">${fmtYen(k8Yen)}</td>
+            <td class="num"><b>${fmtYen(total)}</b></td>
+            <td class="num">${fmtYen(refTotal)}</td>
+          </tr>`;
+      }
+
+      function bindTooltips(container) {
+        if (!window.tippy) return;
+        Object.keys(TERM_DEFS).forEach((cls) => {
+          const els = container.querySelectorAll('.tippy.' + cls);
+          if (els.length) tippy(els, { content: TERM_DEFS[cls], allowHTML: true });
+        });
+      }
+
+      function render(mode) {
+        const table = document.getElementById('rank-table');
+        const rows = RANKS.map((r) => renderRow(r, mode)).join('');
+        table.innerHTML = `<thead>${renderHead(mode)}</thead><tbody>${rows}</tbody>`;
+        bindTooltips(table);
+      }
+
+      document.querySelectorAll('.toggle-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.toggle-btn').forEach((b) => b.classList.remove('is-active'));
+          btn.classList.add('is-active');
+          render(btn.dataset.mode);
+        });
+      });
+
+      render('genbutsu');
+    })();
+  </script>
+  <script src="../js/back-to-top.js?20260908-02"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="description" content="競技かるたのお手付き判定をシミュレーションで体感できるページ。空札・同じ陣・違う陣など全5パターンを台本に沿って体験し、百人一首のルールをゲーム感覚で学べます。">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+  <!-- 構造化データ — パンくずリスト -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "ホーム",
+      "item": "https://hyakuninisshu.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "百人一首のアプリ",
+      "item": "https://hyakuninisshu.com/introduction-app.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "お手付き判定シミュレーション",
+      "item": "https://hyakuninisshu.com/otetsuki.html"
+    }
+  ]
+}
+</script>
+  <!-- 構造化データ — WebPage -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "お手付き判定シミュレーション — 競技かるたのお手付きを体感",
+  "url": "https://hyakuninisshu.com/otetsuki.html",
+  "description": "競技かるたのお手付き判定をシミュレーションで体感できるページ。空札・同じ陣・違う陣など全5パターンを台本に沿って体験し、百人一首のルールをゲーム感覚で学べます。",
+  "datePublished": "2026-05-19",
+  "dateModified": "2026-05-19",
+  "author": {
+    "@type": "Person",
+    "name": "石槫大輔",
+    "url": "https://hyakuninisshu.com/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "時雨の百人一首",
+    "url": "https://hyakuninisshu.com/"
+  }
+}
+</script>
+  <!-- OGP -->
+  <meta property="og:locale" content="ja">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="お手付き判定シミュレーション — 競技かるたのお手付きを体感">
+  <meta property="og:description"
+    content="競技かるたのお手付き判定をシミュレーションで体感できるページ。空札・同じ陣・違う陣など全5パターンを台本に沿って体験し、百人一首のルールをゲーム感覚で学べます。">
+  <meta property="og:image" content="https://hyakuninisshu.com/img/ogp_otetsuki.webp">
+  <meta property="og:url" content="https://hyakuninisshu.com/otetsuki.html">
+  <meta property="og:site_name" content="時雨の百人一首">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>お手付き判定シミュレーション — 競技かるたのお手付きを体感 | 時雨の百人一首</title>
+  <link rel="canonical" href="https://hyakuninisshu.com/otetsuki.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?20260908-16">
+  <link rel="stylesheet" href="css/karuta.css">
+  <style>
+    .red {
+      color: #c0392b;
+    }
+
+    #otetsuki-app {
+      margin-top: 12px;
+    }
+
+    /* ─── ステップ進捗 ─── */
+    #progress {
+      text-align: center;
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 8px;
+    }
+
+    #step-num {
+      font-weight: bold;
+      color: #B82343;
+      font-size: 15px;
+    }
+
+    #progress-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .progress-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ddd;
+      transition: background 0.3s;
+    }
+
+    .progress-dot.done {
+      background: #B82343;
+    }
+
+    .progress-dot.current {
+      background: #e8a0a8;
+    }
+
+    /* ─── 猫キャラ ＋ 吹き出し ─── */
+    #neko-area {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    /* キャラクター枠 */
+    #neko-char-wrap {
+      flex-shrink: 0;
+      width: 72px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    @media (min-width: 480px) {
+      #neko-char-wrap {
+        width: 90px;
+      }
+    }
+
+    #neko-img {
+      width: 72px;
+      display: block;
+      border-radius: 8px;
+    }
+
+    @media (min-width: 480px) {
+      #neko-img {
+        width: 90px;
+      }
+    }
+
+    #neko-img.neko-bounce {
+      animation: neko-bounce 0.4s ease;
+    }
+
+    @keyframes neko-bounce {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      40% {
+        transform: translateY(-8px);
+      }
+    }
+
+    /* 吹き出し列（吹き出し＋ボタン） */
+    #neko-right {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    /* 吹き出し */
+    #neko-balloon {
+      position: relative;
+      background: #fffef5;
+      border: 2px solid #e0c060;
+      border-radius: 14px;
+      padding: 12px 14px;
+      min-height: 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    /* 吹き出しの尻尾（左向き） */
+    #neko-balloon::before {
+      content: '';
+      position: absolute;
+      left: -13px;
+      top: 24px;
+      border: 7px solid transparent;
+      border-right-color: #e0c060;
+      transition: border-right-color 0.3s;
+    }
+
+    #neko-balloon::after {
+      content: '';
+      position: absolute;
+      left: -9px;
+      top: 26px;
+      border: 5px solid transparent;
+      border-right-color: #fffef5;
+      transition: border-right-color 0.3s;
+    }
+
+    /* 結果：セーフ */
+    #neko-balloon.balloon-safe {
+      border-color: #1e8c4a;
+      background: #f0faf4;
+    }
+
+    #neko-balloon.balloon-safe::before {
+      border-right-color: #1e8c4a;
+    }
+
+    #neko-balloon.balloon-safe::after {
+      border-right-color: #f0faf4;
+    }
+
+    /* 結果：お手付き */
+    #neko-balloon.balloon-foul {
+      border-color: #c0392b;
+      background: #fdf3f2;
+    }
+
+    #neko-balloon.balloon-foul::before {
+      border-right-color: #c0392b;
+    }
+
+    #neko-balloon.balloon-foul::after {
+      border-right-color: #fdf3f2;
+    }
+
+    /* 吹き出し内テキスト */
+    .balloon-step-title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #B82343;
+      margin-bottom: 5px;
+    }
+
+    .balloon-body {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #444;
+    }
+
+    .balloon-verdict {
+      font-size: 1.55rem;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    .balloon-verdict.safe {
+      color: #1e8c4a;
+    }
+
+    .balloon-verdict.foul {
+      color: #c0392b;
+    }
+
+    .balloon-explain {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #444;
+    }
+
+    /* ─── 読み上げ（敵陣と自陣の間） ─── */
+    .section p {
+      margin: 0;
+    }
+
+    #reading-area {
+      background: #fff;
+      border-radius: 8px;
+      padding: 10px 16px;
+      margin: 8px 0;
+      text-align: center;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.10);
+    }
+
+    .reading-label-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+
+    .reading-label {
+      font-size: 11px;
+      color: #333;
+      margin: 0;
+    }
+
+    #kami-display {
+      font-family: "Noto Serif JP", serif;
+      font-weight: 700;
+      font-size: 17px;
+      line-height: 1.5;
+      color: #333;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    #karafuda-badge {
+      display: inline-block;
+      background: #c0392b;
+      color: #fff;
+      padding: 2px 12px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: bold;
+      letter-spacing: 0 !important;
+    }
+
+    /* ─── 陣 ─── */
+    .field-section {
+      margin-bottom: 8px;
+    }
+
+    .field-label {
+      font-size: 13px;
+      font-weight: bold;
+      padding: 3px 8px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 4px;
+    }
+
+    .field-label.enemy-label {
+      background: rgba(47, 53, 66, 0.08);
+      color: #2f3542;
+    }
+
+    .field-label.my-label {
+      background: rgba(184, 35, 67, 0.08);
+      color: #B82343;
+    }
+
+    .card-row {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      padding: 20px 8px 10px;
+      border-radius: 8px;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+    }
+
+    #enemy-field {
+      background: rgba(47, 53, 66, 0.04);
+      border: 1px solid rgba(47, 53, 66, 0.15);
+    }
+
+    #my-field {
+      background: rgba(184, 35, 67, 0.04);
+      border: 1px solid rgba(184, 35, 67, 0.15);
+    }
+
+
+    /* ─── 札ラッパー（★ヒント） ─── */
+    .card-wrapper {
+      position: relative;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hint-star {
+      display: none;
+      position: absolute;
+      top: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #B82343;
+      font-size: 15px;
+      line-height: 1;
+      animation: hint-float 0.55s ease-in-out infinite alternate;
+    }
+
+    @keyframes hint-float {
+      from {
+        transform: translateX(-50%) translateY(0);
+      }
+
+      to {
+        transform: translateX(-50%) translateY(-4px);
+      }
+    }
+
+    .card-wrapper.hint .hint-star {
+      display: block;
+    }
+
+    .card-wrapper.hint .ot-card {
+      border-color: #B82343 !important;
+      animation: ot-hint 0.6s ease-in-out infinite alternate !important;
+    }
+
+    @keyframes ot-hint {
+      from {
+        box-shadow: 0 0 6px rgba(184, 35, 67, 0.5);
+      }
+
+      to {
+        box-shadow: 0 0 18px rgba(184, 35, 67, 0.9);
+      }
+    }
+
+    /* ─── かるた札 ─── */
+    .ot-card {
+      width: 100px;
+      height: 143px;
+      border: 2px solid #007e5e;
+      background: #fff url(img/huda_karuta.webp) center / cover;
+      writing-mode: vertical-rl;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border-radius: 3px;
+      user-select: none;
+      -webkit-user-select: none;
+      overflow: hidden;
+      padding: 4px 3px;
+      box-sizing: border-box;
+    }
+
+    @media (min-width: 480px) {
+      .ot-card {
+        width: 120px;
+        height: 171px;
+      }
+    }
+
+    .ot-card p {
+      margin: 0;
+      font-family: "Noto Serif JP", serif;
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: 0.06em;
+      line-height: 1.1;
+      white-space: nowrap;
+    }
+
+    @media (min-width: 480px) {
+      .ot-card p {
+        font-size: 28px;
+      }
+    }
+
+    /* 最終行が6文字以上の場合に文字間を詰めて1行に収める */
+    .ot-card p.fit-last {
+      letter-spacing: -0.15em;
+    }
+
+    @media (min-width: 480px) {
+      .ot-card p.fit-last {
+        letter-spacing: -0.2em;
+      }
+    }
+
+    .enemy-card {
+      transform: rotate(180deg);
+    }
+
+    .correct-card {
+      border-color: #f0c030 !important;
+      animation: ot-glow 0.8s ease-in-out infinite alternate;
+    }
+
+    @keyframes ot-glow {
+      from {
+        box-shadow: 0 0 6px #f0c030;
+      }
+
+      to {
+        box-shadow: 0 0 22px #f0c030, 0 0 44px rgba(240, 192, 48, 0.45);
+      }
+    }
+
+    .ot-card.tapped-safe {
+      border-color: #1e8c4a !important;
+      box-shadow: 0 0 14px rgba(30, 140, 74, 0.8);
+      animation: none;
+    }
+
+    .ot-card.tapped-foul {
+      border-color: #c0392b !important;
+      box-shadow: 0 0 14px rgba(192, 57, 43, 0.8);
+      animation: none;
+    }
+
+    .ot-card.disabled {
+      cursor: default;
+    }
+
+    .ot-card.disabled:not(.correct-card):not(.tapped-safe):not(.tapped-foul) {
+      opacity: 0.5;
+    }
+
+    /* ─── 次へボタン ─── */
+    #next-btn {
+      display: block;
+      margin: 0 auto;
+      padding: 12px 44px;
+      background: #B82343;
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    #next-btn:hover {
+      background: #9a1c38;
+    }
+
+    /* ─── 完了画面 ─── */
+    #completion {
+      text-align: center;
+      padding: 20px 12px 16px;
+      background: #fdf8e8;
+      border: 2px solid #e0c060;
+      border-radius: 12px;
+      margin-top: 12px;
+    }
+
+    #completion .completion-title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #B82343;
+      margin-bottom: 10px;
+    }
+
+    #completion .completion-summary {
+      font-size: 0.87rem;
+      color: #444;
+      line-height: 1.85;
+      margin-bottom: 16px;
+      text-align: left;
+    }
+
+    #restart-btn {
+      padding: 10px 36px;
+      background: #B82343;
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      font-size: 0.95rem;
+      font-weight: bold;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    #restart-btn:hover {
+      background: #2471a3;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* ─── ルール説明 ─── */
+    #rules-section {
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid #e0d8c0;
+    }
+
+    .em-usage-list {
+      font-size: 0.82rem;
+      padding-left: 0;
+    }
+
+    .em-usage-list li {
+      padding-left: 1em;
+      position: relative;
+      margin-bottom: 0.5em;
+      line-height: 1.7;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ヘッダー -->
+  <header class="header">
+    <p class="site-title">
+      <a href="https://hyakuninisshu.com/">時雨の百人一首</a>
+    </p>
+    <div class="header_list">
+      <a href="index.html"><img src="img/icon_top.svg?ver-03" alt="トップ" class="icon"></a>
+      <a href="introduction.html" style="color:#333"><img src="img/icon_column.svg?ver-03" alt="コラム" class="icon"></a>
+      <a href="introduction-app.html" style="color:#333"><img src="img/icon_app.svg?ver-03" alt="アプリ" class="icon"></a>
+      <a href="otetsuki_en.html"><img src="img/icon_lang.svg?ver-01" alt="English" class="icon"></a>
+      <a href="list.html"><img src="img/icon_search.svg?ver-04" alt="和歌の一覧・検索" class="icon"></a>
+    </div>
+  </header>
+
+  <main class="main_about-main">
+    <div class="section">
+      <nav>
+        <ol class="breadcrumb">
+          <li><a href="index.html">トップ</a></li>
+          <li><a href="introduction-app.html">アプリ</a></li>
+          <li>お手付き判定シミュレーション</li>
+        </ol>
+      </nav>
+      <h1>お手付き判定シミュレーション</h1>
+      <div id="otetsuki-app">
+
+        <!-- 進捗 -->
+        <div id="progress">
+          ステップ <span id="step-num">1</span> / <span id="step-total">5</span>
+        </div>
+        <div id="progress-dots"></div>
+
+        <!-- 猫キャラ ＋ 吹き出し -->
+        <div id="neko-area">
+          <div id="neko-char-wrap">
+            <img id="neko-img" src="img/neko_normal.webp" alt="ねこ">
+          </div>
+          <div id="neko-right">
+            <div id="neko-balloon">
+              <div id="neko-balloon-text"></div>
+            </div>
+            <button id="next-btn" class="hidden">次のステップへ</button>
+          </div>
+        </div>
+
+        <!-- ゲームエリア -->
+        <div id="game-area">
+
+          <!-- 敵陣 -->
+          <div class="field-section">
+            <div class="field-label enemy-label">敵陣</div>
+            <div id="enemy-field" class="card-row"></div>
+          </div>
+
+          <!-- 読まれている歌（敵陣と自陣の間） -->
+          <div id="reading-area">
+            <div class="reading-label-row">
+              <p class="reading-label">読まれている歌</p>
+              <div id="karafuda-badge" class="hidden">空 札</div>
+            </div>
+            <div id="kami-display"></div>
+          </div>
+
+          <!-- 自陣 -->
+          <div class="field-section">
+            <div class="field-label my-label">自陣</div>
+            <div id="my-field" class="card-row"></div>
+          </div>
+
+        </div><!-- /game-area -->
+
+        <!-- 完了 -->
+        <div id="completion" class="hidden">
+          <p class="completion-title">お手付きのルールをすべて体験しました！</p>
+          <p class="completion-summary">
+            ① 読まれた札と<strong>同じ陣</strong>の札を触った → <strong style="color:#1e8c4a">セーフ</strong>（正解でなくてもOK）<br>
+            ② 読まれた札と<strong>違う陣</strong>の札を触った → <strong style="color:#c0392b">お手付き</strong><br>
+            ③ <strong>空札</strong>が読まれたときに札を触った → <strong style="color:#c0392b">お手付き</strong>
+          </p>
+          <button id="restart-btn">もう一度始める</button>
+        </div>
+
+      </div>
+
+      <!-- ルール参考 -->
+      <div id="rules-section">
+        <h4>お手付きのルール</h4>
+        <ul class="em-usage-list">
+          <li>読まれた札と<strong>同じ陣</strong>にある札を触った場合 → <strong style="color:#1e8c4a">セーフ</strong>（触った札が正解でなくても構いません）</li>
+          <li>読まれた札と<strong>違う陣</strong>にある札を触った場合 → <strong style="color:#c0392b">お手付き</strong></li>
+          <li>どちらの陣にもない<strong>空札</strong>が読まれたときに札を触った場合 → <strong style="color:#c0392b">お手付き</strong></li>
+          <li>お手付きをすると、相手から札を1枚送られ、自陣の札が増えます。</li>
+          <li>相手がお手付きをすると、相手に札を1枚送り、敵陣の札が増えます。</li>
+          <li>送る札のことを「送り札」といいます。</li>
+          <li>送り札は、送る側が好きな札を選べます。</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <!-- フッター -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-copy">&copy;2023 時雨の百人一首</span>
+      <ul>
+        <li><a href="policy.html">プライバシーポリシー</a></li>
+        <li>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXx7TKlqnTfKrw2Nuh4f37swVwFH-RFDsNkTGQ4JEF50q2wQ/viewform?usp=header"
+            target="_blank" rel="noopener">お問い合わせフォーム</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    // ─── 台本データ ───────────────────────────────────────────
+    // myField    = poems[0..4]  （自陣）
+    // enemyField = poems[5..9]  （敵陣）
+    // 空札       = poems[10]
+    const SCRIPTS = [
+      {
+        step: 1,
+        nekoFace: '🐱',
+        isKarafuda: true,
+        currentPoemIndex: 10,
+        instruction: {
+          title: 'ステップ１：<ruby>空札<rt>からふだ</rt></ruby>',
+          body: '空札（自陣にも敵陣にもない札）が読まれています。<br><span style="color: #B82343;">★</span>マークの札を取ってみましょう。お手付きになるでしょうか？',
+        },
+        hintField: 'my', hintIndex: 0,
+        explainFoul: '読まれた歌の札は、<strong>空札</strong>（自陣にも敵陣にもない札）です。<br class="br-pc">空札が読まれたときは、どの札に触れてもお手付きになります。',
+        explainSafe: '',
+        faceFoul: '🙀',
+        faceSafe: '😸',
+      },
+      {
+        step: 2,
+        nekoFace: '🐱',
+        isKarafuda: false,
+        currentPoemIndex: 2,
+        instruction: {
+          title: 'ステップ２：同じ陣なら正解でなくてもセーフ',
+          body: '正解の札は自陣にあります（金色に光っています）。<br>正解の隣にある<span style="color: #B82343;">★</span>マークの札を取ってみましょう。<br class="br-pc">正解でなくてもセーフになるでしょうか？',
+        },
+        hintField: 'my', hintIndex: 1,
+        explainSafe: '<strong>正解の札と同じ陣の札なら、触ってもセーフです！<br class="br-pc"></strong>競技かるたでは、読まれた札を直接取らなくても、別の札と一緒に正解の札を陣地の外に出すことでも札を取ったと判定されます。このため、同じ陣の別の札に触ってもお手付きにはなりません。',
+        explainFoul: '正解の札は自陣にあるのに、敵陣の札を触ってしまいました。違う陣の札を触るとお手付きになります。',
+        faceFoul: '😿',
+        faceSafe: '😸',
+      },
+      {
+        step: 3,
+        nekoFace: '🐱',
+        isKarafuda: false,
+        currentPoemIndex: 7,
+        instruction: {
+          title: 'ステップ３：違う陣はお手付き',
+          body: '正解の札は敵陣にあります（金色に光っています）。<br>あえて<span style="color: #B82343;">★</span>マークの自陣の札を取ってみましょう。どうなるでしょう？',
+        },
+        hintField: 'my', hintIndex: 2,
+        explainFoul: '正解の札は敵陣にあるのに、自陣の札を触ってしまいました。<br class="br-pc"><strong>正解の札がない陣の札を触るとお手付きになります。</strong>',
+        explainSafe: '敵陣の札を取りましたね。正解も敵陣にあるのでセーフです。',
+        faceFoul: '😿',
+        faceSafe: '😸',
+      },
+      {
+        step: 4,
+        nekoFace: '🐱',
+        isKarafuda: false,
+        currentPoemIndex: 7,
+        instruction: {
+          title: 'ステップ４：敵陣でも同じ陣ならセーフ',
+          body: '今度も正解の札は敵陣にあります（金色に光っています）。<br>今度は<span style="color: #B82343;">★</span>マークの敵陣の別の札を取ってみましょう。',
+        },
+        hintField: 'enemy', hintIndex: 1,
+        explainSafe: '正解の札は敵陣にありました。今回は同じ陣にある別の札を取ったのでセーフです！</strong><br class="br-pc">自陣、敵陣に関わらず、正解と同じ陣にある札はどれを触ってもお手付きになりません。',
+        explainFoul: '自陣の札を取りましたね。正解の札は敵陣にあるので、お手付きになります。',
+        faceFoul: '😿',
+        faceSafe: '😸',
+      },
+      {
+        step: 5,
+        nekoFace: '🐱',
+        isKarafuda: false,
+        currentPoemIndex: 2,
+        instruction: {
+          title: 'ステップ５：まとめ',
+          body: '最後です。正解の札は自陣にあります（金色に光っています）。<br>あえて<span style="color: #B82343;">★</span>マークの敵陣の札を取ってみましょう。',
+        },
+        hintField: 'enemy', hintIndex: 2,
+        explainFoul: '正解の札は自陣にあるのに、敵陣の札を触ってしまいました。<br class="br-pc"><strong>正解の札がない陣の札を触るとお手付きになります。</strong>',
+        explainSafe: '自陣の札を取りましたね。正解も自陣にあるのでセーフです。',
+        faceFoul: '😿',
+        faceSafe: '😸',
+      },
+    ];
+
+    // ─── 状態 ────────────────────────────────────────────────
+    let poems = [];
+    let myField = [], enemyField = [];
+    let currentStep = 0;
+    let answered = false;
+
+    // ─── 5文字区切りフォーマット ──────────────────────────────
+    // shimo_no_ku の <br> 位置が5文字区切りでない首があるため JS で再分割する
+    function formatCardText(html) {
+      const div = document.createElement('div');
+      div.innerHTML = (html || '').replace(/<br\s*\/?>/gi, '');
+      const text = div.textContent.trim();
+      const parts = [];
+      if (text.length > 0) parts.push(text.slice(0, 5));
+      if (text.length > 5) parts.push(text.slice(5, 10));
+      if (text.length > 10) parts.push(text.slice(10));
+      return parts.join('<br>');
+    }
+
+    // ─── 猫キャラ操作 ─────────────────────────────────────────
+    const NEKO_FACE_MAP = {
+      '🐱': 'img/neko_normal.webp',
+      '😸': 'img/neko_happy.webp',
+      '😺': 'img/neko_happy.webp',
+      '😿': 'img/neko_sad.webp',
+      '🙀': 'img/neko_sad.webp',
+    };
+    function setNekoFace(face) {
+      const img = document.getElementById('neko-img');
+      img.src = NEKO_FACE_MAP[face] || 'img/neko_normal.webp';
+      img.classList.remove('neko-bounce');
+      void img.offsetWidth;
+      img.classList.add('neko-bounce');
+    }
+
+    function setNekoInstruction(script) {
+      setNekoFace(script.nekoFace);
+      const balloon = document.getElementById('neko-balloon');
+      balloon.className = '';
+      document.getElementById('neko-balloon-text').innerHTML =
+        '<div class="balloon-step-title">' + script.instruction.title + '</div>' +
+        '<div class="balloon-body">' + script.instruction.body + '</div>';
+    }
+
+    function setNekoResult(isSafe, script) {
+      const face = isSafe ? script.faceSafe : script.faceFoul;
+      setNekoFace(face);
+      const balloon = document.getElementById('neko-balloon');
+      balloon.className = isSafe ? 'balloon-safe' : 'balloon-foul';
+      const verdictText = isSafe ? 'セーフ！' : 'お手付き！';
+      const verdictClass = isSafe ? 'safe' : 'foul';
+      const explanation = isSafe ? script.explainSafe : script.explainFoul;
+      document.getElementById('neko-balloon-text').innerHTML =
+        '<div class="balloon-verdict ' + verdictClass + '">' + verdictText + '</div>' +
+        '<div class="balloon-explain">' + explanation + '</div>';
+    }
+
+    function setNekoCompletion() {
+      setNekoFace('😺');
+      const balloon = document.getElementById('neko-balloon');
+      balloon.className = 'balloon-safe';
+      document.getElementById('neko-balloon-text').innerHTML =
+        '<div class="balloon-step-title">全ステップ完了！</div>' +
+        '<div class="balloon-body">お手付きのルール、バッチリ体感できましたね！<br>下のまとめも確認してみてください。</div>';
+    }
+
+    // ─── 初期化 ───────────────────────────────────────────────
+    async function init() {
+      const res = await fetch('js/kimariji.json?v02');
+      poems = await res.json();
+      myField = poems.slice(0, 3);
+      enemyField = poems.slice(5, 8);
+
+      const dots = document.getElementById('progress-dots');
+      SCRIPTS.forEach((_, i) => {
+        const d = document.createElement('div');
+        d.className = 'progress-dot';
+        d.id = 'dot-' + i;
+        dots.appendChild(d);
+      });
+      document.getElementById('step-total').textContent = SCRIPTS.length;
+
+      loadStep(0);
+    }
+
+    // ─── ステップ読み込み ─────────────────────────────────────
+    function loadStep(index) {
+      currentStep = index;
+      answered = false;
+
+      const script = SCRIPTS[index];
+
+      // 進捗ドット
+      document.getElementById('step-num').textContent = script.step;
+      SCRIPTS.forEach((_, i) => {
+        document.getElementById('dot-' + i).className =
+          'progress-dot' + (i < index ? ' done' : i === index ? ' current' : '');
+      });
+
+      // 猫と吹き出し
+      setNekoInstruction(script);
+
+      // 読み上げ
+      const poem = poems[script.currentPoemIndex];
+      document.getElementById('kami-display').innerHTML =
+        (poem.kami_no_ku_kana || '').replace(/<br\s*\/?>/gi, '　');
+      document.getElementById('karafuda-badge').classList.toggle('hidden', !script.isKarafuda);
+
+      // 陣を描画
+      renderField('enemy-field', enemyField, 'enemy', script);
+      renderField('my-field', myField, 'my', script);
+
+      // UI リセット
+      document.getElementById('game-area').classList.remove('hidden');
+      document.getElementById('next-btn').classList.add('hidden');
+      document.getElementById('completion').classList.add('hidden');
+      document.getElementById('progress').classList.remove('hidden');
+      document.getElementById('progress-dots').classList.remove('hidden');
+    }
+
+    // ─── 陣の描画 ─────────────────────────────────────────────
+    function renderField(fieldId, fieldPoems, side, script) {
+      const el = document.getElementById(fieldId);
+      el.innerHTML = '';
+      fieldPoems.forEach((poem, index) => {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'card-wrapper';
+        if (script.hintField === side && script.hintIndex === index) {
+          wrapper.classList.add('hint');
+        }
+
+        const star = document.createElement('span');
+        star.className = 'hint-star';
+        star.textContent = '★';
+        wrapper.appendChild(star);
+
+        const card = document.createElement('div');
+        card.className = 'ot-card' + (side === 'enemy' ? ' enemy-card' : '');
+        if (!script.isKarafuda && poems.indexOf(poem) === script.currentPoemIndex) {
+          card.classList.add('correct-card');
+        }
+
+        const p = document.createElement('p');
+        p.innerHTML = formatCardText(poem.shimo_no_ku);
+        const rawLen = (poem.shimo_no_ku || '').replace(/<[^>]+>/g, '').trim().length;
+        if (rawLen > 15) p.classList.add('fit-last');
+        card.appendChild(p);
+        card.addEventListener('click', () => onCardTap(card, side, script));
+
+        wrapper.appendChild(card);
+        el.appendChild(wrapper);
+      });
+    }
+
+    // ─── タップ判定 ───────────────────────────────────────────
+    function onCardTap(card, tappedSide, script) {
+      if (answered) return;
+      answered = true;
+
+      document.querySelectorAll('.card-wrapper.hint').forEach(w => w.classList.remove('hint'));
+
+      let isSafe;
+      if (script.isKarafuda) {
+        isSafe = false;
+      } else {
+        const correctSide = script.currentPoemIndex < 5 ? 'my' : 'enemy';
+        isSafe = tappedSide === correctSide;
+      }
+
+      card.classList.add(isSafe ? 'tapped-safe' : 'tapped-foul');
+      document.querySelectorAll('.ot-card').forEach(c => c.classList.add('disabled'));
+
+      setNekoResult(isSafe, script);
+
+      const isLast = currentStep >= SCRIPTS.length - 1;
+      const btn = document.getElementById('next-btn');
+      btn.textContent = isLast ? 'まとめを見る' : '次のステップへ';
+      btn.classList.remove('hidden');
+    }
+
+    // ─── 次のステップ ─────────────────────────────────────────
+    document.getElementById('next-btn').addEventListener('click', () => {
+      if (currentStep >= SCRIPTS.length - 1) {
+        showCompletion();
+      } else {
+        loadStep(currentStep + 1);
+      }
+    });
+
+    // ─── 完了画面 ─────────────────────────────────────────────
+    function showCompletion() {
+      document.getElementById('game-area').classList.add('hidden');
+      document.getElementById('next-btn').classList.add('hidden');
+      document.getElementById('progress').classList.add('hidden');
+      document.getElementById('progress-dots').classList.add('hidden');
+      SCRIPTS.forEach((_, i) => {
+        document.getElementById('dot-' + i).className = 'progress-dot done';
+      });
+      setNekoCompletion();
+      document.getElementById('completion').classList.remove('hidden');
+    }
+
+    // ─── やり直し ─────────────────────────────────────────────
+    document.getElementById('restart-btn').addEventListener('click', () => {
+      loadStep(0);
+    });
+
+    init();
+  </script>
+  <script src="js/back-to-top.js?20260908-02"></script>
+
+</body>
+
+</html>

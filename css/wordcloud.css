@@ -1,0 +1,217 @@
+#wordcloud-section {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #e0c060;
+}
+
+@media (min-width: 760px) {
+  #wordcloud-section {
+    grid-column: 1 / -1;
+  }
+}
+
+.wc-title {
+  font-family: "Noto Serif JP", serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a3a2a;
+  margin: 0 0 14px;
+  letter-spacing: 0.08em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#wordcloud-section .wc-desc {
+  font-size: 0.88rem;
+  color: #555;
+  margin: 0 0 0.75em;
+  line-height: 1.7;
+  white-space: pre-line;
+}
+
+/* ── 入力フォーム ── */
+.wc-input-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+#wc-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1.5px solid #97e2cf;
+  border-radius: 8px;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 1rem; /* 16px以上でiOS Safariのフォーカス時自動ズームを防ぐ */
+  color: #1a3a2a;
+  outline: none;
+  transition: border-color 0.15s;
+  min-width: 0;
+}
+
+#wc-input:focus {
+  border-color: #007e5e;
+}
+
+#wc-input:disabled {
+  background: #f0f0f0;
+  color: #aaa;
+}
+
+#wc-submit {
+  padding: 8px 18px;
+  background: #007e5e;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#wc-submit:hover {
+  background: #005843;
+}
+
+#wc-submit:disabled {
+  background: #ccc;
+  cursor: default;
+}
+
+/* ── メッセージ ── */
+#wc-message {
+  min-height: 1.4em;
+  font-size: 0.85rem;
+  margin: 0 0 8px;
+}
+
+.wc-msg-success { color: #007e5e; }
+.wc-msg-error   { color: #b82343; }
+.wc-msg-info    { color: #666; }
+
+/* ── ワードクラウドキャンバス ── */
+#wc-canvas {
+  width: 100%;
+  min-height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f9f6ee;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+#wc-canvas svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.wc-empty,
+.wc-loading {
+  color: #999;
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 2rem;
+  margin: 0;
+}
+
+.wc-count-badge {
+  font-size: 0.75rem;
+  color: #888;
+  text-align: right;
+  margin-top: 6px;
+}
+
+/* ── 確認ダイアログ ── */
+.wc-dialog-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: wc-overlay-in 0.15s ease;
+}
+
+@keyframes wc-overlay-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.wc-dialog {
+  background: #fff;
+  border-radius: 12px;
+  padding: 28px 24px 20px;
+  width: min(90vw, 320px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  text-align: center;
+  animation: wc-dialog-in 0.15s ease;
+}
+
+@keyframes wc-dialog-in {
+  from { transform: scale(0.92); opacity: 0; }
+  to   { transform: scale(1);    opacity: 1; }
+}
+
+.wc-dialog-msg {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 0.95rem;
+  color: #1a3a2a;
+  line-height: 1.7;
+  margin: 0 0 22px;
+}
+
+.wc-dialog-msg strong {
+  display: block;
+  font-size: 1.2rem;
+  color: #007e5e;
+  margin: 4px 0 8px;
+}
+
+.wc-dialog-btns {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.wc-dialog-cancel {
+  padding: 8px 22px;
+  background: #f0f0f0;
+  color: #555;
+  border: none;
+  border-radius: 8px;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.wc-dialog-cancel:hover {
+  background: #ddd;
+}
+
+.wc-dialog-ok {
+  padding: 8px 22px;
+  background: #007e5e;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.wc-dialog-ok:hover {
+  background: #005843;
+}

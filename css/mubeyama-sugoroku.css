@@ -1,0 +1,766 @@
+/* ==========================================================
+   百人一首 宝集め双六 - 専用スタイル
+   ========================================================== */
+
+.section.sugoroku-section {
+  width: 100%;
+  max-width: 1400px;
+}
+
+.sgr-h1 {
+  display: flex;
+  align-items: center;
+  gap: .3em;
+  font-family: "Kaisei HarunoUmi", serif;
+  font-size: 1.8rem;
+  color: #333;
+  margin: .3em 0 .5em;
+}
+.sgr-h1-icon { font-size: 1.2em; }
+
+.sgr-lead {
+  font-size: .95rem;
+  line-height: 1.9;
+  margin-bottom: 1.2em;
+  color: #444;
+}
+.sgr-lead strong { color: #B82343; }
+
+/* ---------- ゲーム全体コンテナ ---------- */
+#sgr-app {
+  position: relative;
+  background: linear-gradient(160deg, #fffaf0, #f3ead2);
+  border: 1px solid #e4d9b8;
+  border-radius: 1.2em;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, .12);
+  padding: 1em;
+  min-height: 480px;
+}
+/* PCでは、プレイ中にsgr-appの高さをあらかじめ確保しておく。○×クイズの解説が開くと
+   sgr-side-panelが盤面より縦に長くなり（実測で最大1000px超）、その開閉のたびにページの
+   高さが大きく変わって自動スクロールが起きやすくなるため、あらかじめ高さを確保して
+   その機会を減らす（クイズの解説表示など、極端に長くなる場合まで完全には防げない）。
+   スタート画面（プレイ前）には適用しない。 */
+@media (min-width: 901px) {
+  #sgr-app:has(#sgr-game-screen:not(.sgr-hidden)) {
+    min-height: 850px;
+  }
+}
+
+.sgr-hidden { display: none !important; }
+
+/* スマホで、ゲーム画面（プレイ中〜結果）を表示している間だけ、下部の共通リンクバー(.sp-appbar)を隠す。
+   スタート画面に戻ると #sgr-game-screen に .sgr-hidden が付き、バーもまた表示される。 */
+@media screen and (max-width: 1000px) {
+  body:has(#sgr-game-screen:not(.sgr-hidden)) .sp-appbar { display: none !important; }
+  body:has(#sgr-game-screen:not(.sgr-hidden)).has-sp-appbar { padding-bottom: 0; }
+  body:has(#sgr-game-screen:not(.sgr-hidden)).has-sp-appbar .back-to-top { bottom: 0.85rem; }
+}
+
+/* ---------- スタート画面（モーダルではなく通常表示） ---------- */
+.sgr-start-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: .5em 0;
+}
+.sgr-start-card {
+  background: #fffdf6;
+  border-radius: 1em;
+  padding: 1.4em 1.3em;
+  width: 100%;
+  margin: 0 auto;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .1);
+  border: 3px solid #B82343;
+}
+
+/* ---------- モーダル共通（歌人の歌モーダルなど） ---------- */
+.sgr-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(30, 20, 10, .55);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  border-radius: 1.2em;
+  padding: 1em;
+}
+.sgr-modal {
+  background: #fffdf6;
+  border-radius: 1em;
+  padding: 1.4em 1.3em;
+  max-width: 480px;
+  width: 100%;
+  max-height: 90%;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .3);
+  border: 3px solid #B82343;
+}
+.sgr-modal-title {
+  font-family: "Kaisei HarunoUmi", serif;
+  font-size: 1.4rem;
+  text-align: center;
+  margin-bottom: .6em;
+  color: #B82343;
+}
+
+/* サイト共通の .section ul { margin-left: 1em; }（詳細度0,1,1）より確実に強くして、
+   左マージンを0で打ち消す（#sgr-app .sgr-rule-list liと同じ考え方） */
+#sgr-app .sgr-rule-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.1em;
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+}
+/* サイト共通の .section ul li（桜アイコンの箇条書き）より詳細度を上げて打ち消し、
+   最初の絵文字（.sgr-rule-bullet）自体をビュレットとして使う */
+#sgr-app .sgr-rule-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: .5em;
+  background-color: #f7f1e0;
+  background-image: none;
+  padding: .5em .7em;
+  border-radius: .6em;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+.sgr-rule-bullet { flex: none; font-size: 1.1em; line-height: 1.6; }
+
+/* 22コマ目特別ルールの出目内訳など、ルール一覧の項目内に入れ子で説明を足すための小さな箇条書き */
+.sgr-rule-sublist {
+  margin: .4em 0 0;
+  padding-left: 1.2em;
+  display: flex;
+  flex-direction: column;
+  gap: .15em;
+}
+/* #sgr-app .sgr-rule-list li の詳細度(1,1,1)より確実に強くして、フレックス化・カード背景を打ち消す
+   （サイト共通の .section ul li 桜ビュレットも同時に打ち消す必要があるため） */
+#sgr-app .sgr-rule-list ul.sgr-rule-sublist li {
+  display: block;
+  background: none;
+  background-image: none;
+  padding: 0;
+  border-radius: 0;
+  font-size: .85em;
+  color: #777;
+  line-height: 1.5;
+}
+
+.sgr-choice-label { font-weight: 700; margin-bottom: .4em; font-size: .9rem; }
+.sgr-count-choices { display: flex; gap: .5em; margin-bottom: 1.2em; }
+.sgr-count-btn {
+  flex: 1;
+  border: 2px solid #d8cba0;
+  background: #fff;
+  border-radius: .8em;
+  padding: .6em .3em;
+  cursor: pointer;
+  text-align: center;
+  font-weight: 700;
+  font-size: .9rem;
+  transition: .15s;
+  font-family: inherit;
+}
+.sgr-count-btn:hover { border-color: #B82343; }
+.sgr-count-btn.is-selected {
+  border-color: #B82343;
+  background: #fdeef1;
+  box-shadow: 0 0 0 2px rgba(184, 35, 67, .25) inset;
+}
+
+/* ---------- スタートするコマの選択 ---------- */
+.sgr-range-choices { display: flex; align-items: flex-end; gap: .6em; margin-bottom: .4em; }
+.sgr-range-field {
+  display: flex;
+  flex-direction: column;
+  gap: .3em;
+  font-size: .8rem;
+  font-weight: 700;
+  color: #555;
+}
+.sgr-range-input {
+  border: 2px solid #d8cba0;
+  border-radius: .8em;
+  padding: .5em .6em;
+  font-size: .95rem;
+  font-family: inherit;
+  width: 6em;
+  box-sizing: border-box;
+}
+.sgr-range-input:focus { border-color: #B82343; outline: none; }
+.sgr-range-unit { font-weight: 400; color: #888; margin-left: .3em; }
+.sgr-range-hint { font-size: .72rem; color: #888; margin-bottom: 1.2em; }
+
+/* ---------- キャラクター（絵文字）選択 ---------- */
+.sgr-player-setup { display: flex; flex-direction: column; gap: .6em; margin-bottom: 1.2em; }
+.sgr-setup-row {
+  border: 2px solid #d8cba0;
+  border-radius: .8em;
+  padding: .5em .6em;
+  background: #fff;
+}
+.sgr-setup-row-head {
+  display: flex;
+  align-items: center;
+  gap: .5em;
+  margin-bottom: .4em;
+  font-size: .82rem;
+  font-weight: 700;
+}
+.sgr-setup-row-avatar { font-size: 1.4rem; line-height: 1; }
+.sgr-avatar-choices { display: flex; flex-wrap: wrap; gap: .35em; }
+.sgr-avatar-btn {
+  width: 2.1em;
+  height: 2.1em;
+  border-radius: .6em;
+  border: 2px solid #e0d6b8;
+  background: #fdfaf0;
+  font-size: 1.15rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: .12s;
+  font-family: inherit;
+  padding: 0;
+}
+.sgr-avatar-btn:hover { border-color: #B82343; }
+.sgr-avatar-btn.is-selected {
+  border-color: #B82343;
+  background: #fdeef1;
+  box-shadow: 0 0 0 2px rgba(184, 35, 67, .25) inset;
+}
+.sgr-avatar-btn:disabled { opacity: .3; cursor: not-allowed; }
+
+.sgr-best-display {
+  text-align: center;
+  font-size: .82rem;
+  color: #a5790a;
+  font-weight: 700;
+  background: #fff7e6;
+  border: 1px solid #e6c977;
+  border-radius: .6em;
+  padding: .5em .6em;
+  margin-bottom: 1em;
+}
+
+.sgr-primary-btn {
+  display: block;
+  width: 100%;
+  padding: .75em 1em;
+  background: #B82343;
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  border-radius: 2em;
+  cursor: pointer;
+  font-size: 1rem;
+  letter-spacing: .05em;
+  box-shadow: 0 3px 0 #8a1a30;
+  transition: .12s;
+  font-family: inherit;
+}
+.sgr-primary-btn:hover { background: #c9385a; }
+.sgr-primary-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 #8a1a30; }
+.sgr-primary-btn:disabled { background: #ccc; box-shadow: 0 3px 0 #999; cursor: not-allowed; }
+
+/* スタートボタンだけは、他の.sgr-primary-btn（次へ／もう一度あそぶ等）と違って横幅いっぱいにせず、
+   文字幅に合わせて中央に置く。親のtext-alignに依存せず中央寄せできるよう、
+   widthをfit-contentにしてmargin:0 autoで中央寄せする */
+#sgr-start-btn {
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+/* ---------- 歌人の歌モーダル（コマをクリックすると表示） ---------- */
+.sgr-poem-card { text-align: left; }
+.sgr-poem-source { font-size: .8rem; color: #a5790a; font-weight: 700; margin-bottom: .4em; }
+.sgr-poem-text {
+  font-family: "Kaisei HarunoUmi", serif;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #333;
+  margin-bottom: .5em;
+}
+.sgr-poem-text ruby { ruby-align: center; }
+.sgr-poem-text rt { font-size: .6em; color: #888; }
+.sgr-poem-translation-label { font-size: .78rem; color: #a5790a; font-weight: 700; margin-bottom: 0; }
+.sgr-poem-translation { font-size: .85rem; color: #666; line-height: 1.7; margin-bottom: 1em; }
+
+/* ---------- 手番インジケーター（サイコロを振るボタンの下） ---------- */
+.sgr-turn-indicator {
+  display: inline-block;
+  font-weight: 700;
+  background: #fff;
+  border: 2px solid #7EA549;
+  border-radius: 1.5em;
+  padding: .35em 1em;
+  margin: .6em 0 0;
+  font-size: .85rem;
+  cursor: pointer;
+  transition: background-color .15s;
+}
+.sgr-turn-indicator:hover { background-color: #f4faee; }
+.sgr-turn-indicator.is-disabled { cursor: not-allowed; opacity: .7; }
+/* サイト共通の「.section p { text-align: justify; }」（style.css）が<p>要素に直接効いてしまい、
+   .sgr-dice-areaのtext-align:centerが継承で打ち消されるため、詳細度を上げて明示的に中央揃えにする */
+.sgr-dice-area .sgr-turn-indicator { text-align: center; }
+
+/* クイズに正解した直後、「Nコマ進む」（サイコロ／手番インジケーター）と「次へ」ボタンを
+   点滅させて、押せる状態になったことを知らせる。手番インジケーターは普段は白背景の
+   控えめなピル型だが、この状態のときだけ「次へ」（.sgr-primary-btn）と同じ配色・立体感の
+   ボタンに見た目を揃えたうえで点滅させる。 */
+.sgr-btn-blink { animation: sgrBtnBlink 1s ease-in-out infinite; }
+@keyframes sgrBtnBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .45; }
+}
+.sgr-turn-indicator.sgr-btn-blink {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  background: #B82343;
+  border-color: #B82343;
+  color: #fff;
+  box-shadow: 0 3px 0 #8a1a30;
+}
+.sgr-turn-indicator.sgr-btn-blink:hover { background: #c9385a; border-color: #c9385a; }
+
+/* ---------- レイアウト ---------- */
+.sgr-layout { position: relative; display: flex; gap: 1em; align-items: flex-start; }
+.sgr-board-panel { position: relative; flex: 1 1 60%; min-width: 0; }
+/* sgr-side-panelの上部は常にsgr-boardの上と揃える（.sgr-layoutのalign-items:flex-startで
+   両カラムの上端が自然に揃うため、追加のCSSは不要） */
+.sgr-side-panel { flex: 0 0 300px; display: flex; flex-direction: column; gap: .8em; }
+
+@media (max-width: 900px) {
+  .sgr-layout { flex-direction: column; }
+  .sgr-side-panel { flex: 1 1 auto; width: 100%; }
+  .sgr-board-panel { width: 100%; }
+}
+
+/* ---------- 盤面（「新版百人一首むべ山双六」の版画そのものの上にクリック領域を重ねる） ---------- */
+.sgr-board-scroll {
+  overflow-x: auto;
+  overflow-y: visible;
+  border-radius: 1em;
+  -webkit-overflow-scrolling: touch;
+}
+.sgr-board-img-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  min-width: 640px; /* 版画の各マスが小さすぎてタップしづらくならないよう、狭い画面では横スクロールさせる */
+  margin: 0 auto;
+  aspect-ratio: 1920 / 1311;
+  border-radius: .6em;
+  overflow: hidden;
+  border: 2px solid #cfc39a;
+  background: #e8dcc0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .15);
+}
+.sgr-board-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+
+.sgr-board {
+  position: absolute;
+  inset: 0;
+}
+
+.sgr-board-credit {
+  font-size: .68rem;
+  color: #999;
+  text-align: right;
+  margin: .3em 0 0;
+}
+
+.sgr-square {
+  position: absolute;
+  z-index: 1;
+  cursor: pointer;
+  border-radius: .25em;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .45);
+  transition: box-shadow .15s, background-color .15s;
+}
+.sgr-square:hover { background: rgba(255, 255, 255, .22); box-shadow: inset 0 0 0 2px rgba(184, 35, 67, .65); }
+
+.sgr-sq-num {
+  position: absolute;
+  left: 1px;
+  bottom: 1px;
+  font-size: var(--sgr-badge-size, 10px);
+  font-weight: 700;
+  line-height: 1.5;
+  color: #fff;
+  background: rgba(30, 20, 10, .62);
+  border-radius: .25em;
+  padding: 0 .35em;
+  pointer-events: none;
+}
+.sgr-sq-tokens {
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1px;
+  flex-wrap: wrap-reverse;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.sgr-sq-start { box-shadow: inset 0 0 0 2px rgba(58, 150, 190, .8); }
+.sgr-sq-goal { box-shadow: inset 0 0 0 2px rgba(200, 140, 30, .85); }
+.sgr-sq-treasure { box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .45); }
+
+.sgr-sq-current-human { box-shadow: 0 0 0 3px #2f7bd6, inset 0 0 0 2px rgba(255, 255, 255, .6); z-index: 3; }
+.sgr-sq-out-of-range { background: rgba(55, 48, 38, .55); backdrop-filter: grayscale(1) brightness(.75); }
+
+.sgr-token {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--sgr-token-size, 22px);
+  height: var(--sgr-token-size, 22px);
+  font-size: calc(var(--sgr-token-size, 22px) * .62);
+  line-height: 1;
+  background: #fff;
+  border-radius: 50%;
+  border: 2px solid var(--sgr-player-color, #2f7bd6);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .35);
+  flex: none;
+}
+.sgr-token-hop { animation: sgrHop .25s ease; }
+@keyframes sgrHop {
+  0% { transform: translateY(0) scale(1); }
+  40% { transform: translateY(-10px) scale(1.15); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+/* ---------- 22コマ目の特別マスに止まったときの「紅葉が舞い散る」演出 ----------
+   sgr-game-screen全体を覆う透明なオーバーレイ（sgr-sparkle-layer）にJSが
+   img/maple_leaf.webpの葉っぱパーティクルを複数波にわたって動的に生成し、
+   それぞれが左右に揺れながら回転しつつ舞い落ちる（css/fall.scssの雪→紅葉演出と
+   同じ考え方を、この画面専用のオーバーレイに合わせて上から下まで％ベースで再実装）。
+   あわせて画面全体の光のフラッシュと、盤面を縁取るグロー演出も重ねて華やかにする。 */
+#sgr-game-screen { position: relative; }
+.sgr-sparkle-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 40;
+}
+.sgr-maple-particle {
+  position: absolute;
+  top: -8%;
+  opacity: 0;
+  background-image: url(../img/maple_leaf.webp);
+  background-size: contain;
+  background-repeat: no-repeat;
+  will-change: transform, opacity, top;
+  animation: sgrMapleFall linear forwards;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, .3));
+}
+@keyframes sgrMapleFall {
+  0% { opacity: 0; top: -8%; transform: translateX(0) rotate(0deg); }
+  8% { opacity: 1; }
+  25% { transform: translateX(var(--sgr-sway)) rotate(90deg); }
+  50% { transform: translateX(calc(var(--sgr-sway) * -1)) rotate(190deg); }
+  75% { transform: translateX(var(--sgr-sway)) rotate(300deg); }
+  92% { opacity: 1; }
+  100% { opacity: 0; top: 108%; transform: translateX(0) rotate(400deg); }
+}
+
+/* ---------- ゴール到達時の「桜吹雪」演出 ----------
+   img/cherry.webpの花びらを、紅葉（.sgr-maple-particle）と同じ「画面上端から舞い落ちる」
+   方式（sgrMapleFallキーフレームを共用）で降らせる。影は付けない。「一気にまき散らす」と
+   いう要望どおり、紅葉のような3波の小出しではなく1回で大量に生成する（handleGoal()から
+   呼び出す）。 */
+.sgr-cherry-particle {
+  position: absolute;
+  top: -8%;
+  opacity: 0;
+  background-image: url(../img/cherry.webp);
+  background-size: contain;
+  background-repeat: no-repeat;
+  will-change: transform, opacity, top;
+  animation: sgrMapleFall linear forwards;
+}
+
+/* ゴール時のフラッシュ・グローは紅葉と同じ仕組みだが桜色にする */
+.sgr-sparkle-flash-pink {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 39;
+  opacity: 0;
+  background: radial-gradient(circle at 50% 40%, rgba(255, 210, 225, .8), rgba(255, 170, 200, .3) 55%, rgba(255, 170, 200, 0) 75%);
+  animation: sgrSparkleFlash .9s ease-out forwards;
+}
+.sgr-sparkle-glow-pink { animation: sgrSparkleGlowPink 2.6s ease-in-out; }
+@keyframes sgrSparkleGlowPink {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 105, 180, 0); }
+  15%, 45% { box-shadow: 0 0 55px 10px rgba(255, 105, 180, .55); }
+  30% { box-shadow: 0 0 25px 4px rgba(255, 105, 180, .25); }
+}
+
+/* 発動した瞬間、画面全体がパッと金色に光るフラッシュ */
+.sgr-sparkle-flash {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 39;
+  opacity: 0;
+  background: radial-gradient(circle at 50% 40%, rgba(255, 235, 150, .75), rgba(255, 210, 80, .25) 55%, rgba(255, 210, 80, 0) 75%);
+  animation: sgrSparkleFlash .9s ease-out forwards;
+}
+@keyframes sgrSparkleFlash {
+  0% { opacity: 0; }
+  12% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* 画面の縁を光らせるグロー演出（2回明滅。紅葉が舞い落ちる間じゅう続くよう少し長めに） */
+.sgr-sparkle-glow { animation: sgrSparkleGlow 2.6s ease-in-out; }
+@keyframes sgrSparkleGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 140, 0, 0); }
+  15%, 45% { box-shadow: 0 0 55px 10px rgba(255, 140, 0, .55); }
+  30% { box-shadow: 0 0 25px 4px rgba(255, 140, 0, .25); }
+}
+
+/* ---------- 開発用パネル（?dev=1のときだけJSが表示） ---------- */
+.sgr-dev-panel {
+  display: flex;
+  align-items: center;
+  gap: .6em;
+  flex-wrap: wrap;
+  background: #fff8e6;
+  border: 2px dashed #d9962f;
+  border-radius: .7em;
+  padding: .6em .7em;
+  font-family: monospace;
+  font-size: .8rem;
+  color: #8a5a10;
+}
+.sgr-dev-label { display: flex; align-items: center; gap: .4em; }
+.sgr-dev-input { width: 4.5em; padding: .2em .4em; border: 1px solid #d9962f; border-radius: .3em; font-family: inherit; font-size: 1em; }
+.sgr-dev-jump-btn {
+  font-family: inherit;
+  font-size: 1em;
+  padding: .35em .7em;
+  border: 1px solid #d9962f;
+  border-radius: .4em;
+  background: #d9962f;
+  color: #fff;
+  cursor: pointer;
+}
+.sgr-dev-jump-btn:hover { background: #c4841f; }
+
+/* ---------- プレイヤーカード ---------- */
+.sgr-players-panel { display: flex; flex-direction: column; gap: .6em; }
+.sgr-player-card { background: #fff; border: 2px solid #e4d9b8; border-radius: .9em; padding: .6em .7em; }
+.sgr-player-card.is-current-turn { border-color: #7EA549; box-shadow: 0 0 0 2px rgba(126, 165, 73, .3); }
+.sgr-player-card.is-finished { opacity: .55; }
+.sgr-player-head { display: flex; align-items: center; gap: .4em; margin-bottom: .4em; font-size: .85rem; }
+.sgr-player-avatar {
+  font-size: 1.1rem;
+  width: 1.9em;
+  height: 1.9em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid var(--sgr-player-color, #2f7bd6);
+  background: #fff;
+  flex: none;
+}
+.sgr-player-name { font-weight: 700; flex: 1; }
+.sgr-player-pos { font-size: .78rem; color: #555; white-space: nowrap; }
+.sgr-player-pos b { color: #7EA549; font-size: .9rem; }
+
+/* ---------- サイコロ ---------- */
+.sgr-dice-area { background: #fff; border: 2px solid #e4d9b8; border-radius: .9em; padding: .8em .7em 1em; text-align: center; }
+.sgr-dice-scene {
+  perspective: 400px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: .6em;
+  cursor: pointer;
+  padding: .3em;
+  border-radius: .8em;
+  transition: background-color .15s;
+}
+.sgr-dice-scene:hover { background-color: #fbf4dc; }
+.sgr-dice-scene.is-disabled { cursor: not-allowed; opacity: .5; pointer-events: none; }
+.sgr-dice {
+  width: 52px;
+  height: 52px;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateX(0deg) rotateY(0deg);
+  transition: transform .8s cubic-bezier(.34, 1.56, .64, 1);
+}
+.sgr-face {
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  background: #fffdf6;
+  border: 2px solid #333;
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  padding: 6px;
+  box-sizing: border-box;
+}
+.sgr-face-1 { transform: translateZ(26px); }
+.sgr-face-6 { transform: rotateY(180deg) translateZ(26px); }
+.sgr-face-2 { transform: rotateY(90deg) translateZ(26px); }
+.sgr-face-5 { transform: rotateY(-90deg) translateZ(26px); }
+.sgr-face-3 { transform: rotateX(90deg) translateZ(26px); }
+.sgr-face-4 { transform: rotateX(-90deg) translateZ(26px); }
+.sgr-pip { width: 9px; height: 9px; border-radius: 50%; background: #B82343; align-self: center; justify-self: center; }
+.p-tl { grid-column: 1; grid-row: 1; }
+.p-tr { grid-column: 3; grid-row: 1; }
+.p-ml { grid-column: 1; grid-row: 2; }
+.p-c { grid-column: 2; grid-row: 2; }
+.p-mr { grid-column: 3; grid-row: 2; }
+.p-bl { grid-column: 1; grid-row: 3; }
+.p-br { grid-column: 3; grid-row: 3; }
+
+
+/* ---------- トースト ---------- */
+.sgr-toast {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translate(-50%, -140%);
+  background: #333;
+  color: #fff;
+  padding: .6em 1.1em;
+  border-radius: 2em;
+  display: flex;
+  align-items: center;
+  gap: .4em;
+  font-size: .85rem;
+  z-index: 80;
+  opacity: 0;
+  transition: transform .3s ease, opacity .3s ease;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .3);
+  white-space: nowrap;
+  max-width: 90%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.sgr-toast.is-show { transform: translate(-50%, 0); opacity: 1; }
+
+/* ---------- ○×クイズ（モーダルではなく sgr-dice-area の下に通常表示） ---------- */
+.sgr-quiz-panel {
+  background: #fff;
+  border: 2px solid #B82343;
+  border-radius: .9em;
+  padding: .8em .7em;
+}
+.sgr-quiz-timer-wrap { height: 6px; background: #eee; border-radius: 3px; overflow: hidden; margin-bottom: .7em; }
+.sgr-quiz-timer-bar { height: 100%; background: linear-gradient(90deg, #7EA549, #e6c34c, #B82343); width: 100%; transition: width .1s linear; }
+.sgr-quiz-source { font-size: .72rem; color: #888; margin-bottom: .3em; }
+.sgr-quiz-question { font-size: .95rem; line-height: 1.6; margin-bottom: .8em; font-weight: 700; }
+.sgr-quiz-choices { display: flex; gap: .5em; margin-bottom: .6em; }
+.sgr-quiz-btn {
+  flex: 1;
+  padding: .7em .4em;
+  border-radius: .8em;
+  border: 2px solid #ccc;
+  background: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: .12s;
+  font-family: inherit;
+}
+.sgr-quiz-true { color: #2f7bd6; }
+.sgr-quiz-false { color: #d64f2f; }
+.sgr-quiz-btn:hover { border-color: currentColor; background: #f7f7f7; }
+.sgr-quiz-btn:disabled { opacity: .5; cursor: not-allowed; }
+.sgr-quiz-result-text { font-weight: 700; margin-bottom: .4em; }
+.sgr-quiz-explain {
+  font-size: .8rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: .8em;
+  background: #f7f1e0;
+  padding: .6em .7em;
+  border-radius: .6em;
+}
+
+/* ---------- 結果発表（モーダルではなく sgr-dice-area の下に通常表示） ---------- */
+/* 宝物・スコアが無いので、各プレイヤーの結果は「着順（あれば）＋名前＋ゴールまでの手番数」だけの
+   シンプルなカード表示にしている */
+.sgr-gameover-panel {
+  background: #fff;
+  border: 2px solid #B82343;
+  border-radius: .9em;
+  padding: .9em .8em;
+}
+.sgr-gameover-panel .sgr-primary-btn { width: 100%; }
+.sgr-result-banner { text-align: center; font-weight: 700; font-size: 1.15rem; margin-bottom: 1em; color: #B82343; }
+.sgr-result-cols { display: flex; flex-wrap: wrap; gap: .8em; margin-bottom: 1em; }
+.sgr-result-col { flex: 1 0 150px; min-width: 150px; background: #f7f1e0; border-radius: .8em; padding: .9em .7em; font-size: .85rem; }
+.sgr-result-col h3 { font-size: 1rem; margin-bottom: .4em; text-align: center; display: flex; align-items: center; justify-content: center; gap: .3em; }
+.sgr-result-rank { font-size: .78rem; font-weight: 700; color: #a5790a; }
+.sgr-result-status { text-align: center; color: #555; margin: 0; }
+.sgr-result-col.is-winner { box-shadow: 0 0 0 3px #e6c34c inset; }
+.sgr-result-best {
+  text-align: center;
+  font-size: .85rem;
+  color: #555;
+  background: #f7f1e0;
+  border-radius: .6em;
+  padding: .6em .7em;
+  margin-bottom: 1em;
+  line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+  .sgr-result-cols { flex-direction: column; }
+}
+
+/* ---------- 説明コンテンツ ---------- */
+.sgr-info { margin-top: 2em; font-size: .85rem; line-height: 1.8; }
+.sgr-info-h2 {
+  font-family: "Kaisei HarunoUmi", serif;
+  font-size: 1.2rem;
+  border-left: 5px solid #B82343;
+  padding-left: .5em;
+  margin: 1.4em 0 .6em;
+}
+.sgr-howto-list { padding-left: 1.4em; display: flex; flex-direction: column; gap: .9em; }
+.sgr-howto-list li { list-style: decimal; padding-left: .3em; }
+.sgr-howto-list li p { margin: 0 0 .3em; }
+.sgr-howto-list li p:last-child { margin-bottom: 0; }
+.sgr-howto-title { font-weight: 700; font-size: 1rem; color: #B82343; margin-bottom: .3em; }
+.sgr-howto-note {
+  font-size: .85rem;
+  color: #555;
+  background: #f7f1e0;
+  border-radius: .6em;
+  padding: .6em .9em;
+  margin-top: 1em;
+}

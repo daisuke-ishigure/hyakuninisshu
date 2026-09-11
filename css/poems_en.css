@@ -1,0 +1,278 @@
+/* English poem pages (NN_en.html) only — not loaded on the Japanese pages.
+   English commentary tends to run longer than the Japanese original, so on
+   desktop (where .explanation sits beside the card in a fixed-height row)
+   let it scroll internally instead of just overflowing past its max-height. */
+@media screen and (min-width: 1001px) {
+  .explanation {
+    overflow-y: auto;
+    /* Match the bottom edge of .explanation to the bottom edge of the card
+       column (.select-container + .card-item stacked in .column-wrapper).
+       Both components have fixed/consistent heights across every poem page
+       (select-container: fixed labels/buttons; card-item: fixed 550px), so
+       their combined height (measured: card-item bottom at 994.609px minus
+       column top at 76px = 918.609px) is effectively constant — hardcoding
+       it here is safe and keeps the two columns' bottoms flush instead of
+       .explanation stopping short at its own max-height. */
+    height: 919px;
+    max-height: none;
+  }
+}
+
+/* Justified text (used on the Japanese pages) creates uneven, ugly word-spacing
+   in English, so left-align instead. */
+.explanation dd,
+.explanation p {
+  text-align: left;
+}
+
+/* style.scss already switches to Lora/Playfair Display for html[lang="en"] pages
+   (see the html[lang="en"]:not([data-font="legacy"]) rule), but only for
+   body/p/li/a/span/td/th/button/input/label and h1–h6. dt/dd — used throughout
+   this page for section labels ("Modern Translation", "Commentary", …) and their
+   content — aren't covered, so they'd otherwise fall back to the Japanese-oriented
+   fonts. Extend the same treatment: Playfair Display for the dt labels (matching
+   h1–h6), Lora for the dd content (matching body/p). */
+.explanation dt,
+.link-section dt.title,
+.chart-section dt.title,
+.image-section dt.title {
+  font-family: "Playfair Display", "Kaisei HarunoUmi", serif;
+}
+.explanation dd {
+  font-family: "Lora", "Noto Serif JP", serif;
+}
+
+/* English labels ("Matching card", "Audio") run longer than the Japanese originals,
+   so the toggle row and the audio-button row (both flex children of .checkbox1,
+   sitting side by side) end up touching. Add breathing room between them. */
+.checkbox1 {
+  gap: 1.5em;
+  flex-wrap: wrap;
+  /* .checkbox1 has a fixed height:40px in the shared stylesheet, sized for a
+     single row of content. With flex-wrap now stacking the toggle row and the
+     audio-button row into two lines, the fixed height stops growing to contain
+     them, so the second row renders outside the box and overlaps whatever
+     follows (.audio-credit-row). Let it grow to fit both rows instead. */
+  height: auto;
+  min-height: 40px;
+  padding: 0.75em 1.5em;
+}
+.checkbox1 > div {
+  gap: 0.5em;
+}
+
+/* .select-container has no fixed width in the shared stylesheet, so it sizes to its
+   own content — English labels are longer than Japanese and stretch it wider than
+   the card beside it. Pin it to the same width as the card ($pcCardWidth). */
+.select-container {
+  width: 380px;
+  box-sizing: border-box;
+  /* Fits: theme selector, poet selector, JA audio credit, the front/back toggle,
+     and two audio play buttons (JA + EN) — taller than the Japanese page's content,
+     which only ever shows one audio button. The base height (225px) + overflow:hidden
+     would otherwise clip the bottom row. */
+  height: auto;
+  min-height: 290px;
+}
+
+/* #play-pause-btn / #play-pause-btn-en / #audio-credit are display:none by default
+   in the shared stylesheet; the Japanese pages reveal only #play-pause-btn/#audio-credit
+   via JS. The English pages show both audio tracks (Japanese reading + Porter's
+   English translation), so make both play buttons visible here. */
+#play-pause-btn,
+#play-pause-btn-en {
+  display: block;
+}
+
+/* Audio credits sit below the play buttons, Japanese credit on the left and
+   English credit on the right, instead of the Japanese page's single centered line. */
+.audio-credit-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1em;
+  width: 100%;
+  margin-top: 0.5em;
+}
+.audio-credit-row #audio-credit,
+.audio-credit-row #audio-credit-en {
+  display: block;
+  flex: 1;
+  min-width: 0;
+  transform: none;
+  height: auto;
+  margin-bottom: 0;
+  text-align: left;
+  line-height: 1.4;
+}
+
+/* Title inserted above the poet's-feelings quotes in the Chart of the Heart
+   section, translating "歌人の心境（一考察）" — an EN-only addition, not
+   present in the Japanese pages. */
+.chart-quotes-title {
+  font-family: "Playfair Display", "Kaisei HarunoUmi", serif;
+  font-weight: bold;
+  font-size: 1.05rem;
+  margin-bottom: 0.5em;
+  color: #a68f78;
+}
+
+/* main has padding-top but no padding-bottom in the shared stylesheet, so the
+   page content (currently ending at .image-section, since the appendix is
+   skipped on English pages) runs flush into the footer. */
+main {
+  padding-bottom: 1em;
+}
+
+/* Chart of the Heart (radar chart): the shared stylesheet fixes #radarChartWrapper
+   at 280x280 inside .chart-section. Chart.js's radial scale shrinks its drawn
+   radius to make room for the point-label text, and the English axis labels
+   ("Impermanence", "Melancholy", ...) are far longer than the Japanese originals
+   (2 characters each), so at 280px the English chart renders with roughly half
+   the radius (~70px vs the Japanese ~118px) — visibly smaller even though the
+   box itself is identical. Enlarge the box so the drawn chart matches the
+   Japanese version's size; max-width + aspect-ratio keep it responsive/square
+   instead of overflowing .chart-section on narrower viewports. */
+.chart-section .emotion-chart #radarChartWrapper {
+  width: 395px;
+  max-width: 100%;
+  aspect-ratio: 1 / 1;
+  height: auto;
+}
+
+/* Kakekotoba/engo/jokotoba/makurakotoba/honkadori/utamakura marks (js/poems_en.js).
+   The shared stylesheet's .mark row is 6 image icons (each has the technique's
+   kanji drawn into the SVG itself, so it can't be localized) absolutely positioned
+   in the corner of .explanation. The English version swaps in text badges instead,
+   so .mark needs to flow normally (wrap to as many lines as the labels need) rather
+   than being pinned to a fixed-width absolute box. */
+.explanation .mark {
+  position: static;
+  width: auto;
+  height: auto;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 6px;
+  margin: 0 0 0.8em;
+}
+
+.mark-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  border: 1.5px solid #B82343;
+  color: #B82343;
+  background: #fff;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s, filter 0.15s;
+}
+.mark-badge:hover {
+  background: #B82343;
+  color: #fff;
+}
+.mark-badge.none-badge {
+  border-color: #ccc;
+  color: #999;
+}
+.mark-badge.none-badge:hover {
+  background: #eee;
+  color: #999;
+}
+
+/* has-badge: same per-technique colors as the Japanese icon badges
+   (img/mark_*.svg fill colors), background-filled with white text. */
+.mark-badge.has-badge#makurakotoba {
+  background: #f27b35;
+  border-color: #f27b35;
+  color: #fff;
+}
+.mark-badge.has-badge#kakekotoba {
+  background: #327cc6;
+  border-color: #327cc6;
+  color: #fff;
+}
+.mark-badge.has-badge#engo {
+  background: #758c20;
+  border-color: #758c20;
+  color: #fff;
+}
+.mark-badge.has-badge#jokotoba {
+  background: #8c58dd;
+  border-color: #8c58dd;
+  color: #fff;
+}
+.mark-badge.has-badge#honkadori {
+  background: #003d82;
+  border-color: #003d82;
+  color: #fff;
+}
+.mark-badge.has-badge#utamakura {
+  background: #ef629c;
+  border-color: #ef629c;
+  color: #fff;
+}
+.mark-badge.has-badge:hover {
+  filter: brightness(0.85);
+  color: #fff;
+}
+
+/* Popup panels: the shared stylesheet renders these vertically (writing-mode:
+   vertical-rl), which suits short Japanese explanations but reads sideways and
+   is far too narrow for English prose. Force horizontal text and let the box
+   size to its (longer) content instead of the fixed height:50% column. */
+.kakekotoba,
+.engo,
+.jokotoba,
+.makurakotoba,
+.honkadori,
+.utamakura {
+  writing-mode: horizontal-tb !important;
+  text-orientation: mixed;
+  height: auto !important;
+  max-height: 80vh;
+  overflow-y: auto;
+  width: min(360px, calc(100vw - 24px)) !important;
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+.kakekotoba dt,
+.engo dt,
+.jokotoba dt,
+.makurakotoba dt,
+.honkadori dt,
+.utamakura dt {
+  font-weight: 700;
+  color: #B82343;
+  margin-bottom: 0.4em;
+}
+.kakekotoba hr,
+.engo hr,
+.jokotoba hr,
+.makurakotoba hr,
+.honkadori hr,
+.utamakura hr {
+  width: 100%;
+  border: none;
+  border-top: 1px solid #e0d8c8;
+  margin: 0.6em 0;
+}
+
+/* Romaji line inserted below the poem in .explanation (js/poems_en.js), derived
+   from hyakunin.json's yomihuda reading via the same conversion list_en.js uses. */
+.explanation .romaji-line {
+  display: block;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 0.82em;
+  font-style: italic;
+  color: #7a6655;
+  line-height: 1.6;
+  margin: 0.3em 0;
+}

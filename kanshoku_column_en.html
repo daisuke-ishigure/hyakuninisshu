@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="Keywords" content="hyakunin isshu, poet names, court titles, court ranks, heian period">
+  <meta name="description" content="Many poets in the Hyakunin Isshu have names derived directly from court offices or ranks. This page explains the origins of those names.">
+  <link rel="stylesheet" href="../css/style.css?20260908-16">
+  <link rel="stylesheet" href="https://unpkg.com/scroll-hint@latest/css/scroll-hint.css">
+  <link rel="stylesheet" href="../css/showtooltips-blue-kanshoku.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@500&family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/scroll-hint@latest/js/scroll-hint.min.js"></script>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <meta property="og:locale" content="en"><meta property="og:type" content="article">
+  <meta property="og:title" content="How Hyakunin Isshu Poets Got Their Names | Heian Court Ranks &amp; Offices | Shigure's Hyakunin Isshu">
+  <meta property="og:description" content="Many poets in the Hyakunin Isshu have names derived directly from court offices or ranks. This page explains the origins of those names.">
+  <meta property="og:image" content="https://hyakuninisshu.com/img/thumb_kanshoku.webp">
+  <meta property="og:url" content="https://hyakuninisshu.com/kanshoku_column_en.html">
+  <meta property="og:site_name" content="Shigure's Hyakunin Isshu">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://hyakuninisshu.com/kanshoku_column_en.html">
+  <script type="application/ld+json">{
+    "@context":"https://schema.org","@type":"Article",
+    "mainEntityOfPage":{"@type":"WebPage","@id":"https://hyakuninisshu.com/kanshoku_column_en.html"},
+    "headline":"How Hyakunin Isshu Poets Got Their Names | Heian Court Ranks & Offices | Shigure's Hyakunin Isshu",
+    "description":"Many poets in the Hyakunin Isshu have names derived directly from court offices or ranks. This page explains the origins of those names.","image":"https://hyakuninisshu.com/img/thumb_kanshoku.webp",
+    "dateModified":"2026-03-05",
+    "author":{"@type":"Person","name":"Daisuke Ishigure","url":"https://hyakuninisshu.com/"},
+    "publisher":{"@type":"Organization","name":"Shigure's Hyakunin Isshu","logo":{"@type":"ImageObject","url":"https://hyakuninisshu.com/apple-touch-icon.png"}}
+  }</script>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link href="/css/lightbox.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="/js/lightbox.js"></script>
+  <script>lightbox.option({'alwaysShowNavOnTouchDevices':true,'albumLabel':'Image %1 of %2'})</script>
+
+  <style>
+    .kanshoku-intro {
+      margin-bottom: 2em;
+      line-height: 1.95;
+      color: #444;
+    }
+
+    /* ── Cards grid ── */
+    .kanshoku-toc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1em;
+      margin-bottom: 1.4em;
+    }
+
+    .kanshoku-card {
+      display: block;
+      border: 1px solid #c8b89a;
+      border-radius: 4px;
+      padding: 1em 1.2em 0.9em;
+      background: #fdf8f2;
+      text-decoration: none !important;
+      color: inherit;
+      transition: box-shadow 0.18s, transform 0.18s;
+    }
+
+    .kanshoku-card:hover {
+      box-shadow: 0 2px 8px rgba(120, 80, 30, 0.13);
+    }
+
+    /* column cards */
+    .kanshoku-card.is-column {
+      background: #f7f4f0;
+      border-color: #d9d0c4;
+    }
+
+    a.kanshoku-card {
+      text-decoration: none;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    a.kanshoku-card:hover {
+      transform: scale(1.05);
+      text-underline-offset: 3px;
+    }
+
+    .kanshoku-card-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 0.97em;
+      font-weight: 700;
+      color: #333;
+      margin: 0 0 0.4em;
+    }
+
+    .kanshoku-card-desc {
+      font-size: 0.855em;
+      color: #555;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .kanshoku-card-tags {
+      margin-top: 0.55em;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3em;
+    }
+
+    .kanshoku-tag {
+      font-size: 0.75em;
+      background: #e8ddd0;
+      color: #7a5c3a;
+      border-radius: 2px;
+      padding: 0.12em 0.5em;
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+
+    /* ── Callout boxes ── */
+    .callout {
+      background: #fdf5e4;
+      border-left: 3px solid #c8a870;
+      border-radius: 0 4px 4px 0;
+      padding: 0.85em 1.1em;
+      margin: 1.1em 0;
+      font-size: 0.9em;
+      color: #444;
+      line-height: 1.8;
+    }
+
+    .callout p {
+      margin-bottom: 0.5em;
+    }
+
+    .callout p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ── Prose ── */
+    .section p {
+      margin: 0.5em 0 0;
+      line-height: 1.7;
+    }
+
+    /* ── Inline highlight ── */
+    .kanshoku-inline {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.82em;
+      background: #e8ddd0;
+      color: #5a3a1a;
+      border-radius: 2px;
+      padding: 0.1em 0.45em;
+      white-space: nowrap;
+    }
+
+    .kajin {
+      font-weight: 700;
+      color: #6b3f1a;
+    }
+
+    /* ── Ornament ── */
+    .ornament {
+      text-align: center;
+      color: #c8a870;
+      letter-spacing: 0.6em;
+      font-size: 0.85em;
+      margin: 2.8em 0;
+      opacity: 0.7;
+    }
+
+    #page-top {
+      text-align: right;
+      margin-top: 2.5em;
+      font-size: 0.85em;
+    }
+
+    @media (max-width: 600px) {
+      .kanshoku-toc-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .section p{
+      text-align: left;
+    }
+
+    .ason-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0rem 2rem;
+      margin-top: 1em;
+    }
+
+    @media (min-width: 550px) {
+      .ason-list { grid-template-columns: 1fr 1fr; }
+    }
+
+    .ason-list li {
+      background: none !important;
+      position: relative;
+      padding-left: 1.2em;
+      line-height: 1.8;
+    }
+
+    .ason-list li::before {
+      content: "●";
+      position: absolute;
+      left: 0;
+      top: 0.65em;
+      font-size: 0.6em;
+      color: #6b3f1a;
+    }
+
+    .ason-list li::after {
+      content: none !important;
+    }
+
+    .ason-list ruby {
+      ruby-align: start;
+    }
+
+    .ason-list rt {
+      font-size: 0.62em;
+      letter-spacing: 0;
+      color: #7a5c3a;
+    }
+  </style>
+
+  <title>How Hyakunin Isshu Poets Got Their Names | Heian Court Ranks &amp; Offices | Shigure's Hyakunin Isshu</title>
+</head>
+<body>
+  <header class="header">
+    <p class="site-title"><a href="https://hyakuninisshu.com/">Shigure no Hyakunin Isshu</a></p>
+    <div class="header_list">
+      <a href="../index_en.html"><img src="../img/icon_top_en.svg?ver-01" alt="Top" class="icon"></a>
+      <a href="../introduction_en.html" style="color:#333"><img src="/img/icon_column_en.svg?ver-01" alt="Columns" class="icon"></a>
+      <a href="../introduction-app_en.html" style="color:#333"><img src="/img/icon_app_en.svg?ver-01" alt="Apps" class="icon"></a>
+      <a href="kanshoku_column.html"><img src="/img/icon_lang.svg?ver-01" alt="Japanese" class="icon"></a>
+      <a href="../list.html"><img src="/img/icon_list_en.svg?ver-01" alt="Poem list &amp; search" class="icon"></a>
+    </div>
+  </header>
+  <main class="main_about-main"><div class="about-main"><div class="section">
+    <nav><ol class="breadcrumb"><li><a href="../index_en.html">Top</a></li><li><a href="../introduction_en.html">Columns</a></li><li><a href="../kanshoku_en.html">Heian Court Ranks &amp; Offices</a></li><li>How Hyakunin Isshu Poets Got Their Names</li></ol></nav><hr>
+
+        <h1>How Hyakunin Isshu Poets Got Their Names</h1>
+        <p class="kanshoku-intro">Many poets in the Hyakunin Isshu have names that incorporate their court office or rank
+        directly. This was common in Heian aristocratic society, where it was standard practice to
+        refer to a person by their official title or position. The following sections introduce poets
+        whose names are derived from their offices or ranks.</p>
+
+        <h2>Poets named directly after their office</h2>
+        <div class="kanshoku-toc-grid">
+
+          <a href="/6.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title">No. 6<br>Chūnagon Yakamochi<br>(中納言家持)</p>
+            <p class="kanshoku-card-desc">Ōtomo no Yakamochi held the post of <em>Chūnagon</em> (Middle Counselor) in the Grand Council of State (Dajōkan).</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">Dajōkan</span>
+              <span class="kanshoku-tag">Chūnagon</span>
+            </div>
+          </a>
+
+          <a href="/11.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title">No. 11<br>Sangi Takamura<br>(参議篁)</p>
+            <p class="kanshoku-card-desc">Ono no Takamura served as <em>Sangi</em> (Consultant) in the Grand Council of State.</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">Dajōkan</span>
+              <span class="kanshoku-tag">Sangi</span>
+            </div>
+          </a>
+
+          <a href="/16.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title">No. 16<br>Chūnagon Yukihira<br>(中納言行平)</p>
+            <p class="kanshoku-card-desc">Ariwara no Yukihira served as <em>Chūnagon</em> (Middle Counselor) in the Grand Council of State.</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">Chūnagon</span>
+              <span class="kanshoku-tag">Dajōkan</span>
+            </div>
+          </a>
+
+          <a href="/27.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title">No. 27<br>Chūnagon Kanesuke<br>(中納言兼輔)</p>
+            <p class="kanshoku-card-desc">Fujiwara no Kanesuke served as <em>Chūnagon</em> in the Grand Council of State.</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">Chūnagon</span>
+              <span class="kanshoku-tag">Dajōkan</span>
+            </div>
+          </a>
+
+          <a href="/43.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title">No. 43<br>Gon-Chūnagon Atsutada<br>(権中納言敦忠)</p>
+            <p class="kanshoku-card-desc">Fujiwara no Atsutada served as <em>Gon-Chūnagon</em> (Acting Middle Counselor), an assistant counselor post.</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">Gon-Chūnagon</span>
+              <span class="kanshoku-tag">Dajōkan</span>
+            </div>
+          </a>
+
+          <a href="/63.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title">No. 63<br>Sakyō-no-Daibu Michimasa<br>(左京大夫道雅)</p>
+            <p class="kanshoku-card-desc">Fujiwara no Michimasa served as <em>Sakyō-no-Daibu</em> (Chief of the Left Capital Office).</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">Sakyō-shiki</span>
+              <span class="kanshoku-tag">Sakyō-no-Daibu</span>
+            </div>
+          </a>
+
+          <a href="/79.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title">No. 79<br>Sakyō-no-Daibu Akisuke<br>(左京大夫顕輔)</p>
+            <p class="kanshoku-card-desc">Fujiwara no Akisuke served as <em>Sakyō-no-Daibu</em> (Chief of the Left Capital Office).</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">Sakyō-shiki</span>
+              <span class="kanshoku-tag">Sakyō-no-Daibu</span>
+            </div>
+          </a>
+
+          <a href="/73.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title">No. 73<br>Saki no Chūnagon Masafusa<br>(前中納言匡房)</p>
+            <p class="kanshoku-card-desc">Ōe no Masafusa had previously served as <em>Chūnagon</em>. The prefix <em>saki no</em> ("former") indicates he had retired from that post.</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">Chūnagon</span>
+              <span class="kanshoku-tag">Dajōkan</span>
+            </div>
+          </a>
+
+          <a href="/76.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title">No. 76<br>Hōshōji-nyūdō<br>-saki-no-Kampaku-Daijō-daijin<br>(法性寺入道前関白太政大臣)</p>
+            <p class="kanshoku-card-desc">Fujiwara no Tadamichi served as Regent (<em>Kampaku</em>) and Chancellor (<em>Daijō-daijin</em>) before taking Buddhist orders at Hōshōji temple — an unusual biography combining the peak of secular power with monastic life.</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">Kampaku (Regent)</span>
+              <span class="kanshoku-tag">Daijō-daijin (Chancellor)</span>
+              <span class="kanshoku-tag">Nyūdō (Buddhist monk)</span>
+            </div>
+          </a>
+
+          <a href="/91.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title">No. 91<br>Gokyōgoku-Sesshō<br>-saki-no-Daijō-daijin<br>(後京極摂政前太政大臣)</p>
+            <p class="kanshoku-card-desc">Kujō Yoshitsune served as Regent (<em>Sesshō</em>) and Chancellor, living at the Gokyōgoku mansion — hence this long compound name.</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">Sesshō (Regent)</span>
+              <span class="kanshoku-tag">Daijō-daijin (Chancellor)</span>
+            </div>
+          </a>
+
+          <a href="/95.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title">No. 95<br>Saki no Daisōjō Jien<br>(前大僧正慈円)</p>
+            <p class="kanshoku-card-desc">The monk Jien had served as <em>Daisōjō</em> (Senior High Priest), the highest clergy rank. <em>Saki no</em> indicates he had retired from the post.</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">Daisōjō (High Priest)</span>
+              <span class="kanshoku-tag">Sōkan (Buddhist clergy rank)</span>
+            </div>
+          </a>
+
+          <a href="/97.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title">No. 97<br>Gon-Chūnagon Teika<br>(権中納言定家)</p>
+            <p class="kanshoku-card-desc">Fujiwara no Teika served as <em>Gon-Chūnagon</em>. Also known as the compiler of the Hyakunin Isshu itself.</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">Gon-Chūnagon</span>
+              <span class="kanshoku-tag">Dajōkan</span>
+            </div>
+          </a>
+
+        </div>
+
+        <h2>Female poets named after a family member's office</h2>
+        <div class="kanshoku-toc-grid">
+
+          <a href="/53.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title">No. 53<br>Michitsuna no Haha<br>("Mother of Michitsuna")</p>
+            <p class="kanshoku-card-desc">Her own name is unknown. Her son Fujiwara no Michitsuna served as <em>Udaishō</em> (Commander of the Right Imperial Guard), so she came to be called "the mother of Michitsuna the Udaishō" — <em>Udaishō Michitsuna no Haha</em>.</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">U-konoe-fu (Right Guard)</span>
+              <span class="kanshoku-tag">Udaishō</span>
+            </div>
+          </a>
+
+          <a href="/54.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title">No. 54<br>Gidō-Sanshi no Haha<br>("Mother of Gidō-Sanshi")</p>
+            <p class="kanshoku-card-desc">Her own name is Takashine no Takako. Her son Fujiwara no Korechika became <em>Naidaijin</em> (Minister of the Center) and used the Chinese-style honorific <em>Gidō-Sanshi</em> ("equivalent to the Three Senior Ministers") — which became the basis for his mother's name.</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">Gidō-Sanshi</span>
+              <span class="kanshoku-tag">Naidaijin</span>
+            </div>
+          </a>
+
+          <a href="/56.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title">No. 56<br>Izumi Shikibu<br>(和泉式部)</p>
+            <p class="kanshoku-card-desc"><em>Izumi</em> derives from her husband Tachibana no Michisada, who served as Governor of Izumi Province. <em>Shikibu</em> is said to come from her father, who served as an official in the Ministry of Ceremonial (<em>Shikibu-shō</em>). Women in the Heian court were often identified by the offices held by their male relatives.</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">Izumi-no-kami</span>
+              <span class="kanshoku-tag">Shikibu-shō</span>
+            </div>
+          </a>
+
+          <a href="/57.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title">No. 57<br>Murasaki Shikibu<br>(紫式部)</p>
+            <p class="kanshoku-card-desc"><em>Shikibu</em> comes from her father Fujiwara no Tametoki, who served in the Ministry of Ceremonial. <em>Murasaki</em> is said to derive from the heroine "Murasaki no Ue" in <em>The Tale of Genji</em>, which she authored.</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">Shikibu-shō</span>
+            </div>
+          </a>
+
+          <a href="/58.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title">No. 58<br>Daini no Sanmi<br>(大弐三位)</p>
+            <p class="kanshoku-card-desc">Her husband Takashine no Nariyuki served as <em>Dazai-no-Daini</em> (Senior Deputy Governor-General of Dazaifu). She herself held Senior Third Rank (<em>Sanmi</em>). Her name combines her husband's office and her own rank.</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">Dazai-no-Daini</span>
+              <span class="kanshoku-tag">Sanmi (Third Court Rank)</span>
+            </div>
+          </a>
+
+        </div>
+
+        <!-- Ason surname and court ranks -->
+        <h2>The <em>Ason</em> Surname and the Hierarchy of Court Ranks (<em>Ikai</em>)</h2>
+
+        <p>
+          You may notice that many poets in the Hyakunin Isshu carry the surname <em>Ason</em> (朝臣).
+          In ancient Japan, the Eight Hereditary Titles (<em>Yakusa no Kabane</em>) defined a family's
+          social standing. By the Heian period, these had consolidated in practice, and <em>Ason</em>
+          had become the mark of a distinguished noble lineage.
+          Upon that foundation of birth, a nobleman's own achievements and the ruler's favor determined
+          his <em>ikai</em> (court rank) — the numbered ladder of precedence that governed every appointment.
+          Family pedigree set the starting point; personal ability shaped the career. That was the
+          governing principle of the Heian aristocratic world.
+        </p>
+
+        <ul class="ason-list">
+          <li><a href="/17.html">No. 17<br><ruby>在原業平朝臣<rt>Ariwara no Narihira Ason</rt></ruby></a></li>
+          <li><a href="/18.html">No. 18<br><ruby>藤原敏行朝臣<rt>Fujiwara no Toshiyuki Ason</rt></ruby></a></li>
+          <li><a href="/28.html">No. 28<br><ruby>源宗于朝臣<rt>Minamoto no Muneyuki Ason</rt></ruby></a></li>
+          <li><a href="/49.html">No. 49<br><ruby>大中臣能宣朝臣<rt>Ōnakatomi no Yoshinobu Ason</rt></ruby></a></li>
+          <li><a href="/51.html">No. 51<br><ruby>藤原実方朝臣<rt>Fujiwara no Sanekata Ason</rt></ruby></a></li>
+          <li><a href="/52.html">No. 52<br><ruby>藤原道信朝臣<rt>Fujiwara no Michinobu Ason</rt></ruby></a></li>
+          <li><a href="/74.html">No. 74<br><ruby>源俊頼朝臣<rt>Minamoto no Toshiyori Ason</rt></ruby></a></li>
+          <li><a href="/84.html">No. 84<br><ruby>藤原清輔朝臣<rt>Fujiwara no Kiyosuke Ason</rt></ruby></a></li>
+        </ul>
+        <p class="kome" style="margin-left:1em;">For more on <em>ikai</em> (court ranks), see <a href="/kanshoku_ikai_en.html#ikai">this page</a>.</p>
+        <p class="kome" style="margin:0 0 0 1em;">For more on the Eight Hereditary Titles (<em>Yakusa no Kabane</em>), see <a href="/kanshoku_ikai_en.html#yakusanokabane">this page</a>.</p>
+
+        <!-- Kentōshi -->
+        <h2>Poets Connected to the Imperial Missions to Tang China (<em>Kentōshi</em>)</h2>
+
+        <p>The missions to Tang China were voyages undertaken at great risk to life. Several poets in the Hyakunin Isshu had their fates intertwined with these legendary expeditions.</p>
+
+        <div class="kanshoku-toc-grid">
+
+          <a href="/7.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title">No. 7<br>Abe no Nakamaro<br>(阿倍仲麻呂)</p>
+            <p class="kanshoku-card-desc">He traveled to Tang China as a student scholar. On his return voyage he was shipwrecked, and he never succeeded in reaching Japan again, spending the rest of his life in China.</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">Kentō-ryūgakusei (student scholar)</span>
+            </div>
+          </a>
+
+          <a href="/11.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title">No. 11<br>Sangi Takamura<br>(参議篁)</p>
+            <p class="kanshoku-card-desc">Appointed as Vice-Ambassador of a Tang mission, he refused to board the ship for various reasons and never made the crossing to China.</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">Kentō-fukushi (Vice-Ambassador)</span>
+            </div>
+          </a>
+
+          <a href="/24.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title">No. 24<br>Sugawara no Michizane<br>(菅原道真)</p>
+            <p class="kanshoku-card-desc">Appointed as Ambassador to Tang China, he petitioned for the missions to be suspended, citing the decline of the Tang dynasty and the dangers of the sea voyage. In 894 the suspension was approved, bringing this long-running state enterprise to an end.</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">Kentō-taishi (Ambassador)</span>
+              <span class="kanshoku-tag">Abolition of Kentōshi</span>
+            </div>
+          </a>
+
+        </div>
+
+        <!-- Saki no -->
+        <h2>Poets with the Prefix <em>Saki no</em> ("Former")</h2>
+        <p>
+          In the Heian period, it was customary to address someone who had retired from an office
+          by prefixing their former title with <em>saki no</em> (前, "former"). This was not merely
+          a label for ex-officials; it carried a respectful weight, acknowledging the prestige
+          of the position they had held.
+        </p>
+        <div class="kanshoku-toc-grid">
+
+          <a href="/66.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title">No. 66<br>Saki no Daisōjō Gyōson<br>(前大僧正行尊)</p>
+            <p class="kanshoku-card-desc">He composed many waka poems during his austere Shugendo mountain asceticism and pilgrimages across the provinces — a monk-poet who balanced rigorous spiritual practice with the art of verse.</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">Daisōjō</span>
+              <span class="kanshoku-tag">Yamabushi asceticism</span>
+            </div>
+          </a>
+
+          <a href="/76.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title">No. 76<br>Hōshōji-nyūdō-saki-no-Kampaku-Daijō-daijin<br>(法性寺入道前関白太政大臣)</p>
+            <p class="kanshoku-card-desc">Fujiwara no Tadamichi served as Regent (<em>Kampaku</em>) and Chancellor (<em>Daijō-daijin</em>) before taking Buddhist orders at Hōshōji temple — an unusual biography combining the peak of secular power with monastic life.</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">Kampaku (Regent)</span>
+              <span class="kanshoku-tag">Daijō-daijin (Chancellor)</span>
+              <span class="kanshoku-tag">Nyūdō (Buddhist monk)</span>
+            </div>
+          </a>
+
+          <a href="/91.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title">No. 91<br>Gokyōgoku-Sesshō-saki-no-Daijō-daijin<br>(後京極摂政前太政大臣)</p>
+            <p class="kanshoku-card-desc">Kujō Yoshitsune served as Regent (<em>Sesshō</em>) and Chancellor, and lived at the Gokyōgoku mansion — hence this long compound name.</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">Sesshō (Regent)</span>
+              <span class="kanshoku-tag">Daijō-daijin (Chancellor)</span>
+            </div>
+          </a>
+
+          <a href="/95.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title">No. 95<br>Saki no Daisōjō Jien<br>(前大僧正慈円)</p>
+            <p class="kanshoku-card-desc">The monk Jien had served as <em>Daisōjō</em> (Senior High Priest), one of the highest ranks in the Buddhist clergy. He also served four terms as Tendai Zasu (head of the Tendai school at Enryakuji on Mt. Hiei). <em>Saki no</em> indicates he had retired from the post.</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">Daisōjō (High Priest)</span>
+              <span class="kanshoku-tag">Sōkan (Buddhist clergy rank)</span>
+            </div>
+          </a>
+
+        </div>
+
+        <!-- Monks who renounced the world -->
+        <h2>Poets Who Renounced the World — Monks and Court Offices</h2>
+
+        <p>The Hyakunin Isshu also includes poets who had left secular life to become monks.</p>
+
+        <div class="kanshoku-toc-grid">
+
+          <a href="/95.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title">No. 95<br>Saki no Daisōjō Jien<br>(前大僧正慈円)</p>
+            <p class="kanshoku-card-desc">He served four terms as Tendai Zasu (head of the Tendai school at Enryakuji on Mt. Hiei). He is also known as the author of the historical chronicle <em>Gukanshō</em>.</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">Daisōjō (High Priest)</span>
+              <span class="kanshoku-tag">Tendai Zasu</span>
+            </div>
+          </a>
+
+          <a href="/76.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title">No. 76<br>Hōshōji-nyūdō-saki-no-Kampaku-Daijō-daijin<br>(法性寺入道前関白太政大臣)</p>
+            <p class="kanshoku-card-desc">Fujiwara no Tadamichi served as Regent and Chancellor before taking Buddhist orders at Hōshōji temple — an unusual combination of reaching the pinnacle of secular power and then entering monastic life.</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">Kampaku (Regent)</span>
+              <span class="kanshoku-tag">Daijō-daijin (Chancellor)</span>
+              <span class="kanshoku-tag">Nyūdō (Buddhist monk)</span>
+            </div>
+          </a>
+
+          <a href="/66.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title">No. 66<br>Saki no Daisōjō Gyōson<br>(前大僧正行尊)</p>
+            <p class="kanshoku-card-desc">He composed many waka during Shugendo asceticism and pilgrimages across the provinces — a monk-poet who balanced rigorous training with the art of verse.</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">Daisōjō (High Priest)</span>
+              <span class="kanshoku-tag">Yamabushi asceticism</span>
+            </div>
+          </a>
+
+        </div>
+
+        <!-- Warrior who became a monk -->
+        <h2>A Warrior Who Became a Monk</h2>
+        <div class="kanshoku-toc-grid">
+          <a href="/86.html" class="kanshoku-card is-column">
+            <p class="kanshoku-card-title">No. 86<br>Saigyō (西行)</p>
+            <p class="kanshoku-card-desc">He served at court as a <em>Sahyōe-no-jō</em> (officer of the Left Guard) and as one of the <em>hokumen no bushi</em> (warrior attendants of the Retired Emperor Toba). Around the age of 23, he suddenly took Buddhist vows, becoming a wandering monk known as Saigyō.</p>
+            <div class="kanshoku-card-tags">
+              <span class="kanshoku-tag">Hokumen no bushi (imperial guard)</span>
+              <span class="kanshoku-tag">Sahyōe-no-jō (Left Guard officer)</span>
+              <span class="kanshoku-tag">Buddhist monk</span>
+            </div>
+          </a>
+        </div>
+
+  </div></div></main>
+  <footer><div class="footer-inner">
+    <span class="footer-copy">&copy;2023 Shigure no Hyakunin Isshu</span>
+    <ul>
+      <li><a href="../policy.html">Privacy Policy</a></li>
+      <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSeXx7TKlqnTfKrw2Nuh4f37swVwFH-RFDsNkTGQ4JEF50q2wQ/viewform?usp=header" target="_blank" rel="noopener">Contact Form</a></li>
+    </ul>
+  </div></footer>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="../js/move_script.js?20260729"></script>
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/tooltips.js?2026906"></script>
+  <script>document.addEventListener("DOMContentLoaded",()=>{document.querySelectorAll("td,th").forEach(c=>{if(c.querySelector("ruby"))c.style.paddingTop="0.9em";});});</script>
+  <script src="../js/back-to-top.js?20260908-02"></script>
+
+</body></html>

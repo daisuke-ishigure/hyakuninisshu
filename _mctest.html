@@ -1,0 +1,31 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8">
+<style>
+  html,body{margin:0;height:100%;overflow:hidden}
+  .wrap{position:fixed;inset:0;display:flex;flex-direction:column}
+  .head{height:30px;background:#ddd;font:12px sans-serif}
+  .bwrap{position:relative;flex:1;min-height:0}
+  /* TEST A: vertical-rl container + column-width */
+  .book{position:absolute;inset:0;writing-mode:vertical-rl;
+    overflow-x:auto;overflow-y:hidden;background:#f5efdd;
+    column-width:100vh;column-fill:auto;column-gap:48px;padding:24px 40px;
+    font-family:"Noto Serif JP",serif;font-size:18px;line-height:2.1}
+  h2{border-block-start:3px solid #b82343;padding-block-start:.5em}
+  p{text-indent:1em;margin:0 0 1.4em}
+</style></head><body>
+<div class="wrap"><div class="head" id="h">measuring</div><div class="bwrap">
+<div class="book" id="book"><article>
+<h2>見出しテスト一</h2>
+<p>平安時代、紫式部や清少納言をはじめとする多くの女性作家は、天皇や后に仕える「女房」として宮廷に出仕していました。ここでいう「女房」とは妻ではなく、高貴な人物のそばに仕える側近の女性を指します。彼女たちは宮中に住み込み、それぞれに与えられた「房（部屋）」で生活していました。女房は高い教養と礼儀が求められる職業であり、当時の女性にとって憧れの存在でもありました。宮廷文化の中心に身を置くことで、文学を生み出す環境が整っていたのです。</p>
+<p>一条天皇は、藤原道隆の娘・定子を中宮として迎え、深く寵愛していました。しかしその後、藤原道長は定子を「皇后」とし、さらに自らの娘・彰子を「中宮」として入内させます。本来、「皇后」と「中宮」はほぼ同義の称号ですが、道長はこれらを使い分けることで、二人の后が並び立つ体制を成立させました。</p>
+<h2>見出しテスト二</h2>
+<p>彰子は皇子を産むことを期待されていましたが、一条天皇の関心は定子に強く向けられていました。定子には才気あふれ、『枕草子』の作者である清少納言が仕えており、その知性と機知が宮廷で高く評価されていました。そこで道長は、『源氏物語』の作者である紫式部を彰子のもとに出仕させます。これは、彰子の周囲に文化的な魅力を持つ環境を整える意図があったと考えられています。その結果として、一条天皇の関心が彰子に向かうようになったというのが通説です。</p>
+<p>紫式部と清少納言は同時代の作家ですが、実際に宮仕えしていた時期は重なっていません。そのため、直接的な対立関係があったとは考えにくいとされています。ただし『紫式部日記』には、清少納言についての次のような記述があります。</p>
+</article></div>
+</div></div>
+<script>
+var b=document.getElementById('book');
+window.addEventListener('load',function(){setTimeout(function(){
+  document.getElementById('h').textContent='cw='+b.clientWidth+' sw='+b.scrollWidth+' ch='+b.clientHeight+' sh='+b.scrollHeight;
+},200);});
+</script>
+</body></html>

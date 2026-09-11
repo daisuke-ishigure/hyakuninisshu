@@ -1,0 +1,52 @@
+<html>
+
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {
+            'packages': ['geochart']
+        });
+        google.charts.setOnLoadCallback(drawMap);
+        function drawMap() {
+            //都道府県単位のデータ
+            var data = [
+                ["都道府県", "歌枕"],
+                ["宮城", 3],
+                ["福島", 1],
+                ["茨城", 1],
+                ["静岡", 1],
+                ["静岡", 2],
+                ["滋賀", 2],
+                ["京都", 9],
+                ["大阪", 4],
+                ["兵庫", 6],
+                ["奈良", 7],
+                ["鳥取", 1],
+            ];
+            var dt = google.visualization.arrayToDataTable(data);
+            var options = {
+                
+                region: 'JP',  //地域
+                displayMode: 'regions', // regions=塗りつぶし, markers=マーカー 
+                backgroundColor: '#ebf7fe', //背景色
+                resolution: 'provinces',
+                colors: ['#EFD7CC', '#B82343'], //階層の色,
+                backgroundColor: '#81d4fa',
+                datalessRegionColor: '#ffffff',
+                magnifyingGlass: {enable: true, zoomFactor: 7.5},
+                
+            };
+            //出力するDivを指定して chart を生成
+            var chart = new google.visualization.GeoChart(document.getElementById('region-div'));
+            //描画
+            chart.draw(dt, options);
+        }
+
+    </script>
+</head>
+
+<body>
+    <div id="region-div" style="width: 650px; height: auto;"></div>
+</body>
+
+</html>

@@ -1,0 +1,1031 @@
+@media (min-width: 760px) {
+  #step1-area {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    -moz-column-gap: 24px;
+         column-gap: 24px;
+  }
+  #float-area {
+    grid-column: 1/-1;
+  }
+  #card-nav-wrap {
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  #kake-desc {
+    grid-column: 2;
+    align-self: stretch;
+    min-width: 0;
+    padding-top: 6px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  #kake-desc h2.imi {
+    border: none;
+    border-bottom: 2px solid #b82343;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 0;
+    padding-left: 0;
+  }
+  #kake-desc h2.imi::before {
+    content: url("../img/one-point_tori.svg");
+    width: 25px;
+    height: 25px;
+    flex-shrink: 0;
+  }
+  #kake-desc h2.kaisetsu {
+    border: none;
+    border-bottom: 2px solid #b82343;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+    margin-bottom: 0;
+    padding-left: 0;
+  }
+  #kake-desc h2.kaisetsu::before {
+    content: url("../img/one-point_hana.svg");
+    width: 25px;
+    height: 25px;
+    flex-shrink: 0;
+  }
+  #kake-desc p.kaisetsu {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #333;
+    margin-top: 0.75rem;
+  }
+}
+#kake-desc p.kaisetsu {
+  font-size: 1.05rem;
+}
+#kake-desc p.kaisetsu:last-of-type {
+  margin-bottom: 1em;
+}
+.detail-btn {
+  display: block;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 16px auto 0;
+  padding: 9px 20px;
+  background: #b82343;
+  color: #fff;
+  font-family: "Noto Serif JP", serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+.detail-btn:hover, .detail-btn:active {
+  background: #8a1a30;
+}
+
+.h1-badge {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.h1-badge img {
+  height: 2.5em;
+  width: 2.5em;
+  margin-right: 8px;
+}
+
+#kake-app {
+  margin-top: 12px;
+}
+#kake-app p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+#neko-area {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+#neko-char-wrap {
+  flex-shrink: 0;
+  width: 72px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media (min-width: 480px) {
+  #neko-char-wrap {
+    width: 90px;
+  }
+}
+
+#neko-img {
+  width: 72px;
+  display: block;
+  border-radius: 8px;
+}
+@media (min-width: 480px) {
+  #neko-img {
+    width: 90px;
+  }
+}
+#neko-img.neko-bounce {
+  animation: neko-bounce 0.4s ease;
+}
+
+@keyframes neko-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-8px);
+  }
+}
+#neko-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#neko-balloon {
+  position: relative;
+  background: #fffef5;
+  border: 2px solid #e0c060;
+  border-radius: 14px;
+  padding: 12px 14px;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: border-color 0.3s, background 0.3s;
+}
+#neko-balloon::before {
+  content: "";
+  position: absolute;
+  left: -13px;
+  top: 24px;
+  border: 7px solid transparent;
+  border-right-color: #e0c060;
+  transition: border-right-color 0.3s;
+}
+#neko-balloon::after {
+  content: "";
+  position: absolute;
+  left: -9px;
+  top: 26px;
+  border: 5px solid transparent;
+  border-right-color: #fffef5;
+  transition: border-right-color 0.3s;
+}
+#neko-balloon.balloon-happy {
+  border-color: #1e8c4a;
+  background: #f0faf4;
+}
+#neko-balloon.balloon-happy::before {
+  border-right-color: #1e8c4a;
+}
+#neko-balloon.balloon-happy::after {
+  border-right-color: #f0faf4;
+}
+#neko-balloon.balloon-sad {
+  border-color: #c0392b;
+  background: #fdf3f2;
+}
+#neko-balloon.balloon-sad::before {
+  border-right-color: #c0392b;
+}
+#neko-balloon.balloon-sad::after {
+  border-right-color: #fdf3f2;
+}
+
+#neko-area.tail-right {
+  flex-direction: row-reverse;
+}
+#neko-area.tail-right #neko-balloon::before {
+  left: auto;
+  right: -13px;
+  border-right-color: transparent;
+  border-left-color: #e0c060;
+  transition: border-left-color 0.3s;
+}
+#neko-area.tail-right #neko-balloon::after {
+  left: auto;
+  right: -9px;
+  border-right-color: transparent;
+  border-left-color: #fffef5;
+  transition: border-left-color 0.3s;
+}
+#neko-area.tail-right #neko-balloon.balloon-happy::before {
+  border-left-color: #1e8c4a;
+}
+#neko-area.tail-right #neko-balloon.balloon-happy::after {
+  border-left-color: #f0faf4;
+}
+#neko-area.tail-right #neko-balloon.balloon-sad::before {
+  border-left-color: #c0392b;
+}
+#neko-area.tail-right #neko-balloon.balloon-sad::after {
+  border-left-color: #fdf3f2;
+}
+
+.balloon-step-title {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #b82343;
+  margin-bottom: 5px;
+}
+
+.balloon-body {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: #444;
+}
+
+#float-area {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background: #f5f0e8;
+  border-radius: 10px;
+  padding: 18px 12px 0;
+  min-height: 90px;
+  margin-bottom: 10px;
+}
+
+.word-chip {
+  padding: 14px 14px 8px;
+  min-height: 50px;
+  line-height: 1;
+  border-radius: 8px;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  background: #fff;
+  border: 2px solid #007e5e;
+  color: #1a3a1a;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  transition: box-shadow 0.15s;
+  animation: chip-float 3s ease-in-out infinite;
+  -webkit-tap-highlight-color: transparent;
+}
+.word-chip:has(ruby) {
+  padding-top: 8px;
+}
+.word-chip ruby {
+  ruby-position: over;
+}
+.word-chip rt {
+  font-size: 0.6em;
+  line-height: 1.2;
+  letter-spacing: 0;
+  ruby-align: center;
+  margin-bottom: -0.1em;
+}
+@media (min-width: 480px) {
+  .word-chip {
+    font-size: 1.1rem;
+    padding: 9px 16px;
+    min-height: 60px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+  .word-chip:has(ruby) {
+    padding: 9px 16px;
+    padding-bottom: 11px;
+  }
+}
+.word-chip:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.14);
+}
+.word-chip.placed {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
+  animation: none;
+  transform: scale(0.94);
+}
+
+@media (max-width: 759px) {
+  /* flex アイテムが min-width:auto でスロット幅を超えるのを防ぐ */
+  .waka-slot {
+    min-width: 0;
+  }
+  rt {
+    transition: opacity 0.5s ease;
+  }
+  .card-poem-area.complete rt {
+    opacity: 0;
+  }
+}
+@keyframes chip-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  35% {
+    transform: translateY(-9px);
+  }
+  70% {
+    transform: translateY(-4px);
+  }
+}
+#float-area .word-chip:nth-child(1) {
+  animation-delay: 0s;
+}
+#float-area .word-chip:nth-child(2) {
+  animation-delay: 0.14s;
+}
+#float-area .word-chip:nth-child(3) {
+  animation-delay: 0.28s;
+}
+#float-area .word-chip:nth-child(4) {
+  animation-delay: 0.42s;
+}
+#float-area .word-chip:nth-child(5) {
+  animation-delay: 0.56s;
+}
+#float-area .word-chip:nth-child(6) {
+  animation-delay: 0.7s;
+}
+#float-area .word-chip:nth-child(7) {
+  animation-delay: 0.84s;
+}
+#float-area .word-chip:nth-child(8) {
+  animation-delay: 0.98s;
+}
+
+@keyframes do-shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-7px);
+  }
+  40% {
+    transform: translateX(7px);
+  }
+  60% {
+    transform: translateX(-5px);
+  }
+  80% {
+    transform: translateX(5px);
+  }
+}
+.do-shake {
+  animation: do-shake 0.45s ease !important;
+}
+
+#waka-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: #fff url(../img/huda_karuta.webp) center/cover;
+  border: 3px solid #007e5e;
+  border-radius: 6px;
+  padding: 12px 20px 0 8px;
+  max-width: 290px;
+  margin: 14px auto;
+  height: 460px;
+  box-shadow: 3px 6px 20px rgba(0, 80, 40, 0.22);
+  overflow: hidden;
+}
+
+.card-page-num {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  font-size: 0.72rem;
+  font-family: 'Kaisei HarunoUmi', serif;
+  color: #333;
+  line-height: 1;
+  z-index: 20;
+  pointer-events: none;
+  text-shadow: -2px -2px 2px #fff, 2px -2px 2px #fff, -2px 2px 2px #fff, 2px 2px 2px #fff,
+               -2px 0px 2px #fff, 2px 0px 2px #fff, 0px -2px 2px #fff, 0px 2px 2px #fff;
+}
+
+.card-poem-area {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: stretch;
+  gap: 0;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 10;
+}
+.card-poem-area.complete .slot-num {
+  display: none;
+}
+.card-poem-area.complete .waka-slot {
+  border-left: none;
+  padding-top: 2px;
+}
+.card-poem-area.complete .slot-text {
+  font-size: 1.5rem;
+  letter-spacing: 0.12em;
+  margin-top: 0;
+}
+.card-poem-area.complete .poet-name-slot {
+  opacity: 1;
+}
+
+.waka-slot {
+  width: 46px;
+  min-height: 185px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px 14px 5px 3px;
+  border-left: 1px dashed rgba(0, 100, 50, 0.22);
+  position: relative;
+  overflow: visible;
+}
+.waka-slot:last-child {
+  border-left: none;
+}
+.waka-slot:not(.filled)::after {
+  content: "";
+  position: absolute;
+  top: 26px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: calc(100% - 34px);
+  border-left: 2px dashed rgba(0, 100, 50, 0.18);
+}
+.waka-slot.filled .slot-text {
+  display: block;
+  animation: slot-drop-in 0.5s ease;
+}
+
+.slot-num {
+  font-size: 10px;
+  color: #007e5e;
+  font-weight: bold;
+  flex-shrink: 0;
+  margin-bottom: 4px;
+}
+
+.slot-text {
+  display: none;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-family: "Noto Serif JP", serif;
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: #333;
+  letter-spacing: 0.08em;
+  margin-right: auto;
+  margin-top: 4px;
+  text-shadow: -2px -2px 0 #fff, 0 -2px 0 #fff, 2px -2px 0 #fff, -2px 0 0 #fff, 2px 0 0 #fff, -2px 2px 0 #fff, 0 2px 0 #fff, 2px 2px 0 #fff;
+  transition: font-size 0.7s ease-in, letter-spacing 0.7s ease-in;
+}
+
+@keyframes slot-drop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.card-figure-area {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 290px;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.divine-glow-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 90% 70% at 50% 100%, rgba(255, 220, 50, 0.6) 0%, rgba(255, 245, 160, 0.25) 45%, transparent 80%);
+  pointer-events: none;
+  z-index: 1;
+  animation: divine-bg 1.75s ease-out forwards;
+  transition: opacity 0.8s ease;
+}
+
+.divine-beam {
+  position: absolute;
+  bottom: -100%;
+  left: 50%;
+  width: 56px;
+  height: 200%;
+  transform: translateX(-50%);
+  background: linear-gradient(to top, rgba(255, 255, 220, 0.9) 0%, rgba(255, 245, 150, 0.55) 50%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+  animation: divine-beam 0.8s cubic-bezier(0.4, 0, 0.15, 1) forwards;
+  transition: opacity 0.8s ease;
+}
+
+.divine-particle {
+  position: absolute;
+  border-radius: 50px;
+  pointer-events: none;
+  z-index: 3;
+  animation: particle-rise linear forwards;
+  opacity: 0;
+}
+
+@keyframes divine-bg {
+  0% {
+    opacity: 0;
+  }
+  18% {
+    opacity: 1;
+  }
+  65% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0.55;
+  }
+}
+@keyframes divine-beam {
+  0% {
+    bottom: -100%;
+    opacity: 1;
+  }
+  55% {
+    bottom: 0%;
+    opacity: 0.8;
+  }
+  100% {
+    bottom: 0%;
+    opacity: 0.08;
+  }
+}
+@keyframes particle-rise {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  22% {
+    opacity: 0.25;
+  }
+  38% {
+    opacity: 0.95;
+  }
+  54% {
+    opacity: 0.3;
+  }
+  70% {
+    opacity: 0.88;
+  }
+  88% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-240px);
+    opacity: 0;
+  }
+}
+#card-figure {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: bottom center;
+     object-position: bottom center;
+  display: block;
+  opacity: 0;
+  transform-origin: center bottom;
+}
+#card-figure.divine-rise {
+  animation: divine-rise 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes divine-rise {
+  0% {
+    transform: translateY(52px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.poet-name-slot {
+  width: 26px;
+  min-height: 185px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 2px 5px;
+  opacity: 0;
+  transition: opacity 0.9s ease 0.5s;
+  flex-shrink: 0;
+}
+
+.poet-name-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  white-space: nowrap;
+  font-family: "Noto Serif JP", serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #333;
+  letter-spacing: 0.14em;
+  text-shadow: -2px -2px 0 #fff, 0 -2px 0 #fff, 2px -2px 0 #fff, -2px 0 0 #fff, 2px 0 0 #fff, -2px 2px 0 #fff, 0 2px 0 #fff, 2px 2px 0 #fff;
+}
+
+.card-bubble {
+  position: absolute;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  background: #fff;
+  border: 3px solid #007e5e;
+  border-radius: 10px;
+  padding: 6px 3px;
+  font-family: "Noto Sans JP", serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #1a3a1a;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+  /* 合成レイヤーに昇格させ、周囲のエフェクト除去等の再描画の影響を受けにくくする */
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+.card-bubble::before {
+  content: "";
+  position: absolute;
+  top: 30%;
+  right: 0;
+  border-style: solid;
+  border-width: 10px 0 10px 20px;
+  border-color: transparent transparent transparent #007e5e;
+  translate: 100% -50%;
+}
+.card-bubble::after {
+  content: "";
+  position: absolute;
+  top: 30%;
+  right: 1px;
+  border-style: solid;
+  border-width: 8px 0 8px 16px;
+  border-color: transparent transparent transparent #fff;
+  translate: 100% -50%;
+  z-index: 1;
+}
+.card-bubble.tail-left::before {
+  right: auto;
+  left: 0;
+  border-width: 10px 20px 10px 0;
+  border-color: transparent #007e5e transparent transparent;
+  translate: -100% -50%;
+}
+.card-bubble.tail-left::after {
+  right: auto;
+  left: 1px;
+  border-width: 8px 16px 8px 0;
+  border-color: transparent #fff transparent transparent;
+  translate: -100% -50%;
+}
+
+.retry-btn {
+  display: block;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto 20px;
+  padding: 9px 20px;
+  background: #b82343;
+  color: #fff;
+  font-family: "Noto Serif JP", serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease, background 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.retry-btn.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+.retry-btn:hover, .retry-btn:active {
+  background: #8a1a30;
+}
+
+/* 「五句並べに挑戦する」ボタン。
+   #gk-h1-badge（poet-index.js が付ける右肩バッジ）と同じ見た目：
+   多色グラデーションがゆっくり流れる＋ふわふわ上下に浮く。 */
+@keyframes gk-btn-grad {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes gk-btn-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-5px); }
+}
+.challenge-btn {
+  display: block;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 10px auto 0;
+  padding: 9px 20px;
+  color: #fff;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1.5;
+  white-space: nowrap;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #B82343, #e05c00, #7b1fa2, #B82343);
+  background-size: 300% 300%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  animation: gk-btn-grad 4s ease infinite, gk-btn-float 2.6s ease-in-out infinite;
+  transition: opacity 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.challenge-btn:hover, .challenge-btn:active {
+  opacity: 0.88;
+}
+@media (prefers-reduced-motion: reduce) {
+  .challenge-btn { animation: none; }
+}
+
+#hint-area {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin: 0 auto 4px;
+}
+.hint-btn {
+  padding: 6px 12px;
+  background: #fff;
+  color: #1a3a2a;
+  border: 1.5px solid #97e2cf;
+  border-radius: 8px;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.hint-btn:hover,
+.hint-btn:active {
+  background: #e6f5f1;
+  border-color: #007e5e;
+}
+
+#card-nav-wrap {
+  position: relative;
+  max-width: 370px;
+  margin: 0 auto;
+}
+#card-pos-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 14px 0 14px;
+}
+#card-nav-wrap #waka-card {
+  margin: 0;
+}
+
+/* style.css の共通 #next/#back（他ページのカルーセル用）を上書きしないよう #card-pos-wrap 配下に限定 */
+#card-pos-wrap #next,
+#card-pos-wrap #back {
+  position: static;
+  top: auto;
+  right: auto;
+  left: auto;
+  transform: none;
+  flex-shrink: 0;
+  width: 28px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background: #b82343;
+  background-image: none;
+  box-shadow: none;
+  border-radius: 6px;
+  transition: background 0.15s;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  z-index: auto;
+}
+#card-pos-wrap #next:hover,
+#card-pos-wrap #back:hover {
+  background: #8a1a30;
+}
+
+.hidden {
+  display: none !important;
+}
+
+@media (min-width: 760px) {
+  .retry-btn,
+  .detail-btn {
+    margin-top: auto;
+  }
+}
+@keyframes bubble-pop-in {
+  0%   { opacity: 0; transform: translateX(-50%) scale(0.5); }
+  50%  { opacity: 1; transform: translateX(-50%) scale(1.12); }
+  75%  { opacity: 1; transform: translateX(-50%) scale(0.96); }
+  100% { opacity: 1; transform: translateX(-50%) scale(1); }
+}
+.card-bubble.bubble-pop-in {
+  animation: bubble-pop-in 0.45s ease-out forwards;
+}
+.card-bubble.bubble-h.bubble-pop-in {
+  animation: bubble-h-fade-in 0.4s ease-out forwards;
+}
+@keyframes bubble-h-fade-in {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+.card-bubble.bubble-h {
+  writing-mode: horizontal-tb;
+  text-orientation: initial;
+  padding: 8px 4px;
+  white-space: pre-line;
+  text-align: left;
+  font-size: 15px;
+  /* width set by JS: card.offsetWidth */
+}
+.card-bubble.tail-top {
+  transform-origin: center top;
+}
+.card-bubble.tail-top::before,
+.card-bubble.tail-top::after {
+  top: 0;
+  right: auto;
+  left: 50%;
+}
+.card-bubble.tail-top::before {
+  border-width: 0 10px 20px 10px;
+  border-color: transparent transparent #007e5e transparent;
+  translate: -50% -100%;
+}
+.card-bubble.tail-top::after {
+  top: 1px;
+  border-width: 0 8px 16px 8px;
+  border-color: transparent transparent #fff transparent;
+  translate: -50% -100%;
+}
+.card-bubble.tail-top-left::before,
+.card-bubble.tail-top-left::after {
+  left: 35%;
+}
+.card-bubble.tail-top-right::before,
+.card-bubble.tail-top-right::after {
+  left: 65%;
+}
+html[lang="en"] p.kaisetsu {
+  text-align: left;
+}
+
+/* ── English version: romaji mode chips ── */
+#float-area.romaji-mode .word-chip {
+  min-height: 0;
+}
+
+/* ── English version: romaji toggle button ── */
+#romaji-toggle-btn {
+  margin-right: auto;
+  padding: 0.25em 0.7em;
+  background: #fff;
+  color: #007e5e;
+  border: 1.5px solid #007e5e;
+  border-radius: 3px;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 0.6em;
+  font-weight: 700;
+  line-height: 2;
+  cursor: pointer;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+#romaji-toggle-btn:hover {
+  background: #007e5e;
+  color: #fff;
+}
+
+/* ── Romaji mode: waka-card layout ── */
+#waka-card.romaji-mode {
+  width: 100%;
+  max-width: none;
+  min-width: 290px;
+  padding: 10px 10px 8px;
+}
+#waka-card.romaji-mode .card-poem-area {
+  flex-direction: column;
+  width: 100%;
+}
+#waka-card.romaji-mode .poet-name-slot {
+  order: 6;
+  width: 100%;
+  min-height: auto;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 4px 2px 2px;
+}
+#waka-card.romaji-mode .poet-name-text {
+  writing-mode: horizontal-tb;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  white-space: normal;
+  text-align: right;
+}
+#waka-card.romaji-mode .waka-slot {
+  width: 100%;
+  min-height: auto;
+  flex-direction: row;
+  align-items: center;
+  padding: 4px 4px;
+  border-left: none;
+  border-bottom: 1px dashed rgba(0, 100, 50, 0.22);
+}
+#waka-card.romaji-mode .waka-slot:last-child {
+  border-bottom: none;
+}
+#waka-card.romaji-mode .waka-slot:not(.filled)::after {
+  display: none;
+}
+#waka-card.romaji-mode .slot-num {
+  margin-bottom: 0;
+  margin-right: 6px;
+}
+#waka-card.romaji-mode .slot-text {
+  writing-mode: horizontal-tb;
+  text-orientation: initial;
+  font-size: 0.92rem;
+  margin: 0 0 0 4px;
+  letter-spacing: 0.06em;
+}
+#waka-card.romaji-mode .card-poem-area.complete .slot-text {
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  margin-top: 0;
+}
+#waka-card.romaji-mode .card-poem-area.complete .slot-num {
+  display: none;
+}
+#waka-card.romaji-mode .card-poem-area.complete .waka-slot {
+  border-bottom: none;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+/* ── English version: card bubble horizontal ── */
+html[lang="en"] .card-bubble {
+  writing-mode: horizontal-tb;
+  text-orientation: initial;
+  padding: 8px 6px;
+  white-space: pre-line;
+  text-align: left;
+  font-size: 15px;
+}
+
+/*# sourceMappingURL=gokunarabe.css.map */

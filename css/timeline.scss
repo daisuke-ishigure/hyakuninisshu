@@ -1,0 +1,121 @@
+// ----------------  THE BASICS
+
+@import url('https://fonts.googleapis.com/css?family=Oswald|Roboto:400,700');
+
+// ----------------  LAYOUT
+
+.container {
+  max-width: 910px;
+  width: calc(95% - 1.2em);
+  margin: 0 0 0 1.2em;
+
+  // ----------------  THE FONTS
+  // ページ全体に影響しないよう、.container配下だけに限定してスコープする
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Oswald', sans-serif;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: .5em;
+  }
+  h2{
+      font-size:1.5rem;
+      margin:0;
+  }
+
+  p {
+    font-family: 'Roboto', sans-serif;
+    font-size: .8rem;
+    margin:10px 0 0;
+    @media (max-width:750px){
+      font-size:1.15rem;
+    }
+  }
+}
+
+// ----------------  THE FONTS
+
+$border-color: #B82343;
+
+.timeline-item {
+  padding: 2.3em 0 1em 2em;
+  position: relative;
+  color: #333;
+  border-left: 2px solid $border-color;
+  
+  h3{
+    font-size:1.1rem;
+    margin:0;
+    padding:0;
+    border-left:none;
+    &:nth-child(1){
+      margin-top:0.5em;
+    }
+    &:nth-child(n + 2 ){
+      margin-top:0;
+    }
+    @media (max-width:750px){
+      font-size:1.3rem;
+    }
+}
+
+  p {
+    font-size: 1rem;
+    margin-top:0.25em;
+    margin-bottom:0;
+    @media (max-width:750px){
+      font-size:1.05rem;
+    }
+  }
+  
+  &::before {
+    content: attr(date-is);
+    position: absolute;
+    left: 1.5em;
+    top: 1.0em;
+    display: block;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+
+    @media (max-width:750px){
+      font-size:1.2rem;
+    }
+  }
+
+  &::after {
+    width: 20px;
+    height: 20px;
+    display: block;
+    top: 1em;
+    position: absolute;
+    left: -12px;
+    border-radius: 20px;
+    content: '';
+    border: 2px solid $border-color;
+    background: white;
+  }
+
+  &:last-child {
+    border-image: linear-gradient(
+      to bottom,
+      $border-color 60%,
+      rgba($border-color, 0)) 1 100%
+    ;
+  }
+}
+
+/* 道長コラム用 */
+
+
+h3.column-timeline{
+  font-size:1.1rem!important;
+  margin:0;
+  margin-top:0.8em!important;
+  padding:0;
+  border-left:none;
+  @media (max-width:780px){
+    font-size:1.24rem!important;
+  }
+}

@@ -1,0 +1,30 @@
+// .acordion-wrapper{
+//   margin-left:1.6em;
+// }
+.accordion {
+  
+  border: 1px solid #B82343;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 10px;
+
+}
+
+.accordion-header {
+  background-color: #fff;
+  padding: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  border-bottom: 1px solid #B82343;
+}
+
+.accordion-content {
+  display: none;
+  padding: 10px;
+  border-top: 1px solid #B82343;
+  background-color:#fff;
+}
+
+.active + .accordion-content {
+  display: block;
+}

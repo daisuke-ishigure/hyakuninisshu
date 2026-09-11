@@ -1,0 +1,220 @@
+/* 語句・文法の対話パネル（1.html のみ、テストケース） */
+/* 「品詞分解と文法」：main の grid-template に追加した専用の "grammar" 行に配置（words とは独立） */
+.grammar-section {
+  grid-area: grammar;
+  background-color: #f7f1e0;
+  width: 988px;
+  max-width: 100%;
+  margin: 1em auto 0;
+  padding: 1em;
+  border-radius: 1em;
+  box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.2);
+}
+@media screen and (max-width: 1000px) {
+  .grammar-section {
+    max-width: 910px;
+    width: 95%;
+    margin: 0.5em auto 0;
+  }
+}
+@media screen and (max-width: 750px) {
+  .grammar-section {
+    width: calc(100vw - 10px);
+    max-width: 100%;
+    margin: 0 auto;
+  }
+}
+.grammar-section dt.title {
+  font-family: "noto-sans-pro", sans-serif;
+  font-size: 1.3rem;
+  margin-bottom: 0.35em;
+  width: fit-content;
+  border-left: 5px solid #B82343;
+  color: #333;
+  padding: 3px 0 0 6px;
+  font-weight: bold;
+}
+
+/* 左：原文（縦書き・上の句/下の句の2行）　右：解説（横書き）／間はシンプルな罫線でくぎる */
+/* PCとスマホで同じレイアウト・サイズにするため、折り返し（flex-wrap）はさせず、必要なら横スクロールさせる */
+.grammar-stage {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  gap: 1.2em;
+  margin-top: 1.5em;
+  margin-left: 1.7em;
+  margin-right: 0.5em;
+}
+@media screen and (max-width: 750px) {
+  .grammar-stage {
+    margin-left: 8px;
+  }
+}
+
+.grammar-poem {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+  gap: 0.5em;
+  flex: 0 0 auto;
+  padding-right: 1.1em;
+  border-right: 1px solid #d8cba3;
+}
+.gp-part {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-family: "Noto Serif JP", serif;
+  font-size: 1.15rem;
+  line-height: 1.9;
+  letter-spacing: 0.08em;
+  color: #333;
+}
+.gp-phrase {
+  margin-top: 0.6em;
+}
+.gp-phrase:first-child {
+  margin-top: 0;
+}
+
+.gw {
+  cursor: pointer;
+  position: relative;
+  padding: 2px;
+  border-radius: 2px;
+  transition: background .15s ease, color .15s ease;
+}
+.gw:hover {
+  background: rgba(184, 35, 67, 0.1);
+}
+.gw.active {
+  background: #B82343;
+  color: #fff;
+}
+
+.grammar-panel {
+  flex: 1 1 260px;
+  min-width: 0;
+}
+
+.grammar-panel-empty {
+  color: #999;
+  font-size: 0.95rem;
+  text-align: center;
+  margin: 0.4em 0;
+}
+
+.gp-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7em;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #eee1bd;
+  padding-bottom: 0.5em;
+  margin-bottom: 0.5em;
+}
+.gp-word {
+  font-family: "Optima", "noto-sans-jp", sans-serif;
+  font-size: 1.5rem;
+  color: #333;
+  font-weight: bold;
+}
+.gp-pos {
+  font-size: 0.75rem;
+  color: #fff;
+  background: #a4813f;
+  padding: 2px 9px;
+  border-radius: 3px;
+  letter-spacing: 0.05em;
+}
+.gp-typeform {
+  font-size: 0.9rem;
+  color: #a4813f;
+  margin: 0 0 0.4em;
+}
+.gp-figure {
+  margin: 0 0 0.6em;
+}
+.gp-img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(300px, 100%);
+  max-height: 300px;
+  border-radius: 0.4em;
+}
+.gp-img-caption {
+  font-size: 0.8rem;
+  color: #999;
+  margin-top: 0.3em;
+  max-width: min(300px, 100%);
+}
+.gp-note {
+  line-height: 1.75;
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+/* 活用形がある語：活用表を左、見出し・品詞・解説などを右に並べる（常に表の右側、下に折り返さない） */
+.gp-body.has-table {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.1em;
+  flex-wrap: nowrap;
+}
+.gp-right {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.gp-katsuyou {
+  flex: 0 0 auto;
+}
+.gp-katsuyou-label {
+  font-size: 0.85rem;
+  color: #a4813f;
+  margin: 0.6em 0;
+}
+.gp-katsuyou-label b {
+  color: #B82343;
+  font-family: "Optima", "noto-sans-jp", sans-serif;
+}
+.gp-katsuyou-table {
+  border-collapse: collapse;
+  margin: 0;
+}
+.gp-katsuyou-table th,
+.gp-katsuyou-table td {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  background: #fff;
+  border: 1px solid #e3d2a0;
+  padding: 8px 6px;
+  height: 63px;
+  text-align: center;
+  vertical-align: middle;
+}
+.gp-katsuyou-table th {
+  color: #a4813f;
+  font-weight: normal;
+  font-size: 0.85rem;
+}
+.gp-katsuyou-table td {
+  font-family: "Optima", "noto-sans-jp", sans-serif;
+  font-size: 0.85rem;
+  color: #333;
+}
+.gp-katsuyou-table tr.gp-current th,
+.gp-katsuyou-table tr.gp-current td {
+  background: #B82343;
+  color: #fff;
+}
+
+.gp-form-multi {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  height: 100%;
+}

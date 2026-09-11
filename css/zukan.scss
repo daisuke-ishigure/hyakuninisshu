@@ -1,0 +1,724 @@
+@charset "utf-8";
+
+// ─── Variables ───────────────────────────────────────────
+$cream:      #fdf8f2;
+$cream-dark: #f5ede0;
+$border:     #c8b89a;
+$border-lt:  #ddd0bc;
+$accent:     #B82343;
+$accent-lt:  #8c5424;
+$gold:       #c8a870;
+$gold-lt:    #e8d4a8;
+$text:       #3a2a18;
+$text-sub:   #7a6050;
+$text-mute:  #a08870;
+$white:      #ffffff;
+$shadow:     rgba(80, 50, 20, .12);
+
+// Theme colours
+$themes: (
+  autumn:   #c85a00,
+  summer:   #0077a8,
+  spring:   #b8306a,
+  winter:   #3a5f8a,
+  love:     #9b3060,
+  travel:   #2d6e55,
+  farewell: #5a4e8a,
+  misc:     #5a5040,
+);
+
+// ─── CSS Custom Properties ───────────────────────────────
+:root {
+  --cream:      #{$cream};
+  --cream-dark: #{$cream-dark};
+  --border:     #{$border};
+  --border-lt:  #{$border-lt};
+  --accent:     #{$accent};
+  --gold:       #{$gold};
+  --gold-lt:    #{$gold-lt};
+  --text:       #{$text};
+  --text-sub:   #{$text-sub};
+  --text-mute:  #{$text-mute};
+
+  @each $key, $color in $themes {
+    --c-#{$key}: #{$color};
+  }
+}
+
+// ─── Reset ───────────────────────────────────────────────
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+
+
+
+
+// ─── Page Header ─────────────────────────────────────────
+
+
+.search-wrap {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+#search-input {
+  border: 1px solid $border;
+  background: $white;
+  border-radius: 3px;
+  padding: .45rem .8rem;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: .875rem;
+  color: $text;
+  width: 220px;
+  outline: none;
+  transition: border-color .2s;
+
+  &:focus { border-color: $gold; }
+  &::placeholder { color: $text-mute; }
+}
+
+#result-count {
+  position:absolute;
+  bottom:10px;
+  right:10px;
+  font-size: .8rem;
+  color: $text-mute;
+  white-space: nowrap;
+}
+
+// ─── Controls Bar ─────────────────────────────────────────
+.controls-bar {
+  position:relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: flex-start;
+  background: $cream-dark;
+  border: 1px solid $border-lt;
+  border-radius: 4px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.75rem;
+}
+
+.controls-section {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.controls-label {
+  font-size: .72rem;
+  font-family: "noto-sans-pro", sans-serif;
+  color: $text-mute;
+  letter-spacing: .08em;
+}
+
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+}
+
+// ─── Buttons ─────────────────────────────────────────────
+%btn-base {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: .8rem;
+  padding: .3rem .75rem;
+  border: 1px solid $border;
+  border-radius: 2px;
+  background: $white;
+  color: $text-sub;
+  cursor: pointer;
+  transition: background .15s, color .15s, border-color .15s, transform .1s;
+  white-space: nowrap;
+
+  &:hover {
+    background: $gold-lt;
+    border-color: $gold;
+    color: $accent;
+  }
+
+  &.is-active {
+    background: $accent;
+    border-color: $accent;
+    color: $white;
+  }
+
+  &:active { transform: scale(.97); }
+}
+
+.sort-btn { @extend %btn-base; }
+.filter-btn { @extend %btn-base; }
+
+.controls-divider {
+  width: 1px;
+  background: $border-lt;
+  align-self: stretch;
+  margin: 0 .25rem;
+}
+
+// ─── Grid ─────────────────────────────────────────────────
+.poet-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.section-header {
+  grid-column: 1 / -1;
+  font-family: 'Kaisei HarunoUmi', serif;
+  font-size: 1.1rem;
+  color: $accent;
+  border-bottom: 1px solid $border;
+  padding: .5rem 0 .3rem;
+  margin-top: .5rem;
+  letter-spacing: .1em;
+}
+
+@media (min-width:1200px){
+  .section {
+    width:1200px;
+  }
+}
+// ─── Cards ────────────────────────────────────────────────
+.poet-card {
+  display: flex;
+  flex-direction: column;
+  background: $white;
+  border: 1px solid $border-lt;
+  border-radius: 3px;
+  text-decoration: none;
+  color: $text;
+  position: relative;
+  overflow: hidden;
+  transition: transform .18s, box-shadow .18s, border-color .18s;
+  animation: cardIn .25s ease both;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(200,168,112,.07) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px $shadow;
+    border-color: $gold;
+  }
+}
+
+.card-number {
+  position: absolute;
+  top: .55rem;
+  left: .6rem;
+  font-family: 'Kaisei HarunoUmi', serif;
+  font-size: .7rem;
+  color: $white;
+  background: $accent;
+  border-radius: 2px;
+  padding: .05rem .4rem;
+  line-height: 1.5;
+}
+
+.card-body {
+  flex: 1;
+  padding: 2.2rem .85rem .75rem;
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+}
+
+// 対応ブラウザでは、横並びのカードそれぞれの各要素（職業・歌人名・時代・生没年・概要・
+// 歌・挿絵・心のチャート内の各項目）の先頭位置を、同じ行に並ぶカードの中で一番長いものに
+// 揃える（subgridを多段階で連鎖させる）。非対応ブラウザでは上のflex/blockレイアウトが
+// そのまま使われるので影響なし。
+// ※ :has(.kokoro-panel)で絞り込み、心のチャートを持たない英語版（kajin-zukan_en.html、
+//   同じ.poet-card/.card-bodyクラスを共有）のカードには適用しない
+//   （行数の異なるsubgridテンプレートを当ててしまうと、英語版のカード下部に
+//     空白ができてしまうため）。
+@supports (grid-template-rows: subgrid) {
+  .poet-card:has(.kokoro-panel) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: subgrid;
+    grid-row: span 13; // 1: card-img／2〜13: card-bodyへ委譲
+    row-gap: .3rem;
+    padding: 2.2rem .85rem .75rem;
+
+    > .card-img {
+      grid-row: 1;
+    }
+
+    .card-body {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: subgrid;
+      // card-meta, card-name, card-date(era), card-date(date), card-outline, card-poem, card-extra-img(7) + kokoro-panel(5)
+      grid-row: 2 / span 12;
+      padding: 0;
+    }
+
+    .kokoro-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: subgrid;
+      grid-row: span 5; // 和歌タイトル／和歌本文／心境タイトル／心境本文／チャート
+    }
+
+    .emotion-chart {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: subgrid;
+      grid-row: span 5;
+    }
+
+    .kokoro-panel-text {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: subgrid;
+      grid-row: 1 / span 4;
+    }
+
+    .radarChartWrapper {
+      grid-row: 5;
+    }
+  }
+}
+
+.card-name {
+  font-family: "noto-sans-pro", sans-serif;
+  font-size: .95rem;
+  font-weight: 700;
+  color: #333;
+  line-height: 1.5;
+
+  ruby { ruby-align: center; }
+  rt {
+    font-size: .55em;
+    font-weight: 400;
+    color: #333;
+  }
+}
+// 英語版のみ：歌人名の下に英語名を併記する（js/zukan_en.jsが付与）
+.card-name-en {
+  display: block;
+  font-family: "noto-sans-pro", sans-serif;
+  font-size: .78rem;
+  font-weight: 400;
+  font-style: italic;
+  color: $text-sub;
+  line-height: 1.4;
+}
+.card-img > img{
+  position:absolute;
+  top:5%;
+  right:5%;
+  width:80px;
+  height:80px;
+}
+
+.card-date,.card-source,.card-outline {
+  font-size: .73rem;
+  color: $text-sub;
+  font-family: "noto-sans-pro", sans-serif;
+}
+
+.card-poem {
+  font-size: .75rem;
+  color: $text-sub;
+  line-height: 1.6;
+  // border-left: 2px solid $gold;
+  // padding-left: .5rem;
+  margin: .15rem 0;
+  font-family: "noto-sans-pro", sans-serif;
+}
+
+.card-extra-img {
+  width: 100%;
+  border-radius: 3px;
+  margin-top: auto; // 前の文章の長さに関わらず、行内で一番下まで伸びたカードの底に画像の下端を揃える
+  display: block;
+}
+
+.card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .5rem;
+  margin-top: .1rem;
+  // 右上のアバター画像（80px）と重ならないよう、何行に折り返しても避けるための最大幅
+  max-width: calc(100% - 90px);
+}
+
+.card-theme {
+  font-size: .68rem;
+  font-family: 'Noto Sans JP', sans-serif;
+  border-radius: 2px;
+  padding: .1rem .45rem;
+  font-weight: 700;
+  color: $white;
+  background: $text-mute;
+
+  @each $key, $color in $themes {
+    &[data-theme="#{$key}"] { background: $color; }
+  }
+}
+
+.card-job {
+  font-size: .68rem;
+  color: $text-mute;
+  font-family: 'Noto Sans JP', sans-serif;
+  flex: 1 1 100%;
+  min-width: 0;
+  white-space: normal;
+  word-break: break-word;
+}
+
+// ─── Animation ────────────────────────────────────────────
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+// ─── Footer ───────────────────────────────────────────────
+.zukan-footer {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  border-top: 1px solid $border-lt;
+  color: $text-mute;
+  font-size: .78rem;
+}
+
+// ─── Responsive ───────────────────────────────────────────
+@media (max-width: 768px) {
+  .zukan-header h1 { font-size: 1.5rem; }
+  #search-input { width: 160px; }
+}
+
+// カード幅に応じて4列→3列→2列→1列と段階的に減らす。
+// 縦書きの和歌（.kokoro-panel-poem）は句数×行間×文字サイズで幅がほぼ固定のため、
+// カードが狭くなる境目でオーバーフローしないよう、列数の変化に合わせて後段で
+// 和歌の文字サイズも調整する（このファイル末尾の「和歌のはみ出し防止」セクション参照）。
+@media (max-width: 1200px) {
+  .poet-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+// iPad miniくらいの幅（〜768px）から：2列
+@media (max-width: 767px) {
+  .poet-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+// スマホ縦向きの実機幅：1列
+@media (max-width: 480px) {
+  .poet-grid { grid-template-columns: repeat(1, 1fr); }
+}
+
+// スマホ横向き：2列に固定する（横向きは幅が768pxを超える機種が多く、上の幅基準の
+// ルールだけだと3列になってしまうため、高さで「横向きの小さい画面」を判定して上書きする）
+@media (max-width: 950px) and (max-height: 500px) and (orientation: landscape) {
+  .poet-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  #search-input { width: 100%; }
+  .search-wrap { flex: 1 1 100%; flex-direction: column; align-items: stretch; }
+  .zukan-header { padding: 1.25rem 0 1rem; }
+}
+
+// ─── 心のチャート モーダル ─────────────────────────────────
+.poet-card {
+  cursor: pointer;
+}
+
+body.kokoro-modal-open {
+  overflow: hidden;
+}
+
+.kokoro-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.kokoro-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(40, 25, 10, .55);
+}
+
+.kokoro-modal-box {
+  position: relative;
+  background: #fffef8;
+  border: 1px solid $gold;
+  border-radius: 6px;
+  padding: 2rem 1.75rem 1.75rem;
+  max-width: 700px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, .3);
+  animation: kokoroModalIn .18s ease;
+  text-align: center;
+  font-family: "noto-sans-pro", sans-serif;
+}
+
+@media (max-width: 400px) {
+  .kokoro-modal {
+    padding: .5rem;
+  }
+  .kokoro-modal-box {
+    padding: 1.75rem 1rem 1.25rem;
+  }
+}
+
+// 英語ラベル（Impermanenceなど長い単語）が切れないよう、モーダル内のチャートは少し広めに確保する。
+// 幅の狭い画面でもはみ出さないよう、272px（340pxの80%）を上限にレスポンシブにする。
+// 縮めた分は隣の.kokoro-modal-text（flex:1）が自動的に広がる。
+.kokoro-modal-box .emotion-chart #radarChartWrapper {
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: 272px;
+  height: auto;
+  aspect-ratio: 1 / 1;
+}
+
+@keyframes kokoroModalIn {
+  from { opacity: 0; transform: scale(.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.kokoro-modal-close {
+  position: absolute;
+  top: .5rem;
+  right: .75rem;
+  background: none;
+  border: none;
+  font-family: "noto-sans-pro", sans-serif;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  color: $text-sub;
+  padding: .25rem;
+
+  &:hover {
+    color: $accent;
+  }
+}
+
+.kokoro-modal-title {
+  color: $accent;
+  font-size: 1.25rem;
+  margin: 0 0 .75rem;
+}
+
+.kokoro-modal-text {
+  text-align: left;
+}
+
+.kokoro-modal-poem-title {
+  font-size: .8rem;
+  font-weight: 700;
+  color: $text-mute;
+  letter-spacing: .05em;
+  margin-bottom: .5rem;
+}
+
+.kokoro-modal-poem {
+  font-size: .95rem;
+  line-height: 1.9;
+  color: $text;
+  padding-bottom: .75rem;
+  margin-bottom: .75rem;
+  border-bottom: 1px solid $border-lt;
+
+  rt {
+    font-size: .55em;
+    font-weight: 400;
+    color: $text-sub;
+  }
+}
+
+.kokoro-modal-quotes-title {
+  font-size: .8rem;
+  font-weight: 700;
+  color: $text-mute;
+  letter-spacing: .05em;
+  margin-top: 1em;
+  margin-bottom: .5rem;
+}
+
+#kokoro-modal-quotes p {
+  font-size: .95rem;
+  line-height: 1.8;
+  color: $text;
+  text-align: left;
+  margin: 0;
+  margin-top: .7em;
+}
+
+.kokoro-modal-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .3em;
+  margin-top: 1.5rem;
+  padding: .55em 1.3em;
+  background: #007e5e;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: .85rem;
+  transition: background-color .2s;
+
+  &:hover {
+    background: #005e46;
+  }
+}
+
+// ─── 心のチャート（歌人図鑑：モーダルやカード展開ではなく、常に全カードに表示する） ─────
+// ※ 英語版（kajin-zukan_en.html）は上記の .kokoro-modal* を引き続き使用しているため、
+//   そちらは変更していない
+.kokoro-panel {
+  margin-top: .75rem;
+  padding-top: .75rem;
+  border-top: 1px solid $border-lt;
+  text-align: center;
+  font-family: "noto-sans-pro", sans-serif;
+}
+
+.kokoro-panel .emotion-chart {
+  flex-direction: column;
+  align-items: stretch;
+  gap: .5rem;
+}
+
+.kokoro-panel .radarChartWrapper {
+  flex: 0 0 auto;
+  width: 95%; // 5%縮小
+  height: auto;
+  min-width: 0;
+  min-height: 0;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+  align-self: start;
+}
+
+.kokoro-panel-text {
+  text-align: left;
+}
+
+// h3要素のため、共通CSS（style.css）の `.section h3`（詳細度: クラス1+要素1）に
+// 上書きされないよう、親要素を含めて詳細度を上げる（クラス2）。
+// また `.section h3` が付与するborder-left・padding・widthも明示的に打ち消す。
+.kokoro-panel-text .kokoro-panel-poem-title {
+  font-size: .8rem;
+  font-weight: 700;
+  color: $text-mute;
+  letter-spacing: .05em;
+  margin-bottom: .5rem;
+  border-left: none;
+  width: auto;
+  padding: 0;
+}
+
+.kokoro-panel-poem {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: $text;
+
+  rt {
+    font-size: .55em;
+    font-weight: 400;
+    color: $text-sub;
+  }
+}
+
+// 和歌と歌人の心境を区切る境界線は、和歌側（.kokoro-panel-poem）に付けると
+// 縦書き用のwidth:fit-content（テキスト幅ぶんしかない）に引きずられて短くなり、
+// パネル上部の境界線（.kokoro-panel の border-top、カード幅いっぱい）と幅が揃わない。
+// そのため、幅の制約を受けない歌人の心境タイトル側の border-top として持たせる。
+.kokoro-panel-text .kokoro-panel-quotes-title {
+  font-size: .8rem;
+  font-weight: 700;
+  color: $text-mute;
+  letter-spacing: .05em;
+  margin-top: 0;
+  margin-bottom: 0;
+  border-left: none;
+  width: auto;
+  padding: .75rem 0 0;
+  border-top: 1px solid $border-lt;
+}
+
+// 共通CSS（style.css）の `.section h3:nth-of-type(n + 2)`（詳細度: クラス2+要素1）が
+// margin-topを上書きしてしまうため（.kokoro-panel-quotes-titleは.kokoro-panel-text内で
+// 2番目のh3にあたる）、さらに詳細度を上げて確実に上書きする。
+.kokoro-panel .kokoro-panel-text .kokoro-panel-quotes-title {
+  margin-top: 0;
+}
+
+.kokoro-panel-quotes p {
+  font-size: .9rem;
+  line-height: 1.7;
+  color: $text;
+  text-align: left;
+  margin: 0;
+  margin-top: .6em;
+}
+
+// ─── スマホでの可読性向上（カード内の文字サイズを拡大） ───────────
+// ファイル末尾に置くことで、詳細度が同じ他のルールに対してカスケード順で
+// 確実に上書きできるようにする（@mediaブロックの位置自体は詳細度に影響しないため）。
+@media (max-width: 768px) {
+  .card-number { font-size: .78rem; }
+  .card-name { font-size: 1.05rem; }
+  .card-date, .card-source, .card-outline { font-size: .82rem; }
+  .card-poem { font-size: .85rem; }
+  .card-theme { font-size: .75rem; }
+  .card-job { font-size: .75rem; }
+  .kokoro-panel-text .kokoro-panel-poem-title,
+  .kokoro-panel-text .kokoro-panel-quotes-title { font-size: .85rem; }
+}
+
+// ─── 和歌の縦書き表示（日本語版のみ） ─────────────────────────
+// 英語版（kajin-zukan_en.html）は英訳文が入るため対象外。同じzukan.cssを共有しているので
+// html[lang]属性（<html lang="ja">/<html lang="en">）で判定して日本語版だけに適用する。
+// first/secondは元々<br>で句ごとに区切られているため、縦書きにするだけで
+// 自動的に5・7・5・7・7の句ごとの列に分かれ、伝統的な短冊のような表示になる。
+// 幅・高さは width:fit-content / height:auto などブラウザ側の自動計算に
+// 頼らず、js/zukan.jsのpoemInlineStyle()が句の数・文字数から計算した
+// 値をinlineスタイル（style="width:...em;height:...em;"）として直接
+// 指定している。一部の実機ブラウザ（iOS Chrome＝WebKit）で、
+// writing-mode:vertical-rlの要素に対するfit-content/autoのサイズ計算が
+// 正しく機能せず、和歌が右にずれたり句の途中で意図しない折り返しが
+// 起きる不具合が実際に確認されたための対策（Chromium・Playwright上の
+// WebKitでは再現しないため、ブラウザ側の計算を信用しない方針にした）。
+// ※ line-height（句と句の間隔）はpoemInlineStyle()の幅計算式
+//   （句数 × 2.2）と対になっているため、変更する場合は両方揃えること。
+html[lang="ja"] .kokoro-panel-poem {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-family: 'Kaisei HarunoUmi', serif;
+  // 幅はinlineスタイルで指定済みのため、grid-item化に伴う伸縮は無効にする
+  // （縮まない・伸びない）。margin:0 autoは明示的な幅を持つブロック要素の
+  // 中央寄せとして最も枯れた仕組み。
+  min-height: 0;
+  align-self: start;
+  line-height: 2.2; // 縦書きでは「句（列）と句の間隔」になる。幅の計算式と対
+  letter-spacing: .04em;
+  margin: 0 auto .75rem;
+
+  ruby { ruby-align: center; }
+}
+
+// 「上に戻る」ボタン（.back-to-top）は全ページ共通で css/style.scss に
+// 定義し、js/back-to-top.js が生成する（js/zukan.js固有の実装から移行済み）。

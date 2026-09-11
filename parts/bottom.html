@@ -1,0 +1,117 @@
+<!-- メインここまで・フッターここから -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">&copy;2023 時雨 大輔</span>
+    <ul>
+      <li><a href="policy.html">プライバシーポリシー</a></li>
+      <li>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXx7TKlqnTfKrw2Nuh4f37swVwFH-RFDsNkTGQ4JEF50q2wQ/viewform?usp=header"
+          target="_blank" rel="noopener">お問い合わせフォーム</a>
+      </li>
+    </ul>
+  </div>
+</footer>
+<!-- フッターここまで -->
+
+<!-- ▼▼▼ ハンバーガーメニュー ▼▼▼ -->
+<div class="hmenu-overlay" id="hmenuOverlay"></div>
+<nav class="hmenu" id="hmenu" aria-hidden="true">
+  <button class="hmenu__close" id="hmenuClose" aria-label="メニューを閉じる">✕</button>
+  <p class="hmenu__title">時雨の百人一首</p>
+  <ul class="hmenu__list">
+    <li><a href="index.html" class="hmenu__link">🏠 トップ</a></li>
+    <li><a href="list.html" class="hmenu__link">📜 和歌の一覧・検索</a></li>
+    <li><a href="introduction.html" class="hmenu__link">📖 コラム</a></li>
+    <li><a href="introduction-app.html" class="hmenu__link">📱 アプリ紹介</a></li>
+    <li><a href="policy.html" class="hmenu__link">🔒 プライバシーポリシー</a></li>
+    <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSeXx7TKlqnTfKrw2Nuh4f37swVwFH-RFDsNkTGQ4JEF50q2wQ/viewform?usp=header" target="_blank" rel="noopener" class="hmenu__link">✉️ お問い合わせ</a></li>
+  </ul>
+</nav>
+<!-- ▲▲▲ ハンバーガーメニュー ▲▲▲ -->
+
+<!-- ▼▼▼ スマホ用ボトムナビ ▼▼▼ -->
+<nav class="bottom-nav" id="bottomNav" aria-label="ボトムナビゲーション">
+  <a href="index.html" class="bottom-nav__item">
+    <span class="bottom-nav__emoji">🏠</span>
+    <span>ホーム</span>
+  </a>
+  <button type="button" class="bottom-nav__item" id="bottomNavMenu" aria-label="メニューを開く">
+    <span class="bottom-nav__emoji">☰</span>
+    <span>メニュー</span>
+  </button>
+  <button type="button" class="bottom-nav__item" id="bottomNavBack" aria-label="前の和歌へ">
+    <span class="bottom-nav__emoji">◀</span>
+    <span>前の和歌</span>
+  </button>
+  <button type="button" class="bottom-nav__item" id="bottomNavNext" aria-label="次の和歌へ">
+    <span class="bottom-nav__emoji">▶</span>
+    <span>次の和歌</span>
+  </button>
+</nav>
+<!-- ▲▲▲ スマホ用ボトムナビ ▲▲▲ -->
+
+<script>
+  // ハンバーガーメニューの開閉
+  const hmenu = document.getElementById('hmenu');
+  const hmenuOverlay = document.getElementById('hmenuOverlay');
+  const hmenuClose = document.getElementById('hmenuClose');
+  function openHmenu() {
+    hmenu.classList.add('hmenu--open');
+    hmenuOverlay.classList.add('hmenu-overlay--show');
+    hmenu.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('active');
+  }
+  function closeHmenu() {
+    hmenu.classList.remove('hmenu--open');
+    hmenuOverlay.classList.remove('hmenu-overlay--show');
+    hmenu.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('active');
+  }
+  if (hmenuClose) hmenuClose.addEventListener('click', closeHmenu);
+  if (hmenuOverlay) hmenuOverlay.addEventListener('click', closeHmenu);
+
+  // ボトムナビ：各ボタンの動作
+  const btnMenu = document.getElementById('bottomNavMenu');
+  if (btnMenu) btnMenu.addEventListener('click', openHmenu);
+  const btnBack = document.getElementById('bottomNavBack');
+  if (btnBack) btnBack.addEventListener('click', function () {
+    const btn = document.getElementById('back2');
+    if (btn) btn.click();
+  });
+  const btnNext = document.getElementById('bottomNavNext');
+  if (btnNext) btnNext.addEventListener('click', function () {
+    const btn = document.getElementById('next2');
+    if (btn) btn.click();
+  });
+
+  // ボトムナビ：下スクロールで隠す・上スクロールで出す（スマホ幅のみ）
+  (function () {
+    const nav = document.getElementById('bottomNav');
+    const mq = window.matchMedia('(max-width: 1000px)');
+    let lastY = window.scrollY;
+    let ticking = false;
+
+    function onScroll() {
+      if (!mq.matches) return;
+      if (!ticking) {
+        window.requestAnimationFrame(function () {
+          const currentY = window.scrollY;
+          if (currentY > lastY && currentY > 60) {
+            nav.classList.add('bottom-nav--hidden');
+          } else {
+            nav.classList.remove('bottom-nav--hidden');
+          }
+          lastY = currentY;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+
+    mq.addEventListener('change', function (e) {
+      if (!e.matches) nav.classList.remove('bottom-nav--hidden');
+    });
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
+</script>

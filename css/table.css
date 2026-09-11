@@ -1,0 +1,60 @@
+@charset "UTF-8";
+table {
+  border-collapse: collapse;
+  border: 1px solid #333;
+  font-size: 1.17rem;
+  z-index: 10;
+  width: 100%;
+}
+table td {
+  border: 1px solid #333;
+}
+table td:nth-child(1) {
+  text-align: center;
+  color: #00f;
+  text-decoration: underline;
+  cursor: pointer;
+}
+@media (max-width: 960px) {
+  table td:nth-child(1) {
+    width: 30px;
+  }
+}
+table td:nth-child(2) {
+  padding: 1.5% 1.5% 0%;
+  width: 90%;
+  border-right: none;
+}
+@media (max-width: 960px) {
+  table td:nth-child(2) {
+    width: 310px;
+  }
+}
+table td:nth-child(2) rt {
+  font-size: 0.5em;
+  letter-spacing: 0;
+  display: block;
+}
+table td:nth-child(3) {
+  /* 検索用の文字（非表示） */
+  color: transparent;
+  width: 0;
+  display: none;
+  border-left: none;
+  border-right: none;
+}
+table td:nth-child(4) {
+  /* 検索用の文字（非表示） */
+  color: transparent;
+  width: 0;
+  display: none;
+  border-left: none;
+  border-right: none;
+}
+table td:nth-child(5) {
+  /* 検索用の文字（非表示） */
+  color: transparent;
+  width: 0;
+  display: none;
+  border-left: none;
+}/*# sourceMappingURL=table.css.map */

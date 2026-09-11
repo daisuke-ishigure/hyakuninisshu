@@ -1,0 +1,136 @@
+@charset "utf-8";
+
+$t-color: #ffebe5;
+
+.section > ul{
+    margin-left:0;
+    margin-bottom:1em;
+}
+.section > ul > li{
+    line-height:1.4;
+    font-size:1rem;
+    margin-bottom:5px;
+}
+#searchInput {
+    width: 100%;
+}
+.utamakura-list {
+    margin-top: 0.3em;
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
+    text-align: center;
+    
+}
+.utamakura-list th,
+.utamakura-list td {
+    border: 1px solid #333;
+    padding: 0.3em;
+    font-size:1rem;
+    font-family: "noto-sans-pro", sans-serif;
+    @media (max-width:640px){
+        font-size:1.2rem;
+    }
+}
+.utamakura-list td:nth-child(3){
+    display:none;
+}
+.utamakura-list thead th {
+    background-color: $t-color;
+    color: #333;
+    text-align: center;
+
+    &:nth-child(1){
+        width:28%;
+    }
+}
+.utamakura-list tbody{
+    background-color: #fff;
+}
+.utamakura-list tbody th {
+    color: #333;
+    text-align: center;
+    a{
+        text-decoration:none;
+        color:#0047ab!important;
+        font-size:1.05em;
+    }
+    @media (max-width:640px){
+        text-align:left;
+        padding-left:0.75em;
+        border-left:1px solid #333;
+        border-bottom:1px solid #333;
+        border-right:1px solid #333;
+    }
+}
+.utamakura-list tbody td {
+    text-align: left;
+    a{
+        font-weight:bold;
+        text-decoration:underline wavy #B82343;
+    }
+    div > a{
+        text-decoration:none;
+        color:#555;
+
+    }
+    .name{
+        text-align:right;
+        font-size:0.8rem;
+        margin-top:0.2em;
+    }
+
+    &:nth-child(1){
+        text-align:center;
+        width:20%;
+    }
+    @media (max-width:640px){
+        padding-left:0.75em;
+        border-left:1px solid #333;
+        border-bottom:1px solid #333;
+        border-right:1px solid #333;
+        .name{
+            font-size:0.9rem;
+        }
+    }
+}
+.utamakura-list tbody > tr:nth-child(1) > th{
+    border-top:1px solid #333;
+}
+@media screen and (max-width: 640px) {
+    .utamakura-list {
+        text-align: left;
+    }
+    .utamakura-list thead {
+        display: none;
+    }
+    .utamakura-list th,
+    .utamakura-list td {
+        width:100%;
+        display: block;
+        border: 0;
+    }
+    .utamakura-list tbody th {
+        background: $t-color;
+        color: #333;
+
+    }
+}
+
+#inputWrapper{
+    display:flex;
+    gap:10px;
+    margin-bottom:10px;
+    #searchInput{
+        width:90%;
+        @media (max-width:640px){
+            width:85%;
+        }
+    }
+    #button{
+        width:10%;
+        @media (max-width:640px){
+            width:15%;
+        }
+    }
+}

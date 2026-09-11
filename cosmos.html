@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>百首が響き合う、百人一首の宇宙 | TF-IDFで創る言葉の3Dマップ | 時雨の百人一首</title>
+<meta name="description" content="形態素解析とTF-IDF法を用い、百人一首の歌同士の意味の近さを計算。似た想いを持つ歌が引き寄せ合い、3次元空間に浮かび上がる「言葉の宇宙」を体験できるコラムです。">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+  <!-- ogp設定 -->
+  <meta property="og:locale" content="ja">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="百首が響き合う、百人一首の宇宙 | 言葉の距離を可視化した3Dマップ | 時雨の百人一首">
+  <meta property="og:description" content="AI技術（形態素解析・TF-IDF）で百人一首を分解し、心の距離を3D空間に可視化。似た想いは近づき、異なる心は離れていく。新しい古典の楽しみ方を体験。">
+  <meta property="og:image" content="https://hyakuninisshu.com/img/ogp_cosmos.webp">
+  <meta property="og:url" content="https://hyakuninisshu.com/cosmos.html">
+  <meta property="og:site_name" content="時雨の百人一首">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- 構造化データ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://hyakuninisshu.com/cosmos.html" },
+    "headline": "百首が響き合う、百人一首の宇宙 | 言葉の距離を可視化した3Dマップ",
+    "datePublished": "2026-03-30", 
+    "dateModified": "2026-03-30",
+    "description": "形態素解析とTF-IDF法を用い、百人一首の歌同士の意味の近さを計算。似た想いを持つ歌が引き寄せ合い、3次元空間に浮かび上がる「言葉の宇宙」を体験できるコラムです。",
+    "image": "https://hyakuninisshu.com/img/thumb_cosmos.webp",
+    "author": { "@type": "Person", "name": "石槫大輔", "url": "https://hyakuninisshu.com/" },
+    "publisher": { "@type": "Person", "name": "時雨の百人一首", "logo": { "@type": "ImageObject", "url": "https://hyakuninisshu.com/apple-touch-icon.png" } },
+    "genre": "デジタルアーカイブ / 自然言語処理 / 古典文学",
+    "about": [{ "@type": "CreativeWork", "name": "百人一首" }, { "@type": "Thing", "name": "TF-IDF" }]
+  }
+  </script>
+  <!-- パンくずリスト -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "トップ", "item": "https://hyakuninisshu.com/" },
+      { "@type": "ListItem", "position": 2, "name": "アプリ", "item": "https://hyakuninisshu.com/introduction-app.html" },
+      { "@type": "ListItem", "position": 3, "name": "百首が響き合う、百人一首の宇宙", "item": "https://hyakuninisshu.com/universe.html" }
+    ]
+  }
+  </script>
+  <!-- スタイルシート -->
+  <link rel="stylesheet" href="../css/style.css?20260908-16">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@500&family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/protonet-jquery.inview/1.1.2/jquery.inview.min.js"></script>
+  <script src="../js/my-chart.js?v01"></script>
+  <script src="../js/my-chart2.js"></script>
+  <script src="../js/my-chart3.js"></script>
+  <script src="../js/move_script.js?20260729"></script>
+  <!-- canonical設定 -->
+  <link rel="canonical" href="https://hyakuninisshu.com/cosmos.html">
+  <!-- アップルタッチアイコン -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" href="/favicon.ico">
+
+  <style>
+    .cosmos-section {
+      margin: 1rem 0 1rem;
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+
+    .cosmos-title {
+      font-size: 1.5rem;
+      color: #3d2c1e;
+      letter-spacing: 0.15em;
+      margin-bottom: 0.4rem;
+    }
+
+    .cosmos-subtitle {
+      font-size: 0.82rem;
+      color: #7a6655;
+      margin-bottom: 1.2rem;
+      line-height: 1.7;
+    }
+
+    /* グラフ外枠 */
+    .cosmos-wrap {
+      position: relative;
+      background: #0d1020;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    /* 和紙テクスチャ風オーバーレイ（四隅をぼかす） */
+    .cosmos-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, transparent 55%, rgba(10, 13, 28, 0.70) 100%);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    #cosmos-canvas {
+      display: block;
+      width: 100%;
+      cursor: grab;
+    }
+
+    #cosmos-canvas:active {
+      cursor: grabbing;
+    }
+
+    /* ツールチップ */
+    #cosmos-tooltip {
+      position: absolute;
+      pointer-events: none;
+      background: rgba(26, 18, 12, 0.92);
+      border: 1px solid #fff;
+      border-radius: 1px;
+      padding: 8px 12px;
+      font-size: 11px;
+      color: #e8ddd0;
+      max-width: min(90vw, 320px);
+      line-height: 1.65;
+      z-index: 10;
+      display: none;
+      backdrop-filter: blur(4px);
+    }
+
+    #cosmos-tooltip strong {
+      display: block;
+      font-size: 13px;
+      color: #f0c97a;
+      margin-bottom: 3px;
+    }
+
+    #cosmos-tooltip .tooltip-text {
+      display: block;
+      color: #fff;
+      font-size: 15px;
+    }
+
+    @media (max-width: 600px) {
+      #cosmos-tooltip .tooltip-text {
+        font-size: 13px;
+      }
+    }
+
+    #cosmos-tooltip .tooltip-links {
+      margin-top: 4px;
+      font-size: 10px;
+      color: #eee;
+    }
+
+    /* コントロールパネル */
+    .cosmos-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 20px;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 10px;
+      padding: 10px 14px;
+      background: #f7f3ee;
+      border: 1px solid #ddd0c0;
+      border-radius: 3px;
+      font-size: 12px;
+      color: #5a4535;
+    }
+    #star-clear {
+      font-size: 0.8rem;
+      color: #e05c3a;
+      background: none;
+      border: 1px solid #e05c3a;
+      border-radius: 4px;
+      padding: 3px 10px;
+      cursor: pointer;
+      display: none;
+      white-space: nowrap;
+    }
+    #star-clear:hover { background: #fdf0ec; }
+
+    .cosmos-controls label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .cosmos-controls input[type="range"] {
+      width: 90px;
+      accent-color: #B82343;
+      border:1px solid #ccc;
+    }
+
+    .cosmos-controls span.val {
+      min-width: 32px;
+      font-weight: 700;
+      color: #B82343;
+    }
+
+    /* 凡例 */
+    .cosmos-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+      margin-top: 8px;
+      font-size: 11px;
+      color: #7a6655;
+    }
+
+    .cosmos-legend-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 4px;
+      vertical-align: middle;
+    }
+
+    /* 操作ガイド */
+    .cosmos-guide {
+      margin-top: 6px;
+      font-size: 10.5px;
+      color: #a0907e;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 12px;
+    }
+
+    .cosmos-guide span::before {
+      content: '◆ ';
+      color: #c4a882;
+    }
+
+    /* テーマフィルターボタン */
+    .cosmos-theme-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 10px;
+      margin-top: 10px;
+      padding: 10px 14px;
+      background: #f7f3ee;
+      border: 1px solid #ddd0c0;
+      border-radius: 3px;
+      font-size: 12px;
+      color: #5a4535;
+      align-items: center;
+    }
+
+    .cosmos-theme-label {
+      font-size: 11px;
+      color: #7a6655;
+      white-space: nowrap;
+      margin-right: 4px;
+    }
+
+    .theme-btn {
+      padding: 5px 14px;
+      border: 1.5px solid transparent;
+      border-radius: 20px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: #fff;
+      letter-spacing: 0.08em;
+    }
+
+    /* 部立て */
+    .theme-btn[data-theme="春"] { color: #c05880; border-color: #c05880; }
+    .theme-btn[data-theme="春"]:hover, .theme-btn[data-theme="春"].active { background: #c05880; color: #fff; box-shadow: 0 0 8px rgba(192,88,128,0.55); }
+    .theme-btn[data-theme="夏"] { color: #108850; border-color: #108850; }
+    .theme-btn[data-theme="夏"]:hover, .theme-btn[data-theme="夏"].active { background: #108850; color: #fff; box-shadow: 0 0 8px rgba(16,136,80,0.55); }
+    .theme-btn[data-theme="秋"] { color: #b05818; border-color: #b05818; }
+    .theme-btn[data-theme="秋"]:hover, .theme-btn[data-theme="秋"].active { background: #b05818; color: #fff; box-shadow: 0 0 8px rgba(176,88,24,0.55); }
+    .theme-btn[data-theme="冬"] { color: #3870b0; border-color: #3870b0; }
+    .theme-btn[data-theme="冬"]:hover, .theme-btn[data-theme="冬"].active { background: #3870b0; color: #fff; box-shadow: 0 0 8px rgba(56,112,176,0.55); }
+    .theme-btn[data-theme="雑"] { color: #7a6850; border-color: #7a6850; }
+    .theme-btn[data-theme="雑"]:hover, .theme-btn[data-theme="雑"].active { background: #7a6850; color: #fff; box-shadow: 0 0 8px rgba(122,104,80,0.55); }
+    .theme-btn[data-theme="羇旅"] { color: #a07030; border-color: #a07030; }
+    .theme-btn[data-theme="羇旅"]:hover, .theme-btn[data-theme="羇旅"].active { background: #a07030; color: #fff; box-shadow: 0 0 8px rgba(160,112,48,0.55); }
+    .theme-btn[data-theme="離別"] { color: #906878; border-color: #906878; }
+    .theme-btn[data-theme="離別"]:hover, .theme-btn[data-theme="離別"].active { background: #906878; color: #fff; box-shadow: 0 0 8px rgba(144,104,120,0.55); }
+    .theme-btn[data-theme="恋(部立て)"] { color: #B82343; border-color: #B82343; }
+    .theme-btn[data-theme="恋(部立て)"]:hover, .theme-btn[data-theme="恋(部立て)"].active { background: #B82343; color: #fff; box-shadow: 0 0 8px rgba(184,35,67,0.55); }
+    /* 自然・景物 */
+    .theme-btn[data-theme="桜"] { color: #e06898; border-color: #e06898; }
+    .theme-btn[data-theme="桜"]:hover, .theme-btn[data-theme="桜"].active { background: #e06898; color: #fff; box-shadow: 0 0 8px rgba(224,104,152,0.60); }
+    .theme-btn[data-theme="梅"] { color: #c0507a; border-color: #c0507a; }
+    .theme-btn[data-theme="梅"]:hover, .theme-btn[data-theme="梅"].active { background: #c0507a; color: #fff; box-shadow: 0 0 8px rgba(192,80,122,0.55); }
+    /* 恋の細分類 */
+    .theme-btn[data-theme="情熱的な恋"] { color: #cc2020; border-color: #cc2020; }
+    .theme-btn[data-theme="情熱的な恋"]:hover, .theme-btn[data-theme="情熱的な恋"].active { background: #cc2020; color: #fff; box-shadow: 0 0 8px rgba(200,32,32,0.55); }
+    .theme-btn[data-theme="涙に濡れる恋"] { color: #6868b8; border-color: #6868b8; }
+    .theme-btn[data-theme="涙に濡れる恋"]:hover, .theme-btn[data-theme="涙に濡れる恋"].active { background: #6868b8; color: #fff; box-shadow: 0 0 8px rgba(104,104,184,0.55); }
+    .theme-btn[data-theme="未だ逢わざる恋"] { color: #8878b8; border-color: #8878b8; }
+    .theme-btn[data-theme="未だ逢わざる恋"]:hover, .theme-btn[data-theme="未だ逢わざる恋"].active { background: #8878b8; color: #fff; box-shadow: 0 0 8px rgba(136,120,184,0.55); }
+    .theme-btn[data-theme="逢はざる恋"] { color: #9878a8; border-color: #9878a8; }
+    .theme-btn[data-theme="逢はざる恋"]:hover, .theme-btn[data-theme="逢はざる恋"].active { background: #9878a8; color: #fff; box-shadow: 0 0 8px rgba(152,120,168,0.55); }
+    .theme-btn[data-theme="寂しい恋"] { color: #708090; border-color: #708090; }
+    .theme-btn[data-theme="寂しい恋"]:hover, .theme-btn[data-theme="寂しい恋"].active { background: #708090; color: #fff; box-shadow: 0 0 8px rgba(112,128,144,0.55); }
+    .theme-btn[data-theme="祈れども逢はざる恋"] { color: #9060a0; border-color: #9060a0; }
+    .theme-btn[data-theme="祈れども逢はざる恋"]:hover, .theme-btn[data-theme="祈れども逢はざる恋"].active { background: #9060a0; color: #fff; box-shadow: 0 0 8px rgba(144,96,160,0.55); }
+    .theme-btn[data-theme="想い乱れる恋"] { color: #b04878; border-color: #b04878; }
+    .theme-btn[data-theme="想い乱れる恋"]:hover, .theme-btn[data-theme="想い乱れる恋"].active { background: #b04878; color: #fff; box-shadow: 0 0 8px rgba(176,72,120,0.55); }
+    .theme-btn[data-theme="忍ぶ恋"] { color: #a85870; border-color: #a85870; }
+    .theme-btn[data-theme="忍ぶ恋"]:hover, .theme-btn[data-theme="忍ぶ恋"].active { background: #a85870; color: #fff; box-shadow: 0 0 8px rgba(168,88,112,0.55); }
+    .theme-btn[data-theme="待つ恋"] { color: #a84868; border-color: #a84868; }
+    .theme-btn[data-theme="待つ恋"]:hover, .theme-btn[data-theme="待つ恋"].active { background: #a84868; color: #fff; box-shadow: 0 0 8px rgba(168,72,104,0.55); }
+    .theme-btn[data-theme="恨む恋"] { color: #884060; border-color: #884060; }
+    .theme-btn[data-theme="恨む恋"]:hover, .theme-btn[data-theme="恨む恋"].active { background: #884060; color: #fff; box-shadow: 0 0 8px rgba(136,64,96,0.55); }
+    .theme-btn[data-theme="後朝の恋"] { color: #c08040; border-color: #c08040; }
+    .theme-btn[data-theme="後朝の恋"]:hover, .theme-btn[data-theme="後朝の恋"].active { background: #c08040; color: #fff; box-shadow: 0 0 8px rgba(192,128,64,0.55); }
+    .theme-btn[data-theme="忘れられる恋"] { color: #7890a0; border-color: #7890a0; }
+    .theme-btn[data-theme="忘れられる恋"]:hover, .theme-btn[data-theme="忘れられる恋"].active { background: #7890a0; color: #fff; box-shadow: 0 0 8px rgba(120,144,160,0.55); }
+    .theme-btn[data-theme="別れる恋"] { color: #906070; border-color: #906070; }
+    .theme-btn[data-theme="別れる恋"]:hover, .theme-btn[data-theme="別れる恋"].active { background: #906070; color: #fff; box-shadow: 0 0 8px rgba(144,96,112,0.55); }
+    .theme-btn[data-theme="命がけの恋"] { color: #a83030; border-color: #a83030; }
+    .theme-btn[data-theme="命がけの恋"]:hover, .theme-btn[data-theme="命がけの恋"].active { background: #a83030; color: #fff; box-shadow: 0 0 8px rgba(168,48,48,0.55); }
+    .theme-btn[data-theme="艶めかしい恋"] { color: #b84880; border-color: #b84880; }
+    .theme-btn[data-theme="艶めかしい恋"]:hover, .theme-btn[data-theme="艶めかしい恋"].active { background: #b84880; color: #fff; box-shadow: 0 0 8px rgba(184,72,128,0.55); }
+    .theme-btn[data-theme="純粋な恋"] { color: #d07090; border-color: #d07090; }
+    .theme-btn[data-theme="純粋な恋"]:hover, .theme-btn[data-theme="純粋な恋"].active { background: #d07090; color: #fff; box-shadow: 0 0 8px rgba(208,112,144,0.55); }
+    .theme-btn[data-theme="道ならぬ恋"] { color: #806040; border-color: #806040; }
+    .theme-btn[data-theme="道ならぬ恋"]:hover, .theme-btn[data-theme="不倫の恋"].active { background: #806040; color: #fff; box-shadow: 0 0 8px rgba(128,96,64,0.55); }
+    .theme-btn[data-theme="一夜限りの恋"] { color: #a06888; border-color: #a06888; }
+    .theme-btn[data-theme="一夜限りの恋"]:hover, .theme-btn[data-theme="一夜限りの恋"].active { background: #a06888; color: #fff; box-shadow: 0 0 8px rgba(160,104,136,0.55); }
+    .theme-btn[data-theme="叶わぬ恋"] { color: #6070a0; border-color: #6070a0; }
+    .theme-btn[data-theme="叶わぬ恋"]:hover, .theme-btn[data-theme="叶わぬ恋"].active { background: #6070a0; color: #fff; box-shadow: 0 0 8px rgba(96,112,160,0.55); }
+    /* 人生 */
+    .theme-btn[data-theme="悲運の歌"] { color: #6a5aab; border-color: #6a5aab; }
+    .theme-btn[data-theme="悲運の歌"]:hover, .theme-btn[data-theme="悲運の歌"].active { background: #6a5aab; color: #fff; box-shadow: 0 0 8px rgba(106,90,171,0.55); }
+    .theme-btn[data-theme="偲ぶ歌"] { color: #7a7060; border-color: #7a7060; }
+    .theme-btn[data-theme="偲ぶ歌"]:hover, .theme-btn[data-theme="偲ぶ歌"].active { background: #7a7060; color: #fff; box-shadow: 0 0 8px rgba(122,112,96,0.55); }
+    .theme-btn[data-theme="無常"] { color: #5a7fa0; border-color: #5a7fa0; }
+    .theme-btn[data-theme="無常"]:hover, .theme-btn[data-theme="無常"].active { background: #5a7fa0; color: #fff; box-shadow: 0 0 8px rgba(90,127,160,0.55); }
+    .theme-btn[data-theme="平和を願う歌"] { color: #408868; border-color: #408868; }
+    .theme-btn[data-theme="平和を願う歌"]:hover, .theme-btn[data-theme="平和を願う歌"].active { background: #408868; color: #fff; box-shadow: 0 0 8px rgba(64,136,104,0.55); }
+    .theme-btn[data-theme="涙"] { color: #8090b8; border-color: #8090b8; }
+    .theme-btn[data-theme="涙"]:hover, .theme-btn[data-theme="涙"].active { background: #8090b8; color: #fff; box-shadow: 0 0 8px rgba(128,144,184,0.55); }
+
+    .cosmos-theme-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 8px;
+      align-items: center;
+    }
+
+    .cosmos-theme-group-label {
+      font-size: 10px;
+      color: #a09080;
+      white-space: nowrap;
+      width: 100%;
+      margin-top: 4px;
+      border-top: 1px solid #e8ddd0;
+      padding-top: 6px;
+    }
+
+    .theme-btn-clear {
+      padding: 4px 10px;
+      border: 1px solid #bbb;
+      border-radius: 20px;
+      font-size: 11px;
+      cursor: pointer;
+      background: transparent;
+      color: #888;
+      transition: all 0.2s;
+    }
+    .theme-btn-clear:hover {
+      background: #eee;
+      color: #555;
+    }
+
+    /* ── 歌の一覧パネル ── */
+    #cosmos-poem-section {
+      margin-top: 14px;
+    }
+
+    .cosmos-poem-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 10px 16px;
+      background: #f7f3ee;
+      border: 1px solid #ddd0c0;
+      border-radius: 3px;
+      font-family: 'Noto Serif JP', serif;
+      font-size: 0.88rem;
+      color: #a09080;
+      cursor: default;
+      text-align: left;
+      box-sizing: border-box;
+      transition: background 0.15s, color 0.15s;
+      margin-bottom: 1em;
+    }
+
+    .cosmos-poem-toggle.ready {
+      color: #3d2c1e;
+      cursor: pointer;
+    }
+
+    .cosmos-poem-toggle.ready:hover {
+      background: #ede8e0;
+    }
+
+    #cosmos-poem-body {
+      margin-top: 6px;
+      margin-bottom:16px;
+      border: 1px solid #ddd0c0;
+      border-radius: 3px;
+      background: #fdfaf5;
+      padding: 0 16px;
+    }
+
+    .cosmos-poem-card {
+      padding: 14px 0;
+      border-bottom: 1px solid #ede5d5;
+    }
+
+    .cosmos-poem-card:last-child {
+      border-bottom: none;
+    }
+
+    .cosmos-poem-num {
+      font-size: 0.72rem;
+      color: #b09080;
+      margin: 0 0 3px;
+    }
+
+    .cosmos-poem-waka {
+      font-family: 'Kaisei HarunoUmi', 'Noto Serif JP', serif;
+      font-size: 1.0rem;
+      color: #2a1a0a;
+      line-height: 1.9;
+      margin: 0 0 3px;
+    }
+
+    .cosmos-poem-author {
+      font-size: 0.9rem !important;
+      color: #7a6655;
+      margin: 0 0 8px;
+      text-align: right !important;
+    }
+
+    .cosmos-poem-meaning {
+      font-size: 0.82rem;
+      color: #5a4535;
+      line-height: 1.7;
+      border-top: 1px solid #e8ddd0;
+      padding-top: 7px;
+      margin: 0;
+    }
+    .cosmos-poem-card--center {
+      background: #f5ede0;
+      border-radius: 3px;
+      padding-left: 10px;
+      padding-right: 10px;
+      margin-left: -10px;
+      margin-right: -10px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ヘッダーここから -->
+  <header class="header">
+    <p class="site-title">
+      <a href="https://hyakuninisshu.com/">時雨の百人一首</a>
+    </p>
+    <div class="header_list">
+      <a href="index.html"><img src="../img/icon_top.svg?ver-02" alt="トップ" class="icon"></a>
+      <a href="introduction.html" style="color:#333"><img src="/img/icon_column.svg?ver-02" alt="コラム" class="icon"></a>
+      <a href="introduction-app.html" style="color:#333"><img src="/img/icon_app.svg?ver-02" alt="アプリ" class="icon"></a>
+      <a href="cosmos_en.html"><img src="/img/icon_lang.svg?ver-01" alt="English" class="icon"></a>
+      <a href="list.html"><img src="/img/icon_search.svg?ver-04" alt="和歌の一覧・検索" class="icon"></a>
+    </div>
+  </header>
+
+  <!-- メインここから -->
+  <main class="main_about-main">
+    <div class="about-main">
+      <div class="section">
+        <nav>
+          <ol class="breadcrumb">
+            <li><a href="index.html">トップ</a></li>
+            <li><a href="introduction-app.html">アプリ</a></li>
+            <li>百首が響き合う、百人一首の宇宙</li>
+          </ol>
+        </nav>
+        <hr>
+        <h1>百首が響き合う、<br class="br-sp">百人一首の宇宙</h1>
+        <p>
+          百首の歌を一語一語にまで解きほぐし、それぞれの歌を象徴する言葉の響き合い（TF-IDF解析）をもとに、気が合う歌同士を近くに、そうでない歌は遠くへ配置しています。夜空の星座のように、歌同士のつながりを視覚的に愉しめます。
+        </p>
+        <h4>星を絞り込む</h4>
+        <p>下にある「つながりの強さ」を調整すると、より似ている星（歌）だけが浮かび上がります。</p>
+        <h4>テーマで星を光らせる</h4>
+        <p>下にあるテーマボタン（「部立て」や「恋の細分類」など）を押してみてください。データ解析だけでは測れない、歌に込められた「心」をテーマに分類。「忍ぶ恋」や「待つ恋」といったテーマを選ぶと、該当する星たちが一斉に輝き出し、広大な宇宙の中から浮かび上がります。</p>
+        <p>客観的なデータと主観的なテーマが交差する和歌の世界をお愉しみください。</p>
+        
+        <!-- ========== 3D ネットワークグラフ ========== -->
+        <div class="cosmos-section">
+
+          <div class="cosmos-wrap">
+            <canvas id="cosmos-canvas"></canvas>
+            <div id="cosmos-tooltip"></div>
+          </div>
+
+          <div class="cosmos-controls">
+            <label>
+              つながりの強さの基準
+              <input type="range" id="ctrl-thresh" min="5" max="28" value="12" step="1">
+              <span class="val" id="thresh-val">0.12</span>
+            </label>
+            <button id="star-clear">第<span id="star-clear-num"></span>首の選択を解除</button>
+          </div>
+
+          <div class="cosmos-theme-buttons">
+              <h4 style="flex-basis:100%; margin:0;">テーマで光らせる</h4>
+        
+            <div class="cosmos-theme-group">
+              <span class="cosmos-theme-group-label" style="border:none;">部立て</span>
+              <button class="theme-btn" data-theme="春">春</button>
+              <button class="theme-btn" data-theme="夏">夏</button>
+              <button class="theme-btn" data-theme="秋">秋</button>
+              <button class="theme-btn" data-theme="冬">冬</button>
+              <button class="theme-btn" data-theme="雑">雑</button>
+              <button class="theme-btn" data-theme="羇旅">羇旅</button>
+              <button class="theme-btn" data-theme="離別">離別</button>
+              <button class="theme-btn" data-theme="恋(部立て)">恋</button>
+            </div>
+            <div class="cosmos-theme-group">
+              <span class="cosmos-theme-group-label" style="border:none;">自然・景物</span>
+              <button class="theme-btn" data-theme="桜">桜</button>
+              <button class="theme-btn" data-theme="梅">梅</button>
+            </div>
+            <div class="cosmos-theme-group">
+              <span class="cosmos-theme-group-label">恋の細分類</span>
+              <button class="theme-btn" data-theme="情熱的な恋">情熱的な恋</button>
+              <button class="theme-btn" data-theme="涙に濡れる恋">涙に濡れる恋</button>
+              <button class="theme-btn" data-theme="未だ逢わざる恋">未だ逢わざる恋</button>
+              <button class="theme-btn" data-theme="逢はざる恋">逢はざる恋</button>
+              <button class="theme-btn" data-theme="祈れども逢はざる恋">祈れども逢はざる恋</button>
+              <button class="theme-btn" data-theme="寂しい恋">寂しい恋</button>
+              <button class="theme-btn" data-theme="忍ぶ恋">忍ぶ恋</button>
+              <button class="theme-btn" data-theme="待つ恋">待つ恋</button>
+              <button class="theme-btn" data-theme="後朝の恋">後朝の恋</button>
+              <button class="theme-btn" data-theme="忘れられる恋">忘れられる恋</button>
+              <button class="theme-btn" data-theme="別れる恋">別れる恋</button>
+              <button class="theme-btn" data-theme="恨む恋">恨む恋</button>
+              <button class="theme-btn" data-theme="艶めかしい恋">艶めかしい恋</button>
+              <button class="theme-btn" data-theme="純粋な恋">純粋な恋</button>
+              <button class="theme-btn" data-theme="道ならぬ恋">道ならぬ恋</button>
+              <button class="theme-btn" data-theme="一夜限りの恋">一夜限りの恋</button>
+              <button class="theme-btn" data-theme="叶わぬ恋">叶わぬ恋</button>
+            </div>
+            <!-- <div class="cosmos-theme-group">
+              <span class="cosmos-theme-group-label">人生</span>
+              <button class="theme-btn" data-theme="悲運の歌">悲運の歌</button>
+              <button class="theme-btn" data-theme="偲ぶ歌">偲ぶ歌</button>
+              <button class="theme-btn" data-theme="無常">無常</button>
+              <button class="theme-btn" data-theme="平和を願う歌">平和を願う歌</button>
+              <button class="theme-btn" data-theme="涙">涙</button>
+            </div> -->
+            <button class="theme-btn-clear" id="theme-clear">解除</button>
+          </div>
+
+          <div class="cosmos-legend">
+            <span><span class="cosmos-legend-dot" style="background:#d4a855"></span>つながりが多い</span>
+            <span><span class="cosmos-legend-dot" style="background:#8ab4d8"></span>つながりが普通</span>
+            <span><span class="cosmos-legend-dot" style="background:#6a7c6e"></span>つながりが少ない</span>
+            <span><span class="cosmos-legend-dot"
+                style="background:#e05c3a;border:2px solid #e05c3a"></span>選択中の歌</span>
+            <span id="theme-legend-item" style="display:none"><span class="cosmos-legend-dot" id="theme-legend-dot" style="background:#fff;box-shadow:0 0 6px #fff"></span><span id="theme-legend-label">テーマの歌</span></span>
+          </div>
+        </div>
+        <!-- ========== 3D ネットワークグラフ ここまで ========== -->
+
+        <!-- ========== 歌の一覧 ========== -->
+        <div id="cosmos-poem-section">
+          <button id="cosmos-poem-toggle" class="cosmos-poem-toggle">
+            <span id="cosmos-poem-label">テーマを選ぶと歌を一覧で確認できます</span>
+            <span id="cosmos-poem-arrow"></span>
+          </button>
+          <div id="cosmos-poem-body" style="display:none;"></div>
+        </div>
+        <!-- ========== 歌の一覧 ここまで ========== -->
+
+        <p class="kome" style="color:#7a6655;line-height:1.6; margin-top:0; font-size:0.95em">上図は、百人一首を形態素解析した3Dマップで、TF-IDFで解析して歌同士の意味的な近さを3Dで可視化したインタラクティブなマップです。</p>
+        <p class="kome" style="color:#7a6655;line-height:1.6; margin-top:0; font-size:0.95em">このページの形態素解析には、解析エンジンにMeCab、辞書に国立国語研究所の中古和文UniDicを使用させていただきました。</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-copy">&copy;2023 時雨の百人一首</span>
+      <ul>
+        <li><a href="policy.html">プライバシーポリシー</a></li>
+        <li>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXx7TKlqnTfKrw2Nuh4f37swVwFH-RFDsNkTGQ4JEF50q2wQ/viewform?usp=header"
+            target="_blank" rel="noopener">お問い合わせフォーム</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- クリッカブルマップ -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/image-map-resizer/1.0.10/js/imageMapResizer.min.js"></script>
+  <script>imageMapResize();</script>
+
+  <!-- ========== 3D ネットワークグラフ スクリプト ========== -->
+<script>
+  (function () {
+    /* ---------- スマホ判定 ---------- */
+    const isMobile = () => window.innerWidth < 600;
+
+    /* ---------- データ ---------- */
+    const DATA = {
+      "1":{"text":"秋の田の かりほの庵の 苫をあらみ / 我が衣手は 露にぬれつつ","keywords":[{"word":"田","score":0.37348054503246053},{"word":"苫","score":0.37348054503246053},{"word":"かりほ","score":0.37348054503246053},{"word":"衣手","score":0.3427137530932147},{"word":"庵","score":0.3427137530932147}],"similar":[{"uta_num":90,"score":0.19513134980220426},{"uta_num":75,"score":0.16292527651775507},{"uta_num":23,"score":0.15441845003424853}]},
+      "2":{"text":"春過ぎて 夏来にけらし 白妙の / 衣ほすてふ 天の香具山","keywords":[{"word":"天の香具山","score":0.36367429219149283},{"word":"過ぎ","score":0.36367429219149283},{"word":"ほす","score":0.36367429219149283},{"word":"白妙","score":0.33371532530464826},{"word":"てふ","score":0.33371532530464826}],"similar":[{"uta_num":4,"score":0.11685164711451658},{"uta_num":36,"score":0.11555914865844406},{"uta_num":41,"score":0.1115341680186312}]},
+      "3":{"text":"あしびきの 山鳥の尾の しだり尾の / ながながし夜を ひとりかも寝む","keywords":[{"word":"尾","score":0.38023833427844667},{"word":"山鳥","score":0.38023833427844667},{"word":"ながながし","score":0.38023833427844667},{"word":"しだり尾","score":0.38023833427844667},{"word":"あしびき","score":0.38023833427844667}],"similar":[{"uta_num":91,"score":0.2041994955592225},{"uta_num":53,"score":0.17665971655614188},{"uta_num":78,"score":0.13810991829818145}]},
+      "4":{"text":"田子の浦に うちいでてみれば 白妙の / 富士の高嶺に 雪は降りつつ","keywords":[{"word":"富士","score":0.3815883771983602},{"word":"高嶺","score":0.3815883771983602},{"word":"田子の浦","score":0.3815883771983602},{"word":"白妙","score":0.35015367366734756},{"word":"いで","score":0.35015367366734756}],"similar":[{"uta_num":15,"score":0.21100569654849238},{"uta_num":76,"score":0.1953547797676359},{"uta_num":2,"score":0.11685164711451658}]},
+      "5":{"text":"奥山に 紅葉踏み分け 鳴く鹿の / 声聞く時ぞ 秋はかなしき","keywords":[{"word":"奥山","score":0.32472687123887806},{"word":"踏み","score":0.32472687123887806},{"word":"時","score":0.32472687123887806},{"word":"分け","score":0.32472687123887806},{"word":"かなしき","score":0.32472687123887806}],"similar":[{"uta_num":83,"score":0.17871095325847447},{"uta_num":78,"score":0.15057890244635802},{"uta_num":32,"score":0.11334017256957504}]},
+      "6":{"text":"かささぎの 渡せる橋に おく霜の / 白きをみれば 夜ぞふけにける","keywords":[{"word":"橋","score":0.35440811809198686},{"word":"渡せ","score":0.35440811809198686},{"word":"白き","score":0.35440811809198686},{"word":"霜","score":0.35440811809198686},{"word":"かささぎ","score":0.35440811809198686}],"similar":[{"uta_num":94,"score":0.11083933184156619},{"uta_num":23,"score":0.08765878555514238},{"uta_num":4,"score":0.08160389878332712}]},
+      "7":{"text":"天の原 ふりさけみれば 春日なる / 三笠の山に 出でし月かも","keywords":[{"word":"春日","score":0.3615009121886427},{"word":"原","score":0.3615009121886427},{"word":"三笠","score":0.3615009121886427},{"word":"さけ","score":0.3615009121886427},{"word":"天","score":0.3317209852310314}],"similar":[{"uta_num":23,"score":0.14934508127758445},{"uta_num":21,"score":0.14003834861690972},{"uta_num":96,"score":0.11895982740476009}]},
+      "8":{"text":"わが庵は 都の辰巳 しかぞすむ / 世をうぢ山と 人はいふなり","keywords":[{"word":"うぢ","score":0.3907812027665553},{"word":"辰巳","score":0.3907812027665553},{"word":"すむ","score":0.3907812027665553},{"word":"都","score":0.3585892074425636},{"word":"庵","score":0.3585892074425636}],"similar":[{"uta_num":45,"score":0.2019828996364716},{"uta_num":99,"score":0.13568148915852699},{"uta_num":61,"score":0.12727428102233226}]},
+      "9":{"text":"花の色は うつりにけりな いたづらに / わが身よにふる ながめせしまに","keywords":[{"word":"うつり","score":0.3754384843962912},{"word":"ふる","score":0.3754384843962912},{"word":"ながめ","score":0.3754384843962912},{"word":"せ","score":0.3445104002188341},{"word":"色","score":0.32256657527506005}],"similar":[{"uta_num":96,"score":0.15229223896268396},{"uta_num":34,"score":0.13630622938200135},{"uta_num":40,"score":0.12012836359027179}]},
+      "10":{"text":"これやこの 行くも帰るも わかれては / しるもしらぬも 逢坂の関","keywords":[{"word":"行く","score":0.3945997994490239},{"word":"帰る","score":0.3945997994490239},{"word":"わかれ","score":0.3945997994490239},{"word":"しる","score":0.3945997994490239},{"word":"しら","score":0.36209323360404505}],"similar":[{"uta_num":25,"score":0.24045858117276375},{"uta_num":62,"score":0.2227757197423658},{"uta_num":100,"score":0.0}]},
+      "11":{"text":"わたの原 八十島かけて 漕ぎ出でぬと / 人にはつげよ あまのつり舟","keywords":[{"word":"漕ぎ","score":0.3533201229127543},{"word":"八十","score":0.3533201229127543},{"word":"つり舟","score":0.3533201229127543},{"word":"つげよ","score":0.3533201229127543},{"word":"島","score":0.3242141176490512}],"similar":[{"uta_num":40,"score":0.13019996604971953},{"uta_num":32,"score":0.10811054748385862},{"uta_num":76,"score":0.10537188327423029}]},
+      "12":{"text":"天つ風 雲のかよひ路 吹きとぢよ / をとめの姿 しばしとどめむ","keywords":[{"word":"姿","score":0.3575992917413832},{"word":"をとめ","score":0.3575992917413832},{"word":"とどめ","score":0.3575992917413832},{"word":"とぢよ","score":0.3575992917413832},{"word":"天","score":0.3281407746834932}],"similar":[{"uta_num":37,"score":0.171093845168393},{"uta_num":36,"score":0.1136287898313629},{"uta_num":7,"score":0.10885118107248222}]},
+      "13":{"text":"筑波嶺の 峰より落つる みなの川 / こひぞつもりて 淵となりぬる","keywords":[{"word":"淵","score":0.329430120580987},{"word":"嶺","score":0.329430120580987},{"word":"落つる","score":0.329430120580987},{"word":"筑波","score":0.329430120580987},{"word":"みな","score":0.329430120580987}],"similar":[{"uta_num":45,"score":0.121723529254416},{"uta_num":69,"score":0.0956696070048017},{"uta_num":55,"score":0.0917447734124849}]},
+      "14":{"text":"陸奥の しのぶもぢずり 誰ゆゑに / 乱れそめにし 我ならなくに","keywords":[{"word":"乱れ","score":0.429448194037706},{"word":"もぢずり","score":0.429448194037706},{"word":"陸奥","score":0.429448194037706},{"word":"そめ","score":0.39407086739946146},{"word":"しのぶ","score":0.39407086739946146}],"similar":[{"uta_num":100,"score":0.15908590322767124},{"uta_num":41,"score":0.13170616691233827},{"uta_num":99,"score":0.10832448596477859}]},
+      "15":{"text":"君がため 春の野に出でて 若菜つむ / わが衣手に 雪は降りつつ","keywords":[{"word":"若菜","score":0.34993308860874667},{"word":"つむ","score":0.34993308860874667},{"word":"衣手","score":0.32110610237591025},{"word":"野","score":0.32110610237591025},{"word":"君","score":0.32110610237591025}],"similar":[{"uta_num":50,"score":0.2614161557893224},{"uta_num":4,"score":0.21100569654849238},{"uta_num":1,"score":0.11004747748638226}]},
+      "16":{"text":"立ち別れ いなばの山の 峰に生ふる / まつとし聞かば 今帰りこむ","keywords":[{"word":"聞か","score":0.33314262183995963},{"word":"生ふる","score":0.33314262183995963},{"word":"いなば","score":0.33314262183995963},{"word":"帰り","score":0.33314262183995963},{"word":"別れ","score":0.3056988101914732}],"similar":[{"uta_num":26,"score":0.20021736911918028},{"uta_num":21,"score":0.19427241209589033},{"uta_num":30,"score":0.11291460663845132}]},
+      "17":{"text":"ちはやぶる 神代もきかず 竜田川 / から紅に 水くくるとは","keywords":[{"word":"水","score":0.36321139233366906},{"word":"神代","score":0.36321139233366906},{"word":"ちはやぶる","score":0.36321139233366906},{"word":"くくる","score":0.36321139233366906},{"word":"きか","score":0.36321139233366906}],"similar":[{"uta_num":69,"score":0.22579952721401228},{"uta_num":13,"score":0.08832505524268473},{"uta_num":100,"score":0.0}]},
+      "18":{"text":"住の江の 岸による波 よるさへや / 夢のかよひ路 人目よくらむ","keywords":[{"word":"よる","score":0.6242607930159068},{"word":"岸","score":0.3121303965079534},{"word":"住の江","score":0.3121303965079534},{"word":"よく","score":0.3121303965079534},{"word":"夢","score":0.28641754186263346}],"similar":[{"uta_num":67,"score":0.10464598360071965},{"uta_num":28,"score":0.09647077655278129},{"uta_num":12,"score":0.0939852740697464}]},
+      "19":{"text":"難波潟 みじかき葦の ふしのまも / 逢はでこの世を 過ぐしてよとや","keywords":[{"word":"過ぐし","score":0.36303281037833673},{"word":"潟","score":0.36303281037833673},{"word":"みじかき","score":0.36303281037833673},{"word":"ふし","score":0.36303281037833673},{"word":"葦","score":0.33312668784373667}],"similar":[{"uta_num":20,"score":0.2305296305219669},{"uta_num":88,"score":0.18895815536724514},{"uta_num":9,"score":0.10061108124050863}]},
+      "20":{"text":"わびぬれば いまはたおなじ 難波なる / みをつくしても 逢はむとぞ思ふ","keywords":[{"word":"おなじ","score":0.4018526571967278},{"word":"逢は","score":0.3687486113270019},{"word":"つくし","score":0.3687486113270019},{"word":"いま","score":0.34526091699301487},{"word":"わび","score":0.34526091699301487}],"similar":[{"uta_num":88,"score":0.3068726508549568},{"uta_num":19,"score":0.2305296305219669},{"uta_num":99,"score":0.15262239214094336}]},
+      "21":{"text":"今こむと いひしばかりに 長月の / 有明の月を 待ち出でつるかな","keywords":[{"word":"いひ","score":0.4034421788452962},{"word":"長月","score":0.4034421788452962},{"word":"待ち","score":0.4034421788452962},{"word":"こ","score":0.37020719046063905},{"word":"有明","score":0.34662659093379045}],"similar":[{"uta_num":16,"score":0.19427241209589033},{"uta_num":31,"score":0.17779169653532229},{"uta_num":7,"score":0.14003834861690972}]},
+      "22":{"text":"吹くからに 秋の草木の しをるれば / むべ山風を 嵐といふらむ","keywords":[{"word":"草木","score":0.4200540212085798},{"word":"山風","score":0.4200540212085798},{"word":"しをるれ","score":0.4200540212085798},{"word":"いふ","score":0.36089903588239486},{"word":"嵐","score":0.36089903588239486}],"similar":[{"uta_num":69,"score":0.24397528106378513},{"uta_num":45,"score":0.15520881287006583},{"uta_num":96,"score":0.12117977083897391}]},
+      "23":{"text":"月みれば ちぢにものこそ 悲しけれ / わが身一つの 秋にはあらねど","keywords":[{"word":"悲しけれ","score":0.40990166187991106},{"word":"一","score":0.40990166187991106},{"word":"ちぢ","score":0.40990166187991106},{"word":"みれ","score":0.31840929243384203},{"word":"あら","score":0.30557163251087094}],"similar":[{"uta_num":68,"score":0.17196712104795422},{"uta_num":1,"score":0.15441845003424853},{"uta_num":96,"score":0.14980531211115589}]},
+      "24":{"text":"このたびは 幣もとりあへず 手向山 / もみぢのにしき 神のまにまに","keywords":[{"word":"幣","score":0.33361774260232097},{"word":"手向","score":0.33361774260232097},{"word":"神","score":0.33361774260232097},{"word":"もみぢ","score":0.33361774260232097},{"word":"まにま","score":0.33361774260232097}],"similar":[{"uta_num":26,"score":0.13121170550872285},{"uta_num":32,"score":0.11644337401016425},{"uta_num":56,"score":0.09571704478567267}]},
+      "25":{"text":"名にし負はば 逢坂山の さねかづら / 人にしられで くるよしもがな","keywords":[{"word":"負は","score":0.38562873514925783},{"word":"さねかづら","score":0.38562873514925783},{"word":"くる","score":0.38562873514925783},{"word":"よし","score":0.3538611927218455},{"word":"しら","score":0.3538611927218455}],"similar":[{"uta_num":10,"score":0.24045858117276375},{"uta_num":63,"score":0.14823613991652487},{"uta_num":41,"score":0.1261046027496104}]},
+      "26":{"text":"小倉山 峰のもみぢ葉 心あらば / 今ひとたびの みゆき待たなむ","keywords":[{"word":"もみぢ葉","score":0.3442047760500293},{"word":"待た","score":0.3442047760500293},{"word":"小倉","score":0.3442047760500293},{"word":"みゆき","score":0.3442047760500293},{"word":"峰","score":0.29573141917593404}],"similar":[{"uta_num":56,"score":0.2718559172747184},{"uta_num":16,"score":0.20021736911918028},{"uta_num":68,"score":0.18318774283592584}]},
+      "27":{"text":"みかの原 わきて流るる いづみ川 / いつ見きとてか 恋しかるらむ","keywords":[{"word":"いづみ川","score":0.43042065434945787},{"word":"流るる","score":0.43042065434945787},{"word":"わき","score":0.43042065434945787},{"word":"みかの原","score":0.43042065434945787},{"word":"恋しかる","score":0.39496321782469096}],"similar":[{"uta_num":68,"score":0.1583542269609007},{"uta_num":80,"score":0.10025384785065138},{"uta_num":84,"score":0.10025384785065138}]},
+      "28":{"text":"山里は 冬ぞさびしさ まさりける / 人目も草も かれぬと思へば","keywords":[{"word":"草","score":0.3670562405703576},{"word":"山里","score":0.3670562405703576},{"word":"冬","score":0.3670562405703576},{"word":"まさり","score":0.3670562405703576},{"word":"かれ","score":0.3670562405703576}],"similar":[{"uta_num":70,"score":0.12498633739106775},{"uta_num":66,"score":0.10511137880678269},{"uta_num":18,"score":0.09647077655278129}]},
+      "29":{"text":"心当てに 折らばや折らむ 初霜の / おきまどはせる 白菊の花","keywords":[{"word":"折ら","score":0.6524057151370236},{"word":"白菊","score":0.3262028575685118},{"word":"心当て","score":0.3262028575685118},{"word":"初霜","score":0.3262028575685118},{"word":"まどはせ","score":0.3262028575685118}],"similar":[{"uta_num":75,"score":0.1005957908786504},{"uta_num":35,"score":0.07715031059401804},{"uta_num":96,"score":0.070846483961946}]},
+      "30":{"text":"有明の つれなく見えし 別れより / あかつきばかり 憂きものはなし","keywords":[{"word":"つれなく","score":0.40252497194406495},{"word":"あかつき","score":0.40252497194406495},{"word":"別れ","score":0.3693655417491737},{"word":"見え","score":0.34583855161111804},{"word":"有明","score":0.34583855161111804}],"similar":[{"uta_num":92,"score":0.21600479817124685},{"uta_num":82,"score":0.18883535861617537},{"uta_num":21,"score":0.11987683815844159}]},
+      "31":{"text":"朝ぼらけ 有明の月と 見るまでに / 吉野の里に 降れる白雪","keywords":[{"word":"里","score":0.3856768971327688},{"word":"白雪","score":0.3856768971327688},{"word":"見る","score":0.3856768971327688},{"word":"降れ","score":0.3856768971327688},{"word":"吉野","score":0.35390538719019204}],"similar":[{"uta_num":21,"score":0.17779169653532229},{"uta_num":52,"score":0.1269009506076242},{"uta_num":94,"score":0.12061848305018014}]},
+      "32":{"text":"山川に 風のかけたる しがらみは / 流れもあへぬ 紅葉なりけり","keywords":[{"word":"山川","score":0.4145133701219935},{"word":"しがらみ","score":0.4145133701219935},{"word":"流れ","score":0.3803663528698083},{"word":"紅葉","score":0.3803663528698083},{"word":"あへ","score":0.3803663528698083}],"similar":[{"uta_num":55,"score":0.13168081871823736},{"uta_num":24,"score":0.11644337401016425},{"uta_num":5,"score":0.11334017256957504}]},
+      "33":{"text":"久方の 光のどけき 春の日に / しづ心なく 花の散るらむ","keywords":[{"word":"散る","score":0.352232945554768},{"word":"日","score":0.352232945554768},{"word":"光","score":0.352232945554768},{"word":"のどけき","score":0.352232945554768},{"word":"なく","score":0.352232945554768}],"similar":[{"uta_num":76,"score":0.10504765060749251},{"uta_num":67,"score":0.09288892401763446},{"uta_num":2,"score":0.08484321798092558}]},
+      "34":{"text":"誰をかも 知る人にせむ 高砂の / 松も昔の 友ならなくに","keywords":[{"word":"松","score":0.4311712728986556},{"word":"友","score":0.4311712728986556},{"word":"高砂","score":0.3956520014937696},{"word":"せ","score":0.3956520014937696},{"word":"知る","score":0.3704506773714261}],"similar":[{"uta_num":35,"score":0.1755622299490812},{"uta_num":66,"score":0.17271762023697476},{"uta_num":9,"score":0.13630622938200135}]},
+      "35":{"text":"人はいさ 心も知らず ふるさとは / 花ぞ昔の 香に匂ひける","keywords":[{"word":"香","score":0.4255819567012226},{"word":"匂ひ","score":0.39052312515275306},{"word":"ふるさと","score":0.39052312515275306},{"word":"心","score":0.34635422100755037},{"word":"昔","score":0.34635422100755037}],"similar":[{"uta_num":43,"score":0.23060029832450812},{"uta_num":34,"score":0.1755622299490812},{"uta_num":92,"score":0.14799965202592683}]},
+      "36":{"text":"夏の夜は まだ宵ながら あけぬるを / 雲のいづこに 月やどるらむ","keywords":[{"word":"宵","score":0.43045779913034143},{"word":"やどる","score":0.43045779913034143},{"word":"あけ","score":0.43045779913034143},{"word":"夏","score":0.36983768003748535},{"word":"雲","score":0.36983768003748535}],"similar":[{"uta_num":79,"score":0.1752070941303847},{"uta_num":98,"score":0.11765529548732147},{"uta_num":2,"score":0.11555914865844406}]},
+      "37":{"text":"白露に 風の吹きしく 秋の野は / つらぬきとめぬ 玉ぞ散りける","keywords":[{"word":"散り","score":0.3422979273106722},{"word":"白露","score":0.3422979273106722},{"word":"とめ","score":0.3422979273106722},{"word":"つらぬき","score":0.3422979273106722},{"word":"しく","score":0.3422979273106722}],"similar":[{"uta_num":12,"score":0.171093845168393},{"uta_num":15,"score":0.1008593993726837},{"uta_num":89,"score":0.09653951978031695}]},
+      "38":{"text":"忘らるる 身をば思はず 誓ひてし / 人の命の 惜しくもあるかな","keywords":[{"word":"惜しく","score":0.4111600699893127},{"word":"誓ひ","score":0.4111600699893127},{"word":"忘ら","score":0.4111600699893127},{"word":"思は","score":0.35325759392932593},{"word":"命","score":0.35325759392932593}],"similar":[{"uta_num":82,"score":0.24221790612557675},{"uta_num":45,"score":0.15983665853810308},{"uta_num":99,"score":0.15047897419112516}]},
+      "39":{"text":"浅茅生の 小野の篠原 しのぶれど / あまりてなどか 人の恋しき","keywords":[{"word":"小野","score":0.4071438164237372},{"word":"篠原","score":0.4071438164237372},{"word":"浅茅生","score":0.4071438164237372},{"word":"しのぶれ","score":0.4071438164237372},{"word":"あまり","score":0.4071438164237372}],"similar":[{"uta_num":80,"score":0.12596509834704045},{"uta_num":84,"score":0.12596509834704045},{"uta_num":99,"score":0.0819215648353725}]},
+      "40":{"text":"忍ぶれど 色に出でにけり 我が恋は / 物や思ふと 人の問ふまで","keywords":[{"word":"問ふ","score":0.4334566024201347},{"word":"忍ぶれ","score":0.4334566024201347},{"word":"色","score":0.3724141705873757},{"word":"恋","score":0.35276289680016387},{"word":"思ふ","score":0.32313126279283194}],"similar":[{"uta_num":99,"score":0.32827207796158697},{"uta_num":85,"score":0.17873191011694806},{"uta_num":48,"score":0.17696037397482142}]},
+      "41":{"text":"恋すてふ 我が名はまだき 立ちにけり / 人しれずこそ 思ひそめしか","keywords":[{"word":"まだき","score":0.364223724931229},{"word":"す","score":0.364223724931229},{"word":"しれ","score":0.364223724931229},{"word":"てふ","score":0.3342194965628617},{"word":"そめ","score":0.3342194965628617}],"similar":[{"uta_num":65,"score":0.16994318490196308},{"uta_num":40,"score":0.15104693519599788},{"uta_num":14,"score":0.13170616691233827}]},
+      "42":{"text":"契りきな かたみに袖を しぼりつつ / 末の松山 波こさじとは","keywords":[{"word":"松山","score":0.3814094759394061},{"word":"しぼり","score":0.3814094759394061},{"word":"こさ","score":0.3814094759394061},{"word":"かたみ","score":0.3814094759394061},{"word":"契り","score":0.3499895100376626}],"similar":[{"uta_num":75,"score":0.11762063694576234},{"uta_num":54,"score":0.11440354883619248},{"uta_num":48,"score":0.10724764476813456}]},
+      "43":{"text":"逢ひ見ての のちの心に くらぶれば / 昔は物を 思はざりけり","keywords":[{"word":"のち","score":0.40904595906589314},{"word":"くらぶれ","score":0.40904595906589314},{"word":"逢ひ","score":0.3753493392993246},{"word":"思は","score":0.3514412070945676},{"word":"昔","score":0.3328966190359798}],"similar":[{"uta_num":86,"score":0.24182395174273824},{"uta_num":35,"score":0.23060029832450812},{"uta_num":57,"score":0.22449562667148804}]},
+      "44":{"text":"逢ふことの 絶えてしなくは なかなかに / 人をも身をも 恨みざらまし","keywords":[{"word":"し","score":0.4535532836395813},{"word":"恨み","score":0.416190214273042},{"word":"逢ふ","score":0.416190214273042},{"word":"こと","score":0.38968069467793465},{"word":"絶え","score":0.3691183137979882}],"similar":[{"uta_num":89,"score":0.3133771356914714},{"uta_num":56,"score":0.27856165830647217},{"uta_num":45,"score":0.17631683282819638}]},
+      "45":{"text":"あはれとも いふべき人は 思ほえで / 身のいたづらに なりぬべきかな","keywords":[{"word":"思ほえ","score":0.5005530131714943},{"word":"いふ","score":0.4300615890828904},{"word":"なり","score":0.4300615890828904},{"word":"あはれ","score":0.4300615890828904},{"word":"身","score":0.34759190965435993}],"similar":[{"uta_num":8,"score":0.2019828996364716},{"uta_num":66,"score":0.20051040194820255},{"uta_num":99,"score":0.18319557137997644}]},
+      "46":{"text":"由良のとを 渡る舟人 かぢを絶え / ゆくへも知らぬ 恋の道かな","keywords":[{"word":"渡る","score":0.3250705475658237},{"word":"由良","score":0.3250705475658237},{"word":"舟人","score":0.3250705475658237},{"word":"へ","score":0.3250705475658237},{"word":"と","score":0.3250705475658237}],"similar":[{"uta_num":89,"score":0.14423011192747595},{"uta_num":51,"score":0.10483241789839497},{"uta_num":63,"score":0.09829010286617433}]},
+      "47":{"text":"八重葎 しげれる宿の さびしきに / 人こそ見えね 秋は来にけり","keywords":[{"word":"葎","score":0.3762019005022689},{"word":"八重","score":0.3762019005022689},{"word":"しげれ","score":0.3762019005022689},{"word":"さびしき","score":0.3762019005022689},{"word":"宿","score":0.3452109272003097}],"similar":[{"uta_num":70,"score":0.1970080061444773},{"uta_num":92,"score":0.14119888466352784},{"uta_num":97,"score":0.13437881760245687}]},
+      "48":{"text":"風をいたみ 岩うつ波の おのれのみ / くだけて物を 思ふころかな","keywords":[{"word":"いた","score":0.3809211916865834},{"word":"くだけ","score":0.3809211916865834},{"word":"岩","score":0.3495414499416631},{"word":"うつ","score":0.3495414499416631},{"word":"ころ","score":0.3495414499416631}],"similar":[{"uta_num":85,"score":0.28047176026935783},{"uta_num":99,"score":0.21183984540505363},{"uta_num":77,"score":0.1993163753727613}]},
+      "49":{"text":"御垣守 衛士のたく火の 夜はもえ / 昼は消えつつ 物をこそ思へ","keywords":[{"word":"夜は","score":0.34806674952007405},{"word":"火","score":0.34806674952007405},{"word":"昼","score":0.34806674952007405},{"word":"御垣守","score":0.34806674952007405},{"word":"衛士","score":0.34806674952007405}],"similar":[{"uta_num":66,"score":0.09967348846051634},{"uta_num":28,"score":0.09430968630279328},{"uta_num":86,"score":0.08466238522010172}]},
+      "50":{"text":"君がため 惜しからざりし いのちさへ / 長くもがなと 思ひけるかな","keywords":[{"word":"長く","score":0.4435987565301912},{"word":"惜しから","score":0.4435987565301912},{"word":"いのち","score":0.40705572683774405},{"word":"君","score":0.40705572683774405},{"word":"ため","score":0.40705572683774405}],"similar":[{"uta_num":15,"score":0.2614161557893224},{"uta_num":75,"score":0.1367988253645759},{"uta_num":51,"score":0.12003294319419874}]},
+      "51":{"text":"かくとだに えやはいぶきの さしも草 / さしも知らじな もゆる思ひを","keywords":[{"word":"いぶき","score":0.48690409194011114},{"word":"もゆる","score":0.48690409194011114},{"word":"さしも草","score":0.48690409194011114},{"word":"知ら","score":0.39626042602106726},{"word":"思ひ","score":0.3629750549631883}],"similar":[{"uta_num":35,"score":0.1372464711706468},{"uta_num":63,"score":0.12352866453023639},{"uta_num":50,"score":0.12003294319419874}]},
+      "52":{"text":"明けぬれば 暮るるものとは 知りながら / なほうらめしき 朝ぼらけかな","keywords":[{"word":"暮るる","score":0.4457384518699611},{"word":"知り","score":0.4457384518699611},{"word":"うらめしき","score":0.4457384518699611},{"word":"明け","score":0.4090191571425404},{"word":"朝ぼらけ","score":0.3829664029229735}],"similar":[{"uta_num":85,"score":0.1444004019530823},{"uta_num":64,"score":0.1282689285046497},{"uta_num":31,"score":0.1269009506076242}]},
+      "53":{"text":"嘆きつつ ひとり寝る夜の 明くる間は / いかに久しき ものとかは知る","keywords":[{"word":"明くる","score":0.37043775789635225},{"word":"寝る","score":0.37043775789635225},{"word":"嘆き","score":0.37043775789635225},{"word":"久しき","score":0.37043775789635225},{"word":"間","score":0.33992162639973783}],"similar":[{"uta_num":3,"score":0.17665971655614188},{"uta_num":57,"score":0.12247421263235372},{"uta_num":34,"score":0.1179033691437769}]},
+      "54":{"text":"忘れじの ゆく末までは かたければ / 今日を限りの 命ともがな","keywords":[{"word":"今日","score":0.4063374654993338},{"word":"かたけれ","score":0.4063374654993338},{"word":"限り","score":0.4063374654993338},{"word":"忘れ","score":0.37286396755032575},{"word":"末","score":0.3491141427944748}],"similar":[{"uta_num":58,"score":0.1298900852582768},{"uta_num":82,"score":0.12617044925196808},{"uta_num":38,"score":0.12332722209027527}]},
+      "55":{"text":"滝の音は たえて久しく なりぬれど / 名こそ流れて なほ聞こえけれ","keywords":[{"word":"滝","score":0.37727399998705896},{"word":"聞こえ","score":0.37727399998705896},{"word":"久しく","score":0.37727399998705896},{"word":"たえ","score":0.37727399998705896},{"word":"流れ","score":0.3461947086663289}],"similar":[{"uta_num":45,"score":0.13940171194232248},{"uta_num":32,"score":0.13168081871823736},{"uta_num":72,"score":0.11436251541269704}]},
+      "56":{"text":"あらざらむ この世のほかの 思ひ出に / いまひとたびの 逢ふこともがな","keywords":[{"word":"思ひ出","score":0.38866818436182016},{"word":"逢ふ","score":0.3566502564651335},{"word":"ほか","score":0.3566502564651335},{"word":"いま","score":0.3339331750967576},{"word":"ひと","score":0.3339331750967576}],"similar":[{"uta_num":44,"score":0.27856165830647217},{"uta_num":26,"score":0.2718559172747184},{"uta_num":68,"score":0.1669305313214387}]},
+      "57":{"text":"めぐり逢ひて 見しやそれとも わかぬ間に / 雲隠れにし 夜半の月かな","keywords":[{"word":"わか","score":0.3926470247863566},{"word":"めぐり","score":0.3926470247863566},{"word":"雲隠れ","score":0.3926470247863566},{"word":"逢ひ","score":0.36030132571891044},{"word":"夜半","score":0.36030132571891044}],"similar":[{"uta_num":43,"score":0.22449562667148804},{"uta_num":68,"score":0.213844598166},{"uta_num":59,"score":0.15295687589231063}]},
+      "58":{"text":"ありま山 猪名の笹原 風吹けば / いでそよ人を 忘れやはする","keywords":[{"word":"笹原","score":0.3796313211304186},{"word":"猪名","score":0.3796313211304186},{"word":"吹け","score":0.3796313211304186},{"word":"ありま","score":0.3796313211304186},{"word":"忘れ","score":0.348357837072968}],"similar":[{"uta_num":54,"score":0.1298900852582768},{"uta_num":89,"score":0.10706879157417332},{"uta_num":8,"score":0.10367979315360282}]},
+      "59":{"text":"やすらはで 寝なましものを 小夜更けて / かたぶくまでの 月を見しかな","keywords":[{"word":"更け","score":0.405705047580365},{"word":"小夜","score":0.405705047580365},{"word":"やすらは","score":0.405705047580365},{"word":"かたぶく","score":0.405705047580365},{"word":"寝","score":0.33017766261218184}],"similar":[{"uta_num":57,"score":0.15295687589231063},{"uta_num":23,"score":0.14258429616493357},{"uta_num":91,"score":0.10303814938369633}]},
+      "60":{"text":"大江山 いく野の道の 遠ければ / まだふみもみず 天の橋立","keywords":[{"word":"いく野","score":0.38122397063460267},{"word":"遠けれ","score":0.38122397063460267},{"word":"天の橋立","score":0.38122397063460267},{"word":"大江","score":0.38122397063460267},{"word":"ふみ","score":0.38122397063460267}],"similar":[{"uta_num":83,"score":0.15935588991938243},{"uta_num":20,"score":0.1130858314213318},{"uta_num":88,"score":0.0926930306319557}]},
+      "61":{"text":"いにしへの 奈良の都の 八重桜 / けふ九重に 匂ひぬるかな","keywords":[{"word":"いにしへ","score":0.38679414277365004},{"word":"奈良","score":0.38679414277365004},{"word":"八重桜","score":0.38679414277365004},{"word":"九重","score":0.38679414277365004},{"word":"けふ","score":0.38679414277365004}],"similar":[{"uta_num":35,"score":0.13860860545941583},{"uta_num":8,"score":0.12727428102233226},{"uta_num":100,"score":0.0}]},
+      "62":{"text":"夜をこめて 鳥のそらねは はかるとも / よに逢坂の 関は許さじ","keywords":[{"word":"許さ","score":0.3572703398947975},{"word":"鳥","score":0.3572703398947975},{"word":"はかる","score":0.3572703398947975},{"word":"そらね","score":0.3572703398947975},{"word":"こめ","score":0.3572703398947975}],"similar":[{"uta_num":10,"score":0.2227757197423658},{"uta_num":25,"score":0.10170153353857565},{"uta_num":9,"score":0.09901406750127888}]},
+      "63":{"text":"いまはただ 思ひ絶えなむ とばかりを / 人づてならで 言ふよしもがな","keywords":[{"word":"言ふ","score":0.4565176902543565},{"word":"人づて","score":0.4565176902543565},{"word":"よし","score":0.4189104173201797},{"word":"いま","score":0.3922276325364453},{"word":"絶え","score":0.3715308567351196}],"similar":[{"uta_num":89,"score":0.20255171702052133},{"uta_num":25,"score":0.14823613991652487},{"uta_num":44,"score":0.13713884336198928}]},
+      "64":{"text":"朝ぼらけ 宇治の川霧 絶え絶えに / あらはれわたる 瀬々の網代木","keywords":[{"word":"網代木","score":0.3898344504697988},{"word":"川霧","score":0.3898344504697988},{"word":"宇治","score":0.3898344504697988},{"word":"瀬々","score":0.3898344504697988},{"word":"あらはれ","score":0.3898344504697988}],"similar":[{"uta_num":52,"score":0.1282689285046497},{"uta_num":31,"score":0.11098518006844664},{"uta_num":88,"score":0.10812174468132515}]},
+      "65":{"text":"恨みわび ほさぬ袖だに あるものを / 恋にくちなむ 名こそをしけれ","keywords":[{"word":"ほさ","score":0.36863039112944324},{"word":"くち","score":0.36863039112944324},{"word":"恨み","score":0.3382631479163418},{"word":"をしけれ","score":0.3382631479163418},{"word":"わび","score":0.31671724596943057}],"similar":[{"uta_num":82,"score":0.2873966486466142},{"uta_num":67,"score":0.21215348572717813},{"uta_num":41,"score":0.16994318490196308}]},
+      "66":{"text":"もろともに あはれと思へ 山桜 / 花よりほかに 知る人もなし","keywords":[{"word":"山桜","score":0.3879323258629739},{"word":"もろとも","score":0.3879323258629739},{"word":"ほか","score":0.355975016934616},{"word":"思へ","score":0.3333009454087394},{"word":"知る","score":0.3333009454087394}],"similar":[{"uta_num":45,"score":0.20051040194820255},{"uta_num":34,"score":0.17271762023697476},{"uta_num":92,"score":0.14560163482334612}]},
+      "67":{"text":"春の夜の 夢ばかりなる 手枕に / かひなく立たむ 名こそをしけれ","keywords":[{"word":"手枕","score":0.3981616268036566},{"word":"かひなく","score":0.3981616268036566},{"word":"立た","score":0.36536164272685534},{"word":"夢","score":0.36536164272685534},{"word":"をしけれ","score":0.36536164272685534}],"similar":[{"uta_num":65,"score":0.21215348572717813},{"uta_num":73,"score":0.12460155435185434},{"uta_num":18,"score":0.10464598360071965}]},
+      "68":{"text":"心にも あらで憂き世に ながらへば / 恋しかるべき 夜半の月かな","keywords":[{"word":"恋しかる","score":0.4009341118726354},{"word":"夜半","score":0.4009341118726354},{"word":"ながらへ","score":0.4009341118726354},{"word":"心","score":0.3555877054366078},{"word":"憂き","score":0.3555877054366078}],"similar":[{"uta_num":57,"score":0.213844598166},{"uta_num":26,"score":0.18318774283592584},{"uta_num":95,"score":0.1721756996551025}]},
+      "69":{"text":"嵐吹く 三室の山の 紅葉葉は / 竜田の川の 錦なりけり","keywords":[{"word":"紅葉葉","score":0.3934137495725697},{"word":"錦","score":0.3934137495725697},{"word":"三室","score":0.3934137495725697},{"word":"竜田","score":0.3610048888162864},{"word":"嵐","score":0.33801043616986637}],"similar":[{"uta_num":22,"score":0.24397528106378513},{"uta_num":17,"score":0.22579952721401228},{"uta_num":96,"score":0.11349442121977171}]},
+      "70":{"text":"さびしさに 宿を立ち出でて ながむれば / いづくも同じ 秋の夕暮れ","keywords":[{"word":"同じ","score":0.40439225682615365},{"word":"夕暮れ","score":0.3710790023793097},{"word":"宿","score":0.3710790023793097},{"word":"ながむれ","score":0.3710790023793097},{"word":"さびし","score":0.3710790023793097}],"similar":[{"uta_num":47,"score":0.1970080061444773},{"uta_num":87,"score":0.17423816963773897},{"uta_num":81,"score":0.13624235214200042}]},
+      "71":{"text":"夕されば 門田の稲葉 おとづれて / 蘆のまろやに 秋風ぞ吹く","keywords":[{"word":"稲葉","score":0.34347521272994924},{"word":"門田","score":0.34347521272994924},{"word":"蘆","score":0.34347521272994924},{"word":"夕","score":0.34347521272994924},{"word":"まろや","score":0.34347521272994924}],"similar":[{"uta_num":22,"score":0.10650296495137489},{"uta_num":69,"score":0.09974843393133682},{"uta_num":94,"score":0.09417154407930015}]},
+      "72":{"text":"音に聞く 高師の浜の あだ波は / かけじや袖の ぬれもこそすれ","keywords":[{"word":"高師","score":0.35999769853177616},{"word":"浜","score":0.35999769853177616},{"word":"すれ","score":0.35999769853177616},{"word":"あだ波","score":0.35999769853177616},{"word":"音","score":0.33034160416045666}],"similar":[{"uta_num":90,"score":0.2588871828488373},{"uta_num":55,"score":0.11436251541269704},{"uta_num":32,"score":0.11015378337454573}]},
+      "73":{"text":"高砂の 尾の上の桜 咲きにけり / 外山の霞 立たずもあらなむ","keywords":[{"word":"咲き","score":0.3716524153831369},{"word":"尾の上","score":0.3716524153831369},{"word":"霞","score":0.3716524153831369},{"word":"桜","score":0.3716524153831369},{"word":"外山","score":0.3716524153831369}],"similar":[{"uta_num":34,"score":0.134931663873106},{"uta_num":67,"score":0.12460155435185434},{"uta_num":68,"score":0.0902429178853812}]},
+      "74":{"text":"憂かりける 人を初瀬の 山おろしよ / はげしかれとは 祈らぬものを","keywords":[{"word":"祈ら","score":0.4171245651952595},{"word":"山おろし","score":0.4171245651952595},{"word":"憂かり","score":0.4171245651952595},{"word":"初瀬","score":0.4171245651952595},{"word":"はげしかれ","score":0.4171245651952595}],"similar":[{"uta_num":52,"score":0.08421479900953058},{"uta_num":99,"score":0.08392979515745816},{"uta_num":82,"score":0.079472696280821}]},
+      "75":{"text":"契りおきし させもが露を いのちにて / あはれ今年の 秋もいぬめり","keywords":[{"word":"いぬ","score":0.36623930401955573},{"word":"今年","score":0.36623930401955573},{"word":"させも","score":0.36623930401955573},{"word":"契り","score":0.3360690351350961},{"word":"いのち","score":0.3360690351350961}],"similar":[{"uta_num":1,"score":0.16292527651775507},{"uta_num":87,"score":0.14514460324275025},{"uta_num":50,"score":0.1367988253645759}]},
+      "76":{"text":"わたの原 こぎいでてみれば 久方の / 雲居にまがふ 沖つ白波","keywords":[{"word":"白波","score":0.35418427134641806},{"word":"まがふ","score":0.35418427134641806},{"word":"こぎ","score":0.35418427134641806},{"word":"雲居","score":0.35418427134641806},{"word":"いで","score":0.3250070787734515}],"similar":[{"uta_num":4,"score":0.1953547797676359},{"uta_num":92,"score":0.10840162510842317},{"uta_num":11,"score":0.10537188327423029}]},
+      "77":{"text":"瀬をはやみ 岩にせかるる 滝川の / われても末に あはむとぞ思ふ","keywords":[{"word":"滝川","score":0.3743470189746392},{"word":"瀬","score":0.3743470189746392},{"word":"はや","score":0.3743470189746392},{"word":"せか","score":0.3743470189746392},{"word":"あは","score":0.3743470189746392}],"similar":[{"uta_num":48,"score":0.1993163753727613},{"uta_num":99,"score":0.14217583610196363},{"uta_num":54,"score":0.11228516900757861}]},
+      "78":{"text":"淡路島 かよふ千鳥の 鳴く声に / 幾夜寝覚めぬ 須磨の関守","keywords":[{"word":"須磨","score":0.3082437832950875},{"word":"覚め","score":0.3082437832950875},{"word":"淡路","score":0.3082437832950875},{"word":"幾","score":0.3082437832950875},{"word":"千鳥","score":0.3082437832950875}],"similar":[{"uta_num":91,"score":0.15657122916846886},{"uta_num":5,"score":0.15057890244635802},{"uta_num":3,"score":0.13810991829818145}]},
+      "79":{"text":"秋風に たなびく雲の たえ間より / もれいづる月の 影のさやけさ","keywords":[{"word":"いづる","score":0.3562169303783052},{"word":"影","score":0.3562169303783052},{"word":"もれ","score":0.3562169303783052},{"word":"たなびく","score":0.3562169303783052},{"word":"たえ間","score":0.3562169303783052}],"similar":[{"uta_num":36,"score":0.1752070941303847},{"uta_num":94,"score":0.09766497586330361},{"uta_num":12,"score":0.09403128203996952}]},
+      "80":{"text":"長からむ 心もしらず 黒髪の / みだれてけさは 物をこそ思へ","keywords":[{"word":"けさ","score":0.3926513922842778},{"word":"みだれ","score":0.3926513922842778},{"word":"長から","score":0.3926513922842778},{"word":"黒髪","score":0.3926513922842778},{"word":"しら","score":0.3373554394398009}],"similar":[{"uta_num":43,"score":0.1750254702788545},{"uta_num":49,"score":0.15747298508797114},{"uta_num":10,"score":0.11530954014154757}]},
+      "81":{"text":"ほととぎす 鳴きつる方を ながむれば / ただありあけの 月ぞ残れる","keywords":[{"word":"方","score":0.40011257732302663},{"word":"残れ","score":0.40011257732302663},{"word":"ほととぎす","score":0.40011257732302663},{"word":"ありあけ","score":0.40011257732302663},{"word":"鳴き","score":0.40011257732302663}],"similar":[{"uta_num":70,"score":0.13624235214200042},{"uta_num":86,"score":0.0762803251877005},{"uta_num":68,"score":0.07070679811655292}]},
+      "82":{"text":"思ひわび さても命は あるものを / 憂きにたへぬは 涙なりけり","keywords":[{"word":"たへ","score":0.4206390922115224},{"word":"涙","score":0.3859874467544335},{"word":"命","score":0.3614017130387216},{"word":"わび","score":0.3614017130387216},{"word":"憂き","score":0.3423315364155015}],"similar":[{"uta_num":65,"score":0.2873966486466142},{"uta_num":38,"score":0.24221790612557675},{"uta_num":30,"score":0.18883535861617537}]},
+      "83":{"text":"世の中よ 道こそなけれ 思ひ入る / 山の奥にも 鹿ぞ鳴くなる","keywords":[{"word":"奥","score":0.36583172976896716},{"word":"入る","score":0.36583172976896716},{"word":"なけれ","score":0.36583172976896716},{"word":"鹿","score":0.33569503626703934},{"word":"中","score":0.33569503626703934}],"similar":[{"uta_num":5,"score":0.17871095325847447},{"uta_num":93,"score":0.16409370233871645},{"uta_num":60,"score":0.15935588991938243}]},
+      "84":{"text":"長らへば またこのごろや しのばれむ / 憂しと見し世ぞ 今は恋しき","keywords":[{"word":"長らへ","score":0.3845960197804093},{"word":"憂し","score":0.3845960197804093},{"word":"しのば","score":0.3845960197804093},{"word":"ごろ","score":0.3845960197804093},{"word":"恋しき","score":0.3600989139549458}],"similar":[{"uta_num":84,"score":1.0000000000000002},{"uta_num":39,"score":0.12596509834704045},{"uta_num":21,"score":0.1020315880170091}]},
+      "85":{"text":"夜もすがら 物思ふころは 明けやらで / 閨のひまさへ つれなかりけり","keywords":[{"word":"やら","score":0.38473456325230326},{"word":"ひま","score":0.38473456325230326},{"word":"つれなかり","score":0.38473456325230326},{"word":"閨","score":0.38473456325230326},{"word":"明け","score":0.35304068142402373}],"similar":[{"uta_num":48,"score":0.28047176026935783},{"uta_num":99,"score":0.21396055714434375},{"uta_num":40,"score":0.17873191011694806}]},
+      "86":{"text":"嘆けとて 月やは物を 思はする / かこち顔なる わが涙かな","keywords":[{"word":"嘆け","score":0.47136878971834},{"word":"かこち顔","score":0.47136878971834},{"word":"涙","score":0.4325381044984236},{"word":"思は","score":0.4049872948839789},{"word":"物","score":0.3386058000496178}],"similar":[{"uta_num":43,"score":0.24182395174273824},{"uta_num":82,"score":0.16695427857934894},{"uta_num":38,"score":0.14306483736266082}]},
+      "87":{"text":"村雨の 露もまだひぬ まきの葉に / 霧たちのぼる 秋の夕暮れ","keywords":[{"word":"霧","score":0.3327211509855263},{"word":"村雨","score":0.3327211509855263},{"word":"葉","score":0.3327211509855263},{"word":"まき","score":0.3327211509855263},{"word":"ひ","score":0.3327211509855263}],"similar":[{"uta_num":70,"score":0.17423816963773897},{"uta_num":1,"score":0.14801438549241036},{"uta_num":75,"score":0.14514460324275025}]},
+      "88":{"text":"難波江の 葦のかりねの ひとよゆゑ / みをつくしてや 恋ひわたるべき","keywords":[{"word":"恋ひ","score":0.3293864509364404},{"word":"江","score":0.3293864509364404},{"word":"かりね","score":0.3293864509364404},{"word":"葦","score":0.3022520672627546},{"word":"わたる","score":0.3022520672627546}],"similar":[{"uta_num":20,"score":0.3068726508549568},{"uta_num":19,"score":0.18895815536724514},{"uta_num":64,"score":0.10812174468132515}]},
+      "89":{"text":"玉の緒よ 絶えなば絶えね ながらへば / 忍ぶることの 弱りもぞする","keywords":[{"word":"絶え","score":0.5451814118495388},{"word":"忍ぶる","score":0.33494520629359376},{"word":"弱り","score":0.33494520629359376},{"word":"緒","score":0.33494520629359376},{"word":"玉","score":0.30735290032170676}],"similar":[{"uta_num":44,"score":0.3133771356914714},{"uta_num":63,"score":0.20255171702052133},{"uta_num":46,"score":0.14423011192747595}]},
+      "90":{"text":"見せばやな 雄島のあまの 袖だにも / ぬれにぞぬれし 色はかはらず","keywords":[{"word":"ぬれ","score":0.6081048813310346},{"word":"見せ","score":0.3538896967335011},{"word":"かはら","score":0.3538896967335011},{"word":"雄島","score":0.3538896967335011},{"word":"色","score":0.3040524406655173}],"similar":[{"uta_num":72,"score":0.2588871828488373},{"uta_num":1,"score":0.19513134980220426},{"uta_num":40,"score":0.11323343750551591}]},
+      "91":{"text":"きりぎりす 鳴くや霜夜の さむしろに / 衣かたしき ひとりかも寝む","keywords":[{"word":"霜夜","score":0.3834538331001361},{"word":"さむしろ","score":0.3834538331001361},{"word":"きりぎりす","score":0.3834538331001361},{"word":"かたしき","score":0.3834538331001361},{"word":"衣","score":0.32945314574796225}],"similar":[{"uta_num":3,"score":0.2041994955592225},{"uta_num":78,"score":0.15657122916846886},{"uta_num":94,"score":0.10513259241957935}]},
+      "92":{"text":"わが袖は 潮干に見えぬ 沖の石の / 人こそ知らね かわくまもなし","keywords":[{"word":"石","score":0.36347908300711884},{"word":"潮干","score":0.36347908300711884},{"word":"かわく","score":0.36347908300711884},{"word":"沖","score":0.3335361971730631},{"word":"見え","score":0.312291381578153}],"similar":[{"uta_num":30,"score":0.21600479817124685},{"uta_num":35,"score":0.14799965202592683},{"uta_num":66,"score":0.14560163482334612}]},
+      "93":{"text":"世の中は つねにもがもな 渚こぐ / あまの小舟の 綱手かなしも","keywords":[{"word":"綱手","score":0.3533886726114816},{"word":"小舟","score":0.3533886726114816},{"word":"渚","score":0.3533886726114816},{"word":"つね","score":0.3533886726114816},{"word":"こぐ","score":0.3533886726114816}],"similar":[{"uta_num":83,"score":0.16409370233871645},{"uta_num":90,"score":0.09231700232939086},{"uta_num":11,"score":0.09216842115219924}]},
+      "94":{"text":"み吉野の 山の秋風 さ夜ふけて / ふるさと寒く 衣うつなり","keywords":[{"word":"寒く","score":0.37141816466791594},{"word":"さ夜","score":0.37141816466791594},{"word":"うつ","score":0.3408212686668107},{"word":"吉野","score":0.3408212686668107},{"word":"ふるさと","score":0.3408212686668107}],"similar":[{"uta_num":35,"score":0.133098586958289},{"uta_num":31,"score":0.12061848305018014},{"uta_num":48,"score":0.11913116042075414}]},
+      "95":{"text":"おほけなく 憂き世の民に おほふかな / わがたつ杣に 墨染の袖","keywords":[{"word":"杣","score":0.3616614961541196},{"word":"墨染","score":0.3616614961541196},{"word":"民","score":0.3616614961541196},{"word":"たつ","score":0.3616614961541196},{"word":"おほふ","score":0.3616614961541196}],"similar":[{"uta_num":68,"score":0.1721756996551025},{"uta_num":82,"score":0.10075960622635206},{"uta_num":30,"score":0.09642056199798539}]},
+      "96":{"text":"花さそふ 嵐の庭の 雪ならで / ふりゆくものは わが身なりけり","keywords":[{"word":"庭","score":0.3908083459130566},{"word":"さそふ","score":0.3908083459130566},{"word":"ふり","score":0.3586141145755641},{"word":"嵐","score":0.3357719439252323},{"word":"ゆく","score":0.3357719439252323}],"similar":[{"uta_num":9,"score":0.15229223896268396},{"uta_num":23,"score":0.14980531211115589},{"uta_num":22,"score":0.12117977083897391}]},
+      "97":{"text":"来ぬ人を まつほの浦の 夕なぎに / 焼くやもしほの 身もこがれつつ","keywords":[{"word":"焼く","score":0.34592262902157633},{"word":"浦","score":0.34592262902157633},{"word":"夕なぎ","score":0.34592262902157633},{"word":"もしほ","score":0.34592262902157633},{"word":"ほ","score":0.34592262902157633}],"similar":[{"uta_num":45,"score":0.13447589192443177},{"uta_num":47,"score":0.13437881760245687},{"uta_num":99,"score":0.1266029611436174}]},
+      "98":{"text":"風そよぐ ならの小川の 夕暮は / みそぎぞ夏の しるしなりける","keywords":[{"word":"小川","score":0.37027104132967303},{"word":"夕暮","score":0.37027104132967303},{"word":"みそぎ","score":0.37027104132967303},{"word":"なら","score":0.37027104132967303},{"word":"そよぐ","score":0.37027104132967303}],"similar":[{"uta_num":36,"score":0.11765529548732147},{"uta_num":2,"score":0.09940162867388641},{"uta_num":32,"score":0.08529528042528019}]},
+      "99":{"text":"人もをし 人もうらめし あぢきなく / 世を思ふゆゑに 物思ふ身は","keywords":[{"word":"思ふ","score":0.509469343937682},{"word":"人","score":0.3708237561987195},{"word":"うらめし","score":0.3417076530320505},{"word":"をし","score":0.3417076530320505},{"word":"あぢきなく","score":0.3417076530320505}],"similar":[{"uta_num":40,"score":0.32827207796158697},{"uta_num":85,"score":0.21396055714434375},{"uta_num":48,"score":0.21183984540505363}]},
+      "100":{"text":"ももしきや ふるき軒ばの しのぶにも / なほあまりある 昔なりけり","keywords":[{"word":"軒ば","score":0.43994037345417086},{"word":"ももしき","score":0.43994037345417086},{"word":"ふるき","score":0.43994037345417086},{"word":"しのぶ","score":0.40369871611546754},{"word":"昔","score":0.3580396277102139}],"similar":[{"uta_num":14,"score":0.15908590322767124},{"uta_num":34,"score":0.12563718368324717},{"uta_num":35,"score":0.12400853634540449}]}
+    };
+
+    /* ---------- キャンバス初期化 ---------- */
+    const canvas = document.getElementById('cosmos-canvas');
+    const ctx = canvas.getContext('2d');
+    const tooltip = document.getElementById('cosmos-tooltip');
+    const wrap = document.querySelector('.cosmos-wrap');
+
+    let W, H;
+    function resize() {
+      /* 【変更①】devicePixelRatioを最大1.5に制限してスマホの描画負荷を削減 */
+      const dpr = Math.min(devicePixelRatio, isMobile() ? 1.5 : 2);
+      W = canvas.clientWidth;
+      H = Math.min(Math.max(W * 0.85, 400), 720);
+      canvas.width  = W * dpr;
+      canvas.height = H * dpr;
+      canvas.style.height = H + 'px';
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.scale(dpr, dpr);
+    }
+
+    /* ---------- 状態 ---------- */
+    let rotX = 0.42, rotY = 0.18;
+    let isDragging = false, lastMX = 0, lastMY = 0;
+    let threshold = 0.12;
+    const speedVal = 6;
+    let selectedId = null;
+    let nodes = [], edges = [];
+    let animId;
+
+    /* ---------- グラフ構築 ---------- */
+    function buildGraph() {
+      const ids = Object.keys(DATA).map(Number);
+      const phi = Math.PI * (3 - Math.sqrt(5));
+      nodes = ids.map((id, i) => {
+        const t = i / (ids.length - 1);
+        const y = 1 - t * 2;
+        const r = Math.sqrt(1 - y * y);
+        const theta = phi * i;
+        return { id, x: r * Math.cos(theta), y, z: r * Math.sin(theta) };
+      });
+
+      edges = [];
+      const seen = new Set();
+      ids.forEach(id => {
+        DATA[String(id)].similar.forEach(s => {
+          if (s.score < threshold) return;
+          const key = Math.min(id, s.uta_num) + '_' + Math.max(id, s.uta_num);
+          if (!seen.has(key)) { seen.add(key); edges.push({ a: id, b: s.uta_num, score: s.score }); }
+        });
+      });
+
+      const deg = {};
+      nodes.forEach(n => { deg[n.id] = 0; });
+      edges.forEach(e => { deg[e.a]++; deg[e.b]++; });
+      const maxDeg = Math.max(...Object.values(deg), 1);
+      nodes.forEach(n => { n.deg = deg[n.id] || 0; n.normDeg = n.deg / maxDeg; });
+    }
+
+    /* ---------- 3D 投影 ---------- */
+    function project(x, y, z) {
+      const cx = Math.cos(rotX), sx = Math.sin(rotX);
+      const cy = Math.cos(rotY), sy = Math.sin(rotY);
+      const y1 = y * cx - z * sx;
+      const z1 = y * sx + z * cx;
+      const x2 = x * cy + z1 * sy;
+      const z2 = -x * sy + z1 * cy;
+      const fov = 2.6;
+      const s = Math.min(W, H) * 0.6 * (fov / (fov + z2 + 1.4));
+      return { sx: W / 2 + x2 * s, sy: H / 2 + y1 * s, depth: z2, sc: s };
+    }
+
+    /* ---------- テーマ定義 ---------- */
+    const THEMES = {
+      // ── 部立て ──
+      '春': {
+        ids: new Set([9,15,33,35,61,73]),
+        color: '#f090b8', glow: 'rgba(240,100,160,0.55)', legend: '#f090b8'
+      },
+      '夏': {
+        ids: new Set([2,36,81,98]),
+        color: '#30c870', glow: 'rgba(30,180,90,0.55)', legend: '#30c870'
+      },
+      '秋': {
+        ids: new Set([1,5,17,22,23,26,29,32,37,47,69,70,71,79,87,91,94]),
+        color: '#e08830', glow: 'rgba(220,110,30,0.55)', legend: '#e08830'
+      },
+      '冬': {
+        ids: new Set([4,6,28,31,64,78]),
+        color: '#80b8e8', glow: 'rgba(80,150,220,0.55)', legend: '#80b8e8'
+      },
+      '雑': {
+        ids: new Set([8,10,12,34,57,60,62,66,67,68,75,76,83,84,95,96,99,100]),
+        color: '#c0aa80', glow: 'rgba(180,155,100,0.55)', legend: '#c0aa80'
+      },
+      '羇旅': {
+        ids: new Set([7,11,24,93]),
+        color: '#ffc060', glow: 'rgba(255,170,40,0.55)', legend: '#ffc060'
+      },
+      '離別': {
+        ids: new Set([16]),
+        color: '#d0a0b0', glow: 'rgba(200,140,160,0.60)', legend: '#d0a0b0'
+      },
+      '恋(部立て)': {
+        ids: new Set([3,13,14,18,19,20,21,25,26,27,30,38,39,40,41,42,43,44,45,46,48,49,50,51,52,53,54,55,56,58,59,63,65,72,74,77,80,82,85,86,88,89,90,92,97]),
+        color: '#ff6688', glow: 'rgba(255,80,120,0.55)', legend: '#ff6688'
+      },
+      // ── 自然・景物 ──
+      '桜': {
+        ids: new Set([9,33,61,66,73,96]),
+        color: '#ffaacc', glow: 'rgba(255,130,180,0.60)', legend: '#ffaacc'
+      },
+      '梅': {
+        ids: new Set([35]),
+        color: '#e070a0', glow: 'rgba(220,80,140,0.60)', legend: '#e070a0'
+      },
+      // ── 恋の細分類 ──
+      '情熱的な恋': {
+        ids: new Set([17,56,77,89]),
+        color: '#ff5040', glow: 'rgba(255,60,40,0.60)', legend: '#ff5040'
+      },
+      '涙に濡れる恋': {
+        ids: new Set([42,65,72,92]),
+        color: '#8888d8', glow: 'rgba(110,110,210,0.55)', legend: '#8888d8'
+      },
+      '未だ逢わざる恋': {
+        ids: new Set([27]),
+        color: '#a898c8', glow: 'rgba(150,130,190,0.55)', legend: '#a898c8'
+      },
+      '逢はざる恋': {
+        ids: new Set([19]),
+        color: '#b898b8', glow: 'rgba(170,120,170,0.55)', legend: '#b898b8'
+      },
+      '祈れども逢はざる恋': {
+        ids: new Set([74]),
+        color: '#b080c0', glow: 'rgba(160,100,185,0.55)', legend: '#b080c0'
+      },
+      '寂しい恋': {
+        ids: new Set([3,53,85]),
+        color: '#8898a8', glow: 'rgba(120,140,155,0.55)', legend: '#8898a8'
+      },
+      '想い乱れる恋': {
+        ids: new Set([14,46,80]),
+        color: '#c86088', glow: 'rgba(195,75,125,0.55)', legend: '#c86088'
+      },
+      '忍ぶ恋': {
+        ids: new Set([18,39,40,41,51,89]),
+        color: '#c07888', glow: 'rgba(185,100,120,0.55)', legend: '#c07888'
+      },
+
+      '待つ恋': {
+        ids: new Set([21,97]),
+        color: '#d06888', glow: 'rgba(200,90,120,0.55)', legend: '#d06888'
+      },
+      '恨む恋': {
+        ids: new Set([42,53,59,65,82,85]),
+        color: '#a05070', glow: 'rgba(155,70,105,0.55)', legend: '#a05070'
+      },
+      '後朝の恋': {
+        ids: new Set([30,43,50,52]),
+        color: '#d8a050', glow: 'rgba(210,150,60,0.55)', legend: '#d8a050'
+      },
+      '忘れられる恋': {
+        ids: new Set([38,58]),
+        color: '#90a8b8', glow: 'rgba(125,155,170,0.55)', legend: '#90a8b8'
+      },
+      '別れる恋': {
+        ids: new Set([63,77]),
+        color: '#a87888', glow: 'rgba(160,110,125,0.55)', legend: '#a87888'
+      },
+
+      '艶めかしい恋': {
+        ids: new Set([25,80,88]),
+        color: '#d060a0', glow: 'rgba(200,80,150,0.55)', legend: '#d060a0'
+      },
+
+      '純粋な恋': {
+        ids: new Set([13,50]),
+        color: '#e088a8', glow: 'rgba(220,115,150,0.55)', legend: '#e088a8'
+      },
+
+      '道ならぬ恋': {
+        ids: new Set([20,44,65]),
+        color: '#987050', glow: 'rgba(145,105,70,0.55)', legend: '#987050'
+      },
+      '一夜限りの恋': {
+        ids: new Set([88]),
+        color: '#b87898', glow: 'rgba(175,110,145,0.55)', legend: '#b87898'
+      },
+      '叶わぬ恋': {
+        ids: new Set([19,63]),
+        color: '#7888b8', glow: 'rgba(105,120,175,0.55)', legend: '#7888b8'
+      },
+      // ── 人生 ──
+      '悲運の歌': {
+        ids: new Set([65]),
+        color: '#8070c0', glow: 'rgba(115,100,190,0.55)', legend: '#8070c0'
+      },
+      '偲ぶ歌': {
+        ids: new Set([84,100]),
+        color: '#9a9070', glow: 'rgba(145,135,100,0.55)', legend: '#9a9070'
+      },
+      '無常': {
+        ids: new Set([5,10,34,83]),
+        color: '#7ecfff', glow: 'rgba(80,180,255,0.50)', legend: '#7ecfff'
+      },
+      '平和を願う歌': {
+        ids: new Set([93]),
+        color: '#60b888', glow: 'rgba(80,170,125,0.55)', legend: '#60b888'
+      },
+      '涙': {
+        ids: new Set([82,86]),
+        color: '#90a8d0', glow: 'rgba(130,150,200,0.55)', legend: '#90a8d0'
+      }
+    };
+
+    let activeTheme = null;
+    let glowPhase = 0;
+
+    /* ---------- 色 ---------- */
+    function nodeColor(n) {
+      if (selectedId !== null && n.id === selectedId) return '#e05c3a';
+      if (activeTheme && THEMES[activeTheme] && THEMES[activeTheme].ids.has(n.id)) {
+        return THEMES[activeTheme].color;
+      }
+      if (n.normDeg > 0.55) return '#d4a855';
+      if (n.normDeg > 0.25) return '#8ab4d8';
+      return '#5a7a60';
+    }
+
+    /* ---------- 描画 ---------- */
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+
+      const pm = {};
+      nodes.forEach(n => { pm[n.id] = project(n.x, n.y, n.z); });
+
+      const sortedEdges = [...edges].sort((a, b) => {
+        const da = (pm[a.a].depth + pm[a.b].depth) / 2;
+        const db = (pm[b.a].depth + pm[b.b].depth) / 2;
+        return da - db;
+      });
+      sortedEdges.forEach(e => {
+        const pa = pm[e.a], pb = pm[e.b];
+        const isSel = selectedId !== null && (e.a === selectedId || e.b === selectedId);
+        ctx.beginPath();
+        ctx.moveTo(pa.sx, pa.sy);
+        ctx.lineTo(pb.sx, pb.sy);
+        if (isSel) {
+          ctx.strokeStyle = 'rgba(224, 92, 58, 0.85)';
+          ctx.lineWidth = 1.5;
+        } else {
+          const alpha = 0.06 + e.score * 1.2;
+          ctx.strokeStyle = `rgba(210, 185, 150, ${Math.min(alpha, 0.5)})`;
+          ctx.lineWidth = 0.4 + e.score * 1.8;
+        }
+        ctx.stroke();
+      });
+
+      const sortedNodes = [...nodes].map(n => ({ ...n, ...pm[n.id] })).sort((a, b) => a.depth - b.depth);
+      const mobile = isMobile();
+      sortedNodes.forEach(n => {
+        let baseR = 2.5 + n.normDeg * 4.5;
+
+// テーマ選択中で、このノードがテーマに含まれていればサイズを拡大
+if (activeTheme && THEMES[activeTheme] && THEMES[activeTheme].ids.has(n.id)) {
+    baseR *= 1.8;   // 倍率はお好みで調整 (1.5〜2.0 程度)
+}
+
+const r = baseR * Math.max(0.4, n.sc / (Math.min(W, H) * 0.4));
+        const isSel = n.id === selectedId;
+        const color = nodeColor(n);
+        
+        if (isSel) {
+          ctx.beginPath();
+          ctx.arc(n.sx, n.sy, r * 3, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(224, 92, 58, 0.12)';
+          ctx.fill();
+          ctx.beginPath();
+          ctx.arc(n.sx, n.sy, r * 2, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(224, 92, 58, 0.22)';
+          ctx.fill();
+        }
+
+        /* テーマ選択中のグロー */
+        if (activeTheme && THEMES[activeTheme] && THEMES[activeTheme].ids.has(n.id)) {
+          const pulse = 0.55 + 0.35 * Math.sin(glowPhase + n.id * 0.4);
+          const gRaw = THEMES[activeTheme].glow;
+          ctx.beginPath();
+          ctx.arc(n.sx, n.sy, r * 3.2, 0, Math.PI * 2);
+          ctx.fillStyle = gRaw.replace(/[\d.]+\)$/, `${(pulse * 0.45).toFixed(2)})`);
+          ctx.fill();
+          ctx.beginPath();
+          ctx.arc(n.sx, n.sy, r * 2.0, 0, Math.PI * 2);
+          ctx.fillStyle = gRaw.replace(/[\d.]+\)$/, `${(pulse * 0.65).toFixed(2)})`);
+          ctx.fill();
+        }
+
+        ctx.beginPath();
+        ctx.arc(n.sx, n.sy, r, 0, Math.PI * 2);
+        ctx.fillStyle = color;
+        ctx.fill();
+
+        /* 【変更②】スマホでは選択中か大きいノードだけラベル描画してCPU節約 */
+        if (!mobile || isSel || n.normDeg > 0.4) {
+          const fs = Math.max(7, Math.min(11, 8.5 * n.sc / (Math.min(W, H) * 0.38)));
+          ctx.font = `${fs}px 'Noto Sans JP', sans-serif`;
+          ctx.fillStyle = isSel ? '#fff' : 'rgba(255,240,210,0.82)';
+          ctx.textAlign = 'center';
+          ctx.fillText(n.id, n.sx, n.sy - r - 2);
+        }
+      });
+    }
+
+    /* ---------- アニメーションループ ---------- */
+    /* 【変更③】スマホでは自動回転なし・30fps制限でCPU負荷を大幅削減 */
+    let autoRotate = true;
+    let lastFrameTime = 0;
+    const TARGET_FPS_MOBILE = 30;
+    const FRAME_INTERVAL_MOBILE = 1000 / TARGET_FPS_MOBILE;
+
+    function loop(timestamp) {
+      const mobile = isMobile();
+
+      if (mobile) {
+        /* スマホ: 30fps制限 & 自動回転なし */
+        if (timestamp - lastFrameTime < FRAME_INTERVAL_MOBILE) {
+          animId = requestAnimationFrame(loop);
+          return;
+        }
+        lastFrameTime = timestamp;
+      } else {
+        /* PC: 60fps・自動回転あり */
+        if (autoRotate && !isDragging) rotY += speedVal * 0.00014;
+      }
+
+      if (activeTheme) glowPhase += 0.045;
+      draw();
+      animId = requestAnimationFrame(loop);
+    }
+
+    /* ---------- ツールチップ ---------- */
+    function showTooltip(n, mx, my) {
+      const d = DATA[String(n.id)];
+      const links = d.similar.filter(s => s.score >= threshold)
+        .map(s => `第${s.uta_num}首(${s.score.toFixed(2)})`).join('・');
+
+      const half = d.text.split(' / ');
+
+      tooltip.innerHTML =
+        `<strong>第${n.id}首</strong>` +
+        `<span class="tooltip-text">${half[0]}</span>` +
+        (half[1] ? `<span class="tooltip-text">${half[1]}</span>` : '') +
+        (links ? `<span class="tooltip-links">呼応する歌：${links}</span>` : '');
+
+      const rect = wrap.getBoundingClientRect();
+      tooltip.style.display = 'block';
+
+      const tw = tooltip.offsetWidth;
+      const th = tooltip.offsetHeight;
+
+      let left = mx - rect.left + 12;
+      let top  = my - rect.top - th - 12;
+
+      const mobile = window.innerWidth < 600;
+
+      if (mobile) {
+        left = (W - tw) / 2;
+        top  = H - th - 20;
+      } else {
+        if (left + tw > W - 8) left = W - tw - 8;
+        if (left < 8) left = 8;
+        if (top < 8) top = my - rect.top + 12;
+        if (top + th > H - 8) top = H - th - 8;
+      }
+
+      tooltip.style.left = left + 'px';
+      tooltip.style.top  = top + 'px';
+    }
+
+    function hideTooltip() { tooltip.style.display = 'none'; }
+
+    /* ---------- ヒットテスト ---------- */
+    function hitTest(mx, my) {
+      const pm = {};
+      nodes.forEach(n => { pm[n.id] = project(n.x, n.y, n.z); });
+      /* 【変更④】スマホはタップ判定を広め(28px)に拡張 */
+      let hit = null, best = isMobile() ? 28 : 18;
+      nodes.forEach(n => {
+        const p = pm[n.id];
+        const d = Math.hypot(p.sx - mx, p.sy - my);
+        if (d < best) { best = d; hit = n; }
+      });
+      return hit;
+    }
+
+    /* ---------- マウス / タッチ ---------- */
+    canvas.addEventListener('mousedown', e => {
+      isDragging = true; lastMX = e.clientX; lastMY = e.clientY;
+    });
+    canvas.addEventListener('mousemove', e => {
+      if (isDragging) {
+        rotY += (e.clientX - lastMX) * 0.005;
+        rotX += (e.clientY - lastMY) * 0.005;
+        lastMX = e.clientX; lastMY = e.clientY;
+        hideTooltip();
+      } else {
+        const r = canvas.getBoundingClientRect();
+        const mx = e.clientX - r.left, my = e.clientY - r.top;
+        const hit = hitTest(mx, my);
+        if (hit) { showTooltip(hit, e.clientX, e.clientY); canvas.style.cursor = 'pointer'; }
+        else { hideTooltip(); canvas.style.cursor = 'grab'; }
+      }
+    });
+    canvas.addEventListener('mouseup', e => {
+      if (!isDragging) return;
+      isDragging = false;
+      const r = canvas.getBoundingClientRect();
+      const hit = hitTest(e.clientX - r.left, e.clientY - r.top);
+      if (hit) setSelectedId(selectedId === hit.id ? null : hit.id);
+    });
+    canvas.addEventListener('mouseleave', () => { isDragging = false; hideTooltip(); });
+
+    /* ---------- タッチイベント ---------- */
+    let touchStartX = 0, touchStartY = 0, touchMoved = false;
+
+    canvas.addEventListener('touchstart', e => {
+      e.preventDefault();
+      isDragging = true;
+      touchMoved = false;
+      lastMX = touchStartX = e.touches[0].clientX;
+      lastMY = touchStartY = e.touches[0].clientY;
+    }, { passive: false });
+
+    canvas.addEventListener('touchmove', e => {
+      e.preventDefault();
+      const dx = e.touches[0].clientX - lastMX;
+      const dy = e.touches[0].clientY - lastMY;
+      if (Math.hypot(dx, dy) > 3) touchMoved = true;
+      rotY += dx * 0.005;
+      rotX += dy * 0.005;
+      lastMX = e.touches[0].clientX;
+      lastMY = e.touches[0].clientY;
+    }, { passive: false });
+
+    canvas.addEventListener('touchend', e => {
+      isDragging = false;
+      /* 【変更⑤】タップ（ほぼ動かなかった）ならノード選択＆ツールチップ表示 */
+      if (!touchMoved) {
+        const r = canvas.getBoundingClientRect();
+        const touch = e.changedTouches[0];
+        const mx = touch.clientX - r.left;
+        const my = touch.clientY - r.top;
+        const hit = hitTest(mx, my);
+        if (hit) {
+          setSelectedId(selectedId === hit.id ? null : hit.id);
+          if (selectedId !== null) showTooltip(hit, touch.clientX, touch.clientY);
+          else hideTooltip();
+        } else {
+          setSelectedId(null);
+          hideTooltip();
+        }
+      }
+    });
+
+    /* ---------- コントロール ---------- */
+    document.getElementById('ctrl-thresh').addEventListener('input', function () {
+      threshold = this.value / 100;
+      document.getElementById('thresh-val').textContent = threshold.toFixed(2);
+      buildGraph(); setSelectedId(null);
+    });
+
+    /* ---------- テーマボタン ---------- */
+    document.querySelectorAll('.theme-btn').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const theme = this.dataset.theme;
+        if (activeTheme === theme) {
+          activeTheme = null;
+          this.classList.remove('active');
+          document.getElementById('theme-legend-item').style.display = 'none';
+        } else {
+          activeTheme = theme;
+          glowPhase = 0;
+          document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          const t = THEMES[theme];
+          const dot = document.getElementById('theme-legend-dot');
+          dot.style.background = t.legend;
+          dot.style.boxShadow = '0 0 6px ' + t.legend;
+          document.getElementById('theme-legend-label').textContent = theme + 'の歌';
+          document.getElementById('theme-legend-item').style.display = '';
+        }
+        updatePoemList();
+      });
+    });
+
+    document.getElementById('theme-clear').addEventListener('click', function () {
+      activeTheme = null;
+      document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('theme-legend-item').style.display = 'none';
+      updatePoemList();
+    });
+
+    /* ---------- 歌の一覧 ---------- */
+    let poemData = {};
+    let listOpen = false;
+
+    fetch('../js/hyakunin.json?04')
+      .then(r => r.json())
+      .then(data => { poemData = data; });
+
+    const poemToggleBtn  = document.getElementById('cosmos-poem-toggle');
+    const poemLabel      = document.getElementById('cosmos-poem-label');
+    const poemArrow      = document.getElementById('cosmos-poem-arrow');
+    const poemListBody   = document.getElementById('cosmos-poem-body');
+
+    const starClearBtn = document.getElementById('star-clear');
+    const starClearNum = document.getElementById('star-clear-num');
+
+    starClearBtn.addEventListener('click', () => setSelectedId(null));
+
+    function setSelectedId(id) {
+      const prev = selectedId;
+      selectedId = id;
+      if (id !== null && id !== prev) listOpen = true;
+      if (id === null && !activeTheme) listOpen = false;
+      starClearBtn.style.display = id !== null ? 'inline-block' : 'none';
+      if (id !== null) starClearNum.textContent = id;
+      updatePoemList();
+    }
+
+    function renderPoemList(ids, centerId) {
+      poemListBody.innerHTML = '';
+      const sorted = [...ids].sort((a, b) => {
+        if (a === centerId) return -1;
+        if (b === centerId) return 1;
+        return a - b;
+      });
+      sorted.forEach(id => {
+        const p = poemData[String(id)];
+        if (!p) return;
+        const card = document.createElement('div');
+        card.className = 'cosmos-poem-card' + (id === centerId ? ' cosmos-poem-card--center' : '');
+        const sep = isMobile() ? '<br>' : '　';
+        const waka =
+          (p.first  || '').replace(/<br\s*\/?>/gi, sep) + '<br>' +
+          (p.second || '').replace(/<br\s*\/?>/gi, sep);
+        card.innerHTML =
+          `<p class="cosmos-poem-num">第${p.number}首</p>` +
+          `<p class="cosmos-poem-waka">${waka}</p>` +
+          `<p class="cosmos-poem-author">${p.name || ''}</p>` +
+          (p.modern ? `<p class="cosmos-poem-meaning">${p.modern}</p>` : '');
+        poemListBody.appendChild(card);
+      });
+    }
+
+    function updatePoemList() {
+      if (selectedId !== null) {
+        const connIds = edges
+          .filter(e => e.a === selectedId || e.b === selectedId)
+          .map(e => e.a === selectedId ? e.b : e.a);
+        const allIds = new Set([selectedId, ...connIds]);
+        poemToggleBtn.classList.add('ready');
+        if (listOpen) {
+          poemLabel.textContent = `第${selectedId}首とつながりの歌 全${allIds.size}首`;
+          poemArrow.textContent = '▲ 閉じる';
+          renderPoemList(allIds, selectedId);
+          poemListBody.style.display = 'block';
+        } else {
+          poemLabel.textContent = `第${selectedId}首のつながりを一覧で見る（全${allIds.size}首）`;
+          poemArrow.textContent = '▼';
+          poemListBody.style.display = 'none';
+        }
+        return;
+      }
+      if (!activeTheme || !THEMES[activeTheme]) {
+        poemToggleBtn.classList.remove('ready');
+        poemLabel.textContent = 'テーマを選ぶか、星をクリックすると歌を確認できます';
+        poemArrow.textContent = '';
+        poemListBody.style.display = 'none';
+        listOpen = false;
+        return;
+      }
+      poemToggleBtn.classList.add('ready');
+      const count = THEMES[activeTheme].ids.size;
+      if (listOpen) {
+        poemLabel.textContent = `「${activeTheme}」の歌 全${count}首`;
+        poemArrow.textContent = '▲ 閉じる';
+        renderPoemList(THEMES[activeTheme].ids);
+        poemListBody.style.display = 'block';
+      } else {
+        poemLabel.textContent = `「${activeTheme}」の歌 全${count}首を一覧で見る`;
+        poemArrow.textContent = '▼';
+        poemListBody.style.display = 'none';
+      }
+    }
+
+    poemToggleBtn.addEventListener('click', function () {
+      if (selectedId === null && !activeTheme) return;
+      listOpen = !listOpen;
+      updatePoemList();
+      if (listOpen) {
+        setTimeout(() => {
+          poemListBody.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 50);
+      }
+    });
+
+    /* ---------- 起動 ---------- */
+    resize();
+    buildGraph();
+    animId = requestAnimationFrame(loop);
+    window.addEventListener('resize', () => {
+      cancelAnimationFrame(animId);
+      resize();
+      animId = requestAnimationFrame(loop);
+    });
+  })();
+</script>
+<!-- ========== 3D ネットワークグラフ ここまで ========== -->
+
+
+  <script src="../js/back-to-top.js?20260908-02"></script>
+
+</body>
+
+</html>

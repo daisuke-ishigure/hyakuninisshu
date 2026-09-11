@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>百人秀歌と百人一首の配列比較 | 時雨の百人一首</title>
+  <link rel="canonical" href="https://hyakuninisshu.com/hyaku.html">
+  <meta name="description" content="百人秀歌と百人一首の歌人配列をアニメーションで比較。後鳥羽院・順徳院の追加など、二つの撰集の違いを視覚的に確認できます。">
+  <meta property="og:locale" content="ja">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="百人秀歌と百人一首の配列比較 | 時雨の百人一首">
+  <meta property="og:site_name" content="時雨の百人一首">
+  <meta property="og:image" content="https://hyakuninisshu.com/img/ogp_hyaku.webp">
+  <meta property="og:url" content="https://hyakuninisshu.com/hyaku.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@500&family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css?20260908-16">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" href="/favicon.ico">
+  <!-- パンくずリスト -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "トップ",
+          "item": "https://hyakuninisshu.com/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "コラム",
+          "item": "https://hyakuninisshu.com/introduction.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "百人秀歌と百人一首の配列比較",
+          "item": "https://hyakuninisshu.com/hyaku.html"
+        }
+      ]
+    }
+  </script>
+  <!-- 構造化データ -->
+   <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "百人秀歌と百人一首の配列比較",
+    "description": "百人秀歌と百人一首の歌人配列をアニメーションで比較。後鳥羽院・順徳院の追加など、二つの撰集の違いを視覚的に確認できます。",
+    "image": "https://hyakuninisshu.com/img/ogp_hyaku.webp",
+    "author": {
+      "@type": "Person",
+      "name": "石槫大輔",
+      "url": "https://hyakuninisshu.com/message.html" 
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "時雨の百人一首",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://hyakuninisshu.com/logo.png"
+      }
+    },
+    "datePublished": "2026-03-20",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://hyakuninisshu.com/hyaku.html"
+    }
+  }
+  </script>
+  <style>
+    .compare-widget {
+      margin: 2rem 0;
+    }
+
+    .compare-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .compare-controls .label {
+      font-size: 13px;
+      color: #666;
+      letter-spacing: 1px;
+    }
+
+    .btn-mode {
+      padding: 8px 22px;
+      border-radius: 20px;
+      border: 1.5px solid #ccc;
+      cursor: pointer;
+      font-size: 13px;
+      letter-spacing: 2px;
+      background: #fff;
+      color: #555;
+      transition: background 0.3s, color 0.3s, border-color 0.3s;
+    }
+
+    .btn-mode.active-shuka {
+      background: #B82343;
+      border-color: #B82343;
+      color: #FFF;
+      font-weight: 700;
+    }
+
+    .btn-mode.active-isshu {
+      background: #B82343;
+      border-color: #B82343;
+      color: #FFF;
+      font-weight: 700;
+    }
+
+    .compare-legend {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      font-size: 12px;
+      color: #666;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .legend-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+
+    .compare-scroll {
+      border: 1px solid #e0d8cc;
+      border-radius: 6px;
+      overflow-y: auto;
+      max-height: 72vh;
+      background: #faf7f2;
+    }
+
+    .compare-rail {
+      display: flex;
+    }
+
+    .rail-numbers {
+      width: 40px;
+      flex-shrink: 0;
+      border-right: 1px solid #e0d8cc;
+      background: #f5f0e8;
+      position: sticky;
+      left: 0;
+      z-index: 5;
+    }
+
+    .num-cell {
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: #aaa;
+      font-family: 'Noto Sans JP', sans-serif;
+      border-bottom: 1px solid #e8e2d8;
+      background: #f5f0e8;
+    }
+
+    .num-cell.even {
+      background: #ede8df;
+    }
+
+    .rail-cards {
+      flex: 1;
+      position: relative;
+    }
+
+    .stripe-row {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 80px;
+      border-bottom: 1px solid #e8e2d8;
+      pointer-events: none;
+    }
+
+    .stripe-row.even {
+      background: rgba(0, 0, 0, 0.018);
+    }
+
+    /* ── 歌人カード ── */
+    .poet-card {
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      height: 68px;
+      border-radius: 0 6px 6px 0;
+      display: flex;
+      align-items: stretch;
+      transition: top 0.85s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.4s ease;
+      overflow: hidden;
+    }
+
+    /* 左帯（色ライン） */
+    .card-stripe {
+      width: 4px;
+      flex-shrink: 0;
+    }
+
+    /* カード内容 */
+    .card-body {
+      flex: 1;
+      min-width: 0;
+      padding: 6px 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+      font-family: sans-serif;
+    }
+
+    .card-row1 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    .card-name {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 1px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex-shrink: 0;
+      max-width: 160px;
+      color: #333;
+    }
+
+    .card-badge {
+      font-size: 10px;
+      padding: 1px 7px;
+      border-radius: 10px;
+      flex-shrink: 0;
+      font-family: 'Noto Sans JP', sans-serif;
+      letter-spacing: 0;
+    }
+
+    /* PC：上の句＋下の句を1行で表示 */
+    .card-poem {
+      font-size: 18px;
+      letter-spacing: 0.5px;
+      line-height: 1.5;
+      color: #333;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .poem-sep {
+      display: inline;
+    }
+
+    .poem-shimo {
+      display: inline;
+    }
+
+    /* SP（600px以下）：改行あり・行高拡張 */
+    @media (max-width: 600px) {
+      .num-cell {
+        height: 104px;
+      }
+
+      .stripe-row {
+        height: 104px;
+      }
+
+      .poet-card {
+        height: 92px;
+      }
+
+      .card-name {
+        font-size: 11px;
+      }
+
+      .card-poem {
+        font-size: 13.2px;
+        white-space: normal;
+      }
+
+      .poem-sep {
+        display: none;
+      }
+
+      .poem-shimo {
+        display: block;
+      }
+    }
+
+    .compare-note {
+      margin-top: 1em;
+      margin-left:1.5em;
+      text-indent: -1.5em;
+      font-size: 12px;
+      color: #333;
+      font-family: 'Noto Sans JP', sans-serif;
+      line-height: 1.7;
+    }
+    .compare-note::before {
+        content: "※";
+      }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <p class="site-title">
+      <a href="https://hyakuninisshu.com/" style="font-weight:bold;">時雨の百人一首</a>
+    </p>
+    <div class="header_list">
+      <a href="index.html"><img src="../img/icon_top.svg?ver-02" alt="トップ" class="icon"></a>
+      <a href="introduction.html" style="color:#333"><img src="/img/icon_column.svg?ver-02" alt="コラム" class="icon"></a>
+      <a href="introduction-app.html" style="color:#333"><img src="/img/icon_app.svg?ver-02" alt="アプリ" class="icon"></a>
+      <a href="list.html"><img src="/img/icon_search.svg?ver-04" alt="和歌の一覧・検索" class="icon"></a>
+    </div>
+  </header>
+
+  <main class="main_about-main">
+    <div class="about-main">
+      <div class="section">
+
+        <nav>
+          <ol class="breadcrumb">
+            <li><a href="index.html">トップ</a></li>
+            <li><a href="introduction.html">コラム</a></li>
+            <li>百人秀歌と百人一首の配列比較</li>
+          </ol>
+        </nav>
+        <hr>
+
+        <h1>百人秀歌と百人一首の<br class="br-sp">配列比較</h1>
+        <p>
+          百人秀歌と百人一首は、同じ歌をもとにしながらも、その配列は大きく異なります。<br>
+          このページでは、その違いをアニメーションによって視覚的に比較することができます。
+        </p>
+
+        <h2 style="margin-top:1em;">二つの撰集について</h2>
+        <p>
+          藤原定家は、宇都宮頼綱の求めに応じて<strong>百人一首</strong>を編みましたが、それに先立ち、原型とも考えられる<strong>百人秀歌</strong>を編んでいたというのが通説になっています。
+        </p>
+        <p>
+          両者の大きな違いは、末尾の二首に見られます。百人一首では、後鳥羽天皇（第99番）と順徳天皇（第100番）が新たに加えられました。その一方で、百人秀歌にのみ収められていた一条院皇后宮・今中納言国信・権中納言長方の三名は、百人一首には採られていません。
+        </p>
+        <p>この配列の違いは、単なる並び替えではなく、歌の流れや構成を意識した再編集によるものと考えられます。</p>
+
+        <h2>配列のちがい</h2>
+        <p>
+          ボタンを切り替えると、各歌人の番号位置がアニメーションで入れ替わります。<br>
+          1～4番歌は変わりませんが、5番歌以降は配列が大きく異なります。表をスクロールした状態で表示を切り替えることで、歌人の位置がどのように移動するかを視覚的に確認できます。
+        </p>
+        <p>
+          百人秀歌では、内容が呼応する歌や、季節・主題の近い歌が並ぶ傾向が見られます。一方、百人一首はおおむね時代順に配列されつつ、明るい歌、恋の高まり、切なさ、無常感といった感情の流れが波のように織り込まれた構成になっています。
+        </p>
+
+        <div class="compare-widget">
+
+          <div class="compare-controls">
+            <span class="label">表示切替</span>
+            <button class="btn-mode active-shuka" id="btn-shuka" onclick="setMode('shuka')">
+              百人秀歌
+            </button>
+            <button class="btn-mode" id="btn-isshu" onclick="setMode('isshu')">
+              百人一首
+            </button>
+          </div>
+
+          <!-- <div class="compare-legend">
+            <div class="legend-item">
+              <span class="legend-dot" style="background:#FAECE7;border:2px solid #D85A30;"></span>
+              百人秀歌のみ収録（一条院皇后宮・今中納言国信・権中納言長方）
+            </div>
+            <div class="legend-item">
+              <span class="legend-dot" style="background:#E6F1FB;border:2px solid #378ADD;"></span>
+              百人一首のみ収録（後鳥羽院・順徳院）
+            </div>
+            <div class="legend-item">
+              <span class="legend-dot" style="background:#F5EBE0;border:2px solid #c8b89a;"></span>
+              両方に収録
+            </div>
+          </div> -->
+
+          <div class="compare-scroll">
+            <div class="compare-rail">
+              <div class="rail-numbers" id="rail-numbers"></div>
+              <div class="rail-cards" id="rail-cards"></div>
+            </div>
+          </div>
+
+          <p class="compare-note" style="margin-bottom:0;">
+            百人秀歌は101首構成のため、行数は101行で表示しています。
+          </p>
+          <p class="compare-note" style="margin-top:0;">
+            家隆の位階が百人秀歌では正三位、百人一首では従二位となっており、この位階の違いにより、百人秀歌の方が百人一首より先に編まれたと考えられる理由になっています。
+          </p>
+        </div>
+
+        <h2>まとめ</h2>
+        <p>
+          百人一首の編纂にあたり、定家は次の変更を行ったと考えられます。
+        </p>
+        <ul>
+          <li>鎌倉幕府によって配流された後鳥羽院（99番歌）・順徳院（100番歌）の歌を末尾に追加</li>
+          <li>百人秀歌に収録されていた一条院皇后宮・今中納言国信・権中納言長方を採らなかった</li>
+          <li>源俊頼（76番歌）の採用歌を改め、配列順にも変更を加えた</li>
+        </ul>
+        <p>
+          これらの変更は、単なる編集ではなく、歌の流れや時代観、さらには政治的背景を踏まえた再構成であった可能性があります。百人一首は単なる秀歌選ではなく、歌の配列そのものによって一つの物語を構成した作品へ昇華されたと考えられます。
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-copy">&copy;2023 時雨の百人一首</span>
+      <ul>
+        <li><a href="policy.html">プライバシーポリシー</a></li>
+        <li>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXx7TKlqnTfKrw2Nuh3f37swVwFH-RFDsNkTGQ4JEF50q2wQ/viewform?usp=header"
+            target="_blank" rel="noopener">お問い合わせフォーム</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    const POETS = [
+      {
+        id: "01", name: "天智天皇", shuka: 1, isshu: 1,
+        kami: "秋の田の かりほの庵の 苫をあらみ", shimo: "わが衣手は 露にぬれつつ"
+      },
+      {
+        id: "02", name: "持統天皇", shuka: 2, isshu: 2,
+        kami: "春すぎて 夏来にけらし 白妙の", shimo: "衣ほすてふ 天の香具山"
+      },
+      {
+        id: "03", name: "柿本人麻呂", shuka: 3, isshu: 3,
+        kami: "あしびきの 山鳥の尾の しだり尾の", shimo: "ながながし夜を ひとりかも寝む"
+      },
+      {
+        id: "04", name: "山部赤人", shuka: 4, isshu: 4,
+        kami: "田子の浦に うちいでてみれば 白妙の", shimo: "富士の高嶺に 雪は降りつつ"
+      },
+      {
+        id: "05", name: "猿丸大夫", shuka: 8, isshu: 5,
+        kami: "おくやまに もみぢふみわけ 鳴く鹿の", shimo: "声きく時ぞ 秋はかなしき"
+      },
+      {
+        id: "06", name: "中納言家持", shuka: 5, isshu: 6,
+        kami: "かささぎの 渡せる橋に おく霜の", shimo: "白きを見れば 夜ぞふけにける"
+      },
+      {
+        id: "07", name: "阿倍仲麻呂", shuka: 6, isshu: 7,
+        kami: "天の原 ふりさけみれば 春日なる", shimo: "三笠の山に 出でし月かも"
+      },
+      {
+        id: "08", name: "喜撰法師", shuka: 14, isshu: 8,
+        kami: "わが庵は 都のたつみ しかぞすむ", shimo: "世をうぢ山と 人はいふなり"
+      },
+      {
+        id: "09", name: "小野小町", shuka: 13, isshu: 9,
+        kami: "花の色は うつりにけりな いたづらに", shimo: "わが身世にふる ながめせしまに"
+      },
+      {
+        id: "10", name: "蝉丸", shuka: 16, isshu: 10,
+        kami: "これやこの 行くも帰るも 別れては", shimo: "知るも知らぬも 逢坂の関"
+      },
+      {
+        id: "11", name: "参議篁", shuka: 7, isshu: 11,
+        kami: "わたの原 八十島かけて 漕ぎいでぬと", shimo: "人には告げよ 海人の釣り舟"
+      },
+      {
+        id: "12", name: "僧正遍昭", shuka: 15, isshu: 12,
+        kami: "天つ風 雲の通ひ路 吹きとぢよ", shimo: "をとめの姿 しばしとどめむ"
+      },
+      {
+        id: "13", name: "陽成院", shuka: 12, isshu: 13,
+        kami: "筑波嶺の 峰より落つる みなの川", shimo: "恋ぞつもりて 淵となりぬる"
+      },
+      {
+        id: "14", name: "河原左大臣", shuka: 17, isshu: 14,
+        kami: "陸奥の しのぶもぢずり 誰ゆゑに", shimo: "乱れそめにし われならなくに"
+      },
+      {
+        id: "15", name: "光孝天皇", shuka: 18, isshu: 15,
+        kami: "君がため 春の野にいでて 若菜つむ", shimo: "わが衣手に 雪は降りつつ"
+      },
+      {
+        id: "16", name: "中納言行平", shuka: 9, isshu: 16,
+        kami: "立ち別れ いなばの山の 峰に生ふる", shimo: "まつとし聞かば 今帰り来む"
+      },
+      {
+        id: "17", name: "在原業平朝臣", shuka: 10, isshu: 17,
+        kami: "ちはやぶる 神代もきかず 竜田川", shimo: "からくれなゐに 水くくるとは"
+      },
+      {
+        id: "18", name: "藤原敏行朝臣", shuka: 11, isshu: 18,
+        kami: "住の江の 岸による波 よるさへや", shimo: "夢の通ひ路 人目よくらむ"
+      },
+      {
+        id: "19", name: "伊勢", shuka: 19, isshu: 19,
+        kami: "難波潟 みじかき芦の 節の間も", shimo: "逢はでこの世を 過ぐしてよとや"
+      },
+      {
+        id: "20", name: "元良親王", shuka: 20, isshu: 20,
+        kami: "わびぬれば 今はたおなじ 難波なる", shimo: "みをつくしても 逢はむとぞ思ふ"
+      },
+      {
+        id: "21", name: "素性法師", shuka: 22, isshu: 21,
+        kami: "今来むと いひしばかりに 長月の", shimo: "有明の月を 待ちいでつるかな"
+      },
+      {
+        id: "22", name: "文屋康秀", shuka: 27, isshu: 22,
+        kami: "吹くからに 秋の草木の しをるれば", shimo: "むべ山風を あらしといふらむ"
+      },
+      {
+        id: "23", name: "大江千里", shuka: 30, isshu: 23,
+        kami: "月見れば ちぢにものこそ かなしけれ", shimo: "わが身ひとつの 秋にはあらねど"
+      },
+      {
+        id: "24", name: "菅家", shuka: 23, isshu: 24,
+        kami: "このたびは ぬさもとりあへず 手向山", shimo: "紅葉の錦 神のまにまに"
+      },
+      {
+        id: "25", name: "三条右大臣", shuka: 35, isshu: 25,
+        kami: "名にし負はば 逢坂山の さねかづら", shimo: "人に知られで 来るよしもがな"
+      },
+      {
+        id: "26", name: "貞信公", shuka: 34, isshu: 26,
+        kami: "小倉山 峰のもみぢ葉 心あらば", shimo: "今ひとたびの みゆき待たなむ"
+      },
+      {
+        id: "27", name: "中納言兼輔", shuka: 36, isshu: 27,
+        kami: "みかの原 わきて流るる いづみ川", shimo: "いつ見きとてか 恋しかるらむ"
+      },
+      {
+        id: "28", name: "源宗于朝臣", shuka: 21, isshu: 28,
+        kami: "山里は 冬ぞさびしさ まさりける", shimo: "人目も草も 枯れぬと思へば"
+      },
+      {
+        id: "29", name: "凡河内躬恒", shuka: 25, isshu: 29,
+        kami: "心あてに 折らばや折らむ 初霜の", shimo: "おきまどはせる 白菊の花"
+      },
+      {
+        id: "30", name: "壬生忠岑", shuka: 24, isshu: 30,
+        kami: "有明の つれなく見えし 別れより", shimo: "暁ばかり うきものはなし"
+      },
+      {
+        id: "31", name: "坂上是則", shuka: 29, isshu: 31,
+        kami: "朝ぼらけ 有明の月と 見るまでに", shimo: "吉野の里に ふれる白雪"
+      },
+      {
+        id: "32", name: "春道列樹", shuka: 32, isshu: 32,
+        kami: "山川に 風のかけたる しがらみは", shimo: "流れもあへぬ 紅葉なりけり"
+      },
+      {
+        id: "33", name: "紀友則", shuka: 26, isshu: 33,
+        kami: "ひさかたの 光のどけき 春の日に", shimo: "しづ心なく 花の散るらむ"
+      },
+      {
+        id: "34", name: "藤原興風", shuka: 31, isshu: 34,
+        kami: "誰をかも 知る人にせむ 高砂の", shimo: "松も昔の 友ならなくに"
+      },
+      {
+        id: "35", name: "紀貫之", shuka: 28, isshu: 35,
+        kami: "人はいさ 心も知らず ふるさとは", shimo: "花ぞ昔の 香に匂ひける"
+      },
+      {
+        id: "36", name: "清原深養父", shuka: 33, isshu: 36,
+        kami: "夏の夜は まだ宵ながら 明けぬるを", shimo: "雲のいづこに 月宿るらむ"
+      },
+      {
+        id: "37", name: "文屋朝康", shuka: 38, isshu: 37,
+        kami: "白露に 風の吹きしく 秋の野は", shimo: "つらぬきとめぬ 玉ぞ散りける"
+      },
+      {
+        id: "38", name: "右近", shuka: 39, isshu: 38,
+        kami: "忘らるる 身をば思はず 誓ひてし", shimo: "人の命の をしくもあるかな"
+      },
+      {
+        id: "39", name: "参議等", shuka: 37, isshu: 39,
+        kami: "浅茅生の 小野の篠原 しのぶれど", shimo: "あまりてなどか 人の恋しき"
+      },
+      {
+        id: "40", name: "平兼盛", shuka: 41, isshu: 40,
+        kami: "しのぶれど 色に出でにけり わが恋は", shimo: "ものや思ふと 人の問ふまで"
+      },
+      {
+        id: "41", name: "壬生忠見", shuka: 42, isshu: 41,
+        kami: "恋すてふ わが名はまだき 立ちにけり", shimo: "人知れずこそ 思ひそめしか"
+      },
+      {
+        id: "42", name: "清原元輔", shuka: 45, isshu: 42,
+        kami: "契りきな かたみに袖を しぼりつつ", shimo: "末の松山 波越さじとは"
+      },
+      {
+        id: "43", name: "権中納言敦忠", shuka: 40, isshu: 43,
+        kami: "逢ひ見ての のちの心に くらぶれば", shimo: "昔はものを 思はざりけり"
+      },
+      {
+        id: "44", name: "中納言朝忠", shuka: 44, isshu: 44,
+        kami: "逢ふことの たえてしなくは なかなかに", shimo: "人をも身をも 恨みざらまし"
+      },
+      {
+        id: "45", name: "謙徳公", shuka: 43, isshu: 45,
+        kami: "あはれとも いふべき人は 思ほえで", shimo: "身のいたづらに なりぬべきかな"
+      },
+      {
+        id: "46", name: "曽禰好忠", shuka: 47, isshu: 46,
+        kami: "由良の門を 渡る舟人 かぢを絶え", shimo: "ゆくへも知らぬ 恋の道かな"
+      },
+      {
+        id: "47", name: "恵慶法師", shuka: 52, isshu: 47,
+        kami: "八重葎 しげれる宿の さびしきに", shimo: "人こそ見えね 秋は来にけり"
+      },
+      {
+        id: "48", name: "源重之", shuka: 46, isshu: 48,
+        kami: "風をいたみ 岩うつ波の おのれのみ", shimo: "くだけてものを 思ふころかな"
+      },
+      {
+        id: "49", name: "大中臣能宣朝臣", shuka: 48, isshu: 49,
+        kami: "御垣守 衛士のたく火の 夜は燃え", shimo: "昼は消えつつ ものをこそ思へ"
+      },
+      {
+        id: "50", name: "藤原義孝", shuka: 49, isshu: 50,
+        kami: "君がため 惜しからざりし 命さへ", shimo: "長くもがなと 思ひけるかな"
+      },
+      {
+        id: "51", name: "藤原実方朝臣", shuka: 50, isshu: 51,
+        kami: "かくとだに えやはいぶきの さしも草", shimo: "さしも知らじな 燃ゆる思ひを"
+      },
+      {
+        id: "52", name: "藤原道信朝臣", shuka: 51, isshu: 52,
+        kami: "明けぬれば 暮るるものとは 知りながら", shimo: "なほうらめしき 朝ぼらけかな"
+      },
+      {
+        id: "53", name: "右大将道綱母", shuka: 56, isshu: 53,
+        kami: "嘆きつつ ひとりぬる夜の 明くる間は", shimo: "いかに久しき ものとかは知る"
+      },
+      {
+        id: "54", name: "儀同三司母", shuka: 55, isshu: 54,
+        kami: "忘れじの ゆく末までは かたければ", shimo: "今日を限りの 命ともがな"
+      },
+      {
+        id: "55", name: "大納言公任", shuka: 59, isshu: 55,
+        kami: "滝の音は 絶えて久しく なりぬれど", shimo: "名こそ流れて なほきこえけれ"
+      },
+      {
+        id: "56", name: "和泉式部", shuka: 61, isshu: 56,
+        kami: "あらざらむ この世のほかの 思ひ出に", shimo: "今ひとたびの 逢ふこともがな"
+      },
+      {
+        id: "57", name: "紫式部", shuka: 64, isshu: 57,
+        kami: "めぐりあひて 見しやそれとも わかぬまに", shimo: "雲がくれにし 夜半の月かな"
+      },
+      {
+        id: "58", name: "大弐三位", shuka: 62, isshu: 58,
+        kami: "有馬山 猪名の篠原 風吹けば", shimo: "いでそよ人を 忘れやはする"
+      },
+      {
+        id: "59", name: "赤染衛門", shuka: 63, isshu: 59,
+        kami: "やすらはで 寝なましものを 小夜更けて", shimo: "かたぶくまでの 月を見しかな"
+      },
+      {
+        id: "60", name: "小式部内侍", shuka: 66, isshu: 60,
+        kami: "大江山 いく野の道の 遠ければ", shimo: "まだふみも見ず 天の橋立"
+      },
+      {
+        id: "61", name: "伊勢大輔", shuka: 65, isshu: 61,
+        kami: "いにしへの 奈良の都の 八重桜", shimo: "けふ九重に にほひぬるかな"
+      },
+      {
+        id: "62", name: "清少納言", shuka: 60, isshu: 62,
+        kami: "夜をこめて 鳥のそらねは はかるとも", shimo: "よに逢坂の 関は許さじ"
+      },
+      {
+        id: "63", name: "左京大夫道雅", shuka: 68, isshu: 63,
+        kami: "今はただ 思ひたえなむ とばかりを", shimo: "人づてならで いふよしもがな"
+      },
+      {
+        id: "64", name: "権中納言定頼", shuka: 67, isshu: 64,
+        kami: "朝ぼらけ 宇治の川霧 たえだえに", shimo: "あらはれわたる 瀬々の網代木"
+      },
+      {
+        id: "65", name: "相模", shuka: 75, isshu: 65,
+        kami: "恨みわび ほさぬ袖だに あるものを", shimo: "恋に朽ちなむ 名こそをしけれ"
+      },
+      {
+        id: "66", name: "大僧正行尊", shuka: 71, isshu: 66,
+        kami: "もろともに あはれと思へ 山桜", shimo: "花よりほかに 知る人もなし"
+      },
+      {
+        id: "67", name: "周防内侍", shuka: 69, isshu: 67,
+        kami: "春の夜の 夢ばかりなる 手枕に", shimo: "かひなく立たむ 名こそをしけれ"
+      },
+      {
+        id: "68", name: "三条院", shuka: 54, isshu: 68,
+        kami: "心にも あらでうき世に ながらへば", shimo: "恋しかるべき 夜半の月かな"
+      },
+      {
+        id: "69", name: "能因法師", shuka: 57, isshu: 69,
+        kami: "あらし吹く 三室の山の もみぢ葉は", shimo: "竜田の川の 錦なりけり"
+      },
+      {
+        id: "70", name: "良暹法師", shuka: 58, isshu: 70,
+        kami: "さびしさに 宿を立ち出でて ながむれば", shimo: "いづくも同じ 秋の夕暮れ"
+      },
+      {
+        id: "71", name: "大納言経信", shuka: 70, isshu: 71,
+        kami: "夕されば 門田の稲葉 おとづれて", shimo: "葦のまろやに 秋風ぞ吹く"
+      },
+      {
+        id: "72", name: "祐子内親王家紀伊", shuka: 74, isshu: 72,
+        kami: "音に聞く 高師の浜の あだ波は", shimo: "かけじや袖の ぬれもこそすれ"
+      },
+      {
+        id: "73", name: "権中納言匡房", shuka: 72, isshu: 73,
+        kami: "高砂の 尾上の桜 咲きにけり", shimo: "外山の霞 立たずもあらなむ"
+      },
+
+      {
+        id: "74", name: "源俊頼朝臣", shuka: null, isshu: 74,
+        kami: "うかりける 人を初瀬の 山おろしよ", shimo: "はげしかれとは 祈らぬものを"
+      },
+      {
+        id: "75", name: "藤原基俊", shuka: 82, isshu: 75,
+        kami: "契りおきし させもが露を 命にて", shimo: "あはれ今年の 秋もいぬめり"
+      },
+      {
+        id: "76", name: "法性寺入道前関白太政大臣", shuka: 79, isshu: 76,
+        kami: "わたの原 漕ぎいでて見れば ひさかたの", shimo: "雲ゐにまがふ 沖つ白波"
+      },
+      {
+        id: "77", name: "崇徳院", shuka: 77, isshu: 77,
+        kami: "瀬をはやみ 岩にせかるる 滝川の", shimo: "われても末に 逢はむとぞ思ふ"
+      },
+      {
+        id: "78", name: "源兼昌", shuka: 81, isshu: 78,
+        kami: "淡路島 かよふ千鳥の 鳴く声に", shimo: "幾夜寝覚めぬ 須磨の関守"
+      },
+      {
+        id: "79", name: "左京大夫顕輔", shuka: 80, isshu: 79,
+        kami: "秋風に たなびく雲の 絶え間より", shimo: "もれいづる月の 影のさやけさ"
+      },
+      {
+        id: "80", name: "待賢門院堀河", shuka: 78, isshu: 80,
+        kami: "長からむ 心も知らず 黒髪の", shimo: "乱れて今朝は ものをこそ思へ"
+      },
+      {
+        id: "81", name: "後徳大寺左大臣", shuka: 86, isshu: 81,
+        kami: "ほととぎす 鳴きつる方を ながむれば", shimo: "ただありあけの 月ぞ残れる"
+      },
+      {
+        id: "82", name: "道因法師", shuka: 83, isshu: 82,
+        kami: "思ひわび さても命は あるものを", shimo: "憂きに堪へぬは 涙なりけり"
+      },
+      {
+        id: "83", name: "皇太后宮大夫俊成", shuka: 87, isshu: 83,
+        kami: "世の中よ 道こそなけれ 思ひ入る", shimo: "山の奥にも 鹿ぞ鳴くなる"
+      },
+      {
+        id: "84", name: "藤原清輔朝臣", shuka: 84, isshu: 84,
+        kami: "ながらへば またこのごろや しのばれむ", shimo: "うし今日頃の 身をも怨みず"
+      },
+      {
+        id: "85", name: "俊恵法師", shuka: 85, isshu: 85,
+        kami: "夜もすがら もの思ふころは 明けやらで", shimo: "閨のひまさへ つれなかりけり"
+      },
+      {
+        id: "86", name: "西行法師", shuka: 88, isshu: 86,
+        kami: "嘆けとて 月やはものを 思はする", shimo: "かこち顔なる わが涙かな"
+      },
+      {
+        id: "87", name: "寂蓮法師", shuka: 93, isshu: 87,
+        kami: "村雨の 露もまだひぬ 槇の葉に", shimo: "霧立のぼる 秋の夕暮れ"
+      },
+      {
+        id: "88", name: "皇嘉門院別当", shuka: 89, isshu: 88,
+        kami: "難波江の 葦のかりねの ひとよゆゑ", shimo: "みをつくしても 逢はむとぞ思ふ"
+      },
+      {
+        id: "89", name: "式子内親王", shuka: 92, isshu: 89,
+        kami: "玉の緒よ 絶えなば絶えね ながらへば", shimo: "忍ぶることの 弱りもぞする"
+      },
+      {
+        id: "90", name: "殷富門院大輔", shuka: 91, isshu: 90,
+        kami: "見せばやな 雄島のあまの 袖だにも", shimo: "ぬれにぞぬれし 色はかはらず"
+      },
+      {
+        id: "91", name: "後京極摂政前太政大臣", shuka: 95, isshu: 91,
+        kami: "きりぎりす 鳴くや霜夜の さむしろに", shimo: "衣かたしき ひとりかも寝む"
+      },
+      {
+        id: "92", name: "二条院讃岐", shuka: 94, isshu: 92,
+        kami: "わが袖は 潮干に見えぬ 沖の石の", shimo: "人こそ知らね かくこそ思へ"
+      },
+      {
+        id: "93", name: "鎌倉右大臣", shuka: 98, isshu: 93,
+        kami: "世の中は 常にもがもな 渚こぐ", shimo: "あまの小舟の 綱手かなしも"
+      },
+      {
+        id: "94", name: "参議雅経", shuka: 97, isshu: 94,
+        kami: "み吉野の 山の秋風 さ夜ふけて", shimo: "ふるさと寒く 衣うつなり"
+      },
+      {
+        id: "95", name: "前大僧正慈円", shuka: 96, isshu: 95,
+        kami: "おほけなく うき世の民に おほふかな", shimo: "わが立つ杣に 墨染の袖"
+      },
+      {
+        id: "96", name: "入道前太政大臣", shuka: 101, isshu: 96,
+        kami: "花さそふ 嵐の庭の 雪ならで", shimo: "ふりゆくものは わが身なりけり"
+      },
+      {
+        id: "97", name: "権中納言定家", shuka: 100, isshu: 97,
+        kami: "来ぬ人を まつほの浦の 夕なぎに", shimo: "焼くや藻塩の 身もこがれつつ"
+      },
+      {
+        id: "98", name: "従二位家隆", shuka: null, isshu: 98,
+        kami: "風そよぐ ならの小川の 夕暮れは", shimo: "みそぎぞ夏の しるしなりける"
+      },
+      {
+        id: "99", name: "後鳥羽院", shuka: null, isshu: 99,
+        kami: "人も惜し 人も恨めし あぢきなく", shimo: "世を思ふゆゑに ものを思ふ身は"
+      },
+      {
+        id: "100", name: "順徳院", shuka: null, isshu: 100,
+        kami: "ももしきや 古き軒端の しのぶにも", shimo: "なほあまりある むかしなりけり"
+      },
+      {
+        id: "sx1", name: "一条院皇后宮", shuka: 53, isshu: null,
+        kami: "夜もすがら 契りしことを 忘れずは", shimo: "こひむ涙の 色ぞゆかしき"
+      },
+      {
+        id: "sx2", name: "今中納言国信", shuka: 73, isshu: null,
+        kami: "春日野の 下萌えわたる 草の上にに", shimo: "つれなく見ゆる 春の淡雪"
+      },
+      {
+        id: "sx3", name: "権中納言長方", shuka: 90, isshu: null,
+        kami: "紀の国の 由良の岬に 拾ふてふ", shimo: "たまさかにだに 逢ひ見てしがな"
+      },
+      {
+        id: "sx4", name: "源俊頼朝臣", shuka: 76, isshu: null,
+        kami: "山桜 さきそめしより 久方の", shimo: "くもゐにみゆる 瀧の白糸"
+      },
+      {
+        id: "sx5", name: "正三位家隆", shuka: 99, isshu: null,
+       kami: "風そよぐ ならの小川の 夕暮れは", shimo: "みそぎぞ夏の しるしなりける"
+      },
+    ];
+
+    const ROW_H = window.innerWidth <= 600 ? 104 : 80;
+    const ROWS = 101;
+    const OFFSCREEN = ROWS * ROW_H + 400;
+
+    let currentMode = 'shuka';
+
+    const C = {
+      common: { bg: '#F5EBE0', stripe: '#c8b89a', text: '#333333', poem: '#333333' },
+      onlyShuka: {
+        bg: '#FAECE7', stripe: '#D85A30', text: '#333333', poem: '#333333',
+        badgeBg: '#F0997B', badgeText: '#4A1B0C'
+      },
+      onlyIsshu: {
+        bg: '#E6F1FB', stripe: '#378ADD', text: '#333333', poem: '#333333',
+        badgeBg: '#85B7EB', badgeText: '#042C53'
+      },
+    };
+
+    function buildWidget() {
+      const numEl = document.getElementById('rail-numbers');
+      const cardsEl = document.getElementById('rail-cards');
+
+      for (let i = 1; i <= ROWS; i++) {
+        const d = document.createElement('div');
+        d.className = 'num-cell' + (i % 2 === 0 ? ' even' : '');
+        d.textContent = i;
+        numEl.appendChild(d);
+      }
+
+      for (let i = 0; i < ROWS; i++) {
+        const s = document.createElement('div');
+        s.className = 'stripe-row' + (i % 2 !== 0 ? ' even' : '');
+        s.style.top = (i * ROW_H) + 'px';
+        cardsEl.appendChild(s);
+      }
+
+      cardsEl.style.height = (ROWS * ROW_H) + 'px';
+
+      POETS.forEach(poet => {
+        const inShuka = poet.shuka !== null;
+        const inIsshu = poet.isshu !== null;
+        const onlyShuka = inShuka && !inIsshu;
+        const onlyIsshu = !inShuka && inIsshu;
+        const c = onlyShuka ? C.onlyShuka : onlyIsshu ? C.onlyIsshu : C.common;
+
+        const card = document.createElement('div');
+        card.className = 'poet-card';
+        card.id = 'card-' + poet.id;
+        card.style.background = c.bg;
+        card.style.top = inShuka ? ((poet.shuka - 1) * ROW_H + 6) + 'px'
+          : OFFSCREEN + 'px';
+        card.style.opacity = inShuka ? '1' : '0';
+
+        const stripe = document.createElement('div');
+        stripe.className = 'card-stripe';
+        stripe.style.background = c.stripe;
+        card.appendChild(stripe);
+
+        const body = document.createElement('div');
+        body.className = 'card-body';
+
+        // 1行目：歌
+        if (poet.kami || poet.shimo) {
+          const poemEl = document.createElement('div');
+          poemEl.className = 'card-poem';
+
+          const kamiSpan = document.createElement('span');
+          kamiSpan.className = 'poem-kami';
+          kamiSpan.textContent = poet.kami || '';
+          poemEl.appendChild(kamiSpan);
+
+          const sepSpan = document.createElement('span');
+          sepSpan.className = 'poem-sep';
+          sepSpan.textContent = '\u0020';
+          poemEl.appendChild(sepSpan);
+
+          const shimoSpan = document.createElement('span');
+          shimoSpan.className = 'poem-shimo';
+          shimoSpan.textContent = poet.shimo || '';
+          poemEl.appendChild(shimoSpan);
+
+          body.appendChild(poemEl);
+        }
+
+        // 2行目：歌人名 ＋ バッジ
+        const row1 = document.createElement('div');
+        row1.className = 'card-row1';
+
+        const nameEl = document.createElement('span');
+        nameEl.className = 'card-name';
+        nameEl.style.color = c.text;
+        nameEl.textContent = poet.name;
+        row1.appendChild(nameEl);
+
+        if (onlyShuka || onlyIsshu) {
+          const badge = document.createElement('span');
+          badge.className = 'card-badge';
+          badge.textContent = onlyShuka ? '百人秀歌のみ' : '百人一首のみ';
+          badge.style.background = c.badgeBg;
+          badge.style.color = c.badgeText;
+          row1.appendChild(badge);
+        }
+        body.appendChild(row1);
+
+        card.appendChild(body);
+        cardsEl.appendChild(card);
+      });
+    }
+
+    function setMode(mode) {
+      if (mode === currentMode) return;
+      currentMode = mode;
+
+      document.getElementById('btn-shuka').className =
+        'btn-mode' + (mode === 'shuka' ? ' active-shuka' : '');
+      document.getElementById('btn-isshu').className =
+        'btn-mode' + (mode === 'isshu' ? ' active-isshu' : '');
+
+      POETS.forEach(poet => {
+        const card = document.getElementById('card-' + poet.id);
+        if (!card) return;
+        const pos = mode === 'shuka' ? poet.shuka : poet.isshu;
+        if (pos !== null) {
+          card.style.top = ((pos - 1) * ROW_H + 6) + 'px';
+          card.style.opacity = '1';
+        } else {
+          card.style.top = OFFSCREEN + 'px';
+          card.style.opacity = '0';
+        }
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', buildWidget);
+  </script>
+  <script src="../js/back-to-top.js?20260908-02"></script>
+
+</body>
+
+</html>

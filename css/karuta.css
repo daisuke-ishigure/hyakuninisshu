@@ -1,0 +1,233 @@
+.section {
+  min-height: 600px;
+}
+
+body {
+  touch-action: manipulation !important;
+}
+
+#karuta_ul {
+  font-size: 1rem;
+  margin-bottom: 1em;
+}
+#karuta_ul li {
+  line-height: 1.7;
+  margin-bottom: 0.1em;
+}
+
+#karuta_container {
+  display: grid;
+  grid-template-columns: repeat(5, 130px);
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px 24px;
+  transform: translateX(2px);
+}
+@media (max-width: 960px) {
+  #karuta_container {
+    grid-template-columns: repeat(6, 130px);
+    row-gap: 10px;
+    -moz-column-gap: 10px;
+         column-gap: 10px;
+  }
+}
+@media (max-width: 930px) {
+  #karuta_container {
+    grid-template-columns: repeat(5, 130px);
+  }
+}
+@media (max-width: 830px) {
+  #karuta_container {
+    grid-template-columns: repeat(4, 130px);
+  }
+}
+@media (max-width: 650px) {
+  #karuta_container {
+    grid-template-columns: repeat(3, 130px);
+  }
+}
+@media (max-width: 500px) {
+  #karuta_container {
+    grid-template-columns: repeat(3, 100px);
+    row-gap: 5px;
+    -moz-column-gap: 5px;
+         column-gap: 5px;
+  }
+}
+@media (max-width: 349px) {
+  #karuta_container {
+    grid-template-columns: repeat(2, 130px);
+    row-gap: 5px;
+    -moz-column-gap: 5px;
+         column-gap: 5px;
+  }
+}
+@media (max-width: 330px) {
+  #karuta_container {
+    grid-template-columns: repeat(2, 120px);
+    row-gap: 5px;
+    -moz-column-gap: 5px;
+         column-gap: 5px;
+  }
+}
+
+.karuta_card {
+  aspect-ratio: 0.7;
+  height: auto;
+  padding: 0.6em 0.5em 0;
+  border: 3px solid #007e5e;
+  background: #fff;
+  background-image: url(../img/huda_karuta.webp);
+  writing-mode: vertical-rl;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+@media (max-width: 400px) {
+  .karuta_card {
+    aspect-ratio: 0.65;
+    border: 2px solid #4e3052;
+    padding: 0.5em 0.2em 0;
+  }
+}
+.karuta_card p {
+  font-family: "noto-serif-japanese", serif;
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 0.5em;
+  margin-bottom: 0;
+  line-height: 1.7;
+}
+@media (max-width: 500px) {
+  .karuta_card p {
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: 0.3em !important;
+    line-height: 1.5;
+  }
+}
+
+#cardCountSelector {
+  width: 40px;
+  height: 28px;
+  font-size: 1rem;
+  text-align: center;
+}
+
+#start_button,
+#replay_button {
+  width: 100px;
+  height: 30px;
+  margin-right: 0 auto;
+  background-image: url(../img/icon_start.svg);
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+#start_button_en,
+#replay_button_en {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100px;
+  height: 30px;
+  margin: 0 auto;
+  padding: 0 1em;
+  background-color: #B82343;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: bold;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+#start_button_en:hover,
+#replay_button_en:hover {
+  background-color: #9a1c38;
+}
+
+#share_button {
+  display: none;
+  width: 100px;
+  height: 30px;
+  margin: 1em auto;
+  background-image: url(../img/xshare.svg);
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+#replay_button {
+  background-image: url(../img/replay.svg);
+}
+
+#replay_button_en {
+  background-image: none;
+}
+
+#operatin_area {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  margin-bottom: 10px;
+  justify-content: center;
+}
+#operatin_area label {
+  font-size: 14px;
+}
+@media (max-width: 400px) {
+  #operatin_area label {
+    font-size: 11px;
+  }
+}
+
+#result_text {
+  margin-top: 10px;
+  font-size: 0.9em;
+  text-align: center;
+}
+
+@media (max-width: 550px) {
+  .mojikan {
+    letter-spacing: -0.02em;
+  }
+}
+
+#judgement {
+  border-collapse: collapse;
+  background-color: #fff;
+  margin: 0 auto 0;
+  width: 60%;
+}
+@media (max-width: 640px) {
+  #judgement {
+    width: 100%;
+  }
+}
+#judgement th, #judgement td {
+  border: solid 1px #333;
+  padding: 2px;
+  text-align: center;
+  font-weight: 100;
+}
+#judgement td:nth-child(n+2) {
+  text-align: left;
+}
+#judgement th {
+  background-color: #B82343;
+  color: #fff;
+}
+
+#result_container {
+  text-align: center;
+}/*# sourceMappingURL=karuta.css.map */

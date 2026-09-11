@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="Keywords" content="Hyakunin Isshu, audio reading, continuous playback">
+  <title>Listen to the Hyakunin Isshu Read Aloud — Play All 100 Poems in Order or Shuffled | Shigure no Hyakunin Isshu</title>
+  <link rel="canonical" href="https://hyakuninisshu.com/sound-list_en.html">
+  <meta name="description" content="Listen to the Hyakunin Isshu poems read aloud. Play all 100 poems in random order, or play them straight through in order.">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+  <link rel="stylesheet" href="../css/style.css?20260908-16">
+  <link rel="stylesheet" href="../css/player.css?ver04">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@500&family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap"
+    rel="stylesheet">
+  <!-- ogp設定 -->
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Listen to the Hyakunin Isshu Read Aloud — Play All 100 Poems in Order or Shuffled | Shigure no Hyakunin Isshu">
+  <meta property="og:description" content="Listen to the Hyakunin Isshu poems read aloud. Play all 100 poems in random order, or play them straight through in order.">
+  <meta property="og:image" content="https://hyakuninisshu.com/img/thumb_sound-list.webp">
+  <meta property="og:url" content="https://hyakuninisshu.com/sound-list_en.html">
+  <meta property="og:site_name" content="Shigure no Hyakunin Isshu">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- アップルタッチアイコン -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <!-- favicon用 -->
+  <link rel="icon" href="/favicon.ico">
+  <style>
+
+    li{
+      font-size:0.9rem!important;
+    }
+    li rt{
+      color:#333;
+    }
+    li.active rt{
+      color:#fff;
+    }
+    /* 日本語原文の下に添えるローマ字併記行（歌・歌人名とも共通） */
+    li .romaji-line {
+      display: block;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-style: italic;
+      font-size: 0.82em;
+      color: #7a6655;
+      line-height: 1.5;
+      margin-top: 0.15em;
+    }
+    li.active .romaji-line {
+      color: #ffd9d9;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ヘッダーここから -->
+  <header class="header">
+    <p class="site-title">
+    <a href="https://hyakuninisshu.com/">Shigure no Hyakunin Isshu</a>
+  </p>
+    <div class="header_list">
+      <a href="index_en.html"><img src="../img/icon_top_en.svg?ver-01" alt="Top" class="icon"></a>
+      <a href="introduction_en.html" style="color:#333"><img src="/img/icon_column_en.svg?ver-01" alt="Articles" class="icon"></a>
+      <a href="introduction-app_en.html" style="color:#333"><img src="/img/icon_app_en.svg?ver-01" alt="Apps" class="icon"></a>
+      <a href="sound-list.html"><img src="/img/icon_lang.svg?ver-01" alt="Japanese" class="icon"></a>
+      <a href="list_en.html"><img src="/img/icon_list_en.svg?ver-01" alt="Poem list and search" class="icon"></a>
+    </div>
+  </header>
+  <!-- ヘッダーここまで・メインここから -->
+  <main class="main_about-main">
+    <div class="about-main">
+      <div class="section">
+        <nav>
+          <ol class="breadcrumb">
+            <li><a href="index_en.html">Top</a></li>
+            <li><a href="introduction-app_en.html">Apps</a></li>
+            <li>Hyakunin Isshu Audio Player</li>
+          </ol>
+        </nav>
+        <hr>
+        <h1>Hyakunin Isshu Audio Player</h1>
+        <ul>
+          <li>Plays the Hyakunin Isshu readings back to back.</li>
+          <li>Click the "<img src="img/play-icon.gif" alt="Play icon" class="shuffle-icon">" icon, then the "<img
+              src="img/shuffle-icon.gif" alt="Shuffle icon" class="shuffle-icon">" icon next to it, to choose between random and in-order playback. Random playback is on by default.</li>
+          <li>Click a poet's name to jump to that poet's page. Each Japanese verse is paired with its romaji reading, and each poet's name with its English form.</li>
+        </ul>
+        <div class="audio-playlist">
+          <div class="controls">
+            <div class="row_number">
+              <div class="playing-number">Number</div>
+            </div>
+            <div class="row">
+              <div class="playing-title">Title</div>
+            </div>
+            <div class="row">
+              <div class="time" role="timer">
+                <span class="current-time">0:00</span>
+              </div>
+              <input class="range-slider" type="range" name="seek" value="0" step=".1" aria-label="seek bar">
+              <div class="time" role="timer">
+                <span class="duration">0:00</span>
+              </div>
+            </div>
+
+            <div class="row">
+              <button class="skip-backward skip-backward-btn" type="button" aria-label="Skip Backward"></button>
+              <button class="toggle play-btn" type="button" aria-label="Play"></button>
+              <button class="skip-forward skip-forward-btn" type="button" aria-label="Skip Forward"></button>
+              <button class="random random-btn" type="button" aria-label="Random"></button>
+              <button class="mute volume-btn" type="button" aria-label="Mute"></button>
+              <input class="range-slider" type="range" name="vol" min="0.0" max="1.0" value="1.0" step=".1"
+                aria-label="volume bar">
+              <button class="loop loop-btn" type="button" aria-label="Loop"></button>
+            </div>
+            <p class="nhk">Audio: NHK Creative Library<br><small>* Audio may not play in silent mode.</small></p>
+          </div>
+
+          <div class="track-list">
+            <ul>
+              <li data-audio-src="../sound/1.m4a"><ruby>秋<rt>あき</rt></ruby>の<ruby>田<rt>た</rt></ruby>の かりほの<ruby>庵<rt>いお
+                  </rt></ruby>の <ruby>苫<rt>とま</rt></ruby>をあらみ <br class="br-sp"><ruby>我<rt>わ</rt></ruby>が<ruby>衣手<rt>
+                    ころもで</rt></ruby>は <ruby>露<rt>つゆ</rt></ruby>にぬれつつ <br><span class="romaji-line">Akinotano Karihonoiono Tomaoarami <br class="br-sp">Wagakoromodeha Tsuyuninuretsutsu</span><br><span class="small"><a href="1_en.html"><ruby>天智天皇<rt>てんじてんのう</rt></ruby>（626年-671年）<br><span class="romaji-line">Emperor Tenji (626–671)</span></a></span></li>
+
+              <li data-audio-src="../sound/2.m4a"><ruby>春<rt>はる</rt></ruby><ruby>過<rt>す</rt></ruby>ぎて <ruby>夏<rt>なつ</rt>
+                  </ruby><ruby>来<rt>き</rt></ruby>にけらし <ruby>白妙<rt>しろたえ</rt></ruby>の <br class="br-sp"><ruby>衣<rt>ころも
+                  </rt></ruby>ほす<ruby>てふ<rt>ちょう</rt></ruby> <ruby>天<rt>あま</rt></ruby>の<ruby>香具山<rt>かぐやま</rt>
+                  </ruby><br><span class="romaji-line">Harusugite Natsukinikerashi Shirotaeno <br class="br-sp">Koromohosucho Amanokaguyama</span><br><span class="small"><a href="2_en.html"><ruby>持統天皇<rt>じとうてんのう</rt>
+                      </ruby>（645年～702年）<br><span class="romaji-line">Empress Jitō (645–702)</span></a></span></li>
+
+              <li data-audio-src="../sound/3.m4a">あしびきの <ruby>山鳥<rt>やまどり</rt></ruby>の<ruby>尾<rt>お</rt></ruby>の
+                しだり<ruby>尾<rt>お</rt></ruby>の <br class="br-sp">ながながし<ruby>夜<rt>よ</rt></ruby>を ひとりかも<ruby>寝<rt>ね</rt>
+                  </ruby><ruby>む<rt>ん</rt></ruby><br><span class="romaji-line">Ashibikino Yamadorinono Shidariono <br class="br-sp">Naganagashiyowo Hitorikamonen</span><br><span class="small"><a href="3_en.html"><ruby>柿本人麻呂<rt>かきのもとひとまろ</rt>
+                      </ruby>（生没年不詳）<br><span class="romaji-line">Kakinomoto no Hitomaro (dates unknown)</span></a></span></li>
+
+              <li data-audio-src="../sound/4.m4a"><ruby>田子<rt>たご</rt></ruby>の<ruby>浦<rt>うら</rt></ruby>に うちいでてみれば
+                <ruby>白妙<rt>しろたえ</rt></ruby>の <br class="br-sp"><ruby>富士<rt>ふじ</rt></ruby>の<ruby>高嶺<rt>たかね</rt></ruby>に
+                <ruby>雪<rt>ゆき</rt></ruby>は<ruby>降<rt>ふ</rt></ruby>りつつ<br><span class="romaji-line">Tagonourani Uchiidetemireba Shirotaeno <br class="br-sp">Fujinotakaneni Yukiwafuritsutsu</span><br><span class="small"><a href="4_en.html"><ruby>山部赤人<rt>やまべのあかひと</rt></ruby>（生没年不詳）<br><span class="romaji-line">Yamabe no Akahito (dates unknown)</span></a></span></li>
+
+              <li data-audio-src="../sound/5.m4a"><ruby>奥山<rt>おくやま</rt></ruby>に <ruby>紅葉<rt>もみじ</rt></ruby><ruby>踏<rt>ふ
+                  </rt></ruby>み<ruby>分<rt>わ</rt></ruby>け <ruby>鳴<rt>な</rt></ruby>く<ruby>鹿<rt>しか</rt></ruby>の <br class="br-sp"><ruby>声<rt>こえ</rt></ruby><ruby>聞<rt>き</rt></ruby>く<ruby>時<rt>とき</rt></ruby>ぞ <ruby>秋<rt>
+                    あき</rt></ruby>はかなしき<br><span class="romaji-line">Okuyamani Momijifumiwake Nakushikano <br class="br-sp">Koekikutokizo Akihakanashiki</span><br><span class="small"><a href="5_en.html"><ruby>猿丸太夫<rt>さるまるだゆう</rt>
+                      </ruby>（生没年不詳）<br><span class="romaji-line">Sarumaru Dayū (dates unknown)</span></a></span></li>
+
+              <li data-audio-src="../sound/6.m4a">かささぎの <ruby>渡<rt>わた</rt></ruby>せる<ruby>橋<rt>はし</rt></ruby>に おく<ruby>霜
+                  <rt>しも</rt></ruby>の <br class="br-sp"><ruby>白<rt>しろ</rt></ruby>きをみれば <ruby>夜<rt>よ</rt>
+                  </ruby>ぞふけにける<br><span class="romaji-line">Kasasagino Wataseruhashini Okushimono <br class="br-sp">Shirokiwomireba Yozofukenikeru</span><br><span class="small"><a href="6_en.html"><ruby>中納言家持<rt>ちゅうなごんやかもち</rt>
+                      </ruby>（718年頃～785年）<br><span class="romaji-line">Middle Counselor Yakamochi (c. 718–785)</span></a></span></li>
+
+              <li data-audio-src="../sound/7.m4a"><ruby>天<rt>あま</rt></ruby>の<ruby>原<rt>はら</rt></ruby>ふりさけみれば<ruby>春日<rt>
+                    かすが</rt></ruby>なる <br class="br-sp"><ruby>三笠<rt>みかさ</rt></ruby>の<ruby>山<rt>やま</rt></ruby>に<ruby>出
+                  <rt>い</rt></ruby>でし<ruby>月<rt>つき</rt></ruby>かも<br><span class="romaji-line">Amanohara Furisakemireba Kasuganaru <br class="br-sp">Mikasanoyamani Ideshitsukikamo</span><br><span class="small"><a href="7_en.html"><ruby>阿倍仲麻呂
+                      <rt>あべのなかまろ</rt></ruby>（698年頃～770年）<br><span class="romaji-line">Abe no Nakamaro (c. 698–770)</span></a></span></li>
+
+              <li data-audio-src="../sound/8.m4a">わが<ruby>庵<rt>いお</rt></ruby>は <ruby>都<rt>みやこ</rt></ruby>の<ruby>辰巳<rt>
+                    たつみ</rt></ruby> しかぞすむ <br class="br-sp"><ruby>世<rt>よ</rt></ruby>をう<ruby>ぢ<rt>じ</rt></ruby><ruby>山
+                  <rt>やま</rt></ruby>と <ruby>人<rt>ひと</rt></ruby>はい<ruby>ふ<rt>う</rt></ruby>なり<br><span class="romaji-line">Wagaioha Miyakonotatsumi Shikazosumu <br class="br-sp">Yowoujiyamato Hitohaiunari</span><br><span class="small"><a href="8_en.html"><ruby>喜撰法師<rt>きせんほうし</rt></ruby>（生没年不詳）<br><span class="romaji-line">Priest Kisen (dates unknown)</span></a></span></li>
+
+              <li data-audio-src="../sound/9.m4a"><ruby>花<rt>はな</rt></ruby>の<ruby>色<rt>いろ</rt></ruby>は うつりにけりな いた<ruby>づ
+                  <rt>ず</rt></ruby>らに <br class="br-sp">わが<ruby>身<rt>み</rt></ruby>よにふる ながめせしまに<br><span class="romaji-line">Hananoiroha Utsurinikerina Itazurani <br class="br-sp">Wagamiyonifuru Nagameseshimani</span><br><span class="small"><a href="9_en.html"><ruby>小野小町<rt>おののこまち</rt></ruby>（生没年不詳）<br><span class="romaji-line">Ono no Komachi (dates unknown)</span></a></span></li>
+
+              <li data-audio-src="../sound/10.m4a">これやこの <ruby>行<rt>ゆ</rt></ruby>くも<ruby>帰<rt>かえ</rt></ruby>るも わかれては <br class="br-sp">しるもしらぬも <ruby>逢坂<rt>おうさか</rt></ruby>の<ruby>関<rt>せき</rt></ruby><br><span class="romaji-line">Koreyakono Yukumokaerumo Wakareteha <br class="br-sp">Shirumoshiranumo Ousakanoseki</span><br><span class="small"><a href="10_en.html"><ruby>蝉丸<rt>せみまる</rt></ruby>（生没年不詳）<br><span class="romaji-line">Semimaru (dates unknown)</span></a></span></li>
+
+              <li data-audio-src="../sound/11.m4a">わたの<ruby>原<rt>はら</rt></ruby> <ruby>八十島<rt>やそしま</rt></ruby>かけて <ruby>漕
+                  <rt>こ</rt></ruby>ぎ<ruby>出<rt>い</rt></ruby>でぬと <br class="br-sp"><ruby>人<rt>ひと</rt></ruby>にはつげよ
+                あまのつり<ruby>舟<rt>ぶね</rt></ruby><br><span class="romaji-line">Watanohara Yasoshimakakete Kogiidenuto <br class="br-sp">Hitonihatsugeyo Amanotsuribune</span><br><span class="small"><a href="11_en.html"><ruby>参議篁<rt>さんぎたかむら</rt>
+                      </ruby>（802年～852年）<br><span class="romaji-line">Councillor Takamura (802–852)</span></a></span></li>
+
+              <li data-audio-src="../sound/12.m4a"><ruby>天<rt>あま</rt></ruby>つ<ruby>風<rt>かぜ</rt></ruby> <ruby>雲<rt>くも
+                  </rt></ruby>のかよ<ruby>ひ<rt>い</rt></ruby><ruby>路<rt>じ</rt></ruby> <ruby>吹<rt>ふ</rt></ruby>きと<ruby>ぢ<rt>じ
+                  </rt></ruby>よ <br class="br-sp">をとめの<ruby>姿<rt>すがた</rt></ruby> しばしとどめ<ruby>む<rt>ん</rt></ruby><br><span class="romaji-line">Amatsukaze Kumonokayoiji Fukitojiyo <br class="br-sp">Otomenosugata Shibashitodomen</span><br><span class="small"><a href="12_en.html"><ruby>僧正遍昭<rt>そうじょうへんじょう</rt></ruby>（816年～890年）<br><span class="romaji-line">High Priest Henjō (816–890)</span></a></span></li>
+
+              <li data-audio-src="../sound/13.m4a"><ruby>筑波嶺<rt>つくばね</rt></ruby>の <ruby>峰<rt>みね</rt></ruby>より<ruby>落<rt>
+                    お</rt></ruby>つる みなの<ruby>川<rt>がわ</rt></ruby> <br class="br-sp">こひぞつもりて <ruby>淵<rt>ふち</rt>
+                  </ruby>となりぬる<br><span class="romaji-line">Tsukubaneno Mineyoriotsuru Minanogawa <br class="br-sp">Koizotsumorite Fuchitonarinuru</span><br><span class="small"><a href="13_en.html"><ruby>陽成院<rt>ようぜいいん</rt>
+                      </ruby>（868年～949年）<br><span class="romaji-line">Retired Emperor Yōzei (868–949)</span></a></span></li>
+
+              <li data-audio-src="../sound/14.m4a"><ruby>陸奥<rt>みちのく</rt></ruby>の しのぶも<ruby>ぢ<rt>じ</rt></ruby>ずり <ruby>誰
+                  <rt>たれ</rt></ruby>ゆ<ruby>ゑ<rt>え</rt></ruby>に <br class="br-sp"><ruby>乱<rt>みだ</rt></ruby>れそめにし <ruby>我
+                  <rt>われ</rt></ruby>ならなくに<br><span class="romaji-line">Michinokuno Shinobumojizuri Tareyueni <br class="br-sp">Midaresomenishi Warenaranakuni</span><br><span class="small"><a href="14_en.html"><ruby>河原左大臣<rt>かわらのさだいじん</rt>
+                      </ruby>（822年～895年）<br><span class="romaji-line">Minister of the Left of Kawara (822–895)</span></a></span></li>
+
+              <li data-audio-src="../sound/15.m4a"><ruby>君<rt>きみ</rt></ruby>がため <ruby>春<rt>はる</rt></ruby>の<ruby>野<rt>の
+                  </rt></ruby>に<ruby>出<rt>い</rt></ruby>でて <ruby>若菜<rt>わかな</rt></ruby>つむ <br class="br-sp">わが<ruby>衣手<rt>
+                    ころもで</rt></ruby>に <ruby>雪<rt>ゆき</rt></ruby>は<ruby>降<rt>ふ</rt></ruby>りつつ<br><span class="romaji-line">Kimigatame Harunononiidete Wakanatsumu <br class="br-sp">Wagakoromodeni Yukihafuritsutsu</span><br><span class="small"><a href="15_en.html"><ruby>光孝天皇<rt>こうこうてんのう</rt></ruby>（830年～887年）<br><span class="romaji-line">Emperor Kōkō (830–887)</span></a></span></li>
+
+              <li data-audio-src="../sound/16.m4a"><ruby>立<rt>た</rt></ruby>ち<ruby>別<rt>わか</rt></ruby>れ いなばの<ruby>山<rt>やま
+                  </rt></ruby>の <ruby>峰<rt>みね</rt></ruby>に<ruby>生<rt>お</rt></ruby><ruby>ふ<rt>う</rt></ruby>る <br class="br-sp">まつとし<ruby>聞<rt>き</rt></ruby>かば <ruby>今<rt>いま</rt></ruby><ruby>帰<rt>かえ</rt>
+                  </ruby>りこ<ruby>む<rt>ん</rt></ruby><br><span class="romaji-line">Tachiwakare Inabanoyamano Mineniouru <br class="br-sp">Matsutoshikikaba Imakaerikon</span><br><span class="small"><a href="16_en.html"><ruby>中納言行平<rt>ちゅうなごんゆきひら
+                      </rt></ruby>（818年～893年）<br><span class="romaji-line">Middle Counselor Yukihira (818–893)</span></a></span></li>
+
+              <li data-audio-src="../sound/17.m4a">ちはやぶる <ruby>神代<rt>かみよ</rt></ruby>もきかず <ruby>竜田川<rt>たつたがわ</rt></ruby>
+                <br class="br-sp">から<ruby>紅<rt>くれない</rt></ruby>に <ruby>水<rt>みず</rt></ruby>くくるとは<br><span class="romaji-line">Chihayaburu Kamiyomokikazu Tatsutagawa <br class="br-sp">Karakurenaini Mizukukurutoha</span><br><span class="small"><a href="17_en.html"><ruby>在原業平朝臣<rt>ありわらのなりひらあそん</rt></ruby>（825年～880年）<br><span class="romaji-line">Ariwara no Narihira Ason (825–880)</span></a></span></li>
+
+              <li data-audio-src="../sound/18.m4a"><ruby>住<rt>すみ</rt></ruby>の<ruby>江<rt>え</rt></ruby>の <ruby>岸<rt>きし
+                  </rt></ruby>による<ruby>波<rt>なみ</rt></ruby> よるさ<ruby>へ<rt>え</rt></ruby>や <br class="br-sp"><ruby>夢<rt>ゆめ
+                  </rt></ruby>のかよひ<ruby>路<rt>じ</rt></ruby> <ruby>人目<rt>ひとめ</rt></ruby>よくら<ruby>む<rt>ん</rt>
+                  </ruby><br><span class="romaji-line">Suminoeno Kishiniyorunami Yorusaeya <br class="br-sp">Yumenokayoiji Hitomeyokuran</span><br><span class="small"><a href="18_en.html"><ruby>藤原敏行朝臣<rt>ふじわらのとしゆきあそん</rt>
+                      </ruby>（生年不詳～901年頃）<br><span class="romaji-line">Fujiwara no Toshiyuki Ason (dates unknown–c. 901)</span></a></span></li>
+
+              <li data-audio-src="../sound/19.m4a"><ruby>難波潟<rt>なにわがた</rt></ruby> みじかき<ruby>葦<rt>あし</rt></ruby>の ふしのまも
+                <br class="br-sp"><ruby>逢<rt>あ</rt></ruby><ruby>は<rt>わ</rt></ruby>でこの<ruby>世<rt>よ</rt></ruby>を <ruby>過
+                  <rt>す</rt></ruby>ぐしてよとや<br><span class="romaji-line">Naniwagata Mijikakiashino Fushinomamo <br class="br-sp">Awadekonoyowo Sugushiteyotoya</span><br><span class="small"><a href="19_en.html"><ruby>伊勢<rt>いせ</rt>
+                      </ruby>（生没年不詳）<br><span class="romaji-line">Ise (dates unknown)</span></a></span></li>
+
+              <li data-audio-src="../sound/20.m4a">わびぬれば いまはたおなじ <ruby>難波<rt>なにわ</rt></ruby>なる <br class="br-sp">みをつくしても
+                <ruby>逢<rt>あ</rt></ruby><ruby>は<rt>わ</rt></ruby><ruby>む<rt>ん</rt></ruby>とぞ<ruby>思<rt>おも</rt>
+                  </ruby><ruby>ふ<rt>う</rt></ruby><br><span class="romaji-line">Wabinureba Imahataonaji Naniwanaru <br class="br-sp">Miwotsukushitemo Awantozoomou</span><br><span class="small"><a href="20_en.html"><ruby>元良親王<rt>もとよししんのう</rt>
+                      </ruby>（890年～943年）<br><span class="romaji-line">Prince Motoyoshi (890–943)</span></a></span></li>
+
+              <li data-audio-src="../sound/21.m4a"><ruby>今<rt>いま</rt></ruby>こ<ruby>む<rt>ん</rt></ruby>と い<ruby>ひ<rt>い
+                  </rt></ruby>しばかりに <ruby>長月<rt>ながつき</rt></ruby>の <br class="br-sp"><ruby>有明<rt>ありあけ</rt></ruby>の<ruby>月
+                  <rt>つき</rt></ruby>を <ruby>待<rt>ま</rt></ruby>ち<ruby>出<rt>い</rt></ruby>でつるかな<br><span class="romaji-line">Imakonto Iishibakarini Nagatsukino <br class="br-sp">Ariakenotsukiwo Machiidetsurukana</span><br><span class="small"><a href="21_en.html"><ruby>素性法師<rt>そせいほうし</rt></ruby>（生没年不詳）<br><span class="romaji-line">Priest Sosei (dates unknown)</span></a></span></li>
+
+              <li data-audio-src="../sound/22.m4a"><ruby>吹<rt>ふ</rt></ruby>くからに <ruby>秋<rt>あき</rt></ruby>の<ruby>草木<rt>
+                    くさき</rt></ruby>の しをるれば <br class="br-sp">むべ<ruby>山風<rt>やまかぜ</rt></ruby>を <ruby>嵐<rt>あらし</rt>
+                  </ruby>とい<ruby>ふ<rt>う</rt></ruby>ら<ruby>む<rt>ん</rt></ruby><br><span class="romaji-line">Fukukarani Akinokusakino Shiorureba <br class="br-sp">Mubeyamakazewo Arashitoiuran</span><br><span class="small"><a href="22_en.html"><ruby>文屋康秀<rt>ふんやのやすひで</rt></ruby>（生没年不詳）<br><span class="romaji-line">Fun'ya no Yasuhide (dates unknown)</span></a></span></li>
+
+              <li data-audio-src="../sound/23.m4a"><ruby>月<rt>つき</rt></ruby>みれば ちぢにものこそ <ruby>悲<rt>かな</rt></ruby>しけれ <br class="br-sp">わが<ruby>身<rt>み</rt></ruby><ruby>一<rt>ひと</rt></ruby>つの <ruby>秋<rt>あき</rt>
+                  </ruby>にはあらねど<br><span class="romaji-line">Tsukimireba Chijinimonokoso Kanashikere <br class="br-sp">Wagamihitotsuno Akinihaaranedo</span><br><span class="small"><a href="23_en.html"><ruby>大江千里<rt>おおえのちさと</rt>
+                      </ruby>（生没年不詳）<br><span class="romaji-line">Ōe no Chisato (dates unknown)</span></a></span></li>
+
+              <li data-audio-src="../sound/24.m4a">このたびは <ruby>幣<rt>ぬさ</rt></ruby>もとりあ<ruby>へ<rt>え</rt></ruby>ず
+                <ruby>手向山<rt>たむけやま</rt></ruby> <br class="br-sp">もみぢのにしき <ruby>神<rt>かみ</rt></ruby>のまにまに<br><span class="romaji-line">Konotabiha Nusamotoriaezu Tamukeyama <br class="br-sp">Momijinonishiki Kaminomanimani</span><br><span class="small"><a href="24_en.html"><ruby>菅家<rt>かんけ</rt></ruby>（845年～903年）<br><span class="romaji-line">Kanke (845–903)</span></a></span></li>
+
+              <li data-audio-src="../sound/25.m4a"><ruby>名<rt>な</rt></ruby>にし<ruby>負<rt>お</rt></ruby>はば <ruby>逢坂山<rt>
+                    おうさかやま</rt></ruby>の さねか<ruby>づ<rt>ず</rt></ruby>ら <br class="br-sp"><ruby>人<rt>ひと</rt></ruby>にしられで
+                くるよしもがな<br><span class="romaji-line">Nanishiowaba Osakayamano Sanekazura <br class="br-sp">Hitonishirarede Kuruyoshimogana</span><br><span class="small"><a href="25_en.html"><ruby>三条右大臣<rt>さんじょうのうだいじん</rt>
+                      </ruby>（873年～932年）<br><span class="romaji-line">Minister of the Right of Sanjō (873–932)</span></a></span></li>
+
+              <li data-audio-src="../sound/26.m4a"><ruby>小倉山<rt>おぐらやま</rt></ruby> <ruby>峰<rt>みね</rt></ruby>のもみ<ruby>ぢ
+                  <rt>じ</rt></ruby><ruby>葉<rt>は</rt></ruby> <ruby>心<rt>こころ</rt></ruby>あらば <br class="br-sp"><ruby>今<rt>
+                    いま</rt></ruby>ひとたびの みゆき<ruby>待<rt>ま</rt></ruby>たな<ruby>む<rt>ん</rt></ruby><br><span class="romaji-line">Ogurayama Minenomomijiba Kokoroaraba <br class="br-sp">Imahitotabino Miyukimatanan</span><br><span class="small"><a href="26_en.html"><ruby>貞信公<rt>ていしんこう</rt></ruby>（880年～949年）<br><span class="romaji-line">Teishin-kō (880–949)</span></a></span></li>
+
+              <li data-audio-src="../sound/27.m4a">みかの<ruby>原<rt>はら</rt></ruby> わきて<ruby>流<rt>なが</rt></ruby>るる い<ruby>づ
+                  <rt>ず</rt></ruby>み<ruby>川<rt>がわ</rt></ruby> <br class="br-sp">いつ<ruby>見<rt>み</rt></ruby>きとてか <ruby>恋
+                  <rt>こい</rt></ruby>しかるら<ruby>む<rt>ん</rt></ruby><br><span class="romaji-line">Mikanohara Wakitenagaruru Izumigawa <br class="br-sp">Itsumikitoteka Koishikaruran</span><br><span class="small"><a href="27_en.html"><ruby>中納言兼輔
+                      <rt>ちゅうなごんかねすけ</rt></ruby>（877年～933年）<br><span class="romaji-line">Middle Counselor Kanesuke (877–933)</span></a></span></li>
+
+              <li data-audio-src="../sound/28.m4a"><ruby>山里<rt>やまざと</rt></ruby>は <ruby>冬<rt>ふゆ</rt></ruby>ぞさびしさ まさりける
+                <br class="br-sp"><ruby>人目<rt>ひとめ</rt></ruby>も<ruby>草<rt>くさ</rt></ruby>も かれぬと<ruby>思<rt>おも</rt>
+                  </ruby><ruby>へ<rt>え</rt></ruby>ば<br><span class="romaji-line">Yamazatoha Fuyuzosabishisa Masarikeru <br class="br-sp">Hitomemokusamo Karenutoomoeba</span><br><span class="small"><a href="28_en.html"><ruby>源宗于朝臣<rt>みなもとのむねゆきあそん
+                      </rt></ruby>（生年不詳～939年）<br><span class="romaji-line">Minamoto no Muneyuki Ason (dates unknown–939)</span></a></span></li>
+
+              <li data-audio-src="../sound/29.m4a"><ruby>心当<rt>こころあ</rt></ruby>てに <ruby>折<rt>お</rt></ruby>らばや<ruby>折<rt>
+                    お</rt></ruby>ら<ruby>む<rt>ん</rt></ruby> <ruby>初霜<rt>はつしも</rt></ruby>の <br class="br-sp">おきまど<ruby>は
+                  <rt>わ</rt></ruby>せる <ruby>白菊<rt>しらぎく</rt></ruby>の<ruby>花<rt>はな</rt></ruby><br><span class="romaji-line">Kokoroateni OrabayaOran Hatsushimono <br class="br-sp">Okimadowaseru Shiragikunohana</span><br><span class="small"><a href="29_en.html"><ruby>凡河内躬恒<rt>おおしこうちのみつね</rt></ruby>（生没年不詳）<br><span class="romaji-line">Ōshikōchi no Mitsune (dates unknown)</span></a></span></li>
+
+              <li data-audio-src="../sound/30.m4a"><ruby>有明<rt>ありあけ</rt></ruby>の つれなく<ruby>見<rt>み</rt></ruby>えし <ruby>別
+                  <rt>わか</rt></ruby>れより <br class="br-sp">あかつきばかり <ruby>憂<rt>う</rt></ruby>きものはなし<br><span class="romaji-line">Ariakeno Tsurenakumieshi Wakareyori <br class="br-sp">Akatsukibakari Ukimonohanashi</span><br><span class="small"><a href="30_en.html"><ruby>壬生忠岑<rt>みぶのただみね</rt></ruby>（生没年不詳）<br><span class="romaji-line">Mibu no Tadamine (dates unknown)</span></a></span></li>
+
+              <li data-audio-src="../sound/31.m4a"><ruby>朝<rt>あさ</rt></ruby>ぼらけ <ruby>有明<rt>ありあけ</rt></ruby>の<ruby>月<rt>
+                    つき</rt></ruby>と <ruby>見<rt>み</rt></ruby>るまでに <br class="br-sp"><ruby>吉野<rt>よしの</rt></ruby>の<ruby>里
+                  <rt>さと</rt></ruby>に <ruby>降<rt>ふ</rt></ruby>れる<ruby>白雪<rt>しらゆき</rt></ruby><br><span class="romaji-line">Asaborake Ariakenotsukito Mirumadeni <br class="br-sp">Yoshinonosatoni Furerushirayuki</span><br><span class="small"><a href="31_en.html"><ruby>坂上是則<rt>さかのうえのこれのり</rt></ruby>（生没年不詳）<br><span class="romaji-line">Sakanoue no Korenori (dates unknown)</span></a></span></li>
+
+              <li data-audio-src="../sound/32.m4a"><ruby>山川<rt>やまがわ</rt></ruby>に <ruby>風<rt>かぜ</rt></ruby>のかけたる しがらみは
+                <br class="br-sp"><ruby>流<rt>なが</rt></ruby>れもあ<ruby>へ<rt>え</rt></ruby>ぬ <ruby>紅葉<rt>もみじ</rt>
+                  </ruby>なりけり<br><span class="romaji-line">Yamagawani Kazenokaketaru Shigaramiha <br class="br-sp">Nagaremoaenu Momijinarikeri</span><br><span class="small"><a href="32_en.html"><ruby>春道列樹<rt>はるみちのつらき</rt>
+                      </ruby>（生年不詳～920年）<br><span class="romaji-line">Harumichi no Tsuraki (dates unknown–920)</span></a></span></li>
+
+              <li data-audio-src="../sound/33.m4a"><ruby>久方<rt>ひさかた</rt></ruby>の <ruby>光<rt>ひかり</rt></ruby>のどけき <ruby>春
+                  <rt>はる</rt></ruby>の<ruby>日<rt>ひ</rt></ruby>に <br class="br-sp">しづ<ruby>心<rt>こころ</rt></ruby>なく <ruby>花
+                  <rt>はな</rt></ruby>の<ruby>散<rt>ち</rt></ruby>るら<ruby>む<rt>ん</rt></ruby><br><span class="romaji-line">Hisakatano Hikarinodokeki Harunohini <br class="br-sp">Shizugokoronaku Hananochiruran</span><br><span class="small"><a href="33_en.html"><ruby>紀友則<rt>きのとものり</rt></ruby>（生年不詳～904年頃）<br><span class="romaji-line">Ki no Tomonori (dates unknown–c. 904)</span></a></span></li>
+
+              <li data-audio-src="../sound/34.m4a"><ruby>誰<rt>たれ</rt></ruby>をかも <ruby>知<rt>し</rt></ruby>る<ruby>人<rt>ひと
+                  </rt></ruby>にせ<ruby>む<rt>ん</rt></ruby> <ruby>高砂<rt>たかさご</rt></ruby>の <br class="br-sp"><ruby>松<rt>まつ
+                  </rt></ruby>も<ruby>昔<rt>むかし</rt></ruby>の <ruby>友<rt>とも</rt></ruby>ならなくに<br><span class="romaji-line">Tareokamoo Shiruhitonisen Takasagono <br class="br-sp">Matsumomukashino Tomonaranakuni</span><br><span class="small"><a href="34_en.html"><ruby>藤原興風<rt>ふじわらのおきかぜ</rt></ruby>（生没年不詳）<br><span class="romaji-line">Fujiwara no Okikaze (dates unknown)</span></a></span></li>
+
+              <li data-audio-src="../sound/35.m4a"><ruby>人<rt>ひと</rt></ruby>はいさ <ruby>心<rt>こころ</rt></ruby>も<ruby>知<rt>し
+                  </rt></ruby>らず ふるさとは <br class="br-sp"><ruby>花<rt>はな</rt></ruby>ぞ<ruby>昔<rt>むかし</rt></ruby>の <ruby>香
+                  <rt>か</rt></ruby>に<ruby>匂<rt>にお</rt></ruby><ruby>ひ<rt>い</rt></ruby>ける<br><span class="romaji-line">Hitohaisa Kokoromoshirazu Furusatoha <br class="br-sp">Hanazomukashino Kaninioikeru</span><br><span class="small"><a href="35_en.html"><ruby>紀貫之<rt>きのつらゆき</rt></ruby>（868年～945年）<br><span class="romaji-line">Ki no Tsurayuki (868–945)</span></a></span></li>
+
+              <li data-audio-src="../sound/36.m4a"><ruby>夏<rt>なつ</rt></ruby>の<ruby>夜<rt>よ</rt></ruby>は まだ<ruby>宵<rt>よい
+                  </rt></ruby>ながら あけぬるを <br class="br-sp"><ruby>雲<rt>くも</rt></ruby>のいづこに <ruby>月<rt>つき</rt>
+                  </ruby>やどるら<ruby>む<rt>ん</rt></ruby><br><span class="romaji-line">Natsunoyoha Madayoinagara Akenuruwo <br class="br-sp">Kumonoizukoni Tsukiyadoruran</span><br><span class="small"><a href="36_en.html"><ruby>清原深養父<rt>きよはらのふかやぶ
+                      </rt></ruby>（生没年不詳）<br><span class="romaji-line">Kiyohara no Fukayabu (dates unknown)</span></a></span></li>
+
+              <li data-audio-src="../sound/37.m4a"><ruby>白露<rt>しらつゆ</rt></ruby>に <ruby>風<rt>かぜ</rt></ruby>の<ruby>吹<rt>ふ
+                  </rt></ruby>きしく <ruby>秋<rt>あき</rt></ruby>の<ruby>野<rt>の</rt></ruby>は <br class="br-sp">つらぬきとめぬ <ruby>玉
+                  <rt>たま</rt></ruby>ぞ<ruby>散<rt>ち</rt></ruby>りける<br><span class="romaji-line">Shiratsuyuni Kazenofukishiku Akinonoha <br class="br-sp">Tsuranukitomenu Tamazochirikeru</span><br><span class="small"><a href="37_en.html"><ruby>文屋朝康
+                      <rt>ふんやのあさやす</rt></ruby>（生没年不詳）<br><span class="romaji-line">Fun'ya no Asayasu (dates unknown)</span></a></span></li>
+
+              <li data-audio-src="../sound/38.m4a"><ruby>忘<rt>わす</rt></ruby>らるる <ruby>身<rt>み</rt></ruby>をば<ruby>思<rt>おも
+                  </rt></ruby>はず <ruby>誓<rt>ちか</rt></ruby>ひてし <br class="br-sp"><ruby>人<rt>ひと</rt></ruby>の<ruby>命<rt>いのち
+                  </rt></ruby>の <ruby>惜<rt>お</rt></ruby>しくもあるかな<br><span class="romaji-line">Wasuraruru Miobaomowazu Chikaiteshi <br class="br-sp">Hitonoinochino Oshikumoarukana</span><br><span class="small"><a href="38_en.html"><ruby>右近<rt>
+                        うこん</rt></ruby>（生没年不詳）<br><span class="romaji-line">Ukon (dates unknown)</span></a></span></li>
+
+              <li data-audio-src="../sound/39.m4a"><ruby>浅茅生<rt>あさじう</rt></ruby>の <ruby>小野<rt>おの</rt></ruby>の<ruby>篠原
+                  <rt>しのはら</rt></ruby> しのぶれど <br class="br-sp">あまりてなどか <ruby>人<rt>ひと</rt></ruby>の<ruby>恋<rt>こい</rt>
+                  </ruby>しき<br><span class="romaji-line">Asajiuno Ononoshionohara Shinoburedo <br class="br-sp">Amaritenadoka Hitonokoishiki</span><br><span class="small"><a href="39_en.html"><ruby>参議等<rt>さんぎひとし</rt>
+                      </ruby>（880年～951年）<br><span class="romaji-line">Councillor Hitoshi (880–951)</span></a></span></li>
+
+              <li data-audio-src="../sound/40.m4a"><ruby>忍<rt>しの</rt></ruby>ぶれど <ruby>色<rt>いろ</rt></ruby>に<ruby>出<rt>い
+                  </rt></ruby>でにけり <ruby>我<rt>わ</rt></ruby>が<ruby>恋<rt>こい</rt></ruby>は <br class="br-sp"><ruby>物<rt>もの
+                  </rt></ruby>や<ruby>思<rt>おも</rt></ruby>ふと <ruby>人<rt>ひと</rt></ruby>の<ruby>問<rt>と</rt></ruby><ruby>ふ<rt>
+                    う</rt></ruby>まで<br><span class="romaji-line">Shinoburedo Ironiidenikerni Wagakoiha <br class="br-sp">Monoyaomouto Hitonotoumade</span><br><span class="small"><a href="40_en.html"><ruby>平兼盛<rt>たいらのかねもり</rt>
+                      </ruby>（生年不詳～990年）<br><span class="romaji-line">Taira no Kanemori (dates unknown–990)</span></a></span></li>
+
+              <li data-audio-src="../sound/41.m4a"><ruby>恋<rt>こい</rt></ruby>す<ruby>てふ<rt>ちょう</rt></ruby> <ruby>我<rt>わ
+                  </rt></ruby>が<ruby>名<rt>な</rt></ruby>はまだき <ruby>立<rt>た</rt></ruby>ちにけり <br class="br-sp"><ruby>人<rt>ひと
+                  </rt></ruby>しれずこそ <ruby>思<rt>おも</rt></ruby><ruby>ひ<rt>い</rt></ruby>そめしか<br><span class="romaji-line">Koisuchou Waganahamadaki Tachinikeri <br class="br-sp">Hitoshirezukoso Omoisomeshika</span><br><span class="small"><a href="41_en.html"><ruby>壬生忠見<rt>みぶのただみ</rt></ruby>（生没年不詳）<br><span class="romaji-line">Mibu no Tadami (dates unknown)</span></a></span></li>
+
+              <li data-audio-src="../sound/42.m4a"><ruby>契<rt>ちぎ</rt></ruby>りきな かたみに<ruby>袖<rt>そで</rt></ruby>を しぼりつつ <br class="br-sp"><ruby>末<rt>すえ</rt></ruby>の<ruby>松山<rt>まつやま</rt></ruby> <ruby>波<rt>なみ</rt>
+                  </ruby>こさじとは<br><span class="romaji-line">Chigirikina Kataminisodewo Shiboritsutsu <br class="br-sp">SuenoMatsuyama Namikosajitoha</span><br><span class="small"><a href="42_en.html"><ruby>清原元輔<rt>きよはらのもとすけ</rt>
+                      </ruby>（908年～990年）<br><span class="romaji-line">Kiyohara no Motosuke (908–990)</span></a></span></li>
+
+              <li data-audio-src="../sound/43.m4a"><ruby>逢<rt>あ</rt></ruby><ruby>ひ<rt>い</rt></ruby><ruby>見<rt>み</rt>
+                  </ruby>ての のちの<ruby>心<rt>こころ</rt></ruby>に くらぶれば <br class="br-sp"><ruby>昔<rt>むかし</rt></ruby>は<ruby>物
+                  <rt>もの</rt></ruby>を <ruby>思<rt>おも</rt></ruby><ruby>は<rt>わ</rt></ruby>ざりけり<br><span class="romaji-line">Aimiteno Nochinokokoroni Kurabureba <br class="br-sp">Mukashiwamonowo Omowazarikeri</span><br><span class="small"><a href="43_en.html"><ruby>権中納言敦忠<rt>ごんちゅうなごんあつただ</rt></ruby>（906年～943年）<br><span class="romaji-line">Acting Middle Counselor Atsutada (906–943)</span></a></span></li>
+
+              <li data-audio-src="../sound/44.m4a"><ruby>逢<rt>あ</rt></ruby><ruby>ふ<rt>う</rt></ruby>ことの <ruby>絶<rt>た</rt>
+                  </ruby>えてしなくは なかなかに <br class="br-sp"><ruby>人<rt>ひと</rt></ruby>をも<ruby>身<rt>み</rt></ruby>をも <ruby>恨
+                  <rt>うら</rt></ruby>みざらまし<br><span class="romaji-line">Aukotono Taeteshinakuha Nakanakani <br class="br-sp">Hitowomomiwomo Uramizaramashi</span><br><span class="small"><a href="44_en.html"><ruby>中納言朝忠<rt>ちゅうなごんあさただ</rt>
+                      </ruby>（910年～966年）<br><span class="romaji-line">Middle Counselor Asatada (910–966)</span></a></span></li>
+
+              <li data-audio-src="../sound/45.m4a">あ<ruby>は<rt>わ</rt></ruby>れとも い<ruby>ふ<rt>う</rt></ruby>べき人は <ruby>思
+                  <rt>おも</rt></ruby><ruby>ほ<rt>お</rt></ruby>えで <br class="br-sp"><ruby>身<rt>み</rt></ruby>のいた<ruby>づ<rt>ず
+                  </rt></ruby>らに なりぬべきかな<br><span class="romaji-line">Awaretomoo Iubekihitoha Omooede <br class="br-sp">Minoitazurani Narinubekikana</span><br><span class="small"><a href="45_en.html"><ruby>謙徳公<rt>けんとくこう</rt>
+                      </ruby>（924年～972年）<br><span class="romaji-line">Kentoku-kō (924–972)</span></a></span></li>
+
+              <li data-audio-src="../sound/46.m4a"><ruby>由良<rt>ゆら</rt></ruby>のとを <ruby>渡<rt>わた</rt></ruby>る<ruby>舟人<rt>
+                    ふなびと</rt></ruby> か<ruby>ぢ<rt>じ</rt></ruby>を<ruby>絶<rt>た</rt></ruby>え <br class="br-sp">ゆくへも<ruby>知
+                  <rt>し</rt></ruby>らぬ <ruby>恋<rt>こい</rt></ruby>の<ruby>道<rt>みち</rt></ruby>かな<br><span class="romaji-line">Yuranotowo Watarufunabito Kajiwotae <br class="br-sp">Yukuemoshiranu Koinomichikana</span><br><span class="small"><a href="46_en.html"><ruby>曽禰好忠<rt>そねのよしただ</rt></ruby>（生没年不詳）<br><span class="romaji-line">Sone no Yoshitada (dates unknown)</span></a></span></li>
+
+              <li data-audio-src="../sound/47.m4a"><ruby>八重葎<rt>やえむぐら</rt></ruby> しげれる<ruby>宿<rt>やど</rt></ruby>の さびしきに
+                <br class="br-sp"><ruby>人<rt>ひと</rt></ruby>こそ<ruby>見<rt>み</rt></ruby>えね <ruby>秋<rt>あき</rt>
+                  </ruby>は<ruby>来<rt>き</rt></ruby>にけり<br><span class="romaji-line">Yaemugura Shigereruyadono Sabishikini <br class="br-sp">Hitokosomiene Akiwakinikeri</span><br><span class="small"><a href="47_en.html"><ruby>恵慶法師<rt>えぎょうほうし
+                      </rt></ruby>（生没年不詳）<br><span class="romaji-line">Priest Egyō (dates unknown)</span></a></span></li>
+
+              <li data-audio-src="../sound/48.m4a"><ruby>風<rt>かぜ</rt></ruby>をいたみ <ruby>岩<rt>いわ</rt></ruby>うつ<ruby>波<rt>
+                    なみ</rt></ruby>の おのれのみ <br class="br-sp">くだけて<ruby>物<rt>もの</rt></ruby>を <ruby>思<rt>おも</rt>
+                  </ruby><ruby>ふ<rt>う</rt></ruby>ころかな<br><span class="romaji-line">Kazewoitami Iwautsunamino Onorenomi <br class="br-sp">Kudaketemonowo Omoukorokana</span><br><span class="small"><a href="48_en.html"><ruby>源重之<rt>みなもとのしげゆき
+                      </rt></ruby>（生没年不詳）<br><span class="romaji-line">Minamoto no Shigeyuki (dates unknown)</span></a></span></li>
+
+              <li data-audio-src="../sound/49.m4a"><ruby>御垣守<rt>みかきもり</rt></ruby> <ruby>衛士<rt>えじ</rt></ruby>のたく<ruby>火
+                  <rt>ひ</rt></ruby>の <ruby>夜<rt>よる</rt></ruby>はもえ <br class="br-sp"><ruby>昼<rt>ひる</rt></ruby>は<ruby>消
+                  <rt>き</rt></ruby>えつつ <ruby>物<rt>もの</rt></ruby>をこそ<ruby>思<rt>おも</rt></ruby><ruby>へ<rt>え</rt>
+                  </ruby><br><span class="romaji-line">Mikakimori Ejinotakuhino Yoruhamoe <br class="br-sp">Hiruwakietsutsu Monowokosoomoe</span><br><span class="small"><a href="49_en.html"><ruby>大中臣能宣朝臣<rt>おおなかとみのよしのぶあそん</rt>
+                      </ruby>（921年～991年）<br><span class="romaji-line">Ōnakatomi no Yoshinobu Ason (921–991)</span></a></span></li>
+
+              <li data-audio-src="../sound/50.m4a"><ruby>君<rt>きみ</rt></ruby>がため <ruby>惜<rt>お</rt></ruby>しからざりし
+                いのちさ<ruby>へ<rt>え</rt></ruby> <br class="br-sp"><ruby>長<rt>なが</rt></ruby>くもがなと <ruby>思<rt>おも</rt>
+                  </ruby><ruby>ひ<rt>い</rt></ruby>けるかな<br><span class="romaji-line">Kimigatame Oshikarazarishi Inochisae <br class="br-sp">Nagakumoganato Omoikerukana</span><br><span class="small"><a href="50_en.html"><ruby>藤原義孝<rt>ふじわらのよしたか
+                      </rt></ruby>（954年～974年）<br><span class="romaji-line">Fujiwara no Yoshitaka (954–974)</span></a></span></li>
+
+              <li data-audio-src="../sound/51.m4a">かくとだに えやはいぶきの さしも<ruby>草<rt>ぐさ</rt></ruby> <br class="br-sp">さしも<ruby>知<rt>し</rt></ruby>らじな もゆる<ruby>思<rt>おも</rt></ruby><ruby>ひ<rt>い</rt>
+                  </ruby>を<br><span class="romaji-line">Kakutodani Eyahaibukino Sashimogusa <br class="br-sp">Sashimoshirajina Moyuruomoiwo</span><br><span class="small"><a href="51_en.html"><ruby>藤原実方朝臣<rt>ふじわらのさねかたあそん</rt>
+                      </ruby>（生年不詳～998年）<br><span class="romaji-line">Fujiwara no Sanekata Ason (dates unknown–998)</span></a></span></li>
+
+              <li data-audio-src="../sound/52.m4a">明けぬれば <ruby>暮<rt>く</rt></ruby>るるものとは <ruby>知<rt>く</rt></ruby>りながら <br class="br-sp">な<ruby>ほ<rt>お</rt></ruby>うらめしき <ruby>朝<rt>あさ</rt></ruby>ぼらけかな<br><span class="romaji-line">Akenureba Kururumonotoha Shirinagara <br class="br-sp">Naourameshiki Asaborakekana</span><br><span class="small"><a href="52_en.html"><ruby>藤原道信朝臣<rt>ふじわらのみちのぶあそん</rt></ruby>（972年～994年）<br><span class="romaji-line">Fujiwara no Michinobu Ason (972–994)</span></a></span></li>
+
+              <li data-audio-src="../sound/53.m4a"><ruby>嘆<rt>なげ</rt></ruby>きつつ ひとり<ruby>寝<rt>ぬ</rt></ruby>る<ruby>夜<rt>よ
+                  </rt></ruby>の <ruby>明<rt>あ</rt></ruby>くる<ruby>間<rt>ま</rt></ruby>は <br class="br-sp">いかに<ruby>久<rt>ひさ
+                  </rt></ruby>しき ものとかは<ruby>知<rt>し</rt></ruby>る<br><span class="romaji-line">Nagekitsutsu Hitorinuruyono Akurumaha <br class="br-sp">Ikanihisashiki Monotokahashiru</span><br><span class="small"><a href="53_en.html"><ruby>右大将道綱母
+                      <rt>うだいしょうみちつなのはは</rt></ruby>（937年頃～995年頃）<br><span class="romaji-line">Mother of the Right Captain Michitsuna (c. 937–c. 995)</span></a></span></li>
+
+              <li data-audio-src="../sound/54.m4a"><ruby>忘<rt>わす</rt></ruby>れじの ゆく<ruby>末<rt>すえ</rt></ruby>までは かたければ <br class="br-sp"><ruby>今日<rt>きょう</rt></ruby>を<ruby>限<rt>かぎ</rt></ruby>りの <ruby>命<rt>いのち</rt>
+                  </ruby>ともがな<br><span class="romaji-line">Wasurejino Yukusuemadeha Katakereba <br class="br-sp">Kyowokagirino Inochitomogana</span><br><span class="small"><a href="54_en.html"><ruby>儀同三司母<rt>ぎどうさんしのはは</rt>
+                      </ruby>（生年不詳～996年）<br><span class="romaji-line">Mother of the Honorary Grand Minister (dates unknown–996)</span></a></span></li>
+
+              <li data-audio-src="../sound/55.m4a"><ruby>滝<rt>たき</rt></ruby>の<ruby>音<rt>おと</rt></ruby>は たえて<ruby>久<rt>ひさ
+                  </rt></ruby>しく なりぬれど <br class="br-sp"><ruby>名<rt>な</rt></ruby>こそ<ruby>流<rt>なが</rt></ruby>れて な<ruby>ほ
+                  <rt>お</rt></ruby><ruby>聞<rt>き</rt></ruby>こえけれ<br><span class="romaji-line">Takinootoha Taetehisashiku Narinuredo <br class="br-sp">Nakosonagarete Naokikoekere</span><br><span class="small"><a href="55_en.html"><ruby>大納言公任
+                      <rt>だいなごんきんとう</rt></ruby>（996年～1041年）<br><span class="romaji-line">Upper Counselor Kintō (966–1041)</span></a></span></li>
+
+              <li data-audio-src="../sound/56.m4a">あらざら<ruby>む<rt>ん</rt></ruby> この<ruby>世<rt>よ</rt></ruby>のほかの <ruby>思
+                  <rt>おも</rt></ruby><ruby>ひ<rt>い</rt></ruby><ruby>出<rt>で</rt></ruby>に <br class="br-sp">いまひとたびの <ruby>逢
+                  <rt>お</rt></ruby><ruby>ふ<rt>う</rt></ruby>こともがな<br><span class="romaji-line">Arazaran Konoyonohokano Omoideni <br class="br-sp">Imahitotabino Aukotomogana</span><br><span class="small"><a href="56_en.html"><ruby>和泉式部
+                      <rt>いずみしきぶ</rt></ruby>（生没年不詳）<br><span class="romaji-line">Izumi Shikibu (dates unknown)</span></a></span></li>
+
+              <li data-audio-src="../sound/57.m4a">めぐり<ruby>逢<rt>あ</rt></ruby><ruby>ひ<rt>い</rt></ruby>て <ruby>見<rt>み
+                  </rt></ruby>しやそれとも わかぬ<ruby>間<rt>ま</rt></ruby>に <br class="br-sp"><ruby>雲隠<rt>くもがく</rt></ruby>れにし
+                <ruby>夜半<rt>よわ</rt></ruby>の<ruby>月<rt>つき</rt></ruby>かな<br><span class="romaji-line">Meguriaite Mishiyasoretomo Wakanumani <br class="br-sp">Kumogakurenishi Yowanotsukikana</span><br><span class="small"><a href="57_en.html"><ruby>紫式部<rt>むらさきしきぶ</rt></ruby>（970年頃～1014年頃）<br><span class="romaji-line">Murasaki Shikibu (c. 970–c. 1014)</span></a></span></li>
+
+              <li data-audio-src="../sound/58.m4a">ありま<ruby>山<rt>やま</rt></ruby> <ruby>猪名<rt>いな</rt></ruby>の<ruby>笹原<rt>
+                    ささはら</rt></ruby> <ruby>風<rt>かぜ</rt></ruby><ruby>吹<rt>ふ</rt></ruby>けば <br class="br-sp">いでそよ<ruby>人
+                  <rt>ひと</rt></ruby>を <ruby>忘<rt>わす</rt></ruby>れやはする<br><span class="romaji-line">Arimayama Inanosasahara Kazefukeba <br class="br-sp">Idesoyohitowo Wasureyahasuru</span><br><span class="small"><a href="58_en.html"><ruby>大弐三位<rt>だいにのさんみ</rt></ruby>（999年～没年不詳）<br><span class="romaji-line">Daini no Sanmi (999–death year unknown)</span></a></span></li>
+
+              <li data-audio-src="../sound/59.m4a">やすら<ruby>は<rt>わ</rt></ruby>で <ruby>寝<rt>ね</rt></ruby>なましものを <ruby>小夜
+                  <rt>さよ</rt></ruby><ruby>更<rt>ふ</rt></ruby>けて <br class="br-sp">かたぶくまでの <ruby>月<rt>つき</rt>
+                  </ruby>を<ruby>見<rt>み</rt></ruby>しかな<br><span class="romaji-line">Yasurawade Nenamashimonowo Sayofukete <br class="br-sp">Katabukumadeno Tsukiwomishikana</span><br><span class="small"><a href="59_en.html"><ruby>赤染衛門<rt>あかぞめえもん
+                      </rt></ruby>（956年？～1041年？）<br><span class="romaji-line">Akazome Emon (c. 956–1041)</span></a></span></li>
+
+              <li data-audio-src="../sound/60.m4a"><ruby>大江山<rt>おおえやま</rt></ruby> いく<ruby>野<rt>の</rt></ruby>の<ruby>道<rt>
+                    みち</rt></ruby>の <ruby>遠<rt>とお</rt></ruby>ければ <br class="br-sp">まだふみもみず <ruby>天<rt>あま</rt>
+                  </ruby>の<ruby>橋立<rt>はしだて</rt></ruby><br><span class="romaji-line">Ooeyama Ikunonomichino Tookereba <br class="br-sp">Madafumimomizu Amanohashidate</span><br><span class="small"><a href="60_en.html"><ruby>小式部内侍<rt>こしきぶのないし
+                      </rt></ruby>（生年不詳～1025年）<br><span class="romaji-line">Koshikibu no Naishi (d. 1025)</span></a></span></li>
+
+              <li data-audio-src="../sound/61.m4a">いにし<ruby>へ<rt>え</rt></ruby>の <ruby>奈良<rt>なら</rt></ruby>の<ruby>都<rt>
+                    みやこ</rt></ruby>の <ruby>八重桜<rt>やえざくら</rt></ruby> <br class="br-sp"><ruby>けふ<rt>きょう</rt>
+                  </ruby><ruby>九重<rt>ここのえ</rt></ruby>に <ruby>匂<rt>にお</rt></ruby><ruby>ひ<rt>い</rt></ruby>ぬるかな<br><span class="romaji-line">Inishieno Naranomiyakono Yaezakura <br class="br-sp">Kyokokonoeni Nioinurukana</span><br><span class="small"><a href="61_en.html"><ruby>伊勢大輔<rt>いせのたいふ</rt></ruby>（生没年不詳）<br><span class="romaji-line">Ise no Taifu (dates unknown)</span></a></span></li>
+
+              <li data-audio-src="../sound/62.m4a"><ruby>夜<rt>よ</rt></ruby>をこめて <ruby>鳥<rt>とり</rt></ruby>のそらねは はかるとも <br class="br-sp">よに<ruby>逢坂<rt>おうさか</rt></ruby>の <ruby>関<rt>せき</rt></ruby>は<ruby>許<rt>ゆる</rt>
+                  </ruby>さじ<br><span class="romaji-line">Yowokomete Torinosoraneha Hakarutomo <br class="br-sp">Yoniousakano Sekihayurusaji</span><br><span class="small"><a href="62_en.html"><ruby>清少納言<rt>せいしょうなごん</rt>
+                      </ruby>（生没年不詳）<br><span class="romaji-line">Sei Shōnagon (dates unknown)</span></a></span></li>
+
+              <li data-audio-src="../sound/63.m4a">いまはただ <ruby>思<rt>おも</rt></ruby>ひ<ruby>絶<rt>た</rt></ruby>えな<ruby>む<rt>
+                    ん</rt></ruby> とばかりを <br class="br-sp"><ruby>人<rt>ひと</rt></ruby>づてならで <ruby>言<rt>い</rt></ruby><ruby>ふ
+                  <rt>う</rt></ruby>よしもがな<br><span class="romaji-line">Imahatada Omoitaenan Tobakariwo <br class="br-sp">Hitozutenarade Iuyoshimogana</span><br><span class="small"><a href="63_en.html"><ruby>左京大夫道雅<rt>さきょうのだいぶみちまさ</rt>
+                      </ruby>（992年～1054年）<br><span class="romaji-line">Master of the Left Capital Michimasa (992–1054)</span></a></span></li>
+
+              <li data-audio-src="../sound/64.m4a"><ruby>朝<rt>あさ</rt></ruby>ぼらけ <ruby>宇治<rt>うじ</rt></ruby>の<ruby>川霧<rt>
+                    かわぎり</rt></ruby> <ruby>絶<rt>た</rt></ruby>え<ruby>絶<rt>だ</rt></ruby>えに <br class="br-sp">あら<ruby>は<rt>
+                    わ</rt></ruby>れわたる <ruby>瀬々<rt>せぜ</rt></ruby>の<ruby>網代木<rt>あじろぎ</rt></ruby><br><span class="romaji-line">Asaborake Ujinokawagiri Taedaeni <br class="br-sp">Arawarewataru Sezenoajirogi</span><br><span class="small"><a href="64_en.html"><ruby>権中納言定頼<rt>ごんちゅうなごんさだより</rt></ruby>（995年～1045年）<br><span class="romaji-line">Acting Middle Counselor Sadayori (995–1045)</span></a></span></li>
+
+              <li data-audio-src="../sound/65.m4a"><ruby>恨<rt>うら</rt></ruby>みわび ほさぬ<ruby>袖<rt>そで</rt></ruby>だに あるものを <br class="br-sp"><ruby>恋<rt>こい</rt></ruby>にくちな<ruby>む<rt>ん</rt></ruby> <ruby>名<rt>な</rt>
+                  </ruby>こそをしけれ<br><span class="romaji-line">Uramiwabi Hosanusodedani Arumonowo <br class="br-sp">Koinikuchinan Nakosooshikere</span><br><span class="small"><a href="65_en.html"><ruby>相模<rt>さがみ</rt></ruby>（生没年不詳）<br><span class="romaji-line">Sagami (dates unknown)</span></a></span></li>
+
+              <li data-audio-src="../sound/66.m4a">もろともに あ<ruby>は<rt>わ</rt></ruby>れと<ruby>思<rt>おも</rt></ruby><ruby>へ<rt>
+                    え</rt></ruby> <ruby>山桜<rt>やまざくら</rt></ruby> <br class="br-sp"><ruby>花<rt>はな</rt></ruby>よりほかに <ruby>知
+                  <rt>し</rt></ruby>る<ruby>人<rt>ひと</rt></ruby>もなし<br><span class="romaji-line">Morotomoni Awaretoomoe Yamazakura <br class="br-sp">Hanayorihokani Shiruhitomonashi</span><br><span class="small"><a href="66_en.html"><ruby>前大僧正行尊
+                      <rt>さきのだいそうじょうぎょうそん</rt></ruby>（1055年～1135年）<br><span class="romaji-line">Senior High Priest Gyōson (1055–1135)</span></a></span></li>
+
+              <li data-audio-src="../sound/67.m4a"><ruby>春<rt>はる</rt></ruby>の<ruby>夜<rt>よ</rt></ruby>の <ruby>夢<rt>ゆめ
+                  </rt></ruby>ばかりなる <ruby>手枕<rt>たまくら</rt></ruby>に <br class="br-sp">か<ruby>ひ<rt>い</rt></ruby>なく<ruby>立
+                  <rt>た</rt></ruby>た<ruby>む<rt>ん</rt></ruby> <ruby>名<rt>な</rt></ruby>こそをしけれ<br><span class="romaji-line">Harunoyono Yumebakarinaru Tamakurani <br class="br-sp">Kainakutatan Nakosooshikere</span><br><span class="small"><a href="67_en.html"><ruby>周防内侍<rt>すおうのないし</rt></ruby>（生没年不詳）<br><span class="romaji-line">Suō no Naishi (dates unknown)</span></a></span></li>
+
+              <li data-audio-src="../sound/68.m4a"><ruby>心<rt>こころ</rt></ruby>にも あらで<ruby>憂<rt>う</rt></ruby>き<ruby>世<rt>よ
+                  </rt></ruby>に ながら<ruby>へ<rt>え</rt></ruby>ば <br class="br-sp"><ruby>恋<rt>こい</rt></ruby>しかるべき <ruby>夜半
+                  <rt>よわ</rt></ruby>の<ruby>月<rt>つき</rt></ruby>かな<br><span class="romaji-line">Kokoronimo Aradeukiyoni Nagaraeba <br class="br-sp">Koishikarubeki Yowanotsukikana</span><br><span class="small"><a href="68_en.html"><ruby>三条院<rt>
+                        さんじょういん</rt></ruby>（976年～1017年）<br><span class="romaji-line">Retired Emperor Sanjō (976–1017)</span></a></span></li>
+
+              <li data-audio-src="../sound/69.m4a"><ruby>嵐<rt>あらし</rt></ruby><ruby>吹<rt>ふ</rt></ruby>く <ruby>三室<rt>みむろ
+                  </rt></ruby>の<ruby>山<rt>やま</rt></ruby>の <ruby>紅葉<rt>もみじ</rt></ruby><ruby>葉<rt>ば</rt></ruby>は <br class="br-sp"><ruby>竜田<rt>たつた</rt></ruby>の<ruby>川<rt>かわ</rt></ruby>の <ruby>錦<rt>にしき</rt>
+                  </ruby>なりけり<br><span class="romaji-line">Arashifuku Mimuronoyamano Momijibaha <br class="br-sp">Tatsutanokawano Nishikinarikeri</span><br><span class="small"><a href="69_en.html"><ruby>能因法師<rt>のういんほうし</rt>
+                      </ruby>（988年～没年不詳）<br><span class="romaji-line">Priest Nōin (988–death year unknown)</span></a></span></li>
+
+              <li data-audio-src="../sound/70.m4a">さびしさに <ruby>宿<rt>やど</rt></ruby>を<ruby>立<rt>た</rt></ruby>ち<ruby>出<rt>い
+                  </rt></ruby>でて ながむれば <br class="br-sp">い<ruby>づ<rt>ず</rt></ruby>くも<ruby>同<rt>おな</rt></ruby>じ <ruby>秋
+                  <rt>あき</rt></ruby>の<ruby>夕<rt>ゆう</rt></ruby><ruby>暮<rt>ぐれ</rt></ruby><br><span class="romaji-line">Sabishisani Yadowotachiidete Nagamureba <br class="br-sp">Izukomoonaji Akinoyugure</span><br><span class="small"><a href="70_en.html"><ruby>良暹法師<rt>りょうぜんほうし</rt></ruby>（生没年不詳）<br><span class="romaji-line">Priest Ryōzen (dates unknown)</span></a></span></li>
+
+              <li data-audio-src="../sound/71.m4a"><ruby>夕<rt>ゆう</rt></ruby>されば <ruby>門田<rt>かどた</rt></ruby>の<ruby>稲葉<rt>
+                    いなば</rt></ruby> おと<ruby>づ<rt>ず</rt></ruby>れて <br class="br-sp"><ruby>蘆<rt>あし</rt></ruby>のまろやに
+                <ruby>秋風<rt>あきかぜ</rt></ruby>ぞ<ruby>吹<rt>ふ</rt></ruby>く<br><span class="romaji-line">Yusareba Kadotanoinaba Otozurete <br class="br-sp">Ashinomaroyani Akikazezofuku</span><br><span class="small"><a href="71_en.html"><ruby>大納言経信<rt>だいなごんつねのぶ</rt></ruby>（1016年～1097年）<br><span class="romaji-line">Upper Counselor Tsunenobu (1016–1097)</span></a></span></li>
+
+              <li data-audio-src="../sound/72.m4a"><ruby>音<rt>おと</rt></ruby>に<ruby>聞<rt>き</rt></ruby>く <ruby>高師<rt>たかし
+                  </rt></ruby>の<ruby>浜<rt>はま</rt></ruby>の あだ<ruby>波<rt>なみ</rt></ruby>は <br class="br-sp">かけじや<ruby>袖<rt>
+                    そで</rt></ruby>の ぬれもこそすれ<br><span class="romaji-line">Otonikiku Takashinohamano Adanamiha <br class="br-sp">Kakejiyasodeno Nuremokososure</span><br><span class="small"><a href="72_en.html"><ruby>祐子内親王家紀伊<rt>ゆうしないしんのうけのきい
+                      </rt></ruby>（生没年不詳）<br><span class="romaji-line">Kii of Princess Yūshi's Household (dates unknown)</span></a></span></li>
+
+              <li data-audio-src="../sound/73.m4a"><ruby>高砂<rt>たかさご</rt></ruby>の <ruby>尾<rt>お</rt></ruby>の<ruby>上<rt>へ
+                  </rt></ruby>の<ruby>桜<rt>さくら</rt></ruby> <ruby>咲<rt>さ</rt></ruby>きにけり <br class="br-sp"><ruby>外山<rt>とやま
+                  </rt></ruby>の<ruby>霞<rt>かすみ</rt></ruby> <ruby>立<rt>た</rt></ruby>たずもあらな<ruby>む<rt>ん</rt>
+                  </ruby><br><span class="romaji-line">Takasagono Onoenosakura Sakinikeri <br class="br-sp">Toyamanokasumi Tatazumoaranan</span><br><span class="small"><a href="73_en.html"><ruby>権中納言匡房<rt>ごんちゅうなごんまさふさ</rt>
+                      </ruby>（1041年～1111年）<br><span class="romaji-line">Acting Middle Counselor Masafusa (1041–1111)</span></a></span></li>
+
+              <li data-audio-src="../sound/74.m4a"><ruby>憂<rt>う</rt></ruby>かりける <ruby>人<rt>ひと</rt></ruby>を<ruby>初瀬<rt>
+                    はつせ</rt></ruby>の <ruby>山<rt>やま</rt></ruby>おろしよ <br class="br-sp">はげしかれとは <ruby>祈<rt>いの</rt>
+                  </ruby>らぬものを<br><span class="romaji-line">Ukarikeru Hitowohatsuseno Yamaoroshiyo <br class="br-sp">Hageshikaretoha Inoranumonowo</span><br><span class="small"><a href="74_en.html"><ruby>源俊頼朝臣<rt>みなもとのとしよりあそん</rt>
+                      </ruby>（1055年～1129年）<br><span class="romaji-line">Minamoto no Toshiyori Ason (1055–1129)</span></a></span></li>
+
+              <li data-audio-src="../sound/75.m4a"><ruby>契<rt>ちぎ</rt></ruby>りおきし させもが<ruby>露<rt>つゆ</rt></ruby>を いのちにて
+                <br class="br-sp">あ<ruby>は<rt>わ</rt></ruby>れ<ruby>今年<rt>ことし</rt></ruby>の <ruby>秋<rt>あき</rt>
+                  </ruby>もいぬめり<br><span class="romaji-line">Chigiriokishi Sasemogatsuyuwo Inochinite <br class="br-sp">Awarekotoshino Akimoinumeri</span><br><span class="small"><a href="75_en.html"><ruby>藤原基俊<rt>ふじわらのもととし</rt>
+                      </ruby>（1060年～1142年）<br><span class="romaji-line">Fujiwara no Mototoshi (1060–1142)</span></a></span></li>
+
+              <li data-audio-src="../sound/76.m4a">わたの<ruby>原<rt>はら</rt></ruby> こぎいでてみれば <ruby>久方<rt>ひさかた</rt></ruby>の
+                <br class="br-sp"><ruby>雲<rt>くも</rt></ruby><ruby>居<rt>い</rt></ruby>にま<ruby>が<rt>ご</rt></ruby><ruby>ふ<rt>
+                    う</rt></ruby> <ruby>沖<rt>おき</rt></ruby>つ<ruby>白波<rt>しらなみ</rt></ruby><br><span class="romaji-line">Watanohara Kogiidetemireba Hisakatano <br class="br-sp">Kumoinimagou Okitsushiranami</span><br><span class="small"><a href="76_en.html"><ruby>法性寺入道前関白太政大臣<rt>ほっしょうじにゅうどうさきのかんぱくだいじょうだいじん</rt>
+                      </ruby>（1097年～1164年）<br><span class="romaji-line">Lay Novice of Hosshō-ji Temple, former Kampaku and Chancellor of the Realm (1097–1164)</span></a></span></li>
+
+              <li data-audio-src="../sound/77.m4a"><ruby>瀬<rt>せ</rt></ruby>をはやみ <ruby>岩<rt>いわ</rt></ruby>にせかるる <ruby>滝川
+                  <rt>たきがわ</rt></ruby>の <br class="br-sp">われても<ruby>末<rt>すえ</rt></ruby>に あ<ruby>は<rt>わ</rt>
+                  </ruby><ruby>む<rt>ん</rt></ruby>とぞ<ruby>思<rt>おも</rt></ruby><ruby>ふ<rt>う</rt></ruby><br><span class="romaji-line">Sewohayami Iwanisekaruru Takigawano <br class="br-sp">Waretemosueni Awantozoomou</span><br><span class="small"><a href="77_en.html"><ruby>崇徳院<rt>すとくいん</rt></ruby>（1119年～1164年）<br><span class="romaji-line">Retired Emperor Sutoku (1119–1164)</span></a></span></li>
+
+              <li data-audio-src="../sound/78.m4a"><ruby>淡路島<rt>あわじしま</rt></ruby> かよ<ruby>ふ<rt>う</rt></ruby><ruby>千鳥<rt>
+                    ちどり</rt></ruby>の <ruby>鳴<rt>な</rt></ruby>く<ruby>声<rt>こえ</rt></ruby>に <br class="br-sp"><ruby>幾夜<rt>
+                  </rt></ruby><ruby>寝覚<rt>ねざ</rt></ruby>めぬ <ruby>須磨<rt>すま</rt></ruby>の<ruby>関守<rt>せきもり</rt>
+                  </ruby><br><span class="romaji-line">Awajishima Kayouchidorino Nakukoeni <br class="br-sp">Ikuyonezamenu Sumanosekimori</span><br><span class="small"><a href="78_en.html"><ruby>源兼昌<rt>みなもとのかねまさ</rt></ruby>（生没年不詳）<br><span class="romaji-line">Minamoto no Kanemasa (dates unknown)</span></a></span></li>
+
+              <li data-audio-src="../sound/79.m4a"><ruby>秋風<rt>あきかぜ</rt></ruby>に たなびく<ruby>雲<rt>くも</rt></ruby>の
+                たえ<ruby>間<rt>ま</rt></ruby>より <br class="br-sp">もれい<ruby>づ<rt>ず</rt></ruby>る<ruby>月<rt>つき</rt></ruby>の
+                <ruby>影<rt>かげ</rt></ruby>のさやけさ<br><span class="romaji-line">Akikazeni Tanabikukumono Taemayori <br class="br-sp">Moreizurutsukino Kagenosayakesa</span><br><span class="small"><a href="79_en.html"><ruby>左京大夫顕輔<rt>さきょうのだいぶあきすけ
+                      </rt></ruby>（1090年～1155年）<br><span class="romaji-line">Master of the Left Capital Akisuke (1090–1155)</span></a></span></li>
+
+              <li data-audio-src="../sound/80.m4a"><ruby>長<rt>なが</rt></ruby>から<ruby>む<rt>ん</rt></ruby> <ruby>心<rt>こころ
+                  </rt></ruby>もしらず <ruby>黒髪<rt>くろがみ</rt></ruby>の <br class="br-sp">みだれてけさは <ruby>物<rt>もの</rt>
+                  </ruby>をこそ<ruby>思<rt>おも</rt></ruby><ruby>へ<rt>え</rt></ruby><br><span class="romaji-line">Nagakaran Kokoromoshirazu Kurokamino <br class="br-sp">Midaretekesaha Monowokosoomoe</span><br><span class="small"><a href="80_en.html"><ruby>待賢門院堀河<rt>たいけんもんいんのほりかわ</rt></ruby>（生没年不詳）<br><span class="romaji-line">Horikawa, attendant to Empress Taiken (dates unknown)</span></a></span></li>
+
+              <li data-audio-src="../sound/81.m4a">ほととぎす <ruby>鳴<rt>な</rt></ruby>きつる<ruby>方<rt>かた </rt></ruby>を ながむれば
+                <br class="br-sp">ただ<ruby>有明<rt>ありあけ</rt></ruby>の <ruby>月<rt>つき</rt></ruby>ぞ<ruby>残<rt>のこ</rt>
+                  </ruby>れる<br><span class="romaji-line">Hototogisu Nakitsurukatawo Nagamureba <br class="br-sp">Tadaariakeno Tsukizonokoreru</span><br><span class="small"><a href="81_en.html"><ruby>後徳大寺左大臣<rt>ごとくだいじのさだいじん</rt>
+                      </ruby>（1139年～1191年）<br><span class="romaji-line">Later Tokudaiji Minister of the Left (1139–1191)</span></a></span></li>
+
+              <li data-audio-src="../sound/82.m4a"><ruby>思<rt>おも</rt></ruby><ruby>ひ<rt>い</rt></ruby>わび さても<ruby>命<rt>いのち
+                  </rt></ruby>は あるものを <br class="br-sp"><ruby>憂<rt>う</rt></ruby>きにた<ruby>へ<rt>え</rt></ruby>ぬは <ruby>涙
+                  <rt>なみだ</rt></ruby>なりけり<br><span class="romaji-line">Omoiwabi Satemoinochiha Arumonowo <br class="br-sp">Ukinitaenuha Namidanarikeri</span><br><span class="small"><a href="82_en.html"><ruby>道因法師<rt>どういんほうし</rt>
+                      </ruby>（1090年～没年不詳）<br><span class="romaji-line">Priest Dōin (1090–death year unknown)</span></a></span></li>
+
+              <li data-audio-src="../sound/83.m4a"><ruby>世<rt>よ</rt></ruby>の<ruby>中<rt>なか</rt></ruby>よ <ruby>道<rt>みち
+                  </rt></ruby>こそなけれ <ruby>思<rt>おも</rt></ruby><ruby>ひ<rt>い</rt></ruby><ruby>入<rt>い</rt></ruby>る <br class="br-sp"><ruby>山<rt>やま</rt></ruby>の<ruby>奥<rt>おく</rt></ruby>にも <ruby>鹿<rt>しか</rt></ruby>ぞ<ruby>鳴
+                  <rt>な</rt></ruby>くなる<br><span class="romaji-line">Yononakayo Michikosonakere Omoiiru <br class="br-sp">Yamanookunimo Shikazonakunaru</span><br><span class="small"><a href="83_en.html"><ruby>皇太后宮大夫俊成<rt>こうたいごうぐうのだいぶとしなり</rt>
+                      </ruby>（1114年～1204年）<br><span class="romaji-line">Fujiwara no Shunzei (1114–1204)</span></a></span></li>
+
+              <li data-audio-src="../sound/84.m4a"><ruby>長<rt>なが</rt></ruby>ら<ruby>へ<rt>え</rt></ruby>ば またこのごろや
+                しのばれ<ruby>む<rt>ん</rt></ruby> <br class="br-sp"><ruby>憂<rt>う</rt></ruby>しと<ruby>見<rt>み</rt>
+                  </ruby>し<ruby>世<rt>よ</rt></ruby>ぞ <ruby>今<rt>いま</rt></ruby>は<ruby>恋<rt>こい</rt></ruby>しき<br><span class="romaji-line">Nagaraeba Matakonogoroya Shinobaren <br class="br-sp">Ushitomishiyozo Imahakoishiki</span><br><span class="small"><a href="84_en.html"><ruby>藤原清輔朝臣<rt>ふじわらのきよすけあそん</rt></ruby>（1104年～1177年）<br><span class="romaji-line">Fujiwara no Kiyosuke Ason (1104–1177)</span></a></span></li>
+
+              <li data-audio-src="../sound/85.m4a"><ruby>夜<rt>よ</rt></ruby>もすがら <ruby>物<rt>もの</rt></ruby><ruby>思<rt>おも
+                  </rt></ruby><ruby>ふ<rt>う</rt></ruby>ころは <ruby>明<rt>あ</rt></ruby>けやらで <br class="br-sp"><ruby>閨<rt>ねや
+                  </rt></ruby>のひまさ<ruby>へ<rt>え</rt></ruby> つれなかりけり<br><span class="romaji-line">Yomosugara Monoomoukoroha Akeyarade <br class="br-sp">Neyanohimasae Tsurenakarikeri</span><br><span class="small"><a href="85_en.html"><ruby>俊恵法師
+                      <rt>しゅんえほうし</rt></ruby>（1113年～没年不詳）<br><span class="romaji-line">Priest Shun'e (1113–death year unknown)</span></a></span></li>
+
+              <li data-audio-src="../sound/86.m4a"><ruby>嘆<rt>なげ</rt></ruby>けとて <ruby>月<rt>つき</rt></ruby>やは<ruby>物<rt>もの
+                  </rt></ruby>を <ruby>思<rt>おも</rt></ruby><ruby>は<rt>わ</rt></ruby>する <br class="br-sp">かこち<ruby>顔<rt>がお
+                  </rt></ruby>なる わが<ruby>涙<rt>なみだ</rt></ruby>かな<br><span class="romaji-line">Nageketote Tsukiyahamonowo Omowasuru <br class="br-sp">Kakochigaonaru Waganamidakana</span><br><span class="small"><a href="86_en.html"><ruby>西行法師<rt>
+                        さいぎょうほうし</rt></ruby>（1118年～1190年）<br><span class="romaji-line">Priest Saigyō (1118–1190)</span></a></span></li>
+
+              <li data-audio-src="../sound/87.m4a"><ruby>村雨<rt>むらさめ</rt></ruby>の <ruby>露<rt>つゆ</rt></ruby>もまだひぬ
+                まきの<ruby>葉<rt>は</rt></ruby>に <br class="br-sp"><ruby>霧<rt>きり</rt></ruby>たちのぼる <ruby>秋<rt>あき</rt>
+                  </ruby>の<ruby>夕<rt>ゆう</rt></ruby><ruby>暮<rt>ぐれ</rt></ruby><br><span class="romaji-line">Murasameono Tsuyumomadahinu Makinohani <br class="br-sp">Kiritachinoboru Akinoyugure</span><br><span class="small"><a href="87_en.html"><ruby>寂蓮法師<rt>じゃくれんほうし</rt></ruby>（1139年頃～1202年）<br><span class="romaji-line">Priest Jakuren (c. 1139–1202)</span></a></span></li>
+
+              <li data-audio-src="../sound/88.m4a"><ruby>難波江<rt>なにわえ</rt></ruby>の <ruby>葦<rt>あし</rt></ruby>のかりねの
+                ひとよゆ<ruby>ゑ<rt>え</rt></ruby> <br class="br-sp">みをつくしてや <ruby>恋<rt>こ</rt></ruby><ruby>ひ<rt>い</rt>
+                  </ruby>わたるべき<br><span class="romaji-line">Naniwaeno Ashinokarineno Hitoyoyue <br class="br-sp">Miwotsukushiteya Koiwatarubeki</span><br><span class="small"><a href="88_en.html"><ruby>皇嘉門院別当<rt>こうかもんいんのべっとう</rt>
+                      </ruby>（生没年不詳）<br><span class="romaji-line">Attendant to Empress Kōka (dates unknown)</span></a></span></li>
+
+              <li data-audio-src="../sound/89.m4a"><ruby>玉<rt>たま</rt></ruby>の<ruby>緒<rt>お</rt></ruby>よ <ruby>絶<rt>た</rt>
+                  </ruby>えなば<ruby>絶<rt>た</rt></ruby>えね ながら<ruby>へ<rt>え</rt></ruby>ば <br class="br-sp"><ruby>忍<rt>しの</rt>
+                  </ruby>ぶることの <ruby>弱<rt>よわ</rt></ruby>りもぞする<br><span class="romaji-line">Tamanooyo Taenabataene Nagaraeba <br class="br-sp">Shinoburukotono Yowarimozosuru</span><br><span class="small"><a href="89_en.html"><ruby>式子内親王<rt>
+                        しょくしないしんのう</rt></ruby>（1149年～1201年）<br><span class="romaji-line">Princess Shikishi (1149–1201)</span></a></span></li>
+
+              <li data-audio-src="../sound/90.m4a"><ruby>見<rt>み</rt></ruby>せばやな <ruby>雄島<rt>おじま</rt></ruby>のあまの <ruby>袖
+                  <rt>そで</rt></ruby>だにも <br class="br-sp">ぬれにぞぬれし <ruby>色<rt>いろ</rt></ruby>はか<ruby>は<rt>わ</rt>
+                  </ruby>らず<br><span class="romaji-line">Misebayana Ojimanoamano Sodedanimo <br class="br-sp">Nurenizonureshi Irowakawarazu</span><br><span class="small"><a href="90_en.html"><ruby>殷富門院大輔<rt>いんぷもんいんのたいふ</rt>
+                      </ruby>（生没年不詳）<br><span class="romaji-line">Attendant to Empress Inpu (dates unknown)</span></a></span></li>
+
+              <li data-audio-src="../sound/91.m4a">きりぎりす <ruby>鳴<rt>な</rt></ruby>くや<ruby>霜夜<rt>しもよ</rt></ruby>の さむしろに<br class="br-sp"><ruby>衣<rt>ころも</rt></ruby>かたしき ひとりかも<ruby>寝<rt>ね</rt></ruby><ruby>む<rt>ん</rt>
+                  </ruby><br><span class="romaji-line">Kirigirisu Nakuyashimoyono Samushironi <br class="br-sp">Koromokatashiki Hitorikamonen</span><br><span class="small"><a href="91_en.html"><ruby>後京極摂政前太政大臣<rt>ごきょうごくせっしょうさきのだいじょうだいじん</rt>
+                      </ruby>（1169年～1206年）<br><span class="romaji-line">Gokyōgoku Regent and former Chancellor of the Realm (1169–1206)</span></a></span></li>
+
+              <li data-audio-src="../sound/92.m4a">わが<ruby>袖<rt>そで</rt></ruby>は <ruby>潮干<rt>しおひ</rt></ruby>に<ruby>見<rt>み
+                  </rt></ruby>えぬ <ruby>沖<rt>おき</rt></ruby>の<ruby>石<rt>いし</rt></ruby>の <br class="br-sp"><ruby>人<rt>ひと
+                  </rt></ruby>こそ<ruby>知<rt>し</rt></ruby>らね かわくまもなし<br><span class="romaji-line">Wagasodeha Shiohinimienu Okinoishino <br class="br-sp">Hitokososhirane Kawakumamonashi</span><br><span class="small"><a href="92_en.html"><ruby>二条院讃岐
+                      <rt>にじょういんのさぬき</rt></ruby>（1141年頃～1217年頃）<br><span class="romaji-line">Sanuki, attendant to Retired Emperor Nijō (c. 1141–c. 1217)</span></a></span></li>
+
+              <li data-audio-src="../sound/93.m4a"><ruby>世<rt>よ</rt></ruby>の<ruby>中<rt>なか</rt></ruby>は つねにもがもな <ruby>渚
+                  <rt>なぎさ</rt></ruby>こぐ <br class="br-sp">あまの<ruby>小舟<rt>こぶね</rt></ruby>の <ruby>綱手<rt>つなで</rt>
+                  </ruby>かなしも<br><span class="romaji-line">Yononakaha Tsunenimogamona Nagisakogu <br class="br-sp">Amanoobuneno Tsunadekanashimo</span><br><span class="small"><a href="93_en.html"><ruby>鎌倉右大臣<rt>かまくらのうだいじん</rt>
+                      </ruby>（1192年～1219年）<br><span class="romaji-line">Minister of the Right of Kamakura (1192–1219)</span></a></span></li>
+
+              <li data-audio-src="../sound/94.m4a">み<ruby>吉野<rt>よしの</rt></ruby>の <ruby>山<rt>やま</rt></ruby>の<ruby>秋風<rt>
+                    あきかぜ</rt></ruby> さ<ruby>夜<rt>よ</rt></ruby>ふけて <br class="br-sp">ふるさと<ruby>寒<rt>さむ</rt></ruby>く
+                <ruby>衣<rt>ころも</rt></ruby>うつなり<br><span class="romaji-line">Miyoshinono Yamanoakikaze Sayofukete <br class="br-sp">Furusatosamuku Koromoutsunari</span><br><span class="small"><a href="94_en.html"><ruby>参議雅経<rt>さんぎまさつね</rt>
+                      </ruby>（1170年～1221年）<br><span class="romaji-line">Councillor Masatsune (1170–1221)</span></a></span></li>
+
+              <li data-audio-src="../sound/95.m4a">お<ruby>ほ<rt>お</rt></ruby>けなく <ruby>憂<rt>う</rt></ruby>き<ruby>世<rt>よ
+                  </rt></ruby>の<ruby>民<rt>たみ</rt></ruby>に お<ruby>ほ<rt>お</rt></ruby><ruby>ふ<rt>う</rt></ruby>かな <br class="br-sp">わがたつ<ruby>杣<rt>そま</rt></ruby>に <ruby>墨染<rt>すみぞめ</rt></ruby>の<ruby>袖<rt>そで</rt>
+                  </ruby><br><span class="romaji-line">Ookenaku Ukiyonotamini Ooukana <br class="br-sp">Wagatatsusomani Sumizomenosode</span><br><span class="small"><a href="95_en.html"><ruby>前大僧正慈円<rt>さきのだいそうじょうじえん</rt>
+                      </ruby>（1155年～1225年）<br><span class="romaji-line">Former Senior High Priest Jien (1155–1225)</span></a></span></li>
+
+              <li data-audio-src="../sound/96.m4a"><ruby>花<rt>はな</rt></ruby>さそ<ruby>ふ<rt>う</rt></ruby> <ruby>嵐<rt>あらし
+                  </rt></ruby>の<ruby>庭<rt>にわ</rt></ruby>の <ruby>雪<rt>ゆき</rt></ruby>ならで <br class="br-sp">ふりゆくものは
+                わが<ruby>身<rt>み</rt></ruby>なりけり<br><span class="romaji-line">Hanasasou Arashinoniwano Yukinarade <br class="br-sp">Furiyukumonoha Wagaminarikeri</span><br><span class="small"><a href="96_en.html"><ruby>入道前太政大臣<rt>
+                        にゅうどうさきのだいじょうだいじん</rt></ruby>（1171年～1244年）<br><span class="romaji-line">Lay Novice and former Chancellor of the Realm (1171–1244)</span></a></span></li>
+
+              <li data-audio-src="../sound/97.m4a"><ruby>来<rt>こ</rt></ruby>ぬ<ruby>人<rt>ひと</rt></ruby>を <ruby>松帆<rt>まつほ
+                  </rt></ruby>の<ruby>浦<rt>うら</rt></ruby>の <ruby>夕<rt>ゆう</rt></ruby>なぎに <br class="br-sp"><ruby>焼<rt>や
+                  </rt></ruby>くやもしほの <ruby>身<rt>み</rt></ruby>もこがれつつ<br><span class="romaji-line">Konuhitowo Matsuhonourano Yuunagini <br class="br-sp">Yakuyamoshiono Mimokogaretsutsu</span><br><span class="small"><a href="97_en.html"><ruby>権中納言定家<rt>ごんちゅうなごんさだいえ</rt></ruby>（1162年～1241年）<br><span class="romaji-line">Acting Middle Counselor Sadaie (1162–1241)</span></a></span></li>
+
+              <li data-audio-src="../sound/98.m4a"><ruby>風<rt>かぜ</rt></ruby>そよぐ ならの<ruby>小川<rt>おがわ</rt></ruby>の <ruby>夕
+                  <rt></rt></ruby><ruby>暮<rt>ぐれ</rt></ruby>は <br class="br-sp">みそぎぞ<ruby>夏<rt>なつ</rt></ruby>の
+                しるしなりける<br><span class="romaji-line">Kazesoyogu Naranoogawanо Yuugureha <br class="br-sp">Misogizonatsuno Shirushinarikeru</span><br><span class="small"><a href="98_en.html"><ruby>従二位家隆<rt>じゅにいいえたか</rt>
+                      </ruby>（1158年～1237年）<br><span class="romaji-line">Junior Second Rank Ietaka (1158–1237)</span></a></span></li>
+
+              <li data-audio-src="../sound/99.m4a"><ruby>人<rt>ひと</rt></ruby>もをし <ruby>人<rt>ひと</rt></ruby>もうらめし あ<ruby>ぢ
+                  <rt>じ</rt></ruby>きなく <br class="br-sp"><ruby>世<rt>よ</rt></ruby>を<ruby>思<rt>おも</rt></ruby><ruby>ふ<rt>う
+                  </rt></ruby>ゆ<ruby>ゑ<rt>え</rt></ruby>に <ruby>物<rt>も</rt></ruby><ruby>思<rt>おも</rt></ruby><ruby>ふ<rt>う
+                  </rt></ruby><ruby>身<rt>み</rt></ruby>は<br><span class="romaji-line">Hitomooshi Hitomourameshi Ajikinaku <br class="br-sp">Yowoomouyueni Monoomoumiha</span><br><span class="small"><a href="99_en.html"><ruby>後鳥羽院<rt>ごとばいん
+                      </rt></ruby>（1180年～1239年）<br><span class="romaji-line">Retired Emperor Go-Toba (1180–1239)</span></a></span></li>
+
+              <li data-audio-src="../sound/100.m4a">ももしきや ふるき<ruby>軒<rt>のき</rt></ruby>ばの しのぶにも <br class="br-sp">な<ruby>ほ<rt>お</rt></ruby>あまりある <ruby>昔<rt>むかし</rt></ruby>なりけり<br><span class="romaji-line">Momoshikiya Furukinokibano Shinobunimo <br class="br-sp">Naoamariaru Mukashinarikeri</span><br><span class="small"><a href="100_en.html"><ruby>順徳院<rt>じゅんとくいん</rt></ruby>（1197年～1242年）<br><span class="romaji-line">Retired Emperor Juntoku (1197–1242)</span></a></span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-copy">&copy;2023 Shigure no Hyakunin Isshu</span>
+      <ul>
+        <li><a href="policy.html">Privacy Policy</a></li>
+        <li>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXx7TKlqnTfKrw2Nuh4f37swVwFH-RFDsNkTGQ4JEF50q2wQ/viewform?usp=header"
+            target="_blank" rel="noopener">Contact Form</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+  <!-- フッターここまで -->
+  <script src="/js/player_en.js?ver01"></script>
+  <script src="../js/back-to-top.js?20260908-02"></script>
+
+</body>
+</html>

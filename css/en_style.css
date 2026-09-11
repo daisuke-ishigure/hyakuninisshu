@@ -1,0 +1,94 @@
+
+/* ── General overflow prevention ─────────────────────── */
+.select-container,
+.checkbox1,
+.card-front,
+.card-back,
+.coumn-wrapper,
+.makimono,
+.words,
+.explanation {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* ── Poem card: scale name to fit ───────────────────── */
+#poemName {
+  font-size: clamp(0.75rem, 2.2vw, 1.2rem);
+  line-height: 1.4;
+}
+
+/* ── Card poem text: slightly smaller ───────────────── */
+.card-front h3 {
+  font-size: clamp(0.7rem, 1.8vw, 1rem);
+  line-height: 1.6;
+}
+
+/* ── Selector area labels ───────────────────────────── */
+#themeSelector-label,
+#jsonSelector-label {
+  font-size: 0.82em;
+  white-space: nowrap;
+}
+
+/* ── Toggle label: allow wrap, smaller text ─────────── */
+#toggle2-label {
+  font-size: 0.78em;
+  line-height: 1.3;
+  max-width: 9em;
+}
+
+/* ── Audio credit ───────────────────────────────────── */
+#audio-credit,
+#audio-credit-en {
+  font-size: 0.78em;
+  line-height: 1.4;
+}
+
+/* ── Bottom navigation ──────────────────────────────── */
+#next2_arrow,
+#back2_arrow {
+  font-size: 0.85em;
+  white-space: nowrap;
+}
+
+/* ── Quote blocks: slightly tighter ────────────────── */
+.quote q {
+  font-size: 0.92em;
+  line-height: 1.7;
+}
+
+
+@media (min-width: 768px) {
+  .explanation {
+    max-height: 780px;      /* adjust to match your card height */
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 6px;     /* room for the scrollbar */
+    scroll-behavior: smooth;
+  }
+
+  /* Subtle custom scrollbar (WebKit) */
+  .explanation::-webkit-scrollbar {
+    width: 5px;
+  }
+  .explanation::-webkit-scrollbar-track {
+    background: #f5f0ea;
+    border-radius: 99px;
+  }
+  .explanation::-webkit-scrollbar-thumb {
+    background: #c8b49a;
+    border-radius: 99px;
+  }
+  .explanation::-webkit-scrollbar-thumb:hover {
+    background: #9a7a5a;
+  }
+}
+
+/* ── Stat / info cards with fixed widths ────────────── */
+.tm-stat-card .label,
+.tm-stat-card .sub {
+  font-size: 0.78em;
+  overflow-wrap: break-word;
+}
+

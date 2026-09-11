@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="An online karuta quiz for practising the Hyakunin Isshu. Read the upper verse and choose the matching lower verse. Practise by colour group (Blue, Pink, Yellow, Green, Orange) from the Five-Colour Hyakunin Isshu set.">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/style.css?20260908-16">
+    <link rel="stylesheet" href="../css/kimariji.css?20260101-05">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@500&family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap"
+        rel="stylesheet">
+    <!-- OGP -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Hyakunin Isshu Karuta Quiz – Free memorisation game">
+    <meta property="og:description"
+        content="An online karuta quiz for practising the Hyakunin Isshu. Choose the matching lower verse for each upper verse shown. Practise by colour group from the Five-Colour Hyakunin Isshu set.">
+    <meta property="og:image" content="https://hyakuninisshu.com/img/thumb_karuta-quiz.webp">
+    <meta property="og:url" content="https://hyakuninisshu.com/kimariji_game_en.html">
+    <meta property="og:site_name" content="Shigure no Hyakunin Isshu">
+    <meta name="twitter:card" content="summary_large_image">
+    <!-- Apple touch icon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico">
+    <title>Hyakunin Isshu Karuta Quiz (with Kimariji mode) | Shigure no Hyakunin Isshu</title>
+    <link rel="canonical" href="https://hyakuninisshu.com/kimariji_game_en.html">
+
+    <!-- ── Missed-cards flip card styles ──────────────────────────── -->
+    <style>
+      /* ── Section heading ── */
+      #missed_cards_section {
+        margin-top: 24px;
+        text-align: left;
+      }
+      .missed-cards-heading {
+        font-size: 14px;
+        font-weight: bold;
+        color: #B82343;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+
+      /* ── Card grid ── */
+      #missed_cards_list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        background: #f0ebe0;
+        border-radius: 8px;
+        padding: 10px;
+      }
+
+      /* ── One card (perspective container) ── */
+      .missed-card-wrapper {
+        width: clamp(90px, 30vw, 130px);
+        height: clamp(115px, 38vw, 165px);
+        perspective: 600px;
+        cursor: pointer;
+        flex-shrink: 0;
+        /* wrapper itself is transparent for the flip effect */
+        background: none !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      /* ── Rotation axis (holds front + back) ── */
+      .missed-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        transition: transform 0.45s ease;
+      }
+      .missed-card-wrapper.flipped .missed-card-inner {
+        transform: rotateY(180deg);
+      }
+
+      /* ── Front and back shared styles ── */
+      .missed-card-front,
+      .missed-card-back {
+        position: absolute;
+        inset: 0;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        box-sizing: border-box;
+        padding: 6px 5px;
+        background: #fdf8e8;
+        border: 2px solid #c8a84b;
+        border-radius: 4px;
+      }
+
+      /* ── Front: torihuda (lower verse card face) — vertical ── */
+      .missed-card-front {
+        justify-content: center;
+        align-items: center;
+      }
+      .missed-card-front p {
+        margin: 0;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        line-height: 1.6;
+        max-height: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        font-family: 'Kaisei HarunoUmi', serif;
+      }
+
+      /* ── Back: full poem — vertical ── */
+      .missed-card-back {
+        transform: rotateY(180deg);
+        background: #f0e8cc;
+        border-color: #a07830;
+        justify-content: center;
+        align-items: center;
+        color: #333;
+      }
+      .missed-card-back__uta {
+        display: block;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        white-space: pre-line;
+        line-height: 1.6;
+        max-height: 100%;
+        font-family: 'Kaisei HarunoUmi', serif;
+      }
+
+      /* ── Number badge (both faces, bottom-left, horizontal) ── */
+      .missed-card-number {
+        position: absolute;
+        bottom: 4px;
+        left: 5px;
+        font-size: 9px;
+        color: #bbb;
+        writing-mode: horizontal-tb;
+        font-family: 'Noto Sans JP', sans-serif;
+        line-height: 1;
+        pointer-events: none;
+      }
+
+      /* ── Tap hint ── */
+      .missed-card-hint {
+        font-size: 11px;
+        color: #999;
+        text-align: center;
+        margin-top: 6px;
+      }
+
+      /* ── Typewriter: pointer cursor on question card ── */
+      .typewriter-card { cursor: pointer; position: relative; }
+
+      /* ── Skip hint (bottom-right of card) ── */
+      .skip-hint {
+        position: absolute;
+        bottom: 6px;
+        right: 6px;
+        font-size: 9px;
+        color: #bbb;
+        writing-mode: horizontal-tb;
+        font-family: 'Noto Sans JP', sans-serif;
+        pointer-events: none;
+        transition: opacity 0.4s;
+      }
+
+      /* ── Choice buttons while animation is playing ── */
+      .kimariji-card { transition: opacity 0.5s; }
+      .kimariji-card.choices-waiting { opacity: 0.35 !important; cursor: default !important; }
+    </style>
+    <!-- ── End of missed-cards styles ── -->
+</head>
+
+<body>
+    <header class="header">
+        <p class="site-title">
+            <a href="https://hyakuninisshu.com/">Shigure no Hyakunin Isshu</a>
+        </p>
+        <div class="header_list">
+            <a href="index_en.html"><img src="../img/icon_top_en.svg?ver-01" alt="Top" class="icon"></a>
+            <a href="introduction_en.html" style="color:#333"><img src="/img/icon_column_en.svg?ver-01" alt="Articles" class="icon"></a>
+            <a href="introduction-app_en.html" style="color:#333"><img src="/img/icon_app_en.svg?ver-01" alt="App" class="icon"></a>
+            <a href="list_en.html"><img src="/img/icon_list_en.svg?ver-01" alt="Poem list and search" class="icon"></a>
+        </div>
+    </header>
+    <main class="main_about-main">
+        <div id="quiz-container"></div>
+
+        <!-- ── Missed cards section (shown after game ends via showMissedCards()) ── -->
+        <div id="missed_cards_section" style="display:none; max-width:800px; margin:0 auto; padding:0 10px 24px;">
+            <p class="missed-cards-heading">❌ Cards you missed</p>
+            <div id="missed_cards_list"></div>
+            <p class="missed-card-hint">Tap a card to flip it and see the full poem</p>
+        </div>
+        <!-- ── End of missed cards section ── -->
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <span class="footer-copy">&copy;2023 Shigure no Hyakunin Isshu</span>
+            <ul>
+                <li><a href="policy.html">プライバシーポリシー</a></li>
+                <li>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXx7TKlqnTfKrw2Nuh4f37swVwFH-RFDsNkTGQ4JEF50q2wQ/viewform?usp=header"
+                        target="_blank" rel="noopener">お問い合わせフォーム</a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+
+    <!--
+      ★ Load missed-cards-addon.js BEFORE kimariji_en.js
+        so that window.showMissedCards() is available to kimariji_en.js.
+    -->
+    <script src="js/missed-cards-addon.js?20260404-01"></script>
+    <script src="js/kimariji_game_en.js?20260404-01"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.3.2/dist/confetti.browser.min.js"></script>
+
+    
+  <script src="../js/back-to-top.js?20260908-02"></script>
+
+</body>
+
+</html>

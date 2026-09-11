@@ -1,0 +1,567 @@
+@charset "UTF-8";
+html, body {
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --------------------------------------------
+メイン
+-------------------------------------------- */
+.red {
+  color: red;
+}
+
+#quiz-container {
+  background-image: url(../img/tatami.webp);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#quiz-container.play {
+  background-image: url(../img/tatami.webp);
+  background-attachment: fixed;
+  overflow-y: visible;
+  min-height: 100vh;
+}
+
+.main_about-main {
+  flex: 1;
+  min-height: auto;
+  padding: 5px;
+}
+
+.question-number {
+  margin: 5px 10px;
+  font-size: 16px;
+  text-shadow: 0px 0px 4px #fff, 0px 0px 4px #fff, 0px 0px 4px #fff, 0px 0px 4px #fff, 0px 0px 4px #fff;
+}
+
+.quiz-controls-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  border: 1px solid #333;
+  padding: 10px;
+}
+
+.quiz-controls {
+  display: flex;
+  flex-direction: column;
+}
+.quiz-controls p {
+  font-size: 15px;
+  margin-bottom: 5px !important;
+}
+
+#quiz-type-select,
+#quiz-limit-select {
+  height: 30px;
+  font-size: 1.1rem;
+  width: 190px;
+  padding-left: 5px;
+  color: #333;
+}
+
+.selection-controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1em;
+}
+
+.next-button {
+  width: 100px;
+  height: 30px;
+  margin: 10px auto;
+  background-image: url(../img/next-question.svg);
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0px 0px 4px #fff, 0px 0px 4px #fff;
+}
+
+#start-button,
+#replay-button {
+  width: 100px;
+  height: 30px;
+  margin: 20px auto;
+  background-image: url(../img/icon_start.svg);
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+#start-button_en,
+#replay-button_en {
+  width: 100px;
+  height: 30px;
+  margin: 20px auto;
+  background-image: url(../img/icon_start_en.svg);
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+/* 札（歌）のデザイン - 縦書き */
+.card-id {
+  position: absolute;
+  /* 縦書きの「左下」に配置 */
+  bottom: 0px;
+  left: 0px;
+  font-size: 8px; /* サイズを8pxに指定 */
+  color: #333;
+  z-index: 5;
+  writing-mode: horizontal-tb; /* IDは横書きで表示 */
+  text-orientation: mixed;
+  padding: 2px 4px;
+  background-color: #fff;
+  border-right: 1px solid #4e3052;
+  border-top: 1px solid #4e3052;
+  letter-spacing: 0;
+}
+
+.kimariji-card {
+  background-color: #fff;
+  border: 2px solid #4e3052;
+  letter-spacing: 0.5em;
+  background-size: cover;
+  padding: 11px 7px 9px;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: background-color 0.3s, opacity 0.5s;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  height: 280px;
+  width: 205px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+}
+.kimariji-card.choices-waiting {
+  opacity: 0.35 !important;
+  cursor: default !important;
+}
+
+.kimariji-card p {
+  font-family: "Kaisei HarunoUmi", serif;
+  font-size: 28px;
+  line-height: 1.8;
+  margin: 0;
+  text-align: left;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  color: #333;
+}
+
+/* 正解時の画像表示 */
+.kimariji-card.correct-image::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* 不正解時の画像表示 */
+.kimariji-card.incorrect-image::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* 上の句の表示エリア - 縦書き */
+.question-card {
+  font-family: "Kaisei HarunoUmi", serif;
+  letter-spacing: 0.15em;
+  background-image: url(../img/huda.webp);
+  border: 2px solid #333;
+  padding: 10px;
+  margin: 0 auto;
+  width: 190px;
+  height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  position: relative;
+}
+
+.question-card p {
+  font-size: 26px;
+  font-family: "Kaisei HarunoUmi", serif;
+  line-height: 2;
+  text-align: left;
+  margin-bottom: 0 !important;
+}
+.question-card p rt {
+  transform: translateX(-5px);
+}
+
+/* 選択肢を横並びにするためのコンテナ */
+#choices-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  overflow-x: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* メッセージ表示用のスタイル */
+#message-container {
+  background-color: #fff;
+  padding: 10px;
+  margin: 0 auto 10px;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-family: "Kaisei HarunoUmi", serif;
+  text-align: left;
+  font-size: 1.2em;
+  min-height: 20px;
+}
+#message-container:empty {
+  display: none;
+}
+
+.correct-message {
+  color: #008000;
+}
+
+.incorrect-message {
+  color: #333;
+}
+
+.letter-red {
+  color: red;
+}
+
+/* --------------------
+    メディアクエリ
+-------------------- */
+/* 画面幅が760px未満の場合 */
+@media (max-width: 760px) {
+  .quiz-controls-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .question-number {
+    font-size: 14px;
+  }
+  .question-card {
+    height: 230px;
+    width: 170px;
+  }
+  .question-card p {
+    font-size: 24px;
+    line-height: 2;
+  }
+  .kimariji-card {
+    height: 250px;
+    width: 185px;
+    padding: 10px 5px 2px;
+  }
+  .kimariji-card p {
+    font-size: 24px;
+  }
+  /* 画像のサイズを調整 */
+  .kimariji-card.correct-image::after,
+  .kimariji-card.incorrect-image::after {
+    width: 80px;
+    height: 80px;
+  }
+  #choices-container {
+    gap: 10px;
+  }
+  #message-container {
+    font-size: 1.2em;
+  }
+}
+/* 画面幅が550px未満の場合 */
+@media (max-width: 550px) {
+  .question-number {
+    font-size: 12px;
+  }
+  #quiz-type-select {
+    width: 180px;
+  }
+  .quiz-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .quiz-controls p {
+    font-size: 15px;
+    margin: 0;
+  }
+  .question-card {
+    height: 190px;
+    width: 140px;
+    padding: 8px 4px 2px;
+  }
+  .question-card p {
+    font-size: 20px;
+    line-height: 1.8;
+  }
+  .kimariji-card {
+    height: 182px;
+    width: 126px;
+    padding: 8px 2px 2px;
+  }
+  .kimariji-card p {
+    font-size: 20px;
+    line-height: 1.6;
+  }
+  /* 画像のサイズをさらに調整 */
+  .kimariji-card.correct-image::after,
+  .kimariji-card.incorrect-image::after {
+    width: 80px;
+    height: 80px;
+  }
+  #choices-container {
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  #message-container {
+    font-size: 1.2em;
+  }
+}
+/* --------------------------------------------
+   435px未満：3列横並びを維持する調整
+-------------------------------------------- */
+@media (max-width: 435px) {
+  /* 1. コンテナの余白を最小限にして3枚並ぶスペースを確保 */
+  #choices-container {
+    flex-wrap: nowrap; /* 折り返さない */
+    justify-content: space-between;
+    gap: 5px; /* 札同士の隙間を狭く */
+    padding: 5px 5px 0;
+  }
+  /* 2. 札の幅を画面幅の約30%に設定（3枚で90% + 隙間） */
+  .kimariji-card {
+    width: 2vw;
+    min-width: 105px;
+    height: 144px;
+    padding: 5px 2px;
+    margin: 5px 0;
+  }
+  /* 3. 文字サイズを大幅に小さくして3列でも収まるように */
+  .kimariji-card p {
+    font-size: 18px;
+    line-height: 1.3;
+    letter-spacing: 0.2em;
+  }
+  /* 4. 正解・不正解マークのサイズを札に合わせる */
+  .kimariji-card.correct-image::after,
+  .kimariji-card.incorrect-image::after {
+    width: 50px;
+    height: 50px;
+  }
+  /* 5. 上の句（問題札）も全体バランスを見て縮小 */
+  .question-card {
+    width: 120px;
+    height: 180px;
+    padding: 5px;
+  }
+  .question-card p {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+  /* 6. ID（札番号）が邪魔にならないよう調整 */
+  .card-id {
+    font-size: 7px;
+    padding: 1px 2px;
+  }
+}
+/* さらに小さい画面（360px以下）の場合の微調整 */
+@media (max-width: 360px) {
+  .kimariji-card p {
+    font-size: 12px; /* さらに文字を小さく */
+  }
+  .kimariji-card {
+    min-width: 90px;
+  }
+}
+footer {
+  margin-top: auto !important;
+}
+
+/* --------------------------------------------
+   間違えた札フリップカード / Missed-cards flip
+-------------------------------------------- */
+.section p {
+  text-align: left;
+}
+
+#missed_cards_section {
+  margin-top: 24px;
+  text-align: left;
+}
+
+.missed-cards-heading {
+  font-size: 14px;
+  font-weight: bold;
+  color: #B82343;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+#missed_cards_list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  background: #f0ebe0;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.missed-card-wrapper {
+  width: clamp(90px, 30vw, 130px);
+  height: clamp(115px, 38vw, 165px);
+  perspective: 600px;
+  cursor: pointer;
+  flex-shrink: 0;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  -webkit-tap-highlight-color: transparent;
+}
+.missed-card-wrapper.flipped .missed-card-inner {
+  transform: rotateY(180deg);
+}
+
+.missed-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.45s ease;
+}
+
+.missed-card-front,
+.missed-card-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 6px 5px;
+  background: #fdf8e8;
+  border: 2px solid #c8a84b;
+  border-radius: 4px;
+}
+
+.missed-card-front p {
+  margin: 0;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  line-height: 1.6;
+  max-height: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  font-family: "Kaisei HarunoUmi", serif;
+}
+
+.missed-card-back {
+  transform: rotateY(180deg);
+  background: #f0e8cc;
+  border-color: #a07830;
+  color: #333;
+}
+
+.missed-card-back__uta {
+  display: block;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  white-space: pre-line;
+  line-height: 1.6;
+  max-height: 100%;
+  font-family: "Kaisei HarunoUmi", serif;
+}
+
+.missed-card-number {
+  position: absolute;
+  bottom: 4px;
+  left: 5px;
+  font-size: 9px;
+  color: #bbb;
+  writing-mode: horizontal-tb;
+  font-family: "Noto Sans JP", sans-serif;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.missed-card-hint {
+  font-size: 11px;
+  color: #999;
+  text-align: center;
+  margin-top: 6px;
+}
+
+.typewriter-card {
+  cursor: pointer;
+  position: relative;
+}
+
+.skip-hint {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  font-size: 9px;
+  color: #555;
+  writing-mode: horizontal-tb;
+  font-family: "Noto Sans JP", sans-serif;
+  pointer-events: none;
+  transition: opacity 0.4s;
+}
+
+/* ── 英語版フォント上書き ── */
+body.en .question-card,
+body.en .question-card p,
+body.en .kimariji-card p,
+body.en .missed-card-front p,
+body.en .missed-card-back__uta {
+  font-family: "Noto Sans JP", sans-serif;
+}/*# sourceMappingURL=kimariji.css.map */

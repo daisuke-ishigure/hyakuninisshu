@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>百人一首オンライン対戦ゲーム：最大4人で遊べるリアルタイムかるた | 時雨の百人一首</title>
+  <link rel="canonical" href="https://hyakuninisshu.com/karuta-taisen-pc.html">
+  <meta name="Keywords" content="百人一首,かるたゲーム,リアルタイム対戦">
+  <meta name="description"
+    content="全国の誰かと最大4人で遊べる百人一首のリアルタイムかるた対戦ゲームです。自動マッチングや合言葉での友達対戦に加え、試合が始まっていても序盤ならすぐに途中参加できます。">
+  <link rel="stylesheet" href="../css/style.css?20260908-16">
+  <link rel="stylesheet" href="../css/karuta.css?20260101">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@500&family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap"
+    rel="stylesheet">
+  <style>
+    button {
+      font-family: "noto-sans-pro", sans-serif;
+    }
+
+    .section {
+      min-height: 300px;
+    }
+
+    .taken-by-me {
+      border: 3px solid rgba(255, 71, 87, 0.5) !important;
+      background-color: rgba(255, 71, 87, 0.05);
+    }
+
+    .taken-by-others {
+      border: 3px solid rgba(47, 53, 66, 0.3) !important;
+    }
+
+    .taken-by-me p,
+    .taken-by-others p {
+      opacity: 0.3;
+    }
+
+    .taker-icon {
+      opacity: 1.0 !important;
+      font-weight: normal;
+    }
+
+    #player_info {
+      max-width: 800px;
+      margin: 20px auto 10px auto;
+      font-weight: bold;
+      color: #2d5a27;
+      text-shadow:
+        0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff,
+        0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff,
+        0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff;
+    }
+
+
+    #operatin_area {
+      display: none;
+      margin-top: 15px;
+      text-align: center;
+    }
+
+    #room_status,
+    #status_text {
+      margin-bottom: 15px;
+      text-shadow:
+        0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff,
+        0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff,
+        0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff;
+    }
+
+    #auto_join_button,
+    #manual_join_button,
+    #cpu_battle_button {
+      background-color: #B82343;
+      padding: 6px 20px;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    #cpu_battle_button {
+      background-color: #B82343;
+    }
+
+    .ready-active {
+      background-color: #27ae60 !important;
+      color: white;
+    }
+
+    .setup-box {
+      background: #F7F1E0;
+      padding: 15px;
+      border-radius: 8px;
+      max-width: 800px;
+      margin: 0 auto 10px auto;
+      text-align: center;
+    }
+
+    #karuta_container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px;
+      min-height: 200px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    #status_text {
+      font-weight: bold;
+      color: #B82343;
+      margin: 15px 0;
+      min-height: 1.5em;
+      text-align: center;
+      font-size: 1.2rem;
+    }
+
+
+    .btn-return {
+      margin-top: 20px;
+      padding: 12px 24px;
+      background: #B82343;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    #audio_resume_btn {
+      display: none;
+      margin: 10px auto;
+      padding: 12px 24px;
+      background: #f39c12;
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    /* CPU対戦用の追加スタイル */
+    .cpu-difficulty-selector {
+      margin: 15px 0;
+    }
+
+    .difficulty-btn {
+      padding: 8px 16px;
+      margin: 0 5px;
+      background: #ecf0f1;
+      border: 2px solid #bdc3c7;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.3s;
+    }
+
+    .difficulty-btn.selected {
+      background: #27ae60;
+      color: white;
+      border-color: #27ae60;
+    }
+
+    .difficulty-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    @keyframes flash-effect {
+      0% {
+        box-shadow: 0 0 0px #fff;
+        filter: brightness(1);
+      }
+
+      50% {
+        box-shadow: 0 0 20px #fff, 0 0 40px #fffa65;
+        filter: brightness(1.8);
+      }
+
+      100% {
+        box-shadow: 0 0 0px #fff;
+        filter: brightness(1);
+      }
+    }
+
+    .flash {
+      animation: flash-effect 0.5s ease-out;
+      z-index: 20;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.3.2/dist/confetti.browser.min.js"></script>
+</head>
+
+<body>
+  <header class="header">
+    <h1><a href="https://hyakuninisshu.com/">時雨の百人一首</a></h1>
+    <div class="header_list">
+      <a href="index.html"><img src="../img/icon_top.svg?ver-02" style="height:2em" alt="トップ" class="icon"></a>
+      <a href="introduction.html" style="color:#333"><img src="/img/icon_column.svg?ver-02" style="height:2em" alt="コラム"
+          class="icon"></a>
+      <a href="introduction-app.html" style="color:#333"><img src="/img/icon_app.svg?ver-02" style="height:2em"
+          alt="アプリ" class="icon"></a>
+      <a href="list.html"><img src="/img/icon_search.svg?ver-04" style="height:2em" alt="和歌の一覧・検索" class="icon"></a>
+    </div>
+  </header>
+
+  <main class="main_about-main">
+    <div class="section">
+      <h2>百人一首 対戦型かるたゲーム</h2>
+      <div id="game_header">
+        <h4>基本ルール</h4>
+        <ul class="karuta_ul">
+          <li>最大4人でリアルタイムに対戦できるかるたゲームです。</li>
+          <li>お手付きをすると3秒間操作ができなくなります。</li>
+          <li>3枚目の札の読み上げ（序盤）までなら、進行中のゲームに自動合流します。</li>
+          <li>対戦相手がいないときは、🤖ロボットと対戦できます。この場合は1対1の対戦となり、途中で他の誰かが合流することはありません。</li>
+          <li>全12枚のうち、最も多く取った人が勝利です</li>
+        </ul>
+        <h4>ゲームの始め方</h4>
+        <ul class="karuta_ul" style="margin-bottom:0.25em">
+          <li>「誰かと対戦」 ボタンを押すと、オンライン上で他のプレイヤーがいれば対戦できます。</li>
+          <li>「ロボットと対戦」ボタンを押すと、ロボット相手に練習できます。</li>
+          <li>お友達と示し合わせた「合言葉」を入力すると、その友達と対戦できます。<br>合言葉は、日本語（ひらがな・カタカナ・漢字）や英数字、またそれらを組み合わせた言葉もご使用いただけます。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="player_info">
+      <div>あなたのID: <span id="my_id">...</span></div>
+      <div id="others_icons" style="margin-top: 5px;"></div>
+    </div>
+
+    <div id="room_setup">
+      <div class="setup-box">
+        <div id="waiting_display_area" style="margin-bottom: 2px;font-size:16px; font-weight: bold; min-height: 1.5em;">
+          <span id="waiting_status">現在の待機者なし</span>
+        </div>
+        <p style="margin-bottom:6px;">オンライン上の誰かと対戦する場合：</p>
+        <button id="auto_join_button">ゲームへ</button>
+        
+        <hr style="margin: 20px 0; border: 0; border-top: 1px solid #888;">
+        
+        <p style="margin-bottom:6px;">🤖 ロボットと対戦する場合：</p>
+        <div class="cpu-difficulty-selector">
+          <button class="difficulty-btn selected" data-level="easy">やさしい</button>
+          <button class="difficulty-btn" data-level="normal">ふつう</button>
+          <button class="difficulty-btn" data-level="hard">つよい</button>
+        </div>
+        <button id="cpu_battle_button">ロボットと対戦</button>
+        
+        <hr style="margin: 20px 0; border: 0; border-top: 1px solid #888;">
+        <p style="margin-bottom:6px;">友達と遊ぶ場合：<br>合言葉を入力してください</p>
+        <input type="text" id="room_id_input" placeholder="例：桜咲く" style="padding:6px; font-size:14px;">
+        <button id="manual_join_button">ゲームへ</button>
+      </div>
+    </div>
+
+    <div id="operatin_area">
+      <p id="room_status">接続中...</p>
+      <button id="ready_button" style="padding: 15px 30px; font-size: 16px; cursor:pointer;">準備できたら押してください</button>
+    </div>
+
+    <div id="status_text"></div>
+    <div style="text-align:center;"><button id="audio_resume_btn">音が鳴らない場合はここをタップ</button></div>
+    <div id="karuta_container"></div>
+
+    <div id="result_container"
+      style="display:none; text-align:center; padding:20px; background:#fff9e6; border-radius:10px; margin:20px auto; max-width:800px;">
+      <h2 style="color:#f39c12;">ゲーム終了！</h2>
+      <div id="result_text" style="font-weight:bold;"></div>
+      <button class="btn-return" onclick="location.reload()">最初の画面に戻る</button>
+    </div>
+  </main>
+
+  <footer>
+    <ul>
+      <li>&copy;2023 時雨 大輔</li>
+    </ul>
+  </footer>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getDatabase, ref, set, onValue, remove, runTransaction, get, onDisconnect, update, off } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDsKsuYsYZYaNVuFvnzQsZiKIrSAMFZQus",
+      authDomain: "fire-karuta.firebaseapp.com",
+      databaseURL: "https://fire-karuta-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "fire-karuta",
+      appId: "1:202669803794:web:2b2eb18bb0a065dff04bcb"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const myId = "P-" + Math.floor(Math.random() * 900 + 100);
+
+    document.getElementById('my_id').innerText = myId;
+
+    let jsonData = null, currentSongNumber = null, lastGameId = null, playOrder = [];
+    let currentRoomId = null, countdownStarted = false, isGameOver = false;
+    let localPenaltyTimeout = null, heartbeatInterval = null;
+    let isLeavingIntentionally = false;
+
+    // CPU対戦用の変数
+    let isCpuMode = false;
+    let cpuDifficulty = 'easy';
+    let cpuPlayers = [];
+    let cpuTimers = [];
+    let selectedSongs = [];
+    let takenCards = {};
+    let currentSongIndex = -1;
+
+    const globalAudio = new Audio();
+    globalAudio.preload = "auto";
+    const finishAudio = new Audio("../sound/finish.m4a");
+
+    const tapAudio = new Audio("../sound/tap.mp3");
+    const missAudio = new Audio("../sound/miss.mp3");
+    tapAudio.preload = "auto";
+    missAudio.preload = "auto";
+
+    let audioUrlCache = {};
+
+    // CPU難易度設定
+    const CPU_SETTINGS = {
+      easy: {
+        reactionTimeMin: 5000,
+        reactionTimeMax: 7000,
+        accuracy: 0.5,
+        mistakeChance: 0.25
+      },
+      normal: {
+        reactionTimeMin: 4000,
+        reactionTimeMax: 5000,
+        accuracy: 0.65,
+        mistakeChance: 0.15
+      },
+      hard: {
+        reactionTimeMin: 3000,
+        reactionTimeMax: 3500,
+        accuracy: 0.8,
+        mistakeChance: 0.08
+      }
+    };
+
+    function getIcon(pid, allPids) {
+      // CPUプレイヤーは常に🤖
+      if (pid === 'CPU' || pid.startsWith('CPU-')) {
+        return '🤖';
+      }
+      
+      const icons = ['🐵', '🐼', '🐰', '🐨', '🐱', '🦁', '🐶', '🦊', '🐻'];
+      const sortedPids = [...allPids].sort();
+      const index = sortedPids.indexOf(pid);
+      if (index === -1) {
+        const num = parseInt(pid.replace('P-', '').replace('CPU-', '')) || 0;
+        return icons[num % icons.length];
+      }
+      return icons[index % icons.length];
+    }
+
+    function watchWaitingPlayers() {
+      onValue(ref(db, 'rooms_multi'), (snapshot) => {
+        const rooms = snapshot.val() || {};
+        let count = 0;
+        const now = Date.now();
+        for (const rid in rooms) {
+          const room = rooms[rid];
+          const players = room.players || {};
+          const pCount = Object.keys(players).length;
+          if (pCount === 0) { remove(ref(db, `rooms_multi/${rid}`)); continue; }
+          const currentIndex = room.currentSongIndex !== undefined ? room.currentSongIndex : -1;
+          const isJoinable = !room.config || (currentIndex >= -1 && currentIndex <= 2);
+          if (rid.startsWith('room-') && pCount < 4 && isJoinable) {
+            if (!players[myId]) {
+              const hasActivePlayer = Object.values(players).some(p => p.lastActive && (now - p.lastActive <= 120000));
+              if (hasActivePlayer) count++;
+            }
+          }
+        }
+        const statusEl = document.getElementById('waiting_status');
+        if (count > 0) {
+          statusEl.innerHTML = "🔥 対戦相手がいます！すぐ遊べます";
+          document.getElementById('waiting_display_area').style.color = "#ff4757";
+        } else {
+          statusEl.innerHTML = "現在の待機者なし";
+          document.getElementById('waiting_display_area').style.color = "#B82343";
+        }
+      });
+    }
+
+    async function init() {
+      try {
+        const res = await fetch("../js/karuta.json?v=" + Date.now());
+        jsonData = await res.json();
+        watchWaitingPlayers();
+      } catch (e) { console.error("❌ JSONエラー:", e); }
+    }
+
+    function unlockAudio() {
+      globalAudio.src = "data:audio/wav;base64,UklGRigAAABXQVZFRm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAA==";
+      globalAudio.play().then(() => globalAudio.pause()).catch(() => { });
+    }
+
+    function preloadSongs(keys) {
+      keys.forEach(num => {
+        const url = `../sound/${num}.mp3`;
+        audioUrlCache[num] = url;
+      });
+    }
+
+    document.getElementById('audio_resume_btn').onclick = function () {
+      unlockAudio();
+      if (currentSongNumber) {
+        globalAudio.src = audioUrlCache[currentSongNumber];
+        globalAudio.play().then(() => this.style.display = 'none');
+      }
+    };
+
+    // 難易度選択ボタンの処理
+    document.querySelectorAll('.difficulty-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.difficulty-btn').forEach(b => b.classList.remove('selected'));
+        this.classList.add('selected');
+        cpuDifficulty = this.dataset.level;
+      });
+    });
+
+    // CPU対戦ボタン
+    document.getElementById('cpu_battle_button').onclick = () => {
+      if (!jsonData) return;
+      unlockAudio();
+      isCpuMode = true;
+      
+      // CPU対戦用のプレイヤーを生成（常に1人）
+      cpuPlayers = ['CPU'];
+      
+      startCpuGame();
+    };
+
+    document.getElementById('auto_join_button').onclick = async () => {
+      if (!jsonData) return;
+      unlockAudio();
+      isCpuMode = false;
+      
+      const snap = await get(ref(db, 'rooms_multi'));
+      const rooms = snap.val() || {};
+      let target = null;
+
+      for (const rid in rooms) {
+        const room = rooms[rid];
+        const players = room.players || {};
+        const pCount = Object.keys(players).length;
+        const cIdx = room.currentSongIndex !== undefined ? room.currentSongIndex : -1;
+        const takenCount = room.takenCards ? Object.keys(room.takenCards).length : 0;
+
+        if (rid.startsWith('room-') && pCount >= 1 && pCount < 4 && takenCount < 12) {
+          if (!room.config || (cIdx >= -1 && cIdx <= 2)) {
+            target = rid;
+            break;
+          }
+        }
+      }
+
+      if (target) {
+        const result = await runTransaction(ref(db, `rooms_multi/${target}/players`), (cp) => {
+          if (!cp || Object.keys(cp).length >= 4) return undefined;
+          cp[myId] = { ready: false, lastActive: Date.now() };
+          return cp;
+        });
+        if (result.committed) {
+          currentRoomId = target;
+          startSequence();
+          return;
+        }
+      }
+
+      const newRoomId = "room-" + Date.now();
+      await set(ref(db, `rooms_multi/${newRoomId}/players/${myId}`), { ready: false, lastActive: Date.now() });
+      currentRoomId = newRoomId;
+      startSequence();
+    };
+
+    document.getElementById('manual_join_button').onclick = async () => {
+      const val = document.getElementById('room_id_input').value;
+      if (!val) return;
+      unlockAudio();
+      isCpuMode = false;
+      
+      const rid = "manual-" + val;
+      const result = await runTransaction(ref(db, `rooms_multi/${rid}/players`), (cp) => {
+        if (!cp) return { [myId]: { ready: false, lastActive: Date.now() } };
+        if (Object.keys(cp).length >= 4) return undefined;
+        cp[myId] = { ready: false, lastActive: Date.now() };
+        return cp;
+      });
+      if (result.committed) { currentRoomId = rid; startSequence(); }
+      else { alert("満員です。"); }
+    };
+
+    function startSequence() {
+      document.querySelector('.section').style.display = 'none';
+      document.getElementById('room_setup').style.display = 'none';
+      document.getElementById('operatin_area').style.display = 'block';
+      listenToGame();
+    }
+
+    // CPU対戦の開始
+    function startCpuGame() {
+      document.querySelector('.section').style.display = 'none';
+      document.getElementById('room_setup').style.display = 'none';
+      document.getElementById('player_info').style.display = 'block';
+      
+      const allPlayers = [myId, ...cpuPlayers];
+      const myIcon = getIcon(myId, allPlayers);
+      document.getElementById('my_id').innerText = `${myId} ${myIcon}`;
+      
+      // CPUアイコンは🤖
+      document.getElementById('others_icons').innerText = `対戦相手： CPU 🤖`;
+      
+      // ゲーム開始のカウントダウン
+      let countdown = 3;
+      const statusEl = document.getElementById('status_text');
+      statusEl.style.display = 'block';
+      
+      const countdownTimer = setInterval(() => {
+        statusEl.innerText = `🔥 開始まで... ${countdown}`;
+        countdown--;
+        
+        if (countdown < 0) {
+          clearInterval(countdownTimer);
+          initializeCpuGame();
+        }
+      }, 1000);
+    }
+
+    function initializeCpuGame() {
+      const keys = shuffle(Object.keys(jsonData)).slice(0, 12);
+      selectedSongs = keys;
+      playOrder = shuffle([...keys]);
+      takenCards = {};
+      currentSongIndex = -1;
+      isGameOver = false;
+      
+      setupBoardLocal(keys, playOrder);
+      
+      setTimeout(() => {
+        currentSongIndex = 0;
+        document.getElementById('status_text').innerText = `第 1 首 / 12首`;
+        playSongByIndex(0);
+        scheduleCpuActions();
+      }, 2000);
+    }
+
+    // CPUの行動をスケジュール
+    function scheduleCpuActions() {
+      // 前回のタイマーをクリア
+      cpuTimers.forEach(timer => clearTimeout(timer));
+      cpuTimers = [];
+      
+      if (isGameOver || currentSongIndex >= 12) return;
+      
+      const correctCard = playOrder[currentSongIndex];
+      const settings = CPU_SETTINGS[cpuDifficulty];
+      
+      cpuPlayers.forEach(cpuId => {
+        // すでにペナルティ中ならスキップ
+        if (takenCards[correctCard]) return;
+        
+        const willTakeCorrect = Math.random() < settings.accuracy;
+        const reactionTime = settings.reactionTimeMin + 
+          Math.random() * (settings.reactionTimeMax - settings.reactionTimeMin);
+        
+        const timer = setTimeout(() => {
+          if (isGameOver || takenCards[correctCard]) return;
+          
+          if (willTakeCorrect) {
+            cpuTakeCard(cpuId, correctCard);
+          } else {
+            // 間違った札を取る可能性
+            if (Math.random() < settings.mistakeChance) {
+              const availableCards = selectedSongs.filter(s => !takenCards[s] && s !== correctCard);
+              if (availableCards.length > 0) {
+                const wrongCard = availableCards[Math.floor(Math.random() * availableCards.length)];
+                cpuMistake(cpuId, wrongCard);
+              }
+            }
+          }
+        }, reactionTime);
+        
+        cpuTimers.push(timer);
+      });
+    }
+
+    function cpuTakeCard(cpuId, cardNumber) {
+      if (takenCards[cardNumber] || isGameOver) return;
+      
+      takenCards[cardNumber] = cpuId;
+      updateBoardStateCpu();
+      
+      // 次の札へ
+      setTimeout(() => {
+        if (Object.keys(takenCards).length >= 12) {
+          endCpuGame();
+        } else {
+          currentSongIndex++;
+          document.getElementById('status_text').innerText = `第 ${currentSongIndex + 1} 首 / 12首`;
+          playSongByIndex(currentSongIndex);
+          scheduleCpuActions();
+        }
+      }, 1500);
+    }
+
+    function cpuMistake(cpuId, cardNumber) {
+      // CPUのお手付き（視覚的なフィードバックのみ）
+      console.log(`${cpuId} がお手付き`);
+    }
+
+    function listenToGame() {
+      const roomRef = ref(db, `rooms_multi/${currentRoomId}`);
+      const myPlayerRef = ref(db, `rooms_multi/${currentRoomId}/players/${myId}`);
+      onDisconnect(myPlayerRef).remove();
+
+      heartbeatInterval = setInterval(() => {
+        if (!isGameOver) update(myPlayerRef, { lastActive: Date.now() });
+      }, 30000);
+
+      onValue(roomRef, (snapshot) => {
+        const data = snapshot.val();
+        if (!data || !data.players) {
+          if (!isGameOver) location.reload();
+          return;
+        }
+        const players = data.players;
+        const playerIds = Object.keys(players).sort();
+
+        const myIcon = getIcon(myId, playerIds);
+        document.getElementById('my_id').innerText = `${myId} ${myIcon}`;
+
+        const othersIconsEl = document.getElementById('others_icons');
+        const otherIcons = playerIds
+          .filter(pid => pid !== myId)
+          .map(pid => getIcon(pid, playerIds));
+
+        if (otherIcons.length > 0) {
+          othersIconsEl.innerText = "他の参加者： " + otherIcons.join(' ');
+        } else {
+          othersIconsEl.innerText = "対戦相手を待っています...";
+        }
+
+        const isHost = playerIds[0] === myId;
+        const statusEl = document.getElementById('status_text');
+
+        if (data.config && data.config.state === 'playing') {
+          document.getElementById('operatin_area').style.display = 'none';
+          if (lastGameId !== data.config.gameId) {
+            lastGameId = data.config.gameId;
+            setupBoardLocal(data.config.selectedSongs, data.config.order);
+            if (data.currentSongIndex >= 0) {
+              statusEl.innerText = `第 ${data.currentSongIndex + 1} 首から参戦！`;
+              statusEl.style.color = "#f39c12";
+            }
+          }
+          updateBoardState(data.takenCards || {}, playerIds);
+          if (!localPenaltyTimeout) {
+            document.getElementById('karuta_container').style.opacity = "1";
+            document.getElementById('karuta_container').style.pointerEvents = "auto";
+            statusEl.innerText = data.currentSongIndex === -1 ? "まもなく開始..." : `第 ${data.currentSongIndex + 1} 首 / 12首`;
+          }
+          if (data.currentSongIndex === -1 && isHost) {
+            setTimeout(() => update(ref(db, `rooms_multi/${currentRoomId}`), {
+              currentSongIndex: 0
+            }), 3000);
+          }
+          if (data.currentSongIndex >= 0) playSongByIndex(data.currentSongIndex);
+        } else {
+          const readyCount = Object.values(players).filter(p => p.ready).length;
+          document.getElementById('room_status').innerText = `待機中: ${readyCount}/${playerIds.length}人`;
+
+          if (readyCount >= 2 && playerIds.length >= 2) {
+            runCountdown(isHost);
+          }
+        }
+      });
+    }
+
+    function runCountdown(isHost) {
+      if (countdownStarted) return;
+      countdownStarted = true;
+      let sec = 3;
+      const timer = setInterval(() => {
+        document.getElementById('status_text').innerText = `🔥 開始まで... ${sec}`;
+        if (sec-- <= 0) { clearInterval(timer); if (isHost) startGame(); }
+      }, 1000);
+    }
+
+    document.getElementById('ready_button').onclick = async function () {
+      unlockAudio();
+
+      if (this.classList.contains('ready-active')) {
+        isLeavingIntentionally = true;
+        if (currentRoomId) {
+          await remove(ref(db, `rooms_multi/${currentRoomId}/players/${myId}`));
+          if (heartbeatInterval) {
+            clearInterval(heartbeatInterval);
+          }
+        }
+        location.reload();
+        return;
+      }
+
+      this.classList.add('ready-active');
+      this.innerText = "離脱する";
+      update(ref(db, `rooms_multi/${currentRoomId}/players/${myId}`), { ready: true });
+    };
+
+    async function startGame() {
+      const keys = shuffle(Object.keys(jsonData)).slice(0, 12);
+      const order = shuffle([...keys]);
+
+      await update(ref(db, `rooms_multi/${currentRoomId}`), {
+        config: {
+          state: 'playing',
+          selectedSongs: keys,
+          order: order,
+          gameId: "G-" + Date.now()
+        },
+        currentSongIndex: -1,
+        takenCards: {},
+        isFinished: false
+      });
+    }
+
+    function setupBoardLocal(keys, order) {
+      playOrder = order;
+      preloadSongs(keys);
+      const container = document.getElementById('karuta_container');
+      container.innerHTML = '';
+      keys.forEach(key => {
+        const song = Object.values(jsonData).find(s => String(s.number) === String(key));
+        if (song) {
+          const card = document.createElement('div');
+          card.className = 'karuta_card';
+          card.dataset.number = key;
+          card.style.position = 'relative';
+          card.innerHTML = `<p>${song.torihuda}</p>`;
+          card.onclick = () => handleCardClick(key);
+          container.appendChild(card);
+        }
+      });
+    }
+
+    function playSongByIndex(index) {
+      if (isGameOver || index >= 12) return;
+      const num = playOrder[index];
+      if (currentSongNumber === num) return;
+      currentSongNumber = num;
+      globalAudio.pause();
+      globalAudio.src = audioUrlCache[num];
+      globalAudio.play().catch(() => {
+        if (!isGameOver) document.getElementById('audio_resume_btn').style.display = 'block';
+      });
+    }
+
+    async function handleCardClick(num) {
+      if (isGameOver || localPenaltyTimeout) return;
+
+      const cardEl = document.querySelector(`.karuta_card[data-number="${num}"]`);
+      if (cardEl && (cardEl.classList.contains('taken-by-me') || cardEl.classList.contains('taken-by-others'))) return;
+
+      if (String(num) === String(currentSongNumber)) {
+        tapAudio.currentTime = 0;
+        tapAudio.play().catch(() => { });
+
+        if (isCpuMode) {
+          // CPU対戦モード
+          takenCards[num] = myId;
+          updateBoardStateCpu();
+          
+          // CPUのタイマーをクリア
+          cpuTimers.forEach(timer => clearTimeout(timer));
+          cpuTimers = [];
+          
+          setTimeout(() => {
+            if (Object.keys(takenCards).length >= 12) {
+              endCpuGame();
+            } else {
+              currentSongIndex++;
+              document.getElementById('status_text').innerText = `第 ${currentSongIndex + 1} 首 / 12首`;
+              playSongByIndex(currentSongIndex);
+              scheduleCpuActions();
+            }
+          }, 1500);
+        } else {
+          // オンライン対戦モード
+          const res = await runTransaction(ref(db, `rooms_multi/${currentRoomId}/takenCards/${num}`), (curr) => {
+            return curr === null ? myId : undefined;
+          });
+
+          if (res.committed) {
+            const songIndexRef = ref(db, `rooms_multi/${currentRoomId}/currentSongIndex`);
+            const snap = await get(songIndexRef);
+            const nextIndex = (snap.val() || 0) + 1;
+            await update(ref(db, `rooms_multi/${currentRoomId}`), { currentSongIndex: nextIndex });
+          }
+        }
+      } else {
+        // お手付き
+        missAudio.currentTime = 0;
+        missAudio.play().catch(() => { });
+
+        const container = document.getElementById('karuta_container');
+        container.style.opacity = "0.4";
+        container.style.pointerEvents = "none";
+        document.getElementById('status_text').innerText = "❌ お手付き！3秒間待機";
+
+        localPenaltyTimeout = setTimeout(() => {
+          localPenaltyTimeout = null;
+          container.style.opacity = "1";
+          container.style.pointerEvents = "auto";
+          if (isCpuMode) {
+            document.getElementById('status_text').innerText = `第 ${currentSongIndex + 1} 首 / 12首`;
+          }
+        }, 3000);
+      }
+    }
+
+    function updateBoardStateCpu() {
+      const allPlayers = [myId, ...cpuPlayers];
+      Object.keys(takenCards).forEach(num => {
+        const el = document.querySelector(`.karuta_card[data-number="${num}"]`);
+        if (el) {
+          const takerId = takenCards[num];
+          const isMe = takerId === myId;
+
+          if (!el.classList.contains('taken')) {
+            el.classList.add('flash');
+            setTimeout(() => el.classList.remove('flash'), 500);
+          }
+
+          el.classList.add('taken', isMe ? 'taken-by-me' : 'taken-by-others');
+
+          const existingBadge = el.querySelector('.taker-icon');
+          const currentIcon = getIcon(takerId, allPlayers);
+          if (!existingBadge) {
+            const iconBadge = document.createElement('div');
+            iconBadge.className = 'taker-icon';
+            iconBadge.innerHTML = currentIcon;
+            iconBadge.style = `
+              position: absolute; top: -10px; right: -10px; 
+              font-size: 1.4rem; background: white; 
+              border-radius: 50%; width: 28px; height: 28px; 
+              display: flex; align-items: center; justify-content: center;
+              box-shadow: 0 2px 4px rgba(0,0,0,0.3); z-index: 10;
+              opacity: 1 !important;
+            `;
+            el.appendChild(iconBadge);
+          }
+        }
+      });
+    }
+
+    function endCpuGame() {
+      isGameOver = true;
+      cpuTimers.forEach(timer => clearTimeout(timer));
+      cpuTimers = [];
+      
+      document.getElementById('karuta_container').style.display = 'none';
+      
+      const statusEl = document.getElementById('status_text');
+      statusEl.style.display = 'block';
+      statusEl.style.color = "#666";
+      statusEl.innerText = "5秒後に最初の画面に戻ります...";
+      
+      globalAudio.pause();
+      finishAudio.play().catch(() => { });
+      
+      const allPlayers = [myId, ...cpuPlayers];
+      const scoreboard = allPlayers.map(pid => ({
+        id: pid,
+        score: Object.values(takenCards).filter(id => id === pid).length,
+        isMe: pid === myId
+      })).sort((a, b) => b.score - a.score);
+      
+      let myRank = 1;
+      let rankListHtml = "";
+      let currentRank = 1;
+      scoreboard.forEach((s, index) => {
+        if (index > 0 && s.score < scoreboard[index - 1].score) { currentRank = index + 1; }
+        if (s.isMe) { myRank = currentRank; }
+        const icon = getIcon(s.id, allPlayers);
+        const nameDisplay = s.isMe ? 'あなた' : s.id;
+        const style = s.isMe ? 'color:#ff4757; font-weight:bold; background: #fff; border-radius: 5px; padding: 2px 5px;' : '';
+        rankListHtml += `<div style="margin: 5px 0; ${style}">${currentRank}位： ${nameDisplay} ${icon}（${s.score}枚）</div>`;
+      });
+      
+      let html = `<div style="font-size: 2.5rem; color: #B82343; margin-bottom: 10px;">第 ${myRank} 位 ${getIcon(myId, allPlayers)} </div>`;
+      html += `<div style="font-size: 1.1rem; line-height: 1.6;">${rankListHtml}</div>`;
+      document.getElementById('result_text').innerHTML = html;
+      document.getElementById('result_container').style.display = 'block';
+      
+      if (myRank === 1 && scoreboard.find(s => s.isMe).score > 0) {
+        confetti({ particleCount: 200, spread: 80, origin: { y: 0.6 } });
+      }
+      
+      let timeLeft = 5;
+      const autoReturnTimer = setInterval(() => {
+        timeLeft--;
+        if (timeLeft > 0) {
+          statusEl.innerText = `${timeLeft}秒後に最初の画面に戻ります...`;
+        } else {
+          clearInterval(autoReturnTimer);
+          location.reload();
+        }
+      }, 1000);
+    }
+
+    function updateBoardState(taken, pIds) {
+      Object.keys(taken).forEach(num => {
+        const el = document.querySelector(`.karuta_card[data-number="${num}"]`);
+        if (el) {
+          const takerId = taken[num];
+          const isMe = takerId === myId;
+
+          if (!el.classList.contains('taken')) {
+            el.classList.add('flash');
+            setTimeout(() => el.classList.remove('flash'), 500);
+          }
+
+          el.classList.add('taken', isMe ? 'taken-by-me' : 'taken-by-others');
+
+          const existingBadge = el.querySelector('.taker-icon');
+          const currentIcon = getIcon(takerId, pIds);
+          if (!existingBadge) {
+            const iconBadge = document.createElement('div');
+            iconBadge.className = 'taker-icon';
+            iconBadge.innerHTML = currentIcon;
+            iconBadge.style = `
+            position: absolute; top: -10px; right: -10px; 
+            font-size: 1.4rem; background: white; 
+            border-radius: 50%; width: 28px; height: 28px; 
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3); z-index: 10;
+            opacity: 1 !important;
+          `;
+            el.appendChild(iconBadge);
+          }
+        }
+      });
+
+      if (Object.keys(taken).length >= 12 && !isGameOver) {
+        isGameOver = true;
+        clearInterval(heartbeatInterval);
+        document.getElementById('karuta_container').style.display = 'none';
+
+        const statusEl = document.getElementById('status_text');
+        statusEl.style.display = 'block';
+        statusEl.style.color = "#666";
+        statusEl.innerText = "5秒後に最初の画面に戻ります...";
+
+        globalAudio.pause();
+        finishAudio.play().catch(() => { });
+        off(ref(db, `rooms_multi/${currentRoomId}`));
+
+        const scoreboard = pIds.map(pid => ({
+          id: pid,
+          score: Object.values(taken).filter(id => id === pid).length,
+          isMe: pid === myId
+        })).sort((a, b) => b.score - a.score);
+
+        let myRank = 1;
+        let rankListHtml = "";
+        let currentRank = 1;
+        scoreboard.forEach((s, index) => {
+          if (index > 0 && s.score < scoreboard[index - 1].score) { currentRank = index + 1; }
+          if (s.isMe) { myRank = currentRank; }
+          const icon = getIcon(s.id, pIds);
+          const nameDisplay = s.isMe ? 'あなた' : s.id;
+          const style = s.isMe ? 'color:#ff4757; font-weight:bold; background: #fff; border-radius: 5px; padding: 2px 5px;' : '';
+          rankListHtml += `<div style="margin: 5px 0; ${style}">${currentRank}位： ${nameDisplay} ${icon}（${s.score}枚）</div>`;
+        });
+
+        let html = `<div style="font-size: 2.5rem; color: #B82343; margin-bottom: 10px;">第 ${myRank} 位 ${getIcon(myId, pIds)} </div>`;
+        html += `<div style="font-size: 1.1rem; line-height: 1.6;">${rankListHtml}</div>`;
+        document.getElementById('result_text').innerHTML = html;
+        document.getElementById('result_container').style.display = 'block';
+
+        if (myRank === 1 && scoreboard.find(s => s.isMe).score > 0) {
+          confetti({ particleCount: 200, spread: 80, origin: { y: 0.6 } });
+        }
+
+        let timeLeft = 5;
+        const autoReturnTimer = setInterval(() => {
+          timeLeft--;
+          if (timeLeft > 0) {
+            statusEl.innerText = `${timeLeft}秒後に最初の画面に戻ります...`;
+          } else {
+            clearInterval(autoReturnTimer);
+            location.reload();
+          }
+        }, 1000);
+      }
+    }
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    window.onbeforeunload = function () {
+      if (currentRoomId && !isGameOver && !isLeavingIntentionally) {
+        return "試合中ですが、本当に終了しますか？";
+      }
+    };
+
+    init();
+  </script>
+  <script src="../js/back-to-top.js?20260908-02"></script>
+
+</body>
+
+</html>

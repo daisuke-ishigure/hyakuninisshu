@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ja" prefix="og: http://ogp.me/ns#">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="Keywords" content="百人一首,小倉百人一首,歌人の生没年">
+  <meta name="description" content="百人一首に登場する歌人の生没年と天皇の在位期間の年表です。百人一首の歌人たちはほぼ年代順に配列されています。">
+  <meta name="fragment" content="!">
+  <meta name="google-site-verification" content="a3HHNhawWK8QsasKiSFMC_QeIXmO1tdBc60jhNPTA3s">
+  <!-- ogp設定 -->
+  <meta property="og:locale" content="ja">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="百人一首 歌人の生没年年表 タイムライン | 時雨の百人一首">
+  <meta property="og:description" content="百人一首に登場する歌人の生没年の年表です。歌人たちの札は、ほぼ年代順に配置されています。また、男性と女性の歌人を色分けしています。女性歌人は全体の5分の1程度ですが、紫式部の時代では女性歌人が多くいることがわかります。">
+  <meta property="og:image" content="サムネイル画像のURL">
+  <meta property="og:url" content="https://hyakuninisshu.com/chronology.html">
+  <meta property="og:site_name" content="時雨の百人一首">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="stylesheet" href="../css/style.css?20260908-16">
+  <link rel="stylesheet" href="../css/loading.css?20240228">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@500&family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap"
+    rel="stylesheet">
+
+  <!-- jQueryの追加 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+
+  <!-- アップルタッチアイコン -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <!-- favicon用 -->
+  <link rel="icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <title>百人一首 歌人の生没年年表 タイムライン | 時雨の百人一首</title>
+  <link rel="canonical" href="https://hyakuninisshu.com/chronology.html">
+  <!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', { 'packages': ['timeline'] });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      // 'timeline'というIDを持つ要素を取得
+      let container = document.getElementById('timeline');
+      // Timelineチャートのインスタンスを作成
+      let chart = new google.visualization.Timeline(container);
+      // DataTableを作成
+      let dataTable = new google.visualization.DataTable(); -->
+
+
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', { 'packages': ['controls', 'timeline'] });
+    google.charts.setOnLoadCallback(onDraw);
+
+    function onDraw() {
+      var dataTable = new google.visualization.DataTable();
+      // 列の追加
+      dataTable.addColumn({ type: 'string', id: 'Name' });
+      dataTable.addColumn({ type: 'string', id: 'Label' });
+      dataTable.addColumn({ type: 'string', role: 'tooltip' });
+      dataTable.addColumn({ type: 'date', id: 'Start' });
+      dataTable.addColumn({ type: 'date', id: 'End' });
+
+      // データの追加
+      dataTable.addRows([
+        ['天智天皇', '（1）天智天皇', '天智天皇<br>（626年-671年）', new Date(626, 0), new Date(671, 11)],
+        ['持統天皇', '（2）持統天皇', '持統天皇<br>（645年-703年）', new Date(645, 0), new Date(703, 11)],
+        ['阿倍仲麻呂', '（7）阿倍仲麻呂', '阿倍仲麻呂:<br>（698年-770年）', new Date(698, 0), new Date(770, 11)],
+        ['阿倍仲麻呂', '阿倍仲麻呂 唐に渡る', '717年に唐の都・長安に留学', new Date(717, 0), new Date(717, 11)],
+        ['大伴家持', '（6）中納言家持', '大伴家持<br>（718年頃～785年）', new Date(718, 0), new Date(785, 11)],
+        ['小野篁', '（11）参議篁', '参議篁:<br>（802年～852年）', new Date(802, 0), new Date(852, 11)],
+        ['小野篁', '遣唐使船を乗船拒否', '参議篁:遣唐使船を乗船拒否', new Date(838, 0), new Date(838, 11)],
+        ['遍昭', '（12）僧正遍昭', '僧正遍昭:<br>（816年～890年）', new Date(816, 0), new Date(890, 11)],
+        ['陽成院', '（13）陽成院', '陽成院:<br>（868年～949年）', new Date(868, 0), new Date(949, 11)],
+        ['源融', '（14）河原左大臣', '河原左大臣:<br>（822年～895年）', new Date(822, 0), new Date(895, 11)],
+        ['光孝天皇', '（15）光孝天皇', '光孝天皇:<br>（830年～887年）', new Date(830, 0), new Date(887, 11)],
+        ['在原行平', '（16）中納言行平', '中納言行平:<br>（818年～893年）', new Date(818, 0), new Date(893, 11)],
+        ['在原業平', '（17）在原業平朝臣', '在原業平朝臣:<br>（825年～880年）', new Date(825, 0), new Date(880, 11)],
+        ['菅原道真', '（24）菅家', '菅家:<br>（845年～903年）', new Date(845, 0), new Date(903, 11)],
+        ['元良親王', '（20）元良親王', '元良親王:<br>（890年-943年）', new Date(890, 0), new Date(943, 11)],
+        ['朱雀天皇', '第61代 朱雀天皇（在位期間）', '朱雀天皇の在位期間:<br>930年10月16日 - 946年5月23日', new Date(930, 0), new Date(946, 11)],
+        ['藤原忠平', '（26）貞信公', '貞信公（藤原忠平）:<br>（880年-949年）', new Date(880, 0), new Date(949, 11)],
+        ['藤原兼輔', '（27）中納言兼輔', '藤原兼輔:<br>（877年-933年）', new Date(877, 0), new Date(933, 11)],
+        ['紀貫之', '（35）紀貫之', '紀貫之:<br>（868年-945年）', new Date(868, 0), new Date(945, 11)],
+        ['紀貫之', '土佐日記', '紀貫之:<br>934年に『土佐日記』完成', new Date(934, 0), new Date(934, 11)],
+        ['藤原定方', '（25）三条右大臣', '藤原定方:<br>（873年-932年）', new Date(873, 0), new Date(932, 11)],
+        ['源等', '（39）参議等', '源等:<br>（880年-951年）', new Date(880, 0), new Date(951, 11)],
+        ['清原元輔', '（42）清原元輔', '清原元輔:<br>（908年-990年）', new Date(908, 0), new Date(990, 11)],
+        ['藤原敦忠', '（43）権中納言敦忠', '藤原敦忠:<br>（906年-943年）', new Date(906, 0), new Date(943, 11)],
+        ['藤原朝忠', '（44）中納言朝忠', '藤原朝忠:<br>（910年-966年）', new Date(910, 0), new Date(966, 11)],
+        ['藤原伊尹', '（45）謙徳公', '藤原伊尹:<br>（924年-972年）', new Date(924, 0), new Date(972, 11)],
+        ['大中臣能宣', '（49）大中臣能宣朝臣', '大中臣能宣:<br>（921年-991年）', new Date(921, 0), new Date(991, 11)],
+        ['村上天皇', '後撰和歌集の成立', '959年、村上天皇の命による『後撰和歌集』が成立', new Date(959, 0), new Date(959, 11)],
+        ['藤原義孝', '（50）藤原義孝', '藤原義孝:<br>（954年-974年）', new Date(954, 0), new Date(974, 11)],
+        ['藤原道信', '（52）藤原道信朝臣', '藤原道信:<br>（972年-994年）', new Date(972, 0), new Date(994, 11)],
+        ['花山天皇', '拾遺和歌集の成立', '1007年、花山天皇の命による『拾遺和歌集』が成立', new Date(1007, 0), new Date(1007, 11)],
+        ['藤原道綱母', '（53）右大将道綱母', '藤原道綱母:<br>（937年-995年）', new Date(937, 0), new Date(995, 11)],
+        ['藤原道綱', '藤原道綱', '藤原道綱:<br>（955年-1020年）', new Date(955, 0), new Date(1020, 11)],
+        ['藤原公任', '（55）大納言公任', '藤原公任:<br>（966年-1041年）', new Date(966, 0), new Date(1041, 11)],
+        ['紫式部', '（57）紫式部', '紫式部:<br>（970年-1031年）', new Date(970, 0), new Date(1031, 11)],
+        ['紫式部', '源氏物語完成', '1021年『源氏物語』が完成', new Date(1021, 0), new Date(1021, 11)],
+        ['清少納言', '（62）清少納言', '清少納言:<br>（966年-1025年）', new Date(966, 0), new Date(1025, 11)],
+        ['清少納言', '枕草子ほぼ完成', '1001年『枕草子』ほぼ完成', new Date(1001, 0), new Date(1001, 11)],
+        ['藤原賢子', '（58）大弐三位', '藤原賢子:<br>（999年-1055年）', new Date(999, 0), new Date(1055, 11)],
+        ['赤染衛門', '（59）赤染衛門', '赤染衛門:<br>（959年-1041年）', new Date(959, 0), new Date(1041, 11)],
+        ['藤原道雅', '（63）左京大夫道雅', '藤原道雅:<br>（992年-1054年）', new Date(992, 0), new Date(1054, 11)],
+        ['藤原定頼', '（64）権中納言定頼', '藤原定頼:<br>（995年-1045年）', new Date(995, 0), new Date(1045, 11)],
+        ['三条天皇', '（68）三条院', '三条院:<br>（976年-1017年）', new Date(976, 0), new Date(1017, 11)],
+        ['行尊', '（66）前大僧正行尊', '行尊:<br>（1055年-1135年）', new Date(1055, 0), new Date(1135, 11)],
+        ['源経信', '（71）大納言経信', '源経信:<br>（1016年-1097年）', new Date(1016, 0), new Date(1097, 11)],
+        ['大江匡房', '（73）権中納言正房', '大江匡房:<br>（1041年-1111年）', new Date(1041, 0), new Date(1111, 11)],
+        ['源俊頼', '（74）源俊頼朝臣', '源俊頼:<br>（1055年-1129年）', new Date(1055, 0), new Date(1129, 11)],
+        ['藤原基俊', '（75）藤原基俊', '藤原基俊:<br>（1060年-1142年）', new Date(1060, 0), new Date(1142, 11)],
+        ['藤原忠通', '（76）法性寺入道前関白太政大臣', '藤原忠通:<br>（1097年-1164年）', new Date(1097, 0), new Date(1164, 11)],
+        ['崇徳天皇', '（77）崇徳院', '崇徳院:<br>（1119年-1164年）', new Date(1119, 0), new Date(1164, 11)],
+        ['藤原顕輔', '（79）左京大夫顕輔', '藤原顕輔:<br>（1090年-1155年）', new Date(1090, 0), new Date(1155, 11)],
+        ['藤原実定', '（81）後徳大寺左大臣', '藤原実定:<br>（1139年-1191年）', new Date(1139, 0), new Date(1191, 11)],
+        ['藤原俊成', '（83）皇太后宮大夫俊成', '藤原俊成:<br>（1114年-1204年）', new Date(1114, 0), new Date(1204, 11)],
+        ['藤原清輔', '（84）藤原清輔朝臣', '藤原清輔:<br>（1104年-1177年）', new Date(1104, 0), new Date(1177, 11)],
+        ['西行', '（86）西行法師', '西行:<br>（1118年-1190年）', new Date(1118, 0), new Date(1190, 11)],
+        ['寂蓮', '（87）寂蓮法師', '寂蓮:<br>（1139年-1202年）', new Date(1139, 0), new Date(1202, 11)],
+        ['式子内親王', '（89）式子内親王', '式子内親王:<br>（1149年-1201年）', new Date(1149, 0), new Date(1201, 11)],
+        ['殷富門院大輔', '（90）殷富門院大輔', '殷富門院大輔:<br>（1131年-1200年）', new Date(1131, 0), new Date(1200, 11)],
+        ['九条良経', '（91）後京極摂政前太政大臣', '九条良経:<br>（1169年-1206年）', new Date(1169, 0), new Date(1206, 11)],
+        ['源実朝', '（93）鎌倉右大臣', '源実朝:<br>（1192年-1219年）', new Date(1192, 0), new Date(1219, 11)],
+        ['藤原雅経', '（94）参議雅経', '藤原雅経:<br>（1170年-1221年）', new Date(1170, 0), new Date(1221, 11)],
+        ['慈円', '（95）前大僧正慈円', '慈円:<br>（1155年-1225年）', new Date(1155, 0), new Date(1225, 11)],
+        ['西園寺公経', '（96）入道前太政大臣', '西園寺公経:<br>（1171年-1244年）', new Date(1171, 0), new Date(1244, 11)],
+        ['藤原定家', '（97）権中納言定家', '藤原定家:<br>（1162年-1241年）', new Date(1162, 0), new Date(1241, 11)],
+        ['藤原家隆', '（98）従二位家隆', '藤原家隆:<br>（1158年-1237年）', new Date(1158, 0), new Date(1237, 11)],
+        ['後鳥羽天皇', '（99）後鳥羽院', '後鳥羽院:<br>（1180年-1239年）', new Date(1180, 0), new Date(1239, 11)],
+        ['順徳院', '（100）順徳院', '順徳院:<br>（1197年-1242年）', new Date(1197, 0), new Date(1242, 11)],
+      ]);
+
+
+
+      // 表示フィルタ条件を決めるコントロール作成
+      var projectRange = new google.visualization.ControlWrapper({
+        controlType: 'DateRangeFilter',
+        containerId: 'project_range',
+        options: {
+          filterColumnIndex: 3,               // 3列目の要素'Start'でフィルタ
+          ui: {
+            showRangeValues: true,          // 選択範囲のラベル表示
+            format: { pattern: "YYYY" }  // 表示フォーマット
+          }
+        }
+      });
+
+
+
+
+      // タイムラインチャート作成
+      var projectTimechart = new google.visualization.ChartWrapper({
+        'chartType': 'Timeline',
+        'containerId': 'project_timechart',
+        options: {
+        timeline: { showRowLabels: false }, // 一番左の列を非表示
+        hAxis: { format: 'y' },
+        tooltip: { isHtml: true },
+      }
+      });
+
+      // ダッシュボード作成
+      var dashboard = new google.visualization.Dashboard(document.getElementById('project_dashboard'));
+      dashboard.bind(projectRange, projectTimechart); // ダッシュボードにコントロールとチャートを登録
+      dashboard.draw(dataTable);      // ダッシュボードにデータを入れて描画
+    }
+
+
+
+
+
+  </script>
+  <style>
+    body {
+      font-family: "noto-sans-pro", sans-serif !important;
+      background-color: #F7F1E0;
+
+    }
+
+    text {
+      font: 12px sans-serif;
+      font-weight: bold;
+      pointer-events: none;
+    }
+
+
+    .main {
+      background-color: #F7F1E0;
+      width: 100%;
+      height: 100%;
+    }
+
+
+    #project_dashboard {
+      width: 100%;
+      height: 100%;
+
+    }
+
+
+    #project_timechart {
+      padding: 10px 0;
+      margin: 0 auto;
+      width: 90%;
+      height: 100%;
+    }
+
+    .midashi {
+      font-family: "noto-sans-pro", sans-serif;
+      font-size: 1.3rem;
+      margin: 0.7em auto 0;
+      width: 90%;
+      border-left: 5px solid #b82343;
+      color: #333;
+      padding: 3px 0 0 6px;
+      font-weight: bold;
+    }
+
+    .lead {
+      font-family: "noto-sans-pro", sans-serif;
+      font-size: 1.0rem;
+      width: 90%;
+      margin: 13px auto 0;
+    }
+    /* #project_timechart > div > div:nth-child(1) > div > div:nth-child(2){
+      overflow: hidden!important;
+    } */
+
+    #project_range{
+      width:90%;
+      margin:0 auto;
+    }
+    #project_range > div{
+      @media (max-width:750px){
+        margin:0;
+        text-align:center;
+      }
+    }
+    #project_range > div > div > span:nth-child(1),
+    #project_range > div > div > span:nth-child(3)
+    {
+      color:black;
+    }
+    #project_range > div > div > div > div:nth-child(2),
+    #project_range > div > div > div > div:nth-child(3)
+    {
+      background-color: #b82343;
+    }
+
+    #project_range > div > div > div > div.google-visualization-controls-slider-handle{
+      background-color: #fff;
+    }
+    
+
+    div.google-visualization-tooltip {
+      padding: 1em;
+      width: 40%;
+      display:none;
+
+      @media (max-width:750px) {
+        width: 100%;
+      }
+    }
+
+    .google-visualization-tooltip {
+      z-index: 2;
+    }
+
+    #chart-wrapper {
+      position: relative;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ヘッダーここから -->
+  <header class="header">
+    <p class="site-title">
+    <a href="https://hyakuninisshu.com/">時雨の百人一首</a>
+  </p>
+    <div class="header_list">
+      <a href="index.html"><img src="../img/icon_top.svg?ver-02" alt="トップ" class="icon"></a>
+      <a href="introduction.html" style="color:#333"><img src="/img/icon_column.svg?ver-02" alt="コラム" class="icon"></a>
+      <a href="introduction-app.html" style="color:#333"><img src="/img/icon_app.svg?ver-02" alt="アプリ" class="icon"></a>
+      <a href="list.html"><img src="/img/icon_search.svg?ver-04" alt="和歌の一覧・検索" class="icon"></a>
+    </div>
+  </header>
+  <!-- ヘッダーここまで・メインここから -->
+  <h1 class="midashi">歌人の生没年年表</h1>
+  <p class="lead">スライダーで誕生年を絞り込めます。</p>
+  <div class="main">
+
+    <div id="project_dashboard">
+      <div id="project_range"></div>
+      <div id="project_timechart"></div>
+    </div>
+
+  </div>
+  <!-- メインここまで・フッターここから -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-copy">&copy;2023 時雨の百人一首</span>
+      <ul>
+        <li><a href="policy.html">プライバシーポリシー</a></li>
+        <li>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXx7TKlqnTfKrw2Nuh4f37swVwFH-RFDsNkTGQ4JEF50q2wQ/viewform?usp=header"
+            target="_blank" rel="noopener">お問い合わせフォーム</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+  <!-- フッターここまで -->
+  <script src="../js/back-to-top.js?20260908-02"></script>
+
+</body>
+
+</html>

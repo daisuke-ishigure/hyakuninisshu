@@ -1,0 +1,67 @@
+@charset "UTF-8";
+.snow {
+  /* background-color: #fff;
+  border-radius:50%; */
+  background-image: url(/img/cherry.webp);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  animation: snowFall 9s linear;
+}
+
+@keyframes snowFall {
+  0% {
+    opacity: 0;
+    top: 0;
+    transform: translateX(5px); /*雪を左右に降る*/
+  }
+  10% {
+    opacity: 1;
+    transform: translateX(-5px); /*雪を左右に降る（10%ごとに設定）*/
+    rotate: 50deg;
+  }
+  20% {
+    opacity: 1;
+    transform: translateX(5px);
+    rotate: -50deg;
+  }
+  30% {
+    opacity: 1;
+    transform: translateX(-5px);
+    rotate: -100deg;
+  }
+  40% {
+    opacity: 1;
+    transform: translateX(5px);
+    rotate: -50deg;
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-5px);
+    rotate: 0deg;
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(5px);
+    rotate: 50deg;
+  }
+  70% {
+    opacity: 1;
+    transform: translateX(-5px);
+    rotate: 0deg;
+  }
+  80% {
+    opacity: 1;
+    transform: translateX(5px);
+    rotate: -50deg;
+  }
+  90% {
+    opacity: 0;
+    transform: translateX(-5px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(5px);
+    top: 100vh;
+  }
+}/*# sourceMappingURL=cherry.css.map */

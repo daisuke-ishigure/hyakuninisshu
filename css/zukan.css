@@ -1,0 +1,705 @@
+:root {
+  --cream: #fdf8f2;
+  --cream-dark: #f5ede0;
+  --border: #c8b89a;
+  --border-lt: #ddd0bc;
+  --accent: #B82343;
+  --gold: #c8a870;
+  --gold-lt: #e8d4a8;
+  --text: #3a2a18;
+  --text-sub: #7a6050;
+  --text-mute: #a08870;
+  --c-autumn: #c85a00;
+  --c-summer: #0077a8;
+  --c-spring: #b8306a;
+  --c-winter: #3a5f8a;
+  --c-love: #9b3060;
+  --c-travel: #2d6e55;
+  --c-farewell: #5a4e8a;
+  --c-misc: #5a5040;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+.search-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#search-input {
+  border: 1px solid #c8b89a;
+  background: #ffffff;
+  border-radius: 3px;
+  padding: 0.45rem 0.8rem;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 0.875rem;
+  color: #3a2a18;
+  width: 220px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+#search-input:focus {
+  border-color: #c8a870;
+}
+#search-input::placeholder {
+  color: #a08870;
+}
+
+#result-count {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 0.8rem;
+  color: #a08870;
+  white-space: nowrap;
+}
+
+.controls-bar {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: flex-start;
+  background: #f5ede0;
+  border: 1px solid #ddd0bc;
+  border-radius: 4px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.75rem;
+}
+
+.controls-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.controls-label {
+  font-size: 0.72rem;
+  font-family: "noto-sans-pro", sans-serif;
+  color: #a08870;
+  letter-spacing: 0.08em;
+}
+
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.filter-btn, .sort-btn {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 0.8rem;
+  padding: 0.3rem 0.75rem;
+  border: 1px solid #c8b89a;
+  border-radius: 2px;
+  background: #ffffff;
+  color: #7a6050;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s, transform 0.1s;
+  white-space: nowrap;
+}
+.filter-btn:hover, .sort-btn:hover {
+  background: #e8d4a8;
+  border-color: #c8a870;
+  color: #B82343;
+}
+.is-active.filter-btn, .is-active.sort-btn {
+  background: #B82343;
+  border-color: #B82343;
+  color: #ffffff;
+}
+.filter-btn:active, .sort-btn:active {
+  transform: scale(0.97);
+}
+
+.controls-divider {
+  width: 1px;
+  background: #ddd0bc;
+  align-self: stretch;
+  margin: 0 0.25rem;
+}
+
+.poet-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.section-header {
+  grid-column: 1/-1;
+  font-family: "Kaisei HarunoUmi", serif;
+  font-size: 1.1rem;
+  color: #B82343;
+  border-bottom: 1px solid #c8b89a;
+  padding: 0.5rem 0 0.3rem;
+  margin-top: 0.5rem;
+  letter-spacing: 0.1em;
+}
+
+@media (min-width: 1200px) {
+  .section {
+    width: 1200px;
+  }
+}
+.poet-card {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border: 1px solid #ddd0bc;
+  border-radius: 3px;
+  text-decoration: none;
+  color: #3a2a18;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
+  animation: cardIn 0.25s ease both;
+}
+.poet-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(200, 168, 112, 0.07) 0%, transparent 60%);
+  pointer-events: none;
+}
+.poet-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(80, 50, 20, 0.12);
+  border-color: #c8a870;
+}
+
+.card-number {
+  position: absolute;
+  top: 0.55rem;
+  left: 0.6rem;
+  font-family: "Kaisei HarunoUmi", serif;
+  font-size: 0.7rem;
+  color: #ffffff;
+  background: #B82343;
+  border-radius: 2px;
+  padding: 0.05rem 0.4rem;
+  line-height: 1.5;
+}
+
+.card-body {
+  flex: 1;
+  padding: 2.2rem 0.85rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+/* 対応ブラウザでは、横並びのカードそれぞれの各要素（職業・歌人名・時代・生没年・概要・
+   歌・挿絵・心のチャート内の各項目）の先頭位置を、同じ行に並ぶカードの中で一番長いものに
+   揃える（subgridを多段階で連鎖させる）。非対応ブラウザでは上のflex/blockレイアウトが
+   そのまま使われるので影響なし。
+   ※ :has(.kokoro-panel)で絞り込み、心のチャートを持たない英語版（kajin-zukan_en.html、
+     同じ.poet-card/.card-bodyクラスを共有）のカードには適用しない
+     （行数の異なるsubgridテンプレートを当ててしまうと、英語版のカード下部に
+       空白ができてしまうため）。 */
+@supports (grid-template-rows: subgrid) {
+  .poet-card:has(.kokoro-panel) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: subgrid;
+    grid-row: span 13; /* 1:card-img／2〜13:card-bodyへ委譲 */
+    row-gap: 0.3rem;
+    padding: 2.2rem 0.85rem 0.75rem;
+  }
+  .poet-card:has(.kokoro-panel) > .card-img {
+    grid-row: 1;
+  }
+  .poet-card:has(.kokoro-panel) .card-body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: subgrid;
+    /* card-meta,card-name,card-date×2,card-outline,card-poem,card-extra-img(7) + kokoro-panel(5) */
+    grid-row: 2 / span 12;
+    padding: 0;
+  }
+  .poet-card:has(.kokoro-panel) .kokoro-panel {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: subgrid;
+    grid-row: span 5; /* 和歌タイトル／和歌本文／心境タイトル／心境本文／チャート */
+  }
+  .poet-card:has(.kokoro-panel) .emotion-chart {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: subgrid;
+    grid-row: span 5;
+  }
+  .poet-card:has(.kokoro-panel) .kokoro-panel-text {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: subgrid;
+    grid-row: 1 / span 4;
+  }
+  .poet-card:has(.kokoro-panel) .radarChartWrapper {
+    grid-row: 5;
+  }
+}
+
+.card-name {
+  font-family: "noto-sans-pro", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #333;
+  line-height: 1.5;
+}
+.card-name ruby {
+  ruby-align: center;
+}
+.card-name rt {
+  font-size: 0.55em;
+  font-weight: 400;
+  color: #333;
+}
+.card-name-en {
+  display: block;
+  font-family: "noto-sans-pro", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 400;
+  font-style: italic;
+  color: #7a6050;
+  line-height: 1.4;
+}
+
+.card-img > img {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  width: 80px;
+  height: 80px;
+}
+
+.card-date, .card-source, .card-outline {
+  font-size: 0.73rem;
+  color: #7a6050;
+  font-family: "noto-sans-pro", sans-serif;
+}
+
+.card-poem {
+  font-size: 0.75rem;
+  color: #7a6050;
+  line-height: 1.6;
+  margin: 0.15rem 0;
+  font-family: "noto-sans-pro", sans-serif;
+}
+
+.card-extra-img {
+  width: 100%;
+  border-radius: 3px;
+  margin-top: auto;
+  display: block;
+}
+
+.card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.1rem;
+  max-width: calc(100% - 90px);
+}
+
+.card-theme {
+  font-size: 0.68rem;
+  font-family: "Noto Sans JP", sans-serif;
+  border-radius: 2px;
+  padding: 0.1rem 0.45rem;
+  font-weight: 700;
+  color: #ffffff;
+  background: #a08870;
+}
+.card-theme[data-theme=autumn] {
+  background: #c85a00;
+}
+.card-theme[data-theme=summer] {
+  background: #0077a8;
+}
+.card-theme[data-theme=spring] {
+  background: #b8306a;
+}
+.card-theme[data-theme=winter] {
+  background: #3a5f8a;
+}
+.card-theme[data-theme=love] {
+  background: #9b3060;
+}
+.card-theme[data-theme=travel] {
+  background: #2d6e55;
+}
+.card-theme[data-theme=farewell] {
+  background: #5a4e8a;
+}
+.card-theme[data-theme=misc] {
+  background: #5a5040;
+}
+
+.card-job {
+  font-size: 0.68rem;
+  color: #a08870;
+  font-family: "Noto Sans JP", sans-serif;
+  flex: 1 1 100%;
+  min-width: 0;
+  white-space: normal;
+  word-break: break-word;
+}
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.zukan-footer {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  border-top: 1px solid #ddd0bc;
+  color: #a08870;
+  font-size: 0.78rem;
+}
+
+@media (max-width: 768px) {
+  .zukan-header h1 {
+    font-size: 1.5rem;
+  }
+  #search-input {
+    width: 160px;
+  }
+}
+@media (max-width: 1200px) {
+  .poet-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 767px) {
+  .poet-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .poet-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+@media (max-width: 950px) and (max-height: 500px) and (orientation: landscape) {
+  .poet-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  #search-input {
+    width: 100%;
+  }
+  .search-wrap {
+    flex: 1 1 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .zukan-header {
+    padding: 1.25rem 0 1rem;
+  }
+}
+.poet-card {
+  cursor: pointer;
+}
+
+body.kokoro-modal-open {
+  overflow: hidden;
+}
+
+.kokoro-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.kokoro-modal[hidden] {
+  display: none;
+}
+
+.kokoro-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(40, 25, 10, 0.55);
+}
+
+.kokoro-modal-box {
+  position: relative;
+  background: #fffef8;
+  border: 1px solid #c8a870;
+  border-radius: 6px;
+  padding: 2rem 1.75rem 1.75rem;
+  max-width: 700px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  animation: kokoroModalIn 0.18s ease;
+  text-align: center;
+  font-family: "noto-sans-pro", sans-serif;
+}
+
+@media (max-width: 400px) {
+  .kokoro-modal {
+    padding: 0.5rem;
+  }
+  .kokoro-modal-box {
+    padding: 1.75rem 1rem 1.25rem;
+  }
+}
+.kokoro-modal-box .emotion-chart #radarChartWrapper {
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: 272px;
+  height: auto;
+  aspect-ratio: 1/1;
+}
+
+@keyframes kokoroModalIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.kokoro-modal-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  font-family: "noto-sans-pro", sans-serif;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  color: #7a6050;
+  padding: 0.25rem;
+}
+.kokoro-modal-close:hover {
+  color: #B82343;
+}
+
+.kokoro-modal-title {
+  color: #B82343;
+  font-size: 1.25rem;
+  margin: 0 0 0.75rem;
+}
+
+.kokoro-modal-text {
+  text-align: left;
+}
+
+.kokoro-modal-poem-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #a08870;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.kokoro-modal-poem {
+  font-size: 0.95rem;
+  line-height: 1.9;
+  color: #3a2a18;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid #ddd0bc;
+}
+.kokoro-modal-poem rt {
+  font-size: 0.55em;
+  font-weight: 400;
+  color: #7a6050;
+}
+
+.kokoro-modal-quotes-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #a08870;
+  letter-spacing: 0.05em;
+  margin-top: 1em;
+  margin-bottom: 0.5rem;
+}
+
+#kokoro-modal-quotes p {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: #3a2a18;
+  text-align: left;
+  margin: 0;
+  margin-top: 0.7em;
+}
+
+.kokoro-modal-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  margin-top: 1.5rem;
+  padding: 0.55em 1.3em;
+  background: #007e5e;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  transition: background-color 0.2s;
+}
+.kokoro-modal-link:hover {
+  background: #005e46;
+}
+
+/* ==========================================================
+   心のチャート（歌人図鑑：モーダルやカード展開ではなく、常に全カードに表示する）
+   ※ 英語版（kajin-zukan_en.html）は上記の .kokoro-modal* を
+     引き続き使用しているため、そちらは変更していない
+   ========================================================== */
+
+.kokoro-panel {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #ddd0bc;
+  text-align: center;
+  font-family: "noto-sans-pro", sans-serif;
+}
+
+.kokoro-panel .emotion-chart {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.5rem;
+}
+
+.kokoro-panel .radarChartWrapper {
+  flex: 0 0 auto;
+  width: 95%; /* 5%縮小 */
+  height: auto;
+  min-width: 0;
+  min-height: 0;
+  aspect-ratio: 1/1;
+  margin: 0 auto;
+  align-self: start;
+}
+
+.kokoro-panel-text {
+  text-align: left;
+}
+
+.kokoro-panel-text .kokoro-panel-poem-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #a08870;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+  border-left: none;
+  width: auto;
+  padding: 0;
+}
+
+.kokoro-panel-poem {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #3a2a18;
+}
+.kokoro-panel-poem rt {
+  font-size: 0.55em;
+  font-weight: 400;
+  color: #7a6050;
+}
+
+/* 和歌と歌人の心境を区切る境界線は、和歌側（.kokoro-panel-poem）に付けると
+   縦書き用のwidth:fit-content（テキスト幅ぶんしかない）に引きずられて短くなり、
+   パネル上部の境界線（.kokoro-panel の border-top、カード幅いっぱい）と幅が揃わない。
+   そのため、幅の制約を受けない歌人の心境タイトル側の border-top として持たせる。 */
+.kokoro-panel-text .kokoro-panel-quotes-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #a08870;
+  letter-spacing: 0.05em;
+  margin-top: 0;
+  margin-bottom: 0;
+  border-left: none;
+  width: auto;
+  padding: 0.75rem 0 0;
+  border-top: 1px solid #ddd0bc;
+}
+.kokoro-panel .kokoro-panel-text .kokoro-panel-quotes-title {
+  margin-top: 0;
+}
+
+.kokoro-panel-quotes p {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: #3a2a18;
+  text-align: left;
+  margin: 0;
+  margin-top: 0.6em;
+}
+
+@media (max-width: 768px) {
+  .card-number {
+    font-size: 0.78rem;
+  }
+  .card-name {
+    font-size: 1.05rem;
+  }
+  .card-date, .card-source, .card-outline {
+    font-size: 0.82rem;
+  }
+  .card-poem {
+    font-size: 0.85rem;
+  }
+  .card-theme {
+    font-size: 0.75rem;
+  }
+  .card-job {
+    font-size: 0.75rem;
+  }
+  .kokoro-panel-text .kokoro-panel-poem-title,
+  .kokoro-panel-text .kokoro-panel-quotes-title {
+    font-size: 0.85rem;
+  }
+}
+/* 幅・高さは width:fit-content / height:auto などブラウザ側の自動計算に
+   頼らず、js/zukan.jsのpoemInlineStyle()が句の数・文字数から計算した
+   値をinlineスタイル（style="width:...em;height:...em;"）として直接
+   指定している。一部の実機ブラウザ（iOS Chrome＝WebKit）で、
+   writing-mode:vertical-rlの要素に対するfit-content/autoのサイズ計算が
+   正しく機能せず、和歌が右にずれたり句の途中で意図しない折り返しが
+   起きる不具合が実際に確認されたための対策（Chromium・Playwright上の
+   WebKitでは再現しないため、ブラウザ側の計算を信用しない方針にした）。
+   ※ line-height（句と句の間隔）はpoemInlineStyle()の幅計算式
+     （句数 × 2.2）と対になっているため、変更する場合は両方揃えること。 */
+html[lang="ja"] .kokoro-panel-poem {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-family: 'Kaisei HarunoUmi', serif;
+  min-height: 0;
+  align-self: start;
+  line-height: 2.2;
+  letter-spacing: 0.04em;
+  margin: 0 auto 0.75rem;
+}
+html[lang="ja"] .kokoro-panel-poem ruby {
+  ruby-align: center;
+}
+/* 「上に戻る」ボタン（.back-to-top）は全ページ共通で css/style.css に
+   定義し、js/back-to-top.js が生成する（js/zukan.js固有の実装から移行済み）。 */
