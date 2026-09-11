@@ -222,12 +222,14 @@
     }
 
 
-    .top-nav {
+    /* ========== 総合入口カード（旧・扇ナビの位置。動画の上に重ねる） ========== */
+    .top-cards-wrap {
       background: transparent;
-      max-width:1400px;
-      padding: 0 40px 30px;
+      max-width: 1200px;
+      padding: 0 40px;
       position: absolute;
-      bottom: 5%; 
+      /* 下端の歌番号ティッカー（高さ約56px）と重ならないよう、その分を確保 */
+      bottom: calc(4% + 60px);
       left: 50%;
       transform: translateX(-50%);
       width: 100%;
@@ -235,55 +237,64 @@
       z-index: 5;
     }
 
-    .top-nav-grid {
-      display: flex;
-      flex-direction: row;
-      align-items: stretch;
-      justify-content: center;
-      gap: 16px;
-      width: 100%;
+    .top-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
     }
 
-    .top-nav-item {
-      display: block;
+    .top-card {
+      display: flex;
+      flex-direction: column;
+      background: rgba(255, 252, 244, 0.92);
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 10px;
+      padding: 18px 18px;
+      min-height: 118px;
       text-decoration: none;
-      position: relative;
-      flex: 1;
-      overflow: visible;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
       opacity: 0;
       animation: fadeInUp 0.6s ease forwards;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .top-nav-item:nth-child(1) { animation-delay: 0.1s; }
-    .top-nav-item:nth-child(2) { animation-delay: 0.3s; }
-    .top-nav-item:nth-child(3) { animation-delay: 0.5s; }
-    .top-nav-item:nth-child(4) { animation-delay: 0.7s; }
-
-    .top-nav-img-wrap {
-      width: 100%;
-      height: auto;
-      position: static;
+    .top-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
     }
 
-    /* PC版のみ、扇ナビの画像サイズを現在の90%にする */
-    @media (min-width: 800px) {
-      .top-nav-img-wrap {
-        width: 90%;
-        margin: 0 auto;
-      }
+    .top-card:nth-child(1) { animation-delay: 0.05s; }
+    .top-card:nth-child(2) { animation-delay: 0.15s; }
+    .top-card:nth-child(3) { animation-delay: 0.25s; }
+    .top-card:nth-child(4) { animation-delay: 0.35s; }
+    .top-card:nth-child(5) { animation-delay: 0.45s; }
+    .top-card:nth-child(6) { animation-delay: 0.55s; }
+
+    .top-card h2 {
+      font-family: "Noto Serif JP", serif;
+      font-weight: 700;
+      font-size: 0.98em;
+      letter-spacing: 0.02em;
+      color: #2E2A20;
+      margin: 0 0 2px;
     }
 
-    .top-nav-img-wrap img {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-      display: block;
-      transition: transform 0.35s ease, filter 0.35s ease;
+    .top-card p {
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 0.74rem;
+      line-height: 1.5;
+      color: #4A4436;
+      margin: 0 0 6px;
+      flex-grow: 1;
     }
 
-    .top-nav-item:hover .top-nav-img-wrap img {
-      transform: scale(1.04);
-      filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.85)) drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+    .top-card-link {
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #A82A45;
     }
 
     /* ========== アニメーション ========== */
@@ -347,31 +358,31 @@
         z-index: 2;
       }
 
-      .top-nav {
+      .top-cards-wrap {
         position: static;
         transform: none;
-        padding: 20px;
-        width: 330px;
-        margin:0 auto 0;
-        z-index: 2;
+        padding: 24px 0 1em;
+        /* 左右の歌番号ティッカー（固定表示、各約50px幅）と重ならないよう内側に収める */
+        max-width: min(420px, calc(100vw - 110px));
+        margin: 0 auto;
       }
 
-      .top-nav-grid {
-        flex-direction: column;
-        align-items: center;
+      .top-cards-grid {
+        grid-template-columns: 1fr;
         gap: 10px;
       }
 
-      .top-nav-item {
-        width: 100%;
-        max-width: 300px;
-        flex: none;
+      .top-card {
+        padding: 14px 18px;
       }
 
-      .top-nav-item:nth-child(1) { animation-delay: 0.1s; }
-      .top-nav-item:nth-child(2) { animation-delay: 0.2s; }
-      .top-nav-item:nth-child(3) { animation-delay: 0.3s; }
-      .top-nav-item:nth-child(4) { animation-delay: 0.4s; }
+      .top-card h2 {
+        font-size: 1.05em;
+      }
+
+      .top-card p {
+        font-size: 0.82rem;
+      }
     }
 
     @media (max-width: 400px) {
@@ -495,7 +506,7 @@
     </div>
   </header>
 
-  <!-- ★ ヒーローセクション（タイトル＋扇ナビのみ。歌人グリッドは外へ） -->
+  <!-- ★ ヒーローセクション（動画・タイトルのみ。ナビは下のカードセクションへ） -->
   <section class="hero" style="position:relative;">
 
     <!-- 歌番号ティッカー（PC専用・右から左へ流れる） -->
@@ -523,33 +534,46 @@
       <p>百首の歌。百人の歌人。<br class="br-sp">七百年の日本の詩歌。<br>恋、孤独、自然、憧れ、<br class="br-sp">そして切なさ。<br>いにしえの日本の歌にふれ、<br class="br-sp">そこに息づく心をたどる。</p>
     </div>
 
-    <!-- 扇ナビ（下部5%に配置、max-width: 860px） -->
-    <section class="top-nav">
-      <div class="top-nav-grid">
-        <a href="introduction-app.html" class="top-nav-item">
-          <div class="top-nav-img-wrap">
-            <img src="/img/top_karuta.webp?01" alt="かるたゲーム">
-            <div class="top-nav-overlay"></div>
-          </div>
+    <!-- 総合入口カード（動画の上に重ねて配置。旧・扇ナビの位置） -->
+    <section class="top-cards-wrap">
+      <div class="top-cards-grid">
+
+        <a class="top-card" href="about.html">
+          <h2>百人一首とは</h2>
+          <p>藤原定家が選んだ100人100首の和歌集。<br>恋や自然を詠んだ歌が今も読み継がれています。</p>
+          <span class="top-card-link">成り立ちを読む →</span>
         </a>
-        <a href="/kajin-zukan.html" class="top-nav-item">
-          <div class="top-nav-img-wrap">
-            <img src="/img/top_kajin.webp" alt="歌人図鑑">
-            <div class="top-nav-overlay"></div>
-          </div>
+
+        <a class="top-card" href="list.html">
+          <h2>全100首を読む</h2>
+          <p>現代語訳・語句解説つきで全首を紹介。<br>歌番号や歌人名で検索もできます。</p>
+          <span class="top-card-link">一覧を見る →</span>
         </a>
-        <a href="/list.html" class="top-nav-item">
-          <div class="top-nav-img-wrap">
-            <img src="/img/waka.webp" alt="和歌一覧">
-            <div class="top-nav-overlay"></div>
-          </div>
+
+        <a class="top-card" href="kajin-zukan.html">
+          <h2>歌人100人の物語</h2>
+          <p>100人それぞれの人生と人間関係。<br>位階からの推定年収も紹介しています。</p>
+          <span class="top-card-link">歌人図鑑を見る →</span>
         </a>
-        <a href="introduction.html" class="top-nav-item">
-          <div class="top-nav-img-wrap">
-            <img src="/img/top_column.webp" alt="コラム">
-            <div class="top-nav-overlay"></div>
-          </div>
+
+        <a class="top-card" href="hudanagashi-practice.html">
+          <h2>決まり字を覚える</h2>
+          <p>上の句を聞かず札がわかる最初の数文字。<br>札流し形式のクイズで自然に覚えられます。</p>
+          <span class="top-card-link">決まり字を見る →</span>
         </a>
+
+        <a class="top-card" href="introduction-app.html">
+          <h2>かるた・クイズで遊ぶ</h2>
+          <p>読み上げ音声つきのかるたゲームから。<br>リアルタイム対戦・クイズ・すごろく・ミニゲームも。</p>
+          <span class="top-card-link">アプリ一覧へ →</span>
+        </a>
+
+        <a class="top-card" href="introduction.html">
+          <h2>コラムでもっと知る</h2>
+          <p>和歌の技法や平安時代の官職から。<br>歴史のエピソードまで読み物として紹介。</p>
+          <span class="top-card-link">コラム一覧へ →</span>
+        </a>
+
       </div>
     </section>
 
