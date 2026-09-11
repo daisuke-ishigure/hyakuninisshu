@@ -59,6 +59,21 @@ const sectionNameEN = {
   "哀傷": "Elegy",
 };
 
+// Same poem numbers as js/list.js — keep the two lists in sync when new
+// game pages are added via /kakekotoba-game or /gokunarabe-en.
+// Kakekotoba game (kakekotoba-game-NNN_en.html) is not yet available for all
+// 100 poems; only list numbers that already have a page here.
+const KAKEKOTOBA_GAME_NUMS = new Set([
+  1, 8, 9, 10, 13, 14, 16, 20, 22, 24, 25, 27, 28,
+  51, 58, 60, 62, 67, 72, 77, 88, 91, 95, 96, 97, 98, 100,
+]);
+// Poems that actually contain a jokotoba (序詞). Used for the Jokotoba Dango
+// badge. The 序詞解説 explanation page has no English version yet, so unlike
+// js/list.js this list is not used to show that badge on this page.
+const JOKOTOBA_NUMS = new Set([
+  3, 13, 14, 18, 19, 27, 39, 46, 48, 49, 51, 58, 77, 88, 92, 97,
+]);
+
 function translateSource(source) {
   if (!source) return "";
   const parts = source.split(" ");
@@ -167,7 +182,9 @@ fetch(jsonAddress)
 
       // Number cell
       let numberTd = document.createElement("td");
-      numberTd.innerHTML = `<span class="num-badge" data-number="${poem.number}" data-tooltip="Poem details">${poem.number}</span><br><span class="gokunarabe-badge" data-number="${poem.number}" data-tooltip="Meet the poet">${poem.number}</span>`;
+      const paddedNum = String(poem.number).padStart(2, "0");
+      const paddedNum3 = String(poem.number).padStart(3, "0");
+      numberTd.innerHTML = `<a class="num-badge" href="/${poem.number}_en.html" data-number="${poem.number}" data-tooltip="Poem details">${poem.number}</a>`;
       if (poem.color && colorMap[poem.color]) {
         numberTd.style.backgroundColor = colorMap[poem.color];
       }
@@ -188,6 +205,24 @@ fetch(jsonAddress)
       const poetNameEN = poem.name_en || '';
       const dates = poem.date ? translateDate(poem.date) : '';
 
+      // poem.number is a string in hyakunin.json, so it must be converted with
+      // Number() before comparing against the numeric Sets below (forgetting
+      // this makes .has() always return false and hides every badge).
+      const poemNum = Number(poem.number);
+      const hasKakekotobaGame = KAKEKOTOBA_GAME_NUMS.has(poemNum);
+      const hasJokotoba = JOKOTOBA_NUMS.has(poemNum);
+      const gameLinksHTML =
+        '<div class="waka-game-links">' +
+        `<a class="game-badge game-badge--daruma" href="/daruma-otoshi-${paddedNum}_en.html" data-tooltip="Play Daruma Otoshi">Daruma Otoshi</a>` +
+        `<a class="game-badge game-badge--gokunarabe" href="/gokunarabe_${paddedNum}_en.html" data-tooltip="Meet the poet">Meet the Poet</a>` +
+        (hasKakekotobaGame
+          ? `<a class="game-badge game-badge--kakekotoba" href="/kakekotoba-game-${paddedNum3}_en.html" data-tooltip="Play Spin &amp; Discover Kakekotoba">Spin &amp; Discover Kakekotoba</a>`
+          : '') +
+        (hasJokotoba
+          ? `<a class="game-badge game-badge--jokotoba-dango" href="/jokotoba-dango_en.html" data-tooltip="Play Jokotoba Dango">Jokotoba Dango</a>`
+          : '') +
+        '</div>';
+
       let wakaTd = document.createElement("td");
       wakaTd.style.backgroundColor = "#F7F1E0";
       wakaTd.style.cursor = "pointer";
@@ -199,18 +234,21 @@ fetch(jsonAddress)
           `<span class="romaji-text">${romajiFirst} ${romajiSecond}</span>` +
           `<span class="small">${poetName}（${poetNameEN || dates}）</span>` +
           (modernText ? `<span class="modern-toggle">▼ translation</span>` : '') +
-          (modernText ? `<span class="modern-text" style="display:none;">${modernText}</span>` : '');
+          (modernText ? `<span class="modern-text" style="display:none;">${modernText}</span>` : '') +
+          gameLinksHTML;
       } else {
         wakaTd.innerHTML =
           `<span class="kanji-text">${kanjiFirst}<br>${kanjiSecond}</span>` +
           `<span class="romaji-text">${romajiFirst}<br>${romajiSecond}</span>` +
           `<span class="small">${poetName}（${poetNameEN || dates}）</span>` +
           (modernText ? `<span class="modern-toggle">▼ translation</span>` : '') +
-          (modernText ? `<span class="modern-text" style="display:none;">${modernText}</span>` : '');
+          (modernText ? `<span class="modern-text" style="display:none;">${modernText}</span>` : '') +
+          gameLinksHTML;
       }
       if (modernText) {
         wakaTd.dataset.hasModern = "1";
-        wakaTd.addEventListener("click", function () {
+        wakaTd.addEventListener("click", function (event) {
+          if (event.target.closest(".waka-game-links")) return;
           const el = this.querySelector(".modern-text");
           const toggle = this.querySelector(".modern-toggle");
           const isOpen = el.style.display !== "none";
@@ -359,11 +397,10 @@ function clearSearch() {
 // Click number to navigate
 ////////////////////////////////////////////////////////////
 document.addEventListener("click", function (event) {
-  const gokuBadge = event.target.closest(".gokunarabe-badge");
-  if (gokuBadge) {
-    const num = parseInt(gokuBadge.dataset.number);
-    const padded = String(num).padStart(2, "0");
-    window.location.href = `/gokunarabe_${padded}_en.html`;
+  // num-badge and game-badge (Daruma Otoshi / Meet the Poet / kakekotoba games)
+  // are real <a> tags, so leave the click to the browser's normal navigation
+  // instead of intercepting it here.
+  if (event.target.closest(".game-badge")) {
     return;
   }
   const td = event.target.closest("td");
