@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head prefix="og: http://ogp.me/ns#">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="Keywords" content="百人一首,小倉百人一首,読み上げ機能,無料かるたゲーム">
+  <meta name="description" content="小倉百人一首を愉しむためのガイド：日本語・英語の読み上げ音声付き。歌や歌人の解説、関連和歌もご紹介! William N. Porter氏による英語訳も!">
+  <meta name="fragment" content="!">
+  <meta name="google-site-verification" content="a3HHNhawWK8QsasKiSFMC_QeIXmO1tdBc60jhNPTA3s">
+  <!-- ogp設定 -->
+  <meta property="og:locale" content="ja">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="時雨の百人一首 小倉百人一首の歌をすべて解説。歌人に関係する歴史の出来事や逸話などを含めてご紹介!">
+  <meta property="og:description" content="小倉百人一首を愉しむためのガイド：日本語・英語の読み上げ音声付き。歌や歌人の解説、関連和歌もご紹介! William N. Porter氏による英語訳も!">
+  <meta property="og:image" content="サムネイル画像のURL">
+  <meta property="og:url" content="ページのURL">
+  <meta property="og:site_name" content="時雨の百人一首">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="../css/style.css?20240822">
+  <link rel="stylesheet" href="../css/loading.css?20240228">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@500&family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" rel="stylesheet">
+  <!-- jQueryの追加 -->
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+  <!-- Howler.js（音声）のCDNを追加 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
+
+  <!-- favicon用 -->
+  <link rel=”icon” href=“/favicon.ico”>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <!-- favicon Bing用 -->
+  <link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico">
+  <link type="image/x-icon" href="/favicon.ico" rel="shortcut icon">
+  <link rel="shortcut icon" href="https://hyakuninisshu.com/favicon.ico">
+
+  <title>時雨の百人一首 小倉百人一首の歌をすべて解説。歌人に関係する歴史の出来事や逸話などを含めてご紹介!</title>
+  <style>
+    .hero {
+  position: relative;
+  font-family: "Kaisei HarunoUmi", serif;
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+  -moz-text-size-adjust: 100%;
+       text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+@media (max-width: 800px) {
+  .hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url(/img/index_fujisan.webp);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: darken;
+  }
+}
+
+/* video */
+.video-box {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  flex-grow: 1;
+}
+
+.video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  background-size: cover;
+  bottom: 0;
+}
+
+/* overlay */
+.overlay::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  content: "";
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* text */
+.text-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-box img {
+  width: 90px;
+}
+.text-box img:hover {
+  width: 110px;
+}
+
+h2 {
+  font-size: 2.4em;
+  line-height: 1.2;
+  letter-spacing: 0.3em;
+  padding: 0 50px;
+  text-align: center;
+  color: #fff;
+  writing-mode: vertical-rl;
+  font-family: "Kaisei HarunoUmi", serif;
+}
+
+.mobile-only {
+  display: block;
+}
+
+.desktop-only {
+  display: none;
+}
+
+@media (min-width: 800px) {
+  .mobile-only {
+    display: none;
+  }
+  .desktop-only {
+    display: block;
+  }
+}
+#fujisan {
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
+}/*# sourceMappingURL=test.css.map */
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <h1><a href="https://hyakuninisshu.com/" style="color:#fff;">時雨の百人一首</a></h1>
+    <div class="header_list">
+      <a href="index.html"><img src="../img/icon_top.svg?ver-02" style="height:2em" alt="トップ" class="icon"></a>
+      <a href="introduction.html" style="color:#333"><img src="/img/icon_column.svg?ver-02" style="height:2em" alt="コラム" class="icon"></a>
+      <a href="introduction-app.html" style="color:#333"><img src="/img/icon_app.svg?ver-02" style="height:2em" alt="アプリ" class="icon"></a>
+      <a href="list.html"><img src="/img/icon_search.svg?ver-02" style="height:2em" alt="和歌の一覧・検索" class="icon"></a>
+    </div>
+  </header>
+  <section class="hero">
+
+    <div class="video-box overlay desktop-only">
+      <video class="video desktop-only" muted autoplay loop playsinline>
+        <source src="/movie/fujisan_drone.mov" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="text-box">
+      <h2>百人一首を愉しむ</h2>
+      <a href="1.html">
+        <picture>
+          <!-- 800px未満の場合に表示する画像 -->
+          <source srcset="/img/index_icon_tap.svg" media="(max-width: 800px)">
+          <!-- 800px以上の場合に表示する画像 -->
+          <img src="/img/index_icon_click.svg" alt="タップするマーク">
+        </picture>
+      </a>
+
+    </div>
+  </section>
+  <footer>
+    <ul>
+      <li>&copy;2023 時雨 大輔</li>
+      
+    </ul>
+  </footer>
+</body>
+
+</html>

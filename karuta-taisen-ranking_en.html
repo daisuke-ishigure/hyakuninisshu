@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wins Leaderboard | Shigure's Hyakunin Isshu</title>
+  <link rel="canonical" href="https://hyakuninisshu.com/karuta-taisen-ranking_en.html">
+  <meta name="description" content="Wins Leaderboard for Hyakunin Isshu online battles. Log in and join the ranking!">
+  <link rel="stylesheet" href="../css/style.css?20260908-16">
+  <link href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@500&family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: "Noto Sans JP", sans-serif; background: #fdf8f0; color: #333; margin: 0; }
+
+    .ranking-wrap {
+      max-width: 700px;
+      width: 100%;
+      background-color: #f7f1e0;
+      padding: 1.5em 1em 2em;
+      margin: 0 auto;
+      font-family: "noto-sans-pro", sans-serif;
+      border-radius: 1em;
+      box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: 600px) {
+      .ranking-wrap {
+        border-radius: 0;
+        box-shadow: none;
+        padding: 1em 0.75em 2em;
+      }
+    }
+
+    .ranking-title { text-align: center; margin-bottom: 6px; }
+    .ranking-title h1 {
+      font-size: clamp(1.2rem, 5vw, 1.6rem);
+      color: #B82343;
+      margin: 0 0 4px;
+    }
+    .ranking-title .date-label { font-size: 13px; color: #888; }
+
+    /* ===== Tabs ===== */
+    .tab-row {
+      display: flex;
+      gap: 8px;
+      margin: 16px 0 0;
+      border-bottom: 2px solid #e0d8c8;
+    }
+    .tab-btn {
+      flex: 1;
+      padding: 10px 4px;
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      font-size: 14px;
+      font-weight: bold;
+      color: #999;
+      cursor: pointer;
+      margin-bottom: -2px;
+      transition: color 0.2s, border-color 0.2s;
+      font-family: "Noto Sans JP", sans-serif;
+    }
+    .tab-btn.active {
+      color: #B82343;
+      border-bottom-color: #B82343;
+    }
+    .tab-btn:hover:not(.active) { color: #666; }
+
+    /* Tab description */
+    .tab-desc {
+      font-size: 12px;
+      color: #888;
+      text-align: center;
+      margin: 8px 0 0;
+      min-height: 1.4em;
+    }
+
+    /* ===== Period toggle ===== */
+    .period-toggle {
+      display: flex;
+      background: #ede7d3;
+      border-radius: 20px;
+      padding: 3px;
+      margin: 12px auto 0;
+      width: fit-content;
+      gap: 2px;
+    }
+    .period-btn {
+      padding: 6px 20px;
+      border: none;
+      border-radius: 16px;
+      background: transparent;
+      font-size: 13px;
+      font-weight: bold;
+      color: #999;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      font-family: "Noto Sans JP", sans-serif;
+      white-space: nowrap;
+    }
+    .period-btn.active {
+      background: #fff;
+      color: #B82343;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+    }
+
+    /* Login banner */
+    #login_banner {
+      background: linear-gradient(135deg, #fff9e6, #fef3c7);
+      border: 1px solid #f0d060;
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin: 16px 0 0;
+      text-align: center;
+    }
+    #login_banner p { margin: 0 0 10px; font-size: 14px; color: #555; }
+    #google_login_btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #fff; border: 1px solid #ccc; border-radius: 20px;
+      padding: 7px 18px; font-size: 14px; cursor: pointer;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.12); transition: box-shadow 0.2s;
+      white-space: nowrap;
+    }
+    #google_login_btn:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+    #google_login_btn img { width: 18px; height: 18px; flex-shrink: 0; }
+
+    /* Logged-in banner */
+    #loggedin_banner {
+      background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
+      border: 1px solid #a5d6a7; border-radius: 12px;
+      padding: 10px 16px; margin: 16px 0 0;
+      display: none; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 8px;
+    }
+    #loggedin_banner .user-left { display: flex; align-items: center; gap: 10px; min-width: 0; }
+    #user_avatar { width: 36px; height: 36px; border-radius: 50%; border: 2px solid #81c784; flex-shrink: 0; }
+    #user_display_name {
+      font-weight: bold; color: #2d5a27; font-size: 14px;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 180px;
+    }
+    @media (max-width: 400px) { #user_display_name { max-width: 120px; } }
+    #logout_btn {
+      background: none; border: 1px solid #aaa; border-radius: 12px;
+      padding: 4px 12px; font-size: 12px; color: #666; cursor: pointer;
+      white-space: nowrap; flex-shrink: 0;
+    }
+
+    /* Ranking cards */
+    #ranking_list { margin-top: 16px; }
+    .rank-card {
+      display: flex; align-items: center; gap: 12px;
+      background: #fff; border-radius: 12px; padding: 12px 16px;
+      margin-bottom: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      border: 2px solid transparent; position: relative;
+      transition: transform 0.15s;
+    }
+    .rank-card.is-me { border-color: #B82343; background: #fff8f9; }
+    .rank-card:hover { transform: translateY(-1px); }
+
+    @media (max-width: 400px) { .rank-card { gap: 8px; padding: 10px 12px; } }
+
+    .rank-num { font-size: 1.3rem; font-weight: bold; color: #aaa; min-width: 32px; text-align: center; flex-shrink: 0; }
+    .rank-num.gold   { color: #f5a623; font-size: 1.6rem; }
+    .rank-num.silver { color: #9b9b9b; font-size: 1.45rem; }
+    .rank-num.bronze { color: #c07d3e; font-size: 1.4rem; }
+
+    .rank-avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid #e0e0e0; flex-shrink: 0; }
+    .rank-avatar-fallback {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: #f0e8d5; display: flex; align-items: center;
+      justify-content: center; font-size: 1.4rem; flex-shrink: 0; border: 2px solid #e0e0e0;
+    }
+    @media (max-width: 400px) {
+      .rank-avatar, .rank-avatar-fallback { width: 36px; height: 36px; font-size: 1.1rem; }
+    }
+
+    .rank-info { flex: 1; min-width: 0; }
+    .rank-name { font-weight: bold; font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .rank-sub { font-size: 12px; color: #999; margin-top: 2px; text-align:right;}
+    @media (max-width: 400px) { .rank-name { font-size: 13px; } }
+
+    .rank-wins { font-size: 1.4rem; font-weight: bold; color: #B82343; white-space: nowrap; flex-shrink: 0; }
+    .rank-wins span { font-size: 12px; font-weight: normal; color: #888; }
+    @media (max-width: 400px) { .rank-wins { font-size: 1.2rem; } }
+
+    .is-me-label {
+      position: absolute; top: -8px; right: 12px;
+      background: #B82343; color: #fff; font-size: 11px;
+      padding: 1px 8px; border-radius: 8px;
+    }
+
+    /* Empty state */
+    #empty_state { text-align: center; padding: 40px 20px; color: #aaa; }
+    #empty_state .empty-icon { font-size: 3rem; margin-bottom: 10px; }
+    #empty_state p { font-size: 14px; }
+
+    /* Loading */
+    #loading_state { text-align: center; padding: 40px; color: #aaa; font-size: 14px; }
+
+    /* Refresh button */
+    .refresh-row { display: flex; align-items: center; justify-content: space-between; margin: 16px 0 8px; }
+    .refresh-row h2 { margin: 0; font-size: 1.1rem; color: #444; }
+    #refresh_btn {
+      background: none; border: 1px solid #ccc; border-radius: 12px;
+      padding: 4px 12px; font-size: 12px; color: #666; cursor: pointer;
+    }
+    #refresh_btn:hover { background: #f0f0f0; }
+
+    .play-btn {
+      display: block; width: 100%; max-width: 320px; margin: 30px auto 0;
+      padding: 14px; background: #B82343; color: white; border: none;
+      border-radius: 12px; font-size: 1rem; font-weight: bold;
+      cursor: pointer; text-align: center; text-decoration: none;
+    }
+    .play-btn:hover { background: #a01e3a; }
+
+    /* Title accordion */
+    .title-accordion {
+      margin: 12px 0;
+      border: 1px solid #e0d8c8;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fff;
+    }
+    .title-accordion summary {
+      padding: 10px 16px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: bold;
+      color: #B82343;
+      background: #fff9f0;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      user-select: none;
+    }
+    .title-accordion summary::-webkit-details-marker { display: none; }
+    .title-accordion summary::after {
+      content: '▼';
+      margin-left: auto;
+      font-size: 10px;
+      color: #aaa;
+      transition: transform 0.2s;
+    }
+    .title-accordion[open] summary::after { transform: rotate(180deg); }
+    .title-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    .title-table th {
+      background: #f7f1e0;
+      padding: 6px 12px;
+      text-align: left;
+      color: #666;
+      font-weight: bold;
+      border-bottom: 1px solid #e0d8c8;
+    }
+    .title-table td {
+      padding: 6px 12px;
+      border-bottom: 1px solid #f0ebe0;
+      color: #444;
+    }
+    .title-table tr:last-child td { border-bottom: none; }
+    .title-table tr:nth-child(even) td { background: #fdf9f2; }
+    .title-note {
+      font-size: 0.8rem!important;
+      color: #333;
+      padding: 8px 16px;
+      margin: 0;
+      background: #fafafa;
+      border-top: 1px solid #f0ebe0;
+      margin-bottom:0!important;
+    }
+
+    /* Title badges */
+    .title-badge {
+      display: inline-block;
+      font-size: 10px;
+      padding: 1px 7px;
+      border-radius: 10px;
+      margin-left: 4px;
+      font-weight: bold;
+      vertical-align: middle;
+    }
+    .title-badge--online {
+      background: #e8f0fe;
+      color: #1a56a0;
+    }
+    .title-badge--cpu {
+      background: #f0e8fe;
+      color: #6a1a9a;
+    }
+
+    .note { font-size: 12px; color: #aaa; text-align: center; margin-top: 20px; line-height: 1.7; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <p class="site-title"><a href="https://hyakuninisshu.com/">Shigure no Hyakunin Isshu</a></p>
+    <div class="header_list">
+      <a href="index_en.html"><img src="../img/icon_top_en.svg?ver-01" alt="Top" class="icon"></a>
+      <a href="introduction_en.html" style="color:#333"><img src="/img/icon_column_en.svg?ver-01" alt="Column" class="icon"></a>
+      <a href="introduction-app_en.html" style="color:#333"><img src="/img/icon_app_en.svg?ver-01" alt="App" class="icon"></a>
+      <a href="karuta-taisen-ranking.html"><img src="/img/icon_lang.svg?ver-01" alt="Japanese" class="icon"></a>
+      <a href="list.html"><img src="/img/icon_list_en.svg?ver-01" alt="Poem list / search" class="icon"></a>
+    </div>
+  </header>
+
+  <main class="main_about-main">
+    <div class="ranking-wrap">
+      <div class="ranking-title">
+        <h1>🏆 Wins Leaderboard</h1>
+        <div class="date-label" id="date_label">Loading...</div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="tab-row">
+        <button class="tab-btn active" data-tab="online">🌐 Online Battle</button>
+        <button class="tab-btn" data-tab="cpu">👾 Robot Battle</button>
+      </div>
+      <div class="tab-desc" id="tab_desc">Wins in real-time battles between human players</div>
+
+      <!-- Period toggle -->
+      <div class="period-toggle">
+        <button class="period-btn active" data-period="today">📅 Today</button>
+        <button class="period-btn" data-period="cumulative">📊 All-time</button>
+      </div>
+
+      <!-- Not logged in -->
+      <div id="login_banner">
+        <p>Log in to have your wins recorded in the ranking!</p>
+        <button id="google_login_btn">
+          <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
+          Sign in with Google
+        </button>
+      </div>
+
+      <!-- Logged in -->
+      <div id="loggedin_banner">
+        <div class="user-left">
+          <img id="user_avatar" src="" alt="avatar">
+          <div style="min-width:0;">
+            <div id="user_display_name"></div>
+            <div id="my_wins_label" style="font-size:12px; color:#555; margin-top:2px;"></div>
+          </div>
+        </div>
+        <button id="delete_data_btn" style="background:none;border:1px solid #e57373;border-radius:12px;padding:4px 12px;font-size:12px;color:#e57373;cursor:pointer;white-space:nowrap;flex-shrink:0;">Delete data</button>
+        <button id="logout_btn">Log out</button>
+      </div>
+
+      <!-- Ranking table -->
+      <div class="refresh-row">
+        <h2>Rankings</h2>
+        <button id="refresh_btn">🔄 Refresh</button>
+      </div>
+
+      <div id="loading_state">Loading...</div>
+      <div id="ranking_list" style="display:none;"></div>
+      <div id="empty_state" style="display:none;">
+        <div class="empty-icon">📜</div>
+        <p id="empty_msg">No ranking data yet today.<br>Win a match and get on the leaderboard!</p>
+      </div>
+
+      <a href="karuta-taisen_en.html" class="play-btn">Join a Match</a>
+
+      <!-- Title list accordion -->
+      <details class="title-accordion">
+        <summary>🎖 Title List (earned by cumulative wins)</summary>
+        <table class="title-table">
+              <thead>
+                <tr>
+                  <th>Cumulative Wins</th>
+                  <th>Title</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1+</td>
+                  <td>文章生</td>
+                  <td>A student at the Imperial Academy.</td>
+                </tr>
+                <tr>
+                  <td>3+</td>
+                  <td>文章得業生</td>
+                  <td>An outstanding student.</td>
+                </tr>
+                <tr>
+                  <td>5+</td>
+                  <td>少内記</td>
+                  <td>A bureaucrat who handled imperial edicts.</td>
+                </tr>
+                <tr>
+                  <td>10+</td>
+                  <td>文章博士</td>
+                  <td>A professor at the Imperial Academy.</td>
+                </tr>
+                <tr>
+                  <td>20+</td>
+                  <td>蔵人頭</td>
+                  <td>The Emperor's secretary.</td>
+                </tr>
+                <tr>
+                  <td>40+</td>
+                  <td>左中弁</td>
+                  <td>An elite bureaucrat.</td>
+                </tr>
+                <tr>
+                  <td>70+</td>
+                  <td>参議</td>
+                  <td>Joining the ranks of the court nobles.</td>
+                </tr>
+                <tr>
+                  <td>120+</td>
+                  <td>中納言</td>
+                  <td>A senior official of the imperial court.</td>
+                </tr>
+                <tr>
+                  <td>200+</td>
+                  <td>大納言</td>
+                  <td>A pillar of the imperial court.</td>
+                </tr>
+                <tr>
+                  <td>300+</td>
+                  <td>右大臣</td>
+                  <td>A top executive of the imperial court.</td>
+                </tr>
+                <tr>
+                  <td>400+</td>
+                  <td>大宰権帥</td>
+                  <td>Demoted to a distant post.</td>
+                </tr>
+                <tr>
+                  <td>500+</td>
+                  <td>怨霊</td>
+                  <td>Lightning strikes the Seiryōden.</td>
+                </tr>
+                <tr>
+                  <td>700+</td>
+                  <td>左大臣</td>
+                  <td>Bestowed posthumously.</td>
+                </tr>
+                <tr>
+                  <td>1000+</td>
+                  <td>太政大臣</td>
+                  <td>Bestowed posthumously.</td>
+                </tr>
+                <tr>
+                  <td>1500+</td>
+                  <td>天神様</td>
+                  <td>Deity of learning.</td>
+                </tr>
+              </tbody>
+            </table>
+        <p class="title-note">※ Wins for Online Battle and Robot Battle (Normal/Hard) are counted separately.</p>
+        <p class="title-note">※ The titles are modeled after Sugawara no Michizane.</p>
+      </details>
+
+      <p class="note" id="ranking_note">
+        ※ Online Battle counts the number of 1st-place finishes in human-vs-human matches.<br>
+        Robot Battle counts the number of 1st-place finishes in Normal or Hard mode.<br>
+        Rankings reset daily at midnight (Japan Time).
+      </p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-copy">&copy;2023 Shigure no Hyakunin Isshu</span>
+      <ul>
+        <li><a href="policy.html">プライバシーポリシー</a></li>
+        <li>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXx7TKlqnTfKrw2Nuh4f37swVwFH-RFDsNkTGQ4JEF50q2wQ/viewform?usp=header"
+            target="_blank" rel="noopener">お問い合わせフォーム</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getDatabase, ref, onValue, off, get, remove, update } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+    import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDsKsuYsYZYaNVuFvnzQsZiKIrSAMFZQus",
+      authDomain: "fire-karuta.firebaseapp.com",
+      databaseURL: "https://fire-karuta-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "fire-karuta",
+      appId: "1:202669803794:web:2b2eb18bb0a065dff04bcb"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+
+    // ===== Title definitions =====
+    const TITLES = [
+      { wins: 1500,  title: '天神様' },
+      { wins: 1000,  title: '太政大臣' },
+      { wins: 700,   title: '左大臣' },
+      { wins: 500,   title: '怨霊' },
+      { wins: 400,   title: '大宰権帥' },
+      { wins: 300,   title: '右大臣' },
+      { wins: 200,   title: '大納言' },
+      { wins: 120,   title: '中納言' },
+      { wins: 70,    title: '参議' },
+      { wins: 40,    title: '左中弁' },
+      { wins: 20,    title: '蔵人頭' },
+      { wins: 10,    title: '文章博士' },
+      { wins: 5,     title: '少内記' },
+      { wins: 3,     title: '文章得業生' },
+      { wins: 1,     title: '文章生' },
+    ];
+
+    function getTitle(wins) {
+      for (const t of TITLES) {
+        if ((wins || 0) >= t.wins) return t.title;
+      }
+      return null;
+    }
+
+    // user_stats cache
+    let userStatsCache = {};
+
+    async function fetchUserStats(uids) {
+      const missing = uids.filter(uid => !(uid in userStatsCache));
+      await Promise.all(missing.map(async uid => {
+        try {
+          const snap = await get(ref(db, `user_stats/${uid}`));
+          userStatsCache[uid] = snap.val() || {};
+        } catch (e) {
+          userStatsCache[uid] = {};
+        }
+      }));
+    }
+
+    function getTodayKey() {
+      const jst = new Date(Date.now() + 9 * 60 * 60 * 1000);
+      return jst.toISOString().slice(0, 10);
+    }
+
+    function getDisplayDate() {
+      const jst = new Date(Date.now() + 9 * 60 * 60 * 1000);
+      const y = jst.getUTCFullYear(), m = jst.getUTCMonth() + 1, d = jst.getUTCDate();
+      const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+      return `${y}/${m}/${d} (${days[jst.getUTCDay()]})`;
+    }
+
+    document.getElementById('date_label').innerText = getDisplayDate();
+
+    const MEDAL = ['🥇','🥈','🥉'];
+    const ICONS = ['🐻','🐼','🐰','🐨','🐱','🦁','🐶','🦊','🐵'];
+
+    const TAB_META = {
+      online: {
+        today:       { desc: 'Wins in real-time battles between human players',    subLabel: "Today's Online Battle",   emptyMsg: 'No online battle data yet today.<br>Win a match and get on the leaderboard!' },
+        cumulative:  { desc: 'All-time wins in real-time battles between human players', subLabel: 'Online Battle (All-time)', emptyMsg: 'No online battle cumulative data found.' }
+      },
+      cpu: {
+        today:       { desc: 'Wins in Robot Battle (Normal / Hard)',               subLabel: "Today's Robot Battle",    emptyMsg: 'No robot battle data yet today.<br>Try Normal or Hard mode and get on the leaderboard!' },
+        cumulative:  { desc: 'All-time wins in Robot Battle (Normal / Hard)',      subLabel: 'Robot Battle (All-time)', emptyMsg: 'No robot battle cumulative data found.' }
+      }
+    };
+
+    function fallbackIcon(uid) {
+      let hash = 0;
+      for (let i = 0; i < uid.length; i++) hash = (hash * 31 + uid.charCodeAt(i)) & 0xffff;
+      return ICONS[hash % ICONS.length];
+    }
+
+    function escapeHtml(str) {
+      return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    let currentUser = null;
+    let rankingUnsubscribe = null;
+    let currentTab = 'online'; // Currently displayed tab
+    let currentPeriod = 'today'; // 'today' | 'cumulative'
+
+    // Tab switching
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', function () {
+        if (this.dataset.tab === currentTab) return;
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        currentTab = this.dataset.tab;
+        document.getElementById('tab_desc').innerText = TAB_META[currentTab][currentPeriod].desc;
+        loadRanking();
+      });
+    });
+
+    // Period toggle
+    document.querySelectorAll('.period-btn').forEach(btn => {
+      btn.addEventListener('click', function () {
+        if (this.dataset.period === currentPeriod) return;
+        document.querySelectorAll('.period-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        currentPeriod = this.dataset.period;
+        document.getElementById('tab_desc').innerText = TAB_META[currentTab][currentPeriod].desc;
+        const h1 = document.querySelector('.ranking-title h1');
+        if (h1) h1.textContent = currentPeriod === 'cumulative' ? '🏆 All-time Wins Leaderboard' : "🏆 Today's Wins Leaderboard";
+        loadRanking();
+      });
+    });
+
+    function loadRanking() {
+      if (currentPeriod === 'cumulative') {
+        loadCumulativeRanking();
+        return;
+      }
+
+      // Unsubscribe existing listener
+      if (rankingUnsubscribe) {
+        rankingUnsubscribe();
+        rankingUnsubscribe = null;
+      }
+
+      document.getElementById('loading_state').style.display = 'block';
+      document.getElementById('ranking_list').style.display = 'none';
+      document.getElementById('empty_state').style.display = 'none';
+
+      // Switch path for online / cpu
+      const rankRef = ref(db, `rankings/${currentTab}/${getTodayKey()}`);
+
+      rankingUnsubscribe = onValue(rankRef, (snapshot) => {
+        document.getElementById('loading_state').style.display = 'none';
+        const data = snapshot.val();
+        const meta = TAB_META[currentTab][currentPeriod];
+
+        if (!data) {
+          const emptyEl = document.getElementById('empty_state');
+          emptyEl.style.display = 'block';
+          document.getElementById('empty_msg').innerHTML = meta.emptyMsg;
+          updateMyWinsLabel(0);
+          return;
+        }
+
+        const entries = Object.entries(data)
+          .map(([uid, v]) => ({ uid, ...v }))
+          .sort((a, b) => (b.wins || 0) - (a.wins || 0));
+
+        if (entries.length === 0) {
+          document.getElementById('empty_state').style.display = 'block';
+          document.getElementById('empty_msg').innerHTML = meta.emptyMsg;
+          return;
+        }
+
+        if (currentUser) {
+          const mine = entries.find(e => e.uid === currentUser.uid);
+          updateMyWinsLabel(mine ? mine.wins : 0);
+        }
+
+        renderRanking(entries);
+      });
+    }
+
+    async function buildNameMap() {
+      // Collect user names/avatars from the last 7 days of daily rankings
+      const days = [];
+      for (let i = 0; i < 7; i++) {
+        const d = new Date(Date.now() + 9 * 60 * 60 * 1000 - i * 86400000);
+        days.push(d.toISOString().slice(0, 10));
+      }
+      const snaps = await Promise.all(
+        days.map(day => get(ref(db, `rankings/${currentTab}/${day}`)).catch(() => null))
+      );
+      const nameMap = {};
+      snaps.forEach(snap => {
+        if (!snap) return;
+        const data = snap.val() || {};
+        Object.entries(data).forEach(([uid, v]) => {
+          if (!nameMap[uid] && v.displayName) {
+            nameMap[uid] = { displayName: v.displayName, photoURL: v.photoURL || null };
+          }
+        });
+      });
+      return nameMap;
+    }
+
+    async function loadCumulativeRanking() {
+      // Unsubscribe real-time listener
+      if (rankingUnsubscribe) {
+        rankingUnsubscribe();
+        rankingUnsubscribe = null;
+      }
+
+      document.getElementById('loading_state').style.display = 'block';
+      document.getElementById('ranking_list').style.display = 'none';
+      document.getElementById('empty_state').style.display = 'none';
+
+      const winsKey = currentTab === 'online' ? 'online_total_wins' : 'cpu_total_wins';
+      const meta = TAB_META[currentTab][currentPeriod];
+
+      try {
+        const [snap, nameMap] = await Promise.all([
+          get(ref(db, 'user_stats')),
+          buildNameMap()
+        ]);
+        document.getElementById('loading_state').style.display = 'none';
+        const data = snap.val();
+
+        if (!data) {
+          document.getElementById('empty_state').style.display = 'block';
+          document.getElementById('empty_msg').innerHTML = meta.emptyMsg;
+          return;
+        }
+
+        const entries = Object.entries(data)
+          .map(([uid, v]) => ({
+            uid,
+            wins: v[winsKey] || 0,
+            displayName: nameMap[uid]?.displayName || v.displayName || null,
+            photoURL: nameMap[uid]?.photoURL || v.photoURL || null,
+          }))
+          .filter(e => e.wins > 0)
+          .sort((a, b) => b.wins - a.wins)
+          .slice(0, 100);
+
+        if (entries.length === 0) {
+          document.getElementById('empty_state').style.display = 'block';
+          document.getElementById('empty_msg').innerHTML = meta.emptyMsg;
+          return;
+        }
+
+        if (currentUser) {
+          const mine = entries.find(e => e.uid === currentUser.uid);
+          updateMyWinsLabel(mine ? mine.wins : 0);
+        }
+
+        // Cache user_stats
+        Object.entries(data).forEach(([uid, v]) => { userStatsCache[uid] = v; });
+
+        renderRanking(entries);
+      } catch (e) {
+        console.error(e);
+        document.getElementById('loading_state').style.display = 'none';
+        document.getElementById('empty_state').style.display = 'block';
+        document.getElementById('empty_msg').innerHTML = 'Failed to load data.';
+      }
+    }
+
+    async function renderRanking(entries) {
+      const list = document.getElementById('ranking_list');
+      list.innerHTML = '';
+      list.style.display = 'block';
+
+      const subLabel = TAB_META[currentTab][currentPeriod].subLabel;
+      let currentRank = 1;
+
+      // Batch-fetch cumulative data for all users
+      await fetchUserStats(entries.map(e => e.uid));
+
+      entries.forEach((entry, index) => {
+        if (index > 0 && entry.wins < entries[index - 1].wins) currentRank = index + 1;
+
+        const isMe = currentUser && entry.uid === currentUser.uid;
+        const card = document.createElement('div');
+        card.className = 'rank-card' + (isMe ? ' is-me' : '');
+
+        let rankDisplay = '';
+        if (currentRank === 1)      rankDisplay = `<div class="rank-num gold">${MEDAL[0]}</div>`;
+        else if (currentRank === 2) rankDisplay = `<div class="rank-num silver">${MEDAL[1]}</div>`;
+        else if (currentRank === 3) rankDisplay = `<div class="rank-num bronze">${MEDAL[2]}</div>`;
+        else                        rankDisplay = `<div class="rank-num">${currentRank}</div>`;
+
+        const avatarHtml = entry.photoURL
+          ? `<img class="rank-avatar" src="${escapeHtml(entry.photoURL)}" alt="avatar" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="rank-avatar-fallback" style="display:none;">${fallbackIcon(entry.uid)}</div>`
+          : `<div class="rank-avatar-fallback">${fallbackIcon(entry.uid)}</div>`;
+
+        const name = escapeHtml(entry.displayName || 'Anonymous Player');
+        const meBadge = isMe ? '<span class="is-me-label">You</span>' : '';
+
+        // Title badge (show only the relevant title for the current tab)
+        const stats = userStatsCache[entry.uid] || {};
+        let titleHtml = '';
+        if (currentTab === 'online') {
+          const ot = getTitle(stats.online_total_wins);
+          if (ot) titleHtml += `<span class="title-badge title-badge--online">🌐 ${ot} (${stats.online_total_wins || 0} total wins)</span>`;
+        } else {
+          const ct = getTitle(stats.cpu_total_wins);
+          if (ct) titleHtml += `<span class="title-badge title-badge--cpu">👾 ${ct} (${stats.cpu_total_wins || 0} total wins)</span>`;
+        }
+
+        card.innerHTML = `
+          ${meBadge}
+          ${rankDisplay}
+          <div style="display:flex; position:relative; flex-shrink:0;">${avatarHtml}</div>
+          <div class="rank-info">
+            <div class="rank-name">${name} ${titleHtml}</div>
+            <div class="rank-sub">${subLabel}</div>
+          </div>
+          <div class="rank-wins">${entry.wins || 0}<span> wins</span></div>
+        `;
+        list.appendChild(card);
+      });
+    }
+
+    function updateMyWinsLabel(wins) {
+      const el = document.getElementById('my_wins_label');
+      if (el) {
+        const label = currentTab === 'cpu' ? 'Robot Battle' : 'Online Battle';
+        const periodLabel = currentPeriod === 'cumulative' ? 'All-time' : "Today's";
+        el.innerText = `${periodLabel} ${label} wins: ${wins}`;
+      }
+    }
+
+    // Auth
+    onAuthStateChanged(auth, (user) => {
+      currentUser = user;
+      if (user) {
+        document.getElementById('login_banner').style.display = 'none';
+        const lb = document.getElementById('loggedin_banner');
+        lb.style.display = 'flex';
+        document.getElementById('user_avatar').src = user.photoURL || '';
+        document.getElementById('user_display_name').innerText = user.displayName || user.email;
+      } else {
+        document.getElementById('login_banner').style.display = 'block';
+        document.getElementById('loggedin_banner').style.display = 'none';
+      }
+      loadRanking();
+    });
+
+    document.getElementById('google_login_btn').onclick = async () => {
+      try { await signInWithPopup(auth, provider); }
+      catch (e) { console.error(e); alert('Login failed.'); }
+    };
+
+    document.getElementById('logout_btn').onclick = () => signOut(auth);
+    document.getElementById('refresh_btn').onclick = () => loadRanking();
+
+    document.getElementById('delete_data_btn').onclick = async () => {
+      if (!auth.currentUser) return;
+      if (!confirm('This will permanently delete all your score data.\nThis action cannot be undone. Are you sure?')) return;
+      const uid = auth.currentUser.uid;
+      try {
+        await remove(ref(db, `user_stats/${uid}`));
+      } catch (e) {
+        console.error('Delete error:', e);
+        alert('Failed to delete. Please try again.');
+        return;
+      }
+      try {
+        for (const type of ['online', 'cpu']) {
+          const snap = await get(ref(db, `rankings/${type}`));
+          if (!snap.exists()) continue;
+          const updates = {};
+          snap.forEach(dateSnap => {
+            if (dateSnap.child(uid).exists()) {
+              updates[`rankings/${type}/${dateSnap.key}/${uid}`] = null;
+            }
+          });
+          if (Object.keys(updates).length) await update(ref(db), updates);
+        }
+      } catch (e) {
+        console.warn('Ranking cleanup skipped:', e);
+      }
+      await signOut(auth);
+      location.reload();
+    };
+
+    loadRanking();
+  </script>
+  <script src="../js/back-to-top.js?20260908-02"></script>
+
+</body>
+</html>

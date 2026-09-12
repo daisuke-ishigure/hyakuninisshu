@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns#">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:url" content="https://hyakuninisshu.com/tomo-mindmap.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="百人一首 友札完全攻略マインドマップ | 時雨の百人一首">
+  <meta property="og:description" content="百人一首の全100首を友札グループごとに整理した戦略的学習ツール。大友札から一字決まりまで、効率的な暗記をサポートします。">
+  <meta property="og:site_name" content="時雨の百人一首">
+  <meta property="og:image" content="https://hyakuninisshu.com/img/ogp_tomofuda-mindmap.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="description" content="百人一首の全100首を友札グループごとに整理した戦略的学習ツール。大友札から一字決まりまで、効率的な暗記をサポートします。">
+  <link rel="stylesheet" href="../css/style.css?20260908-16">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Kaisei+HarunoUmi:wght@500&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LearningResource",
+    "name": "百人一首 友札完全攻略マインドマップ",
+    "description": "百人一首の全100首を友札グループごとに整理した戦略的学習ツール",
+    "learningResourceType": "Interactive Resource",
+    "inLanguage": "ja",
+    "author": { "@type": "Person", "name": "時雨 大輔", "url": "https://hyakuninisshu.com/" },
+    "url": "https://hyakuninisshu.com/tomo-mindmap.html"
+  }
+  </script>
+  <title>百人一首 友札完全攻略マインドマップ | 時雨の百人一首</title>
+  <link rel="canonical" href="https://hyakuninisshu.com/tomo-mindmap.html">
+  <style>
+    html, body { height: 100%; margin: 0; padding: 0; overflow: hidden; }
+    body { display: flex; flex-direction: column; font-family: 'Noto Sans JP', sans-serif; }
+    header.header { flex-shrink: 0; z-index: 10; }
+    main { flex: 1; position: relative; overflow: hidden; background: #f7f1e0; }
+    #svg-container { width: 100%; height: 100%; }
+    svg { width: 100%; height: 100%; cursor: grab; }
+    svg:active { cursor: grabbing; }
+
+    .node circle { stroke-width: 2px; }
+    .node text { font-family: 'Noto Sans JP', sans-serif; font-size: 12px; fill: #333; pointer-events: none; }
+    .link { fill: none; stroke: #c2b99a; stroke-width: 1.5px; }
+
+    .toolbar {
+      position: absolute; bottom: 16px; right: 16px;
+      display: flex; flex-direction: column; gap: 6px; z-index: 50;
+    }
+    .toolbar button {
+      width: 38px; height: 38px; border: 1px solid #c2b99a; border-radius: 8px;
+      background: #fff; font-size: 1.1rem; cursor: pointer;
+      box-shadow: 0 1px 4px rgba(0,0,0,.15); transition: background .15s;
+    }
+    .toolbar button:hover { background: #f0ead6; }
+
+    .legend {
+      position: absolute; top: 10px; left: 10px;
+      background: rgba(247,241,224,.95); border: 1px solid #c2b99a;
+      border-radius: 8px; padding: 8px 12px; font-size: .72rem; z-index: 50;
+      line-height: 1.9; box-shadow: 0 1px 6px rgba(0,0,0,.08);
+    }
+    .legend b { display: block; margin-bottom: 2px; font-size: .78rem; }
+    .legend-row { display: flex; align-items: center; gap: 6px; }
+    .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .hint { position: absolute; bottom: 10px; left: 10px; font-size: .72rem; color: #888; }
+
+    footer { flex-shrink: 0; text-align: center; padding: 8px 0; font-size: .8rem; background: #8a9a78; color: #333; }
+    footer ul { list-style: none; margin: 0; padding: 0; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <p class="site-title"><a href="https://hyakuninisshu.com/">時雨の百人一首</a></p>
+    <div class="header_list">
+      <a href="index.html"><img src="../img/icon_top.svg?ver-02" alt="トップ" class="icon"></a>
+      <a href="introduction.html"><img src="/img/icon_column.svg?ver-02" alt="コラム" class="icon"></a>
+      <a href="introduction-app.html"><img src="/img/icon_app.svg?ver-02" alt="アプリ" class="icon"></a>
+      <a href="list.html"><img src="/img/icon_search.svg?ver-04" alt="和歌の一覧・検索" class="icon"></a>
+    </div>
+  </header>
+
+  <main>
+    <div id="svg-container"></div>
+
+    <!-- <div class="legend">
+      <b>グループの色</b>
+      <div class="legend-row"><div class="legend-dot" style="background:#b82343"></div>ルート</div>
+      <div class="legend-row"><div class="legend-dot" style="background:#e53935"></div>あ17枚</div>
+      <div class="legend-row"><div class="legend-dot" style="background:#8e24aa"></div>な8枚</div>
+      <div class="legend-row"><div class="legend-dot" style="background:#1e88e5"></div>三枚札</div>
+      <div class="legend-row"><div class="legend-dot" style="background:#00897b"></div>二枚札</div>
+      <div class="legend-row"><div class="legend-dot" style="background:#f4511e"></div>その他</div>
+      <div class="legend-row"><div class="legend-dot" style="background:#6d4c41"></div>一字決まり</div>
+    </div> -->
+
+    <div class="toolbar">
+      <button id="btn-fit"  title="全体表示">⊙</button>
+      <button id="btn-in"   title="拡大">＋</button>
+      <button id="btn-out"  title="縮小">－</button>
+      <button id="btn-all"  title="全展開">▼</button>
+    </div>
+
+    <div class="hint">PCの場合は、スクロールでズームします。決まり字の丸をクリックすると、その歌のページが開きます。</div>
+  </main>
+  <footer><ul><li>&copy;2026 時雨 大輔</li></ul></footer>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script>
+  const linkMap = {
+    "あきの":1,"はるす":2,"あし":3,"たご":4,"おく":5,"かさ":6,"あまの":7,"わがい":8,"はなの":9,"これ":10,
+    "わたのはらや":11,"あまつ":12,"つく":13,"みち":14,"きみがためは":15,"たち":16,"ちは":17,"す":18,"なにはが":19,"わび":20,
+    "いまこ":21,"ふ":22,"つき":23,"この":24,"なにし":25,"をぐ":26,"みかの":27,"やまざ":28,"こころあ":29,"ありあ":30,
+    "あさぼらけあ":31,"やまが":32,"ひさ":33,"たれ":34,"ひとは":35,"なつ":36,"しら":37,"わすら":38,"あさぢ":39,"しの":40,
+    "こひ":41,"ちぎりき":42,"あひ":43,"あふこ":44,"あはれ":45,"ゆら":46,"やへ":47,"かぜを":48,"みかき":49,"きみがためを":50,
+    "かく":51,"あけ":52,"なげき":53,"わすれ":54,"たき":55,"あらざ":56,"め":57,"ありま":58,"やす":59,"おおえ":60,
+    "いに":61,"よを":62,"いまは":63,"あさぼらけう":64,"うら":65,"もろ":66,"はるの":67,"こころに":68,"あらし":69,"さ":70,
+    "ゆふ":71,"おと":72,"たか":73,"うか":74,"ちぎりお":75,"わたのはらこ":76,"せ":77,"あはぢ":78,"あきか":79,"ながか":80,
+    "ほ":81,"おも":82,"よのなかよ":83,"ながら":84,"よも":85,"なげけ":86,"む":87,"なにはえ":88,"たま":89,"みせ":90,
+    "きり":91,"わがそ":92,"よのなかは":93,"みよ":94,"おほけ":95,"はなさ":96,"こぬ":97,"かぜそ":98,"ひとも":99,"もも":100
+  };
+
+  // 五十音行の色（決まり字末端ノード）
+  function gyouColor(t) {
+    const c = (t||'').charAt(0);
+    if('あいうえお'.includes(c)) return '#e57373';
+    if('かきくけこ'.includes(c)) return '#4caf50';
+    if('さしすせそ'.includes(c)) return '#42a5f5';
+    if('たちつてと'.includes(c)) return '#fdd835';
+    if('なにぬねの'.includes(c)) return '#ff9800';
+    if('はひふへほ'.includes(c)) return '#ab47bc';
+    if('まみむめも'.includes(c)) return '#26a69a';
+    if('やゆよ'.includes(c))     return '#ef6c00';
+    if('わをん'.includes(c))     return '#5c6bc0';
+    return '#90a4ae';
+  }
+
+  // グループノードの色（depth=1）
+  const depth1Colors = {
+    'あ17枚':  '#e53935',
+    'な8枚':   '#8e24aa',
+    '三枚札':  '#1e88e5',
+    '二枚札':  '#00897b',
+    'その他グループ': '#f4511e',
+    '一字決まり': '#6d4c41',
+  };
+
+  const L = (n, label, ch) => ({ name: n, label: label || n, children: ch });
+  const N = n => ({ name: n, label: linkMap[n] ? `${n}（${linkMap[n]}）` : n, num: linkMap[n], leaf: !!linkMap[n] });
+
+  const treeData = L('root', '友札完全攻略', [
+    L('あ17枚', 'あ 17枚', [
+      L('あき2', 'あき 2枚', ['あきの','あきか'].map(N)),
+      L('あさ3', 'あさ 3枚', ['あさぢ','あさぼらけあ','あさぼらけう'].map(N)),
+      L('あま2', 'あま 2枚', ['あまの','あまつ'].map(N)),
+      L('あり2', 'あり 2枚', ['ありあ','ありま'].map(N)),
+      L('あら2', 'あら 2枚', ['あらざ','あらし'].map(N)),
+      L('その他6', 'その他 6枚', ['あし','あひ','あふこ','あはれ','あけ','あはぢ'].map(N)),
+    ]),
+    L('な8枚', 'な 8枚', [
+      L('なに3', 'なに 3枚', ['なにはが','なにはえ','なにし'].map(N)),
+      L('なが2', 'なが 2枚', ['ながか','ながら'].map(N)),
+      L('なげ2', 'なげ 2枚', ['なげき','なげけ'].map(N)),
+      N('なつ'),
+    ]),
+    L('三枚札', '三枚札', [
+      L('い3', 'い 3枚', ['いまこ','いまは','いに'].map(N)),
+      L('き3', 'き 3枚', ['きみがためは','きみがためを','きり'].map(N)),
+      L('ち3', 'ち 3枚', ['ちは','ちぎりき','ちぎりお'].map(N)),
+      L('ひ3', 'ひ 3枚', ['ひさ','ひとは','ひとも'].map(N)),
+    ]),
+    L('二枚札', '二枚札', [
+      L('う2', 'う 2枚', ['うら','うか'].map(N)),
+      L('つ2', 'つ 2枚', ['つく','つき'].map(N)),
+      L('し2', 'し 2枚', ['しら','しの'].map(N)),
+      L('ゆ2', 'ゆ 2枚', ['ゆら','ゆふ'].map(N)),
+      L('も2', 'も 2枚', ['もろ','もも'].map(N)),
+    ]),
+    L('その他グループ', 'その他グループ', [
+      L('お5', 'お 5枚', ['おく','おおえ','おと','おも','おほけ'].map(N)),
+      L('か4', 'か 4枚', ['かさ','かく','かぜを','かぜそ'].map(N)),
+      L('こ6', 'こ 6枚', ['これ','この','こころあ','こころに','こひ','こぬ'].map(N)),
+      L('た6', 'た 6枚', ['たご','たち','たれ','たき','たか','たま'].map(N)),
+      L('は4', 'は 4枚', ['はるす','はるの','はなの','はなさ'].map(N)),
+      L('み5', 'み 5枚', ['みち','みかの','みかき','みせ','みよ'].map(N)),
+      L('や4', 'や 4枚', ['やまざ','やまが','やへ','やす'].map(N)),
+      L('よ4', 'よ 4枚', ['よを','よも','よのなかよ','よのなかは'].map(N)),
+      L('わ7', 'わ 7枚', ['わたのはらや','わたのはらこ','わがい','わがそ','わび','わすら','わすれ'].map(N)),
+    ]),
+    L('一字決まり', '一字決まり 8枚', ['む','す','め','ふ','さ','ほ','せ','をぐ'].map(N)),
+  ]);
+
+  // ── 描画 ────────────────────────────────────
+  const el   = document.getElementById('svg-container');
+  const main = document.querySelector('main');
+  const svg  = d3.select('#svg-container').append('svg')
+    .attr('width',  main.clientWidth)
+    .attr('height', main.clientHeight);
+  const g = svg.append('g');
+
+  const zoom = d3.zoom().scaleExtent([0.05, 4])
+    .on('zoom', e => g.attr('transform', e.transform));
+  svg.call(zoom);
+
+  const tree = d3.tree().nodeSize([14, 150]);
+  let root = d3.hierarchy(treeData);
+
+  // 初期状態：全展開
+
+  let uid = 0;
+
+  function nodeColor(d) {
+    if (d.depth === 0) return '#b82343';
+    if (d.data.leaf) return gyouColor(d.data.name);
+    if (d.depth === 1) return depth1Colors[d.data.name] || '#8a9a78';
+    // depth=2のサブグループは親色を薄く
+    if (d.depth === 2 && d.parent) {
+      const base = depth1Colors[d.parent.data.name] || '#8a9a78';
+      return base;
+    }
+    return '#8a9a78';
+  }
+
+  function update(src) {
+    tree(root);
+    const nodes = root.descendants();
+    const links = root.links();
+
+    // リンク
+    const lSel = g.selectAll('path.link').data(links, d => d.target.id);
+    lSel.enter().insert('path', 'g')
+      .attr('class', 'link')
+      .attr('d', () => { const o = [src.y0??src.y, src.x0??src.x]; return d3.linkHorizontal()({source:o, target:o}); })
+      .merge(lSel).transition().duration(200)
+      .attr('d', d => d3.linkHorizontal()({source:[d.source.y, d.source.x], target:[d.target.y, d.target.x]}));
+    lSel.exit().transition().duration(200)
+      .attr('d', () => { const o = [src.y, src.x]; return d3.linkHorizontal()({source:o, target:o}); }).remove();
+
+    // ノード
+    const nSel = g.selectAll('g.node').data(nodes, d => d.id || (d.id = ++uid));
+    const nEnter = nSel.enter().append('g').attr('class', 'node')
+      .attr('transform', () => `translate(${src.y0??src.y},${src.x0??src.x})`)
+      .style('opacity', 0)
+      .on('click', (ev, d) => {
+        if (d.data.leaf) { window.open(`${d.data.num}.html`, '_blank'); return; }
+        if (d.children) { d._children = d.children; d.children = null; }
+        else { d.children = d._children; d._children = null; }
+        update(d);
+      });
+
+    nEnter.append('circle')
+      .attr('r', d => d.depth === 0 ? 14 : d.data.leaf ? 7 : 10)
+      .attr('fill', nodeColor)
+      .attr('stroke', d => d.depth === 0 ? '#7a1030' : d.data.leaf ? '#666' : '#4a4a4a')
+      .style('cursor', d => d.data.leaf ? 'pointer' : 'default');
+
+    nEnter.filter(d => !d.data.leaf).append('text')
+      .attr('class', 'toggle-icon')
+      .attr('text-anchor', 'middle').attr('dy', '0.35em')
+      .attr('font-size', '10px').attr('fill', '#fff').attr('pointer-events', 'none');
+
+    nEnter.append('text')
+      .attr('class', 'label')
+      .attr('dy', '0.35em')
+      .attr('x', d => d.data.leaf ? 11 : (d.depth === 0 ? 18 : 13))
+      .attr('font-size', d => d.depth === 0 ? '14px' : d.data.leaf ? '11px' : '12px')
+      .attr('font-weight', d => d.depth <= 1 ? 'bold' : 'normal')
+      .style('cursor', d => d.data.leaf ? 'pointer' : 'default');
+
+    const nMerge = nEnter.merge(nSel);
+    nMerge.transition().duration(200)
+      .attr('transform', d => `translate(${d.y},${d.x})`).style('opacity', 1);
+
+    nMerge.select('.toggle-icon')
+      .text(d => d.children ? '−' : (d._children ? '＋' : ''));
+
+    nMerge.select('.label')
+      .text(d => d.data.label);
+
+    nSel.exit().transition().duration(200)
+      .attr('transform', `translate(${src.y},${src.x})`).style('opacity', 0).remove();
+
+    nodes.forEach(d => { d.x0 = d.x; d.y0 = d.y; });
+  }
+
+  update(root);
+
+  function fitView() {
+    const b = g.node().getBBox();
+    if (!b.width || !b.height) return;
+    const W = main.clientWidth  || window.innerWidth;
+    const H = main.clientHeight || (window.innerHeight - 120);
+    const padX = 40, padY = 40;
+    const sc = Math.min((W - padX) / b.width, (H - padY) / b.height);
+    const tx = W / 2 - sc * (b.x + b.width  / 2);
+    const ty = H / 2 - sc * (b.y + b.height / 2);
+    svg.transition().duration(400).call(
+      zoom.transform, d3.zoomIdentity.translate(tx, ty).scale(sc)
+    );
+  }
+  setTimeout(fitView, 50);
+  setTimeout(fitView, 300);
+  setTimeout(fitView, 800);
+
+  document.getElementById('btn-fit').addEventListener('click', fitView);
+  document.getElementById('btn-in').addEventListener('click',  () => svg.transition().duration(250).call(zoom.scaleBy, 1.4));
+  document.getElementById('btn-out').addEventListener('click', () => svg.transition().duration(250).call(zoom.scaleBy, 0.72));
+  document.getElementById('btn-all').addEventListener('click', () => {
+    root.each(d => { if (d._children) { d.children = d._children; d._children = null; } });
+    update(root); setTimeout(fitView, 350);
+  });
+  window.addEventListener('resize', () => {
+    svg.attr('width', main.clientWidth).attr('height', main.clientHeight); fitView();
+  });
+  </script>
+  <script src="../js/back-to-top.js?20260908-02"></script>
+
+</body>
+</html>

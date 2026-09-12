@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head prefix="og: http://ogp.me/ns#">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>枕詞マスター 3択クイズ | 時雨の百人一首</title>
+  <link rel="canonical" href="https://hyakuninisshu.com/makurakotoba-game.html">
+  <meta name="description" content="あしひきの・ちはやぶる・ひさかたの など、古典で登場する代表的な枕詞を出題し、導かれる言葉を3択から選ぶ無料クイズです。解説付きで枕詞の意味も学べます。">
+  <link rel="stylesheet" href="../css/style.css?20260908-16">
+  <link rel="stylesheet" href="../css/karuta.css?20260506">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap"
+    rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" href="/favicon.ico">
+
+  <style>
+    .fuda-section {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    /* ── ボタン ── */
+    .main-btn {
+      display: inline-block;
+      padding: 0.6em 2em;
+      background: #B82343;
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 0.4em 0.3em;
+      transition: background 0.15s;
+    }
+
+    .main-btn:hover {
+      background: #9a1c38;
+    }
+
+    .sub-btn {
+      display: inline-block;
+      padding: 0.55em 1.6em;
+      background: #B82343;
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 0.4em 0.3em;
+    }
+
+    .sub-btn:hover {
+      background: #9a1c38;
+    }
+
+    /* ── セパレータ ── */
+    .fuda-sep {
+      border: none;
+      border-top: 1px solid #e0e0e0;
+      margin: 1.2em 0;
+    }
+
+    /* ── スタートボタン ── */
+    #start-button {
+      width: 100px;
+      height: 30px;
+      margin: 20px auto;
+      background-image: url(../img/icon_start.svg);
+      background-position: center center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      cursor: pointer;
+    }
+
+    /* ── ゲームモード設定 ── */
+    .game-mode-box {
+      border: 2px solid #B82343;
+      border-radius: 12px;
+      padding: 1em 1.2em;
+      margin: 1em 0;
+      background: #fff9f9;
+      text-align: center;
+    }
+
+    .q-count-row {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 0.6em 0 1em;
+    }
+
+    .q-count-btn {
+      padding: 8px 14px;
+      border: 2px solid #B82343;
+      border-radius: 20px;
+      background: #fff;
+      color: #B82343;
+      font-weight: bold;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: 0.15s;
+    }
+
+    .q-count-btn.active,
+    .q-count-btn:hover {
+      background: #B82343;
+      color: #fff;
+    }
+
+    /* ── 進捗テキスト ── */
+    #game-progress {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 0.6em;
+    }
+
+    /* ── 出題カード ── */
+    #game-card-wrap {
+      display: flex;
+      justify-content: center;
+      margin: 0.5em 0 1em;
+    }
+
+    #game-card {
+      width: 195px;
+    }
+
+    #game-card p {
+      font-family: "Noto Serif JP", serif;
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: 0.3em;
+      line-height: 1.5;
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 540px) {
+      #game-card {
+        width: 58vw;
+      }
+
+      #game-card p {
+        font-size: 8.5vw;
+      }
+    }
+
+    /* ── 三択ボタン ── */
+    #game-choices {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin: 14px 0;
+      flex-wrap: wrap;
+    }
+
+    .choice-btn {
+      min-width: 96px;
+      min-height: 54px;
+      padding: 10px 20px;
+      font-size: 1.15rem;
+      font-family: "Noto Serif JP", serif;
+      font-weight: 700;
+      border: 2px solid #B82343;
+      border-radius: 12px;
+      background: #fff;
+      color: #B82343;
+      cursor: pointer;
+      transition: background 0.12s, color 0.12s;
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      background: #B82343;
+      color: #fff;
+    }
+
+    .choice-btn.correct {
+      background: #27ae60;
+      border-color: #27ae60;
+      color: #fff;
+    }
+
+    .choice-btn.wrong {
+      background: #e74c3c;
+      border-color: #e74c3c;
+      color: #fff;
+      opacity: 0.65;
+    }
+
+    .choice-btn:disabled {
+      cursor: default;
+    }
+
+    /* ── 解説 ── */
+    #answer-note {
+      max-width: 480px;
+      margin: 0.8em auto 0;
+      padding: 0.8em 1em;
+      background: #f5ede0;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      line-height: 1.7;
+      text-align: left;
+    }
+
+    #answer-note b {
+      color: #B82343;
+    }
+
+    /* ── 結果画面 ── */
+    .result-rank-display {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #B82343;
+      margin: 4px 0 16px;
+    }
+
+    #result-score {
+      font-size: 2.2rem;
+      font-weight: bold;
+      color: #333;
+      margin: 4px 0;
+    }
+
+    .rank-table {
+      width: 100%;
+      max-width: 280px;
+      margin: 0 auto 1em;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    .rank-table th,
+    .rank-table td {
+      border: 1px solid #e0d8c8;
+      padding: 5px 10px;
+      text-align: center;
+    }
+
+    .rank-table th {
+      background: #f5ede0;
+      font-weight: bold;
+    }
+
+    .rank-table tr.highlight td {
+      background: #fff0f0;
+      color: #B82343;
+      font-weight: bold;
+    }
+
+    /* ── 結果 一覧表 ── */
+    .result-songs-table {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      text-align: left;
+    }
+
+    .result-songs-table th,
+    .result-songs-table td {
+      border: 1px solid #e0d8c8;
+      padding: 5px 7px;
+      vertical-align: middle;
+    }
+
+    .result-songs-table th {
+      background: #f5ede0;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .result-songs-table .center-cell {
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .result-songs-table .ok-mark {
+      color: #27ae60;
+      font-weight: bold;
+    }
+
+    .result-songs-table .ng-mark {
+      color: #e74c3c;
+      font-weight: bold;
+    }
+
+    /* スマホのみ：ゲーム中はヘッダー・フッター非表示 */
+    @media (max-width: 540px) {
+
+      #site-header[hidden],
+      #site-footer[hidden] {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ヘッダー -->
+  <header id="site-header" class="header">
+    <p class="site-title">
+      <a href="https://hyakuninisshu.com/">時雨の百人一首</a>
+    </p>
+    <div class="header_list">
+      <a href="index.html"><img src="../img/icon_top.svg?ver-02" alt="トップ" class="icon"></a>
+      <a href="introduction.html" style="color:#333"><img src="/img/icon_column.svg?ver-02" alt="コラム" class="icon"></a>
+      <a href="introduction-app.html" style="color:#333"><img src="/img/icon_app.svg?ver-02" alt="アプリ" class="icon"></a>
+      <a href="makurakotoba-game_en.html"><img src="/img/icon_lang.svg?ver-01" alt="English" class="icon"></a>
+      <a href="list.html"><img src="/img/icon_search.svg?ver-04" alt="和歌の一覧・検索" class="icon"></a>
+    </div>
+  </header>
+
+  <main class="main_about-main">
+    <div class="section fuda-section">
+      <nav id="breadcrumb-nav">
+        <ol class="breadcrumb">
+          <li><a href="index.html">トップ</a></li>
+          <li><a href="introduction-app.html">アプリ</a></li>
+          <li>枕詞マスター 3択クイズ</li>
+        </ol>
+      </nav>
+      <h1 id="page-title" style="text-align: left;">枕詞マスター <br class="br-sp">3択クイズ</h1>
+      <p id="page-desc">
+        出題された枕詞を見て、その枕詞が導く言葉を三択から選びます。
+        <br class="br-pc">選んだ後には、その枕詞についての簡単な解説が表示されます。
+      </p>
+      <ul id="page-list" style="text-align:left; font-size:0.9rem">
+        <li>問題は代表的な枕詞18種類の中からランダムに出題されます。</li>
+        <li>正解・不正解にかかわらず、回答後に解説が表示されます。</li>
+        <li>ゲーム終了後に正答率とランクが表示されます。</li>
+      </ul>
+
+      <!-- ── 設定パネル ── -->
+      <div id="setup-panel">
+        <div class="game-mode-box">
+          <p style="font-size:0.85rem; font-weight:bold; color:#444; margin:0 0 0.3em; text-align:center;">何問チャレンジしますか？
+          </p>
+          <div class="q-count-row">
+            <button class="q-count-btn" data-count="5">5問</button>
+            <button class="q-count-btn active" data-count="10">10問</button>
+            <button class="q-count-btn" data-count="18">全18問</button>
+          </div>
+          <div id="start-button"></div>
+        </div>
+
+        <hr class="fuda-sep">
+        <h2 style="text-align: left;">枕詞とは</h2>
+        <p>枕詞とは、特定の語句を導き出すための言葉です。多くは5音からなり、導き出す語句の直前に置かれて、語調を整えたりある種の情緒を添えたりします。</p>
+        <p>例えば「あしひきの」は「山」を導く枕詞です。「あしひきの　山鳥の尾の　しだり尾の…」のように、「あしひきの」と聞こえた瞬間に、次に「山」に関する言葉が来ることが分かります。</p>
+        <p>枕詞そのものには直接の現代語訳がない場合も多く、和歌のリズムを整えたり、荘重な雰囲気を添えたりする役割を持っています。</p>
+      </div>
+
+      <!-- ── ゲームパネル ── -->
+      <div id="game-panel" hidden>
+        <div id="game-progress"></div>
+
+        <div id="game-card-wrap">
+          <div id="game-card" class="karuta_card">
+            <p id="game-card-text"></p>
+          </div>
+        </div>
+
+        <div id="game-choices"></div>
+
+        <p id="answer-note" hidden></p>
+
+        <div style="margin-top:1.2em;">
+          <button id="next-btn" class="main-btn" style="display:none;">次の問題へ</button>
+        </div>
+      </div>
+
+      <!-- ── 結果パネル ── -->
+      <div id="result-panel" hidden style="text-align:center; padding-bottom:2em;">
+        <p style="color:#666; font-size:0.9rem; margin:0; text-align:center;">正答率</p>
+        <p id="result-score" style="text-align:center;"></p>
+        <p id="result-rank-text" class="result-rank-display" style="text-align:center;"></p>
+
+        <table class="rank-table" id="rank-table">
+          <tr>
+            <th>正答率</th>
+            <th>ランク</th>
+          </tr>
+          <tr data-rank="初心者">
+            <td>0〜39%</td>
+            <td>初心者</td>
+          </tr>
+          <tr data-rank="見習い">
+            <td>40〜59%</td>
+            <td>見習い</td>
+          </tr>
+          <tr data-rank="歌詠み">
+            <td>60〜79%</td>
+            <td>歌詠み</td>
+          </tr>
+          <tr data-rank="名人">
+            <td>80〜99%</td>
+            <td>名人</td>
+          </tr>
+          <tr data-rank="歌聖">
+            <td>100%</td>
+            <td>歌聖</td>
+          </tr>
+        </table>
+
+        <div style="margin-top:1.2em;">
+          <button id="retry-btn" class="main-btn">もう一度</button>
+          <br>
+          <button id="result-back-btn" class="sub-btn">設定に戻る</button>
+        </div>
+
+        <div id="result-list" style="margin-top:1.4em; text-align:left;">
+          <p style="font-size:0.9rem; font-weight:bold; color:#555; margin:0 0 0.5em; text-align:center;">今回出題された枕詞</p>
+          <table class="result-songs-table">
+            <thead>
+              <tr>
+                <th>問</th>
+                <th>枕詞</th>
+                <th>正解</th>
+                <th>あなたの回答</th>
+                <th>結果</th>
+              </tr>
+            </thead>
+            <tbody id="result-list-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer id="site-footer">
+    <div class="footer-inner">
+      <span class="footer-copy">&copy;2023 時雨の百人一首</span>
+      <ul>
+        <li><a href="policy.html">プライバシーポリシー</a></li>
+        <li>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXx7TKlqnTfKrw2Nuh4f37swVwFH-RFDsNkTGQ4JEF50q2wQ/viewform?usp=header"
+            target="_blank" rel="noopener">お問い合わせフォーム</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      'use strict';
+
+      // ── 枕詞データ（枕詞 / 導かれる言葉 / 解説） ──
+      const DATA = [
+        { q: 'あかねさす', a: '日', note: '「あかねさす」は茜色に輝く様子を表し、赤く照り輝く「日」や「昼」「紫」などを導きます。' },
+        { q: 'あしひきの', a: '山', note: '語源には諸説ありますが、山の裾野が長く延びる様子から、あるいは山道を足を引きずるように歩く様子から「山」を導くとされます。' },
+        { q: 'あらたまの', a: '年', note: '語源には諸説ありますが、「新しい魂」の意から、改まる「年」や「月」「日」を導きます。' },
+        { q: 'あをによし', a: '奈良', note: '奈良の都で使われた青丹（あおに）という顔料に由来し、「奈良」を導きます。' },
+        { q: 'いそのかみ', a: 'ふる', note: '奈良県天理市の地名「布留（ふる）」にかけて、同音の「古る」なども導きます。' },
+        { q: 'いはばしる', a: '滝', note: '岩の上を激しく流れる水の様子から「滝」や「垂水」を導きます。' },
+        { q: 'うつせみの', a: '世', note: '「現し身（うつしみ）」に通じ、はかない「世」や「命」「人」を導きます。' },
+        { q: 'からころも', a: '着る', note: '「唐衣（からころも）」は着るものであることから「着る」や「袖」「裾」を導きます。' },
+        { q: 'くさまくら', a: '旅', note: '草を枕に野宿する意から、「旅」や「結ぶ」を導きます。' },
+        { q: 'しろたへの', a: '衣', note: '楮（こうぞ）の繊維で織った真っ白な布のことで、「衣」や白い「雪」「雲」「波」を導きます。' },
+        { q: 'そらみつ', a: '大和', note: '語源には諸説ありますが、「空から見た地」の意とされ、「大和」を導く枕詞です。' },
+        { q: 'たらちねの', a: '母', note: '語源には諸説ありますが、「母」を導く代表的な枕詞です。' },
+        { q: 'ちはやぶる', a: '神', note: '勢いが激しく荒々しい様子を表し、「神」や地名「宇治」を導きます。' },
+        { q: 'ぬばたまの', a: '夜', note: '檜扇（ひおうぎ）の黒い実「ぬばたま」にちなみ、「黒」や「夜」「髪」「夢」を導きます。' },
+        { q: 'ひさかたの', a: '光', note: '天や空に関わる「光」や「月」「雨」「雲」などを導く枕詞です。' },
+        { q: 'ももしきの', a: '大宮', note: '多くの石を敷き並べた意から、「大宮」や「宮」を導きます。' },
+        { q: 'やくもたつ', a: '出雲', note: '幾重にも雲が立つ地の意から「出雲」を導きます。' },
+        { q: 'こもりくの', a: '泊瀬', note: '山に囲まれ隠れたような地形の意から、地名「泊瀬（はつせ）」を導きます。' },
+      ];
+
+      const ALL_ANSWERS = [...new Set(DATA.map(d => d.a))];
+
+      // ── 状態 ──
+      let totalQuestions = 10;
+      let queue = [];
+      let results = [];
+      let currentIdx = 0;
+      let answered = false;
+
+      // ── 問題数選択 ──
+      document.querySelectorAll('.q-count-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.q-count-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          totalQuestions = parseInt(btn.dataset.count, 10);
+        });
+      });
+
+      document.getElementById('start-button').addEventListener('click', startGame);
+      document.getElementById('next-btn').addEventListener('click', advance);
+      document.getElementById('retry-btn').addEventListener('click', startGame);
+      document.getElementById('result-back-btn').addEventListener('click', goToSetup);
+
+      function buildChoices(item) {
+        const others = ALL_ANSWERS.filter(a => a !== item.a);
+        const wrongs = shuffle(others).slice(0, 2);
+        return shuffle([item.a, ...wrongs]);
+      }
+
+      function startGame() {
+        const count = Math.min(totalQuestions, DATA.length);
+        const selected = shuffle(DATA).slice(0, count);
+        queue = selected.map(item => ({ item, choices: buildChoices(item) }));
+        results = [];
+        currentIdx = 0;
+
+        hide('page-title');
+        hide('page-desc');
+        hide('page-list');
+        hide('breadcrumb-nav');
+        hide('site-header');
+        hide('site-footer');
+        hide('setup-panel');
+        hide('result-panel');
+        show('game-panel');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        renderQuestion();
+      }
+
+      function goToSetup() {
+        hide('game-panel');
+        hide('result-panel');
+        show('setup-panel');
+        show('page-title');
+        show('page-desc');
+        show('page-list');
+        show('breadcrumb-nav');
+        show('site-header');
+        show('site-footer');
+      }
+
+      function renderQuestion() {
+        answered = false;
+        const q = queue[currentIdx];
+        document.getElementById('game-progress').textContent =
+          `第 ${currentIdx + 1} 問 ／ 全 ${queue.length} 問`;
+        document.getElementById('game-card-text').textContent = q.item.q;
+
+        const choicesEl = document.getElementById('game-choices');
+        choicesEl.innerHTML = '';
+        q.choices.forEach(a => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn';
+          btn.textContent = a;
+          btn.dataset.answer = a;
+          btn.addEventListener('click', () => handleChoice(btn, a, q.item));
+          choicesEl.appendChild(btn);
+        });
+
+        hide('answer-note');
+        document.getElementById('next-btn').style.display = 'none';
+      }
+
+      function handleChoice(btnEl, chosen, item) {
+        if (answered) return;
+        answered = true;
+        const correct = chosen === item.a;
+        results.push({ item, chosen, correct });
+
+        document.querySelectorAll('.choice-btn').forEach(btn => {
+          btn.disabled = true;
+          if (btn.dataset.answer === item.a) btn.classList.add('correct');
+          else if (btn === btnEl) btn.classList.add('wrong');
+        });
+
+        const noteEl = document.getElementById('answer-note');
+        noteEl.innerHTML = `<b>${correct ? '正解！' : '不正解…'}</b>「${item.q}」は「<b>${item.a}</b>」を導く枕詞です。<br>${item.note}`;
+        show('answer-note');
+
+        const isLast = currentIdx === queue.length - 1;
+        const nextBtn = document.getElementById('next-btn');
+        nextBtn.textContent = isLast ? '結果を見る' : '次の問題へ';
+        nextBtn.style.display = 'inline-block';
+      }
+
+      function advance() {
+        currentIdx++;
+        if (currentIdx < queue.length) {
+          renderQuestion();
+        } else {
+          showResult();
+        }
+      }
+
+      function showResult() {
+        hide('game-panel');
+        show('result-panel');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        const correctCount = results.filter(r => r.correct).length;
+        const total = results.length;
+        const pct = total > 0 ? Math.round((correctCount / total) * 100) : 0;
+        const rank = getRank(pct);
+
+        document.getElementById('result-score').textContent = `${correctCount} / ${total} 問正解（${pct}%）`;
+        document.getElementById('result-rank-text').textContent = `あなたは「${rank}」です！`;
+
+        document.querySelectorAll('#rank-table tr[data-rank]').forEach(tr => {
+          tr.classList.toggle('highlight', tr.dataset.rank === rank);
+        });
+
+        const tbody = document.getElementById('result-list-body');
+        tbody.innerHTML = '';
+        results.forEach((r, i) => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td class="center-cell">${i + 1}</td>
+            <td>${r.item.q}</td>
+            <td class="center-cell">${r.item.a}</td>
+            <td class="center-cell">${r.chosen}</td>
+            <td class="center-cell ${r.correct ? 'ok-mark' : 'ng-mark'}">${r.correct ? '○' : '×'}</td>`;
+          tbody.appendChild(tr);
+        });
+      }
+
+      function getRank(pct) {
+        if (pct >= 100) return '歌聖';
+        if (pct >= 80) return '名人';
+        if (pct >= 60) return '歌詠み';
+        if (pct >= 40) return '見習い';
+        return '初心者';
+      }
+
+      // ── ユーティリティ ──
+      function show(id) { const el = document.getElementById(id); if (el) el.hidden = false; }
+      function hide(id) { const el = document.getElementById(id); if (el) el.hidden = true; }
+
+      function shuffle(arr) {
+        const a = [...arr];
+        for (let i = a.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+      }
+    })();
+  </script>
+  <script src="../js/back-to-top.js?20260908-02"></script>
+
+</body>
+
+</html>

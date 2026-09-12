@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html lang="ja">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="Keywords" content="百人一首, おみくじ">
+  <meta name="description" content="百人一首は、恋心や人生の情景を映す百の歌の宝箱。 あなたの今日を照らす一首が、この中から引かれます。 千年の時を超えて届く歌のメッセージで、運試しをしてみませんか。">
+  <!-- スタイルシート -->
+  <link rel="stylesheet" href="../css/style.css?20260908-16">
+  <link rel="stylesheet" href="../css/omikuji.css?20260725-07">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@500&family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0 "></script>
+  <!-- アップルタッチアイコン -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <!-- favicon用 -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <!-- bootstrap アイコン -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <title>百人一首おみくじ｜今日の運勢を百人一首で占う【無料】｜時雨の百人一首</title>
+  <link rel="canonical" href="https://hyakuninisshu.com/omikuji.html">
+  </title>
+
+</head>
+
+<body>
+  <!-- ヘッダーここから -->
+  <header class="header">
+    <p class="site-title">
+      <a href="https://hyakuninisshu.com/">時雨の百人一首</a>
+    </p>
+    <div class="header_list">
+      <a href="index.html"><img src="../img/icon_top.svg?ver-02" alt="トップ" class="icon"></a>
+      <a href="introduction.html" style="color:#333"><img src="/img/icon_column.svg?ver-02" alt="コラム" class="icon"></a>
+      <a href="introduction-app.html" style="color:#333"><img src="/img/icon_app.svg?ver-02" alt="アプリ" class="icon"></a>
+      <a href="omikuji_en.html"><img src="/img/icon_lang.svg?ver-01" alt="English" class="icon"></a>
+      <a href="list.html"><img src="/img/icon_search.svg?ver-04" alt="和歌の一覧・検索" class="icon"></a>
+    </div>
+  </header>
+  <!-- ヘッダーここまで・メインここから -->
+  <main class="main_about-main">
+    <div class="section">
+      <h1 class="omikuji-explanation">百人一首 おみくじ</h1>
+      <p class="omikuji-explanation">百首の歌、百種類の結果があなたを待っています。<br class="br-pc">大吉は少ないので、出たあなたはかなりラッキー！</p>
+      <div id="omikuji-container">
+        <div id="omikuji-box">
+          <img id="omikuji-image-back" src="img/omikuji_back.webp" alt="戻るボタン">
+          <div id="omikuji-stick-wrap">
+            <div id="omikuji-stick">
+              <span id="omikuji-stick-number"></span>
+            </div>
+          </div>
+          <img id="omikuji-image-front" src="img/omikuji_front.webp" alt="おみくじ箱">
+        </div>
+        <button id="draw-button">おみくじを引く</button>
+        <p id="already-drawn-msg"
+          style="display:none;margin-top:1em;color:#333;font-size:0.9rem;text-align:center;line-height:1.8;">
+          おみくじが引けるのは1日1回です。<br>本日のおみくじはすでに引きました。<br>明日またお越しください。</p>
+      </div>
+
+    </div>
+    <div id="result-area" class="hidden">
+      <h2 id="waka-title">今日の歌<img id="poet-image" src="" alt="歌人のイラスト" /></h2>
+      <div id="waka-row">
+        <div id="waka-content">
+          <p id="waka-poem" class="poem"></p>
+        </div>
+        <img id="waka-card-image" class="waka-card-image" src="" alt="">
+      </div>
+
+      <div class="interpretation-section">
+        <h4>歌の意味</h4>
+        <p id="waka-meaning" class="meaning"></p>
+      </div>
+
+      <h2 id="waka-luck" class="luck-result"></h2>
+
+      <hr style="margin:0.5em 0 1em">
+
+      <div class="interpretation-section">
+        <h4>恋愛・対人関係の運勢</h4>
+        <p id="interp-love"></p>
+      </div>
+
+      <div class="interpretation-section">
+        <h4>仕事・人生の運勢</h4>
+        <p id="interp-work"></p>
+      </div>
+
+      <div class="result-btn-group">
+        <button id="reset-button">戻る</button>
+        <a id="poem-link-btn" href="#" target="_blank" rel="noopener noreferrer">歌のページ</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-copy">&copy;2023 時雨の百人一首</span>
+      <ul>
+        <li><a href="policy.html">プライバシーポリシー</a></li>
+        <li>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXx7TKlqnTfKrw2Nuh4f37swVwFH-RFDsNkTGQ4JEF50q2wQ/viewform?usp=header"
+            target="_blank" rel="noopener">お問い合わせフォーム</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+  <!-- フッターここまで -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="../js/move_script.js?20260729"></script>
+  <script src="/js/omikuji.js?20260725-05"></script>
+  <script src="../js/back-to-top.js?20260908-02"></script>
+
+</body>
+
+</html>

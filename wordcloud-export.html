@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>ワードクラウド投稿データ エクスポート（管理用）</title>
+  <link rel="canonical" href="https://hyakuninisshu.com/wordcloud-export.html">
+  <style>
+    body {
+      font-family: "Hiragino Sans", "Yu Gothic", sans-serif;
+      max-width: 640px;
+      margin: 40px auto;
+      padding: 0 20px;
+      color: #222;
+      line-height: 1.7;
+    }
+    h1 { font-size: 1.3rem; }
+    button {
+      font-size: 1rem;
+      padding: 10px 20px;
+      background: #b82343;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:disabled { background: #999; cursor: not-allowed; }
+    #status {
+      margin-top: 16px;
+      white-space: pre-wrap;
+      font-size: 0.9rem;
+      color: #444;
+    }
+    .warn {
+      background: #fff3cd;
+      border: 1px solid #ffe08a;
+      padding: 12px 16px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>ワードクラウド投稿データ エクスポート</h1>
+  <p class="warn">この画面は各歌ページのワードクラウドに投稿された「単語（正規化済み）と件数」を全100首・和文/英文まとめてCSVでダウンロードするための管理用ツールです。個別の投稿者ログ（誰がいつ投稿したか）は記録されていないため出力されません。</p>
+
+  <p><button id="exportBtn">全首のデータを取得してCSVダウンロード</button></p>
+  <div id="status"></div>
+
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      var FIREBASE_CONFIG = {
+        apiKey:            "AIzaSyAEyZBFp9QCAC65nNXroQXJHe8lB3xoW3U",
+        authDomain:        "word-cloud-5ff7c.firebaseapp.com",
+        projectId:         "word-cloud-5ff7c",
+        storageBucket:     "word-cloud-5ff7c.firebasestorage.app",
+        messagingSenderId: "458438786353",
+        appId:             "1:458438786353:web:5cfc01e61e746c5eda4410"
+      };
+
+      var POEM_COUNT = 100;
+
+      var btn      = document.getElementById('exportBtn');
+      var statusEl = document.getElementById('status');
+
+      function csvEscape(v) {
+        var s = String(v);
+        if (/[",\n]/.test(s)) s = '"' + s.replace(/"/g, '""') + '"';
+        return s;
+      }
+
+      function downloadCsv(rows) {
+        var header = ['poem_no', 'lang', 'text', 'count'];
+        var lines = [header.join(',')];
+        rows.forEach(function (r) {
+          lines.push([r.poemNum, r.lang, csvEscape(r.text), r.count].join(','));
+        });
+        var csv  = '﻿' + lines.join('\r\n');
+        var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+        var url  = URL.createObjectURL(blob);
+        var a    = document.createElement('a');
+        var today = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+        a.href = url;
+        a.download = 'wordcloud_export_' + today + '.csv';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }
+
+      btn.addEventListener('click', function () {
+        btn.disabled = true;
+        statusEl.textContent = '取得中…';
+
+        if (!firebase.apps.length) firebase.initializeApp(FIREBASE_CONFIG);
+        var db = firebase.firestore();
+
+        var targets = [];
+        for (var i = 1; i <= POEM_COUNT; i++) {
+          var pad = String(i).padStart(2, '0');
+          targets.push({ poemNum: i, lang: 'ja', docId: pad });
+          targets.push({ poemNum: i, lang: 'en', docId: pad + '_en' });
+        }
+
+        var rows     = [];
+        var done     = 0;
+        var failed   = [];
+
+        Promise.all(targets.map(function (t) {
+          return db.collection('wordclouds').doc(t.docId).collection('words').get()
+            .then(function (snap) {
+              snap.forEach(function (doc) {
+                var d = doc.data();
+                if (d.text && d.count > 0) {
+                  rows.push({ poemNum: t.poemNum, lang: t.lang, text: d.text, count: d.count });
+                }
+              });
+            })
+            .catch(function (err) {
+              failed.push(t.docId + ': ' + err.message);
+            })
+            .then(function () {
+              done++;
+              statusEl.textContent = '取得中… (' + done + ' / ' + targets.length + ')';
+            });
+        })).then(function () {
+          rows.sort(function (a, b) {
+            return a.poemNum - b.poemNum || a.lang.localeCompare(b.lang) || b.count - a.count;
+          });
+          if (rows.length) {
+            downloadCsv(rows);
+            statusEl.textContent = '完了：' + rows.length + '件をCSVでダウンロードしました。';
+          } else {
+            statusEl.textContent = '投稿データが見つかりませんでした。';
+          }
+          if (failed.length) {
+            statusEl.textContent += '\n\n取得に失敗した歌:\n' + failed.join('\n');
+          }
+          btn.disabled = false;
+        });
+      });
+    })();
+  </script>
+</body>
+
+</html>

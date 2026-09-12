@@ -1,0 +1,1876 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head prefix="og: http://ogp.me/ns#">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Competitive Karuta: Kimariji 3-Choice Quiz | Shigure no Hyakunin Isshu</title>
+  <link rel="canonical" href="https://hyakuninisshu.com/hudanagashi-game_en.html">
+  <meta name="description"
+    content="See the lower verse and pick the correct kimariji from 3 choices. Your response time determines your rank. Free to play, no login required.">
+  <link rel="stylesheet" href="../css/style.css?20260908-16">
+  <link rel="stylesheet" href="../css/karuta.css?20260506">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap"
+    rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" href="/favicon.ico">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    /* ── 共通 ── */
+    .fuda-section {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    /* ── 色選択 ── */
+    #color-selector {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 6px;
+      justify-content: center;
+      margin: 1em 0 1.4em;
+    }
+
+    .color-btn {
+      padding: 0.5em 0;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      background: #f9f9f9;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: bold;
+      line-height: 1.4;
+      transition: border-color 0.15s, background 0.15s, color 0.15s;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .color-btn small {
+      display: block;
+      font-weight: normal;
+      font-size: 0.75em;
+      color: inherit;
+    }
+
+    .color-btn[data-color="青"] {
+      border-color: #3a7bd5;
+    }
+
+    .color-btn[data-color="橙"] {
+      border-color: #e87722;
+    }
+
+    .color-btn[data-color="ピンク"] {
+      border-color: #e8639c;
+    }
+
+    .color-btn[data-color="黄"] {
+      border-color: #c8a100;
+    }
+
+    .color-btn[data-color="緑"] {
+      border-color: #2a9d4a;
+    }
+
+    .color-btn.active {
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .color-btn[data-color="全部"].active {
+      background: #4e3052;
+    }
+
+    .color-btn[data-color="青"].active {
+      background: #3a7bd5;
+    }
+
+    .color-btn[data-color="橙"].active {
+      background: #e87722;
+    }
+
+    .color-btn[data-color="ピンク"].active {
+      background: #e8639c;
+    }
+
+    .color-btn[data-color="黄"].active {
+      background: #c8a100;
+    }
+
+    .color-btn[data-color="緑"].active {
+      background: #2a9d4a;
+    }
+
+    /* ── ボタン ── */
+    .main-btn {
+      display: inline-block;
+      padding: 0.6em 2em;
+      background: #B82343;
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 0.4em 0.3em;
+      transition: background 0.15s;
+    }
+
+    .main-btn:hover {
+      background: #9a1c38;
+    }
+
+    .main-btn:disabled {
+      background: #ccc;
+      cursor: default;
+    }
+
+    .sub-btn {
+      display: inline-block;
+      padding: 0.55em 1.6em;
+      background: #B82343;
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 0.4em 0.3em;
+    }
+
+    .sub-btn:hover {
+      background: #9a1c38;
+    }
+
+    @keyframes result-btn-pulse {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      40% {
+        transform: scale(1.07);
+        opacity: 0.8;
+      }
+
+      60% {
+        transform: scale(1.07);
+        opacity: 0.8;
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    #game-show-result-btn {
+      animation: result-btn-pulse 1.1s ease-in-out infinite;
+    }
+
+    /* ── カード＋ナビ行 ── */
+
+
+    #game-card-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    #game-prev-nav,
+    #game-next-nav {
+      visibility: hidden;
+      padding: 0;
+      font-size: 2.8rem;
+    }
+
+    @media (max-width: 540px) {
+
+      #game-prev-nav,
+      #game-next-nav {
+        font-size: 9vw;
+      }
+    }
+
+    /* ── ナビボタン（◀ ▶） ── */
+    .nav-btn {
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: #B82343;
+      cursor: pointer;
+      padding: 0 0.4em;
+      line-height: 1;
+      flex-shrink: 0;
+      user-select: none;
+    }
+
+    .nav-btn:disabled {
+      color: #ddd;
+      cursor: default;
+    }
+
+    @media (max-width: 540px) {
+      .nav-btn {
+        font-size: 7vw;
+        padding: 0 0.3em;
+      }
+    }
+
+    /* ── 進捗テキスト ── */
+    #progress-text {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 0.6em;
+    }
+
+    /* ── 設定行 ── */
+    .setting-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6em;
+      margin: 0.8em 0;
+    }
+
+    .setting-row:last-of-type {
+      margin-bottom: 1.2em;
+    }
+
+    .setting-row label {
+      font-weight: bold;
+      font-size: 0.95rem;
+    }
+
+    #kimariji-select {
+      width: 7em;
+      height: 32px;
+      font-size: 0.95rem;
+      padding: 0 0.5em;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    /* ── セパレータ ── */
+    .fuda-sep {
+      border: none;
+      border-top: 1px solid #e0e0e0;
+      margin: 1.2em 0;
+    }
+
+    /* ── 札エリア ── */
+    #card-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 290px;
+      margin: 0.5em auto;
+      touch-action: pan-y;
+      user-select: none;
+    }
+
+    @media (max-width: 540px) {
+      #card-wrap {
+        min-height: 0;
+      }
+    }
+
+    #practice-card {
+      width: 195px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    #practice-card p {
+      font-family: "Noto Serif JP", serif;
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: 0.1em;
+      line-height: 1.5;
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 540px) {
+      #practice-card {
+        width: 58vw;
+      }
+
+      #practice-card p {
+        font-size: 8.5vw;
+        letter-spacing: 0.1em;
+      }
+    }
+
+    /* ── 歌番号 ── */
+    #card-number {
+      position: absolute;
+      bottom: 0.4em;
+      left: 0.5em;
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1;
+      z-index: 2;
+    }
+
+    @media (max-width: 540px) {
+      #card-number {
+        font-size: 2.8vw;
+      }
+    }
+
+    /* ── 決まり字オーバーレイ ── */
+    #kimariji-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(20, 12, 12, 0.86);
+      border-radius: inherit;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5em;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      z-index: 5;
+    }
+
+    #kimariji-overlay.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .kj-kami {
+      writing-mode: vertical-rl;
+      font-family: "Noto Serif JP", serif;
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.85);
+      letter-spacing: 0.4em;
+      line-height: 2.2;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 540px) {
+      .kj-kami {
+        font-size: 3.6vw;
+      }
+    }
+
+    .kj-kami .kj-red {
+      color: #e85070;
+      font-weight: bold;
+    }
+
+    /* ── カード枚数・ヒント ── */
+    #card-counter {
+      font-size: 1rem;
+      color: #666;
+      margin-top: 0.5em;
+      min-height: 1.4em;
+    }
+
+    #swipe-hint {
+      font-size: 0.78rem;
+      color: #bbb;
+      margin-top: 0.2em;
+    }
+
+    /* ── 完了メッセージ ── */
+    #finish-msg {
+      font-size: 1.1rem;
+      color: #B82343;
+      font-weight: bold;
+      margin: 0.8em 0 0.4em;
+      text-align: center;
+    }
+
+    /* ── スライドアニメーション ── */
+    @keyframes slideInFromRight {
+      from {
+        transform: translateX(50px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideInFromLeft {
+      from {
+        transform: translateX(-50px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    .slide-in-right {
+      animation: slideInFromRight 0.25s ease forwards;
+    }
+
+    .slide-in-left {
+      animation: slideInFromLeft 0.25s ease forwards;
+    }
+
+    /* ── ナビボタン（◀ ▶） ── */
+    .nav-btn {
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: #B82343;
+      cursor: pointer;
+      padding: 0 0.4em;
+      line-height: 1;
+      flex-shrink: 0;
+      user-select: none;
+    }
+
+    #prev-btn,
+    #next-btn {
+      font-size: 2.8rem;
+    }
+
+    .nav-btn:disabled {
+      color: #ddd;
+      cursor: default;
+    }
+
+    @media (max-width: 540px) {
+      .nav-btn {
+        font-size: 7vw;
+        padding: 0 0.3em;
+      }
+
+      #prev-btn,
+      #next-btn {
+        font-size: 9vw;
+      }
+    }
+
+    /* スマホのみ：ゲーム中はヘッダー・フッター非表示 */
+    @media (max-width: 540px) {
+
+      #site-header[hidden],
+      #site-footer[hidden] {
+        display: none !important;
+      }
+    }
+
+    /* ── スタートボタン ── */
+    #start-button {
+      width: 100px;
+      height: 30px;
+      margin: 20px auto;
+      background-image: url(../img/icon_start.svg);
+      background-position: center center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      cursor: pointer;
+    }
+
+    /* ── ゲームモード設定 ── */
+    .game-mode-box {
+      border: 2px solid #B82343;
+      border-radius: 12px;
+      padding: 1em 1.2em;
+      margin: 1em 0;
+      background: #fff9f9;
+      text-align: center;
+    }
+
+    .q-count-row {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 0.6em 0 1em;
+    }
+
+    .q-count-btn {
+      padding: 8px 14px;
+      border: 2px solid #B82343;
+      border-radius: 20px;
+      background: #fff;
+      color: #B82343;
+      font-weight: bold;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: 0.15s;
+    }
+
+    .q-count-btn.active,
+    .q-count-btn:hover {
+      background: #B82343;
+      color: #fff;
+    }
+
+    /* ── 三択ボタン ── */
+    #game-choices {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin: 14px 0;
+      flex-wrap: wrap;
+    }
+
+    .choice-btn {
+      min-width: 72px;
+      min-height: 54px;
+      padding: 10px 20px;
+      font-size: 1.5rem;
+      font-family: "Noto Serif JP", serif;
+      font-weight: 700;
+      border: 2px solid #B82343;
+      border-radius: 12px;
+      background: #fff;
+      color: #B82343;
+      cursor: pointer;
+      transition: background 0.12s, color 0.12s;
+      letter-spacing: 0.1em;
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      background: #B82343;
+      color: #fff;
+    }
+
+    .choice-btn.correct {
+      background: #27ae60;
+      border-color: #27ae60;
+      color: #fff;
+    }
+
+    .choice-btn.wrong {
+      background: #e74c3c;
+      border-color: #e74c3c;
+      color: #fff;
+      opacity: 0.65;
+    }
+
+    .choice-btn:disabled {
+      cursor: default;
+    }
+
+    /* ── カードフリップ ── */
+    #game-card-scene {
+      perspective: 900px;
+      display: flex;
+      justify-content: center;
+      margin: 0.5em 0;
+    }
+
+    #game-card-scene.flippable {
+      cursor: pointer;
+    }
+
+    #game-card-flipper {
+      width: 195px;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.55s ease;
+    }
+
+    #game-card-flipper.flipped {
+      transform: rotateY(180deg);
+    }
+
+    .game-card-face {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+
+    #game-card {
+      width: 100%;
+      position: relative;
+      cursor: default;
+    }
+
+    #game-card p {
+      font-family: "Noto Serif JP", serif;
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: 0.1em;
+      line-height: 1.5;
+      margin-bottom: 0;
+    }
+
+    .game-card-back {
+      position: absolute;
+      inset: 0;
+      transform: rotateY(180deg);
+      background: rgba(20, 12, 12, 0.92);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .game-kj-kami {
+      writing-mode: vertical-rl;
+      font-family: "Noto Serif JP", serif !important;
+      font-size: 28px !important;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.85);
+      letter-spacing: 0.1em;
+      line-height: 1.5;
+      white-space: nowrap;
+      margin-bottom: 0 !important;
+    }
+
+    .game-kj-kami .kj-red {
+      color: #e85070;
+      font-weight: bold;
+    }
+
+    @media (max-width: 540px) {
+      #game-card-flipper {
+        width: 58vw;
+      }
+
+      #game-card p {
+        font-size: 8.5vw;
+      }
+
+      .game-kj-kami {
+        font-size: 8.5vw;
+        letter-spacing: 0.1em;
+      }
+    }
+
+    #game-card-number {
+      position: absolute;
+      bottom: 0.4em;
+      left: 0.5em;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.7);
+      z-index: 2;
+      writing-mode: horizontal-tb;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      transform: translateZ(1px);
+    }
+
+    #game-card-flipper.flipped #game-card-number {
+      visibility: hidden;
+    }
+
+    #game-time-badge {
+      display: none;
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #B82343;
+      margin: 8px 0 4px;
+      text-align: center;
+    }
+
+    /* ── 結果 歌一覧 ── */
+    .result-songs-table {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      text-align: left;
+    }
+
+    .result-songs-table th,
+    .result-songs-table td {
+      border: 1px solid #e0d8c8;
+      padding: 5px 7px;
+      vertical-align: top;
+    }
+
+    .result-songs-table td:first-child {
+      vertical-align: middle;
+    }
+
+    .result-songs-table th {
+      background: #f5ede0;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .result-songs-table .poem-cell {
+      font-family: "Noto Serif JP", serif;
+      line-height: 1.7;
+    }
+
+    .result-songs-table .poem-cell .kj-red {
+      color: #B82343;
+      font-weight: bold;
+    }
+
+    .result-songs-table .time-cell {
+      text-align: right;
+      white-space: nowrap;
+      color: #B82343;
+      font-weight: bold;
+    }
+
+    /* ── 成績並び替えボタン ── */
+    .history-sort-btns {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 0.6em;
+    }
+
+    .history-sort-btn {
+      padding: 3px 14px;
+      border: 1px solid #c8b9a0;
+      border-radius: 20px;
+      background: #fff;
+      font-size: 0.8rem;
+      cursor: pointer;
+      color: #666;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+
+    .history-sort-btn.active {
+      background: #B82343;
+      color: #fff;
+      border-color: #B82343;
+    }
+
+    /* ── 結果画面 ── */
+    .result-rank-display {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #B82343;
+      margin: 4px 0 16px;
+    }
+
+    .rank-table {
+      width: 100%;
+      max-width: 280px;
+      margin: 0 auto 1em;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    .rank-table th,
+    .rank-table td {
+      border: 1px solid #e0d8c8;
+      padding: 5px 10px;
+      text-align: center;
+    }
+
+    .rank-table th {
+      background: #f5ede0;
+      font-weight: bold;
+    }
+
+    .rank-table tr.highlight td {
+      background: #fff0f0;
+      color: #B82343;
+      font-weight: bold;
+    }
+
+    #radar-wrap {
+      display: none;
+      margin: 1em auto;
+      max-width: 340px;
+    }
+
+    #radar-canvas {
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header id="site-header" class="header">
+    <p class="site-title">
+      <a href="https://hyakuninisshu.com/">Shigure no Hyakunin Isshu</a>
+    </p>
+    <div class="header_list">
+      <a href="index_en.html"><img src="../img/icon_top_en.svg?ver-01" alt="Top" class="icon"></a>
+      <a href="introduction_en.html" style="color:#333"><img src="/img/icon_column_en.svg?ver-01" alt="Articles"
+          class="icon"></a>
+      <a href="introduction-app_en.html" style="color:#333"><img src="/img/icon_app_en.svg?ver-01" alt="Apps"
+          class="icon"></a>
+      <a href="hudanagashi-game.html"><img src="/img/icon_lang.svg?ver-01" alt="Japanese" class="icon"></a>
+      <a href="list_en.html"><img src="/img/icon_list_en.svg?ver-01" alt="Poem list and search" class="icon"></a>
+    </div>
+  </header>
+
+  <main class="main_about-main">
+    <div class="section fuda-section">
+      <nav id="breadcrumb-nav">
+        <ol class="breadcrumb">
+          <li><a href="index_en.html">Top</a></li>
+          <li><a href="introduction-app_en.html">Apps</a></li>
+          <li>Kimariji 3-Choice Quiz</li>
+        </ol>
+      </nav>
+      <h1 id="page-title" style="text-align: left;">Competitive Karuta: <br class="br-sp">Kimariji 3-Choice Quiz</h1>
+      <p id="page-desc">
+        Read the lower verse and select the correct kimariji from three choices. After a correct answer, a <span style="color:#B82343">▶</span> button will appear next to the card. Press it to continue to the next question.
+      </p>
+      <ul id="page-list" style="text-align:left; font-size:0.9rem">
+        <li>Questions are drawn evenly from each of the five color groups.</li>
+        <li>After the game, your response time and rank are shown, along with a radar chart of speed by color group.
+        </li>
+        <li>Response time is the time taken to select the correct kimariji.</li>
+        <li>Each false start adds 1 second to your response time as a penalty.</li>
+        <li>Play 2 or more times to see a trend chart of your response time and miss rate (last 20 games).</li>
+        <li>Game records are stored in your browser. Clearing the browser cache will also erase your records.</li>
+      </ul>
+
+      <!-- ── 設定パネル ── -->
+      <div id="setup-panel">
+        <div class="game-mode-box">
+          <p style="font-size:0.85rem; font-weight:bold; color:#444; margin:0 0 0.3em; text-align:center;">How many
+            questions?
+          </p>
+          <div class="q-count-row">
+            <button class="q-count-btn" data-count="5">5 Q</button>
+            <button class="q-count-btn active" data-count="10">10 Q</button>
+            <button class="q-count-btn" data-count="20">20 Q</button>
+            <button class="q-count-btn" data-count="50">50 Q</button>
+            <button class="q-count-btn" data-count="100">100 Q</button>
+          </div>
+          <div id="start-button"></div>
+        </div>
+
+        <hr class="fuda-sep">
+        <h2 style="text-align: left;">What is Kimariji?</h2>
+        <p>Kimariji are the decisive syllables — the shortest beginning of a poem that uniquely identifies which card to
+          take.</p>
+        <p>For example, only one poem starts with "mu." As soon as you hear "mu," you know the card is "Murasame no /
+          Tsuyu mo mada hinu / Maki no ha ni / Kiri tachi noboru / Aki no yugure." In this case the kimariji is just 1
+          syllable, but some can be up to 6 syllables long.</p>
+        <p>Competitive karuta is a game of speed, so memorizing kimariji gives you a major advantage in matches.</p>
+        <p id="load-error" style="color:red;display:none;">Failed to load data. Please reload the page.</p>
+
+        <div id="setup-history-wrap" style="margin-top:1.5em; display:none; text-align:left;">
+          <hr class="fuda-sep">
+          <p style="font-size:0.9rem; font-weight:bold; color:#555; margin:0 0 0.5em; text-align:center;">Past
+            Performance (Last 10 Games)</p>
+          <div id="setup-history-legend"
+            style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:0.7em;font-size:0.78rem;color:#555;">
+          </div>
+          <table class="result-songs-table">
+            <thead>
+              <tr>
+                <th>No.</th>
+                <th>Upper Verse</th>
+                <th>Lower Verse</th>
+                <th>Avg Time</th>
+              </tr>
+            </thead>
+            <tbody id="setup-history-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ── 練習パネル ── -->
+      <div id="practice-panel" hidden>
+        <div id="progress-text"></div>
+
+        <div id="card-wrap">
+          <button id="prev-btn" class="nav-btn" aria-label="Previous Card">◀</button>
+          <div id="practice-card" class="karuta_card">
+            <p id="card-text"></p>
+            <span id="card-number"></span>
+            <div id="kimariji-overlay">
+              <p class="kj-kami" id="overlay-kami"></p>
+            </div>
+          </div>
+          <button id="next-btn" class="nav-btn" aria-label="Next Card">▶</button>
+        </div>
+
+        <div id="card-counter"></div>
+        <div id="swipe-hint">← Swipe for previous card　Swipe for next card →</div>
+
+        <div style="margin-top:1em;">
+          <button id="back-to-setup-btn" class="sub-btn">Back to Settings</button>
+        </div>
+      </div>
+
+      <!-- ── 完了パネル ── -->
+      <div id="finish-panel" hidden>
+        <p id="finish-msg">You've practiced all the cards!</p>
+        <div>
+          <button id="retry-btn" class="main-btn">Try Again</button>
+          <br>
+          <button id="finish-back-btn" class="sub-btn">Back to Settings</button>
+        </div>
+      </div>
+
+      <!-- ── ゲームパネル ── -->
+      <div id="game-panel" hidden>
+        <div id="game-progress" style="font-size:0.85rem; color:#888; margin-bottom:0.6em;"></div>
+
+        <div id="game-card-wrap">
+          <button id="game-prev-nav" class="nav-btn" aria-label="Previous Question">◀</button>
+          <div id="game-card-scene">
+            <div id="game-card-flipper">
+              <div id="game-card" class="game-card-face karuta_card">
+                <p id="game-card-text"></p>
+                <span id="game-card-number"></span>
+              </div>
+              <div class="game-card-face game-card-back">
+                <p class="game-kj-kami" id="game-card-kami"></p>
+              </div>
+            </div>
+          </div>
+          <button id="game-next-nav" class="nav-btn" aria-label="Next Question">▶</button>
+        </div>
+
+        <p id="game-time-badge"></p>
+        <div id="game-choices"></div>
+
+        <div style="margin-top:1.2em;">
+          <button id="game-show-result-btn" class="sub-btn" style="display:none;">View Results</button>
+          <button id="game-back-setup-btn" class="sub-btn" style="display:none;">Back to Settings</button>
+        </div>
+      </div>
+
+      <!-- ── ゲーム結果パネル ── -->
+      <div id="game-result-panel" hidden style="text-align:center; padding-bottom:2em;">
+        <p style="color:#666; font-size:0.9rem; margin:0; text-align:center;">Avg Time</p>
+        <p id="result-avg-time"
+          style="font-size:2.2rem; font-weight:bold; color:#333; margin:4px 0; text-align:center;"></p>
+        <p id="result-rank-text" class="result-rank-display" style="text-align:center;"></p>
+        <p id="result-penalty-text" style="text-align:center; font-size:0.9rem; color:#e87722; margin:2px 0 10px;"></p>
+
+        <table class="rank-table" id="rank-table">
+          <tr>
+            <th>Time</th>
+            <th>Rank</th>
+          </tr>
+          <tr data-rank="Beginner">
+            <td>Over 4s</td>
+            <td>Beginner</td>
+          </tr>
+          <tr data-rank="Poet">
+            <td>Under 4s</td>
+            <td>Poet</td>
+          </tr>
+          <tr data-rank="Master">
+            <td>Under 3s</td>
+            <td>Master</td>
+          </tr>
+          <tr data-rank="Six Immortal Poets">
+            <td>Under 2s</td>
+            <td>Six Immortal Poets</td>
+          </tr>
+          <tr data-rank="Saint of Poetry">
+            <td>Under 1.5s</td>
+            <td>Saint of Poetry</td>
+          </tr>
+        </table>
+
+        <div id="radar-wrap">
+          <p style="font-size:0.85rem; color:#666; margin:0 0 6px; text-align:center;">Speed by Color Group</p>
+          <canvas id="radar-canvas" width="300" height="300"></canvas>
+          <p style="font-size:0.75rem; color:#aaa; margin:4px 0 0; text-align:center;">Outer = faster　Inner = slower</p>
+        </div>
+
+        <div id="history-chart-wrap" style="margin-top:1.5em; display:none;">
+          <p style="font-size:0.85rem; color:#666; margin:0 0 4px; text-align:center;">Last 20 Games</p>
+          <canvas id="history-chart" height="260"></canvas>
+        </div>
+
+        <div style="margin-top:1.2em;">
+          <button id="result-back-btn" class="sub-btn">Back to Settings</button>
+        </div>
+
+        <div id="result-songs" style="margin-top:1.4em; text-align:left;">
+          <p style="font-size:0.9rem; font-weight:bold; color:#555; margin:0 0 0.5em; text-align:center;">Cards in This
+            Game</p>
+          <table class="result-songs-table">
+            <thead>
+              <tr>
+                <th>Q</th>
+                <th>Upper Verse</th>
+                <th>Lower Verse</th>
+                <th>Time</th>
+              </tr>
+            </thead>
+            <tbody id="result-songs-body"></tbody>
+          </table>
+        </div>
+
+        <div id="weak-cards-wrap" style="margin-top:1.5em; display:none; text-align:left;">
+          <p style="font-size:0.9rem; font-weight:bold; color:#555; margin:0 0 0.5em; text-align:center;">Past
+            Performance (Last 10 Games)</p>
+          <div id="weak-cards-legend"
+            style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:0.7em;font-size:0.78rem;color:#555;">
+          </div>
+          <table class="result-songs-table">
+            <thead>
+              <tr>
+                <th>No.</th>
+                <th>Upper Verse</th>
+                <th>Lower Verse</th>
+                <th>Avg Time</th>
+              </tr>
+            </thead>
+            <tbody id="weak-cards-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer id="site-footer">
+    <div class="footer-inner">
+      <span class="footer-copy">&copy;2023 Shigure no Hyakunin Isshu</span>
+      <ul>
+        <li><a href="policy.html">Privacy Policy</a></li>
+        <li>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXx7TKlqnTfKrw2Nuh4f37swVwFH-RFDsNkTGQ4JEF50q2wQ/viewform?usp=header"
+            target="_blank" rel="noopener">Contact Form</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    (async () => {
+      'use strict';
+
+      // ── データ読み込み ──
+      let poems = [];
+      try {
+        const res = await fetch('../js/hyakunin.json?04');
+        const data = await res.json();
+        poems = Object.values(data);
+      } catch {
+        document.getElementById('load-error').style.display = '';
+        return;
+      }
+
+      showSetupHistory();
+
+      // ── 状態 ──
+      let selectedColor = '全部';
+      let selectedKimariji = 0;
+      let deck = [];
+      let currentIndex = 0;
+      let overlayVisible = false;
+
+      // ── 色ボタン ──
+      document.querySelectorAll('.color-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          selectedColor = btn.dataset.color;
+        });
+      });
+
+
+      // ── スタート ──
+      document.getElementById('retry-btn').addEventListener('click', () => startGame());
+      document.getElementById('finish-back-btn').addEventListener('click', () => goToSetup());
+      document.getElementById('back-to-setup-btn').addEventListener('click', () => goToSetup());
+
+      function startGame() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        let pool = selectedColor === '全部' ? [...poems] : poems.filter(p => p.color === selectedColor);
+        if (selectedKimariji > 0) pool = pool.filter(p => p.kimariji.length === selectedKimariji);
+        if (pool.length === 0) { alert('No matching cards found'); return; }
+        deck = shuffle(pool);
+        currentIndex = 0;
+
+        hide('page-title');
+        hide('page-desc');
+        hide('site-header');
+        hide('site-footer');
+        hide('setup-panel');
+        hide('finish-panel');
+        hide('game-panel');
+        hide('game-result-panel');
+        show('practice-panel');
+
+        renderCard(currentIndex, null);
+      }
+
+      function showSetupHistory() {
+        const cardDetail = JSON.parse(localStorage.getItem('kimariji_card_detail') || '[]');
+        renderWeakCardRanking(cardDetail, {
+          wrapId: 'setup-history-wrap',
+          legendId: 'setup-history-legend',
+          bodyId: 'setup-history-body'
+        });
+      }
+
+      function goToSetup() {
+        ['practice-panel', 'finish-panel', 'game-panel', 'game-result-panel'].forEach(id => hide(id));
+        show('setup-panel');
+        show('page-title');
+        show('page-desc');
+        show('page-list');
+        show('site-header');
+        show('site-footer');
+        show('breadcrumb-nav');
+        showSetupHistory();
+      }
+
+      document.getElementById('next-btn').addEventListener('click', () => goNext());
+      document.getElementById('prev-btn').addEventListener('click', () => goPrev());
+
+      // ── カード描画 ──
+      function renderCard(index, direction) {
+        overlayVisible = false;
+        const poem = deck[index];
+        const card = document.getElementById('practice-card');
+        const overlay = document.getElementById('kimariji-overlay');
+
+        overlay.classList.remove('visible');
+        document.getElementById('card-text').innerHTML = poem.torihuda;
+        document.getElementById('card-number').textContent = poem.number;
+        document.getElementById('overlay-kami').innerHTML = buildKamiHtml(poem);
+
+        document.getElementById('progress-text').textContent =
+          `Card ${index + 1} of ${deck.length}`;
+
+        // ナビボタンの活性状態を更新
+        document.getElementById('prev-btn').disabled = index === 0;
+        document.getElementById('next-btn').disabled = false;
+
+        // スライドアニメーション
+        if (direction) {
+          card.classList.remove('slide-in-right', 'slide-in-left');
+          void card.offsetWidth;
+          card.classList.add(direction === 'next' ? 'slide-in-right' : 'slide-in-left');
+        }
+      }
+
+      // ── タップで決まり字表示 ──
+      let isSwiping = false;
+      document.getElementById('practice-card').addEventListener('click', () => {
+        if (isSwiping) return;
+        overlayVisible = !overlayVisible;
+        document.getElementById('kimariji-overlay').classList.toggle('visible', overlayVisible);
+      });
+
+      // ── スワイプ（タッチ） ──
+      const cardWrap = document.getElementById('card-wrap');
+      let touchStartX = 0, touchStartY = 0;
+
+      cardWrap.addEventListener('touchstart', e => {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+        isSwiping = false;
+      }, { passive: true });
+
+      cardWrap.addEventListener('touchend', e => {
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        const dy = e.changedTouches[0].clientY - touchStartY;
+        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 45) {
+          isSwiping = true;
+          dx < 0 ? goNext() : goPrev();
+          setTimeout(() => { isSwiping = false; }, 50);
+        }
+      }, { passive: true });
+
+      // ── スワイプ（マウス） ──
+      let mouseStartX = 0, isDragging = false;
+      cardWrap.addEventListener('mousedown', e => {
+        mouseStartX = e.clientX;
+        isDragging = true;
+        isSwiping = false;
+      });
+      document.addEventListener('mouseup', e => {
+        if (!isDragging) return;
+        isDragging = false;
+        const dx = e.clientX - mouseStartX;
+        if (Math.abs(dx) > 45) {
+          isSwiping = true;
+          dx < 0 ? goNext() : goPrev();
+          setTimeout(() => { isSwiping = false; }, 50);
+        }
+      });
+
+      // ── キーボード ──
+      document.addEventListener('keydown', e => {
+        if (document.getElementById('practice-panel').hidden) return;
+        if (e.key === 'ArrowRight') goNext();
+        else if (e.key === 'ArrowLeft') goPrev();
+        else if (e.key === ' ') {
+          e.preventDefault();
+          overlayVisible = !overlayVisible;
+          document.getElementById('kimariji-overlay').classList.toggle('visible', overlayVisible);
+        }
+      });
+
+      function goNext() {
+        if (currentIndex < deck.length - 1) {
+          currentIndex++;
+          renderCard(currentIndex, 'next');
+        } else {
+          hide('practice-panel');
+          show('finish-panel');
+        }
+      }
+
+      function goPrev() {
+        if (currentIndex > 0) {
+          currentIndex--;
+          renderCard(currentIndex, 'prev');
+        }
+      }
+
+      // ── 上の句HTML生成（決まり字を赤くする） ──
+      function buildKamiHtml(poem) {
+        const phrases = poem.yomihuda.split('<br>').slice(0, 3);
+        let remaining = poem.kimariji.length;
+        return phrases.map(phrase => {
+          if (remaining <= 0) return phrase;
+          const red = phrase.slice(0, remaining);
+          const rest = phrase.slice(remaining);
+          remaining -= red.length;
+          return `<span class="kj-red">${red}</span>${rest}`;
+        }).join('<br>');
+      }
+
+      // ── ユーティリティ ──
+      function show(id) { const el = document.getElementById(id); if (el) el.hidden = false; }
+      function hide(id) { const el = document.getElementById(id); if (el) el.hidden = true; }
+
+      function getColorHex(name) {
+        return { '青': '#3a7bd5', '橙': '#e87722', 'ピンク': '#e8639c', '黄': '#c8a100', '緑': '#2a9d4a' }[name] || '#888';
+      }
+
+      // ── ゲームモード状態 ──
+      let totalGameQuestions = 10;
+      let gameQueue = [];
+      let gameResults = [];
+      let currentGameIdx = 0;
+      let reviewIdx = -1;
+      let qStartTime = null;
+      let awaitingNext = false;
+      let wrongCountCurrent = 0;
+      let totalWrongs = 0;
+
+      document.querySelectorAll('.q-count-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.q-count-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          totalGameQuestions = parseInt(btn.dataset.count);
+        });
+      });
+
+      document.getElementById('start-button').addEventListener('click', startGameMode);
+      document.getElementById('game-prev-nav').addEventListener('click', () => {
+        if (reviewIdx > 0) showReviewQuestion(reviewIdx - 1);
+      });
+      document.getElementById('game-next-nav').addEventListener('click', () => {
+        if (reviewIdx < currentGameIdx) {
+          showReviewQuestion(reviewIdx + 1);
+        } else {
+          advanceGame();
+        }
+      });
+      document.getElementById('game-card-scene').addEventListener('click', () => {
+        if (!awaitingNext) return;
+        document.getElementById('game-card-flipper').classList.toggle('flipped');
+      });
+      document.getElementById('game-show-result-btn').addEventListener('click', showGameResult);
+      document.getElementById('game-back-setup-btn').addEventListener('click', goToSetup);
+      document.getElementById('result-back-btn').addEventListener('click', goToSetup);
+
+      function startGameMode() {
+        let pool = selectedColor === '全部' ? [...poems] : poems.filter(p => p.color === selectedColor);
+        if (selectedKimariji > 0) pool = pool.filter(p => p.kimariji.length === selectedKimariji);
+        if (pool.length === 0) { alert('No matching cards found'); return; }
+
+        const count = Math.min(totalGameQuestions, pool.length);
+
+        let selected;
+        if (selectedColor === '全部') {
+          // 実データから色グループを作成して均等分配
+          const colorGroups = {};
+          pool.forEach(p => {
+            if (!colorGroups[p.color]) colorGroups[p.color] = [];
+            colorGroups[p.color].push(p);
+          });
+          const colorKeys = Object.keys(colorGroups);
+          const numColors = colorKeys.length;
+          const perColor = Math.floor(count / numColors);
+          const remainder = count % numColors;
+          const extraColors = shuffle([...colorKeys]).slice(0, remainder);
+          selected = [];
+          colorKeys.forEach(c => {
+            const n = perColor + (extraColors.includes(c) ? 1 : 0);
+            selected.push(...shuffle(colorGroups[c]).slice(0, n));
+          });
+          selected = shuffle(selected);
+        } else {
+          selected = shuffle(pool).slice(0, count);
+        }
+        const allKimarijiList = [...new Set(poems.map(p => p.kimariji))];
+
+        gameQueue = selected.map(poem => {
+          const wrongs = shuffle(allKimarijiList.filter(k => k !== poem.kimariji)).slice(0, 2);
+          return { poem, choices: shuffle([poem.kimariji, ...wrongs]) };
+        });
+        gameResults = [];
+        currentGameIdx = 0;
+        reviewIdx = -1;
+        awaitingNext = false;
+        wrongCountCurrent = 0;
+        totalWrongs = 0;
+
+        ['setup-panel', 'practice-panel', 'finish-panel', 'game-result-panel'].forEach(id => hide(id));
+        hide('page-title'); hide('page-desc'); hide('page-list'); hide('site-header'); hide('site-footer'); hide('breadcrumb-nav');
+        show('game-panel');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        renderGameQuestion();
+      }
+
+      function renderGameQuestion() {
+        awaitingNext = false;
+        wrongCountCurrent = 0;
+        document.getElementById('game-card-scene').classList.remove('flippable');
+        const q = gameQueue[currentGameIdx];
+        document.getElementById('game-progress').textContent =
+          `Question ${currentGameIdx + 1} of ${gameQueue.length}`;
+
+        document.getElementById('game-card-text').innerHTML = q.poem.torihuda;
+        document.getElementById('game-card-number').textContent = q.poem.number;
+        document.getElementById('game-card').style.borderColor = getColorHex(q.poem.color);
+
+        const choicesEl = document.getElementById('game-choices');
+        choicesEl.innerHTML = '';
+        q.choices.forEach(k => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn';
+          btn.textContent = k;
+          btn.dataset.kimariji = k;
+          btn.addEventListener('click', () => handleChoiceClick(k, q.poem));
+          choicesEl.appendChild(btn);
+        });
+
+        document.getElementById('game-card-flipper').classList.remove('flipped');
+        document.getElementById('game-card-kami').innerHTML = '';
+        document.getElementById('game-time-badge').style.display = 'none';
+        document.getElementById('game-prev-nav').style.visibility = 'hidden';
+        document.getElementById('game-next-nav').style.visibility = 'hidden';
+        document.getElementById('game-show-result-btn').style.display = 'none';
+
+        qStartTime = Date.now();
+      }
+
+      function handleChoiceClick(chosen, poem) {
+        if (awaitingNext) return;
+        const elapsed = (Date.now() - qStartTime) / 1000;
+
+        if (chosen === poem.kimariji) {
+          gameResults.push({ poem, timeSec: elapsed + wrongCountCurrent, wrongs: wrongCountCurrent });
+          awaitingNext = true;
+
+          document.querySelectorAll('.choice-btn').forEach(btn => {
+            btn.disabled = true;
+            if (btn.dataset.kimariji === poem.kimariji) btn.classList.add('correct');
+          });
+
+          // 上の句を裏面にセットしてフリップ
+          document.getElementById('game-card-kami').innerHTML = buildKamiHtml(poem);
+          document.getElementById('game-card-flipper').classList.add('flipped');
+          document.getElementById('game-card-scene').classList.add('flippable');
+
+          reviewIdx = currentGameIdx;
+          updateNavRow();
+        } else {
+          wrongCountCurrent++;
+          totalWrongs++;
+          const wrongBtn = [...document.querySelectorAll('.choice-btn')].find(b => b.dataset.kimariji === chosen);
+          if (wrongBtn) { wrongBtn.classList.add('wrong'); wrongBtn.disabled = true; }
+        }
+      }
+
+      function updateNavRow() {
+        const prevNav = document.getElementById('game-prev-nav');
+        const nextNav = document.getElementById('game-next-nav');
+        prevNav.style.visibility = 'visible';
+        nextNav.style.visibility = 'visible';
+        prevNav.disabled = reviewIdx === 0;
+        const isLastAnswered = reviewIdx === currentGameIdx && currentGameIdx === gameQueue.length - 1;
+        nextNav.disabled = isLastAnswered;
+        nextNav.textContent = '▶';
+        document.getElementById('game-show-result-btn').style.display = isLastAnswered ? 'inline-block' : 'none';
+      }
+
+      function showReviewQuestion(idx) {
+        reviewIdx = idx;
+        const r = gameResults[idx];
+        const q = gameQueue[idx];
+
+        document.getElementById('game-progress').textContent =
+          `第 ${idx + 1} 問 ／ 全 ${gameQueue.length} 問`;
+        document.getElementById('game-card-text').innerHTML = q.poem.torihuda;
+        document.getElementById('game-card-number').textContent = q.poem.number;
+        document.getElementById('game-card').style.borderColor = getColorHex(q.poem.color);
+
+        // restore choices with correct highlighted
+        const choicesEl = document.getElementById('game-choices');
+        choicesEl.innerHTML = '';
+        q.choices.forEach(k => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn';
+          btn.textContent = k;
+          btn.dataset.kimariji = k;
+          btn.disabled = true;
+          if (k === q.poem.kimariji) btn.classList.add('correct');
+          choicesEl.appendChild(btn);
+        });
+
+        document.getElementById('game-card-kami').innerHTML = buildKamiHtml(q.poem);
+        document.getElementById('game-card-flipper').classList.add('flipped');
+        document.getElementById('game-card-scene').classList.add('flippable');
+        awaitingNext = true;
+
+        updateNavRow();
+      }
+
+      function advanceGame() {
+        currentGameIdx++;
+        if (currentGameIdx < gameQueue.length) {
+          renderGameQuestion();
+        } else {
+          showGameResult();
+        }
+      }
+
+      function showGameResult() {
+        ['game-panel'].forEach(id => hide(id));
+        show('game-result-panel');
+
+        const avgTime = gameResults.reduce((s, r) => s + r.timeSec, 0) / gameResults.length;
+        const rank = getTimeRank(avgTime);
+        const totalClicks = totalWrongs + gameResults.length;
+        const missRate = totalClicks > 0 ? (totalWrongs / totalClicks * 100) : 0;
+        const history = saveGameHistory(avgTime, missRate);
+        renderHistoryChart(history);
+        const cardDetail = saveCardDetail(gameResults);
+        renderWeakCardRanking(cardDetail);
+
+        document.getElementById('result-avg-time').textContent = avgTime.toFixed(2) + 's';
+        document.getElementById('result-rank-text').textContent = `Your rank: "${rank}"!`;
+        const penaltyEl = document.getElementById('result-penalty-text');
+        if (totalWrongs > 0) {
+          penaltyEl.textContent = `${totalWrongs} false start(s). ${totalWrongs}s added.`;
+        } else {
+          penaltyEl.textContent = '';
+        }
+
+        document.querySelectorAll('#rank-table tr[data-rank]').forEach(tr => {
+          tr.classList.toggle('highlight', tr.dataset.rank === rank);
+        });
+
+        const radarWrap = document.getElementById('radar-wrap');
+        if (selectedColor === '全部' && selectedKimariji === 0) {
+          radarWrap.style.display = 'block';
+          requestAnimationFrame(drawRadarChart);
+        } else {
+          radarWrap.style.display = 'none';
+        }
+
+        // 歌一覧テーブル生成
+        const tbody = document.getElementById('result-songs-body');
+        tbody.innerHTML = '';
+        const colorBg = { '青': 'rgba(58,123,213,0.1)', '橙': 'rgba(232,119,34,0.12)', 'ピンク': 'rgba(232,99,156,0.1)', '黄': 'rgba(200,161,0,0.1)', '緑': 'rgba(42,157,74,0.1)' };
+        gameResults.forEach((r, i) => {
+          const kamiHtml = buildKamiHtml(r.poem);
+          const tr = document.createElement('tr');
+          tr.style.backgroundColor = colorBg[r.poem.color] || '';
+          tr.innerHTML = `
+            <td style="text-align:center; color:#888; white-space:nowrap;">${i + 1}</td>
+            <td class="poem-cell">${kamiHtml}</td>
+            <td class="poem-cell">${r.poem.torihuda}</td>
+            <td class="time-cell">${r.timeSec.toFixed(2)}s${r.wrongs > 0 ? `<br><span style="color:#e87722;font-size:0.85em;">${r.wrongs} fault(s)</span>` : ''}</td>`;
+          tbody.appendChild(tr);
+        });
+      }
+
+      function saveCardDetail(results) {
+        const KEY = 'kimariji_card_detail';
+        const history = JSON.parse(localStorage.getItem(KEY) || '[]');
+        history.push({
+          date: new Date().toISOString(),
+          cards: results.map(r => ({
+            number: r.poem.number,
+            kimariji: r.poem.kimariji,
+            yomihuda: r.poem.yomihuda,
+            torihuda: r.poem.torihuda,
+            timeSec: r.timeSec,
+            wrongs: r.wrongs || 0,
+          }))
+        });
+        if (history.length > 10) history.splice(0, history.length - 10);
+        localStorage.setItem(KEY, JSON.stringify(history));
+        return history;
+      }
+
+      function renderWeakCardRanking(cardDetail, opts = {}) {
+        const wrapId = opts.wrapId || 'weak-cards-wrap';
+        const legendId = opts.legendId || 'weak-cards-legend';
+        const bodyId = opts.bodyId || 'weak-cards-body';
+        const wrap = document.getElementById(wrapId);
+        if (!wrap) return;
+        if (cardDetail.length === 0) { wrap.style.display = 'none'; return; }
+
+        // カードごとに集計
+        const cardMap = {};
+        cardDetail.forEach(game => {
+          game.cards.forEach(card => {
+            if (!cardMap[card.number]) {
+              cardMap[card.number] = { number: card.number, yomihuda: card.yomihuda || '', kimariji: card.kimariji, torihuda: card.torihuda, totalTime: 0, totalWrongs: 0, count: 0 };
+            }
+            cardMap[card.number].totalTime += card.timeSec;
+            cardMap[card.number].totalWrongs += card.wrongs;
+            cardMap[card.number].count++;
+          });
+        });
+
+        const allCards = Object.values(cardMap)
+          .map(c => ({ ...c, avgTime: c.totalTime / c.count }));
+
+        const IND_COLORS = ['#2a9d4a', '#8bc34a', '#f5a623', '#ff7043', '#e53935'];
+        const IND_LABELS = ['≤2s', '≤3s', '≤4s', '≤5s', '6s+'];
+        const IND_THRESHOLDS = [2, 3, 4, 5, Infinity];
+
+        function indicatorBars(level, align = 'flex-end') {
+          let html = `<div style="display:flex;gap:2px;justify-content:${align};">`;
+          for (let i = 0; i < 5; i++) {
+            html += `<span style="display:inline-block;width:11px;height:6px;border-radius:2px;background:${i < level ? IND_COLORS[level - 1] : '#ddd'};"></span>`;
+          }
+          return html + '</div>';
+        }
+
+        function diffIndicator(avgTime) {
+          const level = IND_THRESHOLDS.findIndex(t => avgTime < t) + 1 || 5;
+          return `<div style="margin-top:4px;">${indicatorBars(level)}</div>`;
+        }
+
+        function getSorted(mode) {
+          return mode === 'difficulty'
+            ? [...allCards].sort((a, b) => b.avgTime - a.avgTime)
+            : [...allCards].sort((a, b) => Number(a.number) - Number(b.number));
+        }
+
+        function buildRows(cards) {
+          const tbody = document.getElementById(bodyId);
+          tbody.innerHTML = '';
+          cards.forEach(card => {
+            const kamiHtml = buildKamiHtml({ yomihuda: card.yomihuda, kimariji: card.kimariji });
+            const tr = document.createElement('tr');
+            tr.style.opacity = '0';
+            tr.innerHTML = `
+              <td style="text-align:center; color:#888; font-size:0.85em; white-space:nowrap;">${card.number}</td>
+              <td class="poem-cell" style="font-size:0.85em;">${kamiHtml}</td>
+              <td class="poem-cell" style="font-size:0.85em;">${card.torihuda}</td>
+              <td class="time-cell">${card.avgTime.toFixed(2)}s${diffIndicator(card.avgTime)}${card.totalWrongs > 0 ? `<span style="color:#e87722;font-size:0.8em;display:block;margin-top:2px;">${card.totalWrongs} fault(s)</span>` : ''}</td>`;
+            tbody.appendChild(tr);
+          });
+        }
+
+        function fadeInRows() {
+          const tbody = document.getElementById(bodyId);
+          Array.from(tbody.querySelectorAll('tr')).forEach((r, i) => {
+            r.style.transition = `opacity 0.2s ease ${i * 0.025}s`;
+            requestAnimationFrame(() => requestAnimationFrame(() => { r.style.opacity = '1'; }));
+          });
+        }
+
+        function animateSort(newMode, btns) {
+          btns.forEach(b => b.classList.toggle('active', b.dataset.sort === newMode));
+          const tbody = document.getElementById(bodyId);
+          const rows = Array.from(tbody.querySelectorAll('tr'));
+          rows.forEach(r => { r.style.transition = 'opacity 0.15s ease'; r.style.opacity = '0'; });
+          setTimeout(() => {
+            buildRows(getSorted(newMode));
+            fadeInRows();
+          }, 160);
+        }
+
+        // 凡例
+        const legendEl = document.getElementById(legendId);
+        if (legendEl) {
+          legendEl.innerHTML = IND_LABELS.map((label, i) =>
+            `<div style="display:flex;align-items:center;gap:5px;">${indicatorBars(i + 1, 'flex-start')}<span>${label}</span></div>`
+          ).join('');
+        }
+
+        // 並び替えボタン（既存があれば差し替え）
+        const tableEl = wrap.querySelector('table');
+        let sortBtnsDiv = wrap.querySelector('.history-sort-btns');
+        if (!sortBtnsDiv) {
+          sortBtnsDiv = document.createElement('div');
+          sortBtnsDiv.className = 'history-sort-btns';
+          wrap.insertBefore(sortBtnsDiv, tableEl);
+        }
+        sortBtnsDiv.innerHTML = `
+          <button class="history-sort-btn active" data-sort="number">By Card No.</button>
+          <button class="history-sort-btn" data-sort="difficulty">By Difficulty</button>`;
+        const btns = Array.from(sortBtnsDiv.querySelectorAll('.history-sort-btn'));
+        btns.forEach(btn => {
+          btn.addEventListener('click', () => { if (!btn.classList.contains('active')) animateSort(btn.dataset.sort, btns); });
+        });
+
+        wrap.style.display = '';
+        buildRows(getSorted('number'));
+        fadeInRows();
+      }
+
+      function saveGameHistory(avgTime, missRate) {
+        const STORAGE_KEY = 'kimariji_game_history';
+        const history = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+        history.push({ date: new Date().toISOString(), avgTime: +avgTime.toFixed(3), missRate: +missRate.toFixed(1) });
+        if (history.length > 20) history.splice(0, history.length - 20);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(history));
+        return history;
+      }
+
+      function renderHistoryChart(history) {
+        const wrap = document.getElementById('history-chart-wrap');
+        if (history.length < 2) { wrap.style.display = 'none'; return; }
+        wrap.style.display = '';
+
+        const labels = history.map(h => {
+          const d = new Date(h.date);
+          const date = `${d.getMonth() + 1}/${d.getDate()}`;
+          const time = `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
+          return [date, time];
+        });
+
+        const canvas = document.getElementById('history-chart');
+        const existing = Chart.getChart(canvas);
+        if (existing) existing.destroy();
+
+        new Chart(canvas, {
+          type: 'line',
+          data: {
+            labels,
+            datasets: [
+              {
+                label: 'Avg Time (s)',
+                data: history.map(h => h.avgTime),
+                borderColor: '#B82343',
+                backgroundColor: 'rgba(184,35,67,0.08)',
+                yAxisID: 'y',
+                tension: 0.3,
+                pointRadius: 4,
+                fill: true,
+              },
+              {
+                label: 'Miss Rate (%)',
+                data: history.map(h => h.missRate),
+                borderColor: '#3a7bd5',
+                backgroundColor: 'rgba(58,123,213,0.08)',
+                yAxisID: 'y2',
+                tension: 0.3,
+                pointRadius: 4,
+                fill: true,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            interaction: { mode: 'index', intersect: false },
+            scales: {
+              x: {
+                ticks: { color: '#666', font: { size: 11 } },
+                grid: { color: 'rgba(0,0,0,0.07)' },
+              },
+              y: {
+                type: 'linear',
+                position: 'left',
+                min: 0,
+                title: { display: true, text: 'Avg Time (s)', color: '#B82343', font: { size: 11 } },
+                ticks: { color: '#B82343', font: { size: 11 } },
+                grid: { color: 'rgba(0,0,0,0.07)' },
+              },
+              y2: {
+                type: 'linear',
+                position: 'right',
+                min: 0,
+                max: 100,
+                title: { display: true, text: 'Miss Rate (%)', color: '#3a7bd5', font: { size: 11 } },
+                ticks: { color: '#3a7bd5', font: { size: 11 } },
+                grid: { drawOnChartArea: false },
+              },
+            },
+            plugins: {
+              legend: { labels: { font: { size: 11 }, boxWidth: 12 } },
+            },
+          },
+        });
+      }
+
+      function getTimeRank(sec) {
+        if (sec <= 1.5) return 'Saint of Poetry';
+        if (sec <= 2.0) return 'Six Immortal Poets';
+        if (sec <= 3.0) return 'Master';
+        if (sec <= 4.0) return 'Poet';
+        return 'Beginner';
+      }
+
+      function drawRadarChart() {
+        const canvas = document.getElementById('radar-canvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        const W = canvas.width, H = canvas.height;
+        const cx = W / 2, cy = H / 2;
+        const R = Math.min(W, H) / 2 - 48;
+
+        // JSON color key → display name / hex
+        const C_META = {
+          '青': { display: 'Blue', hex: '#3a7bd5', order: 0 },
+          'ピンク': { display: 'Pink', hex: '#e8639c', order: 1 },
+          '緑': { display: 'Green', hex: '#2a9d4a', order: 2 },
+          '黄': { display: 'Yellow', hex: '#c8a100', order: 3 },
+          '橙': { display: 'Orange', hex: '#e87722', order: 4 },
+        };
+
+        // gameQueue から実際に使われたカラーキーを取得して順番に並べる
+        const COLORS = [...new Set(gameQueue.map(q => q.poem.color))]
+          .sort((a, b) => (C_META[a]?.order ?? 99) - (C_META[b]?.order ?? 99));
+        const N = COLORS.length;
+
+        const sums = {}, counts = {};
+        COLORS.forEach(c => { sums[c] = 0; counts[c] = 0; });
+        gameResults.forEach(r => {
+          const c = r.poem.color;
+          if (sums[c] !== undefined) { sums[c] += r.timeSec; counts[c]++; }
+        });
+
+        const t2r = t => Math.max(0, Math.min(1, (5.0 - t) / 5.0));
+
+        function vtx(i, frac) {
+          const a = (i / N) * Math.PI * 2 - Math.PI / 2;
+          return [cx + Math.cos(a) * frac * R, cy + Math.sin(a) * frac * R];
+        }
+        function poly(frac, fill, stroke, lw) {
+          ctx.beginPath();
+          for (let i = 0; i < N; i++) {
+            const [x, y] = vtx(i, frac);
+            i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+          }
+          ctx.closePath();
+          if (fill) { ctx.fillStyle = fill; ctx.fill(); }
+          if (stroke) { ctx.strokeStyle = stroke; ctx.lineWidth = lw || 1; ctx.stroke(); }
+        }
+
+        ctx.clearRect(0, 0, W, H);
+
+        // 背景ゾーン（外→内の順に描画）
+        poly(1.0, 'rgba(255,210,40,0.22)', null);
+        poly(t2r(1.5), 'rgba(190,200,240,0.45)', null);
+        poly(t2r(2.0), 'rgba(110,205,130,0.45)', null);
+        poly(t2r(3.0), 'rgba(240,225,90,0.45)', null);
+        poly(t2r(4.0), 'rgba(210,210,210,0.55)', null);
+
+        // グリッド
+        [0.2, 0.4, 0.6, 0.8, 1.0].forEach(r => poly(r, null, 'rgba(0,0,0,0.07)', 1));
+
+        // Rank boundary lines and labels
+        [
+          { t: 1.5, label: 'Saint of Poetry', color: 'rgba(180,140,0,0.7)' },
+          { t: 2.0, label: 'Six Immortal Poets', color: 'rgba(100,100,180,0.7)' },
+          { t: 3.0, label: 'Master', color: 'rgba(30,140,60,0.7)' },
+          { t: 4.0, label: 'Poet', color: 'rgba(160,140,0,0.7)' },
+        ].forEach(({ t, label, color }) => {
+          poly(t2r(t), null, color, 1.2);
+          ctx.font = '9px "Noto Sans JP",sans-serif';
+          ctx.fillStyle = color;
+          ctx.textAlign = 'right';
+          const [lx, ly] = vtx(0, t2r(t));
+          ctx.fillText(label, lx - 2, ly - 2);
+        });
+
+        // 軸線
+        for (let i = 0; i < N; i++) {
+          const [x, y] = vtx(i, 1.0);
+          ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(x, y);
+          ctx.strokeStyle = 'rgba(0,0,0,0.1)'; ctx.lineWidth = 1; ctx.stroke();
+        }
+
+        // 軸ラベル（表示名 + 平均タイム）
+        ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        COLORS.forEach((c, i) => {
+          const meta = C_META[c] || { display: c, hex: '#888' };
+          const [lx, ly] = vtx(i, 1.28);
+          ctx.font = 'bold 13px "Noto Sans JP",sans-serif';
+          ctx.fillStyle = counts[c] > 0 ? meta.hex : '#bbb';
+          ctx.fillText(meta.display, lx, ly);
+          if (counts[c] > 0) {
+            ctx.font = '10px "Noto Sans JP",sans-serif';
+            ctx.fillStyle = '#777';
+            ctx.fillText((sums[c] / counts[c]).toFixed(2) + 's', lx, ly + 15);
+          }
+        });
+
+        // プレイヤーデータ
+        const dataR = COLORS.map(c => counts[c] > 0 ? t2r(sums[c] / counts[c]) : 0);
+        ctx.beginPath();
+        for (let i = 0; i < N; i++) {
+          const [x, y] = vtx(i, dataR[i]);
+          i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+        }
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(184,35,67,0.22)';
+        ctx.fill();
+        ctx.strokeStyle = '#B82343';
+        ctx.lineWidth = 2.5;
+        ctx.stroke();
+
+        // データ点
+        COLORS.forEach((c, i) => {
+          if (counts[c] === 0) return;
+          const [x, y] = vtx(i, dataR[i]);
+          ctx.beginPath(); ctx.arc(x, y, 4, 0, Math.PI * 2);
+          ctx.fillStyle = '#B82343'; ctx.fill();
+        });
+
+        // 中心点
+        ctx.beginPath(); ctx.arc(cx, cy, 3, 0, Math.PI * 2);
+        ctx.fillStyle = '#bbb'; ctx.fill();
+      }
+
+      function shuffle(arr) {
+        const a = [...arr];
+        for (let i = a.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+      }
+    })();
+  </script>
+  <script src="../js/back-to-top.js?20260908-02"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="Keywords" content="Hyakunin Isshu, utamakura">
+  <meta name="description" content="A map and photo guide to the utamakura (scenic places celebrated in poetry) featured in the Hyakunin Isshu, and other places closely tied to the anthology.">
+  <title>Utamakura — Scenic Places Celebrated in the Hyakunin Isshu | Shigure no Hyakunin Isshu</title>
+  <link rel="canonical" href="https://hyakuninisshu.com/utamakura_en.html">
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="css/leaflet-search.src.css">
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="js/leaflet-search.src.js?20240225"></script>
+  <!-- MapTiler（英語版：ラベルを英語表示するためベクタータイルSDKを使用） -->
+  <link rel="stylesheet" href="https://cdn.maptiler.com/maptiler-sdk-js/latest/maptiler-sdk.css" />
+  <script src="https://cdn.maptiler.com/maptiler-sdk-js/latest/maptiler-sdk.umd.min.js"></script>
+  <script src="https://cdn.maptiler.com/leaflet-maptilersdk/latest/leaflet-maptilersdk.umd.min.js"></script>
+  <!-- アップルタッチアイコン -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <!-- favicon用 -->
+  <link rel="icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <!-- ogp設定 -->
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Utamakura — Scenic Places Celebrated in the Hyakunin Isshu | Shigure no Hyakunin Isshu">
+  <meta property="og:description" content="A map and photo guide to the utamakura (scenic places celebrated in poetry) featured in the Hyakunin Isshu, and other places closely tied to the anthology.">
+  <meta property="og:image" content="https://hyakuninisshu.com/img/ogp_utamakura.webp">
+  <meta property="og:url" content="https://hyakuninisshu.com/utamakura_en.html">
+  <meta property="og:site_name" content="Shigure no Hyakunin Isshu">
+  <meta name="twitter:card" content="summary_large_image">
+   <!-- lightbox.cssの追加 -->
+   <link href="/css/lightbox.css" rel="stylesheet">
+   <!-- jQueryの追加 -->
+   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+   <!-- lightbox.jsの追加 -->
+   <script src="/js/lightbox.js"></script>
+  <style>
+    html,
+    body {
+      height: 100%;
+    }
+
+    #map {
+      height: 100%;
+    }
+
+    .utamakura-name {
+      font-size: 1rem;
+      margin-bottom: 0;
+    }
+
+    .leaflet-popup-content p {
+      font-size: 0.8rem;
+      margin: 0.3em 0 0;
+      line-height: 1.4;
+    }
+
+    #map {
+      position: relative;
+    }
+
+    .custom-link-control {
+      position: absolute;
+      top: 0px;
+      border-radius: 5px;
+      right: 0;
+    }
+
+    .leaflet-control-layers.leaflet-control {
+      position: absolute;
+      top: 35px;
+      right: 0;
+    }
+
+    @media (max-width:960px) {
+      .leaflet-control-search.leaflet-control {
+        display: none;
+      }
+    }
+
+    .leaflet-control-search .search-input {
+      width: 250px;
+    }
+
+    /* 右上のアイコン群：視認性を高めるため、横並びではなく2行に積んでそれぞれを大きくする */
+    .header-icon-stack {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+    }
+
+    .toppage-icon {
+      margin: 0;
+      padding: 0;
+      height: 28px;
+      width: auto;
+      display: block;
+    }
+
+    .lang-toggle-link {
+      display: block;
+      width: 64px;
+    }
+
+    @media (max-width:600px) {
+      .header-icon-stack {
+        top: 14px;
+        right: 12px;
+        gap: 7px;
+      }
+      .lang-toggle-link {
+        width: 48px;
+      }
+    }
+  </style>
+  <!-- 構造化データ -->
+  <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Utamakura — Scenic Places Celebrated in the Hyakunin Isshu",
+    "description": "A map and photo guide to the utamakura (scenic places celebrated in poetry) featured in the Hyakunin Isshu, and other places closely tied to the anthology.",
+    "image": "https://hyakuninisshu.com/img/ogp_utamakura.webp",
+    "author": {
+      "@type": "Organization",
+      "name": "Shigure no Hyakunin Isshu"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Shigure no Hyakunin Isshu",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://hyakuninisshu.com/apple-touch-icon.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://hyakuninisshu.com/utamakura_en.html"
+    }
+    }
+  </script>
+</head>
+
+<body>
+  <div class="header-icon-stack">
+    <h1 style="margin:0;"><a href="index_en.html"><img src="/img/icon_toppage_en.png" alt="Hyakunin Isshu Utamakura" class="toppage-icon"></a></h1>
+    <a href="utamakura.html" class="lang-toggle-link"><img src="/img/icon_lang.svg?ver-01" alt="Japanese" style="width:100%; display:block;"></a>
+  </div>
+  <div id="map">
+  </div>
+  <script src="../js/utamakura_en.js?20260822"></script>
+</body>
+
+</html>

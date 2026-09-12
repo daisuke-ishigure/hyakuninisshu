@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head prefix="og: http://ogp.me/ns#">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="Keywords" content="Japanese poetry, Ogura Hyakunin Isshu, Hyakunin Isshu, 100 poems by 100 poets, Japanese classical poetry, Heian period poetry, Japanese waka, Japanese love poetry, Japanese poetry translation, audio reading, free karuta game">
+  <meta name="description" content="What is Hyakunin Isshu? All 100 waka poems and 100 poets, explained in English with kimariji. Learn by playing free karuta games and quizzes — no ads, no login.">
+  <meta name="fragment" content="!">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Hyakunin Isshu: Read, Learn &amp; Play All 100 Poems | Shigure no Hyakunin Isshu">
+  <meta property="og:description" content="What is Hyakunin Isshu? All 100 waka poems and 100 poets, explained in English with kimariji. Learn by playing free karuta games and quizzes — no ads, no login.">
+  <meta property="og:image" content="https://hyakuninisshu.com/img/ogp_index.webp?ver-01">
+  <meta property="og:url" content="https://hyakuninisshu.com/index_en.html">
+  <meta property="og:site_name" content="Shigure no Hyakunin Isshu">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://hyakuninisshu.com/index_en.html">
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Shigure no Hyakunin Isshu",
+    "url": "https://hyakuninisshu.com/index_en.html",
+    "description": "An English guide to Hyakunin Isshu: all 100 classical Japanese waka poems and 100 poets, with translations, kimariji, and karuta games.",
+    "inLanguage": "en",
+    "publisher": {
+      "@type": "Person",
+      "name": "Daisuke Ishigure",
+      "url": "https://hyakuninisshu.com/"
+    }
+  }
+  </script>
+  <link rel="stylesheet" href="../css/style.css?20260908-16">
+  <link rel="stylesheet" href="../css/loading.css?20240228">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@500&family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.clouds.min.js"></script>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" href="/favicon.ico">
+
+  <title>Hyakunin Isshu: Read, Learn &amp; Play All 100 Poems | Shigure no Hyakunin Isshu</title>
+  <style>
+    /* ========== リセット ========== */
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: clip;
+      overscroll-behavior: none;
+    }
+
+    @media (max-width: 760px) {
+      body {
+        height: auto;
+        min-height: 100svh;
+      }
+    }
+
+    #vanta-bg canvas {
+      display: block !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    /* ========== ヒーローセクション ========== */
+    .hero {
+      position: relative;
+      font-family: "Kaisei HarunoUmi", serif;
+      line-height: 1.5;
+      letter-spacing: 0.05em;
+      -moz-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+      -webkit-text-size-adjust: 100%;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      height: 100svh;
+    }
+
+    /* 動画 */
+    .video-box {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      display: flex;
+      flex-grow: 1;
+    }
+
+    .video {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
+      z-index: -100;
+    }
+
+    .overlay::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      content: "";
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    @media (max-width: 800px) {
+      .video {
+        display: none !important;
+        position: static !important;
+      }
+    }
+
+    #vanta-bg {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      will-change: transform;
+    }
+
+    @media (max-width: 800px) {
+      #vanta-bg {
+        display: block;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 0;
+        pointer-events: none;
+      }
+    }
+
+    .text-box {
+      position: absolute;
+      top:35%;
+      left: 50%;
+      width: 100%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction:column;
+      justify-content: center;
+      align-items:center;
+      gap:1.8em;
+      z-index: 2;
+    }
+
+    .text-box h1,  .text-box p{
+      font-size: 2.4em;
+      letter-spacing: 0.1em;
+      white-space: nowrap;
+      color: #FFF8E7;
+      font-family: "Kaisei HarunoUmi", serif;
+      text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    }
+    .text-box h1{
+      font-size: 2.7em;
+    }
+    /* EN版：日本語版は縦書きの詩的テキストだが、英語は縦書きにすると可読性が
+       著しく下がるため、横書き・中央揃えに変更（構成は日本語版を踏襲） */
+    .text-box p{
+      writing-mode: horizontal-tb;
+      white-space: normal;
+      text-align: center;
+      max-width: 90vw;
+      margin-right: 0;
+      margin-top: 0;
+      font-size: 1.05em;
+      line-height: 1.8;
+    }
+    /* PC版では非表示（スマホのヘッダー折り返し用の区切り要素） */
+    .header-break {
+      display: none;
+    }
+
+    /* ========== 画像切替 ========== */
+    .mobile-only {
+      display: block;
+    }
+
+    .desktop-only {
+      display: none;
+    }
+
+    @media (min-width: 800px) {
+      .mobile-only {
+        display: none;
+      }
+
+      .desktop-only {
+        display: block;
+      }
+
+      .hero {
+        overflow: hidden;
+      }
+    }
+
+
+    .top-nav {
+      background: transparent;
+      max-width:1400px;
+      padding: 0 40px 30px;
+      position: absolute;
+      bottom: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      box-sizing: border-box;
+      z-index: 5;
+    }
+
+    .top-nav-grid {
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      justify-content: center;
+      gap: 16px;
+      width: 100%;
+    }
+
+    .top-nav-item {
+      display: block;
+      text-decoration: none;
+      position: relative;
+      flex: 1;
+      overflow: visible;
+      opacity: 0;
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .top-nav-item:nth-child(1) { animation-delay: 0.1s; }
+    .top-nav-item:nth-child(2) { animation-delay: 0.3s; }
+    .top-nav-item:nth-child(3) { animation-delay: 0.5s; }
+    .top-nav-item:nth-child(4) { animation-delay: 0.7s; }
+
+    .top-nav-img-wrap {
+      width: 100%;
+      height: auto;
+      position: static;
+    }
+
+    /* PC版のみ、扇ナビの画像サイズを現在の90%にする */
+    @media (min-width: 800px) {
+      .top-nav-img-wrap {
+        width: 90%;
+        margin: 0 auto;
+      }
+    }
+
+    .top-nav-img-wrap img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      transition: transform 0.35s ease, filter 0.35s ease;
+    }
+
+    .top-nav-item:hover .top-nav-img-wrap img {
+      transform: scale(1.04);
+      filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.85)) drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+    }
+
+    /* ========== アニメーション ========== */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ========== スマホ（760px以下） ========== */
+    @media (max-width: 760px) {
+      /* 左右の歌番号ティッカーと重ならないよう、サイトタイトルを少し縮小 */
+      .header .site-title {
+        font-size: 1.2rem;
+      }
+
+      /* 左右の歌番号ティッカーと重ならないよう、ヘッダーのアイコン一覧を折り返す */
+      .header_list {
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: calc(100vw - 110px);
+        margin: 0 auto;
+      }
+
+      /* JA/EN以降を強制的に2行目にする */
+      .header-break {
+        display: block;
+        flex-basis: 100%;
+        height: 0;
+      }
+
+      .hero {
+        flex: 1;
+        height: auto;
+        overflow: visible;
+        padding-top:40px;
+        padding-bottom:0;
+        background: transparent !important;
+        box-sizing: border-box;
+      }
+
+      .text-box h1,.text-box p {
+        writing-mode: horizontal-tb !important;
+        font-size: 1.6em;
+        letter-spacing: 0.2em;
+        text-align: center;
+        filter: drop-shadow(0 0 2px rgba(24, 24, 24, 0.4));
+      }
+      /* EN版：見出しが日本語版より長いため折り返しを許可し、収まるようフォントサイズを縮小 */
+      .text-box h1 {
+        white-space: normal;
+        font-size: 1.3em;
+        letter-spacing: 0.05em;
+        padding: 0 0.5em;
+      }
+      .text-box p{
+        font-size:0.85em !important;
+        letter-spacing: 0;
+        text-align:center;
+        margin-top:0.2em;
+        margin-right:0;
+        line-height:1.7;
+        max-width: 100%;
+      }
+
+      .text-box {
+        position: static;
+        transform: none;
+        display: flex;
+        align-items: center;
+        height: auto;
+        width: calc(100% - 110px);
+        margin: 0 auto;
+        box-sizing: border-box;
+        z-index: 2;
+      }
+
+      .top-nav {
+        position: static;
+        transform: none;
+        padding: 20px;
+        width: 330px;
+        margin:0 auto 0;
+        z-index: 2;
+      }
+
+      .top-nav-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .top-nav-item {
+        width: 100%;
+        max-width: 300px;
+        flex: none;
+      }
+
+      .top-nav-item:nth-child(1) { animation-delay: 0.1s; }
+      .top-nav-item:nth-child(2) { animation-delay: 0.2s; }
+      .top-nav-item:nth-child(3) { animation-delay: 0.3s; }
+      .top-nav-item:nth-child(4) { animation-delay: 0.4s; }
+    }
+
+    @media (max-width: 400px) {
+      h1 {
+        font-size: 1.7em;
+        letter-spacing: 0;
+        padding: 0;
+        width: 100%;
+      }
+    }
+
+    /* ===============================
+   歌番号ティッカー（ドラッグ可能。PC：ヒーロー上部を右から左へ／SP：画面左端を下から上へ）
+   =============================== */
+.number-ticker {
+  display: block;
+  z-index: 20;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.25);
+  cursor: grab;
+}
+
+.number-ticker.dragging {
+  cursor: grabbing;
+}
+
+.number-ticker-track {
+  display: flex;
+  gap: 22px;
+  width: max-content;
+  will-change: transform;
+  user-select: none;
+}
+
+.number-ticker-item {
+  flex: 0 0 auto;
+  width: 32px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fffdf8;
+  border: 3px solid #7EA549;
+  font-size: 12px;
+  font-family: 'Noto Sans JP', sans-serif;
+  color: #333;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.number-ticker.dragging .number-ticker-item {
+  transition: none;
+}
+
+.number-ticker-item:hover {
+  background: #B82343;
+  border-color: #B82343;
+  color: #fff;
+}
+
+/* PC：ヒーロー内の上端・下端に横向きで配置（スマホの左右ティッカーと同じ考え方を、
+   横長画面なので上下に置き換えたもの。ヘッダー・フッターとは重ねない） */
+@media (min-width: 800px) {
+  .number-ticker {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 8px 0;
+    touch-action: pan-y;
+  }
+
+  .number-ticker-right {
+    top: auto;
+    bottom: 0;
+  }
+}
+
+/* スマホ：画面左端に縦向きで配置（ヘッダー・フッターは通常のフロー要素なので、
+   ティッカーを画面全体の高さにすることでヘッダー・フッターの上も途切れずに流れる） */
+@media (max-width: 799px) {
+  .number-ticker {
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* bottom:0だとアドレスバーの表示/非表示でレイアウトビューポートが変わり、
+       スクロール中に縦幅の基準がずれて位置がガクつくため、dvhで実際に見えている高さを直接指定する */
+    height: 100vh;
+    height: 100dvh;
+    padding: 10px 6px;
+    touch-action: pan-x;
+    transform: translateZ(0);
+  }
+
+  .number-ticker-track {
+    flex-direction: column;
+    width: auto;
+    height: max-content;
+  }
+
+  /* 右側ティッカーは左端ではなく右端に配置（流れる向き自体はJS側で逆にする） */
+  .number-ticker-right {
+    left: auto;
+    right: 0;
+  }
+}
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <p class="site-title">
+      <a href="https://hyakuninisshu.com/">Shigure no Hyakunin Isshu</a>
+    </p>
+    <div class="header_list">
+      <a href="index_en.html"><img src="../img/icon_top_en.svg?ver-01" alt="Top" class="icon"></a>
+      <a href="introduction_en.html" style="color:#333"><img src="/img/icon_column_en.svg?ver-01" alt="Columns" class="icon"></a>
+      <a href="introduction-app_en.html" style="color:#333"><img src="/img/icon_app_en.svg?ver-01" alt="App" class="icon"></a>
+      <div class="header-break"></div>
+      <a href="index.html"><img src="/img/icon_lang.svg?ver-01" alt="Japanese" class="icon"></a>
+      <a href="list_en.html"><img src="/img/icon_list_en.svg?ver-01" alt="Waka List &amp; Search" class="icon"></a>
+    </div>
+  </header>
+
+  <!-- ★ ヒーローセクション（タイトル＋扇ナビのみ。歌人グリッドは外へ） -->
+  <section class="hero" style="position:relative;">
+
+    <!-- 歌番号ティッカー（PC専用・右から左へ流れる） -->
+    <div class="number-ticker" id="number-ticker-left">
+      <div class="number-ticker-track" id="number-ticker-track"></div>
+    </div>
+
+    <!-- 歌番号ティッカー（右側・スマホ専用・100→1の逆順で、左側とは反対方向へ流れる） -->
+    <div class="number-ticker number-ticker-right" id="number-ticker-right">
+      <div class="number-ticker-track" id="number-ticker-track-right"></div>
+    </div>
+
+    <!-- Vanta.js スマホ背景 -->
+    <div id="vanta-bg"></div>
+
+    <div class="video-box overlay desktop-only">
+      <video class="video desktop-only" muted autoplay loop playsinline>
+        <source src="/movie/fujisan_drone.mov" type="video/mp4">
+      </video>
+    </div>
+
+    <!-- タイトル（上部18%に配置） -->
+    <div class="text-box">
+      <h1>Enjoying <br class="br-sp">the Hyakunin Isshu</h1>
+      <p>100 Poems. 100 Poets. 700 Years of Japanese Poetry.<br>Discover love, loneliness, longing, nature, and the beauty of the human heart through the poetry of medieval Japan.</p>
+    </div>
+
+    <!-- 扇ナビ（下部5%に配置、max-width: 860px） -->
+    <section class="top-nav">
+      <div class="top-nav-grid">
+        <a href="introduction-app_en.html" class="top-nav-item">
+          <div class="top-nav-img-wrap">
+            <img src="/img/top_karuta_en.webp" alt="Karuta Games">
+            <div class="top-nav-overlay"></div>
+          </div>
+        </a>
+        <a href="/kajin-zukan_en.html" class="top-nav-item">
+          <div class="top-nav-img-wrap">
+            <img src="/img/top_kajin_en.webp" alt="Poet Encyclopedia">
+            <div class="top-nav-overlay"></div>
+          </div>
+        </a>
+        <a href="/list_en.html" class="top-nav-item">
+          <div class="top-nav-img-wrap">
+            <img src="/img/waka_en.webp" alt="Poem List">
+            <div class="top-nav-overlay"></div>
+          </div>
+        </a>
+        <a href="introduction_en.html" class="top-nav-item">
+          <div class="top-nav-img-wrap">
+            <img src="/img/top_column_en.webp" alt="Columns">
+            <div class="top-nav-overlay"></div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <ul>
+        <li><a href="policy.html">Privacy Policy</a></li>
+        <li>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXx7TKlqnTfKrw2Nuh4f37swVwFH-RFDsNkTGQ4JEF50q2wQ/viewform?usp=header"
+            target="_blank" rel="noopener">Contact Form</a>
+        </li>
+      </ul>
+      <span class="footer-copy">&copy;2023 Shigure no Hyakunin Isshu</span>
+    </div>
+  </footer>
+
+  <script src="../js/poems_en.js?20260802-02"></script>
+
+  <!-- Vanta.js 初期化（スマホのみ） -->
+  <script>
+    (function () {
+      if (window.innerWidth <= 800) {
+        VANTA.CLOUDS({
+          el: "#vanta-bg",
+          mouseControls: true,
+          touchControls: true,
+          gyroControls: false,
+          minHeight: 200.00,
+          minWidth: 200.00,
+          skyColor: 0x3895d7
+        });
+      }
+    })();
+  </script>
+
+  <script>
+/* ===== 歌番号ティッカーの自動生成（1セット分を2セット並べてシームレスにループ） ===== */
+/* reverse=trueのときは100→1の逆順で並べる（右側ティッカー用） */
+/* EN版：各番号は英語版の詩ページ（N_en.html）へリンクする */
+function buildTicker(containerId, reverse) {
+  const track = document.getElementById(containerId);
+  if (!track) return;
+  track.innerHTML = "";
+  const nums = [];
+  for (let i = 1; i <= 100; i++) nums.push(i);
+  if (reverse) nums.reverse();
+  for (let set = 0; set < 2; set++) {
+    nums.forEach((i) => {
+      const a = document.createElement('a');
+      a.className = 'number-ticker-item';
+      a.href = '/' + i + '_en.html';
+      a.textContent = i;
+      if (set === 1) a.setAttribute('aria-hidden', 'true');
+      track.appendChild(a);
+    });
+  }
+}
+
+buildTicker("number-ticker-track");
+buildTicker("number-ticker-track-right");
+
+/* ===== 歌番号ティッカーのドラッグ操作＋自動スクロール ===== */
+/* PC：横向き（translateX、右から左）／SP：縦向き（translateY、下から上）
+   右側ティッカー（direction:1）は逆向き（translateY、上から下）に流す */
+(function () {
+  const mq = window.matchMedia('(max-width: 799px)');
+  function isVertical() { return mq.matches; }
+  const SPEED = 56;          // 自動スクロール速度（px/秒）
+  const HOVER_PAUSE_MS = 5000; // 数字にホバーしたら止めておく時間
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // direction: -1＝左側ティッカー（0から負方向へ、上へ流れる）
+  //             1＝右側ティッカー（-singleSetSizeから0へ、下へ流れる＝逆方向）
+  function initTicker(wrap, track, direction) {
+    if (!wrap || !track) return;
+
+    let pos = 0;               // 現在のtranslateX/Y（px、-singleSetSize〜0の範囲）
+    let singleSetSize = 0;     // 歌番号100個、1セット分のサイズ（横幅 or 縦幅）
+    let isDragging = false;
+    let dragStart = 0;
+    let dragStartPos = 0;
+    let dragMoved = 0;
+    let pauseUntil = 0;
+
+    function measure() {
+      singleSetSize = isVertical() ? track.scrollHeight / 2 : track.scrollWidth / 2;
+    }
+    measure();
+    pos = direction > 0 ? -singleSetSize : 0;
+    window.addEventListener('resize', measure);
+
+    // 向きが変わったら位置をリセットして測り直す
+    function handleOrientationChange() {
+      measure();
+      pos = direction > 0 ? -singleSetSize : 0;
+      apply();
+    }
+    if (mq.addEventListener) {
+      mq.addEventListener('change', handleOrientationChange);
+    } else if (mq.addListener) {
+      mq.addListener(handleOrientationChange);
+    }
+
+    // 2セット分ループしているので、範囲外に出たら1セット分ワープさせてシームレスに見せる
+    function wrapPos(val) {
+      if (!singleSetSize) return val;
+      while (val <= -singleSetSize) val += singleSetSize;
+      while (val > 0) val -= singleSetSize;
+      return val;
+    }
+
+    function apply() {
+      track.style.transform = isVertical() ? `translateY(${pos}px)` : `translateX(${pos}px)`;
+    }
+
+    let lastTime = null;
+    function tick(now) {
+      if (lastTime === null) lastTime = now;
+      const dt = (now - lastTime) / 1000;
+      lastTime = now;
+      if (!isDragging && !reduceMotion && now >= pauseUntil) {
+        pos = wrapPos(pos + direction * SPEED * dt);
+        apply();
+      }
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+
+    function coord(e) {
+      return isVertical() ? e.clientY : e.clientX;
+    }
+
+    // 数字にホバーしている間（＋離れてから5秒間）は自動スクロールを止める
+    wrap.addEventListener('mousemove', (e) => {
+      if (e.target.closest('.number-ticker-item')) {
+        pauseUntil = performance.now() + HOVER_PAUSE_MS;
+      }
+    });
+
+    // ※ setPointerCaptureは使わない。捕捉するとクリックのtargetがwrap自身に
+    //   すり替わり、<a>のリンク遷移が起きなくなってしまうため。
+    //   代わりに、ドラッグ中だけwindowにmove/upを一時的に登録する。
+    function pointerDown(e) {
+      isDragging = true;
+      dragMoved = 0;
+      dragStart = coord(e);
+      dragStartPos = pos;
+      wrap.classList.add('dragging');
+      window.addEventListener('pointermove', pointerMove);
+      window.addEventListener('pointerup', pointerUp);
+      window.addEventListener('pointercancel', pointerUp);
+    }
+
+    function pointerMove(e) {
+      if (!isDragging) return;
+      const d = coord(e) - dragStart;
+      dragMoved = Math.max(dragMoved, Math.abs(d));
+      pos = wrapPos(dragStartPos + d);
+      apply();
+    }
+
+    function pointerUp() {
+      if (!isDragging) return;
+      isDragging = false;
+      wrap.classList.remove('dragging');
+      window.removeEventListener('pointermove', pointerMove);
+      window.removeEventListener('pointerup', pointerUp);
+      window.removeEventListener('pointercancel', pointerUp);
+    }
+
+    wrap.addEventListener('pointerdown', pointerDown);
+
+    // ドラッグでリンクを動かした後は、離した瞬間のクリックでページ遷移しないようにする
+    track.addEventListener('click', (e) => {
+      if (dragMoved > 5) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    }, true);
+  }
+
+  initTicker(document.getElementById('number-ticker-left'), document.getElementById('number-ticker-track'), -1);
+  initTicker(document.getElementById('number-ticker-right'), document.getElementById('number-ticker-track-right'), 1);
+})();
+</script>
+  <script src="../js/back-to-top.js?20260908-02"></script>
+
+</body>
+
+</html>

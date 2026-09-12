@@ -1,0 +1,75 @@
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+  width: calc(32.8% - 10px);
+  margin-bottom: 20px;
+  margin-right: 0;
+  
+
+  &:hover {
+    transform: scale(1.05);
+    border:2px solid #432847;
+    @media (max-width: 640px){
+      transform: none; /* スマートフォンではホバー時のアニメーションを無効にする */
+      border: none; /* スマートフォンではホバー時のボーダーも無効にする */
+    }
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  .card-content {
+    padding: 15px;
+    h2{
+    font-family: "noto-sans-pro", sans-serif;
+    font-size: 1.3rem;
+    // width: fit-content;
+    border-left: 5px solid #b82343;
+    background: #fff;
+    color: #333;
+    padding: 0 0 0 0.5rem;
+    border-top:none;
+    border-bottom:none;
+    font-weight: bold;
+    @media screen and (max-width: 1000px) {
+      font-size: 1.5rem;
+      margin-bottom: 0.5em;
+        }
+      }
+    }
+  p{
+    font-size:0.9em;
+    line-height:1.4;
+  }
+  a{
+    color:#333;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .card {
+    width: calc(48% - 10px);
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .card {
+    width: 100%;
+  }
+}

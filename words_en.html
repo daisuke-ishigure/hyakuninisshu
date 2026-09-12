@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hyakunin Isshu Word Frequency Map | Visualizing the Language of 100 Classical Poems | Shigure no Hyakunin Isshu</title>
+  <meta name="description"
+    content="We applied morphological analysis to all 100 poems of the Ogura Hyakunin Isshu and visualized the most frequent words in an interactive Word Frequency Map. Explore the vocabulary of waka poetry by category — emotion, nature, action, and more. Click any word to see which poems contain it."
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+  <meta property="og:title"
+    content="Hyakunin Isshu Word Frequency Map | Visualizing the Language of 100 Classical Poems | Shigure no Hyakunin Isshu">
+  <meta property="og:description"
+    content="Exploring 100 waka poems through data. Which words appear most often? An interactive analysis tool — click any word to search related poems.">
+  <meta property="og:image" content="https://hyakuninisshu.com/img/words.webp">
+  <meta property="og:url" content="https://hyakuninisshu.com/words_en.html">
+  <meta property="og:site_name" content="Shigure no Hyakunin Isshu">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://hyakuninisshu.com/words_en.html"
+    },
+    "headline": "Hyakunin Isshu Word Frequency Map | Visualizing the Language of 100 Classical Poems | Shigure no Hyakunin Isshu",
+    "datePublished": "2023-03-29",
+    "dateModified": "2026-03-29",
+    "description": "Morphological analysis of all 100 poems from the Ogura Hyakunin Isshu, with frequent words visualized in a word map. Explore the vocabulary patterns of waka poetry through data.",
+    "image": "https://hyakuninisshu.com/img/words.webp",
+    "author": {
+      "@type": "Person",
+      "name": "石槫大輔",
+      "url": "https://hyakuninisshu.com/"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Shigure no Hyakunin Isshu",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://hyakuninisshu.com/apple-touch-icon.png"
+      }
+    },
+    "genre": "Japanese Traditional Culture / Hyakunin Isshu / Morphological Analysis",
+    "about": [
+      {
+        "@type": "CreativeWork",
+        "name": "Hyakunin Isshu"
+      },
+      {
+        "@type": "Thing",
+        "name": "Morphological Analysis"
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Shigure no Hyakunin Isshu TOP",
+      "item": "https://hyakuninisshu.com/"
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Hyakunin Isshu Apps",
+      "item": "https://hyakuninisshu.com/introduction-app.html"
+    },{
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Word Frequency Map",
+      "item": "https://hyakuninisshu.com/words_en.html"
+    }]
+  }
+  </script>
+  <!-- スタイルシート -->
+  <link rel="stylesheet" href="../css/style.css?20260908-16">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@500&family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0 "></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/protonet-jquery.inview/1.1.2/jquery.inview.min.js"></script>
+  <script src="../js/my-chart.js?v01"></script>
+  <script src="../js/my-chart2.js"></script>
+  <script src="../js/my-chart3.js"></script>
+  <script src="../js/move_script.js?20260729"></script>
+  <!-- canonical設定 -->
+  <link rel="canonical" href="https://hyakuninisshu.com/words_en.html">
+  <!-- アップルタッチアイコン -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <!-- favicon用 -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <style>
+    @media(min-width:768px) {
+      .section {
+        width: 1000px !important;
+      }
+    }
+
+    .tm-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .tm-tab-group {
+      display: flex;
+      background: #fff;
+      border-radius: 8px;
+      padding: 3px;
+      gap: 2px;
+    }
+
+    .tm-tab-btn {
+      background: transparent;
+      border: none;
+      padding: 7px 16px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-family: 'Noto Sans JP', sans-serif;
+      color: #7a6a58;
+      cursor: pointer;
+      transition: background .15s, color .15s;
+    }
+
+    .tm-tab-btn.active {
+      background: #B82343;
+      color: #fff;
+      font-weight: 700;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, .08);
+    }
+
+    .tm-filter-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tm-filter-btn {
+      background: #fff;
+      border: 1px solid #333;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-family: 'Noto Sans JP', sans-serif;
+      color: #7a6a58;
+      cursor: pointer;
+      transition: background .15s, border-color .15s, color .15s;
+    }
+
+    .tm-filter-btn[data-cat="emotion"] {
+      background: rgb(252, 234, 230);
+      color: rgb(160, 64, 48);
+      border-color: rgb(160, 64, 48);
+    }
+
+    .tm-filter-btn[data-cat="nature"] {
+      background: rgb(232, 245, 224);
+      color: rgb(74, 120, 51);
+      border-color: rgb(74, 120, 51);
+    }
+
+    .tm-filter-btn[data-cat="action"] {
+      background: rgb(240, 232, 248);
+      color: rgb(96, 64, 160);
+      border-color: rgb(96, 64, 160);
+    }
+
+    .tm-filter-btn[data-cat="all"] {
+      background: #fff;
+      color: #7a6a58;
+      border-color: #333;
+    }
+
+    .tm-filter-btn.active {
+      background: #B82343;
+      border-color: #333;
+      color: #fff;
+    }
+
+    .tm-filter-btn:hover:not(.active) {
+      background: #f5f0ea;
+    }
+
+    .tm-slider-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-left: auto;
+      font-size: 12px;
+      color: #7a6a58;
+    }
+
+    .tm-slider-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #3d2b1a;
+      border: 2px solid #7a5c38;
+      border-radius: 10px;
+      padding: 6px 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    }
+    .tm-slider-wrap label,
+    .tm-slider-wrap .tm-slider-label {
+      color: #f5ece0;
+      font-size: 12px;
+      font-family: 'Noto Sans JP', sans-serif;
+      white-space: nowrap;
+    }
+    .tm-slider-wrap input[type=range] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 110px;
+      height: 6px;
+      border-radius: 3px;
+      background: #7a5c38;
+      outline: none;
+      cursor: pointer;
+    }
+    .tm-slider-wrap input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #B82343;
+      border: 3px solid #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      cursor: pointer;
+    }
+    .tm-slider-wrap input[type=range]::-moz-range-thumb {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #B82343;
+      border: 3px solid #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      cursor: pointer;
+    }
+    .tm-pie-inline {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .tm-pie-inline canvas {
+      display: block;
+    }
+    .tm-pie-inline-label {
+      font-size: 11px;
+      color: #7a6a58;
+      line-height: 1.3;
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+    .tm-pie-inline-label strong {
+      display: block;
+      font-size: 15px;
+      color: #B82343;
+      font-weight: 700;
+    }
+    .tm-poem-card-modern {
+      font-size: 12px;
+      color: #5a4a38;
+      line-height: 1.7;
+      margin: 6px 0;
+      background: #faf7f3;
+      border-left: 3px solid #c8b89a;
+      padding: 5px 8px;
+      border-radius: 0 4px 4px 0;
+    }
+    .tm-poem-card ruby rt {
+      font-size: 8px;
+      color: #9a8a78;
+    }
+    .tm-poem-card-romaji {
+      font-size: 11px;
+      color: #7a6a58;
+          line-height: 1.6;
+      margin: 3px 0;
+    }
+
+    .tm-slider-group span {
+      min-width: 56px;
+    }
+
+    #tm-cloud-view {
+      background: #fff;
+      border: 1px solid #ddd3c3;
+      border-radius: 12px;
+      padding: 28px 20px;
+      min-height: 280px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 8px 12px;
+      margin-bottom: 12px;
+    }
+
+    .tm-word-tag {
+      display: inline-block;
+      padding: 3px 7px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: transform .15s, opacity .2s, box-shadow .15s;
+      line-height: 1.3;
+      letter-spacing: .04em;
+      position: relative;
+      user-select: none;
+    }
+
+    .tm-word-tag:hover {
+      transform: scale(1.12);
+      z-index: 5;
+    }
+
+    .tm-word-tag.dimmed {
+      opacity: .12;
+      pointer-events: none;
+    }
+
+    .tm-word-tag.selected {
+      box-shadow: 0 0 0 2px #7a5c38;
+      transform: scale(1.08);
+    }
+
+    .tm-word-tag .tip {
+      position: absolute;
+      bottom: calc(100% + 5px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: #3d2b1a;
+      color: #fff;
+      font-size: 11px;
+      font-family: 'Noto Sans JP', sans-serif;
+      white-space: nowrap;
+      padding: 3px 8px;
+      border-radius: 5px;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .12s;
+      z-index: 20;
+    }
+
+    .tm-word-tag:hover .tip {
+      opacity: 1;
+    }
+
+    #tm-bar-view {
+      background: #fff;
+      border: 1px solid #ddd3c3;
+      border-radius: 12px;
+      padding: 24px;
+      display: none;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+
+    .tm-click-hint {
+      font-size: 12px;
+      color: #b0a090;
+      text-align: center;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    .tm-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 14px;
+      margin-bottom: 24px;
+      font-size: 12px;
+      color: #7a6a58;
+    }
+
+    .tm-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .tm-legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+    }
+
+
+
+
+
+
+    #tm-poem-panel {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      transform: translateY(100%);
+      transition: transform .35s cubic-bezier(.22, .68, 0, 1.1);
+    }
+
+    #tm-poem-panel.open {
+      transform: translateY(0);
+    }
+
+    .tm-panel-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fff;
+      border: 1px solid #ddd3c3;
+      border-bottom: none;
+      border-radius: 16px 16px 0 0;
+      box-shadow: 0 -6px 28px rgba(0, 0, 0, .12);
+      overflow: hidden;
+    }
+
+    .tm-panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px 12px;
+      border-bottom: 1px solid #ede8e0;
+      background: #faf7f3;
+    }
+
+    .tm-panel-title {
+      font-size: 15px;
+      color: #3d2b1a;
+    }
+
+    .tm-panel-title em {
+      font-style: normal;
+      color: #7a5c38;
+    }
+
+    .tm-panel-meta {
+      font-size: 12px;
+      color: #9a8a78;
+      font-family: 'Noto Sans JP', sans-serif;
+      margin-left: 8px;
+    }
+
+    .tm-panel-close {
+      background: none;
+      border: 1px solid #d8cfc4;
+      border-radius: 20px;
+      padding: 3px 12px;
+      font-size: 12px;
+      font-family: 'Noto Sans JP', sans-serif;
+      color: #7a6a58;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .tm-panel-close:hover {
+      background: #f5f0ea;
+    }
+
+    .tm-panel-scroll {
+      max-height: 50vh;
+      overflow-y: auto;
+      padding: 14px 16px 16px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 10px;
+    }
+
+    .tm-poem-card {
+      background: #fff;
+      border: 1px solid #ede8e0;
+      border-radius: 10px;
+      padding: 12px 14px;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: background .12s, border-color .12s, transform .12s;
+    }
+
+    .tm-poem-card:hover {
+      background: #fffdf8;
+      border-color: #c8b89a;
+      transform: translateY(-2px);
+    }
+
+    .tm-poem-card-num {
+      font-size: 11px;
+      color: #333;
+      margin-bottom: 5px;
+    }
+
+    .tm-poem-card-verse {
+      font-size: 13px;
+      color: #333;
+      line-height: 1.8;
+      margin-bottom: 7px;
+    }
+
+    .tm-poem-card-verse mark {
+      background: #fce9b0;
+      color: #7a4010;
+      border-radius: 2px;
+      padding: 0 1px;
+    }
+
+    .tm-poem-card-name {
+      font-size: 11px;
+      color: #333;
+      text-align: right;
+    }
+
+    .tm-poem-card-link {
+      font-size: 11px;
+      color: #B82343;
+      text-align: right;
+      margin-top: 4px;
+    }
+
+    .tm-panel-empty {
+      padding: 28px;
+      text-align: center;
+      color: #333;
+      font-size: 13px;
+      grid-column: 1 / -1;
+    }
+
+    @media (max-width: 600px) {
+      .tm-slider-group {
+        margin-left: 0;
+      }
+
+      .tm-panel-scroll {
+        grid-template-columns: 1fr;
+        max-height: 58vh;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ヘッダーここから -->
+  <header class="header">
+    <p class="site-title">
+      <a href="https://hyakuninisshu.com/">Shigure no Hyakunin Isshu</a>
+    </p>
+    <div class="header_list">
+      <a href="index_en.html"><img src="../img/icon_top_en.svg?ver-01" alt="トップ" class="icon"></a>
+      <a href="introduction_en.html" style="color:#333"><img src="/img/icon_column_en.svg?ver-01" alt="コラム" class="icon"></a>
+      <a href="introduction-app_en.html" style="color:#333"><img src="/img/icon_app_en.svg?ver-01" alt="アプリ" class="icon"></a>
+      <a href="words.html"><img src="/img/icon_lang.svg?ver-01" alt="Japanese" class="icon"></a>
+      <a href="list.html"><img src="/img/icon_list_en.svg?ver-01" alt="和歌の一覧・検索" class="icon"></a>
+    </div>
+  </header>
+  <!-- ヘッダーここまで・メインここから -->
+  <main class="main_about-main">
+    <div class="about-main">
+      <div class="section">
+        <nav>
+          <ol class="breadcrumb">
+            <li><a href="index_en.html">Top</a></li>
+            <li><a href="introduction-app_en.html">Apps</a></li>
+            <li>Hyakunin Isshu Word Frequency Map</li>
+          </ol>
+        </nav>
+        <hr>
+        <h1>Hyakunin Isshu Word Frequency Map</h1>
+        <ul class="em-usage-list">
+          <li>I have visualized the "words" that appear throughout the Hyakunin Isshu.</li>
+          <li>All 100 poems were processed using morphological analysis — a technique that breaks text into its smallest
+          meaningful units and identifies their part of speech and meaning — and the results are presented here as a "Word Frequency Map."</li>
+          <li> Words that appear more frequently are shown larger, and clicking a word displays a list
+          of all poems containing it.</li>
+          <li>Discover through statistics and visuals what words the poets entrusted their feelings to.</li>
+        </ul>
+        <div class="tm-controls">
+          <div class="tm-tab-group">
+            <button class="tm-tab-btn active" id="tm-btn-cloud" onclick="tmSwitchView('cloud')">Word Frequency
+              Map</button>
+            <button class="tm-tab-btn" id="tm-btn-bar" onclick="tmSwitchView('bar')">Frequency Ranking</button>
+          </div>
+          <div class="tm-filter-group">
+            <button class="tm-filter-btn active" data-cat="all" onclick="tmFilterCategory(this)">All</button>
+            <button class="tm-filter-btn" data-cat="emotion" onclick="tmFilterCategory(this)">Emotion</button>
+            <button class="tm-filter-btn" data-cat="nature" onclick="tmFilterCategory(this)">Nature</button>
+            <button class="tm-filter-btn" data-cat="action" onclick="tmFilterCategory(this)">Action / Verbs</button>
+            <!-- <button class="tm-filter-btn" data-cat="people"  onclick="tmFilterCategory(this)">People</button>
+            <button class="tm-filter-btn" data-cat="place"   onclick="tmFilterCategory(this)">Place Names</button>
+             -->
+          </div>
+          <div class="tm-slider-group">
+            <div class="tm-slider-wrap">
+              <label for="tmTopN">Top</label>
+              <input type="range" id="tmTopN" min="10" max="511" step="5" value="152" oninput="tmUpdateTopN(this.value)">
+              <span class="tm-slider-label" id="tmTopN-label">Top 152 words</span>
+            </div>
+            <div class="tm-pie-inline">
+              <canvas id="tmPieChart" width="48" height="48"></canvas>
+              <div class="tm-pie-inline-label"><strong id="pie-shown-count">152</strong>/ 510</div>
+            </div>
+          </div>
+        </div>
+
+        <div id="tm-cloud-view"></div>
+        <div id="tm-bar-view">
+          <div style="position:relative;width:100%;" id="tm-bar-canvas-wrap">
+            <canvas id="tmBarChart"></canvas>
+          </div>
+        </div>
+
+
+<p class="kome" style="color:#7a6655;line-height:1.6; margin-top:0; font-size:0.95em">The morphological analysis
+          on this page was performed using MeCab as the analysis engine and the Middle Classical Japanese UniDic
+          dictionary from the National Institute for Japanese Language and Linguistics.</p>
+        <!-- Poem Panel -->
+        <div id="tm-poem-panel">
+          <div class="tm-panel-inner">
+            <div class="tm-panel-header">
+              <span class="tm-panel-title" id="tm-panel-title">Poems</span>
+              <button class="tm-panel-close" onclick="tmClosePanel()">Close ✕</button>
+            </div>
+            <div class="tm-panel-scroll" id="tm-panel-body"></div>
+          </div>
+        </div>
+
+        <script>
+const tmPoem100 = {
+  1: {"first": "<ruby>秋<rt>あき</rt></ruby>の<ruby>田<rt>た</rt></ruby>の<br>かりほの<ruby>庵<rt>いお</rt></ruby>の<br><ruby>苫<rt>とま</rt></ruby>をあらみ", "second": "<ruby>我<rt>わ</rt></ruby>が<ruby>衣手<rt>ころもで</rt></ruby>は<br><ruby>露<rt>つゆ</rt></ruby>にぬれつつ", "name": "<ruby>天智天皇<rt>てんじてんのう</rt></ruby>", "yomihuda": "あきのたの<br>かりほのいほの<br>とまをあらみ<br>わがころもでは<br>つゆにぬれつつ", "modern": "秋の田のほとりにある仮小屋は、屋根の苫の編み目が粗くて、私の袖は夜露に濡れているよ。", "modern_en": "By the rice fields, in a makeshift hut with a loosely woven roof, my sleeves are wet with the night dew.", "name_en": "Emperor Tenji"},
+  2: {"first": "<ruby>春<rt>はる</rt></ruby><ruby>過<rt>す</rt></ruby>ぎて<br><ruby>夏<rt>なつ</rt></ruby><ruby>来<rt>き</rt></ruby>にけらし<br><ruby>白妙<rt>しろたえ</rt></ruby>の", "second": "<ruby>衣<rt>ころも</rt></ruby>ほす<ruby>てふ<rt>ちょう</rt></ruby><br><ruby>天<rt>あま</rt></ruby>の<ruby>香具山<rt>かぐやま</rt></ruby>", "name": "<ruby>持統天皇<rt>じとうてんのう</rt></ruby>", "yomihuda": "はるすぎて<br>なつきにけらし<br>しろたへの<br>ころもほすてふ<br>あまのかぐやま", "modern": "春は過ぎ去り、夏が来たようだ。夏になると衣が干されるという天の香具山に白い衣が干されているよ。", "modern_en": "Spring has passed and summer seems to have come — white robes are said to be hung out to dry on the heavenly Mount Kagu.", "name_en": "Empress Jitō"},
+  3: {"first": "あしびきの<br><ruby>山鳥<rt>やまどり</rt></ruby>の<ruby>尾<rt>お</rt></ruby>の<br>しだり<ruby>尾<rt>お</rt></ruby>の", "second": "ながながし<ruby>夜<rt>よ</rt></ruby>を<br>ひとりかも<ruby>寝<rt>ね</rt></ruby><ruby>む<rt>ん</rt></ruby>", "name": "<ruby>柿本人麻呂<rt>かきのもとひとまろ</rt></ruby>", "yomihuda": "あしびきの<br>やまどりのをの<br>しだりをの<br>ながながしよを<br>ひとりかもねむ", "modern": "山鳥の垂れ下がる尾のような長い長い夜を独りさびしく寝るのだろうか。", "modern_en": "As long as the trailing tail feathers of the mountain bird — through these long, long nights, must I sleep alone?", "name_en": "Kakinomoto no Hitomaro"},
+  4: {"first": "<ruby>田子<rt>たご</rt></ruby>の<ruby>浦<rt>うら</rt></ruby>に<br>うちいでてみれば<br><ruby>白妙<rt>しろたえ</rt></ruby>の", "second": "<ruby>富士<rt>ふじ</rt></ruby>の<ruby>高嶺<rt>たかね</rt></ruby>に<br><ruby>雪<rt>ゆき</rt></ruby>は<ruby>降<rt>ふ</rt></ruby>りつつ", "name": "<ruby>山部赤人<rt>やまべのあかひと</rt></ruby>", "yomihuda": "たごのうらに<br>うちいでてみれば<br>しろたへの<br>ふじのたかねに<br>ゆきはふりつつ", "modern": "田子の浦に出てみたら、富士の高嶺に真っ白な布を被せたように雪がしきりに降っているよ。", "modern_en": "Going out to Tago Bay and looking around, I see snow falling ceaselessly on the high peak of Fuji, white as freshly woven cloth.", "name_en": "Yamabe no Akahito"},
+  5: {"first": "<ruby>奥山<rt>おくやま</rt></ruby>に<br><ruby>紅葉<rt>もみじ</rt></ruby><ruby>踏<rt>ふ</rt></ruby>み<ruby>分<rt>わ</rt></ruby>け<br><ruby>鳴<rt>な</rt></ruby>く<ruby>鹿<rt>しか</rt></ruby>の", "second": "<ruby>声<rt>こえ</rt></ruby><ruby>聞<rt>き</rt></ruby>く<ruby>時<rt>とき</rt></ruby>ぞ<br><ruby>秋<rt>あき</rt></ruby>はかなしき", "name": "<ruby>猿丸太夫<rt>さるまるだゆう</rt></ruby>", "yomihuda": "おくやまに<br>もみぢふみわけ<br>なくしかの<br>こゑきくときぞ<br>あきはかなしき", "modern": "人里離れた奥山に紅葉を踏み分け入っていくと、鹿の鳴き声が響く。その声を聞くとき、秋はひとしお悲しく感じられる。", "modern_en": "Deep in the mountains, treading through the scattered autumn leaves, I hear a deer cry. Listening to that voice, I feel the sadness of autumn all the more.", "name_en": "Sarumaru Dayū"},
+  6: {"first": "かささぎの<br><ruby>渡<rt>わた</rt></ruby>せる<ruby>橋<rt>はし</rt></ruby>に<br>おく<ruby>霜<rt>しも</rt></ruby>の", "second": "<ruby>白<rt>しろ</rt></ruby>きをみれば<br><ruby>夜<rt>よ</rt></ruby>ぞふけにける", "name": "<ruby>中納言家持<rt>ちゅうなごんやかもち</rt></ruby>", "yomihuda": "かささぎの<br>わたせるはしに<br>おくしもの<br>しろきをみれば<br>よぞふけにける", "modern": "かささぎの群れが翼を連ねて渡すという天の川は、霜が降りたように白く冴えわたっている。その様子を見ていると、夜が深まっていくようだ。", "modern_en": "Looking up at the Milky Way that magpies wing across — its white shimmer seems to be scattered frost. The night deepens.", "name_en": "Middle Counselor Yakamochi"},
+  7: {"first": "<ruby>天<rt>あま</rt></ruby>の<ruby>原<rt>はら</rt></ruby><br>ふりさけみれば<br><ruby>春日<rt>かすが</rt></ruby>なる", "second": "<ruby>三笠<rt>みかさ</rt></ruby>の<ruby>山<rt>やま</rt></ruby>に<br><ruby>出<rt>い</rt></ruby>でし<ruby>月<rt>つき</rt></ruby>かも", "name": "<ruby>阿倍仲麻呂<rt>あべのなかまろ</rt></ruby>", "yomihuda": "あまのはら<br>ふりさけみれば<br>かすがなる<br>みかさのやまに<br>いでしつきかも", "modern": "遥かな大空を仰ぎ見ると月が出ていた。あの月は春日の三笠山に出ていた月と同じなのだろうか。", "modern_en": "Looking up at the vast sky, I see the moon. Is that the same moon that rose over Mount Mikasa in Kasuga, so long ago?", "name_en": "Abe no Nakamaro"},
+  8: {"first": "わが<ruby>庵<rt>いお</rt></ruby>は<br><ruby>都<rt>みやこ</rt></ruby>の<ruby>辰巳<rt>たつみ</rt></ruby><br>しかぞすむ", "second": "<ruby>世<rt>よ</rt></ruby>をう<ruby>ぢ<rt>じ</rt></ruby><ruby>山<rt>やま</rt></ruby>と<br><ruby>人<rt>ひと</rt></ruby>はい<ruby>ふ<rt>う</rt></ruby>なり", "name": "<ruby>喜撰法師<rt>きせんほうし</rt></ruby>", "yomihuda": "わがいほは<br>みやこのたつみ<br>しかぞすむ<br>よをうぢやまと<br>ひとはいふなり", "modern": "私の住まいは都の東南にあり、このように心静かに暮らしている。 世を憂いているから憂し山に移り住んだと噂する人がいるようだけれども。", "modern_en": "My home is in the southeast of the capital, and I live here at peace. People say I moved to Mount Uji because I found the world hard to bear — but that is only what others say.", "name_en": "Priest Kisen"},
+  9: {"first": "<ruby>花<rt>はな</rt></ruby>の<ruby>色<rt>いろ</rt></ruby>は<br>うつりにけりな<br>いた<ruby>づ<rt>ず</rt></ruby>らに", "second": "わが<ruby>身<rt>み</rt></ruby>よにふる<br>ながめせしまに", "name": "<ruby>小野小町<rt>おののこまち</rt></ruby>", "yomihuda": "はなのいろは<br>うつりにけりな<br>いたづらに<br>わがみよにふる<br>ながめせしまに", "modern": "美しかった桜が長雨に打たれて空しく色あせてしまった。私の容色も物思いに沈んで、この世を過ごしているうちに衰えてしまった。", "modern_en": "How the beauty of the cherry blossoms faded away, soaked by the long spring rains. And just like them, my own looks have faded too, lost in a haze of endless longing.", "name_en": "Ono no Komachi "},
+  10: {"first": "これやこの<br><ruby>行<rt>ゆ</rt></ruby>くも<ruby>帰<rt>かえ</rt></ruby>るも<br>わかれては", "second": "しるもしらぬも<br><ruby>逢坂<rt>おうさか</rt></ruby>の<ruby>関<rt>せき</rt></ruby>", "name": "<ruby>蝉丸<rt>せみまる</rt></ruby>", "yomihuda": "これやこの<br>ゆくもかへるも<br>わかれては<br>しるもしらぬも<br>あふさかのせき", "modern": "これがあの、旅立つ人も帰る人も、知っている人も知らない人も、別れたり、行き会ったりする逢坂の関なのだなぁ。", "modern_en": "So this is it — the Barrier of Ōsaka, where those who leave and those who return, those who know each other and those who do not, all meet and part.", "name_en": "Semimaru"},
+  11: {"first": "わたの<ruby>原<rt>はら</rt></ruby><br><ruby>八十島<rt>やそしま</rt></ruby>かけて<br><ruby>漕<rt>こ</rt></ruby>ぎ<ruby>出<rt>い</rt></ruby>でぬと", "second": "<ruby>人<rt>ひと</rt></ruby>にはつげよ<br>あまのつり<ruby>舟<rt>ぶね</rt></ruby>", "name": "<ruby>参議篁<rt>さんぎたかむら</rt></ruby>", "yomihuda": "わたのはら<br>やそしまかけて<br>こぎいでぬと<br>ひとにはつげよ<br>あまのつりぶね", "modern": "わたしが大海原の島々に向けて船出したと伝えておくれ。漁師の釣り舟よ。", "modern_en": "I have set out rowing across the vast sea, heading for the many islands far away. Tell the people back home.", "name_en": "Councillor Takamura"},
+  12: {"first": "<ruby>天<rt>あま</rt></ruby>つ<ruby>風<rt>かぜ</rt></ruby><br><ruby>雲<rt>くも</rt></ruby>のかよ<ruby>ひ<rt>い</rt></ruby><ruby>路<rt>じ</rt></ruby><br><ruby>吹<rt>ふ</rt></ruby>きと<ruby>ぢ<rt>じ</rt></ruby>よ", "second": "をとめの<ruby>姿<rt>すがた</rt></ruby><br>しばしとどめ<ruby>む<rt>ん</rt></ruby>", "name": "<ruby>僧正遍昭<rt>そうじょうへんじょう</rt></ruby>", "yomihuda": "あまつかぜ<br>くものかよひぢ<br>ふきとぢよ<br>をとめのすがた<br>しばしとどめむ", "modern": "空吹く風よ。天女が帰る雲の通り道を吹き閉じておくれ。舞姫たちをもうしばらくとどめておきたい。", "modern_en": "Heavenly wind, please close the path through the clouds! I want to keep the celestial maidens here a little longer.", "name_en": "High Priest Henjō"},
+  13: {"first": "<ruby>筑波嶺<rt>つくばね</rt></ruby>の<br><ruby>峰<rt>みね</rt></ruby>より<ruby>落<rt>お</rt></ruby>つる<br>みなの<ruby>川<rt>がわ</rt></ruby>", "second": "こひぞつもりて<br><ruby>淵<rt>ふち</rt></ruby>となりぬる", "name": "<ruby>陽成院<rt>ようぜいいん</rt></ruby>", "yomihuda": "つくばねの<br>みねよりおつる<br>みなのがは<br>こひぞつもりて<br>ふちとなりぬる", "modern": "筑波山から流れ落ちるみなの川。一滴の雫が集まって川となり淵に溜まるようにあなたへの愛がどんどん大きくなり、淵のように深くなりました。", "modern_en": "Just as the streams from the peak of Tsukuba flow down to fill the deep pools of the Mina River, so my love for you has gathered deep within me.", "name_en": "Retired Emperor Yōzei"},
+  14: {"first": "<ruby>陸奥<rt>みちのく</rt></ruby>の<br>しのぶも<ruby>ぢ<rt>じ</rt></ruby>ずり<br><ruby>誰<rt>たれ</rt></ruby>ゆ<ruby>ゑ<rt>え</rt></ruby>に", "second": "<ruby>乱<rt>みだ</rt></ruby>れそめにし<br><ruby>我<rt>われ</rt></ruby>ならなくに", "name": "<ruby>河原左大臣<rt>かわらのさだいじん</rt></ruby>", "yomihuda": "みちのくの<br>しのぶもぢずり<br>たれゆゑに<br>みだれそめにし<br>われならなくに", "modern": "私の心は、陸奥産のしのぶもぢずりの乱れ模様のように乱れてしまった。私のせいではありませんよ。", "modern_en": "For whose sake has my heart become as disordered as the tangled patterns of Shinobu-mojizuri cloth of Mutsu? It is certainly not my own doing.", "name_en": "Minister of the Left of Kawara"},
+  15: {"first": "<ruby>君<rt>きみ</rt></ruby>がため<br><ruby>春<rt>はる</rt></ruby>の<ruby>野<rt>の</rt></ruby>に<ruby>出<rt>い</rt></ruby>でて<br><ruby>若菜<rt>わかな</rt></ruby>つむ", "second": "わが<ruby>衣手<rt>ころもで</rt></ruby>に<br><ruby>雪<rt>ゆき</rt></ruby>は<ruby>降<rt>ふ</rt></ruby>りつつ", "name": "<ruby>光孝天皇<rt>こうこうてんのう</rt></ruby>", "yomihuda": "きみがため<br>はるののにいでて<br>わかなつむ<br>わがころもでに<br>ゆきはふりつつ", "modern": "あなたのために寒い春の野に出て、袖に雪がしんしんと降り続く中で若菜を摘んでいます。", "modern_en": "Going out into the spring fields to pick young greens for you — the snow falls on my sleeves.", "name_en": "Emperor Kōkō"},
+  16: {"first": "<ruby>立<rt>た</rt></ruby>ち<ruby>別<rt>わか</rt></ruby>れ<br>いなばの<ruby>山<rt>やま</rt></ruby>の<br><ruby>峰<rt>みね</rt></ruby>に<ruby>生<rt>お</rt></ruby><ruby>ふ<rt>う</rt></ruby>る", "second": "まつとし<ruby>聞<rt>き</rt></ruby>かば<br><ruby>今<rt>いま</rt></ruby><ruby>帰<rt>かえ</rt></ruby>りこ<ruby>む<rt>ん</rt></ruby>", "name": "<ruby>中納言行平<rt>ちゅうなごんゆきひら</rt></ruby>", "yomihuda": "たちわかれ<br>いなばのやまの<br>みねにおふる<br>まつとしきかば<br>いまかへりこむ", "modern": "別れても因幡山に生えている松ではないが、あなたが待っていると聞いたらすぐに戻ってこよう。", "modern_en": "I am leaving for the province of Inaba, where the pines grow on the mountain peak. If I hear that you are waiting for me, I will come back right away.", "name_en": "Middle Counselor Yukihira "},
+  17: {"first": "ちはやぶる<br><ruby>神代<rt>かみよ</rt></ruby>もきかず<br><ruby>竜田川<rt>たつたがわ</rt></ruby>", "second": "から<ruby>紅<rt>くれない</rt></ruby>に<br><ruby>水<rt>みず</rt></ruby>くくるとは", "name": "<ruby>在原業平朝臣<rt>ありわらのなりひらあそん</rt></ruby>", "yomihuda": "ちはやぶる<br>かみよもきかず<br>たつたがは<br>からくれなゐに<br>みづくくるとは", "modern": "神話の世界でもこんなに美しい景色があっただろうか。紅葉が竜田川を唐紅色に絞り染め上げているよ。", "modern_en": "Even the ancient gods never heard of this — the Tatsuta River, dyeing its waters a deep crimson with fallen maple leaves.", "name_en": "Ariwara no Narihira Ason"},
+  18: {"first": "<ruby>住<rt>すみ</rt></ruby>の<ruby>江<rt>え</rt></ruby>の<br><ruby>岸<rt>きし</rt></ruby>による<ruby>波<rt>なみ</rt></ruby><br>よるさ<ruby>へ<rt>え</rt></ruby>や", "second": "<ruby>夢<rt>ゆめ</rt></ruby>のかよひ<ruby>路<rt>じ</rt></ruby><br><ruby>人目<rt>ひとめ</rt></ruby>よくら<ruby>む<rt>ん</rt></ruby>", "name": "<ruby>藤原敏行朝臣<rt>ふじわらのとしゆきあそん</rt></ruby>", "yomihuda": "すみのえの<br>きしによるなみ<br>よるさへや<br>ゆめのかよひぢ<br>ひとめよくらむ", "modern": "波は住之江の岸に打ち寄せるけれども、あなたは昼間だけでなく、そのうえ夜の夢の通い道さえ人目を避けて、現れてくれないのでしょうか。", "modern_en": "Even in my dreams, I find myself longing to go to you along the path of dreams — but do I hide from others' eyes even in the night?", "name_en": "Fujiwara no Toshiyuki Ason"},
+  19: {"first": "<ruby>難波潟<rt>なにわがた</rt></ruby><br>みじかき<ruby>葦<rt>あし</rt></ruby>の<br>ふしのまも", "second": "<ruby>逢<rt>あ</rt></ruby><ruby>は<rt>わ</rt></ruby>でこの<ruby>世<rt>よ</rt></ruby>を<br><ruby>過<rt>す</rt></ruby>ぐしてよとや", "name": "<ruby>伊勢<rt>いせ</rt></ruby>", "yomihuda": "なにはがた<br>みじかきあしの<br>ふしのまも<br>あはでこのよを<br>すぐしてよとや", "modern": "難波潟に生えている葦の節と節の間のような短い時間さえ会えないままこの世を終えてしまえとあなたは言うのでしょうか。", "modern_en": "In this short life, even as brief as a joint of reed at Naniwa Bay, must I pass through this world without ever meeting you?", "name_en": "Ise"},
+  20: {"first": "わびぬれば<br>いまはたおなじ<br><ruby>難波<rt>なにわ</rt></ruby>なる", "second": "みをつくしても<br><ruby>逢<rt>あ</rt></ruby><ruby>は<rt>わ</rt></ruby><ruby>む<rt>ん</rt></ruby>とぞ<ruby>思<rt>おも</rt></ruby><ruby>ふ<rt>う</rt></ruby>", "name": "<ruby>元良親王<rt>もとよししんのう</rt></ruby>", "yomihuda": "わびぬれば<br>いまはたおなじ<br>なにはなる<br>みをつくしても<br>あはむとぞおもふ", "modern": "お会いできず、寂しくつらい思いをする私はもはや身を捨てたのも同じことです。 今となっては難波の海の澪標のように、身を滅ぼしてでもあなたに会いたいのです。", "modern_en": "Since things have come to this, it no longer matters. Even if I must sacrifice everything, I still want to meet you.", "name_en": "Prince Motoyoshi"},
+  21: {"first": "<ruby>今<rt>いま</rt></ruby>こ<ruby>む<rt>ん</rt></ruby>と<br>い<ruby>ひ<rt>い</rt></ruby>しばかりに<br><ruby>長月<rt>ながつき</rt></ruby>の", "second": "<ruby>有明<rt>ありあけ</rt></ruby>の<ruby>月<rt>つき</rt></ruby>を<br><ruby>待<rt>ま</rt></ruby>ち<ruby>出<rt>い</rt></ruby>でつるかな", "name": "<ruby>素性法師<rt>そせいほうし</rt></ruby>", "yomihuda": "いまこむと<br>いひしばかりに<br>ながつきの<br>ありあけのつきを<br>まちいでつるかな", "modern": "今行くとあなたが言うので待っていたら、とうとう九月の有明の月を待ち明かすことになりましたよ。", "modern_en": "Just because you said \"I will come right away\" — I waited all night for you, watching the moon of the long autumn month until it set at dawn.", "name_en": "Priest Sosei"},
+  22: {"first": "<ruby>吹<rt>ふ</rt></ruby>くからに<br><ruby>秋<rt>あき</rt></ruby>の<ruby>草木<rt>くさき</rt></ruby>の<br>しをるれば", "second": "むべ<ruby>山風<rt>やまかぜ</rt></ruby>を<br><ruby>嵐<rt>あらし</rt></ruby>とい<ruby>ふ<rt>う</rt></ruby>ら<ruby>む<rt>ん</rt></ruby>", "name": "<ruby>文屋康秀<rt>ふんやのやすひで</rt></ruby>", "yomihuda": "ふくからに<br>あきのくさきの<br>しをるれば<br>むべやまかぜを<br>あらしといふらむ", "modern": "山から風が吹くと秋の草木はしおれるので、なるほど、だから「山」に「風」と書いて嵐と読むのでしょう。", "modern_en": "The moment the autumn wind blows, the grasses and trees wither. Now I understand why the mountain wind is called \"arashi\" — storm.", "name_en": "Fun'ya no Yasuhide "},
+  23: {"first": "<ruby>月<rt>つき</rt></ruby>みれば<br>ちぢにものこそ<br><ruby>悲<rt>かな</rt></ruby>しけれ", "second": "わが<ruby>身<rt>み</rt></ruby><ruby>一<rt>ひと</rt></ruby>つの<br><ruby>秋<rt>あき</rt></ruby>にはあらねど", "name": "<ruby>大江千里<rt>おおえのちさと</rt></ruby>", "yomihuda": "つきみれば<br>ちぢにものこそ<br>かなしけれ<br>わがみひとつの<br>あきにはあらねど", "modern": "月を見るとあれこれと悲しくなります。私ひとりだけに訪れた秋ではないのですが。", "modern_en": "When I look at the moon, a thousand thoughts rise up and fill me with sadness. Yet this autumn is not mine alone.", "name_en": "Ōe no Chisato"},
+  24: {"first": "このたびは<br><ruby>幣<rt>ぬさ</rt></ruby>もとりあ<ruby>へ<rt>え</rt></ruby>ず<br><ruby>手向山<rt>たむけやま</rt></ruby>", "second": "もみぢのにしき<br><ruby>神<rt>かみ</rt></ruby>のまにまに", "name": "<ruby>菅家<rt>かんけ</rt></ruby>", "yomihuda": "このたびは<br>ぬさもとりあへず<br>たむけやま<br>もみぢのにしき<br>かみのまにまに", "modern": "今回の旅は急のことで、幣を携えてくることができませんでした。 手向山の神様よ。この美しい紅葉を捧げるので、 御心のままにお受け取りください。", "modern_en": "This time I have no offerings ready, O Tamukeyama. Please, grant me safe passage — I leave it in the hands of the gods.", "name_en": "Kanke"},
+  25: {"first": "<ruby>名<rt>な</rt></ruby>にし<ruby>負<rt>お</rt></ruby>はば<br><ruby>逢坂山<rt>おうさかやま</rt></ruby>の<br>さねか<ruby>づ<rt>ず</rt></ruby>ら", "second": "<ruby>人<rt>ひと</rt></ruby>にしられで<br>くるよしもがな", "name": "<ruby>三条右大臣<rt>さんじょうのうだいじん</rt></ruby>", "yomihuda": "なにしおはば<br>あふさかやまの<br>さねかづら<br>ひとにしられで<br>くるよしもがな", "modern": "逢坂山の「さねかずら」。その名前どおりであるならば、さねかずらのつるにあなたを絡ませて手繰り寄せ、 人に知られないで逢瀬できたらいいのにと思う。", "modern_en": "If the name of Ōsaka carries its meaning — then let me secretly follow the vine I draw toward me, and come to you unseen.", "name_en": "Minister of the Right of Sanjō"},
+  26: {"first": "<ruby>小倉山<rt>おぐらやま</rt></ruby><br><ruby>峰<rt>みね</rt></ruby>のもみ<ruby>ぢ<rt>じ</rt></ruby><ruby>葉<rt>は</rt></ruby><br><ruby>心<rt>こころ</rt></ruby>あらば", "second": "<ruby>今<rt>いま</rt></ruby>ひとたびの<br>みゆき<ruby>待<rt>ま</rt></ruby>たな<ruby>む<rt>ん</rt></ruby>", "name": "<ruby>貞信公<rt>ていしんこう</rt></ruby>", "yomihuda": "をぐらやま<br>みねのもみぢば<br>こころあらば<br>いまひとたびの<br>みゆきまたなむ", "modern": "小倉山のもみぢ葉よ。心あらばもう一度の行幸があるまで散らずに待っていてほしい。", "modern_en": "O maple leaves of Ogura Mountain, if you have a heart — hold on a little longer, until the emperor's visit.", "name_en": "Teishin-kō"},
+  27: {"first": "みかの<ruby>原<rt>はら</rt></ruby><br>わきて<ruby>流<rt>なが</rt></ruby>るる<br>い<ruby>づ<rt>ず</rt></ruby>み<ruby>川<rt>がわ</rt></ruby>", "second": "いつ<ruby>見<rt>み</rt></ruby>きとてか<br><ruby>恋<rt>こい</rt></ruby>しかるら<ruby>む<rt>ん</rt></ruby>", "name": "<ruby>中納言兼輔<rt>ちゅうなごんかねすけ</rt></ruby>", "yomihuda": "みかのはら<br>わきてながるる<br>いづみがは<br>いつみきとてか<br>こひしかるらむ", "modern": "みかの原を分けるように湧き出て流れるいづみ川ではないけれど、あなたにいつお会いしたからといってこれほどまでに恋しいのでしょう。", "modern_en": "Like the Izumi River that wells up and flows through Mika Plain — when did I first see you, that I should long for you so?", "name_en": "Middle Counselor Kanesuke"},
+  28: {"first": "<ruby>山里<rt>やまざと</rt></ruby>は<br><ruby>冬<rt>ふゆ</rt></ruby>ぞさびしさ<br>まさりける", "second": "<ruby>人目<rt>ひとめ</rt></ruby>も<ruby>草<rt>くさ</rt></ruby>も<br>かれぬと<ruby>思<rt>おも</rt></ruby><ruby>へ<rt>え</rt></ruby>ば", "name": "<ruby>源宗于朝臣<rt>みなもとのむねゆきあそん</rt></ruby>", "yomihuda": "やまざとは<br>ふゆぞさびしさ<br>まさりける<br>ひとめもくさも<br>かれぬとおもへば", "modern": "山里は寂しいものですが、冬は一段と寂しい。訪れてくれる人もいないし、草木も枯れてしまうと思うと。", "modern_en": "In a mountain village, loneliness deepens in winter. Not only people disappear — the grass too withers away.", "name_en": "Minamoto no Muneyuki Ason"},
+  29: {"first": "<ruby>心当<rt>こころあ</rt></ruby>てに<br><ruby>折<rt>お</rt></ruby>らばや<ruby>折<rt>お</rt></ruby>ら<ruby>む<rt>ん</rt></ruby><br><ruby>初霜<rt>はつしも</rt></ruby>の", "second": "おきまど<ruby>は<rt>わ</rt></ruby>せる<br><ruby>白菊<rt>しらぎく</rt></ruby>の<ruby>花<rt>はな</rt></ruby>", "name": "<ruby>凡河内躬恒<rt>おおしこうちのみつね</rt></ruby>", "yomihuda": "こころあてに<br>をらばやをらむ<br>はつしもの<br>おきまどはせる<br>しらぎくのはな", "modern": "心して手折たおろうして折れるものだろうか。初霜が降りて、見分けにくくなっているほど真っ白で美しい幻想的な白菊の花を。", "modern_en": "Shall I pick it or not? The white chrysanthemum lies hidden beneath the first frost, and I cannot tell them apart.", "name_en": "Ōshikōchi no Mitsune"},
+  30: {"first": "<ruby>有明<rt>ありあけ</rt></ruby>の<br>つれなく<ruby>見<rt>み</rt></ruby>えし<br><ruby>別<rt>わか</rt></ruby>れより", "second": "あかつきばかり<br><ruby>憂<rt>う</rt></ruby>きものはなし", "name": "<ruby>壬生忠岑<rt>みぶのただみね</rt></ruby>", "yomihuda": "ありあけの<br>つれなくみえし<br>わかれより<br>あかつきばかり<br>うきものはなし", "modern": "あなたとの別れを惜しんで帰る道、有明の月はそしらぬ顔をしていました。それときからというもの暁の時間になるとつらく感じてしまいます。", "modern_en": "Ever since that cold dawn when we parted, I have come to dread the break of day more than anything in the world.", "name_en": "Mibu no Tadamine"},
+  31: {"first": "<ruby>朝<rt>あさ</rt></ruby>ぼらけ<br><ruby>有明<rt>ありあけ</rt></ruby>の<ruby>月<rt>つき</rt></ruby>と<br><ruby>見<rt>み</rt></ruby>るまでに", "second": "<ruby>吉野<rt>よしの</rt></ruby>の<ruby>里<rt>さと</rt></ruby>に<br><ruby>降<rt>ふ</rt></ruby>れる<ruby>白雪<rt>しらゆき</rt></ruby>", "name": "<ruby>坂上是則<rt>さかのうえのこれのり</rt></ruby>", "yomihuda": "あさぼらけ<br>ありあけのつきと<br>みるまでに<br>よしののさとに<br>ふれるしらゆき", "modern": "夜がぼんやり明ける頃、外を眺めると、吉野の里に有明の月かと思うほど白雪が降り積もっていた。", "modern_en": "In the early morning light, the village of Yoshino is blanketed in white — it looks just like the pale glow of the dawn moon.", "name_en": "Sakanoue no Korenori"},
+  32: {"first": "<ruby>山川<rt>やまがわ</rt></ruby>に<br><ruby>風<rt>かぜ</rt></ruby>のかけたる<br>しがらみは", "second": "<ruby>流<rt>なが</rt></ruby>れもあ<ruby>へ<rt>え</rt></ruby>ぬ<br><ruby>紅葉<rt>もみじ</rt></ruby>なりけり", "name": "<ruby>春道列樹<rt>はるみちのつらき</rt></ruby>", "yomihuda": "やまがはに<br>かぜのかけたる<br>しがらみは<br>ながれもあへぬ<br>もみぢなりけり", "modern": "山間の川に風がかけたしがらみとは、流れきらずにたまっている紅葉だったよ。", "modern_en": "The weir of fallen maple leaves, caught by the mountain wind across the stream — the water cannot flow through.", "name_en": "Harumichi no Tsuraki"},
+  33: {"first": "<ruby>久方<rt>ひさかた</rt></ruby>の<br><ruby>光<rt>ひかり</rt></ruby>のどけき<br><ruby>春<rt>はる</rt></ruby>の<ruby>日<rt>ひ</rt></ruby>に", "second": "しづ<ruby>心<rt>こころ</rt></ruby>なく<br><ruby>花<rt>はな</rt></ruby>の<ruby>散<rt>ち</rt></ruby>るら<ruby>む<rt>ん</rt></ruby>", "name": "<ruby>紀友則<rt>きのとものり</rt></ruby>", "yomihuda": "ひさかたの<br>ひかりのどけき<br>はるのひに<br>しづこころなく<br>はなのちるらむ", "modern": "うららかな春の日に桜の花はどうしてせわしなく散ってしまうのでしょう。", "modern_en": "In the peaceful light of a spring day, why do the cherry blossoms scatter so restlessly?", "name_en": "Ki no Tomonori"},
+  34: {"first": "<ruby>誰<rt>たれ</rt></ruby>をかも<br><ruby>知<rt>し</rt></ruby>る<ruby>人<rt>ひと</rt></ruby>にせ<ruby>む<rt>ん</rt></ruby><br><ruby>高砂<rt>たかさご</rt></ruby>の", "second": "<ruby>松<rt>まつ</rt></ruby>も<ruby>昔<rt>むかし</rt></ruby>の<br><ruby>友<rt>とも</rt></ruby>ならなくに", "name": "<ruby>藤原興風<rt>ふじわらのおきかぜ</rt></ruby>", "yomihuda": "たれをかも<br>しるひとにせむ<br>たかさごの<br>まつもむかしの<br>ともならなくに", "modern": "誰を心を通わせられる友にしたらいいのだろう。長く生きている高砂の松も、昔からの友ではないし。", "modern_en": "Who can I call a true friend now? Even the old pine of Takasago knew the friends of long ago no longer.", "name_en": "Fujiwara no Okikaze"},
+  35: {"first": "<ruby>人<rt>ひと</rt></ruby>はいさ<br><ruby>心<rt>こころ</rt></ruby>も<ruby>知<rt>し</rt></ruby>らず<br>ふるさとは", "second": "<ruby>花<rt>はな</rt></ruby>ぞ<ruby>昔<rt>むかし</rt></ruby>の<br><ruby>香<rt>か</rt></ruby>に<ruby>匂<rt>にお</rt></ruby><ruby>ひ<rt>い</rt></ruby>ける", "name": "<ruby>紀貫之<rt>きのつらゆき</rt></ruby>", "yomihuda": "ひとはいさ<br>こころもしらず<br>ふるさとは<br>はなぞむかしの<br>かににほひける", "modern": "人の心は変わってしまうものですから、あなたの気持ちもわかりません。しかし、昔馴染みのこの里では、梅の花がかつてと同じ香りを漂わせていますよ。", "modern_en": "I cannot know what is in your heart. But here in the old village, the plum blossoms still carry the same fragrance as before.", "name_en": "Ki no Tsurayuki"},
+  36: {"first": "<ruby>夏<rt>なつ</rt></ruby>の<ruby>夜<rt>よ</rt></ruby>は<br>まだ<ruby>宵<rt>よい</rt></ruby>ながら<br>あけぬるを", "second": "<ruby>雲<rt>くも</rt></ruby>のいづこに<br><ruby>月<rt>つき</rt></ruby>やどるら<ruby>む<rt>ん</rt></ruby>", "name": "<ruby>清原深養父<rt>きよはらのふかやぶ</rt></ruby>", "yomihuda": "なつのよは<br>まだよひながら<br>あけぬるを<br>くものいづこに<br>つきやどるらむ", "modern": "夏の夜というものは短く、まだ宵のうちだと思ってる間に夜が明けてしまった。月は雲のどのあたりに宿をとっているのだろう。", "modern_en": "On a summer night, the day has already dawned while it still feels like early evening. Where in the clouds is the moon hiding?", "name_en": "Kiyohara no Fukayabu"},
+  37: {"first": "<ruby>白露<rt>しらつゆ</rt></ruby>に<br><ruby>風<rt>かぜ</rt></ruby>の<ruby>吹<rt>ふ</rt></ruby>きしく<br><ruby>秋<rt>あき</rt></ruby>の<ruby>野<rt>の</rt></ruby>は", "second": "つらぬきとめぬ<br><ruby>玉<rt>たま</rt></ruby>ぞ<ruby>散<rt>ち</rt></ruby>りける", "name": "<ruby>文屋朝康<rt>ふんやのあさやす</rt></ruby>", "yomihuda": "しらつゆに<br>かぜのふきしく<br>あきののは<br>つらぬきとめぬ<br>たまぞちりける", "modern": "白露に風がしきりに吹き付ける秋の野は、糸を通してつなぎ留めていない玉（真珠）が散っているようだ。", "modern_en": "In the autumn fields lashed by the wind and dew, the scattered drops look like beads of jade that cannot be strung together.", "name_en": "Fun'ya no Asayasu"},
+  38: {"first": "<ruby>忘<rt>わす</rt></ruby>らるる<br><ruby>身<rt>み</rt></ruby>をば<ruby>思<rt>おも</rt></ruby>はず<br><ruby>誓<rt>ちか</rt></ruby>ひてし", "second": "<ruby>人<rt>ひと</rt></ruby>の<ruby>命<rt>いのち</rt></ruby>の<br><ruby>惜<rt>お</rt></ruby>しくもあるかな", "name": "<ruby>右近<rt>うこん</rt></ruby>", "yomihuda": "わすらるる<br>みをばおもはず<br>ちかひてし<br>ひとのいのちの<br>をしくもあるかな", "modern": "忘れ去られる私は構わないのですが、私を愛すると神に誓ったあなたが神罰によって命を落とさないか惜しく思われることです。", "modern_en": "I do not grieve for myself, though I am forgotten. But I worry for you — you who swore an oath. What will become of you?", "name_en": "Ukon"},
+  39: {"first": "<ruby>浅茅生<rt>あさじう</rt></ruby>の<br><ruby>小野<rt>おの</rt></ruby>の<ruby>篠原<rt>しのはら</rt></ruby><br>しのぶれど", "second": "あまりてなどか<br><ruby>人<rt>ひと</rt></ruby>の<ruby>恋<rt>こい</rt></ruby>しき", "name": "<ruby>参議等<rt>さんぎひとし</rt></ruby>", "yomihuda": "あさぢふの<br>をののしのはら<br>しのぶれど<br>あまりてなどか<br>ひとのこひしき", "modern": "浅茅生の野の篠原ではありませんが、心に忍ぼうとしてもこれえきれない。どうしてこれほどまでにあの人のことが恋しいのでしょうか。", "modern_en": "Though I try to hide it, my longing spills over. Why is it that I cannot stop thinking of that person?", "name_en": "Councillor Hitoshi"},
+  40: {"first": "<ruby>忍<rt>しの</rt></ruby>ぶれど<br><ruby>色<rt>いろ</rt></ruby>に<ruby>出<rt>い</rt></ruby>でにけり<br><ruby>我<rt>わ</rt></ruby>が<ruby>恋<rt>こい</rt></ruby>は", "second": "<ruby>物<rt>もの</rt></ruby>や<ruby>思<rt>おも</rt></ruby>ふと<br><ruby>人<rt>ひと</rt></ruby>の<ruby>問<rt>と</rt></ruby><ruby>ふ<rt>う</rt></ruby>まで", "name": "<ruby>平兼盛<rt>たいらのかねもり</rt></ruby>", "yomihuda": "しのぶれど<br>いろにいでにけり<br>わがこひは<br>ものやおもふと<br>ひとのとふまで", "modern": "気づかれないように恋心を秘めてきましたが、顔色に出てしまった。人から物思いをしているのではないかと聞かれるまでに。", "modern_en": "Though I tried to keep it secret, my love showed itself on my face — to the point where people asked if something was on my mind.", "name_en": "Taira no Kanemori"},
+  41: {"first": "<ruby>恋<rt>こい</rt></ruby>す<ruby>てふ<rt>ちょう</rt></ruby><br><ruby>我<rt>わ</rt></ruby>が<ruby>名<rt>な</rt></ruby>はまだき<br><ruby>立<rt>た</rt></ruby>ちにけり", "second": "<ruby>人<rt>ひと</rt></ruby>しれずこそ<br><ruby>思<rt>おも</rt></ruby><ruby>ひ<rt>い</rt></ruby>そめしか", "name": "<ruby>壬生忠見<rt>みぶのただみ</rt></ruby>", "yomihuda": "こひすてふ<br>わがなはまだき<br>たちにけり<br>ひとしれずこそ<br>おもひそめしか", "modern": "恋をしているという噂が早くも立ってしまった。気づかれないように心の中で密かに想い始めたばかりなのに。", "modern_en": "They say my name as a lover is already known far and wide, even before the affair began. I had kept it so quietly in my heart.", "name_en": "Mibu no Tadami"},
+  42: {"first": "<ruby>契<rt>ちぎ</rt></ruby>りきな<br>かたみに<ruby>袖<rt>そで</rt></ruby>を<br>しぼりつつ", "second": "<ruby>末<rt>すえ</rt></ruby>の<ruby>松山<rt>まつやま</rt></ruby><br><ruby>波<rt>なみ</rt></ruby>こさじとは", "name": "<ruby>清原元輔<rt>きよはらのもとすけ</rt></ruby>", "yomihuda": "ちぎりきな<br>かたみにそでを<br>しぼりつつ<br>すゑのまつやま<br>なみこさじとは", "modern": "約束しましたよね。涙に濡れた着物の袖を絞りながら、末の松山を波が決して越えないように私たちの心は変わらないと。", "modern_en": "We promised each other, wringing out our tear-soaked sleeves, that our love would last forever, never to be swept away like the waves beyond Suenomatsu.", "name_en": "Kiyohara no Motosuke"},
+  43: {"first": "<ruby>逢<rt>あ</rt></ruby><ruby>ひ<rt>い</rt></ruby><ruby>見<rt>み</rt></ruby>ての<br>のちの<ruby>心<rt>こころ</rt></ruby>に<br>くらぶれば", "second": "<ruby>昔<rt>むかし</rt></ruby>は<ruby>物<rt>もの</rt></ruby>を<br><ruby>思<rt>おも</rt></ruby><ruby>は<rt>わ</rt></ruby>ざりけり", "name": "<ruby>権中納言敦忠<rt>ごんちゅうなごんあつただ</rt></ruby>", "yomihuda": "あひみての<br>のちのこころに<br>くらぶれば<br>むかしはものを<br>おもはざりけり", "modern": "逢って契りを結んだ後の気持ちと比べてみたら、逢う前の物思いなんて何でもなかったようです。", "modern_en": "Compared to this feeling after meeting you, the longing I felt before seems like nothing at all.", "name_en": "Acting Middle Counselor Atsutada"},
+  44: {"first": "<ruby>逢<rt>あ</rt></ruby><ruby>ふ<rt>う</rt></ruby>ことの<br><ruby>絶<rt>た</rt></ruby>えてしなくは<br>なかなかに", "second": "<ruby>人<rt>ひと</rt></ruby>をも<ruby>身<rt>み</rt></ruby>をも<br><ruby>恨<rt>うら</rt></ruby>みざらまし", "name": "<ruby>中納言朝忠<rt>ちゅうなごんあさただ</rt></ruby>", "yomihuda": "あふことの<br>たえてしなくは<br>なかなかに<br>ひとをもみをも<br>うらみざらまし", "modern": "男女が逢うことが全くなかったら、人のつれなさを恨んだり、自分の惨めさを嘆くこともなかったのに。", "modern_en": "If there were no meetings at all, I would not have to suffer. It is because we meet that parting brings such pain.", "name_en": "Middle Counselor Asatada"},
+  45: {"first": "あ<ruby>は<rt>わ</rt></ruby>れとも<br>い<ruby>ふ<rt>う</rt></ruby>べき人は<br><ruby>思<rt>おも</rt></ruby><ruby>ほ<rt>お</rt></ruby>えで", "second": "<ruby>身<rt>み</rt></ruby>のいた<ruby>づ<rt>ず</rt></ruby>らに<br>なりぬべきかな", "name": "<ruby>謙徳公<rt>けんとくこう</rt></ruby>", "yomihuda": "あはれとも<br>いふべきひとは<br>おもほえで<br>みのいたづらに<br>なりぬべきかな", "modern": "私に同情してくれそうな人は思い浮かばない。あなたに捨てられて私はむなしく死んでいくのでしょう。", "modern_en": "There is no one who might show even a little compassion. I feel as though my life will simply fade away, just like that.", "name_en": "Kentoku-kō"},
+  46: {"first": "<ruby>由良<rt>ゆら</rt></ruby>のとを<br><ruby>渡<rt>わた</rt></ruby>る<ruby>舟人<rt>ふなびと</rt></ruby><br>か<ruby>ぢ<rt>じ</rt></ruby>を<ruby>絶<rt>た</rt></ruby>え", "second": "ゆくへも<ruby>知<rt>し</rt></ruby>らぬ<br><ruby>恋<rt>こい</rt></ruby>の<ruby>道<rt>みち</rt></ruby>かな", "name": "<ruby>曽禰好忠<rt>そねのよしただ</rt></ruby>", "yomihuda": "ゆらのとを<br>わたるふなびと<br>かぢをたえ<br>ゆくへもしらぬ<br>こひのみちかな", "modern": "由良の河口を渡る船人が、櫂をなくして漂うように行方の知れない恋路であることよ。", "modern_en": "Like a boatman who has lost his oar on the swift straits of Yura — I drift, not knowing where my love is taking me.", "name_en": "Sone no Yoshitada"},
+  47: {"first": "<ruby>八重葎<rt>やえむぐら</rt></ruby><br>しげれる<ruby>宿<rt>やど</rt></ruby>の<br>さびしきに", "second": "<ruby>人<rt>ひと</rt></ruby>こそ<ruby>見<rt>み</rt></ruby>えね<br><ruby>秋<rt>あき</rt></ruby>は<ruby>来<rt>き</rt></ruby>にけり", "name": "<ruby>恵慶法師<rt>えぎょうほうし</rt></ruby>", "yomihuda": "やへむぐら<br>しげれるやどの<br>さびしきに<br>ひとこそみえね<br>あきはきにけり", "modern": "幾重にもつる草が生い茂る屋敷で寂しい所に人が訪れてくることはありませんが、秋はたしかにやって来たのですね。", "modern_en": "Weeds grow thick around the deserted house. No one comes to visit. And yet — autumn has arrived.", "name_en": "Priest Egyō"},
+  48: {"first": "<ruby>風<rt>かぜ</rt></ruby>をいたみ<br><ruby>岩<rt>いわ</rt></ruby>うつ<ruby>波<rt>なみ</rt></ruby>の<br>おのれのみ", "second": "くだけて<ruby>物<rt>もの</rt></ruby>を<br><ruby>思<rt>おも</rt></ruby><ruby>ふ<rt>う</rt></ruby>ころかな", "name": "<ruby>源重之<rt>みなもとのしげゆき</rt></ruby>", "yomihuda": "かぜをいたみ<br>いはうつなみの<br>おのれのみ<br>くだけてものを<br>おもふころかな", "modern": "風が激しく吹くので、岩に打ち寄せる波がひとりでに砕け散るように、私だけ心を砕かれて、物思いをするこの頃ですよ。", "modern_en": "Like the waves crashing against the rocks in the fierce wind, I alone am broken to pieces by this sorrow.", "name_en": "Minamoto no Shigeyuki"},
+  49: {"first": "<ruby>御垣守<rt>みかきもり</rt></ruby><br><ruby>衛士<rt>えじ</rt></ruby>のたく<ruby>火<rt>ひ</rt></ruby>の<br><ruby>夜<rt>よる</rt></ruby>はもえ", "second": "<ruby>昼<rt>ひる</rt></ruby>は<ruby>消<rt>き</rt></ruby>えつつ<br><ruby>物<rt>もの</rt></ruby>をこそ<ruby>思<rt>おも</rt></ruby><ruby>へ<rt>え</rt></ruby>", "name": "<ruby>大中臣能宣朝臣<rt>おおなかとみのよしのぶあそん</rt></ruby>", "yomihuda": "みかきもり<br>ゑじのたくひの<br>よるはもえ<br>ひるはきえつつ<br>ものをこそおもへ", "modern": "警護の兵士が燃やす篝火が、夜は燃えて昼は消えているように、私の恋心は夜に燃え、昼は消え入るように沈んでは物思いにふけっています。", "modern_en": "Like the fire tended by the palace guards, I burn at night and fade in the day — lost in endless longing.", "name_en": "Ōnakatomi no Yoshinobu Ason"},
+  50: {"first": "<ruby>君<rt>きみ</rt></ruby>がため<br><ruby>惜<rt>お</rt></ruby>しからざりし<br>いのちさ<ruby>へ<rt>え</rt></ruby>", "second": "<ruby>長<rt>なが</rt></ruby>くもがなと<br><ruby>思<rt>おも</rt></ruby><ruby>ひ<rt>い</rt></ruby>けるかな", "name": "<ruby>藤原義孝<rt>ふじわらのよしたか</rt></ruby>", "yomihuda": "きみがため<br>をしからざりし<br>いのちさへ<br>ながくもがなと<br>おもひけるかな", "modern": "あなたに逢うためなら惜しくないと思った命ですが、あなたと出会ってからは、末永く添い遂げたいと思うようになりました。", "modern_en": "A life I once did not mind losing — now, for your sake, I wish it would last forever.", "name_en": "Fujiwara no Yoshitaka"},
+  51: {"first": "かくとだに<br>えやはいぶきの<br>さしも<ruby>草<rt>ぐさ</rt></ruby>", "second": "さしも<ruby>知<rt>し</rt></ruby>らじな<br>もゆる<ruby>思<rt>おも</rt></ruby><ruby>ひ<rt>い</rt></ruby>を", "name": "<ruby>藤原実方朝臣<rt>ふじわらのさねかたあそん</rt></ruby>", "yomihuda": "かくとだに<br>えやはいぶきの<br>さしもぐさ<br>さしもしらじな<br>もゆるおもひを", "modern": "これほどまでに恋焦がれているとあなたに言えるでしょうか。伊吹山のさしも草ではありませんが、それほどまでとはあなたはご存知ないでしょう。私の（お灸のように熱い）燃える想いを。", "modern_en": "I cannot even tell you how I feel — like the smoldering fire of ibuki wormwood, my hidden love quietly burns.", "name_en": "Fujiwara no Sanekata Ason"},
+  52: {"first": "明けぬれば<br><ruby>暮<rt>く</rt></ruby>るるものとは<br><ruby>知<rt>く</rt></ruby>りながら", "second": "な<ruby>ほ<rt>お</rt></ruby>うらめしき<br><ruby>朝<rt>あさ</rt></ruby>ぼらけかな", "name": "<ruby>藤原道信朝臣<rt>ふじわらのみちのぶあそん</rt></ruby>", "yomihuda": "あけぬれば<br>くるるものとは<br>しりながら<br>なほうらめしき<br>あさぼらけかな", "modern": "夜が明けてしまえば、やがて日が暮れてまたお会いできるとわかってはいるものの、それでも恨めしい朝ぼらけであることよ。", "modern_en": "I know that after dawn comes dusk — and yet how I resent this pale morning sky.", "name_en": "Fujiwara no Michinobu Ason"},
+  53: {"first": "<ruby>嘆<rt>なげ</rt></ruby>きつつ<br>ひとり<ruby>寝<rt>ぬ</rt></ruby>る<ruby>夜<rt>よ</rt></ruby>の<br><ruby>明<rt>あ</rt></ruby>くる<ruby>間<rt>ま</rt></ruby>は", "second": "いかに<ruby>久<rt>ひさ</rt></ruby>しき<br>ものとかは<ruby>知<rt>し</rt></ruby>る", "name": "<ruby>右大将道綱母<rt>うだいしょうみちつなのはは</rt></ruby>", "yomihuda": "なげきつつ<br>ひとりぬるよの<br>あくるまは<br>いかにひさしき<br>ものとかはしる", "modern": "あなたが来なくて嘆きながら一人で寝る夜の明けるまでの時間がどれほど長いものかわかりますか。", "modern_en": "Lying alone, waiting for the long night to end — how endless it feels. Does the person who left me even know?", "name_en": "Mother of the Right Captain Michitsuna"},
+  54: {"first": "<ruby>忘<rt>わす</rt></ruby>れじの<br>ゆく<ruby>末<rt>すえ</rt></ruby>までは<br>かたければ", "second": "<ruby>今日<rt>きょう</rt></ruby>を<ruby>限<rt>かぎ</rt></ruby>りの<br><ruby>命<rt>いのち</rt></ruby>ともがな", "name": "<ruby>儀同三司母<rt>ぎどうさんしのはは</rt></ruby>", "yomihuda": "わすれじの<br>ゆくすゑまでは<br>かたければ<br>けふをかぎりの<br>いのちともがな", "modern": "「ずっと忘れない」という言葉は難しい約束でしょうから、その言葉を聞いた今日限りの命だったらいいのにと思ってしまいます。", "modern_en": "The promise that you would never forget me — that is too much to ask forever. I only wish my life would end today, while the vow still holds.", "name_en": "Mother of the Honorary Grand Minister"},
+  55: {"first": "<ruby>滝<rt>たき</rt></ruby>の<ruby>音<rt>おと</rt></ruby>は<br>たえて<ruby>久<rt>ひさ</rt></ruby>しく<br>なりぬれど", "second": "<ruby>名<rt>な</rt></ruby>こそ<ruby>流<rt>なが</rt></ruby>れて<br>な<ruby>ほ<rt>お</rt></ruby><ruby>聞<rt>き</rt></ruby>こえけれ", "name": "<ruby>大納言公任<rt>だいなごんきんとう</rt></ruby>", "yomihuda": "たきのおとは<br>たえてひさしく<br>なりぬれど<br>なこそながれて<br>なほきこえけれ", "modern": "滝の音が聞こえなくなってから久しくなりますが、その名声は今も流れ伝わっています。", "modern_en": "The sound of the waterfall has long since faded, but its name flows on and is still heard by the world.", "name_en": "Upper Counselor Kintō"},
+  56: {"first": "あらざら<ruby>む<rt>ん</rt></ruby><br>この<ruby>世<rt>よ</rt></ruby>のほかの<br><ruby>思<rt>おも</rt></ruby><ruby>ひ<rt>い</rt></ruby><ruby>出<rt>で</rt></ruby>に", "second": "いまひとたびの<br><ruby>逢<rt>お</rt></ruby><ruby>ふ<rt>う</rt></ruby>こともがな", "name": "<ruby>和泉式部<rt>いずみしきぶ</rt></ruby>", "yomihuda": "あらざらむ<br>このよのほかの<br>おもひでに<br>いまひとたびの<br>あふこともがな", "modern": "この世を去ってしまうのでしょう。あの世へ持っていく思い出に、もう一度あなたにお会いしたいものです。", "modern_en": "I may not be long for this world. As a memory to take beyond — let me meet you just one more time.", "name_en": "Izumi Shikibu"},
+  57: {"first": "めぐり<ruby>逢<rt>あ</rt></ruby><ruby>ひ<rt>い</rt></ruby>て<br><ruby>見<rt>み</rt></ruby>しやそれとも<br>わかぬ<ruby>間<rt>ま</rt></ruby>に", "second": "<ruby>雲隠<rt>くもがく</rt></ruby>れにし<br><ruby>夜半<rt>よわ</rt></ruby>の<ruby>月<rt>つき</rt></ruby>かな", "name": "<ruby>紫式部<rt>むらさきしきぶ</rt></ruby>", "yomihuda": "めぐりあひて<br>みしやそれとも<br>わかぬまに<br>くもがくれにし<br>よはのつきかな", "modern": "久しぶりにめぐり会って、それが誰かわからないうちにあなたは雲に隠れる夜半の月のように帰ってしまった。", "modern_en": "We met for just a moment, yet I could not be sure it was really you — and then you vanished behind the clouds, like the midnight moon.", "name_en": "Murasaki Shikibu"},
+  58: {"first": "ありま<ruby>山<rt>やま</rt></ruby><br><ruby>猪名<rt>いな</rt></ruby>の<ruby>笹原<rt>ささはら</rt></ruby><br><ruby>風<rt>かぜ</rt></ruby><ruby>吹<rt>ふ</rt></ruby>けば", "second": "いでそよ<ruby>人<rt>ひと</rt></ruby>を<br><ruby>忘<rt>わす</rt></ruby>れやはする", "name": "<ruby>大弐三位<rt>だいにのさんみ</rt></ruby>", "yomihuda": "ありまやま<br>ゐなのささはら<br>かぜふけば<br>いでそよひとを<br>わすれやはする", "modern": "有馬山に近い猪名の笹原に風が吹きそよそよと音が響きわたります。さぁそうですよ。私があなたのことを忘れられるでしょうか。いいえ忘れられません。", "modern_en": "When the wind blows through the bamboo groves of Arima and Ina — of course I have not forgotten you.", "name_en": "Daini no Sanmi"},
+  59: {"first": "やすら<ruby>は<rt>わ</rt></ruby>で<br><ruby>寝<rt>ね</rt></ruby>なましものを<br><ruby>小夜<rt>さよ</rt></ruby><ruby>更<rt>ふ</rt></ruby>けて", "second": "かたぶくまでの<br><ruby>月<rt>つき</rt></ruby>を<ruby>見<rt>み</rt></ruby>しかな", "name": "<ruby>赤染衛門<rt>あかぞめえもん</rt></ruby>", "yomihuda": "やすらはで<br>ねなましものを<br>さよふけて<br>かたぶくまでの<br>つきをみしかな", "modern": "あなたが来ないと分かっていたなら、ためらわずに眠りについたでしょうに。待ち続けるうちに夜が更けて、西の空に傾く月を見上げることになってしまったのです。", "modern_en": "I waited and waited without sleep, watching the moon sink slowly toward the horizon in the deepening night. How I regret it.", "name_en": "Akazome Emon"},
+  60: {"first": "<ruby>大江山<rt>おおえやま</rt></ruby><br>いく<ruby>野<rt>の</rt></ruby>の<ruby>道<rt>みち</rt></ruby>の<br><ruby>遠<rt>とお</rt></ruby>ければ", "second": "まだふみもみず<br><ruby>天<rt>あま</rt></ruby>の<ruby>橋立<rt>はしだて</rt></ruby>", "name": "<ruby>小式部内侍<rt>こしきぶのないし</rt></ruby>", "yomihuda": "おほえやま<br>いくののみちの<br>とほければ<br>まだふみもみず<br>あまのはしだて", "modern": "大江山も（母の住む丹後に行く）生野の道も遠いので、まだ天橋立の地に足を踏み入れたこともありませんし、母からの手紙も見ておりません。", "modern_en": "The road to Oe Mountain and Ikuno is so long and far — I have not yet set foot on it, nor received a letter from my mother.", "name_en": "Koshikibu no Naishi"},
+  61: {"first": "いにし<ruby>へ<rt>え</rt></ruby>の<br><ruby>奈良<rt>なら</rt></ruby>の<ruby>都<rt>みやこ</rt></ruby>の<br><ruby>八重桜<rt>やえざくら</rt></ruby>", "second": "<ruby>けふ<rt>きょう</rt></ruby><ruby>九重<rt>ここのえ</rt></ruby>に<br><ruby>匂<rt>にお</rt></ruby><ruby>ひ<rt>い</rt></ruby>ぬるかな", "name": "<ruby>伊勢大輔<rt>いせのたいふ</rt></ruby>", "yomihuda": "いにしへの<br>ならのみやこの<br>やへざくら<br>けふここのへに<br>にほひぬるかな", "modern": "古都奈良で咲き誇っていた八重桜が、今日は平安京の宮中で美しく咲き誇っていますよ。", "modern_en": "The ancient eightfold cherry blossoms of Nara — today they bloom gloriously in the ninefold imperial palace.", "name_en": "Ise no Taifu"},
+  62: {"first": "<ruby>夜<rt>よ</rt></ruby>をこめて<br><ruby>鳥<rt>とり</rt></ruby>のそらねは<br>はかるとも", "second": "よに<ruby>逢坂<rt>おうさか</rt></ruby>の<br><ruby>関<rt>せき</rt></ruby>は<ruby>許<rt>ゆる</rt></ruby>さじ", "name": "<ruby>清少納言<rt>せいしょうなごん</rt></ruby>", "yomihuda": "よをこめて<br>とりのそらねは<br>はかるとも<br>よにあふさかの<br>せきはゆるさじ", "modern": "夜が明けないうちに、鶏の鳴き真似をして人をだまそうとしても、この逢坂の関は決して開きませんよ。", "modern_en": "Even if you try to fool me with a crowing rooster in the night — I will not open the Barrier of Ōsaka for you.", "name_en": "Sei Shōnagon"},
+  63: {"first": "いまはただ<br><ruby>思<rt>おも</rt></ruby>ひ<ruby>絶<rt>た</rt></ruby>えな<ruby>む<rt>ん</rt></ruby><br>とばかりを", "second": "<ruby>人<rt>ひと</rt></ruby>づてならで<br><ruby>言<rt>い</rt></ruby><ruby>ふ<rt>う</rt></ruby>よしもがな", "name": "<ruby>左京大夫道雅<rt>さきょうのだいぶみちまさ</rt></ruby>", "yomihuda": "いまはただ<br>おもひたえなむ<br>とばかりを<br>ひとづてならで<br>いふよしもがな", "modern": "（逢うことが許されなくなった）今となっては「あなたへの思いをあきらめましょう」とせめて人づてでなく、直接伝えられる方法があったらよいのに。", "modern_en": "If only I could say it directly: all I want is to end this love. But there is no way to tell you in person.", "name_en": "Master of the Left Capital Michimasa"},
+  64: {"first": "<ruby>朝<rt>あさ</rt></ruby>ぼらけ<br><ruby>宇治<rt>うじ</rt></ruby>の<ruby>川霧<rt>かわぎり</rt></ruby><br><ruby>絶<rt>た</rt></ruby>え<ruby>絶<rt>だ</rt></ruby>えに", "second": "あら<ruby>は<rt>わ</rt></ruby>れわたる<br><ruby>瀬々<rt>せぜ</rt></ruby>の<ruby>網代木<rt>あじろぎ</rt></ruby>", "name": "<ruby>権中納言定頼<rt>ごんちゅうなごんさだより</rt></ruby>", "yomihuda": "あさぼらけ<br>うぢのかはぎり<br>たえだえに<br>あらはれわたる<br>せぜのあじろぎ", "modern": "夜がほんのり明けてくる頃、宇治川の朝霧が途切れ途切れになり、霧の絶え間のあちこちから現れわたる瀬々の網代木よ。", "modern_en": "In the early dawn mist over the Uji River, here and there the wooden stakes of fish weirs begin to appear through the haze.", "name_en": "Acting Middle Counselor Sadayori"},
+  65: {"first": "<ruby>恨<rt>うら</rt></ruby>みわび<br>ほさぬ<ruby>袖<rt>そで</rt></ruby>だに<br>あるものを", "second": "<ruby>恋<rt>こい</rt></ruby>にくちな<ruby>む<rt>ん</rt></ruby><br><ruby>名<rt>な</rt></ruby>こそをしけれ", "name": "<ruby>相模<rt>さがみ</rt></ruby>", "yomihuda": "うらみわび<br>ほさぬそでだに<br>あるものを<br>こひにくちなむ<br>なこそをしけれ", "modern": "恨む気力さえなくなり、涙に濡れて乾かすひまもない着物の袖さえあるのに、ましてこの恋のせいで浮名が立って私の評判が朽ちてしまうことは口惜しいことです。", "modern_en": "My sleeves are never dry — and I grieve not for myself, but that my name as a lover will be ruined before it is known.", "name_en": "Sagami"},
+  66: {"first": "もろともに<br>あ<ruby>は<rt>わ</rt></ruby>れと<ruby>思<rt>おも</rt></ruby><ruby>へ<rt>え</rt></ruby><br><ruby>山桜<rt>やまざくら</rt></ruby>", "second": "<ruby>花<rt>はな</rt></ruby>よりほかに<br><ruby>知<rt>し</rt></ruby>る<ruby>人<rt>ひと</rt></ruby>もなし", "name": "<ruby>前大僧正行尊<rt>さきのだいそうじょうぎょうそん</rt></ruby>", "yomihuda": "もろともに<br>あはれとおもへ<br>やまざくら<br>はなよりほかに<br>しるひともなし", "modern": "お互いにしみじみと愛しく思っておくれ山桜よ。心を通い合わせられる相手は他にいないのだから。", "modern_en": "O mountain cherry — feel moved together with me. There is no one else here who knows me but you.", "name_en": "Senior High Priest Gyōson"},
+  67: {"first": "<ruby>春<rt>はる</rt></ruby>の<ruby>夜<rt>よ</rt></ruby>の<br><ruby>夢<rt>ゆめ</rt></ruby>ばかりなる<br><ruby>手枕<rt>たまくら</rt></ruby>に", "second": "か<ruby>ひ<rt>い</rt></ruby>なく<ruby>立<rt>た</rt></ruby>た<ruby>む<rt>ん</rt></ruby><br><ruby>名<rt>な</rt></ruby>こそをしけれ", "name": "<ruby>周防内侍<rt>すおうのないし</rt></ruby>", "yomihuda": "はるのよの<br>ゆめばかりなる<br>たまくらに<br>かひなくたたむ<br>なこそをしけれ", "modern": "春の夜のような夢ぐらい儚いあなたの戯れの手枕のために何の甲斐もない浮名が立つことが惜しいのです。", "modern_en": "In the spring night, resting my head on an arm for just a brief dream — how I grieve that my name might spread for such a fleeting thing.", "name_en": "Suō no Naishi"},
+  68: {"first": "<ruby>心<rt>こころ</rt></ruby>にも<br>あらで<ruby>憂<rt>う</rt></ruby>き<ruby>世<rt>よ</rt></ruby>に<br>ながら<ruby>へ<rt>え</rt></ruby>ば", "second": "<ruby>恋<rt>こい</rt></ruby>しかるべき<br><ruby>夜半<rt>よわ</rt></ruby>の<ruby>月<rt>つき</rt></ruby>かな", "name": "<ruby>三条院<rt>さんじょういん</rt></ruby>", "yomihuda": "こころにも<br>あらでうきよに<br>ながらへば<br>こひしかるべき<br>よはのつきかな", "modern": "不本意であってもこの辛い世を生き長らえたら、この夜更けの月を恋しく思い出すだろう。", "modern_en": "If I live on in this painful world without purpose, I am sure I will come to miss this night and its lonely moon.", "name_en": "Retired Emperor Sanjō"},
+  69: {"first": "<ruby>嵐<rt>あらし</rt></ruby><ruby>吹<rt>ふ</rt></ruby>く<br><ruby>三室<rt>みむろ</rt></ruby>の<ruby>山<rt>やま</rt></ruby>の<br><ruby>紅葉<rt>もみじ</rt></ruby><ruby>葉<rt>ば</rt></ruby>は", "second": "<ruby>竜田<rt>たつた</rt></ruby>の<ruby>川<rt>かわ</rt></ruby>の<br><ruby>錦<rt>にしき</rt></ruby>なりけり", "name": "<ruby>能因法師<rt>のういんほうし</rt></ruby>", "yomihuda": "あらしふく<br>みむろのやまの<br>もみぢばは<br>たつたのかはの<br>にしきなりけり", "modern": "嵐が吹き下ろす三室山のもみじは、龍田川の川面に散り乱れて、まるで錦織物のように美しく彩っているよ。", "modern_en": "The storm blows through Mimuro Mountain, and the scattered maple leaves become a brocade on the Tatsuta River.", "name_en": "Priest Nōin"},
+  70: {"first": "さびしさに<br><ruby>宿<rt>やど</rt></ruby>を<ruby>立<rt>た</rt></ruby>ち<ruby>出<rt>い</rt></ruby>でて<br>ながむれば", "second": "い<ruby>づ<rt>ず</rt></ruby>くも<ruby>同<rt>おな</rt></ruby>じ<br><ruby>秋<rt>あき</rt></ruby>の<ruby>夕<rt>ゆう</rt></ruby><ruby>暮<rt>ぐれ</rt></ruby>", "name": "<ruby>良暹法師<rt>りょうぜんほうし</rt></ruby>", "yomihuda": "さびしさに<br>やどをたちいでて<br>ながむれば<br>いづくもおなじ<br>あきのゆふぐれ", "modern": "寂しさに耐えかねて庵から出てみたけれど、どこも同じように寂しい秋の夕暮れであることよ。", "modern_en": "Feeling lonely, I stepped outside to gaze at the view — and everywhere I looked, it was the same twilight of autumn.", "name_en": "Priest Ryōzen"},
+  71: {"first": "<ruby>夕<rt>ゆう</rt></ruby>されば<br><ruby>門田<rt>かどた</rt></ruby>の<ruby>稲葉<rt>いなば</rt></ruby><br>おと<ruby>づ<rt>ず</rt></ruby>れて", "second": "<ruby>蘆<rt>あし</rt></ruby>のまろやに<br><ruby>秋風<rt>あきかぜ</rt></ruby>ぞ<ruby>吹<rt>ふ</rt></ruby>く", "name": "<ruby>大納言経信<rt>だいなごんつねのぶ</rt></ruby>", "yomihuda": "ゆふされば<br>かどたのいなば<br>おとづれて<br>あしのまろやに<br>あきかぜぞふく", "modern": "夕方になると、門前の稲の葉は音を立て、ついでに葦葺きのこの庵にも秋風が吹きつけることだ。", "modern_en": "As evening falls, the breeze comes rustling through the rice stalks by the gate, and the autumn wind blows through the reed-thatched hut.", "name_en": "Upper Counselor Tsunenobu"},
+  72: {"first": "<ruby>音<rt>おと</rt></ruby>に<ruby>聞<rt>き</rt></ruby>く<br><ruby>高師<rt>たかし</rt></ruby>の<ruby>浜<rt>はま</rt></ruby>の<br>あだ<ruby>波<rt>なみ</rt></ruby>は", "second": "かけじや<ruby>袖<rt>そで</rt></ruby>の<br>ぬれもこそすれ", "name": "<ruby>祐子内親王家紀伊<rt>ゆうしないしんのうけのきい</rt></ruby>", "yomihuda": "おとにきく<br>たかしのはまの<br>あだなみは<br>かけじやそでの<br>ぬれもこそすれ", "modern": "噂に聞くいたずらに立ち騒ぐ高師の浜の波にはかかりますまい。袖を濡らすことになるでしょうから。", "modern_en": "I have heard how fickle the waves at Takashi Beach are. I will not let them wet my sleeves — I will keep my heart guarded.", "name_en": "Kii of Princess Yūshi's Household"},
+  73: {"first": "<ruby>高砂<rt>たかさご</rt></ruby>の<br><ruby>尾<rt>お</rt></ruby>の<ruby>上<rt>へ</rt></ruby>の<ruby>桜<rt>さくら</rt></ruby><br><ruby>咲<rt>さ</rt></ruby>きにけり", "second": "<ruby>外山<rt>とやま</rt></ruby>の<ruby>霞<rt>かすみ</rt></ruby><br><ruby>立<rt>た</rt></ruby>たずもあらな<ruby>む<rt>ん</rt></ruby>", "name": "<ruby>権中納言匡房<rt>ごんちゅうなごんまさふさ</rt></ruby>", "yomihuda": "たかさごの<br>をのへのさくら<br>さきにけり<br>とやまのかすみ<br>たたずもあらなむ", "modern": "高い山の尾根に美しい桜が咲いた。人里近くの山の霞よ、どうか立たないでほしい。", "modern_en": "The cherry blossoms on the high peaks of Takasago have already bloomed. Let the mist not rise over the foothills and hide them from view.", "name_en": "Acting Middle Counselor Masafusa"},
+  74: {"first": "<ruby>憂<rt>う</rt></ruby>かりける<br><ruby>人<rt>ひと</rt></ruby>を<ruby>初瀬<rt>はつせ</rt></ruby>の<br><ruby>山<rt>やま</rt></ruby>おろしよ", "second": "はげしかれとは<br><ruby>祈<rt>いの</rt></ruby>らぬものを", "name": "<ruby>源俊頼朝臣<rt>みなもとのとしよりあそん</rt></ruby>", "yomihuda": "うかりける<br>ひとをはつせの<br>やまおろしよ<br>はげしかれとは<br>いのらぬものを", "modern": "つれないあの人が私になびくように初瀬の観音様に祈りこそしましたが、初瀬の山おろしよ。お前のように冷たく手厳しくあれとは祈ってもいないのに。", "modern_en": "I prayed to the storm wind of Hatsuse — but I never prayed for it to grow fiercer. Why has this person become so cold to me?", "name_en": "Minamoto no Toshiyori Ason"},
+  75: {"first": "<ruby>契<rt>ちぎ</rt></ruby>りおきし<br>させもが<ruby>露<rt>つゆ</rt></ruby>を<br>いのちにて", "second": "あ<ruby>は<rt>わ</rt></ruby>れ<ruby>今年<rt>ことし</rt></ruby>の<br><ruby>秋<rt>あき</rt></ruby>もいぬめり", "name": "<ruby>藤原基俊<rt>ふじわらのもととし</rt></ruby>", "yomihuda": "ちぎりおきし<br>させもがつゆを<br>いのちにて<br>あはれことしの<br>あきもいぬめり", "modern": "約束してくださった「さしも草の」の歌の露のようなありがたい言葉を命のように大切にしていたのに。ああ…今年の秋もむなしく過ぎていくようだ。", "modern_en": "You promised me, and I staked my life on it like the morning dew on the wormwood. But another autumn is passing, alas.", "name_en": "Fujiwara no Mototoshi"},
+  76: {"first": "わたの<ruby>原<rt>はら</rt></ruby><br>こぎいでてみれば<br><ruby>久方<rt>ひさかた</rt></ruby>の", "second": "<ruby>雲<rt>くも</rt></ruby><ruby>居<rt>い</rt></ruby>にま<ruby>が<rt>ご</rt></ruby><ruby>ふ<rt>う</rt></ruby><br><ruby>沖<rt>おき</rt></ruby>つ<ruby>白波<rt>しらなみ</rt></ruby>", "name": "<ruby>法性寺入道前関白太政大臣<rt>ほっしょうじにゅうどうさきのかんぱくだいじょうだいじん</rt></ruby>", "yomihuda": "わたのはら<br>こぎいでてみれば<br>ひさかたの<br>くもゐにまがふ<br>おきつしらなみ", "modern": "大海原に漕ぎ出してみれば、はるか沖に白雲に見間違えるほどの白波が立っていたよ。", "modern_en": "Rowing out onto the open sea and looking around — the white waves far off on the water seem to blur into the clouds.", "name_en": "Lay Novice of Hosshō-ji Temple, former Kampaku and Chancellor of the Realm"},
+  77: {"first": "<ruby>瀬<rt>せ</rt></ruby>をはやみ<br><ruby>岩<rt>いわ</rt></ruby>にせかるる<br><ruby>滝川<rt>たきがわ</rt></ruby>の", "second": "われても<ruby>末<rt>すえ</rt></ruby>に<br>あ<ruby>は<rt>わ</rt></ruby><ruby>む<rt>ん</rt></ruby>とぞ<ruby>思<rt>おも</rt></ruby><ruby>ふ<rt>う</rt></ruby>", "name": "<ruby>崇徳院<rt>すとくいん</rt></ruby>", "yomihuda": "せをはやみ<br>いはにせかるる<br>たきがはの<br>われてもすゑに<br>あはむとぞおもふ", "modern": "川瀬の流れが早く、岩にせきとめられた滝川のようにあなたと別れてもいつかはまた会いたいと思う。", "modern_en": "Like the river that is split by rocks and flows apart — though we are separated now, I believe we will meet again in the end.", "name_en": "Retired Emperor Sutoku"},
+  78: {"first": "<ruby>淡路島<rt>あわじしま</rt></ruby><br>かよ<ruby>ふ<rt>う</rt></ruby><ruby>千鳥<rt>ちどり</rt></ruby>の<br><ruby>鳴<rt>な</rt></ruby>く<ruby>声<rt>こえ</rt></ruby>に", "second": "<ruby>幾夜<rt></rt></ruby><ruby>寝覚<rt>ねざ</rt></ruby>めぬ<br><ruby>須磨<rt>すま</rt></ruby>の<ruby>関守<rt>せきもり</rt></ruby>", "name": "<ruby>源兼昌<rt>みなもとのかねまさ</rt></ruby>", "yomihuda": "あはぢしま<br>かよふちどりの<br>なくこゑに<br>いくよねざめぬ<br>すまのせきもり", "modern": "淡路島から渡ってくる千鳥が鳴く声に、須磨の関守は幾夜目を覚ませられただろう。", "modern_en": "The cry of the plovers flying between Awaji Island — how many nights have I lain awake listening to them at the Suma Barrier?", "name_en": "Minamoto no Kanemasa"},
+  79: {"first": "<ruby>秋風<rt>あきかぜ</rt></ruby>に<br>たなびく<ruby>雲<rt>くも</rt></ruby>の<br>たえ<ruby>間<rt>ま</rt></ruby>より", "second": "もれい<ruby>づ<rt>ず</rt></ruby>る<ruby>月<rt>つき</rt></ruby>の<br><ruby>影<rt>かげ</rt></ruby>のさやけさ", "name": "<ruby>左京大夫顕輔<rt>さきょうのだいぶあきすけ</rt></ruby>", "yomihuda": "あきかぜに<br>たなびくくもの<br>たえまより<br>もれいずるつきの<br>かげのさやけさ", "modern": "秋風にたなびく雲の切れ目から、こぼれ落ちる月の光は何と澄み渡って明るい美しさであることよ。", "modern_en": "Through the gaps in the clouds trailing in the autumn wind, the moonlight filters through, so clear and still.", "name_en": "Master of the Left Capital Akisuke"},
+  80: {"first": "<ruby>長<rt>なが</rt></ruby>から<ruby>む<rt>ん</rt></ruby><br><ruby>心<rt>こころ</rt></ruby>もしらず<br><ruby>黒髪<rt>くろがみ</rt></ruby>の", "second": "みだれてけさは<br><ruby>物<rt>もの</rt></ruby>をこそ<ruby>思<rt>おも</rt></ruby><ruby>へ<rt>え</rt></ruby>", "name": "<ruby>待賢門院堀河<rt>たいけんもんいんのほりかわ</rt></ruby>", "yomihuda": "ながからむ<br>こころもしらず<br>くろかみの<br>みだれてけさは<br>ものをこそおもへ", "modern": "末永く愛してくれると言うあなたの心ははかりがたく、お別れした今朝の私はこの黒髪が乱れるように心も乱れ、物思いに沈んでいます。", "modern_en": "Not knowing whether your heart will last — I woke this morning with my long black hair in tangles, lost in thought.", "name_en": "Horikawa, attendant to Empress Taiken"},
+  81: {"first": "ほととぎす<br><ruby>鳴<rt>な</rt></ruby>きつる<ruby>方<rt>かた </rt></ruby>を<br>ながむれば", "second": "ただありあけの<br><ruby>月<rt>つき</rt></ruby>ぞ<ruby>残<rt>のこ</rt></ruby>れる", "name": "<ruby>後徳大寺左大臣<rt>ごとくだいじのさだいじん</rt></ruby>", "yomihuda": "ほととぎす<br>なきつるかたを<br>ながむれば<br>ただありあけの<br>つきぞのこれる", "modern": "ほととぎすが鳴いた方を眺めてみると、鳥の姿は見えず、ただ有明の月が残っていました。", "modern_en": "I looked toward where the cuckoo had just called — and all that remained was the pale moon at dawn.", "name_en": "Later Tokudaiji Minister of the Left"},
+  82: {"first": "<ruby>思<rt>おも</rt></ruby><ruby>ひ<rt>い</rt></ruby>わび<br>さても<ruby>命<rt>いのち</rt></ruby>は<br>あるものを", "second": "<ruby>憂<rt>う</rt></ruby>きにた<ruby>へ<rt>え</rt></ruby>ぬは<br><ruby>涙<rt>なみだ</rt></ruby>なりけり", "name": "<ruby>道因法師<rt>どういんほうし</rt></ruby>", "yomihuda": "おもひわび<br>さてもいのちは<br>あるものを<br>うきにたへぬは<br>なみだなりけり", "modern": "嘆き悲しんでいながらも、堪えて生きているのに、辛い思いにこぼれ落ちるもろい涙であったよ。", "modern_en": "I am exhausted with sorrow, yet somehow I am still alive. What cannot endure is not my life — but my tears.", "name_en": "Priest Dōin"},
+  83: {"first": "<ruby>世<rt>よ</rt></ruby>の<ruby>中<rt>なか</rt></ruby>よ<br><ruby>道<rt>みち</rt></ruby>こそなけれ<br><ruby>思<rt>おも</rt></ruby><ruby>ひ<rt>い</rt></ruby><ruby>入<rt>い</rt></ruby>る", "second": "<ruby>山<rt>やま</rt></ruby>の<ruby>奥<rt>おく</rt></ruby>にも<br><ruby>鹿<rt>しか</rt></ruby>ぞ<ruby>鳴<rt>な</rt></ruby>くなる", "name": "<ruby>皇太后宮大夫俊成<rt>こうたいごうぐうのだいぶとしなり</rt></ruby>", "yomihuda": "よのなかよ<br>みちこそなけれ<br>おもひいる<br>やまのおくにも<br>しかぞなくなる", "modern": "つらい世の中から逃れる方法はないようだ。思い詰めて分け入ったこの山の中でさえ、哀しげに鳴く鹿の声が聞こえてくる。", "modern_en": "There is no escape from this world. Even deep in the mountains, the deer cry out.", "name_en": "Master of the Empress Dowager's Household Toshinari"},
+  84: {"first": "<ruby>長<rt>なが</rt></ruby>ら<ruby>へ<rt>え</rt></ruby>ば<br>またこのごろや<br>しのばれ<ruby>む<rt>ん</rt></ruby>", "second": "<ruby>憂<rt>う</rt></ruby>しと<ruby>見<rt>み</rt></ruby>し<ruby>世<rt>よ</rt></ruby>ぞ<br><ruby>今<rt>いま</rt></ruby>は<ruby>恋<rt>こい</rt></ruby>しき", "name": "<ruby>藤原清輔朝臣<rt>ふじわらのきよすけあそん</rt></ruby>", "yomihuda": "ながらへば<br>またこのごろや<br>しのばれむ<br>うしとみしよぞ<br>いまはこひしき", "modern": "長く生きながらえたら、今を懐かしく思うだろう。つらいと思った日々も今では懐かしく思えるのだから。", "modern_en": "If I live on long enough, perhaps even these painful days will become dear to me, as something I once longed to leave behind.", "name_en": "Fujiwara no Kiyosuke Ason"},
+  85: {"first": "<ruby>夜<rt>よ</rt></ruby>もすがら<br><ruby>物<rt>もの</rt></ruby><ruby>思<rt>おも</rt></ruby><ruby>ふ<rt>う</rt></ruby>ころは<br><ruby>明<rt>あ</rt></ruby>けやらで", "second": "<ruby>閨<rt>ねや</rt></ruby>のひまさ<ruby>へ<rt>え</rt></ruby><br>つれなかりけり", "name": "<ruby>俊恵法師<rt>しゅんえほうし</rt></ruby>", "yomihuda": "よもすがら<br>ものおもふころは<br>あけやらで<br>ねやのひまさへ<br>つれなかりけり", "modern": "一晩中、恋に思い悩んでいるこの頃は、いつまでも夜が明けきらないので、一向に光が差し込まない寝室の隙間さえもつれなく感じられる。", "modern_en": "All through the night, lost in thought, the dawn will not come. Even the crack of light through the bedroom door seems cold and distant.", "name_en": "Priest Shun'e"},
+  86: {"first": "<ruby>嘆<rt>なげ</rt></ruby>けとて<br><ruby>月<rt>つき</rt></ruby>やは<ruby>物<rt>もの</rt></ruby>を<br><ruby>思<rt>おも</rt></ruby><ruby>は<rt>わ</rt></ruby>する", "second": "かこち<ruby>顔<rt>がお</rt></ruby>なる<br>わが<ruby>涙<rt>なみだ</rt></ruby>かな", "name": "<ruby>西行法師<rt>さいぎょうほうし</rt></ruby>", "yomihuda": "なげけとて<br>つきやはものを<br>おもはする<br>かこちがほなる<br>わがなみだかな", "modern": "嘆けと言って月が私に物思いをさせるのだろうか。そうではない。月に誘われるそぶりで流れる私の涙かな。", "modern_en": "Did the moon ask me to grieve? These tears on my face — it is as if I am blaming the moon for making me feel this way.", "name_en": "Priest Saigyō"},
+  87: {"first": "<ruby>村雨<rt>むらさめ</rt></ruby>の<br><ruby>露<rt>つゆ</rt></ruby>もまだひぬ<br>まきの<ruby>葉<rt>は</rt></ruby>に", "second": "<ruby>霧<rt>きり</rt></ruby>たちのぼる<br><ruby>秋<rt>あき</rt></ruby>の<ruby>夕<rt>ゆう</rt></ruby><ruby>暮<rt>ぐれ</rt></ruby>", "name": "<ruby>寂蓮法師<rt>じゃくれんほうし</rt></ruby>", "yomihuda": "むらさめの<br>つゆもまだひぬ<br>まきのはに<br>きりたちのぼる<br>あきのゆふぐれ", "modern": "村雨が通り過ぎて、まだその滴が乾いていない杉や檜の葉のあたりに、霧が立ち上っている。秋の夕暮れに。", "modern_en": "After the passing shower, the mist rises slowly through the rain-drenched leaves of the cedar. An autumn evening.", "name_en": "Priest Jakuren"},
+  88: {"first": "<ruby>難波江<rt>なにわえ</rt></ruby>の<br><ruby>葦<rt>あし</rt></ruby>のかりねの<br>ひとよゆ<ruby>ゑ<rt>え</rt></ruby>", "second": "みをつくしてや<br><ruby>恋<rt>こ</rt></ruby><ruby>ひ<rt>い</rt></ruby>わたるべき", "name": "<ruby>皇嘉門院別当<rt>こうかもんいんのべっとう</rt></ruby>", "yomihuda": "なにはえの<br>あしのかりねの<br>ひとよゆゑ<br>みをつくしてや<br>こひわたるべき", "modern": "難波の入り江に生えている葦を刈った根の短い一節ではありませんが、一夜の共寝をしたために、私は難波の澪標のように身を尽くし、あの人を恋い慕い続けなくてはいけないのでしょうか。", "modern_en": "For just one brief night together, like the cut end of a reed at Naniwa — must I go on longing for you forever?", "name_en": "Attendant to Empress Kōka"},
+  89: {"first": "<ruby>玉<rt>たま</rt></ruby>の<ruby>緒<rt>お</rt></ruby>よ<br><ruby>絶<rt>た</rt></ruby>えなば<ruby>絶<rt>た</rt></ruby>えね<br>ながら<ruby>へ<rt>え</rt></ruby>ば", "second": "<ruby>忍<rt>しの</rt></ruby>ぶることの<br><ruby>弱<rt>よわ</rt></ruby>りもぞする", "name": "<ruby>式子内親王<rt>しょくしないしんのう</rt></ruby>", "yomihuda": "たまのをよ<br>たえなばたえね<br>ながらへば<br>しのぶることの<br>よわりもぞする", "modern": "私の命よ、絶えてしまうのなら絶えてしまえ。生き長らえてしまうと恋を忍ぶ気持ちが弱って困るから。", "modern_en": "Let my life end now, if it must. For if I go on living, my power to endure this secret love may weaken.", "name_en": "Princess Shikishi"},
+  90: {"first": "<ruby>見<rt>み</rt></ruby>せばやな<br><ruby>雄島<rt>おじま</rt></ruby>のあまの<br><ruby>袖<rt>そで</rt></ruby>だにも", "second": "ぬれにぞぬれし<br><ruby>色<rt>いろ</rt></ruby>はか<ruby>は<rt>わ</rt></ruby>らず", "name": "<ruby>殷富門院大輔<rt>いんぷもんいんのたいふ</rt></ruby>", "yomihuda": "みせばやな<br>をじまのあまの<br>そでだにも<br>ぬれにぞぬれし<br>いろはかはらず", "modern": "あなたに見せたい。私の血の涙に濡れて色が変わってしまったこの袖を。あの雄島の漁師の袖でさえ、ひどく濡れても色は変わらないのに。", "modern_en": "I wish I could show you — these sleeves of mine, soaked through and through with tears that never change color, never dry.", "name_en": "Attendant to Empress Inpu"},
+  91: {"first": "きりぎりす<br><ruby>鳴<rt>な</rt></ruby>くや<ruby>霜夜<rt>しもよ</rt></ruby>の<br>さむしろに", "second": "<ruby>衣<rt>ころも</rt></ruby>かたしき<br>ひとりかも<ruby>寝<rt>ね</rt></ruby><ruby>む<rt>ん</rt></ruby>", "name": "<ruby>後京極摂政前太政大臣<rt>ごきょうごくせっしょうさきのだいじょうだいじん</rt></ruby>", "yomihuda": "きりぎりす<br>なくやしもよの<br>さむしろに<br>ころもかたしき<br>ひとりかもねむ", "modern": "こおろぎが鳴いている霜のおりる夜、寒いむしろの上に自分の衣だけを敷いて、私はひとり寂しく寝るのだろうか。", "modern_en": "On a cold, frosty night, the cricket cries. Lying alone with one sleeve folded beneath me — how lonely it is.", "name_en": "Gokyōgoku Regent and former Chancellor of the Realm"},
+  92: {"first": "わが<ruby>袖<rt>そで</rt></ruby>は<br><ruby>潮干<rt>しおひ</rt></ruby>に<ruby>見<rt>み</rt></ruby>えぬ<br><ruby>沖<rt>おき</rt></ruby>の<ruby>石<rt>いし</rt></ruby>の", "second": "<ruby>人<rt>ひと</rt></ruby>こそ<ruby>知<rt>し</rt></ruby>らね<br>かわくまもなし", "name": "<ruby>二条院讃岐<rt>にじょういんのさぬき</rt></ruby>", "yomihuda": "わがそでは<br>しほひにみえぬ<br>おきのいしの<br>ひとこそしらね<br>かわくまもなし", "modern": "私の袖は潮干のときも見えない沖の石のように、人に知られることはないけれども、涙で濡れて乾く暇もない。", "modern_en": "My sleeves are like a rock hidden beneath the tides — unseen by others, they are never dry.", "name_en": "Sanuki, attendant to retired Emperor Nijō"},
+  93: {"first": "<ruby>世<rt>よ</rt></ruby>の<ruby>中<rt>なか</rt></ruby>は<br>つねにもがもな<br><ruby>渚<rt>なぎさ</rt></ruby>こぐ", "second": "あまの<ruby>小舟<rt>こぶね</rt></ruby>の<br><ruby>綱手<rt>つなで</rt></ruby>かなしも", "name": "<ruby>鎌倉右大臣<rt>かまくらのうだいじん</rt></ruby>", "yomihuda": "よのなかは<br>つねにもがもな<br>なぎさこぐ<br>あまのをぶねの<br>つなでかなしも", "modern": "世の中は、こんな風にいつまでも変わらないでいてほしい。渚を漕ぐ漁師の小舟の綱を引く様子が愛おしく感じられるよ。", "modern_en": "I wish the world could stay just as it is forever. How moving it is to watch the small fishing boats being towed along the shore.", "name_en": "Minister of the Right of Kamakura"},
+  94: {"first": "み<ruby>吉野<rt>よしの</rt></ruby>の<br><ruby>山<rt>やま</rt></ruby>の<ruby>秋風<rt>あきかぜ</rt></ruby><br>さ<ruby>夜<rt>よ</rt></ruby>ふけて", "second": "ふるさと<ruby>寒<rt>さむ</rt></ruby>く<br><ruby>衣<rt>ころも</rt></ruby>うつなり", "name": "<ruby>参議雅経<rt>さんぎまさつね</rt></ruby>", "yomihuda": "みよしのの<br>やまのあきかぜ<br>さよふけて<br>ふるさとさむく<br>ころもうつなり", "modern": "吉野の山に、秋風が吹きわたり、夜更けになると、吉野の里は寒く、衣を打つ砧の音が寒々しく響く。", "modern_en": "On an autumn night, the mountain wind of Yoshino blows cold. In the old village, I can hear the sound of someone beating cloth.", "name_en": "Councillor Masatsune"},
+  95: {"first": "お<ruby>ほ<rt>お</rt></ruby>けなく<br><ruby>憂<rt>う</rt></ruby>き<ruby>世<rt>よ</rt></ruby>の<ruby>民<rt>たみ</rt></ruby>に<br>お<ruby>ほ<rt>お</rt></ruby><ruby>ふ<rt>う</rt></ruby>かな", "second": "わがたつ<ruby>杣<rt>そま</rt></ruby>に<br><ruby>墨染<rt>すみぞめ</rt></ruby>の<ruby>袖<rt>そで</rt></ruby>", "name": "<ruby>前大僧正慈円<rt>さきのだいそうじょうじえん</rt></ruby>", "yomihuda": "おほけなく<br>うきよのたみに<br>おほふかな<br>わがたつそまに<br>すみぞめのそで", "modern": "おこがましいけれども、このつらい悲しみに満ちた現世を生きる人々を私の袖で包んであげたい。比叡山に住みはじめた私の墨染の袖で。", "modern_en": "How bold it is of me — yet I spread my ink-black sleeves to shelter the people of this troubled world.", "name_en": "Former Senior High Priest Jien"},
+  96: {"first": "<ruby>花<rt>はな</rt></ruby>さそ<ruby>ふ<rt>う</rt></ruby><br><ruby>嵐<rt>あらし</rt></ruby>の<ruby>庭<rt>にわ</rt></ruby>の<br><ruby>雪<rt>ゆき</rt></ruby>ならで", "second": "ふりゆくものは<br>わが<ruby>身<rt>み</rt></ruby>なりけり", "name": "<ruby>入道前太政大臣<rt>にゅうどうさきのだいじょうだいじん</rt></ruby>", "yomihuda": "はなさそふ<br>あらしのにはの<br>ゆきならで<br>ふりゆくものは<br>わがみなりけり", "modern": "桜の花を誘って、散らすように嵐が吹く庭で、花は雪のように降るけれど、古くなるのは我が身であることだ。", "modern_en": "It is not the snow of blossoms scattered by the storm in the garden — it is I myself who am fading with the years.", "name_en": "Lay Novice and former Chancellor of the Realm"},
+  97: {"first": "<ruby>来<rt>こ</rt></ruby>ぬ<ruby>人<rt>ひと</rt></ruby>を<br><ruby>松帆<rt>まつほ</rt></ruby>の<ruby>浦<rt>うら</rt></ruby>の<br><ruby>夕<rt>ゆう</rt></ruby>なぎに", "second": "<ruby>焼<rt>や</rt></ruby>くやもしほの<br><ruby>身<rt>み</rt></ruby>もこがれつつ", "name": "<ruby>権中納言定家<rt>ごんちゅうなごんさだいえ</rt></ruby>", "yomihuda": "こぬひとを<br>まつほのうらの<br>ゆうなぎに<br>やくやもしほの<br>みもこがれつつ", "modern": "来てくれない恋人を待ち続け、夕凪どきに松帆の浦で焼かれる藻塩のように我が身も恋に焦がれています。", "modern_en": "Waiting for someone who will not come, at the quiet evening shore — like salt burned from the seaweed, I too am consumed by longing.", "name_en": "Acting Middle Counselor Sadaie"},
+  98: {"first": "<ruby>風<rt>かぜ</rt></ruby>そよぐ<br>ならの<ruby>小川<rt>おがわ</rt></ruby>の<br><ruby>夕<rt></rt></ruby><ruby>暮<rt>ぐれ</rt></ruby>は", "second": "みそぎぞ<ruby>夏<rt>なつ</rt></ruby>の<br>しるしなりける", "name": "<ruby>従二位家隆<rt>じゅにいいえたか</rt></ruby>", "yomihuda": "かぜそよぐ<br>ならのをがはの<br>ゆふぐれは<br>みそぎぞなつの<br>しるしなりける", "modern": "風がそよそよと楢の葉を吹く。ならの小川の夕暮れは秋の気配がするけれど、水無月祓の行事こそがまだ夏であることの証なのだなあ。", "modern_en": "The breeze rustles through the leaves of the sacred oak trees by the river at dusk. The purification rite is the only sign that summer is here.", "name_en": "Junior Second Rank Ietaka"},
+  99: {"first": "<ruby>人<rt>ひと</rt></ruby>もをし<br><ruby>人<rt>ひと</rt></ruby>もうらめし<br>あ<ruby>ぢ<rt>じ</rt></ruby>きなく", "second": "<ruby>世<rt>よ</rt></ruby>を<ruby>思<rt>おも</rt></ruby><ruby>ふ<rt>う</rt></ruby>ゆ<ruby>ゑ<rt>え</rt></ruby>に<br><ruby>物<rt>も</rt></ruby><ruby>思<rt>おも</rt></ruby><ruby>ふ<rt>う</rt></ruby><ruby>身<rt>み</rt></ruby>は", "name": "<ruby>後鳥羽院<rt>ごとばいん</rt></ruby>", "yomihuda": "ひともをし<br>ひともうらめし<br>あぢきなく<br>よをおもふゆゑえに<br>ものおもふみは", "modern": "時には人が愛しく、時には人が恨めしく思われる。つまらなく世の中を思うがゆえに物思いに沈む私には。", "modern_en": "I find people both dear and hateful. It is because I care so deeply about this troubled world that I am always lost in thought.", "name_en": "Retired Emperor Go-Toba"},
+  100: {"first": "ももしきや<br>ふるき<ruby>軒<rt>のき</rt></ruby>ばの<br>しのぶにも", "second": "な<ruby>ほ<rt>お</rt></ruby>あまりある<br><ruby>昔<rt>むかし</rt></ruby>なりけり", "name": "<ruby>順徳院<rt>じゅんとくいん</rt></ruby>", "yomihuda": "ももしきや<br>ふるきのきばの<br>しのぶにも<br>なほあまりある<br>むかしなりけり", "modern": "宮中の古びた軒先に生えている忍ぶ草を見るにつけても偲んでも偲びきれないのは、昔のよかった時代であることよ。", "modern_en": "Even the ancient ferns on the old eaves of the palace — there is more than enough of the past that they call to mind.", "name_en": "Retired Emperor Juntoku"}
+};
+
+/* ===== hyakunin.json が利用可能なら modern/modern_en/name_en を上書き ===== */
+fetch('../js/hyakunin.json?04')
+  .then(r => r.json())
+  .then(json => {
+    Object.entries(json).forEach(([k, v]) => {
+      const entry = tmPoem100[k];
+      if (!entry) return;
+      if (v.modern)    entry.modern    = v.modern;
+      if (v.modern_en) entry.modern_en = v.modern_en;
+      if (v.name_en)   entry.name_en   = v.name_en;
+    });
+  })
+  .catch(() => {}); // ファイルがなくても動作継続
+
+
+          /* ── Hiragana to Romaji ── */
+          function hiraganaToRomaji(str) {
+            const map = {
+              'あ':'a','い':'i','う':'u','え':'e','お':'o',
+              'か':'ka','き':'ki','く':'ku','け':'ke','こ':'ko',
+              'さ':'sa','し':'shi','す':'su','せ':'se','そ':'so',
+              'た':'ta','ち':'chi','つ':'tsu','て':'te','と':'to',
+              'な':'na','に':'ni','ぬ':'nu','ね':'ne','の':'no',
+              'は':'ha','ひ':'hi','ふ':'fu','へ':'he','ほ':'ho',
+              'ま':'ma','み':'mi','む':'mu','め':'me','も':'mo',
+              'や':'ya','ゆ':'yu','よ':'yo',
+              'ら':'ra','り':'ri','る':'ru','れ':'re','ろ':'ro',
+              'わ':'wa','ゐ':'wi','ゑ':'we','を':'wo','ん':'n',
+              'が':'ga','ぎ':'gi','ぐ':'gu','げ':'ge','ご':'go',
+              'ざ':'za','じ':'ji','ず':'zu','ぜ':'ze','ぞ':'zo',
+              'だ':'da','ぢ':'ji','づ':'zu','で':'de','ど':'do',
+              'ば':'ba','び':'bi','ぶ':'bu','べ':'be','ぼ':'bo',
+              'ぱ':'pa','ぴ':'pi','ぷ':'pu','ぺ':'pe','ぽ':'po',
+              'きゃ':'kya','きゅ':'kyu','きょ':'kyo',
+              'しゃ':'sha','しゅ':'shu','しょ':'sho',
+              'ちゃ':'cha','ちゅ':'chu','ちょ':'cho',
+              'にゃ':'nya','にゅ':'nyu','にょ':'nyo',
+              'ひゃ':'hya','ひゅ':'hyu','ひょ':'hyo',
+              'みゃ':'mya','みゅ':'myu','みょ':'myo',
+              'りゃ':'rya','りゅ':'ryu','りょ':'ryo',
+              'ぎゃ':'gya','ぎゅ':'gyu','ぎょ':'gyo',
+              'じゃ':'ja','じゅ':'ju','じょ':'jo',
+              'びゃ':'bya','びゅ':'byu','びょ':'byo',
+              'ぴゃ':'pya','ぴゅ':'pyu','ぴょ':'pyo',
+              'っ':'tt','ー':'-',
+            };
+            let result = '';
+            let i = 0;
+            while (i < str.length) {
+              const two = str.slice(i, i+2);
+              if (map[two]) { result += map[two]; i += 2; continue; }
+              const one = str[i];
+              if (one === 'っ') { const next = str[i+1]; result += (map[str.slice(i+1,i+3)] || map[next] || '')[0] || 't'; i++; continue; }
+              if (map[one]) { result += map[one]; } else { result += one; }
+              i++;
+            }
+            return result;
+          }
+          function yomihudaToRomaji(yomi) {
+            return yomi.split('<br>').map(part => hiraganaToRomaji(part)).join('  ');
+          }
+          /* strip internal <br> from first/second, keep only the separator between them */
+          function formatVerse(first, second) {
+            return first.replace(/<br>/gi, '') + '<br>' + second.replace(/<br>/gi, '');
+          }
+
+          /* ── Poem data ── */
+          const tmPoemData = {
+            1: { first: "秋の田の かりほの庵の 苫をあらみ", second: "我が衣手は 露にぬれつつ", name: "天智天皇" },
+            2: { first: "春過ぎて 夏来にけらし 白妙の", second: "衣ほすてふ 天の香具山", name: "持統天皇" },
+            3: { first: "あしびきの 山鳥の尾の しだり尾の", second: "ながながし夜を ひとりかも寝む", name: "柿本人麻呂" },
+            4: { first: "田子の浦に うちいでてみれば 白妙の", second: "富士の高嶺に 雪は降りつつ", name: "山部赤人" },
+            5: { first: "奥山に 紅葉踏み分け 鳴く鹿の", second: "声聞く時ぞ 秋はかなしき", name: "猿丸太夫" },
+            6: { first: "かささぎの 渡せる橋に おく霜の", second: "白きをみれば 夜ぞふけにける", name: "中納言家持" },
+            7: { first: "天の原 ふりさけみれば 春日なる", second: "三笠の山に 出でし月かも", name: "阿倍仲麻呂" },
+            8: { first: "わが庵は 都の辰巳 しかぞすむ", second: "世をうぢ山と 人はいふなり", name: "喜撰法師" },
+            9: { first: "花の色は うつりにけりな いたづらに", second: "わが身よにふる ながめせしまに", name: "小野小町" },
+            10: { first: "これやこの 行くも帰るも わかれては", second: "しるもしらぬも 逢坂の関", name: "蝉丸" },
+            11: { first: "わたの原 八十島かけて 漕ぎ出でぬと", second: "人にはつげよ あまのつり舟", name: "参議篁" },
+            12: { first: "天つ風 雲のかよひ路 吹きとぢよ", second: "をとめの姿 しばしとどめむ", name: "僧正遍昭" },
+            13: { first: "筑波嶺の 峰より落つる みなの川", second: "こひぞつもりて 淵となりぬる", name: "陽成院" },
+            14: { first: "陸奥の しのぶもぢずり 誰ゆゑに", second: "乱れそめにし 我ならなくに", name: "河原左大臣" },
+            15: { first: "君がため 春の野に出でて 若菜つむ", second: "わが衣手に 雪は降りつつ", name: "光孝天皇" },
+            16: { first: "立ち別れ いなばの山の 峰に生ふる", second: "まつとし聞かば 今帰りこむ", name: "中納言行平" },
+            17: { first: "ちはやぶる 神代もきかず 竜田川", second: "から紅に 水くくるとは", name: "在原業平朝臣" },
+            18: { first: "住の江の 岸による波 よるさへや", second: "夢のかよひ路 人目よくらむ", name: "藤原敏行朝臣" },
+            19: { first: "難波潟 みじかき葦の ふしのまも", second: "逢はでこの世を 過ぐしてよとや", name: "伊勢" },
+            20: { first: "わびぬれば いまはたおなじ 難波なる", second: "みをつくしても 逢はむとぞ思ふ", name: "元良親王" },
+            21: { first: "今こむと いひしばかりに 長月の", second: "有明の月を 待ち出でつるかな", name: "素性法師" },
+            22: { first: "吹くからに 秋の草木の しをるれば", second: "むべ山風を 嵐といふらむ", name: "文屋康秀" },
+            23: { first: "月みれば ちぢにものこそ 悲しけれ", second: "わが身一つの 秋にはあらねど", name: "大江千里" },
+            24: { first: "このたびは 幣もとりあへず 手向山", second: "もみぢのにしき 神のまにまに", name: "菅家" },
+            25: { first: "名にし負はば 逢坂山の さねかづら", second: "人にしられで くるよしもがな", name: "三条右大臣" },
+            26: { first: "小倉山 峰のもみぢ葉 心あらば", second: "今ひとたびの みゆき待たなむ", name: "貞信公" },
+            27: { first: "みかの原 わきて流るる いづみ川", second: "いつ見きとてか 恋しかるらむ", name: "中納言兼輔" },
+            28: { first: "山里は 冬ぞさびしさ まさりける", second: "人目も草も かれぬと思へば", name: "源宗于朝臣" },
+            29: { first: "心当てに 折らばや折らむ 初霜の", second: "おきまどはせる 白菊の花", name: "凡河内躬恒" },
+            30: { first: "有明の つれなく見えし 別れより", second: "あかつきばかり 憂きものはなし", name: "壬生忠岑" },
+            31: { first: "朝ぼらけ 有明の月と 見るまでに", second: "吉野の里に 降れる白雪", name: "坂上是則" },
+            32: { first: "山川に 風のかけたる しがらみは", second: "流れもあへぬ 紅葉なりけり", name: "春道列樹" },
+            33: { first: "久方の 光のどけき 春の日に", second: "しづ心なく 花の散るらむ", name: "紀友則" },
+            34: { first: "誰をかも 知る人にせむ 高砂の", second: "松も昔の 友ならなくに", name: "藤原興風" },
+            35: { first: "人はいさ 心も知らず ふるさとは", second: "花ぞ昔の 香に匂ひける", name: "紀貫之" },
+            36: { first: "夏の夜は まだ宵ながら あけぬるを", second: "雲のいづこに 月やどるらむ", name: "清原深養父" },
+            37: { first: "白露に 風の吹きしく 秋の野は", second: "つらぬきとめぬ 玉ぞ散りける", name: "文屋朝康" },
+            38: { first: "忘らるる 身をば思はず 誓ひてし", second: "人の命の 惜しくもあるかな", name: "右近" },
+            39: { first: "浅茅生の 小野の篠原 しのぶれど", second: "あまりてなどか 人の恋しき", name: "参議等" },
+            40: { first: "忍ぶれど 色に出でにけり 我が恋は", second: "物や思ふと 人の問ふまで", name: "平兼盛" },
+            41: { first: "恋すてふ 我が名はまだき 立ちにけり", second: "人しれずこそ 思ひそめしか", name: "壬生忠見" },
+            42: { first: "契りきな かたみに袖を しぼりつつ", second: "末の松山 波こさじとは", name: "清原元輔" },
+            43: { first: "逢ひ見ての のちの心に くらぶれば", second: "昔は物を 思はざりけり", name: "権中納言敦忠" },
+            44: { first: "逢ふことの 絶えてしなくは なかなかに", second: "人をも身をも 恨みざらまし", name: "中納言朝忠" },
+            45: { first: "あはれとも いふべき人は 思ほえで", second: "身のいたづらに なりぬべきかな", name: "謙徳公" },
+            46: { first: "由良のとを 渡る舟人 かぢを絶え", second: "ゆくへも知らぬ 恋の道かな", name: "曽禰好忠" },
+            47: { first: "八重葎 しげれる宿の さびしきに", second: "人こそ見えね 秋は来にけり", name: "恵慶法師" },
+            48: { first: "風をいたみ 岩うつ波の おのれのみ", second: "くだけて物を 思ふころかな", name: "源重之" },
+            49: { first: "御垣守 衛士のたく火の 夜はもえ", second: "昼は消えつつ 物をこそ思へ", name: "大中臣能宣朝臣" },
+            50: { first: "君がため 惜しからざりし いのちさへ", second: "長くもがなと 思ひけるかな", name: "藤原義孝" },
+            51: { first: "かくとだに えやはいぶきの さしも草", second: "さしも知らじな もゆる思ひを", name: "藤原実方朝臣" },
+            52: { first: "明けぬれば 暮るるものとは 知りながら", second: "なほうらめしき 朝ぼらけかな", name: "藤原道信朝臣" },
+            53: { first: "嘆きつつ ひとり寝る夜の 明くる間は", second: "いかに久しき ものとかは知る", name: "右大将道綱母" },
+            54: { first: "忘れじの ゆく末までは かたければ", second: "今日を限りの 命ともがな", name: "儀同三司母" },
+            55: { first: "滝の音は たえて久しく なりぬれど", second: "名こそ流れて なほ聞こえけれ", name: "大納言公任" },
+            56: { first: "あらざらむ この世のほかの 思ひ出に", second: "いまひとたびの 逢ふこともがな", name: "和泉式部" },
+            57: { first: "めぐり逢ひて 見しやそれとも わかぬ間に", second: "雲隠れにし 夜半の月かな", name: "紫式部" },
+            58: { first: "ありま山 猪名の笹原 風吹けば", second: "いでそよ人を 忘れやはする", name: "大弐三位" },
+            59: { first: "やすらはで 寝なましものを 小夜更けて", second: "かたぶくまでの 月を見しかな", name: "赤染衛門" },
+            60: { first: "大江山 いく野の道の 遠ければ", second: "まだふみもみず 天の橋立", name: "小式部内侍" },
+            61: { first: "いにしへの 奈良の都の 八重桜", second: "けふ九重に 匂ひぬるかな", name: "伊勢大輔" },
+            62: { first: "夜をこめて 鳥のそらねは はかるとも", second: "よに逢坂の 関は許さじ", name: "清少納言" },
+            63: { first: "いまはただ 思ひ絶えなむ とばかりを", second: "人づてならで 言ふよしもがな", name: "左京大夫道雅" },
+            64: { first: "朝ぼらけ 宇治の川霧 絶え絶えに", second: "あらはれわたる 瀬々の網代木", name: "権中納言定頼" },
+            65: { first: "恨みわび ほさぬ袖だに あるものを", second: "恋にくちなむ 名こそをしけれ", name: "相模" },
+            66: { first: "もろともに あはれと思へ 山桜", second: "花よりほかに 知る人もなし", name: "前大僧正行尊" },
+            67: { first: "春の夜の 夢ばかりなる 手枕に", second: "かひなく立たむ 名こそをしけれ", name: "周防内侍" },
+            68: { first: "心にも あらで憂き世に ながらへば", second: "恋しかるべき 夜半の月かな", name: "三条院" },
+            69: { first: "嵐吹く 三室の山の 紅葉葉は", second: "竜田の川の 錦なりけり", name: "能因法師" },
+            70: { first: "さびしさに 宿を立ち出でて ながむれば", second: "いづくも同じ 秋の夕暮れ", name: "良暹法師" },
+            71: { first: "夕されば 門田の稲葉 おとづれて", second: "蘆のまろやに 秋風ぞ吹く", name: "大納言経信" },
+            72: { first: "音に聞く 高師の浜の あだ波は", second: "かけじや袖の ぬれもこそすれ", name: "祐子内親王家紀伊" },
+            73: { first: "高砂の 尾の上の桜 咲きにけり", second: "外山の霞 立たずもあらなむ", name: "前権中納言匡房" },
+            74: { first: "憂かりける 人を初瀬の 山おろしよ", second: "はげしかれとは 祈らぬものを", name: "源俊頼朝臣" },
+            75: { first: "契りおきし させもが露を いのちにて", second: "あはれ今年の 秋もいぬめり", name: "藤原基俊" },
+            76: { first: "わたの原 こぎいでてみれば 久方の", second: "雲居にまがふ 沖つ白波", name: "法性寺入道前関白太政大臣" },
+            77: { first: "瀬をはやみ 岩にせかるる 滝川の", second: "われても末に あはむとぞ思ふ", name: "崇徳院" },
+            78: { first: "淡路島 かよふ千鳥の 鳴く声に", second: "幾夜寝覚めぬ 須磨の関守", name: "源兼昌" },
+            79: { first: "秋風に たなびく雲の たえ間より", second: "もれいづる月の 影のさやけさ", name: "左京大夫顕輔" },
+            80: { first: "長からむ 心もしらず 黒髪の", second: "みだれてけさは 物をこそ思へ", name: "待賢門院堀河" },
+            81: { first: "ほととぎす 鳴きつる方を ながむれば", second: "ただありあけの 月ぞ残れる", name: "後徳大寺左大臣" },
+            82: { first: "思ひわび さても命は あるものを", second: "憂きにたへぬは 涙なりけり", name: "道因法師" },
+            83: { first: "世の中よ 道こそなけれ 思ひ入る", second: "山の奥にも 鹿ぞ鳴くなる", name: "皇太后宮大夫俊成" },
+            84: { first: "長らへば またこのごろや しのばれむ", second: "憂しと見し世ぞ 今は恋しき", name: "藤原清輔朝臣" },
+            85: { first: "夜もすがら 物思ふころは 明けやらで", second: "閨のひまさへ つれなかりけり", name: "俊恵法師" },
+            86: { first: "嘆けとて 月やは物を 思はする", second: "かこち顔なる わが涙かな", name: "西行法師" },
+            87: { first: "村雨の 露もまだひぬ まきの葉に", second: "霧たちのぼる 秋の夕暮れ", name: "寂蓮法師" },
+            88: { first: "難波江の 葦のかりねの ひとよゆゑ", second: "みをつくしてや 恋ひわたるべき", name: "皇嘉門院別当" },
+            89: { first: "玉の緒よ 絶えなば絶えね ながらへば", second: "忍ぶることの 弱りもぞする", name: "式子内親王" },
+            90: { first: "見せばやな 雄島のあまの 袖だにも", second: "ぬれにぞぬれし 色はかはらず", name: "殷富門院大輔" },
+            91: { first: "きりぎりす 鳴くや霜夜の さむしろに", second: "衣かたしき ひとりかも寝む", name: "後京極摂政前太政大臣" },
+            92: { first: "わが袖は 潮干に見えぬ 沖の石の", second: "人こそ知らね かわくまもなし", name: "二条院讃岐" },
+            93: { first: "世の中は つねにもがもな 渚こぐ", second: "あまの小舟の 綱手かなしも", name: "鎌倉右大臣" },
+            94: { first: "み吉野の 山の秋風 さ夜ふけて", second: "ふるさと寒く 衣うつなり", name: "参議雅経" },
+            95: { first: "おほけなく 憂き世の民に おほふかな", second: "わがたつ杣に 墨染の袖", name: "前大僧正慈円" },
+            96: { first: "花さそふ 嵐の庭の 雪ならで", second: "ふりゆくものは わが身なりけり", name: "入道前太政大臣" },
+            97: { first: "来ぬ人を まつほの浦の 夕なぎに", second: "焼くやもしほの 身もこがれつつ", name: "権中納言定家" },
+            98: { first: "風そよぐ ならの小川の 夕暮は", second: "みそぎぞ夏の しるしなりける", name: "従二位家隆" },
+            99: { first: "人もをし 人もうらめし あぢきなく", second: "世を思ふゆゑに 物思ふ身は", name: "後鳥羽院" },
+            100: { first: "ももしきや ふるき軒ばの しのぶにも", second: "なほあまりある 昔なりけり", name: "順徳院" }
+          };
+
+          const tmRawData = [
+            ["人", 19], ["山", 11], ["月", 11], ["世", 10], ["秋", 9], ["もの", 9],
+            ["身", 8], ["夜", 7], ["思ふ", 7], ["物", 7], ["あら", 6], ["出で", 6],
+            ["花", 6], ["風", 6], ["見", 6], ["思ひ", 6], ["袖", 6], ["みれ", 5],
+            ["今", 5], ["名", 5], ["絶え", 5], ["ぬれ", 4], ["春", 4], ["寝", 4],
+            ["鳴く", 4], ["心", 4], ["憂き", 4], ["昔", 4], ["知ら", 4], ["ある", 4],
+            ["恋", 4], ["露", 3], ["夏", 3], ["来", 3], ["衣", 3], ["ひとり", 3],
+            ["雪", 3], ["いふ", 3], ["色", 3], ["よ", 3], ["ま", 3], ["逢坂", 3],
+            ["かけ", 3], ["あま", 3], ["雲", 3], ["峰", 3], ["川", 3], ["なり", 3],
+            ["ゆゑ", 3], ["立ち", 3], ["波", 3], ["難波", 3], ["わび", 3], ["いま", 3],
+            ["み", 3], ["有明", 3], ["吹く", 3], ["嵐", 3], ["たび", 3], ["ひと", 3],
+            ["思へ", 3], ["見え", 3], ["なし", 3], ["朝ぼらけ", 3], ["知る", 3],
+            ["思は", 3], ["命", 3], ["恋しき", 3], ["末", 3], ["こと", 3], ["あはれ", 3],
+            ["ゆく", 3], ["道", 3], ["秋風", 3], ["庵", 2], ["衣手", 2], ["白妙", 2],
+            ["てふ", 2], ["いで", 2], ["降り", 2], ["紅葉", 2], ["鹿", 2], ["声", 2],
+            ["聞く", 2], ["ふけ", 2], ["天", 2], ["ふり", 2], ["都", 2], ["せ", 2],
+            ["しら", 2], ["関", 2], ["わたの原", 2], ["島", 2], ["かよひ路", 2],
+            ["吹き", 2], ["しのぶ", 2], ["そめ", 2], ["君", 2], ["ため", 2], ["野", 2],
+            ["別れ", 2], ["まつ", 2], ["こ", 2], ["竜田", 2], ["よる", 2], ["夢", 2],
+            ["人目", 2], ["葦", 2], ["逢は", 2], ["つくし", 2], ["あへ", 2], ["よし", 2],
+            ["恋しかる", 2], ["さびし", 2], ["折ら", 2], ["おき", 2], ["吉野", 2],
+            ["流れ", 2], ["久方", 2], ["高砂", 2], ["ふるさと", 2], ["匂ひ", 2],
+            ["玉", 2], ["契り", 2], ["逢ひ", 2], ["逢ふ", 2], ["恨み", 2], ["宿", 2],
+            ["岩", 2], ["うつ", 2], ["ころ", 2], ["いのち", 2], ["明け", 2], ["間", 2],
+            ["忘れ", 2], ["音", 2], ["ほか", 2], ["夜半", 2], ["する", 2], ["わたる", 2],
+            ["をしけれ", 2], ["立た", 2], ["ながらへ", 2], ["ながむれ", 2],
+            ["夕暮れ", 2], ["沖", 2], ["長らへ", 2], ["ごろ", 2], ["しのば", 2],
+            ["憂し", 2], ["涙", 2], ["中", 2],
+            ["田", 1], ["かりほ", 1], ["苫", 1], ["過ぎ", 1], ["ほす", 1],
+            ["天の香具山", 1], ["あしびき", 1], ["山鳥", 1], ["尾", 1], ["しだり尾", 1],
+            ["ながながし", 1], ["田子の浦", 1], ["富士", 1], ["高嶺", 1], ["奥山", 1],
+            ["踏み", 1], ["分け", 1], ["時", 1], ["かなしき", 1], ["かささぎ", 1],
+            ["渡せ", 1], ["橋", 1], ["おく", 1], ["霜", 1], ["白き", 1], ["原", 1],
+            ["さけ", 1], ["春日", 1], ["三笠", 1], ["辰巳", 1], ["すむ", 1], ["うぢ", 1],
+            ["うつり", 1], ["ふる", 1], ["ながめ", 1], ["行く", 1], ["帰る", 1],
+            ["わかれ", 1], ["しる", 1], ["八十", 1], ["漕ぎ", 1], ["つげよ", 1],
+            ["つり舟", 1], ["とぢよ", 1], ["をとめ", 1], ["姿", 1], ["とどめ", 1],
+            ["筑波", 1], ["嶺", 1], ["落つる", 1], ["みな", 1], ["こひ", 1],
+            ["つもり", 1], ["淵", 1], ["陸奥", 1], ["もぢずり", 1], ["乱れ", 1],
+            ["若菜", 1], ["つむ", 1], ["いなば", 1], ["生ふる", 1], ["聞か", 1],
+            ["帰り", 1], ["ちはやぶる", 1], ["神代", 1], ["きか", 1], ["から紅", 1],
+            ["水", 1], ["くくる", 1], ["住の江", 1], ["岸", 1], ["よく", 1], ["潟", 1],
+            ["みじかき", 1], ["ふし", 1], ["過ぐし", 1], ["おなじ", 1], ["いひ", 1],
+            ["長月", 1], ["待ち", 1], ["草木", 1], ["しをるれ", 1], ["山風", 1],
+            ["ちぢ", 1], ["悲しけれ", 1], ["一", 1], ["幣", 1], ["とり", 1],
+            ["手向", 1], ["もみぢ", 1], ["にしき", 1], ["神", 1], ["まにま", 1],
+            ["負は", 1], ["さねかづら", 1], ["くる", 1], ["小倉", 1], ["もみぢ葉", 1],
+            ["みゆき", 1], ["待た", 1], ["みかの原", 1], ["わき", 1], ["流るる", 1],
+            ["いづみ川", 1], ["山里", 1], ["冬", 1], ["まさり", 1], ["草", 1],
+            ["かれ", 1], ["心当て", 1], ["初霜", 1], ["まどはせ", 1], ["白菊", 1],
+            ["つれなく", 1], ["あかつき", 1], ["見る", 1], ["里", 1], ["降れ", 1],
+            ["白雪", 1], ["山川", 1], ["しがらみ", 1], ["光", 1], ["のどけき", 1],
+            ["日", 1], ["しづ心", 1], ["なく", 1], ["散る", 1], ["松", 1], ["友", 1],
+            ["香", 1], ["宵", 1], ["あけ", 1], ["やどる", 1], ["白露", 1], ["しく", 1],
+            ["つらぬき", 1], ["とめ", 1], ["散り", 1], ["忘ら", 1], ["誓ひ", 1],
+            ["惜しく", 1], ["浅茅生", 1], ["小野", 1], ["篠原", 1], ["しのぶれ", 1],
+            ["あまり", 1], ["忍ぶれ", 1], ["問ふ", 1], ["す", 1], ["まだき", 1],
+            ["しれ", 1], ["かたみ", 1], ["しぼり", 1], ["松山", 1], ["こさ", 1],
+            ["のち", 1], ["くらぶれ", 1], ["し", 1], ["思ほえ", 1], ["由良", 1],
+            ["と", 1], ["渡る", 1], ["舟人", 1], ["かぢ", 1], ["へ", 1], ["八重", 1],
+            ["葎", 1], ["しげれ", 1], ["さびしき", 1], ["いた", 1], ["くだけ", 1],
+            ["御垣守", 1], ["衛士", 1], ["たく", 1], ["火", 1], ["夜は", 1], ["昼", 1],
+            ["消え", 1], ["惜しから", 1], ["長く", 1], ["いぶき", 1], ["さしも草", 1],
+            ["もゆる", 1], ["暮るる", 1], ["知り", 1], ["うらめしき", 1], ["嘆き", 1],
+            ["寝る", 1], ["明くる", 1], ["久しき", 1], ["かたけれ", 1], ["今日", 1],
+            ["限り", 1], ["滝", 1], ["たえ", 1], ["久しく", 1], ["聞こえ", 1],
+            ["思ひ出", 1], ["めぐり", 1], ["わか", 1], ["雲隠れ", 1], ["ありま", 1],
+            ["猪名", 1], ["笹原", 1], ["吹け", 1], ["やすらは", 1], ["小夜", 1],
+            ["更け", 1], ["かたぶく", 1], ["大江", 1], ["いく野", 1], ["遠けれ", 1],
+            ["ふみ", 1], ["天の橋立", 1], ["いにしへ", 1], ["奈良", 1], ["八重桜", 1],
+            ["けふ", 1], ["九重", 1], ["こめ", 1], ["鳥", 1], ["そらね", 1],
+            ["はかる", 1], ["許さ", 1], ["人づて", 1], ["言ふ", 1], ["宇治", 1],
+            ["川霧", 1], ["あらはれ", 1], ["瀬々", 1], ["網代木", 1], ["ほさ", 1],
+            ["くち", 1], ["もろとも", 1], ["山桜", 1], ["手枕", 1], ["かひなく", 1],
+            ["三室", 1], ["紅葉葉", 1], ["錦", 1], ["同じ", 1], ["夕", 1], ["され", 1],
+            ["門田", 1], ["稲葉", 1], ["おとづれ", 1], ["蘆", 1], ["まろや", 1],
+            ["高師", 1], ["浜", 1], ["あだ波", 1], ["すれ", 1], ["尾の上", 1],
+            ["桜", 1], ["咲き", 1], ["外山", 1], ["霞", 1], ["憂かり", 1], ["初瀬", 1],
+            ["山おろし", 1], ["はげしかれ", 1], ["祈ら", 1], ["させも", 1],
+            ["今年", 1], ["いぬ", 1], ["こぎ", 1], ["雲居", 1], ["まがふ", 1],
+            ["白波", 1], ["瀬", 1], ["はや", 1], ["せか", 1], ["滝川", 1], ["あは", 1],
+            ["淡路", 1], ["かよふ", 1], ["千鳥", 1], ["幾", 1], ["覚め", 1],
+            ["須磨", 1], ["関守", 1], ["たなびく", 1], ["たえ間", 1], ["もれ", 1],
+            ["いづる", 1], ["影", 1], ["さやけ", 1], ["ほととぎす", 1], ["鳴き", 1],
+            ["方", 1], ["ありあけ", 1], ["残れ", 1], ["たへ", 1], ["なけれ", 1],
+            ["入る", 1], ["奥", 1], ["やら", 1], ["閨", 1], ["ひま", 1],
+            ["つれなかり", 1], ["嘆け", 1], ["かこち顔", 1], ["村雨", 1], ["ひ", 1],
+            ["まき", 1], ["葉", 1], ["霧", 1], ["たち", 1], ["のぼる", 1], ["江", 1],
+            ["かりね", 1], ["恋ひ", 1], ["緒", 1], ["忍ぶる", 1], ["弱り", 1],
+            ["見せ", 1], ["雄島", 1], ["かはら", 1], ["きりぎりす", 1], ["霜夜", 1],
+            ["さむしろ", 1], ["かたしき", 1], ["潮干", 1], ["石", 1], ["かわく", 1],
+            ["つね", 1], ["渚", 1], ["こぐ", 1], ["小舟", 1], ["綱手", 1],
+            ["かなし", 1], ["さ夜", 1], ["寒く", 1], ["おほけなく", 1], ["民", 1],
+            ["おほふ", 1], ["たつ", 1], ["杣", 1], ["墨染", 1], ["さそふ", 1],
+            ["庭", 1], ["ほ", 1], ["浦", 1], ["夕なぎ", 1], ["焼く", 1], ["もしほ", 1],
+            ["こがれ", 1], ["そよぐ", 1], ["なら", 1], ["小川", 1], ["夕暮", 1],
+            ["みそぎ", 1], ["しるし", 1], ["をし", 1], ["うらめし", 1],
+            ["あぢきなく", 1], ["ももしき", 1], ["ふるき", 1], ["軒ば", 1],
+            ["沖の石", 1], ["うぢ山", 1], ["大江山", 1], ["ならの小川", 1], ["ありま山", 1], ["まつほの浦", 1]
+          ];
+
+          const tmCatMap = {
+            nature: new Set(["山", "月", "秋", "花", "風", "露", "夏", "雪", "雲", "峰", "川", "春", "波", "葦", "嵐", "鹿", "野", "紅葉", "もみぢ葉", "天", "秋風", "夕暮れ", "朝ぼらけ", "声", "色", "白妙", "夜", "岩", "玉", "島"]),
+            emotion: new Set(["恋", "思ふ", "思ひ", "思へ", "思は", "心", "袖", "衣", "衣手", "別れ", "寝", "もの", "物", "あはれ", "わび", "さびし", "夢", "恋しかる", "恋しき", "憂き", "うき", "契り", "恨み", "しのぶ", "しのぶれ", "惜しけれ", "涙", "いのち", "命", "ため", "ながらへ"]),
+            people: new Set(["人", "世", "身", "名", "ひと", "ひとり", "昔", "君", "人め"]),
+            place: new Set(["難波", "逢坂", "竜田", "吉野", "高砂", "都", "筑波", "由良", "天橋立", "田子の浦", "香久山", "小倉", "春日", "高師", "松山", "陸奥", "猪名", "富士", "雄島", "須磨", "三室", "沖の石", "いぶき", "うぢ山", "大江山", "ならの小川", "ありま山", "まつほの浦"]),
+            action: new Set(["出で", "知ら", "知る", "見", "鳴く", "来", "見れ", "立ち", "いふ", "なり", "吹く", "見え", "行く", "流れ", "折ら", "ゆく", "わたる", "ながむれ", "濡れ", "ぬれ", "明け", "たえ", "絶え", "忘れ", "乱れ"])
+          };
+          const tmCatColor = {
+            nature: { bg: "#e8f5e0", text: "#4a7833", bar: "#6a9e4f" },
+            emotion: { bg: "#fceae6", text: "#a04030", bar: "#c0634a" },
+            people: { bg: "#f0ece6", text: "#5a4a38", bar: "#9a8a78" },
+            place: { bg: "#f0ece6", text: "#5a4a38", bar: "#9a8a78" },
+            action: { bg: "#f0e8f8", text: "#6040a0", bar: "#8b5fba" },
+            other: { bg: "#f0ece6", text: "#5a4a38", bar: "#9a8a78" }
+          };
+          function tmGetCategory(w) {
+            for (const [k, s] of Object.entries(tmCatMap)) { if (s.has(w)) return k; }
+            return "other";
+          }
+          function tmFindPoems(word) {
+            return Object.entries(tmPoemData)
+              .filter(([, p]) => (p.first + p.second).includes(word))
+              .map(([n, p]) => ({ num: parseInt(n), ...p }));
+          }
+          function tmHighlight(text, word) {
+            return text.split(word).join(`<mark>${word}</mark>`);
+          }
+          let tmSelectedTag = null;
+          function tmOpenPanel(word) {
+            const poems = tmFindPoems(word);
+            const titleEl = document.getElementById("tm-panel-title");
+            titleEl.innerHTML = `Poems containing "<em>${word}</em>" <span class="tm-panel-meta">${poems.length} poem(s)</span>`;
+            const body = document.getElementById("tm-panel-body");
+            body.innerHTML = poems.length === 0
+              ? `<p class="tm-panel-empty">No poems found containing this word.</p>`
+              : poems.map(p => {
+                  const hd = tmPoem100[p.num] || {};
+                  const verse = hd.first ? formatVerse(hd.first, hd.second) : (tmHighlight(p.first, word) + '<br>' + tmHighlight(p.second, word));
+                  const romaji = hd.yomihuda ? yomihudaToRomaji(hd.yomihuda) : '';
+                  return `
+                <a href="https://hyakuninisshu.com/${p.num}.html"
+                   class="tm-poem-card" target="_blank" rel="noopener">
+                  <div class="tm-poem-card-num">No.${p.num}</div>
+                  <div class="tm-poem-card-verse">${verse}</div>
+                  ${romaji ? `<div class="tm-poem-card-romaji">${romaji}</div>` : ''}
+                  <div class="tm-poem-card-modern">${hd.modern_en || ''}</div>
+                  <div class="tm-poem-card-name">― ${hd.name || p.name}${hd.name_en ? ` (${hd.name_en})` : ''}</div>
+                  <div class="tm-poem-card-link">View details →</div>
+                </a>`;
+                }).join("");
+            document.getElementById("tm-poem-panel").classList.add("open");
+          }
+          function tmClosePanel() {
+            document.getElementById("tm-poem-panel").classList.remove("open");
+            if (tmSelectedTag) { tmSelectedTag.classList.remove("selected"); tmSelectedTag = null; }
+          }
+          let tmCurrentView = "cloud", tmCurrentCat = "all", tmCurrentTopN = 152;
+          function tmFilteredData() {
+            let d = tmCurrentCat === "all" ? tmRawData : tmRawData.filter(([w]) => tmGetCategory(w) === tmCurrentCat);
+            return d.slice(0, tmCurrentTopN);
+          }
+          const tmCloud = document.getElementById("tm-cloud-view");
+          const tmMaxCount = tmRawData[0][1], tmMinCount = tmRawData[tmRawData.length - 1][1];
+          function tmSizeFromCount(c) { return Math.round(12 + ((c - tmMinCount) / (tmMaxCount - tmMinCount)) * 36); }
+          function tmBuildCloud() {
+            tmCloud.innerHTML = "";
+            const shuffled = [...tmFilteredData()].sort(() => Math.random() - .5);
+            shuffled.forEach(([word, count]) => {
+              const cat = tmGetCategory(word), col = tmCatColor[cat], size = tmSizeFromCount(count);
+              const el = document.createElement("span");
+              el.className = "tm-word-tag"; el.dataset.cat = cat;
+              el.style.cssText = `font-size:${size}px;background:${col.bg};color:${col.text};`;
+              el.innerHTML = `${word}<span class="tip">${count}×</span>`;
+              el.addEventListener("click", () => {
+                if (tmSelectedTag) tmSelectedTag.classList.remove("selected");
+                tmSelectedTag = el; el.classList.add("selected");
+                tmOpenPanel(word);
+              });
+              tmCloud.appendChild(el);
+            });
+          }
+          let tmBarChart;
+          function tmBuildBar() {
+            const data = tmFilteredData();
+            document.getElementById("tm-bar-canvas-wrap").style.height = (data.length * 26 + 60) + "px";
+            if (tmBarChart) tmBarChart.destroy();
+            const ctx = document.getElementById("tmBarChart").getContext("2d");
+            tmBarChart = new Chart(ctx, {
+              type: "bar",
+              data: {
+                labels: data.map(d => d[0]),
+                datasets: [{
+                  data: data.map(d => d[1]),
+                  backgroundColor: data.map(d => tmCatColor[tmGetCategory(d[0])].bar + "bb"),
+                  borderColor: data.map(d => tmCatColor[tmGetCategory(d[0])].bar),
+                  borderWidth: 1.5, borderRadius: 3
+                }]
+              },
+              options: {
+                indexAxis: "y", responsive: true, maintainAspectRatio: false, animation: { duration: 200 },
+                plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => `  ${c.raw} times` } } },
+                scales: {
+                  x: { beginAtZero: true, grid: { color: "rgba(0,0,0,0.05)" }, ticks: { color: "#9a8a78", font: { family: "'Noto Sans JP',sans-serif", size: 11 }, stepSize: 1 } },
+                  y: { grid: { display: false }, ticks: { color: "#3d2b1a", font: { size: 12 }, autoSkip: false } }
+                },
+                onClick(evt, elements) {
+                  if (elements.length > 0) tmOpenPanel(data[elements[0].index][0]);
+                }
+              }
+            });
+          }
+          function tmSwitchView(view) {
+            tmCurrentView = view;
+            document.getElementById("tm-btn-cloud").classList.toggle("active", view === "cloud");
+            document.getElementById("tm-btn-bar").classList.toggle("active", view === "bar");
+            document.getElementById("tm-cloud-view").style.display = view === "cloud" ? "flex" : "none";
+            document.getElementById("tm-bar-view").style.display = view === "bar" ? "block" : "none";
+            if (view === "bar") tmBuildBar();
+          }
+          function tmApplyFilter() {
+            document.querySelectorAll(".tm-word-tag").forEach(el => {
+              el.classList.toggle("dimmed", !(tmCurrentCat === "all" || el.dataset.cat === tmCurrentCat));
+            });
+          }
+          function tmFilterCategory(btn) {
+            document.querySelectorAll(".tm-filter-btn").forEach(b => b.classList.remove("active"));
+            btn.classList.add("active"); tmCurrentCat = btn.dataset.cat;
+            if (tmCurrentView === "cloud") {
+              tmBuildCloud();
+              tmApplyFilter();
+            } else tmBuildBar();
+          }
+          function tmUpdateTopN(val) {
+            val = parseInt(val); tmCurrentTopN = val;
+            const total = tmRawData.length;
+            document.getElementById("tmTopN-label").textContent = val >= total ? `All ${total} words` : `Top ${val} words`;
+            tmUpdatePie(Math.min(val, total), total);
+            if (tmCurrentView === "cloud") { tmBuildCloud(); tmApplyFilter(); } else tmBuildBar();
+          }
+          /* ── Pie chart ── */
+          let tmPieChart;
+          function tmInitPie() {
+            const ctx = document.getElementById('tmPieChart').getContext('2d');
+            tmPieChart = new Chart(ctx, {
+              type: 'doughnut',
+              data: {
+                datasets: [{
+                  data: [152, 510 - 152],
+                  backgroundColor: ['#B82343', '#ddd3c3'],
+                  borderWidth: 0
+                }]
+              },
+              options: {
+                cutout: '58%',
+                responsive: false,
+                plugins: { legend: { display: false }, tooltip: { enabled: false } },
+                animation: { duration: 200 }
+              }
+            });
+          }
+          function tmUpdatePie(shown, total) {
+            if (!tmPieChart) return;
+            tmPieChart.data.datasets[0].data = [shown, Math.max(0, total - shown)];
+            tmPieChart.update();
+            document.getElementById('pie-shown-count').textContent = shown >= total ? 'ALL' : shown;
+          }
+          tmInitPie();
+          tmBuildCloud();
+          document.addEventListener("click", e => {
+            const panel = document.getElementById("tm-poem-panel");
+            if (panel.classList.contains("open") && !panel.contains(e.target) && !e.target.closest(".tm-word-tag"))
+              tmClosePanel();
+          });
+        </script>
+
+
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-copy">&copy;2023 Shigure no Hyakunin Isshu</span>
+      <ul>
+        <li><a href="policy.html">プライバシーポリシー</a></li>
+        <li>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXx7TKlqnTfKrw2Nuh4f37swVwFH-RFDsNkTGQ4JEF50q2wQ/viewform?usp=header"
+            target="_blank" rel="noopener">お問い合わせフォーム</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+  <!-- フッターここまで -->
+  <!-- クリッカブルマップここから -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/image-map-resizer/1.0.10/js/imageMapResizer.min.js"></script>
+  <script>
+    imageMapResize();
+  </script>
+  <!-- クリッカブルマップここまで -->
+  <script src="../js/back-to-top.js?20260908-02"></script>
+
+</body>
+
+</html>

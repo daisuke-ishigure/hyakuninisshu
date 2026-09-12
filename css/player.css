@@ -1,0 +1,342 @@
+@charset "UTF-8";
+* {
+  transition: none !important;
+}
+
+a {
+  text-decoration: underline;
+  color: #333;
+}
+
+.audio-playlist {
+  position: relative;
+  margin: 0 0 10px;
+  width: 100%;
+  max-width: 100%;
+  /* border: 1px solid #999; */
+  background-color: #f7f1e0;
+  border-radius: 1em;
+  color: #eee;
+}
+
+.playing-title {
+  font-size: 1.2em;
+  color: #333;
+  flex-grow: 1;
+  line-height: 2.1;
+}
+@media (max-width: 750px) {
+  .playing-title {
+    font-size: 1.1em;
+  }
+}
+
+.playing-number {
+  font-size: 1.2rem;
+  text-align: left;
+  color: #333;
+  font-weight: bold;
+}
+
+div.controls > p.nhk {
+  color: #333;
+  text-align: center;
+  font-size: 10px;
+  margin: 0.5em 0 0;
+}
+
+/* single モード */
+.audio-playlist.single {
+  max-width: 480px;
+  padding: 0;
+}
+
+.audio-playlist .controls {
+  max-width: 100%;
+  border: 1px solid #333;
+  padding: 1em 1em 0.5em;
+  margin-bottom: 1em;
+  position: sticky;
+  top: 10px;
+  background-color: #fff;
+  z-index: 100;
+  box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* single モード */
+.audio-playlist.single .controls {
+  display: flex;
+  max-width: none;
+}
+
+.audio-playlist .controls .row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+/* single モード */
+.audio-playlist.single .controls .row {
+  gap: 2px;
+  margin: 5px 0;
+}
+
+.audio-playlist .controls button {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  position: relative;
+}
+
+.audio-playlist input[name=vol] {
+  display: none;
+}
+
+@media screen and (min-width: 480px) {
+  .audio-playlist {
+    padding: 0;
+  }
+  .audio-playlist input[name=vol] {
+    display: block;
+  }
+}
+.audio-playlist .controls button::before {
+  content: "";
+  display: inline-block;
+  height: 24px;
+  width: 24px;
+  vertical-align: -10px;
+  margin-right: 8px;
+  background-repeat: no-repeat;
+}
+
+.audio-playlist .controls button.play-btn::before,
+.audio-playlist .controls button.pause-btn::before {
+  height: 32px;
+  width: 32px;
+  vertical-align: -4px;
+}
+
+/* single モード */
+.audio-playlist.single .controls button.play-btn::before,
+.audio-playlist.single .controls button.pause-btn::before {
+  height: 30px;
+  width: 30px;
+  vertical-align: 0;
+}
+
+.audio-playlist .controls button.loop-btn::before {
+  height: 20px;
+  width: 20px;
+  vertical-align: -4px;
+  display: none;
+}
+
+.audio-playlist .controls button.loop-btn.looped::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #b82343;
+}
+
+.audio-playlist .controls button.random-btn::before {
+  height: 20px;
+  width: 20px;
+  vertical-align: -4px;
+}
+
+.audio-playlist .controls button.random-btn.randomed::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #b82343;
+}
+
+.audio-playlist .controls .time {
+  font-size: 12px;
+  line-height: 36px;
+  color: #333;
+}
+
+.audio-playlist .track-list ul {
+  list-style-type: none;
+  padding-inline-start: 0.5rem;
+  padding: 0;
+  margin: 0;
+}
+
+/* counter(list-item) で ul 要素にナンバリング*/
+.audio-playlist .track-list ul li::before {
+  content: counter(list-item);
+  color: #333;
+  font-weight: bold;
+  margin-right: 0.5rem;
+  position: absolute;
+  top: 0;
+  left: 0.25em;
+  font-size: 1rem;
+}
+
+.audio-playlist .track-list ul li.active::before {
+  color: #fff;
+}
+
+.audio-playlist .track-list ul li.active a {
+  color: #fff;
+}
+
+.audio-playlist .track-list ul li {
+  padding: 0.8rem 0 0.5rem 2em;
+  cursor: pointer;
+  font-size: 1.2em;
+  border: 1px solid #000;
+  background: none;
+  color: #333;
+  position: relative;
+}
+@media (max-width: 750px) {
+  .audio-playlist .track-list ul li {
+    font-size: 1em;
+  }
+}
+
+.audio-playlist .track-list ul li.active {
+  background-color: #b82343;
+  color: #fff;
+  transition: 0s !important;
+}
+
+/* レンジスライダー */
+.audio-playlist input[type=range] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+  border-radius: 15px;
+  height: 6px;
+  background: #333;
+  margin: 0 5px;
+}
+
+/* Thumb: webkit */
+.audio-playlist input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 15px;
+  width: 15px;
+  background-color: #b82343;
+  border-radius: 50%;
+  border: none;
+}
+
+/* Thumb: Firefox */
+.audio-playlist input[type=range]::-moz-range-thumb {
+  height: 15px;
+  width: 15px;
+  background-color: #b82343;
+  border-radius: 50%;
+  border: none;
+}
+
+/* Hover, active & focus Thumb: Webkit */
+.audio-playlist input[type=range]::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 0 8px rgba(251, 255, 0, 0.3);
+}
+
+.audio-playlist input[type=range]:active::-webkit-slider-thumb {
+  box-shadow: 0 0 0 5px rgba(251, 255, 0, 0.4);
+}
+
+.audio-playlist input[type=range]:focus::-webkit-slider-thumb {
+  box-shadow: 0 0 0 5px rgba(251, 255, 0, 0.4);
+}
+
+/* Hover, active & focus Thumb: Firfox */
+.audio-playlist input[type=range]::-moz-range-thumb:hover {
+  box-shadow: 0 0 0 8px rgba(251, 255, 0, 0.3);
+}
+
+.audio-playlist input[type=range]:active::-moz-range-thumb {
+  box-shadow: 0 0 0 5px rgba(251, 255, 0, 0.4);
+}
+
+.audio-playlist input[type=range]:focus::-moz-range-thumb {
+  box-shadow: 0 0 0 5px rgba(251, 255, 0, 0.4);
+}
+
+/* Play ボタン*/
+.audio-playlist button.play-btn::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23B82343' viewBox='0 0 16 16'%3E %3Cpath d='M4.5 3.5L11.5 8L4.5 12.5V3.5z'/%3E%3C/svg%3E");
+}
+
+/* Pause ボタン */
+.audio-playlist button.play-btn.playing::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23B82343' viewBox='0 0 16 16'%3E %3Cpath d='M5 3h2v10H5zM9 3h2v10H9z'/%3E%3C/svg%3E");
+}
+
+/* Skip Forward ボタン */
+.audio-playlist button.skip-forward-btn::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23333333' class='bi bi-skip-forward-fill' viewBox='0 0 16 16'%3E %3Cpath d='M15.5 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V8.753l-6.267 3.636c-.54.313-1.233-.066-1.233-.697v-2.94l-6.267 3.636C.693 12.703 0 12.324 0 11.693V4.308c0-.63.693-1.01 1.233-.696L7.5 7.248v-2.94c0-.63.693-1.01 1.233-.696L15 7.248V4a.5.5 0 0 1 .5-.5z'/%3E%3C/svg%3E");
+}
+
+/* Skip Backward ボタン */
+.audio-playlist button.skip-backward-btn::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23333333' class='bi bi-skip-backward-fill' viewBox='0 0 16 16'%3E %3Cpath d='M.5 3.5A.5.5 0 0 0 0 4v8a.5.5 0 0 0 1 0V8.753l6.267 3.636c.54.313 1.233-.066 1.233-.697v-2.94l6.267 3.636c.54.314 1.233-.065 1.233-.696V4.308c0-.63-.693-1.01-1.233-.696L8.5 7.248v-2.94c0-.63-.692-1.01-1.233-.696L1 7.248V4a.5.5 0 0 0-.5-.5z'/%3E%3C/svg%3E");
+}
+
+/* Mute ボタン */
+.audio-playlist button.volume-btn.muted::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23333333' class='bi bi-volume-mute' viewBox='0 0 16 16'%3E  %3Cpath d='M6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06zM6 5.04 4.312 6.39A.5.5 0 0 1 4 6.5H2v3h2a.5.5 0 0 1 .312.11L6 10.96V5.04zm7.854.606a.5.5 0 0 1 0 .708L12.207 8l1.647 1.646a.5.5 0 0 1-.708.708L11.5 8.707l-1.646 1.647a.5.5 0 0 1-.708-.708L10.793 8 9.146 6.354a.5.5 0 1 1 .708-.708L11.5 7.293l1.646-1.647a.5.5 0 0 1 .708 0z'/%3E%3C/svg%3E");
+}
+
+.audio-playlist button.volume-btn.muted {
+  transform: scale(1.1);
+}
+
+/* Volume ボタン */
+.audio-playlist button.volume-btn::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23333333' class='bi bi-volume-up' viewBox='0 0 16 16'%3E  %3Cpath d='M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z'/%3E  %3Cpath d='M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.483 5.483 0 0 1 11.025 8a5.483 5.483 0 0 1-1.61 3.89l.706.706z'/%3E  %3Cpath d='M10.025 8a4.486 4.486 0 0 1-1.318 3.182L8 10.475A3.489 3.489 0 0 0 9.025 8c0-.966-.392-1.841-1.025-2.475l.707-.707A4.486 4.486 0 0 1 10.025 8zM7 4a.5.5 0 0 0-.812-.39L3.825 5.5H1.5A.5.5 0 0 0 1 6v4a.5.5 0 0 0 .5.5h2.325l2.363 1.89A.5.5 0 0 0 7 12V4zM4.312 6.39 6 5.04v5.92L4.312 9.61A.5.5 0 0 0 4 9.5H2v-3h2a.5.5 0 0 0 .312-.11z'/%3E%3C/svg%3E");
+}
+
+/* Loop ボタン */
+.audio-playlist button.loop-btn::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23333333' class='bi bi-repeat' viewBox='0 0 16 16'%3E  %3Cpath d='M11 5.466V4H5a4 4 0 0 0-3.584 5.777.5.5 0 1 1-.896.446A5 5 0 0 1 5 3h6V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192Zm3.81.086a.5.5 0 0 1 .67.225A5 5 0 0 1 11 13H5v1.466a.25.25 0 0 1-.41.192l-2.36-1.966a.25.25 0 0 1 0-.384l2.36-1.966a.25.25 0 0 1 .41.192V12h6a4 4 0 0 0 3.585-5.777.5.5 0 0 1 .225-.67Z'/%3E%3C/svg%3E");
+}
+
+/* Loop ボタン (Active) */
+.audio-playlist button.loop-btn.looped::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23B82343' class='bi bi-repeat' viewBox='0 0 16 16'%3E %3Cpath d='M11 5.466V4H5a4 4 0 0 0-3.584 5.777.5.5 0 1 1-.896.446A5 5 0 0 1 5 3h6V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192Zm3.81.086a.5.5 0 0 1 .67.225A5 5 0 0 1 11 13H5v1.466a.25.25 0 0 1-.41.192l-2.36-1.966a.25.25 0 0 1 0-.384l2.36-1.966a.25.25 0 0 1 .41.192V12h6a4 4 0 0 0 3.585-5.777.5.5 0 0 1 .225-.67Z'/%3E%3C/svg%3E");
+}
+
+/* Random ボタン */
+.audio-playlist button.random-btn::before {
+  background-image: url("data:image/svg+xml,%3Csvg version='1.1' id='_x32_' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 512 512' style='width: 256px; height: 256px; opacity: 1;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E	.st0{fill:%234B4B4B;}%3C/style%3E%3Cg%3E	%3Cpath class='st0' d='M418.976,324.763c-2.839-2.106-6.667-2.358-9.748-0.638c-3.081,1.733-4.861,5.103-4.573,8.628l2.454,28.148		c-11.937-1.733-22.768-4.429-32.732-7.954c-13.334-4.742-25.199-10.951-36.246-18.448c-16.535-11.24-31.24-25.524-45.056-42.059		c-5.295-6.318-10.446-12.972-15.524-19.868c-2.792,4.152-5.512,8.244-8.063,12.155c-9.723,14.74-20.145,30.169-31.625,45.32		c10.373,12.816,21.661,25.295,34.345,36.884c19.784,18.087,43.058,34.008,70.567,45.177c19.616,7.99,41.301,13.429,65.032,15.908		l-3.153,36.054c-0.288,3.513,1.492,6.894,4.573,8.616c3.081,1.733,6.908,1.48,9.748-0.626l89.388-66.44		c2.287-1.697,3.635-4.368,3.635-7.209c0-2.839-1.348-5.523-3.635-7.22L418.976,324.763z' style='fill: rgb(75, 75, 75);'%3E%3C/path%3E	%3Cpath class='st0' d='M77.186,159.054c13.31,4.742,25.199,10.951,36.222,18.448c16.559,11.24,31.264,25.524,45.08,42.047		c5.295,6.33,10.445,12.985,15.524,19.88c2.792-4.164,5.488-8.244,8.063-12.155c9.7-14.74,20.121-30.156,31.626-45.32		c-10.373-12.816-21.661-25.295-34.345-36.885c-19.784-18.086-43.058-34.02-70.568-45.175		c-27.51-11.204-59.039-17.497-94.612-17.473H0v66.547h14.176C38.966,148.993,59.4,152.748,77.186,159.054z' style='fill: rgb(75, 75, 75);'%3E%3C/path%3E	%3Cpath class='st0' d='M288.504,225.133c9.074-11.324,18.532-21.734,28.592-30.916c15.115-13.79,31.481-24.838,50.735-32.672		c11.746-4.754,24.67-8.365,39.279-10.47l-2.454,28.172c-0.288,3.526,1.492,6.896,4.573,8.628c3.081,1.72,6.908,1.468,9.748-0.638		l89.388-66.428c2.287-1.697,3.635-4.381,3.635-7.22c0-2.84-1.348-5.512-3.635-7.209l-89.388-66.44		c-2.839-2.106-6.667-2.359-9.748-0.626c-3.081,1.722-4.861,5.103-4.573,8.616l3.153,36.042		c-20.024,2.106-38.63,6.282-55.718,12.371c-18.942,6.727-36.03,15.681-51.385,26.127c-23.033,15.667-42.119,34.561-58.702,54.393		c-16.583,19.844-30.759,40.687-44.02,60.856c-11.408,17.328-22.816,34.044-34.923,49.147		c-9.074,11.324-18.532,21.722-28.593,30.916c-15.115,13.79-31.481,24.826-50.735,32.672c-19.279,7.81-41.662,12.552-69.558,12.575		H0v66.548h14.176c31.626,0.024,60.05-4.934,85.298-13.922c18.917-6.727,36.03-15.681,51.361-26.127		c23.057-15.668,42.119-34.562,58.702-54.393c16.607-19.844,30.783-40.687,44.045-60.856		C264.965,256.939,276.398,240.235,288.504,225.133z' style='fill: rgb(75, 75, 75);'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Random ボタン (Active) */
+.audio-playlist button.random-btn.randomed::before {
+  background-image: url("data:image/svg+xml,%3Csvg version='1.1' id='_x32_' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 512 512' style='width: 256px; height: 256px; opacity: 1;' xml:space='preserve'%3E%3Cg%3E	%3Cpath class='st0' d='M418.976,324.763c-2.839-2.106-6.667-2.358-9.748-0.638c-3.081,1.733-4.861,5.103-4.573,8.628l2.454,28.148		c-11.937-1.733-22.768-4.429-32.732-7.954c-13.334-4.742-25.199-10.951-36.246-18.448c-16.535-11.24-31.24-25.524-45.056-42.059		c-5.295-6.318-10.446-12.972-15.524-19.868c-2.792,4.152-5.512,8.244-8.063,12.155c-9.723,14.74-20.145,30.169-31.625,45.32		c10.373,12.816,21.661,25.295,34.345,36.884c19.784,18.087,43.058,34.008,70.567,45.177c19.616,7.99,41.301,13.429,65.032,15.908		l-3.153,36.054c-0.288,3.513,1.492,6.894,4.573,8.616c3.081,1.733,6.908,1.48,9.748-0.626l89.388-66.44		c2.287-1.697,3.635-4.368,3.635-7.209c0-2.839-1.348-5.523-3.635-7.22L418.976,324.763z' style='fill: rgb(223, 86, 86);'%3E%3C/path%3E	%3Cpath class='st0' d='M77.186,159.054c13.31,4.742,25.199,10.951,36.222,18.448c16.559,11.24,31.264,25.524,45.08,42.047		c5.295,6.33,10.445,12.985,15.524,19.88c2.792-4.164,5.488-8.244,8.063-12.155c9.7-14.74,20.121-30.156,31.626-45.32		c-10.373-12.816-21.661-25.295-34.345-36.885c-19.784-18.086-43.058-34.02-70.568-45.175		c-27.51-11.204-59.039-17.497-94.612-17.473H0v66.547h14.176C38.966,148.993,59.4,152.748,77.186,159.054z' style='fill: rgb(223, 86, 86);'%3E%3C/path%3E	%3Cpath class='st0' d='M288.504,225.133c9.074-11.324,18.532-21.734,28.592-30.916c15.115-13.79,31.481-24.838,50.735-32.672		c11.746-4.754,24.67-8.365,39.279-10.47l-2.454,28.172c-0.288,3.526,1.492,6.896,4.573,8.628c3.081,1.72,6.908,1.468,9.748-0.638		l89.388-66.428c2.287-1.697,3.635-4.381,3.635-7.22c0-2.84-1.348-5.512-3.635-7.209l-89.388-66.44		c-2.839-2.106-6.667-2.359-9.748-0.626c-3.081,1.722-4.861,5.103-4.573,8.616l3.153,36.042		c-20.024,2.106-38.63,6.282-55.718,12.371c-18.942,6.727-36.03,15.681-51.385,26.127c-23.033,15.667-42.119,34.561-58.702,54.393		c-16.583,19.844-30.759,40.687-44.02,60.856c-11.408,17.328-22.816,34.044-34.923,49.147		c-9.074,11.324-18.532,21.722-28.593,30.916c-15.115,13.79-31.481,24.826-50.735,32.672c-19.279,7.81-41.662,12.552-69.558,12.575		H0v66.548h14.176c31.626,0.024,60.05-4.934,85.298-13.922c18.917-6.727,36.03-15.681,51.361-26.127		c23.057-15.668,42.119-34.562,58.702-54.393c16.607-19.844,30.783-40.687,44.045-60.856		C264.965,256.939,276.398,240.235,288.504,225.133z' style='fill: rgb(223, 86, 86);'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+}
+
+.shuffle-icon {
+  vertical-align: middle;
+  width: 1.7em;
+  transform: translateY(-2px);
+}
+
+.controls > div:nth-child(4) > input {
+  display: none;
+}/*# sourceMappingURL=player.css.map */

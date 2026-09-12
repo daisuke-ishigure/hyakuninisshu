@@ -1,0 +1,1205 @@
+.mojikan {
+  letter-spacing: -0.15em;
+}
+
+button {
+  font-family: "noto-sans-pro", sans-serif;
+}
+
+.section {
+  min-height: 300px;
+}
+
+.taken-by-me {
+  border: 3px solid rgba(255, 71, 87, 0.5) !important;
+  background-color: rgba(255, 71, 87, 0.05);
+}
+
+.taken-by-others {
+  border: 3px solid rgba(47, 53, 66, 0.3) !important;
+}
+
+.taken-by-me p,
+.taken-by-others p {
+  opacity: 0.3;
+}
+
+.taker-icon {
+  opacity: 1.0 !important;
+  font-weight: normal;
+}
+
+#player_info {
+  text-align: center;
+  max-width: 800px;
+  margin: 4px auto 4px auto;
+  font-weight: bold;
+  font-size: 13px;
+  color: #2d5a27;
+  text-shadow:
+    0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff,
+    0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff,
+    0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 2px 10px;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.3;
+  padding: 2px 8px;
+}
+
+#ci_badge {
+  text-shadow: none;
+}
+
+#player_info>span {
+  white-space: nowrap;
+}
+
+@media (hover: none) and (pointer: coarse) {
+
+  #ci_player_label,
+  #others_icons {
+    display: none !important;
+  }
+}
+
+.ci-bar-span {
+  font-family: monospace;
+  font-size: 13px;
+  letter-spacing: 0;
+  color: #B82343;
+  white-space: nowrap;
+}
+
+.ci-bar-span .ci-empty {
+  color: #ccc;
+}
+
+.ci-count-span {
+  font-size: 11px;
+  color: #555;
+  white-space: nowrap;
+}
+
+.ci-badge {
+  display: inline-block;
+  padding: 1px 7px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: bold;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.ci-badge.advantage-mine {
+  background: #27ae60;
+}
+
+.ci-badge.advantage-enemy {
+  background: #B82343;
+}
+
+.ci-badge.advantage-even {
+  background: #888;
+}
+
+.ci-badge.advantage-reversal {
+  background: #e67e22;
+  animation: reversal-blink 0.35s step-end infinite;
+}
+
+.ci-badge.advantage-reversal-good {
+  background: #27ae60;
+  color: #fff;
+  animation: reversal-blink 0.35s step-end infinite;
+}
+
+.ci-badge.advantage-reversal-bad {
+  background: #222;
+  color: #fff;
+  animation: reversal-blink 0.35s step-end infinite;
+}
+
+@keyframes reversal-blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+#status_text {
+  margin-bottom: 15px;
+  text-shadow:
+    0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff,
+    0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff,
+    0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff;
+}
+
+#cpu_battle_button {
+  background-color: #B82343;
+  padding: 6px 20px;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1.1em;
+  margin-top: 10px;
+}
+
+.setup-box {
+  background: #F7F1E0;
+  padding: 15px;
+  border-radius: 8px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+#karuta_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  min-height: 200px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* タッチ改善 */
+.karuta_card {
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: pointer;
+  position: relative;
+}
+
+/* ── 暗記フェーズ行（center_line 内に横並び表示） ── */
+#memory_info_row {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: #333;
+  white-space: nowrap;
+  width: 100%;
+}
+
+#memory_countdown_timer {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
+}
+
+#memory_skip_btn {
+  pointer-events: all;
+  margin: 0;
+  padding: 4px 14px;
+  background: rgba(184, 35, 67, 0.75);
+  color: rgba(255, 255, 255, 0.95);
+  border: none;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+/* ── 暗記時間セレクター ── */
+.memory-time-selector {
+  margin: 10px 0 6px 0;
+}
+
+.memory-time-btn {
+  padding: 5px 10px;
+  margin: 3px;
+  background: #ecf0f1;
+  border: 2px solid #bdc3c7;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s;
+}
+
+.memory-time-btn.selected {
+  background: #2980b9;
+  color: white;
+  border-color: #2980b9;
+}
+
+#status_text {
+  font-weight: bold;
+  color: #B82343;
+  margin: 6px 0;
+  min-height: 1.2em;
+  text-align: center;
+  font-size: 1rem;
+}
+
+/* ── 取られた札のフリップアニメーション ── */
+#missed_cards_list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  background: #f0ebe0;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.missed-card-wrapper {
+  width: clamp(120px, 44vw, 300px);
+  height: clamp(171px, 63vw, 429px);
+  position: relative;
+  perspective: 600px;
+  cursor: pointer;
+  /* 表と裏がカードの見た目を持つので、ラッパー自体は透明 */
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.missed-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.45s ease;
+}
+
+.missed-card-wrapper.flipped .missed-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* PC（600px以上）: 3列グリッド */
+@media (min-width: 600px) {
+  #missed_cards_list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .missed-card-wrapper {
+    width: 100%;
+    height: 0 !important;
+    padding-bottom: 142.86% !important;
+    /* 高さ = 幅 / 0.7 */
+    padding-top: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .missed-card-inner {
+    position: absolute;
+    inset: 0;
+    height: auto;
+  }
+}
+
+/* 表・裏ともにカードの外観を持たせる */
+.missed-card-front,
+.missed-card-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 6px 5px;
+  background: #fdf8e8;
+  border: 2px solid #c8a84b;
+  border-radius: 4px;
+}
+
+.missed-card-front {
+  align-items: center;
+}
+
+.missed-card-front p {
+  margin: 0;
+  line-height: 1.8 !important;
+  max-width: 100%;
+  max-height: 100%;
+  box-sizing: border-box;
+  text-align: left;
+  word-break: break-all;
+  font-size: 32px !important;
+  font-weight: 700;
+}
+
+@media (max-width: 500px) {
+  .missed-card-front p {
+    font-size: 30px !important;
+    line-height: 1.45 !important;
+  }
+}
+
+/* 裏面 */
+.missed-card-back {
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4px;
+  transform: rotateY(180deg);
+  background: #f0e8cc;
+  border-color: #a07830;
+  line-height: 2.0;
+  text-align: left;
+  color: #333;
+  word-break: break-all;
+  font-family: "Noto Serif JP", serif;
+  font-weight: 700;
+}
+
+/* ルビ（ふりがな） */
+.missed-card-back ruby rt {
+  font-size: 0.52em;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+/* 歌本文 */
+.missed-back-uta {
+  margin: 0;
+}
+
+/* ── ポートレート（縦向き）：コンテナをズームで縮小 ── */
+@media (orientation: portrait) {
+
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  #karuta_container {
+    transform-origin: top center;
+  }
+
+  main.main_about-main {
+    padding-bottom: 20px;
+    overflow-x: hidden;
+  }
+
+  /* スマホ以外の縦向き（タブレット縦など）では非表示 */
+  #card_mode_selector {
+    display: none !important;
+  }
+
+  /* スマホタッチ端末では6枚・12枚を選べるよう表示 */
+  @media (hover: none) and (pointer: coarse) {
+    #card_mode_selector {
+      display: block !important;
+    }
+  }
+
+  /* 敵陣カードは縦向きでも180度回転 */
+  #pc_enemy_field .karuta_card {
+    transform: rotate(180deg);
+  }
+
+  /* スマホ縦向き：6枚モード（1段）カードスタイル */
+  #pc_enemy_field[data-card-mode="0"] .karuta_card,
+  #pc_my_field[data-card-mode="0"] .karuta_card {
+    padding: 0 5px 0 !important;
+    overflow: hidden;
+  }
+
+  #pc_enemy_field[data-card-mode="0"] .karuta_card p,
+  #pc_my_field[data-card-mode="0"] .karuta_card p {
+    font-size: 24px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.2em !important;
+    line-height: 1.25 !important;
+    margin: 0 !important;
+  }
+
+  /* スマホ縦向き：12枚モード（2段）カードスタイル */
+  #pc_enemy_field[data-card-mode="1"] .karuta_card,
+  #pc_my_field[data-card-mode="1"] .karuta_card {
+    padding: 0 5px 0 !important;
+    overflow: hidden;
+  }
+
+  #pc_enemy_field[data-card-mode="1"] .karuta_card p,
+  #pc_my_field[data-card-mode="1"] .karuta_card p {
+    font-size: 19px !important;
+    font-weight: 600;
+    letter-spacing: 0.15em !important;
+    line-height: 1.15 !important;
+    margin: 0 !important;
+  }
+}
+
+/* ===== 送り札・中央ライン（縦横共通） ===== */
+#pc_center_line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 4px 10px;
+  min-height: 36px;
+  border-top: 1px dashed #ccc;
+  border-bottom: 1px dashed #ccc;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+#send_card_notice {
+  display: none;
+  background: rgba(39, 174, 96, 0.9);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
+  animation: send-notice-pulse 0.7s ease-in-out infinite alternate;
+}
+
+@keyframes send-notice-pulse {
+  from {
+    opacity: 0.85;
+  }
+
+  to {
+    opacity: 1.0;
+  }
+}
+
+#empty_card_notice {
+  display: none;
+  background: rgba(100, 100, 100, 0.85);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+#show_kami_no_ku_cb,
+#show_kimariji_cb,
+#play_joka_cb {
+  -webkit-appearance: checkbox;
+  -moz-appearance: checkbox;
+  appearance: checkbox;
+  accent-color: #B82343;
+}
+
+.kimariji-badge {
+  position: absolute;
+  bottom: 3px;
+  left: 3px;
+  font-size: 13px;
+  color: #c0392b;
+  writing-mode: horizontal-tb;
+  font-family: "Noto Serif JP", "Kaisei HarunoUmi", serif;
+  font-weight: bold;
+  line-height: 1;
+  pointer-events: none;
+  letter-spacing: 0;
+}
+
+#kami_no_ku_display {
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #333;
+  letter-spacing: 0.06em;
+  text-align: center;
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+#kami_no_ku_display::after {
+  display: none;
+}
+
+@keyframes kami-cursor-blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.incoming-sent-card {
+  outline: 3px solid #c0392b !important;
+  outline-offset: -2px;
+  z-index: 10;
+  position: relative;
+  animation: sent-card-arrive 0.5s ease-out;
+}
+
+@keyframes sent-card-arrive {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.send-card-highlight {
+  animation: send-pulse 0.8s ease-in-out infinite alternate !important;
+}
+
+@keyframes send-pulse {
+  from {
+    box-shadow: 0 0 6px rgba(39, 174, 96, 0.5);
+  }
+
+  to {
+    box-shadow: 0 0 18px rgba(39, 174, 96, 1.0);
+  }
+}
+
+/* ===== 競技かるたレイアウト（横向き全デバイス共通） ===== */
+@media (orientation: landscape) {
+  #karuta_container {
+    max-width: 1200px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 0 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  #pc_enemy_field,
+  #pc_my_field {
+    display: grid;
+    gap: 8px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    justify-content: center;
+  }
+
+  #pc_my_field {
+    align-content: start;
+    background: rgba(184, 35, 67, 0.04);
+    border: 1px solid rgba(184, 35, 67, 0.15);
+  }
+
+  #pc_enemy_field {
+    align-content: end;
+    background: rgba(47, 53, 66, 0.04);
+    border: 1px solid rgba(47, 53, 66, 0.15);
+  }
+
+  #pc_enemy_field .karuta_card,
+  #pc_my_field .karuta_card {
+    overflow: hidden;
+    padding: 4px 2px 0 !important;
+  }
+
+  #pc_enemy_field .karuta_card {
+    transform: rotate(180deg);
+  }
+
+  #pc_enemy_field .karuta_card p,
+  #pc_my_field .karuta_card p {
+    font-size: 15px !important;
+    letter-spacing: 0.12em !important;
+    line-height: 1.25 !important;
+    margin: 0 !important;
+  }
+
+  /* PC横向き：モード0（6枚・3枚/陣、最大札） */
+  #pc_enemy_field[data-card-mode="0"] .karuta_card,
+  #pc_my_field[data-card-mode="0"] .karuta_card {
+    padding: 8px 4px 0 !important;
+  }
+
+  #pc_enemy_field[data-card-mode="0"] .karuta_card p,
+  #pc_my_field[data-card-mode="0"] .karuta_card p {
+    font-size: 28px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.10em !important;
+    line-height: 1.2 !important;
+  }
+
+  /* PC横向き：モード1（12枚・6枚/陣、大きい札） */
+  #pc_enemy_field[data-card-mode="1"] .karuta_card,
+  #pc_my_field[data-card-mode="1"] .karuta_card {
+    padding: 10px 6px 0 !important;
+  }
+
+  #pc_enemy_field[data-card-mode="1"] .karuta_card p,
+  #pc_my_field[data-card-mode="1"] .karuta_card p {
+    font-size: 26px !important;
+    letter-spacing: 0.10em !important;
+    line-height: 1.3 !important;
+  }
+
+  /* PC横向き：モード2（24枚・12枚/陣、中サイズ札） */
+  #pc_enemy_field[data-card-mode="2"] .karuta_card,
+  #pc_my_field[data-card-mode="2"] .karuta_card {
+    padding: 7px 4px 0 !important;
+  }
+
+  #pc_enemy_field[data-card-mode="2"] .karuta_card p,
+  #pc_my_field[data-card-mode="2"] .karuta_card p {
+    font-size: 21px !important;
+    letter-spacing: 0.08em !important;
+    line-height: 1.25 !important;
+  }
+
+  /* PC横向き：モード3（50枚・25枚/陣、小サイズ札） */
+  #pc_enemy_field[data-card-mode="3"] .karuta_card p,
+  #pc_my_field[data-card-mode="3"] .karuta_card p {
+    font-size: 16px !important;
+    letter-spacing: 0.06em !important;
+    line-height: 1.2 !important;
+  }
+
+  #pc_center_line {
+    height: 44px;
+  }
+
+  .pc-field-label {
+    text-align: center;
+    font-size: 11px;
+    color: #888;
+    margin: 2px 0;
+  }
+
+  .drop-target {
+    outline: 3px solid #27ae60 !important;
+    outline-offset: -2px;
+    z-index: 5;
+    position: relative;
+  }
+
+  .arr-drag-clone {
+    overflow: hidden !important;
+    padding: 4px 2px 0 !important;
+  }
+
+  .arr-drag-clone p {
+    font-size: 15px !important;
+    letter-spacing: 0.12em !important;
+    line-height: 1.25 !important;
+    margin: 0 !important;
+  }
+
+  .arr-placeholder {
+    align-self: stretch;
+    min-height: 40px;
+    border: 2px dashed rgba(39, 174, 96, 0.4);
+    border-radius: 4px;
+    background: rgba(39, 174, 96, 0.04);
+  }
+
+  .arr-placeholder.drop-target {
+    border-color: rgba(39, 174, 96, 0.85);
+    background: rgba(39, 174, 96, 0.15);
+  }
+
+  .arrange-hint {
+    font-size: 12px;
+    color: #fff;
+    background-color: #222;
+    text-align: center;
+    margin: 2px 0;
+  }
+}
+
+.btn-return {
+  margin-top: 20px;
+  padding: 12px 24px;
+  background: #B82343;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+#audio_resume_btn {
+  display: none;
+  margin: 10px auto;
+  padding: 12px 24px;
+  background: #f39c12;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.cpu-difficulty-selector {
+  margin: 8px 0;
+}
+
+.difficulty-btn {
+  padding: 8px 16px;
+  margin: 0 5px;
+  background: #ecf0f1;
+  border: 2px solid #bdc3c7;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.difficulty-btn.selected {
+  background: #27ae60;
+  color: white;
+  border-color: #27ae60;
+}
+
+.difficulty-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== ログインエリア ===== */
+#login_area {
+  max-width: 800px;
+  margin: 0 auto 12px auto;
+  text-align: center;
+}
+
+#login_prompt_box {
+  margin-top: 1em;
+  background: linear-gradient(135deg, #fff9e6, #fef3c7);
+  border: 1px solid #f0d060;
+  border-radius: 10px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+#login_prompt_box p {
+  margin: 0;
+  font-size: 13px;
+  color: #555;
+}
+
+#google_login_btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-size: 13px;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s;
+  font-family: inherit;
+}
+
+#google_login_btn:hover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+#google_login_btn img {
+  width: 18px;
+  height: 18px;
+}
+
+#user_info_box {
+  display: none;
+  margin-top: 1em;
+  background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
+  border: 1px solid #a5d6a7;
+  border-radius: 10px;
+  padding: 8px 16px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+#user_info_box .user-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#user_avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #81c784;
+}
+
+#user_display_name {
+  font-weight: bold;
+  color: #2d5a27;
+  font-size: 14px;
+}
+
+#logout_btn {
+  background: none;
+  border: 1px solid #aaa;
+  border-radius: 12px;
+  padding: 3px 10px;
+  font-size: 12px;
+  color: #666;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* ===== ランキング ===== */
+#ranking_section {
+  margin-top: 18px;
+  border-top: 2px solid #e0c860;
+  padding-top: 16px;
+}
+
+#ranking_name_input {
+  padding: 8px 12px;
+  border: 2px solid #c8a830;
+  border-radius: 8px;
+  font-size: 14px;
+  width: 180px;
+  font-family: inherit;
+}
+
+.ranking-submit-btn {
+  padding: 8px 18px;
+  background: #B82343;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.ranking-view-btn {
+  display: block;
+  margin: 10px auto 0;
+  padding: 6px 14px;
+  background: #ecf0f1;
+  border: 1px solid #bdc3c7;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-family: inherit;
+}
+
+#ranking_overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2000;
+  justify-content: center;
+  align-items: center;
+}
+
+#ranking_overlay.open {
+  display: flex;
+}
+
+#ranking_overlay_inner {
+  background: #fff9e6;
+  border-radius: 12px;
+  padding: 24px 20px;
+  max-width: 480px;
+  width: 92vw;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.ranking-entry {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.ranking-entry.highlight {
+  background: #fff3b0;
+  font-weight: bold;
+}
+
+.ranking-entry.even {
+  background: #fffdf0;
+}
+
+.rank-card-simple {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 8px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  margin: 3px 0;
+}
+
+.rank-card-simple.is-me {
+  background: #fff3b0;
+  font-weight: bold;
+}
+
+.rank-card-simple.even-row {
+  background: #fffdf0;
+}
+
+@keyframes flash-effect {
+  0% {
+    box-shadow: 0 0 0px #fff;
+    filter: brightness(1);
+  }
+
+  50% {
+    box-shadow: 0 0 20px #fff, 0 0 40px #fffa65;
+    filter: brightness(1.8);
+  }
+
+  100% {
+    box-shadow: 0 0 0px #fff;
+    filter: brightness(1);
+  }
+}
+
+.flash {
+  animation: flash-effect 0.5s ease-out;
+  z-index: 20;
+}
+
+#room_setup {
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* 称号バッジ */
+.title-badge {
+  display: inline-block;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-left: 4px;
+  font-weight: bold;
+}
+
+.title-badge--cpu {
+  background: #f0e8fe;
+  color: #6a1a9a;
+}
+
+/* 称号アコーディオン */
+.title-accordion {
+  margin: 12px 0;
+  border: 1px solid #e0d8c8;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.title-accordion summary {
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: bold;
+  color: #B82343;
+  background: #fff9f0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  user-select: none;
+}
+
+.title-accordion summary::-webkit-details-marker {
+  display: none;
+}
+
+.title-accordion summary::after {
+  content: '▼';
+  margin-left: auto;
+  font-size: 10px;
+  color: #aaa;
+  transition: transform 0.2s;
+}
+
+.title-accordion[open] summary::after {
+  transform: rotate(180deg);
+}
+
+.title-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.title-table th {
+  background: #f7f1e0;
+  padding: 6px 12px;
+  text-align: left;
+  color: #666;
+  font-weight: bold;
+  border-bottom: 1px solid #e0d8c8;
+}
+
+.title-table td {
+  padding: 6px 12px;
+  border-bottom: 1px solid #f0ebe0;
+  color: #444;
+}
+
+.title-table tr:last-child td {
+  border-bottom: none;
+}
+
+.title-table tr:nth-child(even) td {
+  background: #fdf9f2;
+}
+
+.title-note {
+  font-size: 0.8rem !important;
+  color: #333;
+  padding: 8px 16px;
+  margin: 0;
+  background: #fafafa;
+  border-top: 1px solid #f0ebe0;
+  margin-bottom: 0 !important;
+}
+
+/* 競技かるたのルール 画像レイアウト */
+.rule-items {
+  margin-top: 0.6em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+}
+
+.rule-item-row {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background-color: #fff9e6;
+}
+
+.rule-img {
+  width: 50%;
+  flex-shrink: 0;
+}
+
+.em-usage-list {
+  font-size: 0.82rem;
+}
+
+.rule-desc {
+  width: 50%;
+  margin: 0;
+  padding: 0 1em;
+  box-sizing: border-box;
+  font-size: 1em !important;
+
+  p {
+    font-size: 1em;
+  }
+}
+
+.section>div>ul>li>div>div>div>p {
+  font-size: 1em !important;
+}
+
+@media (max-width: 600px) {
+  .rule-item-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .rule-img {
+    width: 100%;
+  }
+
+  .rule-desc {
+    width: 100%;
+    padding: 0 10px;
+    font-size: 0.82rem;
+  }
+}
+
+#medetashi-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  pointer-events: none;
+  z-index: 9999;
+  animation: medetashi-fade 4s ease forwards;
+}
+
+#medetashi-overlay img {
+  width: clamp(120px, 40vw, 200px);
+  display: block;
+}
+
+
+@keyframes medetashi-fade {
+  0% {
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+/* ===== 取り札フラッシュアニメーション ===== */
+@keyframes card-taken-flash {
+  0%   { opacity: 0; transform: scale(0.5); }
+  12%  { opacity: 1; transform: scale(1.08); }
+  40%  { opacity: 1; transform: scale(1.0); }
+  100% { opacity: 0; transform: scale(1.0); }
+}
+#card-taken-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  pointer-events: none;
+}
+#card-taken-overlay .karuta_card {
+  width: 180px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+  animation: card-taken-flash 1.5s ease-out forwards;
+}
+#card-taken-overlay .karuta_card p {
+  font-size: 32px !important;
+  letter-spacing: 0.1em !important;
+}
+  </style>

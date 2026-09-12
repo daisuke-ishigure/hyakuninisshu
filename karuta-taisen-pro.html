@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="UTF-8">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <title>競技かるた 対戦ゲーム（送り札対応）【無料】｜時雨の百人一首</title>
+  <meta name="description"
+    content="百人一首の競技かるた対戦ゲーム。無料でロボット対戦が楽しめるブラウザ版。送り札で形勢逆転できる本格ルールを採用し、一人でも白熱した対戦や練習が可能です。すぐ遊べるかるたゲーム。">
+  <link rel="canonical" href="https://hyakuninisshu.com/karuta-taisen-pro.html">
+  <link rel="alternate" hreflang="ja" href="https://hyakuninisshu.com/karuta-taisen-pro.html">
+  <link rel="alternate" hreflang="en" href="https://hyakuninisshu.com/karuta-taisen-pro_en.html">
+  <link rel="alternate" hreflang="x-default" href="https://hyakuninisshu.com/karuta-taisen-pro.html">
+  <meta property="og:title" content="百人一首ゲーム｜競技かるた対戦（無料・オンライン・送り札あり）｜時雨の百人一首">
+  <meta property="og:description"
+    content="百人一首の競技かるた対戦ゲーム。無料でロボット対戦が楽しめるブラウザ版。送り札で形勢逆転できる本格ルールを採用し、一人でも白熱した対戦や練習が可能です。">
+  <meta property="og:site_name" content="時雨の百人一首">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hyakuninisshu.com/karuta-taisen-pro.html">
+  <meta property="og:image" content="https://hyakuninisshu.com/img/ogp_okurihuda.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="競技かるた 対戦ゲーム（送り札対応）【無料】｜時雨の百人一首">
+  <meta name="twitter:description"
+    content="百人一首の競技かるた対戦ゲーム。無料でロボット対戦が楽しめるブラウザ版。送り札で形勢逆転できる本格ルールを採用し、一人でも白熱した対戦や練習が可能です。">
+  <meta name="twitter:image" content="https://hyakuninisshu.com/img/ogp_okurihuda.webp">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "百人一首ゲーム｜競技かるた対戦（送り札あり）",
+  "applicationCategory": "GameApplication",
+  "operatingSystem": "Web",
+  "url": "https://hyakuninisshu.com/karuta-taisen-pro.html",
+  "description": "百人一首の競技かるた対戦ゲーム。無料でロボット対戦が楽しめるブラウザ版。送り札で形勢逆転できる本格ルールを採用し、一人でも白熱した対戦や練習が可能です。すぐ遊べるかるたゲーム。",
+  "inLanguage": "ja",
+  "genre": "Card Game",
+  "dateModified": "2026-05-25",
+  "offers": {
+    "@type": "Offer",
+    "price": 0,
+    "priceCurrency": "JPY"
+  },
+  "featureList": [
+    "送り札機能で試合状況が変化",
+    "音声読み上げ対応",
+    "上の句テキスト表示可能",
+    "決まり字表示可能"
+  ]
+}
+</script>
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "ホーム",
+      "item": "https://hyakuninisshu.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "百人一首のアプリ・ゲーム",
+      "item": "https://hyakuninisshu.com/introduction-app.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "競技かるた対戦ゲーム（送り札対応）",
+      "item": "https://hyakuninisshu.com/karuta-taisen-pro.html"
+    }
+  ]
+}
+</script>
+  <link rel="stylesheet" href="../css/style.css?20260908-16">
+  <link rel="stylesheet" href="../css/karuta.css?20260525">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@500&family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/pixi.js@7.3.2/dist/pixi.min.js"></script>
+  <link rel="stylesheet" href="../css/karuta-taisen-pro-shared.css?20260525">
+  <style>
+    #medetashi-overlay span {
+      font-family: "Noto Serif JP", serif;
+      font-weight: 700;
+      font-size: clamp(60px, 15vw, 80px);
+      color: #c0392b;
+      text-shadow:
+        0 0 2px #fff, 0 0 4px #fff,
+        3px 3px 0 #fff, -3px 3px 0 #fff, 3px -3px 0 #fff, -3px -3px 0 #fff,
+        3px 0 0 #fff, -3px 0 0 #fff, 0 3px 0 #fff, 0 -3px 0 #fff,
+        4px 0 0 #fff, -4px 0 0 #fff, 0 4px 0 #fff, 0 -4px 0 #fff;
+      letter-spacing: 0.15em;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+</head>
+
+<body>
+  <header class="header">
+    <p class="site-title">
+      <a href="https://hyakuninisshu.com/">時雨の百人一首</a>
+    </p>
+    <div class="header_list">
+      <a href="index.html"><img src="../img/icon_top.svg?ver-02" alt="トップ" class="icon"></a>
+      <a href="introduction.html" style="color:#333"><img src="/img/icon_column.svg?ver-02" alt="コラム" class="icon"></a>
+      <a href="introduction-app.html" style="color:#333"><img src="/img/icon_app.svg?ver-02" alt="アプリ" class="icon"></a>
+      <a href="karuta-taisen-pro_en.html"><img src="/img/icon_lang.svg?ver-01" alt="English" class="icon"></a>
+      <a href="list.html"><img src="/img/icon_search.svg?ver-04" alt="和歌の一覧・検索" class="icon"></a>
+    </div>
+  </header>
+
+  <main class="main_about-main">
+    <div class="section">
+      <nav>
+        <ol class="breadcrumb">
+          <li><a href="index.html">トップ</a></li>
+          <li><a href="introduction-app.html">アプリ</a></li>
+          <li>競技かるた対戦ゲーム</li>
+        </ol>
+      </nav>
+      <h1>競技かるた 対戦ゲーム</h1>
+      <!-- ゲームセットアップ -->
+      <div id="room_setup">
+        <div class="setup-box">
+          <p style="margin-bottom:0; font-size:13px; color:#555; text-align: center;">難易度をお選びください</p>
+          <div class="cpu-difficulty-selector">
+            <button class="difficulty-btn" data-level="easy">やさしい</button>
+            <button class="difficulty-btn selected" data-level="normal">ふつう</button>
+            <button class="difficulty-btn" data-level="hard">つよい</button>
+          </div>
+          <div id="card_mode_selector" class="memory-time-selector">
+            <label style="font-size:13px; color:#555; display:block; margin-bottom:4px;">札の枚数をお選びください</label>
+            <div id="card_mode_buttons">
+              <button class="memory-time-btn" data-mode="0">6枚</button>
+              <button class="memory-time-btn selected" data-mode="1">12枚</button>
+              <button class="memory-time-btn" data-mode="2">24枚</button>
+              <button class="memory-time-btn" data-mode="3">50枚</button>
+            </div>
+          </div>
+          <div class="memory-time-selector">
+            <label style="font-size:13px; color:#555; display:block; margin-bottom:4px;">札の暗記時間をお選びください</label>
+            <div id="memory_time_buttons">
+              <button class="memory-time-btn selected" data-sec="60">1:00</button>
+              <button class="memory-time-btn" data-sec="300">5:00</button>
+              <button class="memory-time-btn" data-sec="900">15:00</button>
+            </div>
+          </div>
+          <div
+            style="margin-top:10px; margin-bottom:8px; display:flex; gap:16px; flex-wrap:wrap; justify-content:center;">
+            <label
+              style="display:inline-flex; align-items:center; gap:6px; font-size:13px; color:#555; cursor:pointer;">
+              <input type="checkbox" id="show_kami_no_ku_cb" style="width:15px;height:15px;cursor:pointer;" checked>
+              上の句を表示する
+            </label>
+            <label
+              style="display:inline-flex; align-items:center; gap:6px; font-size:13px; color:#555; cursor:pointer;">
+              <input type="checkbox" id="show_kimariji_cb" style="width:15px;height:15px;cursor:pointer;">
+              決まり字を表示する
+            </label>
+            <label
+              style="display:inline-flex; align-items:center; gap:6px; font-size:13px; color:#555; cursor:pointer;">
+              <input type="checkbox" id="play_joka_cb" style="width:15px;height:15px;cursor:pointer;">
+              序歌を流す
+            </label>
+          </div>
+          <p style="text-align:center;font-size:13px; margin-top: 10px;">※読手（音声）：槇藤寛子</p>
+          <button id="cpu_battle_button">対戦する</button>
+        </div>
+      </div>
+      <!-- 競技かるたのルール -->
+      <div>
+        <h4>競技かるたのルール</h4>
+        <ul class="em-usage-list">
+          <li>競技かるたでは、読み上げられた歌に対応する札を素早く取ります。</li>
+          <li>
+            読み上げられる札「読み札」と取る札「取り札」は別々の札で、読み札には上の句と下の句が両方書かれていますが、取り札には下の句だけが濁音なしの平仮名で書かれています。
+            <div class="rule-items">
+              <div class="rule-item-row">
+                <img src="img/upper&lower_phrase.webp" alt="上の句と下の句" class="rule-img">
+                <div class="rule-desc">
+                  <p>歌は上の句と下の句でできています。</p>
+                  <p><ruby>読手<rt>どくしゅ</rt></ruby>が読み札の上の句を読み上げ、選手は対応する下の句の札「取り札」を素早く取ります。</p>
+                  <p style="margin-bottom: 0;">
+                    選手は、上の句と下の句をセットで覚えておくと有利です。さらに決まり字を覚えておくと、最短で札を取れるようになります。決まり字とは、その札だとわかる文字のことです。例えば、この札の場合は「はなの」が決まり字です。上手な選手は、読み手が「はなの」と読んだ瞬間に札を取ります。
+                  </p>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>競技かるたでは、自分と相手がそれぞれ札を並べます。<br>自分の前の札を「自陣」、相手の前の札を「敵陣」といいます。</li>
+          <li>自陣の札を、敵陣より先になくしたら勝ちです</li>
+          <li>自陣の札の配置は自由に決められます。試合開始前の暗記時間に自分で並べられます。このゲームでは最初にランダムに配置されますが、自分で並び替えできます。</li>
+          <li>
+            お手付きのルールは次のとおりです。
+            <div class="rule-items">
+              <div class="rule-item-row">
+                <img src="img/rule_01.webp" alt="ルール1" class="rule-img">
+                <p class="rule-desc">読まれた札と違う陣の札を触ると、<br>お手付き</p>
+              </div>
+              <div class="rule-item-row">
+                <img src="img/rule_02.webp" alt="ルール2" class="rule-img">
+                <p class="rule-desc">読まれた札と同じ陣の札なら<br>違う札を触ってもお手付きになりません</p>
+              </div>
+              <div class="rule-item-row">
+                <img src="img/rule_03.webp" alt="ルール3" class="rule-img">
+                <p class="rule-desc">空札（どちらの陣にもない札）のときは、<br>札を触るとお手付き</p>
+              </div>
+            </div>
+          </li>
+          <li>お手付きをすると、相手から送り札を1枚受け取ります。相手がお手付きした場合は、自陣の札を1枚選んで相手陣へ送れます。</li>
+          <li>お手付きのルールを体験して理解できるページ<span style="text-decoration:underline; color:#0054B2; font-weight:bold;">「<a
+                href="otetsuki.html">お手付き判定シミュレーション</a>」</span>もご用意しています。</li>
+        </ul>
+      </div>
+      <!-- 基本ルール -->
+      <div id="game_header">
+        <h4>このゲーム独自のルール</h4>
+        <ul class="em-usage-list" style="margin-bottom:0.25em;">
+          <li>試合開始前の札を暗記する時間では、自陣の札を並び替えできます。</li>
+          <li>試合中に送り札を受け取った直後の5秒間は、自陣の札を並び替えできます。</li>
+          <li>札の枚数（自陣＋敵陣）を6枚・12枚・24枚・50枚から選べます。</li>
+          <li>送り札は、配置スペースを広げないため、相手陣の初期枚数（上限）を超えて送ることはできません。</li>
+          <!-- <li>相手陣が以下の枚数に達している場合は、それ以上札を送れません。
+            <ul style="font-size:0.9em; margin-left:0">
+              <li>6枚設定（3枚vs3枚）：相手陣が3枚のとき</li>
+              <li>12枚設定（6枚vs6枚）：相手陣が6枚のとき</li>
+              <li>24枚設定（12枚vs12枚）：相手陣が12枚のとき</li>
+              <li>50枚設定（25枚vs25枚）：相手陣が25枚のとき</li>
+            </ul>
+          </li> -->
+          <li>実際の競技かるたでは、同じ歌の上の句と下の句が続けて読まれることはありません。次の歌に移るときに、直前に読んだ歌の下の句が読まれてから、次の歌の上の句が読まれるルールになっています。ただし、このゲームではわかりやすさを重視して、同じ歌の上の句と下の句が続けて読まれます。</li>
+          <li>24枚設定で勝利すると勝ち数が2倍、50枚設定で勝利すると勝ち数が5倍になります。</li>
+          <li>スマホでは6枚・12枚でプレイできます。24枚・50枚はパソコン横向きのみです。</li>
+          <li>24枚・50枚モードでは、場にない札（空札）も読まれます。空札が読まれたときに札に触れるとお手付きになります。</li>
+        </ul>
+      </div>
+      <!-- ランキング -->
+      <div>
+        <div style="font-size:0.85rem;font-weight:bold;color:#B82343;margin-bottom:6px;text-align:center;">📊 累計ランキング
+        </div>
+        <div style="font-size:0.75rem;color:#aaa;text-align:center;margin-bottom:8px;">全難易度がランキング対象です</div>
+        <div id="inline_ranking_content">
+          <div style="color:#aaa;font-size:0.9rem;text-align:center;padding:16px;">読み込み中...</div>
+        </div>
+        <!-- Googleログイン -->
+        <div id="login_area">
+          <!-- 未ログイン時 -->
+          <div id="login_prompt_box">
+            <p>🏆 Googleログインすると<br class="br-sp">勝利数がランキングに自動記録されます！</p>
+            <button id="google_login_btn">
+              <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
+              Googleでログイン
+            </button>
+          </div>
+          <!-- ログイン済み -->
+          <div id="user_info_box">
+            <div class="user-left">
+              <img id="user_avatar" src="" alt="avatar">
+              <span id="user_display_name"></span>
+              <span id="my_title_badge"></span>
+            </div>
+            <div>
+              <button id="logout_btn">ログアウト</button>
+              <button id="delete_data_btn" style="background:none;border:1px solid #e8b4b8;border-radius:12px;
+                       padding:3px 10px;font-size:12px;color:#c0392b;cursor:pointer;margin-left:4px;">
+                データ削除
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- ランキングの説明・称号一覧 -->
+        <ul class="em-usage-list">
+          <li>
+            Googleアカウントでログインして、勝利するとランキングに反映されます。
+          </li>
+          <li>
+            ログインすると、Googleアカウントの表示名・メールアドレス・プロフィール画像URLの情報を取得します。<br
+              class="br-pc">これらの情報はランキング表示のためにのみ使用し、法令に基づく場合を除き、第三者に提供することはありません。<br class="br-pc">詳しくは<a
+              href="policy.html">プライバシーポリシー</a>をご参照ください。 </li>
+          <li>ログインすると、「ログアウト」ボタンの横に「データ削除」ボタンが表示されます。「データ削除」ボタンを押すと、ランキングに登録されたデータを削除できます。 ただし、削除すると元に戻せないのでご注意ください。
+          </li>
+          <li>勝利数に応じて、称号バッジが名前の横に表示されます。下記の「称号一覧」をクリックしていただくと、称号バッジの詳細をご覧いただけます。</li>
+        </ul>
+        <!-- 称号一覧アコーディオン -->
+        <details class="title-accordion" open>
+          <summary>🎖 称号一覧</summary>
+          <table class="title-table">
+            <thead>
+              <tr>
+                <th>累計勝利数</th>
+                <th>称号</th>
+                <th>説明</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1勝〜</td>
+                <td>文章生<br><span style="font-size:0.82em;color:#777;">Scholar</span></td>
+                <td>大学寮の学生。</td>
+              </tr>
+              <tr>
+                <td>3勝〜</td>
+                <td>文章得業生<br><span style="font-size:0.82em;color:#777;">Gifted Scholar</span></td>
+                <td>優秀な学生。</td>
+              </tr>
+              <tr>
+                <td>5勝〜</td>
+                <td>少内記<br><span style="font-size:0.82em;color:#777;">Junior Secretary</span></td>
+                <td>詔書を扱う官僚。</td>
+              </tr>
+              <tr>
+                <td>10勝〜</td>
+                <td>文章博士<br><span style="font-size:0.82em;color:#777;">Professor</span></td>
+                <td>大学寮の教授。</td>
+              </tr>
+              <tr>
+                <td>20勝〜</td>
+                <td>蔵人頭<br><span style="font-size:0.82em;color:#777;">Chief Secretary</span></td>
+                <td>天皇の秘書。</td>
+              </tr>
+              <tr>
+                <td>40勝〜</td>
+                <td>左中弁<br><span style="font-size:0.82em;color:#777;">Senior Official</span></td>
+                <td>エリート官僚。</td>
+              </tr>
+              <tr>
+                <td>70勝〜</td>
+                <td>参議<br><span style="font-size:0.82em;color:#777;">Councillor</span></td>
+                <td>公卿の仲間入り。</td>
+              </tr>
+              <tr>
+                <td>120勝〜</td>
+                <td>中納言<br><span style="font-size:0.82em;color:#777;">Middle Counselor</span></td>
+                <td>朝廷の幹部。</td>
+              </tr>
+              <tr>
+                <td>200勝〜</td>
+                <td>大納言<br><span style="font-size:0.82em;color:#777;">Major Counselor</span></td>
+                <td>朝廷の重鎮。</td>
+              </tr>
+              <tr>
+                <td>300勝〜</td>
+                <td>右大臣<br><span style="font-size:0.82em;color:#777;">Minister of the Right</span></td>
+                <td>朝廷の最高幹部。</td>
+              </tr>
+              <tr>
+                <td>400勝〜</td>
+                <td>大宰権帥<br><span style="font-size:0.82em;color:#777;">Exiled Governor</span></td>
+                <td>左遷。</td>
+              </tr>
+              <tr>
+                <td>500勝〜</td>
+                <td>怨霊<br><span style="font-size:0.82em;color:#777;">Vengeful Spirit</span></td>
+                <td>清涼殿に雷。</td>
+              </tr>
+              <tr>
+                <td>700勝〜</td>
+                <td>左大臣<br><span style="font-size:0.82em;color:#777;">Minister of the Left</span></td>
+                <td>死後に贈られる。</td>
+              </tr>
+              <tr>
+                <td>1000勝〜</td>
+                <td>太政大臣<br><span style="font-size:0.82em;color:#777;">Grand Minister</span></td>
+                <td>死後に贈られる。</td>
+              </tr>
+              <tr>
+                <td>1500勝〜</td>
+                <td>天神様<br><span style="font-size:0.82em;color:#777;">God of Learning</span></td>
+                <td>学問の神様。</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="title-note">※ 称号は菅原道真をモデルに構成しています。</p>
+        </details>
+      </div>
+    </div>
+
+    <div id="player_info">
+      <span id="ci_player_label" style="display:none;">あなた</span>
+      <span id="my_id" style="display:none;"></span>
+      <span id="ci_my_bar" class="ci-bar-span" style="display:none;"></span>
+      <span id="ci_my_count" class="ci-count-span" style="display:none;"></span>
+      <span id="ci_badge" class="ci-badge" style="display:none;"></span>
+      <span id="ci_enemy_bar" class="ci-bar-span" style="display:none;"></span>
+      <span id="ci_enemy_count" class="ci-count-span" style="display:none;"></span>
+      <span id="others_icons" style="display:none;"></span>
+    </div>
+
+    <!-- ランキング閲覧モーダル -->
+    <div id="ranking_overlay" onclick="if(event.target===this)closeRankingOverlay()">
+      <div id="ranking_overlay_inner">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+          <b style="font-size:1rem;">📊 累計ランキング（ロボット対戦）</b>
+          <button onclick="closeRankingOverlay()"
+            style="background:none;border:none;font-size:20px;cursor:pointer;line-height:1;">✕</button>
+        </div>
+        <div style="font-size:0.78rem;color:#aaa;text-align:center;margin-bottom:10px;">全難易度がランキング対象です</div>
+        <div id="ranking_overlay_content"></div>
+      </div>
+    </div>
+
+    <div id="status_text"></div>
+    <div style="text-align:center;"><button id="audio_resume_btn">音が鳴らない場合はここをタップ</button></div>
+
+    <div id="karuta_container"></div>
+
+    <div id="result_container"
+      style="display:none; text-align:center; padding:20px; background:#fff9e6; border-radius:10px; margin:20px auto; max-width:800px;">
+      <div id="result_text" style="font-weight:bold;"></div>
+      <!-- 取られた札の一覧 -->
+      <div id="missed_cards_section" style="display:none; margin-top:18px; text-align:left;">
+        <div style="font-size:14px; font-weight:bold; color:#B82343; margin-bottom:8px; text-align:center;">
+          ロボットに取られた札
+        </div>
+        <div id="missed_cards_list"></div>
+      </div>
+      <!-- ランキングエリア -->
+      <div id="ranking_section" style="display:none; margin-top:18px; border-top:2px solid #e0c860; padding-top:16px;">
+        <div id="win_recorded_notice"
+          style="display:none; font-size:0.95rem; font-weight:bold; color:#2d5a27; margin-bottom:10px;"></div>
+        <div id="ranking_login_note" style="display:none; font-size:0.85rem; color:#888; margin-bottom:10px;">
+          ログインすると勝利数がランキングに記録されます。</div>
+      </div>
+      <button class="btn-return" onclick="location.reload()" style="margin-top:18px;">最初の画面に戻る</button>
+      <button class="ranking-view-btn" id="ranking_view_btn" onclick="openRankingOverlay()"
+        style="display:none; margin-top:10px;">📊 ランキングを見る</button>
+    </div>
+  </main>
+
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-copy">&copy;2023 時雨の百人一首</span>
+      <ul>
+        <li><a href="policy.html">プライバシーポリシー</a></li>
+        <li>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXx7TKlqnTfKrw2Nuh4f37swVwFH-RFDsNkTGQ4JEF50q2wQ/viewform?usp=header"
+            target="_blank" rel="noopener">お問い合わせフォーム</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    window.LANG = {
+      othersIconsText: 'ロボット',
+      statusPreparingCards: '札を準備しています...',
+      jokaLabel: '序歌：',
+      btnSkip: 'スキップ',
+      statusPlayingJoka: '序歌を読んでいます...',
+      statusLoadingAudio: '音声を読み込み中...',
+      statusStartingIn: sec => `🔥 開始まで... ${sec}`,
+      statusCardNumber: total => `第 1 首 / ${total}首`,
+      centerLineHtml: '<div id="memory_info_row"><span>暗記タイム 残り：</span><span id="memory_countdown_timer">3:00</span><button id="memory_skip_btn">今すぐ始める</button></div><div id="send_card_notice">自陣の1枚を敵陣に送ってください</div><div id="kami_no_ku_display" class="done"></div><div id="empty_card_notice">空札でした。次を読みます。</div>',
+      arrangeHintText: '★ ドラッグして自陣の札を並び替えられます（暗記フェーズ中のみ）',
+      statusSendCardPrompt: '自陣の1枚を敵陣に送ってください',
+      statusPostSendDone: '送り完了',
+      statusPostSendCountdown: (label, remaining) => `${label} ─ あと${remaining}秒（自陣を整えてください）`,
+      statusCardDisplay: (idx, total) => `第 ${idx + 1} 首 / ${total}首`,
+      statusReceiveSentCard: '送り札を自陣に配置してください',
+      statusCardReceived: '送り札受取',
+      statusRobotMistake: 'ロボットがお手付き。自陣の1枚を敵陣に送れます！',
+      statusPlayerFalseStart: '❌ お手付き！敵陣から1枚送られます',
+      countSuffix: '枚',
+      badgeAlmostWon: 'あと一息',
+      badgeReversal: '形勢逆転！',
+      badgeLastOne: '運命戦',
+      badgeYouLead: 'あなた有利',
+      badgeOppLeads: '相手有利',
+      badgeEven: '互角',
+      endGameVictory: 'めでたし！',
+      defeatTextStyles: ['font-size:clamp(60px,15vw,80px)', 'letter-spacing:0.15em', 'white-space:nowrap'],
+      defeatFlexDirection: 'column',
+      defeatText: '残念！',
+      badgeWin: 'お見事！',
+      badgeLose: '残念！',
+      rankListHtml: (enemyScore, myScore) => `<div style="font-size:1.1rem;">ロボット：${enemyScore}枚、あなた：${myScore}枚</div>`,
+      resultRank: (myRank, icon) => `<div style="font-size:2.5rem;color:#B82343;margin-bottom:10px;">第 ${myRank} 位 ${icon}</div>`,
+      rankingLoadingHtml: '<div style="color:#aaa;font-size:0.9rem;text-align:center;padding:20px;">読み込み中...</div>',
+      rankingLoginPromptHtml: '<div style="color:#aaa;font-size:0.9rem;text-align:center;padding:20px;">ログインするとランキングが表示されます</div>',
+      rankingLoadingCheckStr: '読み込み中',
+      rankingTimeoutHtml: '<div style="color:#aaa;font-size:0.9rem;text-align:center;padding:16px;">読み込みに時間がかかっています<br><small>ページをリロードしてください</small></div>',
+      rankTitles: [
+        { wins: 1500, title: '天神様' }, { wins: 1000, title: '太政大臣' },
+        { wins: 700, title: '左大臣' }, { wins: 500, title: '怨霊' },
+        { wins: 400, title: '大宰権帥' }, { wins: 300, title: '右大臣' },
+        { wins: 200, title: '大納言' }, { wins: 120, title: '中納言' },
+        { wins: 70, title: '参議' }, { wins: 40, title: '左中弁' },
+        { wins: 20, title: '蔵人頭' }, { wins: 10, title: '文章博士' },
+        { wins: 5, title: '少内記' }, { wins: 3, title: '文章得業生' },
+        { wins: 1, title: '文章生' },
+      ],
+      alertLoginFailed: 'ログインに失敗しました。',
+      confirmDeleteData: '記録したスコアデータをすべて削除します。\nこの操作は元に戻せません。本当に削除しますか？',
+      alertDeleteFailed: '削除に失敗しました。再度お試しください。',
+      defaultName: '名無し',
+      winMultiplierSuffix: multiplier => `（×${multiplier}）`,
+      winRecordedNotice: suffix => `🏆 ランキングに勝利を記録しました！${suffix}`,
+      rankingNoRecordsHtml: '<div style="color:#aaa;font-size:0.9rem;text-align:center;padding:16px;">まだ記録がありません<br><small>勝利するとランキングに載ります</small></div>',
+      meBadgeText: 'あなた',
+      winCount: wins => `${wins}勝`,
+      rankingLoadErrorHtml: msg => `<div style="color:#e74c3c;text-align:center;padding:16px;">読み込みに失敗しました ${msg}<br><small style="color:#aaa;">ブラウザのコンソール(F12)でエラーを確認してください</small></div>`,
+    };
+  </script>
+  <script src="../js/karuta-taisen-pro-shared.js?06"></script>
+  <script type="module" src="../js/karuta-taisen-pro-module.js?01"></script>
+  <script src="../js/back-to-top.js?20260908-02"></script>
+
+</body>
+
+</html>

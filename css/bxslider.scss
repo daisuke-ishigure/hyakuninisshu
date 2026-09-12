@@ -1,0 +1,27 @@
+.bx-wrapper {
+    background-color: transparent;
+    margin: 0px auto;
+    border: none;
+    box-shadow: none;
+}
+
+div.bx-controls.bx-has-controls-direction.bx-has-pager>div.bx-pager.bx-default-pager {
+    display: flex !important;
+    flex-direction:column;
+    align-items:center;
+    justify-content: center;
+    height:100%;
+    gap:5px;
+}
+
+.bx-wrapper .bx-pager {
+    position: absolute;
+    left:-18%;
+    top: 0;
+    bottom:0;
+    margin:auto 0;
+    @media (max-width:750px){
+        left:-20px;
+    }
+    
+}

@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head prefix="og: http://ogp.me/ns#">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="Keywords" content="百人一首,暗記">
+  <meta name="description"
+    content="百人一首の下の句の暗記・確認に特化した学習ページ。ヒントとして上の句が最初から見えています。隠されている上の句を思い出し、クリックして答え合わせをします。五色百人一首の色ごとに表示を切り替えられます。">
+  <meta name="fragment" content="!">
+  <meta name="google-site-verification" content="a3HHNhawWK8QsasKiSFMC_QeIXmO1tdBc60jhNPTA3s">
+  <!-- canonical設定 -->
+  <link rel="canonical" href="https://hyakuninisshu.com/anki-shimo.html">
+  <!-- スタイルシートの追加 -->
+  <link rel="stylesheet" href="../css/style.css?20260908-16">
+  <!-- google fontの追加 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@500&family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap"
+    rel="stylesheet">
+
+  <!-- google font英文用の追加 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fondamento:ital@0;1&display=swap" rel="stylesheet">
+  <!-- lightbox.cssの追加 -->
+  <link href="/css/lightbox.css" rel="stylesheet">
+  <!-- jQueryの追加 -->
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.jsの追加 -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': '計%2枚ある中、今は%1枚目の画像 '
+    })
+  </script>
+  <!-- Howler.js（音声）のCDNを追加 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
+  <!-- inview.jsの追加 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/protonet-jquery.inview/1.1.2/jquery.inview.min.js"></script>
+
+  <!-- MixItUp CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/mixitup@3/dist/mixitup.min.js"></script>
+
+  <!-- アップルタッチアイコン -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <!-- favicon用 -->
+  <link rel="icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <script>
+    if (window.location.href.includes("?jsonSelectorValue=36")) {
+      window.location.href = window.location.href.replace("?jsonSelectorValue=36", "");
+    }
+  </script>
+  <!-- 構造化データ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://hyakuninisshu.com/anki-shimo.html"
+    },
+    "headline": "百人一首の下の句の暗記・確認に特化した学習ページ",
+    "description": "百人一首の下の句の暗記・確認に特化した学習ページ。ヒントとして上の句が見える状態で下の句を思い出す練習ができます。五色百人一首の切り替えにも対応。",
+    "publisher": {
+      "@type": "Person",
+      "name": "時雨の百人一首"
+    }
+  }
+  </script>
+  <!-- パンくずリスト -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "時雨の百人一首 TOP",
+      "item": "https://hyakuninisshu.com/"
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "百人一首のアプリ",
+      "item": "https://hyakuninisshu.com/introduction-app.html"
+    },{
+      "@type": "ListItem",
+      "position": 3,
+      "name": "百人一首の下の句の暗記・確認に特化した学習ページ",
+      "item": "https://hyakuninisshu.com/anki-shimo.html"
+    }]
+  }
+  </script>
+  <title>百人一首の下の句の暗記・確認に特化した学習ページ | 時雨の百人一首</title>
+</head>
+<style>
+  /* フォントの読み込み：Kaisei HarunoUmi（和風で雅なフォント） */
+  @import url('https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@400;700&family=Sawarabi+Mincho&display=swap');
+
+  body {
+    font-family: "Kaisei HarunoUmi", serif;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  ruby {
+    ruby-align: center;
+  }
+
+  rt {
+    text-align: start;
+    margin-left: -0.1em;
+    line-height: 1;
+    font-size: 0.4em;
+    /* ルビのサイズを明示的に指定 */
+  }
+
+  @media(max-width:1000px) {
+    rt {
+      margin-left: -0.2em;
+    }
+  }
+
+
+  main {
+    padding: 5px;
+    display: block;
+  }
+
+  /* フィルターボタン用のスタイル */
+  .filter-controls {
+    text-align: center;
+    margin: 30px auto;
+    max-width: 1200px;
+  }
+
+  .filter-controls button {
+    font-family: "noto-sans-pro", sans-serif !important;
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: 2px solid #8a9a78;
+    background: #fff;
+    color: #333;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .filter-controls button:hover {
+    color: #222;
+  }
+
+  .filter-controls button.mixitup-control-active {
+    color: #222;
+    border-color: #B82343 !important;
+  }
+
+  #container {
+    display: flex;
+    flex-wrap: wrap;
+    /* 右から左へ並べる */
+    flex-direction: row-reverse;
+    /* 全体を中央に寄せる（これで左右の余白が均等になります） */
+    justify-content: center;
+    /* 縦方向の間隔 */
+    row-gap: 30px;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+
+  /* 各カードに左右の余白を持たせることで、均等なグリッドを作ります */
+  .card {
+    position: relative;
+    z-index: 20;
+    background: #ffe9e9;
+    /* ← これが重要 */
+    transform: translateZ(0);
+    will-change: transform;
+    margin: 0 15px;
+    justify-content: end;
+    width: 320px;
+    height: 400px;
+    line-height: 2;
+    background: #fff;
+    background-image: url(../img/paper.gif);
+    color: #333;
+    padding: 30px 15px;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    border: 15px solid #8a9a78;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+
+  /* 最後の行を左端（和歌の終点方向）へ寄せるためのダミー要素用 */
+  .spacer {
+    width: 320px;
+    margin: 0 15px;
+    height: 0;
+  }
+
+
+
+  /* --- 文字レイアウト --- */
+  .author {
+    position: absolute;
+    right: 15px;
+    bottom: 30px;
+    font-size: 1.1rem;
+    color: #666;
+    text-align: right;
+    /* 縦書きでの「下端」寄せ */
+  }
+
+  .kami {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    padding: 15px 0;
+    line-height: 1.7;
+    /* 統一された行間 */
+    letter-spacing: 0.1em;
+    overflow: hidden;
+  }
+
+
+  /* 決まり字のスタイル */
+  .kimariji {
+    color: #d32f2f;
+  }
+
+  /* 決まり字ヒント（下の句の最後の行に表示） */
+  .kimariji-hint {
+    font-size: 0.9rem;
+    color: transparent;
+    margin-top: -5px;
+    transition: all 0.6s ease;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+  }
+
+.shimo {
+  cursor: pointer;
+  height: 80%;
+  font-size: 1.5rem;
+  line-height: 1.7;
+  padding: 15px 5px;
+  border-radius: 5px;
+  background: #ffe9e9;
+  color: transparent;
+  transition: all 0.6s ease;
+  position: relative;
+  z-index: 30;        /* ← 追加：.card(z-index:20)より上に積む */
+  isolation: isolate; /* ← 追加：子要素のルビが外へ突き抜けないよう文脈を閉じる */
+}
+.shimo rt {
+  visibility: hidden;
+}
+
+.shimo.revealed rt {
+  visibility: visible;
+}
+
+  @media (max-width:1000px) {
+
+    .kami,
+    .shimo {
+      font-size: 1.8rem;
+      line-height: 2;
+      padding:0;
+    }
+  }
+
+  .shimo.revealed {
+    background: transparent !important;
+    color: #333;
+    animation: text-float-up 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  }
+
+  .shimo.revealed .kimariji-hint {
+    color: #d32f2f;
+  }
+
+  @keyframes text-float-up {
+    0% {
+      opacity: 0;
+      transform: translateY(15px);
+      filter: blur(4px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+
+
+
+  @keyframes glitter {
+    0% {
+      /* 座標を(0,0)に固定し、最初は小さく */
+      transform: translate3d(0, 0, 0) scale(0) rotate(0deg);
+      opacity: 0;
+    }
+
+    5% {
+      opacity: 1;
+      transform: translate3d(0, 5px, 0) scale(1) rotate(45deg);
+    }
+
+    100% {
+      /* 終了地点まで一気に計算させる。translate3dを使うのが滑らかさのコツ */
+      transform: translate3d(var(--random-x), 250px, 0) scale(0.3) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  .sparkle {
+    position: absolute;
+    width: 10px;
+    height: 14px;
+    /* 非常に淡いピンク（桜の白に近い色） */
+    background: #ffd3ed;
+    /* 背景を少し透けさせて、繊細な感じを出す */
+    opacity: 0.8;
+    border-radius: 50% 10% 50% 50%;
+    pointer-events: none;
+    z-index: 10;
+    /* 下に落ちるアニメーション */
+    animation: glitter 2.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+
+    /* ぼんやりと光っているような柔らかい影 */
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  }
+
+  .detail-link {
+    position: absolute;
+    bottom: 25px;
+    line-height: 1.5;
+    /* 下端の余白に合わせる */
+
+    /* --- 修正ポイント --- */
+    /* 左端からの固定位置ではなく、カードのパディング(25px)に合わせる */
+    left: 25px;
+
+    writing-mode: horizontal-tb;
+    text-decoration: none;
+    text-align: center;
+    color: #fff;
+    font-size: 0.8rem;
+    background-color: #B82343;
+    width: 89.6px;
+    /* ボタンの横幅 */
+    padding: 8px 5px;
+    /* 上下を少し広げると読みやすい */
+    border-radius: 3px;
+    transition: all 0.3s;
+    z-index: 5;
+    /* 文字の下に隠れないように */
+  }
+
+
+  .detail-link:hover {
+    background-color: #d4af37;
+    color: #fff;
+  }
+</style>
+
+<body>
+  <!-- ヘッダーここから -->
+  <header class="header">
+    <p class="site-title">
+      <a href="https://hyakuninisshu.com/">時雨の百人一首</a>
+    </p>
+    <div class="header_list">
+      <a href="index.html"><img src="../img/icon_top.svg?ver-02" alt="トップ" class="icon"></a>
+<a href="introduction.html" style="color:#333"><img src="/img/icon_column.svg?ver-02" alt="コラム" class="icon"></a>
+<a href="introduction-app.html" style="color:#333"><img src="/img/icon_app.svg?ver-02" alt="アプリ" class="icon"></a>
+<a href="list.html"><img src="/img/icon_search.svg?ver-04" alt="和歌の一覧・検索" class="icon"></a>
+    </div>
+  </header>
+  <!-- ヘッダーここまで・メインここから -->
+  <main>
+    <!-- フィルターボタン -->
+    <div class="filter-controls">
+      <button type="button" data-filter="all">すべて</button>
+      <button type="button" data-filter=".ピンク"
+        style="background-color: #ffd1dc; padding: 10px 20px; border-radius: 5px; cursor: pointer;">ピンク</button>
+      <button type="button" data-filter=".青"
+        style="background-color: #d1e9ff; padding: 10px 20px; border-radius: 5px; cursor: pointer;">青</button>
+      <button type="button" data-filter=".黄"
+        style="background-color: #fff9c4; padding: 10px 20px; border-radius: 5px; cursor: pointer;">黄</button>
+      <button type="button" data-filter=".緑"
+        style="background-color: #dcedc8; padding: 10px 20px; border-radius: 5px; cursor: pointer;">緑</button>
+      <button type="button" data-filter=".橙"
+        style="background-color: #ffe0b2; padding: 10px 20px; border-radius: 5px; cursor: pointer;">橙</button>
+    </div>
+
+    <div id="container"></div>
+
+    <script>
+      let mixer; // MixItUpインスタンスを格納
+
+      async function loadHyakuninIsshu() {
+        try {
+          const response = await fetch('./js/hyakunin.json?04');
+          const data = await response.json();
+          const container = document.getElementById('container');
+
+          Object.values(data).forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'card mix ' + item.color; // colorの値をクラスに追加
+
+            card.innerHTML = `
+        <div class="author">${item.name}</div>
+        <div class="kami">${item.first}</div>
+        <div class="shimo" onclick="reveal(this)" data-kimariji="${item.kimariji || ''}">
+          ${item.second}
+          <div class="kimariji-hint">【決まり字】${item.kimariji || 'なし'}</div>
+        </div>
+        <a href="${item.number}.html" class="detail-link">第${item.number}首<br>解説ページ</a>
+      `;
+            container.appendChild(card);
+          });
+
+          // --- ここを追加:最後の一行を左に詰めるための見えない箱 ---
+          for (let i = 0; i < 4; i++) { // 最大列数分（4-5個）あれば十分です
+            const spacer = document.createElement('div');
+            spacer.className = 'spacer';
+            container.appendChild(spacer);
+          }
+
+          // MixItUpの初期化
+          mixer = mixitup(container, {
+            selectors: {
+              target: '.card' // フィルタリング対象
+            },
+            animation: {
+              duration: 400,
+              effects: 'fade scale', // フェード＆スケールアニメーション
+              easing: 'cubic-bezier(0.25, 0.1, 0.25, 1)'
+            }
+          });
+
+        } catch (error) {
+          console.error("データの読み込みに失敗しました:", error);
+        }
+      }
+
+      function reveal(el) {
+        if (el.classList.contains('revealed')) return;
+        el.classList.add('revealed');
+
+        const w = el.offsetWidth;
+        const h = el.offsetHeight;
+
+
+        for (let i = 0; i < 25; i++) {
+          const sparkle = document.createElement('div');
+          sparkle.className = 'sparkle';
+
+          // 出現位置を少し高めに設定（落ちる距離を稼ぐため）
+          sparkle.style.left = (Math.random() * w) + 'px';
+          sparkle.style.top = (Math.random() * (h * 0.5)) + 'px'; // 帯の上半分から発生
+
+          // 左右にランダムに散らす
+          const randomX = (Math.random() - 0.5) * 500; // -60px ～ 60px
+          sparkle.style.setProperty('--random-x', `${randomX}px`);
+
+          // 花びらの色
+          const petalColors = [
+            'rgba(255, 235, 235, 0.9)', // 薄紅（少し赤みを足して視認性アップ）
+            'rgba(255, 220, 230, 0.9)', // 桜色（ピンクを強めに）
+            'rgba(255, 210, 220, 0.8)', // 撫子色（さらに濃いピンク）
+            'rgba(255, 245, 245, 0.95)' // ほとんど白に近いが、不透明度を高く
+          ];
+          sparkle.style.background = petalColors[Math.floor(Math.random() * petalColors.length)];
+
+          // 落ちる時間をバラつかせる
+          const duration = 2 + Math.random() * 5;
+          sparkle.style.animationDuration = `${duration}s`;
+
+          el.appendChild(sparkle);
+          setTimeout(() => sparkle.remove(), duration * 1000);
+        }
+      }
+
+      loadHyakuninIsshu();
+    </script>
+  </main>
+
+  <!-- メインここまで・フッターここから -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-copy">&copy;2023 時雨の百人一首</span>
+      <ul>
+        <li><a href="policy.html">プライバシーポリシー</a></li>
+        <li>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXx7TKlqnTfKrw2Nuh4f37swVwFH-RFDsNkTGQ4JEF50q2wQ/viewform?usp=header"
+            target="_blank" rel="noopener">お問い合わせフォーム</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+  <!-- フッターここまで -->
+
+  <script src="../js/back-to-top.js?20260908-02"></script>
+
+</body>
+
+</html>

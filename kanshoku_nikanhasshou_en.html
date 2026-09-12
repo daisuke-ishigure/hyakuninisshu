@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="Keywords"
+    content="Nikan-Hassho, Dajōkan, Jingikan, eight ministries, Heian government, ritsuryō, hyakunin isshu">
+  <meta name="description"
+    content="A complete guide to the Heian central government: the Two Offices (Jingikan and Dajōkan), Eight Ministries, the regent system, the rank correspondence table, and the four-tier office structure.">
+  <link rel="stylesheet" href="../css/style.css?20260908-16">
+  <link rel="stylesheet" href="https://unpkg.com/scroll-hint@latest/css/scroll-hint.css">
+  <link rel="stylesheet" href="../css/showtooltips-blue-kanshoku.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@500&family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap"
+    rel="stylesheet">
+  <script src="https://unpkg.com/scroll-hint@latest/js/scroll-hint.min.js"></script>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+  <meta property="og:title"
+    content="Central Government: Two Offices and Eight Ministries (Nikan-Hasshō) | Heian Court Ranks &amp; Offices | Shigure's Hyakunin Isshu">
+  <meta property="og:description"
+    content="A complete guide to the Heian central government: the Two Offices (Jingikan and Dajōkan), Eight Ministries, the regent system, the rank correspondence table, and the four-tier office structure.">
+  <meta property="og:image" content="https://hyakuninisshu.com/img/thumb_kanshoku.webp">
+  <meta property="og:url" content="https://hyakuninisshu.com/kanshoku_nikanhasshou_en.html">
+  <meta property="og:site_name" content="Shigure's Hyakunin Isshu">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://hyakuninisshu.com/kanshoku_nikanhasshou_en.html">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link href="/css/lightbox.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="/js/lightbox.js"></script>
+  <script>lightbox.option({ 'alwaysShowNavOnTouchDevices': true, 'albumLabel': 'Image %1 of %2' })</script>
+  <!-- google chart -->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <style>
+    a {
+      text-decoration: underline;
+    }
+
+    /* Left-align all text */
+    body {
+      text-align: left;
+    }
+
+    p,
+    td,
+    th,
+    li,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      text-align: left;
+    }
+
+    .section p {
+      text-align: left;
+    }
+
+    .w80 {
+      margin: 0 auto 0.75em;
+      width: 80%;
+      display: block;
+    }
+
+    @media (max-width:760px) {
+      .w80 {
+        width: 100%;
+      }
+    }
+
+    /* Org-chart node: Japanese (vertical) + English (horizontal) side by side */
+    .v-node {
+      display: inline-flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      gap: 4px !important;
+      writing-mode: horizontal-tb !important;
+      padding: 4px 6px !important;
+      line-height: 1.3 !important;
+    }
+
+    /* Japanese label — vertical writing */
+    .v-node .vn-ja {
+      writing-mode: vertical-rl !important;
+      text-orientation: mixed !important;
+      font-size: 0.85em !important;
+      color: #222 !important;
+      white-space: nowrap !important;
+    }
+
+    /* Divider */
+    .v-node .vn-sep {
+      width: 1px !important;
+      align-self: stretch !important;
+      background: #bbb !important;
+      margin: 0 2px !important;
+    }
+
+    /* English label — rotated 90° to read left-to-right when tilted */
+    .v-node .vn-en-wrap {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      align-self: stretch !important;
+      /* width = roughly one em so the wrapper is narrow after rotation */
+      width: 1.2em !important;
+      position: relative !important;
+      overflow: visible !important;
+    }
+
+    .v-node .vn-en {
+      writing-mode: horizontal-tb !important;
+      text-orientation: mixed !important;
+      transform: rotate(90deg) !important;
+      transform-origin: center center !important;
+      font-size: 0.78em !important;
+      color: #333 !important;
+      white-space: nowrap !important;
+      position: absolute !important;
+      left: 50% !important;
+      top: 50% !important;
+      transform: translate(-50%, -50%) rotate(90deg) !important;
+      line-height: 1.2 !important;
+    }
+
+    /* OrgChart */
+    .google-visualization-orgchart-table {
+      border-collapse: separate !important;
+      border-spacing: 0 !important;
+    }
+
+    .google-visualization-orgchart-node {
+      background-color: white !important;
+      border: none !important;
+      box-shadow: none !important;
+      outline: none !important;
+      position: relative !important;
+      z-index: 0 !important;
+      background-clip: padding-box !important;
+      overflow: hidden !important;
+    }
+
+    .google-visualization-orgchart-node::after {
+      content: '' !important;
+      position: absolute !important;
+      inset: 0 !important;
+      border: 1px solid #999 !important;
+      z-index: 1 !important;
+      pointer-events: none !important;
+    }
+
+    .google-visualization-orgchart-node>div {
+      overflow: visible !important;
+    }
+  </style>
+  <title>Central Government: Two Offices and Eight Ministries (Nikan-Hasshō) | Heian Court Ranks &amp; Offices |
+    Shigure's Hyakunin Isshu</title>
+</head>
+
+<body>
+  <header class="header">
+    <p class="site-title"><a href="https://hyakuninisshu.com/">Shigure no Hyakunin Isshu</a></p>
+    <div class="header_list">
+      <a href="../index_en.html"><img src="../img/icon_top_en.svg?ver-01" alt="Top" class="icon"></a>
+      <a href="../introduction_en.html" style="color:#333"><img src="/img/icon_column_en.svg?ver-01" alt="Columns"
+          class="icon"></a>
+      <a href="../introduction-app_en.html" style="color:#333"><img src="/img/icon_app_en.svg?ver-01" alt="Apps"
+          class="icon"></a>
+      <a href="kanshoku_nikanhasshou.html"><img src="/img/icon_lang.svg?ver-01" alt="Japanese" class="icon"></a>
+      <a href="../list.html"><img src="/img/icon_list_en.svg?ver-01" alt="Poem list &amp; search" class="icon"></a>
+    </div>
+  </header>
+  <main class="main_about-main">
+    <div class="about-main">
+      <div class="section">
+        <nav>
+          <ol class="breadcrumb">
+            <li><a href="../index_en.html">Top</a></li>
+            <li><a href="../introduction_en.html">Columns</a></li>
+            <li><a href="../kanshoku_en.html">Heian Court Ranks &amp; Offices</a></li>
+            <li>Two Offices and Eight Ministries</li>
+          </ol>
+        </nav>
+        <hr>
+
+        <h1>Central Government Structure: The Two Offices and Eight Ministries (Nikan-Hasshō)</h1>
+        <p>
+          Imagine a system of government in which religious authority and political power
+          stood side by side under the emperor.
+          This was the structure of the Heian court.
+        </p>
+
+        <p>
+          This system was known as <em><ruby>二官八省<rt>Nikan-Hasshō</rt></ruby></em> —
+          the "Two Offices and Eight Ministries."
+        </p>
+
+        <p>
+          Beneath the emperor were two parallel institutions:
+          the <em><ruby>神祇官<rt>Jingikan</rt></ruby></em> (Office of Shinto), responsible for state religious rites,
+          and the <em><ruby>太政官<rt>Dajōkan</rt></ruby></em> (Grand Council of State), which directed national
+          governance.
+          Eight ministries operated under the authority of the Dajōkan.
+        </p>
+        <figure class="image-overlay-container w80">
+          <img src="/img/nikanhasshou_en.svg" alt="二官八省の図" style="width:100%; height:auto; display:block;">
+          <div class="marker pulse" style="top: 9.9%; left: 43.7%;" onclick="handleMarkerClick(this, '#sekkan')"></div>
+          <div class="marker pulse" style="top: 24%; left: 93%;" onclick="handleMarkerClick(this, '#shingikan')"></div>
+          <div class="marker pulse" style="top: 25%; left: 60.2%;" onclick="handleMarkerClick(this, '#dajoukan')"></div>
+          <div class="marker pulse" style="top: 25%; left: 25.2%;" onclick="handleMarkerClick(this, '#togubou')"></div>
+          <div class="marker pulse" style="top: 25%; left: 14.5%;" onclick="handleMarkerClick(this, '#danjoudai')">
+          </div>
+          <div class="marker pulse" style="top: 25%; left: 4.5%;" onclick="handleMarkerClick(this, '#rokuefu')"></div>
+          <div class="marker pulse" style="top: 68%; left: 48%;" onclick="handleMarkerClick(this, '#nakanotsukasa')">
+          </div>
+          <div class="marker pulse" style="top: 68%; left: 40.5%;"
+            onclick="handleMarkerClick(this, '#shikibunotukasa')"></div>
+          <div class="marker pulse" style="top: 68%; left: 32.75%;" onclick="handleMarkerClick(this, '#jibushou')">
+          </div>
+          <div class="marker pulse" style="top: 68%; left: 25.5%;" onclick="handleMarkerClick(this, '#minbushou')">
+          </div>
+          <div class="marker pulse" style="top: 68%; left: 95%;" onclick="handleMarkerClick(this, '#hyoubushou')">
+          </div>
+          <div class="marker pulse" style="top: 68%; left: 87.5%;" onclick="handleMarkerClick(this, '#gyoubushou')">
+          </div>
+          <div class="marker pulse" style="top: 68%; left: 80%;" onclick="handleMarkerClick(this, '#ookurashou')">
+          </div>
+          <div class="marker pulse" style="top: 68%; left: 72.4%;" onclick="handleMarkerClick(this, '#kunaishou')">
+          </div>
+          <div class="marker pulse" style="top: 65%; left: 14.5%;" onclick="handleMarkerClick(this, '#maryou')"></div>
+          <div class="marker pulse" style="top: 65%; left: 4.6%;" onclick="handleMarkerClick(this, '#hyougoryou')">
+          </div>
+        </figure>
+
+        <h2>The Two Offices (Nikan)</h2>
+
+        <h3 id="shingikan" class="mt-2">Jingikan (神祇官) — Office of Shinto</h3>
+        <p>
+          The Jingikan oversaw state religious ceremonies and supervised Shinto priests throughout the country.
+          In the formal <em>ritsuryō</em> system, it stood alongside the Dajōkan as an institution parallel under the
+          emperor.
+          In practice, however, the Dajōkan exercised far greater political influence.
+        </p>
+
+        <h3 id="dajoukan">Dajōkan (太政官) — Grand Council of State</h3>
+        <p>
+          The Dajōkan was the central governing body of the Heian state.
+          Unlike modern systems based on the separation of powers, it concentrated executive, legislative,
+          and judicial authority in a single institution.
+        </p>
+
+        <p>
+          Its senior officials — including the <em>daijō-daijin</em>, <em>sadaijin</em>, <em>udaijin</em>,
+          as well as senior and middle counselors (<em>dainagon</em>, <em>chūnagon</em>) and councillors
+          (<em>sangi</em>) — met in a policy council known as <em>jin no sadame</em> to deliberate on matters of state.
+        </p>
+
+        <p>
+          The <em>Shōnagon</em> originally served as a close aide to the emperor. However, after the establishment
+          of the <em>Kurōdodokoro</em> (Chamberlain's Office) by Emperor Saga in 810, many of these functions
+          were transferred to the chamberlains. The Shōnagon thereafter focused mainly on administrative duties
+          such as managing imperial seals and post-horse bells (<em>ekirei</em>).
+        </p>
+
+        <p>
+          The Left and Right <em>Benkan</em> bureaus functioned as the administrative core of the Dajōkan,
+          transmitting decisions to the eight ministries in the form of concrete orders.
+          In addition, extra-statutory offices (<em>ryōgenokan</em>) such as the <em>Naidaijin</em>
+          (Minister of the Interior) played important roles in governance.
+          Titles such as <em>Jun-daijin</em> (Acting Minister) were also used to grant ministerial-level status
+          to individuals outside the standard hierarchy.
+        </p>
+
+        <p>
+          In the Heian court, power was organized with remarkable precision.
+          Every official position was tied to rank, and each rank determined the offices a person could hold.
+        </p>
+
+        <p>
+          At the center of this system stood the <em>Dajōkan</em>, supported by a clearly defined internal hierarchy.
+        </p>
+
+        <p>
+          The table below illustrates its four-tier structure.
+        </p>
+
+        <p>
+          Government offices were organized into four functional levels:
+          leadership (<em>kami</em>), deputies (<em>suke</em>), administrators (<em>jō</em>), and record-keepers
+          (<em>sakan</em>).
+        </p>
+        <table class="rank_table" style="width:100%;">
+          <tr>
+            <td style="width:25%;">Tier</td>
+            <td style="width:75%;">Posts</td>
+          </tr>
+
+          <tr>
+            <td>Kami (Chief)</td>
+            <td>
+              <ruby>太政大臣<rt>Daijō-daijin</rt></ruby> (Chancellor) &gt;
+              <ruby>左大臣<rt>Sadaijin</rt></ruby> (Minister of the Left) &gt;<br class="br-pc">
+              <ruby>右大臣<rt>Udaijin</rt></ruby> (Minister of the Right) &gt;
+              <ruby>内大臣<rt>Naidaijin</rt></ruby> (Minister of the Interior)
+            </td>
+          </tr>
+
+          <tr>
+            <td>Suke (Deputy)</td>
+            <td>
+              <ruby>大納言<rt>Dainagon</rt></ruby> (Senior Counselor) &gt;
+              <ruby>中納言<rt>Chūnagon</rt></ruby> (Middle Counselor) &gt;<br class="br-pc">
+              <ruby>参議<rt>Sangi</rt></ruby> (Councillor)
+            </td>
+          </tr>
+
+          <tr>
+            <td>Jō (Controller)</td>
+            <td>
+              <ruby>少納言<rt>Shōnagon</rt></ruby> ·
+              <ruby>左弁<rt>Saben</rt></ruby>・<ruby>右弁<rt>Uben</rt></ruby> (Senior &gt; Middle &gt; Junior)
+            </td>
+          </tr>
+
+          <tr>
+            <td>Sakan (Recorder)</td>
+            <td>
+              <ruby>外記<rt>Geki</rt></ruby> (Senior/Junior) ·
+              <ruby>左史<rt>Sashi</rt></ruby>・<ruby>右史<rt>Ushi</rt></ruby> (Senior/Junior)
+            </td>
+          </tr>
+        </table>
+        <p class="kome">The <em>Daijō-daijin</em> was often left unfilled (sokketsukan) (<em>sokketsukan</em>) — it was
+          left unfilled when no suitable candidate existed, and the empty post caused no problem as it was essentially
+          an honorary role. Titles prefixed with <em>gon</em> (acting) indicate appointments beyond the standard quota.
+        </p>
+
+        <hr style="margin-top:2em;">
+
+        <h4 id="daijokannohaika">Structure of the Dajōkan and Its Sub-Organisations</h4>
+        <figure class="sannana">
+          <img src="/img/dajoukan-haika_en.gif?v01" alt="Organisations under the Dajōkan" class="zeroroku">
+          <figcaption>
+            <p>
+              The <strong>Dajōkan</strong> was the supreme governing body of the state, overseeing all
+              <em>shō</em> (ministries) and combining functions comparable to a modern cabinet, legislature,
+              and supreme court.
+            </p>
+
+            <p>
+              A <strong><em>shō</em></strong> (省) can be understood as a ministry.
+            </p>
+
+            <p>
+              Below the ministries were several layers of subordinate organisations.
+              A <strong><em>shiki</em></strong> (職) was relatively large and high-ranking,
+              while a <strong><em>ryō</em></strong> (寮) was smaller in scale.
+            </p>
+
+            <p>
+              In the Heian period, important <em>shiki</em> included the Chūgū-shiki
+              (serving the empress) and the Kyō-shiki (responsible for administration and judicial matters in the
+              capital).
+            </p>
+
+            <p>
+              A <strong><em>tsukasa</em></strong> (司) was the smallest administrative unit,
+              responsible for highly specialised practical tasks.
+              Most <em>tsukasa</em> operated under a <em>ryō</em>, although some units close to the emperor
+              functioned independently under a ministry.
+            </p>
+          </figcaption>
+        </figure>
+
+        <p>
+          In addition to this basic "ministry → bureau → office" structure, there also existed a category
+          known as <strong><em>gen</em></strong> (監). These were independent agencies, often related to military,
+          diplomatic, or guard functions, and ranked between <em>shiki</em> and <em>ryō</em>.
+        </p>
+
+        <p>
+          Many of these organisations disappeared during the early Heian period.
+          For example, the Tonerigen was absorbed into the Ōtoneri-ryō, while the Udoneri-gen came under
+          the control of the Nakatsukasa-shō.
+        </p>
+
+        <p>
+          The title <em>gen</em> survived mainly in regional administration, particularly in the Dazaifu,
+          where officials were known as <em>Daigen</em> (大監) and <em>Shōgen</em> (少監).
+        </p>
+
+        <h2 id="sekkan" class="mt-2">Regency Power: Sesshō, Kampaku, and Nairan</h2>
+
+        <p>
+          These three positions stood above the <em>Nikan-Hasshō</em> system and effectively controlled
+          the entire administration of the state.
+        </p>
+
+        <table class="rank_table" style="width:100%;">
+          <tr>
+            <td style="width:25%;">Title</td>
+            <td style="width:75%;">Description</td>
+          </tr>
+
+          <tr>
+            <td><ruby>摂政<rt>Sesshō</rt></ruby><br><em>Regent</em></td>
+            <td>
+              Governed on behalf of the emperor when the emperor was a minor.
+              Held full authority over the government and directed the entire
+              <em>Nikan-Hasshō</em> system.
+            </td>
+          </tr>
+
+          <tr>
+            <td><ruby>関白<rt>Kampaku</rt></ruby><br><em>Chief Advisor to the Emperor</em></td>
+            <td>
+              Served as the chief advisor to an adult emperor.
+              In practice, the Kampaku exercised power comparable to the Sesshō
+              and effectively controlled the administration.
+            </td>
+          </tr>
+
+          <tr>
+            <td><ruby>内覧<rt>Nairan</rt></ruby></td>
+            <td>
+              Reviewed official documents and imperial edicts before they reached the emperor.
+              By controlling the flow of information, the Nairan could exert significant
+              influence over political decision-making.
+            </td>
+          </tr>
+        </table>
+
+        <h2>The Eight Ministries (Hasshō)</h2>
+
+        <h3 id="nakanotsukasa" style="margin-top:2em;">Nakatsukasa-shō (中務省) — Ministry of Central Affairs</h3>
+        <div class="chart_viewport">
+          <div id="chart_nakanotsukasa" class="chart_instance"></div>
+        </div>
+
+        <p>
+          The Nakatsukasa-shō was the most important of the eight ministries, positioned closest to the emperor.
+        </p>
+
+        <p>
+          It handled core state affairs, including the drafting of imperial edicts and the management
+          of official appointments. Because of its proximity to the emperor, it played a central role
+          in coordinating government administration.
+        </p>
+        <table class="rank_table" style="width:100%;">
+          <tr>
+            <td style="width:40%;">Office</td>
+            <td>Function</td>
+          </tr>
+          <tr>
+            <td>Taikōtaigō-gū-shiki (太皇太后宮職)</td>
+            <td>Served the empress dowager (grandmother generation) and managed her household affairs.</td>
+          </tr>
+          <tr>
+            <td>Kōtaigō-gū-shiki (皇太后宮職)</td>
+            <td>Served the empress dowager (mother generation) and managed her household.</td>
+          </tr>
+          <tr>
+            <td>Kōgō-gū-shiki (皇后宮職)</td>
+            <td>Served the empress (the emperor's principal consort).</td>
+          </tr>
+          <tr>
+            <td>Chūgū-shiki (中宮職)</td>
+            <td>Served the chūgū (the emperor's principal consort, distinct title).</td>
+          </tr>
+          <tr>
+            <td>Ōtoneri-ryō (大舎人寮)</td>
+            <td>Responsible for palace security and ceremonial duties; guards joined imperial processions.</td>
+          </tr>
+          <tr>
+            <td>Zusho-ryō (図書寮)</td>
+            <td>Managed books and Buddhist images; also collected and stored texts, produced sutra copies, and made
+              paper and ink.</td>
+          </tr>
+          <tr>
+            <td>Kura-ryō (内蔵寮)</td>
+            <td>Managed the emperor's private assets — the "imperial treasury," receiving offerings and managing their
+              disbursement.</td>
+          </tr>
+          <tr>
+            <td>Nuidono-ryō (縫殿寮)</td>
+            <td>Made imperial garments and managed the personnel of female palace officials.</td>
+          </tr>
+          <tr>
+            <td>Onmyō-ryō (陰陽寮)</td>
+            <td>Handled astronomy, calendrical calculations, and divination — determining auspicious dates and times.
+            </td>
+          </tr>
+          <tr>
+            <td>Takumi-ryō (内匠寮)</td>
+            <td>Made palace utensils and ceremonial objects, and decorated buildings.</td>
+          </tr>
+        </table>
+
+        <h3 id="shikibunotukasa" style="margin-bottom:1em;">Shikibu-shō (式部省) — Ministry of Ceremonial</h3>
+        <div class="sannana-grid">
+          <div class="chart_viewport">
+            <div id="chart_shikibu" class="chart_instance"></div>
+          </div>
+          <p>Managed the Daigaku-ryō (Imperial University) and handled the personnel evaluation and
+            appointment of civil officials. Also administered the Sanni-ryō (Bureau of Supernumerary
+            Officials).</p>
+        </div>
+        <table class="rank_table" style="width:100%;">
+          <tr>
+            <td style="width:40%;">Office</td>
+            <td>Function</td>
+          </tr>
+          <tr>
+            <td>Daigaku-ryō (大学寮)</td>
+            <td>The national university; trained officials for government service.</td>
+          </tr>
+          <tr>
+            <td>Sanni-ryō (散位寮)</td>
+            <td>Maintained lists of officials who held court rank but had no current post. Dispatched personnel to other
+              offices on request. A uniquely Japanese institution with no equivalent in the Tang system; absorbed into
+              the Shikibu-shō in 896.</td>
+          </tr>
+        </table>
+        <h4 id="daigakuryou">Daigaku-ryō Curriculum</h4>
+        <p>The Daigaku-ryō offered four specialist courses: <em>Kidendō</em> (Chinese history and literature),
+          <em>Myōgyōdō</em> (Confucian classics), <em>Myōhōdō</em> (law), and <em>Sandō</em> (mathematics). In the Heian
+          period, Kidendō became the dominant course.
+        </p>
+
+        <h5 style="margin-top:0.5em">Kidendō (紀伝道) — Ranks</h5>
+        <table class="rank_table" style="width:100%;">
+          <tr>
+            <td style="width:40%;">Rank</td>
+            <td style="width:60%;">Definition</td>
+          </tr>
+          <tr>
+            <td>Monjō-hakase (文章博士)</td>
+            <td>Lecturer in Kidendō (Chinese poetry and history)</td>
+          </tr>
+          <tr>
+            <td>Monjō-tokugyōshō (文章得業生)</td>
+            <td>Two outstanding students selected from the monjō-shō</td>
+          </tr>
+          <tr>
+            <td>Monjō-shō (文章生)</td>
+            <td>Students who passed further examinations from the gimonjō-shō</td>
+          </tr>
+          <tr>
+            <td>Gimonjō-shō (擬文章生)</td>
+            <td>Candidates who passed the ryō-shi entrance examination</td>
+          </tr>
+        </table>
+
+        <h5>Myōgyōdō (明経道) — Ranks</h5>
+        <table class="rank_table" style="width:100%;">
+          <tr>
+            <td style="width:40%;">Rank</td>
+            <td style="width:60%;">Definition</td>
+          </tr>
+          <tr>
+            <td>Myōgyō-hakase (明経博士)</td>
+            <td>One lecturer in Confucian classics; the post was hereditary in the Nakahara and Kiyohara clans</td>
+          </tr>
+          <tr>
+            <td>Jokyō (助教)</td>
+            <td>Two assistant lecturers</td>
+          </tr>
+          <tr>
+            <td>Chokkyō (直講)</td>
+            <td>Two supporting instructors</td>
+          </tr>
+          <tr>
+            <td>Myōgyō-tokugyōshō (明経得業生)</td>
+            <td>Two outstanding students selected from myōgyō-shō</td>
+          </tr>
+          <tr>
+            <td>Myōgyō-shō (明経生)</td>
+            <td>Students of the Confucian classics course</td>
+          </tr>
+        </table>
+
+        <h5>Myōhōdō (明法道) — Ranks</h5>
+        <table class="rank_table" style="width:100%;">
+          <tr>
+            <td style="width:40%;">Rank</td>
+            <td style="width:60%;">Definition</td>
+          </tr>
+          <tr>
+            <td>Myōhō-hakase (明法博士)</td>
+            <td>Two law lecturers</td>
+          </tr>
+          <tr>
+            <td>Myōhō-tokugyōshō (明法得業生)</td>
+            <td>Two outstanding students selected from myōhō-shō</td>
+          </tr>
+          <tr>
+            <td>Myōhō-shō (明法生)</td>
+            <td>Law students</td>
+          </tr>
+        </table>
+
+        <h5>Sandō (算道) — Ranks</h5>
+        <table class="rank_table" style="width:100%;">
+          <tr>
+            <td style="width:40%;">Rank</td>
+            <td style="width:60%;">Definition</td>
+          </tr>
+          <tr>
+            <td>San-hakase (算博士)</td>
+            <td>Two mathematics lecturers</td>
+          </tr>
+          <tr>
+            <td>San-tokugyōshō (算得業生)</td>
+            <td>Two outstanding students selected from san-shō</td>
+          </tr>
+          <tr>
+            <td>San-shō (算生)</td>
+            <td>Mathematics students</td>
+          </tr>
+        </table>
+
+        <h5>Ondō (音道)</h5>
+        <p style="margin-bottom:0;">Ondō was not an independent course but a foundational skills subject for students of
+          the Daigaku-ryō (especially those in Kidendō and Myōgyōdō).</p>
+        <table class="rank_table" style="width:100%;">
+          <tr>
+            <td style="width:40%;">Rank</td>
+            <td style="width:60%;">Definition</td>
+          </tr>
+          <tr>
+            <td>On-hakase (音博士)</td>
+            <td>Two instructors teaching Chinese pronunciation at the Daigaku-ryō</td>
+          </tr>
+          <tr>
+            <td>On-shō (音生)</td>
+            <td>Students learning Chinese pronunciation at the Daigaku-ryō</td>
+          </tr>
+        </table>
+
+        <h5>Shodō (書道)</h5>
+        <p style="margin-bottom:0;">Shodō was not an independent course but a foundational skills subject for students
+          of the Daigaku-ryō (especially those in Kidendō and Myōgyōdō).</p>
+        <table class="rank_table" style="width:100%;">
+          <tr>
+            <td style="width:40%;">Rank</td>
+            <td style="width:60%;">Definition</td>
+          </tr>
+          <tr>
+            <td>Sho-hakase (書博士)</td>
+            <td>Two instructors teaching calligraphy at the Daigaku-ryō</td>
+          </tr>
+          <tr>
+            <td>Sho-shō (書生)</td>
+            <td>Students learning calligraphy at the Daigaku-ryō</td>
+          </tr>
+        </table>
+
+        <h3 id="jibushou" style="margin-bottom:1em;">Jibu-shō (治部省) — Ministry of Civil Affairs</h3>
+        <div class="sannana-grid">
+          <div class="chart_viewport">
+            <div id="chart_jibu" class="chart_instance"></div>
+          </div>
+          <p>Broadly responsible for court ceremonies, foreign diplomacy, and the administration of
+            Buddhist and Shinto clergy. Its sub-offices included:</p>
+        </div>
+        <table class="rank_table" style="width:100%;">
+          <tr>
+            <td style="width:40%;">Office</td>
+            <td>Function</td>
+          </tr>
+          <tr>
+            <td>Uta-ryō / Gagaku-ryō (雅楽寮)</td>
+            <td>Court music, dance, and related education.</td>
+          </tr>
+          <tr>
+            <td>Genba-ryō (玄蕃寮)</td>
+            <td>Administered Buddhist clergy and received foreign envoys. The Kōrokan guest houses in Kyoto, Osaka, and
+              Fukuoka hosted envoys from Silla and Balhae.</td>
+          </tr>
+          <tr>
+            <td>Shoryō-ryō (諸陵寮)</td>
+            <td>Managed imperial mausoleums and conducted imperial funeral rites. Elevated from a smaller office
+              (<em>shoryō-shi</em>) to a full bureau during Emperor Saga's reign.</td>
+          </tr>
+        </table>
+
+        <h3 id="minbushou" style="margin-bottom:1em;">Minbu-shō (民部省) — Ministry of Popular Affairs</h3>
+        <div class="sannana-grid">
+          <div class="chart_viewport">
+            <div id="chart_minbu" class="chart_instance"></div>
+          </div>
+          <p>Controlled the nation's finances and household registers — combining the functions of a
+            modern ministry of finance and ministry of internal affairs. A common misconception: it was
+            the Minbu-shō, not the Ōkura-shō, that collected taxes. The Ōkura-shō was the guardian of
+            the treasury.</p>
+        </div>
+        <table class="rank_table" style="width:100%;">
+          <tr>
+            <td style="width:40%;">Office</td>
+            <td>Function</td>
+          </tr>
+          <tr>
+            <td>Kazue-ryō (主計寮)</td>
+            <td>Compiled the national budget and calculated tax revenues — deciding how taxes (especially <em>chō</em>,
+              local specialties delivered to the capital) would be collected and allocated.</td>
+          </tr>
+          <tr>
+            <td>Chikara-ryō (主税寮)</td>
+            <td>Managed <em>so</em> (rice stored in provincial granaries) and audited local finances. The famous Shōsōin
+              repository at Tōdaiji in Nara is similar in construction to the provincial <em>shōsō</em> granaries,
+              though it was a temple storehouse rather than a government one.</td>
+          </tr>
+        </table>
+
+        <h3 id="hyoubushou" style="margin-bottom:1em;">Hyōbu-shō (兵部省) — Ministry of Military Affairs</h3>
+        <div class="sannana-grid">
+          <div class="chart_viewport">
+            <div id="chart_hyoubu" class="chart_instance"></div>
+          </div>
+          <p>The supreme headquarters for military and national defence — the equivalent of a modern
+            Ministry of Defence. It also managed the <em>Hayato</em>, warriors from southern Kyushu,
+            who served as palace guards and performed traditional dances; maintained the fire-and-smoke
+            signal network (<em>tobhi</em>) for rapid communication; and oversaw state horse-breeding
+            pastures (<em>maki</em>).</p>
+        </div>
+        <table class="rank_table" style="width:100%;">
+          <tr>
+            <td style="width:40%;">Office</td>
+            <td>Function</td>
+          </tr>
+          <tr>
+            <td>Hayato-shi (隼人司)</td>
+            <td>Administered and commanded the Hayato warriors from the Ōsumi and Satsuma peninsulas of southern Kyushu.
+            </td>
+          </tr>
+        </table>
+
+        <h3 id="gyoubushou" style="margin-bottom:1em;">Gyōbu-shō (刑部省) — Ministry of Justice</h3>
+        <div class="sannana-grid">
+          <div class="chart_viewport">
+            <div id="chart_gyoubu" class="chart_instance"></div>
+          </div>
+          <div>
+            <p>The supreme judicial organ, determining the severity of crimes according to the penal codes
+              (<em>ritsuryō</em>) and overseeing the execution of sentences. The five types of punishment
+              were:</p>
+            <div class="gokei-list">
+              <dl class="gokei-item">
+                <dt>Chi (笞)</dt>
+                <dd>Light flogging: Beaten with a thin bamboo whip on the back or buttocks; 10–50 strokes in five
+                  gradations.</dd>
+              </dl>
+              <dl class="gokei-item">
+                <dt>Jō (杖)</dt>
+                <dd>Heavy flogging: Beaten with a thicker rod; 60–100 strokes in five gradations.</dd>
+              </dl>
+              <dl class="gokei-item">
+                <dt>Zu (徒)</dt>
+                <dd>Penal servitude: Forced labour at a government office for 1–3 years.</dd>
+              </dl>
+              <dl class="gokei-item">
+                <dt>Ru (流)</dt>
+                <dd>Exile: Forced relocation to a distant province; three gradations based on distance (near, middle,
+                  far).</dd>
+              </dl>
+              <dl class="gokei-item">
+                <dt>Shi (死)</dt>
+                <dd>Death: The ultimate penalty; two forms: strangulation (kō) and decapitation (zan).</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+        <table class='rank_table'>
+          <tr>
+            <td style="width:30%; padding-top:0.3em;">Office</td>
+            <td style="width:70%; padding-top:0.3em;">Function</td>
+          </tr>
+          <tr>
+            <td>Shūgoku-shi (囚獄司)</td>
+            <td>Managed the prison facilities (<em>gokusha</em>) — the equivalent of a modern correctional
+              institution.</td>
+          </tr>
+        </table>
+        <p>For serious cases or legally complex disputes, the Dajōkan issued the final verdict after
+          reviewing the Gyōbu-shō's findings. From the mid-Heian period, as the Kebiishi (capital
+          police) took over arrests, trials, and prison management, the Gyōbu-shō and its prison office
+          became increasingly hollow.</p>
+
+
+
+        <h3 id="ookurashou" style="margin-bottom:1em;">Ōkura-shō (大蔵省) — Treasury Ministry</h3>
+        <div class="sannana-grid">
+          <div class="chart_viewport">
+            <div id="chart_ookura" class="chart_instance"></div>
+          </div>
+          <div>
+            <p>Received and safeguarded the goods (<em>chō</em> — cloth and regional produce) and precious
+              metals collected by the Minbu-shō, carefully inspecting quality before storing them. The
+              national treasury.</p>
+          </div>
+        </div>
+        <table class="rank_table" style="width:100%;">
+          <tr>
+            <td style="width:40%;">Office</td>
+            <td>Function</td>
+          </tr>
+          <tr>
+            <td>Oribe-no-Tsukasa (織部司)</td>
+            <td>Not merely a storage operation — this office created value by producing premium textiles such as brocade
+              and damask from the yarns and cloth received as tax, using the finest craftsmanship of the day.</td>
+          </tr>
+        </table>
+
+        <h3 id="kunaishou" style="margin-bottom:1em;">Kunai-shō (宮内省) — Ministry of the Imperial Household</h3>
+        <div class="chart_viewport">
+          <div id="chart_kunai" class="chart_instance"></div>
+        </div>
+        <p>The core agency for running the imperial court, managing everything from the emperor's
+          food, clothing, and shelter to medical care and palace maintenance.</p>
+        <table class="rank_table" style="width:100%;">
+          <tr>
+            <td style="width:40%;">Office</td>
+            <td>Function</td>
+          </tr>
+          <tr>
+            <td>Daizen-shiki (大膳職)</td>
+            <td>Prepared large-scale ceremonial banquets.</td>
+          </tr>
+          <tr>
+            <td>Naizen-shi (内膳司)</td>
+            <td>Prepared the emperor's daily meals and managed food safety (including tasting).</td>
+          </tr>
+          <tr>
+            <td>Ōi-ryō (大炊寮)</td>
+            <td>Managed and supplied rice and grains for cooking.</td>
+          </tr>
+          <tr>
+            <td>Miki-no-Tsukasa (造酒司)</td>
+            <td>Brewed sake, vinegar, porridge, and other fermented foods for court use.</td>
+          </tr>
+          <tr>
+            <td>Moitori-no-Tsukasa (主水司)</td>
+            <td>Managed drinking water, ice and ice cellars, and ritual water supplies.</td>
+          </tr>
+          <tr>
+            <td>Moku-ryō (木工寮)</td>
+            <td>Constructed and repaired palace buildings; produced wooden furniture and utensils.</td>
+          </tr>
+          <tr>
+            <td>Tonomori-ryō (主殿寮)</td>
+            <td>Managed palace cleaning, lighting, firewood and charcoal, and bathing.</td>
+          </tr>
+          <tr>
+            <td>Kamon-ryō (掃部寮)</td>
+            <td>Managed tatami mats and blinds; set up and cleaned ceremony venues.</td>
+          </tr>
+          <tr>
+            <td>Ten'yaku-ryō (典薬寮)</td>
+            <td>Provided medical care, procured medicines, and trained physicians and acupuncturists.</td>
+          </tr>
+          <tr>
+            <td>Uneme-no-Tsukasa (采女司)</td>
+            <td>Administered and educated the <em>uneme</em> — serving women submitted from the provinces to attend the
+              empress.</td>
+          </tr>
+        </table>
+
+        <h2>Major Bureaus Outside the Eight Ministries</h2>
+        <p>While the Nikan-Hasshō was the administrative backbone, some agencies dealing with military
+          power and ceremonial arms were placed directly under the Dajōkan rather than any of the
+          eight ministries.</p>
+
+        <h3 id="maryou">Maryō (馬寮) — Bureau of Horses</h3>
+        <p class="h4-p">An independent, high-autonomy organization directly under the Dajōkan, not subordinate to any
+          ministry. Managed the breeding, training, and equipment of official horses, and oversaw horse pastures
+          throughout the country. Divided into Left (Samaryō) and Right (Umaryō) bureaus.</p>
+
+        <hr style="margin-top:2em;">
+
+        <h3 id="hyougoryou">Hyōgo-ryō (兵庫寮) — Bureau of Arms</h3>
+        <p class="h4-p">Likewise directly under the Dajōkan, not subordinate to any ministry. Maintained and managed
+          weapons and ceremonial arms (<em>gijō</em>).</p>
+
+        <h2 id="kanisoutouhyou">Rank Correspondence Table (Kani-Sōtō-Hyō)</h2>
+        <p>The table below shows the correspondence between court offices and ranks within the
+          Nikan-Hasshō system. Offices were assigned according to a person's court rank under the
+          <em>kani-sōtō-sei</em> (rank-office correspondence system), making rank the critical factor
+          for any official's career.
+        </p>
+        <div class="js-table">
+          <table class="ikai_table" style="width:100%;font-size:0.82em;">
+            <tr>
+              <td colspan="1"><ruby>位階<rt>ikai</rt></ruby></td>
+              <td colspan="2"><ruby>二官<rt>Nikan</rt></ruby></td>
+              <td colspan="3"><ruby>八省<rt>Hasshō</rt></ruby></td>
+            </tr>
+            <tr>
+              <td>Rank</td>
+              <td><ruby>神祇官<rt>Jingikan</rt></ruby></td>
+              <td><ruby>太政官<rt>Dajōkan</rt></ruby></td>
+              <td><ruby>中務省<rt>Nakatsukasa-shō</rt></ruby></td>
+              <td><ruby>式部省<rt>Shikibushō</rt></ruby> / <ruby>治部省<rt>Jibushō</rt>
+                </ruby> / <br><ruby>民部省<rt>Minbushō</rt></ruby> / <ruby>兵部省<rt>
+                    Hyōbushō</rt></ruby> /
+                <br><ruby>大蔵省<rt>Ōkurashō</rt></ruby> / <ruby>宮内省<rt>Kunai</rt>
+                </ruby>
+              </td>
+              <td><ruby>刑部省<rt>Gyōbu-shō</rt></ruby></td>
+            </tr>
+            <tr>
+              <td>Sr. 1st<br>(正一位)</td>
+              <td></td>
+              <td><ruby>太政大臣<rt>Daijō-daijin</rt></ruby></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Jr. 1st<br>(従一位)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Sr. 2nd<br>(正二位)</td>
+              <td></td>
+              <td><ruby>左大臣<rt>Sadaijin</rt></ruby><br><ruby>右大臣<rt>Udaijin</rt></ruby><br><ruby>内大臣<rt>Naidaijin</rt>
+                </ruby></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Jr. 2nd<br>(従二位)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Sr. 3rd<br>(正三位)</td>
+              <td></td>
+              <td><ruby>大納言<rt>Dainagon</rt></ruby></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Jr. 3rd<br>(従三位)</td>
+              <td></td>
+              <td><ruby>中納言<rt>Chūnagon</rt></ruby><br><ruby>権中納言<rt>Gon-Chūnagon</rt></ruby></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Sr. 4th Upper<br>(正四位上)</td>
+              <td><ruby>伯<rt>Haku</rt></ruby></td>
+              <td></td>
+              <td><ruby>卿<rt>Kyō</rt></ruby></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Sr. 4th Lower<br>(正四位下)</td>
+              <td></td>
+              <td><ruby>参議<rt>Sangi</rt></ruby> / <ruby>宰相<rt>Saishō</rt></ruby></td>
+              <td></td>
+              <td><ruby>卿<rt>Kyō</rt></ruby></td>
+              <td><ruby>卿<rt>Kyō</rt></ruby></td>
+            </tr>
+            <tr>
+              <td>Jr. 4th Upper<br>(従四位上)</td>
+              <td></td>
+              <td><ruby>大弁<rt>Daiben</rt></ruby></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Jr. 4th Lower<br>(従四位下)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Sr. 5th Upper<br>(正五位上)</td>
+              <td></td>
+              <td><ruby>左中弁<rt>Sachūben</rt></ruby><br><ruby>右中弁<rt>Uchūben</rt></ruby></td>
+              <td><ruby>大輔<rt>Taifu</rt></ruby></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Sr. 5th Lower<br>(正五位下)</td>
+              <td></td>
+              <td><ruby>左小弁<rt>Sashōben</rt></ruby><br><ruby>右小弁<rt>Ushōben</rt></ruby></td>
+              <td><ruby>大輔<rt>Taifu</rt></ruby></td>
+              <td><ruby>大輔<rt>Taifu</rt></ruby></td>
+              <td><ruby>大判事<rt>Daihangji</rt></ruby></td>
+            </tr>
+            <tr>
+              <td>Jr. 5th Upper<br>(従五位上)</td>
+              <td></td>
+              <td></td>
+              <td><ruby>少輔<rt>Shōfu</rt></ruby></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Jr. 5th Lower<br>(従五位下)</td>
+              <td><ruby>大副<rt>Daifuku</rt></ruby></td>
+              <td><ruby>少納言<rt>Shōnagon</rt></ruby><br><ruby>侍従<rt>Jijū</rt></ruby><br><ruby>大監物<rt>Daikemmotsu</rt>
+                </ruby></td>
+              <td><ruby>少輔<rt>Shōfu</rt></ruby></td>
+              <td><ruby>少輔<rt>Shōfu</rt></ruby></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Sr. 6th Upper<br>(正六位上)</td>
+              <td><ruby>少副<rt>Shōfuku</rt></ruby></td>
+              <td><ruby>左弁大史<rt>Sabenno-Daishi</rt></ruby><br><ruby>右弁大史<rt>Ubenno-Daishi</rt></ruby><br><ruby>大内記<rt>
+                    Dainai-ki</rt></ruby></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Sr. 6th Lower<br>(正六位下)</td>
+              <td><ruby>少祐<rt>Shōyū</rt></ruby></td>
+              <td><ruby>大丞<rt>Daijō</rt></ruby></td>
+              <td><ruby>大丞<rt>Daijō</rt></ruby></td>
+              <td><ruby>大丞<rt>Daijō</rt></ruby></td>
+              <td><ruby>中判事<rt>Chūhangji</rt></ruby></td>
+            </tr>
+            <tr>
+              <td>Jr. 6th Upper<br>(従六位上)</td>
+              <td><ruby>大祐<rt>Daiyū</rt></ruby></td>
+              <td><ruby>少丞<rt>Shōjō</rt></ruby></td>
+              <td><ruby>中監物<rt>Chūkemmotsu</rt></ruby></td>
+              <td><ruby>少丞<rt>Shōjō</rt></ruby></td>
+              <td><ruby>少丞<rt>Shōjō</rt></ruby></td>
+            </tr>
+            <tr>
+              <td>Jr. 6th Lower<br>(従六位下)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><ruby>少判事<rt>Shōhangji</rt></ruby></td>
+            </tr>
+            <tr>
+              <td>Sr. 7th Upper<br>(正七位上)</td>
+              <td><ruby>大外記<rt>Daigeki</rt></ruby></td>
+              <td><ruby>左弁少史<rt>Sabenno-Shōshi</rt></ruby><br><ruby>右弁少史<rt>Ubenno-Shōshi</rt></ruby><br><ruby>大録<rt>
+                    Dairoku</rt></ruby></td>
+              <td><ruby>中内記<rt>Chūnai-ki</rt></ruby></td>
+              <td><ruby>大録<rt>Dairoku</rt></ruby></td>
+              <td><ruby>大録<rt>Dairoku</rt></ruby></td>
+            </tr>
+            <tr>
+              <td>Sr. 7th Lower<br>(正七位下)</td>
+              <td><ruby>少監物<rt>Shōkemmotsu</rt></ruby></td>
+              <td><ruby>大主鈴<rt>Daishūrei</rt></ruby><br><ruby>判事大属<rt>Hangji-Daizoku</rt></ruby></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Jr. 7th Upper<br>(従七位上)</td>
+              <td><ruby>少外記<rt>Shōgeki</rt></ruby></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Jr. 7th Lower<br>(従七位下)</td>
+              <td><ruby>大典鑰<rt>Dai-tennyaku</rt></ruby></td>
+              <td><ruby>大解部<rt>Dai-kaibu</rt></ruby></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Sr. 8th Upper<br>(正八位上)</td>
+              <td></td>
+              <td><ruby>少録<rt>Shōroku</rt></ruby></td>
+              <td><ruby>少内記<rt>Shōnai-ki</rt></ruby><br><ruby>少主鈴<rt>Shōshūrei</rt></ruby></td>
+              <td><ruby>少録<rt>Shōroku</rt></ruby></td>
+              <td><ruby>少録<rt>Shōroku</rt></ruby></td>
+            </tr>
+            <tr>
+              <td>Sr. 8th Lower<br>(正八位下)</td>
+              <td><ruby>大史<rt>Daishi</rt></ruby></td>
+              <td><ruby>判事少属<rt>Hangji-Shōzoku</rt></ruby></td>
+              <td><ruby>中解部<rt>Chū-kaibu</rt></ruby></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Jr. 8th Upper<br>(従八位上)</td>
+              <td><ruby>少史<rt>Shōshi</rt></ruby></td>
+              <td><ruby>少典鑰<rt>Shō-tennyaku</rt></ruby></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Jr. 8th Lower<br>(従八位下)</td>
+              <td></td>
+              <td>Shō-kaibu (少解部)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Daishōi Upper/Lower<br>(大初位上下)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Shōshōi Upper/Lower<br>(少初位上下)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+        <p>Officials of Fifth Rank and above were considered nobility (<em>kizoku</em>). Those of Third
+          Rank and above, plus the <em>sangi</em>, were called <em>kugyō</em> or <em>kandachime</em>
+          (senior courtiers). Those of Sixth Rank and below were not nobility and were called
+          <em>jigebito</em>. For further details on the rank system and the Eight Hereditary Titles,
+          see <a href="kanshoku_ikai_en.html">Court Ranks and the Eight Hereditary Titles</a>.
+        </p>
+
+        <h2 id="shitoukan">Note: The Four-Tier Office Structure (Shitōkan)</h2>
+        <p>Virtually every government office had four tiers of officials: <em>kami</em> (chief),
+          <em>suke</em> (deputy), <em>jō</em> (controller), and <em>sakan</em> (recorder) —
+          comparable to a modern organisation's president, general manager, section manager, and
+          team leader.
+        </p>
+        <p>There were exceptions. In the Dazaifu (the regional government of Kyushu) and the Konoefu
+          (imperial guard), the third-tier (<em>jō</em>) post was called <em>gen</em> rather than
+          <em>jō</em>. Likewise, the fourth-tier (<em>sakan</em>) had distinctive names in these
+          offices — <em>daiten</em> and <em>shōten</em> in the Dazaifu, and <em>shōsō</em> in the
+          Konoefu — reflecting the specialised military and diplomatic traditions of those organisations.
+        </p>
+        <table class="ikai3_table" style="width:100%;">
+          <tr>
+            <td style="width:20%;">Office type</td>
+            <td style="width:20%;"><ruby>長官<rt>kami</rt></ruby><br>(Chief)</td>
+            <td style="width:20%;"><ruby>次官<rt>suke</rt></ruby><br>(Deputy)</td>
+            <td style="width:20%;"><ruby>判官<rt>jō</rt></ruby><br>(Controller)</td>
+            <td style="width:20%;"><ruby>主典<rt>sakan</rt></ruby><br>(Recorder)</td>
+          </tr>
+          <tr>
+            <td><ruby>神祇官<rt>Jingikan</rt></ruby><br>(Department of Shinto)</td>
+            <td><ruby>伯<rt>haku</rt></ruby></td>
+            <td><ruby>大副<rt>Daifuku</rt></ruby> ＞ <ruby>少副<rt>Shōfuku</rt></ruby></td>
+            <td><ruby>大祐<rt>Daiyū</rt></ruby> ＞ <ruby>少佑<rt>Shōyū</rt></ruby></td>
+            <td><ruby>大史<rt>Daishi</rt></ruby> ＞ <ruby>少史<rt>Shōshi</rt></ruby></td>
+          </tr>
+          <tr>
+            <td><ruby>省<rt>shō</rt></ruby><br>(Ministry)</td>
+            <td><ruby>卿<rt>kyō</rt></ruby></td>
+            <td><ruby>大輔<rt>Taifu</rt></ruby> ＞ <ruby>少輔<rt>Shōfu</rt></ruby></td>
+            <td><ruby>大丞<rt>Daijō</rt></ruby> ＞ <ruby>少丞<rt>Shōjō</rt></ruby></td>
+            <td><ruby>大録<rt>Dairoku</rt></ruby> ＞ <ruby>少録<rt>Shōroku</rt></ruby></td>
+          </tr>
+          <tr>
+            <td><ruby>職<rt>shiki</rt></ruby><br>(Office)</td>
+            <td><ruby>大夫<rt>Daibu</rt></ruby></td>
+            <td><ruby>亮<rt>Ryō</rt></ruby></td>
+            <td><ruby>大進<rt>Daishin</rt></ruby> ＞ <ruby>少進<rt>Shōshin</rt></ruby></td>
+            <td><ruby>大属<rt>Daizoku</rt></ruby> ＞ <ruby>少属<rt>Shōzoku</rt></ruby></td>
+          </tr>
+          <tr>
+            <td><ruby>寮<rt>ryō</rt></ruby><br>(Bureau)</td>
+            <td><ruby>頭<rt>kami</rt></ruby></td>
+            <td><ruby>助<rt>suke</rt></ruby></td>
+            <td><ruby>大允<rt>Daijō</rt></ruby> ＞ <ruby>少允<rt>Shōjō</rt></ruby></td>
+            <td><ruby>大属<rt>Daizoku</rt></ruby> ＞ <ruby>少属<rt>Shōzoku</rt></ruby></td>
+          </tr>
+        </table>
+
+        <h2 id="shishou">Note: Shishō (史生) — Junior Scribes</h2>
+        <p>Below the four-tier managerial officials were <em>shishō</em> (史生), lower-ranking
+          officials who actually drafted official documents and handled clerical work — comparable to
+          modern administrative staff or secretaries. Largely invisible in the historical record, they
+          were the people who kept the mountains of paperwork moving in Heian bureaucracy. They appear
+          occasionally in historical fiction as minor but practically indispensable officials.</p>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-copy">&copy;2023 Shigure no Hyakunin Isshu</span>
+      <ul>
+        <li><a href="../policy.html">Privacy Policy</a></li>
+        <li><a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSeXx7TKlqnTfKrw2Nuh4f37swVwFH-RFDsNkTGQ4JEF50q2wQ/viewform?usp=header"
+            target="_blank" rel="noopener">Contact Form</a></li>
+      </ul>
+    </div>
+  </footer>
+  <script>new ScrollHint(".js-table");</script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="../js/move_script.js?20260729"></script>
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/tooltips.js?2026906"></script>
+  <script>document.addEventListener("DOMContentLoaded", () => { document.querySelectorAll("td,th").forEach(c => { if (c.querySelector("ruby")) c.style.paddingTop = "0.9em"; }); });</script>
+
+  <!-- Marker click: scroll to section -->
+  <script>
+    function handleMarkerClick(el, targetSelector) {
+      const target = document.querySelector(targetSelector);
+      if (!target) return;
+      const header = document.querySelector('header.header');
+      const offset = (header ? header.offsetHeight : 0) + 20;
+      const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    }
+  </script>
+
+  <!-- Organisation Charts - Google Chart -->
+  <script type="text/javascript">
+    google.charts.load('current', { packages: ["orgchart"] });
+    google.charts.setOnLoadCallback(initAllCharts);
+
+    const chartList = [];
+
+    function initAllCharts() {
+
+      // helper: build the dual-label node HTML
+      function n(ja, en) {
+        return `<div class="v-node"><span class="vn-ja">${ja}</span><span class="vn-sep"></span><span class="vn-en-wrap"><span class="vn-en">${en}</span></span></div>`;
+      }
+
+      // --- Nakatsukasa-sho ---
+      drawSingleChart('chart_nakanotsukasa', [
+        [{ v: '1', f: n('中務省', 'Nakatsukasa-shō') }, ''],
+        [{ v: '2', f: n('太皇太后宮職', 'Taikōtaigō-gū-shiki') }, '1'],
+        [{ v: '3', f: n('皇太后宮職', 'Kōtaigō-gū-shiki') }, '1'],
+        [{ v: '4', f: n('皇后宮職', 'Kōgō-gū-shiki') }, '1'],
+        [{ v: '5', f: n('中宮職', 'Chūgū-shiki') }, '1'],
+        [{ v: '6', f: n('大舎人寮', 'Ōtoneri-ryō') }, '1'],
+        [{ v: '7', f: n('図書寮', 'Zusho-ryō') }, '1'],
+        [{ v: '8', f: n('内蔵寮', 'Kura-ryō') }, '1'],
+        [{ v: '9', f: n('縫殿寮', 'Nuidono-ryō') }, '1'],
+        [{ v: '10', f: n('陰陽寮', 'Onmyō-ryō') }, '1'],
+        [{ v: '11', f: n('内匠寮', 'Takumi-ryō') }, '1'],
+      ]);
+
+      // --- Shikibu-sho ---
+      drawSingleChart('chart_shikibu', [
+        [{ v: '1', f: n('式部省', 'Shikibu-shō') }, ''],
+        [{ v: '2', f: n('大学寮', 'Daigaku-ryō') }, '1'],
+        [{ v: '3', f: n('散位寮', 'Sanni-ryō') }, '1']
+      ]);
+
+      // --- Jibu-sho ---
+      drawSingleChart('chart_jibu', [
+        [{ v: '1', f: n('治部省', 'Jibu-shō') }, ''],
+        [{ v: '2', f: n('雅楽寮', 'Gagaku-ryō') }, '1'],
+        [{ v: '3', f: n('玄蕃寮', 'Genba-ryō') }, '1'],
+        [{ v: '4', f: n('諸陵寮', 'Shoryō-ryō') }, '1']
+      ]);
+
+      // --- Minbu-sho ---
+      drawSingleChart('chart_minbu', [
+        [{ v: '1', f: n('民部省', 'Minbu-shō') }, ''],
+        [{ v: '2', f: n('主計寮', 'Kazue-ryō') }, '1'],
+        [{ v: '3', f: n('主税寮', 'Chikara-ryō') }, '1'],
+      ]);
+
+      // --- Hyobu-sho ---
+      drawSingleChart('chart_hyoubu', [
+        [{ v: '1', f: n('兵部省', 'Hyōbu-shō') }, ''],
+        [{ v: '2', f: n('隼人司', 'Hayato-shi') }, '1'],
+      ]);
+
+      // --- Gyobu-sho ---
+      drawSingleChart('chart_gyoubu', [
+        [{ v: '1', f: n('刑部省', 'Gyōbu-shō') }, ''],
+        [{ v: '2', f: n('囚獄司', 'Shūgoku-shi') }, '1'],
+      ]);
+
+      // --- Okura-sho ---
+      drawSingleChart('chart_ookura', [
+        [{ v: '1', f: n('大蔵省', 'Ōkura-shō') }, ''],
+        [{ v: '2', f: n('織部司', 'Oribe-no-Tsukasa') }, '1'],
+      ]);
+
+      // --- Kunai-sho ---
+      drawSingleChart('chart_kunai', [
+        [{ v: '1', f: n('宮内省', 'Kunai-shō') }, ''],
+        [{ v: '2', f: n('大膳職', 'Daizen-shiki') }, '1'],
+        [{ v: '3', f: n('内膳司', 'Naizen-shi') }, '1'],
+        [{ v: '4', f: n('大炊寮', 'Ōi-ryō') }, '1'],
+        [{ v: '5', f: n('造酒司', 'Miki-no-Tsukasa') }, '1'],
+        [{ v: '6', f: n('主水司', 'Moitori-no-Tsukasa') }, '1'],
+        [{ v: '7', f: n('木工寮', 'Moku-ryō') }, '1'],
+        [{ v: '8', f: n('主殿寮', 'Tonomori-ryō') }, '1'],
+        [{ v: '9', f: n('掃部寮', 'Kamon-ryō') }, '1'],
+        [{ v: '10', f: n('典薬寮', "Ten'yaku-ryō") }, '1'],
+        [{ v: '11', f: n('采女司', 'Uneme-no-Tsukasa') }, '1'],
+      ]);
+    }
+
+    function drawSingleChart(containerId, rowData) {
+      const data = new google.visualization.DataTable();
+      data.addColumn('string', 'Entity');
+      data.addColumn('string', 'Parent');
+      data.addRows(rowData);
+
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      const chart = new google.visualization.OrgChart(container);
+
+      google.visualization.events.addListener(chart, 'ready', () => {
+        autoFitSingle(container);
+      });
+
+      chart.draw(data, { 'allowHtml': true, 'size': 'medium' });
+      chartList.push({ chart, data, container });
+    }
+
+    function autoFitSingle(container) {
+      container.style.transform = 'scale(1)';
+      const viewportWidth = container.parentElement.offsetWidth;
+      const chartWidth = container.offsetWidth;
+
+      if (chartWidth > viewportWidth) {
+        const scale = (viewportWidth / chartWidth) * 0.95;
+        container.style.transform = `scale(${scale})`;
+        container.parentElement.style.height = (container.offsetHeight * scale) + "px";
+      } else {
+        container.parentElement.style.height = "auto";
+      }
+    }
+
+    window.addEventListener('resize', () => {
+      chartList.forEach(item => {
+        item.chart.draw(item.data, { 'allowHtml': true, 'size': 'medium' });
+        autoFitSingle(item.container);
+      });
+    });
+  </script>
+  <script src="../js/back-to-top.js?20260908-02"></script>
+
+</body>
+
+</html>

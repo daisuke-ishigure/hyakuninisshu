@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="Keywords" content="kokushi, zuryō, jigebito, court rank, court office, salary, Heian period, Hyakunin Isshu">
+  <meta name="description" content="Provincial governor (kokushi) postings are often pictured as a kind of exile from the capital, but for lower-ranked nobles they were actually a major source of income. Using salary data by court rank and office, we compare the pay gap between capital and local officials to see why lower nobles pursued these posts.">
+  <!-- スタイルシート -->
+  <link rel="stylesheet" href="../css/style.css?20260908-16">
+  <link rel="stylesheet" href="https://unpkg.com/scroll-hint@latest/css/scroll-hint.css">
+  <script src="https://unpkg.com/scroll-hint@latest/js/scroll-hint.min.js"></script>
+  <!-- フォント -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@500&family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap"
+    rel="stylesheet">
+  <!-- アップルタッチアイコン -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <!-- canonical -->
+  <link rel="canonical" href="https://hyakuninisshu.com/kanshoku_local_column_en.html">
+  <!-- ogp設定 -->
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Why Did Lower-Ranked Nobles Aim to Become Local Officials? | Heian Court Ranks &amp; Offices | Shigure's Hyakunin Isshu">
+  <meta property="og:description" content="Provincial governor (kokushi) postings are often pictured as a kind of exile from the capital, but for lower-ranked nobles they were actually a major source of income. Using salary data by court rank and office, we compare the pay gap between capital and local officials to see why lower nobles pursued these posts.">
+  <meta property="og:image" content="https://hyakuninisshu.com/img/thumb_kanshoku.webp">
+  <meta property="og:url" content="https://hyakuninisshu.com/kanshoku_local_column_en.html">
+  <meta property="og:site_name" content="Shigure's Hyakunin Isshu">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- 構造化データ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://hyakuninisshu.com/kanshoku_local_column_en.html"
+    },
+    "headline": "Why Did Lower-Ranked Nobles Aim to Become Local Officials? | Heian Court Ranks & Offices | Shigure's Hyakunin Isshu",
+    "description": "Provincial governor (kokushi) postings are often pictured as a kind of exile from the capital, but for lower-ranked nobles they were actually a major source of income. Using salary data by court rank and office, we compare the pay gap between capital and local officials to see why lower nobles pursued these posts.",
+    "image": "https://hyakuninisshu.com/img/thumb_kanshoku.webp",
+    "dateModified": "2026-07-29",
+    "author": {
+      "@type": "Person",
+      "name": "石槫大輔",
+      "url": "https://hyakuninisshu.com/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Shigure no Hyakunin Isshu",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://hyakuninisshu.com/apple-touch-icon.png"
+      }
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Shigure's Hyakunin Isshu",
+        "item": "https://hyakuninisshu.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Columns",
+        "item": "https://hyakuninisshu.com/introduction.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Heian Court Ranks & Offices",
+        "item": "https://hyakuninisshu.com/kanshoku_en.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Why Did Lower-Ranked Nobles Aim to Become Local Officials?",
+        "item": "https://hyakuninisshu.com/kanshoku_local_column_en.html"
+      }
+    ]
+  }
+  </script>
+  <!-- ファビコン -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="shortcut icon" href="https://hyakuninisshu.com/favicon.ico">
+
+  <style>
+    a {
+      text-decoration: underline;
+    }
+
+    .kanshoku-intro {
+      margin-bottom: 1.6em;
+      line-height: 1.95;
+      color: #444;
+    }
+
+    .callout {
+      background: #fdf5e4;
+      border-left: 3px solid #c8a870;
+      border-radius: 0 4px 4px 0;
+      padding: 0.85em 1.1em;
+      margin: 1.2em 0;
+      font-size: 0.95em;
+      color: #444;
+      line-height: 1.85;
+    }
+
+    .callout-green {
+      background: #eef4ec;
+      border-left-color: #5a8050;
+    }
+
+    .callout p {
+      margin: 0 0 0.5em;
+    }
+
+    .callout p:last-child {
+      margin-bottom: 0;
+    }
+
+    .income-compare-table {
+      margin-top: 0.8em;
+      border-collapse: collapse;
+      border: 1px solid #333;
+      width: 100%;
+    }
+
+    .income-compare-table th,
+    .income-compare-table td {
+      border: 1px solid #333;
+      background-color: #fff;
+      padding: 0.55em 0.6em;
+      font-size: 0.95em;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .income-compare-table th {
+      background-color: #e8e3d3;
+      color: #333;
+    }
+
+    .income-compare-table tr:nth-child(even) td {
+      background-color: #f7f4ee;
+    }
+
+    .income-compare-table td:first-child {
+      text-align: left;
+      font-weight: bold;
+    }
+
+    .toggle-bar {
+      display: flex;
+      gap: 0.6em;
+      margin: 1em 0 0;
+      flex-wrap: wrap;
+    }
+
+    .toggle-btn {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.85em;
+      padding: 0.5em 1.2em;
+      border: 1px solid #b82343;
+      border-radius: 20px;
+      background: #fdf1f4;
+      color: #b82343;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .toggle-btn:hover {
+      background: #f6dde3;
+    }
+
+    .toggle-btn.is-active {
+      background: #b82343;
+      color: #fff;
+      border-color: #b82343;
+    }
+
+    #page-top {
+      text-align: right;
+      margin-top: 2.5em;
+      font-size: 0.85em;
+    }
+
+    p.ref {
+      font-size: 0.85em;
+      color: #666;
+      line-height: 1.8;
+    }
+  </style>
+  <title>Why Did Lower-Ranked Nobles Aim to Become Local Officials? | Heian Court Ranks &amp; Offices | Shigure's Hyakunin Isshu</title>
+</head>
+
+<body>
+  <!-- ヘッダーここから -->
+  <header class="header">
+    <p class="site-title">
+      <a href="https://hyakuninisshu.com/">Shigure no Hyakunin Isshu</a>
+    </p>
+    <div class="header_list">
+      <a href="../index_en.html"><img src="../img/icon_top_en.svg?ver-01" alt="Top" class="icon"></a>
+      <a href="../introduction_en.html" style="color:#333"><img src="/img/icon_column_en.svg?ver-01" alt="Columns" class="icon"></a>
+      <a href="../introduction-app_en.html" style="color:#333"><img src="/img/icon_app_en.svg?ver-01" alt="Apps" class="icon"></a>
+      <a href="kanshoku_local_column.html"><img src="/img/icon_lang.svg?ver-01" alt="Japanese" class="icon"></a>
+      <a href="../list.html"><img src="/img/icon_list_en.svg?ver-01" alt="Poem list &amp; search" class="icon"></a>
+    </div>
+  </header>
+  <!-- ヘッダーここまで・メインここから -->
+  <main class="main_about-main">
+    <div class="about-main">
+      <div class="section">
+        <nav>
+          <ol class="breadcrumb">
+            <li><a href="../index_en.html">Top</a></li>
+            <li><a href="../introduction_en.html">Columns</a></li>
+            <li><a href="../kanshoku_en.html">Heian Court Ranks &amp; Offices</a></li>
+            <li>Why Did Lower-Ranked Nobles Aim to Become Local Officials?</li>
+          </ol>
+        </nav>
+        <hr>
+
+        <h1>Why Did Lower-Ranked Nobles Aim to Become Local Officials?</h1>
+
+
+        <p class="kanshoku-intro">
+          When you hear the term "local official" — or <em>kokushi</em>, provincial governor — you might picture someone banished from the glamorous life of the capital.
+          <br class="br-pc">But the salary data from the period tells a very different story. The lower an official's court rank, the more they actually earned by working in the provinces rather than in the capital. Using salary comparison data by court rank and office for <em>ritsuryō</em> officials, this page explores why lower-ranked nobles were so strongly drawn to provincial governor posts.
+        </p>
+
+        <h2>Salary Comparison by Court Rank</h2>
+        <p>
+          The table below compares the salaries of <em>ritsuryō</em> officials across three categories: officials working in the capital, officials posted to the Dazaifu, and local officials posted elsewhere in the provinces. All figures are in bundles of rice.
+          <br class="br-pc">Use the buttons below to switch between the raw bundle figures and a modern yen estimate, calculated on the same basis as the <a href="kanshoku_salary_en.html">Estimated Annual Income of Heian Nobles</a> page.
+        </p>
+
+        <div class="toggle-bar" role="group" aria-label="Display mode">
+          <button type="button" class="toggle-btn is-active" data-mode="genbutsu">Show Raw Bundles</button>
+          <button type="button" class="toggle-btn" data-mode="gendai">Show Modern Yen Value</button>
+        </div>
+
+        <div class="js-table">
+          <table class="income-compare-table" id="income3-table"></table>
+        </div>
+        <p class="kome">Source: Takashima, Masanori (2020). "On Income Disparity in the Nara Period," <em>Keizai Kenkyū</em> (The Economic Review), Vol. 71, No. 1, Table 3.</p>
+        <p class="kome">The modern yen figures are a rough estimate, calculated on the same basis as the <a href="kanshoku_salary_en.html">Estimated Annual Income of Heian Nobles</a> page (1 <em>koku</em> = 20 bundles of rice; rice at ¥400/kg, so 1 <em>koku</em> ≈ ¥60,000, meaning 1 bundle ≈ ¥3,000). Please treat these as a rough point of comparison rather than a measure of actual purchasing power.</p>
+        <p class="kome">For Senior First through Senior Third Rank, the "Capital Officials" column includes <em>shikifu</em> — tax revenue tied to the office itself, used to cover its running costs, which cannot be considered purely personal disposable income. The raw bundle figures follow Table 3 exactly as published, but the modern yen conversion subtracts the shikifu portion using the same approach as the <a href="kanshoku_salary_en.html">Estimated Annual Income of Heian Nobles</a> page, so the totals shown here match that page's figures.</p>
+
+        <h2>What the Data Shows</h2>
+
+        <p>
+          <span class="kanshoku-inline" style="font-family:'Noto Sans JP',sans-serif; font-size:0.82em; background:#e8ddd0; color:#5a3a1a; border-radius:2px; padding:0.1em 0.45em;">Upper nobility (Senior 1st–Junior 3rd Rank)</span>　At the ranks held by the highest nobility — Chancellor- and Minister-level officials — capital salaries overwhelmingly exceed those of local officials, averaging about 13 times higher. Nobles at this level rarely actually served as local officials, which is why almost no local-post data exists for these ranks. For the highest nobility, simply staying in the capital was the most profitable option.
+        </p>
+        <p>
+          <span class="kanshoku-inline" style="font-family:'Noto Sans JP',sans-serif; font-size:0.82em; background:#e8ddd0; color:#5a3a1a; border-radius:2px; padding:0.1em 0.45em;">Middle-ranking nobility (Senior 4th–Junior 5th Rank)</span>　Here the picture starts to change. On average, Dazaifu officials (15,518 bundles) actually earned more than capital officials (10,350 bundles) — a posting to the Dazaifu, a key hub for diplomacy and military affairs, was a genuinely attractive option at this rank. Local officials outside the Dazaifu (6,215–6,063 bundles), on the other hand, earned less than capital officials, showing just how much pay could vary depending on the posting.
+        </p>
+        <p>
+          <span class="kanshoku-inline" style="font-family:'Noto Sans JP',sans-serif; font-size:0.82em; background:#e8ddd0; color:#5a3a1a; border-radius:2px; padding:0.1em 0.45em;">Sixth Rank and below (lower nobles and jigebito)</span>　This trend is most pronounced at Sixth Rank and below. Capital officials at this level earned an average of just 281 bundles, while Dazaifu officials earned 1,166 bundles (about 4.1 times as much), and local officials outside the Dazaifu still earned 524–498 bundles (about 1.9 times as much). For officials of Sixth Rank and below — known as <em>jigebito</em> — a provincial posting paid far better than grinding away in a junior post in the capital.
+        </p>
+
+        <div class="callout callout-green">
+          <p>
+            What this data shows is that, for lower-ranked nobles, a posting as a local official — a <em>kokushi</em> — was a far more lucrative and attractive prospect than remaining a junior official in the capital.
+          </p>
+          <p>
+            In later periods, hands-on provincial governors came to be known as <em>zuryō</em>, well known for amassing wealth in the provinces they governed — and this underlying difference in salary structure likely explains why. For lower nobles with no real hope of advancement in the capital, becoming a <em>kokushi</em> was a genuine chance to change their fortunes.
+          </p>
+        </div>
+
+        <h2>References</h2>
+        <p class="ref">
+          Takashima, Masanori (2020). "On Income Disparity in the Nara Period," <em>Keizai Kenkyū</em> (The Economic Review), Vol. 71, No. 1, pp. 63–82. Table 3 was used as a reference.
+        </p>
+        <p class="ref">
+          Takashima, Masanori (2023). <em>Chingin no Nihonshi</em> (A History of Wages in Japan).
+        </p>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-copy">&copy;2023 Shigure no Hyakunin Isshu</span>
+      <ul>
+        <li><a href="../policy.html">Privacy Policy</a></li>
+        <li>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXx7TKlqnTfKrw2Nuh4f37swVwFH-RFDsNkTGQ4JEF50q2wQ/viewform?usp=header"
+            target="_blank" rel="noopener">Contact Form</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+  <!-- フッターここまで -->
+  <script>new ScrollHint(".js-table");</script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="../js/move_script.js?20260729"></script>
+  <!-- 位階・官職別の給与比較テーブル -->
+  <script>
+    (function () {
+      // Source: salary comparison by court rank and office (Keizai Kenkyū, Table 3). All raw figures are in bundles of rice.
+      const SOKU_YEN = 3000; // 1 bundle ≈ ¥3,000 (same basis as kanshoku_salary_en.html: 1 koku = 20 bundles, 1 koku ≈ ¥60,000)
+      const FUKO_SOKU = 356.35; // 1 fuko household = 356.35 bundles (same conversion rate as kanshoku_salary_en.html)
+      // Table 3's "Capital Officials" column includes shikifu (tax revenue tied to the office, for running costs),
+      // which does not match kanshoku_salary_en.html's annual income figures (personal disposable income, excl. shikifu).
+      // For Senior 1st through Senior 3rd Rank, we convert the shikifu (households) defined in kanshoku_salary_en.html's
+      // RANKS data into bundles and subtract it, so the modern-yen total matches that page's figures.
+      const SHOKUFU_KO = { '正一位': 3000, '従一位': 3000, '正二位': 2000, '従二位': 2000, '正三位': 800 };
+      function shokufuSoku(name) {
+        const ko = SHOKUFU_KO[name];
+        return ko ? ko * FUKO_SOKU : 0;
+      }
+      const RANKS3 = [
+        { name: '正一位', nameEn: 'Sr. 1st', kyokan: 1227325, dazai: null, other: null },
+        { name: '従一位', nameEn: 'Jr. 1st', kyokan: 1210791, dazai: null, other: null },
+        { name: '正二位', nameEn: 'Sr. 2nd', kyokan: 821850, dazai: null, other: null },
+        { name: '従二位', nameEn: 'Jr. 2nd', kyokan: 808880, dazai: null, other: null },
+        { name: '正三位', nameEn: 'Sr. 3rd', kyokan: 356832, dazai: null, other: null },
+        { name: '従三位', nameEn: 'Jr. 3rd', kyokan: 50763, dazai: 57695, other: null },
+        { name: '正四位', nameEn: 'Sr. 4th', kyokan: 14852, dazai: null, other: null },
+        { name: '従四位', nameEn: 'Jr. 4th', kyokan: 12382, dazai: null, other: null },
+        { name: '正五位', nameEn: 'Sr. 5th', kyokan: 8263, dazai: 17952, other: null },
+        { name: '従五位', nameEn: 'Jr. 5th', kyokan: 5903, dazai: 13084, other: [6215, 6063] },
+        { name: '正六位', nameEn: 'Sr. 6th', kyokan: 432, dazai: 1775, other: [836, 760] },
+        { name: '従六位', nameEn: 'Jr. 6th', kyokan: 402, dazai: 1695, other: [760, 608] },
+        { name: '正七位', nameEn: 'Sr. 7th', kyokan: 333, dazai: 1367, other: 608 },
+        { name: '従七位', nameEn: 'Jr. 7th', kyokan: 303, dazai: 1287, other: 608 },
+        { name: '正八位', nameEn: 'Sr. 8th', kyokan: 234, dazai: 1035, other: 456 },
+        { name: '従八位', nameEn: 'Jr. 8th', kyokan: 209, dazai: null, other: 456 },
+        { name: '大初位', nameEn: 'Daishōi', kyokan: 179, dazai: 774, other: 380 },
+        { name: '少初位', nameEn: 'Shōshōi', kyokan: 154, dazai: null, other: 380 },
+        { name: '史生', nameEn: 'Shishō', kyokan: null, dazai: 228, other: 228 },
+      ];
+
+      function yen(soku) { return Math.round(soku * SOKU_YEN); }
+      function fmtYen(v) { return `¥${Math.round(v).toLocaleString('en-US')}`; }
+      function rankLabel(r) { return `${r.nameEn}<br>(${r.name})`; }
+
+      function cellValue(v, mode) {
+        if (v === null || v === undefined) return '—';
+        if (Array.isArray(v)) {
+          const [hi, lo] = v;
+          return mode === 'gendai'
+            ? `${fmtYen(yen(hi))}–${fmtYen(yen(lo))}`
+            : `${hi.toLocaleString('en-US')}–${lo.toLocaleString('en-US')} bundles`;
+        }
+        return mode === 'gendai' ? fmtYen(yen(v)) : `${v.toLocaleString('en-US')} bundles`;
+      }
+
+      // Capital Officials: subtract the shikifu equivalent only when showing the modern-yen value,
+      // so the figure matches kanshoku_salary_en.html's annual income.
+      function kyokanCellValue(r, mode) {
+        if (r.kyokan === null || r.kyokan === undefined) return '—';
+        if (mode !== 'gendai') return `${r.kyokan.toLocaleString('en-US')} bundles`;
+        const adjusted = r.kyokan - shokufuSoku(r.name);
+        return fmtYen(yen(adjusted));
+      }
+
+      function render(mode) {
+        const table = document.getElementById('income3-table');
+        const rows = RANKS3.map((r) => `<tr>
+            <td>${rankLabel(r)}</td>
+            <td class="num">${kyokanCellValue(r, mode)}</td>
+            <td class="num">${cellValue(r.dazai, mode)}</td>
+            <td class="num">${cellValue(r.other, mode)}</td>
+          </tr>`).join('');
+        table.innerHTML = `<thead><tr>
+            <th>Court Rank</th>
+            <th>Capital Officials</th>
+            <th>Dazaifu Officials</th>
+            <th>Local Officials<br>(outside Dazaifu)</th>
+          </tr></thead><tbody>${rows}</tbody>`;
+      }
+
+      document.querySelectorAll('.toggle-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.toggle-btn').forEach((b) => b.classList.remove('is-active'));
+          btn.classList.add('is-active');
+          render(btn.dataset.mode);
+        });
+      });
+
+      render('genbutsu');
+    })();
+  </script>
+  <script src="../js/back-to-top.js?20260908-02"></script>
+
+</body>
+
+</html>

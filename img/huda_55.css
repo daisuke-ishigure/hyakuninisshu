@@ -1,0 +1,37 @@
+.card-front::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  animation: darken 3s ease-in-out forwards;
+}
+
+@keyframes darken {
+  0% {
+    background-image: url(../img/huda_55.webp);
+    background-size:contain;
+    opacity: 0;
+  }
+  100% {
+    background-image: url(../img/huda_55.webp);
+    background-size:contain;
+    opacity: 0.8;
+  }
+}
+.card-front #frontContent h3,
+.card-front #frontContent h2 {
+  animation: text-color 3s ease-in-out forwards !important;
+}
+
+@keyframes text-color {
+  0% {
+    color: #333;
+    text-shadow: 0px 0px 8px #f9edca, 0px 0px 8px #f9edca, 0px 0px 8px #f9edca, 0px 0px 8px #f9edca, 0px 0px 8px #f9edca, 0px 0px 8px #f9edca;
+  }
+  100% {
+    color: #222;
+    text-shadow: 0px 0px 8px #fff, 0px 0px 8px #fff, 0px 0px 8px #fff, 0px 0px 8px #fff, 0px 0px 8px #fff, 0px 0px 8px #fff;
+  }
+}/*# sourceMappingURL=huda_64.css.map */

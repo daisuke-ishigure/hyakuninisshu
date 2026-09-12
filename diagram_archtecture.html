@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>百人一首 相関図｜歌人どうしのつながりを時代別に可視化 | 時雨の百人一首</title>
+  <meta name="description" content="百人一首の歌人100人を奈良・飛鳥時代から鎌倉時代まで時代別に配置し、親子・恋愛・師弟・ライバルなどのつながりを線で示した相関図です。歌人をクリックすると和歌の一部が表示されます。">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+  <!-- ogp設定 -->
+  <meta property="og:locale" content="ja">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="百人一首の歌人たちのつながりを時代別に可視化した相関図です。 | 時雨の百人一首">
+  <meta property="og:description" content="百人一首の歌人100人を奈良・飛鳥時代から鎌倉時代まで時代別に配置し、親子・恋愛・師弟・ライバルなどのつながりを線で示した相関図です。歌人をクリックすると和歌の一部が表示されます。">
+  <meta property="og:image" content="https://hyakuninisshu.com/img/ogp_diagram_archtecture.webp">
+  <meta property="og:url" content="https://hyakuninisshu.com/diagram_archtecture.html">
+  <meta property="og:site_name" content="時雨の百人一首">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- 構造化データ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LearningResource",
+    "name": "百人一首 相関図",
+    "description": "百人一首の歌人100人を奈良・飛鳥時代から鎌倉時代まで時代別に配置し、親子・恋愛・師弟・ライバルなどのつながりを線で示した相関図です。",
+    "learningResourceType": "Interactive Resource",
+    "inLanguage": "ja",
+    "author": { "@type": "Person", "name": "時雨 大輔", "url": "https://hyakuninisshu.com/" },
+    "url": "https://hyakuninisshu.com/diagram_archtecture.html"
+  }
+  </script>
+  <!-- スタイルシート -->
+  <link rel="stylesheet" href="../css/style.css?20260908-16">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@500&family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
+  <link rel="canonical" href="https://hyakuninisshu.com/diagram_archtecture.html">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" href="/favicon.ico">
+
+  <!-- 相関図スタイル -->
+  <link rel="stylesheet" href="css/network-diagram.css?20260718-2">
+
+</head>
+
+<body>
+  <header class="header">
+    <p class="site-title">
+      <a href="https://hyakuninisshu.com/">時雨の百人一首</a>
+    </p>
+    <div class="header_list">
+      <a href="index.html"><img src="../img/icon_top.svg?ver-02" alt="トップ" class="icon"></a>
+      <a href="introduction.html" style="color:#333"><img src="/img/icon_column.svg?ver-02" alt="コラム" class="icon"></a>
+      <a href="introduction-app.html" style="color:#333"><img src="/img/icon_app.svg?ver-02" alt="アプリ" class="icon"></a>
+      <a href="diagram_archtecture_en.html"><img src="/img/icon_lang.svg?ver-01" alt="English" class="icon"></a>
+      <a href="list.html"><img src="/img/icon_search.svg?ver-04" alt="和歌の一覧・検索" class="icon"></a>
+    </div>
+  </header>
+
+  <main class="main_about-main">
+    <div class="about-main">
+      <div class="section diagram-section">
+        <nav>
+          <ol class="breadcrumb">
+            <li><a href="index.html">トップ</a></li>
+            <li><a href="introduction-app.html">アプリ</a></li>
+            <li>百人一首とは</li>
+          </ol>
+        </nav>
+        <hr>
+        <h1>百人一首 相関図</h1>
+        <p>歌人たちを活躍した時代ごとに並べ、歌人どうしのつながりを線で結んだ相関図です。歌人を<span class="sp">タップ</span><span class="pc">クリック</span>すると和歌の一部が表示されます。気になる歌人を<span class="sp">ダブルタップ</span><span class="pc">ダブルクリック</span>すると、その歌人とつながりのある歌人だけに絞り込んで表示されます（元に戻すときは何もない場所を<span class="sp">ダブルタップ</span><span class="pc">ダブルクリック</span>してください）。</p>
+
+        <div class="adjust-toolbar" id="adjust-toolbar" style="display:none;">
+          <button id="toggle-edit" type="button">🔧 調整モード OFF</button>
+          <span id="drag-readout"></span>
+        </div>
+        <div id="adjust-panel" style="display:none;">
+          <p class="adjust-note">
+            ノードを左右にドラッグして位置を調整、または関係線のハンドルをドラッグして曲がり方を調整する。
+            「ファイルに保存」を押すと、初回のみ js/network-data.json を選べば直接上書きできる
+            （Chrome/Edgeのみ対応。2回目以降は同じファイルに確認なしで上書き）。非対応ブラウザではダウンロードになるので、
+            js/network-data.json に手動で置き換えてください。
+          </p>
+          <button id="save-file" type="button">💾 ファイルに保存</button>
+          <button id="copy-json" type="button">📋 座標をコピー</button>
+          <textarea id="json-output" rows="12" readonly placeholder="ここに調整後のJSONが表示されます"></textarea>
+        </div>
+
+        <svg id="hyakunin-network" width="100%" height="500" viewBox="0 0 1000 500"></svg>
+        <div id="poet-tooltip"></div>
+        <div class="network-legend" id="network-legend"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-copy">&copy;2023 時雨の百人一首</span>
+      <ul>
+        <li><a href="policy.html">プライバシーポリシー</a></li>
+        <li>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXx7TKlqnTfKrw2Nuh4f37swVwFH-RFDsNkTGQ4JEF50q2wQ/viewform?usp=header"
+            target="_blank" rel="noopener">お問い合わせフォーム</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- 相関図ロジック（データは network-data.json を読み込み） -->
+  <script src="js/network-diagram.js?20260908-1" defer></script>
+
+  <script src="../js/back-to-top.js?20260908-02"></script>
+
+</body>
+</html>

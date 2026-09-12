@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head prefix="og: http://ogp.me/ns#">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Competitive Karuta: Learning Kimariji Through Card Flow | Shigure no Hyakunin Isshu</title>
+  <link rel="canonical" href="https://hyakuninisshu.com/hudanagashi-practice_en.html">
+  <meta name="description"
+    content="A card-flow practice page for efficiently memorizing kimariji in competitive karuta. Look at the lower verse and train yourself to instantly recall the kimariji. Tap the card to reveal the upper verse with only the kimariji highlighted in red. Swipe to move to the next or previous card. Supports filtering by the five-color Hyakunin Isshu card sets and by kimariji length. Free, no login required.">
+  <link rel="stylesheet" href="../css/style.css?20260908-16">
+  <link rel="stylesheet" href="../css/karuta.css?20260506">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap"
+    rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" href="/favicon.ico">
+
+  <style>
+    /* ── 共通 ── */
+    .fuda-section {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    /* ── 色選択 ── */
+    #color-selector {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 6px;
+      justify-content: center;
+      margin: 1em 0 1.4em;
+    }
+
+    .color-btn {
+      padding: 0.5em 0;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      background: #f9f9f9;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: bold;
+      line-height: 1.4;
+      transition: border-color 0.15s, background 0.15s, color 0.15s;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .color-btn small {
+      display: block;
+      font-weight: normal;
+      font-size: 0.75em;
+      color: inherit;
+    }
+
+    .color-btn[data-color="青"] {
+      border-color: #3a7bd5;
+    }
+
+    .color-btn[data-color="橙"] {
+      border-color: #e87722;
+    }
+
+    .color-btn[data-color="ピンク"] {
+      border-color: #e8639c;
+    }
+
+    .color-btn[data-color="黄"] {
+      border-color: #c8a100;
+    }
+
+    .color-btn[data-color="緑"] {
+      border-color: #2a9d4a;
+    }
+
+    .color-btn.active {
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .color-btn[data-color="全部"].active {
+      background: #4e3052;
+    }
+
+    .color-btn[data-color="青"].active {
+      background: #3a7bd5;
+    }
+
+    .color-btn[data-color="橙"].active {
+      background: #e87722;
+    }
+
+    .color-btn[data-color="ピンク"].active {
+      background: #e8639c;
+    }
+
+    .color-btn[data-color="黄"].active {
+      background: #c8a100;
+    }
+
+    .color-btn[data-color="緑"].active {
+      background: #2a9d4a;
+    }
+
+    /* ── スタートボタン ── */
+    #start-button {
+      width: 100px;
+      height: 30px;
+      margin: 20px auto;
+      background-image: url(../img/icon_start.svg);
+      background-position: center center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      cursor: pointer;
+    }
+
+    /* ── ボタン ── */
+    .main-btn {
+      display: inline-block;
+      padding: 0.6em 2em;
+      background: #B82343;
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 0.4em 0.3em;
+      transition: background 0.15s;
+    }
+
+    .main-btn:hover {
+      background: #9a1c38;
+    }
+
+    .main-btn:disabled {
+      background: #ccc;
+      cursor: default;
+    }
+
+    .sub-btn {
+      display: inline-block;
+      padding: 0.4em 1.2em;
+      background: #f0f0f0;
+      color: #555;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      margin: 0.4em 0.3em;
+    }
+
+    .sub-btn:hover {
+      background: #e0e0e0;
+    }
+
+    /* ── 進捗テキスト ── */
+    #progress-text {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 0.6em;
+    }
+
+    /* ── 設定行 ── */
+    .setting-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6em;
+      margin: 0.8em 0;
+    }
+
+    .setting-row:last-of-type {
+      margin-bottom: 1.2em;
+    }
+
+    .setting-row label {
+      font-weight: bold;
+      font-size: 0.95rem;
+    }
+
+    #kimariji-select {
+      width: 7em;
+      height: 32px;
+      font-size: 0.95rem;
+      padding: 0 0.5em;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    /* ── セパレータ ── */
+    .fuda-sep {
+      border: none;
+      border-top: 1px solid #e0e0e0;
+      margin: 1.2em 0;
+    }
+
+    /* ── 札エリア ── */
+    .karuta_card p{
+      letter-spacing:0!important;
+    }
+    #card-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 290px;
+      margin: 0.5em auto;
+      touch-action: pan-y;
+      user-select: none;
+    }
+
+    @media (max-width: 540px) {
+      #card-wrap {
+        min-height: 0;
+      }
+    }
+
+    #practice-card {
+      width: 195px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    #practice-card p {
+      font-family: "Noto Serif JP", serif;
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: 0.1em;
+      line-height: 1.5;
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 540px) {
+      #practice-card {
+        width: 58vw;
+      }
+
+      #practice-card p {
+        font-size: 8.5vw;
+        letter-spacing: 0.1em;
+      }
+    }
+
+    /* ── 歌番号 ── */
+    #card-number {
+      position: absolute;
+      bottom: 0.4em;
+      left: 0.5em;
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1;
+      z-index: 2;
+    }
+
+    @media (max-width: 540px) {
+      #card-number {
+        font-size: 2.8vw;
+      }
+    }
+
+    /* ── 決まり字オーバーレイ ── */
+    #kimariji-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(20, 12, 12, 0.86);
+      border-radius: inherit;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5em;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      z-index: 5;
+    }
+
+    #kimariji-overlay.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .kj-kami {
+      writing-mode: vertical-rl;
+      font-family: "Noto Serif JP", serif;
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.85);
+      letter-spacing: 0.4em;
+      line-height: 2.2;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 540px) {
+      .kj-kami {
+        font-size: 3.6vw;
+      }
+    }
+
+    .kj-kami .kj-red {
+      color: #e85070;
+      font-weight: bold;
+    }
+
+    /* ── カード枚数・ヒント ── */
+    #card-counter {
+      font-size: 1rem;
+      color: #666;
+      margin-top: 0.5em;
+      min-height: 1.4em;
+    }
+
+    #swipe-hint {
+      font-size: 0.78rem;
+      color: #bbb;
+      margin-top: 0.2em;
+    }
+
+    /* ── 完了メッセージ ── */
+    #finish-msg {
+      font-size: 1.1rem;
+      color: #B82343;
+      font-weight: bold;
+      margin: 0.8em 0 0.4em;
+      text-align: center;
+    }
+
+    /* ── スライドアニメーション ── */
+    @keyframes slideInFromRight {
+      from {
+        transform: translateX(50px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideInFromLeft {
+      from {
+        transform: translateX(-50px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    .slide-in-right {
+      animation: slideInFromRight 0.25s ease forwards;
+    }
+
+    .slide-in-left {
+      animation: slideInFromLeft 0.25s ease forwards;
+    }
+
+    /* ── ナビボタン（◀ ▶） ── */
+    .nav-btn {
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: #B82343;
+      cursor: pointer;
+      padding: 0 0.4em;
+      line-height: 1;
+      flex-shrink: 0;
+      user-select: none;
+    }
+
+    .nav-btn:disabled {
+      color: #ddd;
+      cursor: default;
+    }
+
+    @media (max-width: 540px) {
+      .nav-btn {
+        font-size: 7vw;
+        padding: 0 0.3em;
+      }
+    }
+
+    /* スマホのみ：ゲーム中はヘッダー・フッター非表示 */
+    @media (max-width: 540px) {
+
+      #site-header[hidden],
+      #site-footer[hidden] {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ヘッダー -->
+  <header id="site-header" class="header">
+    <p class="site-title">
+      <a href="https://hyakuninisshu.com/">Shigure no Hyakunin Isshu</a>
+    </p>
+    <div class="header_list">
+      <a href="index_en.html"><img src="../img/icon_top_en.svg?ver-01" alt="Top" class="icon"></a>
+      <a href="introduction_en.html" style="color:#333"><img src="/img/icon_column_en.svg?ver-01" alt="Articles" class="icon"></a>
+      <a href="introduction-app_en.html" style="color:#333"><img src="/img/icon_app_en.svg?ver-01" alt="Apps" class="icon"></a>
+      <a href="hudanagashi-practice.html"><img src="/img/icon_lang.svg?ver-01" alt="Japanese" class="icon"></a>
+      <a href="list_en.html"><img src="/img/icon_list_en.svg?ver-01" alt="Poem list and search" class="icon"></a>
+    </div>
+  </header>
+
+  <main class="main_about-main">
+    <div class="section fuda-section">
+      <nav>
+          <ol class="breadcrumb">
+            <li><a href="index_en.html">Top</a></li>
+            <li><a href="introduction-app_en.html">Apps</a></li>
+            <li>Learning Kimariji Through Card Flow</li>
+          </ol>
+        </nav>
+      <h1 id="page-title" style="text-align: left;">Competitive Karuta <br class="br-sp">Learning Kimariji Through Card Flow</h1>
+
+      <p id="page-desc">
+        The lower-verse cards are shown one at a time. Tap a card to reveal its kimariji.
+        Click the triangle arrows on either side, or swipe left or right, to move to the previous or next card.
+      </p>
+      <p id="sister-page">
+        There's also a sister page, the <a href="hudanagashi-game_en.html">Kimariji 3-Choice Quiz</a>, which we recommend.
+      </p>
+
+      <!-- ── 設定パネル ── -->
+      <div id="setup-panel">
+        <hr class="fuda-sep">
+        <p style="font-weight:bold;margin-bottom:0.3em;text-align:center;">Choose which color group to practice</p>
+        <div id="color-selector">
+          <button class="color-btn active" data-color="全部">All<small>100 cards</small></button>
+          <button class="color-btn" data-color="青">Blue<small>20 cards</small></button>
+          <button class="color-btn" data-color="橙">Orange<small>20 cards</small></button>
+          <button class="color-btn" data-color="ピンク">Pink<small>20 cards</small></button>
+          <button class="color-btn" data-color="黄">Yellow<small>20 cards</small></button>
+          <button class="color-btn" data-color="緑">Green<small>20 cards</small></button>
+        </div>
+        <div class="setting-row">
+          <label for="kimariji-select">Kimariji length</label>
+          <select id="kimariji-select">
+            <option value="0">All</option>
+            <option value="1">1-character</option>
+            <option value="2">2-character</option>
+            <option value="3">3-character</option>
+            <option value="4">4-character</option>
+            <option value="5">5-character</option>
+            <option value="6">6-character</option>
+          </select>
+        </div>
+        <div id="start-button"></div>
+        <hr class="fuda-sep">
+        <h2 style="text-align: left;">What is Kimariji?</h2>
+        <p>Kimariji are the decisive syllables — the shortest beginning of a poem that uniquely identifies which card to take.</p>
+        <p>For example, only one poem starts with "mu." As soon as you hear "mu," you know the card is "Murasame no / Tsuyu mo mada hinu / Maki no ha ni / Kiri tachi noboru / Aki no yugure." In this case the kimariji is just 1 syllable, but some can be up to 6 syllables long.</p>
+        <p>Competitive karuta is a game of speed, so memorizing kimariji gives you a major advantage in matches.</p>
+        <p id="load-error" style="color:red;display:none;">Failed to load data. Please reload the page.</p>
+      </div>
+
+      <!-- ── 練習パネル ── -->
+      <div id="practice-panel" hidden>
+        <div id="progress-text"></div>
+
+        <div id="card-wrap">
+          <button id="prev-btn" class="nav-btn" aria-label="Previous Card">◀</button>
+          <div id="practice-card" class="karuta_card">
+            <p id="card-text"></p>
+            <span id="card-number"></span>
+            <div id="kimariji-overlay">
+              <p class="kj-kami" id="overlay-kami"></p>
+            </div>
+          </div>
+          <button id="next-btn" class="nav-btn" aria-label="Next Card">▶</button>
+        </div>
+
+        <div id="card-counter"></div>
+        <div id="swipe-hint">← Swipe for previous card　Swipe for next card →</div>
+
+        <div style="margin-top:1em;">
+          <button id="back-to-setup-btn" class="sub-btn">Back to Settings</button>
+        </div>
+      </div>
+
+      <!-- ── 完了パネル ── -->
+      <div id="finish-panel" hidden>
+        <p id="finish-msg">You've practiced all the cards!</p>
+        <div>
+          <button id="retry-btn" class="main-btn">Try Again</button>
+          <br>
+          <button id="finish-back-btn" class="sub-btn">Back to Settings</button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer id="site-footer">
+    <div class="footer-inner">
+      <span class="footer-copy">&copy;2023 Shigure no Hyakunin Isshu</span>
+      <ul>
+        <li><a href="policy.html">Privacy Policy</a></li>
+        <li>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXx7TKlqnTfKrw2Nuh4f37swVwFH-RFDsNkTGQ4JEF50q2wQ/viewform?usp=header"
+            target="_blank" rel="noopener">Contact Form</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    (async () => {
+      'use strict';
+
+      // ── データ読み込み ──
+      let poems = [];
+      try {
+        const res = await fetch('../js/hyakunin.json?04');
+        const data = await res.json();
+        poems = Object.values(data);
+      } catch {
+        document.getElementById('load-error').style.display = '';
+        return;
+      }
+
+      // ── 状態 ──
+      let selectedColor = '全部';
+      let selectedKimariji = 0;
+      let deck = [];
+      let currentIndex = 0;
+      let overlayVisible = false;
+
+      // ── 色ボタン ──
+      document.querySelectorAll('.color-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          selectedColor = btn.dataset.color;
+        });
+      });
+
+      document.getElementById('kimariji-select').addEventListener('change', e => {
+        selectedKimariji = parseInt(e.target.value, 10);
+      });
+
+      // ── スタート ──
+      document.getElementById('start-button').addEventListener('click', () => startGame());
+      document.getElementById('retry-btn').addEventListener('click', () => startGame());
+      document.getElementById('finish-back-btn').addEventListener('click', () => goToSetup());
+      document.getElementById('back-to-setup-btn').addEventListener('click', () => goToSetup());
+
+      function startGame() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        let pool = selectedColor === '全部' ? [...poems] : poems.filter(p => p.color === selectedColor);
+        if (selectedKimariji > 0) pool = pool.filter(p => p.kimariji.length === selectedKimariji);
+        if (pool.length === 0) { alert('No matching cards found'); return; }
+        deck = shuffle(pool);
+        currentIndex = 0;
+
+        hide('page-title');
+        hide('page-desc');
+        hide('sister-page');
+        hide('site-header');
+        hide('site-footer');
+        hide('setup-panel');
+        hide('finish-panel');
+        show('practice-panel');
+
+        renderCard(currentIndex, null);
+      }
+
+      function goToSetup() {
+        hide('practice-panel');
+        hide('finish-panel');
+        show('setup-panel');
+        show('page-title');
+        show('page-desc');
+        show('sister-page');
+        show('site-header');
+        show('site-footer');
+      }
+
+      document.getElementById('next-btn').addEventListener('click', () => goNext());
+      document.getElementById('prev-btn').addEventListener('click', () => goPrev());
+
+      // ── カード描画 ──
+      function renderCard(index, direction) {
+        overlayVisible = false;
+        const poem = deck[index];
+        const card = document.getElementById('practice-card');
+        const overlay = document.getElementById('kimariji-overlay');
+
+        overlay.classList.remove('visible');
+        document.getElementById('card-text').innerHTML = poem.torihuda;
+        document.getElementById('card-number').textContent = poem.number;
+        document.getElementById('overlay-kami').innerHTML = buildKamiHtml(poem);
+
+        document.getElementById('progress-text').textContent =
+          `Card ${index + 1} of ${deck.length}`;
+
+        // ナビボタンの活性状態を更新
+        document.getElementById('prev-btn').disabled = index === 0;
+        document.getElementById('next-btn').disabled = false;
+
+        // スライドアニメーション
+        if (direction) {
+          card.classList.remove('slide-in-right', 'slide-in-left');
+          void card.offsetWidth;
+          card.classList.add(direction === 'next' ? 'slide-in-right' : 'slide-in-left');
+        }
+      }
+
+      // ── タップで決まり字表示 ──
+      let isSwiping = false;
+      document.getElementById('practice-card').addEventListener('click', () => {
+        if (isSwiping) return;
+        overlayVisible = !overlayVisible;
+        document.getElementById('kimariji-overlay').classList.toggle('visible', overlayVisible);
+      });
+
+      // ── スワイプ（タッチ） ──
+      const cardWrap = document.getElementById('card-wrap');
+      let touchStartX = 0, touchStartY = 0;
+
+      cardWrap.addEventListener('touchstart', e => {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+        isSwiping = false;
+      }, { passive: true });
+
+      cardWrap.addEventListener('touchend', e => {
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        const dy = e.changedTouches[0].clientY - touchStartY;
+        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 45) {
+          isSwiping = true;
+          dx < 0 ? goNext() : goPrev();
+          setTimeout(() => { isSwiping = false; }, 50);
+        }
+      }, { passive: true });
+
+      // ── スワイプ（マウス） ──
+      let mouseStartX = 0, isDragging = false;
+      cardWrap.addEventListener('mousedown', e => {
+        mouseStartX = e.clientX;
+        isDragging = true;
+        isSwiping = false;
+      });
+      document.addEventListener('mouseup', e => {
+        if (!isDragging) return;
+        isDragging = false;
+        const dx = e.clientX - mouseStartX;
+        if (Math.abs(dx) > 45) {
+          isSwiping = true;
+          dx < 0 ? goNext() : goPrev();
+          setTimeout(() => { isSwiping = false; }, 50);
+        }
+      });
+
+      // ── キーボード ──
+      document.addEventListener('keydown', e => {
+        if (document.getElementById('practice-panel').hidden) return;
+        if (e.key === 'ArrowRight') goNext();
+        else if (e.key === 'ArrowLeft') goPrev();
+        else if (e.key === ' ') {
+          e.preventDefault();
+          overlayVisible = !overlayVisible;
+          document.getElementById('kimariji-overlay').classList.toggle('visible', overlayVisible);
+        }
+      });
+
+      function goNext() {
+        if (currentIndex < deck.length - 1) {
+          currentIndex++;
+          renderCard(currentIndex, 'next');
+        } else {
+          hide('practice-panel');
+          show('finish-panel');
+        }
+      }
+
+      function goPrev() {
+        if (currentIndex > 0) {
+          currentIndex--;
+          renderCard(currentIndex, 'prev');
+        }
+      }
+
+      // ── 上の句HTML生成（決まり字を赤くする） ──
+      function buildKamiHtml(poem) {
+        const phrases = poem.yomihuda.split('<br>').slice(0, 3);
+        let remaining = poem.kimariji.length;
+        return phrases.map(phrase => {
+          if (remaining <= 0) return phrase;
+          const red = phrase.slice(0, remaining);
+          const rest = phrase.slice(remaining);
+          remaining -= red.length;
+          return `<span class="kj-red">${red}</span>${rest}`;
+        }).join('<br>');
+      }
+
+      // ── ユーティリティ ──
+      function show(id) { document.getElementById(id).hidden = false; }
+      function hide(id) { document.getElementById(id).hidden = true; }
+
+      function shuffle(arr) {
+        const a = [...arr];
+        for (let i = a.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+      }
+    })();
+  </script>
+  <script src="../js/back-to-top.js?20260908-02"></script>
+
+</body>
+
+</html>

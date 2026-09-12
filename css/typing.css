@@ -1,0 +1,538 @@
+@charset "UTF-8";
+/* --------------------------------------------
+メイン
+-------------------------------------------- */
+html,
+body {
+  height: auto;
+  overflow-x: hidden; /* 横スクロール防止 */
+}
+
+.section {
+  margin: 0.5em auto;
+}
+.section h3#current-kami {
+  border-left: none;
+  padding: 0;
+  margin: 0;
+}
+
+.red {
+  color: red;
+}
+
+#current-kami {
+  text-align: center;
+  font-family: "Kaisei HarunoUmi", serif;
+  font-weight: normal;
+}
+
+#quiz-container {
+  background-color: #F7F1E0;
+  border-radius: 1em;
+  max-width: 600px;
+  margin: 10px auto;
+  padding: 20px 20px 30px;
+}
+@media (max-width: 650px) {
+  #quiz-container {
+    max-width: 550px;
+  }
+}
+@media (max-width: 600px) {
+  #quiz-container {
+    max-width: 500px;
+  }
+}
+@media (max-width: 550px) {
+  #quiz-container {
+    max-width: 450px;
+  }
+}
+@media (max-width: 450px) {
+  #quiz-container {
+    max-width: 400px;
+  }
+}
+@media (max-width: 400px) {
+  #quiz-container {
+    max-width: 350px;
+  }
+}
+@media (max-width: 375px) {
+  #quiz-container {
+    max-width: 320px;
+  }
+}
+
+#quiz-container.play {
+  background-image: url(../img/tatami.webp);
+  background-attachment: fixed;
+  height: auto;
+  min-height: calc(100vh - 120px);
+  overflow-y: visible;
+}
+@media (max-width: 1000px) {
+  #quiz-container.play {
+    min-height: calc(100vh - 143px);
+  }
+}
+
+.main_about-main {
+  min-height: calc(100vh - 120px);
+  padding: 5px;
+}
+@media (max-width: 1000px) {
+  .main_about-main {
+    min-height: calc(100vh - 143px);
+  }
+}
+
+.question-number {
+  margin: 5px 10px;
+  font-size: 16px;
+  text-shadow: 0px 0px 4px #fff, 0px 0px 4px #fff, 0px 0px 4px #fff, 0px 0px 4px #fff, 0px 0px 4px #fff;
+}
+
+.quiz-controls-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  border: 1px solid #333;
+  padding: 10px;
+}
+
+.quiz-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 15px 0 5px;
+}
+.quiz-controls p {
+  font-size: 15px;
+  margin-bottom: 5px !important;
+}
+
+#quiz-type-select,
+#quiz-limit-select {
+  height: 30px;
+  font-size: 1.1rem;
+  width: 190px;
+  padding-left: 5px;
+  margin: 0 auto;
+  color: #333;
+}
+
+.selection-controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1em;
+}
+
+.next-button {
+  width: 100px;
+  height: 30px;
+  margin: 10px auto;
+  background-image: url(../img/next-question.svg);
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0px 0px 4px #fff, 0px 0px 4px #fff;
+}
+
+#start-button,
+#replay-button,
+#replay-button_en {
+  width: 100px;
+  height: 30px;
+  margin: 20px auto;
+  background-image: url(../img/icon_start.svg);
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+#replay-button {
+  background-image: url(../img/replay.svg);
+}
+
+#replay-button_en {
+  background-image: url(../img/replay_en.svg);
+}
+
+#share_button {
+  display: none;
+  width: 100px;
+  height: 30px;
+  margin: 1em auto;
+  background-image: url(../img/xshare.svg);
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+/* 札（歌）のデザイン - 縦書き */
+.card-id {
+  position: absolute;
+  /* 縦書きの「左下」に配置 */
+  bottom: 0px;
+  left: 0px;
+  font-size: 8px; /* サイズを8pxに指定 */
+  color: #333;
+  z-index: 5;
+  writing-mode: horizontal-tb; /* IDは横書きで表示 */
+  text-orientation: mixed;
+  padding: 2px 4px;
+  background-color: #fff;
+  border-right: 1px solid #4e3052;
+  border-top: 1px solid #4e3052;
+  letter-spacing: 0;
+}
+
+.kimariji-card {
+  background-color: #fff;
+  border: 2px solid #4e3052;
+  letter-spacing: 0.1em;
+  background-size: cover;
+  padding: 11px 7px 9px;
+  margin: 5px 0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  height: 210px;
+  width: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  white-space: nowrap;
+  position: relative;
+}
+
+.kimariji-card p {
+  font-family: "Kaisei HarunoUmi", serif;
+  font-size: 24px;
+  line-height: 1.6;
+  margin: 0;
+  text-align: left;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  color: #333;
+  text-shadow: 1px 1px 3px #fff, -1px 1px 3px #fff, 1px -1px 3px #fff, -1px -1px 3px #fff, 0 1px 3px #fff, 0 -1px 3px #fff, 1px 0 3px #fff, -1px 0 3px #fff;
+}
+
+/* 正解時の画像表示 */
+.kimariji-card.correct-image::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  background-image: url("../img/maru.png"); /* 画像のパスを適切に設定 */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* 不正解時の画像表示 */
+.kimariji-card.incorrect-image::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  background-image: url("../img/batsu.png"); /* 画像のパスを適切に設定 */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* 上の句の表示エリア - 縦書き */
+.question-card {
+  font-family: "Kaisei HarunoUmi", serif;
+  letter-spacing: 0;
+  background-image: url(../img/huda.webp);
+  border: 2px solid #333;
+  padding: 10px;
+  margin: 0 auto;
+  width: 190px;
+  height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  position: relative;
+}
+
+.question-card p {
+  font-size: 26px;
+  line-height: 2;
+  text-align: left;
+  margin-bottom: 0 !important;
+}
+.question-card p rt {
+  transform: translateX(-5px);
+}
+
+/* 選択肢を横並びにするためのコンテナ */
+#choices-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* メッセージ表示用のスタイル */
+#message-container {
+  background-color: #fff;
+  padding: 10px;
+  margin: 0 auto;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-family: "Kaisei HarunoUmi", serif;
+  text-align: left;
+  font-size: 1.2em;
+  min-height: 20px;
+}
+#message-container:empty {
+  display: none;
+}
+
+.correct-message {
+  color: #008000;
+}
+
+.incorrect-message {
+  color: #333;
+}
+
+.letter-red {
+  color: red;
+}
+
+/* --------------------
+    メディアクエリ
+-------------------- */
+/* 画面幅が760px未満の場合 */
+@media (max-width: 760px) {
+  .quiz-controls-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .question-number {
+    font-size: 14px;
+  }
+  .question-card {
+    height: 230px;
+    width: 170px;
+  }
+  .question-card p {
+    font-size: 24px;
+    line-height: 2;
+  }
+  .kimariji-card {
+    height: 230px;
+    width: 170px;
+    padding: 10px 5px 2px;
+  }
+  .kimariji-card p {
+    font-size: 24px;
+  }
+  /* 画像のサイズを調整 */
+  .kimariji-card.correct-image::after,
+  .kimariji-card.incorrect-image::after {
+    width: 80px;
+    height: 80px;
+  }
+  #choices-container {
+    gap: 10px;
+  }
+  #message-container {
+    font-size: 1.2em;
+  }
+}
+/* 画面幅が550px未満の場合 */
+@media (max-width: 550px) {
+  .breadcrumb {
+    padding: 0 10px;
+  }
+  .title {
+    padding: 0 10px;
+  }
+  .quiz-controls-wrapper {
+    margin: 5px 10px 0;
+  }
+  .section {
+    padding: 10px 5px;
+  }
+  .question-number {
+    font-size: 11px;
+  }
+  #quiz-type-select {
+    width: 180px;
+  }
+  .quiz-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .quiz-controls p {
+    font-size: 15px;
+    margin: 0;
+  }
+  .question-card {
+    height: 190px;
+    width: 140px;
+    padding: 8px 4px 2px;
+  }
+  .question-card p {
+    font-size: 20px;
+    line-height: 1.8;
+  }
+  .kimariji-card {
+    height: 175px;
+    width: 113px;
+    padding: 4px 2px 2px;
+  }
+  .kimariji-card p {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+  /* 画像のサイズをさらに調整 */
+  .kimariji-card.correct-image::after,
+  .kimariji-card.incorrect-image::after {
+    width: 80px;
+    height: 80px;
+  }
+  #choices-container {
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  #message-container {
+    font-size: 1.2em;
+  }
+  .kimariji-card {
+    width: 100px;
+    height: 160px;
+    background-color: #2c5d3f; /* デフォルト（畳色） */
+  }
+  .kimariji-card.back-pink {
+    background-color: #ffc0cb;
+  }
+  .kimariji-card.back-yellow {
+    background-color: #f0e68c;
+  }
+  .kimariji-card.back-green {
+    background-color: #98fb98;
+  }
+}
+/* 札の基本スタイル（既存に追加） */
+.kimariji-card {
+  transition: transform 0.4s, background-color 0.3s;
+  background-image: url("/img/paper.gif");
+}
+.kimariji-card.matched {
+  background-image: url("/img/uragara2.webp");
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* 縦書きのルビが崩れないよう調整 */
+.kimariji-card p {
+  pointer-events: none;
+  letter-spacing: 0;
+}
+
+/* ビンゴ専用のコンパクト設定 */
+#grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  max-width: 350px; /* 全体の幅を抑える */
+  margin: 0 auto;
+}
+
+/* 札のコンパクト化 */
+.kimariji-card.bingo-card {
+  height: 140px; /* 高さを210pxから140pxに短縮 */
+  width: auto; /* 幅はグリッドに合わせる */
+  min-width: 0; /* 崩れ防止 */
+  padding: 8px 4px; /* 余白を削る */
+  margin: 0; /* 隙間はgapで制御 */
+}
+
+/* 札の中の文字サイズ調整 */
+.kimariji-card.bingo-card p {
+  font-size: 1.3rem;
+  line-height: 1.4;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+}
+@media (max-width: 1000px) {
+  .kimariji-card.bingo-card p {
+    font-size: 1.5rem;
+  }
+}
+@media (max-width: 550px) {
+  .kimariji-card.bingo-card p {
+    font-size: 1.42rem !important;
+  }
+}
+@media (max-width: 350px) {
+  .kimariji-card.bingo-card p {
+    line-height: 1.3;
+  }
+}
+
+/* 正解・不正解マークのサイズもコンパクトに */
+.kimariji-card.bingo-card.correct-image::after,
+.kimariji-card.bingo-card.incorrect-image::after {
+  width: 60px;
+  height: 60px;
+}
+
+/* 画面が小さい時（スマホ）のさらなる調整 */
+@media (max-width: 550px) {
+  .kimariji-card.bingo-card {
+    height: 110px; /* さらに低く */
+  }
+  .kimariji-card.bingo-card p {
+    font-size: 0.95rem; /* スマホではさらに文字を小さく */
+  }
+}
+/* 問題ボックス（上の句）もコンパクトに */
+.question-box-compact {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 左右中央 */
+  justify-content: center; /* 上下中央（高さがある場合） */
+  text-align: center;
+  background: #fff;
+  padding: 8px;
+  border-radius: 8px;
+  border: 3px solid #488056 !important;
+  margin-bottom: 15px;
+  min-height: 100px; /* ある程度の高さを確保 */
+}/*# sourceMappingURL=typing.css.map */

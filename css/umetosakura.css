@@ -1,0 +1,164 @@
+@charset "UTF-8";
+table {
+  border-collapse: collapse;
+  border: 1px solid #333;
+  font-size: 1.05rem;
+  z-index: 10;
+  width: 100%;
+}
+table td {
+  border: 1px solid #333;
+  background-color: #fff;
+}
+table td:nth-child(1) {
+  text-align: left;
+  color: #B82343;
+  cursor: pointer;
+}
+@media (max-width: 960px) {
+  table td:nth-child(1) {
+    width: 30px;
+  }
+}
+table td:nth-child(1) {
+  border: 1px solid #333;
+  padding: 0.5em;
+  width: 90%;
+  border-right: none;
+}
+table td:nth-child(1) rt {
+  font-size: 0.6em;
+  letter-spacing: 0;
+}
+table td:nth-child(3) {
+  /* 検索用の文字（非表示） */
+  color: transparent;
+  width: 0;
+  display: none;
+  border-left: none;
+  border-right: none;
+}
+table td:nth-child(4) {
+  /* 検索用の文字（非表示） */
+  color: transparent;
+  width: 0;
+  display: none;
+  border-left: none;
+  border-right: none;
+}
+table td:nth-child(5) {
+  /* 検索用の文字（非表示） */
+  color: transparent;
+  width: 0;
+  display: none;
+  border-left: none;
+}
+table td:nth-child(6) {
+  /* 検索用の文字（非表示） */
+  color: transparent;
+  width: 0;
+  display: none;
+  border-left: none;
+}
+
+#input-wrapper {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 1em;
+}
+
+#searchInput {
+  box-sizing: border-box;
+  width: 100%;
+  height: 45px;
+  padding: 10px 10px 8px;
+  font-size: 16px;
+}
+@media (max-width: 960px) {
+  #searchInput {
+    width: 100%;
+  }
+}
+
+/* アコーディオン */
+.details {
+  transition: 0.3s;
+  overflow: hidden;
+  margin-top: -10px;
+}
+.details:last-of-type {
+  margin-bottom: 0;
+}
+
+.details[open] {
+  margin-top: 0;
+}
+
+.details-summary {
+  display: block;
+  padding: 15px 0 10px;
+  transition: 0.3s;
+  transform: translateY(10px);
+  color: #333;
+}
+@media (max-width: 500px) {
+  .details-summary {
+    padding: 30px 0 10px;
+  }
+}
+.details-summary:hover {
+  cursor: pointer;
+}
+
+.details-summary::-webkit-details-marker {
+  display: none;
+}
+
+.details[open] .details-summary {
+  transform: translateY(0);
+}
+
+.details-content {
+  padding: 0.5em;
+  background-color: #eee;
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
+  border-left: 1px solid #333;
+  border-right: 1px solid #333;
+  margin-bottom: 0.5rem !important;
+}
+
+td > details.details > p {
+  font-size: 1.05rem;
+  color: #333;
+}
+td > details.details > p::before {
+  content: "現代語訳\a";
+  color: #0047AB;
+  white-space: pre;
+  font-weight: bold;
+}
+
+td:nth-child(2) {
+  position: relative;
+}
+
+.drop-down {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  color: #B82343;
+  font-weight: bold;
+}
+
+.details-content-kotae {
+  margin-top: 10px;
+  margin-bottom: 10px !important;
+  border: 1px solid #333;
+  padding: 0.75em;
+}
+@media (max-width: 750px) {
+  .details-content-kotae {
+    margin: 3px !important;
+  }
+}/*# sourceMappingURL=umetosakura.css.map */

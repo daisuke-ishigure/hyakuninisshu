@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="Keywords" content="小倉百人一首,百人一首の一覧,百人一首の検索,百人一首の絞り込み">
+  <meta name="description" content="「百人一首の決まり字が覚えられない…」そんな悩みを解決！オリジナルの語呂合わせや、暗記のコツをシェアできる投稿型掲示板です。100首すべての決まり字を網羅し、みんなの知恵で楽しく暗記。あなただけのユニークな覚え方もぜひ投稿してください！">
+  <meta name="fragment" content="!">
+  <meta name="google-site-verification" content="a3HHNhawWK8QsasKiSFMC_QeIXmO1tdBc60jhNPTA3s">
+  <link rel="stylesheet" href="../css/style.css?20260908-16">
+  <link rel="stylesheet" href="../css/list.css?20260912-04">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@500&family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
+  <!-- ogp設定 -->
+  <meta property="og:locale" content="ja">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="百人一首 一覧 | 時雨の百人一首">
+  <meta property="og:description" content="「百人一首の決まり字が覚えられない…」そんな悩みを解決！考案したオリジナルの語呂合わせや、暗記のコツをシェアできる投稿型掲示板です。100首すべての決まり字を網羅し、みんなの知恵で楽しく暗記。あなただけのユニークな覚え方もぜひ投稿してください！">
+  <meta property="og:image" content="https://hyakuninisshu.com/img/1.svg">
+  <meta property="og:url" content="https://hyakuninisshu.com/list-kimariji.html">
+  <meta property="og:site_name" content="時雨の百人一首">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico">
+  <link type="image/x-icon" href="/favicon.ico" rel="shortcut icon">
+  <link rel="shortcut icon" href="https://hyakuninisshu.com/favicon.ico">
+  <title>百人一首 決まり字の覚え方投稿掲示板（みんなのコツを共有中） | 時雨の百人一首</title>
+  <link rel="canonical" href="https://hyakuninisshu.com/list-kimariji.html">
+
+  <style>
+    /* =====================================================
+       list.scss の内容をコンパイルしたスタイル
+    ===================================================== */
+    * {
+      text-decoration: none !important;
+    }
+
+    /* テーブル基本 */
+    table {
+      border-collapse: collapse;
+      border: 1px solid #333;
+      font-size: 1.1rem;
+      z-index: 10;
+      width: 100%;
+    }
+
+    table td {
+      border: 1px solid #333;
+      padding: 1em !important;
+      font-size: 1.2rem;
+      line-height: 2 !important;
+    }
+
+    /* 1列目：番号セル */
+    table td:nth-child(1) {
+      text-align: center;
+      width: 56px;
+      min-width: 48px;
+      padding: 10px 6px !important;
+      border-right: 1px solid #333;
+      vertical-align: middle;
+      cursor: pointer;
+    }
+
+    @media (max-width: 960px) {
+      table td:nth-child(1) {
+        width: 44px;
+      }
+    }
+
+    /* num-badge：番号を丸バッジで表示 */
+    .num-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #ede6cc;
+      color: #0047ab;
+      font-weight: bold;
+      font-size: 0.85rem;
+      border: 1px solid #c2b99a;
+      transition: background 0.15s, color 0.15s, border-color 0.15s, transform 0.1s;
+    }
+
+    table td:nth-child(1):hover .num-badge {
+      background: #b82343;
+      color: #fff;
+      border-color: #b82343;
+      transform: scale(1.12);
+    }
+
+    /* 2列目：和歌テキスト */
+    table td:nth-child(2) {
+      padding: 1.5% 1.5% 0.75% !important;
+      width: 90%;
+      border-right: none;
+    }
+
+    @media (max-width: 960px) {
+      table td:nth-child(2) {
+        padding: 3% 1.5% 2% !important;
+        width: 310px;
+        font-size:0.9rem;
+      }
+    }
+
+    table td:nth-child(2) rt {
+      font-size: 0.5em;
+      letter-spacing: 0;
+    }
+
+    /* 3〜6列目：検索用テキスト（非表示） */
+    table td:nth-child(3),
+    table td:nth-child(4),
+    table td:nth-child(5),
+    table td:nth-child(6) {
+      color: transparent;
+      width: 0;
+      display: none;
+      border-left: none;
+      border-right: none;
+    }
+
+    /* 検索ボックスエリア */
+    #input-wrapper {
+      width: 100%;
+      text-align: left;
+      margin-bottom: 1em;
+    }
+
+    #searchInput {
+      box-sizing: border-box;
+      width: 100%;
+      height: 45px;
+      padding: 10px 10px 8px;
+      font-size: 16px;
+    }
+
+    @media (max-width: 960px) {
+      #searchInput {
+        width: 100%;
+      }
+    }
+
+    .small {
+      margin-top: 0.75em;
+    }
+
+    /* =====================================================
+       ページ固有スタイル
+    ===================================================== */
+    .lead {
+      font-size: 1.4rem;
+    }
+
+    @media (max-width: 768px) {
+      .lead {
+        font-size: 0.9rem !important;
+      }
+    }
+
+    /* アコーディオン */
+    .poem-row {
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .poem-row:hover {
+      background-color: #f5f5f5;
+    }
+
+    .poem-row.active {
+      background-color: #fff9e6;
+    }
+
+    .accordion-content {
+      display: none;
+      background-color: #fafafa;
+      border-left: 3px solid #B82343;
+    }
+
+    .accordion-content.show {
+      display: table-row;
+    }
+
+    .kimariji-container {
+      padding: 15px 20px;
+    }
+
+    .kimariji-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .kimariji-header h4 {
+      margin: 0;
+      color: #B82343;
+      font-size: 1.1em;
+    }
+
+    .post-button {
+      background-color: #27ae60;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9em;
+      transition: background-color 0.3s;
+      text-decoration: none;
+    }
+
+    .post-button:hover {
+      background-color: #229954;
+    }
+
+    .kimariji-list {
+      margin-top: 10px;
+    }
+
+    .kimariji-item {
+      background: white;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 5px;
+      border: 1px solid #e0e0e0;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .kimariji-text {
+      font-weight: bold;
+      color: #2c3e50;
+      font-size: 0.9em;
+      margin-bottom: 5px;
+    }
+
+    .kimariji-meta {
+      font-size: 0.8em;
+      color: #7f8c8d;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .kimariji-author {
+      font-style: italic;
+    }
+
+    .kimariji-date {
+      color: #95a5a6;
+    }
+
+    .no-kimariji {
+      color: #999;
+      font-style: italic;
+      padding: 10px;
+      text-align: center;
+    }
+
+    /* モーダル */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      animation: fadeIn 0.3s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 10% auto;
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 500px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      animation: slideIn 0.3s;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-50px); opacity: 0; }
+      to   { transform: translateY(0);     opacity: 1; }
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      line-height: 20px;
+    }
+
+    .close:hover { color: #000; }
+
+    .modal h3 {
+      margin-top: 0;
+      color: #B82343;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1em;
+      box-sizing: border-box;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .submit-button {
+      background-color: #B82343;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+      width: 100%;
+      transition: background-color 0.3s;
+    }
+
+    .submit-button:hover   { background-color: #9a1d38; }
+    .submit-button:disabled { background-color: #ccc; cursor: not-allowed; }
+
+    .helper-text {
+      font-size: 0.85em;
+      color: #666;
+      margin-top: 5px;
+    }
+
+    .toggle-icon {
+      float: right;
+      font-size: 0.8em;
+      color: #B82343;
+      transition: transform 0.3s;
+    }
+
+    /* 投稿数バッジ */
+    .num-badge-wrap {
+      position: relative;
+      display: inline-block;
+    }
+
+    .post-count-badge {
+      position: absolute;
+      top: -6px;
+      right: -8px;
+      background: #27ae60;
+      color: #fff;
+      font-size: 0.62rem;
+      font-weight: bold;
+      min-width: 16px;
+      height: 16px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 3px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+      pointer-events: none;
+      line-height: 1;
+    }
+
+    .poem-row.active .toggle-icon {
+      transform: rotate(180deg);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ヘッダーここから -->
+  <header class="header">
+    <p class="site-title">
+      <a href="https://hyakuninisshu.com/">時雨の百人一首</a>
+    </p>
+    <div class="header_list">
+      <a href="index.html"><img src="../img/icon_top.svg?ver-02" alt="トップ" class="icon"></a>
+      <a href="introduction.html" style="color:#333"><img src="/img/icon_column.svg?ver-02" alt="コラム" class="icon"></a>
+      <a href="introduction-app.html" style="color:#333"><img src="/img/icon_app.svg?ver-02" alt="アプリ" class="icon"></a>
+      <a href="list.html"><img src="/img/icon_search.svg?ver-04" alt="和歌の一覧・検索" class="icon"></a>
+    </div>
+  </header>
+  <!-- ヘッダーここまで・メインここから -->
+  <main class="main_about-main">
+    <div class="table-main"></div>
+    <div class="section">
+      <nav>
+        <ol class="breadcrumb">
+          <li><a href="index.html">トップ</a></li>
+          <li><a href="introduction.html">コラム</a></li>
+          <li>百人一首 決まり字の覚え方 <span style="display:inline-block">掲示板</span></li>
+        </ol>
+      </nav>
+      <hr>
+      <h1>百人一首 決まり字の覚え方 <span style="display:inline-block">掲示板</span></h1>
+      <div id="input-wrapper">
+        <p class="lead">百人一首の決まり字を覚えるのは大変です。でも、誰かが考えたユニークな語呂合わせなどですんなり覚えられることも。
+          百人一首の決まり字を覚えるのは、なかなか大変。でも、誰かが考えたユニークな語呂合わせや工夫で、意外とすんなり身につくこともあります。ここは、上の句を耳で聞いた瞬間に反応し、できるだけ早く札が取れるようになるための、みんなの「オリジナルの覚え方」をシェアする場所です。投稿したり、内容を見るには、各歌の右側にある赤い矢印をクリックしてください。
+        </p>
+        <p class="kome lead">関係のない内容や誰かを不快にさせるおそれがある内容は、運営者の判断で削除する場合があります。あらかじめご了承ください。</p>
+        <input type="text" id="searchInput" placeholder="検索ワードを入力してください" autofocus>
+      </div>
+      <div id="table" class="active"></div>
+    </div>
+  </main>
+
+  <!-- 投稿用モーダル -->
+  <div id="postModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3>覚え方を投稿</h3>
+      <form id="kimarijiForm">
+        <div class="form-group">
+          <label for="kimarijiText">あなたの覚え方 <span style="color: #e74c3c;">*</span></label>
+          <input type="text" id="kimarijiText" required placeholder="例：あきの">
+          <div class="helper-text">この歌の覚え方やポイントなどを入力してください</div>
+        </div>
+        <div class="form-group">
+          <label for="authorName">投稿者名（任意）</label>
+          <input type="text" id="authorName" placeholder="例：かるた小町">
+          <div class="helper-text">空欄の場合は「匿名」として表示されます</div>
+        </div>
+        <div class="form-group">
+          <label for="comment">詳しい説明（任意）</label>
+          <textarea id="comment" placeholder="覚え方のコツなどあれば"></textarea>
+        </div>
+        <button type="submit" class="submit-button">投稿する</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-copy">&copy;2023 時雨の百人一首</span>
+      <ul>
+        <li><a href="policy.html">プライバシーポリシー</a></li>
+        <li>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXx7TKlqnTfKrw2Nuh4f37swVwFH-RFDsNkTGQ4JEF50q2wQ/viewform?usp=header"
+            target="_blank" rel="noopener">お問い合わせフォーム</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="../js/move_script.js?20260729"></script>
+
+  <!-- Firebase SDK -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getFirestore, collection, addDoc, query, orderBy, getDocs, getCountFromServer, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDsKsuYsYZYaNVuFvnzQsZiKIrSAMFZQus",
+      authDomain: "fire-karuta.firebaseapp.com",
+      databaseURL: "https://fire-karuta-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "fire-karuta",
+      appId: "1:202669803794:web:2b2eb18bb0a065dff04bcb"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const jsonAddress = "../js/hyakunin.json?04";
+    let currentPoemNumber = null;
+    let kimarijiCache = {};
+
+    ////////////////////////////////////////////////////////////
+    // 歌の一覧
+    ////////////////////////////////////////////////////////////
+    fetch(jsonAddress)
+      .then((response) => response.json())
+      .then((data) => {
+        window.poemData = data;
+        let table = document.createElement("table");
+
+        for (let key in data) {
+          let poem = data[key];
+
+          // メイン行
+          let tr = document.createElement("tr");
+          tr.className = "poem-row";
+          tr.dataset.number = poem.number;
+
+          // 1列目：番号バッジ
+          let numberTd = document.createElement("td");
+          numberTd.innerHTML = `<span class="num-badge-wrap"><span class="num-badge">${poem.number}</span></span>`;
+          tr.appendChild(numberTd);
+
+          // 2列目：和歌テキスト
+          let wakaTd = document.createElement("td");
+          if (window.innerWidth >= 960) {
+            wakaTd.innerHTML =
+              poem.first.replace(/<br\s*\/?>/g, " ") +
+              "<br>" +
+              poem.second.replace(/<br\s*\/?>/g, " ") +
+              '<span class="toggle-icon">▼</span>';
+          } else {
+            wakaTd.innerHTML =
+              poem.first.replace(/<br\s*\/?>/g, " ") +
+              '<br>' +
+              poem.second.replace(/<br\s*\/?>/g, " ") +
+              '<span class="toggle-icon">▼</span>';
+          }
+          tr.appendChild(wakaTd);
+
+          // 3〜5列目：検索用（非表示）
+          let kanaTd = document.createElement("td");
+          kanaTd.innerHTML = poem.yomihuda.replace(/<rt>.*?<\/rt>/g, "");
+          tr.appendChild(kanaTd);
+
+          let hiraganaTd = document.createElement("td");
+          hiraganaTd.textContent = poem.hiragana;
+          tr.appendChild(hiraganaTd);
+
+          let sourceTd = document.createElement("td");
+          sourceTd.innerHTML = poem.forConsole.replace(/ /g, '');
+          tr.appendChild(sourceTd);
+
+          table.appendChild(tr);
+
+          // アコーディオンコンテンツ行
+          let accordionTr = document.createElement("tr");
+          accordionTr.className = "accordion-content";
+          accordionTr.dataset.number = poem.number;
+
+          let accordionTd = document.createElement("td");
+          accordionTd.setAttribute("colspan", "5");
+          accordionTd.innerHTML = `
+            <div class="kimariji-container">
+              <div class="kimariji-header">
+                <button class="post-button" onclick="window.openPostModal(${poem.number})">投稿する</button>
+              </div>
+              <div class="kimariji-list" id="kimariji-list-${poem.number}">
+                <div class="no-kimariji">読み込み中...</div>
+              </div>
+            </div>
+          `;
+          accordionTr.appendChild(accordionTd);
+          table.appendChild(accordionTr);
+
+          // クリックイベント（アコーディオン開閉）
+          tr.addEventListener("click", function (e) {
+            // 番号バッジをクリック → ページ遷移
+            if (e.target.classList.contains('num-badge') || e.target.classList.contains('num-badge-wrap') || e.target === numberTd) {
+              let linkNumber = poem.number;
+              window.location.href = `https://hyakuninisshu.com/${linkNumber}.html`;
+              return;
+            }
+            e.preventDefault();
+            toggleAccordion(poem.number, tr, accordionTr);
+          });
+        }
+
+        document.getElementById("table").appendChild(table);
+        initializeSearch();
+
+        // テーブル生成後に投稿数を並列取得してバッジを表示
+        loadAllPostCounts(data);
+      })
+      .catch((error) => console.error("Error fetching JSON:", error));
+
+    ////////////////////////////////////////////////////////////
+    // 投稿数の一括取得とバッジ表示
+    ////////////////////////////////////////////////////////////
+    async function loadAllPostCounts(data) {
+      const numbers = Object.keys(data).map(k => data[k].number);
+
+      // 並列で全件カウントを取得
+      await Promise.all(numbers.map(async (num) => {
+        try {
+          const ref = collection(db, `poems/${num}/kimariji`);
+          const snap = await getCountFromServer(ref);
+          const count = snap.data().count;
+          if (count > 0) {
+            applyPostCountBadge(num, count);
+          }
+        } catch (e) {
+          // カウント取得失敗は静かに無視
+        }
+      }));
+    }
+
+    function applyPostCountBadge(poemNumber, count) {
+      const row = document.querySelector(`tr.poem-row[data-number="${poemNumber}"]`);
+      if (!row) return;
+      const wrap = row.querySelector('.num-badge-wrap');
+      if (!wrap) return;
+
+      // 既存バッジがあれば件数を更新するだけ
+      let badge = wrap.querySelector('.post-count-badge');
+      if (!badge) {
+        badge = document.createElement('span');
+        badge.className = 'post-count-badge';
+        wrap.appendChild(badge);
+      }
+      badge.textContent = count;
+    }
+
+    ////////////////////////////////////////////////////////////
+    // アコーディオンの開閉
+    ////////////////////////////////////////////////////////////
+    async function toggleAccordion(poemNumber, poemRow, accordionRow) {
+      const isOpen = accordionRow.classList.contains('show');
+
+      if (isOpen) {
+        accordionRow.classList.remove('show');
+        poemRow.classList.remove('active');
+      } else {
+        accordionRow.classList.add('show');
+        poemRow.classList.add('active');
+
+        if (!kimarijiCache[poemNumber]) {
+          await loadKimariji(poemNumber);
+        }
+      }
+    }
+
+    ////////////////////////////////////////////////////////////
+    // 決まり字の読み込み
+    ////////////////////////////////////////////////////////////
+    async function loadKimariji(poemNumber) {
+      const listElement = document.getElementById(`kimariji-list-${poemNumber}`);
+
+      try {
+        let html = '';
+
+        const poemData = window.poemData[poemNumber];
+        if (poemData && poemData.kimariji) {
+          html += `
+            <div class="kimariji-item" style="background: #fff9e6; border: 2px solid #B82343;">
+              <div style="display: flex; align-items: center; margin-bottom: 5px;">
+                <span style="background: #B82343; color: white; padding: 2px 8px; border-radius: 3px; font-size: 0.8em; margin-right: 8px;">決まり字</span>
+                <div class="kimariji-text" style="margin: 0;">${escapeHtml(poemData.kimariji)}</div>
+              </div>
+            </div>
+          `;
+        }
+
+        const kimarijiRef = collection(db, `poems/${poemNumber}/kimariji`);
+        const q = query(kimarijiRef, orderBy("createdAt", "desc"));
+        const querySnapshot = await getDocs(q);
+
+        if (!querySnapshot.empty) {
+          html += '<div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #ddd;"><h5 style="margin: 0 0 10px 0; color: #666;">みんなの覚え方</h5></div>';
+
+          const items = [];
+          querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            items.push(data);
+
+            const date = data.createdAt ? new Date(data.createdAt.seconds * 1000).toLocaleDateString('ja-JP') : '不明';
+            const author = data.authorName || '匿名';
+
+            html += `
+              <div class="kimariji-item">
+                <div class="kimariji-text">${escapeHtml(data.kimariji)}</div>
+                ${data.comment ? `<div style="margin: 5px 0; color: #555;">${escapeHtml(data.comment)}</div>` : ''}
+                <div class="kimariji-meta">
+                  <span class="kimariji-author">投稿者: ${escapeHtml(author)}</span>
+                  <span class="kimariji-date">${date}</span>
+                </div>
+              </div>
+            `;
+          });
+
+          kimarijiCache[poemNumber] = items;
+        } else if (!poemData || !poemData.kimariji) {
+          html = '<div class="no-kimariji">まだ投稿がありません。最初の投稿者になりましょう！</div>';
+        }
+
+        listElement.innerHTML = html;
+      } catch (error) {
+        console.error("Error loading kimariji:", error);
+        listElement.innerHTML = '<div class="no-kimariji">読み込みエラーが発生しました。</div>';
+      }
+    }
+
+    ////////////////////////////////////////////////////////////
+    // モーダル操作
+    ////////////////////////////////////////////////////////////
+    const modal = document.getElementById('postModal');
+    const closeBtn = document.getElementsByClassName('close')[0];
+    const form = document.getElementById('kimarijiForm');
+
+    window.openPostModal = function (poemNumber) {
+      currentPoemNumber = poemNumber;
+      modal.style.display = 'block';
+      form.reset();
+    };
+
+    closeBtn.onclick = function () { modal.style.display = 'none'; };
+
+    window.onclick = function (event) {
+      if (event.target == modal) modal.style.display = 'none';
+    };
+
+    ////////////////////////////////////////////////////////////
+    // 決まり字の投稿
+    ////////////////////////////////////////////////////////////
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const submitButton = form.querySelector('.submit-button');
+      submitButton.disabled = true;
+      submitButton.textContent = '投稿中...';
+
+      const kimarijiText = document.getElementById('kimarijiText').value.trim();
+      const authorName   = document.getElementById('authorName').value.trim();
+      const comment      = document.getElementById('comment').value.trim();
+
+      try {
+        const kimarijiRef = collection(db, `poems/${currentPoemNumber}/kimariji`);
+        await addDoc(kimarijiRef, {
+          kimariji: kimarijiText,
+          authorName: authorName || '匿名',
+          comment: comment,
+          createdAt: serverTimestamp()
+        });
+
+        delete kimarijiCache[currentPoemNumber];
+        await loadKimariji(currentPoemNumber);
+
+        // バッジの件数も更新
+        try {
+          const countRef = collection(db, `poems/${currentPoemNumber}/kimariji`);
+          const countSnap = await getCountFromServer(countRef);
+          applyPostCountBadge(currentPoemNumber, countSnap.data().count);
+        } catch(e) {}
+
+        modal.style.display = 'none';
+        form.reset();
+        alert('投稿が完了しました！');
+      } catch (error) {
+        console.error("Error posting kimariji:", error);
+        alert('投稿に失敗しました。もう一度お試しください。');
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = '投稿する';
+      }
+    });
+
+    ////////////////////////////////////////////////////////////
+    // 検索機能
+    ////////////////////////////////////////////////////////////
+    function initializeSearch() {
+      const searchInput = document.getElementById("searchInput");
+      const table = document.querySelector("#table table");
+      const tableRows = table ? table.getElementsByClassName("poem-row") : [];
+
+      searchInput.addEventListener("keyup", () => {
+        const searchValue = searchInput.value.toLowerCase();
+
+        for (let i = 0; i < tableRows.length; i++) {
+          const poemRow = tableRows[i];
+          const accordionRow = poemRow.nextElementSibling;
+          const rowText = poemRow.textContent.toLowerCase();
+
+          if (rowText.includes(searchValue)) {
+            poemRow.style.display = "";
+            if (accordionRow && accordionRow.classList.contains('show')) {
+              accordionRow.style.display = "";
+            }
+          } else {
+            poemRow.style.display = "none";
+            if (accordionRow) accordionRow.style.display = "none";
+          }
+        }
+      });
+    }
+
+    ////////////////////////////////////////////////////////////
+    // ユーティリティ
+    ////////////////////////////////////////////////////////////
+    function escapeHtml(text) {
+      const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+      return text.replace(/[&<>"']/g, m => map[m]);
+    }
+  </script>
+  <script src="../js/back-to-top.js?20260908-02"></script>
+
+</body>
+
+</html>

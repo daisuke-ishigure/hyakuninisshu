@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>MP3 Player with SVG Display</title>
+    <link rel="canonical" href="https://hyakuninisshu.com/music_test.html">
+    <link rel="stylesheet" href="../css/style.css?20260908-16">
+
+</head>
+
+<body>
+
+
+
+
+    <audio id="audio" controls style="display:none;"></audio>
+
+    <div class="card-item">
+        <div class="card-front">
+            <div id="frontContent">
+                <h2 id="poemName"></h2><!-- json読み込み -->
+                <h3 id="poemContent"></h3><!-- json読み込み -->
+                <img id="image" src="" alt="SVG Image" style="width:98%; height:auto;">
+            </div>
+        </div>
+        <div class="card-back"></div><!-- json読み込み -->
+
+    </div>
+    </div>
+
+    <button id="prevButton">一つ戻る</button>
+    <button id="playButton">再生</button>
+    <button id="nextButton">一つ先</button>
+
+
+    <script>
+        const files = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100"]
+            ; // ファイル名の配列（拡張子なし）
+        let currentFileIndex = 0;
+        const audioElement = document.getElementById('audio');
+        const imageElement = document.getElementById('image');
+        const playButton = document.getElementById('playButton');
+        const nextButton = document.getElementById('nextButton');
+        const prevButton = document.getElementById('prevButton');
+
+        function setFile(index) {
+            if (index >= 0 && index < files.length) {
+                currentFileIndex = index;
+                const currentFile = files[currentFileIndex];
+                audioElement.src = "/sound/" + currentFile + ".mp3";
+                imageElement.src = "/img/" + currentFile + ".svg";
+            }
+        }
+
+        function playFile() {
+            audioElement.play();
+        }
+
+        function playNext() {
+            if (currentFileIndex < files.length - 1) {
+                setFile(currentFileIndex + 1);
+                playFile();
+            }
+        }
+
+        function playPrev() {
+            if (currentFileIndex > 0) {
+                setFile(currentFileIndex - 1);
+                playFile();
+            }
+        }
+
+        playButton.addEventListener('click', () => {
+            playFile();
+        });
+
+        nextButton.addEventListener('click', playNext);
+        prevButton.addEventListener('click', playPrev);
+        audioElement.addEventListener('ended', playNext);
+
+        // 最初のファイルをセット
+        setFile(currentFileIndex);
+
+
+
+
+    </script>
+
+
+
+  <script src="../js/back-to-top.js?20260908-02"></script>
+
+</body>
+
+</html>

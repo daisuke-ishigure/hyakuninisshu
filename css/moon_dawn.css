@@ -1,0 +1,120 @@
+#poemContent {
+  position: relative;
+}
+
+#moon {
+  position: absolute;
+  width: 100px;
+  top: 40px;
+  left: 80px;
+  z-index: 1;
+  animation: fadein 3s ease-in-out forwards, scale 3s ease-in-out infinite;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.95;
+  }
+}
+@keyframes scale {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+.card-front::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  animation: darken 5s ease-in-out forwards;
+}
+
+#moon{
+  animation:lighten 5s ease-in-out forwards;
+}
+
+@keyframes lighten{
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+
+@keyframes darken {
+  0% {
+    background-image: url(../img/huda_yozora.webp);
+    opacity: 0;
+  }
+  50% {
+    background-image: url(../img/huda_yozora.webp);
+    opacity: 1;
+  }
+  100% {
+    background-image: url(../img/huda_dawn.webp);
+    opacity: 1;
+  }
+}
+
+
+#cloud {
+  position: absolute;
+  width: 200px;
+  top: 40px;
+  left: 15px;
+  z-index: 20;
+  animation: fadein 3s ease-in-out forwards, scale 3s ease-in-out infinite;
+}
+
+.card-front #frontContent h3,
+.card-front #frontContent h2 {
+  animation: text-color 3s ease-in-out forwards !important;
+}
+
+@keyframes text-color {
+  0% {
+    color: #333;
+    text-shadow: 0px 0px 8px #fff, 0px 0px 8px #fff, 0px 0px 8px #fff, 0px 0px 8px #fff, 0px 0px 8px #fff, 0px 0px 8px #fff;
+  }
+  100% {
+    color: #fff;
+    text-shadow: 0px 0px 8px #333, 0px 0px 8px #333, 0px 0px 8px #333, 0px 0px 8px #333, 0px 0px 8px #333, 0px 0px 8px #333;
+  }
+}
+
+.card-front.active #frontContent h3,
+.card-front.active #frontContent h2
+ {
+    animation:text-color2 3s ease-in-out forwards!important;
+}
+
+@keyframes text-color {
+    0% {
+        color:#333;
+        text-shadow: 0px 0px 8px #fff, 0px 0px 8px #fff, 0px 0px 8px #fff, 0px 0px 8px #fff, 0px 0px 8px #fff, 0px 0px 8px #fff;
+    }
+
+    100% {
+        color:#fff;
+        text-shadow: 0px 0px 8px #333, 0px 0px 8px #333, 0px 0px 8px #333, 0px 0px 8px #333, 0px 0px 8px #333, 0px 0px 8px #333;
+    }
+}
+@keyframes text-color2 {
+    0% {
+        color:#333;
+    }
+
+    100% {
+        color:#333;
+    }
+}

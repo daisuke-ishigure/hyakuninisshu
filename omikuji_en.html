@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html lang="en" data-font="legacy">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="Keywords" content="Hyakunin Isshu, fortune, omikuji, Japanese poem">
+  <meta name="description" content="The Hyakunin Isshu is a treasury of one hundred poems reflecting love and the scenes of life. One poem chosen for your today awaits within. Try your luck with a message that travels across a thousand years.">
+  <!-- スタイルシート -->
+  <link rel="stylesheet" href="../css/style.css?20260908-16">
+  <link rel="stylesheet" href="../css/omikuji.css?20260725-07">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@500&family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    /* 英語版：見出しは占い・神託らしい雰囲気のCinzelに（日本語／Englishの言語切り替えボタンは対象外） */
+    #waka-title,
+    .interpretation-section h4,
+    #waka-luck,
+    h1.omikuji-explanation {
+      font-family: 'Cinzel', 'Kaisei HarunoUmi', serif;
+    }
+
+    /* 本文・ボタンは小文字も読みやすいCormorant Garamondに（Cormorant系は同じサイズでも小さく見えるため、少し拡大） */
+    p.omikuji-explanation,
+    #waka-meaning,
+    #interp-love,
+    #interp-work,
+    #poet-name-display,
+    #draw-button,
+    #reset-button,
+    #poem-link-btn,
+    #romaji-toggle-btn {
+      font-family: 'Cormorant Garamond', 'Kaisei HarunoUmi', serif;
+      font-weight: 600;
+    }
+
+    p.omikuji-explanation {
+      font-size: 1.15rem !important;
+    }
+
+    #waka-meaning,
+    #interp-love,
+    #interp-work {
+      font-size: 1.15em;
+    }
+
+    #poet-name-display {
+      font-size: 1em;
+    }
+
+    #draw-button,
+    #reset-button,
+    #poem-link-btn {
+      font-size: 1.15em;
+    }
+
+    #romaji-toggle-btn {
+      font-size: 0.85em;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0 "></script>
+  <!-- アップルタッチアイコン -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <!-- favicon用 -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <!-- bootstrap アイコン -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <title>Hyakunin Isshu Fortune | Daily Oracle from Classical Japanese Poetry | Shigure no Hyakunin Isshu</title>
+  <link rel="canonical" href="https://hyakuninisshu.com/omikuji_en.html">
+  </title>
+
+</head>
+
+<body>
+  <!-- ヘッダーここから -->
+  <header class="header">
+    <p class="site-title">
+      <a href="https://hyakuninisshu.com/">Shigure no Hyakunin Isshu</a>
+    </p>
+    <div class="header_list">
+      <a href="index_en.html"><img src="../img/icon_top_en.svg?ver-01" alt="Top" class="icon"></a>
+      <a href="introduction_en.html" style="color:#333"><img src="/img/icon_column_en.svg?ver-01" alt="Column" class="icon"></a>
+      <a href="introduction-app_en.html" style="color:#333"><img src="/img/icon_app_en.svg?ver-01" alt="App" class="icon"></a>
+      <a href="omikuji.html"><img src="/img/icon_lang.svg?ver-01" alt="Japanese" class="icon"></a>
+      <a href="list.html"><img src="/img/icon_list_en.svg?ver-01" alt="Poem List" class="icon"></a>
+    </div>
+  </header>
+  <!-- ヘッダーここまで・メインここから -->
+  <main class="main_about-main">
+    <div class="section">
+      <h1 class="omikuji-explanation">Hyakunin Isshu Fortune</h1>
+      <p class="omikuji-explanation">One hundred poems, one hundred possible fortunes await you.<br>Great Fortune is rare — count yourself lucky if you draw it!</p>
+      <div id="omikuji-container">
+        <div id="omikuji-box">
+          <img id="omikuji-image-back" src="img/omikuji_back.webp" alt="戻るボタン">
+          <div id="omikuji-stick-wrap">
+            <div id="omikuji-stick">
+              <span id="omikuji-stick-number"></span>
+            </div>
+          </div>
+          <img id="omikuji-image-front" src="img/omikuji_front.webp" alt="Fortune box">
+        </div>
+        <button id="draw-button">Draw Your Fortune</button>
+        <p id="already-drawn-msg"
+          style="display:none;margin-top:1em;color:#333;font-size:0.9rem;text-align:center;line-height:1.8;">
+          You can draw your fortune once per day.<br>You have already drawn today's fortune.<br>Please come back tomorrow.</p>
+      </div>
+    </div>
+
+    <div id="result-area" class="hidden">
+      <button id="romaji-toggle-btn">Show Romaji</button>
+      <h2 id="waka-title">Today's Poem<img id="poet-image" src="" alt="歌人のイラスト" /></h2>
+      <p id="poet-name-display"></p>
+      <div id="waka-row">
+        <div id="waka-content">
+          <p id="waka-poem" class="poem"></p>
+        </div>
+        <img id="waka-card-image" class="waka-card-image" src="" alt="">
+      </div>
+
+      <div class="interpretation-section">
+        <h4>Meaning</h4>
+        <p id="waka-meaning" class="meaning"></p>
+      </div>
+
+      <h2 id="waka-luck" class="luck-result"></h2>
+
+      <hr style="margin:0.5em 0 1em">
+
+      <div class="interpretation-section">
+        <h4>Love &amp; Relationships</h4>
+        <p id="interp-love"></p>
+      </div>
+
+      <div class="interpretation-section">
+        <h4>Work &amp; Life</h4>
+        <p id="interp-work"></p>
+      </div>
+
+      <div class="result-btn-group">
+        <button id="reset-button">Back</button>
+        <a id="poem-link-btn" href="#" target="_blank" rel="noopener noreferrer">View Poem</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-copy">&copy;2023 Shigure no Hyakunin Isshu</span>
+      <ul>
+        <li><a href="policy.html">Privacy Policy</a></li>
+        <li>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXx7TKlqnTfKrw2Nuh4f37swVwFH-RFDsNkTGQ4JEF50q2wQ/viewform?usp=header"
+            target="_blank" rel="noopener">Contact Form</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+  <!-- フッターここまで -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="../js/move_script.js?20260729"></script>
+  <script src="/js/omikuji_en.js?20260807-01"></script>
+  <script src="../js/back-to-top.js?20260908-02"></script>
+
+</body>
+
+</html>

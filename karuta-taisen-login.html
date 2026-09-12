@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+
+  <title>百人一首オンライン対戦｜リアルタイムで1〜4人プレイ対応【無料】｜時雨の百人一首</title>
+  <link rel="canonical" href="https://hyakuninisshu.com/karuta-taisen-login.html">
+  <meta name="description" content="最大4人でリアルタイム対戦できるオンライン百人一首。友達と合言葉で遊ぶのはもちろん、1人でのロボット練習も可能です。インストール不要、3枚目までなら途中参加もOK。手軽に本格的なかるた対戦を楽しみましょう！">
+  <meta name="keywords" content="百人一首,オンライン対戦,かるたゲーム,無料,リアルタイム">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "百人一首オンライン対戦",
+    "operatingSystem": "Web Browser",
+    "applicationCategory": "GameApplication",
+    "applicationSubCategory": "Multiplayer Game",
+    "description": "最大4人でリアルタイムに対戦できるオンライン百人一首。ロボット対戦や合言葉によるプライベート対戦機能も搭載。",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "JPY"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "時雨 大輔",
+      "url": "https://hyakuninisshu.com/"
+    },
+    "url": "https://hyakuninisshu.com/karuta-taisen-login.html",
+    "image": "https://hyakuninisshu.com/img/ogp_karuta-taisen.webp",
+    "featureList": [
+      "最大4人同時対戦",
+      "1対1ロボット対戦",
+      "合言葉（プライベート）対戦",
+      "途中参加可能（3枚目まで）"
+    ]
+  }
+  </script>
+
+  <meta property="og:locale" content="ja">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="百人一首オンライン対戦｜時雨の百人一首">
+  <meta property="og:description" content="最大4人でリアルタイム対戦！友達と合言葉で遊んだり、ロボット相手に特訓も。PC・スマホで今すぐプレイ！">
+  <meta property="og:url" content="https://hyakuninisshu.com/karuta-taisen-login.html">
+  <meta property="og:site_name" content="時雨の百人一首">
+  <meta property="og:image" content="https://hyakuninisshu.com/img/ogp_karuta-taisen.webp">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="【百人一首】オンライン対戦で遊ぼう！">
+  <meta name="twitter:description" content="リアルタイムでかるた勝負！登録不要で友達と今すぐ遊べます。">
+  
+  <link rel="stylesheet" href="../css/style.css?20260908-16">
+  <link rel="stylesheet" href="../css/karuta.css?20260101">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@500&family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap"
+    rel="stylesheet">
+  <style>
+    button {
+      font-family: "noto-sans-pro", sans-serif;
+    }
+
+    .section {
+      min-height: 300px;
+    }
+
+    .taken-by-me {
+      border: 3px solid rgba(255, 71, 87, 0.5) !important;
+      background-color: rgba(255, 71, 87, 0.05);
+    }
+
+    .taken-by-others {
+      border: 3px solid rgba(47, 53, 66, 0.3) !important;
+    }
+
+    .taken-by-me p,
+    .taken-by-others p {
+      opacity: 0.3;
+    }
+
+    .taker-icon {
+      opacity: 1.0 !important;
+      font-weight: normal;
+    }
+
+    #player_info {
+      max-width: 800px;
+      margin: 20px auto 10px auto;
+      font-weight: bold;
+      color: #2d5a27;
+      text-shadow:
+        0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff,
+        0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff,
+        0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff;
+    }
+
+    #operatin_area {
+      display: none;
+      margin-top: 15px;
+      text-align: center;
+    }
+
+    #room_status,
+    #status_text {
+      margin-bottom: 15px;
+      text-shadow:
+        0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff,
+        0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff,
+        0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff;
+    }
+
+    #auto_join_button,
+    #manual_join_button,
+    #cpu_battle_button {
+      background-color: #B82343;
+      padding: 6px 20px;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    #cpu_battle_button {
+      background-color: #B82343;
+    }
+
+    .ready-active {
+      background-color: #27ae60 !important;
+      color: white;
+    }
+
+    .setup-box {
+      background: #F7F1E0;
+      padding: 15px;
+      border-radius: 8px;
+      max-width: 800px;
+      margin: 0 auto 10px auto;
+      text-align: center;
+    }
+
+    #karuta_container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px;
+      min-height: 200px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    #status_text {
+      font-weight: bold;
+      color: #B82343;
+      margin: 15px 0;
+      min-height: 1.5em;
+      text-align: center;
+      font-size: 1.2rem;
+    }
+
+    .btn-return {
+      margin-top: 20px;
+      padding: 12px 24px;
+      background: #B82343;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    #audio_resume_btn {
+      display: none;
+      margin: 10px auto;
+      padding: 12px 24px;
+      background: #f39c12;
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .cpu-difficulty-selector {
+      margin: 15px 0;
+    }
+
+    .difficulty-btn {
+      padding: 8px 16px;
+      margin: 0 5px;
+      background: #ecf0f1;
+      border: 2px solid #bdc3c7;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.3s;
+    }
+
+    .difficulty-btn.selected {
+      background: #27ae60;
+      color: white;
+      border-color: #27ae60;
+    }
+
+    .difficulty-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    @keyframes flash-effect {
+      0% { box-shadow: 0 0 0px #fff; filter: brightness(1); }
+      50% { box-shadow: 0 0 20px #fff, 0 0 40px #fffa65; filter: brightness(1.8); }
+      100% { box-shadow: 0 0 0px #fff; filter: brightness(1); }
+    }
+
+    .flash {
+      animation: flash-effect 0.5s ease-out;
+      z-index: 20;
+    }
+
+    /* ===== ログインエリア ===== */
+    #login_area {
+      max-width: 800px;
+      margin: 0 auto 12px auto;
+      text-align: center;
+    }
+
+    #login_prompt_box {
+      margin-top:1em;
+      background: linear-gradient(135deg, #fff9e6, #fef3c7);
+      border: 1px solid #f0d060;
+      border-radius: 10px;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    #login_prompt_box p {
+      margin: 0;
+      font-size: 13px;
+      color: #555;
+    }
+
+    #google_login_btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 13px;
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      transition: box-shadow 0.2s;
+    }
+
+    #google_login_btn:hover {
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    #google_login_btn img {
+      width: 18px;
+      height: 18px;
+    }
+
+    #user_info_box {
+      display: none;
+      background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
+      border: 1px solid #a5d6a7;
+      border-radius: 10px;
+      padding: 8px 16px;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    #user_info_box .user-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    #user_avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid #81c784;
+    }
+
+    #user_display_name {
+      font-weight: bold;
+      color: #2d5a27;
+      font-size: 14px;
+    }
+
+    #ranking_badge {
+      font-size: 12px;
+      background: #B82343;
+      color: white;
+      border-radius: 10px;
+      padding: 2px 8px;
+    }
+
+    #logout_btn {
+      background: none;
+      border: 1px solid #aaa;
+      border-radius: 12px;
+      padding: 3px 10px;
+      font-size: 12px;
+      color: #666;
+      cursor: pointer;
+    }
+
+    #ranking_link_btn {
+      display: inline-block;
+      margin-left: 8px;
+      background: #B82343;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 3px 10px;
+      font-size: 12px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    /* ランキング記録通知 */
+    #win_recorded_notice {
+      display: none;
+      background: #fff3cd;
+      border: 1px solid #ffc107;
+      border-radius: 8px;
+      padding: 8px 16px;
+      margin: 8px 0;
+      font-size: 13px;
+      text-align: center;
+      color: #856404;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.3.2/dist/confetti.browser.min.js"></script>
+</head>
+
+<body>
+  <header class="header">
+    <p class="site-title">
+      <a href="https://hyakuninisshu.com/">時雨の百人一首</a>
+    </p>
+    <div class="header_list">
+      <a href="index.html"><img src="../img/icon_top.svg?ver-02" alt="トップ" class="icon"></a>
+      <a href="introduction.html" style="color:#333"><img src="/img/icon_column.svg?ver-02" alt="コラム" class="icon"></a>
+      <a href="introduction-app.html" style="color:#333"><img src="/img/icon_app.svg?ver-02" alt="アプリ" class="icon"></a>
+      <a href="list.html"><img src="/img/icon_search.svg?ver-04" alt="和歌の一覧・検索" class="icon"></a>
+    </div>
+  </header>
+
+  <main class="main_about-main">
+    <div class="section">
+      <h1>百人一首 <span style="display:inline-block">対戦型かるたゲーム</span></h1>
+      <div id="game_header">
+        <h4>基本ルール</h4>
+        <ul class="karuta_ul">
+          <li>最大4人でリアルタイムに対戦できるかるたゲームです。</li>
+          <li>お手付きをすると3秒間操作ができなくなります。</li>
+          <li>3枚目の札の読み上げ（序盤）までなら、進行中のゲームに自動合流します。</li>
+          <li>対戦相手がいないときは、🤖ロボットと対戦できます。この場合は1対1の対戦となり、途中で他の誰かが合流することはありません。</li>
+          <li>全12枚のうち、最も多く取った人が勝利です</li>
+        </ul>
+        <h4>ゲームの始め方</h4>
+        <ul class="karuta_ul" style="margin-bottom:0.25em">
+          <li>「誰かと対戦」 ボタンを押すと、オンライン上で他のプレイヤーがいれば対戦できます。</li>
+          <li>「ロボットと対戦」ボタンを押すと、ロボット相手に練習できます。</li>
+          <li>お友達と示し合わせた「合言葉」を入力すると、その友達と対戦できます。<br>合言葉は、日本語（ひらがな・カタカナ・漢字）や英数字、またそれらを組み合わせた言葉もご使用いただけます。</li>
+        </ul>
+        <p><small>※読み上げ音声：NHKクリエイティブライブラリー</small></p>
+      </div>
+    </div>
+
+    <!-- ===== ログインエリア ===== -->
+    <div id="login_area">
+      <!-- 未ログイン時 -->
+      <div id="login_prompt_box">
+        <p>🏆 Googleログインすると本日の勝利数ランキングに参加できます！（近日公開予定）</p>
+        <button id="google_login_btn">
+          <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
+          Googleでログイン
+        </button>
+        <a href="karuta-taisen-ranking.html" class="ranking_link_btn" style="font-size:13px; color:#B82343; text-decoration:none;">📊 本日のランキングを見る</a>
+      </div>
+      <!-- ログイン済み -->
+      <div id="user_info_box">
+        <div class="user-left">
+          <img id="user_avatar" src="" alt="avatar">
+          <span id="user_display_name"></span>
+          <span id="ranking_badge">🏆 ランキング参加中</span>
+        </div>
+        <div>
+          <a href="karuta-taisen-ranking.html" class="ranking_link_btn" style="font-size:13px; color:#fff; background:#2d5a27; border-radius:12px; padding:3px 10px; text-decoration:none; margin-right:6px;">📊 ランキング</a>
+          <button id="logout_btn">ログアウト</button>
+        </div>
+      </div>
+    </div>
+    <!-- 勝利記録通知 -->
+    <div id="win_recorded_notice"></div>
+
+    <div id="player_info">
+      <div>あなたのID: <span id="my_id">...</span></div>
+      <div id="others_icons" style="margin-top: 5px;"></div>
+    </div>
+
+    <div id="room_setup">
+      <div class="setup-box">
+        <div id="waiting_display_area" style="margin-bottom: 2px;font-size:16px; font-weight: bold; min-height: 1.5em;">
+          <span id="waiting_status">現在の待機者なし</span>
+        </div>
+        <p style="margin-bottom:6px;">オンライン上の誰かと対戦する場合：</p>
+        <button id="auto_join_button">ゲームへ</button>
+
+        <hr style="margin: 20px 0; border: 0; border-top: 1px solid #888;">
+
+        <p style="margin-bottom:6px;">🤖 ロボットと対戦する場合：</p>
+        <div class="cpu-difficulty-selector">
+          <button class="difficulty-btn selected" data-level="easy">やさしい</button>
+          <button class="difficulty-btn" data-level="normal">ふつう</button>
+          <button class="difficulty-btn" data-level="hard">つよい</button>
+        </div>
+        <button id="cpu_battle_button">ロボットと対戦</button>
+
+        <hr style="margin: 20px 0; border: 0; border-top: 1px solid #888;">
+        <p style="margin-bottom:6px;">友達と遊ぶ場合：<br>合言葉を入力してください</p>
+        <input type="text" id="room_id_input" placeholder="例：桜咲く" style="padding:6px; font-size:14px;">
+        <button id="manual_join_button">ゲームへ</button>
+      </div>
+    </div>
+
+    <div id="operatin_area">
+      <p id="room_status">接続中...</p>
+      <button id="ready_button" style="padding: 15px 30px; font-size: 16px; cursor:pointer;">準備できたら押してください</button>
+    </div>
+
+    <div id="status_text"></div>
+    <div style="text-align:center;"><button id="audio_resume_btn">音が鳴らない場合はここをタップ</button></div>
+    <div id="karuta_container"></div>
+
+    <div id="result_container"
+      style="display:none; text-align:center; padding:20px; background:#fff9e6; border-radius:10px; margin:20px auto; max-width:800px;">
+      <h2 style="color:#f39c12;">ゲーム終了！</h2>
+      <div id="result_text" style="font-weight:bold;"></div>
+      <div id="win_recorded_notice_result" style="display:none; margin: 10px 0; font-size:14px; color:#2d5a27; background:#e8f5e9; border-radius:8px; padding:8px;"></div>
+      <button class="btn-return" onclick="location.reload()">最初の画面に戻る</button>
+      <br>
+      <a href="karuta-taisen-ranking.html" style="display:inline-block; margin-top:12px; color:#B82343; font-size:14px;">📊 本日のランキングを見る</a>
+    </div>
+  </main>
+
+  <footer>
+    <ul>
+      <li>&copy;2023 時雨 大輔</li>
+    </ul>
+  </footer>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import {
+      getDatabase, ref, set, onValue, remove, runTransaction,
+      get, onDisconnect, update, off
+    } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+    import {
+      getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged
+    } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDsKsuYsYZYaNVuFvnzQsZiKIrSAMFZQus",
+      authDomain: "fire-karuta.firebaseapp.com",
+      databaseURL: "https://fire-karuta-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "fire-karuta",
+      appId: "1:202669803794:web:2b2eb18bb0a065dff04bcb"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+
+    const myId = "P-" + Math.floor(Math.random() * 900 + 100);
+    document.getElementById('my_id').innerText = myId;
+
+    // ===== Auth state =====
+    let currentUser = null;
+
+    onAuthStateChanged(auth, (user) => {
+      currentUser = user;
+      if (user) {
+        // ログイン済み表示
+        document.getElementById('login_prompt_box').style.display = 'none';
+        const uib = document.getElementById('user_info_box');
+        uib.style.display = 'flex';
+        document.getElementById('user_avatar').src = user.photoURL || '';
+        document.getElementById('user_display_name').innerText = user.displayName || user.email;
+      } else {
+        // 未ログイン表示
+        document.getElementById('login_prompt_box').style.display = 'flex';
+        document.getElementById('user_info_box').style.display = 'none';
+      }
+    });
+
+    document.getElementById('google_login_btn').onclick = async () => {
+      try {
+        await signInWithPopup(auth, provider);
+      } catch (e) {
+        console.error('ログインエラー:', e);
+        alert('ログインに失敗しました。もう一度お試しください。');
+      }
+    };
+
+    document.getElementById('logout_btn').onclick = async () => {
+      await signOut(auth);
+    };
+
+    // ===== 勝利を記録する関数 =====
+    async function recordWin() {
+      if (!currentUser) return;
+      try {
+        const now = new Date();
+        // JSTで日付を取得
+        const jst = new Date(now.getTime() + 9 * 60 * 60 * 1000);
+        const dateKey = jst.toISOString().slice(0, 10); // "2026-03-04"
+
+        const rankRef = ref(db, `rankings/${dateKey}/${currentUser.uid}`);
+        await runTransaction(rankRef, (current) => {
+          if (current === null) {
+            return {
+              displayName: currentUser.displayName || '名無し',
+              photoURL: currentUser.photoURL || '',
+              wins: 1,
+              updatedAt: Date.now()
+            };
+          }
+          return {
+            ...current,
+            displayName: currentUser.displayName || current.displayName,
+            photoURL: currentUser.photoURL || current.photoURL,
+            wins: (current.wins || 0) + 1,
+            updatedAt: Date.now()
+          };
+        });
+
+        // 結果画面に通知
+        const notice = document.getElementById('win_recorded_notice_result');
+        if (notice) {
+          notice.style.display = 'block';
+          notice.innerText = `🏆 本日の勝利数をランキングに記録しました！`;
+        }
+      } catch (e) {
+        console.error('ランキング記録エラー:', e);
+      }
+    }
+
+    // ===== 以下は元のゲームコード =====
+
+    let jsonData = null, currentSongNumber = null, lastGameId = null, playOrder = [];
+    let currentRoomId = null, countdownStarted = false, isGameOver = false;
+    let localPenaltyTimeout = null, heartbeatInterval = null;
+    let isLeavingIntentionally = false;
+
+    let isCpuMode = false;
+    let cpuDifficulty = 'easy';
+    let cpuPlayers = [];
+    let cpuTimers = [];
+    let selectedSongs = [];
+    let takenCards = {};
+    let currentSongIndex = -1;
+
+    const globalAudio = new Audio();
+    globalAudio.preload = "auto";
+    const finishAudio = new Audio("../sound/finish.m4a");
+    const tapAudio = new Audio("../sound/tap.mp3");
+    const missAudio = new Audio("../sound/miss.mp3");
+    tapAudio.preload = "auto";
+    missAudio.preload = "auto";
+
+    let audioUrlCache = {};
+
+    const CPU_SETTINGS = {
+      easy:   { reactionTimeMin: 5000, reactionTimeMax: 7000, accuracy: 0.5,  mistakeChance: 0.3 },
+      normal: { reactionTimeMin: 3000, reactionTimeMax: 4500, accuracy: 0.75, mistakeChance: 0.2 },
+      hard:   { reactionTimeMin: 1500, reactionTimeMax: 2500, accuracy: 0.95, mistakeChance: 0.05 }
+    };
+
+    function getIcon(pid, allPids) {
+      if (pid === 'ロボット' || pid.startsWith('CPU-')) return '🤖';
+      const icons = ['🐻', '🐼', '🐰', '🐨', '🐱', '🦁', '🐶', '🦊', '🐵'];
+      const sortedPids = [...allPids].sort();
+      const index = sortedPids.indexOf(pid);
+      if (index === -1) {
+        const num = parseInt(pid.replace('P-', '').replace('CPU-', '')) || 0;
+        return icons[num % icons.length];
+      }
+      return icons[index % icons.length];
+    }
+
+    function watchWaitingPlayers() {
+      onValue(ref(db, 'rooms_multi'), (snapshot) => {
+        const rooms = snapshot.val() || {};
+        let count = 0;
+        const now = Date.now();
+        const cutoff24h = now - (24 * 60 * 60 * 1000);
+
+        for (const rid in rooms) {
+          const room = rooms[rid];
+          const players = room.players || {};
+          const pCount = Object.keys(players).length;
+
+          if (pCount === 0) { remove(ref(db, `rooms_multi/${rid}`)); continue; }
+
+          let roomTimestamp = 0;
+          if (rid.startsWith('room-')) roomTimestamp = parseInt(rid.replace('room-', ''));
+          else if (room.createdAt) roomTimestamp = room.createdAt;
+          else if (room.config && room.config.gameId) roomTimestamp = parseInt(room.config.gameId.replace('G-', ''));
+
+          const lastActive = Object.values(players).map(p => p.lastActive || 0).reduce((max, time) => Math.max(max, time), roomTimestamp);
+          if (lastActive > 0 && lastActive < cutoff24h) { remove(ref(db, `rooms_multi/${rid}`)); continue; }
+
+          const currentIndex = room.currentSongIndex !== undefined ? room.currentSongIndex : -1;
+          const isJoinable = !room.config || (currentIndex >= -1 && currentIndex <= 2);
+          if (rid.startsWith('room-') && pCount < 4 && isJoinable) {
+            if (!players[myId]) {
+              const hasActivePlayer = Object.values(players).some(p => p.lastActive && (now - p.lastActive <= 120000));
+              if (hasActivePlayer) count++;
+            }
+          }
+        }
+        const statusEl = document.getElementById('waiting_status');
+        if (count > 0) {
+          statusEl.innerHTML = "🔥 対戦相手がいます！すぐ遊べます";
+          document.getElementById('waiting_display_area').style.color = "#ff4757";
+        } else {
+          statusEl.innerHTML = "現在の待機者なし";
+          document.getElementById('waiting_display_area').style.color = "#B82343";
+        }
+      });
+    }
+
+    async function cleanupOldRooms() {
+      try {
+        const snapshot = await get(ref(db, 'rooms_multi'));
+        const rooms = snapshot.val() || {};
+        const now = Date.now();
+        const cutoff24h = now - (24 * 60 * 60 * 1000);
+        let deletedCount = 0;
+        for (const rid in rooms) {
+          const room = rooms[rid];
+          const players = room.players || {};
+          if (Object.keys(players).length === 0) { await remove(ref(db, `rooms_multi/${rid}`)); deletedCount++; continue; }
+          let roomTimestamp = 0;
+          if (rid.startsWith('room-')) roomTimestamp = parseInt(rid.replace('room-', ''));
+          else if (room.createdAt) roomTimestamp = room.createdAt;
+          else if (room.config && room.config.gameId) roomTimestamp = parseInt(room.config.gameId.replace('G-', ''));
+          const lastActive = Object.values(players).map(p => p.lastActive || 0).reduce((max, time) => Math.max(max, time), roomTimestamp);
+          if (lastActive > 0 && lastActive < cutoff24h) { await remove(ref(db, `rooms_multi/${rid}`)); deletedCount++; }
+        }
+        if (deletedCount > 0) console.log(`✅ ${deletedCount}個の古いルームを削除しました`);
+      } catch (e) { console.error("❌ クリーンアップエラー:", e); }
+    }
+
+    async function init() {
+      try {
+        const res = await fetch("../js/karuta.json?v=" + Date.now());
+        jsonData = await res.json();
+        watchWaitingPlayers();
+        cleanupOldRooms();
+        setInterval(cleanupOldRooms, 10 * 60 * 1000);
+      } catch (e) { console.error("❌ JSONエラー:", e); }
+    }
+
+    function unlockAudio() {
+      globalAudio.src = "data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAA==";
+      globalAudio.play().then(() => globalAudio.pause()).catch(() => { });
+    }
+
+    function preloadSongs(keys) {
+      keys.forEach(num => { audioUrlCache[num] = `../sound/${num}.mp3`; });
+    }
+
+    document.getElementById('audio_resume_btn').onclick = function () {
+      unlockAudio();
+      if (currentSongNumber) {
+        globalAudio.src = audioUrlCache[currentSongNumber];
+        globalAudio.play().then(() => this.style.display = 'none');
+      }
+    };
+
+    document.querySelectorAll('.difficulty-btn').forEach(btn => {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('.difficulty-btn').forEach(b => b.classList.remove('selected'));
+        this.classList.add('selected');
+        cpuDifficulty = this.dataset.level;
+      });
+    });
+
+    document.getElementById('cpu_battle_button').onclick = () => {
+      if (!jsonData) return;
+      unlockAudio();
+      isCpuMode = true;
+      cpuPlayers = ['ロボット'];
+      startCpuGame();
+    };
+
+    document.getElementById('auto_join_button').onclick = async () => {
+      if (!jsonData) return;
+      unlockAudio();
+      isCpuMode = false;
+      const snap = await get(ref(db, 'rooms_multi'));
+      const rooms = snap.val() || {};
+      let target = null;
+      for (const rid in rooms) {
+        const room = rooms[rid];
+        const players = room.players || {};
+        const pCount = Object.keys(players).length;
+        const cIdx = room.currentSongIndex !== undefined ? room.currentSongIndex : -1;
+        const takenCount = room.takenCards ? Object.keys(room.takenCards).length : 0;
+        if (rid.startsWith('room-') && pCount >= 1 && pCount < 4 && takenCount < 12) {
+          if (!room.config || (cIdx >= -1 && cIdx <= 2)) { target = rid; break; }
+        }
+      }
+      if (target) {
+        const result = await runTransaction(ref(db, `rooms_multi/${target}/players`), (cp) => {
+          if (!cp || Object.keys(cp).length >= 4) return undefined;
+          cp[myId] = { ready: false, lastActive: Date.now() };
+          return cp;
+        });
+        if (result.committed) { currentRoomId = target; startSequence(); return; }
+      }
+      const newRoomId = "room-" + Date.now();
+      await set(ref(db, `rooms_multi/${newRoomId}/players/${myId}`), { ready: false, lastActive: Date.now() });
+      currentRoomId = newRoomId;
+      startSequence();
+    };
+
+    document.getElementById('manual_join_button').onclick = async () => {
+      const val = document.getElementById('room_id_input').value;
+      if (!val) return;
+      unlockAudio();
+      isCpuMode = false;
+      const rid = "manual-" + val;
+      const result = await runTransaction(ref(db, `rooms_multi/${rid}/players`), (cp) => {
+        if (!cp) return { [myId]: { ready: false, lastActive: Date.now() } };
+        if (Object.keys(cp).length >= 4) return undefined;
+        cp[myId] = { ready: false, lastActive: Date.now() };
+        return cp;
+      });
+      if (result.committed) { currentRoomId = rid; startSequence(); }
+      else { alert("満員です。"); }
+    };
+
+    function startSequence() {
+      document.querySelector('.section').style.display = 'none';
+      document.getElementById('room_setup').style.display = 'none';
+      document.getElementById('login_area').style.display = 'none';
+      document.getElementById('operatin_area').style.display = 'block';
+      listenToGame();
+    }
+
+    function startCpuGame() {
+      document.querySelector('.section').style.display = 'none';
+      document.getElementById('room_setup').style.display = 'none';
+      document.getElementById('login_area').style.display = 'none';
+      document.getElementById('player_info').style.display = 'block';
+
+      const allPlayers = [myId, ...cpuPlayers];
+      const myIcon = getIcon(myId, allPlayers);
+      document.getElementById('my_id').innerText = `${myId} ${myIcon}`;
+      document.getElementById('others_icons').innerText = `対戦相手： ロボット 🤖`;
+
+      let countdown = 3;
+      const statusEl = document.getElementById('status_text');
+      statusEl.style.display = 'block';
+
+      const countdownTimer = setInterval(() => {
+        statusEl.innerText = `🔥 開始まで... ${countdown}`;
+        countdown--;
+        if (countdown < 0) { clearInterval(countdownTimer); initializeCpuGame(); }
+      }, 1000);
+    }
+
+    function initializeCpuGame() {
+      const keys = shuffle(Object.keys(jsonData)).slice(0, 12);
+      selectedSongs = keys;
+      playOrder = shuffle([...keys]);
+      takenCards = {};
+      currentSongIndex = -1;
+      isGameOver = false;
+      setupBoardLocal(keys, playOrder);
+      setTimeout(() => {
+        currentSongIndex = 0;
+        document.getElementById('status_text').innerText = `第 1 首 / 12首`;
+        playSongByIndex(0);
+        scheduleCpuActions();
+      }, 2000);
+    }
+
+    function scheduleCpuActions() {
+      cpuTimers.forEach(timer => clearTimeout(timer));
+      cpuTimers = [];
+      if (isGameOver || currentSongIndex >= 12) return;
+      const correctCard = playOrder[currentSongIndex];
+      const settings = CPU_SETTINGS[cpuDifficulty];
+      cpuPlayers.forEach(cpuId => {
+        if (takenCards[correctCard]) return;
+        const willTakeCorrect = Math.random() < settings.accuracy;
+        const reactionTime = settings.reactionTimeMin + Math.random() * (settings.reactionTimeMax - settings.reactionTimeMin);
+        const timer = setTimeout(() => {
+          if (isGameOver || takenCards[correctCard]) return;
+          if (willTakeCorrect) {
+            cpuTakeCard(cpuId, correctCard);
+          } else {
+            const availableCards = selectedSongs.filter(s => !takenCards[s] && s !== correctCard);
+            if (availableCards.length > 0) {
+              const wrongCard = availableCards[Math.floor(Math.random() * availableCards.length)];
+              cpuMistake(cpuId, wrongCard);
+            }
+          }
+        }, reactionTime);
+        cpuTimers.push(timer);
+      });
+    }
+
+    function cpuTakeCard(cpuId, cardNumber) {
+      if (takenCards[cardNumber] || isGameOver) return;
+      takenCards[cardNumber] = cpuId;
+      updateBoardStateCpu();
+      setTimeout(() => {
+        if (Object.keys(takenCards).length >= 12) {
+          endCpuGame();
+        } else {
+          currentSongIndex++;
+          document.getElementById('status_text').innerText = `第 ${currentSongIndex + 1} 首 / 12首`;
+          playSongByIndex(currentSongIndex);
+          scheduleCpuActions();
+        }
+      }, 1500);
+    }
+
+    function cpuMistake(cpuId, cardNumber) {
+      const statusEl = document.getElementById('status_text');
+      const originalText = statusEl.innerText;
+      const originalColor = statusEl.style.color;
+      statusEl.innerText = "🤖 ロボットがお手付き。チャンスです！";
+      statusEl.style.color = "#f39c12";
+      missAudio.currentTime = 0;
+      missAudio.play().catch(() => { });
+      const wrongCardEl = document.querySelector(`.karuta_card[data-number="${cardNumber}"]`);
+      if (wrongCardEl && !wrongCardEl.classList.contains('taken')) {
+        wrongCardEl.style.border = "3px solid #f39c12";
+        wrongCardEl.style.transform = "scale(1.05)";
+        wrongCardEl.style.transition = "all 0.2s";
+        setTimeout(() => { wrongCardEl.style.border = ""; wrongCardEl.style.transform = ""; }, 500);
+      }
+      setTimeout(() => { statusEl.innerText = originalText; statusEl.style.color = originalColor; }, 1000);
+    }
+
+    function listenToGame() {
+      const roomRef = ref(db, `rooms_multi/${currentRoomId}`);
+      const myPlayerRef = ref(db, `rooms_multi/${currentRoomId}/players/${myId}`);
+      onDisconnect(myPlayerRef).remove();
+
+      heartbeatInterval = setInterval(() => {
+        if (!isGameOver) update(myPlayerRef, { lastActive: Date.now() });
+      }, 30000);
+
+      onValue(roomRef, (snapshot) => {
+        const data = snapshot.val();
+        if (!data || !data.players) { if (!isGameOver) location.reload(); return; }
+        const players = data.players;
+        const playerIds = Object.keys(players).sort();
+
+        const myIcon = getIcon(myId, playerIds);
+        document.getElementById('my_id').innerText = `${myId} ${myIcon}`;
+
+        const othersIconsEl = document.getElementById('others_icons');
+        const otherIcons = playerIds.filter(pid => pid !== myId).map(pid => getIcon(pid, playerIds));
+        othersIconsEl.innerText = otherIcons.length > 0 ? "他の参加者： " + otherIcons.join(' ') : "対戦相手を待っています...";
+
+        const isHost = playerIds[0] === myId;
+        const statusEl = document.getElementById('status_text');
+
+        if (data.config && data.config.state === 'playing') {
+          document.getElementById('operatin_area').style.display = 'none';
+          if (lastGameId !== data.config.gameId) {
+            lastGameId = data.config.gameId;
+            setupBoardLocal(data.config.selectedSongs, data.config.order);
+            if (data.currentSongIndex >= 0) {
+              statusEl.innerText = `第 ${data.currentSongIndex + 1} 首から参戦！`;
+              statusEl.style.color = "#f39c12";
+            }
+          }
+          updateBoardState(data.takenCards || {}, playerIds);
+          if (!localPenaltyTimeout) {
+            document.getElementById('karuta_container').style.opacity = "1";
+            document.getElementById('karuta_container').style.pointerEvents = "auto";
+            statusEl.innerText = data.currentSongIndex === -1 ? "まもなく開始..." : `第 ${data.currentSongIndex + 1} 首 / 12首`;
+          }
+          if (data.currentSongIndex === -1 && isHost) {
+            setTimeout(() => update(ref(db, `rooms_multi/${currentRoomId}`), { currentSongIndex: 0 }), 3000);
+          }
+          if (data.currentSongIndex >= 0) playSongByIndex(data.currentSongIndex);
+        } else {
+          const readyCount = Object.values(players).filter(p => p.ready).length;
+          document.getElementById('room_status').innerText = `待機中: ${readyCount}/${playerIds.length}人`;
+          if (readyCount >= 2 && playerIds.length >= 2) runCountdown(isHost);
+        }
+      });
+    }
+
+    function runCountdown(isHost) {
+      if (countdownStarted) return;
+      countdownStarted = true;
+      let sec = 3;
+      const timer = setInterval(() => {
+        document.getElementById('status_text').innerText = `🔥 開始まで... ${sec}`;
+        if (sec-- <= 0) { clearInterval(timer); if (isHost) startGame(); }
+      }, 1000);
+    }
+
+    document.getElementById('ready_button').onclick = async function () {
+      unlockAudio();
+      if (this.classList.contains('ready-active')) {
+        isLeavingIntentionally = true;
+        if (currentRoomId) {
+          await remove(ref(db, `rooms_multi/${currentRoomId}/players/${myId}`));
+          if (heartbeatInterval) clearInterval(heartbeatInterval);
+        }
+        location.reload();
+        return;
+      }
+      this.classList.add('ready-active');
+      this.innerText = "離脱する";
+      update(ref(db, `rooms_multi/${currentRoomId}/players/${myId}`), { ready: true });
+    };
+
+    async function startGame() {
+      const keys = shuffle(Object.keys(jsonData)).slice(0, 12);
+      const order = shuffle([...keys]);
+      await update(ref(db, `rooms_multi/${currentRoomId}`), {
+        config: { state: 'playing', selectedSongs: keys, order: order, gameId: "G-" + Date.now() },
+        currentSongIndex: -1,
+        takenCards: {},
+        isFinished: false
+      });
+    }
+
+    function setupBoardLocal(keys, order) {
+      playOrder = order;
+      preloadSongs(keys);
+      const container = document.getElementById('karuta_container');
+      container.innerHTML = '';
+      keys.forEach(key => {
+        const song = Object.values(jsonData).find(s => String(s.number) === String(key));
+        if (song) {
+          const card = document.createElement('div');
+          card.className = 'karuta_card';
+          card.dataset.number = key;
+          card.style.position = 'relative';
+          card.innerHTML = `<p>${song.torihuda}</p>`;
+          card.onclick = () => handleCardClick(key);
+          container.appendChild(card);
+        }
+      });
+    }
+
+    function playSongByIndex(index) {
+      if (isGameOver || index >= 12) return;
+      const num = playOrder[index];
+      if (currentSongNumber === num) return;
+      currentSongNumber = num;
+      globalAudio.pause();
+      globalAudio.src = audioUrlCache[num];
+      globalAudio.play().catch(() => {
+        if (!isGameOver) document.getElementById('audio_resume_btn').style.display = 'block';
+      });
+    }
+
+    async function handleCardClick(num) {
+      if (isGameOver || localPenaltyTimeout) return;
+      const cardEl = document.querySelector(`.karuta_card[data-number="${num}"]`);
+      if (cardEl && (cardEl.classList.contains('taken-by-me') || cardEl.classList.contains('taken-by-others'))) return;
+
+      if (String(num) === String(currentSongNumber)) {
+        tapAudio.currentTime = 0;
+        tapAudio.play().catch(() => { });
+
+        if (isCpuMode) {
+          takenCards[num] = myId;
+          updateBoardStateCpu();
+          cpuTimers.forEach(timer => clearTimeout(timer));
+          cpuTimers = [];
+          setTimeout(() => {
+            if (Object.keys(takenCards).length >= 12) {
+              endCpuGame();
+            } else {
+              currentSongIndex++;
+              document.getElementById('status_text').innerText = `第 ${currentSongIndex + 1} 首 / 12首`;
+              playSongByIndex(currentSongIndex);
+              scheduleCpuActions();
+            }
+          }, 1500);
+        } else {
+          const res = await runTransaction(ref(db, `rooms_multi/${currentRoomId}/takenCards/${num}`), (curr) => {
+            return curr === null ? myId : undefined;
+          });
+          if (res.committed) {
+            const songIndexRef = ref(db, `rooms_multi/${currentRoomId}/currentSongIndex`);
+            const snap = await get(songIndexRef);
+            const nextIndex = (snap.val() || 0) + 1;
+            await update(ref(db, `rooms_multi/${currentRoomId}`), { currentSongIndex: nextIndex });
+          }
+        }
+      } else {
+        missAudio.currentTime = 0;
+        missAudio.play().catch(() => { });
+        const container = document.getElementById('karuta_container');
+        container.style.opacity = "0.4";
+        container.style.pointerEvents = "none";
+        document.getElementById('status_text').innerText = "❌ お手付き！3秒間待機";
+        localPenaltyTimeout = setTimeout(() => {
+          localPenaltyTimeout = null;
+          container.style.opacity = "1";
+          container.style.pointerEvents = "auto";
+          if (isCpuMode) document.getElementById('status_text').innerText = `第 ${currentSongIndex + 1} 首 / 12首`;
+        }, 3000);
+      }
+    }
+
+    function updateBoardStateCpu() {
+      const allPlayers = [myId, ...cpuPlayers];
+      Object.keys(takenCards).forEach(num => {
+        const el = document.querySelector(`.karuta_card[data-number="${num}"]`);
+        if (el) {
+          const takerId = takenCards[num];
+          const isMe = takerId === myId;
+          if (!el.classList.contains('taken')) { el.classList.add('flash'); setTimeout(() => el.classList.remove('flash'), 500); }
+          el.classList.add('taken', isMe ? 'taken-by-me' : 'taken-by-others');
+          if (!el.querySelector('.taker-icon')) {
+            const iconBadge = document.createElement('div');
+            iconBadge.className = 'taker-icon';
+            iconBadge.innerHTML = getIcon(takerId, allPlayers);
+            iconBadge.style = `position:absolute;top:-10px;right:-10px;font-size:1.4rem;background:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 4px rgba(0,0,0,0.3);z-index:10;opacity:1!important;`;
+            el.appendChild(iconBadge);
+          }
+        }
+      });
+    }
+
+    async function endCpuGame() {
+      isGameOver = true;
+      cpuTimers.forEach(timer => clearTimeout(timer));
+      cpuTimers = [];
+      document.getElementById('karuta_container').style.display = 'none';
+
+      const statusEl = document.getElementById('status_text');
+      statusEl.style.display = 'block';
+      statusEl.style.color = "#666";
+      statusEl.innerText = "5秒後に最初の画面に戻ります...";
+
+      globalAudio.pause();
+      finishAudio.play().catch(() => { });
+
+      const allPlayers = [myId, ...cpuPlayers];
+      const scoreboard = allPlayers.map(pid => ({
+        id: pid,
+        score: Object.values(takenCards).filter(id => id === pid).length,
+        isMe: pid === myId
+      })).sort((a, b) => b.score - a.score);
+
+      let myRank = 1, rankListHtml = "", currentRank = 1;
+      scoreboard.forEach((s, index) => {
+        if (index > 0 && s.score < scoreboard[index - 1].score) currentRank = index + 1;
+        if (s.isMe) myRank = currentRank;
+        const icon = getIcon(s.id, allPlayers);
+        const nameDisplay = s.isMe ? 'あなた' : s.id;
+        const style = s.isMe ? 'color:#ff4757;font-weight:bold;background:#fff;border-radius:5px;padding:2px 5px;' : '';
+        rankListHtml += `<div style="margin:5px 0;${style}">${currentRank}位： ${nameDisplay} ${icon}（${s.score}枚）</div>`;
+      });
+
+      let html = `<div style="font-size:2.5rem;color:#B82343;margin-bottom:10px;">第 ${myRank} 位 ${getIcon(myId, allPlayers)}</div>`;
+      html += `<div style="font-size:1.1rem;line-height:1.6;">${rankListHtml}</div>`;
+      document.getElementById('result_text').innerHTML = html;
+      document.getElementById('result_container').style.display = 'block';
+
+      // CPU対戦での1位はランキングに記録しない（オンライン対戦のみ）
+      // ※ ロボット相手の結果はランキング対象外
+      if (myRank === 1 && scoreboard.find(s => s.isMe).score > 0) {
+        confetti({ particleCount: 200, spread: 80, origin: { y: 0.6 } });
+      }
+
+      let timeLeft = 5;
+      const autoReturnTimer = setInterval(() => {
+        timeLeft--;
+        if (timeLeft > 0) {
+          statusEl.innerText = `${timeLeft}秒後に最初の画面に戻ります...`;
+        } else {
+          clearInterval(autoReturnTimer);
+          location.reload();
+        }
+      }, 1000);
+    }
+
+    function updateBoardState(taken, pIds) {
+      Object.keys(taken).forEach(num => {
+        const el = document.querySelector(`.karuta_card[data-number="${num}"]`);
+        if (el) {
+          const takerId = taken[num];
+          const isMe = takerId === myId;
+          if (!el.classList.contains('taken')) { el.classList.add('flash'); setTimeout(() => el.classList.remove('flash'), 500); }
+          el.classList.add('taken', isMe ? 'taken-by-me' : 'taken-by-others');
+          if (!el.querySelector('.taker-icon')) {
+            const iconBadge = document.createElement('div');
+            iconBadge.className = 'taker-icon';
+            iconBadge.innerHTML = getIcon(takerId, pIds);
+            iconBadge.style = `position:absolute;top:-10px;right:-10px;font-size:1.4rem;background:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 4px rgba(0,0,0,0.3);z-index:10;opacity:1!important;`;
+            el.appendChild(iconBadge);
+          }
+        }
+      });
+
+      if (Object.keys(taken).length >= 12 && !isGameOver) {
+        isGameOver = true;
+        clearInterval(heartbeatInterval);
+        document.getElementById('karuta_container').style.display = 'none';
+
+        const statusEl = document.getElementById('status_text');
+        statusEl.style.display = 'block';
+        statusEl.style.color = "#666";
+        statusEl.innerText = "5秒後に最初の画面に戻ります...";
+
+        globalAudio.pause();
+        finishAudio.play().catch(() => { });
+        off(ref(db, `rooms_multi/${currentRoomId}`));
+
+        const scoreboard = pIds.map(pid => ({
+          id: pid,
+          score: Object.values(taken).filter(id => id === pid).length,
+          isMe: pid === myId
+        })).sort((a, b) => b.score - a.score);
+
+        let myRank = 1, rankListHtml = "", currentRank = 1;
+        scoreboard.forEach((s, index) => {
+          if (index > 0 && s.score < scoreboard[index - 1].score) currentRank = index + 1;
+          if (s.isMe) myRank = currentRank;
+          const icon = getIcon(s.id, pIds);
+          const nameDisplay = s.isMe ? 'あなた' : s.id;
+          const style = s.isMe ? 'color:#ff4757;font-weight:bold;background:#fff;border-radius:5px;padding:2px 5px;' : '';
+          rankListHtml += `<div style="margin:5px 0;${style}">${currentRank}位： ${nameDisplay} ${icon}（${s.score}枚）</div>`;
+        });
+
+        let html = `<div style="font-size:2.5rem;color:#B82343;margin-bottom:10px;">第 ${myRank} 位 ${getIcon(myId, pIds)}</div>`;
+        html += `<div style="font-size:1.1rem;line-height:1.6;">${rankListHtml}</div>`;
+        document.getElementById('result_text').innerHTML = html;
+        document.getElementById('result_container').style.display = 'block';
+
+        // ===== オンライン対戦で1位になった場合、ランキングに記録 =====
+        if (myRank === 1) {
+          recordWin().then(() => {
+            // 記録完了後の通知はrecordWin内で処理済み
+          });
+        }
+
+        if (myRank === 1 && scoreboard.find(s => s.isMe).score > 0) {
+          confetti({ particleCount: 200, spread: 80, origin: { y: 0.6 } });
+        }
+
+        let timeLeft = 5;
+        const autoReturnTimer = setInterval(() => {
+          timeLeft--;
+          if (timeLeft > 0) {
+            statusEl.innerText = `${timeLeft}秒後に最初の画面に戻ります...`;
+          } else {
+            clearInterval(autoReturnTimer);
+            location.reload();
+          }
+        }, 1000);
+      }
+    }
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    window.onbeforeunload = function () {
+      if (currentRoomId && !isGameOver && !isLeavingIntentionally) {
+        return "試合中ですが、本当に終了しますか？";
+      }
+    };
+
+    init();
+  </script>
+  <script src="../js/back-to-top.js?20260908-02"></script>
+
+</body>
+
+</html>

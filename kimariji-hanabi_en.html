@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="description" content="A free game to memorize kimariji (decisive syllables) of Hyakunin Isshu. Read the lower verse of a falling card and select the correct kimariji. Answer correctly and fireworks light up the night sky!">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+  <!-- 構造化データ — パンくずリスト -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://hyakuninisshu.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Hyakunin Isshu Apps",
+      "item": "https://hyakuninisshu.com/introduction-app.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Kimariji Fireworks",
+      "item": "https://hyakuninisshu.com/kimariji-hanabi_en.html"
+    }
+  ]
+}
+</script>
+  <!-- 構造化データ — SoftwareApplication -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Kimariji Fireworks",
+  "operatingSystem": "Web Browser",
+  "applicationCategory": "GameApplication",
+  "applicationSubCategory": "Educational Game",
+  "description": "A free game to memorize kimariji (decisive syllables) of Hyakunin Isshu. Read the lower verse of a falling card and select the correct kimariji. Answer correctly and fireworks light up the night sky!",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "JPY"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "石槫大輔",
+    "url": "https://hyakuninisshu.com/"
+  },
+  "url": "https://hyakuninisshu.com/kimariji-hanabi_en.html",
+  "image": "https://hyakuninisshu.com/img/thumb_karuta-quiz.webp",
+  "featureList": [
+    "Learn kimariji through gameplay",
+    "Correct answers launch fireworks into the night sky",
+    "Higher position when answered = bigger fireworks",
+    "Three difficulty levels: Easy, Normal, Hard",
+    "Works on both smartphone and PC"
+  ]
+}
+</script>
+  <!-- 構造化データ — WebPage -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Kimariji Fireworks — A Game to Learn Hyakunin Isshu Kimariji",
+  "url": "https://hyakuninisshu.com/kimariji-hanabi_en.html",
+  "description": "Read the lower verse of a falling card, position your launcher, and select the correct kimariji. A free game where correct answers launch fireworks into the night sky.",
+  "datePublished": "2026-05-17",
+  "dateModified": "2026-05-17",
+  "author": {
+    "@type": "Person",
+    "name": "石槫大輔",
+    "url": "https://hyakuninisshu.com/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Shigure no Hyakunin Isshu",
+    "url": "https://hyakuninisshu.com/"
+  }
+}
+</script>
+  <!-- OGP -->
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Kimariji Fireworks — Learn Hyakunin Isshu Kimariji Through a Fireworks Game">
+  <meta property="og:description" content="Read the lower verse of a falling card, position your launcher, and select the correct kimariji. A free game where correct answers launch fireworks into the night sky.">
+  <meta property="og:image" content="https://hyakuninisshu.com/img/ogp_hanabi.jpg">
+  <meta property="og:url" content="https://hyakuninisshu.com/kimariji-hanabi_en.html">
+  <meta property="og:site_name" content="Shigure no Hyakunin Isshu">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kimariji Fireworks — Learn Hyakunin Isshu Kimariji Through a Fireworks Game">
+  <title>Kimariji Fireworks — Learn Hyakunin Isshu Kimariji Through a Fireworks Game | Shigure no Hyakunin-isshu</title>
+  <link rel="canonical" href="https://hyakuninisshu.com/kimariji-hanabi_en.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?20260908-16">
+  <link rel="stylesheet" href="css/kimariji-hanabi.css?09">
+  <style>
+    #gameover-msg, #clear-msg {                                                     
+      writing-mode: horizontal-tb;
+      text-orientation: mixed;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ヘッダー -->
+  <header class="header">
+    <p class="site-title">
+      <a href="https://hyakuninisshu.com/">Shigure no Hyakunin Isshu</a>
+    </p>
+    <div class="header_list">
+      <a href="index_en.html"><img src="img/icon_top_en.svg?ver-01" alt="Top" class="icon"></a>
+      <a href="introduction_en.html" style="color:#333"><img src="img/icon_column_en.svg?ver-01" alt="Articles" class="icon"></a>
+      <a href="introduction-app_en.html" style="color:#333"><img src="img/icon_app_en.svg?ver-01" alt="Apps" class="icon"></a>
+      <a href="kimariji-hanabi.html"><img src="img/icon_lang.svg?ver-01" alt="Japanese" class="icon"></a>
+      <a href="list_en.html"><img src="img/icon_list_en.svg?ver-01" alt="Poem list and search" class="icon"></a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- スタート画面（ゲームオーバー後も兼ねる） -->
+    <section id="start-section">
+      
+      <div class="game-intro-box">
+        
+        <div class="intro-body">
+          <nav>
+          <ol class="breadcrumb">
+            <li><a href="index_en.html">Top</a></li>
+            <li><a href="introduction-app_en.html">Apps</a></li>
+            <li>Kimariji Fireworks</li>
+          </ol>
+        </nav>
+          <h1 class="game-title">Kimariji Fireworks</h1>
+          <!-- ゲームオーバー後のスコア（初期は非表示） -->
+          <div id="game-result" class="hidden">
+            <p class="score-label">Fireworks launched</p>
+            <p id="final-score-display">0</p>
+          </div>
+
+          <ul class="rules-list">
+            <li>Read the lower verse of the falling card, align the launcher, and lock it with <span class="sp">a tap</span><span class="pc">the up arrow key</span>.</li>
+            <li>Select the correct kimariji. A correct answer launches fireworks!</li>
+            <li>Answer correctly 10 times to fill the night sky with beautiful fireworks.</li>
+            <li>The game ends if a card touches the red line.</li>
+          </ul>
+
+          <div class="how-to-box">
+            <h3>PC controls:</h3>
+            <div><span class="key">← →</span> Move launcher &ensp;<span class="key">↑</span> / <span class="key">Space</span> Show choices</div>
+            <div><span class="key">↑ ↓</span> Select choice &ensp;<span class="key">Enter</span> Confirm</div>
+          </div>
+          <div class="how-to-box">
+            <h3>Smartphone controls:</h3>
+            <div><span class="key">Tilt phone</span> to move &ensp;<span class="key">Tap launcher</span> to show choices</div>
+            <div><span class="key">Tap a choice</span> to select</div>
+          </div>
+
+          <div class="color-section">
+            <p class="diff-label">Five-Color Hyakunin Isshu</p>
+            <select id="color-select" class="color-select">
+              <option value="全部">All (100 poems)</option>
+              <option value="青">Blue (20 poems)</option>
+              <option value="ピンク">Pink (20 poems)</option>
+              <option value="黄">Yellow (20 poems)</option>
+              <option value="緑">Green (20 poems)</option>
+              <option value="オレンジ">Orange (20 poems)</option>
+            </select>
+          </div>
+
+          <div class="mode-section">
+            <p class="diff-label">Answer Format</p>
+            <div class="diff-row">
+              <button class="mode-btn selected" data-mode="kimariji">Kimariji</button>
+              <button class="mode-btn" data-mode="kami">Upper Verse</button>
+            </div>
+          </div>
+
+          <div class="diff-section">
+            <p class="diff-label">Select Difficulty</p>
+            <div class="diff-row">
+              <button class="diff-btn" data-diff="easy">Easy</button>
+              <button class="diff-btn selected" data-diff="normal">Normal</button>
+              <button class="diff-btn" data-diff="hard">Hard</button>
+            </div>
+          </div>
+
+          <button id="start-btn" class="action-btn">Start</button>
+          <button id="retry-btn" class="action-btn-retry hidden">Back to Settings</button>
+
+          <!-- ゲーム終了後：出題された札の一覧 -->
+          <div id="shown-cards-section" class="hidden">
+            <p class="shown-cards-heading">Card Results</p>
+            <p id="result-summary"></p>
+            <div class="shown-cards-table-wrap">
+              <table class="shown-cards-table">
+                <thead>
+                  <tr>
+                    <th>Result</th>
+                    <th>Order</th>
+                    <th>No.</th>
+                    <th>Upper Verse</th>
+                    <th>Lower Verse</th>
+                  </tr>
+                </thead>
+                <tbody id="shown-cards-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ゲーム画面 -->
+    <section id="game-section" class="hidden">
+      <!-- 星空 -->
+      <div id="star-field"></div>
+      <!-- 落下する札エリア -->
+      <div id="card-area"></div>
+      <!-- 危険ライン -->
+      <div id="danger-line"></div>
+      <!-- プレイヤー（台座） -->
+      <div id="player">
+        <div id="player-guide"></div>
+      </div>
+      <!-- 決まり字ボタンと制限時間バー -->
+      <div id="kimari-area">
+        <div id="timer-bar-wrap">
+          <div id="timer-bar"></div>
+        </div>
+        <div id="choices-wrap" class="hidden"></div>
+      </div>
+
+      <!-- ゲームオーバーメッセージ -->
+      <div id="gameover-msg">Game Over!</div>
+      <!-- Clear message -->
+      <div id="clear-msg">Splendid!</div>
+    </section>
+
+  </main>
+
+  <!-- フッター -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-copy">&copy;2023 Shigure no Hyakunin Isshu</span>
+      <ul>
+        <li><a href="policy.html">Privacy Policy</a></li>
+        <li>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXx7TKlqnTfKrw2Nuh4f37swVwFH-RFDsNkTGQ4JEF50q2wQ/viewform?usp=header"
+            target="_blank" rel="noopener">Contact Form</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/pixi.js@7.3.2/dist/pixi.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+  <script src="js/kimariji-hanabi.js?08"></script>
+  <script src="js/back-to-top.js?20260908-02"></script>
+
+</body>
+</html>

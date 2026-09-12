@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head prefix="og: http://ogp.me/ns#">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Hyakunin Isshu Kimariji Mind Map | Shigure no Hyakunin Isshu">
+  <meta property="og:description" content="A study tool that organizes all 100 Hyakunin Isshu poems by kimariji.">
+  <meta property="og:site_name" content="Shigure no Hyakunin Isshu">
+  <meta property="og:image" content="https://hyakuninisshu.com/img/ogp_mindmap_kimariji.webp">
+  <meta name="description" content="A study tool that organizes all 100 Hyakunin Isshu poems by kimariji (the deciding syllables of the karuta game). Poems are visually sorted from 1-character to 6-character kimariji, each linking to its full poem page.">
+  <link rel="stylesheet" href="../css/style.css?20260908-16">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Kaisei+HarunoUmi:wght@500&display=swap"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@500&family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap"
+    rel="stylesheet">
+  <title>Hyakunin Isshu Kimariji Mind Map | Shigure no Hyakunin Isshu</title>
+  <link rel="canonical" href="https://hyakuninisshu.com/mindmap_en.html">
+  <style>
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+
+    main {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      background: #f7f1e0;
+      gap: 0;
+      padding: 0;
+    }
+
+    header.header {
+      flex-shrink: 0;
+      z-index: 10;
+    }
+
+    #svg-container {
+      width: 100%;
+      height: 100%;
+    }
+
+    svg {
+      width: 100%;
+      height: 100%;
+      cursor: grab;
+    }
+
+    svg:active {
+      cursor: grabbing;
+    }
+
+    .node circle {
+      stroke-width: 2px;
+    }
+
+    .node text {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 12px;
+      fill: #333;
+      pointer-events: none;
+    }
+
+    .link {
+      fill: none;
+      stroke: #c2b99a;
+      stroke-width: 1.5px;
+    }
+
+    /* フィルターボタンバー */
+    .filter-bar {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      z-index: 50;
+    }
+
+    .filter-bar button {
+      padding: 3px 8px;
+      border: 1px solid #c2b99a;
+      border-radius: 20px;
+      background: #fff;
+      font-size: 0.65rem;
+      font-family: 'Noto Sans JP', sans-serif;
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, .10);
+      transition: background .15s, color .15s;
+      white-space: nowrap;
+      text-align: left;
+    }
+
+    .filter-bar button:hover {
+      background: #f0ead6;
+    }
+
+    .filter-bar button.active {
+      background: #b82343;
+      color: #fff;
+      border-color: #b82343;
+    }
+
+    .hint {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      font-size: .72rem;
+      color: #888;
+    }
+
+    /* ── 歌カードモーダル ── */
+    #poem-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0, 0, 0, 0.55);
+      align-items: center;
+      justify-content: center;
+    }
+    #poem-modal.open { display: flex; }
+
+    .poem-card {
+      position: relative;
+      /* JAのカルタ札は縦書きだが、英語版は日本語原文＋ローマ字を横書きで併記するため
+         カード全体は横書きに切り替える（下半分の決まり字も同様に horizontal-tb）。 */
+      writing-mode: horizontal-tb;
+      background: #fdf8e8;
+      background-image: url(../img/huda_karuta.webp);
+      background-size: cover;
+      border: 3px solid #007e5e;
+      border-radius: 4px;
+      aspect-ratio: 3 / 4;
+      height: min(82vh, 92vw * 4 / 3);
+      width: auto;
+      overflow: hidden;
+      font-family: 'noto serif jp', 'serif';
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      cursor: pointer;
+    }
+
+    /* 上半分：歌名・上の句・下の句（日本語原文＋ローマ字併記）
+       下半分（決まり字）は内容が短くカード下部に大きな余白ができるため、
+       上半分の高さと上部パディングを増やしてバランスを取る。 */
+    .poem-upper {
+      height: 58%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: 1.6em 1em 0;
+      box-sizing: border-box;
+    }
+    .poem-upper p {
+      margin: 0;
+      writing-mode: horizontal-tb;
+    }
+    .poem-upper .poem-name {
+      font-size: clamp(13px, 1.9vmin, 16px);
+      font-weight: 800;
+      color: #555;
+      letter-spacing: 0.06em;
+      line-height: 1.5;
+      text-align: center;
+    }
+    .poem-verse {
+      letter-spacing: 0.03em;
+      line-height: 1.85;
+      font-size: clamp(17px, 2.5vmin, 21px);
+      font-weight: 550;
+      text-align: center;
+      margin-top: 0.3em !important;
+    }
+    /* ローマ字併記行（歌人名・上の句・下の句それぞれの直後に表示） */
+    .romaji-line {
+      display: block;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(10.5px, 1.6vmin, 13px);
+      color: #7a6655;
+      letter-spacing: 0.01em;
+      line-height: 1.35;
+      text-align: center;
+      margin-top: 0.15em !important;
+      margin-bottom: 0.55em !important;
+    }
+
+    /* 下半分：決まり字 */
+    .poem-lower {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 42%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 0.1em;
+      padding: 0 0 1em;
+      box-sizing: border-box;
+      overflow: hidden;
+      pointer-events: none;
+      font-size: clamp(24px, 4.5vmin, 36px);
+      font-weight: 700;
+    }
+    .poem-lower span {
+      writing-mode: vertical-rl;
+      color: #b82343;
+      letter-spacing: 0;
+    }
+    .kimariji-badge {
+      display: inline-block;
+      background: #b82343;
+      color: #fff!important;
+      font-size: 0.5em;
+      font-weight: 500;
+      letter-spacing: 0;
+      padding: 0.15em 0.3em;
+      border-radius: 3px;
+      text-align: center;
+    }
+
+    /* English badge/kimariji/romaji all read left-to-right, not vertically.
+       Needs the #id form: ".poem-lower span" (class+element) otherwise
+       outranks a plain ".kimariji-badge" class selector and wins vertical-rl. */
+    #modal-kimariji-badge,
+    #modal-kimariji-text,
+    #modal-kimariji-romaji {
+      writing-mode: horizontal-tb;
+    }
+    #modal-kimariji-romaji {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-style: italic;
+      font-size: clamp(11px, 2.2vmin, 15px);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      margin-top: 0.4em;
+    }
+
+    .poem-card .poem-num {
+      position: absolute;
+      writing-mode: horizontal-tb;
+      bottom: 6px;
+      left: 8px;
+      font-size: 10px;
+      color: #aaa;
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <p class="site-title"><a href="https://hyakuninisshu.com/">Shigure no Hyakunin Isshu</a></p>
+    <div class="header_list">
+      <a href="index_en.html"><img src="../img/icon_top_en.svg?ver-01" alt="Top" class="icon"></a>
+      <a href="introduction_en.html"><img src="/img/icon_column_en.svg?ver-01" alt="Articles" class="icon"></a>
+      <a href="introduction-app_en.html"><img src="/img/icon_app_en.svg?ver-01" alt="Apps" class="icon"></a>
+      <a href="mindmap.html"><img src="/img/icon_lang.svg?ver-01" alt="Japanese" class="icon"></a>
+      <a href="list_en.html"><img src="/img/icon_list_en.svg?ver-01" alt="Poem list and search" class="icon"></a>
+    </div>
+  </header>
+
+  <main>
+    <div id="svg-container"></div>
+
+    <!-- フィルターボタン -->
+    <div class="filter-bar">
+      <h1 style="text-align:center; font-size:0.7rem; color:#333; ">Hyakunin Isshu Kimariji</h1>
+      <button data-filter="all" class="active">🗺 Overview</button>
+      <button data-filter="0">1-Character (7 poems)</button>
+      <button data-filter="1">2-Character (43 poems)</button>
+      <button data-filter="2">3-Character (36 poems)</button>
+      <button data-filter="3">4-Character (6 poems)</button>
+      <button data-filter="4">5-Character (2 poems)</button>
+      <button data-filter="5">6-Character (6 poems)</button>
+    </div>
+  </main>
+  <div id="poem-modal">
+    <div class="poem-card">
+      <div class="poem-upper">
+        <p class="poem-name" id="modal-name"></p>
+        <p class="romaji-line" id="modal-name-romaji"></p>
+        <p class="poem-verse" id="modal-first"></p>
+        <p class="romaji-line" id="modal-first-romaji"></p>
+        <p class="poem-verse" id="modal-second"></p>
+        <p class="romaji-line" id="modal-second-romaji"></p>
+      </div>
+      <div class="poem-lower">
+        <span class="kimariji-badge" id="modal-kimariji-badge"></span>
+        <span id="modal-kimariji-text"></span>
+        <span id="modal-kimariji-romaji"></span>
+      </div>
+      <span class="poem-num" id="modal-num"></span>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-copy">&copy;2023 Shigure no Hyakunin Isshu</span>
+      <ul>
+        <li><a href="policy.html">Privacy Policy</a></li>
+        <li>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXx7TKlqnTfKrw2Nuh4f37swVwFH-RFDsNkTGQ4JEF50q2wQ/viewform?usp=header"
+            target="_blank" rel="noopener">Contact Form</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script>
+    let poemData = {};
+    fetch('../js/hyakunin.json?04').then(r => r.json()).then(d => { poemData = d; });
+
+    // 決まり字・上の句・下の句のローマ字（js/kimariji.json の type_*_gendai を流用。手打ち変換はしない）
+    let numToRomaji = {};
+    let numToFirstRomaji = {};
+    let numToSecondRomaji = {};
+    fetch('../js/kimariji.json?20260630').then(r => r.json()).then(list => {
+      list.forEach(s => {
+        if (!s.id) return;
+        if (s.type_kimariji_gendai) numToRomaji[s.id] = s.type_kimariji_gendai;
+        if (s.type_kakminoku_gendai) numToFirstRomaji[s.id] = s.type_kakminoku_gendai;
+        if (s.type_shimonoku_gendai) numToSecondRomaji[s.id] = s.type_shimonoku_gendai;
+      });
+      // 初回描画がこのfetchより先に終わっている場合に備えてラベルを再描画
+      g.selectAll('.label').text(d => d.data.leaf ? leafLabel(d) : d.data.name);
+    });
+
+    const modal = document.getElementById('poem-modal');
+    modal.addEventListener('click', () => modal.classList.remove('open'));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') modal.classList.remove('open'); });
+
+    function showPoem(num) {
+      const p = poemData[num];
+      if (!p) return;
+      document.getElementById('modal-first').innerHTML  = p.first;
+      document.getElementById('modal-second').innerHTML = p.second;
+      document.getElementById('modal-name').innerHTML   = p.name;
+      document.getElementById('modal-name-romaji').textContent = p.name_en || '';
+      document.getElementById('modal-first-romaji').textContent = numToFirstRomaji[p.number] || '';
+      document.getElementById('modal-second-romaji').textContent = numToSecondRomaji[p.number] || '';
+      document.getElementById('modal-num').textContent      = `Poem ${p.number}`;
+      const lenLabelsEn = ['1-Character', '2-Character', '3-Character', '4-Character', '5-Character', '6-Character'];
+      const kimLen = (p.kimariji || '').length;
+      document.getElementById('modal-kimariji-badge').textContent = lenLabelsEn[kimLen - 1] || '';
+      document.getElementById('modal-kimariji-text').textContent  = p.kimariji || '';
+      document.getElementById('modal-kimariji-romaji').textContent = numToRomaji[p.number] || '';
+      modal.classList.add('open');
+    }
+
+    const linkMap = {
+      "あきの": 1, "はるす": 2, "あし": 3, "たご": 4, "おく": 5, "かさ": 6, "あまの": 7, "わがい": 8, "はなの": 9, "これ": 10,
+      "わたのはらや": 11, "あまつ": 12, "つく": 13, "みち": 14, "きみがためは": 15, "たち": 16, "ちは": 17, "す": 18, "なにはが": 19, "わび": 20,
+      "いまこ": 21, "ふ": 22, "つき": 23, "この": 24, "なにし": 25, "をぐ": 26, "みかの": 27, "やまざ": 28, "こころあ": 29, "ありあ": 30,
+      "あさぼらけあ": 31, "やまが": 32, "ひさ": 33, "たれ": 34, "ひとは": 35, "なつ": 36, "しら": 37, "わすら": 38, "あさぢ": 39, "しの": 40,
+      "こひ": 41, "ちぎりき": 42, "あひ": 43, "あふこ": 44, "あはれ": 45, "ゆら": 46, "やへ": 47, "かぜを": 48, "みかき": 49, "きみがためを": 50,
+      "かく": 51, "あけ": 52, "なげき": 53, "わすれ": 54, "たき": 55, "あらざ": 56, "め": 57, "ありま": 58, "やす": 59, "おおえ": 60,
+      "いに": 61, "よを": 62, "いまは": 63, "あさぼらけう": 64, "うら": 65, "もろ": 66, "はるの": 67, "こころに": 68, "あらし": 69, "さ": 70,
+      "ゆふ": 71, "おと": 72, "たか": 73, "うか": 74, "ちぎりお": 75, "わたのはらこ": 76, "せ": 77, "あはぢ": 78, "あきか": 79, "ながか": 80,
+      "ほ": 81, "おも": 82, "よのなかよ": 83, "ながら": 84, "よも": 85, "なげけ": 86, "む": 87, "なにはえ": 88, "たま": 89, "みせ": 90,
+      "きり": 91, "わがそ": 92, "よのなかは": 93, "みよ": 94, "おほけ": 95, "はなさ": 96, "こぬ": 97, "かぜそ": 98, "ひとも": 99, "もも": 100
+    };
+
+    function gyouColor(t) {
+      const c = (t || '').charAt(0);
+      if ('あいうえお'.includes(c)) return '#e57373';
+      if ('かきくけこ'.includes(c)) return '#4caf50';
+      if ('さしすせそ'.includes(c)) return '#42a5f5';
+      if ('たちつてと'.includes(c)) return '#fdd835';
+      if ('なにぬねの'.includes(c)) return '#ff9800';
+      if ('はひふへほ'.includes(c)) return '#ab47bc';
+      if ('まみむめも'.includes(c)) return '#26a69a';
+      if ('やゆよ'.includes(c)) return '#ef6c00';
+      if ('わをん'.includes(c)) return '#5c6bc0';
+      return '#90a4ae';
+    }
+
+    const L = (n, ch) => ({ name: n, children: ch });
+    const N = n => ({ name: n, num: linkMap[n], leaf: true });
+
+    // 葉ノードのラベル：仮名 + ローマ字（js/kimariji.json）+ 番号
+    function leafLabel(d) {
+      const romaji = numToRomaji[d.data.num];
+      return romaji ? `${d.data.name} ${romaji} (${d.data.num})` : `${d.data.name} (${d.data.num})`;
+    }
+
+    const treeData = L('Kimariji', [
+      L('1-Character (7 poems)', ['む', 'す', 'め', 'ふ', 'さ', 'ほ', 'せ'].map(N)),
+      L('2-Character (43 poems)', [
+        L('A-row', ['あけ', 'あし', 'あひ', 'いに', 'うか', 'うら', 'おく', 'おと', 'おも'].map(N)),
+        L('Ka-row', ['かく', 'かさ', 'きり', 'こひ', 'こぬ', 'この', 'これ'].map(N)),
+        L('Sa-row', ['しの', 'しら'].map(N)),
+        L('Ta-row', ['たか', 'たき', 'たご', 'たち', 'たま', 'たれ', 'ちは', 'つき', 'つく'].map(N)),
+        L('Na-row', ['なつ'].map(N)),
+        L('Ha-row', ['ひさ'].map(N)),
+        L('Ma-row', ['みせ', 'みち', 'みよ', 'もも', 'もろ'].map(N)),
+        L('Ya-row', ['やへ', 'やす', 'ゆふ', 'ゆら', 'よも', 'よを'].map(N)),
+        L('Wa-row', ['わび', 'をぐ'].map(N)),
+      ]),
+      L('3-Character (36 poems)', [
+        L('A-row', ['あきか', 'あきの', 'あさぢ', 'あはぢ', 'あはれ', 'あふこ', 'あまつ', 'あまの', 'あらざ', 'あらし', 'ありあ', 'ありま', 'いまこ', 'いまは', 'おおえ', 'おほけ'].map(N)),
+        L('Ka-row', ['かぜそ', 'かぜを'].map(N)),
+        L('Na-row', ['ながか', 'ながら', 'なげき', 'なげけ', 'なにし'].map(N)),
+        L('Ha-row', ['はなさ', 'はなの', 'はるす', 'はるの', 'ひとは', 'ひとも'].map(N)),
+        L('Ma-row', ['みかき', 'みかの'].map(N)),
+        L('Ya-row', ['やまが', 'やまざ'].map(N)),
+        L('Wa-row', ['わがい', 'わがそ', 'わすら', 'わすれ'].map(N)),
+      ]),
+      L('4-Character (6 poems)', ['こころあ', 'こころに', 'ちぎりお', 'ちぎりき', 'なにはえ', 'なにはが'].map(N)),
+      L('5-Character (2 poems)', ['よのなかは', 'よのなかよ'].map(N)),
+      L('6-Character (6 poems)', ['わたのはらや', 'わたのはらこ', 'あさぼらけあ', 'あさぼらけう', 'きみがためは', 'きみがためを'].map(N)),
+    ]);
+
+    const groupColors = ['#b82343', '#6a5acd', '#2e8b57', '#d2691e', '#1e90ff', '#b8860b', '#8b4513'];
+
+    // ── 描画 ────────────────────────────────────
+    const el = document.getElementById('svg-container');
+    const main = document.querySelector('main');
+    const svg = d3.select('#svg-container').append('svg')
+      .attr('width', main.clientWidth)
+      .attr('height', main.clientHeight);
+    const g = svg.append('g');
+
+    const zoom = d3.zoom().scaleExtent([0.05, 6])
+      .on('zoom', e => g.attr('transform', e.transform));
+    svg.call(zoom);
+
+    const tree = d3.tree().nodeSize([20, 200]);
+    let root = d3.hierarchy(treeData);
+
+    // ── 折りたたみ ──
+    function collapseAll(d) {
+      if (d.children) {
+        d._children = d.children;
+        d.children = null;
+        d._children.forEach(collapseAll);
+      }
+    }
+    collapseAll(root);
+
+    let uid = 0;
+
+    function update(src, duration) {
+      const dur = duration !== undefined ? duration : 200;
+      tree(root);
+      const nodes = root.descendants();
+      const links = root.links();
+
+      const lSel = g.selectAll('path.link').data(links, d => d.target.id);
+      lSel.enter().insert('path', 'g')
+        .attr('class', 'link')
+        .attr('d', () => { const o = [src.y0 ?? src.y, src.x0 ?? src.x]; return d3.linkHorizontal()({ source: o, target: o }); })
+        .merge(lSel).transition().duration(dur)
+        .attr('d', d => d3.linkHorizontal()({ source: [d.source.y, d.source.x], target: [d.target.y, d.target.x] }));
+      lSel.exit().transition().duration(dur)
+        .attr('d', () => { const o = [src.y, src.x]; return d3.linkHorizontal()({ source: o, target: o }); }).remove();
+
+      const nSel = g.selectAll('g.node').data(nodes, d => d.id || (d.id = ++uid));
+      const nEnter = nSel.enter().append('g').attr('class', 'node')
+        .attr('transform', () => `translate(${src.y0 ?? src.y},${src.x0 ?? src.x})`)
+        .style('opacity', 0)
+        .on('click', (ev, d) => {
+          if (d.data.leaf) { showPoem(d.data.num); return; }
+          if (d.children) { d._children = d.children; d.children = null; }
+          else { d.children = d._children; d._children = null; }
+          update(d);
+          setTimeout(() => fitView(300), 220);
+        });
+
+      nEnter.append('circle')
+        .attr('r', d => d.depth === 0 ? 14 : d.data.leaf ? 7 : 10)
+        .attr('fill', d => {
+          if (d.depth === 0) return '#b82343';
+          if (d.data.leaf) return gyouColor(d.data.name);
+          if (d.depth === 1) {
+            const idx = d.parent.children ? d.parent.children.indexOf(d) : 0;
+            return groupColors[idx % groupColors.length];
+          }
+          return '#8a9a78';
+        })
+        .attr('stroke', d => d.depth === 0 ? '#7a1030' : d.data.leaf ? '#666' : '#4a5e3a')
+        .style('cursor', d => d.data.leaf ? 'pointer' : 'default');
+
+      nEnter.filter(d => !d.data.leaf).append('text')
+        .attr('class', 'toggle-icon')
+        .attr('text-anchor', 'middle').attr('dy', '0.35em')
+        .attr('font-size', '10px').attr('fill', '#fff').attr('pointer-events', 'none');
+
+      nEnter.append('text')
+        .attr('class', 'label')
+        .attr('dy', '0.35em')
+        .attr('x', d => d.data.leaf ? 11 : (d.depth === 0 ? 18 : 13))
+        .attr('font-size', d => d.depth === 0 ? '14px' : d.data.leaf ? '11px' : '12px')
+        .attr('font-weight', d => d.depth <= 1 ? 'bold' : 'normal')
+        .style('cursor', d => d.data.leaf ? 'pointer' : 'default');
+
+      const nMerge = nEnter.merge(nSel);
+      nMerge.transition().duration(dur)
+        .attr('transform', d => `translate(${d.y},${d.x})`).style('opacity', 1);
+
+      nMerge.select('.toggle-icon')
+        .text(d => d.children ? '−' : (d._children ? '＋' : ''));
+
+      nMerge.select('.label')
+        .text(d => d.data.leaf ? leafLabel(d) : d.data.name);
+
+      nSel.exit().transition().duration(dur)
+        .attr('transform', `translate(${src.y},${src.x})`).style('opacity', 0).remove();
+
+      nodes.forEach(d => { d.x0 = d.x; d.y0 = d.y; });
+    }
+
+    // depth=1（一字決まり〜六字決まり）を展開した状態で初期表示
+    root.children = root._children;
+    root._children = null;
+
+    update(root, 0);
+    setTimeout(() => fitView(400), 50);
+
+    function fitView(duration) {
+      const dur = duration !== undefined ? duration : 400;
+      const b = g.node().getBBox();
+      if (!b.width || !b.height) return;
+      const W = main.clientWidth || window.innerWidth;
+      const H = main.clientHeight || (window.innerHeight - 120);
+      const padX = 140, padY = 20;
+      const scX = (W - padX) / b.width;
+      const scY = (H - padY) / b.height;
+      const sc = Math.min(scX, scY);
+      const tx = W / 2 - sc * (b.x + b.width / 2);
+      const ty = H / 2 - sc * (b.y + b.height / 2);
+      svg.transition().duration(dur).call(
+        zoom.transform, d3.zoomIdentity.translate(tx, ty).scale(sc)
+      );
+    }
+
+    // ── フィルター機能 ────────────────────────────
+    // ツリー全体を再構築してから指定グループだけ展開する
+    function focusGroup(groupIndex) {
+      // まず全ノードを「持っているものはすべて _children に退避」して完全に閉じる
+      root.each(d => {
+        const c = d.children || d._children;
+        if (c) { d._children = c; d.children = null; }
+      });
+
+      if (groupIndex === 'all') {
+        // 全体：全展開してfit
+        root.each(d => {
+          if (d._children) { d.children = d._children; d._children = null; }
+        });
+        update(root, 300);
+        setTimeout(() => fitView(400), 350);
+        return;
+      }
+
+      // root（depth=0）を開く
+      if (root._children) { root.children = root._children; root._children = null; }
+
+      // 対象グループ以外のdepth=1ノードを明示的に閉じる
+      root.children.forEach((child, i) => {
+        const c = child.children || child._children;
+        if (c) { child._children = c; child.children = null; }
+      });
+
+      // 対象グループだけ展開
+      const target = root.children[groupIndex];
+      function openAll(d) {
+        if (d._children) { d.children = d._children; d._children = null; }
+        if (d.children) d.children.forEach(openAll);
+      }
+      openAll(target);
+
+      update(root, 300);
+
+      // 対象グループにズームフォーカス（描画完了後にBBoxで実サイズを取得）
+      setTimeout(() => {
+        const b = g.node().getBBox();
+        if (!b.width || !b.height) return;
+        const W = main.clientWidth;
+        const H = main.clientHeight;
+        const padX = 20, padY = 40;
+        const scX = (W - padX) / b.width;
+        const scY = (H - padY) / b.height;
+        const sc = Math.min(scX, scY, 5.0);
+        const tx = W / 2 - sc * (b.x + b.width / 2);
+        const ty = H / 2 - sc * (b.y + b.height / 2);
+        svg.transition().duration(400).call(
+          zoom.transform, d3.zoomIdentity.translate(tx, ty).scale(sc)
+        );
+      }, 450);
+    }
+
+    // フィルターボタンのイベント登録
+    document.querySelectorAll('.filter-bar button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-bar button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.dataset.filter;
+        focusGroup(f === 'all' ? 'all' : parseInt(f));
+      });
+    });
+
+    window.addEventListener('resize', () => { svg.attr('width', main.clientWidth).attr('height', main.clientHeight); fitView(); });
+  </script>
+  <script src="../js/back-to-top.js?20260908-02"></script>
+
+</body>
+
+</html>

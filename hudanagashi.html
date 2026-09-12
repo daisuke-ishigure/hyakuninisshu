@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head prefix="og: http://ogp.me/ns#">
+  <!-- 旧URL。新URL(hudanagashi-flash.html)へ誘導する（GitHub Pagesは.htaccessのリダイレクトを解釈しないため） -->
+  <script>
+    location.replace('/hudanagashi-flash.html' + location.search + location.hash);
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>百人一首の決まり字を覚える 札流し練習 | 時雨の百人一首</title>
+  <link rel="canonical" href="https://hyakuninisshu.com/hudanagashi-flash.html">
+  <meta name="description"
+    content="札流しで百人一首の決まり字を瞬時に思い出す練習ページ。下の句を見て上の句の決まり字を答える競技かるたトレーニング。五色百人一首の色ごとに表示したり、表示時間や枚数を自由に設定可能。">
+  <link rel="stylesheet" href="../css/style.css?20260908-16">
+  <link rel="stylesheet" href="../css/karuta.css?20260502">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap"
+    rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" href="/favicon.ico">
+
+  <style>
+    /* ── 共通 ── */
+    .fuda-section {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    /* ── 色選択 ── */
+    #color-selector {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 6px;
+      justify-content: center;
+      margin: 1em 0 1.4em;
+    }
+
+    .color-btn {
+      padding: 0.5em 0.7em;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      background: #f9f9f9;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: bold;
+      line-height: 1.4;
+      transition: border-color 0.15s, background 0.15s, color 0.15s;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .color-btn small {
+      display: block;
+      font-weight: normal;
+      font-size: 0.75em;
+      color: inherit;
+    }
+
+    .color-btn[data-color="青"] {
+      border-color: #3a7bd5;
+    }
+
+    .color-btn[data-color="橙"] {
+      border-color: #e87722;
+    }
+
+    .color-btn[data-color="桃"] {
+      border-color: #e8639c;
+    }
+
+    .color-btn[data-color="黄"] {
+      border-color: #c8a100;
+    }
+
+    .color-btn[data-color="緑"] {
+      border-color: #2a9d4a;
+    }
+
+    .color-btn.active {
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .color-btn[data-color="全部"].active {
+      background: #4e3052;
+    }
+
+    .color-btn[data-color="青"].active {
+      background: #3a7bd5;
+    }
+
+    .color-btn[data-color="橙"].active {
+      background: #e87722;
+    }
+
+    .color-btn[data-color="桃"].active {
+      background: #e8639c;
+    }
+
+    .color-btn[data-color="黄"].active {
+      background: #c8a100;
+    }
+
+    .color-btn[data-color="緑"].active {
+      background: #2a9d4a;
+    }
+
+    /* ── ボタン ── */
+    .main-btn {
+      display: inline-block;
+      padding: 0.6em 2em;
+      background: #B82343;
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 0.4em 0.3em;
+      transition: background 0.15s;
+    }
+
+    .main-btn:hover {
+      background: #9a1c38;
+    }
+
+    .main-btn:disabled {
+      background: #ccc;
+      cursor: default;
+    }
+
+    .sub-btn {
+      display: inline-block;
+      padding: 0.4em 1.2em;
+      background: #f0f0f0;
+      color: #555;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      margin: 0.4em 0.3em;
+    }
+
+    .sub-btn:hover {
+      background: #e0e0e0;
+    }
+
+    /* ── 進捗テキスト ── */
+    #progress-text {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 0.6em;
+    }
+
+    /* ── 札フラッシュエリア ── */
+    #flash-card-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 290px;
+      margin: 0.5em auto;
+    }
+
+    #flash-card {
+      width: 195px;
+      opacity: 0;
+      background-color: #fff;
+      background-image: none;
+      background-size: 200px 200px;
+      background-repeat: repeat;
+    }
+
+    #flash-card p {
+      font-family: "Noto Serif JP", serif;
+      font-weight: 700;
+      font-size: 33px;
+      letter-spacing: 0.45em;
+      line-height: 1.5;
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 540px) {
+      #flash-card {
+        width: 58vw;
+      }
+
+      #flash-card p {
+        font-size: 9.5vw;
+        letter-spacing: 0.4em;
+      }
+
+      #flash-card-wrap {
+        min-height: 0;
+      }
+
+      #answer-list {
+        gap: 0.6em;
+      }
+    }
+
+    #card-counter {
+      font-size: 1rem;
+      color: #666;
+      margin-top: 0.5em;
+      min-height: 1.4em;
+    }
+
+    /* ── 答え合わせ ── */
+    #answer-list {
+      display: flex;
+      flex-direction: row-reverse;
+      gap: 1.2em;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 0.8em auto 1em;
+    }
+
+    .answer-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3em;
+    }
+
+    .answer-num {
+      font-weight: bold;
+      color: #4e3052;
+      font-size: 1rem;
+    }
+
+    .answer-kami {
+      writing-mode: vertical-rl;
+      font-family: "Noto Serif JP", serif;
+      font-size: 1.05rem;
+      letter-spacing: clamp(0.1em, 1.5vw, 0.5em);
+      line-height: 1.8;
+    }
+
+    .answer-kj-red {
+      color: #B82343;
+      font-weight: bold;
+    }
+
+    #finish-msg {
+      font-size: 1.1rem;
+      color: #B82343;
+      font-weight: bold;
+      margin: 0.5em 0;
+    }
+
+    .answer-actions {
+      margin-top: 1em;
+    }
+
+    /* ── 設定行（連続枚数・表示時間・決まり字） ── */
+    .setting-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6em;
+      margin: 0.8em 0;
+    }
+
+    .setting-row:last-of-type {
+      margin-bottom: 1.2em;
+    }
+
+    .setting-row label {
+      font-weight: bold;
+      font-size: 0.95rem;
+    }
+
+    #batch-select,
+    #speed-select,
+    #kimariji-select {
+      width: 7em;
+      height: 32px;
+      font-size: 0.95rem;
+      padding: 0 0.5em;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    /* ── 一時停止ボタン ── */
+    .pause-btn {
+      width: 2.8em;
+      height: 2.8em;
+      border-radius: 50%;
+      border: none;
+      background: none;
+      font-size: 1.3rem;
+      cursor: pointer;
+      display: inline-flex;
+      padding: 0;
+      overflow: hidden;
+    }
+    .pause-icon {
+      width: 100%;
+      height: 100%;
+      display: block;
+      pointer-events: none;
+    }
+
+    /* ── スマホのみ：ゲーム中はヘッダー・フッター非表示 ── */
+    @media (max-width: 540px) {
+      #site-header[hidden],
+      #site-footer[hidden] { display: none !important; }
+    }
+
+    /* ── セパレータ ── */
+    .fuda-sep {
+      border: none;
+      border-top: 1px solid #e0e0e0;
+      margin: 1.2em 0;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ヘッダー -->
+  <header id="site-header" class="header">
+    <p class="site-title">
+      <a href="https://hyakuninisshu.com/">時雨の百人一首</a>
+    </p>
+    <div class="header_list">
+      <a href="index.html"><img src="../img/icon_top.svg?ver-02" alt="トップ" class="icon"></a>
+      <a href="introduction.html" style="color:#333"><img src="/img/icon_column.svg?ver-02" alt="コラム" class="icon"></a>
+      <a href="introduction-app.html" style="color:#333"><img src="/img/icon_app.svg?ver-02" alt="アプリ" class="icon"></a>
+      <a href="list.html"><img src="/img/icon_search.svg?ver-04" alt="和歌の一覧・検索" class="icon"></a>
+    </div>
+  </header>
+
+  <main class="main_about-main">
+    <div class="section fuda-section">
+      <h1 id="page-title">百人一首の<br class="br-sp">決まり字を覚える<br class="br-sp">札流し練習</h1>
+
+      <p id="page-desc" style="font-size:0.9rem;color:#666;margin-bottom:0.5em;">
+        札流しは、下の句の札を見て上の句の決まり字を瞬時に思い出す、
+        競技かるたの練習法です。
+        決まり字の反応速度を高めることで、札を取るスピードと精度が向上します。<br>
+        このページでは、下の句の札を設定した枚数、設定した時間瞬間表示します。五色百人一首の色ごとに練習できます。
+      </p>
+
+      <!-- ── 設定パネル ── -->
+      <div id="setup-panel">
+        <hr class="fuda-sep">
+        <p style="font-weight:bold;margin-bottom:0.3em;text-align: center;">出題する色を選んでください</p>
+        <div id="color-selector">
+          <button class="color-btn active" data-color="全部">全部<small>100枚</small></button>
+          <button class="color-btn" data-color="青">青<small>20枚</small></button>
+          <button class="color-btn" data-color="橙">橙<small>20枚</small></button>
+          <button class="color-btn" data-color="桃">桃<small>20枚</small></button>
+          <button class="color-btn" data-color="黄">黄<small>20枚</small></button>
+          <button class="color-btn" data-color="緑">緑<small>20枚</small></button>
+        </div>
+        <div class="setting-row">
+          <label for="batch-select">連続枚数</label>
+          <select id="batch-select">
+            <option value="3">3 枚</option>
+            <option value="5" selected>5 枚</option>
+            <option value="10">10 枚</option>
+          </select>
+        </div>
+        <div class="setting-row">
+          <label for="speed-select">表示時間</label>
+          <select id="speed-select">
+            <option value="100">0.1 秒</option>
+            <option value="300">0.3 秒</option>
+            <option value="500" selected>0.5 秒</option>
+            <option value="1000">1 秒</option>
+            <option value="1500">1.5 秒</option>
+            <option value="3000">3 秒</option>
+            <option value="5000">5 秒</option>
+          </select>
+        </div>
+        <div class="setting-row">
+          <label for="kimariji-select">決まり字</label>
+          <select id="kimariji-select">
+            <option value="0">全部</option>
+            <option value="1">一字決まり</option>
+            <option value="2">二字決まり</option>
+            <option value="3">三字決まり</option>
+            <option value="4">四字決まり</option>
+            <option value="5">五字決まり</option>
+            <option value="6">六字決まり</option>
+          </select>
+        </div>
+        <button id="startBtn" class="main-btn">スタート</button>
+        <p id="load-error" style="color:red;display:none;">データの読み込みに失敗しました。ページを再読み込みしてください。</p>
+      </div>
+
+      <!-- ── フラッシュパネル ── -->
+      <div id="flash-panel" hidden>
+        <div id="progress-text"></div>
+        <div id="flash-card-wrap">
+          <div id="flash-card" class="karuta_card">
+            <p id="flash-card-text"></p>
+          </div>
+        </div>
+        <div id="card-counter"></div>
+        <div id="flash-controls" style="margin-top:0.8em;">
+          <button id="pause-btn" class="pause-btn" title="一時停止"><img src="../img/pause.svg" alt="一時停止" class="pause-icon"></button>
+        </div>
+      </div>
+
+      <!-- ── 答え合わせパネル ── -->
+      <div id="answer-panel" hidden>
+        <p style="font-weight:bold;margin-bottom:0.2em; text-align: center;">答え合わせ</p>
+        <div id="answer-list"></div>
+        <div id="finish-msg" hidden>全ての札を練習しました！</div>
+        <div class="answer-actions">
+          <button id="repeat-btn" class="main-btn">反復</button>
+          <button id="restart-btn" class="main-btn">次へ</button>
+          <br>
+          <button id="back-to-setup-btn" class="sub-btn">設定に戻る</button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer id="site-footer">
+    <div class="footer-inner">
+      <span class="footer-copy">&copy;2023 時雨の百人一首</span>
+      <ul>
+        <li><a href="policy.html">プライバシーポリシー</a></li>
+        <li>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXx7TKlqnTfKrw2Nuh4f37swVwFH-RFDsNkTGQ4JEF50q2wQ/viewform?usp=header"
+            target="_blank" rel="noopener">お問い合わせフォーム</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    (async () => {
+      'use strict';
+
+      // ── データ読み込み ──
+      let poems = [];
+      try {
+        const res = await fetch('../js/hyakunin.json?04');
+        const data = await res.json();
+        poems = Object.values(data);
+      } catch {
+        document.getElementById('load-error').style.display = '';
+        document.getElementById('startBtn').disabled = true;
+        return;
+      }
+
+      // ── 状態 ──
+      let selectedColor = '全部';
+      let selectedKimariji = 0;
+      let displayMs = 500;
+      let batchSize = 5;
+      let batches = [];
+      let batchIndex = 0;
+      let currentBatch = [];
+
+      // ── 一時停止 ──
+      let _isPaused = false;
+      let _resumeCallbacks = [];
+      let _cancelCurrentDelay = null;
+
+      function waitForResume() {
+        return new Promise(resolve => _resumeCallbacks.push(resolve));
+      }
+      function triggerResume() {
+        const cbs = _resumeCallbacks.splice(0);
+        cbs.forEach(cb => cb());
+      }
+      function pauseableDelay(ms) {
+        return new Promise(resolve => {
+          let remaining = ms;
+          (async function loop() {
+            while (remaining > 0) {
+              if (_isPaused) { await waitForResume(); continue; }
+              const started = Date.now();
+              await new Promise(r => {
+                const id = setTimeout(() => { _cancelCurrentDelay = null; r(); }, remaining);
+                _cancelCurrentDelay = () => {
+                  clearTimeout(id);
+                  remaining -= Date.now() - started;
+                  _cancelCurrentDelay = null;
+                  r();
+                };
+              });
+              if (!_isPaused) remaining = 0;
+            }
+            resolve();
+          })();
+        });
+      }
+
+      document.getElementById('pause-btn').addEventListener('click', () => {
+        _isPaused = !_isPaused;
+        const btn = document.getElementById('pause-btn');
+        if (_isPaused) {
+          if (_cancelCurrentDelay) _cancelCurrentDelay();
+          btn.innerHTML = '<img src="../img/play.svg" alt="再生" class="pause-icon">';
+          btn.title = '再生';
+          btn.classList.add('paused');
+        } else {
+          btn.innerHTML = '<img src="../img/pause.svg" alt="一時停止" class="pause-icon">';
+          btn.title = '一時停止';
+          btn.classList.remove('paused');
+          triggerResume();
+        }
+      });
+
+      // ── 連続枚数 ──
+      document.getElementById('batch-select').addEventListener('change', e => {
+        batchSize = parseInt(e.target.value, 10);
+      });
+
+      // ── 表示時間 ──
+      document.getElementById('speed-select').addEventListener('change', e => {
+        displayMs = parseInt(e.target.value, 10);
+      });
+
+      // ── 決まり字絞り込み ──
+      document.getElementById('kimariji-select').addEventListener('change', e => {
+        selectedKimariji = parseInt(e.target.value, 10);
+      });
+
+      // ── 色ボタン ──
+      document.querySelectorAll('.color-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          selectedColor = btn.dataset.color;
+        });
+      });
+
+      // ── スタート ──
+      document.getElementById('startBtn').addEventListener('click', () => {
+        startGame(selectedColor);
+      });
+
+      function startGame(color) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        hide('page-title');
+        hide('page-desc');
+        hide('site-header');
+        hide('site-footer');
+        let pool = color === '全部' ? [...poems] : poems.filter(p => p.color === color);
+        if (selectedKimariji > 0) pool = pool.filter(p => p.kimariji.length === selectedKimariji);
+        pool = shuffle(pool);
+        batches = [];
+        for (let i = 0; i < pool.length; i += batchSize) batches.push(pool.slice(i, i + batchSize));
+        batchIndex = 0;
+        hide('setup-panel');
+        runBatch();
+      }
+
+      // ── バッチ実行 ──
+      async function runBatch() {
+        // 一時停止状態をリセット
+        _isPaused = false;
+        _resumeCallbacks = [];
+        _cancelCurrentDelay = null;
+        const btn = document.getElementById('pause-btn');
+        btn.innerHTML = '<img src="../img/pause.svg" alt="一時停止" class="pause-icon">';
+        btn.title = '一時停止';
+        btn.classList.remove('paused');
+
+        currentBatch = batches[batchIndex];
+
+        // 進捗表示
+        const total = batches.reduce((s, b) => s + b.length, 0);
+        const done = batches.slice(0, batchIndex).reduce((s, b) => s + b.length, 0);
+        document.getElementById('progress-text').textContent =
+          `${done + 1}〜${done + currentBatch.length}枚目 ／ 全${total}枚`;
+
+        document.querySelector('.fuda-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        show('flash-panel');
+        hide('answer-panel');
+
+        // 枚数分フラッシュ
+        for (let i = 0; i < currentBatch.length; i++) {
+          document.getElementById('card-counter').textContent = `${i + 1} ／ ${currentBatch.length}`;
+          await flashCard(currentBatch[i]);
+        }
+
+        document.getElementById('card-counter').textContent = '';
+        hide('flash-panel');
+
+        // 自動で答え合わせ表示
+        const nums = ['①', '②', '③', '④', '⑤', '⑥', '⑦', '⑧', '⑨', '⑩'];
+        document.getElementById('answer-list').innerHTML = currentBatch.map((p, i) =>
+          `<div class="answer-item">
+            <span class="answer-num">${nums[i]}</span>
+            <span class="answer-kami">${buildKamiHtml(p)}</span>
+          </div>`
+        ).join('');
+        const isLast = batchIndex >= batches.length - 1;
+        document.getElementById('finish-msg').hidden = !isLast;
+        show('answer-panel');
+      }
+
+      // ── 1枚フラッシュ ──
+      async function flashCard(poem) {
+        const cardEl = document.getElementById('flash-card');
+        const textEl = document.getElementById('flash-card-text');
+        textEl.innerHTML = poem.torihuda;
+        const fadeMs = Math.min(Math.round(displayMs * 0.15), 100);
+
+        cardEl.style.transition = 'none';
+        cardEl.style.opacity = '1';
+
+        await pauseableDelay(displayMs);
+
+        cardEl.style.transition = `opacity ${fadeMs / 1000}s ease`;
+        cardEl.style.opacity = '0';
+        await new Promise(r => setTimeout(r, fadeMs + 100));
+      }
+
+      // ── 上の句HTML生成（決まり字を赤くする） ──
+      function buildKamiHtml(poem) {
+        // yomihuda を <br> で分割して上の句3句を取得
+        const phrases = poem.yomihuda.split('<br>').slice(0, 3);
+        let remaining = poem.kimariji.length;
+        return phrases.map(phrase => {
+          if (remaining <= 0) return phrase;
+          const red = phrase.slice(0, remaining);
+          const rest = phrase.slice(remaining);
+          remaining -= red.length;
+          return `<span class="answer-kj-red">${red}</span>${rest}`;
+        }).join(' ');
+      }
+
+      // ── 次へ（次のバッチ、最後ならシャッフルして最初から） ──
+      document.getElementById('restart-btn').addEventListener('click', () => {
+        if (batchIndex >= batches.length - 1) {
+          startGame(selectedColor);
+        } else {
+          batchIndex++;
+          runBatch();
+        }
+      });
+
+      // ── 反復（同じバッチをもう一度） ──
+      document.getElementById('repeat-btn').addEventListener('click', () => {
+        runBatch();
+      });
+
+      // ── 設定に戻る ──
+      document.getElementById('back-to-setup-btn').addEventListener('click', () => {
+        hide('flash-panel');
+        hide('answer-panel');
+        show('setup-panel');
+        show('page-title');
+        show('page-desc');
+        show('site-header');
+        show('site-footer');
+      });
+
+      // ── ユーティリティ ──
+      function show(id) { document.getElementById(id).hidden = false; }
+      function hide(id) { document.getElementById(id).hidden = true; }
+
+      function shuffle(arr) {
+        const a = [...arr];
+        for (let i = a.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+      }
+    })();
+  </script>
+  <script src="../js/back-to-top.js?20260908-02"></script>
+
+</body>
+
+</html>

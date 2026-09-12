@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head prefix="og: http://ogp.me/ns#">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Makurakotoba Master 3-Choice Quiz | Shigure no Hyakunin Isshu</title>
+  <link rel="canonical" href="https://hyakuninisshu.com/makurakotoba-game_en.html">
+  <meta name="description" content="A free quiz featuring classic makurakotoba (pillow words) from classical Japanese literature — ashihiki no, chihayaburu, hisakata no, and more. Choose the word each one leads into from three options, with commentary included so you can learn what each makurakotoba means.">
+  <link rel="stylesheet" href="../css/style.css?20260908-16">
+  <link rel="stylesheet" href="../css/karuta.css?20260506">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap"
+    rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" href="/favicon.ico">
+
+  <style>
+    .fuda-section {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    /* ── ボタン ── */
+    .main-btn {
+      display: inline-block;
+      padding: 0.6em 2em;
+      background: #B82343;
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 0.4em 0.3em;
+      transition: background 0.15s;
+    }
+
+    .main-btn:hover {
+      background: #9a1c38;
+    }
+
+    .sub-btn {
+      display: inline-block;
+      padding: 0.55em 1.6em;
+      background: #B82343;
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 0.4em 0.3em;
+    }
+
+    .sub-btn:hover {
+      background: #9a1c38;
+    }
+
+    /* ── セパレータ ── */
+    .fuda-sep {
+      border: none;
+      border-top: 1px solid #e0e0e0;
+      margin: 1.2em 0;
+    }
+
+    /* ── スタートボタン ── */
+    #start-button {
+      width: 100px;
+      height: 30px;
+      margin: 20px auto;
+      background-image: url(../img/icon_start.svg);
+      background-position: center center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      cursor: pointer;
+    }
+
+    /* ── ゲームモード設定 ── */
+    .game-mode-box {
+      border: 2px solid #B82343;
+      border-radius: 12px;
+      padding: 1em 1.2em;
+      margin: 1em 0;
+      background: #fff9f9;
+      text-align: center;
+    }
+
+    .q-count-row {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 0.6em 0 1em;
+    }
+
+    .q-count-btn {
+      padding: 8px 14px;
+      border: 2px solid #B82343;
+      border-radius: 20px;
+      background: #fff;
+      color: #B82343;
+      font-weight: bold;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: 0.15s;
+    }
+
+    .q-count-btn.active,
+    .q-count-btn:hover {
+      background: #B82343;
+      color: #fff;
+    }
+
+    /* ── 進捗テキスト ── */
+    #game-progress {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 0.6em;
+    }
+
+    /* ── 出題カード ── */
+    #game-card-wrap {
+      display: flex;
+      justify-content: center;
+      margin: 0.5em 0 1em;
+    }
+
+    #game-card {
+      width: 195px;
+    }
+
+    #game-card p {
+      font-family: "Noto Serif JP", serif;
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: 0.3em;
+      line-height: 1.5;
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 540px) {
+      #game-card {
+        width: 58vw;
+      }
+
+      #game-card p {
+        font-size: 8.5vw;
+      }
+    }
+
+    /* ── 三択ボタン ── */
+    #game-choices {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin: 14px 0;
+      flex-wrap: wrap;
+    }
+
+    .choice-btn {
+      min-width: 96px;
+      min-height: 54px;
+      padding: 10px 20px;
+      font-size: 1.15rem;
+      font-family: "Noto Serif JP", serif;
+      font-weight: 700;
+      border: 2px solid #B82343;
+      border-radius: 12px;
+      background: #fff;
+      color: #B82343;
+      cursor: pointer;
+      transition: background 0.12s, color 0.12s;
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      background: #B82343;
+      color: #fff;
+    }
+
+    .choice-btn.correct {
+      background: #27ae60;
+      border-color: #27ae60;
+      color: #fff;
+    }
+
+    .choice-btn.wrong {
+      background: #e74c3c;
+      border-color: #e74c3c;
+      color: #fff;
+      opacity: 0.65;
+    }
+
+    .choice-btn:disabled {
+      cursor: default;
+    }
+
+    /* ── 解説 ── */
+    #answer-note {
+      max-width: 480px;
+      margin: 0.8em auto 0;
+      padding: 0.8em 1em;
+      background: #f5ede0;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      line-height: 1.7;
+      text-align: left;
+    }
+
+    #answer-note b {
+      color: #B82343;
+    }
+
+    /* ── 結果画面 ── */
+    .result-rank-display {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #B82343;
+      margin: 4px 0 16px;
+    }
+
+    #result-score {
+      font-size: 2.2rem;
+      font-weight: bold;
+      color: #333;
+      margin: 4px 0;
+    }
+
+    .rank-table {
+      width: 100%;
+      max-width: 280px;
+      margin: 0 auto 1em;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    .rank-table th,
+    .rank-table td {
+      border: 1px solid #e0d8c8;
+      padding: 5px 10px;
+      text-align: center;
+    }
+
+    .rank-table th {
+      background: #f5ede0;
+      font-weight: bold;
+    }
+
+    .rank-table tr.highlight td {
+      background: #fff0f0;
+      color: #B82343;
+      font-weight: bold;
+    }
+
+    /* ── 結果 一覧表 ── */
+    .result-songs-table {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      text-align: left;
+    }
+
+    .result-songs-table th,
+    .result-songs-table td {
+      border: 1px solid #e0d8c8;
+      padding: 5px 7px;
+      vertical-align: middle;
+    }
+
+    .result-songs-table th {
+      background: #f5ede0;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .result-songs-table .center-cell {
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .result-songs-table .ok-mark {
+      color: #27ae60;
+      font-weight: bold;
+    }
+
+    .result-songs-table .ng-mark {
+      color: #e74c3c;
+      font-weight: bold;
+    }
+
+    /* スマホのみ：ゲーム中はヘッダー・フッター非表示 */
+    @media (max-width: 540px) {
+
+      #site-header[hidden],
+      #site-footer[hidden] {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ヘッダー -->
+  <header id="site-header" class="header">
+    <p class="site-title">
+      <a href="https://hyakuninisshu.com/">Shigure no Hyakunin Isshu</a>
+    </p>
+    <div class="header_list">
+      <a href="index_en.html"><img src="../img/icon_top_en.svg?ver-01" alt="Top" class="icon"></a>
+      <a href="introduction_en.html" style="color:#333"><img src="/img/icon_column_en.svg?ver-01" alt="Articles" class="icon"></a>
+      <a href="introduction-app_en.html" style="color:#333"><img src="/img/icon_app_en.svg?ver-01" alt="Apps" class="icon"></a>
+      <a href="makurakotoba-game.html"><img src="/img/icon_lang.svg?ver-01" alt="Japanese" class="icon"></a>
+      <a href="list_en.html"><img src="/img/icon_list_en.svg?ver-01" alt="Poem list and search" class="icon"></a>
+    </div>
+  </header>
+
+  <main class="main_about-main">
+    <div class="section fuda-section">
+      <nav id="breadcrumb-nav">
+        <ol class="breadcrumb">
+          <li><a href="index_en.html">Top</a></li>
+          <li><a href="introduction-app_en.html">Apps</a></li>
+          <li>Makurakotoba Master 3-Choice Quiz</li>
+        </ol>
+      </nav>
+      <h1 id="page-title" style="text-align: left;">Makurakotoba Master <br class="br-sp">3-Choice Quiz</h1>
+      <p id="page-desc">
+        Look at the makurakotoba (pillow word) shown and choose the word it leads into from three options.
+        <br class="br-pc">After you answer, a brief commentary on that makurakotoba will be shown.
+      </p>
+      <ul id="page-list" style="text-align:left; font-size:0.9rem">
+        <li>Questions are drawn at random from 18 classic makurakotoba.</li>
+        <li>Whether you answer correctly or not, a commentary is shown after each question.</li>
+        <li>Your accuracy rate and rank are shown at the end of the game.</li>
+      </ul>
+
+      <!-- ── 設定パネル ── -->
+      <div id="setup-panel">
+        <div class="game-mode-box">
+          <p style="font-size:0.85rem; font-weight:bold; color:#444; margin:0 0 0.3em; text-align:center;">How many
+            questions?
+          </p>
+          <div class="q-count-row">
+            <button class="q-count-btn" data-count="5">5 Q</button>
+            <button class="q-count-btn active" data-count="10">10 Q</button>
+            <button class="q-count-btn" data-count="18">All 18 Q</button>
+          </div>
+          <div id="start-button"></div>
+        </div>
+
+        <hr class="fuda-sep">
+        <h2 style="text-align: left;">What is Makurakotoba?</h2>
+        <p>Makurakotoba are words used to lead into a specific following word. Most are five syllables long and are placed immediately before the word they introduce, smoothing the rhythm of a poem or lending it a certain mood.</p>
+        <p>For example, "ashihiki no" is a makurakotoba that leads into "yama" (mountain). In a line like "ashihiki no / yamadori no o no / shidario no…," the moment you hear "ashihiki no," you know a word related to "mountain" is coming next.</p>
+        <p>Many makurakotoba have no direct modern-language translation of their own; instead, their role is to shape the rhythm of a waka poem and lend it a dignified, solemn tone.</p>
+      </div>
+
+      <!-- ── ゲームパネル ── -->
+      <div id="game-panel" hidden>
+        <div id="game-progress"></div>
+
+        <div id="game-card-wrap">
+          <div id="game-card" class="karuta_card">
+            <p id="game-card-text"></p>
+          </div>
+        </div>
+
+        <div id="game-choices"></div>
+
+        <p id="answer-note" hidden></p>
+
+        <div style="margin-top:1.2em;">
+          <button id="next-btn" class="main-btn" style="display:none;">Next Question</button>
+        </div>
+      </div>
+
+      <!-- ── 結果パネル ── -->
+      <div id="result-panel" hidden style="text-align:center; padding-bottom:2em;">
+        <p style="color:#666; font-size:0.9rem; margin:0; text-align:center;">Accuracy</p>
+        <p id="result-score" style="text-align:center;"></p>
+        <p id="result-rank-text" class="result-rank-display" style="text-align:center;"></p>
+
+        <table class="rank-table" id="rank-table">
+          <tr>
+            <th>Accuracy</th>
+            <th>Rank</th>
+          </tr>
+          <tr data-rank="Beginner">
+            <td>0–39%</td>
+            <td>Beginner</td>
+          </tr>
+          <tr data-rank="Apprentice">
+            <td>40–59%</td>
+            <td>Apprentice</td>
+          </tr>
+          <tr data-rank="Poet">
+            <td>60–79%</td>
+            <td>Poet</td>
+          </tr>
+          <tr data-rank="Master">
+            <td>80–99%</td>
+            <td>Master</td>
+          </tr>
+          <tr data-rank="Saint of Poetry">
+            <td>100%</td>
+            <td>Saint of Poetry</td>
+          </tr>
+        </table>
+
+        <div style="margin-top:1.2em;">
+          <button id="retry-btn" class="main-btn">Try Again</button>
+          <br>
+          <button id="result-back-btn" class="sub-btn">Back to Settings</button>
+        </div>
+
+        <div id="result-list" style="margin-top:1.4em; text-align:left;">
+          <p style="font-size:0.9rem; font-weight:bold; color:#555; margin:0 0 0.5em; text-align:center;">Makurakotoba From This Round</p>
+          <table class="result-songs-table">
+            <thead>
+              <tr>
+                <th>Q</th>
+                <th>Makurakotoba</th>
+                <th>Correct Answer</th>
+                <th>Your Answer</th>
+                <th>Result</th>
+              </tr>
+            </thead>
+            <tbody id="result-list-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer id="site-footer">
+    <div class="footer-inner">
+      <span class="footer-copy">&copy;2023 Shigure no Hyakunin Isshu</span>
+      <ul>
+        <li><a href="policy.html">Privacy Policy</a></li>
+        <li>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXx7TKlqnTfKrw2Nuh4f37swVwFH-RFDsNkTGQ4JEF50q2wQ/viewform?usp=header"
+            target="_blank" rel="noopener">Contact Form</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      'use strict';
+
+      // ── 枕詞データ（枕詞 / 導かれる言葉 / 解説）── q と a は原文の日本語のまま。noteのみ英訳。
+      const DATA = [
+        { q: 'あかねさす', a: '日', note: '"Akane-sasu" describes something glowing madder-red, and leads into words like "hi" (sun), "hiru" (daytime), or "murasaki" (purple) — things that shine or glow red.' },
+        { q: 'あしひきの', a: '山', note: 'Its origin is debated, but it\'s said to lead into "yama" (mountain) either from the image of a mountain\'s foothills stretching out long, or from the image of dragging one\'s feet (ashi hiku) along a mountain path.' },
+        { q: 'あらたまの', a: '年', note: 'Its origin is debated, but from the meaning "a new spirit," it leads into words for time renewing itself — "toshi" (year), "tsuki" (month), or "hi" (day).' },
+        { q: 'あをによし', a: '奈良', note: 'Derived from "aoni," a blue-green pigment used in the capital of Nara, this makurakotoba leads into "Nara" itself.' },
+        { q: 'いそのかみ', a: 'ふる', note: 'A pivot on the place name "Furu" in present-day Tenri City, Nara Prefecture, it also leads into the homophone "furu" (to grow old).' },
+        { q: 'いはばしる', a: '滝', note: 'From the image of water rushing violently over rocks, it leads into "taki" (waterfall) or "tarumi" (a cascade).' },
+        { q: 'うつせみの', a: '世', note: 'Connected to "utsushimi" (a living, mortal body), it leads into words for fleeting existence — "yo" (the world), "inochi" (life), or "hito" (a person).' },
+        { q: 'からころも', a: '着る', note: 'Since "karakoromo" (a Tang-style robe) is a garment one wears, it leads into "kiru" (to wear), "sode" (sleeve), or "suso" (hem).' },
+        { q: 'くさまくら', a: '旅', note: 'From the image of using grass as a pillow while sleeping outdoors, it leads into "tabi" (journey) or "musubu" (to tie, to make camp).' },
+        { q: 'しろたへの', a: '衣', note: 'Refers to pure white cloth woven from paper mulberry fiber, and leads into "koromo" (a robe) or things that are white, like "yuki" (snow), "kumo" (clouds), or "nami" (waves).' },
+        { q: 'そらみつ', a: '大和', note: 'Its origin is debated, but it\'s thought to mean "the land seen from the sky," and it leads into "Yamato" (the old name for Japan).' },
+        { q: 'たらちねの', a: '母', note: 'Its origin is debated, but this is one of the most well-known makurakotoba leading into "haha" (mother).' },
+        { q: 'ちはやぶる', a: '神', note: 'Describes something fierce and forceful in its power, and leads into "kami" (a god) or the place name "Uji."' },
+        { q: 'ぬばたまの', a: '夜', note: 'Named for "nubatama," the black seed of the blackberry lily, it leads into "kuro" (black), "yoru" (night), "kami" (hair), or "yume" (a dream).' },
+        { q: 'ひさかたの', a: '光', note: 'A makurakotoba that leads into words connected to the heavens and sky, such as "hikari" (light), "tsuki" (the moon), "ame" (rain), or "kumo" (clouds).' },
+        { q: 'ももしきの', a: '大宮', note: 'From the meaning "many stones laid out in rows," it leads into "ōmiya" (the great palace) or "miya" (a palace/shrine).' },
+        { q: 'やくもたつ', a: '出雲', note: 'From the meaning "a land where clouds rise up in many layers," it leads into "Izumo."' },
+        { q: 'こもりくの', a: '泊瀬', note: 'From the meaning "a hidden land enclosed by mountains," it leads into the place name "Hatsuse."' },
+      ];
+
+      const ALL_ANSWERS = [...new Set(DATA.map(d => d.a))];
+
+      // ── 状態 ──
+      let totalQuestions = 10;
+      let queue = [];
+      let results = [];
+      let currentIdx = 0;
+      let answered = false;
+
+      // ── 問題数選択 ──
+      document.querySelectorAll('.q-count-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.q-count-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          totalQuestions = parseInt(btn.dataset.count, 10);
+        });
+      });
+
+      document.getElementById('start-button').addEventListener('click', startGame);
+      document.getElementById('next-btn').addEventListener('click', advance);
+      document.getElementById('retry-btn').addEventListener('click', startGame);
+      document.getElementById('result-back-btn').addEventListener('click', goToSetup);
+
+      function buildChoices(item) {
+        const others = ALL_ANSWERS.filter(a => a !== item.a);
+        const wrongs = shuffle(others).slice(0, 2);
+        return shuffle([item.a, ...wrongs]);
+      }
+
+      function startGame() {
+        const count = Math.min(totalQuestions, DATA.length);
+        const selected = shuffle(DATA).slice(0, count);
+        queue = selected.map(item => ({ item, choices: buildChoices(item) }));
+        results = [];
+        currentIdx = 0;
+
+        hide('page-title');
+        hide('page-desc');
+        hide('page-list');
+        hide('breadcrumb-nav');
+        hide('site-header');
+        hide('site-footer');
+        hide('setup-panel');
+        hide('result-panel');
+        show('game-panel');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        renderQuestion();
+      }
+
+      function goToSetup() {
+        hide('game-panel');
+        hide('result-panel');
+        show('setup-panel');
+        show('page-title');
+        show('page-desc');
+        show('page-list');
+        show('breadcrumb-nav');
+        show('site-header');
+        show('site-footer');
+      }
+
+      function renderQuestion() {
+        answered = false;
+        const q = queue[currentIdx];
+        document.getElementById('game-progress').textContent =
+          `Question ${currentIdx + 1} of ${queue.length}`;
+        document.getElementById('game-card-text').textContent = q.item.q;
+
+        const choicesEl = document.getElementById('game-choices');
+        choicesEl.innerHTML = '';
+        q.choices.forEach(a => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn';
+          btn.textContent = a;
+          btn.dataset.answer = a;
+          btn.addEventListener('click', () => handleChoice(btn, a, q.item));
+          choicesEl.appendChild(btn);
+        });
+
+        hide('answer-note');
+        document.getElementById('next-btn').style.display = 'none';
+      }
+
+      function handleChoice(btnEl, chosen, item) {
+        if (answered) return;
+        answered = true;
+        const correct = chosen === item.a;
+        results.push({ item, chosen, correct });
+
+        document.querySelectorAll('.choice-btn').forEach(btn => {
+          btn.disabled = true;
+          if (btn.dataset.answer === item.a) btn.classList.add('correct');
+          else if (btn === btnEl) btn.classList.add('wrong');
+        });
+
+        const noteEl = document.getElementById('answer-note');
+        noteEl.innerHTML = `<b>${correct ? 'Correct!' : 'Incorrect…'}</b> "${item.q}" is a makurakotoba that leads into "<b>${item.a}</b>."<br>${item.note}`;
+        show('answer-note');
+
+        const isLast = currentIdx === queue.length - 1;
+        const nextBtn = document.getElementById('next-btn');
+        nextBtn.textContent = isLast ? 'View Results' : 'Next Question';
+        nextBtn.style.display = 'inline-block';
+      }
+
+      function advance() {
+        currentIdx++;
+        if (currentIdx < queue.length) {
+          renderQuestion();
+        } else {
+          showResult();
+        }
+      }
+
+      function showResult() {
+        hide('game-panel');
+        show('result-panel');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        const correctCount = results.filter(r => r.correct).length;
+        const total = results.length;
+        const pct = total > 0 ? Math.round((correctCount / total) * 100) : 0;
+        const rank = getRank(pct);
+
+        document.getElementById('result-score').textContent = `${correctCount} / ${total} correct (${pct}%)`;
+        document.getElementById('result-rank-text').textContent = `You are a "${rank}"!`;
+
+        document.querySelectorAll('#rank-table tr[data-rank]').forEach(tr => {
+          tr.classList.toggle('highlight', tr.dataset.rank === rank);
+        });
+
+        const tbody = document.getElementById('result-list-body');
+        tbody.innerHTML = '';
+        results.forEach((r, i) => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td class="center-cell">${i + 1}</td>
+            <td>${r.item.q}</td>
+            <td class="center-cell">${r.item.a}</td>
+            <td class="center-cell">${r.chosen}</td>
+            <td class="center-cell ${r.correct ? 'ok-mark' : 'ng-mark'}">${r.correct ? '○' : '×'}</td>`;
+          tbody.appendChild(tr);
+        });
+      }
+
+      function getRank(pct) {
+        if (pct >= 100) return 'Saint of Poetry';
+        if (pct >= 80) return 'Master';
+        if (pct >= 60) return 'Poet';
+        if (pct >= 40) return 'Apprentice';
+        return 'Beginner';
+      }
+
+      // ── ユーティリティ ──
+      function show(id) { const el = document.getElementById(id); if (el) el.hidden = false; }
+      function hide(id) { const el = document.getElementById(id); if (el) el.hidden = true; }
+
+      function shuffle(arr) {
+        const a = [...arr];
+        for (let i = a.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+      }
+    })();
+  </script>
+  <script src="../js/back-to-top.js?20260908-02"></script>
+
+</body>
+
+</html>

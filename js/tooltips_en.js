@@ -1,0 +1,15 @@
+tippy('.yamadori', {
+    content: '<div style="display:flex; flex-direction:column; gap:10px;"><div style="display:flex; flex-direction:column; "><h3 style="margin-bottom:5px;"><ruby>山鳥<rt>やまどり</rt></ruby>（copper pheasant）</h3><p>【Noun】A bird native to Japan. The male is easily recognized by its long tail feathers. It was once believed that mated pairs spent the day together but slept on opposite sides of a valley at night.</p></div><img loading="lazy" src="/img/yamadori.jpg" alt="山鳥" style="display:block; width:100%; height:auto; margin:0 auto 10px;"></div>', allowHTML: true
+});
+tippy('.fuji_yama', {
+    content: '<div style="display:flex; flex-direction:column; gap:10px;"><div style="display:flex; flex-direction:column; "><h3 style="margin-bottom:5px;"><ruby>富士<rt>ふじ</rt></ruby><ruby>山<rt>さん</rt></ruby> (fuji-san)</h3><p>【Noun】Japan\'s highest mountain (3,776 m) and the country\'s most iconic peak. An active volcano located on the border of present-day Shizuoka and Yamanashi Prefectures, it has long been admired for its snow-covered summit and celebrated in Japanese poetry and art. When this poem was composed in the 8th century, Mount Fuji is believed to have still been emitting volcanic smoke.</p></div><img loading="lazy" src="/img/fujisan_shinkansen_small.webp" alt="富士山" style="display:block; width:100%; height:auto; margin:0 auto 10px;"></div>', allowHTML: true
+});
+tippy('.kasasagi', {
+    content: '<div style="display:flex; flex-direction:column; gap:10px;"><div style="display:flex; flex-direction:column;"><h3 style="margin-bottom:5px;">Magpie (kasasagi)</h3><p><strong>Noun:</strong> A member of the crow family, slightly smaller than a crow. It is easily recognized by its striking black-and-white plumage, with glossy blue-green iridescence on its tail rather than a solid black color. In this poem, Yakamochi is thought to have likened the bird\'s white feathers to frost.</p></div><img loading="lazy" src="/img/kasasagi.jpg" alt="Magpie" style="display:block; width:100%; height:auto; margin:0 auto 10px;"></div>',
+    allowHTML: true
+});
+tippy('.gosechinomai', {
+    content: '<div style="display:flex; flex-direction:column; gap:10px; margin-bottom:0;"><div style="display:flex; flex-direction:column;"><h3 style="margin-bottom:5px;"><ruby>五節<rt>ごせち</rt></ruby>の<ruby>舞<rt>まい</rt></ruby> (gosechi-no-mai)</h3><p><strong>Noun:</strong> A ceremonial court dance performed at the Imperial Court during important harvest festivals. Four or five unmarried young women, dressed in the elegant jūnihitoe (twelve-layer ceremonial robes), danced as an offering of gratitude for a successful rice harvest. They carried Japanese cypress fans (hiōgi) and wore ornamental combs in their hair.</p></div><img loading="lazy" src="/img/hokusai_12.webp" alt="gosechi-no-mai" style="display:block; width:100%; height:auto; margin:0 auto"></div ><div style="font-size:11px; line-height:1.2; margin:3px auto 10px; color:#fff;"> © The Trustees of the British Museum</div> ',
+    allowHTML: true
+});
+
