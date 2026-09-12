@@ -373,30 +373,51 @@ const TOWER_TOP = 155;             // 最上段ブロック top Y
   let lastPoemIdx = -1;
 
   /* ── サウンド ──────────────────────────────────────────── */
-  // crushSound / landingSound はアニメーション後半（await を挟んで数百ms後）に鳴らすため、
+  // crushSound / landingSound などはアニメーション後半（await を挟んで数百ms後）に鳴らすため、
   // 何もせず鳴らすとブラウザの自動再生ブロックで無音になることがある。
   // 対策として、最初のブロック操作（確実なユーザー操作）の瞬間にミュート再生→即停止で
   // 一度アンロックしておく（hitSound はその場で即再生するため対策不要）。
+  //
+  // 注意: 実機（特に初回のオーディオ初期化が遅い端末）では、このミュート再生→停止の完了
+  // (play()のPromise解決)が本番再生より後に届くことがある。対策なしだと、
+  // ①本番再生が muted=true のまま鳴って無音になる、②本番再生の直後にアンロック側の
+  // pause() が割り込んで再生が止まる／音が欠けて別の音のように聞こえる、という不具合が起きる。
+  // そのため各Audioに _unlocking フラグを持たせ、本番再生（playDelayedSound）が
+  // 一度でも呼ばれたらアンロック側の後始末（pause/currentTime/muted解除）を無効化する。
   const hitSound       = Object.assign(new Audio('sound/daruma_hummer2.mp3'), { volume: 0.5 });
   const crushSound     = Object.assign(new Audio('sound/daruma-crush.mp3'),  { volume: 0.5 });
   const landingSound   = Object.assign(new Audio('sound/daruma-landing.mp3'), { volume: 0.5 });
   const transitionSound = Object.assign(new Audio('sound/daruma-transition.mp3'), { volume: 0.5 });
   const jumpSound        = Object.assign(new Audio('sound/daruma-jump.mp3'), { volume: 0.5 });
   const finalSound       = Object.assign(new Audio('sound/daruma-final.mp3'), { volume: 0.5 });
+  const DELAYED_SOUNDS = [crushSound, landingSound, transitionSound, jumpSound, finalSound];
   let soundsUnlocked = false;
   function unlockSounds() {
     if (soundsUnlocked) return;
     soundsUnlocked = true;
-    [crushSound, landingSound, transitionSound, jumpSound, finalSound].forEach(audio => {
+    DELAYED_SOUNDS.forEach(audio => {
+      audio._unlocking = true;
       audio.muted = true;
       audio.play().then(() => {
-        audio.pause();
-        audio.currentTime = 0;
-        audio.muted = false;
+        if (audio._unlocking) {
+          audio.pause();
+          audio.currentTime = 0;
+          audio.muted = false;
+        }
+        audio._unlocking = false;
       }).catch(() => {
         audio.muted = false;
+        audio._unlocking = false;
       });
     });
+  }
+
+  // crushSound/landingSound/transitionSound/jumpSound/finalSound はこれ経由で再生する。
+  function playDelayedSound(audio) {
+    audio._unlocking = false;   // アンロック処理の後始末（pause等）を無効化してから鳴らす
+    audio.muted = false;
+    audio.currentTime = 0;
+    audio.play().catch(() => {});
   }
 
   /* ── SVGヘルパー ───────────────────────────────────────── */
@@ -772,8 +793,7 @@ const TOWER_TOP = 155;             // 最上段ブロック top Y
     }
 
     /* ④ バウンド（scaleYでタワーの重みを表現） */
-    landingSound.currentTime = 0;
-    landingSound.play().catch(() => {});
+    playDelayedSound(landingSound);
     const all = [catGroup, ...blockGroups];
     await Promise.all(all.map(g => an(g,
       [
@@ -823,8 +843,7 @@ const TOWER_TOP = 155;             // 最上段ブロック top Y
       { duration: 260, easing: 'ease-in-out', fill: 'forwards' }
     )));
 
-    crushSound.currentTime = 0;
-    crushSound.play().catch(() => {});
+    playDelayedSound(crushSound);
     await Promise.all(all.map((el, j) => {
       const angle = (Math.random() - 0.5) * 80;
       const tx    = (Math.random() - 0.5) * 300;
@@ -846,8 +865,7 @@ const TOWER_TOP = 155;             // 最上段ブロック top Y
     try {
 
     /* ① タワーブロックをピカピカ点滅 */
-    transitionSound.currentTime = 0;
-    transitionSound.play().catch(() => {});
+    playDelayedSound(transitionSound);
     const flashOvs = blockGroups.map((g, i) => {
       const y = TOWER_TOP + i * BSTRIDE;
       const ov = mk('rect', { x: BX, y, width: BW, height: BH - 1, rx: 4,
@@ -891,8 +909,7 @@ const TOWER_TOP = 155;             // 最上段ブロック top Y
     ], { duration: 500, easing: 'ease-in', fill: 'forwards' });
 
     /* ④ 着地バウンド（天地中央付近まで大きく跳ね上がる） */
-    jumpSound.currentTime = 0;
-    jumpSound.play().catch(() => {});
+    playDelayedSound(jumpSound);
     catGroup.style.transform       = `translateY(${fallDist}px)`;
     catGroup.getAnimations().forEach(a => a.cancel());
     catGroup.style.transformBox    = 'fill-box';
@@ -910,8 +927,7 @@ const TOWER_TOP = 155;             // 最上段ブロック top Y
     if (base) base.style.display = 'none';
 
     /* 天地中央（跳ね上がりの頂点）でカラフルな煙幕 */
-    finalSound.currentTime = 0;
-    finalSound.play().catch(() => {});
+    playDelayedSound(finalSound);
     const smokeCX = CAT_X + CAT_W / 2;
     const smokeCY = CAT_Y + CAT_H / 2 + bouncePeak;
 
