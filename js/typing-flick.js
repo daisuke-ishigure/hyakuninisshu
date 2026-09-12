@@ -366,16 +366,18 @@ function showResults() {
   const avgKpm = Math.round(wpmData.reduce((a, b) => a + b, 0) / wpmData.length);
 
   const RANKS = [
-    { min: 150, label: "歌聖" },
-    { min: 100, label: "六歌仙" },
-    { min: 50, label: "名人" },
-    { min:  30, label: "歌詠み" },
-    { min:   0, label: "手習い" },
+    { min: 150, label: "歌聖",   color: "#B82343", range: "150〜" },
+    { min: 100, label: "六歌仙", color: "#b35f16", range: "100〜149" },
+    { min:  50, label: "名人",   color: "#8a6d1c", range: "50〜99" },
+    { min:  30, label: "歌詠み", color: "#4a7c59", range: "30〜49" },
+    { min:   0, label: "手習い", color: "#5c6a7d", range: "〜29" },
   ];
-  const rank = RANKS.find(r => avgKpm >= r.min).label;
+  const rankInfo = RANKS.find(r => avgKpm >= r.min);
+  const rank = rankInfo.label;
+  const rankColor = rankInfo.color;
 
   const chartBars = wpmData.map((wpm, i) => {
-    const color = getColorCode(completedQuestions[i].song.color);
+    const color = RANKS.find(r => wpm >= r.min).color;
     return `
       <div class="wpm-bar-wrap" data-wpm="${wpm}"
            style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%;">
@@ -405,22 +407,27 @@ function showResults() {
   document.getElementById('quiz-container').innerHTML = `
     <div style="font-family:'Noto Sans JP',sans-serif; margin-top:20px;">
       <p style="text-align:center; font-size:1rem; color:#666; margin:0 0 4px;">平均KPM: <strong>${avgKpm}</strong></p>
-      <p style="text-align:center; font-size:1.4rem; font-weight:bold; margin:0 0 16px;">あなたは<span style="color:#B82343;">「${rank}」</span>です！</p>
+      <p style="text-align:center; font-size:1.4rem; font-weight:bold; margin:0 0 16px;">あなたは<span style="color:${rankColor};">「${rank}」</span>です！</p>
+      <style>
+        @keyframes rankRowBlink {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.4; }
+        }
+        .rank-row-current {
+          animation: rankRowBlink 1s ease-in-out infinite;
+        }
+      </style>
       <div style="margin:0 auto 16px; max-width:260px; border:1px solid #e0d8c8; border-radius:8px; overflow:hidden; font-size:0.8rem;">
-        <div style="background:#f5ede0; padding:4px 0; text-align:center; font-weight:bold; color:#666;">ランク表</div>
-        ${[
-          ["〜29", "手習い"],
-          ["30〜49", "歌詠み"],
-          ["50〜99", "名人"],
-          ["100〜149", "六歌仙"],
-          ["150〜", "歌聖"],
-        ].map(([range, label]) => `
-          <div style="display:flex; justify-content:space-between; padding:5px 16px;
-                      background:${label === rank ? '#fff0f0' : '#fff'};
-                      font-weight:${label === rank ? 'bold' : 'normal'};
-                      color:${label === rank ? '#B82343' : '#333'};
-                      border-top:1px solid #f0e8d8;">
-            <span>${range} KPM</span><span>${label}</span>
+        <div style="background:#333; padding:4px 0; text-align:center; font-weight:bold; color:#fff;">ランク表</div>
+        ${RANKS.map(r => `
+          <div class="${r.label === rank ? 'rank-row-current' : ''}"
+               style="display:flex; align-items:center; justify-content:space-between; padding:5px 16px;
+                      background:${r.color};
+                      font-weight:${r.label === rank ? 'bold' : 'normal'};
+                      color:#fff;
+                      border-top:1px solid rgba(255,255,255,0.3);">
+            <span>${r.range} KPM</span>
+            <span>${r.label}${r.label === rank ? ' <span style="font-size:0.85em; opacity:0.85;">(現在)</span>' : ''}</span>
           </div>`).join('')}
       </div>
       <div style="text-align:center;">
