@@ -384,6 +384,26 @@ const TOWER_TOP = 155;             // 最上段ブロック top Y
   // pause() が割り込んで再生が止まる／音が欠けて別の音のように聞こえる、という不具合が起きる。
   // そのため各Audioに _unlocking フラグを持たせ、本番再生（playDelayedSound）が
   // 一度でも呼ばれたらアンロック側の後始末（pause/currentTime/muted解除）を無効化する。
+  // ── 一時デバッグ表示（実機で音が鳴らない原因を特定するため。原因判明後に削除すること） ──
+  function _soundDebug(msg) {
+    let box = document.getElementById('sound-debug-box');
+    if (!box) {
+      box = document.createElement('div');
+      box.id = 'sound-debug-box';
+      box.style.cssText = 'position:fixed;bottom:0;left:0;right:0;max-height:45vh;overflow:auto;'
+        + 'background:rgba(0,0,0,0.88);color:#7CFC00;font-size:11px;font-family:monospace;'
+        + 'padding:6px;z-index:99999;white-space:pre-wrap;pointer-events:none;';
+      document.body.appendChild(box);
+    }
+    const line = document.createElement('div');
+    const t = new Date();
+    const hh = String(t.getHours()).padStart(2, '0'), mm = String(t.getMinutes()).padStart(2, '0'),
+          ss = String(t.getSeconds()).padStart(2, '0'), ms = String(t.getMilliseconds()).padStart(3, '0');
+    line.textContent = `${hh}:${mm}:${ss}.${ms} ${msg}`;
+    box.appendChild(line);
+    box.scrollTop = box.scrollHeight;
+  }
+
   const hitSound       = Object.assign(new Audio('sound/daruma_hummer2.mp3'), { volume: 0.5 });
   const crushSound     = Object.assign(new Audio('sound/daruma-crush.mp3'),  { volume: 0.5 });
   const landingSound   = Object.assign(new Audio('sound/daruma-landing.mp3'), { volume: 0.5 });
@@ -395,17 +415,21 @@ const TOWER_TOP = 155;             // 最上段ブロック top Y
   function unlockSounds() {
     if (soundsUnlocked) return;
     soundsUnlocked = true;
+    _soundDebug(`unlockSounds() start (${DELAYED_SOUNDS.length}件)`);
     DELAYED_SOUNDS.forEach(audio => {
+      const label = audio.src.split('/').pop();
       audio._unlocking = true;
       audio.muted = true;
       audio.play().then(() => {
+        _soundDebug(`unlock OK: ${label}`);
         if (audio._unlocking) {
           audio.pause();
           audio.currentTime = 0;
           audio.muted = false;
         }
         audio._unlocking = false;
-      }).catch(() => {
+      }).catch(err => {
+        _soundDebug(`unlock FAIL: ${label} - ${err && err.name}: ${err && err.message}`);
         audio.muted = false;
         audio._unlocking = false;
       });
@@ -414,10 +438,16 @@ const TOWER_TOP = 155;             // 最上段ブロック top Y
 
   // crushSound/landingSound/transitionSound/jumpSound/finalSound はこれ経由で再生する。
   function playDelayedSound(audio) {
+    const label = audio.src.split('/').pop();
     audio._unlocking = false;   // アンロック処理の後始末（pause等）を無効化してから鳴らす
     audio.muted = false;
     audio.currentTime = 0;
-    audio.play().catch(() => {});
+    _soundDebug(`playDelayedSound: ${label} readyState=${audio.readyState} muted=${audio.muted}`);
+    audio.play().then(() => {
+      _soundDebug(`play OK: ${label}`);
+    }).catch(err => {
+      _soundDebug(`play FAIL: ${label} - ${err && err.name}: ${err && err.message}`);
+    });
   }
 
   /* ── SVGヘルパー ───────────────────────────────────────── */
@@ -705,7 +735,12 @@ const TOWER_TOP = 155;             // 最上段ブロック top Y
     isAnimating = true;
     unlockSounds();
     hitSound.currentTime = 0;
-    hitSound.play().catch(() => {});
+    _soundDebug(`hitSound.play() readyState=${hitSound.readyState}`);
+    hitSound.play().then(() => {
+      _soundDebug('hitSound OK');
+    }).catch(err => {
+      _soundDebug(`hitSound FAIL - ${err && err.name}: ${err && err.message}`);
+    });
     impactEffect(blockGroups[idx], dir);
     if (blockGroups[idx].dataset.dummy === '1') {
       dummyIdxs = dummyIdxs.filter(p => p !== idx);
