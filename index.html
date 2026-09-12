@@ -2,6 +2,12 @@
 <html lang="ja">
 
 <head prefix="og: http://ogp.me/ns#">
+  <!-- /index.html でアクセスされた場合にURLを / に整形する（GitHub Pagesは.htaccessのリダイレクトを解釈しないため） -->
+  <script>
+    if (location.pathname === '/index.html') {
+      history.replaceState(null, '', '/' + location.search + location.hash);
+    }
+  </script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
   <script>
