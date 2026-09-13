@@ -6,7 +6,7 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
     gtag('config', 'G-8X7WDTSLFD');
@@ -123,7 +123,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <!-- favicon用 -->
   <link rel="icon" href="/favicon.ico">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <script>
     if (window.location.href.includes("?jsonSelectorValue=35")) {
       window.location.href = window.location.href.replace("?jsonSelectorValue=35", "");
@@ -139,14 +139,14 @@
   <!-- ヘッダーここから -->
   <header class="header">
     <p class="site-title">
-    <a href="https://hyakuninisshu.com/">時雨の百人一首</a>
-  </p>
+      <a href="https://hyakuninisshu.com/">時雨の百人一首</a>
+    </p>
     <div class="header_list">
       <a href="index.html"><img src="../img/icon_top.svg?ver-02" alt="トップ" class="icon"></a>
-<a href="introduction.html" style="color:#333"><img src="/img/icon_column.svg?ver-02" alt="コラム" class="icon"></a>
-<a href="introduction-app.html" style="color:#333"><img src="/img/icon_app.svg?ver-02" alt="アプリ" class="icon"></a>
-<a href="35_en.html"><img src="/img/icon_lang.svg?ver-01" alt="English" class="icon"></a>
-<a href="list.html"><img src="/img/icon_search.svg?ver-04" alt="和歌の一覧・検索" class="icon"></a>
+      <a href="introduction.html" style="color:#333"><img src="/img/icon_column.svg?ver-02" alt="コラム" class="icon"></a>
+      <a href="introduction-app.html" style="color:#333"><img src="/img/icon_app.svg?ver-02" alt="アプリ" class="icon"></a>
+      <a href="35_en.html"><img src="/img/icon_lang.svg?ver-01" alt="English" class="icon"></a>
+      <a href="list.html"><img src="/img/icon_search.svg?ver-04" alt="和歌の一覧・検索" class="icon"></a>
     </div>
   </header>
   <!-- ヘッダーここまで・メインここから -->
@@ -168,7 +168,7 @@
           </select>
           <label for="jsonSelector" id="jsonSelector-label">歌人を選択</label>
           <select id="jsonSelector" class="selector"></select>
-          
+
 
           <!-- 札の裏返しトグル -->
           <p id="audio-credit">音声：NHKクリエイティブ・ライブラリー<br><small>※マナーモード時は音声が再生されません。</small></p>
@@ -283,59 +283,61 @@
       </dl>
     </div>
     <div class="chart-image-row">
-    <div class="chart-section">
-      <dl>
-        <dt class='title'>紀貫之の心のチャート</dt>
-            <dd>
-              <p>歌人の心の内をチャートと現代の言葉で描いてみました。</p>
-              <div class="emotion-chart">
-                <div id="radarChartWrapper">
-                  <canvas id="radarChart" width="300" height="300"></canvas>
-                </div>
-                <div>
-                  <p>この梅の香は、あの日のあなたのように私を迎えてくれたのに。<br>
-                  あなたの心は変わってしまった。</p>
-                </div>
-
+      <div class="chart-section">
+        <dl>
+          <dt class='title'>紀貫之の心のチャート</dt>
+          <dd>
+            <p>歌人の心の内をチャートと現代の言葉で描いてみました。</p>
+            <div class="emotion-chart">
+              <div id="radarChartWrapper">
+                <canvas id="radarChart" width="300" height="300"></canvas>
               </div>
-            </dd>
-      </dl>
+              <div>
+                <p>この梅の香は、あの日のあなたのように私を迎えてくれたのに。<br>
+                  あなたの心は変わってしまった。</p>
+              </div>
+
+            </div>
+          </dd>
+        </dl>
+      </div>
+      <div class="image-section">
+        <dl>
+          <dt class='title'>歌のイメージ</dt>
+          <dd>
+            <img loading='lazy' src='../img/c_035.webp' alt='紀貫之の歌のイメージ'>
+            <p><small>この画像は、William N. Porter氏が1909年にイギリスで出版した百人一首の英訳本『A Hundred Verses from Old Japan』の挿絵を元にAdobe
+                Firefly（生成AI）で色を付けて、アレンジしたイメージです。</small></p>
+            <p>このイメージでは宿の主人は男性として描かれていますが、詞書には性別は記されておらず、女性だった可能性もあります。</p>
+          </dd>
+        </dl>
+      </div>
     </div>
-    <div class="image-section">
-      <dl>
-        <dt class='title'>歌のイメージ</dt>
-        <dd>
-          <img loading='lazy' src='../img/c_035.webp' alt='紀貫之の歌のイメージ'>
-          <p><small>この画像は、William N. Porter氏が1909年にイギリスで出版した百人一首の英訳本『A Hundred Verses from Old Japan』の挿絵を元にAdobe Firefly（生成AI）で色を付けて、アレンジしたイメージです。</small></p>
-          <p>このイメージでは宿の主人は男性として描かれていますが、詞書には性別は記されておらず、女性だった可能性もあります。</p>
-        </dd>
-      </dl>
-    </div>
-  </div><div class="diagram-section">
+    <div class="diagram-section">
       <dl>
         <dt class='title'>紀貫之の系図</dt>
-            <dd class='thumb-image2'>
-              <figure class='portrait'>
-                <img src='../img/35_kinotsurayuki_diagram.gif?ver3' alt='紀貫之の系図' usemap="#ImageMap" />
-                <map name="ImageMap">
-                  <area shape="rect" coords="753,670,812,903" href="/17.html" alt="在原業平" />
-                  <area shape="rect" coords="427,666,492,904" href="/18.html" alt="藤原敏行" />
-                  <area shape="rect" coords="255,989,319,1220" href="/30.html" alt="壬生忠岑" />
-                  <area shape="rect" coords="24,782,96,978" href="/33.html" alt="紀友則" />
-                  <area shape="rect" coords="26,993,93,1258" href="/29.html" alt="凡河内躬恒" />
-                </map>
-                <figcaption>
-                  <p class="kome" style="width:calc(100% - 1em); font-size:0.9em;"><span
-                      style="color:#C32538; margin-right:0.25em;">■</span>の番号が付いている人物をクリックすると、その歌人のページに移動します。</p>
-                </figcaption>
-              </figure>
-              <div>
-                <p style="width:100%; margin-bottom: 0.75em;">
-                  紀貫之は紀友則のいとこです。藤原敏行は遠い親戚です。<br>醍醐天皇の勅を受けて、<a href="/33.html">紀友則</a>・紀貫之・<a href="/30.html">壬生忠岑</a>・<a
-                    href="/29.html">凡河内躬恒</a>が古今和歌集の撰者を務めました。紀友則は古今和歌集が完成する前に亡くなったと考えられています。
-                </p>
-              </div>
-            </dd>
+        <dd class='thumb-image2'>
+          <figure class='portrait'>
+            <img src='../img/35_kinotsurayuki_diagram.gif?ver3' alt='紀貫之の系図' usemap="#ImageMap" />
+            <map name="ImageMap">
+              <area shape="rect" coords="753,670,812,903" href="/17.html" alt="在原業平" />
+              <area shape="rect" coords="427,666,492,904" href="/18.html" alt="藤原敏行" />
+              <area shape="rect" coords="255,989,319,1220" href="/30.html" alt="壬生忠岑" />
+              <area shape="rect" coords="24,782,96,978" href="/33.html" alt="紀友則" />
+              <area shape="rect" coords="26,993,93,1258" href="/29.html" alt="凡河内躬恒" />
+            </map>
+            <figcaption>
+              <p class="kome" style="width:calc(100% - 1em); font-size:0.9em;"><span
+                  style="color:#C32538; margin-right:0.25em;">■</span>の番号が付いている人物をクリックすると、その歌人のページに移動します。</p>
+            </figcaption>
+          </figure>
+          <div>
+            <p style="width:100%; margin-bottom: 0.75em;">
+              紀貫之は紀友則のいとこです。藤原敏行は遠い親戚です。<br>醍醐天皇の勅を受けて、<a href="/33.html">紀友則</a>・紀貫之・<a href="/30.html">壬生忠岑</a>・<a
+                href="/29.html">凡河内躬恒</a>が古今和歌集の撰者を務めました。紀友則は古今和歌集が完成する前に亡くなったと考えられています。
+            </p>
+          </div>
+        </dd>
       </dl>
     </div>
     <div class="words">
@@ -343,7 +345,7 @@
         <dt class='title'>付録</dt>
         <dd>
           <dl class='word'>
-                        <dt id="henka">宿の主人の返歌</dt>
+            <dt id="henka">宿の主人の返歌</dt>
             <dd>紀貫之の百人一首の歌に対して、宿の主人は次のように返歌しました。
               <div class='quote'><q>
                   <h4>原文</h4>
@@ -361,7 +363,44 @@
                 </q></div>
             </dd>
 
-            
+            <dt>男の心変わりを責める歌</dt>
+            <dd>
+              次の歌は、紀貫之の私家集に収められた一首です。心変わりする貫之を責める女性が詠んだとされています。萩は下のほうの葉から先に色づくことが古くから知られており、その「色が変わっていく」様子に、心変わりした男性の姿を重ねて詠んでいます。
+              <div class='quote'><q>
+                  <h4>原文</h4>
+                  <ruby>秋萩<rt>あきはぎ</rt></ruby>の
+                  <ruby>下葉<rt>したば</rt></ruby>につけて
+                  <ruby>目<rt>め</rt></ruby>に<ruby>近<rt>ちか</rt></ruby>く
+                  <br>よそなる<ruby>人<rt>ひと</rt></ruby>の
+                  <ruby>心<rt>こころ</rt></ruby>をぞ<ruby>見<rt>み</rt></ruby>る
+                  <span class="shutten">『貫之集』紀貫之</span>
+                </q><q>
+                  <h4>現代語訳</h4>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">
+                    秋萩の下葉が色づいて変わっていくのを見るにつけても、目の前で見えているのに、よそよそしくなってすっかり心変わりしたあなたの気持ちを思い知ることだ。
+                  </p>
+                </q></div>
+            </dd>
+
+            <dt>源氏物語でアレンジされた貫之の歌</dt>
+            <dd>
+              次の歌は、紀貫之の上記の歌「秋萩の下葉につけて…」を本歌取りしたもので、『源氏物語』第34帖『若菜上』に登場します。光源氏から長年深く寵愛されてきた紫の上でしたが、光源氏が自分よりずっと若い女三宮を正妻に迎えることを打ち明けられ、悲しみを詠んだ歌です。
+              <div class='quote'><q>
+                  <h4>原文</h4>
+                  <ruby>目<rt>め</rt></ruby>に<ruby>近<rt>ちか</rt></ruby>く 
+                  <ruby>移<rt>うつ</rt></ruby>れば<ruby>変<rt>か</rt></ruby>はる 
+                  <ruby>世<rt>よ</rt></ruby>の<ruby>中<rt>なか</rt></ruby>を
+                  <br><ruby>行<rt>ゆ</rt></ruby>く<ruby>末<rt>すえ</rt></ruby><ruby>遠<rt>とお</rt></ruby>く 
+                  <ruby>頼<rt>たの</rt></ruby>みけるかな
+                  <span class="shutten">『源氏物語』紫の上</span>
+                </q><q>
+                  <h4>現代語訳</h4>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">
+                    男女の仲が目の前で移り変わる世の中を見てきたのに、行く末永く一緒にいてくださるなどと頼みにしてきたのだなあ。
+                  </p>
+                </q></div>
+            </dd>
+
 
             <div class="acordion-wrapper">
               <div class="accordion">
