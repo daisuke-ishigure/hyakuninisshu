@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="Keywords" content="aristocracy, court rank, kugyo, tenjobito, jigenin, status system, Heian period, hyakunin isshu">
+  <meta name="description" content="An overview of the status hierarchy within Heian aristocratic society: the differences between upper-, middle-, and lower-tier nobles, terms like kugyō, tenjōbito, and jigenin, and the pyramid structure of court ranks.">
+  <!-- スタイルシート -->
+  <link rel="stylesheet" href="../css/style.css?20260915-03">
+  <link rel="stylesheet" href="https://unpkg.com/scroll-hint@latest/css/scroll-hint.css">
+  <link rel="stylesheet" href="../css/showtooltips-blue-kanshoku.css">
+  <!-- google chart -->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <!-- フォント -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@500&family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap"
+    rel="stylesheet">
+  <script src="https://unpkg.com/scroll-hint@latest/js/scroll-hint.min.js"></script>
+  <!-- アップルタッチアイコン -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <!-- ogp設定 -->
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Overview of the Status Hierarchy | Heian Court Ranks &amp; Offices | Shigure's Hyakunin Isshu">
+  <meta property="og:description" content="An overview of the status hierarchy within Heian aristocratic society: the differences between upper-, middle-, and lower-tier nobles, terms like kugyō, tenjōbito, and jigenin, and the pyramid structure of court ranks.">
+  <meta property="og:image" content="https://hyakuninisshu.com/img/thumb_kanshoku.webp">
+  <meta property="og:url" content="https://hyakuninisshu.com/kanshoku_hierarchy_en.html">
+  <meta property="og:site_name" content="Shigure's Hyakunin Isshu">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="canonical" href="https://hyakuninisshu.com/kanshoku_hierarchy_en.html">
+  <!-- 構造化データ -->
+  <script type="application/ld+json">{
+    "@context":"https://schema.org","@type":"Article",
+    "mainEntityOfPage":{"@type":"WebPage","@id":"https://hyakuninisshu.com/kanshoku_hierarchy_en.html"},
+    "headline":"Overview of the Status Hierarchy | Heian Court Ranks & Offices | Shigure's Hyakunin Isshu",
+    "description":"An overview of the status hierarchy within Heian aristocratic society: the differences between upper-, middle-, and lower-tier nobles, terms like kugyō, tenjōbito, and jigenin, and the pyramid structure of court ranks.",
+    "image":"https://hyakuninisshu.com/img/thumb_kanshoku.webp",
+    "dateModified":"2026-09-15",
+    "author":{"@type":"Person","name":"Daisuke Ishigure","url":"https://hyakuninisshu.com/"},
+    "publisher":{"@type":"Organization","name":"Shigure's Hyakunin Isshu","logo":{"@type":"ImageObject","url":"https://hyakuninisshu.com/apple-touch-icon.png"}}
+  }</script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"Shigure's Hyakunin Isshu","item":"https://hyakuninisshu.com/"},
+      {"@type":"ListItem","position":2,"name":"Columns","item":"https://hyakuninisshu.com/introduction.html"},
+      {"@type":"ListItem","position":3,"name":"Heian Court Ranks & Offices","item":"https://hyakuninisshu.com/kanshoku_en.html"},
+      {"@type":"ListItem","position":4,"name":"The Status System of the Heian Aristocracy","item":"https://hyakuninisshu.com/kanshoku_hierarchy_en.html"}
+    ]
+  }
+  </script>
+  <!-- ファビコン -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="shortcut icon" href="https://hyakuninisshu.com/favicon.ico">
+  <!-- lightbox.cssの追加 -->
+  <link href="/css/lightbox.css" rel="stylesheet">
+  <!-- jQueryの追加 -->
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.jsの追加 -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
+  <style>
+    a {
+      text-decoration: underline;
+    }
+
+    /* OrgChart */
+    .google-visualization-orgchart-table {
+      border-collapse: separate !important;
+      border-spacing: 0 !important;
+    }
+
+    .google-visualization-orgchart-node {
+      background-color: white !important;
+      border: none !important;
+      box-shadow: none !important;
+      outline: none !important;
+      position: relative !important;
+      z-index: 0 !important;
+      background-clip: padding-box !important;
+      overflow: hidden !important;
+    }
+
+    .google-visualization-orgchart-node::after {
+      content: '' !important;
+      position: absolute !important;
+      inset: 0 !important;
+      border: 1px solid #999 !important;
+      z-index: 1 !important;
+      pointer-events: none !important;
+    }
+
+    .google-visualization-orgchart-node>div {
+      overflow: visible !important;
+    }
+
+    /* Court rank pyramid image (ikai_en.svg): fill the screen height when opened in the lightbox.
+       lightbox.js sizes SVGs by width, so we override it here to size by height instead. */
+    #lightbox .lb-image {
+      width: auto !important;
+      height: 90vh !important;
+      max-width: 95vw !important;
+      object-fit: contain;
+    }
+
+    .section p {
+      text-align: left;
+    }
+  </style>
+  <title>Overview of the Status Hierarchy | Heian Court Ranks &amp; Offices | Shigure's Hyakunin Isshu</title>
+</head>
+
+<body>
+  <!-- ヘッダーここから -->
+  <header class="header">
+    <p class="site-title">
+      <a href="https://hyakuninisshu.com/">Shigure no Hyakunin Isshu</a>
+    </p>
+    <div class="header_list">
+      <a href="../index_en.html"><img src="../img/icon_top_en.svg?ver-01" alt="Top" class="icon"></a>
+      <a href="../introduction_en.html" style="color:#333"><img src="/img/icon_column_en.svg?ver-01" alt="Columns"
+          class="icon"></a>
+      <a href="../introduction-app_en.html" style="color:#333"><img src="/img/icon_app_en.svg?ver-01" alt="Apps"
+          class="icon"></a>
+      <a href="kanshoku_hierarchy.html"><img src="/img/icon_lang.svg?ver-01" alt="Japanese" class="icon"></a>
+      <a href="../list_en.html"><img src="/img/icon_list_en.svg?ver-01" alt="Poem list &amp; search" class="icon"></a>
+    </div>
+  </header>
+  <!-- ヘッダーここまで・メインここから -->
+  <main class="main_about-main">
+    <div class="about-main">
+      <div class="section">
+        <nav>
+          <ol class="breadcrumb">
+            <li><a href="../index_en.html">Top</a></li>
+            <li><a href="../introduction_en.html">Columns</a></li>
+            <li><a href="../kanshoku_en.html">Heian Court Ranks &amp; Offices</a></li>
+            <li>The Status System of the Heian Aristocracy</li>
+          </ol>
+        </nav>
+        <hr>
+
+        <h1 id="hierarchy">The Status System of the Heian Aristocracy</h1>
+
+        <article>
+          <h2>Aristocratic Status and Hierarchy</h2>
+          <p>
+            Here, we introduce the nobility divided roughly into three tiers: upper, middle, and lower.
+          </p>
+          <p>
+            Upper-tier nobles (<em>jōryū kizoku</em>) held the Third Rank or higher, or held the Fourth Rank while
+            serving as a Councillor (<em>sangi</em>). They were known as <em>kugyō</em> or <em>kandachime</em>. This
+            group included officials such as the Chancellor (<em>daijō-daijin</em>), the Ministers of the Left and
+            Right, the Major and Middle Counselors, the Inner Minister, and Councillors — roughly equivalent to
+            today's cabinet ministers, at the very center of court politics.
+          </p>
+          <p>
+            Middle-tier nobles (<em>chūryū kizoku</em>) mainly held the Fourth or Fifth Rank, and were sometimes
+            called <em>tenjōbito</em>. A <em>tenjōbito</em> was someone permitted to enter the Tenjō-no-Ma chamber
+            of the Seiryōden — a privilege that was not determined by rank alone. For example, Chamberlains
+            (<em>kurōdo</em>), who served close to the emperor, were granted this privilege even at the Sixth Rank.
+            This tier formed the senior bureaucratic class that supported the core of the imperial court.
+          </p>
+          <p>
+            Lower-tier nobles (<em>karyū kizoku</em>) were those not permitted to enter the Seiryōden, including
+            those holding the Sixth through Eighth Ranks, or the Initial Rank. They were known as <em>jigenin</em>.
+          </p>
+          <p>
+            Even so, someone at the Sixth Rank could still be appointed as a provincial governor (<em>kokushi</em>).
+            In particular, in lower-graded provinces — those classified as <em>chūgoku</em> or <em>gekoku</em> — a
+            Sixth Rank official could even be appointed to the top post of <em>kami</em>. In this way, a person's
+            actual social standing depended not only on rank, but also on office and posting.
+          </p>
+        </article>
+        <article>
+          <h2>The Pyramid Structure of Court Ranks</h2>
+          <p>Court ranks formed a pyramid structure like the one shown below. From the Fourth Rank down, each rank
+            was divided into senior (<em>shō</em>) and junior (<em>ju</em>) grades, some of which were further split
+            into upper and lower — creating a total of 30 distinct steps.</p>
+          <p>There was a major difference in treatment at court between the Fifth Rank and above versus the Sixth
+            Rank and below. That said, some Sixth Rank officials still became <em>tenjōbito</em> as Chamberlains, or
+            were appointed provincial governors — so rank alone did not determine one's social standing.
+          </p>
+          <figure>
+            <a href="../img/ikai_en.svg" data-lightbox='court-ranks' data-title='Pyramid structure of court ranks'><img
+                src="../img/ikai_en.svg" alt="Pyramid structure of court ranks"></a>
+          </figure>
+        </article>
+
+        <div class="link-section-plain">
+          <dl>
+            <dt class='title'>Links</dt>
+            <dd>
+              <a class="da-link-btn" href="kanshoku_nikanhasshou_en.html">Central Government</a>
+              <a class="kt-link-btn" href="kanshoku_local_en.html">Local Government</a>
+              <a class="kts-link-btn" href="kanshoku_ikai_en.html">Court Ranks &amp; Titles</a>
+              <a class="mb-link-btn" href="kanshoku_salary_en.html">Nobles' Annual Income</a>
+            </dd>
+          </dl>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-copy">&copy;2023 Shigure no Hyakunin Isshu</span>
+      <ul>
+        <li><a href="../policy.html">Privacy Policy</a></li>
+        <li>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXx7TKlqnTfKrw2Nuh4f37swVwFH-RFDsNkTGQ4JEF50q2wQ/viewform?usp=header"
+            target="_blank" rel="noopener">Contact Form</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+  <!-- フッターここまで -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="../js/move_script.js?20260729"></script>
+  <!-- ▼▼▼ tippy.js ▼▼▼▼ -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/tooltips.js?2026906"></script>
+  <!-- ▲▲▲ tippy.js ▲▲▲ -->
+  <script src="js/showtooltiplink.js"></script>
+  <script src="../js/back-to-top.js?20260908-02"></script>
+
+</body>
+
+</html>

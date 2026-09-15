@@ -509,6 +509,69 @@ main {
   right: auto;
 }
 
+/* シンプル版リンクバッジ（コラム記事ページ用）：.link-sectionと同じ構成だが、
+   影・角丸なしで、上ボーダーのみで区切るデザイン */
+.link-section-plain {
+  background-color: #f7f1e0;
+  width: 988px;
+  max-width: 100%;
+  margin: 1em auto 0;
+  padding: 1em 0;
+  border-top: 1px solid #B82343;
+}
+@media screen and (max-width: 1000px) {
+  .link-section-plain {
+    max-width: 910px;
+    width: 95%;
+    margin: 0.5em auto 0;
+  }
+}
+@media screen and (max-width: 750px) {
+  .link-section-plain {
+    width: calc(100vw - 10px);
+    max-width: 100%;
+    margin: 0 auto;
+  }
+}
+
+.link-section-plain dt.title {
+  font-family: "noto-sans-pro", sans-serif;
+  font-size: 1.3rem;
+  margin-bottom: 0.35em;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-left: 5px solid #B82343;
+  color: #333;
+  padding: 3px 0 0 6px;
+  font-weight: bold;
+}
+@media screen and (max-width: 1000px) {
+  .link-section-plain dt.title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5em;
+  }
+}
+
+.link-section-plain dd {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 0.8em;
+}
+
+.link-section-plain .gk-link-btn,
+.link-section-plain .kg-link-btn,
+.link-section-plain .do-link-btn,
+.link-section-plain .da-link-btn,
+.link-section-plain .kt-link-btn,
+.link-section-plain .kts-link-btn,
+.link-section-plain .mb-link-btn {
+  position: static;
+  top: auto;
+  right: auto;
+}
+
 /* 心のチャート：main の "chart" 行に配置し、付録（.words）から独立させる（1.html〜100.html 共通） */
 .chart-image-row {
   grid-area: chart;
