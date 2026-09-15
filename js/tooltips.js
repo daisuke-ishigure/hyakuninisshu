@@ -268,6 +268,7 @@ tippy('.uneme', { content: '<h3><ruby>采女<rt>うねめ</rt></ruby></h3>【名
 
 
 /* 歴代の都・都市計画 */
+tippy('.tenjounoma', { content: '<h3><ruby>殿上<rt>てんじょう</rt></ruby>の<ruby>間<rt>ま</rt></ruby></h3>【名詞】内裏清涼殿にある細長い部屋。天皇、公卿、参議が参加する会議室として使用されました。ここに上殿を許された者は<ruby>殿上人<rt>てんじょうびと</rt></ruby>と呼ばれました。', allowHTML: true });
 tippy('.asukakiyomihara', { content: '<h3><ruby>飛鳥浄御原宮<rt>あすかのきよみはらのみや</rt></ruby></h3>【名詞】飛鳥浄御原宮は、天武天皇と持統天皇の2代が営んだ宮。天武天皇の病気の治癒を願って名付けられたと言われています。現在の奈良県高市郡明日香村にあったとされています。', allowHTML: true });
 tippy('.kunikyo', { content: '<h3><ruby>恭仁京<rt>にきょう</rt></ruby></h3>【名詞】恭仁京は、740年に平城京から遷都された都。期間は短く、740年～744年の3年3か月でした。', allowHTML: true });
 tippy('.heijokyo', { content: '<h3><ruby>平城京<rt>へいじょうきょう</rt></ruby></h3>平【名詞】城京は、710年に藤原京から遷都された都。', allowHTML: true });
