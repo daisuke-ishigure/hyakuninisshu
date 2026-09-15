@@ -1523,6 +1523,40 @@ figure img {
   }
 }
 
+/* 図＋クリック説明エリアのレイアウト（皇族の相関図など）：PCでは図60%・説明エリア40%を横並び、
+   スマホでは両方とも幅100%で縦に並べる */
+.diagram-explanation-layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.diagram-explanation-layout .image-overlay-container {
+  flex: 0 0 60%;
+  max-width: 60%;
+}
+.diagram-explanation-layout #explanation {
+  flex: 0 0 40%;
+  max-width: 40%;
+  padding-left: 10px;
+}
+@media (max-width: 750px) {
+  .diagram-explanation-layout {
+    flex-direction: column;
+  }
+  .diagram-explanation-layout .image-overlay-container,
+  .diagram-explanation-layout #explanation {
+    flex: 1 1 auto;
+    max-width: 100%;
+  }
+  .diagram-explanation-layout #explanation {
+    padding-left: 0;
+    padding-top: 10px;
+    margin-bottom: 1em;
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+}
+
 .nanasan {
   display: flex;
   align-items: center;

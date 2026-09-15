@@ -6,7 +6,7 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
     gtag('config', 'G-8X7WDTSLFD');
@@ -14,9 +14,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="Keywords" content="皇族,親王,内親王,上皇,法皇,平安時代,百人一首">
-  <meta name="description" content="平安時代の皇族の称号と序列を解説。天皇・上皇・法皇・親王・王など、臣下とは別格の皇族のしくみをわかりやすく紹介します。">
+  <meta name="description" content="平安時代の皇族の称号と序列を解説。天皇・上皇・法皇・親王・内親王・王・女王など、臣下とは別格の皇族のしくみを、クリックで説明が見られる相関図つきでわかりやすく紹介します。">
   <!-- スタイルシート -->
-  <link rel="stylesheet" href="../css/style.css?20260915-03">
+  <link rel="stylesheet" href="../css/style.css?20260915-05">
   <link rel="stylesheet" href="https://unpkg.com/scroll-hint@latest/css/scroll-hint.css">
   <link rel="stylesheet" href="../css/showtooltips-blue-kanshoku.css">
   <!-- google chart -->
@@ -34,7 +34,7 @@
   <meta property="og:locale" content="ja">
   <meta property="og:type" content="article">
   <meta property="og:title" content="皇族 | 平安時代の位階・官職 | 時雨の百人一首">
-  <meta property="og:description" content="平安時代の皇族の称号と序列を解説。天皇・上皇・法皇・親王・王など、臣下とは別格の皇族のしくみをわかりやすく紹介します。">
+  <meta property="og:description" content="平安時代の皇族の称号と序列を解説。天皇・上皇・法皇・親王・内親王・王・女王など、臣下とは別格の皇族のしくみを、クリックで説明が見られる相関図つきでわかりやすく紹介します。">
   <meta property="og:image" content="https://hyakuninisshu.com/img/thumb_kanshoku.webp">
   <meta property="og:url" content="https://hyakuninisshu.com/kanshoku_kouzoku.html">
   <meta property="og:site_name" content="時雨の百人一首">
@@ -51,9 +51,9 @@
       "@id": "https://hyakuninisshu.com/kanshoku_kouzoku.html"
     },
     "headline": "皇族 | 平安時代の位階・官職 | 時雨の百人一首",
-    "description": "平安時代の複雑な位階・官職を、百人一首の歌人と絡めて徹底解説。天武天皇が制定した「八色の姓」から、四等官（かみ・すけ・じょう・さかん）、史生の仕組みまで、古典文学の理解が深まる完全ガイドです。",
+    "description": "平安時代の皇族の称号と序列を解説。天皇・上皇・法皇・親王・内親王・王・女王など、臣下とは別格の皇族のしくみを、クリックで説明が見られる相関図つきでわかりやすく紹介します。",
     "image": "https://hyakuninisshu.com/img/thumb_kanshoku.webp",
-    "dateModified": "2026-03-05", 
+    "dateModified": "2026-09-16",
     "author": {
       "@type": "Person",
       "name": "石槫大輔",
@@ -71,23 +71,23 @@
     "about": [
       {
         "@type": "Thing",
-        "name": "八色の姓",
-        "sameAs": "https://ja.wikipedia.org/wiki/%E5%85%AB%E8%89%B2%E3%81%AE%E5%A7%93"
+        "name": "皇族",
+        "sameAs": "https://ja.wikipedia.org/wiki/%E7%9A%87%E6%97%8F"
       },
       {
         "@type": "Thing",
-        "name": "位階",
-        "sameAs": "https://ja.wikipedia.org/wiki/%E4%BD%8D%E9%9A%8E"
+        "name": "親王",
+        "sameAs": "https://ja.wikipedia.org/wiki/%E8%A6%AA%E7%8E%8B"
       },
       {
         "@type": "Thing",
-        "name": "官職",
-        "sameAs": "https://ja.wikipedia.org/wiki/%E5%AE%98%E8%81%B7"
+        "name": "内親王",
+        "sameAs": "https://ja.wikipedia.org/wiki/%E5%86%85%E8%A6%AA%E7%8E%8B"
       },
       {
         "@type": "Thing",
-        "name": "四等官",
-        "sameAs": "https://ja.wikipedia.org/wiki/%E5%9B%9B%E7%AD%89%E5%AE%98"
+        "name": "上皇",
+        "sameAs": "https://ja.wikipedia.org/wiki/%E4%B8%8A%E7%9A%87"
       }
     ]
   }
@@ -175,6 +175,49 @@
     .google-visualization-orgchart-node>div {
       overflow: visible !important;
     }
+
+    /* 皇族の相関図：クリックした赤い点を強調表示する */
+    @keyframes marker-active-spin {
+      from {
+        transform: translate(-50%, -50%) rotate(0deg);
+      }
+
+      to {
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
+    }
+
+    .image-overlay-container .marker.active {
+      /* pulseアニメーションで一番広がる瞬間（scale(1.3)）のサイズに固定する */
+      width: 39px !important;
+      height: 39px !important;
+      background-color: transparent;
+      border: 4pt dotted rgba(220, 0, 0, 0.9);
+      animation: marker-active-spin 6s linear infinite;
+    }
+
+    #explanation {
+      background-color: #fdf6f6;
+      border-left: 4px solid #B82343;
+      border-radius: 4px;
+      padding: 0.8em 1em;
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    #explanation .explanation-placeholder {
+      color: #888;
+      margin: 0;
+    }
+
+    #explanation dt {
+      margin-top: 0.5em;
+      font-weight: bold;
+    }
+
+    #explanation dt:has(ruby) {
+      margin-top: 0.75em;
+    }
   </style>
   <title>皇族 | 平安時代の位階・官職 | 時雨の百人一首</title>
 </head>
@@ -187,8 +230,10 @@
     </p>
     <div class="header_list">
       <a href="../index.html"><img src="../img/icon_top.svg?ver-02" alt="トップ" class="icon"></a>
-      <a href="../introduction.html" style="color:#333"><img src="/img/icon_column.svg?ver-02" alt="コラム" class="icon"></a>
-      <a href="../introduction-app.html" style="color:#333"><img src="/img/icon_app.svg?ver-02" alt="アプリ" class="icon"></a>
+      <a href="../introduction.html" style="color:#333"><img src="/img/icon_column.svg?ver-02" alt="コラム"
+          class="icon"></a>
+      <a href="../introduction-app.html" style="color:#333"><img src="/img/icon_app.svg?ver-02" alt="アプリ"
+          class="icon"></a>
       <a href="kanshoku_kouzoku_en.html"><img src="/img/icon_lang.svg?ver-01" alt="English" class="icon"></a>
       <a href="../list.html"><img src="/img/icon_search.svg?ver-04" alt="和歌の一覧・検索" class="icon"></a>
     </div>
@@ -206,18 +251,97 @@
           </ol>
         </nav>
         <hr>
-        
+
         <h1 id="kouzoku">皇族</h1>
-        <!-- h1の直後・表の前に挿入 -->
+        <h2>皇族の血縁関係と身分</h2>
+        <p>下図は、天皇を中心に描いた血縁関係の図です。<br class="br-pc">赤い点をクリックすると、それぞれの身分についての説明が表示されます。</p>
+        <figure class="diagram-explanation-layout">
+          <div class="image-overlay-container">
+            <img src="img/kouzoku_diagram.svg" alt="皇族の相関図" style="width:100%; height:auto; display:block;">
+            <div class="marker pulse" style="top: 7.74%; left: 28.07%;"
+              onclick="showKouzokuExplanation(this, 'father')"></div>
+            <div class="marker pulse" style="top: 7.74%; left: 50.19%;"
+              onclick="showKouzokuExplanation(this, 'mother')"></div>
+            <div class="marker pulse" style="top: 24.75%; left: 39.13%;"
+              onclick="showKouzokuExplanation(this, 'tennou')"></div>
+            <div class="marker pulse" style="top: 24.75%; left: 61.24%;"
+              onclick="showKouzokuExplanation(this, 'kisaki')"></div>
+            <div class="marker pulse" style="top: 57.33%; left: 14.59%;"
+              onclick="showKouzokuExplanation(this, 'naishinnou')"></div>
+            <div class="marker pulse" style="top: 57.33%; left: 50.19%;"
+              onclick="showKouzokuExplanation(this, 'ouSon')"></div>
+            <div class="marker pulse" style="top: 57.33%; left: 85.36%;"
+              onclick="showKouzokuExplanation(this, 'koutaishi')"></div>
+            <div class="marker pulse" style="top: 91.74%; left: 5.57%;"
+              onclick="showKouzokuExplanation(this, 'shinouNaishinnouMagoFemale')"></div>
+            <div class="marker pulse" style="top: 91.74%; left: 23.82%;"
+              onclick="showKouzokuExplanation(this, 'shinouNaishinnouMagoMale')"></div>
+            <div class="marker pulse" style="top: 91.74%; left: 41.06%;"
+              onclick="showKouzokuExplanation(this, 'joouMago')"></div>
+            <div class="marker pulse" style="top: 91.74%; left: 59.30%;"
+              onclick="showKouzokuExplanation(this, 'ouMago')"></div>
+            <div class="marker pulse" style="top: 91.74%; left: 76.24%;"
+              onclick="showKouzokuExplanation(this, 'koutaishiChlidFemale')"></div>
+            <div class="marker pulse" style="top: 91.74%; left: 94.48%;"
+              onclick="showKouzokuExplanation(this, 'koutaishiChlidMale')"></div>
+          </div>
+          <div id="explanation">
+            <p class="explanation-placeholder">図中の赤い点をクリックすると、ここに説明が表示されます。</p>
+          </div>
+        </figure>
+        <script>
+          const kouzokuExplanations = {
+            father: "天皇の父。すでに<ruby>譲位<rt>じょうい</rt></ruby>して<ruby>上皇<rt>じょうこう</rt></ruby>となっている場合や、出家して<ruby>法皇<rt>ほうおう</rt></ruby>となっている場合もあります。",
+
+            mother: "天皇の母。皇后や中宮など、かつて天皇の妃であった女性が、わが子の即位によって<ruby>皇太后<rt>こうたいごう</rt></ruby>となる例も見られます。",
+
+            tennou: "<dl><dt>天皇</dt><dd>日本の君主。「帝」と呼ばれることもあります。</dd><dt><ruby>太上天皇<rt>だいじょうてんのう</rt></ruby></dt><dd>天皇が譲位すると、「太上天皇」と呼ばれました。略して「上皇」、また「院」と呼ばれることもありました。</dd><dt>法皇</dt><dd>上皇が出家すると、法皇と呼ばれました。</dd></dl>",
+
+            kisaki: "<dl><dt><ruby>中宮<rt>ちゅうぐう</rt></ruby>・<ruby>皇后<rt>こうごう</rt></ruby></dt><dd>天皇の<ruby>后<rt>きさき</rt></ruby>として、最も高い地位にある女性。<br>※平安時代には、皇后と中宮が並立することもありました。</dd><dt><ruby>皇太后<rt>こうたいごう</rt></ruby></dt><dd>先代の天皇の皇后・中宮が、皇太后となることがありました。</dd><dt><ruby>太皇太后<rt>たいこうたいごう</rt></ruby></dt><dd>先々代などの天皇の皇后・中宮が、太皇太后となることがありました。</dd><dt><ruby>女御<rt>にょうご</rt></ruby></dt><dd>天皇の后妃の一人で、更衣より上位の立場にある女性。中宮・皇后となる者もいました。</dd><dt><ruby>更衣<rt>こうい</rt></ruby></dt><dd>天皇の后妃の一人で、女御より下位の立場にある女性。女御に昇ることもありました。</dd></dl>",
+
+            naishinnou: "<dl><dt><ruby>内親王<rt>ないしんのう</rt></ruby></dt><dd>皇族の女子が<ruby>親王宣下<rt>しんのうせんげ</rt></ruby>を受けると、「内親王」と呼ばれました。</dd><dt><ruby>斎院<rt>さいいん</rt></ruby></dt><dd>天皇の近親の未婚女性から選ばれ、賀茂社に奉仕した女性。内親王のほか、女王が選ばれることもありました。</dd><dt><ruby>斎宮<rt>さいぐう</rt></ruby></dt><dd>天皇の近親の未婚女性から選ばれ、伊勢神宮に奉仕した女性。内親王のほか、女王が選ばれることもありました。</dd></dl>",
+
+            ouSon: "天皇の息子であっても、<ruby>親王宣下<rt>しんのうせんげ</rt></ruby>を受けなければ「<ruby>親王<rt>しんのう</rt></ruby>」とは呼ばれず、「<ruby>王<rt>おう</rt></ruby>」という身分にとどまりました。",
+
+            koutaishi: "<dl><dt><ruby>皇太子<rt>こうたいし</rt></ruby>（<ruby>東宮<rt>とうぐう</rt></ruby>・<ruby>春宮<rt>とうぐう</rt></ruby>）</dt><dd>次の皇位継承者として<ruby>立太子<rt>りったいし</rt></ruby>された者は「皇太子」、「東宮」、「春宮」などと呼ばれました。次の天皇となることが期待される立場でした。<br>※皇太子は、必ずしも天皇の実子とは限りませんでした。</dd></dl>",
+
+            shinouNaishinnouMagoFemale: "天皇から見て孫にあたる女子。親王宣下を受けた場合は、「内親王」と呼ばれました。親王の娘であっても、親王宣下を受けなければ、「内親王」ではなく「女王」となる場合がありました。",
+
+            shinouNaishinnouMagoMale: "天皇から見て孫にあたる男子。親王宣下を受けた場合は、「親王」と呼ばれました。親王の息子であっても、親王宣下を受けなければ、「親王」ではなく「王」となる場合がありました。",
+
+            joouMago: "女王の子は、親と同じ皇族としての立場になるとは限りませんでした。皇族としての立場は、父系の皇統との関係などによって定められ、皇族の身分を離れて臣籍に降下することもありました。",
+
+            ouMago: "王の子は、親と同じ皇族としての立場になるとは限りませんでした。皇族としての立場は、父系の皇統との関係などによって定められ、皇族の身分を離れて臣籍に降下することもありました。",
+
+            koutaishiChlidFemale: "平安時代においては、皇太子の娘が皇位を継承することはありませんでした。また、皇太子の娘であるという理由だけで、必ずしも親王宣下を受けるとは限りませんでした。",
+
+            koutaishiChlidMale: "皇太子の息子は、皇族として皇位継承につながる立場にありましたが、必ずしも皇太子として立太子されるとは限りませんでした。また、親王宣下を受けるとも限りませんでした。",
+          };
+
+          function showKouzokuExplanation(element, key) {
+            // クリックしたマーカーを強調表示する
+            element.closest('.image-overlay-container').querySelectorAll('.marker').forEach(m => m.classList.remove('active'));
+            element.classList.add('active');
+
+            // 説明文を表示する
+            const explanation = document.getElementById('explanation');
+            explanation.innerHTML = kouzokuExplanations[key] || '';
+          }
+        </script>
         <p>
-          位階制度において、皇族は一般の官人とは別格の存在でした。臣下の序列（位階）とは独立した「皇族」という枠組みに属しており、天皇を頂点に、上皇・法皇・親王・内親王・王・女王の順に連なります。このページでは、皇族の称号とその意味を整理します。
+          皇族には、天皇を中心として、上皇・法皇、親王・内親王、王・女王などの身分がありました。
         </p>
         <p>
-          なお、皇太子の家政機関については「<a href="kanshoku_touguubou.html">春宮坊</a>」を、五位以上の貴族の序列については「<a href="kanshoku_ikai.html">位階と八色の姓</a>」をあわせてご覧ください。
+          また、親王・内親王には「品位」と呼ばれる皇族独自の位階があり、一品から四品までに分けられていました。これに対して、王・女王は原則として臣下と同じ位階体系に属し、正一位・従一位などの通常の位階が授けられました。
         </p>
+        <p>
+          親王・内親王と王・女王の間には、身分や待遇の面で大きな差がありました。
+        </p>
+        
+        <h2>皇族の称号・身分</h2>
         <table class='rank_table'>
           <tr>
-            <td style="width:20%; padding-top:0.3em;">称号</td>
+            <td style="width:20%; padding-top:0.3em;">称号・身分</td>
             <td style="width:80%;  padding-top:0.3em;">定義</td>
           </tr>
           <tr>
