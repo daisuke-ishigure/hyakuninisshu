@@ -1,5 +1,4 @@
 @charset "UTF-8";
-@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:wght@400;600;700;800&display=swap');
 
 /* 変数定義 */
@@ -5021,26 +5020,30 @@ table.kajin th {
      object-fit: contain;
 }
 
-.swiper-button-next::after {
-  font-family: "Material Icons" !important;
-  content: "\e5cc" !important;
+/* 矢印は外部アイコンフォント（Material Icons）に依存せず、border+transformだけで描く。
+   ネットワーク環境やローカルサーバーの違いに左右されず常に表示される。 */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  content: "" !important;
+  display: block !important;
+  font-size: 0 !important;
   position: absolute !important;
-  right: 0 !important;
-  top: 50%;
-  color: #b82343 !important;
-  font-size: 30px !important;
-  text-shadow: 0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff;
+  top: 50% !important;
+  width: 14px;
+  height: 14px;
+  border-top: 3px solid #b82343;
+  border-right: 3px solid #b82343;
+  filter: drop-shadow(0px 0px 2px #fff) drop-shadow(0px 0px 2px #fff) drop-shadow(0px 0px 2px #fff);
+}
+
+.swiper-button-next::after {
+  right: 8px !important;
+  transform: translateY(-50%) rotate(45deg);
 }
 
 .swiper-button-prev::after {
-  font-family: "Material Icons" !important;
-  content: "\e5cb" !important;
-  position: absolute;
-  left: 0 !important;
-  top: 50% !important;
-  color: #b82343 !important;
-  font-size: 30px !important;
-  text-shadow: 0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff;
+  left: 8px !important;
+  transform: translateY(-50%) rotate(-135deg);
 }
 
 .swiper-pagination-horizontal {
