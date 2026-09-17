@@ -80,8 +80,10 @@ fetch(jsonAddress)
       const hasKakekotobaGame = KAKEKOTOBA_GAME_NUMS.has(poemNum);
       const hasKakekotoba = KAKEKOTOBA_TECHNIQUE_NUMS.has(poemNum);
       const hasJokotoba = JOKOTOBA_NUMS.has(poemNum);
+      const poetName = poem.name.replace(/<rt>.*?<\/rt>/g, "");
       const gameLinksHTML =
         '<div class="waka-game-links">' +
+        `<a class="game-badge game-badge--poet" href="/${poem.number}.html" data-tooltip="解説ページへ">${poetName}の歌</a>` +
         `<a class="game-badge game-badge--daruma" href="/daruma-otoshi-${paddedNum}.html" data-tooltip="だるま落としで遊ぶ">だるま落とし</a>` +
         `<a class="game-badge game-badge--gokunarabe" href="/gokunarabe_${paddedNum}.html" data-tooltip="歌人に会える五句並べ">五句並べ</a>` +
         (hasKakekotobaGame
@@ -96,11 +98,11 @@ fetch(jsonAddress)
         (hasJokotoba
           ? `<a class="game-badge game-badge--jokotoba-dango" href="/jokotoba-dango.html" data-tooltip="序詞だんごで遊ぶ">序詞だんご</a>`
           : '') +
+        '<span class="small">' + poem.name + (poem.date ? "（" + poem.date + "）" : "") + "</span>" +
         '</div>';
 
       wakaTd.innerHTML =
         wakaHTML +
-        '<span class="small">' + poem.name + (poem.date ? "（" + poem.date + "）" : "") + "</span>" +
         (modernText ? '<span class="modern-toggle">▼ 現代語訳</span>' : '') +
         (modernText ? '<span class="modern-text" style="display:none;">' + modernText + '</span>' : '') +
         gameLinksHTML;

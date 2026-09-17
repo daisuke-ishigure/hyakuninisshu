@@ -130,8 +130,17 @@ table {
 .waka-game-links {
   display: flex;
   flex-wrap: wrap;
+  align-items: baseline;
   gap: 6px;
   margin-top: 0.6em;
+
+  .small {
+    margin-top: 0;
+    margin-left: auto;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: break-word;
+  }
 }
 .game-badge {
   display: inline-block;
@@ -144,6 +153,15 @@ table {
   transition: background 0.15s, color 0.15s, border-color 0.15s;
   cursor: pointer;
 
+  &--poet {
+    background: #f9dde3;
+    color: #b82343;
+    border-color: #e8aab8;
+    &:hover {
+      background: #b82343;
+      color: #fff;
+    }
+  }
   &--daruma {
     background: #fbe4d5;
     color: #b8571a;

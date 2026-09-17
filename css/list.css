@@ -98,8 +98,16 @@ table td:nth-child(2) rt {
 .waka-game-links {
   display: flex;
   flex-wrap: wrap;
+  align-items: baseline;
   gap: 6px;
   margin-top: 0.6em;
+}
+.waka-game-links .small {
+  margin-top: 0;
+  margin-left: auto;
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: break-word;
 }
 .game-badge {
   display: inline-block;
@@ -111,6 +119,15 @@ table td:nth-child(2) rt {
   border: 1px solid transparent;
   transition: background 0.15s, color 0.15s, border-color 0.15s;
   cursor: pointer;
+}
+.game-badge--poet {
+  background: #f9dde3;
+  color: #b82343;
+  border-color: #e8aab8;
+}
+.game-badge--poet:hover {
+  background: #b82343;
+  color: #fff;
 }
 .game-badge--daruma {
   background: #fbe4d5;

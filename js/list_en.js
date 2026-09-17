@@ -213,6 +213,7 @@ fetch(jsonAddress)
       const hasJokotoba = JOKOTOBA_NUMS.has(poemNum);
       const gameLinksHTML =
         '<div class="waka-game-links">' +
+        `<a class="game-badge game-badge--poet" href="/${poem.number}_en.html" data-tooltip="Poem details">${poetNameEN}'s Poem</a>` +
         `<a class="game-badge game-badge--daruma" href="/daruma-otoshi-${paddedNum}_en.html" data-tooltip="Play Daruma Otoshi">Daruma Otoshi</a>` +
         `<a class="game-badge game-badge--gokunarabe" href="/gokunarabe_${paddedNum}_en.html" data-tooltip="Meet the poet">Meet the Poet</a>` +
         (hasKakekotobaGame
@@ -221,6 +222,7 @@ fetch(jsonAddress)
         (hasJokotoba
           ? `<a class="game-badge game-badge--jokotoba-dango" href="/jokotoba-dango_en.html" data-tooltip="Play Jokotoba Dango">Jokotoba Dango</a>`
           : '') +
+        `<span class="small">${poetName}（${poetNameEN || dates}）</span>` +
         '</div>';
 
       let wakaTd = document.createElement("td");
@@ -232,7 +234,6 @@ fetch(jsonAddress)
         wakaTd.innerHTML =
           `<span class="kanji-text">${kanjiFirst} ${kanjiSecond}</span> ` +
           `<span class="romaji-text">${romajiFirst} ${romajiSecond}</span>` +
-          `<span class="small">${poetName}（${poetNameEN || dates}）</span>` +
           (modernText ? `<span class="modern-toggle">▼ translation</span>` : '') +
           (modernText ? `<span class="modern-text" style="display:none;">${modernText}</span>` : '') +
           gameLinksHTML;
@@ -240,7 +241,6 @@ fetch(jsonAddress)
         wakaTd.innerHTML =
           `<span class="kanji-text">${kanjiFirst}<br>${kanjiSecond}</span>` +
           `<span class="romaji-text">${romajiFirst}<br>${romajiSecond}</span>` +
-          `<span class="small">${poetName}（${poetNameEN || dates}）</span>` +
           (modernText ? `<span class="modern-toggle">▼ translation</span>` : '') +
           (modernText ? `<span class="modern-text" style="display:none;">${modernText}</span>` : '') +
           gameLinksHTML;
