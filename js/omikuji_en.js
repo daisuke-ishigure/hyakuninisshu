@@ -1094,7 +1094,7 @@ document.addEventListener('DOMContentLoaded', () => {
         wakaLuck.textContent = `Today's Fortune: ${luckMap[result.luck] || result.luck}`;
         interpLove.textContent = result.love;
         interpWork.textContent = result.work;
-        if (poemLinkBtn) poemLinkBtn.href = `gokunarabe_${index + 1}_en.html`;
+        if (poemLinkBtn) poemLinkBtn.href = `${index + 1}_en.html`;
 
         // 表示切替
         resultArea.classList.remove('hidden');
