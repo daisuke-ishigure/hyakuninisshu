@@ -1997,7 +1997,8 @@ video {
   letter-spacing: 0;
 }
 
-.card-front #frontContent h3 {
+.card-front #frontContent h3,
+.card-front #frontContent .was-h3 {
   writing-mode: vertical-rl;
   font-family: "Kaisei HarunoUmi", serif;
   font-size: 1.7rem;
@@ -2009,27 +2010,32 @@ video {
   z-index: 20;
 }
 @media screen and (max-width: 750px) {
-  .card-front #frontContent h3 {
+  .card-front #frontContent h3,
+  .card-front #frontContent .was-h3 {
     letter-spacing: 0.1em;
   }
 }
-.card-front #frontContent h3 {
+.card-front #frontContent h3,
+.card-front #frontContent .was-h3 {
   text-shadow: 0px 0px 8px #fff, 0px 0px 8px #fff, 0px 0px 8px #fff, 0px 0px 8px #fff, 0px 0px 8px #fff, 0px 0px 8px #fff;
 }
 @media (max-width: 1000px) {
-  .card-front #frontContent h3 {
+  .card-front #frontContent h3,
+  .card-front #frontContent .was-h3 {
     font-size: 1.6rem;
     line-height: 2;
   }
 }
 @media (max-width: 800px) {
-  .card-front #frontContent h3 {
+  .card-front #frontContent h3,
+  .card-front #frontContent .was-h3 {
     font-size: 1.75rem;
     line-height: 2;
   }
 }
 @media screen and (max-width: 380px) {
-  .card-front #frontContent h3 {
+  .card-front #frontContent h3,
+  .card-front #frontContent .was-h3 {
     font-size: 1.7rem;
     line-height: 2;
   }
@@ -2063,7 +2069,8 @@ video {
   text-shadow: 0px 0px 8px #fff, 0px 0px 8px #fff, 0px 0px 8px #fff, 0px 0px 8px #fff, 0px 0px 8px #fff, 0px 0px 8px #fff;
 }
 
-.card-front.active #frontContent h3 {
+.card-front.active #frontContent h3,
+.card-front.active #frontContent .was-h3 {
   font-size: 1.1rem;
   writing-mode: horizontal-tb;
   font-weight: normal;
@@ -2075,7 +2082,8 @@ video {
   text-shadow: 0px 0px 8px #fff, 0px 0px 8px #fff, 0px 0px 8px #fff, 0px 0px 8px #fff, 0px 0px 8px #fff, 0px 0px 8px #fff;
 }
 @media (max-width: 750px) {
-  .card-front.active #frontContent h3 {
+  .card-front.active #frontContent h3,
+  .card-front.active #frontContent .was-h3 {
     font-size: 1.25rem;
     line-height: 1.5;
   }
@@ -2147,14 +2155,16 @@ dd rt {
   padding: 0.75em;
   transition: transform 0.6s ease-in-out;
 }
-.card-back h3 {
+.card-back h3,
+.card-back .was-h3 {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: normal;
   line-height: 1.7;
   font-size: 1.1rem;
   flex-grow: 1;
 }
-.card-back h3 span {
+.card-back h3 span,
+.card-back .was-h3 span {
   display: block;
   font-size: 0.9rem;
   text-align: right;

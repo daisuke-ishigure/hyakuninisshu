@@ -71,8 +71,8 @@ tippy('.shinnousenge', { content: '<h3><ruby>親王宣下<rt>しんのうせん�
 tippy('.naishinnou', { content: '<h3><ruby>内親王<rt>ないしんのう</rt></ruby></h3>天皇の姉妹、皇女', allowHTML: true });
 tippy('.shinsekikouka', { content: '<h3><ruby>臣籍降下<rt>しんせきこうか</rt></ruby></h3>皇族がその身分を離れ、姓を与えられ臣下の身分に下ること', allowHTML: true });
 tippy('.ryouan', { content: '<h3><ruby>諒闇<rt>りょうあん</rt></ruby></h3>天皇がその父母の喪に服す期間', allowHTML: true });
-tippy('.gyoukou', { content: '<h3><ruby>御幸<rt>みゆき</rt></ruby>・<ruby>行幸<rt>みゆき</rt></ruby></h3>御幸（「ごこう」、「ぎょこう」とも読まれる）は、上皇・法皇・女院がお出かけされること。行幸（「ぎょうこう」とも読まれる）は天皇がお出かけされること。どちらも「みゆき」と読まれることがあります。', allowHTML: true });
-tippy('.miyuki', { content: '<h3>みゆき</h3>【名詞】「行幸」と書くと、天皇のお出かけ。「御幸」と書くと、上皇・法皇・女院のお出かけ。', allowHTML: true });
+tippy('.gyoukou', { content: '<h3><ruby>御幸<rt>みゆき</rt></ruby>・<ruby>行幸<rt>みゆき</rt></ruby></h3>御幸（「ごこう」、「ぎょうこう」とも読まれる）は、上皇・法皇・女院がお出かけされること。行幸（「ぎょうこう」とも読まれる）は天皇がお出かけされること。どちらも「みゆき」と読まれることがあります。', allowHTML: true });
+tippy('.miyuki', { content: '<h3>みゆき</h3>【名詞】天皇・上皇などのお出かけ。平安時代末期頃から、「行幸」を「ぎょうこう」と音読すると天皇、「御幸」を「ごこう」と音読すると上皇・法皇・女院などのお出かけを指すようになりました。', allowHTML: true });
 tippy('.chokkan', { content: '<h3><ruby>勅勘<rt>ちょっかん</rt></ruby></h3>天皇から受けるとがめ', allowHTML: true });
 tippy('.koutaitei', { content: '<h3><ruby>皇太弟<rt>こうたいてい</rt></ruby></h3>天皇の弟のうち将来皇位を継ぐべき者', allowHTML: true });
 tippy('.momoshiki', { content: '<h3><ruby>百敷<rt>ももしき</rt></ruby></h3>【名詞】石を敷き詰めた城のことで、宮中や内裏を意味します。', allowHTML: true });

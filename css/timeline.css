@@ -36,20 +36,24 @@
   color: #333;
   border-left: 2px solid #B82343;
 }
-.timeline-item h3 {
+.timeline-item h3,
+.timeline-item .was-h3 {
   font-size: 1.1rem;
   margin: 0;
   padding: 0;
   border-left: none;
 }
-.timeline-item h3:nth-child(1) {
+.timeline-item h3:nth-child(1),
+.timeline-item .was-h3:nth-child(1) {
   margin-top: 0.5em;
 }
-.timeline-item h3:nth-child(n+2) {
+.timeline-item h3:nth-child(n+2),
+.timeline-item .was-h3:nth-child(n+2) {
   margin-top: 0;
 }
 @media (max-width: 750px) {
-  .timeline-item h3 {
+  .timeline-item h3,
+  .timeline-item .was-h3 {
     font-size: 1.3rem;
   }
 }
@@ -95,7 +99,8 @@
 }
 
 /* 道長コラム用 */
-h3.column-timeline {
+h3.column-timeline,
+.was-h3.column-timeline {
   font-size: 1.1rem !important;
   margin: 0;
   margin-top: 0.8em !important;
@@ -103,7 +108,8 @@ h3.column-timeline {
   border-left: none;
 }
 @media (max-width: 780px) {
-  h3.column-timeline {
+  h3.column-timeline,
+  .was-h3.column-timeline {
     font-size: 1.24rem !important;
   }
 }/*# sourceMappingURL=timeline.css.map */

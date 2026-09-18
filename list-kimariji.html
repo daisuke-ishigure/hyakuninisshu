@@ -457,7 +457,7 @@
   <div id="postModal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
-      <h3>覚え方を投稿</h3>
+      <h2 class="was-h3">覚え方を投稿</h2>
       <form id="kimarijiForm">
         <div class="form-group">
           <label for="kimarijiText">あなたの覚え方 <span style="color: #e74c3c;">*</span></label>
@@ -691,7 +691,7 @@
         const querySnapshot = await getDocs(q);
 
         if (!querySnapshot.empty) {
-          html += '<div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #ddd;"><h5 style="margin: 0 0 10px 0; color: #666;">みんなの覚え方</h5></div>';
+          html += '<div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #ddd;"><h3 style="margin: 0 0 10px 0; color: #666;" class="was-h5">みんなの覚え方</h3></div>';
 
           const items = [];
           querySnapshot.forEach((doc) => {

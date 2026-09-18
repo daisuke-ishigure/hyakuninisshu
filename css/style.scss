@@ -1684,7 +1684,8 @@ video {
   }
 }
 
-.card-front #frontContent h3 {
+.card-front #frontContent h3,
+.card-front #frontContent .was-h3 {
   writing-mode: vertical-rl;
   font-family: "Kaisei HarunoUmi", serif;
   font-size: 1.7rem;
@@ -1750,7 +1751,8 @@ video {
     0px 0px 8px #fff,
     0px 0px 8px #fff;
 }
-.card-front.active #frontContent h3 {
+.card-front.active #frontContent h3,
+.card-front.active #frontContent .was-h3 {
   font-size: 1.1rem;
   writing-mode: horizontal-tb;
   font-weight: normal;
@@ -1835,7 +1837,7 @@ dd rt {
   padding: 0.75em;
   transition: transform 0.6s ease-in-out;
 
-  h3 {
+  h3, .was-h3 {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: normal;
     line-height: 1.7;
