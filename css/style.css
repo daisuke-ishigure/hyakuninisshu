@@ -5665,7 +5665,7 @@ body.hmenu-active {
   }
 
   /* ナビはフッターへ。ヘッダーは「サイト名（左）＋ JA/EN（右）」の横並びにして高さを詰める（サイト名は 1.3rem のまま） */
-  body.has-sp-appbar .header {
+  body:not(.no-sp-appbar) .header {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -5677,12 +5677,12 @@ body.hmenu-active {
     position: relative;
     z-index: 100;
   }
-  body.has-sp-appbar .header .site-title {
+  body:not(.no-sp-appbar) .header .site-title {
     text-align: left;
     margin: 0;
   }
   /* 英語版はサイト名が長い（Shigure no Hyakunin Isshu）。アイコン＋1行に収まるサイズにする */
-  html[lang="en"] body.has-sp-appbar .header .site-title {
+  html[lang="en"] body:not(.no-sp-appbar) .header .site-title {
     font-size: 0.9rem;
     letter-spacing: 0;
     white-space: nowrap;
@@ -5693,11 +5693,11 @@ body.hmenu-active {
   /* アイコンは日本語スマホと同じ実寸に固定（英語はサイト名フォントを縮めているため
      em のままだとアイコンも小さくなってしまう。rem で font-size 非依存にする）。
      2.2em / 1.96em × 1.3rem = 2.86rem / 2.548rem 相当。 */
-  html[lang="en"] body.has-sp-appbar .header .site-title a::before {
+  html[lang="en"] body:not(.no-sp-appbar) .header .site-title a::before {
     width: 2.86rem;
     height: 2.55rem;
   }
-  body.has-sp-appbar .header_list {
+  body:not(.no-sp-appbar) .header_list {
     margin: 0;          /* index.html のインライン margin:0 auto / max-width を打ち消す */
     max-width: none;
     flex: 0 0 auto;
@@ -5780,21 +5780,21 @@ body.hmenu-active {
   /* 固定バーのぶん、ページ下端に余白を確保してフッターが隠れないようにする。
      body は height:100vh 固定なので、コンテンツで伸びるよう height:auto にしたうえで
      min-height で最低1画面を維持し、padding-bottom でバーぶんの余白を作る。 */
-  body.has-sp-appbar {
+  body:not(.no-sp-appbar) {
     height: auto;
     min-height: 100vh;
     padding-bottom: 66px; /* バー高さ（56 + 10）ぶん。env は使わない（上記理由） */
   }
 
   /* 「上に戻る」ボタンを固定バーの上へ持ち上げる */
-  body.has-sp-appbar .back-to-top {
+  body:not(.no-sp-appbar) .back-to-top {
     bottom: calc(66px + 0.85rem);
   }
 }
 
 /* 極小幅では英語版サイト名をさらに縮めて、アイコン＋1行を維持 */
 @media screen and (max-width: 380px) {
-  html[lang="en"] body.has-sp-appbar .header .site-title {
+  html[lang="en"] body:not(.no-sp-appbar) .header .site-title {
     font-size: 0.8rem;
   }
 }

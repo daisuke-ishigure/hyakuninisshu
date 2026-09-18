@@ -135,6 +135,5 @@
 
   if (bar.children.length) {
     document.body.appendChild(bar);
-    document.body.classList.add('has-sp-appbar');
   }
 })();
