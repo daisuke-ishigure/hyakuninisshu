@@ -80,6 +80,42 @@
       min-height: 300px;
     }
 
+    /* 見出し階層をh1→h2に統一しつつ、従来のh4（矢印アイコン付き小見出し）の見た目を維持 */
+    .section h2.section-subheading {
+      font-family: "noto-sans-pro", sans-serif;
+      font-size: 1.1rem;
+      width: fit-content;
+      border: none;
+      color: #333;
+      padding: 3px 0 0 0;
+      font-weight: bold;
+    }
+
+    .section h2.section-subheading::before,
+    .section h2.section-subheading::after {
+      content: "";
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+    }
+
+    .section h2.section-subheading::before {
+      background-image: url("../img/double_arrow_right.svg");
+    }
+
+    .section h2.section-subheading::after {
+      background-image: url("../img/double_arrow_left.svg");
+    }
+
+    @media screen and (max-width: 1000px) {
+      .section h2.section-subheading {
+        font-size: 1.2rem;
+      }
+    }
+
     .taken-by-me {
       border: 3px solid rgba(255, 71, 87, 0.5) !important;
       background-color: rgba(255, 71, 87, 0.05);
@@ -864,7 +900,7 @@
           <span id="others_icons"></span>
         </div>
         <div class="setup-box">
-          <h4 style="margin-bottom:6px; margin-top: 0;">オンライン上の誰かと対戦する</h4>
+          <h2 class="section-subheading" style="margin-top:0; margin-bottom:6px;">オンライン上の誰かと対戦する</h2>
           <ul class="em-usage-list">
             <li style="text-align: left;">オンライン上で他のプレイヤーがいれば対戦できます。</li>
             <li style="text-align: left;">最大4人でリアルタイムに対戦できるかるたゲームです。</li>
@@ -879,7 +915,7 @@
 
           <hr style="margin: 20px 0; border: 0; border-top: 1px solid #888;">
 
-          <h4 style="margin-bottom:6px;">ロボットと対戦する</h4>
+          <h2 class="section-subheading" style="margin-top:1.5em; margin-bottom:6px;">ロボットと対戦する</h2>
           <ul class="em-usage-list">
             <li style="text-align: left;">ロボットを相手にいつでも対戦できます。</li>
           </ul>
@@ -903,7 +939,7 @@
 
           <button id="cpu_battle_button">ロボットと対戦</button>
           <hr style="margin: 20px 0; border: 0; border-top: 1px solid #888;">
-          <h4 style="margin-bottom:6px;">友達と遊ぶ</h4>
+          <h2 class="section-subheading" style="margin-top:1.5em; margin-bottom:6px;">友達と遊ぶ</h2>
           <ul class="em-usage-list">
             <li style="text-align: left;">お友達と示し合わせた「合言葉」を入力すると、その友達と対戦できます。</li>
             <li style="text-align: left;">合言葉は、日本語（ひらがな・カタカナ・漢字）や英数字、またそれらを組み合わせた言葉もご使用いただけます。</li>
@@ -914,7 +950,7 @@
       </div>
       <hr style="margin: 20px 0; border: 0; border-top: 1px solid #888;">
       <div id="game_header">
-        <h4>ご案内</h4>
+        <h2 class="section-subheading" style="margin-top:1em; margin-bottom:0.35em;">ご案内</h2>
         <style>
           @keyframes pulse-btn {
 
@@ -951,7 +987,7 @@
 
 
 
-        <h4>ランキング</h4>
+        <h2 class="section-subheading" style="margin-top:1.5em; margin-bottom:0.35em;">ランキング</h2>
         <ul class="em-usage-list">
           <li>
             Googleアカウントでログインして「誰かと対戦（オンライン対戦）」および「ロボットと対戦（ロボット対戦）」（ふつう・つよい）において勝利すると、本日の勝利数ランキングにリアルタイムで反映されます。ランキングは毎日0時（日本時間）にリセットされます。
