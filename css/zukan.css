@@ -51,6 +51,9 @@ html {
 #search-input:focus {
   border-color: #c8a870;
 }
+#search-input::-moz-placeholder {
+  color: #a08870;
+}
 #search-input::placeholder {
   color: #a08870;
 }
@@ -198,20 +201,12 @@ html {
   gap: 0.3rem;
 }
 
-/* 対応ブラウザでは、横並びのカードそれぞれの各要素（職業・歌人名・時代・生没年・概要・
-   歌・挿絵・心のチャート内の各項目）の先頭位置を、同じ行に並ぶカードの中で一番長いものに
-   揃える（subgridを多段階で連鎖させる）。非対応ブラウザでは上のflex/blockレイアウトが
-   そのまま使われるので影響なし。
-   ※ :has(.kokoro-panel)で絞り込み、心のチャートを持たない英語版（kajin-zukan_en.html、
-     同じ.poet-card/.card-bodyクラスを共有）のカードには適用しない
-     （行数の異なるsubgridテンプレートを当ててしまうと、英語版のカード下部に
-       空白ができてしまうため）。 */
 @supports (grid-template-rows: subgrid) {
   .poet-card:has(.kokoro-panel) {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: subgrid;
-    grid-row: span 13; /* 1:card-img／2〜13:card-bodyへ委譲 */
+    grid-row: span 13;
     row-gap: 0.3rem;
     padding: 2.2rem 0.85rem 0.75rem;
   }
@@ -222,15 +217,14 @@ html {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: subgrid;
-    /* card-meta,card-name,card-date×2,card-outline,card-poem,card-extra-img(7) + kokoro-panel(5) */
-    grid-row: 2 / span 12;
+    grid-row: 2/span 12;
     padding: 0;
   }
   .poet-card:has(.kokoro-panel) .kokoro-panel {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: subgrid;
-    grid-row: span 5; /* 和歌タイトル／和歌本文／心境タイトル／心境本文／チャート */
+    grid-row: span 5;
   }
   .poet-card:has(.kokoro-panel) .emotion-chart {
     display: grid;
@@ -242,13 +236,12 @@ html {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: subgrid;
-    grid-row: 1 / span 4;
+    grid-row: 1/span 4;
   }
   .poet-card:has(.kokoro-panel) .radarChartWrapper {
     grid-row: 5;
   }
 }
-
 .card-name {
   font-family: "noto-sans-pro", sans-serif;
   font-size: 0.95rem;
@@ -264,6 +257,7 @@ html {
   font-weight: 400;
   color: #333;
 }
+
 .card-name-en {
   display: block;
   font-family: "noto-sans-pro", sans-serif;
@@ -568,12 +562,6 @@ body.kokoro-modal-open {
   background: #005e46;
 }
 
-/* ==========================================================
-   心のチャート（歌人図鑑：モーダルやカード展開ではなく、常に全カードに表示する）
-   ※ 英語版（kajin-zukan_en.html）は上記の .kokoro-modal* を
-     引き続き使用しているため、そちらは変更していない
-   ========================================================== */
-
 .kokoro-panel {
   margin-top: 0.75rem;
   padding-top: 0.75rem;
@@ -590,7 +578,7 @@ body.kokoro-modal-open {
 
 .kokoro-panel .radarChartWrapper {
   flex: 0 0 auto;
-  width: 95%; /* 5%縮小 */
+  width: 95%;
   height: auto;
   min-width: 0;
   min-height: 0;
@@ -625,10 +613,6 @@ body.kokoro-modal-open {
   color: #7a6050;
 }
 
-/* 和歌と歌人の心境を区切る境界線は、和歌側（.kokoro-panel-poem）に付けると
-   縦書き用のwidth:fit-content（テキスト幅ぶんしかない）に引きずられて短くなり、
-   パネル上部の境界線（.kokoro-panel の border-top、カード幅いっぱい）と幅が揃わない。
-   そのため、幅の制約を受けない歌人の心境タイトル側の border-top として持たせる。 */
 .kokoro-panel-text .kokoro-panel-quotes-title {
   font-size: 0.8rem;
   font-weight: 700;
@@ -641,6 +625,7 @@ body.kokoro-modal-open {
   padding: 0.75rem 0 0;
   border-top: 1px solid #ddd0bc;
 }
+
 .kokoro-panel .kokoro-panel-text .kokoro-panel-quotes-title {
   margin-top: 0;
 }
@@ -678,28 +663,16 @@ body.kokoro-modal-open {
     font-size: 0.85rem;
   }
 }
-/* 幅・高さは width:fit-content / height:auto などブラウザ側の自動計算に
-   頼らず、js/zukan.jsのpoemInlineStyle()が句の数・文字数から計算した
-   値をinlineスタイル（style="width:...em;height:...em;"）として直接
-   指定している。一部の実機ブラウザ（iOS Chrome＝WebKit）で、
-   writing-mode:vertical-rlの要素に対するfit-content/autoのサイズ計算が
-   正しく機能せず、和歌が右にずれたり句の途中で意図しない折り返しが
-   起きる不具合が実際に確認されたための対策（Chromium・Playwright上の
-   WebKitでは再現しないため、ブラウザ側の計算を信用しない方針にした）。
-   ※ line-height（句と句の間隔）はpoemInlineStyle()の幅計算式
-     （句数 × 2.2）と対になっているため、変更する場合は両方揃えること。 */
-html[lang="ja"] .kokoro-panel-poem {
+html[lang=ja] .kokoro-panel-poem {
   writing-mode: vertical-rl;
   text-orientation: mixed;
-  font-family: 'Kaisei HarunoUmi', serif;
+  font-family: "Kaisei HarunoUmi", serif;
   min-height: 0;
   align-self: start;
   line-height: 2.2;
   letter-spacing: 0.04em;
   margin: 0 auto 0.75rem;
 }
-html[lang="ja"] .kokoro-panel-poem ruby {
+html[lang=ja] .kokoro-panel-poem ruby {
   ruby-align: center;
-}
-/* 「上に戻る」ボタン（.back-to-top）は全ページ共通で css/style.css に
-   定義し、js/back-to-top.js が生成する（js/zukan.js固有の実装から移行済み）。 */
+}/*# sourceMappingURL=zukan.css.map */

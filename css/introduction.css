@@ -71,22 +71,4 @@
   .card {
     width: 100%;
   }
-}
-
-/* introduction-app.html だけ（.app-card-grid修飾クラス付きの.sectionのみ）：
-   PCでは.sectionの幅を広げ、幅に余裕があるぶんカードを最大4列まで並べられるようにする。
-   introduction.css は introduction.html などとも共有しているため、他ページには影響させない。 */
-.section.app-card-grid {
-  width: 1100px;
-}
-@media (max-width: 1000px) {
-  .section.app-card-grid {
-    width: 100%;
-  }
-}
-@media (min-width: 1001px) {
-  .section.app-card-grid .card {
-    width: calc(25% - 15px);
-  }
-}
-/*# sourceMappingURL=introduction.css.map */
+}/*# sourceMappingURL=introduction.css.map */

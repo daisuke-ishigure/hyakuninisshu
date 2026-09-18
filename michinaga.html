@@ -62,6 +62,10 @@
       font-size: 1.1rem;
     }
 
+    .section .was-h3 {
+      border-bottom: none;
+    }
+
     h3.column-timeline,
     .was-h3.column-timeline {
       font-size: 1.1rem !important;
@@ -76,6 +80,31 @@
       .was-h3.column-timeline {
         font-size: 1.1rem !important;
       }
+    }
+
+    /* 原文・現代語訳ボックス：歌ページの .words .quote と同じ見た目（幅は .section 側に合わせる） */
+    .quote {
+      display: flex;
+      gap: 1em;
+      margin: 0.5em 0;
+    }
+    @media (max-width: 1000px) {
+      .quote {
+        flex-direction: column;
+        gap: 0.5em;
+      }
+    }
+    .quote q {
+      background-image: url(/img/paper.gif);
+      box-shadow: 0px 0px 3px 0px rgba(136, 136, 136, 0.777);
+      flex: 1;
+      padding: 0.5em;
+    }
+    .quote .was-h4 {
+      font-size: 1rem;
+      width: auto;
+      padding: 0;
+      margin: 1em 0;
     }
   </style>
   <!-- 構造化データ -->
@@ -182,20 +211,20 @@
             この歌を手がかりに、当時の宮廷の姿をたどってみたいと思います。
           </p>
         <div class="quote">
-          <q style="font-family: noto-sans-jp, sans-serif;">
-            <h2 class="was-h3">原文</h2>
-            この<ruby>世<rt>よ</rt></ruby>をば
-            <ruby>我<rt>わ</rt></ruby>が<ruby>世<rt>よ</rt></ruby>とぞ<ruby>思<rt>おも</rt></ruby>ふ
-            <ruby>望月<rt>もちづき</rt></ruby>の
-            <br><ruby>欠<rt>か</rt></ruby>けたることも
-            なしと<ruby>思<rt>おも</rt></ruby>へば
-            <span class="shutten">『小右記』より</span>
-          </q>
-          <q style="font-family: noto-sans-jp, sans-serif; padding-right:0">
-            <h2 class="was-h3">現代語訳</h2>
-            <span style="margin-bottom: 0;">この世は我が世であると思う。
+          <q>
+            <h2 class="was-h4">原文</h2>
+              この<ruby>世<rt>よ</rt></ruby>をば
+              <ruby>我<rt>わ</rt></ruby>が<ruby>世<rt>よ</rt></ruby>とぞ<ruby>思<rt>おも</rt></ruby>ふ
+              <ruby>望月<rt>もちづき</rt></ruby>の
+              <br><ruby>欠<rt>か</rt></ruby>けたることも
+              なしと<ruby>思<rt>おも</rt></ruby>へば
+              <span class="shutten">『小右記』より</span>
+            </q>
+          <q>
+            <h2 class="was-h4">現代語訳</h2>
+            <p style="line-height: 1.8; margin-top: 0.2em;">この世は我が世であると思う。
               <br class="br-pc">満月に欠けるもののないように、
-              <br class="br-pc">すべてがそろっている。</span>
+              <br class="br-pc">すべてがそろっている。</p>
           </q>
         </div>
         では、道長はどのようにしてこのような権力を手に入れたのでしょうか。
@@ -287,7 +316,7 @@
         <p>
         つまり道長は、「娘三人はみな后となった。盃を交わす公卿たちも誰一人欠けていない。だからこそ皆で娘たちを支えてほしい」と、公卿たちに協力を呼びかける意味を込めてこの歌を詠んだのではないか、とも考えられています。
         </p>
-        <h3 class="was-h4">天皇の后になった道長の娘たち</h3>
+        <h3>天皇の后になった道長の娘たち</h3>
         <p>下表に記載した年齢は道長の娘が中宮に立后されたときのものです。当人の意思と関係なく結婚していないため、驚くほど若い年齢で結婚しているケースがあります。</p>
         <table class="michinaga_table">
           <tr>

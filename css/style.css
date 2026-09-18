@@ -1,6 +1,6 @@
 @charset "UTF-8";
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:wght@400;600;700;800&display=swap');
-
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:wght@400;600;700;800&display=swap");
 /* 変数定義 */
 /* 共通スタイル */
 * {
@@ -76,24 +76,10 @@ p {
   line-height: 1.8;
 }
 
-html[lang="en"]:not([data-font="legacy"]) body,
-html[lang="en"]:not([data-font="legacy"]) p,
-html[lang="en"]:not([data-font="legacy"]) li,
-html[lang="en"]:not([data-font="legacy"]) a,
-html[lang="en"]:not([data-font="legacy"]) span,
-html[lang="en"]:not([data-font="legacy"]) td,
-html[lang="en"]:not([data-font="legacy"]) th,
-html[lang="en"]:not([data-font="legacy"]) button,
-html[lang="en"]:not([data-font="legacy"]) input,
-html[lang="en"]:not([data-font="legacy"]) label {
+html[lang=en]:not([data-font=legacy]) body, html[lang=en]:not([data-font=legacy]) p, html[lang=en]:not([data-font=legacy]) li, html[lang=en]:not([data-font=legacy]) a, html[lang=en]:not([data-font=legacy]) span, html[lang=en]:not([data-font=legacy]) td, html[lang=en]:not([data-font=legacy]) th, html[lang=en]:not([data-font=legacy]) button, html[lang=en]:not([data-font=legacy]) input, html[lang=en]:not([data-font=legacy]) label {
   font-family: "Lora", "Noto Serif JP", serif !important;
 }
-html[lang="en"]:not([data-font="legacy"]) h1,
-html[lang="en"]:not([data-font="legacy"]) h2,
-html[lang="en"]:not([data-font="legacy"]) h3,
-html[lang="en"]:not([data-font="legacy"]) h4,
-html[lang="en"]:not([data-font="legacy"]) h5,
-html[lang="en"]:not([data-font="legacy"]) h6 {
+html[lang=en]:not([data-font=legacy]) h1, html[lang=en]:not([data-font=legacy]) h2, html[lang=en]:not([data-font=legacy]) h3, html[lang=en]:not([data-font=legacy]) h4, html[lang=en]:not([data-font=legacy]) h5, html[lang=en]:not([data-font=legacy]) h6 {
   font-family: "Playfair Display", "Kaisei HarunoUmi", serif !important;
 }
 
@@ -200,6 +186,7 @@ body.active {
 .header .site-title a {
   color: #333;
 }
+
 /* サイト名の左に時雨アイコン（img/shigure-icon.svg）。CSS 疑似要素なので全ページの HTML は無改修。
    a を block-level flex にして .site-title いっぱいに広げ、行の baseline に依存せず天地中央に。 */
 .header .site-title a {
@@ -208,6 +195,7 @@ body.active {
   gap: 0.35em;
   line-height: 1;
 }
+
 .header .site-title a::before {
   content: "";
   flex: 0 0 auto;
@@ -215,12 +203,11 @@ body.active {
   height: 1.96em; /* SVG 縦横比 86.91:77.69 */
   background: url(../img/shigure-icon.svg) no-repeat center center;
   background-size: contain;
-  /* 画像の下側に白い光彩（サイト名の文字影と揃える）。drop-shadow なので絵柄の形に沿う */
-  filter:
-    drop-shadow(0 0 1px #fff)
-    drop-shadow(0 2px 3px rgba(255, 255, 255, 0.85));
+  /* 画像の下側に白い光彩(サイト名の文字影と揃える)。drop-shadow なので絵柄の形に沿う */
+  filter: drop-shadow(0 0 1px #fff) drop-shadow(0 2px 3px rgba(255, 255, 255, 0.85));
 }
-html[lang="en"] .header .site-title {
+
+html[lang=en] .header .site-title {
   margin-bottom: 0;
 }
 
@@ -422,7 +409,7 @@ main {
   }
 }
 .words .quote q {
-  background-image: url(/img/paper.gif);
+  background-color: #fff;
   box-shadow: 0px 0px 3px 0px rgba(136, 136, 136, 0.777);
   flex: 1;
   padding: 0.5em;
@@ -443,6 +430,22 @@ main {
   content: "）";
 }
 
+/* q内の飾り画像（position:absoluteでインライン指定）：スマホ幅では文章にかぶるため、
+   絶対配置をやめて通常フローのブロック要素にする。floatにすると短歌の手動改行（br-sp等）と
+   干渉してテキストが不自然に折り返されるため、float は使わず右寄せのブロックとして
+   画像を独立した行に配置する */
+@media (max-width: 768px) {
+  q img[style*="position:absolute"],
+  q img[style*="position: absolute"] {
+    position: static !important;
+    float: none;
+    display: block !important;
+    width: 56px !important;
+    right: auto !important;
+    top: auto !important;
+    margin: 0 0 0.4em auto;
+  }
+}
 /* 五句並べ・掛詞ゲームへのリンクボタン：main の "link" 行に配置し、横並びにする（1.html〜100.html 共通） */
 .link-section {
   grid-area: link;
@@ -503,69 +506,6 @@ main {
 .link-section .kt-link-btn,
 .link-section .kts-link-btn,
 .link-section .mb-link-btn {
-  position: static;
-  top: auto;
-  right: auto;
-}
-
-/* シンプル版リンクバッジ（コラム記事ページ用）：.link-sectionと同じ構成だが、
-   影・角丸なしで、上ボーダーのみで区切るデザイン */
-.link-section-plain {
-  background-color: #f7f1e0;
-  width: 988px;
-  max-width: 100%;
-  margin: 1em auto 0;
-  padding: 1em 0;
-  border-top: 1px solid #B82343;
-}
-@media screen and (max-width: 1000px) {
-  .link-section-plain {
-    max-width: 910px;
-    width: 95%;
-    margin: 0.5em auto 0;
-  }
-}
-@media screen and (max-width: 750px) {
-  .link-section-plain {
-    width: calc(100vw - 10px);
-    max-width: 100%;
-    margin: 0 auto;
-  }
-}
-
-.link-section-plain dt.title {
-  font-family: "noto-sans-pro", sans-serif;
-  font-size: 1.3rem;
-  margin-bottom: 0.35em;
-  width: -moz-fit-content;
-  width: fit-content;
-  border-left: 5px solid #B82343;
-  color: #333;
-  padding: 3px 0 0 6px;
-  font-weight: bold;
-}
-@media screen and (max-width: 1000px) {
-  .link-section-plain dt.title {
-    font-size: 1.2rem;
-    margin-bottom: 0.5em;
-  }
-}
-
-.link-section-plain dd {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  gap: 0.8em;
-}
-
-.link-section-plain .gk-link-btn,
-.link-section-plain .kg-link-btn,
-.link-section-plain .do-link-btn,
-.link-section-plain .da-link-btn,
-.link-section-plain .kt-link-btn,
-.link-section-plain .kts-link-btn,
-.link-section-plain .mb-link-btn {
   position: static;
   top: auto;
   right: auto;
@@ -1475,13 +1415,7 @@ figure img {
 @media (max-width: 768px) {
   q img[style*="position:absolute"],
   q img[style*="position: absolute"] {
-    position: static !important;
-    float: none;
-    display: block !important;
-    width: 56px !important;
-    right: auto !important;
-    top: auto !important;
-    margin: 0 0 0.4em auto;
+    display: none;
   }
 }
 
@@ -1515,40 +1449,6 @@ figure img {
   }
   .rokuyon figcaption {
     padding-left: 0;
-    padding-top: 10px;
-    margin-bottom: 1em;
-    font-size: 1.05rem;
-    line-height: 1.8;
-  }
-}
-
-/* 図＋クリック説明エリアのレイアウト（皇族の相関図など）：PCでは図60%・説明エリア40%を横並び、
-   スマホでは両方とも幅100%で縦に並べる */
-.diagram-explanation-layout {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.diagram-explanation-layout .image-overlay-container {
-  flex: 0 0 60%;
-  max-width: 60%;
-}
-.diagram-explanation-layout #explanation {
-  flex: 0 0 40%;
-  max-width: 40%;
-  padding-left: 10px;
-}
-@media (max-width: 750px) {
-  .diagram-explanation-layout {
-    flex-direction: column;
-  }
-  .diagram-explanation-layout .image-overlay-container,
-  .diagram-explanation-layout #explanation {
-    flex: 1 1 auto;
-    max-width: 100%;
-  }
-  .diagram-explanation-layout #explanation {
-    padding-left: 16px;
     padding-top: 10px;
     margin-bottom: 1em;
     font-size: 1.05rem;
@@ -2155,16 +2055,14 @@ dd rt {
   padding: 0.75em;
   transition: transform 0.6s ease-in-out;
 }
-.card-back h3,
-.card-back .was-h3 {
+.card-back h3, .card-back .was-h3 {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: normal;
   line-height: 1.7;
   font-size: 1.1rem;
   flex-grow: 1;
 }
-.card-back h3 span,
-.card-back .was-h3 span {
+.card-back h3 span, .card-back .was-h3 span {
   display: block;
   font-size: 0.9rem;
   text-align: right;
@@ -2434,7 +2332,7 @@ card-item.active img#moon {
 }
 @media (max-width: 380px) {
   .bottom_arrow {
-    width: min(280px, calc(100vw - 90px));
+    width: min(280px, 100vw - 90px);
   }
 }
 
@@ -3765,6 +3663,11 @@ footer a:hover {
   flex-direction: column;
 }
 
+.was-h4 {
+  font-size: 1rem;
+  margin-bottom: 0.6rem;
+}
+
 .section {
   width: 800px;
   background-color: #f7f1e0;
@@ -3946,15 +3849,14 @@ footer a:hover {
     font-size: 1.2em;
   }
 }
-/* 見出し階層修正用: 元のタグ(h3/h4/h5)の見た目を保持したまま、より浅いタグへ差し替えるための互換クラス */
 .section .was-h3 {
   font-family: "noto-sans-pro", sans-serif;
   font-size: 1.2rem;
   margin-bottom: 0.35em;
-  width: fit-content;
   border-left: 5px solid #b82343;
+  border-bottom: 1px solid #b82343;
   color: #333;
-  padding: 3px 0 0 6px;
+  padding: 3px 0 0.4rem 6px;
   font-weight: bold;
   margin-top: 1em;
 }
@@ -3977,6 +3879,7 @@ footer a:hover {
   line-height: 1.8;
   font-size: 1.1em;
   border-left: none;
+  border-bottom: none;
 }
 @media (max-width: 1000px) {
   .section .was-h3.waka {
@@ -3987,31 +3890,13 @@ footer a:hover {
   font-family: "noto-sans-pro", sans-serif;
   font-size: 1.1rem;
   margin-bottom: 0.35em;
+  width: -moz-fit-content;
   width: fit-content;
+  border: none;
   color: #333;
   padding: 3px 0 0 0;
   font-weight: bold;
   margin-top: 1em;
-}
-.section .was-h4::before {
-  content: "";
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  background-image: url("../img/double_arrow_right.svg");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-}
-.section .was-h4::after {
-  content: "";
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  background-image: url("../img/double_arrow_left.svg");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
 }
 .section .was-h4:nth-of-type(n + 2) {
   margin-top: 1.5em;
@@ -4025,6 +3910,7 @@ footer a:hover {
 .section .was-h5 {
   font-size: 1.05em;
   border-left: 4px #b82343 solid;
+  border-bottom: none;
   padding-left: 5px;
   margin-top: 1.5em;
 }
@@ -4033,6 +3919,7 @@ footer a:hover {
   font-weight: bold;
   color: #4a2d1f;
   border-left: none;
+  border-bottom: none;
   padding-left: 0;
   position: relative;
   display: inline-block;
@@ -4066,10 +3953,6 @@ footer a:hover {
     font-size: 1.05rem;
     line-height: 1.8;
   }
-}
-/* 英語版のカード紹介文は、justifyだと単語間隔が不揃いになり読みにくいため左揃えにする */
-html[lang="en"] .card-content p {
-  text-align: left;
 }
 .section p.h4-p {
   font-size: 1.08rem;
@@ -5134,30 +5017,26 @@ table.kajin th {
      object-fit: contain;
 }
 
-/* 矢印は外部アイコンフォント（Material Icons）に依存せず、border+transformだけで描く。
-   ネットワーク環境やローカルサーバーの違いに左右されず常に表示される。 */
-.swiper-button-next::after,
-.swiper-button-prev::after {
-  content: "" !important;
-  display: block !important;
-  font-size: 0 !important;
-  position: absolute !important;
-  top: 50% !important;
-  width: 14px;
-  height: 14px;
-  border-top: 3px solid #b82343;
-  border-right: 3px solid #b82343;
-  filter: drop-shadow(0px 0px 2px #fff) drop-shadow(0px 0px 2px #fff) drop-shadow(0px 0px 2px #fff);
-}
-
 .swiper-button-next::after {
-  right: 8px !important;
-  transform: translateY(-50%) rotate(45deg);
+  font-family: "Material Icons" !important;
+  content: "\e5cc" !important;
+  position: absolute !important;
+  right: 0 !important;
+  top: 50%;
+  color: #b82343 !important;
+  font-size: 30px !important;
+  text-shadow: 0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff;
 }
 
 .swiper-button-prev::after {
-  left: 8px !important;
-  transform: translateY(-50%) rotate(-135deg);
+  font-family: "Material Icons" !important;
+  content: "\e5cb" !important;
+  position: absolute;
+  left: 0 !important;
+  top: 50% !important;
+  color: #b82343 !important;
+  font-size: 30px !important;
+  text-shadow: 0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff, 0px 0px 2px #fff;
 }
 
 .swiper-pagination-horizontal {
@@ -5777,7 +5656,6 @@ body.hmenu-active {
   .header_list a.sp-moved {
     display: none;
   }
-
   /* ナビはフッターへ。ヘッダーは「サイト名（左）＋ JA/EN（右）」の横並びにして高さを詰める（サイト名は 1.3rem のまま） */
   body:not(.no-sp-appbar) .header {
     flex-direction: row;
@@ -5796,7 +5674,7 @@ body.hmenu-active {
     margin: 0;
   }
   /* 英語版はサイト名が長い（Shigure no Hyakunin Isshu）。アイコン＋1行に収まるサイズにする */
-  html[lang="en"] body:not(.no-sp-appbar) .header .site-title {
+  html[lang=en] body:not(.no-sp-appbar) .header .site-title {
     font-size: 0.9rem;
     letter-spacing: 0;
     white-space: nowrap;
@@ -5807,16 +5685,15 @@ body.hmenu-active {
   /* アイコンは日本語スマホと同じ実寸に固定（英語はサイト名フォントを縮めているため
      em のままだとアイコンも小さくなってしまう。rem で font-size 非依存にする）。
      2.2em / 1.96em × 1.3rem = 2.86rem / 2.548rem 相当。 */
-  html[lang="en"] body:not(.no-sp-appbar) .header .site-title a::before {
+  html[lang=en] body:not(.no-sp-appbar) .header .site-title a::before {
     width: 2.86rem;
     height: 2.55rem;
   }
   body:not(.no-sp-appbar) .header_list {
-    margin: 0;          /* index.html のインライン margin:0 auto / max-width を打ち消す */
+    margin: 0; /* index.html のインライン margin:0 auto / max-width を打ち消す */
     max-width: none;
     flex: 0 0 auto;
   }
-
   .sp-appbar {
     display: flex; /* position 系はベース規則（.sp-appbar）で指定済み */
     align-items: center;
@@ -5835,7 +5712,6 @@ body.hmenu-active {
     background-size: 30px 30px;
     box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.18);
   }
-
   .sp-appbar__item {
     display: flex;
     flex: 1 1 0;
@@ -5854,22 +5730,18 @@ body.hmenu-active {
     -webkit-tap-highlight-color: transparent;
     transition: background 0.2s, opacity 0.2s;
   }
-
   .sp-appbar__item:active {
     opacity: 0.6;
     background: rgba(255, 255, 255, 0.14);
   }
-
   .sp-appbar__item.is-current {
     background: rgba(255, 255, 255, 0.22);
     box-shadow: inset 0 2px 0 #b82343;
   }
-
   .sp-appbar__item.is-current .sp-appbar__label {
     font-weight: 700;
     color: #b82343;
   }
-
   .sp-appbar__icon {
     width: 26px;
     height: 26px;
@@ -5878,7 +5750,6 @@ body.hmenu-active {
     display: block;
     flex-shrink: 0;
   }
-
   /* アイコン＋ラベルの塊の高さを px で固定 → スクロールしても
      アイコン・文字・バーの位置関係が一切ずれない（26 + 3 + 12 = 41px 固定） */
   .sp-appbar__label {
@@ -5890,7 +5761,6 @@ body.hmenu-active {
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-
   /* 固定バーのぶん、ページ下端に余白を確保してフッターが隠れないようにする。
      body は height:100vh 固定なので、コンテンツで伸びるよう height:auto にしたうえで
      min-height で最低1画面を維持し、padding-bottom でバーぶんの余白を作る。 */
@@ -5899,17 +5769,14 @@ body.hmenu-active {
     min-height: 100vh;
     padding-bottom: 66px; /* バー高さ（56 + 10）ぶん。env は使わない（上記理由） */
   }
-
   /* 「上に戻る」ボタンを固定バーの上へ持ち上げる */
   body:not(.no-sp-appbar) .back-to-top {
     bottom: calc(66px + 0.85rem);
   }
 }
-
 /* 極小幅では英語版サイト名をさらに縮めて、アイコン＋1行を維持 */
 @media screen and (max-width: 380px) {
-  html[lang="en"] body:not(.no-sp-appbar) .header .site-title {
+  html[lang=en] body:not(.no-sp-appbar) .header .site-title {
     font-size: 0.8rem;
   }
-}
-/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */

@@ -810,12 +810,13 @@ canvas {
     white-space: normal;
   }
 }
-
 /* スマホで、ゲーム画面（#game-section）を表示している間だけ、下部の共通リンクバー(.sp-appbar)を隠す。
    結果は #start-section 側に表示され #game-section に .hidden が戻るので、そのときバーも復帰する。
    日本語版・英語版とも共通の css/kimariji-hanabi.css。 */
 @media screen and (max-width: 1000px) {
-  body:has(#game-section:not(.hidden)) .sp-appbar { display: none !important; }
+  body:has(#game-section:not(.hidden)) .sp-appbar {
+    display: none !important;
+  }
   /* バーを display:none にするだけでは、style.css の body.has-sp-appbar による
      height:auto / min-height:100vh / padding-bottom:66px が残る。
      #game-section は 100dvh なので、min-height:100vh との差（iOS 等のツール
@@ -826,6 +827,7 @@ canvas {
     min-height: 0;
     padding-bottom: 0;
   }
-  body:has(#game-section:not(.hidden)).has-sp-appbar .back-to-top { bottom: 0.85rem; }
-}
-/*# sourceMappingURL=kimariji-hanabi.css.map */
+  body:has(#game-section:not(.hidden)).has-sp-appbar .back-to-top {
+    bottom: 0.85rem;
+  }
+}/*# sourceMappingURL=kimariji-hanabi.css.map */

@@ -437,8 +437,8 @@ main {
       font-size: 1.1rem;
     }
     q {
-      // background-color: #fff;
-      background-image: url(/img/paper.gif);
+      background-color: #fff;
+      // background-image: url(/img/paper.webp);
       box-shadow: 0px 0px 3px 0px rgba(136, 136, 136, 0.777);
       // border: 1px solid #333;
       flex: 1;
@@ -3358,6 +3358,11 @@ footer {
   align-items: center;
   flex-direction: column;
 }
+// 歌ページは .section の外（main直下）にあるため .section .was-h4 が効かず、ここが実質のフォールバック
+.was-h4 {
+  font-size: 1rem;
+  margin-bottom: 0.6rem;
+}
 .section {
   width: 800px;
   // background-image: url(../img/washi.webp);
@@ -3535,10 +3540,10 @@ footer {
     font-family: "noto-sans-pro", sans-serif;
     font-size: 1.2rem;
     margin-bottom: 0.35em;
-    width: fit-content;
     border-left: 5px solid #b82343;
+    border-bottom: 1px solid #b82343;
     color: #333;
-    padding: 3px 0 0 6px;
+    padding: 3px 0 0.4rem 6px;
     font-weight: bold;
     margin-top: 1em;
     &:nth-of-type(n + 2) {
@@ -3558,6 +3563,7 @@ footer {
       line-height: 1.8;
       font-size: 1.1em;
       border-left: none;
+      border-bottom: none;
       @media (max-width: 1000px) {
         font-size: 1.2em;
       }
@@ -3568,30 +3574,11 @@ footer {
     font-size: 1.1rem;
     margin-bottom: 0.35em;
     width: fit-content;
+    border: none;
     color: #333;
     padding: 3px 0 0 0;
     font-weight: bold;
     margin-top: 1em;
-    &::before {
-      content: "";
-      display: inline-block;
-      width: 1em;
-      height: 1em;
-      background-image: url("../img/double_arrow_right.svg");
-      background-repeat: no-repeat;
-      background-size: contain;
-      background-position: center;
-    }
-    &::after {
-      content: "";
-      display: inline-block;
-      width: 1em;
-      height: 1em;
-      background-image: url("../img/double_arrow_left.svg");
-      background-repeat: no-repeat;
-      background-size: contain;
-      background-position: center;
-    }
     &:nth-of-type(n + 2) {
       margin-top: 1.5em;
     }
@@ -3603,6 +3590,7 @@ footer {
   .was-h5 {
     font-size: 1.05em;
     border-left: 4px #b82343 solid;
+    border-bottom: none;
     padding-left: 5px;
     margin-top: 1.5em;
     &.tea {
@@ -3610,6 +3598,7 @@ footer {
       font-weight: bold;
       color: #4a2d1f;
       border-left: none;
+      border-bottom: none;
       padding-left: 0;
       position: relative;
       display: inline-block;
