@@ -913,7 +913,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <span class="poet-name">${result.poet}</span>
             <span class="poem-number">第${index + 1}番</span>
         `;
-        wakaMeaning.textContent = `\n${result.meaning}`;
+        wakaMeaning.textContent = result.meaning;
         wakaLuck.textContent = `今日の運勢：${result.luck}`;
         interpLove.textContent = result.love;
         interpWork.textContent = result.work;

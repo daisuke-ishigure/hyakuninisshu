@@ -1090,7 +1090,7 @@ document.addEventListener('DOMContentLoaded', () => {
             romajiBtn.textContent = 'Show Romaji';
             romajiBtn.classList.remove('active');
         }
-        wakaMeaning.textContent = `\n${result.meaning}`;
+        wakaMeaning.textContent = result.meaning;
         wakaLuck.textContent = `Today's Fortune: ${luckMap[result.luck] || result.luck}`;
         interpLove.textContent = result.love;
         interpWork.textContent = result.work;
