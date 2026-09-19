@@ -5,6 +5,11 @@
 :root {
   --header-h: 60px;
   --footer-h: 60px;
+  /* iOS Safari の 100dvh は初回描画やツールバー表示中に実際の表示領域より
+     大きい値を返すことがあるため、JS (syncViewportHeight) が
+     visualViewport.height の実測値で毎回上書きする。JS 実行前や非対応
+     ブラウザ向けのフォールバックとして 100dvh を既定値にしておく。 */
+  --vh100: 100dvh;
 }
 
 @media screen and (max-width: 1000px) {
@@ -26,7 +31,7 @@ main {
    スクロール可能になり、ツールバーの出し引きのたびに #game-section 上部
    （お題表示）が見えたり隠れたりする不具合が起きるため、動的な dvh に揃える。 */
 body {
-  height: 100dvh;
+  height: var(--vh100);
 }
 
 /* ============================================================
@@ -55,7 +60,7 @@ body.game-active footer {
   display: none;
 }
 body.game-active #game-section {
-  height: 100dvh;
+  height: var(--vh100);
 }
 /* スタート画面（ルール説明が長くスクロールが必要な端末もある）から
    ゲーム開始後もスクロール位置が残っていると、body の実コンテンツ高さが

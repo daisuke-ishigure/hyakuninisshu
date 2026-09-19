@@ -4,6 +4,26 @@
    ============================================================ */
 
 // ============================================================
+// ビューポート高さの実測同期
+// ------------------------------------------------------------
+// iOS Safari の CSS dvh 単位は、初回描画時やツールバーの出し引き直後に
+// 実際の表示領域より大きい値を返すことがあり、#game-section が画面より
+// 縦に詰まって（下に空白ができて）お題表示が隠れる不具合の原因になる。
+// visualViewport の実測値を --vh100 に書き込み、CSS 側はそれを使う。
+// ============================================================
+function syncViewportHeight() {
+  const h = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+  document.documentElement.style.setProperty('--vh100', h + 'px');
+}
+syncViewportHeight();
+window.addEventListener('resize', syncViewportHeight);
+window.addEventListener('orientationchange', syncViewportHeight);
+if (window.visualViewport) {
+  window.visualViewport.addEventListener('resize', syncViewportHeight);
+  window.visualViewport.addEventListener('scroll', syncViewportHeight);
+}
+
+// ============================================================
 // 定数
 // ============================================================
 let CARD_WIDTH = 108;
@@ -312,6 +332,9 @@ function startGame() {
   // スタート画面でスクロールしていた場合、その位置が残ったままゲーム画面に
   // 切り替わると（iOS Safari で）お題表示が画面外に隠れる不具合になるためリセット
   window.scrollTo(0, 0);
+  // 傾き検知の許可ダイアログ表示などでツールバーの状態が変わった直後の
+  // 可能性があるため、ゲーム画面を出す直前に高さを測り直す
+  syncViewportHeight();
 
   document.getElementById('start-section').classList.add('hidden');
   document.getElementById('game-section').classList.remove('hidden');
