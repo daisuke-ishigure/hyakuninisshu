@@ -66,9 +66,13 @@ body.game-active #game-section {
    ゲーム開始後もスクロール位置が残っていると、body の実コンテンツ高さが
    #game-section の 100dvh 1枚分に縮んだ後も iOS Safari がその古いスクロール
    位置を引きずり、お題表示（#game-section 上部）が画面外に隠れて下に空白が
-   残る不具合が起きるため、ゲーム中は body のスクロール自体を止める。 */
+   残る不具合が起きる。overflow:hidden だけでは iOS Safari のバウンス/
+   スクロールを確実には止められないため、ゲーム中は body を position:fixed
+   で画面に固定し、物理的にスクロールできない状態にする。 */
 body.game-active {
-  overflow-y: hidden;
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
 }
 
 /* ============================================================
