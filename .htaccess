@@ -11,8 +11,7 @@ RewriteRule ^kajin-sort\.html$ https://hyakuninisshu.com/kajin-zukan.html [R=301
 RewriteRule ^hudanagashi\.html$ https://hyakuninisshu.com/hudanagashi-flash.html [R=301,L]
 RewriteRule ^karuta_tokkun\.html$ https://hyakuninisshu.com/karuta.html [R=301,L]
 
-# 旧URL構造（WordPress時代のパーマリンク、例: /no24konotabiwa/）から
-# 現行の歌ページ（例: /24.html）へのリダイレクト。Google に残った旧URLの評価を引き継ぐため。
+# 現行の歌ページへのリダイレクト。
 RewriteRule ^no([0-9]{1,3})[a-zA-Z0-9_-]*/?$ https://hyakuninisshu.com/$1.html [R=301,L]
 
 <IfModule mod_deflate.c>

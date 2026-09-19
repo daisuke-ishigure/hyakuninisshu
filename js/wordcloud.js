@@ -36,6 +36,7 @@
     loading:     isEn ? 'Loading…'                                      : '読み込み中…',
     noWords:     isEn ? 'Be the first to add a word!'                   : '最初の一言を投稿してみよう！',
     responses:   isEn ? 'responses'                                     : '件の回答',
+    resultsTitle: isEn ? 'One-word impressions from everyone'           : 'みなさんから集まった一言',
     empty:       isEn ? 'Please enter a word.'                          : '言葉を入力してください。',
     notPlayed:   isEn ? 'Complete the poem game to participate.'        : '五句並べを完成させると参加できます。',
     cancel:      isEn ? 'Cancel'                                        : 'キャンセル',
@@ -51,6 +52,7 @@
       '<input type="text" id="wc-input" maxlength="30" placeholder="' + T.placeholder + '">' +
       '<button id="wc-submit">' + T.submit + '</button>' +
     '</div>' +
+    '<h3 class="wc-results-title">' + T.resultsTitle + '</h3>' +
     '<p id="wc-message"></p>' +
     '<div id="wc-canvas"><p class="wc-loading">' + T.loading + '</p></div>' +
     '<p class="wc-count-badge" id="wc-count"></p>';
