@@ -309,6 +309,10 @@ function buildSegmentPool() {
 // ゲーム開始 / リスタート
 // ============================================================
 function startGame() {
+  // スタート画面でスクロールしていた場合、その位置が残ったままゲーム画面に
+  // 切り替わると（iOS Safari で）お題表示が画面外に隠れる不具合になるためリセット
+  window.scrollTo(0, 0);
+
   document.getElementById('start-section').classList.add('hidden');
   document.getElementById('game-section').classList.remove('hidden');
   document.body.classList.add('game-active');

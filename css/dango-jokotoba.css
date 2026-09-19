@@ -57,6 +57,14 @@ body.game-active footer {
 body.game-active #game-section {
   height: 100dvh;
 }
+/* スタート画面（ルール説明が長くスクロールが必要な端末もある）から
+   ゲーム開始後もスクロール位置が残っていると、body の実コンテンツ高さが
+   #game-section の 100dvh 1枚分に縮んだ後も iOS Safari がその古いスクロール
+   位置を引きずり、お題表示（#game-section 上部）が画面外に隠れて下に空白が
+   残る不具合が起きるため、ゲーム中は body のスクロール自体を止める。 */
+body.game-active {
+  overflow-y: hidden;
+}
 
 /* ============================================================
    ゲームセクション（和菓子屋の縁側・春がすみ背景）
