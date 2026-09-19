@@ -940,7 +940,7 @@ function spawnFirework(cx, cy, scale) {
 const SOUNDS = {
   stab:  Object.assign(new Audio('sound/kozutsumi.mp3'), { volume: 0.4 }),
   clear: Object.assign(new Audio('sound/hyoushigi.mp3'), { volume: 0.5 }),
-  poem:  Object.assign(new Audio('sound/shakeen.mp3'),   { volume: 0.5 }),
+  poem:  Object.assign(new Audio('sound/wadaiko_kaka.mp3'), { volume: 0.5 }),
 };
 
 function unlockSounds() {
