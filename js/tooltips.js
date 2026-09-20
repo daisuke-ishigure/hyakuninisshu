@@ -93,7 +93,7 @@ tippy('.minadukibarae', { content: '<h3><ruby>水無月祓<rt>みなづきばら
 /* 後宮 */
 tippy('.chugu', { content: '<h3><ruby>中宮<rt>ちゅうぐう</rt></ruby></h3>天皇の正妻（皇后の別称）', allowHTML: true });
 tippy('.kougou', { content: '<h3><ruby>皇后<rt>こうごう</rt></ruby></h3>天皇の正妻（中宮の別称）', allowHTML: true });
-tippy('.miyasudokoro', { content: '<h3><ruby>御息所<rt>みやすどころ</rt></ruby></h3>天皇の御寝所に仕える女性', allowHTML: true });
+tippy('.miyasudokoro', { content: '<h3><ruby>御息所<rt>みやすどころ</rt></ruby></h3>もとは天皇が休憩する場所を意味していたが、天皇の御寝所に仕える女性を指すようになった。', allowHTML: true });
 tippy('.nyogo', { content: '<h3><ruby>女御<rt>にょうご</rt></ruby></h3>天皇の后。中宮よりも地位は下、更衣よりも地位は上。', allowHTML: true });
 tippy('.koui', { content: '<h3><ruby>更衣<rt>こうい</rt></ruby></h3>天皇の后。女御よりも地位は下。', allowHTML: true });
 tippy('.judai', { content: '<h3><ruby>入内<rt>じゅだい</rt></ruby></h3>皇后・中宮・女御・更衣などに決まった女性が、正式な儀式を経て内裏に入ること', allowHTML: true });
