@@ -180,46 +180,41 @@
           imperial princes and princesses, and more distant members of the imperial line.
         </p>
 
-        <p class="kome">
-          For the administration of the Crown Prince’s household, see
-          <a href="kanshoku_touguubou_en.html">The Crown Prince’s Household Office (Tōgūbō)</a>.
-          For the rank hierarchy of high-ranking nobles (Fifth Rank and above), see
-          <a href="kanshoku_ikai_en.html">Court Ranks and the Eight Hereditary Titles</a>.
-        </p>
+        
 
         <h2>Blood Relations and Status within the Imperial Family</h2>
         <p>The diagram below shows blood relations centered on the emperor. <br class="br-pc">Click a red
           marker to see an explanation of that status.</p>
         <figure class="diagram-explanation-layout">
           <div class="image-overlay-container">
-            <img src="img/kouzoku_diagram.svg" alt="Diagram of the imperial family’s blood relations"
+            <img src="img/kouzoku_diagram_en.svg" alt="Diagram of the imperial family’s blood relations"
               style="width:100%; height:auto; display:block;">
             <div class="marker pulse" style="top: 7.74%; left: 28.07%;"
-              onclick="showKouzokuExplanation(this, ‘father’)"></div>
+              onclick="showKouzokuExplanation(this, 'father')"></div>
             <div class="marker pulse" style="top: 7.74%; left: 50.19%;"
-              onclick="showKouzokuExplanation(this, ‘mother’)"></div>
-            <div class="marker pulse" style="top: 24.75%; left: 39.13%;"
-              onclick="showKouzokuExplanation(this, ‘tennou’)"></div>
-            <div class="marker pulse" style="top: 24.75%; left: 61.24%;"
-              onclick="showKouzokuExplanation(this, ‘kisaki’)"></div>
-            <div class="marker pulse" style="top: 57.33%; left: 14.59%;"
-              onclick="showKouzokuExplanation(this, ‘naishinnou’)"></div>
-            <div class="marker pulse" style="top: 57.33%; left: 50.19%;"
-              onclick="showKouzokuExplanation(this, ‘ouSon’)"></div>
-            <div class="marker pulse" style="top: 57.33%; left: 85.36%;"
-              onclick="showKouzokuExplanation(this, ‘koutaishi’)"></div>
-            <div class="marker pulse" style="top: 91.74%; left: 5.57%;"
-              onclick="showKouzokuExplanation(this, ‘shinouNaishinnouMagoFemale’)"></div>
-            <div class="marker pulse" style="top: 91.74%; left: 23.82%;"
-              onclick="showKouzokuExplanation(this, ‘shinouNaishinnouMagoMale’)"></div>
-            <div class="marker pulse" style="top: 91.74%; left: 41.06%;"
-              onclick="showKouzokuExplanation(this, ‘joouMago’)"></div>
-            <div class="marker pulse" style="top: 91.74%; left: 59.30%;"
-              onclick="showKouzokuExplanation(this, ‘ouMago’)"></div>
-            <div class="marker pulse" style="top: 91.74%; left: 76.24%;"
-              onclick="showKouzokuExplanation(this, ‘koutaishiChlidFemale’)"></div>
-            <div class="marker pulse" style="top: 91.74%; left: 94.48%;"
-              onclick="showKouzokuExplanation(this, ‘koutaishiChlidMale’)"></div>
+              onclick="showKouzokuExplanation(this, 'mother')"></div>
+            <div class="marker pulse" style="top: 22.75%; left: 39.13%;"
+              onclick="showKouzokuExplanation(this, 'tennou')"></div>
+            <div class="marker pulse" style="top: 22.75%; left: 61.24%;"
+              onclick="showKouzokuExplanation(this, 'kisaki')"></div>
+            <div class="marker pulse" style="top: 52.33%; left: 14.59%;"
+              onclick="showKouzokuExplanation(this, 'naishinnou')"></div>
+            <div class="marker pulse" style="top: 52.33%; left: 50.19%;"
+              onclick="showKouzokuExplanation(this, 'ouSon')"></div>
+            <div class="marker pulse" style="top: 52.33%; left: 85.36%;"
+              onclick="showKouzokuExplanation(this, 'koutaishi')"></div>
+            <div class="marker pulse" style="top: 88.74%; left: 5.57%;"
+              onclick="showKouzokuExplanation(this, 'shinouNaishinnouMagoFemale')"></div>
+            <div class="marker pulse" style="top: 88.74%; left: 23.82%;"
+              onclick="showKouzokuExplanation(this, 'shinouNaishinnouMagoMale')"></div>
+            <div class="marker pulse" style="top: 88.74%; left: 41.06%;"
+              onclick="showKouzokuExplanation(this, 'joouMago')"></div>
+            <div class="marker pulse" style="top: 88.74%; left: 59.30%;"
+              onclick="showKouzokuExplanation(this, 'ouMago')"></div>
+            <div class="marker pulse" style="top: 88.74%; left: 76.24%;"
+              onclick="showKouzokuExplanation(this, 'koutaishiChlidFemale')"></div>
+            <div class="marker pulse" style="top: 88.74%; left: 94.48%;"
+              onclick="showKouzokuExplanation(this, 'koutaishiChlidMale')"></div>
           </div>
           <div id="explanation">
             <p class="explanation-placeholder">Click a red marker in the diagram to see an explanation here.</p>
@@ -256,14 +251,15 @@
 
           function showKouzokuExplanation(element, key) {
             // クリックしたマーカーを強調表示する
-            element.closest(‘.image-overlay-container’).querySelectorAll(‘.marker’).forEach(m => m.classList.remove(‘active’));
-            element.classList.add(‘active’);
+            element.closest('.image-overlay-container').querySelectorAll('.marker').forEach(m => m.classList.remove('active'));
+            element.classList.add('active');
 
             // 説明文を表示する
-            const explanation = document.getElementById(‘explanation’);
-            explanation.innerHTML = kouzokuExplanations[key] || ‘’;
+            const explanation = document.getElementById('explanation');
+            explanation.innerHTML = kouzokuExplanations[key] || '';
           }
         </script>
+        <hr style="margin-top:1em;">
         <p>
           Within the imperial family, centered on the emperor, there were statuses such as Jōkō and
           Hōō, Shinnō and Naishinnō, and Ō and Joō.
@@ -509,7 +505,7 @@
   <script src="../js/move_script.js?20260729"></script>
   <script src="../js/popper.min.js"></script>
   <script src="../js/tippy.umd.min.js"></script>
-  <script src="../js/tooltips.js?2026920"></script>
+  <script src="../js/tooltips.js?2026918"></script>
   <script>document.addEventListener("DOMContentLoaded", () => { document.querySelectorAll("td,th").forEach(c => { if (c.querySelector("ruby")) c.style.paddingTop = "0.9em"; }); });</script>
 
 </body>
