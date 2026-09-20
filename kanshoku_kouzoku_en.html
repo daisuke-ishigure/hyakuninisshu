@@ -76,6 +76,66 @@
     .section p {
       text-align: left;
     }
+
+    /* 皇族の相関図：クリックした赤い点を強調表示する */
+    @keyframes marker-active-spin {
+      from {
+        transform: translate(-50%, -50%) rotate(0deg);
+      }
+
+      to {
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
+    }
+
+    .image-overlay-container .marker.active {
+      /* pulseアニメーションで一番広がる瞬間（scale(1.3)）のサイズに固定する */
+      width: 39px !important;
+      height: 39px !important;
+      background-color: transparent;
+      border: 4pt dotted rgba(220, 0, 0, 0.9);
+      animation: marker-active-spin 6s linear infinite;
+    }
+
+    #explanation {
+      background-color: #fdf6f6;
+      border-left: 4px solid #B82343;
+      border-radius: 4px;
+      padding: 0.8em 1em;
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    #explanation .explanation-placeholder {
+      color: #888;
+      margin: 0;
+    }
+
+    #explanation dt {
+      margin-top: 0.5em;
+      font-weight: bold;
+    }
+
+    /* 皇族の相関図：PC幅では図と説明を6:4の比率で横並びにする */
+    .diagram-explanation-layout {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5em;
+    }
+
+    .diagram-explanation-layout .image-overlay-container {
+      flex: 6;
+    }
+
+    .diagram-explanation-layout #explanation {
+      flex: 4;
+    }
+
+    @media (max-width: 1000px) {
+      .diagram-explanation-layout {
+        display: block;
+      }
+    }
   </style>
   <!-- Cloudflare Web Analytics -->
   <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d2f01c23361b402aadede990ea58da0b"}'></script>
@@ -122,11 +182,104 @@
 
         <p class="kome">
           For the administration of the Crown Prince’s household, see
-          <a href="kanshoku_touguubou_en.html">The Crown Prince's Household Office (Tōgūbō)</a>.
+          <a href="kanshoku_touguubou_en.html">The Crown Prince’s Household Office (Tōgūbō)</a>.
           For the rank hierarchy of high-ranking nobles (Fifth Rank and above), see
           <a href="kanshoku_ikai_en.html">Court Ranks and the Eight Hereditary Titles</a>.
         </p>
 
+        <h2>Blood Relations and Status within the Imperial Family</h2>
+        <p>The diagram below shows blood relations centered on the emperor. <br class="br-pc">Click a red
+          marker to see an explanation of that status.</p>
+        <figure class="diagram-explanation-layout">
+          <div class="image-overlay-container">
+            <img src="img/kouzoku_diagram.svg" alt="Diagram of the imperial family’s blood relations"
+              style="width:100%; height:auto; display:block;">
+            <div class="marker pulse" style="top: 7.74%; left: 28.07%;"
+              onclick="showKouzokuExplanation(this, ‘father’)"></div>
+            <div class="marker pulse" style="top: 7.74%; left: 50.19%;"
+              onclick="showKouzokuExplanation(this, ‘mother’)"></div>
+            <div class="marker pulse" style="top: 24.75%; left: 39.13%;"
+              onclick="showKouzokuExplanation(this, ‘tennou’)"></div>
+            <div class="marker pulse" style="top: 24.75%; left: 61.24%;"
+              onclick="showKouzokuExplanation(this, ‘kisaki’)"></div>
+            <div class="marker pulse" style="top: 57.33%; left: 14.59%;"
+              onclick="showKouzokuExplanation(this, ‘naishinnou’)"></div>
+            <div class="marker pulse" style="top: 57.33%; left: 50.19%;"
+              onclick="showKouzokuExplanation(this, ‘ouSon’)"></div>
+            <div class="marker pulse" style="top: 57.33%; left: 85.36%;"
+              onclick="showKouzokuExplanation(this, ‘koutaishi’)"></div>
+            <div class="marker pulse" style="top: 91.74%; left: 5.57%;"
+              onclick="showKouzokuExplanation(this, ‘shinouNaishinnouMagoFemale’)"></div>
+            <div class="marker pulse" style="top: 91.74%; left: 23.82%;"
+              onclick="showKouzokuExplanation(this, ‘shinouNaishinnouMagoMale’)"></div>
+            <div class="marker pulse" style="top: 91.74%; left: 41.06%;"
+              onclick="showKouzokuExplanation(this, ‘joouMago’)"></div>
+            <div class="marker pulse" style="top: 91.74%; left: 59.30%;"
+              onclick="showKouzokuExplanation(this, ‘ouMago’)"></div>
+            <div class="marker pulse" style="top: 91.74%; left: 76.24%;"
+              onclick="showKouzokuExplanation(this, ‘koutaishiChlidFemale’)"></div>
+            <div class="marker pulse" style="top: 91.74%; left: 94.48%;"
+              onclick="showKouzokuExplanation(this, ‘koutaishiChlidMale’)"></div>
+          </div>
+          <div id="explanation">
+            <p class="explanation-placeholder">Click a red marker in the diagram to see an explanation here.</p>
+          </div>
+        </figure>
+        <script>
+          const kouzokuExplanations = {
+            father: "The emperor’s father. He may have already abdicated and become a Retired Emperor (Jōkō), or taken Buddhist vows and become a Cloistered Emperor (Hōō).",
+
+            mother: "The emperor’s mother. A woman who was once the emperor’s consort — as Kōgō or Chūgū — often became Kōtaigō (Empress Dowager) upon her child’s accession.",
+
+            tennou: "<dl><dt>Tennō (天皇)</dt><dd>The sovereign of Japan, sometimes also called <em>Mikado</em>.</dd><dt>Daijō-Tennō (太上天皇)</dt><dd>The title given to an emperor after abdication, often abbreviated to Jōkō, and also called In.</dd><dt>Hōō (法皇)</dt><dd>The title given to a Jōkō who has taken Buddhist vows.</dd></dl>",
+
+            kisaki: "<dl><dt>Chūgū / Kōgō (中宮・皇后)</dt><dd>The woman holding the highest rank among the emperor’s consorts.<br>*In the Heian period, a Kōgō and a Chūgū could hold office at the same time.</dd><dt>Kōtaigō (皇太后)</dt><dd>A Kōgō or Chūgū of the previous emperor could become Kōtaigō (Empress Dowager).</dd><dt>Taikō-Taigō (太皇太后)</dt><dd>A Kōgō or Chūgū of an even earlier emperor could become Taikō-Taigō.</dd><dt>Nyōgo (女御)</dt><dd>One of the emperor’s consorts, ranked above the Kōi. Some went on to become Chūgū or Kōgō.</dd><dt>Kōi (更衣)</dt><dd>One of the emperor’s consorts, ranked below the Nyōgo. Some were later promoted to Nyōgo.</dd></dl>",
+
+            naishinnou: "<dl><dt>Naishinnō (内親王)</dt><dd>A female member of the imperial family who has been granted princely status (<em>shinnō-senge</em>).</dd><dt>Saiin (斎院)</dt><dd>An unmarried woman closely related to the emperor, chosen to serve at the Kamo Shrines. Usually a Naishinnō, though sometimes a Joō was chosen instead.</dd><dt>Saigū (斎宮)</dt><dd>An unmarried woman closely related to the emperor, chosen to serve at the Grand Shrine of Ise. Usually a Naishinnō, though sometimes a Joō was chosen instead.</dd></dl>",
+
+            ouSon: "Even a son of the emperor was not called Shinnō unless he received princely status (<em>shinnō-senge</em>); otherwise he remained at the rank of Ō.",
+
+            koutaishi: "<dl><dt>Kōtaishi (皇太子) / Tōgū (東宮) / Haruno Miya (春宮)</dt><dd>A person formally installed as heir apparent (<em>rittaishi</em>) was called Kōtaishi, Tōgū, or Haruno Miya, and was expected to become the next emperor.<br>*The Crown Prince was not necessarily the emperor’s own biological son.</dd></dl>",
+
+            shinouNaishinnouMagoFemale: "A female grandchild of the emperor. If she received princely status (<em>shinnō-senge</em>), she was called Naishinnō.<br>Even a daughter of a Shinnō could instead be a Joō if she did not receive <em>shinnō-senge</em>.",
+
+            shinouNaishinnouMagoMale: "A male grandchild of the emperor. If he received princely status (<em>shinnō-senge</em>), he was called Shinnō.<br>Even a son of a Shinnō could instead be an Ō if he did not receive <em>shinnō-senge</em>.",
+
+            joouMago: "A daughter of an Ō or Joō did not always retain the same imperial status as her parent.<br>She might leave the imperial family and be reduced to subject status (<em>shinseki-kōka</em>).",
+
+            ouMago: "A son of an Ō or Joō did not always retain the same imperial status as his parent.<br>He might leave the imperial family and be reduced to subject status (<em>shinseki-kōka</em>).",
+
+            koutaishiChlidFemale: "In the Heian period, a daughter of the Crown Prince never succeeded to the throne.<br>Being his daughter also did not automatically guarantee <em>shinnō-senge</em> or the title Naishinnō.",
+
+            koutaishiChlidMale: "A son of the Crown Prince stood in a position within the imperial family that could lead to the throne, but he was not necessarily installed as Crown Prince (<em>rittaishi</em>) himself.<br>Being his son also did not automatically guarantee <em>shinnō-senge</em> or the title Shinnō.",
+          };
+
+          function showKouzokuExplanation(element, key) {
+            // クリックしたマーカーを強調表示する
+            element.closest(‘.image-overlay-container’).querySelectorAll(‘.marker’).forEach(m => m.classList.remove(‘active’));
+            element.classList.add(‘active’);
+
+            // 説明文を表示する
+            const explanation = document.getElementById(‘explanation’);
+            explanation.innerHTML = kouzokuExplanations[key] || ‘’;
+          }
+        </script>
+        <p>
+          Within the imperial family, centered on the emperor, there were statuses such as Jōkō and
+          Hōō, Shinnō and Naishinnō, and Ō and Joō.
+        </p>
+        <p>
+          Shinnō and Naishinnō also held a rank system unique to the imperial family called
+          <em>hon’i</em> (品位), divided into four grades from Ippon (一品) to Shihon (四品). Ō and
+          Joō, by contrast, generally belonged to the same rank system as ordinary subjects,
+          receiving regular court ranks such as Shō-ichii (正一位) or Ju-ichii (従一位).
+        </p>
+        <p>
+          There was a substantial difference in status and treatment between Shinnō/Naishinnō and
+          Ō/Joō.
+        </p>
+
+        <h2>Titles and Statuses of the Imperial Family</h2>
         <table class="rank_table">
           <tr>
             <td style="width:35%;">Title</td>
