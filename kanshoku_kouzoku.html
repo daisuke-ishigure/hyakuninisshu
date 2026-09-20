@@ -221,6 +221,27 @@
     #explanation dt:has(ruby) {
       margin-top: 0.75em;
     }
+
+    /* 皇族の相関図：PC幅では図と説明を6:4の比率で横並びにする */
+    .diagram-explanation-layout {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5em;
+    }
+
+    .diagram-explanation-layout .image-overlay-container {
+      flex: 6;
+    }
+
+    .diagram-explanation-layout #explanation {
+      flex: 4;
+    }
+
+    @media (max-width: 1000px) {
+      .diagram-explanation-layout {
+        display: block;
+      }
+    }
   </style>
   <title>皇族 | 平安時代の位階・官職 | 時雨の百人一首</title>
   <!-- Cloudflare Web Analytics -->
