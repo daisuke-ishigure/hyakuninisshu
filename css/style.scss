@@ -532,9 +532,46 @@ main {
   right: auto;
 }
 
-/* 心のチャート：main の "chart" 行に配置し、付録（.words）から独立させる（1.html〜100.html 共通） */
-// .chart-section（左半分：心のチャート）と .image-section（右半分：歌のイメージ）を
-// 横並びにする外側ラッパー。main の "chart" 行を占有する（1.html〜100.html 共通）。
+/* .link-section のカード型（背景・box-shadow・padding）をやめ、上ボーダーの区切り線だけにしたバージョン。
+   .section など、すでに背景付きのカード内で使うことを想定（kanshoku_hierarchy.html など） */
+.link-section-plain {
+  border-top: 1px solid #B82343;
+  padding-top: 1em;
+}
+.link-section-plain dt.title {
+  font-family: "noto-sans-pro", sans-serif;
+  font-size: 1.3rem;
+  margin-bottom: 0.35em;
+  width: fit-content;
+  border-left: 5px solid #B82343;
+  color: #333;
+  padding: 3px 0 0 6px;
+  font-weight: bold;
+  @media screen and (max-width: 1000px) {
+    font-size: 1.2rem;
+    margin-bottom: 0.5em;
+  }
+}
+.link-section-plain dd {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 0.8em;
+}
+.link-section-plain .gk-link-btn,
+.link-section-plain .kg-link-btn,
+.link-section-plain .do-link-btn,
+.link-section-plain .da-link-btn,
+.link-section-plain .kt-link-btn,
+.link-section-plain .kts-link-btn,
+.link-section-plain .mb-link-btn {
+  position: static;
+  top: auto;
+  right: auto;
+}
+
+/* 心のチャート*/
 .chart-image-row {
   grid-area: chart;
   display: flex;
