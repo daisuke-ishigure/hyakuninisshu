@@ -137,3 +137,46 @@
     document.body.appendChild(bar);
   }
 })();
+
+////////////////////////////////////////////////////////////
+// 旧ドメインからの訪問者向け「アドレス変更」お知らせバナー（全ページ共通）
+// 旧ドメイン(hyakuninisshu.sakura.ne.jp)の.htaccessが301リダイレクト時に
+// 付与する ?from_old_domain=1 を検知したときだけ表示する。
+// 表示後はURLからこのパラメータを取り除く（履歴・共有URLを汚さないため）。
+////////////////////////////////////////////////////////////
+(function () {
+  var params = new URLSearchParams(location.search);
+  if (params.get('from_old_domain') !== '1') return;
+
+  params.delete('from_old_domain');
+  var newSearch = params.toString();
+  var cleanUrl = location.pathname + (newSearch ? '?' + newSearch : '') + location.hash;
+  if (window.history && history.replaceState) {
+    history.replaceState(null, '', cleanUrl);
+  }
+
+  var isEn = document.documentElement.lang === 'en';
+
+  var bar = document.createElement('div');
+  bar.setAttribute('role', 'status');
+  bar.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:9999;' +
+    'background:#333;color:#fff;padding:10px 40px 10px 16px;font-size:0.9rem;' +
+    'line-height:1.5;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,0.2);';
+
+  var text = document.createElement('span');
+  text.textContent = isEn
+    ? 'This site has moved to a new address: hyakuninisshu.com — please update your bookmarks.'
+    : 'サイトのアドレスが hyakuninisshu.com に変わりました。お手数ですがブックマークの更新をお願いします。';
+  bar.appendChild(text);
+
+  var closeBtn = document.createElement('button');
+  closeBtn.type = 'button';
+  closeBtn.textContent = '×';
+  closeBtn.setAttribute('aria-label', isEn ? 'Close' : '閉じる');
+  closeBtn.style.cssText = 'position:absolute;right:8px;top:50%;transform:translateY(-50%);' +
+    'background:transparent;border:none;color:#fff;font-size:1.3rem;cursor:pointer;line-height:1;padding:4px 8px;';
+  closeBtn.addEventListener('click', function () { bar.remove(); });
+  bar.appendChild(closeBtn);
+
+  document.body.prepend(bar);
+})();

@@ -1,8 +1,10 @@
 RewriteEngine on
 
 # 旧ドメイン (hyakuninisshu.sakura.ne.jp) から新ドメインへのリダイレクト
+# 末尾に付与する from_old_domain=1 は、新ドメイン側(js/back-to-top.js)で
+# 「アドレスが変わりました」バナーを出すための目印。
 RewriteCond %{HTTP_HOST} ^hyakuninisshu\.sakura\.ne\.jp$ [NC]
-RewriteRule ^(.*)$ https://hyakuninisshu.com/$1 [R=301,L]
+RewriteRule ^(.*)$ https://hyakuninisshu.com/$1?from_old_domain=1 [R=301,L,QSA]
 
 # www なしにリダイレクト
 RewriteCond %{HTTP_HOST} ^www\.hyakuninisshu\.com$ [NC]
