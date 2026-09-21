@@ -160,7 +160,7 @@
   var bar = document.createElement('div');
   bar.setAttribute('role', 'status');
   bar.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:9999;' +
-    'background:#333;color:#fff;padding:10px 40px 10px 16px;font-size:0.9rem;' +
+    'background:#B82343;color:#fff;padding:10px 40px 10px 16px;font-size:0.9rem;' +
     'line-height:1.5;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,0.2);';
 
   var text = document.createElement('span');
