@@ -252,6 +252,7 @@
 
         <h2>後宮の女房</h2>
         <p>后妃たちの生活を直接支えたのが、女房や女官と呼ばれる女性たちです。女房には、朝廷の官司に属する女官だけでなく、后妃の家政組織に仕える女性も含まれていました。彼女たちは、主人の身の回りの世話だけでなく、文書の作成や取次、儀礼、衣服、食事など、さまざまな仕事を担いました。</p>
+        
         <table class='rank_table'>
           <tr>
             <td style="width:20%; padding-top:0.3em;">呼称</td>
@@ -312,6 +313,10 @@
 
         <h2>後宮十二司</h2>
         <p>こうした広大な後宮の実務を動かしていたのが「後宮十二司」です。后妃の食事・医薬・衣服から門の鍵管理・清掃にいたるまで、宮中生活のあらゆる場面を専門の役所が分担していました。後宮には女官たちが宮中生活の実務を担当する十二の役所が置かれ、これらはまとめて「後宮十二司」と呼ばれていました。</p>
+        <p>ところが、平安中期になると蔵人所の台頭などにより他の十一司の実務は次第に衰退し、やがて形骸化していきました。その結果、内侍司が後宮における女官組織の実質的な中心となりました。</p>
+        <div class="chart_viewport">
+          <div id="chart_koukyu" class="chart_instance"></div>
+        </div>
         <table class='rank_table'>
           <tr>
             <td style="width:20%; padding-top:0.3em;">名称</td>
@@ -342,7 +347,7 @@
             <td>宮中の御門の鍵管理を司る。</td>
           </tr>
           <tr>
-            <td><ruby>殿司<rt>とのもりつかさ</rt></ruby></td>
+            <td><ruby>殿司<rt>とのもりのつかさ</rt></ruby></td>
             <td><ruby>輿繖<rt>よさん</rt></ruby>（乗物の輿とその上に差し掛ける長い柄のついた傘）、灯火、炭、入浴用品など宮中生活に関わる物品の管理を司る。</td>
           </tr>
           <tr>
@@ -370,10 +375,6 @@
         <h3 id="naishinotsukasa" style="margin-top:1.5em"><ruby>内侍司<rt>ないしのつかさ</rt></ruby></h3>
         <p>
           後宮十二司のうち、平安時代に特に重要性を増したのが内侍司です。他の十一司が次第に形骸化していく一方で内侍司は天皇への奏上や命令の伝達など、天皇の側近で行う仕事を担い続けました。
-        </p>
-
-        <p>
-          内侍司は令によって定められた後宮十二司の一つで、天皇に近侍し、奏上や伝達を担う役所です。 律令制のもとでは後宮に十二の役所が置かれていましたが、平安中期になると蔵人所の台頭などにより他の十一司の実務は次第に衰退し、やがて形骸化していきました。その結果、内侍司が後宮における女官組織の実質的な中心となりました。
         </p>
 
         <table class='kokushi-rank_table'>
@@ -487,6 +488,23 @@
 
     function initAllCharts() {
 
+
+      // --- 後宮十二司 ---
+      drawSingleChart('chart_koukyu', [
+        [{ v: '1', f: '<div class="v-node">後宮十二司</div>' }, ''],
+        [{ v: '2', f: '<div class="v-node"><ruby>縫司<rt>ぬいのつかさ</rt></ruby></div>' }, '1'],
+        [{ v: '3', f: '<div class="v-node"><ruby>酒司<rt>みきのつかさ</rt></ruby></div>' }, '1'],
+        [{ v: '4', f: '<div class="v-node"><ruby>膳司<rt>かしわでのつかさ</rt></ruby></div>' }, '1'],
+        [{ v: '5', f: '<div class="v-node"><ruby>水司<rt>もいとりのつかさ</rt></ruby></div>' }, '1'],
+        [{ v: '6', f: '<div class="v-node"><ruby>掃司<rt>かにもりのつかさ</rt></ruby></div>' }, '1'],
+        [{ v: '7', f: '<div class="v-node"><ruby>殿司<rt>とのもりのつかさ</rt></ruby></div>' }, '1'],
+        [{ v: '8', f: '<div class="v-node"><ruby>闈司<rt>みかどのつかさ</rt></ruby></div>' }, '1'],
+        [{ v: '9', f: '<div class="v-node"><ruby>兵司<rt>つわもののつかさ</rt></ruby></div>' }, '1'],
+        [{ v: '10', f: '<div class="v-node"><ruby>薬司<rt>くすりのつかさ</rt></ruby></div>' }, '1'],
+        [{ v: '11', f: '<div class="v-node"><ruby>書司<rt>ふみのつかさ</rt></ruby></div>' }, '1'],
+        [{ v: '12', f: '<div class="v-node"><ruby>蔵司<rt>くらのつかさ</rt></ruby></div>' }, '1'],
+        [{ v: '13', f: '<div class="v-node"><ruby>内侍司<rt>ないしのつかさ</rt></ruby></div>' }, '1'],
+      ]);
 
       // --- 春宮坊 ---
       drawSingleChart('chart_touguubou', [

@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="../css/style.css?20260920-02">
   <link rel="stylesheet" href="https://unpkg.com/scroll-hint@latest/css/scroll-hint.css">
   <link rel="stylesheet" href="../css/showtooltips-blue-kanshoku.css">
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -57,6 +58,89 @@
   <style>
     a {
       text-decoration: underline;
+    }
+
+    /* Org-chart node: Japanese (vertical) + English (horizontal) side by side */
+    .v-node {
+      display: inline-flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      gap: 4px !important;
+      writing-mode: horizontal-tb !important;
+      padding: 10px 6px !important;
+      line-height: 1.3 !important;
+    }
+
+    /* Japanese label — vertical writing */
+    .v-node .vn-ja {
+      writing-mode: vertical-rl !important;
+      text-orientation: mixed !important;
+      font-size: 0.85em !important;
+      color: #222 !important;
+      white-space: nowrap !important;
+    }
+
+    /* Divider */
+    .v-node .vn-sep {
+      width: 1px !important;
+      align-self: stretch !important;
+      background: #bbb !important;
+      margin: 0 2px !important;
+    }
+
+    /* English label — rotated 90° to read left-to-right when tilted */
+    .v-node .vn-en-wrap {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      align-self: stretch !important;
+      width: 1.2em !important;
+      min-height: 11em !important;
+      position: relative !important;
+      overflow: visible !important;
+    }
+
+    .v-node .vn-en {
+      writing-mode: horizontal-tb !important;
+      text-orientation: mixed !important;
+      font-size: 0.78em !important;
+      color: #333 !important;
+      white-space: nowrap !important;
+      position: absolute !important;
+      left: 50% !important;
+      top: 50% !important;
+      transform: translate(-50%, -50%) rotate(90deg) !important;
+      line-height: 1.2 !important;
+    }
+
+    /* OrgChart */
+    .google-visualization-orgchart-table {
+      border-collapse: separate !important;
+      border-spacing: 0 !important;
+    }
+
+    .google-visualization-orgchart-node {
+      background-color: white !important;
+      border: none !important;
+      box-shadow: none !important;
+      outline: none !important;
+      position: relative !important;
+      z-index: 0 !important;
+      background-clip: padding-box !important;
+      overflow: hidden !important;
+    }
+
+    .google-visualization-orgchart-node::after {
+      content: '' !important;
+      position: absolute !important;
+      inset: 0 !important;
+      border: 1px solid #999 !important;
+      z-index: 1 !important;
+      pointer-events: none !important;
+    }
+
+    .google-visualization-orgchart-node>div {
+      overflow: visible !important;
     }
   </style>
   <title>The Inner Palace (Kōkyū) | Heian Court Ranks &amp; Offices | Shigure's Hyakunin Isshu</title>
@@ -246,6 +330,13 @@
         <p>The vast inner palace was run by the <em>kōkyū-jūnishi</em> (Twelve Offices of the
           Inner Palace). Specialist offices covered every aspect of palace life — from the consorts'
           food, medicine, and clothing to the management of gate keys and cleaning.</p>
+        <p>However, from the mid-Heian period onward, the rise of the Kurōdo-dokoro (Imperial
+          Secretariat) caused the practical work of the other eleven offices to gradually decline
+          until they became merely nominal. As a result, the Naishi no Tsukasa became the effective
+          centre of the female official organisation in the inner palace.</p>
+        <div class="chart_viewport">
+          <div id="chart_koukyu" class="chart_instance"></div>
+        </div>
         <table class="rank_table">
           <tr>
             <td>Name</td>
@@ -312,16 +403,6 @@
           became hollow institutions, the Naishi no Tsukasa continued to carry out the duties
           performed in close attendance on the emperor, such as conveying memorials and relaying
           his commands.
-        </p>
-
-        <p>
-          The Naishi no Tsukasa was one of the Twelve Offices established by the legal codes
-          (<em>ryō</em>), serving in close attendance on the emperor and handling memorials and
-          communications. Under the <em>ritsuryō</em> system, twelve offices were placed in the
-          inner palace, but from the mid-Heian period onward the rise of the Kurōdo-dokoro
-          (Imperial Secretariat) caused the practical work of the other eleven offices to gradually
-          decline until they became merely nominal. As a result, the Naishi no Tsukasa became the
-          effective centre of the female official organisation in the inner palace.
         </p>
         <table class='kokushi-rank_table'>
           <tr>
@@ -432,6 +513,79 @@
   <script src="../js/tippy.umd.min.js"></script>
   <script src="../js/tooltips.js?2026920"></script>
   <script>document.addEventListener("DOMContentLoaded", () => { document.querySelectorAll("td,th").forEach(c => { if (c.querySelector("ruby")) c.style.paddingTop = "0.9em"; }); });</script>
+
+  <!-- Organisation Charts - Google Chart -->
+  <script type="text/javascript">
+    google.charts.load('current', { packages: ["orgchart"] });
+    google.charts.setOnLoadCallback(initAllCharts);
+
+    const chartList = [];
+
+    function initAllCharts() {
+
+      // helper: build the dual-label node HTML
+      function n(ja, en) {
+        return `<div class="v-node"><span class="vn-ja">${ja}</span><span class="vn-sep"></span><span class="vn-en-wrap"><span class="vn-en">${en}</span></span></div>`;
+      }
+
+      // --- Kōkyū-jūnishi ---
+      drawSingleChart('chart_koukyu', [
+        [{ v: '1', f: n('後宮十二司', 'Kōkyū-jūnishi') }, ''],
+        [{ v: '2', f: n('縫司', 'Nui no Tsukasa') }, '1'],
+        [{ v: '3', f: n('酒司', 'Miki no Tsukasa') }, '1'],
+        [{ v: '4', f: n('膳司', 'Kashiwade no Tsukasa') }, '1'],
+        [{ v: '5', f: n('水司', 'Moitori no Tsukasa') }, '1'],
+        [{ v: '6', f: n('掃司', 'Kanimori no Tsukasa') }, '1'],
+        [{ v: '7', f: n('殿司', 'Tonomori no Tsukasa') }, '1'],
+        [{ v: '8', f: n('闈司', 'Mikado no Tsukasa') }, '1'],
+        [{ v: '9', f: n('兵司', 'Tsuwamono no Tsukasa') }, '1'],
+        [{ v: '10', f: n('薬司', 'Kusuri no Tsukasa') }, '1'],
+        [{ v: '11', f: n('書司', 'Fumi no Tsukasa') }, '1'],
+        [{ v: '12', f: n('蔵司', 'Kura no Tsukasa') }, '1'],
+        [{ v: '13', f: n('内侍司', 'Naishi no Tsukasa') }, '1'],
+      ]);
+    }
+
+    function drawSingleChart(containerId, rowData) {
+      const data = new google.visualization.DataTable();
+      data.addColumn('string', 'Entity');
+      data.addColumn('string', 'Parent');
+      data.addRows(rowData);
+
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      const chart = new google.visualization.OrgChart(container);
+
+      google.visualization.events.addListener(chart, 'ready', () => {
+        autoFitSingle(container);
+      });
+
+      chart.draw(data, { 'allowHtml': true, 'size': 'medium' });
+
+      chartList.push({ chart, data, container });
+    }
+
+    function autoFitSingle(container) {
+      container.style.transform = 'scale(1)';
+      const viewportWidth = container.parentElement.offsetWidth;
+      const chartWidth = container.offsetWidth;
+
+      if (chartWidth > viewportWidth) {
+        const scale = (viewportWidth / chartWidth) * 0.95;
+        container.style.transform = `scale(${scale})`;
+        container.parentElement.style.height = (container.offsetHeight * scale) + "px";
+      } else {
+        container.parentElement.style.height = "auto";
+      }
+    }
+
+    window.addEventListener('resize', () => {
+      chartList.forEach(item => {
+        item.chart.draw(item.data, { 'allowHtml': true, 'size': 'medium' });
+        autoFitSingle(item.container);
+      });
+    });
+  </script>
 
 </body>
 
