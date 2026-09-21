@@ -143,7 +143,35 @@
     </header>
 <script src="../js/back-to-top.js?20260908-02"></script>
     <main class="main_about-main">
-        <div id="quiz-container"></div>
+        <div id="quiz-container">
+            <main class="main_about-main">
+                <div class="section">
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li><a href="index.html">トップ</a></li>
+                            <li><a href="introduction-app.html">アプリ</a></li>
+                            <li>百人一首 ビンゴゲーム</li>
+                        </ol>
+                    </nav>
+                    <hr>
+                    <div class="title"><h1>百人一首 ビンゴゲーム</h1></div>
+                    <ul id="karuta_ul">
+                        <li>縦・横・斜めのいずれか1列揃えればクリアです。</li>
+                        <li>クリアするまでにかかった時間が表示されます。</li>
+                        <li>お手つきのたびに5秒のペナルティが加算されます。</li>
+                    </ul>
+                    <p class="kome" style="margin: 0.25em 0 0.75em 2em;"><small>音声:NHKクリエイティブ・ライブラリー</small></p>
+                    <div class="quiz-controls" style="text-align:center;">
+                        <select id="quiz-type-select">
+                            <option value="全歌対象">すべての歌</option>
+                            <option value="青">青色</option><option value="ピンク">ピンク</option>
+                            <option value="黄">黄色</option><option value="緑">緑色</option><option value="橙">橙</option>
+                        </select>
+                        <div id="start-button"></div>
+                    </div>
+                </div>
+            </main>
+        </div>
     </main>
 
     <footer>

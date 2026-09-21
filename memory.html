@@ -118,7 +118,51 @@
     </header>
 <script src="../js/back-to-top.js?20260908-02"></script>
     <main class="main_about-main">
-        <div id="quiz-container"></div>
+        <div id="quiz-container">
+            <main class="main_about-main">
+                <div class="section">
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li><a href="index.html">トップ</a></li>
+                            <li><a href="introduction-app.html">アプリ</a></li>
+                            <li>百人一首 神経衰弱</li>
+                        </ol>
+                    </nav>
+                    <hr>
+                    <div class="title">
+                        <h1>百人一首 神経衰弱</h1>
+                    </div>
+                    <ul id="karuta_ul">
+                        <li>同じ歌の「上の句」と「下の句」を当てるゲームです。</li>
+                        <li>五色百人一首の各色20首ずつに絞って練習できます。</li>
+                        <li>指定したペア数がランダムに出題されます。</li>
+                    </ul>
+                    <div class="quiz-controls-wrapper">
+                        <div class="quiz-controls">
+                            <p>①札の色を選んでください。</p>
+                            <select id="quiz-type-select">
+                                <option value="青">青</option>
+                                <option value="ピンク">ピンク</option>
+                                <option value="黄">黄</option>
+                                <option value="緑">緑</option>
+                                <option value="橙">橙</option>
+                                <option value="全歌対象" selected>すべての歌を対象</option>
+                            </select>
+                        </div>
+                        <div class="quiz-controls">
+                            <p>②ペア数を選んでください。</p>
+                            <select id="quiz-limit-select">
+                                <option value="2">2ペア (4枚)</option>
+                                <option value="4" selected>4ペア (8枚)</option>
+                                <option value="6">6ペア (12枚)</option>
+                                <option value="8">8ペア (16枚)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="start-button"></div>
+                </div>
+            </main>
+        </div>
     </main>
 
     <footer>

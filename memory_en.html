@@ -118,7 +118,51 @@
     </header>
 <script src="../js/back-to-top.js?20260908-02"></script>
     <main class="main_about-main">
-        <div id="quiz-container"></div>
+        <div id="quiz-container">
+            <main class="main_about-main">
+                <div class="section">
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li><a href="index_en.html">Top</a></li>
+                            <li><a href="introduction-app_en.html">Apps</a></li>
+                            <li>Hyakunin Isshu Memory Match</li>
+                        </ol>
+                    </nav>
+                    <hr>
+                    <div class="title">
+                        <h1>Hyakunin Isshu Memory Match</h1>
+                    </div>
+                    <ul id="karuta_ul">
+                        <li>Match the "upper verse" and "lower verse" of the same poem.</li>
+                        <li>Practice with just the 20 poems from a single color of the Five-Color Hyakunin Isshu set.</li>
+                        <li>The chosen number of pairs is drawn at random.</li>
+                    </ul>
+                    <div class="quiz-controls-wrapper">
+                        <div class="quiz-controls">
+                            <p>① Choose a card color.</p>
+                            <select id="quiz-type-select">
+                                <option value="青">Blue</option>
+                                <option value="ピンク">Pink</option>
+                                <option value="黄">Yellow</option>
+                                <option value="緑">Green</option>
+                                <option value="橙">Orange</option>
+                                <option value="全歌対象" selected>All poems</option>
+                            </select>
+                        </div>
+                        <div class="quiz-controls">
+                            <p>② Choose the number of pairs.</p>
+                            <select id="quiz-limit-select">
+                                <option value="2">2 pairs (4 cards)</option>
+                                <option value="4" selected>4 pairs (8 cards)</option>
+                                <option value="6">6 pairs (12 cards)</option>
+                                <option value="8">8 pairs (16 cards)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="start-button_en"></div>
+                </div>
+            </main>
+        </div>
     </main>
 
     <footer>
