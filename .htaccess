@@ -1,10 +1,20 @@
 RewriteEngine on
 
-RewriteCond %{HTTP_HOST} ^(hyakuninisshu.com)$ [NC]
+# 旧ドメイン (hyakuninisshu.sakura.ne.jp) から新ドメインへのリダイレクト
+RewriteCond %{HTTP_HOST} ^hyakuninisshu\.sakura\.ne\.jp$ [NC]
+RewriteRule ^(.*)$ https://hyakuninisshu.com/$1 [R=301,L]
+
+# www なしにリダイレクト
+RewriteCond %{HTTP_HOST} ^www\.hyakuninisshu\.com$ [NC]
+RewriteRule ^(.*)$ https://hyakuninisshu.com/$1 [R=301,L]
+
+# https 統一
+RewriteCond %{HTTPS} !=on
 RewriteRule ^(.*)$ https://hyakuninisshu.com/$1 [R=301,L]
 
 RewriteCond %{THE_REQUEST} ^.*/index.html
 RewriteRule ^(.*)index.html$ https://hyakuninisshu.com/$1 [R=301,L]
+
 RewriteRule ^bozumekuri\.html$ https://hyakuninisshu.com/memory.html [R=301,L]
 RewriteRule ^yakushoku\.html$ https://hyakuninisshu.com/kanshoku.html [R=301,L]
 RewriteRule ^kajin-sort\.html$ https://hyakuninisshu.com/kajin-zukan.html [R=301,L]
@@ -22,20 +32,20 @@ SetOutputFilter DEFLATE
 BrowserMatch ^Mozilla/4\.0[678] no-gzip
 BrowserMatch ^Mozilla/4 gzip-only-text/html
 BrowserMatch \bMSI[E] !no-gzip !gzip-only-text/html
-    
+
 # 画像は2重圧縮になるので圧縮しない
 SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png|ico)$ no-gzip dont-vary
 SetEnvIfNoCase Request_URI _\.utxt$ no-gzip
 
 # 圧縮するファイル形式を列挙
-AddOutputFilterByType DEFLATE text/plain #テキストファイル
-AddOutputFilterByType DEFLATE text/html  #HTMLファイル
-AddOutputFilterByType DEFLATE text/xml   #XMLファイル(1)
-AddOutputFilterByType DEFLATE text/css   #CSSファイル
-AddOutputFilterByType DEFLATE application/xhtml+xml #XHTMLファイル
-AddOutputFilterByType DEFLATE application/xml           #XMLファイル(2)
-AddOutputFilterByType DEFLATE application/rss+xml    #XMLファイル(3:rss形式)
-AddOutputFilterByType DEFLATE application/atom_xml #XMLファイル(4:atom形式)
-AddOutputFilterByType DEFLATE application/x-javascript #JavaScriptファイル
-AddOutputFilterByType DEFLATE application/x-httpd-php #PHPファイル
+AddOutputFilterByType DEFLATE text/plain
+AddOutputFilterByType DEFLATE text/html
+AddOutputFilterByType DEFLATE text/xml
+AddOutputFilterByType DEFLATE text/css
+AddOutputFilterByType DEFLATE application/xhtml+xml
+AddOutputFilterByType DEFLATE application/xml
+AddOutputFilterByType DEFLATE application/rss+xml
+AddOutputFilterByType DEFLATE application/atom_xml
+AddOutputFilterByType DEFLATE application/x-javascript
+AddOutputFilterByType DEFLATE application/x-httpd-php
 </IfModule>
