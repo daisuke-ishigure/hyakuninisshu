@@ -54,7 +54,7 @@ const ESTIMATED_INCOME_BY_NUMBER = {
     21: null, 22: null, 23: "approx. ¥17.7 million", 24: "approx. ¥289 million", 25: "approx. ¥289 million", 26: "approx. ¥475 million", 27: "approx. ¥130 million", 28: "approx. ¥44.6 million", 29: null, 30: "approx. ¥1.3 million",
     31: "approx. ¥17.7 million", 32: null, 33: null, 34: null, 35: "approx. ¥17.7 million", 36: "approx. ¥17.7 million", 37: "approx. ¥17.7 million", 38: null, 39: "approx. ¥37.1 million", 40: "approx. ¥17.7 million",
     41: null, 42: "approx. ¥17.7 million", 43: "approx. ¥130 million", 44: "approx. ¥130 million", 45: "approx. ¥327 million", 46: null, 47: null, 48: "approx. ¥17.7 million", 49: "approx. ¥37.1 million", 50: "approx. ¥17.7 million",
-    51: "approx. ¥37.1 million", 52: "approx. ¥37.1 million", 53: null, 54: null, 55: "approx. ¥327 million", 56: null, 57: null, 58: "approx. ¥130 million", 59: null, 60: null,
+    51: "approx. ¥37.1 million", 52: "approx. ¥37.1 million", 53: null, 54: "approx. ¥130 million", 55: "approx. ¥327 million", 56: null, 57: null, 58: "approx. ¥130 million", 59: null, 60: null,
     61: null, 62: null, 63: "approx. ¥130 million", 64: "approx. ¥215 million", 65: null, 66: null, 67: null, 68: null, 69: null, 70: null,
     71: "approx. ¥327 million", 72: null, 73: "approx. ¥327 million", 74: "approx. ¥37.1 million", 75: "approx. ¥17.7 million", 76: "approx. ¥425 million", 77: null, 78: "approx. ¥17.7 million", 79: "approx. ¥215 million", 80: null,
     81: "approx. ¥327 million", 82: "approx. ¥17.7 million", 83: "approx. ¥215 million", 84: "approx. ¥44.6 million", 85: null, 86: "approx. ¥17.7 million", 87: "approx. ¥17.7 million", 88: null, 89: null, 90: null,
@@ -68,7 +68,7 @@ const RANK_BY_NUMBER = {
     21: null, 22: null, 23: "Junior Fifth Rank, Lower Grade", 24: "Junior Second Rank", 25: "Junior Second Rank", 26: "Senior First Rank", 27: "Junior Third Rank", 28: "Senior Fourth Rank, Lower Grade", 29: null, 30: "Senior Sixth Rank, Upper Grade",
     31: "Junior Fifth Rank, Lower Grade", 32: null, 33: null, 34: null, 35: "Junior Fifth Rank, Upper Grade", 36: "Junior Fifth Rank, Lower Grade", 37: "Junior Fifth Rank, Lower Grade", 38: null, 39: "Junior Fourth Rank, Upper Grade", 40: "Junior Fifth Rank, Upper Grade",
     41: null, 42: "Junior Fifth Rank, Upper Grade", 43: "Junior Third Rank", 44: "Junior Third Rank", 45: "Senior Second Rank", 46: null, 47: null, 48: "Junior Fifth Rank, Lower Grade", 49: "Junior Fourth Rank, Upper Grade", 50: "Junior Fifth Rank, Upper Grade",
-    51: "Junior Fourth Rank, Upper Grade", 52: "Junior Fourth Rank, Upper Grade", 53: null, 54: null, 55: "Senior Second Rank", 56: null, 57: null, 58: "Junior Third Rank", 59: null, 60: null,
+    51: "Junior Fourth Rank, Upper Grade", 52: "Junior Fourth Rank, Upper Grade", 53: null, 54: "Junior Third Rank", 55: "Senior Second Rank", 56: null, 57: null, 58: "Junior Third Rank", 59: null, 60: null,
     61: null, 62: null, 63: "Junior Third Rank", 64: "Senior Third Rank", 65: null, 66: null, 67: null, 68: null, 69: null, 70: null,
     71: "Senior Second Rank", 72: null, 73: "Senior Second Rank", 74: "Junior Fourth Rank, Upper Grade", 75: "Junior Fifth Rank, Upper Grade", 76: "Junior First Rank", 77: null, 78: "Junior Fifth Rank, Lower Grade", 79: "Senior Third Rank", 80: null,
     81: "Senior Second Rank", 82: "Junior Fifth Rank, Upper Grade", 83: "Senior Third Rank", 84: "Senior Fourth Rank, Lower Grade", 85: null, 86: "Junior Fifth Rank, Lower Grade", 87: "Junior Fifth Rank, Upper Grade", 88: null, 89: "Sanpon (3rd Princely Rank)", 90: null,
@@ -420,7 +420,7 @@ const POETS_RAW = [
     },
     {
         n: 54, name: '<ruby>儀同三司母<rt>ぎどうさんしのはは</rt></ruby>', date: '生年不詳～996年', theme: 'love',
-        poem: '<ruby>忘<rt>わす</rt></ruby>れじの…', job: '女房', source: '千載集',
+        poem: '<ruby>忘<rt>わす</rt></ruby>れじの…', job: '内侍', source: '千載集',
         outline: 'A female poet who witnessed the rise and fall of the Nakanokwanpaku clan', img: 'img/z54.webp',
     },
     {
