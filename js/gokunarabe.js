@@ -1102,7 +1102,7 @@
     "@type": "BreadcrumbList",
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "時雨の百人一首", "item": "https://hyakuninisshu.com/" },
-      { "@type": "ListItem", "position": 2, "name": "百人一首の一覧", "item": "https://hyakuninisshu.com/list.html" },
+      { "@type": "ListItem", "position": 2, "name": "小倉百人一首の一覧", "item": "https://hyakuninisshu.com/list.html" },
       { "@type": "ListItem", "position": 3, "name": `歌人に会える百人一首 ${CFG.poetName}`, "item": `https://hyakuninisshu.com/gokunarabe_${_ldPadded}.html` }
     ]
   };
