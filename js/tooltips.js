@@ -138,6 +138,7 @@ tippy('.fujiwaranokinnori', { content: '<h3><ruby>藤原公教<rt>ふじわら�
 tippy('.kujoukanezane', { content: '<h3><ruby>九条兼実<rt>くじょうかねざね</rt></ruby></h3>【人物名】平安末期から鎌倉初期の公卿。藤原忠通の三男です。父の忠通から九条の地を譲られ、そこに邸を構えて、九条を家名としました。', allowHTML: true });
 tippy('.yoritomo', { content: '<h3><ruby>源頼朝<rt>みなもとのよりとも</rt></ruby></h3>鎌【人物名】倉幕府初代征夷大将軍。鎌倉右大臣こと源実朝の父にあたります。', allowHTML: true });
 tippy('.mononobeshi', { content: '<h3><ruby>物部氏<rt>もののべし</rt></ruby></h3>【氏族名】古代ヤマト政権を支えた有力豪族の一つ。、特に軍事・武器管理を担った氏族として知られています。', allowHTML: true });
+tippy('.takeuchinosukune', { content: '<h3><ruby>武内<rt>たくうちの</rt></ruby><ruby>宿禰<rt>すくね</rt></ruby></h3>【人物名】大和朝廷初期の伝説上の人物で、蘇我氏・平群氏・紀氏・葛城氏など中央豪族の祖とされる。景行・成務・仲哀・応神・仁徳の5天皇に仕え、300年以上生きたとされる。', allowHTML: true });
 
 /* 総称 */
 tippy('.emishi', { content: '<h3><ruby>蝦夷<rt>えみし</rt></ruby></h3>【名詞】朝廷の律令国家の支配に抵抗した人々の総称', allowHTML: true });
