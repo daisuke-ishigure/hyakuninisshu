@@ -52,7 +52,7 @@ PC：番（左・右）を横並び／SP：1名ずつ縦に並べる
 .kasen-card {
   display: grid;
   /* 和歌欄は固定幅（現代語訳が3行の歌がはみ出ない最小幅）にし、残りを人物紹介欄に充てる */
-  grid-template-columns: minmax(0, 1fr) 15.5rem;
+  grid-template-columns: minmax(0, 1fr) 14.5rem;
   position: relative; /* 和歌欄（絶対配置）の基準 */
   height: 38rem; /* 全カード同じ高さ（人物紹介が最も長いカードに合わせる） */
   background: #fffdf7;
@@ -135,10 +135,26 @@ PC：番（左・右）を横並び／SP：1名ずつ縦に並べる
   grid-row: 1;
   inset: 0;
   writing-mode: vertical-rl;
-  display: flex;
-  flex-direction: column; /* 縦書きなので右から左へ並ぶ */
+  /* グリッドにし、歌人名を上の句の下（右下）に置いて現代語訳の幅を広げる
+     （縦書きなので columns が上下方向、rows が右→左方向のトラックになる） */
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-rows: auto auto minmax(0, 1fr);
   padding: 14px 12px;
   overflow-x: auto;
+}
+.section .kasen-card__kami {
+  grid-row: 1;
+  grid-column: 1;
+}
+.section .kasen-card__poem .kasen-card__name {
+  grid-row: 1;
+  grid-column: 2;
+  margin-top: 0.6em;
+}
+.section .kasen-card__shimo {
+  grid-row: 2;
+  grid-column: 1 / -1;
 }
 .section .kasen-card__kami,
 .section .kasen-card__shimo {
@@ -159,12 +175,13 @@ PC：番（左・右）を横並び／SP：1名ずつ縦に並べる
 .section .kasen-card__yaku {
   /* 和歌の左側の残り幅いっぱいに広げ、訳文をその左右中央に置く
      （縦書きでは align-content がブロック方向＝左右に効く。flex にするとルビが分解されるため使わない） */
-  flex: 1 0 auto;
+  grid-row: 3;
+  grid-column: 1 / -1;
   align-content: center;
   font-size: 1rem;
   line-height: 1.8;
-  margin: 0 0.9em 0 0;
-  padding-right: 0.8em;
+  margin: 0 0.6em 0 0;
+  padding-right: 0.5em;
   border-right: 1px solid #c9bb9a;
 }
 
@@ -202,15 +219,19 @@ PC：番（左・右）を横並び／SP：1名ずつ縦に並べる
     grid-row: 2;
     inset: auto;
   }
-  /* 右半分に歌（歌人名・上の句・下の句）、左半分に現代語訳を置き、幅を均等にする */
-  .section .kasen-card__name {
-    margin-block-start: auto;
+  /* 右半分に歌（上の句・下の句）を左右中央に、左半分に現代語訳を置き、幅を均等にする */
+  .kasen-card__poem {
+    grid-template-rows: minmax(0, 1fr) auto auto minmax(0, 1fr) 50%;
+  }
+  .section .kasen-card__kami,
+  .section .kasen-card__poem .kasen-card__name {
+    grid-row: 2;
   }
   .section .kasen-card__shimo {
-    margin-block-end: auto;
+    grid-row: 3;
   }
   .section .kasen-card__yaku {
-    flex: 0 0 50%;
+    grid-row: 5;
     box-sizing: border-box;
     margin-right: 0;
   }
@@ -224,7 +245,9 @@ PC：番（左・右）を横並び／SP：1名ずつ縦に並べる
   }
   .kasen-card {
     grid-template-columns: minmax(0, 1fr) 13rem;
-    height: 44rem;
+    /* 1名ずつ並ぶので高さはそろえず、人物紹介の長さに合わせる（和歌欄に必要な高さは確保） */
+    height: auto;
+    min-height: 30rem;
   }
   .kasen-card__profile {
     padding: 10px;
@@ -238,8 +261,8 @@ PC：番（左・右）を横並び／SP：1名ずつ縦に並べる
   }
   .section .kasen-card__yaku {
     line-height: 1.65;
-    margin-right: 0.5em;
-    padding-right: 0.5em;
+    margin-right: 0.35em;
+    padding-right: 0.35em;
   }
 }
 
