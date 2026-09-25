@@ -1,0 +1,195 @@
+/* --------------------------------------------
+三十六歌仙 歌仙絵と和歌（sanjurokkasen-zukan.html）
+PC：番（左・右）を横並び／SP：1名ずつ縦に並べる
+-------------------------------------------- */
+.kasen-lead {
+  line-height: 1.7;
+  margin-bottom: 0.8em;
+}
+
+/* 画像の出典表記 */
+.section .image-credit {
+  font-size: 0.8rem;
+  line-height: 1.6;
+  text-align: right;
+  color: #555;
+}
+
+.kasen-list {
+  margin-top: 1.5em;
+}
+
+/* 番 */
+.kasen-pair {
+  margin-bottom: 2.5em;
+}
+.section .kasen-pair__title {
+  display: flex;
+  align-items: center;
+  gap: 0.8em;
+  font-family: "Noto Serif JP", serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.2em;
+  color: #b82343;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0 0 0.8em;
+}
+.section .kasen-pair__title::before,
+.section .kasen-pair__title::after {
+  content: "";
+  flex: 1;
+  border-top: 1px solid #b82343;
+}
+.kasen-pair__cards {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 20px;
+}
+
+/* 歌人カード */
+.kasen-card {
+  display: grid;
+  grid-template-columns: 44% minmax(0, 1fr);
+  position: relative; /* 和歌欄（絶対配置）の基準 */
+  height: 38rem; /* 全カード同じ高さ（人物紹介が最も長いカードに合わせる） */
+  background: #fffdf7;
+  border: 1px solid #8a7a5c;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  scroll-margin-top: 1em;
+}
+
+/* 左：歌仙絵・歌人名・人物紹介 */
+.kasen-card__profile {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  border-right: 1px solid #8a7a5c;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+.kasen-card__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid #c9bb9a;
+  margin-bottom: 0.6em;
+}
+.section .kasen-card__name {
+  writing-mode: vertical-rl;
+  font-family: "Noto Serif JP", serif;
+  font-size: 1rem;
+  line-height: 1.3;
+  letter-spacing: 0.1em;
+  text-align: end; /* 縦書きなので下ぞろえ */
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+}
+.kasen-card__name rt {
+  font-size: 0.5em;
+  letter-spacing: 0;
+}
+.kasen-card__side {
+  display: inline-block;
+  margin-bottom: 0.4em;
+  padding: 0.2em 0;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: #fff;
+  background: #b82343;
+  border-radius: 3px;
+}
+.section .kasen-card__life {
+  font-size: 0.8em;
+  color: #555;
+  margin-bottom: 0.3em;
+}
+.section .kasen-card__text {
+  font-size: inherit;
+  line-height: inherit;
+  margin-bottom: 0.5em;
+}
+.section .kasen-card__note {
+  font-size: inherit;
+  line-height: inherit;
+  color: #555;
+  padding-top: 0.5em;
+  border-top: 1px dotted #8a7a5c;
+  margin-bottom: 0.5em;
+}
+.kasen-card__link {
+  align-self: flex-start;
+  margin-top: auto; /* 人物紹介欄の下端にそろえる */
+}
+
+/* 右：和歌（上の句・下の句）と現代語訳を縦書きで */
+.kasen-card__poem {
+  /* 2列目のグリッド領域に絶対配置し、カードの高さいっぱいに広げる
+     （縦書き要素は通常フローだと高さを固定しないと列が折り返せないため） */
+  position: absolute;
+  grid-column: 2;
+  grid-row: 1;
+  inset: 0;
+  writing-mode: vertical-rl;
+  display: flex;
+  flex-direction: column; /* 縦書きなので右から左へ並ぶ */
+  padding: 14px 12px;
+  overflow-x: auto;
+}
+.section .kasen-card__kami,
+.section .kasen-card__shimo {
+  font-family: "Kaisei HarunoUmi", "Noto Serif JP", serif;
+  font-size: 1.15rem;
+  line-height: 2;
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+.section .kasen-card__shimo {
+  padding-top: 0;
+}
+.section .kasen-card__kami rt,
+.section .kasen-card__shimo rt {
+  font-size: 0.45em;
+  letter-spacing: 0;
+}
+.section .kasen-card__yaku {
+  /* 和歌の左側の残り幅いっぱいに広げ、訳文をその左右中央に置く
+     （縦書きでは align-content がブロック方向＝左右に効く。flex にするとルビが分解されるため使わない） */
+  flex: 1 0 auto;
+  align-content: center;
+  font-size: 1rem;
+  line-height: 1.8;
+  margin: 0 0.9em 0 0;
+  padding-right: 0.8em;
+  border-right: 1px solid #c9bb9a;
+}
+
+/* SP：1名ずつ */
+@media (max-width: 700px) {
+  .kasen-pair__cards {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+  .kasen-card {
+    grid-template-columns: 38% minmax(0, 1fr);
+    height: 44rem;
+  }
+  .kasen-card__profile {
+    padding: 10px;
+  }
+  .kasen-card__poem {
+    padding: 12px 6px;
+  }
+  .section .kasen-card__kami,
+  .section .kasen-card__shimo {
+    font-size: 1.05rem;
+  }
+  .section .kasen-card__yaku {
+    line-height: 1.65;
+    margin-right: 0.5em;
+    padding-right: 0.5em;
+  }
+}
