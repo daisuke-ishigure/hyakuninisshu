@@ -51,7 +51,8 @@ PC：番（左・右）を横並び／SP：1名ずつ縦に並べる
 /* 歌人カード */
 .kasen-card {
   display: grid;
-  grid-template-columns: 44% minmax(0, 1fr);
+  /* 和歌欄は固定幅（現代語訳が3行の歌がはみ出ない最小幅）にし、残りを人物紹介欄に充てる */
+  grid-template-columns: minmax(0, 1fr) 15.5rem;
   position: relative; /* 和歌欄（絶対配置）の基準 */
   height: 38rem; /* 全カード同じ高さ（人物紹介が最も長いカードに合わせる） */
   background: #fffdf7;
@@ -167,14 +168,62 @@ PC：番（左・右）を横並び／SP：1名ずつ縦に並べる
   border-right: 1px solid #c9bb9a;
 }
 
+/* 中間幅：番は横並びのまま、カード内を縦積みにする
+   （上：歌仙絵と人物紹介を横並び／下：和歌欄。和歌欄の高さはPCと同じにして歌と現代語訳の幅を保つ） */
+@media (min-width: 641px) and (max-width: 960px) {
+  .kasen-card {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto 38rem;
+    height: auto;
+  }
+  .kasen-card__profile {
+    display: grid;
+    grid-template-columns: 40% minmax(0, 1fr);
+    grid-auto-rows: min-content;
+    column-gap: 12px;
+    border-right: none;
+    border-bottom: 1px solid #8a7a5c;
+  }
+  .kasen-card__zoom {
+    grid-row: 1 / span 4;
+  }
+  .kasen-card__profile > :not(.kasen-card__zoom) {
+    grid-column: 2;
+  }
+  .kasen-card__img {
+    margin-bottom: 0;
+  }
+  .kasen-card__link {
+    margin-top: 0.3em;
+  }
+  .kasen-card__poem {
+    position: relative;
+    grid-column: 1;
+    grid-row: 2;
+    inset: auto;
+  }
+  /* 右半分に歌（歌人名・上の句・下の句）、左半分に現代語訳を置き、幅を均等にする */
+  .section .kasen-card__name {
+    margin-block-start: auto;
+  }
+  .section .kasen-card__shimo {
+    margin-block-end: auto;
+  }
+  .section .kasen-card__yaku {
+    flex: 0 0 50%;
+    box-sizing: border-box;
+    margin-right: 0;
+  }
+}
+
 /* SP：1名ずつ */
-@media (max-width: 700px) {
+@media (max-width: 640px) {
   .kasen-pair__cards {
     grid-template-columns: minmax(0, 1fr);
     gap: 16px;
   }
   .kasen-card {
-    grid-template-columns: 38% minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr) 13rem;
     height: 44rem;
   }
   .kasen-card__profile {
@@ -192,4 +241,32 @@ PC：番（左・右）を横並び／SP：1名ずつ縦に並べる
     margin-right: 0.5em;
     padding-right: 0.5em;
   }
+}
+
+/* 検索（絞り込み） */
+.kasen-search {
+  margin-top: 1.2em;
+}
+#searchInput {
+  box-sizing: border-box;
+  width: 100%;
+  height: 45px;
+  padding: 10px 10px 8px;
+  font-size: 16px;
+}
+.section .kasen-search__result {
+  min-height: 1.5em;
+  margin: 0.4em 0 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+.kasen-pair[hidden],
+.kasen-card[hidden] {
+  display: none;
+}
+
+/* 歌仙絵の拡大（lightbox） */
+.kasen-card__zoom {
+  display: block;
+  cursor: zoom-in;
 }
