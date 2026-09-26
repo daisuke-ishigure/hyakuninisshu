@@ -28,16 +28,14 @@ const KAKEKOTOBA_GAME_NUMS = new Set([
   51, 58, 60, 62, 67, 72, 77, 88, 91, 95, 96, 97, 98, 100,
 ]);
 
-// 掛詞・序詞を実際に含む歌の番号（js/poems.js の kakekotobaMark / jokotobaMark が
-// "_none" ではない歌から抽出）。gihou-kakekotoba.html・gihou-jokotoba.html への
-// バッジ表示に使う。歌自体の技法解説を新たに書き足したときはここも更新すること。
-const KAKEKOTOBA_TECHNIQUE_NUMS = new Set([
-  1, 8, 9, 10, 13, 14, 16, 19, 20, 22, 24, 25, 27, 28,
-  51, 58, 60, 62, 67, 72, 77, 88, 91, 95, 96, 97, 98, 100,
-]);
-const JOKOTOBA_NUMS = new Set([
-  3, 13, 14, 18, 19, 27, 39, 46, 48, 49, 51, 58, 77, 88, 92, 97,
-]);
+// 三十六歌仙に選ばれている歌人の歌番号 → sanjurokkasen.html 内の歌人カードのid。
+// バッジから該当歌人のカードへ直接飛べるようにする。
+const SANJUROKKASEN_CARD_IDS = {
+  3: "01", 4: "06", 5: "11", 6: "05", 9: "12", 12: "08", 17: "07", 18: "21",
+  19: "04", 21: "09", 27: "13", 28: "23", 29: "03", 30: "18", 31: "29", 33: "10",
+  34: "27", 35: "02", 40: "35", 41: "34", 42: "28", 43: "15", 44: "14", 48: "22",
+  49: "33",
+};
 
 ////////////////////////////////////////////////////////////
 // 歌の一覧
@@ -78,8 +76,7 @@ fetch(jsonAddress)
       // .has()が常にfalseになり、バッジが一切表示されなくなる）。
       const poemNum = Number(poem.number);
       const hasKakekotobaGame = KAKEKOTOBA_GAME_NUMS.has(poemNum);
-      const hasKakekotoba = KAKEKOTOBA_TECHNIQUE_NUMS.has(poemNum);
-      const hasJokotoba = JOKOTOBA_NUMS.has(poemNum);
+      const kasenCardId = SANJUROKKASEN_CARD_IDS[poemNum];
       const poetName = poem.name.replace(/<rt>.*?<\/rt>/g, "");
       const gameLinksHTML =
         '<div class="waka-game-links">' +
@@ -89,14 +86,8 @@ fetch(jsonAddress)
         (hasKakekotobaGame
           ? `<a class="game-badge game-badge--kakekotoba" href="/kakekotoba-game-${paddedNum3}.html" data-tooltip="掛詞クルッと発見で遊ぶ">掛詞クルッと発見</a>`
           : '') +
-        (hasKakekotoba
-          ? `<a class="game-badge game-badge--kakekotoba-gihou" href="/gihou-kakekotoba.html" data-tooltip="この歌に含まれる掛詞の解説へ">掛詞解説</a>`
-          : '') +
-        (hasJokotoba
-          ? `<a class="game-badge game-badge--jokotoba" href="/gihou-jokotoba.html" data-tooltip="この歌に含まれる序詞の解説へ">序詞解説</a>`
-          : '') +
-        (hasJokotoba
-          ? `<a class="game-badge game-badge--jokotoba-dango" href="/jokotoba-dango.html" data-tooltip="序詞だんごで遊ぶ">序詞だんご</a>`
+        (kasenCardId
+          ? `<a class="game-badge game-badge--kasen" href="/sanjurokkasen.html#${kasenCardId}" data-tooltip="三十六歌仙の紹介へ">三十六歌仙</a>`
           : '') +
         '<span class="small">' + poem.name + (poem.date ? "（" + poem.date + "）" : "") + "</span>" +
         '</div>';
