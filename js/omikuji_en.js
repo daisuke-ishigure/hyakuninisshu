@@ -925,8 +925,9 @@ function saveTodayResult(index) {
     localStorage.setItem('omikuji_en_result_index', String(index));
 }
 
-// 開発モード：URLに ?dev=1 を付けると、1日の回数制限なしで何度でも引けるようになる
-// （本日の結果はlocalStorageに保存されないため、開発モードを外せば通常の1日1回制限に戻る）
+// おみくじは1日に何度でも引けるが、同じ日に引いた場合は何度引いても同じ結果になる
+// （その日の最初の結果をlocalStorageに保存し、2回目以降はそれを使う）。
+// 開発モード：URLに ?dev=1 を付けると、毎回ランダムに引き直せる（結果は保存しない）
 const DEV_MODE = new URLSearchParams(location.search).has('dev');
 if (DEV_MODE) {
     console.info('[omikuji] Dev mode enabled: no daily draw limit.');
@@ -967,7 +968,7 @@ function _htmlToRomaji(html) {
     return withBr.split(/<br\s*\/?>/i).map(seg => _kanaToRomaji(seg.trim())).join('<br>');
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+function initOmikuji() {
     // 開発モード中はひと目でわかるようにバッジを表示
     if (DEV_MODE) {
         const badge = document.createElement('div');
@@ -978,6 +979,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 必要なDOM要素の取得
     const drawButton = document.getElementById('draw-button');
+    if (!drawButton) return; // おみくじのマークアップが無いページでは何もしない
     const omikujiBox = document.getElementById('omikuji-box');
     const omikujiContainer = document.getElementById('omikuji-container');
     const resultArea = document.getElementById('result-area');
@@ -986,7 +988,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // 説明文・セクション・言語切り替えの要素を取得
     const omikujiExplanation = document.querySelectorAll('.omikuji-explanation');
     const hiddenOnResult = document.querySelectorAll('.section, p.lang-wrapper');
-    const alreadyDrawnMsg = document.getElementById('already-drawn-msg');
     const omikujiStickWrap = document.getElementById('omikuji-stick-wrap');
     const omikujiStickNumber = document.getElementById('omikuji-stick-number');
     const omikujiImageFront = document.getElementById('omikuji-image-front');
@@ -1144,7 +1145,9 @@ document.addEventListener('DOMContentLoaded', () => {
         drawButton.style.display = 'none';
 
         // 結果をこの時点で決定（棒に番号を表示するため）
-        const randomIndex = Math.floor(Math.random() * hyakuninIsshu.length);
+        // 同じ日に引いた場合は、何度引いても同じ結果にする（その日の初回だけランダムに決めて保存）
+        const todayResult = DEV_MODE ? null : getTodayResult();
+        const randomIndex = todayResult ? todayResult.index : Math.floor(Math.random() * hyakuninIsshu.length);
         const poemNumber = randomIndex + 1;
         omikujiStickNumber.textContent = `No. ${poemNumber}`;
 
@@ -1172,9 +1175,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => {
                     try {
                         const result = hyakuninIsshu[randomIndex];
-                        if (!DEV_MODE) {
+                        if (!DEV_MODE && !todayResult) {
                             saveTodayResult(randomIndex);
-                            alreadyDrawnMsg.style.display = 'block';
                         }
                         displayResultAndFadeIn(result, randomIndex);
                     } catch (e) {
@@ -1217,19 +1219,14 @@ document.addEventListener('DOMContentLoaded', () => {
             romajiBtn.classList.remove('active');
         }
 
-        // 本日すでに引いている場合はボタンを非表示にしてメッセージ表示（開発モードでは常に再表示）
-        if (!DEV_MODE && getTodayResult()) {
-            drawButton.style.display = 'none';
-            alreadyDrawnMsg.style.display = 'block';
-        } else {
-            drawButton.style.display = '';
-            alreadyDrawnMsg.style.display = 'none';
-        }
+        // 何度でも引けるので、ボタンは常に再表示
+        drawButton.style.display = '';
     });
+}
 
-    // ページ読み込み時に本日すでに引いていればボタンを非表示（開発モードでは制限なし）
-    if (!DEV_MODE && getTodayResult()) {
-        drawButton.style.display = 'none';
-        alreadyDrawnMsg.style.display = 'block';
-    }
-});
+// 通常は DOMContentLoaded で初期化。index.html では後から読み込むので、その時点で即初期化する
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initOmikuji);
+} else {
+    initOmikuji();
+}

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <!-- GitHub Pages は存在しないURLにこのページを返す（ステータスは404）。
+       どの階層のURLでも表示されるので、CSS・JS・画像・リンクはすべて / から始まる絶対パスで書くこと。 -->
+  <!-- 旧サイトの歌ページ（/no17chihayaburu/ など）で、転送用ページを置いていないURL
+       （29番・/feed/ 付きなど）は、下のスクリプトが歌番号を読み取って転送する。 -->
+  <script>
+    (function () {
+      var m = location.pathname.match(/^\/no([0-9]{1,3})(?:[a-zA-Z0-9_-]*)(?:\/.*)?$/);
+      if (m) {
+        var n = parseInt(m[1], 10);
+        if (n >= 1 && n <= 100) location.replace("/" + n + ".html" + location.search + location.hash);
+      }
+    })();
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ページが見つかりません｜時雨の百人一首</title>
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="/css/style.css?20260927-01">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@500&family=Noto+Sans+JP:wght@400;700&display=swap"
+    rel="stylesheet">
+  <style>
+    /* style.css の main（グリッド・畳の背景）を打ち消し、和紙色の1カラムに */
+    main.notfound {
+      display: block;
+      flex-grow: 1;
+      background: #F7F1E0;
+      padding: 0;
+    }
+
+    .notfound__inner {
+      max-width: 640px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 64px 20px 72px;
+      box-sizing: border-box;
+      text-align: center;
+      font-family: "Noto Sans JP", sans-serif;
+      color: #333;
+    }
+
+    .notfound__code {
+      margin: 0;
+      font-family: "Kaisei HarunoUmi", serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      color: #B82343;
+    }
+
+    .notfound h1 {
+      margin: 4px 0 16px;
+      font-family: "Kaisei HarunoUmi", serif;
+      font-weight: 500;
+      font-size: 1.6rem;
+      letter-spacing: 0.1em;
+    }
+
+    .notfound p {
+      font-size: 0.92rem;
+      line-height: 1.9;
+      color: #555;
+    }
+
+    .notfound__links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin: 28px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .notfound__links a {
+      display: inline-block;
+      padding: 10px 22px;
+      border: 1px solid #B82343;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #B82343;
+      text-decoration: none;
+    }
+
+    .notfound__links a:hover,
+    .notfound__links li:first-child a {
+      background: #B82343;
+      color: #fff;
+    }
+  </style>
+  <!-- Cloudflare Web Analytics -->
+  <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d2f01c23361b402aadede990ea58da0b"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+</head>
+
+<body>
+  <header class="header">
+    <p class="site-title"><a href="https://hyakuninisshu.com/">時雨の百人一首</a></p>
+    <div class="header_list">
+      <a href="/"><img src="/img/icon_top.svg?ver-02" alt="トップ" class="icon" width="67" height="22"></a>
+      <a href="/introduction.html" style="color:#333"><img src="/img/icon_column.svg?ver-02" alt="コラム" class="icon" width="67" height="22"></a>
+      <a href="/introduction-app.html" style="color:#333"><img src="/img/icon_app.svg?ver-02" alt="アプリ" class="icon" width="67" height="22"></a>
+      <a href="/list.html"><img src="/img/icon_search.svg?ver-04" alt="和歌の一覧・検索" class="icon" width="59" height="22"></a>
+    </div>
+  </header>
+  <script src="/js/back-to-top.js?20260921-02"></script>
+
+  <main class="notfound">
+   <div class="notfound__inner">
+    <p class="notfound__code">404 NOT FOUND</p>
+    <h1>ページが見つかりません</h1>
+    <p>お探しのページは、移動または削除された可能性があります。<br>トップページや百人一首の一覧から、あらためてお探しください。</p>
+    <ul class="notfound__links">
+      <li><a href="/">トップページへ</a></li>
+      <li><a href="/list.html">百人一首一覧</a></li>
+      <li><a href="/introduction-app.html">アプリ・ゲーム</a></li>
+      <li><a href="/introduction.html">コラム</a></li>
+    </ul>
+   </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <ul>
+        <li><a href="/policy.html">プライバシーポリシー</a></li>
+        <li>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXx7TKlqnTfKrw2Nuh4f37swVwFH-RFDsNkTGQ4JEF50q2wQ/viewform?usp=header"
+            target="_blank" rel="noopener">お問い合わせフォーム</a>
+        </li>
+      </ul>
+      <span class="footer-copy">&copy;2023 時雨の百人一首</span>
+    </div>
+  </footer>
+</body>
+
+</html>

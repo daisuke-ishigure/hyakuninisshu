@@ -187,7 +187,7 @@ body.active {
 .header .site-title a {
   color: #333;
 }
-/* サイト名の左に時雨アイコン（img/shigure-icon.svg）。CSS 疑似要素なので全ページの HTML は無改修。
+/* サイト名の左にファビコンと同じアイコン（/apple-touch-icon.png＝favicon.ico と同じ赤地に「百」）。CSS 疑似要素なので全ページの HTML は無改修。
    a を block-level flex にして .site-title いっぱいに広げ、行の baseline に依存せず天地中央に。 */
 .header .site-title a {
   display: flex;
@@ -198,14 +198,10 @@ body.active {
 .header .site-title a::before {
   content: "";
   flex: 0 0 auto;
-  width: 2.2em;
-  height: 1.96em; /* SVG 縦横比 86.91:77.69 */
-  background: url(../img/shigure-icon.svg) no-repeat center center;
+  width: 1.2em;
+  height: 1.2em; /* 正方形のアイコン */
+  background: url(/apple-touch-icon.png) no-repeat center center;
   background-size: contain;
-  /* 画像の下側に白い光彩(サイト名の文字影と揃える)。drop-shadow なので絵柄の形に沿う */
-  filter:
-    drop-shadow(0 0 1px #fff)
-    drop-shadow(0 2px 3px rgba(255, 255, 255, 0.85));
 }
 html[lang="en"] .header .site-title {
   margin-bottom: 0;
@@ -5319,10 +5315,10 @@ body.hmenu-active {
   }
   /* アイコンは日本語スマホと同じ実寸に固定（英語はサイト名フォントを縮めているため
      em のままだとアイコンも小さくなってしまう。rem で font-size 非依存にする）。
-     2.2em / 1.96em × 1.3rem = 2.86rem / 2.548rem 相当。 */
+     1.2em × 1.3rem = 1.56rem 相当（正方形）。 */
   html[lang="en"] body:not(.no-sp-appbar) .header .site-title a::before {
-    width: 2.86rem;
-    height: 2.55rem;
+    width: 1.56rem;
+    height: 1.56rem;
   }
   body:not(.no-sp-appbar) .header_list {
     margin: 0;          /* index.html のインライン margin:0 auto / max-width を打ち消す */

@@ -127,6 +127,16 @@ table {
     }
   }
 }
+/* 上の句と下の句の間の改行：画面幅960px未満だけ改行し、それ以上では1行で表示 */
+.waka-br {
+  display: none;
+}
+@media (max-width: 959px) {
+  .waka-br {
+    display: inline;
+  }
+}
+
 .waka-game-links {
   display: flex;
   flex-wrap: wrap;

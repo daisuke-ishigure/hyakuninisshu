@@ -1,61 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-8X7WDTSLFD');
-  </script>
   <meta charset="UTF-8">
-  <title>百人一首に登場する歌枕地図</title>
-  <meta name="description" content="百人一首の歌に詠まれた「歌枕」（地名）を実際の地図上にマッピングして紹介。歌がどの土地を舞台にしているのか、位置関係で確認できます。">
-  <link rel="canonical" href="https://hyakuninisshu.com/leaflet-map.html">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.0/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.3.0/dist/leaflet.js"></script>
-  <script src="https://code.jquery.com/ui/1.8.24/jquery-ui.min.js"></script>
-  <script src="js/leaflet.customsearchbox.min.js"></script>
-  <link href="css/searchbox.min.css" rel="stylesheet" />
-    <!-- favicon用 -->
-    <link rel=”icon” href=“/favicon.ico”>
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <!-- favicon Bing用 -->
-  <link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico">
-  <link type="image/x-icon" href="/favicon.ico" rel="shortcut icon">
-  <link rel="shortcut icon" href="https://hyakuninisshu.com/favicon.ico">
-  <script>
-    function init() {
-      var map = L.map('mapcontainer', { zoomControl: false });
-      var oguraPoint = [35.02348, 135.65913];
-      map.setView(oguraPoint, 15);
-      L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
-        attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>"
-      }).addTo(map);
-      //ポップアップする文字（HTML可、ここでは画像を表示）
-      var sucontents = "<p style='font-size:1.5em; margin-bottom:0;'>小倉山</p><img src='../img/ogurayama.webp' width='300' alt='小倉山'>"
-      //ポップアップオブジェクトを作成
-      var popup1 = L.popup({ maxWidth: 550 }).setContent(sucontents);
-      var popup2 = L.popup().setContent("桜区役所です");
-      //マーカーにポップアップを紐付けする。同時にbindTooltipでツールチップも追加
-      L.marker(oguraPoint, { draggable: true }).bindPopup(popup1).bindTooltip("小倉山").addTo(map);
-      L.marker([35.8561, 139.6098]).bindPopup(popup2).bindTooltip(" ").addTo(map);
-    }
-  </script>
-  <style>
-    #mapcontainer{
-      width:350px;
-      height:350px;
-    }
-  </style>
-  <!-- Cloudflare Web Analytics -->
-  <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d2f01c23361b402aadede990ea58da0b"}'></script>
-  <!-- End Cloudflare Web Analytics -->
+  <title>ページを移動しました｜時雨の百人一首</title>
+  <link rel="canonical" href="https://hyakuninisshu.com/utamakura.html">
+  <meta name="robots" content="noindex">
+  <meta http-equiv="refresh" content="0; url=/utamakura.html">
+  <script>location.replace("/utamakura.html" + location.search + location.hash);</script>
 </head>
-<body onload="init()">
-  <h1 style="position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;">百人一首に登場する歌枕地図</h1>
-  <div id="mapcontainer" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+<body>
+  <p>このページは移動しました。<a href="/utamakura.html">https://hyakuninisshu.com/utamakura.html</a> へお進みください。</p>
 </body>
 </html>
