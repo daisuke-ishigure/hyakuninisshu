@@ -3366,6 +3366,15 @@ footer {
     @media (max-width: 1000px) {
       gap: 4px 15px;
     }
+    // 画面幅の狭いスマホでは、最後のリンク（公式X）を1行目に単独で表示し、
+    // 他のリンクを2行目に並べる
+    li:last-child {
+      @media (max-width: 374px) {
+        order: -1;
+        flex-basis: 100%;
+        text-align: center;
+      }
+    }
   }
 
   a {
