@@ -124,6 +124,8 @@ const state = {
 };
 
 let targetedCard = null; // 現在、串と横位置が合っている落下中の札
+// 直前に正解の札を出した位置。次の正解の札は、ここ以外の位置に出す
+let lastCorrectLane = null;
 
 // 短冊のフォントサイズ（CSSの .card-text / @media 指定値と対応）
 const CARD_FONT_TABLE = { pc: 22, base: 17, mobile: 15 };
@@ -385,10 +387,12 @@ function startGame() {
 
   pickNextPoem();
 
+  lastCorrectLane = null;
+
   const laneCount = DIFFICULTIES[state.difficulty].laneCount;
   const gap = DIFFICULTIES[state.difficulty].spawnGap;
-  for (let slot = 0; slot < laneCount; slot++) {
-    setTimeout(() => spawnCard(slot), slot * gap * 0.6);
+  for (let i = 0; i < laneCount; i++) {
+    setTimeout(() => spawnCard(), i * gap * 0.6);
   }
 
   state.pixiApp.ticker.remove(gameLoop);
@@ -504,10 +508,18 @@ function hasCorrectCardActive() {
 // ============================================================
 // 札の生成（上からふわふわ落下）
 // ============================================================
-function spawnCard(slot) {
+// 札が落ちる位置の数。同時に落ちる札の枚数（laneCount）より1つ多くして、
+// 常に「空いている位置」が2つ以上あるようにする
+function getPositionCount() {
+  return DIFFICULTIES[state.difficulty].laneCount + 1;
+}
+
+// 札を1枚降らせる。位置は、落下中の札が無い位置からランダムに選ぶ。
+// 正解の札は、直前の正解の札と同じ位置には出さない（同じ位置に出続けると串を動かさずに済んでしまうため）
+function spawnCard() {
   if (!state.running || !state.currentPoem) return;
 
-  const laneCount = DIFFICULTIES[state.difficulty].laneCount;
+  const positionCount = getPositionCount();
   let cardData;
 
   const needsCorrectCard = state.targetIndex < state.currentPoem.segments.length && !hasCorrectCardActive();
@@ -524,10 +536,21 @@ function spawnCard(slot) {
     cardData = { text: pick.text, poemId: pick.poemId, isCorrect: isActuallyCorrect };
   }
 
+  const occupied = new Set(state.cards.filter(c => c.state === 'falling').map(c => c.slot));
+  let freeSlots = [];
+  for (let i = 0; i < positionCount; i++) {
+    if (!occupied.has(i)) freeSlots.push(i);
+  }
+  if (cardData.isCorrect && freeSlots.length > 1) {
+    freeSlots = freeSlots.filter(i => i !== lastCorrectLane);
+  }
+  const slot = freeSlots[Math.floor(Math.random() * freeSlots.length)];
+  if (cardData.isCorrect) lastCorrectLane = slot;
+
   const cardHeight = getCardHeight(cardData.text);
 
   const ga = getGameArea();
-  const slotCenterX = ga.left + (ga.width / laneCount) * (slot + 0.5);
+  const slotCenterX = ga.left + (ga.width / positionCount) * (slot + 0.5);
   const startY = -cardHeight - 20;
 
   const el = document.createElement('div');
@@ -562,7 +585,7 @@ function spawnCard(slot) {
       if (card && card.state === 'falling') {
         card.el.remove();
         state.cards = state.cards.filter(c => c !== card);
-        replenishCard(slot);
+        replenishCard();
       }
     },
   });
@@ -586,10 +609,10 @@ function spawnCard(slot) {
   state.cards.push(card);
 }
 
-function replenishCard(slot) {
+function replenishCard() {
   if (!state.running) return;
   const delay = 250 + Math.random() * 350;
-  setTimeout(() => { if (state.running) spawnCard(slot); }, delay);
+  setTimeout(() => { if (state.running) spawnCard(); }, delay);
 }
 
 // ============================================================
@@ -658,7 +681,7 @@ function onCorrectTap(card, slot) {
     onComplete: () => {
       card.el.remove();
       state.cards = state.cards.filter(c => c !== card);
-      replenishCard(slot);
+      replenishCard();
     },
   });
 
@@ -687,7 +710,7 @@ function onWrongTap(card, slot) {
     onComplete: () => {
       card.el.remove();
       state.cards = state.cards.filter(c => c !== card);
-      replenishCard(slot);
+      replenishCard();
     },
   });
 
