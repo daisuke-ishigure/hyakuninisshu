@@ -375,22 +375,24 @@
       margin-bottom: 28px;
     }
 
+    /* PCは3列×3段（9項目）のグリッド。ボタンはセルいっぱいに広げて端をそろえる */
     .quick-nav ul {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 8px 10px;
-      max-width: 1100px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      max-width: 780px;
       margin: 0 auto;
       padding: 0;
       list-style: none;
     }
 
     .quick-nav a {
-      display: inline-flex;
+      display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 5px 16px 5px 5px;
+      gap: 10px;
+      height: 100%;
+      box-sizing: border-box;
+      padding: 6px 16px 6px 6px;
       border: 1px solid var(--home-line);
       border-radius: 999px;
       background: #fff;
@@ -1080,25 +1082,27 @@
         bottom: 84px;
       }
 
-      /* 目的ナビは横スクロールの1行に */
+      /* 目的ナビはスマホでは2列のグリッド（9つ目の「百首から選ぶ」も1列分の幅） */
       .quick-nav {
-        padding: 44px 0 36px;
+        padding: 44px 16px 36px;
       }
 
       .quick-nav ul {
-        flex-wrap: nowrap;
-        justify-content: flex-start;
-        overflow-x: auto;
-        padding: 0 16px 4px;
-        scrollbar-width: none;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
       }
 
-      .quick-nav ul::-webkit-scrollbar {
-        display: none;
+      .quick-nav a {
+        gap: 6px;
+        padding: 4px 10px 4px 4px;
+        font-size: 0.78rem;
+        line-height: 1.35;
       }
 
-      .quick-nav li {
-        flex: 0 0 auto;
+      .quick-nav__mon {
+        width: 24px;
+        height: 24px;
+        font-size: 0.75rem;
       }
 
       .home-heading {
@@ -1149,6 +1153,20 @@
       .hyakushu .theme-filter-btn {
         padding: 5px 7px;
       }
+
+      /* 目的ナビ：狭い画面でもラベルが途中で折れにくいように少し詰める */
+      .quick-nav a {
+        gap: 5px;
+        padding-right: 6px;
+        font-size: 0.72rem;
+        letter-spacing: 0;
+      }
+
+      .quick-nav__mon {
+        width: 22px;
+        height: 22px;
+        font-size: 0.7rem;
+      }
     }
   </style>
   <!-- Cloudflare Web Analytics -->
@@ -1198,6 +1216,7 @@
     <p class="home-kicker">Explore</p>
     <h2 class="home-heading">目的から探す</h2>
     <ul>
+      <li><a href="#hyakushu"><span class="quick-nav__mon" aria-hidden="true">百</span>百首から選ぶ</a></li>
       <li><a href="#kajin"><span class="quick-nav__mon" aria-hidden="true">知</span>歌と歌人を知る</a></li>
       <li><a href="#oboeru"><span class="quick-nav__mon" aria-hidden="true">覚</span>覚える・暗記する</a></li>
       <li><a href="#kyogi"><span class="quick-nav__mon" aria-hidden="true">競</span>競技かるたを鍛える</a></li>
@@ -1206,7 +1225,6 @@
       <li><a href="#yomu"><span class="quick-nav__mon" aria-hidden="true">読</span>歴史と物語を読む</a></li>
       <li><a href="#kanshoku"><span class="quick-nav__mon" aria-hidden="true">官</span>平安時代の位階・官職</a></li>
       <li><a href="#miru"><span class="quick-nav__mon" aria-hidden="true">見</span>地図とデータで見る</a></li>
-      <li><a href="#hyakushu"><span class="quick-nav__mon" aria-hidden="true">百</span>百首から選ぶ</a></li>
     </ul>
   </nav>
 
@@ -1714,8 +1732,7 @@
 
   <script>
 /* ===== 今日の一首（百人一首おみくじ） =====
-   箱の反転・棒・結果の紙のアニメーションまで js/omikuji.js をそのまま使う（omikuji.html と同じ動き）。
-   omikuji.js は約95KBあるので、セクションが近づいたとき（または先にボタンが押されたとき）に読み込む */
+   箱の反転・棒・結果の紙のアニメーションまで js/omikuji.js をそのまま使用。 */
 (function () {
   const OMIKUJI_SRC = "/js/omikuji.js?20260927-01";
   const section = document.getElementById("omikuji");
