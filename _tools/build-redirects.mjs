@@ -52,6 +52,7 @@ const REDIRECTS = {
   // 削除したページ
   "leaflet-map.html": "/utamakura.html",
   "takaramono-sugoroku.html": "/mubeyama-sugoroku.html",
+  "discontinued_sanjurokkasen.html": "/sanjurokkasen.html",
   "cosmos_test.html": "/cosmos.html",
   "sanjurokkasen-zukan.html": "/sanjurokkasen.html",
 };
