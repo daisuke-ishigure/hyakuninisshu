@@ -119,7 +119,7 @@
           "markname": "筑波山",
           "kajin": "陽成院（筑波山）",
           "type": "type1",
-          "name": "<a href='../img/tsukubasan_large.webp?20240504' data-lightbox='map' data-title='茨城県つくば市:筑波山'><img src='../img/tsukubasan.webp?20240504' width='300' alt='筑波山'></a><br><small>写真:Adobe Stock</small><h2 class='utamakura-name'>歌枕：筑波山</h2><p>茨城県つくば市北端にある標高877 mの山。東の峰を女体山、西の峰を男体山と呼ぶことから、男女の象徴として捉えられることがあり、筑波山は男女の歌の歌枕として多く引用されています。</p><hr><a href='/13.html'>13番歌 陽成院へのリンク</a>"
+          "name": "<a href='../img/tsukubayama.webp' data-lightbox='map' data-title='茨城県つくば市:筑波山'><img src='../img/tsukubayama_small.webp' width='300' alt='筑波山'></a><br><small>写真提供：つくば市</small><h2 class='utamakura-name'>歌枕：筑波山</h2><p>茨城県つくば市北端にある標高877 mの山。東の峰を女体山、西の峰を男体山と呼ぶことから、男女の象徴として捉えられることがあり、筑波山は男女の歌の歌枕として多く引用されています。</p><hr><a href='/13.html'>13番歌 陽成院へのリンク</a>"
         },
         "geometry": {
           "type": "Point",

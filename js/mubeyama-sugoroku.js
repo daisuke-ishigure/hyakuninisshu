@@ -1939,10 +1939,39 @@
     });
   }
 
+  // 盤面の表示サイズ：標準は画面幅に合わせて全体を表示。狭い画面では「盤面を拡大」で
+  // 640px幅に広げ（.is-zoomed）、横スクロールしながら各マスをタップしやすくできる。
+  // 拡大したときは、手番のプレイヤーのコマがあるマスが盤面の中央に来るようにスクロールする。
+  function wireBoardZoom() {
+    const btn = document.getElementById('sgr-board-zoom');
+    const scrollEl = el.boardScroll;
+    if (!btn || !scrollEl) return;
+    btn.addEventListener('click', () => {
+      const zoomed = scrollEl.classList.toggle('is-zoomed');
+      btn.setAttribute('aria-pressed', zoomed ? 'true' : 'false');
+      btn.textContent = zoomed ? '画面幅に合わせる' : '盤面を拡大';
+      // 盤面の幅が変わったので、コマ・バッジの大きさを盤面幅に合わせて計算し直す
+      layoutBoard();
+      if (zoomed) centerOnCurrentPlayer();
+    });
+  }
+
+  function centerOnCurrentPlayer() {
+    const player = state.players[state.currentPlayerIndex];
+    if (!player) return;
+    const sqEl = document.getElementById('sgr-sq-' + player.pos);
+    const scrollEl = el.boardScroll;
+    if (!sqEl || !scrollEl) return;
+    const sqRect = sqEl.getBoundingClientRect();
+    const containerRect = scrollEl.getBoundingClientRect();
+    scrollEl.scrollLeft += (sqRect.left + sqRect.width / 2) - (containerRect.left + containerRect.width / 2);
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     cacheDom();
     renderPlayerSetup();
     wireEvents();
+    wireBoardZoom();
     updateBestDisplay();
   });
 })();

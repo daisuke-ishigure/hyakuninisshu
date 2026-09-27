@@ -77,7 +77,7 @@
         "markname": "Mt. Tsukuba",
         "kajin": "Retired Emperor Yōzei (Mt. Tsukuba)",
         "type": "type1",
-        "name": "<a href='../img/tsukubasan_large.webp?20240504' data-lightbox='map' data-title='Tsukuba, Ibaraki: Mt. Tsukuba'><img src='../img/tsukubasan.webp?20240504' width='300' alt='Mt. Tsukuba'></a><br><small>Photo: Adobe Stock</small><h2 class='utamakura-name'>Utamakura: Mt. Tsukuba</h2><p>An 877m peak at the northern edge of Tsukuba, Ibaraki Prefecture. Its eastern peak is called Nyotai-san (\"female body\") and its western peak Nantai-san (\"male body\"), and the mountain is often understood as a symbol of male and female union — making it a frequently cited utamakura in poems about love.</p><hr><a href='/13_en.html'>Link to Poem 13: Retired Emperor Yōzei</a>"
+        "name": "<a href='../img/tsukubayama.webp' data-lightbox='map' data-title='Tsukuba, Ibaraki: Mt. Tsukuba'><img src='../img/tsukubayama_small.webp' width='300' alt='Mt. Tsukuba'></a><br><small>Photo courtesy of Tsukuba City</small><h2 class='utamakura-name'>Utamakura: Mt. Tsukuba</h2><p>An 877m peak at the northern edge of Tsukuba, Ibaraki Prefecture. Its eastern peak is called Nyotai-san (\"female body\") and its western peak Nantai-san (\"male body\"), and the mountain is often understood as a symbol of male and female union — making it a frequently cited utamakura in poems about love.</p><hr><a href='/13_en.html'>Link to Poem 13: Retired Emperor Yōzei</a>"
       },
       "geometry": { "type": "Point", "coordinates": [140.10749, 36.22537] }
     },
@@ -587,7 +587,7 @@
         "markname": "Rozan-ji",
         "kajin": "Murasaki Shikibu (Rozan-ji)",
         "type": "type2",
-        "name": "<a href='../img/rozanji_large.webp' data-lightbox='map' data-title='Rozan-ji Garden (Genji Garden)'><img src='../img/rozanji.webp?20240424' width='300' alt='Rozan-ji'></a><br><small>Photographed August 8, 2026</small><h2 class='utamakura-name'>Rozan-ji</h2><p>Rozan-ji is a temple in Kamigyo Ward, Kyoto, built on the site where Murasaki Shikibu was born and raised. Its grounds hold poem monuments for Murasaki Shikibu and Daini no Sanmi. The temple also features the Genji Garden, a dry-landscape garden said to express the \"feeling\" of Heian-period gardens, and is known in summer as a spot for viewing Chinese bellflowers (kikyō).</p><hr><a href='/27_en.html'>Link to Poem 27: Middle Counselor Kanesuke</a><hr><a href='/57_en.html'>Link to Poem 57: Murasaki Shikibu</a>"
+        "name": "<a href='../img/rozanji_large.webp' data-lightbox='map' data-title='Rozan-ji Garden (Genji Garden)'><img src='../img/rozanji_small.webp?20260822' width='300' alt='Rozan-ji'></a><br><small>Photographed August 8, 2026</small><h2 class='utamakura-name'>Rozan-ji</h2><p>Rozan-ji is a temple in Kamigyo Ward, Kyoto, built on the site where Murasaki Shikibu was born and raised. Its grounds hold poem monuments for Murasaki Shikibu and Daini no Sanmi. The temple also features the Genji Garden, a dry-landscape garden said to express the \"feeling\" of Heian-period gardens, and is known in summer as a spot for viewing Chinese bellflowers (kikyō).</p><hr><a href='/27_en.html'>Link to Poem 27: Middle Counselor Kanesuke</a><hr><a href='/57_en.html'>Link to Poem 57: Murasaki Shikibu</a>"
       },
       "geometry": { "type": "Point", "coordinates": [135.7679119927189, 35.02460328527962] }
     },

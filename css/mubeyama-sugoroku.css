@@ -358,7 +358,9 @@
   position: relative;
   width: 100%;
   max-width: 1100px;
-  min-width: 640px; /* 版画の各マスが小さすぎてタップしづらくならないよう、狭い画面では横スクロールさせる */
+  /* 標準は画面幅に合わせて盤面全体を表示。狭い画面では「盤面を拡大」ボタン（.is-zoomed）で
+     640px幅に広げて横スクロールでき、各マスをタップしやすくできる */
+  min-width: 0;
   margin: 0 auto;
   aspect-ratio: 1920 / 1311;
   border-radius: .6em;
@@ -380,6 +382,45 @@
 .sgr-board {
   position: absolute;
   inset: 0;
+}
+
+.sgr-board-scroll.is-zoomed .sgr-board-img-wrap {
+  min-width: 640px;
+}
+
+/* 盤面の下：拡大ボタン（狭い画面のみ）＋クレジット */
+.sgr-board-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .8em;
+  margin-top: .4em;
+}
+.sgr-board-zoom {
+  display: none;
+  flex: 0 0 auto;
+  padding: .35em .9em;
+  border: 1px solid #cfc39a;
+  border-radius: 999px;
+  background: #fffdf8;
+  color: #5a4a2a;
+  font-size: .78rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+.sgr-board-zoom[aria-pressed="true"] {
+  background: #b82343;
+  border-color: #b82343;
+  color: #fff;
+}
+@media (max-width: 700px) {
+  .sgr-board-zoom { display: inline-block; }
+}
+.sgr-board-foot .sgr-board-credit {
+  margin: 0 0 0 auto;
+  /* サイト共通の p の両端揃えで単語間が間延びしないよう、右寄せに固定 */
+  text-align: right;
+  text-align-last: right;
 }
 
 .sgr-board-credit {
