@@ -1,8 +1,8 @@
 "use strict";
 // 百人一首一覧の「表の1行」を作るテンプレート。
-// list.html（js/list.js がブラウザで hyakunin.json から表を作る）と、
-// index.html（_tools/build-index-poem-table.mjs が Node で表を作り、HTMLに直書きする）の両方で使う。
-// 行の見た目・バッジを変えたら、_tools/build-index-poem-table.mjs を実行して index.html の表も作り直すこと。
+// index.html・list.html の表は _tools/build-index-poem-table.mjs が Node でこのテンプレートから作り、HTMLに直書きしている。
+// （js/list.js は、表が直書きされていないページではブラウザで hyakunin.json から表を作る）
+// 行の見た目・バッジを変えたら、_tools/build-index-poem-table.mjs を実行して両ページの表も作り直すこと。
 
 ////////////////////////////////////////////////////////////
 // カラー定義

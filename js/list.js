@@ -35,8 +35,8 @@ function initTable(table) {
   }
 }
 
-// index.html のように表がHTMLに直書きされていればそれを使う（検索エンジンがリンクを確実に辿れるよう）。
-// 無ければ（list.html）hyakunin.json から表を作る。
+// index.html・list.html のように表がHTMLに直書きされていればそれを使う（検索エンジンがリンクを確実に辿れるよう）。
+// 無ければ hyakunin.json から表を作る。
 const prebuiltTable = document.querySelector("#table table");
 if (prebuiltTable) {
   // このファイルの後半で宣言する searchInput などが初期化されてから実行する
