@@ -51,6 +51,7 @@ const REDIRECTS = {
   "karuta_tokkun.html": "/karuta.html",
   // 削除したページ
   "leaflet-map.html": "/utamakura.html",
+  "takaramono-sugoroku.html": "/mubeyama-sugoroku.html",
 };
 for (const [num, slug] of Object.entries(OLD_POEM_SLUGS)) {
   REDIRECTS[`no${num}${slug}/index.html`] = `/${num}.html`;
