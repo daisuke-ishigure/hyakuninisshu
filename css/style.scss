@@ -3347,8 +3347,10 @@ footer {
 
   ul {
     display: flex;
+    flex-wrap: wrap; // 画面幅が狭いときはリンクを折り返す
     align-items: center;
-    gap: 24px;
+    justify-content: center;
+    gap: 4px 24px;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -3362,7 +3364,7 @@ footer {
       0px 0px 3px #f7f1e0,
       0px 0px 3px #f7f1e0;
     @media (max-width: 1000px) {
-      gap: 15px;
+      gap: 4px 15px;
     }
   }
 
