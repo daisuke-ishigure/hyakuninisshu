@@ -14,7 +14,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="Keywords" content="藤原氏,系図,南家,北家,式家,京家,摂関家,五摂家,百人一首">
-  <meta name="description" content="藤原鎌足から五摂家までの藤原氏の略系図。南家・北家・式家・京家や摂関家、五摂家、奥州藤原氏などをボタンで切り替えて表示できます。百人一首の歌人も系図の中で確認できます。">
+  <meta name="description"
+    content="藤原鎌足から五摂家までの藤原氏の略系図。南家・北家・式家・京家や摂関家、五摂家、奥州藤原氏などをボタンで切り替えて表示できます。百人一首の歌人も系図の中で確認できます。">
   <meta name="fragment" content="!">
   <meta name="google-site-verification" content="a3HHNhawWK8QsasKiSFMC_QeIXmO1tdBc60jhNPTA3s">
   <link rel="stylesheet" href="../css/style.css?20260928-02">
@@ -28,7 +29,8 @@
   <meta property="og:locale" content="ja">
   <meta property="og:type" content="article">
   <meta property="og:title" content="藤原氏の略系図 南家・北家・式家・京家から五摂家まで | 時雨の百人一首">
-  <meta property="og:description" content="藤原鎌足から五摂家までの藤原氏の略系図。南家・北家・式家・京家や摂関家、五摂家、奥州藤原氏などをボタンで切り替えて表示できます。百人一首の歌人も系図の中で確認できます。">
+  <meta property="og:description"
+    content="藤原鎌足から五摂家までの藤原氏の略系図。南家・北家・式家・京家や摂関家、五摂家、奥州藤原氏などをボタンで切り替えて表示できます。百人一首の歌人も系図の中で確認できます。">
   <meta property="og:image" content="https://hyakuninisshu.com/img/ogp_fujiwarashi.webp">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -75,47 +77,108 @@
   <main class="main_about-main">
     <div class="about-main">
       <div class="section fk-section">
-      <nav>
-        <ol class="breadcrumb">
-          <li><a href="index.html">トップ</a></li>
-          <li><a href="introduction.html">コラム</a></li>
-          <li>藤原氏の略系図</li>
-        </ol>
-      </nav>
-      <hr>
-      <h1>藤原氏の略系図</h1>
-      <p class="fk-lead">藤原氏は、<ruby>中臣<rt>なかとみ</rt></ruby>鎌足が天智天皇から「藤原」の姓を賜ったことに始まります。<br class="br-pc">鎌足の子・不比等の4人の息子がそれぞれ南家・北家・式家・京家をおこし、中でも北家は摂政・関白を独占して大いに栄えました。<br class="br-pc">
-      百人一首には、藤原氏の一族から多くの歌人が選ばれています。系図をたどることで、歌人たちがどのような家系につながり、平安時代の宮廷社会の中でどのような位置にいたのかを知ることができます。
-      下のボタンで家を選ぶと、その家の人物だけを表示できます。</p>
+        <nav>
+          <ol class="breadcrumb">
+            <li><a href="index.html">トップ</a></li>
+            <li><a href="introduction.html">コラム</a></li>
+            <li>藤原氏の略系図</li>
+          </ol>
+        </nav>
+        <hr>
+        <h1>藤原氏の略系図</h1>
+        <p class="fk-lead">藤原氏は、<ruby>中臣<rt>なかとみ</rt></ruby>鎌足が天智天皇から「藤原」の姓を賜ったことに始まります。<br
+            class="br-pc">鎌足の子・不比等の4人の息子がそれぞれ南家・北家・式家・京家をおこし、中でも北家は摂政・関白を独占して大いに栄えました。<br class="br-pc">
+          百人一首には、藤原氏の一族から多くの歌人が選ばれています。系図をたどることで、歌人たちがどのような家系につながり、平安時代の宮廷社会の中でどのような位置にいたのかを知ることができます。
+          下のボタンで家を選ぶと、その家の人物だけを表示できます。</p>
 
-      <div class="fk-controls">
-        <div class="fk-filters" id="fkFilters" role="group" aria-label="表示する家を選ぶ"></div>
-      </div>
-
-      <p class="fk-desc" id="fkDesc" aria-live="polite"></p>
-
-      <!-- 系図のすぐ上：左に凡例、右に拡大・縮小 -->
-      <div class="fk-chart-bar">
-        <ul class="fk-legend">
-          <li><span class="fk-legend__blue">青字</span>摂政・関白になった人物</li>
-          <li><span class="fk-legend__pre">〇〇</span>家名</li>
-          <li><span class="fk-legend__badge" aria-hidden="true"></span>百人一首の歌番号（クリックで歌のページへ）</li>
-          <li><span class="fk-legend__dash"></span>数代省略</li>
-          <li><span class="fk-legend__eq">＝</span>婚姻（妻）</li>
-        </ul>
-        <div class="fk-zoom" role="group" aria-label="拡大・縮小">
-          <button type="button" id="fkZoomOut" aria-label="縮小">－</button>
-          <span class="fk-zoom__label" id="fkZoomLabel" aria-live="polite">100%</span>
-          <button type="button" id="fkZoomIn" aria-label="拡大">＋</button>
-          <button type="button" id="fkZoomReset">等倍</button>
-          <button type="button" id="fkZoomFit">幅に合わせる</button>
+        <div class="fk-controls">
+          <div class="fk-filters" id="fkFilters" role="group" aria-label="表示する家を選ぶ"></div>
         </div>
-      </div>
 
-      <div class="fk-chart" id="fkChart">
-        <noscript>系図の表示には JavaScript を有効にしてください。</noscript>
-      </div>
-      <p class="fk-hint">※系図はドラッグで動かせます。名前にカーソルを合わせると、その人物の情報が表示されます。</p>
+        <p class="fk-desc" id="fkDesc" aria-live="polite"></p>
+
+        <!-- 系図のすぐ上：左に凡例、右に拡大・縮小 -->
+        <div class="fk-chart-bar">
+          <ul class="fk-legend">
+            <li><span class="fk-legend__blue">青字</span>摂政・関白になった人物</li>
+            <li><span class="fk-legend__pre">〇〇</span>家名</li>
+            <li><span class="fk-legend__badge" aria-hidden="true"></span>百人一首の歌番号（クリックで歌のページへ）</li>
+            <li><span class="fk-legend__dash"></span>数代省略</li>
+            <li><span class="fk-legend__eq">＝</span>婚姻（妻）</li>
+          </ul>
+          <div class="fk-zoom" role="group" aria-label="拡大・縮小">
+            <button type="button" id="fkZoomOut" aria-label="縮小">－</button>
+            <span class="fk-zoom__label" id="fkZoomLabel" aria-live="polite">100%</span>
+            <button type="button" id="fkZoomIn" aria-label="拡大">＋</button>
+            <button type="button" id="fkZoomReset">等倍</button>
+            <button type="button" id="fkZoomFit">幅に合わせる</button>
+          </div>
+        </div>
+
+        <div class="fk-chart" id="fkChart">
+          <noscript>系図の表示には JavaScript を有効にしてください。</noscript>
+        </div>
+        <p class="fk-hint">※系図はドラッグで動かせます。名前にカーソルを合わせると、その人物の情報が表示されます。</p>
+
+        <!-- 豆知識（レイアウトは kanshoku_touguubou.html の豆知識と同じ） -->
+        <div style="background:rgba(0,0,0,0.06); padding:1em; margin-top:1em;">
+          <h2 class="was-h5 tea" style="margin:0.5em 0 0;">豆知識</h2>
+          <h3 style="border:none;margin-top:1em;">「氏」「家系」「流」「家」「家名」とは</h3>
+          <ul>
+            <li>
+              <dl>
+                <dt><strong><ruby>氏<rt>し</rt></ruby>：</strong></dt>
+                <dd>血縁をもとにした大きな一族のまとまりです。藤原氏は、中臣鎌足を祖とする藤原氏族のことです。<br class="br-pc">藤原不比等の子から、南家・北家・式家・京家の4つの家系に分かれました。
+                </dd>
+              </dl>
+            </li>
+            <li>
+              <dl>
+                <dt><strong><ruby>家系<rt>かけい</rt></ruby>：</strong></dt>
+                <dd>ある人物から子孫へと続いていく血縁上の系統を表します。<br
+                    class="br-pc">例えば、藤原北家は藤原不比等の子・藤原房前から続く家系です。その子孫から、さらにさまざまな流や家が生まれました。</dd>
+              </dl>
+            </li>
+            <li>
+              <dl>
+                <dt><strong><ruby>流<rt>りゅう</rt></ruby></strong>：</dt>
+                <dd>ある祖先から分かれた系統を表します。<br
+                    class="br-pc">例えば、藤原北家の藤原公季から続く系統を閑院流といいます。さらに、その子孫から三条家・西園寺家・徳大寺家などが分かれていきました。</dd>
+              </dl>
+            </li>
+            <li>
+              <dl>
+                <dt><strong><ruby>家<rt>いえ</rt></ruby></strong>：</dt>
+                <dd>代々、家名や家格などを受け継いでいく公家の家系です。<br
+                    class="br-pc">例えば藤原俊成や藤原定家は、藤原長家から続く御子左家の人物です。また、百人一首の藤原俊成・藤原定家は、この家系を代表する歌人です。</dd>
+              </dl>
+            </li>
+            <li>
+              <dl>
+                <dt><strong><ruby>家名<rt>かめい</rt></ruby></strong>：</dt>
+                <dd>公家では、近衛・一条・三条・西園寺・徳大寺など、居所や邸宅、寺院などに由来する名称が使われました。<br
+                    class="br-pc">そのため、同じ藤原氏でも「藤原○○」ではなく、「徳大寺○○」「西園寺○○」などと呼ばれます。</dd>
+              </dl>
+            </li>
+          </ul>
+          <p>例えば、西園寺公経は次のようになっています。</p>
+          <ul>
+            <li>藤原氏（氏・氏族）</li>
+            <li>北家（家系）</li>
+            <li>閑院流（流）</li>
+            <li>西園寺家（家名）</li>
+            <li>西園寺公経（人物）</li>
+          </ul>
+
+          <p>
+            西園寺公経は、百人一首では「入道前太政大臣」の名で知られる歌人ですが、西園寺公経は、藤原北家の閑院流に属する西園寺家の人物です。
+            <br class="br-pc">このように、藤原氏という大きな氏族の中に、さまざまな家系・流・家が分かれていきました。
+          </p>
+          <p>また、氏族名を表す場合は「<ruby>藤原定家<rt>ふじわらのさだいえ</rt></ruby>」のように氏族名と名前の間に「の」が入ります。<br class="br-pc">一方で、家名を表す場合は「<ruby>西園寺公経<rt>さいおんじきんつね</rt></ruby>」のように家名と名前の間には「の」が入らないという特徴があります。<br class="br-pc">これは「藤原」が家名ではなく、氏族を表す<ruby>氏<rt>うじ</rt></ruby>だからです。</p>
+          <p>なお、「家名」と「名字」は時代や文脈によって重なって使われることがあります。
+            <br class="br-pc">このページでは、主に公家の家系を表すものとして「家名」を用いています。
+          </p>
+        </div>
       </div>
     </div>
   </main>
