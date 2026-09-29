@@ -1,0 +1,304 @@
+/* --------------------------------------------
+藤原氏の略系図（fujiwara-keizu.html）
+系図本体は js/fujiwara-keizu.js が SVG で描画する
+-------------------------------------------- */
+/* 幅は mubeyama-sugoroku.html（.sugoroku-section）と同じ。min-width は SVG の幅に引っぱられて広がらないようにするため */
+.section.fk-section {
+  width: 100%;
+  max-width: 1400px;
+  min-width: 0;
+}
+
+.fk-lead {
+  line-height: 1.8;
+  margin-bottom: 1em;
+}
+
+/* 絞り込みボタン */
+.fk-controls {
+  margin: 1em 0 0.6em;
+}
+.fk-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+.fk-filter {
+  font: inherit;
+  font-size: 0.95rem;
+  padding: 0.35em 0.9em;
+  border: 1px solid #b82343;
+  border-radius: 999px;
+  background: #fff;
+  color: #b82343;
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s;
+}
+.fk-filter:hover {
+  background: #fbe9ec;
+}
+.fk-filter[aria-pressed="true"] {
+  background: #b82343;
+  color: #fff;
+}
+.fk-filter:focus-visible,
+.fk-zoom button:focus-visible {
+  outline: 2px solid #1f4fbf;
+  outline-offset: 2px;
+}
+
+/* 系図のすぐ上の行：左に凡例、右端に拡大・縮小（狭い画面では折り返して、拡大・縮小は右寄せのまま） */
+.fk-chart-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.4em 1em;
+  margin-bottom: 0.4em;
+}
+
+/* 拡大・縮小 */
+.fk-zoom {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  margin-left: auto;
+}
+.fk-zoom button {
+  font: inherit;
+  font-size: 0.85rem;
+  min-width: 2.2em;
+  padding: 0.25em 0.6em;
+  border: 1px solid #999;
+  border-radius: 4px;
+  background: #fff;
+  color: #333;
+  cursor: pointer;
+}
+.fk-zoom button:hover {
+  background: #eee;
+}
+.fk-zoom__label {
+  min-width: 3.2em;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+/* 家の説明 */
+.fk-desc {
+  min-height: 3.4em;
+  margin: 0.8em 0;
+  padding: 0.6em 0.9em;
+  line-height: 1.7;
+  background: #fff;
+  border-left: 4px solid #b82343;
+  border-radius: 4px;
+}
+
+/* 凡例 */
+.fk-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3em 1.4em;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.85rem;
+  color: #444;
+}
+.section .fk-legend li {
+  /* style.css の .section ul li（桜アイコン）を打ち消す */
+  padding-left: 0;
+  background: none;
+  font-size: inherit;
+  line-height: 1.6;
+  margin-bottom: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+}
+.fk-legend__blue {
+  color: #1f4fbf;
+  font-weight: 700;
+}
+.fk-legend__pre {
+  padding: 0 0.3em;
+  border: 1px solid #b82343;
+  color: #b82343;
+  line-height: 1.4;
+}
+.fk-legend__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  background: #b82343;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.fk-legend__eq {
+  /* 系図では夫婦を上下に並べるので、縦向きの「＝」にする */
+  display: inline-block;
+  transform: rotate(90deg);
+  font-weight: 700;
+  color: #555;
+}
+.fk-legend__dash {
+  display: inline-block;
+  width: 2em;
+  border-top: 2px dashed #555;
+}
+
+/* 系図本体：高さは内容なり、横長なので横方向だけ枠内でスクロールさせる */
+.fk-chart {
+  height: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  background: #fffdf7;
+  border: 1px solid #d8ccb0;
+  border-radius: 6px;
+  /* スクロールバーの代わりにドラッグで動かす（js/fujiwara-keizu.js） */
+  scrollbar-width: none;
+  cursor: grab;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.fk-chart::-webkit-scrollbar {
+  display: none;
+}
+.fk-chart.is-dragging,
+.fk-chart.is-dragging a {
+  cursor: grabbing;
+}
+.fk-svg {
+  display: block;
+  animation: fk-fade 0.3s ease-out;
+}
+@keyframes fk-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.fk-hint {
+  margin-top: 0.4em;
+  font-size: 0.8rem!important;
+  color: #666;
+}
+
+/* SVG 内の要素 */
+.fk-edge {
+  fill: none;
+  stroke: #555;
+  stroke-width: 1.2;
+}
+.fk-edge.is-ctx {
+  stroke: #bbb;
+}
+.fk-edge.is-dash {
+  stroke-dasharray: 4 3;
+}
+.fk-node text {
+  dominant-baseline: central;
+}
+.fk-name {
+  font-family: "Noto Serif JP", serif;
+  font-size: 15px;
+  font-weight: 700;
+  fill: #333;
+}
+.fk-node.is-kanpaku .fk-name {
+  fill: #1f4fbf;
+}
+/* 養子の線に添える「養子」 */
+.fk-adopt {
+  font-size: 10px;
+  fill: #555;
+  text-anchor: middle;
+}
+.fk-adopt.is-ctx {
+  opacity: 0.45;
+}
+.fk-note {
+  font-size: 11px;
+  fill: #555;
+}
+.fk-pre-box {
+  fill: #fff;
+  stroke: #b82343;
+  stroke-width: 1.2;
+}
+.fk-pre {
+  font-size: 11px;
+  font-weight: 700;
+  fill: #b82343;
+  text-anchor: middle;
+}
+.fk-sub-box {
+  fill: #fff;
+  stroke: #333;
+  stroke-width: 1;
+}
+.fk-sub {
+  font-size: 11px;
+  fill: #333;
+  text-anchor: middle;
+}
+.fk-badge {
+  fill: #b82343;
+}
+.fk-badge-num {
+  font-size: 11px;
+  font-weight: 700;
+  fill: #fff;
+  text-anchor: middle;
+}
+.fk-hit {
+  fill: transparent;
+}
+.fk-node a:hover .fk-name,
+.fk-node a:focus .fk-name {
+  text-decoration: underline;
+}
+.fk-node a:hover .fk-hit,
+.fk-node a:focus .fk-hit {
+  fill: #fbe9ec;
+}
+
+/* 絞り込み時の祖先（文脈として薄く表示） */
+.fk-node.is-ctx {
+  opacity: 0.45;
+}
+
+/* ツールチップ（tippy.js・theme: 'fk'）の上の余白：見出しのルビが枠に詰まらないように広げる（tippy の標準は 5px） */
+.tippy-box[data-theme~="fk"] .tippy-content {
+  padding-top: 10px;
+}
+/* ツールチップ（tippy.js・theme: 'fk'）：見出し（1行目）の下に罫線。説明の行が無いときは引かない */
+.tippy-box[data-theme~="fk"] h3:not(:last-child) {
+  margin-bottom: 0.3em;
+  padding-bottom: 0.25em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+/* ツールチップの文面で1行まるごと <u>…</u> と書いた行：見出しの下と同じ、幅いっぱいの罫線（js で is-rule を付ける） */
+.tippy-box[data-theme~="fk"] .fk-tip-line.is-rule:not(:last-child) {
+  margin-bottom: 0.3em;
+  padding-bottom: 0.25em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+/* 行の一部だけ <u>…</u> と書いた部分：同じ色・太さの下線 */
+.tippy-box[data-theme~="fk"] u {
+  text-decoration: none;
+  padding-bottom: 0.1em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+@media screen and (max-width: 750px) {
+  .fk-filter {
+    font-size: 0.85rem;
+    padding: 0.3em 0.75em;
+  }
+}
