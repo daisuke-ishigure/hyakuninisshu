@@ -170,12 +170,12 @@
   overlay.appendChild(bar);
 
   var lines = isEn
-    ? ['This site has moved to a new address: hyakuninisshu.com',
-       'This message appears when you visit via the old address.',
-       'Bookmark this page and it will not be shown next time.']
-    : ['サイトのアドレスが hyakuninisshu.com に変わりました。',
-       'このメッセージは旧アドレスからアクセスした場合に表示されます。',
-       '現在のページをブックマークしていただくと、次回から表示されません。'];
+    ? ['This site has moved to a new address: https://hyakuninisshu.com/',
+       'This message is shown when you visit the old address.',
+       'If you have bookmarked the old address, we would appreciate it if you could replace it with the URL currently shown. Thank you for your continued support.']
+    : ['サイトのアドレスが https://hyakuninisshu.com/ に変わりました。',
+       'このメッセージは旧アドレスにアクセスしていただいた場合に表示されます。',
+       '旧アドレスをお気に入り登録してくださっている場合は、現在表示されているURLに置き換えていただけたら幸いです。今後ともよろしくお願いいたします。'];
   lines.forEach(function (line) {
     var p = document.createElement('p');
     p.textContent = line;
