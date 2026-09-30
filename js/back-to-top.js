@@ -165,7 +165,7 @@
   var bar = document.createElement('div');
   bar.setAttribute('role', 'status');
   bar.style.cssText = 'position:relative;max-width:32em;width:100%;box-sizing:border-box;' +
-    'background:#B82343;color:#fff;padding:24px 40px;font-size:0.95rem;border-radius:8px;' +
+    'background:#f7f1e0;color:#333;padding:24px 40px;font-size:0.95rem;border-radius:8px;' +
     'line-height:1.8;text-align:left;box-shadow:0 4px 16px rgba(0,0,0,0.3);';
   overlay.appendChild(bar);
 
@@ -179,7 +179,7 @@
   lines.forEach(function (line) {
     var p = document.createElement('p');
     p.textContent = line;
-    p.style.cssText = 'margin:0;color:#fff;';
+    p.style.cssText = 'margin:0;color:#333;';
     bar.appendChild(p);
   });
 
@@ -194,7 +194,7 @@
   closeBtn.textContent = '×';
   closeBtn.setAttribute('aria-label', isEn ? 'Close' : '閉じる');
   closeBtn.style.cssText = 'position:absolute;right:6px;top:6px;' +
-    'background:transparent;border:none;color:#fff;font-size:1.4rem;cursor:pointer;line-height:1;padding:4px 8px;';
+    'background:transparent;border:none;color:#333;font-size:1.4rem;cursor:pointer;line-height:1;padding:4px 8px;';
   closeBtn.addEventListener('click', close);
   bar.appendChild(closeBtn);
 
