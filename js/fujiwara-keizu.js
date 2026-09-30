@@ -583,6 +583,10 @@
       var m = line.match(/^<u>(.*)<\/u>$/);
       return m ? '<div class="fk-tip-line is-rule">' + m[1] + '</div>' : '<div class="fk-tip-line">' + line + '</div>';
     });
+    // スマホなど（ホバーできない端末）では、歌人のツールチップの中に歌のページへのリンクを置く
+    if (d.p && touchUI.matches) {
+      body.push('<a class="fk-tip-link" href="/' + d.p + '.html">' + d.p + '番の歌のページへ</a>');
+    }
     return '<h3>' + lines[0] + '</h3>' + body.join('');
   }
 
@@ -671,6 +675,7 @@
   var state = { filter: 'all', scale: 1 };
   var current = null; // { svg, width, height }
   var tips = [];       // tippy のインスタンス（描き直すたびに破棄する）
+  var touchUI = window.matchMedia('(hover: none)'); // スマホなど、ホバーできない端末
 
   function applyScale() {
     if (!current) return;
@@ -699,7 +704,13 @@
     chart.replaceChildren(svg);
     if (window.tippy) {
       // theme: 'fk' … 系図のツールチップだけに効くスタイル（css/fujiwara-keizu.css の [data-theme~="fk"]）
-      tips = tippy(svg.querySelectorAll('[data-tippy-content]'), { allowHTML: true, theme: 'fk' });
+      var opts = { allowHTML: true, theme: 'fk' };
+      // スマホ：ツールチップの中のリンクをタップできるようにする（interactive は body に置かないと SVG の中に入ってしまう）
+      if (touchUI.matches) {
+        opts.interactive = true;
+        opts.appendTo = document.body;
+      }
+      tips = tippy(svg.querySelectorAll('[data-tippy-content]'), opts);
     }
     current = { svg: svg, width: lay.width, height: lay.height };
     applyScale();
@@ -782,6 +793,11 @@
     drag = null;
   });
   chart.addEventListener('dragstart', function (e) { e.preventDefault(); });
+
+  // スマホ：歌人をタップしてもすぐには移動せず、ツールチップを開くだけにする（移動はツールチップの中のリンクから）
+  chart.addEventListener('click', function (e) {
+    if (touchUI.matches && e.target.closest('a')) e.preventDefault();
+  });
 
   // URL の #nanke などで初期表示の家を指定できる
   var hash = location.hash.replace('#', '');
