@@ -115,8 +115,12 @@
       var ex = b.x + Math.min(a.n.length, b.n.length) * FS / 2;
       var y1 = a.y + (a.sub ? 28 : 9);
       var y2 = b.y - (b.t ? TNO_TOP + 2 : 9);
+      // 子への線を出す高さ（＝の中ほど）。代数の札の上端までの＝で決める
+      var outY = (y1 + y2) / 2;
+      // ＝が代数の札より右を通るとき（後朱雀など3文字の天皇）は、札で止めずに名前の上まで伸ばす
+      if (b.t && ex - 2 > b.x + String(b.t).length * 6.3 + 6) y2 = b.y - 9;
       el('path', { d: 'M' + (ex - 2) + ' ' + y1 + 'V' + y2 + 'M' + (ex + 2) + ' ' + y1 + 'V' + y2, class: 'fk-edge fk-eq' }, edges);
-      byId[c.id] = { outX: ex + 2, outY: (y1 + y2) / 2 };
+      byId[c.id] = { outX: ex + 2, outY: outY };
     });
 
     // 親から子へ：横線を縦線（bar）まで引き、縦線で子を束ねて各子へ横線を引く
