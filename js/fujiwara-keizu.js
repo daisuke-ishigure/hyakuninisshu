@@ -234,7 +234,7 @@
                   N('清衡', { dash: 1, band: '奥州藤原氏', id: 'oshu' }, [
                     N('基衡', {}, [N('秀衡', {}, [N('泰衡')])])
                   ]),
-                  // 佐藤氏：秀郷の6世の孫・公清から（コトバンク「佐藤氏」「西行」、Wikipedia「西行」）
+                  // 佐藤氏：秀郷の6世の孫・公清から
                   N('公清', { dash: 1, pre: '佐藤', id: 'sato' }, [
                     N('季清', {}, [
                       N('康清', {}, [
@@ -590,6 +590,34 @@
     return '<h3>' + lines[0] + '</h3>' + body.join('');
   }
 
+  /* 家名の札（北家・九条流・近衛など）から、その家の絞り込みボタンを探す
+    本人か、いちばん近い祖先の id を起点（FILTERS のキー、または roots）にしているボタン。見つからなければ null */
+  function filterKeyFor(d) {
+    for (var a = d; a; a = a.parent) {
+      if (!a.id) continue;
+      if (FILTERS[a.id] && FILTERS[a.id].roots) return a.id;
+      for (var key in FILTERS) {
+        if (FILTERS[key].roots && FILTERS[key].roots.indexOf(a.id) >= 0) return key;
+      }
+    }
+    return null;
+  }
+
+  // 札をクリックすると、その家のボタンを押したのと同じように絞り込む
+  function tagGroup(parent, d) {
+    var key = filterKeyFor(d);
+    if (!key) return parent;
+    var on = state.filter === key;
+    return el('g', {
+      class: 'fk-tag' + (on ? ' is-on' : ''),
+      'data-filter': key,
+      role: 'button',
+      tabindex: 0,
+      'aria-pressed': on ? 'true' : 'false',
+      'aria-label': on ? '全体の表示に戻す' : FILTERS[key].label + 'で絞り込む'
+    }, parent);
+  }
+
   function drawNode(g, v) {
     var d = v.d;
     var title = tooltipLines(d)[0] + (d.p ? '（百人一首' + d.p + '番）' : '');
@@ -599,8 +627,9 @@
     node.setAttribute('data-tippy-content', tooltipHtml(d));
 
     if (d.pre) {
-      el('rect', { class: 'fk-pre-box', x: 0, y: -9, width: v.preW, height: 18, rx: 2 }, node);
-      el('text', { class: 'fk-pre', x: v.preW / 2, y: 0.5 }, node).textContent = d.pre;
+      var preTag = tagGroup(node, d);
+      el('rect', { class: 'fk-pre-box', x: 0, y: -9, width: v.preW, height: 18, rx: 2 }, preTag);
+      el('text', { class: 'fk-pre', x: v.preW / 2, y: 0.5 }, preTag).textContent = d.pre;
     }
 
     // 歌人は名前とバッジをまとめて歌のページへのリンクにする
@@ -620,8 +649,9 @@
     if (d.sub) {
       // 札の幅は measure() で人物の幅に含めてあるので、子への線（縦線）とは重ならない
       var sw = d.sub.length * NOTE_FS + 12;
-      el('rect', { class: 'fk-sub-box', x: v.nameX, y: 11, width: sw, height: 16, rx: 8 }, node);
-      el('text', { class: 'fk-sub', x: v.nameX + sw / 2, y: 19.5 }, node).textContent = d.sub;
+      var subTag = tagGroup(node, d);
+      el('rect', { class: 'fk-sub-box', x: v.nameX, y: 11, width: sw, height: 16, rx: 8 }, subTag);
+      el('text', { class: 'fk-sub', x: v.nameX + sw / 2, y: 19.5 }, subTag).textContent = d.sub;
     }
     if (d.wife) drawWife(g, v);
   }
@@ -633,7 +663,7 @@
     var x1 = v.x + v.nameX - 2;
     var x2 = last.x + last.textW + 2;
     var ctx = v.mode === 'ctx' ? ' is-ctx' : '';
-    var band = el('g', { class: 'fk-node' + ctx }, g);
+    var band = tagGroup(el('g', { class: 'fk-node' + ctx }, g), v.d);
     el('rect', { class: 'fk-sub-box', x: x1, y: v.inY + 11, width: x2 - x1, height: 16, rx: 8 }, band);
     el('text', { class: 'fk-sub', x: (x1 + x2) / 2, y: v.inY + 19.5 }, band).textContent = v.d.band;
   }
@@ -736,12 +766,42 @@
     filterBox.appendChild(b);
   });
 
+  function setFilter(key) {
+    state.filter = key;
+    try { history.replaceState(null, '', state.filter === 'all' ? location.pathname : '#' + state.filter); } catch (err) { /* noop */ }
+    render();
+  }
+
   filterBox.addEventListener('click', function (e) {
     var b = e.target.closest('button[data-filter]');
     if (!b) return;
-    state.filter = b.dataset.filter;
-    try { history.replaceState(null, '', state.filter === 'all' ? location.pathname : '#' + state.filter); } catch (err) { /* noop */ }
-    render();
+    setFilter(b.dataset.filter);
+  });
+
+  // 系図の中の家名の札（北家・九条流・近衛など）：ボタンと同じく絞り込む。
+  // トグル：すでにその家で絞り込んでいるときにもう一度押すと、全体に戻す
+  function toggleTag(tag) {
+    var key = tag.getAttribute('data-filter');
+    setFilter(state.filter === key ? 'all' : key);
+    keepChartInView();
+  }
+
+  // 絞り込みで系図の高さが変わると、系図が画面の上に外れて見えなくなることがある。
+  // 系図の上端が画面の上に出ている（または画面の下のほうにある）ときは、上端が見える位置までスクロールする
+  function keepChartInView() {
+    var top = chart.getBoundingClientRect().top;
+    if (top >= 0 && top <= window.innerHeight * 0.5) return;
+    window.scrollTo({ top: window.scrollY + top - 12, behavior: 'smooth' });
+  }
+  chart.addEventListener('click', function (e) {
+    var tag = e.target.closest('.fk-tag');
+    if (tag) toggleTag(tag);
+  });
+  chart.addEventListener('keydown', function (e) {
+    var tag = e.target.closest && e.target.closest('.fk-tag');
+    if (!tag || (e.key !== 'Enter' && e.key !== ' ')) return;
+    e.preventDefault();
+    toggleTag(tag);
   });
 
   function setScale(s) {

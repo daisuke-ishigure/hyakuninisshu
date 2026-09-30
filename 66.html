@@ -97,6 +97,7 @@
   <link rel="stylesheet" href="../css/huda_66.css?20240507-02">
   <link rel="stylesheet" href="../css/animate.min.css">
   <link rel="stylesheet" href="../css/grammar-panel.css?20260721">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261001-09">
   <!-- bxSlider -->
   <link rel="stylesheet" href="../css/jquery.bxslider.css">
   <link rel="stylesheet" href="../css/bxslider.css">
@@ -325,15 +326,91 @@
   </div><div class="diagram-section">
       <dl>
         <dt class='title'>行尊の相関図</dt>
-            <dd class='thumb-image2'>
-              <figure class='portrait'>
-                <img src='../img/66_gyoson_diagram.gif?ver03' alt='行尊の相関図' usemap="#ImageMap" width="832" height="1280" />
-                <map name="ImageMap">
-                  <area shape="rect" coords="606,2,694,255" href="/68.html" alt="三条天皇" />
-                  <area shape="rect" coords="619,842,688,1129" href="/80.html" alt="待賢門院堀河" />
-                </map>
-              </figure>
-              <div>
+            <dd class='kd-dd'>
+              <ul class="fk-legend kd-legend">
+                <li><span class="fk-legend__tenno">茶字</span>天皇</li>
+                <li><span class="fk-legend__tno" aria-hidden="true"></span>天皇の代数</li>
+                <li><span class="fk-legend__badge" aria-hidden="true"></span>百人一首の歌番号（クリックで歌のページへ）</li>
+                <li><span class="fk-legend__eq">＝</span>婚姻</li>
+              </ul>
+              <!-- 相関図は js/keizu-diagram.js が下のデータから SVG で描く -->
+              <div class="kd-chart" aria-label="行尊の相関図">
+                <script type="application/json">
+{
+  "nodes": [
+    { "id": "ichijo", "n": "一条", "k": 1, "t": 66, "x": 16, "y": 60 },
+    { "id": "shoshi", "n": "藤原彰子", "x": 16, "y": 104 },
+    { "id": "kenshi", "n": "藤原妍子", "note": "中宮", "x": 16, "y": 150 },
+    { "id": "sanjo", "n": "三条", "k": 1, "t": 67, "p": 68, "x": 16, "y": 228 },
+    { "id": "seishi", "n": "藤原娍子", "note": "皇后", "x": 16, "y": 272 },
+    { "id": "goichijo", "n": "後一条", "k": 1, "t": 68, "x": 140, "y": 40 },
+    { "id": "kishi", "n": "藤原嬉子", "x": 140, "y": 84 },
+    { "id": "gosuzaku", "n": "後朱雀", "k": 1, "t": 69, "x": 140, "y": 136 },
+    { "id": "teishi", "n": "禎子内親王", "x": 140, "y": 180 },
+    { "id": "atsuakira", "n": "敦明親王", "x": 140, "y": 300 },
+    { "id": "goreizei", "n": "後冷泉", "k": 1, "t": 70, "x": 262, "y": 101 },
+    { "id": "gosanjo", "n": "後三条", "k": 1, "t": 71, "x": 262, "y": 158 },
+    { "id": "moshi", "n": "藤原茂子", "x": 262, "y": 202 },
+    { "id": "motohira", "n": "源基平", "sub": "三条源氏", "x": 262, "y": 300 },
+    { "id": "shirakawa", "n": "白河", "k": 1, "t": 72, "x": 384, "y": 180 },
+    { "id": "kenshi2", "n": "藤原賢子", "x": 384, "y": 224 },
+    { "id": "gyoson", "n": "行尊", "p": 66, "self": 1, "x": 384, "y": 300 },
+    { "id": "horikawa", "n": "堀河", "k": 1, "t": 73, "x": 506, "y": 202 },
+    { "id": "ishi", "n": "藤原苡子", "x": 506, "y": 246 },
+    { "id": "hbh", "n": "待賢門院堀河", "p": 80, "x": 628, "y": 115 },
+    { "id": "taikenmonin", "n": "待賢門院", "x": 628, "y": 170 },
+    { "id": "toba", "n": "鳥羽", "k": 1, "t": 74, "x": 628, "y": 224 },
+    { "id": "bifukumonin", "n": "美福門院", "x": 628, "y": 268 },
+    { "id": "sutoku", "n": "崇徳", "k": 1, "t": 75, "p": 77, "x": 750, "y": 160 },
+    { "id": "goshirakawa", "n": "後白河", "k": 1, "t": 77, "x": 750, "y": 205 },
+    { "id": "konoe", "n": "近衛", "k": 1, "t": 76, "x": 750, "y": 250 }
+  ],
+  "couples": [
+    { "id": "c-ichijo", "top": "ichijo", "bottom": "shoshi" },
+    { "id": "c-sanjo1", "top": "kenshi", "bottom": "sanjo" },
+    { "id": "c-sanjo2", "top": "sanjo", "bottom": "seishi" },
+    { "id": "c-gosuzaku1", "top": "kishi", "bottom": "gosuzaku" },
+    { "id": "c-gosuzaku2", "top": "gosuzaku", "bottom": "teishi" },
+    { "id": "c-gosanjo", "top": "gosanjo", "bottom": "moshi" },
+    { "id": "c-shirakawa", "top": "shirakawa", "bottom": "kenshi2" },
+    { "id": "c-horikawa", "top": "horikawa", "bottom": "ishi" },
+    { "id": "c-toba1", "top": "taikenmonin", "bottom": "toba" },
+    { "id": "c-toba2", "top": "toba", "bottom": "bifukumonin" }
+  ],
+  "kids": [
+    { "from": "c-ichijo", "to": ["goichijo", "gosuzaku"] },
+    { "from": "c-sanjo1", "to": ["teishi"] },
+    { "from": "c-sanjo2", "to": ["atsuakira"] },
+    { "from": "c-gosuzaku1", "to": ["goreizei"] },
+    { "from": "c-gosuzaku2", "to": ["gosanjo"] },
+    { "from": "atsuakira", "to": ["motohira"] },
+    { "from": "motohira", "to": ["gyoson"] },
+    { "from": "c-gosanjo", "to": ["shirakawa"] },
+    { "from": "c-shirakawa", "to": ["horikawa"] },
+    { "from": "c-horikawa", "to": ["toba"] },
+    { "from": "c-toba1", "to": ["sutoku", "goshirakawa"] },
+    { "from": "c-toba2", "to": ["konoe"] }
+  ],
+  "arrows": [
+    { "points": [[448, 300], [458, 300], [458, 180], [420, 180]] },
+    { "points": [[458, 300], [704, 300], [704, 224], [664, 224]] },
+    { "points": [[704, 300], [824, 300], [824, 160], [810, 160]],
+      "label": { "text": "護持僧として加持祈祷", "x": 520, "y": 318 } },
+    { "points": [[658, 127], [658, 157]], "label": { "text": "仕える", "x": 666, "y": 143 } }
+  ],
+  "tips": {
+    "藤原妍子": ["<ruby>藤原妍子<rt>ふじわらのけんし</rt></ruby>", "生没年：994年～1027年", "系譜：藤原道長の娘", "特記：三条天皇の中宮。禎子内親王の母"],
+    "藤原娍子": ["<ruby>藤原娍子<rt>ふじわらのせいし</rt></ruby>", "生没年：972年～1025年", "系譜：藤原済時の娘", "特記：三条天皇の皇后。敦明親王の母"],
+    "禎子内親王": ["<ruby>禎子内親王<rt>ていしないしんのう</rt></ruby>", "生没年：1013年～1094年", "系譜：三条天皇と藤原妍子の皇女", "特記：後朱雀天皇の皇后。後三条天皇の母。女院号は陽明門院"],
+    "藤原嬉子": ["<ruby>藤原嬉子<rt>ふじわらのきし</rt></ruby>", "生没年：1007年～1025年", "系譜：藤原道長の娘", "特記：後朱雀天皇が東宮のときの妃。後冷泉天皇を生んだ直後に亡くなった"],
+    "藤原茂子": ["<ruby>藤原茂子<rt>ふじわらのもし</rt></ruby>", "系譜：藤原公成の娘で、藤原能信の養女", "特記：後三条天皇が東宮のときの妃。白河天皇の母"],
+    "藤原賢子": ["<ruby>藤原賢子<rt>ふじわらのけんし</rt></ruby>", "生没年：1057年～1084年", "系譜：源顕房の娘で、藤原師実の養女", "特記：白河天皇の中宮。堀河天皇の母"],
+    "藤原苡子": ["<ruby>藤原苡子<rt>ふじわらのいし</rt></ruby>", "生没年：1076年～1103年", "系譜：藤原実季の娘", "特記：堀河天皇の女御。鳥羽天皇を生んだ直後に亡くなった"]
+  }
+}
+                </script>
+              </div>
+              <div class="kd-text">
                 <p style="width:100%; margin-bottom:0.5em;">
                   <a
                     href="/68.html">三条院</a>は、行尊の曾祖父にあたり、三条天皇の第一皇子として生まれながらも藤原道長の圧政により東宮を辞した敦明親王は、行尊の祖父にあたります。そのため、行尊の父は臣籍降下して、源氏姓を名乗りました。
@@ -489,6 +566,8 @@
   <script src="../js/popper.min.js"></script>
   <script src="../js/tippy.umd.min.js"></script>
   <script src="../js/tooltips.js?2026920"></script>
+  <script src="../js/tenno-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/keizu-diagram.js?20261001-02"></script>
   <!-- ▲▲▲ tippy.js ▲▲▲ -->
   <script>window.POEM_NUM = 66;</script>
   <script src="../js/grammar-data.js?20260830"></script>

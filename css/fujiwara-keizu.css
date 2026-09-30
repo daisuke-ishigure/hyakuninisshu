@@ -107,7 +107,8 @@
   font-size: 0.85rem;
   color: #444;
 }
-.section .fk-legend li {
+.section .fk-legend li,
+.diagram-section .fk-legend li {
   /* style.css の .section ul li（桜アイコン）を打ち消す */
   padding-left: 0;
   background: none;
@@ -118,8 +119,12 @@
   align-items: center;
   gap: 0.35em;
 }
-.fk-legend__blue {
-  color: #1f4fbf;
+.fk-legend__kanpaku {
+  color: #5f4f79;
+  font-weight: 700;
+}
+.fk-legend__tenno {
+  color: #ad4d00;
   font-weight: 700;
 }
 .fk-legend__pre {
@@ -205,13 +210,17 @@
   dominant-baseline: central;
 }
 .fk-name {
-  font-family: "Noto Serif JP", serif;
+  font-family: "noto-sans-pro", sans-serif;
   font-size: 15px;
   font-weight: 700;
   fill: #333;
 }
 .fk-node.is-kanpaku .fk-name {
-  fill: #1f4fbf;
+  fill: #5f4f79;
+}
+/* 天皇（tenno-keizu.html・歌のページの相関図） */
+.fk-node.is-tenno .fk-name {
+  fill: #ad4d00;
 }
 /* 養子の線に添える「養子」 */
 .fk-adopt {
@@ -270,7 +279,7 @@
 
 /* 天皇の代数（tenno-keizu.html）：名前の一文字目の上の青い札 */
 .fk-tno-box {
-  fill: #1f4fbf;
+  fill: #ad4d00;
 }
 .fk-tno {
   font-size: 10px;
@@ -278,15 +287,13 @@
   fill: #fff;
   text-anchor: middle;
 }
+/* 凡例の青い四角（数字は入れない） */
 .fk-legend__tno {
   display: inline-block;
-  padding: 0 0.25em;
+  width: 1.3em;
+  height: 0.9em;
   border-radius: 2px;
-  background: #1f4fbf;
-  color: #fff;
-  font-size: 0.8rem;
-  font-weight: 700;
-  line-height: 1.4;
+  background: #ad4d00;
 }
 
 /* 絞り込み時の祖先（文脈として薄く表示） */
@@ -338,4 +345,92 @@
     font-size: 0.85rem;
     padding: 0.3em 0.75em;
   }
+}
+
+/* --------------------------------------------
+歌のページ（N.html）の相関図（js/keizu-diagram.js）
+.diagram-section の幅いっぱいに系図を置き、その下に説明の文章を置く
+-------------------------------------------- */
+.diagram-section dd.kd-dd {
+  margin-left: 0;
+}
+.kd-legend {
+  margin-bottom: 0.4em;
+}
+.kd-chart {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #fffdf7;
+  border: 1px solid #d8ccb0;
+  border-radius: 6px;
+}
+.kd-svg {
+  width: 100%;
+  height: auto;
+  /* 狭い画面では文字が小さくなりすぎないよう、この幅より縮めずに横スクロールさせる */
+  min-width: 640px;
+}
+.kd-text {
+  margin-top: 0.8em;
+}
+/* このページの歌人（黄色の枠） */
+.kd-self-box {
+  fill: #fff6c2;
+  stroke: #c9a227;
+  stroke-width: 1.2;
+}
+/* 護持僧として仕えた、などの赤い矢印 */
+.kd-arrow {
+  fill: none;
+  stroke: #d8243f;
+  stroke-width: 1.4;
+}
+.kd-arrow-head {
+  fill: #d8243f;
+}
+.kd-arrow-label {
+  font-size: 12px;
+  font-weight: 700;
+  fill: #d8243f;
+  dominant-baseline: central;
+}
+/* style.css の dd a の下線を打ち消す（SVG では名前の上に線が出てしまう） */
+.diagram-section .kd-chart a {
+  text-decoration: none;
+}
+/* 凡例の四角・丸・点線：和文は行の中心より少し下に字面が来るので、記号もそれに合わせて少し下げる */
+.fk-legend__tno,
+.fk-legend__badge,
+.fk-legend__dash {
+  position: relative;
+  top: 0.12em;
+}
+
+/* 家名の札（北家・九条流・近衛など）：クリックでその家に絞り込む（js/fujiwara-keizu.js） */
+.fk-chart .fk-tag {
+  cursor: pointer;
+}
+.fk-tag:hover .fk-sub-box,
+.fk-tag:focus .fk-sub-box,
+.fk-tag:hover .fk-pre-box,
+.fk-tag:focus .fk-pre-box {
+  fill: #fbe9ec;
+}
+.fk-tag:focus {
+  outline: none;
+}
+.fk-tag:focus-visible .fk-sub-box,
+.fk-tag:focus-visible .fk-pre-box {
+  stroke: #1f4fbf;
+  stroke-width: 2;
+}
+/* 絞り込み中の家の札（もう一度押すと全体に戻る） */
+.fk-tag.is-on .fk-sub-box,
+.fk-tag.is-on .fk-pre-box {
+  fill: #b82343;
+  stroke: #b82343;
+}
+.fk-tag.is-on .fk-sub,
+.fk-tag.is-on .fk-pre {
+  fill: #fff;
 }

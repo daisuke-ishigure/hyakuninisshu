@@ -22,8 +22,7 @@
     id: 絞り込みの起点 / key: ツールチップを探す名前（同じ名前が2人いるときだけ。省略時は名前）
     hidden: 名前を出さない人物（起点で、子どうしを線だけで結ぶ）
     ※ツールチップの文面は js/tenno-keizu-tooltips.js にまとめています
-    ※系譜は Wikipedia・コトバンクの記述によります。
-      画像版の系図との違い：平真材（「直材」を訂正）、志貴皇子は持統天皇の子ではなく天智天皇の子
+    ※画像版の系図との違い：平真材（「直材」を訂正）、志貴皇子は持統天皇の子ではなく天智天皇の子
   */
   function N(n, o, c) {
     var node = o || {};
@@ -65,7 +64,7 @@
                                 ])
                               ])
                             ]),
-                            // 相模は頼光の養女（実父は不詳。Wikipedia「相模 (歌人)」）
+                            // 相模は頼光の養女（実父は不詳）
                             N('相模', { p: 65, lbl: '養女' })
                           ]),
                           N('源頼信', {}, [
@@ -97,7 +96,7 @@
                   N('宇多', { k: 1, t: 59 }, [
                     N('醍醐', { k: 1, t: 60 }, [
                       N('朱雀', { k: 1, t: 61 }),
-                      // 徽子女王（斎宮女御）は叔父にあたる村上天皇の女御（Wikipedia「徽子女王」）
+                      // 徽子女王（斎宮女御）は叔父にあたる村上天皇の女御
                       N('重明親王', {}, [
                         N('徽子女王')
                       ]),
@@ -175,7 +174,7 @@
                         ])
                       ])
                     ]),
-                    // 妻の伊勢（百人一首19番）との子が中務（Wikipedia「敦慶親王」「中務」）
+                    // 妻の伊勢（百人一首19番）との子が中務
                     N('敦慶親王', { wife: { n: '伊勢', p: 19 } }, [
                       N('中務')
                     ]),
@@ -212,7 +211,7 @@
                       ])
                     ])
                   ]),
-                  // 光孝天皇の第十四皇子（Wikipedia「源公忠」）。信明は中務の夫の一人
+                  // 光孝天皇の第十四皇子。信明は中務の夫の一人
                   N('源国紀', { sub: '光孝源氏', id: 'kuninori' }, [
                     N('源公忠', {}, [
                       N('源信明')
@@ -276,7 +275,7 @@
         ]),
         N('元正', { k: 1, t: 44 })
       ]),
-      // 貞代王の父は不明（Wikipedia「清原氏」）。子の有雄王は天武天皇の五世孫とされる
+      // 貞代王の父は不明。子の有雄王は天武天皇の五世孫とされる
       N('舎人親王', { id: 'kiyohara' }, [
         N('淳仁', { k: 1, t: 47 }),
         N('貞代王', { dash: 1, lbl: '系譜不明' }, [
@@ -690,18 +689,49 @@
     return '<h3>' + lines[0] + '</h3>' + body.join('');
   }
 
+  /* 氏の札（在原氏・清和源氏など）から、その系統の絞り込みボタンを探す
+    本人か、いちばん近い祖先の id を起点（roots）にしているボタン。天皇まで上ったらそこで止める
+    （三条源氏などを「天智天皇の系統」のような大きなくくりにつながないため）。見つからなければ null */
+  function filterKeyFor(d) {
+    for (var a = d; a; a = a.parent) {
+      if (a !== d && a.k) return null;
+      if (!a.id) continue;
+      if (FILTERS[a.id] && FILTERS[a.id].roots && FILTERS[a.id].roots.indexOf(a.id) >= 0) return a.id;
+      for (var key in FILTERS) {
+        if (FILTERS[key].roots && FILTERS[key].roots.indexOf(a.id) >= 0) return key;
+      }
+    }
+    return null;
+  }
+
+  // 札をクリックすると、その系統のボタンを押したのと同じように絞り込む（js/fujiwara-keizu.js と同じ）
+  function tagGroup(parent, d) {
+    var key = filterKeyFor(d);
+    if (!key) return parent;
+    var on = state.filter === key;
+    return el('g', {
+      class: 'fk-tag' + (on ? ' is-on' : ''),
+      'data-filter': key,
+      role: 'button',
+      tabindex: 0,
+      'aria-pressed': on ? 'true' : 'false',
+      'aria-label': on ? '全体の表示に戻す' : FILTERS[key].label + 'で絞り込む'
+    }, parent);
+  }
+
   function drawNode(g, v) {
     var d = v.d;
     if (d.hidden) return;
     var title = tooltipLines(d)[0] + (d.p ? '（百人一首' + d.p + '番）' : '');
 
-    var cls = 'fk-node' + (v.mode === 'ctx' ? ' is-ctx' : '') + (d.k ? ' is-kanpaku' : '') + (d.p ? ' is-poet' : '');
+    var cls = 'fk-node' + (v.mode === 'ctx' ? ' is-ctx' : '') + (d.k ? ' is-tenno' : '') + (d.p ? ' is-poet' : '');
     var node = el('g', { class: cls, transform: 'translate(' + v.x + ',' + v.inY + ')' }, g);
     node.setAttribute('data-tippy-content', tooltipHtml(d));
 
     if (d.pre) {
-      el('rect', { class: 'fk-pre-box', x: 0, y: -9, width: v.preW, height: 18, rx: 2 }, node);
-      el('text', { class: 'fk-pre', x: v.preW / 2, y: 0.5 }, node).textContent = d.pre;
+      var preTag = tagGroup(node, d);
+      el('rect', { class: 'fk-pre-box', x: 0, y: -9, width: v.preW, height: 18, rx: 2 }, preTag);
+      el('text', { class: 'fk-pre', x: v.preW / 2, y: 0.5 }, preTag).textContent = d.pre;
     }
 
     // 歌人は名前とバッジをまとめて歌のページへのリンクにする
@@ -728,8 +758,9 @@
     if (d.sub) {
       // 札の幅は measure() で人物の幅に含めてあるので、子への線（縦線）とは重ならない
       var sw = d.sub.length * NOTE_FS + 12;
-      el('rect', { class: 'fk-sub-box', x: v.nameX, y: 11, width: sw, height: 16, rx: 8 }, node);
-      el('text', { class: 'fk-sub', x: v.nameX + sw / 2, y: 19.5 }, node).textContent = d.sub;
+      var subTag = tagGroup(node, d);
+      el('rect', { class: 'fk-sub-box', x: v.nameX, y: 11, width: sw, height: 16, rx: 8 }, subTag);
+      el('text', { class: 'fk-sub', x: v.nameX + sw / 2, y: 19.5 }, subTag).textContent = d.sub;
     }
     if (d.wife) drawWife(g, v);
   }
@@ -741,7 +772,7 @@
     var x1 = v.x + v.nameX - 2;
     var x2 = last.x + last.textW + 2;
     var ctx = v.mode === 'ctx' ? ' is-ctx' : '';
-    var band = el('g', { class: 'fk-node' + ctx }, g);
+    var band = tagGroup(el('g', { class: 'fk-node' + ctx }, g), v.d);
     el('rect', { class: 'fk-sub-box', x: x1, y: v.inY + 11, width: x2 - x1, height: 16, rx: 8 }, band);
     el('text', { class: 'fk-sub', x: (x1 + x2) / 2, y: v.inY + 19.5 }, band).textContent = v.d.band;
   }
@@ -853,12 +884,43 @@
     filterBox.appendChild(b);
   });
 
+  function setFilter(key) {
+    state.filter = key;
+    try { history.replaceState(null, '', state.filter === 'all' ? location.pathname : '#' + state.filter); } catch (err) { /* noop */ }
+    render();
+  }
+
   filterBox.addEventListener('click', function (e) {
     var b = e.target.closest('button[data-filter]');
     if (!b) return;
-    state.filter = b.dataset.filter;
-    try { history.replaceState(null, '', state.filter === 'all' ? location.pathname : '#' + state.filter); } catch (err) { /* noop */ }
-    render();
+    setFilter(b.dataset.filter);
+  });
+
+  // 系図の中の氏の札（在原氏・清和源氏など）：ボタンと同じく絞り込む。
+  // トグル：すでにその系統で絞り込んでいるときにもう一度押すと、全体に戻す
+  function toggleTag(tag) {
+    var key = tag.getAttribute('data-filter');
+    setFilter(state.filter === key ? 'all' : key);
+    keepChartInView();
+  }
+
+  // 絞り込みで系図の高さが変わると、系図が画面の上に外れて見えなくなることがある。
+  // 系図の上端が画面の上に出ている（または画面の下のほうにある）ときは、上端が見える位置までスクロールする
+  function keepChartInView() {
+    var top = chart.getBoundingClientRect().top;
+    if (top >= 0 && top <= window.innerHeight * 0.5) return;
+    window.scrollTo({ top: window.scrollY + top - 12, behavior: 'smooth' });
+  }
+
+  chart.addEventListener('click', function (e) {
+    var tag = e.target.closest('.fk-tag');
+    if (tag) toggleTag(tag);
+  });
+  chart.addEventListener('keydown', function (e) {
+    var tag = e.target.closest && e.target.closest('.fk-tag');
+    if (!tag || (e.key !== 'Enter' && e.key !== ' ')) return;
+    e.preventDefault();
+    toggleTag(tag);
   });
 
   function setScale(s) {
