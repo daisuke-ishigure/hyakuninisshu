@@ -157,26 +157,50 @@
 
   var isEn = document.documentElement.lang === 'en';
 
+  // 画面全体を覆う半透明オーバーレイ＋天地中央のボックス
+  var overlay = document.createElement('div');
+  overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;z-index:9999;' +
+    'background:rgba(0,0,0,0.45);display:flex;align-items:center;justify-content:center;padding:16px;';
+
   var bar = document.createElement('div');
   bar.setAttribute('role', 'status');
-  bar.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:9999;' +
-    'background:#B82343;color:#fff;padding:10px 40px 10px 16px;font-size:0.9rem;' +
-    'line-height:1.5;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,0.2);';
+  bar.style.cssText = 'position:relative;max-width:32em;width:100%;box-sizing:border-box;' +
+    'background:#B82343;color:#fff;padding:24px 40px;font-size:0.95rem;border-radius:8px;' +
+    'line-height:1.8;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,0.3);';
+  overlay.appendChild(bar);
 
-  var text = document.createElement('span');
-  text.textContent = isEn
-    ? 'This site has moved to a new address: hyakuninisshu.com — please update your bookmarks.'
-    : 'サイトのアドレスが hyakuninisshu.com に変わりました。お手数ですがブックマークの更新をお願いします。';
-  bar.appendChild(text);
+  var lines = isEn
+    ? ['This site has moved to a new address: hyakuninisshu.com',
+       'This message appears when you visit via the old address.',
+       'Bookmark this page and it will not be shown next time.']
+    : ['サイトのアドレスが hyakuninisshu.com に変わりました。',
+       'このメッセージは旧アドレスからアクセスした場合に表示されます。',
+       '現在のページをブックマークしていただくと、次回から表示されません。'];
+  lines.forEach(function (line) {
+    var p = document.createElement('p');
+    p.textContent = line;
+    p.style.cssText = 'margin:0;color:#fff;';
+    bar.appendChild(p);
+  });
+
+  function close() {
+    overlay.remove();
+    document.removeEventListener('keydown', onKey);
+  }
+  function onKey(e) { if (e.key === 'Escape') close(); }
 
   var closeBtn = document.createElement('button');
   closeBtn.type = 'button';
   closeBtn.textContent = '×';
   closeBtn.setAttribute('aria-label', isEn ? 'Close' : '閉じる');
-  closeBtn.style.cssText = 'position:absolute;right:8px;top:50%;transform:translateY(-50%);' +
-    'background:transparent;border:none;color:#fff;font-size:1.3rem;cursor:pointer;line-height:1;padding:4px 8px;';
-  closeBtn.addEventListener('click', function () { bar.remove(); });
+  closeBtn.style.cssText = 'position:absolute;right:6px;top:6px;' +
+    'background:transparent;border:none;color:#fff;font-size:1.4rem;cursor:pointer;line-height:1;padding:4px 8px;';
+  closeBtn.addEventListener('click', close);
   bar.appendChild(closeBtn);
 
-  document.body.prepend(bar);
+  // ボックスの外側（暗い部分）クリックや Esc でも閉じる
+  overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
+  document.addEventListener('keydown', onKey);
+
+  document.body.appendChild(overlay);
 })();
