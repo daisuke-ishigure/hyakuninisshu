@@ -166,7 +166,7 @@
   bar.setAttribute('role', 'status');
   bar.style.cssText = 'position:relative;max-width:32em;width:100%;box-sizing:border-box;' +
     'background:#B82343;color:#fff;padding:24px 40px;font-size:0.95rem;border-radius:8px;' +
-    'line-height:1.8;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,0.3);';
+    'line-height:1.8;text-align:left;box-shadow:0 4px 16px rgba(0,0,0,0.3);';
   overlay.appendChild(bar);
 
   var lines = isEn
