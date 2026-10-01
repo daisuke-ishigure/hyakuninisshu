@@ -94,6 +94,7 @@
   <link rel="stylesheet" href="../css/huda_48.css?20240507-02">
   <link rel="stylesheet" href="../css/animate.min.css">
   <link rel="stylesheet" href="../css/grammar-panel.css?20260721">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261001-16">
   <!-- google fontの追加 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -317,26 +318,84 @@
   </div><div class="diagram-section">
       <dl>
         <dt class='title'>源重之の系図</dt>
-            <dd class='thumb-image30'>
-              <figure class='portrait'>
-                <img src='../img/48_minamotonoshigeyuki_diagram.gif?ver02' alt='源重之の相関図' usemap="#ImageMap" width="650" height="1280" />
-                <map name="ImageMap">
-                  <area shape="rect" coords="520,354,593,612" href="/13.html" alt="陽成院" />
-                  <area shape="rect" coords="519,660,590,969" href="/20.html" alt="元良親王" />
-                  <area shape="rect" coords="31,1019,104,1269" href="/93.html" alt="源実朝" />
-                </map>
-                <figcaption>
-                  <p class="kome" style="width:calc(100% - 1em); font-size:0.9em;"><span
-                      style="color:#C32538; margin-right:0.25em;">■</span>の番号が付いている人物をクリックすると、その歌人のページに移動します。</p>
-                </figcaption>
-              </figure>
-              <div>
+            <dd class='kd-dd'>
+              <!-- 系図のすぐ上：左に凡例、右に拡大・縮小（tenno-keizu.html と同じ） -->
+              <div class="fk-chart-bar">
+                <ul class="fk-legend kd-legend">
+                  <li><span class="fk-legend__tenno">茶字</span>天皇</li>
+                  <li><span class="fk-legend__tno" aria-hidden="true"></span>天皇の代数</li>
+                  <li><span class="fk-legend__badge" aria-hidden="true"></span>百人一首の歌番号（クリックで歌のページへ）</li>
+                  <li><span class="fk-legend__dash"></span>数代省略・養子</li>
+                </ul>
+                <div class="fk-zoom" role="group" aria-label="拡大・縮小">
+                  <button type="button" data-zoom="out" aria-label="縮小">－</button>
+                  <span class="fk-zoom__label" aria-live="polite">100%</span>
+                  <button type="button" data-zoom="in" aria-label="拡大">＋</button>
+                  <button type="button" data-zoom="reset">等倍</button>
+                  <button type="button" data-zoom="fit">幅に合わせる</button>
+                </div>
+              </div>
+              <!-- 相関図のデータ。SVG は node _tools/build-keizu.mjs で下の KEIZU:START〜END に書き込む -->
+              <div class="kd-chart" aria-label="源重之の系図">
+                <script type="application/json">
+{
+  "nodes": [
+    { "id": "seiwa", "n": "清和", "k": 1, "t": 56, "x": 16, "y": 120 },
+    { "id": "sadazumi", "n": "貞純親王", "x": 136, "y": 40 },
+    { "id": "sadamoto", "n": "貞元親王", "x": 136, "y": 106 },
+    { "id": "yozei", "n": "陽成", "k": 1, "t": 57, "p": 13, "x": 136, "y": 200 },
+    { "id": "kanetada", "n": "源兼忠", "x": 256, "y": 84 },
+    { "id": "kanenobu", "n": "源兼信", "x": 256, "y": 128 },
+    { "id": "motoyoshi", "n": "元良親王", "p": 20, "x": 256, "y": 200 },
+    { "id": "yoritomo", "n": "源頼朝", "x": 376, "y": 40 },
+    { "id": "shigeyuki", "n": "源重之", "p": 48, "self": 1, "x": 376, "y": 128 },
+    { "id": "sanetomo", "n": "源実朝", "p": 93, "x": 496, "y": 40 }
+  ],
+  "kids": [
+    { "from": "seiwa", "to": ["sadazumi", "sadamoto", "yozei"] },
+    { "from": "sadamoto", "to": ["kanetada", "kanenobu"] },
+    { "from": "kanenobu", "to": ["shigeyuki"] },
+    { "from": "yozei", "to": ["motoyoshi"] },
+    { "from": "yoritomo", "to": ["sanetomo"] }
+  ],
+  "lines": [
+    { "points": [[199, 40], [373, 40]], "dash": true, "label": { "text": "8代略", "x": 290, "y": 34 } },
+    { "points": [[304, 84], [335, 84], [335, 128]], "dash": true, "label": { "text": "養子", "x": 352, "y": 100 } }
+  ],
+  "tips": {
+    "源兼忠": ["<ruby>源兼忠<rt>みなもとのかねただ</rt></ruby>", "官職：参議", "系譜：貞元親王の子", "特記：弟・源兼信の子の重之を養子とした"],
+    "源兼信": ["<ruby>源兼信<rt>みなもとのかねのぶ</rt></ruby>", "官職：三河守", "系譜：貞元親王の子", "特記：源重之の父"],
+    "源重之": ["<ruby>源重之<rt>みなもとのしげゆき</rt></ruby>", "官職：筑前権守", "位階：従五位下", "系譜：源兼信の子。伯父の源兼忠の養子。貞元親王の孫", "百人一首：48番「風をいたみ…」の歌人", "特記：春宮・憲平親王（冷泉天皇）に『重之百首』を詠進した。のち陸奥守藤原実方に従って陸奥国に下り、1000年に当地で没した"]
+  }
+}
+                </script>
+                <!-- KEIZU:START -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 581 226" width="581" height="226" role="img" aria-label="源重之の系図" class="fk-svg kd-svg" style="max-width:872px;min-width:min(640px,872px)" data-src="5iw6li">
+<g class="fk-edges"><path d="M49 120H122" class="fk-edge"/><path d="M122 40V200" class="fk-edge"/><path d="M122 40H133" class="fk-edge"/><path d="M122 106H133" class="fk-edge"/><path d="M122 200H133" class="fk-edge"/><path d="M199 106H242" class="fk-edge"/><path d="M242 84V128" class="fk-edge"/><path d="M242 84H253" class="fk-edge"/><path d="M242 128H253" class="fk-edge"/><path d="M304 128H362" class="fk-edge"/><path d="M362 128H373" class="fk-edge"/><path d="M193 200H242" class="fk-edge"/><path d="M242 200H253" class="fk-edge"/><path d="M424 40H482" class="fk-edge"/><path d="M482 40H493" class="fk-edge"/><path d="M199 40L373 40" class="fk-edge is-dash"/><text class="fk-adopt" x="290" y="34">8代略</text><path d="M304 84L335 84L335 128" class="fk-edge is-dash"/><text class="fk-adopt" x="352" y="100">養子</text></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node is-tenno" transform="translate(16,120)" data-tip="&lt;h3&gt;&lt;ruby&gt;清和天皇&lt;rt&gt;せいわてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第56代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：850年～881年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：858年～876年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：9歳で即位し、外祖父の藤原良房が政治を行った&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">清和</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">56</text></g>
+<g class="fk-node" transform="translate(136,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;貞純親王&lt;rt&gt;さだずみしんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：不明～916年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：四品&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：清和天皇の皇子、源経基の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">貞純親王</text></g>
+<g class="fk-node" transform="translate(136,106)" data-tip="&lt;h3&gt;&lt;ruby&gt;貞元親王&lt;rt&gt;さだもとしんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：四品&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：清和天皇の皇子&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">貞元親王</text></g>
+<g class="fk-node is-tenno is-poet" transform="translate(136,200)" data-tip="&lt;h3&gt;&lt;ruby&gt;陽成天皇&lt;rt&gt;ようぜいてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第57代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：868年～949年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：876年～884年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：13番「筑波嶺の…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;陽成院&lt;rt&gt;ようぜいいん&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;" data-p="13"><a href="/13.html" aria-label="陽成天皇（百人一首13番）"><rect class="fk-hit" x="-2" y="-13" width="58" height="26"/><text class="fk-name" x="0" y="0.5">陽成</text><circle class="fk-badge" cx="44" cy="0" r="10"/><text class="fk-badge-num" x="44" y="0.5">13</text></a><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">57</text></g>
+<g class="fk-node" transform="translate(256,84)" data-tip="&lt;h3&gt;&lt;ruby&gt;源兼忠&lt;rt&gt;みなもとのかねただ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：参議&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：貞元親王の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：弟・源兼信の子の重之を養子とした&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">源兼忠</text></g>
+<g class="fk-node" transform="translate(256,128)" data-tip="&lt;h3&gt;&lt;ruby&gt;源兼信&lt;rt&gt;みなもとのかねのぶ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：三河守&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：貞元親王の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：源重之の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">源兼信</text></g>
+<g class="fk-node is-poet" transform="translate(256,200)" data-tip="&lt;h3&gt;&lt;ruby&gt;元良親王&lt;rt&gt;もとよししんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：890年～943年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：三品&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：陽成天皇の皇子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：20番「わびぬれば…」の歌人&lt;/div&gt;" data-p="20"><a href="/20.html" aria-label="元良親王（百人一首20番）"><rect class="fk-hit" x="-2" y="-13" width="88" height="26"/><text class="fk-name" x="0" y="0.5">元良親王</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">20</text></a></g>
+<g class="fk-node" transform="translate(376,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;源頼朝&lt;rt&gt;みなもとのよりとも&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1147年～1199年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正二位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：源義朝の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：鎌倉幕府の初代将軍&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">源頼朝</text></g>
+<g class="fk-node is-poet is-self" transform="translate(376,128)" data-tip="&lt;h3&gt;&lt;ruby&gt;源重之&lt;rt&gt;みなもとのしげゆき&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：筑前権守&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従五位下&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：源兼信の子。伯父の源兼忠の養子。貞元親王の孫&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：48番「風をいたみ…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：春宮・憲平親王（冷泉天皇）に『重之百首』を詠進した。のち陸奥守藤原実方に従って陸奥国に下り、1000年に当地で没した&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="79" height="28" rx="3"/><text class="fk-name" x="0" y="0.5">源重之</text><circle class="fk-badge" cx="59" cy="0" r="10"/><text class="fk-badge-num" x="59" y="0.5">48</text></g>
+<g class="fk-node is-poet" transform="translate(496,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;源実朝&lt;rt&gt;みなもとのさねとも&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1192年～1219年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：右大臣、鎌倉幕府3代将軍&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正二位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：93番「世の中は…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;鎌倉右大臣&lt;rt&gt;かまくらのうだいじん&lt;/rt&gt;&lt;/ruby&gt;。家集『金槐和歌集』&lt;/div&gt;" data-p="93"><a href="/93.html" aria-label="源実朝（百人一首93番）"><rect class="fk-hit" x="-2" y="-13" width="73" height="26"/><text class="fk-name" x="0" y="0.5">源実朝</text><circle class="fk-badge" cx="59" cy="0" r="10"/><text class="fk-badge-num" x="59" y="0.5">93</text></a></g>
+</g>
+</svg>
+                <!-- KEIZU:END -->
+              </div>
+              <div class="kd-text">
                 <p style="width:100%; margin-bottom:0.5em;">
-                  源重之は、源兼信の子でしたが、叔父の参議・源兼信の養子になっています。
+                  源重之は、源兼信の子でしたが、伯父の参議・源兼忠の養子になっています。
                   清和天皇の<span class="tippy souson">曽孫</span>ですが、官位には恵まれず、地方官を歴任。最終官位は、筑前権守・従五位下でした。
                 </p>
                 <p style="width:100%; margin-bottom:0.5em;">
-                  安法法師が河原院で催す<span class="tippy utakai">歌会</span>に参加し、<a href="/47.html">恵慶法師</a>と親しかったようです。</p>
+                  源順・曽禰好忠・平兼盛らと交友がありました。</p>
                 <p style="width:100%; margin-bottom:0.5em;">
                   源重之は、百首歌を含む家集『重之集』を作り、東宮時代の冷泉天皇に献上しています。私的ではあるものの、先駆けて百首歌を作っていた<a
                     href="/46.html">曽禰好忠</a>の影響を受け、親交がありました。
@@ -436,6 +495,9 @@
   <script src="../js/popper.min.js"></script>
   <script src="../js/tippy.umd.min.js"></script>
   <script src="../js/tooltips.js?2026920"></script>
+  <script src="../js/tenno-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/fujiwara-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/keizu-diagram.js?20261001-17"></script>
   <!-- ▲▲▲ tippy.js ▲▲▲ -->
   <script>window.POEM_NUM = 48;</script>
   <script src="../js/grammar-data.js?20260830"></script>

@@ -97,6 +97,7 @@
   <link rel="stylesheet" href="../css/moon.css?20240820">
   <link rel="stylesheet" href="../css/animate.min.css">
   <link rel="stylesheet" href="../css/grammar-panel.css?20260721">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261001-16">
   <!-- google fontの追加 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -325,22 +326,453 @@
   </div><div class="diagram-section">
       <dl>
         <dt class='title'>三条院の系図</dt>
-            <dd class="thumb-image2">
-              <figure>
-                <img id="kakeizu" loading='lazy' src='../img/68_sanjoin_diagram.gif?05' alt='三条院の家系図'
-                  usemap="#ImageMap" width="1280" height="1885" />
-                <map name="ImageMap">
-                  <area shape="rect" coords="100,60,175,475" href="/54.html" alt="儀同三司母" />
-                  <area shape="rect" coords="108,731,187,1057" href="/63.html" alt="左京大夫道雅" />
-                </map>
-                <figcaption>
-                  <p class="kome" style="width:calc(100% - 1em); font-size:0.9em;"><span
-                      style="color:#C32538; margin-right:0.25em;">■</span>の番号が付いている人物をクリックすると、その歌人のページに移動します。</p>
-                </figcaption>
-              </figure>
-              <div>
+            <dd class='kd-dd'>
+              <!-- 系図のすぐ上：左に凡例、右に拡大・縮小（tenno-keizu.html と同じ） -->
+              <div class="fk-chart-bar">
+                <ul class="fk-legend kd-legend">
+                  <li><span class="fk-legend__tenno">茶字</span>天皇</li>
+                  <li><span class="fk-legend__tno" aria-hidden="true"></span>天皇の代数</li>
+                  <li><span class="fk-legend__kanpaku">紫字</span>摂政・関白になった人物</li>
+                  <li><span class="fk-legend__badge" aria-hidden="true"></span>百人一首の歌番号（クリックで歌のページへ）</li>
+                  <li><span class="fk-legend__eq">＝</span>婚姻</li>
+                </ul>
+                <div class="fk-zoom" role="group" aria-label="拡大・縮小">
+                  <button type="button" data-zoom="out" aria-label="縮小">－</button>
+                  <span class="fk-zoom__label" aria-live="polite">100%</span>
+                  <button type="button" data-zoom="in" aria-label="拡大">＋</button>
+                  <button type="button" data-zoom="reset">等倍</button>
+                  <button type="button" data-zoom="fit">幅に合わせる</button>
+                </div>
+              </div>
+              <!-- 相関図のデータ。SVG は node _tools/build-keizu.mjs で下の KEIZU:START〜END に書き込む -->
+              <div class="kd-chart" aria-label="三条院の系図">
+                <script type="application/json">
+{
+ "nodes": [
+  {
+   "id": "kaneie",
+   "n": "兼家",
+   "key": "兼家",
+   "kan": 1,
+   "x": 16,
+   "y": 110
+  },
+  {
+   "id": "tokihime",
+   "n": "時姫",
+   "x": 16,
+   "y": 154
+  },
+  {
+   "id": "michitaka",
+   "n": "道隆",
+   "kan": 1,
+   "x": 136,
+   "y": 30
+  },
+  {
+   "id": "enyu",
+   "n": "円融",
+   "k": 1,
+   "t": 64,
+   "x": 136,
+   "y": 74
+  },
+  {
+   "id": "senshi",
+   "n": "詮子",
+   "x": 136,
+   "y": 118
+  },
+  {
+   "id": "michinaga",
+   "n": "道長",
+   "kan": 1,
+   "x": 136,
+   "y": 160
+  },
+  {
+   "id": "rinshi",
+   "n": "源倫子",
+   "x": 136,
+   "y": 204
+  },
+  {
+   "id": "choshi",
+   "n": "超子",
+   "x": 136,
+   "y": 250
+  },
+  {
+   "id": "reizei",
+   "n": "冷泉",
+   "k": 1,
+   "t": 63,
+   "x": 136,
+   "y": 302
+  },
+  {
+   "id": "kaishi",
+   "n": "懐子",
+   "x": 136,
+   "y": 346
+  },
+  {
+   "id": "teishi",
+   "n": "定子",
+   "key": "藤原定子",
+   "x": 256,
+   "y": 40
+  },
+  {
+   "id": "ichijo",
+   "n": "一条",
+   "k": 1,
+   "t": 66,
+   "x": 256,
+   "y": 92
+  },
+  {
+   "id": "shoshi",
+   "n": "彰子",
+   "key": "藤原彰子",
+   "x": 256,
+   "y": 136
+  },
+  {
+   "id": "kenshi",
+   "n": "妍子",
+   "x": 256,
+   "y": 190
+  },
+  {
+   "id": "sanjo",
+   "n": "三条",
+   "k": 1,
+   "t": 67,
+   "p": 68,
+   "self": 1,
+   "x": 256,
+   "y": 242
+  },
+  {
+   "id": "seishi",
+   "n": "娍子",
+   "x": 256,
+   "y": 286
+  },
+  {
+   "id": "kazan",
+   "n": "花山",
+   "k": 1,
+   "t": 65,
+   "x": 256,
+   "y": 350
+  },
+  {
+   "id": "goichijo",
+   "n": "後一条",
+   "k": 1,
+   "t": 68,
+   "x": 376,
+   "y": 100
+  },
+  {
+   "id": "gosuzaku",
+   "n": "後朱雀",
+   "k": 1,
+   "t": 69,
+   "x": 376,
+   "y": 152
+  },
+  {
+   "id": "teishi2",
+   "n": "禎子内親王",
+   "x": 376,
+   "y": 196
+  },
+  {
+   "id": "atsuakira",
+   "n": "敦明親王",
+   "sub": "皇太子を辞退",
+   "x": 376,
+   "y": 244
+  },
+  {
+   "id": "atsunori",
+   "n": "敦儀親王",
+   "x": 376,
+   "y": 290
+  },
+  {
+   "id": "atsuhira",
+   "n": "敦平親王",
+   "x": 376,
+   "y": 326
+  },
+  {
+   "id": "moroakira",
+   "n": "師明親王",
+   "x": 376,
+   "y": 362
+  },
+  {
+   "id": "toshi",
+   "n": "当子内親王",
+   "x": 376,
+   "y": 398
+  },
+  {
+   "id": "shishi",
+   "n": "禔子内親王",
+   "x": 376,
+   "y": 434
+  },
+  {
+   "id": "gosanjo",
+   "n": "後三条",
+   "k": 1,
+   "t": 71,
+   "x": 526,
+   "y": 174
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-kaneie",
+   "top": "kaneie",
+   "bottom": "tokihime"
+  },
+  {
+   "id": "c-enyu",
+   "top": "enyu",
+   "bottom": "senshi"
+  },
+  {
+   "id": "c-michinaga",
+   "top": "michinaga",
+   "bottom": "rinshi"
+  },
+  {
+   "id": "c-choshi",
+   "top": "choshi",
+   "bottom": "reizei"
+  },
+  {
+   "id": "c-kaishi",
+   "top": "reizei",
+   "bottom": "kaishi"
+  },
+  {
+   "id": "c-teishi",
+   "top": "teishi",
+   "bottom": "ichijo"
+  },
+  {
+   "id": "c-shoshi",
+   "top": "ichijo",
+   "bottom": "shoshi"
+  },
+  {
+   "id": "c-kenshi",
+   "top": "kenshi",
+   "bottom": "sanjo"
+  },
+  {
+   "id": "c-seishi",
+   "top": "sanjo",
+   "bottom": "seishi"
+  },
+  {
+   "id": "c-teishi2",
+   "top": "gosuzaku",
+   "bottom": "teishi2"
+  }
+ ],
+ "kids": [
+  {
+   "from": "c-kaneie",
+   "to": [
+    "michitaka",
+    "senshi",
+    "michinaga",
+    "choshi"
+   ]
+  },
+  {
+   "from": "michitaka",
+   "to": [
+    "teishi"
+   ]
+  },
+  {
+   "from": "c-enyu",
+   "to": [
+    "ichijo"
+   ]
+  },
+  {
+   "from": "c-michinaga",
+   "to": [
+    "shoshi",
+    "kenshi"
+   ]
+  },
+  {
+   "from": "c-choshi",
+   "to": [
+    "sanjo"
+   ]
+  },
+  {
+   "from": "c-kaishi",
+   "to": [
+    "kazan"
+   ]
+  },
+  {
+   "from": "c-shoshi",
+   "to": [
+    "goichijo",
+    "gosuzaku"
+   ]
+  },
+  {
+   "from": "c-kenshi",
+   "to": [
+    "teishi2"
+   ]
+  },
+  {
+   "from": "c-seishi",
+   "to": [
+    "atsuakira",
+    "atsunori",
+    "atsuhira",
+    "moroakira",
+    "toshi",
+    "shishi"
+   ]
+  },
+  {
+   "from": "c-teishi2",
+   "to": [
+    "gosanjo"
+   ]
+  }
+ ],
+ "tips": {
+  "時姫": [
+   "<ruby>藤原時姫<rt>ふじわらのときひめ</rt></ruby>",
+   "特記：藤原兼家の妻。道隆・道兼・道長・超子・詮子らを生んだ"
+  ],
+  "源倫子": [
+   "<ruby>源倫子<rt>みなもとのりんし</rt></ruby>",
+   "特記：藤原道長の正室。彰子・妍子らの母"
+  ],
+  "詮子": [
+   "<ruby>藤原詮子<rt>ふじわらのせんし</rt></ruby>",
+   "特記：円融天皇の女御。一条天皇の母"
+  ],
+  "超子": [
+   "<ruby>藤原超子<rt>ふじわらのちょうし</rt></ruby>",
+   "系譜：藤原兼家の長女",
+   "特記：冷泉天皇の女御。三条天皇の母"
+  ],
+  "懐子": [
+   "<ruby>藤原懐子<rt>ふじわらのかいし</rt></ruby>",
+   "特記：冷泉天皇の女御。花山天皇の母"
+  ],
+  "妍子": [
+   "<ruby>藤原妍子<rt>ふじわらのけんし</rt></ruby>",
+   "生没年：994年～1027年",
+   "系譜：藤原道長の次女",
+   "特記：三条天皇の中宮。禎子内親王の母"
+  ],
+  "娍子": [
+   "<ruby>藤原娍子<rt>ふじわらのせいし</rt></ruby>",
+   "生没年：972年～1025年",
+   "系譜：藤原済時の長女。弟に通任",
+   "特記：992年、三条天皇の東宮時代に東宮妃として入内。のち皇后"
+  ],
+  "禎子内親王": [
+   "禎子内親王",
+   "生没年：1013年～1094年",
+   "系譜：三条天皇と中宮妍子の皇女",
+   "特記：後朱雀天皇の皇后。後三条天皇の母。陽明門院"
+  ],
+  "敦明親王": [
+   "敦明親王",
+   "生没年：994年～1051年",
+   "系譜：三条天皇と皇后娍子の皇子",
+   "特記：三条天皇の譲位の条件として皇太子となったが、道長の圧力を受けて1017年に自ら皇太子を辞退し、小一条院の院号を受けた"
+  ],
+  "敦儀親王": [
+   "敦儀親王",
+   "系譜：三条天皇と皇后娍子の皇子"
+  ],
+  "敦平親王": [
+   "敦平親王",
+   "系譜：三条天皇と皇后娍子の皇子"
+  ],
+  "師明親王": [
+   "師明親王",
+   "系譜：三条天皇と皇后娍子の皇子。のちの性信入道親王"
+  ],
+  "当子内親王": [
+   "当子内親王",
+   "生没年：1001年～1022年",
+   "系譜：三条天皇と皇后娍子の皇女"
+  ],
+  "禔子内親王": [
+   "禔子内親王",
+   "生没年：1003年～1048年",
+   "系譜：三条天皇と皇后娍子の皇女",
+   "特記：藤原教通の妻"
+  ]
+ }
+}
+                </script>
+                <!-- KEIZU:START -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 587 460" width="587" height="460" role="img" aria-label="三条院の系図" class="fk-svg kd-svg" style="max-width:881px;min-width:min(640px,881px)" data-src="1xke7m4">
+<g class="fk-edges"><path d="M29 119V145M33 119V145" class="fk-edge fk-eq"/><path d="M149 83V109M153 83V109" class="fk-edge fk-eq"/><path d="M149 169V195M153 169V195" class="fk-edge fk-eq"/><path d="M149 259V277M153 259V277" class="fk-edge fk-eq"/><path d="M149 311V337M153 311V337" class="fk-edge fk-eq"/><path d="M269 49V67M273 49V67" class="fk-edge fk-eq"/><path d="M269 101V127M273 101V127" class="fk-edge fk-eq"/><path d="M269 199V217M273 199V217" class="fk-edge fk-eq"/><path d="M269 251V277M273 251V277" class="fk-edge fk-eq"/><path d="M396.5 161V187M400.5 161V187" class="fk-edge fk-eq"/><path d="M33 132H122" class="fk-edge"/><path d="M122 30V250" class="fk-edge"/><path d="M122 30H133" class="fk-edge"/><path d="M122 118H133" class="fk-edge"/><path d="M122 160H133" class="fk-edge"/><path d="M122 250H133" class="fk-edge"/><path d="M169 30H242" class="fk-edge"/><path d="M242 30V40" class="fk-edge"/><path d="M242 40H253" class="fk-edge"/><path d="M153 96H242" class="fk-edge"/><path d="M242 92V96" class="fk-edge"/><path d="M242 92H253" class="fk-edge"/><path d="M153 182H242" class="fk-edge"/><path d="M242 136V190" class="fk-edge"/><path d="M242 136H253" class="fk-edge"/><path d="M242 190H253" class="fk-edge"/><path d="M153 267H242" class="fk-edge"/><path d="M242 242V267" class="fk-edge"/><path d="M242 242H253" class="fk-edge"/><path d="M153 324H242" class="fk-edge"/><path d="M242 324V350" class="fk-edge"/><path d="M242 350H253" class="fk-edge"/><path d="M273 114H362" class="fk-edge"/><path d="M362 100V152" class="fk-edge"/><path d="M362 100H373" class="fk-edge"/><path d="M362 152H373" class="fk-edge"/><path d="M273 207H362" class="fk-edge"/><path d="M362 196V207" class="fk-edge"/><path d="M362 196H373" class="fk-edge"/><path d="M273 264H362" class="fk-edge"/><path d="M362 244V434" class="fk-edge"/><path d="M362 244H373" class="fk-edge"/><path d="M362 290H373" class="fk-edge"/><path d="M362 326H373" class="fk-edge"/><path d="M362 362H373" class="fk-edge"/><path d="M362 398H373" class="fk-edge"/><path d="M362 434H373" class="fk-edge"/><path d="M400.5 174H512" class="fk-edge"/><path d="M512 174H523" class="fk-edge"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node is-kanpaku" transform="translate(16,110)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原兼家&lt;rt&gt;ふじわらのかねいえ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：929年～990年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：摂政、関白、太政大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;外戚：一条天皇の外祖父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">兼家</text></g>
+<g class="fk-node" transform="translate(16,154)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原時姫&lt;rt&gt;ふじわらのときひめ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：藤原兼家の妻。道隆・道兼・道長・超子・詮子らを生んだ&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">時姫</text></g>
+<g class="fk-node is-kanpaku" transform="translate(136,30)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原道隆&lt;rt&gt;ふじわらのみちたか&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：953年～995年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：摂政、関白、内大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正二位&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">道隆</text></g>
+<g class="fk-node is-tenno" transform="translate(136,74)" data-tip="&lt;h3&gt;&lt;ruby&gt;円融天皇&lt;rt&gt;えんゆうてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第64代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：959年～991年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：969年～984年&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">円融</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">64</text></g>
+<g class="fk-node" transform="translate(136,118)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原詮子&lt;rt&gt;ふじわらのせんし&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：円融天皇の女御。一条天皇の母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">詮子</text></g>
+<g class="fk-node is-kanpaku" transform="translate(136,160)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原道長&lt;rt&gt;ふじわらのみちなが&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：966年～1028年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：摂政、左大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;外戚：後一条、後朱雀、後冷泉天皇の外祖父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">道長</text></g>
+<g class="fk-node" transform="translate(136,204)" data-tip="&lt;h3&gt;&lt;ruby&gt;源倫子&lt;rt&gt;みなもとのりんし&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：藤原道長の正室。彰子・妍子らの母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">源倫子</text></g>
+<g class="fk-node" transform="translate(136,250)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原超子&lt;rt&gt;ふじわらのちょうし&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：藤原兼家の長女&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：冷泉天皇の女御。三条天皇の母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">超子</text></g>
+<g class="fk-node is-tenno" transform="translate(136,302)" data-tip="&lt;h3&gt;&lt;ruby&gt;冷泉天皇&lt;rt&gt;れいぜいてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第63代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：950年～1011年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：967年～969年&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">冷泉</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">63</text></g>
+<g class="fk-node" transform="translate(136,346)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原懐子&lt;rt&gt;ふじわらのかいし&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：冷泉天皇の女御。花山天皇の母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">懐子</text></g>
+<g class="fk-node" transform="translate(256,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原定子&lt;rt&gt;ふじわらのていし&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：976年～1001年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：藤原道隆と高階貴子（儀同三司母）の娘&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：一条天皇の中宮、のちに皇后となった。清少納言が仕えた&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">定子</text></g>
+<g class="fk-node is-tenno" transform="translate(256,92)" data-tip="&lt;h3&gt;&lt;ruby&gt;一条天皇&lt;rt&gt;いちじょうてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第66代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：980年～1011年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：986年～1011年&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">一条</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">66</text></g>
+<g class="fk-node" transform="translate(256,136)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原彰子&lt;rt&gt;ふじわらのしょうし&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：988年～1074年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：藤原道長と源倫子の娘&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：一条天皇の中宮。後一条・後朱雀天皇の母。女院号は上東門院。百人一首の歌人である紫式部、和泉式部、伊勢大輔、赤染衛門らが仕えた&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">彰子</text></g>
+<g class="fk-node" transform="translate(256,190)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原妍子&lt;rt&gt;ふじわらのけんし&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：994年～1027年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：藤原道長の次女&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：三条天皇の中宮。禎子内親王の母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">妍子</text></g>
+<g class="fk-node is-tenno is-poet is-self" transform="translate(256,242)" data-tip="&lt;h3&gt;&lt;ruby&gt;三条天皇&lt;rt&gt;さんじょうてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第67代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：976年～1017年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：1011年～1016年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：68番「心にも…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;三条院&lt;rt&gt;さんじょういん&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="64" height="28" rx="3"/><text class="fk-name" x="0" y="0.5">三条</text><circle class="fk-badge" cx="44" cy="0" r="10"/><text class="fk-badge-num" x="44" y="0.5">68</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">67</text></g>
+<g class="fk-node" transform="translate(256,286)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原娍子&lt;rt&gt;ふじわらのせいし&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：972年～1025年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：藤原済時の長女。弟に通任&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：992年、三条天皇の東宮時代に東宮妃として入内。のち皇后&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">娍子</text></g>
+<g class="fk-node is-tenno" transform="translate(256,350)" data-tip="&lt;h3&gt;&lt;ruby&gt;花山天皇&lt;rt&gt;かざんてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第65代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：968年～1008年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：984年～986年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：藤原兼家らの策略で出家・退位した（寛和の変）&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">花山</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">65</text></g>
+<g class="fk-node is-tenno" transform="translate(376,100)" data-tip="&lt;h3&gt;&lt;ruby&gt;後一条天皇&lt;rt&gt;ごいちじょうてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第68代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1008年～1036年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：1016年～1036年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：一条天皇の皇子。母は藤原道長の娘・彰子&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">後一条</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">68</text></g>
+<g class="fk-node is-tenno" transform="translate(376,152)" data-tip="&lt;h3&gt;&lt;ruby&gt;後朱雀天皇&lt;rt&gt;ごすざくてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第69代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1009年～1045年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：1036年～1045年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：一条天皇の皇子。後一条天皇の弟&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">後朱雀</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">69</text></g>
+<g class="fk-node" transform="translate(376,196)" data-tip="&lt;h3&gt;禎子内親王&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1013年～1094年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：三条天皇と中宮妍子の皇女&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：後朱雀天皇の皇后。後三条天皇の母。陽明門院&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">禎子内親王</text></g>
+<g class="fk-node" transform="translate(376,244)" data-tip="&lt;h3&gt;敦明親王&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：994年～1051年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：三条天皇と皇后娍子の皇子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：三条天皇の譲位の条件として皇太子となったが、道長の圧力を受けて1017年に自ら皇太子を辞退し、小一条院の院号を受けた&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">敦明親王</text><rect class="fk-sub-box" x="0" y="11" width="78" height="16" rx="8"/><text class="fk-sub" x="39" y="19.5">皇太子を辞退</text></g>
+<g class="fk-node" transform="translate(376,290)" data-tip="&lt;h3&gt;敦儀親王&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：三条天皇と皇后娍子の皇子&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">敦儀親王</text></g>
+<g class="fk-node" transform="translate(376,326)" data-tip="&lt;h3&gt;敦平親王&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：三条天皇と皇后娍子の皇子&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">敦平親王</text></g>
+<g class="fk-node" transform="translate(376,362)" data-tip="&lt;h3&gt;師明親王&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：三条天皇と皇后娍子の皇子。のちの性信入道親王&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">師明親王</text></g>
+<g class="fk-node" transform="translate(376,398)" data-tip="&lt;h3&gt;当子内親王&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1001年～1022年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：三条天皇と皇后娍子の皇女&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">当子内親王</text></g>
+<g class="fk-node" transform="translate(376,434)" data-tip="&lt;h3&gt;禔子内親王&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1003年～1048年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：三条天皇と皇后娍子の皇女&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：藤原教通の妻&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">禔子内親王</text></g>
+<g class="fk-node is-tenno" transform="translate(526,174)" data-tip="&lt;h3&gt;&lt;ruby&gt;後三条天皇&lt;rt&gt;ごさんじょうてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第71代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1034年～1073年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：1068年～1073年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：後朱雀天皇の皇子。母は三条天皇の皇女・禎子内親王&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：藤原氏を外戚としない天皇として親政を行った&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">後三条</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">71</text></g>
+</g>
+</svg>
+                <!-- KEIZU:END -->
+              </div>
+              <div class="kd-text">
                 <p>
-                  三条天皇が皇太子のとき、<ruby>娍子<rt>すけこ</rt></ruby>は東宮后として<span
+                  三条天皇が皇太子のとき、<ruby>娍子<rt>すけこ</rt></ruby>は東宮妃として<span
                     class="tippy judai">入内</span>し、三条天皇から寵愛されました。しかし、藤原道長は自分の娘・<ruby>妍子<rt>きよこ</rt></ruby>を<span
                     class="tippy judai">入内</span>させて中宮にしました。これに対抗する形で、三条天皇は娍子を皇后に昇格させましたが、このことが原因で道長との間に軋轢が生じました。最終的に道長は三条天皇に譲位を迫り、天皇は自身の皇子である<ruby>敦明
                     <rt>あつあきら</rt>
@@ -581,6 +1013,9 @@
   <script src="../js/popper.min.js"></script>
   <script src="../js/tippy.umd.min.js"></script>
   <script src="../js/tooltips.js?2026920"></script>
+  <script src="../js/tenno-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/fujiwara-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/keizu-diagram.js?20261001-17"></script>
   <!-- ▲▲▲ tippy.js ▲▲▲ -->
   <script>window.POEM_NUM = 68;</script>
   <script src="../js/grammar-data.js?20260830"></script>

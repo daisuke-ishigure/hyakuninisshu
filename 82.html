@@ -96,6 +96,7 @@
   <link rel="stylesheet" href="../css/huda_82.css?20240507-02">
   <link rel="stylesheet" href="../css/animate.min.css">
   <link rel="stylesheet" href="../css/grammar-panel.css?20260721">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261001-16">
   <!-- google fontの追加 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -319,7 +320,253 @@
         </dd>
       </dl>
     </div>
-  </div><div class="words">
+  </div><div class="diagram-section">
+      <dl>
+        <dt class='title'>道因法師の系図</dt>
+            <dd class='kd-dd'>
+              <!-- 系図のすぐ上：左に凡例、右に拡大・縮小（tenno-keizu.html と同じ） -->
+              <div class="fk-chart-bar">
+                <ul class="fk-legend kd-legend">
+                  <li><span class="fk-legend__badge" aria-hidden="true"></span>百人一首の歌番号（クリックで歌のページへ）</li>
+                  <li><span class="fk-legend__dash"></span>数代省略</li>
+                </ul>
+                <div class="fk-zoom" role="group" aria-label="拡大・縮小">
+                  <button type="button" data-zoom="out" aria-label="縮小">－</button>
+                  <span class="fk-zoom__label" aria-live="polite">100%</span>
+                  <button type="button" data-zoom="in" aria-label="拡大">＋</button>
+                  <button type="button" data-zoom="reset">等倍</button>
+                  <button type="button" data-zoom="fit">幅に合わせる</button>
+                </div>
+              </div>
+              <!-- 相関図のデータ。SVG は node _tools/build-keizu.mjs で下の KEIZU:START〜END に書き込む -->
+              <div class="kd-chart" aria-label="道因法師の系図">
+                <script type="application/json">
+{
+ "tooltips": "fujiwara",
+ "nodes": [
+  {
+   "id": "yoshikado",
+   "n": "良門",
+   "x": 16,
+   "y": 137
+  },
+  {
+   "id": "takafuji",
+   "n": "高藤",
+   "sub": "勧修寺流",
+   "x": 76,
+   "y": 95
+  },
+  {
+   "id": "toshimoto",
+   "n": "利基",
+   "x": 76,
+   "y": 180
+  },
+  {
+   "id": "sadakata",
+   "n": "定方",
+   "p": 25,
+   "x": 200,
+   "y": 62
+  },
+  {
+   "id": "nobunari",
+   "n": "信成",
+   "x": 200,
+   "y": 128
+  },
+  {
+   "id": "kanesuke",
+   "n": "兼輔",
+   "p": 27,
+   "x": 200,
+   "y": 180
+  },
+  {
+   "id": "asayori",
+   "n": "朝頼",
+   "x": 300,
+   "y": 40
+  },
+  {
+   "id": "asatada",
+   "n": "朝忠",
+   "p": 44,
+   "x": 300,
+   "y": 84
+  },
+  {
+   "id": "taifu",
+   "n": "殷富門院大輔",
+   "p": 90,
+   "x": 300,
+   "y": 128
+  },
+  {
+   "id": "masatada",
+   "n": "雅正",
+   "x": 300,
+   "y": 180
+  },
+  {
+   "id": "doin",
+   "n": "道因",
+   "p": 82,
+   "self": 1,
+   "x": 400,
+   "y": 40
+  },
+  {
+   "id": "tametoki",
+   "n": "為時",
+   "x": 400,
+   "y": 180
+  },
+  {
+   "id": "murasaki",
+   "n": "紫式部",
+   "p": 57,
+   "x": 500,
+   "y": 180
+  },
+  {
+   "id": "katako",
+   "n": "賢子",
+   "p": 58,
+   "x": 610,
+   "y": 180
+  }
+ ],
+ "kids": [
+  {
+   "from": "yoshikado",
+   "to": [
+    "takafuji",
+    "toshimoto"
+   ]
+  },
+  {
+   "from": "takafuji",
+   "to": [
+    "sadakata"
+   ],
+   "bar": 140
+  },
+  {
+   "from": "sadakata",
+   "to": [
+    "asayori",
+    "asatada"
+   ]
+  },
+  {
+   "from": "nobunari",
+   "to": [
+    "taifu"
+   ]
+  },
+  {
+   "from": "toshimoto",
+   "to": [
+    "kanesuke"
+   ]
+  },
+  {
+   "from": "kanesuke",
+   "to": [
+    "masatada"
+   ]
+  },
+  {
+   "from": "masatada",
+   "to": [
+    "tametoki"
+   ]
+  },
+  {
+   "from": "tametoki",
+   "to": [
+    "murasaki"
+   ]
+  },
+  {
+   "from": "murasaki",
+   "to": [
+    "katako"
+   ]
+  }
+ ],
+ "lines": [
+  {
+   "points": [
+    [
+     140,
+     95
+    ],
+    [
+     140,
+     128
+    ]
+   ]
+  },
+  {
+   "points": [
+    [
+     140,
+     128
+    ],
+    [
+     197,
+     128
+    ]
+   ],
+   "dash": true
+  },
+  {
+   "points": [
+    [
+     333,
+     40
+    ],
+    [
+     397,
+     40
+    ]
+   ],
+   "dash": true
+  }
+ ]
+}
+                </script>
+                <!-- KEIZU:START -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 206" width="680" height="206" role="img" aria-label="道因法師の系図" class="fk-svg kd-svg" style="max-width:1020px;min-width:min(640px,1020px)" data-src="a2imp9">
+<g class="fk-edges"><path d="M49 137H62" class="fk-edge"/><path d="M62 95V180" class="fk-edge"/><path d="M62 95H73" class="fk-edge"/><path d="M62 180H73" class="fk-edge"/><path d="M109 95H140" class="fk-edge"/><path d="M140 62V95" class="fk-edge"/><path d="M140 62H197" class="fk-edge"/><path d="M257 62H286" class="fk-edge"/><path d="M286 40V84" class="fk-edge"/><path d="M286 40H297" class="fk-edge"/><path d="M286 84H297" class="fk-edge"/><path d="M233 128H286" class="fk-edge"/><path d="M286 128H297" class="fk-edge"/><path d="M109 180H186" class="fk-edge"/><path d="M186 180H197" class="fk-edge"/><path d="M257 180H286" class="fk-edge"/><path d="M286 180H297" class="fk-edge"/><path d="M333 180H386" class="fk-edge"/><path d="M386 180H397" class="fk-edge"/><path d="M433 180H486" class="fk-edge"/><path d="M486 180H497" class="fk-edge"/><path d="M572 180H596" class="fk-edge"/><path d="M596 180H607" class="fk-edge"/><path d="M140 95L140 128" class="fk-edge"/><path d="M140 128L197 128" class="fk-edge is-dash"/><path d="M333 40L397 40" class="fk-edge is-dash"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node" transform="translate(16,137)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原良門&lt;rt&gt;ふじわらのよしかど&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：不明&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：内舎人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正六位上&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">良門</text></g>
+<g class="fk-node" transform="translate(76,95)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原高藤&lt;rt&gt;ふじわらのたかふじ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：838年～900年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：内大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正三位、贈正一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;勧修寺家の祖&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;外戚：醍醐天皇の外祖父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">高藤</text><rect class="fk-sub-box" x="0" y="11" width="56" height="16" rx="8"/><text class="fk-sub" x="28" y="19.5">勧修寺流</text></g>
+<g class="fk-node" transform="translate(76,180)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原利基&lt;rt&gt;ふじわらのとしもと&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：不明&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：右近衛中将&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従四位上&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">利基</text></g>
+<g class="fk-node is-poet" transform="translate(200,62)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原定方&lt;rt&gt;ふじわらのさだかた&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：873年～932年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：右大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従二位、贈従一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;外戚：醍醐天皇の外叔父&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：25番「名にし負はば…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;三条右大臣&lt;rt&gt;さんじょうのうだいじん&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;" data-p="25"><a href="/25.html" aria-label="藤原定方（百人一首25番）"><rect class="fk-hit" x="-2" y="-13" width="58" height="26"/><text class="fk-name" x="0" y="0.5">定方</text><circle class="fk-badge" cx="44" cy="0" r="10"/><text class="fk-badge-num" x="44" y="0.5">25</text></a></g>
+<g class="fk-node" transform="translate(200,128)" data-tip="&lt;h3&gt;藤原信成&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従五位下&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：殷富門院大輔の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">信成</text></g>
+<g class="fk-node is-poet" transform="translate(200,180)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原兼輔&lt;rt&gt;ふじわらのかねすけ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：877年～933年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：権中納言&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従三位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：27番「みかの原…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;中納言兼輔&lt;rt&gt;ちゅうなごんかねすけ&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の名前は、中納言兼輔&lt;/div&gt;" data-p="27"><a href="/27.html" aria-label="藤原兼輔（百人一首27番）"><rect class="fk-hit" x="-2" y="-13" width="58" height="26"/><text class="fk-name" x="0" y="0.5">兼輔</text><circle class="fk-badge" cx="44" cy="0" r="10"/><text class="fk-badge-num" x="44" y="0.5">27</text></a></g>
+<g class="fk-node" transform="translate(300,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原朝頼&lt;rt&gt;ふじわらのあさより&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：不明&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：勘解由長官&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従四位上&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">朝頼</text></g>
+<g class="fk-node is-poet" transform="translate(300,84)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原朝忠&lt;rt&gt;ふじわらのあさただ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：910年～967年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：中納言&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従三位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：44番「逢ふことの…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;中納言朝忠&lt;rt&gt;ちゅうなごんあさただ&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;" data-p="44"><a href="/44.html" aria-label="藤原朝忠（百人一首44番）"><rect class="fk-hit" x="-2" y="-13" width="58" height="26"/><text class="fk-name" x="0" y="0.5">朝忠</text><circle class="fk-badge" cx="44" cy="0" r="10"/><text class="fk-badge-num" x="44" y="0.5">44</text></a></g>
+<g class="fk-node is-poet" transform="translate(300,128)" data-tip="&lt;h3&gt;&lt;ruby&gt;殷富門院大輔&lt;rt&gt;いんぷもんいんのたいふ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1130年頃～1200年頃&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：藤原信成の娘&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：90番「見せばやな…」の歌人&lt;/div&gt;" data-p="90"><a href="/90.html" aria-label="殷富門院大輔（百人一首90番）"><rect class="fk-hit" x="-2" y="-13" width="118" height="26"/><text class="fk-name" x="0" y="0.5">殷富門院大輔</text><circle class="fk-badge" cx="104" cy="0" r="10"/><text class="fk-badge-num" x="104" y="0.5">90</text></a></g>
+<g class="fk-node" transform="translate(300,180)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原雅正&lt;rt&gt;ふじわらのまさただ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：不明～961年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：周防守&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従五位下&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">雅正</text></g>
+<g class="fk-node is-poet is-self" transform="translate(400,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原敦頼&lt;rt&gt;ふじわらのあつより&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1090年～1182年頃&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：右馬助&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従五位上&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;法名：道因&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：82番「思ひわび…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;道因法師&lt;rt&gt;どういんほうし&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="64" height="28" rx="3"/><text class="fk-name" x="0" y="0.5">道因</text><circle class="fk-badge" cx="44" cy="0" r="10"/><text class="fk-badge-num" x="44" y="0.5">82</text></g>
+<g class="fk-node" transform="translate(400,180)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原為時&lt;rt&gt;ふじわらのためとき&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：949年頃～1029年頃&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：越後守&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正五位下&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">為時</text></g>
+<g class="fk-node is-poet" transform="translate(500,180)" data-tip="&lt;h3&gt;&lt;ruby&gt;紫式部&lt;rt&gt;むらさきしきぶ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：不明&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;出仕：一条天皇の中宮・藤原彰子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：57番「めぐり逢ひて…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：本名不明、『源氏物語』の作者&lt;/div&gt;" data-p="57"><a href="/57.html" aria-label="紫式部（百人一首57番）"><rect class="fk-hit" x="-2" y="-13" width="73" height="26"/><text class="fk-name" x="0" y="0.5">紫式部</text><circle class="fk-badge" cx="59" cy="0" r="10"/><text class="fk-badge-num" x="59" y="0.5">57</text></a></g>
+<g class="fk-node is-poet" transform="translate(610,180)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原賢子&lt;rt&gt;ふじわらのかたいこ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：999年頃～1082年頃&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;出仕：一条天皇の中宮・藤原彰子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：58番「ありま山…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;大弐三位&lt;rt&gt;だいにのさんみ&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：後冷泉天皇の乳母。「大弐三位」と称される&lt;/div&gt;" data-p="58"><a href="/58.html" aria-label="藤原賢子（百人一首58番）"><rect class="fk-hit" x="-2" y="-13" width="58" height="26"/><text class="fk-name" x="0" y="0.5">賢子</text><circle class="fk-badge" cx="44" cy="0" r="10"/><text class="fk-badge-num" x="44" y="0.5">58</text></a></g>
+</g>
+</svg>
+                <!-- KEIZU:END -->
+              </div>
+            </dd>
+      </dl>
+    </div>
+    <div class="words">
       <dl>
         <dt class='title'>付録</dt>
         <dd>
@@ -382,6 +629,9 @@
   <script src="../js/popper.min.js"></script>
   <script src="../js/tippy.umd.min.js"></script>
   <script src="../js/tooltips.js?2026920"></script>
+  <script src="../js/tenno-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/fujiwara-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/keizu-diagram.js?20261001-17"></script>
   <!-- ▲▲▲ tippy.js ▲▲▲ -->
   <script>window.POEM_NUM = 82;</script>
   <script src="../js/grammar-data.js?20260830"></script>

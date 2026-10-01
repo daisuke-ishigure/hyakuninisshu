@@ -95,6 +95,7 @@
   <link rel="stylesheet" href="../css/huda_93.css?20240507-02">
   <link rel="stylesheet" href="../css/animate.min.css">
   <link rel="stylesheet" href="../css/grammar-panel.css?20260721">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261001-16">
   <!-- bxSlider -->
   <link rel="stylesheet" href="../css/jquery.bxslider.css">
   <link rel="stylesheet" href="../css/bxslider.css">
@@ -322,22 +323,299 @@
   </div><div class="diagram-section">
       <dl>
         <dt class='title'>源実朝の系図</dt>
-            <dd class='thumb-image1'>
-              <figure class='portrait'>
-                <img src='../img/93_sanetomo_diagram.gif?ver00' alt='源実朝の相関図' usemap="#ImageMap" width="869" height="1280" />
-                <map name="ImageMap">
-                  <area shape="rect" coords="747,312,824,547" href="/13.html" alt="陽成院" />
-                  <area shape="rect" coords="747,584,821,864" href="/20.html" alt="元良親王" />
-                  <area shape="rect" coords="478,801,553,1038" href="/48.html" alt="源重之" />
-                </map>
-                <figcaption>
-                  <p class="kome" style="width:calc(100% - 1em); font-size:0.9em;"><span
-                      style="color:#C32538; margin-right:0.25em;">■</span>の番号が付いている人物をクリックすると、その歌人のページに移動します。</p>
-                </figcaption>
-              </figure>
-              <div>
+            <dd class='kd-dd'>
+              <!-- 系図のすぐ上：左に凡例、右に拡大・縮小（tenno-keizu.html と同じ） -->
+              <div class="fk-chart-bar">
+                <ul class="fk-legend kd-legend">
+                  <li><span class="fk-legend__tenno">茶字</span>天皇</li>
+                  <li><span class="fk-legend__tno" aria-hidden="true"></span>天皇の代数</li>
+                  <li><span class="fk-legend__badge" aria-hidden="true"></span>百人一首の歌番号（クリックで歌のページへ）</li>
+                  <li><span class="fk-legend__dash"></span>数代省略・養子</li>
+                  <li><span class="fk-legend__eq">＝</span>婚姻</li>
+                </ul>
+                <div class="fk-zoom" role="group" aria-label="拡大・縮小">
+                  <button type="button" data-zoom="out" aria-label="縮小">－</button>
+                  <span class="fk-zoom__label" aria-live="polite">100%</span>
+                  <button type="button" data-zoom="in" aria-label="拡大">＋</button>
+                  <button type="button" data-zoom="reset">等倍</button>
+                  <button type="button" data-zoom="fit">幅に合わせる</button>
+                </div>
+              </div>
+              <!-- 相関図のデータ。SVG は node _tools/build-keizu.mjs で下の KEIZU:START〜END に書き込む -->
+              <div class="kd-chart" aria-label="源実朝の系図">
+                <script type="application/json">
+{
+ "nodes": [
+  {
+   "id": "seiwa",
+   "n": "清和",
+   "k": 1,
+   "t": 56,
+   "x": 16,
+   "y": 170
+  },
+  {
+   "id": "sadazumi",
+   "n": "貞純親王",
+   "x": 136,
+   "y": 40
+  },
+  {
+   "id": "sadamoto",
+   "n": "貞元親王",
+   "x": 136,
+   "y": 220
+  },
+  {
+   "id": "yozei",
+   "n": "陽成",
+   "k": 1,
+   "t": 57,
+   "p": 13,
+   "x": 136,
+   "y": 300
+  },
+  {
+   "id": "tokimasa",
+   "n": "北条時政",
+   "x": 256,
+   "y": 106
+  },
+  {
+   "id": "kanetada",
+   "n": "源兼忠",
+   "x": 256,
+   "y": 200
+  },
+  {
+   "id": "kanenobu",
+   "n": "源兼信",
+   "x": 256,
+   "y": 240
+  },
+  {
+   "id": "motoyoshi",
+   "n": "元良親王",
+   "p": 20,
+   "x": 256,
+   "y": 300
+  },
+  {
+   "id": "yoritomo",
+   "n": "源頼朝",
+   "x": 376,
+   "y": 40
+  },
+  {
+   "id": "masako",
+   "n": "北条政子",
+   "x": 376,
+   "y": 84
+  },
+  {
+   "id": "yoshitoki",
+   "n": "北条義時",
+   "x": 376,
+   "y": 128
+  },
+  {
+   "id": "shigeyuki",
+   "n": "源重之",
+   "p": 48,
+   "x": 376,
+   "y": 240
+  },
+  {
+   "id": "yoriie",
+   "n": "源頼家",
+   "x": 496,
+   "y": 40
+  },
+  {
+   "id": "sanetomo",
+   "n": "源実朝",
+   "p": 93,
+   "self": 1,
+   "x": 496,
+   "y": 84
+  },
+  {
+   "id": "kugyo",
+   "n": "公暁",
+   "sub": "叔父・実朝を暗殺",
+   "x": 616,
+   "y": 40
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-masako",
+   "top": "yoritomo",
+   "bottom": "masako"
+  }
+ ],
+ "kids": [
+  {
+   "from": "seiwa",
+   "to": [
+    "sadazumi",
+    "sadamoto",
+    "yozei"
+   ]
+  },
+  {
+   "from": "sadamoto",
+   "to": [
+    "kanetada",
+    "kanenobu"
+   ]
+  },
+  {
+   "from": "kanenobu",
+   "to": [
+    "shigeyuki"
+   ]
+  },
+  {
+   "from": "yozei",
+   "to": [
+    "motoyoshi"
+   ]
+  },
+  {
+   "from": "tokimasa",
+   "to": [
+    "masako",
+    "yoshitoki"
+   ]
+  },
+  {
+   "from": "c-masako",
+   "to": [
+    "yoriie",
+    "sanetomo"
+   ]
+  },
+  {
+   "from": "yoriie",
+   "to": [
+    "kugyo"
+   ]
+  }
+ ],
+ "lines": [
+  {
+   "points": [
+    [
+     199,
+     40
+    ],
+    [
+     373,
+     40
+    ]
+   ],
+   "dash": true,
+   "label": {
+    "text": "8代略",
+    "x": 290,
+    "y": 34
+   }
+  },
+  {
+   "points": [
+    [
+     304,
+     200
+    ],
+    [
+     335,
+     200
+    ],
+    [
+     335,
+     240
+    ]
+   ],
+   "dash": true,
+   "label": {
+    "text": "養子",
+    "x": 352,
+    "y": 220
+   }
+  }
+ ],
+ "tips": {
+  "源兼忠": [
+   "<ruby>源兼忠<rt>みなもとのかねただ</rt></ruby>",
+   "官職：参議",
+   "系譜：貞元親王の子",
+   "特記：弟・源兼信の子の重之を養子とした"
+  ],
+  "源兼信": [
+   "<ruby>源兼信<rt>みなもとのかねのぶ</rt></ruby>",
+   "系譜：貞元親王の子",
+   "特記：源重之の父"
+  ],
+  "北条時政": [
+   "<ruby>北条時政<rt>ほうじょうときまさ</rt></ruby>",
+   "特記：北条政子・義時の父。実朝の祖父"
+  ],
+  "北条政子": [
+   "<ruby>北条政子<rt>ほうじょうまさこ</rt></ruby>",
+   "特記：源頼朝の妻。頼家・実朝の母"
+  ],
+  "北条義時": [
+   "<ruby>北条義時<rt>ほうじょうよしとき</rt></ruby>",
+   "特記：北条時政の子。執権として実朝の時代の幕府を担った"
+  ],
+  "源頼家": [
+   "<ruby>源頼家<rt>みなもとのよりいえ</rt></ruby>",
+   "系譜：源頼朝と北条政子の子",
+   "特記：1203年に将軍職を失い、伊豆に追われた。公暁の父"
+  ],
+  "公暁": [
+   "<ruby>公暁<rt>くぎょう</rt></ruby>",
+   "系譜：源頼家の子",
+   "特記：1219年、鶴岡八幡宮で叔父の実朝を暗殺した"
+  ],
+  "源実朝": [
+   "<ruby>源実朝<rt>みなもとのさねとも</rt></ruby>",
+   "系譜：源頼朝の四男。北条政子の子としては次男",
+   "百人一首：93番「世の中は…」の歌人",
+   "特記：12歳で将軍職を継いだ。武士として初めて右大臣となった。藤原定家に和歌を学んだ。1219年、公暁に暗殺された（享年28）"
+  ]
+ }
+}
+                </script>
+                <!-- KEIZU:START -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 732 326" width="732" height="326" role="img" aria-label="源実朝の系図" class="fk-svg kd-svg" style="max-width:1098px;min-width:min(640px,1098px)" data-src="5ccsmx">
+<g class="fk-edges"><path d="M396.5 49V75M400.5 49V75" class="fk-edge fk-eq"/><path d="M49 170H122" class="fk-edge"/><path d="M122 40V300" class="fk-edge"/><path d="M122 40H133" class="fk-edge"/><path d="M122 220H133" class="fk-edge"/><path d="M122 300H133" class="fk-edge"/><path d="M199 220H242" class="fk-edge"/><path d="M242 200V240" class="fk-edge"/><path d="M242 200H253" class="fk-edge"/><path d="M242 240H253" class="fk-edge"/><path d="M304 240H362" class="fk-edge"/><path d="M362 240H373" class="fk-edge"/><path d="M193 300H242" class="fk-edge"/><path d="M242 300H253" class="fk-edge"/><path d="M319 106H362" class="fk-edge"/><path d="M362 84V128" class="fk-edge"/><path d="M362 84H373" class="fk-edge"/><path d="M362 128H373" class="fk-edge"/><path d="M400.5 62H482" class="fk-edge"/><path d="M482 40V84" class="fk-edge"/><path d="M482 40H493" class="fk-edge"/><path d="M482 84H493" class="fk-edge"/><path d="M544 40H602" class="fk-edge"/><path d="M602 40H613" class="fk-edge"/><path d="M199 40L373 40" class="fk-edge is-dash"/><text class="fk-adopt" x="290" y="34">8代略</text><path d="M304 200L335 200L335 240" class="fk-edge is-dash"/><text class="fk-adopt" x="352" y="220">養子</text></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node is-tenno" transform="translate(16,170)" data-tip="&lt;h3&gt;&lt;ruby&gt;清和天皇&lt;rt&gt;せいわてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第56代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：850年～881年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：858年～876年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：9歳で即位し、外祖父の藤原良房が政治を行った&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">清和</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">56</text></g>
+<g class="fk-node" transform="translate(136,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;貞純親王&lt;rt&gt;さだずみしんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：不明～916年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：四品&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：清和天皇の皇子、源経基の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">貞純親王</text></g>
+<g class="fk-node" transform="translate(136,220)" data-tip="&lt;h3&gt;&lt;ruby&gt;貞元親王&lt;rt&gt;さだもとしんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：四品&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：清和天皇の皇子&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">貞元親王</text></g>
+<g class="fk-node is-tenno is-poet" transform="translate(136,300)" data-tip="&lt;h3&gt;&lt;ruby&gt;陽成天皇&lt;rt&gt;ようぜいてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第57代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：868年～949年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：876年～884年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：13番「筑波嶺の…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;陽成院&lt;rt&gt;ようぜいいん&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;" data-p="13"><a href="/13.html" aria-label="陽成天皇（百人一首13番）"><rect class="fk-hit" x="-2" y="-13" width="58" height="26"/><text class="fk-name" x="0" y="0.5">陽成</text><circle class="fk-badge" cx="44" cy="0" r="10"/><text class="fk-badge-num" x="44" y="0.5">13</text></a><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">57</text></g>
+<g class="fk-node" transform="translate(256,106)" data-tip="&lt;h3&gt;&lt;ruby&gt;北条時政&lt;rt&gt;ほうじょうときまさ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：北条政子・義時の父。実朝の祖父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">北条時政</text></g>
+<g class="fk-node" transform="translate(256,200)" data-tip="&lt;h3&gt;&lt;ruby&gt;源兼忠&lt;rt&gt;みなもとのかねただ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：参議&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：貞元親王の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：弟・源兼信の子の重之を養子とした&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">源兼忠</text></g>
+<g class="fk-node" transform="translate(256,240)" data-tip="&lt;h3&gt;&lt;ruby&gt;源兼信&lt;rt&gt;みなもとのかねのぶ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：貞元親王の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：源重之の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">源兼信</text></g>
+<g class="fk-node is-poet" transform="translate(256,300)" data-tip="&lt;h3&gt;&lt;ruby&gt;元良親王&lt;rt&gt;もとよししんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：890年～943年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：三品&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：陽成天皇の皇子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：20番「わびぬれば…」の歌人&lt;/div&gt;" data-p="20"><a href="/20.html" aria-label="元良親王（百人一首20番）"><rect class="fk-hit" x="-2" y="-13" width="88" height="26"/><text class="fk-name" x="0" y="0.5">元良親王</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">20</text></a></g>
+<g class="fk-node" transform="translate(376,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;源頼朝&lt;rt&gt;みなもとのよりとも&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1147年～1199年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正二位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：源義朝の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：鎌倉幕府の初代将軍&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">源頼朝</text></g>
+<g class="fk-node" transform="translate(376,84)" data-tip="&lt;h3&gt;&lt;ruby&gt;北条政子&lt;rt&gt;ほうじょうまさこ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：源頼朝の妻。頼家・実朝の母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">北条政子</text></g>
+<g class="fk-node" transform="translate(376,128)" data-tip="&lt;h3&gt;&lt;ruby&gt;北条義時&lt;rt&gt;ほうじょうよしとき&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：北条時政の子。執権として実朝の時代の幕府を担った&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">北条義時</text></g>
+<g class="fk-node is-poet" transform="translate(376,240)" data-tip="&lt;h3&gt;&lt;ruby&gt;源重之&lt;rt&gt;みなもとのしげゆき&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：不明～1000年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従五位下&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：源兼信の子。伯父の源兼忠の養子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：48番「風をいたみ…」の歌人&lt;/div&gt;" data-p="48"><a href="/48.html" aria-label="源重之（百人一首48番）"><rect class="fk-hit" x="-2" y="-13" width="73" height="26"/><text class="fk-name" x="0" y="0.5">源重之</text><circle class="fk-badge" cx="59" cy="0" r="10"/><text class="fk-badge-num" x="59" y="0.5">48</text></a></g>
+<g class="fk-node" transform="translate(496,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;源頼家&lt;rt&gt;みなもとのよりいえ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：源頼朝と北条政子の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：1203年に将軍職を失い、伊豆に追われた。公暁の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">源頼家</text></g>
+<g class="fk-node is-poet is-self" transform="translate(496,84)" data-tip="&lt;h3&gt;&lt;ruby&gt;源実朝&lt;rt&gt;みなもとのさねとも&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：源頼朝の四男。北条政子の子としては次男&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：93番「世の中は…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：12歳で将軍職を継いだ。武士として初めて右大臣となった。藤原定家に和歌を学んだ。1219年、公暁に暗殺された（享年28）&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="79" height="28" rx="3"/><text class="fk-name" x="0" y="0.5">源実朝</text><circle class="fk-badge" cx="59" cy="0" r="10"/><text class="fk-badge-num" x="59" y="0.5">93</text></g>
+<g class="fk-node" transform="translate(616,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;公暁&lt;rt&gt;くぎょう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：源頼家の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：1219年、鶴岡八幡宮で叔父の実朝を暗殺した&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">公暁</text><rect class="fk-sub-box" x="0" y="11" width="100" height="16" rx="8"/><text class="fk-sub" x="50" y="19.5">叔父・実朝を暗殺</text></g>
+</g>
+</svg>
+                <!-- KEIZU:END -->
+              </div>
+              <div class="kd-text">
                 <p style="width:100%; margin-bottom:0.5em;">
-                  源実朝は、鎌倉幕府の初代将軍・源頼朝の次男です。御家人たちの権力争いで兄の頼家は追放されたため、実朝はわずか12歳で将軍になりました。しかし、実際の政治は祖父の北条時政や母の北条政子、母の弟の北条義時によって執り行われました。
+                  源実朝は、鎌倉幕府の初代将軍・源頼朝の四男で、母・北条政子にとっては次男です。御家人たちの権力争いで兄の頼家は追放されたため、実朝はわずか12歳で将軍になりました。しかし、実際の政治は祖父の北条時政や母の北条政子、母の弟の北条義時によって執り行われました。
                 </p>
                 <p style="width:100%; margin-bottom:0.5em;">
                   一方で、実朝は後鳥羽上皇と関係を築き、武士としては初めて右大臣に任じられています。また、朝廷文化に興味を持ち、将軍邸で<span
@@ -492,6 +770,9 @@
   <script src="../js/popper.min.js"></script>
   <script src="../js/tippy.umd.min.js"></script>
   <script src="../js/tooltips.js?2026920"></script>
+  <script src="../js/tenno-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/fujiwara-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/keizu-diagram.js?20261001-17"></script>
   <!-- ▲▲▲ tippy.js ▲▲▲ -->
   <script>window.POEM_NUM = 93;</script>
   <script src="../js/grammar-data.js?20260830"></script>

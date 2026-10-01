@@ -96,6 +96,7 @@
   <link rel="stylesheet" href="../css/huda_72.css?20240507-02">
   <link rel="stylesheet" href="../css/animate.min.css">
   <link rel="stylesheet" href="../css/grammar-panel.css?20260721">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261001-16">
   <!-- google fontの追加 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -262,9 +263,7 @@
         </dl>
         <dl class="last-dl">
           <dt>どんな人？</dt>
-          <dd>作者は後朱雀天皇の第一皇女・祐子内親王の<span class="tippy nyoubou">女房</span>で、長く歌人として活躍しました。夫といわれる藤原重経の官職が<ruby>紀伊守<rt>きいのかみ
-              </rt>
-            </ruby>だったことが名前の由来です。</dd>
+          <dd>作者は後朱雀天皇の第三皇女・祐子内親王の<span class="tippy nyoubou">女房</span>で、長く歌人として活躍しました。紀伊守・藤原重経（素意法師）の妹あるいは妻とする文献もあり、その官職が名前の由来と考えられています。</dd>
         </dl>
       </div>
     </div>
@@ -327,24 +326,421 @@
         <dt class='title' id="nakanokanpakuke">祐子内親王家紀伊の相関図</dt>
             <dd>
               <p>
-                祐子内親王家紀伊は、後朱雀天皇の第一皇女・祐子内親王の女房でした。祐子内親王家紀伊に歌を贈ってきた藤原俊忠は、百人一首の撰者・藤原定家の祖父にあたる人物です。
+                祐子内親王家紀伊は、後朱雀天皇の第三皇女・祐子内親王の女房でした。祐子内親王家紀伊に歌を贈ってきた藤原俊忠は、百人一首の撰者・藤原定家の祖父にあたる人物です。
               </p>
-              <picture
-                style="display:flex; justify-content: center; flex-direction: column; max-width:700px; margin: 0.5em auto 0;">
-                <img id="kakeizu" loading='lazy' src='../img/72_kii_diagram.gif?ver2' alt='祐子内親王家紀伊の相関図'
-                  usemap="#ImageMap" width="1075" height="1280" />
-                <map name="ImageMap">
-                  <area shape="rect" coords="993,302,1084,568" href="/68.html" alt="三条天皇" />
-                  <area shape="rect" coords="721,821,802,1056" href="/67.html" alt="周防内侍" />
-                  <area shape="rect" coords="445,518,529,678" href="/65.html" alt="相模" />
-                  <area shape="rect" coords="0,803,88,1035" href="/83.html" alt="藤原俊成" />
-                  <area shape="rect" coords="-2,1056,87,1287" href="/97.html" alt="藤原定家" />
-                </map>
-                <figcaption>
-                  <p class="kome" style="width:calc(100% - 1em); font-size:0.9em;"><span
-                      style="color:#C32538; margin-right:0.25em;">■</span>の番号が付いている人物をクリックすると、その歌人のページに移動します。</p>
-                </figcaption>
-              </picture>
+              <!-- 系図のすぐ上：左に凡例、右に拡大・縮小（tenno-keizu.html と同じ） -->
+              <div class="fk-chart-bar">
+                <ul class="fk-legend kd-legend">
+                  <li><span class="fk-legend__tenno">茶字</span>天皇</li>
+                  <li><span class="fk-legend__tno" aria-hidden="true"></span>天皇の代数</li>
+                  <li><span class="fk-legend__kanpaku">紫字</span>摂政・関白になった人物</li>
+                  <li><span class="fk-legend__badge" aria-hidden="true"></span>百人一首の歌番号（クリックで歌のページへ）</li>
+                  <li><span class="fk-legend__eq">＝</span>婚姻</li>
+                </ul>
+                <div class="fk-zoom" role="group" aria-label="拡大・縮小">
+                  <button type="button" data-zoom="out" aria-label="縮小">－</button>
+                  <span class="fk-zoom__label" aria-live="polite">100%</span>
+                  <button type="button" data-zoom="in" aria-label="拡大">＋</button>
+                  <button type="button" data-zoom="reset">等倍</button>
+                  <button type="button" data-zoom="fit">幅に合わせる</button>
+                </div>
+              </div>
+              <!-- 相関図のデータ。SVG は node _tools/build-keizu.mjs で下の KEIZU:START〜END に書き込む -->
+              <div class="kd-chart" aria-label="祐子内親王家紀伊の相関図">
+                <script type="application/json">
+{
+ "nodes": [
+  {
+   "id": "teishi",
+   "n": "定子",
+   "key": "藤原定子",
+   "x": 16,
+   "y": 40
+  },
+  {
+   "id": "ichijo",
+   "n": "一条",
+   "k": 1,
+   "t": 66,
+   "x": 16,
+   "y": 92
+  },
+  {
+   "id": "shoshi",
+   "n": "彰子",
+   "key": "藤原彰子",
+   "x": 16,
+   "y": 136
+  },
+  {
+   "id": "kenshi",
+   "n": "妍子",
+   "x": 16,
+   "y": 200
+  },
+  {
+   "id": "sanjo",
+   "n": "三条",
+   "k": 1,
+   "t": 67,
+   "p": 68,
+   "x": 16,
+   "y": 252
+  },
+  {
+   "id": "atsuyasu",
+   "n": "敦康親王",
+   "x": 136,
+   "y": 48
+  },
+  {
+   "id": "tomohirajo",
+   "n": "具平親王の次女",
+   "x": 136,
+   "y": 92
+  },
+  {
+   "id": "genshi",
+   "n": "嫄子",
+   "x": 286,
+   "y": 70
+  },
+  {
+   "id": "gosuzaku",
+   "n": "後朱雀",
+   "k": 1,
+   "t": 69,
+   "x": 286,
+   "y": 114
+  },
+  {
+   "id": "teishi2",
+   "n": "禎子内親王",
+   "x": 286,
+   "y": 158
+  },
+  {
+   "id": "yushi",
+   "n": "祐子内親王",
+   "x": 426,
+   "y": 40
+  },
+  {
+   "id": "baishi",
+   "n": "禖子内親王",
+   "x": 426,
+   "y": 76
+  },
+  {
+   "id": "goreizei",
+   "n": "後冷泉",
+   "k": 1,
+   "t": 70,
+   "x": 426,
+   "y": 114
+  },
+  {
+   "id": "gosanjo",
+   "n": "後三条",
+   "k": 1,
+   "t": 71,
+   "x": 426,
+   "y": 170
+  },
+  {
+   "id": "kii",
+   "n": "祐子内親王家紀伊",
+   "p": 72,
+   "x": 576,
+   "y": 100,
+   "self": 1
+  },
+  {
+   "id": "michinaga",
+   "n": "藤原道長",
+   "key": "道長",
+   "kan": 1,
+   "x": 16,
+   "y": 300
+  },
+  {
+   "id": "nagaie",
+   "n": "長家",
+   "x": 136,
+   "y": 300
+  },
+  {
+   "id": "tadaie",
+   "n": "忠家",
+   "x": 256,
+   "y": 300
+  },
+  {
+   "id": "toshitada",
+   "n": "俊忠",
+   "x": 476,
+   "y": 300,
+   "sub": "堀河院艶書合で紀伊に歌を贈った",
+   "key": "俊忠"
+  },
+  {
+   "id": "shunzei",
+   "n": "俊成",
+   "key": "俊成",
+   "p": 83,
+   "x": 596,
+   "y": 300
+  },
+  {
+   "id": "teika",
+   "n": "定家",
+   "key": "定家",
+   "p": 97,
+   "x": 716,
+   "y": 300
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-teishi",
+   "top": "teishi",
+   "bottom": "ichijo"
+  },
+  {
+   "id": "c-shoshi",
+   "top": "ichijo",
+   "bottom": "shoshi"
+  },
+  {
+   "id": "c-kenshi",
+   "top": "kenshi",
+   "bottom": "sanjo"
+  },
+  {
+   "id": "c-atsuyasu",
+   "top": "atsuyasu",
+   "bottom": "tomohirajo"
+  },
+  {
+   "id": "c-genshi",
+   "top": "genshi",
+   "bottom": "gosuzaku"
+  },
+  {
+   "id": "c-teishi2",
+   "top": "gosuzaku",
+   "bottom": "teishi2"
+  }
+ ],
+ "kids": [
+  {
+   "from": "c-teishi",
+   "to": [
+    "atsuyasu"
+   ]
+  },
+  {
+   "from": "c-shoshi",
+   "to": [
+    "gosuzaku"
+   ]
+  },
+  {
+   "from": "c-kenshi",
+   "to": [
+    "teishi2"
+   ]
+  },
+  {
+   "from": "c-atsuyasu",
+   "to": [
+    "genshi"
+   ]
+  },
+  {
+   "from": "c-genshi",
+   "to": [
+    "yushi",
+    "baishi"
+   ]
+  },
+  {
+   "from": "gosuzaku",
+   "to": [
+    "goreizei"
+   ]
+  },
+  {
+   "from": "c-teishi2",
+   "to": [
+    "gosanjo"
+   ]
+  },
+  {
+   "from": "michinaga",
+   "to": [
+    "nagaie"
+   ]
+  },
+  {
+   "from": "nagaie",
+   "to": [
+    "tadaie"
+   ]
+  },
+  {
+   "from": "tadaie",
+   "to": [
+    "toshitada"
+   ]
+  },
+  {
+   "from": "toshitada",
+   "to": [
+    "shunzei"
+   ]
+  },
+  {
+   "from": "shunzei",
+   "to": [
+    "teika"
+   ]
+  }
+ ],
+ "tips": {
+  "妍子": [
+   "<ruby>藤原妍子<rt>ふじわらのけんし</rt></ruby>",
+   "系譜：藤原道長の次女",
+   "特記：三条天皇の中宮。禎子内親王の母"
+  ],
+  "具平親王の次女": [
+   "具平親王の次女",
+   "特記：敦康親王の妃。嫄子の母"
+  ],
+  "嫄子": [
+   "<ruby>藤原嫄子<rt>ふじわらのげんし</rt></ruby>",
+   "生没年：1016年～1039年",
+   "系譜：敦康親王の娘。母は具平親王の次女。藤原頼通の養女",
+   "特記：後朱雀天皇の中宮。祐子内親王・禖子内親王の母"
+  ],
+  "禎子内親王": [
+   "禎子内親王",
+   "生没年：1013年～1094年",
+   "系譜：三条天皇と藤原妍子の皇女",
+   "特記：後朱雀天皇の皇后。後三条天皇の母。陽明門院"
+  ],
+  "後冷泉": [
+   "<ruby>後冷泉天皇<rt>ごれいぜいてんのう</rt></ruby>",
+   "第70代天皇",
+   "系譜：後朱雀天皇の皇子。母は藤原道長の娘・嬉子",
+   "特記：中宮は章子内親王（二条院）"
+  ],
+  "祐子内親王": [
+   "祐子内親王",
+   "系譜：後朱雀天皇と中宮嫄子の皇女",
+   "特記：相模・紀伊らが仕えた"
+  ],
+  "禖子内親王": [
+   "禖子内親王",
+   "系譜：後朱雀天皇と中宮嫄子の皇女"
+  ],
+  "俊忠": [
+   "<ruby>藤原俊忠<rt>ふじわらのとしただ</rt></ruby>",
+   "系譜：藤原忠家の子",
+   "特記：1102年の堀河院艶書合で、紀伊に「人しれぬ…」の歌を贈った。藤原定家の祖父"
+  ],
+  "祐子内親王家紀伊": [
+   "<ruby>祐子内親王家紀伊<rt>ゆうしないしんのうけのきい</rt></ruby>",
+   "系譜：出自ははっきりしない。母は祐子内親王家小弁",
+   "百人一首：72番「音に聞く…」の歌人",
+   "特記：後朱雀天皇の皇女・祐子内親王に仕えた。百人一首の歌は堀河院艶書合で藤原俊忠の歌に返したもの"
+  ]
+ },
+ "arrows": [
+  {
+   "points": [
+    [
+     568,
+     100
+    ],
+    [
+     540,
+     100
+    ],
+    [
+     540,
+     40
+    ],
+    [
+     505,
+     40
+    ]
+   ],
+   "label": {
+    "text": "仕える",
+    "x": 546,
+    "y": 70
+   }
+  },
+  {
+   "points": [
+    [
+     491,
+     289
+    ],
+    [
+     491,
+     200
+    ],
+    [
+     620,
+     200
+    ],
+    [
+     620,
+     117
+    ]
+   ],
+   "label": {
+    "text": "歌を贈る",
+    "x": 626,
+    "y": 160
+   }
+  }
+ ]
+}
+                </script>
+                <!-- KEIZU:START -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 786 340" width="786" height="340" role="img" aria-label="祐子内親王家紀伊の相関図" class="fk-svg kd-svg" style="max-width:1179px;min-width:min(640px,1179px)" data-src="ibnja5">
+<g class="fk-edges"><path d="M29 49V67M33 49V67" class="fk-edge fk-eq"/><path d="M29 101V127M33 101V127" class="fk-edge fk-eq"/><path d="M29 209V227M33 209V227" class="fk-edge fk-eq"/><path d="M164 57V83M168 57V83" class="fk-edge fk-eq"/><path d="M299 79V89M303 79V89" class="fk-edge fk-eq"/><path d="M306.5 123V149M310.5 123V149" class="fk-edge fk-eq"/><path d="M33 57H122" class="fk-edge"/><path d="M122 48V57" class="fk-edge"/><path d="M122 48H133" class="fk-edge"/><path d="M33 114H272" class="fk-edge"/><path d="M272 114H283" class="fk-edge"/><path d="M33 217H272" class="fk-edge"/><path d="M272 158V217" class="fk-edge"/><path d="M272 158H283" class="fk-edge"/><path d="M168 70H272" class="fk-edge"/><path d="M272 70H283" class="fk-edge"/><path d="M303 83H412" class="fk-edge"/><path d="M412 40V83" class="fk-edge"/><path d="M412 40H423" class="fk-edge"/><path d="M412 76H423" class="fk-edge"/><path d="M334 114H412" class="fk-edge"/><path d="M412 114H423" class="fk-edge"/><path d="M310.5 136H412" class="fk-edge"/><path d="M412 136V170" class="fk-edge"/><path d="M412 170H423" class="fk-edge"/><path d="M79 300H122" class="fk-edge"/><path d="M122 300H133" class="fk-edge"/><path d="M169 300H242" class="fk-edge"/><path d="M242 300H253" class="fk-edge"/><path d="M289 300H462" class="fk-edge"/><path d="M462 300H473" class="fk-edge"/><path d="M509 300H582" class="fk-edge"/><path d="M582 300H593" class="fk-edge"/><path d="M653 300H702" class="fk-edge"/><path d="M702 300H713" class="fk-edge"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"><path d="M568 100L540 100L540 40L505 40" class="kd-arrow" marker-end="url(#kdArrowHead)"/><text class="kd-arrow-label" x="546" y="70">仕える</text><path d="M491 289L491 200L620 200L620 117" class="kd-arrow" marker-end="url(#kdArrowHead)"/><text class="kd-arrow-label" x="626" y="160">歌を贈る</text></g>
+<g>
+<g class="fk-node" transform="translate(16,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原定子&lt;rt&gt;ふじわらのていし&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：976年～1001年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：藤原道隆と高階貴子（儀同三司母）の娘&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：一条天皇の中宮、のちに皇后となった。清少納言が仕えた&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">定子</text></g>
+<g class="fk-node is-tenno" transform="translate(16,92)" data-tip="&lt;h3&gt;&lt;ruby&gt;一条天皇&lt;rt&gt;いちじょうてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第66代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：980年～1011年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：986年～1011年&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">一条</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">66</text></g>
+<g class="fk-node" transform="translate(16,136)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原彰子&lt;rt&gt;ふじわらのしょうし&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：988年～1074年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：藤原道長と源倫子の娘&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：一条天皇の中宮。後一条・後朱雀天皇の母。女院号は上東門院。百人一首の歌人である紫式部、和泉式部、伊勢大輔、赤染衛門らが仕えた&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">彰子</text></g>
+<g class="fk-node" transform="translate(16,200)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原妍子&lt;rt&gt;ふじわらのけんし&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：藤原道長の次女&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：三条天皇の中宮。禎子内親王の母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">妍子</text></g>
+<g class="fk-node is-tenno is-poet" transform="translate(16,252)" data-tip="&lt;h3&gt;&lt;ruby&gt;三条天皇&lt;rt&gt;さんじょうてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第67代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：976年～1017年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：1011年～1016年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：68番「心にも…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;三条院&lt;rt&gt;さんじょういん&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;" data-p="68"><a href="/68.html" aria-label="三条天皇（百人一首68番）"><rect class="fk-hit" x="-2" y="-13" width="58" height="26"/><text class="fk-name" x="0" y="0.5">三条</text><circle class="fk-badge" cx="44" cy="0" r="10"/><text class="fk-badge-num" x="44" y="0.5">68</text></a><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">67</text></g>
+<g class="fk-node" transform="translate(136,48)" data-tip="&lt;h3&gt;敦康親王&lt;/h3&gt;"><text class="fk-name" x="0" y="0.5">敦康親王</text></g>
+<g class="fk-node" transform="translate(136,92)" data-tip="&lt;h3&gt;具平親王の次女&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：敦康親王の妃。嫄子の母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">具平親王の次女</text></g>
+<g class="fk-node" transform="translate(286,70)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原嫄子&lt;rt&gt;ふじわらのげんし&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1016年～1039年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：敦康親王の娘。母は具平親王の次女。藤原頼通の養女&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：後朱雀天皇の中宮。祐子内親王・禖子内親王の母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">嫄子</text></g>
+<g class="fk-node is-tenno" transform="translate(286,114)" data-tip="&lt;h3&gt;&lt;ruby&gt;後朱雀天皇&lt;rt&gt;ごすざくてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第69代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1009年～1045年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：1036年～1045年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：一条天皇の皇子。後一条天皇の弟&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">後朱雀</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">69</text></g>
+<g class="fk-node" transform="translate(286,158)" data-tip="&lt;h3&gt;禎子内親王&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1013年～1094年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：三条天皇と藤原妍子の皇女&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：後朱雀天皇の皇后。後三条天皇の母。陽明門院&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">禎子内親王</text></g>
+<g class="fk-node" transform="translate(426,40)" data-tip="&lt;h3&gt;祐子内親王&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：後朱雀天皇と中宮嫄子の皇女&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：相模・紀伊らが仕えた&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">祐子内親王</text></g>
+<g class="fk-node" transform="translate(426,76)" data-tip="&lt;h3&gt;禖子内親王&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：後朱雀天皇と中宮嫄子の皇女&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">禖子内親王</text></g>
+<g class="fk-node is-tenno" transform="translate(426,114)" data-tip="&lt;h3&gt;&lt;ruby&gt;後冷泉天皇&lt;rt&gt;ごれいぜいてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第70代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：後朱雀天皇の皇子。母は藤原道長の娘・嬉子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：中宮は章子内親王（二条院）&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">後冷泉</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">70</text></g>
+<g class="fk-node is-tenno" transform="translate(426,170)" data-tip="&lt;h3&gt;&lt;ruby&gt;後三条天皇&lt;rt&gt;ごさんじょうてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第71代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1034年～1073年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：1068年～1073年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：後朱雀天皇の皇子。母は三条天皇の皇女・禎子内親王&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：藤原氏を外戚としない天皇として親政を行った&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">後三条</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">71</text></g>
+<g class="fk-node is-poet is-self" transform="translate(576,100)" data-tip="&lt;h3&gt;&lt;ruby&gt;祐子内親王家紀伊&lt;rt&gt;ゆうしないしんのうけのきい&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：出自ははっきりしない。母は祐子内親王家小弁&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：72番「音に聞く…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：後朱雀天皇の皇女・祐子内親王に仕えた。百人一首の歌は堀河院艶書合で藤原俊忠の歌に返したもの&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="154" height="28" rx="3"/><text class="fk-name" x="0" y="0.5">祐子内親王家紀伊</text><circle class="fk-badge" cx="134" cy="0" r="10"/><text class="fk-badge-num" x="134" y="0.5">72</text></g>
+<g class="fk-node is-kanpaku" transform="translate(16,300)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原道長&lt;rt&gt;ふじわらのみちなが&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：966年～1028年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：摂政、左大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;外戚：後一条、後朱雀、後冷泉天皇の外祖父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">藤原道長</text></g>
+<g class="fk-node" transform="translate(136,300)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原長家&lt;rt&gt;ふじわらのながいえ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1005年～1064年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：権大納言&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正二位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：御子左家の祖&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">長家</text></g>
+<g class="fk-node" transform="translate(256,300)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原忠家&lt;rt&gt;ふじわらのただいえ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1033年～1091年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：大納言&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正二位&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">忠家</text></g>
+<g class="fk-node" transform="translate(476,300)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原俊忠&lt;rt&gt;ふじわらのとしただ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：藤原忠家の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：1102年の堀河院艶書合で、紀伊に「人しれぬ…」の歌を贈った。藤原定家の祖父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">俊忠</text><rect class="fk-sub-box" x="0" y="11" width="177" height="16" rx="8"/><text class="fk-sub" x="88.5" y="19.5">堀河院艶書合で紀伊に歌を贈った</text></g>
+<g class="fk-node is-poet" transform="translate(596,300)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原俊成&lt;rt&gt;ふじわらのとしなり&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1114年～1204年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：皇太后宮大夫&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正三位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首83番「世の中よ…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;皇太后宮大夫俊成&lt;rt&gt;こうたいごうぐうのだいぶとしなり&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;" data-p="83"><a href="/83.html" aria-label="藤原俊成（百人一首83番）"><rect class="fk-hit" x="-2" y="-13" width="58" height="26"/><text class="fk-name" x="0" y="0.5">俊成</text><circle class="fk-badge" cx="44" cy="0" r="10"/><text class="fk-badge-num" x="44" y="0.5">83</text></a></g>
+<g class="fk-node is-poet" transform="translate(716,300)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原定家&lt;rt&gt;ふじわらのさだいえ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1162年～1241年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：権中納言&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正二位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首97番「来ぬ人を」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;権中納言定家&lt;rt&gt;ごんちゅうなごんさだいえ&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;" data-p="97"><a href="/97.html" aria-label="藤原定家（百人一首97番）"><rect class="fk-hit" x="-2" y="-13" width="58" height="26"/><text class="fk-name" x="0" y="0.5">定家</text><circle class="fk-badge" cx="44" cy="0" r="10"/><text class="fk-badge-num" x="44" y="0.5">97</text></a></g>
+</g>
+</svg>
+                <!-- KEIZU:END -->
+              </div>
             </dd>
       </dl>
     </div>
@@ -485,6 +881,9 @@
   <script src="../js/popper.min.js"></script>
   <script src="../js/tippy.umd.min.js"></script>
   <script src="../js/tooltips.js?2026920"></script>
+  <script src="../js/tenno-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/fujiwara-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/keizu-diagram.js?20261001-17"></script>
   <!-- ▲▲▲ tippy.js ▲▲▲ -->
   <script>window.POEM_NUM = 72;</script>
   <script src="../js/grammar-data.js?20260830"></script>

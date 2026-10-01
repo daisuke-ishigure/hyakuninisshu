@@ -96,6 +96,7 @@
   <link rel="stylesheet" href="../css/huda_80.css?20240507-02">
   <link rel="stylesheet" href="../css/animate.min.css">
   <link rel="stylesheet" href="../css/grammar-panel.css?20260721">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261001-16">
   <!-- google fontの追加 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -321,18 +322,165 @@
   </div><div class="diagram-section">
       <dl>
         <dt class='title'>待賢門院堀河の相関図</dt>
-            <dd class='thumb-image2'>
-              <figure>
-                <img src='../img/80_horikawa_diagram.gif?ver2' alt='待賢門院堀河の系図' usemap="#ImageMap" width="1280" height="1027" />
-                <map name="ImageMap">
-                  <area shape="rect" coords="615,582,710,1012" href="/77.html" alt="崇徳院" />
-                </map>
-                <figcaption>
-                  <p class="kome" style="width:calc(100% - 1em); font-size:0.9em;"><span
-                      style="color:#C32538; margin-right:0.25em;">■</span>の番号が付いている人物をクリックすると、その歌人のページに移動します。</p>
-                </figcaption>
-              </figure>
-              <div>
+            <dd class='kd-dd'>
+              <!-- 系図のすぐ上：左に凡例、右に拡大・縮小（tenno-keizu.html と同じ） -->
+              <div class="fk-chart-bar">
+                <ul class="fk-legend kd-legend">
+                  <li><span class="fk-legend__tenno">茶字</span>天皇</li>
+                  <li><span class="fk-legend__tno" aria-hidden="true"></span>天皇の代数</li>
+                  <li><span class="fk-legend__badge" aria-hidden="true"></span>百人一首の歌番号（クリックで歌のページへ）</li>
+                  <li><span class="fk-legend__eq">＝</span>婚姻</li>
+                </ul>
+                <div class="fk-zoom" role="group" aria-label="拡大・縮小">
+                  <button type="button" data-zoom="out" aria-label="縮小">－</button>
+                  <span class="fk-zoom__label" aria-live="polite">100%</span>
+                  <button type="button" data-zoom="in" aria-label="拡大">＋</button>
+                  <button type="button" data-zoom="reset">等倍</button>
+                  <button type="button" data-zoom="fit">幅に合わせる</button>
+                </div>
+              </div>
+              <!-- 相関図のデータ。SVG は node _tools/build-keizu.mjs で下の KEIZU:START〜END に書き込む -->
+              <div class="kd-chart" aria-label="待賢門院堀河の相関図">
+                <script type="application/json">
+{
+ "nodes": [
+  {
+   "id": "bifukumonin",
+   "n": "美福門院",
+   "x": 16,
+   "y": 40
+  },
+  {
+   "id": "toba",
+   "n": "鳥羽",
+   "k": 1,
+   "t": 74,
+   "x": 16,
+   "y": 92
+  },
+  {
+   "id": "taikenmonin",
+   "n": "待賢門院",
+   "x": 16,
+   "y": 136
+  },
+  {
+   "id": "konoe",
+   "n": "近衛",
+   "k": 1,
+   "t": 76,
+   "x": 166,
+   "y": 66
+  },
+  {
+   "id": "goshirakawa",
+   "n": "後白河",
+   "k": 1,
+   "t": 77,
+   "x": 166,
+   "y": 130
+  },
+  {
+   "id": "sutoku",
+   "n": "崇徳",
+   "k": 1,
+   "t": 75,
+   "p": 77,
+   "x": 166,
+   "y": 190
+  },
+  {
+   "id": "horikawa",
+   "n": "待賢門院堀河",
+   "p": 80,
+   "self": 1,
+   "sub": "崇徳院の久安百首の作者の一人となった",
+   "x": 16,
+   "y": 250
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-bifuku",
+   "top": "bifukumonin",
+   "bottom": "toba"
+  },
+  {
+   "id": "c-taiken",
+   "top": "toba",
+   "bottom": "taikenmonin"
+  }
+ ],
+ "kids": [
+  {
+   "from": "c-bifuku",
+   "to": [
+    "konoe"
+   ]
+  },
+  {
+   "from": "c-taiken",
+   "to": [
+    "goshirakawa",
+    "sutoku"
+   ]
+  }
+ ],
+ "tips": {
+  "美福門院": [
+   "<ruby>美福門院<rt>びふくもんいん</rt></ruby>",
+   "特記：鳥羽天皇の皇后（藤原得子）。近衛天皇の母"
+  ],
+  "待賢門院": [
+   "<ruby>待賢門院<rt>たいけんもんいん</rt></ruby>",
+   "特記：鳥羽天皇の皇后（中宮）の藤原璋子。崇徳天皇・後白河天皇の母。待賢門院堀河が仕えた"
+  ],
+  "待賢門院堀河": [
+   "<ruby>待賢門院堀河<rt>たいけんもんいんのほりかわ</rt></ruby>",
+   "系譜：神祇伯源顕仲の娘",
+   "百人一首：80番「長からむ…」の歌人",
+   "特記：令子内親王に仕えたのち待賢門院に仕えたとされる。1150年、崇徳院が召した『久安百首』（作者14名）の作者の一人となった"
+  ]
+ },
+ "arrows": [
+  {
+   "points": [
+    [
+     46,
+     235
+    ],
+    [
+     46,
+     147
+    ]
+   ],
+   "label": {
+    "text": "仕える",
+    "x": 53,
+    "y": 191
+   }
+  }
+ ]
+}
+                </script>
+                <!-- KEIZU:START -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 242 290" width="242" height="290" role="img" aria-label="待賢門院堀河の相関図" class="fk-svg kd-svg" style="max-width:363px;min-width:min(640px,363px)" data-src="1bcl80e">
+<g class="fk-edges"><path d="M29 49V67M33 49V67" class="fk-edge fk-eq"/><path d="M29 101V127M33 101V127" class="fk-edge fk-eq"/><path d="M33 57H152" class="fk-edge"/><path d="M152 57V66" class="fk-edge"/><path d="M152 66H163" class="fk-edge"/><path d="M33 114H152" class="fk-edge"/><path d="M152 114V190" class="fk-edge"/><path d="M152 130H163" class="fk-edge"/><path d="M152 190H163" class="fk-edge"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"><path d="M46 235L46 147" class="kd-arrow" marker-end="url(#kdArrowHead)"/><text class="kd-arrow-label" x="53" y="191">仕える</text></g>
+<g>
+<g class="fk-node" transform="translate(16,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;美福門院&lt;rt&gt;びふくもんいん&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：鳥羽天皇の皇后（藤原得子）。近衛天皇の母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">美福門院</text></g>
+<g class="fk-node is-tenno" transform="translate(16,92)" data-tip="&lt;h3&gt;&lt;ruby&gt;鳥羽天皇&lt;rt&gt;とばてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第74代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1103年～1156年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：1107年～1123年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：譲位後は院政を行った&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">鳥羽</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">74</text></g>
+<g class="fk-node" transform="translate(16,136)" data-tip="&lt;h3&gt;&lt;ruby&gt;待賢門院&lt;rt&gt;たいけんもんいん&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：鳥羽天皇の皇后（中宮）の藤原璋子。崇徳天皇・後白河天皇の母。待賢門院堀河が仕えた&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">待賢門院</text></g>
+<g class="fk-node is-tenno" transform="translate(166,66)" data-tip="&lt;h3&gt;&lt;ruby&gt;近衛天皇&lt;rt&gt;このえてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第76代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1139年～1155年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：1141年～1155年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：鳥羽天皇の皇子。母は美福門院（藤原得子）&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：17歳で亡くなり、その後継をめぐる争いが保元の乱の一因となった&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">近衛</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">76</text></g>
+<g class="fk-node is-tenno" transform="translate(166,130)" data-tip="&lt;h3&gt;&lt;ruby&gt;後白河天皇&lt;rt&gt;ごしらかわてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第77代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1127年～1192年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：1155年～1158年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：譲位後、長く院政を行った。今様を集めた『梁塵秘抄』を編んだ&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">後白河</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">77</text></g>
+<g class="fk-node is-tenno is-poet" transform="translate(166,190)" data-tip="&lt;h3&gt;&lt;ruby&gt;崇徳天皇&lt;rt&gt;すとくてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第75代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1119年～1164年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：1123年～1142年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：77番「瀬をはやみ…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;崇徳院&lt;rt&gt;すとくいん&lt;/rt&gt;&lt;/ruby&gt;。保元の乱（1156年）に敗れて讃岐に流された&lt;/div&gt;" data-p="77"><a href="/77.html" aria-label="崇徳天皇（百人一首77番）"><rect class="fk-hit" x="-2" y="-13" width="58" height="26"/><text class="fk-name" x="0" y="0.5">崇徳</text><circle class="fk-badge" cx="44" cy="0" r="10"/><text class="fk-badge-num" x="44" y="0.5">77</text></a><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">75</text></g>
+<g class="fk-node is-poet is-self" transform="translate(16,250)" data-tip="&lt;h3&gt;&lt;ruby&gt;待賢門院堀河&lt;rt&gt;たいけんもんいんのほりかわ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：神祇伯源顕仲の娘&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：80番「長からむ…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：令子内親王に仕えたのち待賢門院に仕えたとされる。1150年、崇徳院が召した『久安百首』（作者14名）の作者の一人となった&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="124" height="28" rx="3"/><text class="fk-name" x="0" y="0.5">待賢門院堀河</text><circle class="fk-badge" cx="104" cy="0" r="10"/><text class="fk-badge-num" x="104" y="0.5">80</text><rect class="fk-sub-box" x="0" y="11" width="210" height="16" rx="8"/><text class="fk-sub" x="105" y="19.5">崇徳院の久安百首の作者の一人となった</text></g>
+</g>
+</svg>
+                <!-- KEIZU:END -->
+              </div>
+              <div class="kd-text">
                 <p>待賢門院堀河は、鳥羽天皇の皇后・待賢門院（藤原璋子）に仕えました。</p>
               </div>
             </dd>
@@ -488,6 +636,9 @@
   <script src="../js/popper.min.js"></script>
   <script src="../js/tippy.umd.min.js"></script>
   <script src="../js/tooltips.js?2026920"></script>
+  <script src="../js/tenno-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/fujiwara-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/keizu-diagram.js?20261001-17"></script>
   <!-- ▲▲▲ tippy.js ▲▲▲ -->
   <script>window.POEM_NUM = 80;</script>
   <script src="../js/grammar-data.js?20260830"></script>

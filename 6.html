@@ -39,6 +39,7 @@
   <link rel="stylesheet" href="../css/animate.min.css">
   <link rel="stylesheet" href="../css/shootingstars.css?20240507-02">
   <link rel="stylesheet" href="../css/grammar-panel.css?20260721">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261001-16">
   <!-- swiper -->
   <link rel="stylesheet" href="../css/swiper-bundle.min.css">
   <script type="application/ld+json">
@@ -331,13 +332,465 @@
   </div><div class="diagram-section">
       <dl>
         <dt class='title'>大伴家持の系図と大伴氏の没落</dt>
-            <dd class='thumb-image2'>
-              <figure>
-                <img loading='lazy' src='../img/06_yakamochi_diagram.gif?ver03' alt='大伴一族を揺るがす大事件' width="1348" height="1980">
-              </figure>
-              <div>
+            <dd class='kd-dd'>
+              <!-- 系図のすぐ上：左に凡例、右に拡大・縮小（tenno-keizu.html と同じ） -->
+              <div class="fk-chart-bar">
+                <ul class="fk-legend kd-legend">
+                  <li><span class="fk-legend__tenno">茶字</span>天皇</li>
+                  <li><span class="fk-legend__tno" aria-hidden="true"></span>天皇の代数</li>
+                  <li><span class="fk-legend__badge" aria-hidden="true"></span>百人一首の歌番号（クリックで歌のページへ）</li>
+                </ul>
+                <div class="fk-zoom" role="group" aria-label="拡大・縮小">
+                  <button type="button" data-zoom="out" aria-label="縮小">－</button>
+                  <span class="fk-zoom__label" aria-live="polite">100%</span>
+                  <button type="button" data-zoom="in" aria-label="拡大">＋</button>
+                  <button type="button" data-zoom="reset">等倍</button>
+                  <button type="button" data-zoom="fit">幅に合わせる</button>
+                </div>
+              </div>
+              <!-- 相関図のデータ。SVG は node _tools/build-keizu.mjs で下の KEIZU:START〜END に書き込む -->
+              <div class="kd-chart" aria-label="大伴家持の系図">
+                <script type="application/json">
+{
+ "nodes": [
+  {
+   "id": "yasumaro",
+   "n": "大伴安麻呂",
+   "x": 16,
+   "y": 62
+  },
+  {
+   "id": "tabito",
+   "n": "大伴旅人",
+   "x": 166,
+   "y": 62
+  },
+  {
+   "id": "kakimochi",
+   "n": "大伴書持",
+   "x": 316,
+   "y": 40
+  },
+  {
+   "id": "yakamochi",
+   "n": "大伴家持",
+   "p": 6,
+   "self": 1,
+   "sub": "除名",
+   "x": 316,
+   "y": 84
+  },
+  {
+   "id": "naganushi",
+   "n": "大伴永主",
+   "sub": "隠岐に配流",
+   "x": 466,
+   "y": 84
+  },
+  {
+   "id": "komaro",
+   "n": "大伴古麻呂",
+   "x": 166,
+   "y": 182
+  },
+  {
+   "id": "tsuguhito",
+   "n": "大伴継人",
+   "sub": "斬首",
+   "x": 316,
+   "y": 150
+  },
+  {
+   "id": "takeyoshi",
+   "n": "大伴竹良",
+   "sub": "斬首",
+   "x": 316,
+   "y": 214
+  },
+  {
+   "id": "kunimichi",
+   "n": "伴国道",
+   "sub": "佐渡に配流",
+   "x": 466,
+   "y": 150
+  },
+  {
+   "id": "yoshio",
+   "n": "伴善男",
+   "sub": "応天門の変で伊豆に配流",
+   "x": 616,
+   "y": 150
+  },
+  {
+   "id": "konin",
+   "n": "光仁",
+   "k": 1,
+   "t": 49,
+   "x": 16,
+   "y": 336
+  },
+  {
+   "id": "sawara",
+   "n": "早良親王",
+   "sub": "淡路へ配流の途中で死去",
+   "x": 166,
+   "y": 290
+  },
+  {
+   "id": "kanmu",
+   "n": "桓武",
+   "k": 1,
+   "t": 50,
+   "x": 166,
+   "y": 382
+  },
+  {
+   "id": "heizei",
+   "n": "平城",
+   "k": 1,
+   "t": 51,
+   "x": 316,
+   "y": 330
+  },
+  {
+   "id": "saga",
+   "n": "嵯峨",
+   "k": 1,
+   "t": 52,
+   "x": 316,
+   "y": 382
+  },
+  {
+   "id": "junna",
+   "n": "淳和",
+   "k": 1,
+   "t": 53,
+   "x": 316,
+   "y": 434
+  },
+  {
+   "id": "fuhito",
+   "n": "藤原不比等",
+   "key": "不比等",
+   "x": 16,
+   "y": 496
+  },
+  {
+   "id": "umakai",
+   "n": "藤原宇合",
+   "key": "宇合",
+   "x": 166,
+   "y": 496
+  },
+  {
+   "id": "kiyonari",
+   "n": "藤原清成",
+   "key": "清成",
+   "x": 316,
+   "y": 496
+  },
+  {
+   "id": "tanetsugu",
+   "n": "藤原種継",
+   "key": "種継",
+   "sub": "暗殺される",
+   "x": 466,
+   "y": 496
+  }
+ ],
+ "kids": [
+  {
+   "from": "yasumaro",
+   "to": [
+    "tabito"
+   ]
+  },
+  {
+   "from": "tabito",
+   "to": [
+    "kakimochi",
+    "yakamochi"
+   ]
+  },
+  {
+   "from": "yakamochi",
+   "to": [
+    "naganushi"
+   ]
+  },
+  {
+   "from": "komaro",
+   "to": [
+    "tsuguhito",
+    "takeyoshi"
+   ]
+  },
+  {
+   "from": "tsuguhito",
+   "to": [
+    "kunimichi"
+   ]
+  },
+  {
+   "from": "kunimichi",
+   "to": [
+    "yoshio"
+   ]
+  },
+  {
+   "from": "konin",
+   "to": [
+    "sawara",
+    "kanmu"
+   ]
+  },
+  {
+   "from": "kanmu",
+   "to": [
+    "heizei",
+    "saga",
+    "junna"
+   ]
+  },
+  {
+   "from": "fuhito",
+   "to": [
+    "umakai"
+   ]
+  },
+  {
+   "from": "umakai",
+   "to": [
+    "kiyonari"
+   ]
+  },
+  {
+   "from": "kiyonari",
+   "to": [
+    "tanetsugu"
+   ]
+  }
+ ],
+ "tips": {
+  "大伴安麻呂": [
+   "<ruby>大伴安麻呂<rt>おおとものやすまろ</rt></ruby>",
+   "官職：大納言",
+   "特記：大伴旅人の父"
+  ],
+  "大伴旅人": [
+   "<ruby>大伴旅人<rt>おおとものたびと</rt></ruby>",
+   "系譜：大伴安麻呂の子",
+   "特記：大伴家持・書持の父"
+  ],
+  "大伴書持": [
+   "大伴書持",
+   "系譜：大伴旅人の子。家持の兄または弟"
+  ],
+  "大伴家持": [
+   "<ruby>大伴家持<rt>おおとものやかもち</rt></ruby>",
+   "官職：中納言",
+   "位階：従三位",
+   "系譜：大伴旅人と丹比郎女の子",
+   "百人一首：6番「かささぎの…」の歌人",
+   "特記：785年8月に死去。翌月の藤原種継暗殺事件に関与したとされ、埋葬を許されず官籍から除名された。806年に恩赦を受けた"
+  ],
+  "大伴永主": [
+   "大伴永主",
+   "系譜：大伴家持の子",
+   "特記：藤原種継暗殺事件に連座し、隠岐国へ配流された"
+  ],
+  "大伴古麻呂": [
+   "<ruby>大伴古麻呂<rt>おおとものこまろ</rt></ruby>",
+   "官職：左大弁",
+   "系譜：父については諸説あり、確実なことは不明",
+   "特記：大伴継人の父"
+  ],
+  "大伴継人": [
+   "<ruby>大伴継人<rt>おおとものつぐひと</rt></ruby>",
+   "系譜：大伴古麻呂の子",
+   "特記：藤原種継暗殺事件の首謀者として斬首された。806年に罪を赦され、正五位上を贈られた"
+  ],
+  "大伴竹良": [
+   "大伴竹良",
+   "系譜：大伴古麻呂の子とする系図がある。継人と同族",
+   "特記：藤原種継暗殺事件で最初に捕らえられ、斬首された"
+  ],
+  "伴国道": [
+   "<ruby>伴国道<rt>とものくにみち</rt></ruby>",
+   "生没年：768年～828年",
+   "系譜：大伴継人の子",
+   "特記：藤原種継暗殺事件に連座し、佐渡国へ流された。伴善男の父"
+  ],
+  "伴善男": [
+   "<ruby>伴善男<rt>とものよしお</rt></ruby>",
+   "官職：大納言",
+   "系譜：伴国道の子",
+   "特記：866年の応天門の変で、伊豆国へ流された"
+  ],
+  "早良親王": [
+   "<ruby>早良親王<rt>さわらしんのう</rt></ruby>",
+   "系譜：光仁天皇と高野新笠の子。桓武天皇の同母弟",
+   "特記：11歳で東大寺で出家。781年に還俗して皇太子となったが、藤原種継暗殺事件で廃され、淡路へ移送される途中、絶食の末に死去した。800年に崇道天皇と追称された"
+  ]
+ },
+ "boxes": [
+  {
+   "text": "暗殺の嫌疑",
+   "x": 400,
+   "y": 255,
+   "w": 120,
+   "h": 40
+  }
+ ],
+ "arrows": [
+  {
+   "points": [
+    [
+     496,
+     486
+    ],
+    [
+     496,
+     298
+    ]
+   ]
+  },
+  {
+   "points": [
+    [
+     400,
+     285
+    ],
+    [
+     230,
+     285
+    ]
+   ]
+  },
+  {
+   "points": [
+    [
+     410,
+     255
+    ],
+    [
+     410,
+     214
+    ],
+    [
+     380,
+     214
+    ]
+   ]
+  },
+  {
+   "points": [
+    [
+     425,
+     255
+    ],
+    [
+     425,
+     195
+    ],
+    [
+     333,
+     195
+    ],
+    [
+     333,
+     180
+    ]
+   ]
+  },
+  {
+   "points": [
+    [
+     455,
+     255
+    ],
+    [
+     455,
+     128
+    ],
+    [
+     333,
+     128
+    ],
+    [
+     333,
+     114
+    ]
+   ]
+  },
+  {
+   "points": [
+    [
+     490,
+     255
+    ],
+    [
+     490,
+     180
+    ]
+   ]
+  },
+  {
+   "points": [
+    [
+     520,
+     270
+    ],
+    [
+     560,
+     270
+    ],
+    [
+     560,
+     84
+    ],
+    [
+     530,
+     84
+    ]
+   ]
+  }
+ ]
+}
+                </script>
+                <!-- KEIZU:START -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 765 536" width="765" height="536" role="img" aria-label="大伴家持の系図" class="fk-svg kd-svg" style="max-width:1148px;min-width:min(640px,1148px)" data-src="1n0rfed">
+<g class="fk-edges"><path d="M94 62H152" class="fk-edge"/><path d="M152 62H163" class="fk-edge"/><path d="M229 62H302" class="fk-edge"/><path d="M302 40V84" class="fk-edge"/><path d="M302 40H313" class="fk-edge"/><path d="M302 84H313" class="fk-edge"/><path d="M403 84H452" class="fk-edge"/><path d="M452 84H463" class="fk-edge"/><path d="M244 182H302" class="fk-edge"/><path d="M302 150V214" class="fk-edge"/><path d="M302 150H313" class="fk-edge"/><path d="M302 214H313" class="fk-edge"/><path d="M379 150H452" class="fk-edge"/><path d="M452 150H463" class="fk-edge"/><path d="M514 150H602" class="fk-edge"/><path d="M602 150H613" class="fk-edge"/><path d="M49 336H152" class="fk-edge"/><path d="M152 290V382" class="fk-edge"/><path d="M152 290H163" class="fk-edge"/><path d="M152 382H163" class="fk-edge"/><path d="M199 382H302" class="fk-edge"/><path d="M302 330V434" class="fk-edge"/><path d="M302 330H313" class="fk-edge"/><path d="M302 382H313" class="fk-edge"/><path d="M302 434H313" class="fk-edge"/><path d="M94 496H152" class="fk-edge"/><path d="M152 496H163" class="fk-edge"/><path d="M229 496H302" class="fk-edge"/><path d="M302 496H313" class="fk-edge"/><path d="M379 496H452" class="fk-edge"/><path d="M452 496H463" class="fk-edge"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"><rect class="kd-box" x="400" y="255" width="120" height="40" rx="3"/><text class="kd-box-text" x="460" y="275.5">暗殺の嫌疑</text><path d="M496 486L496 298" class="kd-arrow" marker-end="url(#kdArrowHead)"/><path d="M400 285L230 285" class="kd-arrow" marker-end="url(#kdArrowHead)"/><path d="M410 255L410 214L380 214" class="kd-arrow" marker-end="url(#kdArrowHead)"/><path d="M425 255L425 195L333 195L333 180" class="kd-arrow" marker-end="url(#kdArrowHead)"/><path d="M455 255L455 128L333 128L333 114" class="kd-arrow" marker-end="url(#kdArrowHead)"/><path d="M490 255L490 180" class="kd-arrow" marker-end="url(#kdArrowHead)"/><path d="M520 270L560 270L560 84L530 84" class="kd-arrow" marker-end="url(#kdArrowHead)"/></g>
+<g>
+<g class="fk-node" transform="translate(16,62)" data-tip="&lt;h3&gt;&lt;ruby&gt;大伴安麻呂&lt;rt&gt;おおとものやすまろ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：大納言&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：大伴旅人の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">大伴安麻呂</text></g>
+<g class="fk-node" transform="translate(166,62)" data-tip="&lt;h3&gt;&lt;ruby&gt;大伴旅人&lt;rt&gt;おおとものたびと&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：大伴安麻呂の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：大伴家持・書持の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">大伴旅人</text></g>
+<g class="fk-node" transform="translate(316,40)" data-tip="&lt;h3&gt;大伴書持&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：大伴旅人の子。家持の兄または弟&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">大伴書持</text></g>
+<g class="fk-node is-poet is-self" transform="translate(316,84)" data-tip="&lt;h3&gt;&lt;ruby&gt;大伴家持&lt;rt&gt;おおとものやかもち&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：中納言&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従三位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：大伴旅人と丹比郎女の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：6番「かささぎの…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：785年8月に死去。翌月の藤原種継暗殺事件に関与したとされ、埋葬を許されず官籍から除名された。806年に恩赦を受けた&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="94" height="28" rx="3"/><text class="fk-name" x="0" y="0.5">大伴家持</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">6</text><rect class="fk-sub-box" x="0" y="11" width="34" height="16" rx="8"/><text class="fk-sub" x="17" y="19.5">除名</text></g>
+<g class="fk-node" transform="translate(466,84)" data-tip="&lt;h3&gt;大伴永主&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：大伴家持の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：藤原種継暗殺事件に連座し、隠岐国へ配流された&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">大伴永主</text><rect class="fk-sub-box" x="0" y="11" width="67" height="16" rx="8"/><text class="fk-sub" x="33.5" y="19.5">隠岐に配流</text></g>
+<g class="fk-node" transform="translate(166,182)" data-tip="&lt;h3&gt;&lt;ruby&gt;大伴古麻呂&lt;rt&gt;おおとものこまろ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：左大弁&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：父については諸説あり、確実なことは不明&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：大伴継人の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">大伴古麻呂</text></g>
+<g class="fk-node" transform="translate(316,150)" data-tip="&lt;h3&gt;&lt;ruby&gt;大伴継人&lt;rt&gt;おおとものつぐひと&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：大伴古麻呂の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：藤原種継暗殺事件の首謀者として斬首された。806年に罪を赦され、正五位上を贈られた&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">大伴継人</text><rect class="fk-sub-box" x="0" y="11" width="34" height="16" rx="8"/><text class="fk-sub" x="17" y="19.5">斬首</text></g>
+<g class="fk-node" transform="translate(316,214)" data-tip="&lt;h3&gt;大伴竹良&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：大伴古麻呂の子とする系図がある。継人と同族&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：藤原種継暗殺事件で最初に捕らえられ、斬首された&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">大伴竹良</text><rect class="fk-sub-box" x="0" y="11" width="34" height="16" rx="8"/><text class="fk-sub" x="17" y="19.5">斬首</text></g>
+<g class="fk-node" transform="translate(466,150)" data-tip="&lt;h3&gt;&lt;ruby&gt;伴国道&lt;rt&gt;とものくにみち&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：768年～828年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：大伴継人の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：藤原種継暗殺事件に連座し、佐渡国へ流された。伴善男の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">伴国道</text><rect class="fk-sub-box" x="0" y="11" width="67" height="16" rx="8"/><text class="fk-sub" x="33.5" y="19.5">佐渡に配流</text></g>
+<g class="fk-node" transform="translate(616,150)" data-tip="&lt;h3&gt;&lt;ruby&gt;伴善男&lt;rt&gt;とものよしお&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：大納言&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：伴国道の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：866年の応天門の変で、伊豆国へ流された&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">伴善男</text><rect class="fk-sub-box" x="0" y="11" width="133" height="16" rx="8"/><text class="fk-sub" x="66.5" y="19.5">応天門の変で伊豆に配流</text></g>
+<g class="fk-node is-tenno" transform="translate(16,336)" data-tip="&lt;h3&gt;&lt;ruby&gt;光仁天皇&lt;rt&gt;こうにんてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第49代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：709年～782年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：770年～781年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：天智天皇の孫、志貴皇子の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：称徳天皇のあとに即位し、皇統が天武系から天智系に移った&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">光仁</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">49</text></g>
+<g class="fk-node" transform="translate(166,290)" data-tip="&lt;h3&gt;&lt;ruby&gt;早良親王&lt;rt&gt;さわらしんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：光仁天皇と高野新笠の子。桓武天皇の同母弟&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：11歳で東大寺で出家。781年に還俗して皇太子となったが、藤原種継暗殺事件で廃され、淡路へ移送される途中、絶食の末に死去した。800年に崇道天皇と追称された&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">早良親王</text><rect class="fk-sub-box" x="0" y="11" width="133" height="16" rx="8"/><text class="fk-sub" x="66.5" y="19.5">淡路へ配流の途中で死去</text></g>
+<g class="fk-node is-tenno" transform="translate(166,382)" data-tip="&lt;h3&gt;&lt;ruby&gt;桓武天皇&lt;rt&gt;かんむてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第50代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：737年～806年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：781年～806年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：長岡京、ついで平安京（794年）に遷都した&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">桓武</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">50</text></g>
+<g class="fk-node is-tenno" transform="translate(316,330)" data-tip="&lt;h3&gt;&lt;ruby&gt;平城天皇&lt;rt&gt;へいぜいてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第51代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：774年～824年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：806年～809年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：譲位後、810年の平城太上天皇の変（薬子の変）で出家した&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">平城</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">51</text></g>
+<g class="fk-node is-tenno" transform="translate(316,382)" data-tip="&lt;h3&gt;&lt;ruby&gt;嵯峨天皇&lt;rt&gt;さがてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第52代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：786年～842年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：809年～823年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：皇子・皇女に源の氏を与えた（嵯峨源氏）&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">嵯峨</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">52</text></g>
+<g class="fk-node is-tenno" transform="translate(316,434)" data-tip="&lt;h3&gt;&lt;ruby&gt;淳和天皇&lt;rt&gt;じゅんなてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第53代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：786年～840年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：823年～833年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：桓武天皇の皇子、嵯峨天皇の弟&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">淳和</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">53</text></g>
+<g class="fk-node" transform="translate(16,496)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原不比等&lt;rt&gt;ふじわらのふひと&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：659年～720年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：右大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正二位、贈正一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;外戚：聖武天皇、孝謙天皇の外祖父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">藤原不比等</text></g>
+<g class="fk-node" transform="translate(166,496)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原宇合&lt;rt&gt;ふじわらのうまかい&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：694年～737年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：参議&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正三位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：藤原式家の祖&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">藤原宇合</text></g>
+<g class="fk-node" transform="translate(316,496)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原清成&lt;rt&gt;ふじわらのきよなり&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：716年頃～777年頃&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：無官&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">藤原清成</text></g>
+<g class="fk-node" transform="translate(466,496)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原種継&lt;rt&gt;ふじわらのたねつぐ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：737年～785年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：中納言&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正三位、贈正一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：長岡京造営中に暗殺される&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">藤原種継</text><rect class="fk-sub-box" x="0" y="11" width="67" height="16" rx="8"/><text class="fk-sub" x="33.5" y="19.5">暗殺される</text></g>
+</g>
+</svg>
+                <!-- KEIZU:END -->
+              </div>
+              <div class="kd-text">
                 <p>
-                  785年、長岡京の造営を監督していた中納言・藤原種継が矢で暗殺される事件が起きました。暗殺犯として大伴竹良が捕縛され、取調べの結果、従三位中納言・大伴家持が首謀者として、大伴氏一族は連座して処罰されました。家持は事件が起きる1カ月ほど前に亡くなっていたにもかかわらず、遺骨を掘り起こされて配流されました。
+                  785年、長岡京の造営を監督していた中納言・藤原種継が矢で暗殺される事件が起きました。暗殺犯として大伴竹良が捕縛され、取調べの結果、従三位中納言・大伴家持が首謀者として、大伴氏一族は連座して処罰されました。家持は事件が起きる1カ月ほど前に亡くなっていたにもかかわらず、埋葬を許されず、官籍からも除名されました。
                   しかし、806年、家持は没後20年以上経過してから無罪になり従三位に復されました。
                 </p>
                 <p>
@@ -731,6 +1184,9 @@
   <script src="../js/popper.min.js"></script>
   <script src="../js/tippy.umd.min.js"></script>
   <script src="../js/tooltips.js?2026920"></script>
+  <script src="../js/tenno-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/fujiwara-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/keizu-diagram.js?20261001-17"></script>
   <!-- ▲▲▲ tippy.js ▲▲▲ -->
   <!-- ▼▼▼ 語句・文法の対話パネル ▼▼▼ -->
   <script>window.POEM_NUM = 6;</script>

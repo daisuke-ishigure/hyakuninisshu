@@ -91,6 +91,7 @@
   <link rel="stylesheet" href="../css/huda_11.css?20240725">
   <link rel="stylesheet" href="../css/animate.min.css">
   <link rel="stylesheet" href="../css/grammar-panel.css?20260721">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261001-16">
   <!-- swiper -->
   <link rel="stylesheet" href="../css/swiper-bundle.min.css">
   <!-- google fontの追加 -->
@@ -326,18 +327,81 @@
     <div class="diagram-section">
       <dl>
         <dt class='title'>小野篁の系図</dt>
-            <dd class='thumb-image2'>
-              <figure>
-                <img loading='lazy' src='../img/11_takamura_diagram.gif?ver5' alt='小野篁の系図' usemap="#ImageMap" width="1280" height="1069" />
-                <map name="ImageMap">
-                  <area shape="rect" coords="469,941,864,1040" href="/9.html" alt="小野小町" />
-                </map>
-                <figcaption style="margin-top:0.5em;">
-                  <p class="kome" style="width:calc(100% - 1em); font-size:0.9em;"><span
-                      style="color:#C32538; margin-right:0.25em;">■</span>の番号が付いている人物をクリックすると、その歌人のページに移動します。</p>
-                </figcaption>
-              </figure>
-              <div>
+            <dd class='kd-dd'>
+              <!-- 系図のすぐ上：左に凡例、右に拡大・縮小（tenno-keizu.html と同じ） -->
+              <div class="fk-chart-bar">
+                <ul class="fk-legend kd-legend">
+                  <li><span class="fk-legend__badge" aria-hidden="true"></span>百人一首の歌番号（クリックで歌のページへ）</li>
+                  <li><span class="fk-legend__dash"></span>数代省略</li>
+                  <li><span class="fk-legend__eq">＝</span>婚姻</li>
+                </ul>
+                <div class="fk-zoom" role="group" aria-label="拡大・縮小">
+                  <button type="button" data-zoom="out" aria-label="縮小">－</button>
+                  <span class="fk-zoom__label" aria-live="polite">100%</span>
+                  <button type="button" data-zoom="in" aria-label="拡大">＋</button>
+                  <button type="button" data-zoom="reset">等倍</button>
+                  <button type="button" data-zoom="fit">幅に合わせる</button>
+                </div>
+              </div>
+              <!-- 相関図のデータ。SVG は node _tools/build-keizu.mjs で下の KEIZU:START〜END に書き込む -->
+              <div class="kd-chart" aria-label="小野篁の系図">
+                <script type="application/json">
+{
+  "nodes": [
+    { "id": "imoko", "n": "小野妹子", "x": 16, "y": 95 },
+    { "id": "minemori", "n": "小野岑守", "x": 166, "y": 95 },
+    { "id": "toshiyukishitsu", "n": "藤原敏行室", "x": 316, "y": 40 },
+    { "id": "toshiyuki", "n": "藤原敏行", "key": "敏行", "p": 18, "x": 316, "y": 84 },
+    { "id": "takamura", "n": "小野篁", "p": 11, "self": 1, "x": 316, "y": 150 },
+    { "id": "yoshizane", "n": "小野良真", "x": 466, "y": 128 },
+    { "id": "kuzuo", "n": "小野葛絃", "x": 466, "y": 172 },
+    { "id": "komachi", "n": "小野小町", "p": 9, "x": 616, "y": 128 },
+    { "id": "michikaze", "n": "小野道風", "x": 616, "y": 172 }
+  ],
+  "couples": [
+    { "id": "c-toshiyuki", "top": "toshiyukishitsu", "bottom": "toshiyuki" }
+  ],
+  "kids": [
+    { "from": "minemori", "to": ["toshiyukishitsu", "takamura"] },
+    { "from": "takamura", "to": ["yoshizane", "kuzuo"] },
+    { "from": "yoshizane", "to": ["komachi"] },
+    { "from": "kuzuo", "to": ["michikaze"] }
+  ],
+  "lines": [
+    { "points": [[79, 95], [163, 95]], "dash": true }
+  ],
+  "tips": {
+    "小野妹子": ["<ruby>小野妹子<rt>おののいもこ</rt></ruby>", "特記：遣隋使として隋に派遣された。小野岑守までの系譜ははっきりしない"],
+    "小野岑守": ["<ruby>小野岑守<rt>おののみねもり</rt></ruby>", "生没年：778年～830年", "系譜：小野永見の三男", "特記：小野篁の父。小野小町の曽祖父とされる"],
+    "藤原敏行室": ["小野岑守の娘", "特記：藤原敏行の妻。小野篁の姉または妹"],
+    "小野篁": ["<ruby>小野篁<rt>おののたかむら</rt></ruby>", "生没年：802年～853年", "官職：参議", "系譜：小野岑守の子", "百人一首：11番「わたの原 八十島かけて…」の歌人", "特記：一説には小野小町・小野道風の祖父"],
+    "小野良真": ["<ruby>小野良真<rt>おののよしざね</rt></ruby>", "系譜：小野篁の子（良貞・良実とも）", "特記：小野小町の父とされる"],
+    "小野葛絃": ["<ruby>小野葛絃<rt>おののくずお</rt></ruby>", "官職：大宰大弐", "系譜：小野篁の子", "特記：小野好古・小野道風の父"],
+    "小野小町": ["<ruby>小野小町<rt>おののこまち</rt></ruby>", "百人一首：9番「花の色は…」の歌人", "系譜：出自ははっきりしないが、通説では小野良実（良真）の娘とされる。小野篁の娘とする説などもある"],
+    "小野道風": ["<ruby>小野道風<rt>おののみちかぜ</rt></ruby>", "系譜：小野葛絃の三男。小野篁の孫"]
+  }
+}
+                </script>
+                <!-- KEIZU:START -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 716 198" width="716" height="198" role="img" aria-label="小野篁の系図" class="fk-svg kd-svg" style="max-width:1074px;min-width:min(640px,1074px)" data-src="1n5g0xv">
+<g class="fk-edges"><path d="M344 49V75M348 49V75" class="fk-edge fk-eq"/><path d="M229 95H302" class="fk-edge"/><path d="M302 40V150" class="fk-edge"/><path d="M302 40H313" class="fk-edge"/><path d="M302 150H313" class="fk-edge"/><path d="M388 150H452" class="fk-edge"/><path d="M452 128V172" class="fk-edge"/><path d="M452 128H463" class="fk-edge"/><path d="M452 172H463" class="fk-edge"/><path d="M529 128H602" class="fk-edge"/><path d="M602 128H613" class="fk-edge"/><path d="M529 172H602" class="fk-edge"/><path d="M602 172H613" class="fk-edge"/><path d="M79 95L163 95" class="fk-edge is-dash"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node" transform="translate(16,95)" data-tip="&lt;h3&gt;&lt;ruby&gt;小野妹子&lt;rt&gt;おののいもこ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：遣隋使として隋に派遣された。小野岑守までの系譜ははっきりしない&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">小野妹子</text></g>
+<g class="fk-node" transform="translate(166,95)" data-tip="&lt;h3&gt;&lt;ruby&gt;小野岑守&lt;rt&gt;おののみねもり&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：778年～830年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：小野永見の三男&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：小野篁の父。小野小町の曽祖父とされる&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">小野岑守</text></g>
+<g class="fk-node" transform="translate(316,40)" data-tip="&lt;h3&gt;小野岑守の娘&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：藤原敏行の妻。小野篁の姉または妹&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">藤原敏行室</text></g>
+<g class="fk-node is-poet" transform="translate(316,84)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原敏行&lt;rt&gt;ふじわらのとしゆき&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：不明～901年または907年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：右兵衛督&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従四位上&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：18番「住の江の…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;藤原敏行朝臣&lt;rt&gt;ふじわらのとしゆきあそん&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;" data-p="18"><a href="/18.html" aria-label="藤原敏行（百人一首18番）"><rect class="fk-hit" x="-2" y="-13" width="88" height="26"/><text class="fk-name" x="0" y="0.5">藤原敏行</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">18</text></a></g>
+<g class="fk-node is-poet is-self" transform="translate(316,150)" data-tip="&lt;h3&gt;&lt;ruby&gt;小野篁&lt;rt&gt;おののたかむら&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：802年～853年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：参議&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：小野岑守の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：11番「わたの原 八十島かけて…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：一説には小野小町・小野道風の祖父&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="79" height="28" rx="3"/><text class="fk-name" x="0" y="0.5">小野篁</text><circle class="fk-badge" cx="59" cy="0" r="10"/><text class="fk-badge-num" x="59" y="0.5">11</text></g>
+<g class="fk-node" transform="translate(466,128)" data-tip="&lt;h3&gt;&lt;ruby&gt;小野良真&lt;rt&gt;おののよしざね&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：小野篁の子（良貞・良実とも）&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：小野小町の父とされる&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">小野良真</text></g>
+<g class="fk-node" transform="translate(466,172)" data-tip="&lt;h3&gt;&lt;ruby&gt;小野葛絃&lt;rt&gt;おののくずお&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：大宰大弐&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：小野篁の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：小野好古・小野道風の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">小野葛絃</text></g>
+<g class="fk-node is-poet" transform="translate(616,128)" data-tip="&lt;h3&gt;&lt;ruby&gt;小野小町&lt;rt&gt;おののこまち&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：9番「花の色は…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：出自ははっきりしないが、通説では小野良実（良真）の娘とされる。小野篁の娘とする説などもある&lt;/div&gt;" data-p="9"><a href="/9.html" aria-label="小野小町（百人一首9番）"><rect class="fk-hit" x="-2" y="-13" width="88" height="26"/><text class="fk-name" x="0" y="0.5">小野小町</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">9</text></a></g>
+<g class="fk-node" transform="translate(616,172)" data-tip="&lt;h3&gt;&lt;ruby&gt;小野道風&lt;rt&gt;おののみちかぜ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：小野葛絃の三男。小野篁の孫&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">小野道風</text></g>
+</g>
+</svg>
+                <!-- KEIZU:END -->
+              </div>
+              <div class="kd-text">
                 <h3 class="was-h4">初めて中国に渡った篁の祖先</h3>
                 <p>
                   小野氏は、飛鳥時代から平安時代にかけて活躍した一族です。特に飛鳥時代の小野妹子は、聖徳太子が作成した「日出ずる処の天子」で始まる国書を、隋の皇帝に届けた遣隋使の大使として歴史に名を残しています。
@@ -606,6 +670,9 @@
   <script src="../js/popper.min.js"></script>
   <script src="../js/tippy.umd.min.js"></script>
   <script src="../js/tooltips.js?2026920"></script>
+  <script src="../js/tenno-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/fujiwara-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/keizu-diagram.js?20261001-17"></script>
   <!-- ▲▲▲ tippy.js ▲▲▲ -->
   <!-- ▼▼▼ 語句・文法の対話パネル ▼▼▼ -->
   <script>window.POEM_NUM = 11;</script>

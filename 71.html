@@ -97,6 +97,7 @@
   <link rel="stylesheet" href="../css/huda_71.css?20240507-02">
   <link rel="stylesheet" href="../css/animate.min.css">
   <link rel="stylesheet" href="../css/grammar-panel.css?20260721">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261001-16">
   <!-- google fontの追加 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -322,21 +323,111 @@
   </div><div class="diagram-section">
       <dl>
         <dt class='title'>源経信の系図</dt>
-            <dd class='thumb-image2'>
-              <figure>
-                <img src='../img/71_tsunenobu_diagram.gif?ver0' alt='源経信の系図' usemap="#ImageMap" width="1280" height="1943" />
-                <map name="ImageMap">
-                  <area shape="rect" coords="922,20,1009,415" href="/25.html" alt="三条右大臣" />
-                  <area shape="rect" coords="921,462,1007,802" href="/44.html" alt="藤原朝忠" />
-                  <area shape="rect" coords="276,1299,361,1584" href="/74.html" alt="源俊頼" />
-                  <area shape="rect" coords="190,1565,269,1902" href="/85.html" alt="俊恵法師" />
-                </map>
-                <figcaption>
-                  <p class="kome" style="width:calc(100% - 1em); font-size:0.9em;"><span
-                      style="color:#C32538; margin-right:0.25em;">■</span>の番号が付いている人物をクリックすると、その歌人のページに移動します。</p>
-                </figcaption>
-              </figure>
-              <div>
+            <dd class='kd-dd'>
+              <!-- 系図のすぐ上：左に凡例、右に拡大・縮小（tenno-keizu.html と同じ） -->
+              <div class="fk-chart-bar">
+                <ul class="fk-legend kd-legend">
+                  <li><span class="fk-legend__tenno">茶字</span>天皇</li>
+                  <li><span class="fk-legend__tno" aria-hidden="true"></span>天皇の代数</li>
+                  <li><span class="fk-legend__badge" aria-hidden="true"></span>百人一首の歌番号（クリックで歌のページへ）</li>
+                  <li><span class="fk-legend__dash"></span>数代省略</li>
+                  <li><span class="fk-legend__eq">＝</span>婚姻</li>
+                </ul>
+                <div class="fk-zoom" role="group" aria-label="拡大・縮小">
+                  <button type="button" data-zoom="out" aria-label="縮小">－</button>
+                  <span class="fk-zoom__label" aria-live="polite">100%</span>
+                  <button type="button" data-zoom="in" aria-label="拡大">＋</button>
+                  <button type="button" data-zoom="reset">等倍</button>
+                  <button type="button" data-zoom="fit">幅に合わせる</button>
+                </div>
+              </div>
+              <!-- 相関図のデータ。SVG は node _tools/build-keizu.mjs で下の KEIZU:START〜END に書き込む -->
+              <div class="kd-chart" aria-label="源経信の系図">
+                <script type="application/json">
+{
+  "nodes": [
+    { "id": "uda", "n": "宇多", "k": 1, "t": 59, "x": 16, "y": 62 },
+    { "id": "inshi", "n": "胤子", "x": 16, "y": 106 },
+    { "id": "daigo", "n": "醍醐", "k": 1, "t": 60, "x": 136, "y": 62 },
+    { "id": "shushi", "n": "源周子", "x": 136, "y": 106 },
+    { "id": "atsumi", "n": "敦実親王", "x": 136, "y": 170 },
+    { "id": "tokihirajo", "n": "時平の娘", "x": 136, "y": 214 },
+    { "id": "takaakira", "n": "源高明", "x": 256, "y": 84 },
+    { "id": "masanobu", "n": "源雅信", "x": 256, "y": 230 },
+    { "id": "takaakirajo", "n": "高明の娘", "x": 376, "y": 106 },
+    { "id": "shigenobu", "n": "源重信", "x": 376, "y": 150 },
+    { "id": "michikata", "n": "源道方", "x": 496, "y": 128 },
+    { "id": "tsunenobu", "n": "源経信", "p": 71, "self": 1, "x": 616, "y": 128 },
+    { "id": "sadasukejo", "n": "貞亮の娘", "x": 616, "y": 172 },
+    { "id": "morokata", "n": "源師賢", "x": 616, "y": 230 },
+    { "id": "toshiyori", "n": "源俊頼", "p": 74, "x": 766, "y": 150 },
+    { "id": "atsutakajo", "n": "敦隆の娘", "x": 766, "y": 194 },
+    { "id": "shune", "n": "俊恵", "p": 85, "x": 886, "y": 172 }
+  ],
+  "couples": [
+    { "id": "c-uda", "top": "uda", "bottom": "inshi" },
+    { "id": "c-daigo", "top": "daigo", "bottom": "shushi" },
+    { "id": "c-atsumi", "top": "atsumi", "bottom": "tokihirajo" },
+    { "id": "c-shigenobu", "top": "takaakirajo", "bottom": "shigenobu" },
+    { "id": "c-tsunenobu", "top": "tsunenobu", "bottom": "sadasukejo" },
+    { "id": "c-toshiyori", "top": "toshiyori", "bottom": "atsutakajo" }
+  ],
+  "kids": [
+    { "from": "c-uda", "to": ["daigo", "atsumi"] },
+    { "from": "c-daigo", "to": ["takaakira"] },
+    { "from": "c-atsumi", "to": ["shigenobu", "masanobu"] },
+    { "from": "takaakira", "to": ["takaakirajo"] },
+    { "from": "c-shigenobu", "to": ["michikata"] },
+    { "from": "michikata", "to": ["tsunenobu"] },
+    { "from": "c-tsunenobu", "to": ["toshiyori"] },
+    { "from": "c-toshiyori", "to": ["shune"] }
+  ],
+  "lines": [
+    { "points": [[304, 230], [613, 230]], "dash": true, "label": { "text": "3代略", "x": 450, "y": 224 } }
+  ],
+  "tips": {
+    "胤子": ["<ruby>藤原胤子<rt>ふじわらのいんし</rt></ruby>", "系譜：藤原高藤の娘", "特記：宇多天皇の女御。醍醐天皇・敦実親王の母"],
+    "源周子": ["源周子", "特記：醍醐天皇の妃。源高明の母"],
+    "時平の娘": ["藤原時平の娘", "特記：敦実親王の妃。源重信の母"],
+    "源高明": ["<ruby>源高明<rt>みなもとのたかあきら</rt></ruby>", "系譜：醍醐天皇の皇子", "特記：娘は源重信の妻となり、源道方を生んだ"],
+    "高明の娘": ["源高明の娘", "特記：源重信の妻。源道方の母"],
+    "源重信": ["<ruby>源重信<rt>みなもとのしげのぶ</rt></ruby>", "官職：左大臣", "系譜：敦実親王と藤原時平の娘の子。源雅信の弟", "特記：妻は藤原朝忠の娘、源高明の娘。道方の父"],
+    "源道方": ["<ruby>源道方<rt>みなもとのみちかた</rt></ruby>", "官職：権中納言", "系譜：源重信の子。母は源高明の娘", "特記：源経信の父"],
+    "源経信": ["<ruby>源経信<rt>みなもとのつねのぶ</rt></ruby>", "系譜：源道方の子。母は源国盛の娘", "百人一首：71番「夕されば…」の歌人", "特記：子に源俊頼、孫に俊恵がおり、3代にわたって百人一首に選ばれた"],
+    "貞亮の娘": ["源貞亮の娘", "特記：源経信の妻。源俊頼の母"],
+    "源師賢": ["<ruby>源師賢<rt>みなもとのもろかた</rt></ruby>", "系譜：源資通の子。源雅信の子孫"],
+    "敦隆の娘": ["橘敦隆の娘", "特記：源俊頼の継室"]
+  }
+}
+                </script>
+                <!-- KEIZU:START -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 956 256" width="956" height="256" role="img" aria-label="源経信の系図" class="fk-svg kd-svg" style="max-width:1434px;min-width:min(640px,1434px)" data-src="13q64jt">
+<g class="fk-edges"><path d="M29 71V97M33 71V97" class="fk-edge fk-eq"/><path d="M149 71V97M153 71V97" class="fk-edge fk-eq"/><path d="M164 179V205M168 179V205" class="fk-edge fk-eq"/><path d="M396.5 115V141M400.5 115V141" class="fk-edge fk-eq"/><path d="M636.5 137V163M640.5 137V163" class="fk-edge fk-eq"/><path d="M786.5 159V185M790.5 159V185" class="fk-edge fk-eq"/><path d="M33 84H122" class="fk-edge"/><path d="M122 62V170" class="fk-edge"/><path d="M122 62H133" class="fk-edge"/><path d="M122 170H133" class="fk-edge"/><path d="M153 84H242" class="fk-edge"/><path d="M242 84H253" class="fk-edge"/><path d="M168 192H242" class="fk-edge"/><path d="M242 150V230" class="fk-edge"/><path d="M242 150H373" class="fk-edge"/><path d="M242 230H253" class="fk-edge"/><path d="M304 84H362" class="fk-edge"/><path d="M362 84V106" class="fk-edge"/><path d="M362 106H373" class="fk-edge"/><path d="M400.5 128H482" class="fk-edge"/><path d="M482 128H493" class="fk-edge"/><path d="M544 128H602" class="fk-edge"/><path d="M602 128H613" class="fk-edge"/><path d="M640.5 150H752" class="fk-edge"/><path d="M752 150H763" class="fk-edge"/><path d="M790.5 172H872" class="fk-edge"/><path d="M872 172H883" class="fk-edge"/><path d="M304 230L613 230" class="fk-edge is-dash"/><text class="fk-adopt" x="450" y="224">3代略</text></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node is-tenno" transform="translate(16,62)" data-tip="&lt;h3&gt;&lt;ruby&gt;宇多天皇&lt;rt&gt;うだてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第59代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：867年～931年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：887年～897年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：菅原道真を重用した&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">宇多</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">59</text></g>
+<g class="fk-node" transform="translate(16,106)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原胤子&lt;rt&gt;ふじわらのいんし&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：藤原高藤の娘&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：宇多天皇の女御。醍醐天皇・敦実親王の母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">胤子</text></g>
+<g class="fk-node is-tenno" transform="translate(136,62)" data-tip="&lt;h3&gt;&lt;ruby&gt;醍醐天皇&lt;rt&gt;だいごてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第60代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：885年～930年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：897年～930年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：『古今和歌集』の編纂を命じた&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">醍醐</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">60</text></g>
+<g class="fk-node" transform="translate(136,106)" data-tip="&lt;h3&gt;源周子&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：醍醐天皇の妃。源高明の母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">源周子</text></g>
+<g class="fk-node" transform="translate(136,170)" data-tip="&lt;h3&gt;&lt;ruby&gt;敦実親王&lt;rt&gt;あつみしんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：893年～967年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：一品&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：宇多天皇の皇子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：宇多源氏（雅信・重信ら）の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">敦実親王</text></g>
+<g class="fk-node" transform="translate(136,214)" data-tip="&lt;h3&gt;藤原時平の娘&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：敦実親王の妃。源重信の母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">時平の娘</text></g>
+<g class="fk-node" transform="translate(256,84)" data-tip="&lt;h3&gt;&lt;ruby&gt;源高明&lt;rt&gt;みなもとのたかあきら&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：醍醐天皇の皇子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：娘は源重信の妻となり、源道方を生んだ&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">源高明</text></g>
+<g class="fk-node" transform="translate(256,230)" data-tip="&lt;h3&gt;&lt;ruby&gt;源雅信&lt;rt&gt;みなもとのまさのぶ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：920年～993年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：左大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従一位、贈正一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：娘の倫子は藤原道長の妻&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">源雅信</text></g>
+<g class="fk-node" transform="translate(376,106)" data-tip="&lt;h3&gt;源高明の娘&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：源重信の妻。源道方の母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">高明の娘</text></g>
+<g class="fk-node" transform="translate(376,150)" data-tip="&lt;h3&gt;&lt;ruby&gt;源重信&lt;rt&gt;みなもとのしげのぶ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：左大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：敦実親王と藤原時平の娘の子。源雅信の弟&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：妻は藤原朝忠の娘、源高明の娘。道方の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">源重信</text></g>
+<g class="fk-node" transform="translate(496,128)" data-tip="&lt;h3&gt;&lt;ruby&gt;源道方&lt;rt&gt;みなもとのみちかた&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：権中納言&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：源重信の子。母は源高明の娘&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：源経信の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">源道方</text></g>
+<g class="fk-node is-poet is-self" transform="translate(616,128)" data-tip="&lt;h3&gt;&lt;ruby&gt;源経信&lt;rt&gt;みなもとのつねのぶ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：源道方の子。母は源国盛の娘&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：71番「夕されば…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：子に源俊頼、孫に俊恵がおり、3代にわたって百人一首に選ばれた&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="79" height="28" rx="3"/><text class="fk-name" x="0" y="0.5">源経信</text><circle class="fk-badge" cx="59" cy="0" r="10"/><text class="fk-badge-num" x="59" y="0.5">71</text></g>
+<g class="fk-node" transform="translate(616,172)" data-tip="&lt;h3&gt;源貞亮の娘&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：源経信の妻。源俊頼の母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">貞亮の娘</text></g>
+<g class="fk-node" transform="translate(616,230)" data-tip="&lt;h3&gt;&lt;ruby&gt;源師賢&lt;rt&gt;みなもとのもろかた&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：源資通の子。源雅信の子孫&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">源師賢</text></g>
+<g class="fk-node is-poet" transform="translate(766,150)" data-tip="&lt;h3&gt;&lt;ruby&gt;源俊頼&lt;rt&gt;みなもとのとしより&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1055年～1129年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従四位上&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：74番「憂かりける…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;源俊頼朝臣&lt;rt&gt;みなもとのとしよりあそん&lt;/rt&gt;&lt;/ruby&gt;。『金葉和歌集』の撰者&lt;/div&gt;" data-p="74"><a href="/74.html" aria-label="源俊頼（百人一首74番）"><rect class="fk-hit" x="-2" y="-13" width="73" height="26"/><text class="fk-name" x="0" y="0.5">源俊頼</text><circle class="fk-badge" cx="59" cy="0" r="10"/><text class="fk-badge-num" x="59" y="0.5">74</text></a></g>
+<g class="fk-node" transform="translate(766,194)" data-tip="&lt;h3&gt;橘敦隆の娘&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：源俊頼の継室&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">敦隆の娘</text></g>
+<g class="fk-node is-poet" transform="translate(886,172)" data-tip="&lt;h3&gt;&lt;ruby&gt;俊恵&lt;rt&gt;しゅんえ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1113年～不明&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：源俊頼の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：85番「夜もすがら…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;俊恵法師&lt;rt&gt;しゅんえほうし&lt;/rt&gt;&lt;/ruby&gt;。自坊の歌林苑に歌人が集った&lt;/div&gt;" data-p="85"><a href="/85.html" aria-label="俊恵（百人一首85番）"><rect class="fk-hit" x="-2" y="-13" width="58" height="26"/><text class="fk-name" x="0" y="0.5">俊恵</text><circle class="fk-badge" cx="44" cy="0" r="10"/><text class="fk-badge-num" x="44" y="0.5">85</text></a></g>
+</g>
+</svg>
+                <!-- KEIZU:END -->
+              </div>
+              <div class="kd-text">
                 <p style="width:100%; margin-bottom:0.5em;">源経信は宇多天皇を祖とする宇多源氏の子孫です。</p>
                 <p style="width:100%; margin-bottom:0.5em;">親戚・源師賢の梅津（京都市右京区梅津、<ruby>太秦<rt>うずまさ</rt>
                     </ruby>の南、桂川の東岸）にある別荘で<span class="tippy utakai">歌会</span>が催されました。百人一首に選ばれた歌は、その歌会で詠まれたものです。</p>
@@ -489,6 +580,9 @@
   <script src="../js/popper.min.js"></script>
   <script src="../js/tippy.umd.min.js"></script>
   <script src="../js/tooltips.js?2026920"></script>
+  <script src="../js/tenno-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/fujiwara-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/keizu-diagram.js?20261001-17"></script>
   <!-- ▲▲▲ tippy.js ▲▲▲ -->
   <script>window.POEM_NUM = 71;</script>
   <script src="../js/grammar-data.js?20260830"></script>

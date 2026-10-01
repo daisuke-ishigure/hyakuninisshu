@@ -6,7 +6,7 @@
 //   node _tools/build-keizu.mjs
 //
 // 相関図のデータ（各ページの <div class="kd-chart"> の中の <script type="application/json">）や、
-// ツールチップの文面（js/tenno-keizu-tooltips.js）、js/keizu-diagram.js を変えたら実行すること。
+// ツールチップの文面（js/tenno-keizu-tooltips.js・js/fujiwara-keizu-tooltips.js）、js/keizu-diagram.js を変えたら実行すること。
 // データの直後の <!-- KEIZU:START --> と <!-- KEIZU:END --> の間を書き換える（無ければ足す）。
 // ルートにある .html のうち、class="kd-chart" を含むものをすべて対象にする。
 //
@@ -26,12 +26,14 @@ import vm from "node:vm";
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const read = (p) => readFileSync(join(root, p), "utf8");
 
-// ブラウザと同じファイルを読み込む（window.TK_TOOLTIPS と window.KeizuDiagram ができる）
+// ブラウザと同じファイルを読み込む（window.TK_TOOLTIPS・FK_TOOLTIPS と window.KeizuDiagram ができる）
 const context = vm.createContext({});
 context.window = context;
 vm.runInContext(read("js/tenno-keizu-tooltips.js"), context);
+vm.runInContext(read("js/fujiwara-keizu-tooltips.js"), context);
 vm.runInContext(read("js/keizu-diagram.js"), context);
-const { KeizuDiagram, TK_TOOLTIPS } = context;
+const { KeizuDiagram, TK_TOOLTIPS, FK_TOOLTIPS } = context;
+const TIP_SETS = { tenno: TK_TOOLTIPS, fujiwara: FK_TOOLTIPS };
 
 const OPEN = '<div class="kd-chart"';
 const JSON_OPEN = '<script type="application/json">';
@@ -65,7 +67,7 @@ for (const page of pages) {
     // データの <script> と同じ字下げで書き込む
     const lineStart = html.lastIndexOf("\n", a) + 1;
     const indent = html.slice(lineStart, a).match(/^\s*/)[0];
-    const svg = KeizuDiagram.toSvg(data, TK_TOOLTIPS, label, src);
+    const svg = KeizuDiagram.toSvg(data, TIP_SETS, label, src);
     const block = START + "\n" + indent + svg + "\n" + indent + END;
 
     // 既にある START〜END を置き換える（データの直後にあるものだけ。無ければ足す）

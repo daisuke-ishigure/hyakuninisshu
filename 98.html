@@ -96,6 +96,7 @@
   <link rel="stylesheet" href="../css/huda_98.css?20240507-02">
   <link rel="stylesheet" href="../css/animate.min.css">
   <link rel="stylesheet" href="../css/grammar-panel.css?20260721">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261001-16">
   <!-- google fontの追加 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -323,23 +324,355 @@
   </div><div class="diagram-section">
       <dl>
         <dt class='title'>藤原家隆の系図</dt>
-            <dd class='thumb-image2'>
-              <figure class='portrait'>
-                <img src='../img/98_ietaka_diagram.gif?ver00' alt='藤原家隆の系図' usemap="#ImageMap" width="898" height="1280" />
-
-                <p class="kome" style="width:calc(100% - 1em); font-size:0.9em;"><span
-                    style="color:#C32538; margin-right:0.25em;">■</span>の番号が付いている人物をクリックすると、その歌人のページに移動します。</p>
-              </figure>
-              <div>
+            <dd class='kd-dd'>
+              <!-- 系図のすぐ上：左に凡例、右に拡大・縮小（tenno-keizu.html と同じ） -->
+              <div class="fk-chart-bar">
+                <ul class="fk-legend kd-legend">
+                  <li><span class="fk-legend__tenno">茶字</span>天皇</li>
+                  <li><span class="fk-legend__tno" aria-hidden="true"></span>天皇の代数</li>
+                  <li><span class="fk-legend__badge" aria-hidden="true"></span>百人一首の歌番号（クリックで歌のページへ）</li>
+                  <li><span class="fk-legend__eq">＝</span>婚姻</li>
+                </ul>
+                <div class="fk-zoom" role="group" aria-label="拡大・縮小">
+                  <button type="button" data-zoom="out" aria-label="縮小">－</button>
+                  <span class="fk-zoom__label" aria-live="polite">100%</span>
+                  <button type="button" data-zoom="in" aria-label="拡大">＋</button>
+                  <button type="button" data-zoom="reset">等倍</button>
+                  <button type="button" data-zoom="fit">幅に合わせる</button>
+                </div>
+              </div>
+              <!-- 相関図のデータ。SVG は node _tools/build-keizu.mjs で下の KEIZU:START〜END に書き込む -->
+              <div class="kd-chart" aria-label="藤原家隆の系図">
+                <script type="application/json">
+{
+ "tooltips": "fujiwara",
+ "nodes": [
+  {
+   "id": "toshitada",
+   "n": "藤原俊忠",
+   "key": "俊忠",
+   "x": 16,
+   "y": 70
+  },
+  {
+   "id": "shunkai",
+   "n": "俊海",
+   "x": 136,
+   "y": 40
+  },
+  {
+   "id": "shunzei",
+   "n": "藤原俊成",
+   "key": "俊成",
+   "p": 83,
+   "x": 136,
+   "y": 100
+  },
+  {
+   "id": "mitsutaka",
+   "n": "藤原光隆",
+   "x": 136,
+   "y": 170
+  },
+  {
+   "id": "sanekanejo",
+   "n": "実兼の娘",
+   "x": 136,
+   "y": 214
+  },
+  {
+   "id": "jakuren",
+   "n": "寂蓮",
+   "p": 87,
+   "x": 286,
+   "y": 40
+  },
+  {
+   "id": "teika",
+   "n": "藤原定家",
+   "key": "定家",
+   "p": 97,
+   "sub": "家隆と並び称された",
+   "x": 286,
+   "y": 100
+  },
+  {
+   "id": "jushi",
+   "n": "藤原重子",
+   "x": 286,
+   "y": 290
+  },
+  {
+   "id": "gotoba",
+   "n": "後鳥羽",
+   "k": 1,
+   "t": 82,
+   "p": 99,
+   "x": 286,
+   "y": 342
+  },
+  {
+   "id": "zaishi",
+   "n": "源在子",
+   "x": 286,
+   "y": 386
+  },
+  {
+   "id": "jakurenjo",
+   "n": "寂蓮の娘",
+   "x": 436,
+   "y": 148
+  },
+  {
+   "id": "ietaka",
+   "n": "藤原家隆",
+   "p": 98,
+   "self": 1,
+   "sub": "俊成に和歌を学んだ",
+   "x": 436,
+   "y": 192
+  },
+  {
+   "id": "juntoku",
+   "n": "順徳",
+   "k": 1,
+   "t": 84,
+   "p": 100,
+   "x": 436,
+   "y": 320
+  },
+  {
+   "id": "tsuchimikado",
+   "n": "土御門",
+   "k": 1,
+   "t": 83,
+   "x": 436,
+   "y": 380
+  },
+  {
+   "id": "kosaisho",
+   "n": "土御門院小宰相",
+   "x": 616,
+   "y": 230
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-mitsutaka",
+   "top": "mitsutaka",
+   "bottom": "sanekanejo"
+  },
+  {
+   "id": "c-ietaka",
+   "top": "jakurenjo",
+   "bottom": "ietaka"
+  },
+  {
+   "id": "c-jushi",
+   "top": "jushi",
+   "bottom": "gotoba"
+  },
+  {
+   "id": "c-zaishi",
+   "top": "gotoba",
+   "bottom": "zaishi"
+  }
+ ],
+ "kids": [
+  {
+   "from": "toshitada",
+   "to": [
+    "shunkai",
+    "shunzei"
+   ]
+  },
+  {
+   "from": "shunkai",
+   "to": [
+    "jakuren"
+   ]
+  },
+  {
+   "from": "shunzei",
+   "to": [
+    "teika"
+   ]
+  },
+  {
+   "from": "jakuren",
+   "to": [
+    "jakurenjo"
+   ],
+   "bar": 410
+  },
+  {
+   "from": "c-mitsutaka",
+   "to": [
+    "ietaka"
+   ]
+  },
+  {
+   "from": "ietaka",
+   "to": [
+    "kosaisho"
+   ]
+  },
+  {
+   "from": "c-jushi",
+   "to": [
+    "juntoku"
+   ]
+  },
+  {
+   "from": "c-zaishi",
+   "to": [
+    "tsuchimikado"
+   ]
+  }
+ ],
+ "tips": {
+  "俊海": [
+   "俊海",
+   "特記：醍醐寺の阿闍梨。藤原俊成の兄弟。寂蓮の父"
+  ],
+  "藤原光隆": [
+   "<ruby>藤原光隆<rt>ふじわらのみつたか</rt></ruby>",
+   "特記：藤原家隆の父"
+  ],
+  "実兼の娘": [
+   "藤原実兼の娘",
+   "特記：藤原家隆の母（藤原信通の娘とする説もある）"
+  ],
+  "寂蓮の娘": [
+   "寂蓮の娘",
+   "特記：藤原家隆の妻（家隆は寂蓮の婿だったという説がある）"
+  ],
+  "藤原重子": [
+   "藤原重子",
+   "特記：後鳥羽天皇の妃。順徳天皇の母"
+  ],
+  "源在子": [
+   "源在子",
+   "特記：後鳥羽天皇の妃。土御門天皇の母。承明門院"
+  ],
+  "藤原家隆": [
+   "<ruby>藤原家隆<rt>ふじわらのいえたか</rt></ruby>",
+   "系譜：藤原光隆の子",
+   "百人一首：98番「風そよぐ…」の歌人",
+   "特記：和歌を藤原俊成に学び、定家と並び称された。『新古今和歌集』の撰者の一人。後鳥羽院が隠岐に流された後も、題を賜って和歌を送った。寂蓮の婿だったという説もある"
+  ],
+  "土御門院小宰相": [
+   "土御門院小宰相",
+   "系譜：藤原家隆の娘",
+   "特記：初め土御門院に出仕し、のち承明門院在子、さらに後嵯峨院に仕えた"
+  ]
+ },
+ "arrows": [
+  {
+   "points": [
+    [
+     660,
+     240
+    ],
+    [
+     660,
+     380
+    ],
+    [
+     486,
+     380
+    ]
+   ],
+   "label": {
+    "text": "仕える",
+    "x": 667,
+    "y": 310
+   }
+  },
+  {
+   "points": [
+    [
+     710,
+     240
+    ],
+    [
+     710,
+     420
+    ],
+    [
+     308,
+     420
+    ],
+    [
+     308,
+     397
+    ]
+   ],
+   "label": {
+    "text": "仕える",
+    "x": 667,
+    "y": 405
+   }
+  },
+  {
+   "points": [
+    [
+     540,
+     221
+    ],
+    [
+     540,
+     342
+    ],
+    [
+     359,
+     342
+    ]
+   ],
+   "label": {
+    "text": "仕える",
+    "x": 546,
+    "y": 285
+   }
+  }
+ ]
+}
+                </script>
+                <!-- KEIZU:START -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 737 432" width="737" height="432" role="img" aria-label="藤原家隆の系図" class="fk-svg kd-svg" style="max-width:1106px;min-width:min(640px,1106px)" data-src="15d4mua">
+<g class="fk-edges"><path d="M164 179V205M168 179V205" class="fk-edge fk-eq"/><path d="M464 157V183M468 157V183" class="fk-edge fk-eq"/><path d="M306.5 299V333M310.5 299V333" class="fk-edge fk-eq"/><path d="M306.5 351V377M310.5 351V377" class="fk-edge fk-eq"/><path d="M79 70H122" class="fk-edge"/><path d="M122 40V100" class="fk-edge"/><path d="M122 40H133" class="fk-edge"/><path d="M122 100H133" class="fk-edge"/><path d="M169 40H272" class="fk-edge"/><path d="M272 40H283" class="fk-edge"/><path d="M223 100H272" class="fk-edge"/><path d="M272 100H283" class="fk-edge"/><path d="M343 40H410" class="fk-edge"/><path d="M410 40V148" class="fk-edge"/><path d="M410 148H433" class="fk-edge"/><path d="M168 192H422" class="fk-edge"/><path d="M422 192H433" class="fk-edge"/><path d="M523 192H602" class="fk-edge"/><path d="M602 192V230" class="fk-edge"/><path d="M602 230H613" class="fk-edge"/><path d="M310.5 307H422" class="fk-edge"/><path d="M422 307V320" class="fk-edge"/><path d="M422 320H433" class="fk-edge"/><path d="M310.5 364H422" class="fk-edge"/><path d="M422 364V380" class="fk-edge"/><path d="M422 380H433" class="fk-edge"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"><path d="M660 240L660 380L486 380" class="kd-arrow" marker-end="url(#kdArrowHead)"/><text class="kd-arrow-label" x="667" y="310">仕える</text><path d="M710 240L710 420L308 420L308 397" class="kd-arrow" marker-end="url(#kdArrowHead)"/><text class="kd-arrow-label" x="667" y="405">仕える</text><path d="M540 221L540 342L359 342" class="kd-arrow" marker-end="url(#kdArrowHead)"/><text class="kd-arrow-label" x="546" y="285">仕える</text></g>
+<g>
+<g class="fk-node" transform="translate(16,70)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原俊忠&lt;rt&gt;ふじわらのとしただ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1071年または1073年～1123年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：権中納言&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従三位&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">藤原俊忠</text></g>
+<g class="fk-node" transform="translate(136,40)" data-tip="&lt;h3&gt;俊海&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：醍醐寺の阿闍梨。藤原俊成の兄弟。寂蓮の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">俊海</text></g>
+<g class="fk-node is-poet" transform="translate(136,100)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原俊成&lt;rt&gt;ふじわらのとしなり&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1114年～1204年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：皇太后宮大夫&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正三位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首83番「世の中よ…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;皇太后宮大夫俊成&lt;rt&gt;こうたいごうぐうのだいぶとしなり&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;" data-p="83"><a href="/83.html" aria-label="藤原俊成（百人一首83番）"><rect class="fk-hit" x="-2" y="-13" width="88" height="26"/><text class="fk-name" x="0" y="0.5">藤原俊成</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">83</text></a></g>
+<g class="fk-node" transform="translate(136,170)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原光隆&lt;rt&gt;ふじわらのみつたか&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：藤原家隆の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">藤原光隆</text></g>
+<g class="fk-node" transform="translate(136,214)" data-tip="&lt;h3&gt;藤原実兼の娘&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：藤原家隆の母（藤原信通の娘とする説もある）&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">実兼の娘</text></g>
+<g class="fk-node is-poet" transform="translate(286,40)" data-tip="&lt;h3&gt;寂蓮&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首87番の歌人&lt;/div&gt;" data-p="87"><a href="/87.html" aria-label="寂蓮（百人一首87番）"><rect class="fk-hit" x="-2" y="-13" width="58" height="26"/><text class="fk-name" x="0" y="0.5">寂蓮</text><circle class="fk-badge" cx="44" cy="0" r="10"/><text class="fk-badge-num" x="44" y="0.5">87</text></a></g>
+<g class="fk-node is-poet" transform="translate(286,100)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原定家&lt;rt&gt;ふじわらのさだいえ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1162年～1241年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：権中納言&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正二位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首97番「来ぬ人を」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;権中納言定家&lt;rt&gt;ごんちゅうなごんさだいえ&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;" data-p="97"><a href="/97.html" aria-label="藤原定家（百人一首97番）"><rect class="fk-hit" x="-2" y="-13" width="88" height="26"/><text class="fk-name" x="0" y="0.5">藤原定家</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">97</text></a><rect class="fk-sub-box" x="0" y="11" width="111" height="16" rx="8"/><text class="fk-sub" x="55.5" y="19.5">家隆と並び称された</text></g>
+<g class="fk-node" transform="translate(286,290)" data-tip="&lt;h3&gt;藤原重子&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：後鳥羽天皇の妃。順徳天皇の母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">藤原重子</text></g>
+<g class="fk-node is-tenno is-poet" transform="translate(286,342)" data-tip="&lt;h3&gt;&lt;ruby&gt;後鳥羽天皇&lt;rt&gt;ごとばてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第82代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1180年～1239年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：1183年～1198年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：99番「人もをし…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;後鳥羽院&lt;rt&gt;ごとばいん&lt;/rt&gt;&lt;/ruby&gt;。『新古今和歌集』の編纂を命じた。承久の乱（1221年）に敗れて隠岐に流された&lt;/div&gt;" data-p="99"><a href="/99.html" aria-label="後鳥羽天皇（百人一首99番）"><rect class="fk-hit" x="-2" y="-13" width="73" height="26"/><text class="fk-name" x="0" y="0.5">後鳥羽</text><circle class="fk-badge" cx="59" cy="0" r="10"/><text class="fk-badge-num" x="59" y="0.5">99</text></a><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">82</text></g>
+<g class="fk-node" transform="translate(286,386)" data-tip="&lt;h3&gt;源在子&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：後鳥羽天皇の妃。土御門天皇の母。承明門院&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">源在子</text></g>
+<g class="fk-node" transform="translate(436,148)" data-tip="&lt;h3&gt;寂蓮の娘&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：藤原家隆の妻（家隆は寂蓮の婿だったという説がある）&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">寂蓮の娘</text></g>
+<g class="fk-node is-poet is-self" transform="translate(436,192)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原家隆&lt;rt&gt;ふじわらのいえたか&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：藤原光隆の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：98番「風そよぐ…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：和歌を藤原俊成に学び、定家と並び称された。『新古今和歌集』の撰者の一人。後鳥羽院が隠岐に流された後も、題を賜って和歌を送った。寂蓮の婿だったという説もある&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="94" height="28" rx="3"/><text class="fk-name" x="0" y="0.5">藤原家隆</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">98</text><rect class="fk-sub-box" x="0" y="11" width="111" height="16" rx="8"/><text class="fk-sub" x="55.5" y="19.5">俊成に和歌を学んだ</text></g>
+<g class="fk-node is-tenno is-poet" transform="translate(436,320)" data-tip="&lt;h3&gt;&lt;ruby&gt;順徳天皇&lt;rt&gt;じゅんとくてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第84代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1197年～1242年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：1210年～1221年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：100番「ももしきや…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;順徳院&lt;rt&gt;じゅんとくいん&lt;/rt&gt;&lt;/ruby&gt;。承久の乱に敗れて佐渡に流された&lt;/div&gt;" data-p="100"><a href="/100.html" aria-label="順徳天皇（百人一首100番）"><rect class="fk-hit" x="-2" y="-13" width="58" height="26"/><text class="fk-name" x="0" y="0.5">順徳</text><circle class="fk-badge" cx="44" cy="0" r="10"/><text class="fk-badge-num" x="44" y="0.5" style="font-size:8.5px">100</text></a><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">84</text></g>
+<g class="fk-node is-tenno" transform="translate(436,380)" data-tip="&lt;h3&gt;&lt;ruby&gt;土御門天皇&lt;rt&gt;つちみかどてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第83代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1196年～1231年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：1198年～1210年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：後鳥羽天皇の皇子。順徳天皇の兄&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：承久の乱には加わらなかったが、自ら望んで土佐（のち阿波）に移った&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">土御門</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">83</text></g>
+<g class="fk-node" transform="translate(616,230)" data-tip="&lt;h3&gt;土御門院小宰相&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：藤原家隆の娘&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：初め土御門院に出仕し、のち承明門院在子、さらに後嵯峨院に仕えた&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">土御門院小宰相</text></g>
+</g>
+</svg>
+                <!-- KEIZU:END -->
+              </div>
+              <div class="kd-text">
                 <p style="width:100%; margin-bottom: 0.75em;">
-                  藤原家隆は、藤原俊成の養子・寂連の養子になっており、和歌を俊成に師事し、和歌の腕を磨き、百人一首の撰者・藤原定家と並び称されるほど、良きライバル関係にありました。2人は『新古今和歌集』の撰者に選ばれています。
+                  藤原家隆は、藤原俊成の養子・寂蓮の婿だったという説もあり、和歌を俊成に師事し、和歌の腕を磨き、百人一首の撰者・藤原定家と並び称されるほど、良きライバル関係にありました。2人は『新古今和歌集』の撰者に選ばれています。
                 </p>
                 <p style="width:100%; margin-bottom: 0.75em;">
                   家隆は、後鳥羽院に仕えました。院が「承久の乱」を引き起こし、敗れて<span
-                    class="tippy oki">隠岐</span>に流された後も変わらぬ忠誠心で、自作の歌を院に送り続け、音信を絶やしませんでした。2人は書状をやりとりすることで「遠島歌合」を成立させています。
+                    class="tippy oki">隠岐</span>に流された後も変わらぬ忠誠心で、院から題を賜って和歌を送るなど、音信を絶やしませんでした。
                 </p>
                 <p style="width:100%; margin-bottom: 0.75em;">
-                  家隆の娘・土御門院小宰相は、土御門天皇の母・藤原在子に仕えました。この縁から家隆は、土御門天皇とも親交がありました。
+                  家隆の娘・土御門院小宰相は、はじめ土御門院に仕え、承久の乱後は土御門天皇の母・源在子（承明門院）に仕えました。
                 </p>
               </div>
             </dd>
@@ -498,6 +831,9 @@
   <script src="../js/popper.min.js"></script>
   <script src="../js/tippy.umd.min.js"></script>
   <script src="../js/tooltips.js?2026920"></script>
+  <script src="../js/tenno-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/fujiwara-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/keizu-diagram.js?20261001-17"></script>
   <!-- ▲▲▲ tippy.js ▲▲▲ -->
   <script>window.POEM_NUM = 98;</script>
   <script src="../js/grammar-data.js?20260830"></script>

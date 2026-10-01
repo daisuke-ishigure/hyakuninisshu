@@ -91,6 +91,7 @@
   <link rel="stylesheet" href="../css/huda_34.css?20240507-02">
   <link rel="stylesheet" href="../css/animate.min.css">
   <link rel="stylesheet" href="../css/grammar-panel.css?20260721">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261001-16">
   <!-- google fontの追加 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -312,24 +313,120 @@
   </div><div class="diagram-section">
       <dl>
         <dt class='title'>藤原興風の系図</dt>
-            <dd class='thumb-image2'>
-              <figure class='portrait'>
-                <img src='../img/34_okikaze_diagram.gif?ver02' alt='藤原興風の系図' usemap="#ImageMap" width="1280" height="1021" />
-                <map name="ImageMap">
-                  <area shape="rect" coords="1066,917,1274,1024" href="/18.html" alt="藤原敏行" />
-                </map>
-                <figcaption>
-                  <p class="kome" style="width:calc(100% - 1em); font-size:0.9em;"><span
-                      style="color:#C32538; margin-right:0.25em;">■</span>の番号が付いている人物をクリックすると、その歌人のページに移動します。</p>
-                </figcaption>
-              </figure>
-              <div>
+            <dd class='kd-dd'>
+              <!-- 系図のすぐ上：左に凡例、右に拡大・縮小（fujiwara-keizu.html と同じ） -->
+              <div class="fk-chart-bar">
+                <ul class="fk-legend kd-legend">
+                  <li><span class="fk-legend__kanpaku">紫字</span>摂政・関白になった人物</li>
+                  <li><span class="fk-legend__badge" aria-hidden="true"></span>百人一首の歌番号（クリックで歌のページへ）</li>
+                  <li><span class="fk-legend__dash"></span>数代省略</li>
+                  <li><span class="fk-legend__eq">＝</span>婚姻</li>
+                </ul>
+                <div class="fk-zoom" role="group" aria-label="拡大・縮小">
+                  <button type="button" data-zoom="out" aria-label="縮小">－</button>
+                  <span class="fk-zoom__label" aria-live="polite">100%</span>
+                  <button type="button" data-zoom="in" aria-label="拡大">＋</button>
+                  <button type="button" data-zoom="reset">等倍</button>
+                  <button type="button" data-zoom="fit">幅に合わせる</button>
+                </div>
+              </div>
+              <!-- 相関図のデータ。SVG は node _tools/build-keizu.mjs で下の KEIZU:START〜END に書き込む -->
+              <div class="kd-chart" aria-label="藤原興風の系図">
+                <script type="application/json">
+{
+  "tooltips": "fujiwara",
+  "nodes": [
+    { "id": "kamatari", "n": "鎌足", "x": 16, "y": 115 },
+    { "id": "fuhito", "n": "不比等", "x": 126, "y": 115 },
+    { "id": "fusasaki", "n": "房前", "sub": "北家", "x": 236, "y": 40 },
+    { "id": "matate", "n": "真楯", "x": 346, "y": 40 },
+    { "id": "uchimaro", "n": "内麻呂", "x": 456, "y": 40 },
+    { "id": "fuyutsugu", "n": "冬嗣", "x": 566, "y": 40 },
+    { "id": "yoshifusa", "n": "良房", "kan": 1, "x": 676, "y": 40 },
+    { "id": "muchimaro", "n": "武智麻呂", "sub": "南家", "x": 236, "y": 90 },
+    { "id": "kosemaro", "n": "巨勢麻呂", "x": 346, "y": 90 },
+    { "id": "matsukuri", "n": "真作", "x": 456, "y": 90 },
+    { "id": "murata", "n": "村田", "x": 566, "y": 90 },
+    { "id": "fujimaro", "n": "富士麻呂", "x": 676, "y": 90 },
+    { "id": "toshiyuki", "n": "敏行", "p": 18, "x": 786, "y": 90 },
+    { "id": "umakai", "n": "宇合", "sub": "式家", "x": 236, "y": 140 },
+    { "id": "hirotsugu", "n": "広嗣", "x": 346, "y": 140 },
+    { "id": "maro", "n": "麻呂", "sub": "京家", "x": 236, "y": 190 },
+    { "id": "hamanari", "n": "浜成", "x": 346, "y": 190 },
+    { "id": "hoichi", "n": "法壱", "x": 456, "y": 190 },
+    { "id": "kawatsugu", "n": "氷上川継", "x": 456, "y": 234 },
+    { "id": "okikaze", "n": "興風", "p": 34, "self": 1, "x": 676, "y": 270 }
+  ],
+  "couples": [
+    { "id": "c-hoichi", "top": "hoichi", "bottom": "kawatsugu" }
+  ],
+  "kids": [
+    { "from": "kamatari", "to": ["fuhito"] },
+    { "from": "fuhito", "to": ["fusasaki", "muchimaro", "umakai", "maro"] },
+    { "from": "fusasaki", "to": ["matate"] },
+    { "from": "matate", "to": ["uchimaro"] },
+    { "from": "uchimaro", "to": ["fuyutsugu"] },
+    { "from": "fuyutsugu", "to": ["yoshifusa"] },
+    { "from": "muchimaro", "to": ["kosemaro"] },
+    { "from": "kosemaro", "to": ["matsukuri"] },
+    { "from": "matsukuri", "to": ["murata"] },
+    { "from": "murata", "to": ["fujimaro"] },
+    { "from": "fujimaro", "to": ["toshiyuki"] },
+    { "from": "umakai", "to": ["hirotsugu"] },
+    { "from": "maro", "to": ["hamanari"] },
+    { "from": "hamanari", "to": ["hoichi"] }
+  ],
+  "lines": [
+    { "points": [[442, 190], [442, 270], [673, 270]], "dash": true }
+  ],
+  "arrows": [
+    { "points": [[712, 40], [768, 40]], "label": { "text": "摂関家として繁栄", "x": 774, "y": 40 } }
+  ],
+  "tips": {
+    "広嗣": ["<ruby>藤原広嗣<rt>ふじわらのひろつぐ</rt></ruby>", "系譜：藤原宇合の長男", "特記：740年、大宰府で反乱を起こして敗死した（藤原広嗣の乱）"],
+    "浜成": ["<ruby>藤原浜成<rt>ふじわらのはまなり</rt></ruby>", "官職：参議", "系譜：藤原麻呂の子", "特記：娘婿・氷上川継の乱（782年）に連座して参議を解かれた"],
+    "法壱": ["藤原法壱", "系譜：藤原浜成の娘", "特記：氷上川継の妻"],
+    "氷上川継": ["<ruby>氷上川継<rt>ひかみのかわつぐ</rt></ruby>", "系譜：塩焼王と不破内親王の子", "特記：782年に謀反を企てたとして流罪となった（氷上川継の乱）"]
+  }
+}
+                </script>
+                <!-- KEIZU:START -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 886 296" width="886" height="296" role="img" aria-label="藤原興風の系図" class="fk-svg kd-svg" style="max-width:1329px;min-width:min(640px,1329px)" data-src="1cbgyw5">
+<g class="fk-edges"><path d="M469 199V225M473 199V225" class="fk-edge fk-eq"/><path d="M49 115H112" class="fk-edge"/><path d="M112 115H123" class="fk-edge"/><path d="M174 115H222" class="fk-edge"/><path d="M222 40V190" class="fk-edge"/><path d="M222 40H233" class="fk-edge"/><path d="M222 90H233" class="fk-edge"/><path d="M222 140H233" class="fk-edge"/><path d="M222 190H233" class="fk-edge"/><path d="M269 40H332" class="fk-edge"/><path d="M332 40H343" class="fk-edge"/><path d="M379 40H442" class="fk-edge"/><path d="M442 40H453" class="fk-edge"/><path d="M504 40H552" class="fk-edge"/><path d="M552 40H563" class="fk-edge"/><path d="M599 40H662" class="fk-edge"/><path d="M662 40H673" class="fk-edge"/><path d="M299 90H332" class="fk-edge"/><path d="M332 90H343" class="fk-edge"/><path d="M409 90H442" class="fk-edge"/><path d="M442 90H453" class="fk-edge"/><path d="M489 90H552" class="fk-edge"/><path d="M552 90H563" class="fk-edge"/><path d="M599 90H662" class="fk-edge"/><path d="M662 90H673" class="fk-edge"/><path d="M739 90H772" class="fk-edge"/><path d="M772 90H783" class="fk-edge"/><path d="M269 140H332" class="fk-edge"/><path d="M332 140H343" class="fk-edge"/><path d="M269 190H332" class="fk-edge"/><path d="M332 190H343" class="fk-edge"/><path d="M379 190H442" class="fk-edge"/><path d="M442 190H453" class="fk-edge"/><path d="M442 190L442 270L673 270" class="fk-edge is-dash"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"><path d="M712 40L768 40" class="kd-arrow" marker-end="url(#kdArrowHead)"/><text class="kd-arrow-label" x="774" y="40">摂関家として繁栄</text></g>
+<g>
+<g class="fk-node" transform="translate(16,115)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原鎌足&lt;rt&gt;ふじわらのかまたり&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：614年～669年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：内大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：贈正一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：天智天皇から「藤原」の姓を賜る&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">鎌足</text></g>
+<g class="fk-node" transform="translate(126,115)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原不比等&lt;rt&gt;ふじわらのふひと&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：659年～720年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：右大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正二位、贈正一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;外戚：聖武天皇、孝謙天皇の外祖父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">不比等</text></g>
+<g class="fk-node" transform="translate(236,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原房前&lt;rt&gt;ふじわらのふささき&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：681年～737年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：参議&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正三位、贈正一位&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">房前</text><rect class="fk-sub-box" x="0" y="11" width="34" height="16" rx="8"/><text class="fk-sub" x="17" y="19.5">北家</text></g>
+<g class="fk-node" transform="translate(346,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原真楯&lt;rt&gt;ふじわらのまたて&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：715年～766年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：大納言&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正三位&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">真楯</text></g>
+<g class="fk-node" transform="translate(456,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原内麻呂&lt;rt&gt;ふじわらのうちまろ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：756年～812年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：右大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従二位、贈従一位&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">内麻呂</text></g>
+<g class="fk-node" transform="translate(566,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原冬嗣&lt;rt&gt;ふじわらのふゆつぐ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：775年～826年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：左大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正二位、贈正一位&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">冬嗣</text></g>
+<g class="fk-node is-kanpaku" transform="translate(676,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原良房&lt;rt&gt;ふじわらのよしふさ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：804年～872年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：摂政・太政大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従一位、贈正一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：人臣として史上初の摂政&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">良房</text></g>
+<g class="fk-node" transform="translate(236,90)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原武智麻呂&lt;rt&gt;ふじわらのむちまろ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：680年～737年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：左大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：藤原南家の祖&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">武智麻呂</text><rect class="fk-sub-box" x="0" y="11" width="34" height="16" rx="8"/><text class="fk-sub" x="17" y="19.5">南家</text></g>
+<g class="fk-node" transform="translate(346,90)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原巨勢麻呂&lt;rt&gt;ふじわらのこせまろ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：不明～764年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：参議&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従三位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：藤原仲麻呂の乱で死亡&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">巨勢麻呂</text></g>
+<g class="fk-node" transform="translate(456,90)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原真作&lt;rt&gt;ふじわらのまつくり&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：不明&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：阿波守&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従五位上&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">真作</text></g>
+<g class="fk-node" transform="translate(566,90)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原村田&lt;rt&gt;ふじわらのむらた&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：不明&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：讃岐守&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正五位下&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">村田</text></g>
+<g class="fk-node" transform="translate(676,90)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原富士麻呂&lt;rt&gt;ふじわらのふじまろ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：804年～850年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：陸奧出羽按察使&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従四位下&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">富士麻呂</text></g>
+<g class="fk-node is-poet" transform="translate(786,90)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原敏行&lt;rt&gt;ふじわらのとしゆき&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：不明～901年または907年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：右兵衛督&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従四位上&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：18番「住の江の…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;藤原敏行朝臣&lt;rt&gt;ふじわらのとしゆきあそん&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;" data-p="18"><a href="/18.html" aria-label="藤原敏行（百人一首18番）"><rect class="fk-hit" x="-2" y="-13" width="58" height="26"/><text class="fk-name" x="0" y="0.5">敏行</text><circle class="fk-badge" cx="44" cy="0" r="10"/><text class="fk-badge-num" x="44" y="0.5">18</text></a></g>
+<g class="fk-node" transform="translate(236,140)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原宇合&lt;rt&gt;ふじわらのうまかい&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：694年～737年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：参議&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正三位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：藤原式家の祖&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">宇合</text><rect class="fk-sub-box" x="0" y="11" width="34" height="16" rx="8"/><text class="fk-sub" x="17" y="19.5">式家</text></g>
+<g class="fk-node" transform="translate(346,140)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原広嗣&lt;rt&gt;ふじわらのひろつぐ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：藤原宇合の長男&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：740年、大宰府で反乱を起こして敗死した（藤原広嗣の乱）&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">広嗣</text></g>
+<g class="fk-node" transform="translate(236,190)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原麻呂&lt;rt&gt;ふじわらのまろ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：695年～737年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：参議&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従三位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：藤原京家の祖&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">麻呂</text><rect class="fk-sub-box" x="0" y="11" width="34" height="16" rx="8"/><text class="fk-sub" x="17" y="19.5">京家</text></g>
+<g class="fk-node" transform="translate(346,190)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原浜成&lt;rt&gt;ふじわらのはまなり&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：参議&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：藤原麻呂の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：娘婿・氷上川継の乱（782年）に連座して参議を解かれた&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">浜成</text></g>
+<g class="fk-node" transform="translate(456,190)" data-tip="&lt;h3&gt;藤原法壱&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：藤原浜成の娘&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：氷上川継の妻&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">法壱</text></g>
+<g class="fk-node" transform="translate(456,234)" data-tip="&lt;h3&gt;&lt;ruby&gt;氷上川継&lt;rt&gt;ひかみのかわつぐ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：塩焼王と不破内親王の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：782年に謀反を企てたとして流罪となった（氷上川継の乱）&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">氷上川継</text></g>
+<g class="fk-node is-poet is-self" transform="translate(676,270)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原興風&lt;rt&gt;ふじわらのおきかぜ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：不明&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：下総大掾&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正六位上&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：34番「誰をかも…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：三十六歌仙の一人&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="64" height="28" rx="3"/><text class="fk-name" x="0" y="0.5">興風</text><circle class="fk-badge" cx="44" cy="0" r="10"/><text class="fk-badge-num" x="44" y="0.5">34</text></g>
+</g>
+</svg>
+                <!-- KEIZU:END -->
+              </div>
+              <div class="kd-text">
                 <p style="width:100%; margin-bottom: 0.75em;">
                   藤原興風は、藤原京家から唯一、百人一首に選ばれた歌人です。藤原京家は藤原麻呂を祖とする家系で、麻呂が<span
                     class="tippy sakyoudaibu">左京大夫</span>であったことから「京家」という名前がつけられました。
                 </p>
                 <p style="width:100%; margin-bottom: 0.75em;">
-                  藤原興風の祖父で参議の藤原浜成は娘婿の<ruby>氷上<rt>ひかみの</rt></ruby><ruby>川継<rt>かわつぐ</rt></ruby>が桓武天皇に反乱を起こす計画「<ruby>氷上<rt>
+                  藤原興風の祖先で参議の藤原浜成は娘婿の<ruby>氷上<rt>ひかみの</rt></ruby><ruby>川継<rt>かわつぐ</rt></ruby>が桓武天皇に反乱を起こす計画「<ruby>氷上<rt>
                       ひかみの</rt></ruby><ruby>川継<rt>かわつぐ</rt></ruby>の乱」が発覚。浜成は連座して参議を解任されており、藤原京家は、政治面ではあまり活躍しませんでした。
                 </p>
               </div>
@@ -451,6 +548,8 @@
   <script src="../js/popper.min.js"></script>
   <script src="../js/tippy.umd.min.js"></script>
   <script src="../js/tooltips.js?2026920"></script>
+  <script src="../js/fujiwara-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/keizu-diagram.js?20261001-17"></script>
   <!-- ▲▲▲ tippy.js ▲▲▲ -->
   <script>window.POEM_NUM = 34;</script>
   <script src="../js/grammar-data.js?20260830"></script>

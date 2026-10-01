@@ -97,7 +97,7 @@
   <link rel="stylesheet" href="../css/huda_66.css?20240507-02">
   <link rel="stylesheet" href="../css/animate.min.css">
   <link rel="stylesheet" href="../css/grammar-panel.css?20260721">
-  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261001-09">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261001-16">
   <!-- bxSlider -->
   <link rel="stylesheet" href="../css/jquery.bxslider.css">
   <link rel="stylesheet" href="../css/bxslider.css">
@@ -327,13 +327,23 @@
       <dl>
         <dt class='title'>行尊の相関図</dt>
             <dd class='kd-dd'>
-              <ul class="fk-legend kd-legend">
-                <li><span class="fk-legend__tenno">茶字</span>天皇</li>
-                <li><span class="fk-legend__tno" aria-hidden="true"></span>天皇の代数</li>
-                <li><span class="fk-legend__badge" aria-hidden="true"></span>百人一首の歌番号（クリックで歌のページへ）</li>
-                <li><span class="fk-legend__eq">＝</span>婚姻</li>
-              </ul>
-              <!-- 相関図は js/keizu-diagram.js が下のデータから SVG で描く -->
+              <!-- 系図のすぐ上：左に凡例、右に拡大・縮小（tenno-keizu.html と同じ） -->
+              <div class="fk-chart-bar">
+                <ul class="fk-legend kd-legend">
+                  <li><span class="fk-legend__tenno">茶字</span>天皇</li>
+                  <li><span class="fk-legend__tno" aria-hidden="true"></span>天皇の代数</li>
+                  <li><span class="fk-legend__badge" aria-hidden="true"></span>百人一首の歌番号（クリックで歌のページへ）</li>
+                  <li><span class="fk-legend__eq">＝</span>婚姻</li>
+                </ul>
+                <div class="fk-zoom" role="group" aria-label="拡大・縮小">
+                  <button type="button" data-zoom="out" aria-label="縮小">－</button>
+                  <span class="fk-zoom__label" aria-live="polite">100%</span>
+                  <button type="button" data-zoom="in" aria-label="拡大">＋</button>
+                  <button type="button" data-zoom="reset">等倍</button>
+                  <button type="button" data-zoom="fit">幅に合わせる</button>
+                </div>
+              </div>
+              <!-- 相関図のデータ。SVG は node _tools/build-keizu.mjs で下の KEIZU:START〜END に書き込む -->
               <div class="kd-chart" aria-label="行尊の相関図">
                 <script type="application/json">
 {
@@ -410,8 +420,8 @@
 }
                 </script>
                 <!-- KEIZU:START -->
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 340" width="840" height="340" role="img" aria-label="行尊の相関図" class="fk-svg kd-svg" data-src="11xnezf">
-<g class="fk-edges"><path d="M29 69V95M33 69V95" class="fk-edge fk-eq"/><path d="M29 159V201M33 159V201" class="fk-edge fk-eq"/><path d="M29 237V263M33 237V263" class="fk-edge fk-eq"/><path d="M160.5 93V127M164.5 93V127" class="fk-edge fk-eq"/><path d="M160.5 145V171M164.5 145V171" class="fk-edge fk-eq"/><path d="M282.5 167V193M286.5 167V193" class="fk-edge fk-eq"/><path d="M397 189V215M401 189V215" class="fk-edge fk-eq"/><path d="M519 211V237M523 211V237" class="fk-edge fk-eq"/><path d="M641 179V197M645 179V197" class="fk-edge fk-eq"/><path d="M641 233V259M645 233V259" class="fk-edge fk-eq"/><path d="M33 82H126" class="fk-edge"/><path d="M126 40V136" class="fk-edge"/><path d="M126 40H137" class="fk-edge"/><path d="M126 136H137" class="fk-edge"/><path d="M33 180H126" class="fk-edge"/><path d="M126 180H137" class="fk-edge"/><path d="M33 250H126" class="fk-edge"/><path d="M126 250V300" class="fk-edge"/><path d="M126 300H137" class="fk-edge"/><path d="M164.5 101H248" class="fk-edge"/><path d="M248 101H259" class="fk-edge"/><path d="M164.5 158H248" class="fk-edge"/><path d="M248 158H259" class="fk-edge"/><path d="M203 300H248" class="fk-edge"/><path d="M248 300H259" class="fk-edge"/><path d="M310 300H370" class="fk-edge"/><path d="M370 300H381" class="fk-edge"/><path d="M286.5 180H370" class="fk-edge"/><path d="M370 180H381" class="fk-edge"/><path d="M401 202H492" class="fk-edge"/><path d="M492 202H503" class="fk-edge"/><path d="M523 224H614" class="fk-edge"/><path d="M614 224H625" class="fk-edge"/><path d="M645 188H736" class="fk-edge"/><path d="M736 160V205" class="fk-edge"/><path d="M736 160H747" class="fk-edge"/><path d="M736 205H747" class="fk-edge"/><path d="M645 246H736" class="fk-edge"/><path d="M736 246V250" class="fk-edge"/><path d="M736 250H747" class="fk-edge"/></g>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 340" width="840" height="340" role="img" aria-label="行尊の相関図" class="fk-svg kd-svg" style="max-width:1260px;min-width:min(640px,1260px)" data-src="11xnezf">
+<g class="fk-edges"><path d="M29 69V95M33 69V95" class="fk-edge fk-eq"/><path d="M29 159V203M33 159V203" class="fk-edge fk-eq"/><path d="M29 237V263M33 237V263" class="fk-edge fk-eq"/><path d="M160.5 93V127M164.5 93V127" class="fk-edge fk-eq"/><path d="M160.5 145V171M164.5 145V171" class="fk-edge fk-eq"/><path d="M282.5 167V193M286.5 167V193" class="fk-edge fk-eq"/><path d="M397 189V215M401 189V215" class="fk-edge fk-eq"/><path d="M519 211V237M523 211V237" class="fk-edge fk-eq"/><path d="M641 179V199M645 179V199" class="fk-edge fk-eq"/><path d="M641 233V259M645 233V259" class="fk-edge fk-eq"/><path d="M33 82H126" class="fk-edge"/><path d="M126 40V136" class="fk-edge"/><path d="M126 40H137" class="fk-edge"/><path d="M126 136H137" class="fk-edge"/><path d="M33 180H126" class="fk-edge"/><path d="M126 180H137" class="fk-edge"/><path d="M33 250H126" class="fk-edge"/><path d="M126 250V300" class="fk-edge"/><path d="M126 300H137" class="fk-edge"/><path d="M164.5 101H248" class="fk-edge"/><path d="M248 101H259" class="fk-edge"/><path d="M164.5 158H248" class="fk-edge"/><path d="M248 158H259" class="fk-edge"/><path d="M203 300H248" class="fk-edge"/><path d="M248 300H259" class="fk-edge"/><path d="M310 300H370" class="fk-edge"/><path d="M370 300H381" class="fk-edge"/><path d="M286.5 180H370" class="fk-edge"/><path d="M370 180H381" class="fk-edge"/><path d="M401 202H492" class="fk-edge"/><path d="M492 202H503" class="fk-edge"/><path d="M523 224H614" class="fk-edge"/><path d="M614 224H625" class="fk-edge"/><path d="M645 188H736" class="fk-edge"/><path d="M736 160V205" class="fk-edge"/><path d="M736 160H747" class="fk-edge"/><path d="M736 205H747" class="fk-edge"/><path d="M645 246H736" class="fk-edge"/><path d="M736 246V250" class="fk-edge"/><path d="M736 250H747" class="fk-edge"/></g>
 <defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
 <g class="kd-arrows"><path d="M448 300L458 300L458 180L420 180" class="kd-arrow" marker-end="url(#kdArrowHead)"/><path d="M458 300L704 300L704 224L664 224" class="kd-arrow" marker-end="url(#kdArrowHead)"/><path d="M704 300L824 300L824 160L810 160" class="kd-arrow" marker-end="url(#kdArrowHead)"/><text class="kd-arrow-label" x="520" y="318">護持僧として加持祈祷</text><path d="M658 127L658 157" class="kd-arrow" marker-end="url(#kdArrowHead)"/><text class="kd-arrow-label" x="666" y="143">仕える</text></g>
 <g>
@@ -602,7 +612,7 @@
   <script src="../js/tippy.umd.min.js"></script>
   <script src="../js/tooltips.js?2026920"></script>
   <script src="../js/tenno-keizu-tooltips.js?20261001-01"></script>
-  <script src="../js/keizu-diagram.js?20261001-04"></script>
+  <script src="../js/keizu-diagram.js?20261001-17"></script>
   <!-- ▲▲▲ tippy.js ▲▲▲ -->
   <script>window.POEM_NUM = 66;</script>
   <script src="../js/grammar-data.js?20260830"></script>

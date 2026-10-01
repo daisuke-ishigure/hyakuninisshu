@@ -96,6 +96,7 @@
   <link rel="stylesheet" href="../css/huda_97.css?20240507-02">
   <link rel="stylesheet" href="../css/animate.min.css">
   <link rel="stylesheet" href="../css/grammar-panel.css?20260721">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261001-16">
   <!-- google fontの追加 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -328,19 +329,342 @@
   </div><div class="diagram-section">
       <dl>
         <dt class='title'>藤原定家の系図</dt>
-            <dd class='thumb-image2'>
-              <figure class='portrait'>
-                <img src='../img/97_teika_diagram.gif?ver01' alt='藤原定家の系図' usemap="#ImageMap" width="1075" height="1280" />
-                <map name="ImageMap">
-                  <area shape="rect" coords="934,533,1054,1263" href="/96.html" alt="入道前太政大臣（西園寺公経）" />
-                  <area shape="rect" coords="483,335,580,658" href="/83.html" alt="皇太后宮大夫俊成（藤原俊成）" />
-                  <area shape="rect" coords="55,509,146,721" href="/87.html" alt="寂連" />
-                  <area shape="rect" coords="9,879,151,1261" href="/98.html" alt="従二位家隆（藤原家隆）" />
-                </map>
-                <p class="kome" style="width:calc(100% - 1em); font-size:0.9em;"><span
-                    style="color:#C32538; margin-right:0.25em;">■</span>の番号が付いている人物をクリックすると、その歌人のページに移動します。</p>
-              </figure>
-              <div>
+            <dd class='kd-dd'>
+              <!-- 系図のすぐ上：左に凡例、右に拡大・縮小（tenno-keizu.html と同じ） -->
+              <div class="fk-chart-bar">
+                <ul class="fk-legend kd-legend">
+                  <li><span class="fk-legend__badge" aria-hidden="true"></span>百人一首の歌番号（クリックで歌のページへ）</li>
+                  <li><span class="fk-legend__dash"></span>養子</li>
+                  <li><span class="fk-legend__eq">＝</span>婚姻</li>
+                </ul>
+                <div class="fk-zoom" role="group" aria-label="拡大・縮小">
+                  <button type="button" data-zoom="out" aria-label="縮小">－</button>
+                  <span class="fk-zoom__label" aria-live="polite">100%</span>
+                  <button type="button" data-zoom="in" aria-label="拡大">＋</button>
+                  <button type="button" data-zoom="reset">等倍</button>
+                  <button type="button" data-zoom="fit">幅に合わせる</button>
+                </div>
+              </div>
+              <!-- 相関図のデータ。SVG は node _tools/build-keizu.mjs で下の KEIZU:START〜END に書き込む -->
+              <div class="kd-chart" aria-label="藤原定家の系図">
+                <script type="application/json">
+{
+ "tooltips": "fujiwara",
+ "nodes": [
+  {
+   "id": "nagaie",
+   "n": "藤原長家",
+   "key": "長家",
+   "sub": "御子左流",
+   "x": 16,
+   "y": 70
+  },
+  {
+   "id": "tadaie",
+   "n": "藤原忠家",
+   "key": "忠家",
+   "x": 136,
+   "y": 70
+  },
+  {
+   "id": "toshitada",
+   "n": "藤原俊忠",
+   "key": "俊忠",
+   "x": 256,
+   "y": 70
+  },
+  {
+   "id": "shunkai",
+   "n": "俊海",
+   "x": 376,
+   "y": 40
+  },
+  {
+   "id": "shunzei",
+   "n": "藤原俊成",
+   "key": "俊成",
+   "p": 83,
+   "x": 376,
+   "y": 100
+  },
+  {
+   "id": "kaga",
+   "n": "美福門院加賀",
+   "x": 376,
+   "y": 144
+  },
+  {
+   "id": "sanemune",
+   "n": "藤原実宗",
+   "key": "実宗",
+   "x": 376,
+   "y": 227
+  },
+  {
+   "id": "jakuren",
+   "n": "寂蓮",
+   "p": 87,
+   "x": 526,
+   "y": 40
+  },
+  {
+   "id": "teika",
+   "n": "藤原定家",
+   "key": "定家",
+   "p": 97,
+   "x": 526,
+   "y": 150,
+   "self": 1
+  },
+  {
+   "id": "sanemunejo",
+   "n": "実宗の娘",
+   "x": 526,
+   "y": 194
+  },
+  {
+   "id": "kintsune",
+   "n": "入道前太政大臣",
+   "key": "公経",
+   "p": 96,
+   "x": 526,
+   "y": 260
+  },
+  {
+   "id": "jakurenjo",
+   "n": "寂蓮の娘",
+   "x": 706,
+   "y": 40
+  },
+  {
+   "id": "ietaka",
+   "n": "藤原家隆",
+   "p": 98,
+   "sub": "藤原俊成に和歌を学んだ",
+   "x": 706,
+   "y": 84
+  },
+  {
+   "id": "tameie",
+   "n": "藤原為家",
+   "x": 856,
+   "y": 172
+  },
+  {
+   "id": "yoritsuna",
+   "n": "宇都宮頼綱",
+   "x": 706,
+   "y": 216
+  },
+  {
+   "id": "yoritsunajo",
+   "n": "頼綱の娘",
+   "x": 856,
+   "y": 216
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-kaga",
+   "top": "shunzei",
+   "bottom": "kaga"
+  },
+  {
+   "id": "c-teika",
+   "top": "teika",
+   "bottom": "sanemunejo"
+  },
+  {
+   "id": "c-ietaka",
+   "top": "jakurenjo",
+   "bottom": "ietaka"
+  },
+  {
+   "id": "c-tameie",
+   "top": "tameie",
+   "bottom": "yoritsunajo"
+  }
+ ],
+ "kids": [
+  {
+   "from": "nagaie",
+   "to": [
+    "tadaie"
+   ]
+  },
+  {
+   "from": "tadaie",
+   "to": [
+    "toshitada"
+   ]
+  },
+  {
+   "from": "toshitada",
+   "to": [
+    "shunkai",
+    "shunzei"
+   ]
+  },
+  {
+   "from": "shunkai",
+   "to": [
+    "jakuren"
+   ]
+  },
+  {
+   "from": "c-kaga",
+   "to": [
+    "teika"
+   ]
+  },
+  {
+   "from": "sanemune",
+   "to": [
+    "sanemunejo",
+    "kintsune"
+   ]
+  },
+  {
+   "from": "jakuren",
+   "to": [
+    "jakurenjo"
+   ]
+  },
+  {
+   "from": "c-teika",
+   "to": [
+    "tameie"
+   ]
+  },
+  {
+   "from": "yoritsuna",
+   "to": [
+    "yoritsunajo"
+   ]
+  }
+ ],
+ "lines": [
+  {
+   "points": [
+    [
+     463,
+     100
+    ],
+    [
+     502,
+     100
+    ],
+    [
+     502,
+     40
+    ]
+   ],
+   "dash": true,
+   "label": {
+    "text": "養子",
+    "x": 488,
+    "y": 74
+   }
+  }
+ ],
+ "tips": {
+  "俊海": [
+   "俊海",
+   "特記：醍醐寺の阿闍梨。藤原俊成の兄または弟。寂蓮の父"
+  ],
+  "美福門院加賀": [
+   "美福門院加賀",
+   "特記：藤原俊成の妻。藤原定家の母"
+  ],
+  "寂蓮": [
+   "<ruby>寂蓮<rt>じゃくれん</rt></ruby>",
+   "系譜：俊海の子。1150年頃、叔父の藤原俊成の養子となった",
+   "百人一首：87番「村雨の…」の歌人",
+   "特記：従五位上・中務少輔に至り、30歳代で出家。1201年に『新古今和歌集』の撰者となったが、完成を待たず翌年没した"
+  ],
+  "実宗の娘": [
+   "藤原実宗の娘",
+   "特記：藤原定家の妻。藤原為家の母"
+  ],
+  "寂蓮の娘": [
+   "寂蓮の娘",
+   "特記：藤原家隆の妻（家隆は寂蓮の婿だったという説がある）"
+  ],
+  "藤原家隆": [
+   "<ruby>藤原家隆<rt>ふじわらのいえたか</rt></ruby>",
+   "系譜：藤原光隆の子",
+   "百人一首：98番「風そよぐ…」の歌人",
+   "特記：和歌を藤原俊成に学んだ。寂蓮の婿だったという説もある"
+  ],
+  "藤原為家": [
+   "<ruby>藤原為家<rt>ふじわらのためいえ</rt></ruby>",
+   "系譜：藤原定家の子"
+  ],
+  "宇都宮頼綱": [
+   "<ruby>宇都宮頼綱<rt>うつのみやよりつな</rt></ruby>",
+   "特記：法名は蓮生。嵯峨の小倉山荘（中院山荘）の襖の装飾のため、藤原定家に色紙の作成を依頼したとされる。娘は藤原為家の妻"
+  ],
+  "頼綱の娘": [
+   "宇都宮頼綱の娘",
+   "特記：藤原為家の妻"
+  ]
+ },
+ "arrows": [
+  {
+   "points": [
+    [
+     702,
+     216
+    ],
+    [
+     660,
+     216
+    ],
+    [
+     660,
+     150
+    ],
+    [
+     620,
+     150
+    ]
+   ],
+   "label": {
+    "text": "色紙和歌を依頼",
+    "x": 666,
+    "y": 158
+   }
+  }
+ ]
+}
+                </script>
+                <!-- KEIZU:START -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 932 286" width="932" height="286" role="img" aria-label="藤原定家の系図" class="fk-svg kd-svg" style="max-width:1398px;min-width:min(640px,1398px)" data-src="ozhze8">
+<g class="fk-edges"><path d="M404 109V135M408 109V135" class="fk-edge fk-eq"/><path d="M554 159V185M558 159V185" class="fk-edge fk-eq"/><path d="M734 49V75M738 49V75" class="fk-edge fk-eq"/><path d="M884 181V207M888 181V207" class="fk-edge fk-eq"/><path d="M79 70H122" class="fk-edge"/><path d="M122 70H133" class="fk-edge"/><path d="M199 70H242" class="fk-edge"/><path d="M242 70H253" class="fk-edge"/><path d="M319 70H362" class="fk-edge"/><path d="M362 40V100" class="fk-edge"/><path d="M362 40H373" class="fk-edge"/><path d="M362 100H373" class="fk-edge"/><path d="M409 40H512" class="fk-edge"/><path d="M512 40H523" class="fk-edge"/><path d="M408 122H512" class="fk-edge"/><path d="M512 122V150" class="fk-edge"/><path d="M512 150H523" class="fk-edge"/><path d="M439 227H512" class="fk-edge"/><path d="M512 194V260" class="fk-edge"/><path d="M512 194H523" class="fk-edge"/><path d="M512 260H523" class="fk-edge"/><path d="M583 40H692" class="fk-edge"/><path d="M692 40H703" class="fk-edge"/><path d="M558 172H842" class="fk-edge"/><path d="M842 172H853" class="fk-edge"/><path d="M784 216H842" class="fk-edge"/><path d="M842 216H853" class="fk-edge"/><path d="M463 100L502 100L502 40" class="fk-edge is-dash"/><text class="fk-adopt" x="488" y="74">養子</text></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"><path d="M702 216L660 216L660 150L620 150" class="kd-arrow" marker-end="url(#kdArrowHead)"/><text class="kd-arrow-label" x="666" y="158">色紙和歌を依頼</text></g>
+<g>
+<g class="fk-node" transform="translate(16,70)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原長家&lt;rt&gt;ふじわらのながいえ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1005年～1064年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：権大納言&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正二位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：御子左家の祖&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">藤原長家</text><rect class="fk-sub-box" x="0" y="11" width="56" height="16" rx="8"/><text class="fk-sub" x="28" y="19.5">御子左流</text></g>
+<g class="fk-node" transform="translate(136,70)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原忠家&lt;rt&gt;ふじわらのただいえ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1033年～1091年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：大納言&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正二位&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">藤原忠家</text></g>
+<g class="fk-node" transform="translate(256,70)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原俊忠&lt;rt&gt;ふじわらのとしただ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1071年または1073年～1123年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：権中納言&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従三位&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">藤原俊忠</text></g>
+<g class="fk-node" transform="translate(376,40)" data-tip="&lt;h3&gt;俊海&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：醍醐寺の阿闍梨。藤原俊成の兄または弟。寂蓮の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">俊海</text></g>
+<g class="fk-node is-poet" transform="translate(376,100)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原俊成&lt;rt&gt;ふじわらのとしなり&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1114年～1204年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：皇太后宮大夫&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正三位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首83番「世の中よ…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;皇太后宮大夫俊成&lt;rt&gt;こうたいごうぐうのだいぶとしなり&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;" data-p="83"><a href="/83.html" aria-label="藤原俊成（百人一首83番）"><rect class="fk-hit" x="-2" y="-13" width="88" height="26"/><text class="fk-name" x="0" y="0.5">藤原俊成</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">83</text></a></g>
+<g class="fk-node" transform="translate(376,144)" data-tip="&lt;h3&gt;美福門院加賀&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：藤原俊成の妻。藤原定家の母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">美福門院加賀</text></g>
+<g class="fk-node" transform="translate(376,227)" data-tip="&lt;h3&gt;&lt;ruby&gt;西園寺実宗&lt;rt&gt;さいおんじさねむね&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1145年～1214年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：内大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正二位&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">藤原実宗</text></g>
+<g class="fk-node is-poet" transform="translate(526,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;寂蓮&lt;rt&gt;じゃくれん&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：俊海の子。1150年頃、叔父の藤原俊成の養子となった&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：87番「村雨の…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：従五位上・中務少輔に至り、30歳代で出家。1201年に『新古今和歌集』の撰者となったが、完成を待たず翌年没した&lt;/div&gt;" data-p="87"><a href="/87.html" aria-label="寂蓮（百人一首87番）"><rect class="fk-hit" x="-2" y="-13" width="58" height="26"/><text class="fk-name" x="0" y="0.5">寂蓮</text><circle class="fk-badge" cx="44" cy="0" r="10"/><text class="fk-badge-num" x="44" y="0.5">87</text></a></g>
+<g class="fk-node is-poet is-self" transform="translate(526,150)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原定家&lt;rt&gt;ふじわらのさだいえ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1162年～1241年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：権中納言&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正二位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首97番「来ぬ人を」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;権中納言定家&lt;rt&gt;ごんちゅうなごんさだいえ&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="94" height="28" rx="3"/><text class="fk-name" x="0" y="0.5">藤原定家</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">97</text></g>
+<g class="fk-node" transform="translate(526,194)" data-tip="&lt;h3&gt;藤原実宗の娘&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：藤原定家の妻。藤原為家の母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">実宗の娘</text></g>
+<g class="fk-node is-poet" transform="translate(526,260)" data-tip="&lt;h3&gt;&lt;ruby&gt;西園寺公経&lt;rt&gt;さいおんじきんつね&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1171年～1244年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：太政大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：96番「花さそふ…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;入道前太政大臣&lt;rt&gt;にゅうどうさきのだいじょうだいじん&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;" data-p="96"><a href="/96.html" aria-label="西園寺公経（百人一首96番）"><rect class="fk-hit" x="-2" y="-13" width="133" height="26"/><text class="fk-name" x="0" y="0.5">入道前太政大臣</text><circle class="fk-badge" cx="119" cy="0" r="10"/><text class="fk-badge-num" x="119" y="0.5">96</text></a></g>
+<g class="fk-node" transform="translate(706,40)" data-tip="&lt;h3&gt;寂蓮の娘&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：藤原家隆の妻（家隆は寂蓮の婿だったという説がある）&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">寂蓮の娘</text></g>
+<g class="fk-node is-poet" transform="translate(706,84)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原家隆&lt;rt&gt;ふじわらのいえたか&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：藤原光隆の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：98番「風そよぐ…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：和歌を藤原俊成に学んだ。寂蓮の婿だったという説もある&lt;/div&gt;" data-p="98"><a href="/98.html" aria-label="藤原家隆（百人一首98番）"><rect class="fk-hit" x="-2" y="-13" width="88" height="26"/><text class="fk-name" x="0" y="0.5">藤原家隆</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">98</text></a><rect class="fk-sub-box" x="0" y="11" width="133" height="16" rx="8"/><text class="fk-sub" x="66.5" y="19.5">藤原俊成に和歌を学んだ</text></g>
+<g class="fk-node" transform="translate(856,172)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原為家&lt;rt&gt;ふじわらのためいえ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：藤原定家の子&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">藤原為家</text></g>
+<g class="fk-node" transform="translate(706,216)" data-tip="&lt;h3&gt;&lt;ruby&gt;宇都宮頼綱&lt;rt&gt;うつのみやよりつな&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：法名は蓮生。嵯峨の小倉山荘（中院山荘）の襖の装飾のため、藤原定家に色紙の作成を依頼したとされる。娘は藤原為家の妻&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">宇都宮頼綱</text></g>
+<g class="fk-node" transform="translate(856,216)" data-tip="&lt;h3&gt;宇都宮頼綱の娘&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：藤原為家の妻&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">頼綱の娘</text></g>
+</g>
+</svg>
+                <!-- KEIZU:END -->
+              </div>
+              <div class="kd-text">
                 <p style="width:100%; margin-bottom: 0.75em;">
                   藤原定家の父は藤原俊成（百人一首 83番 皇太后宮大夫俊成）です。父・俊成も和歌の大家で、後鳥羽院や式子内親王、従二位家隆などに歌を指導しました。定家・俊成親子は<span class="tippy mikohidarike"><ruby>御子左家<rt>みこひだりけ</rt></ruby></span>と呼ばれる有名な歌道家でした。</p>
                 <p style="width:100%; margin-bottom: 0.75em;">
@@ -637,6 +961,9 @@
   <script src="../js/popper.min.js"></script>
   <script src="../js/tippy.umd.min.js"></script>
   <script src="../js/tooltips.js?2026920"></script>
+  <script src="../js/tenno-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/fujiwara-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/keizu-diagram.js?20261001-17"></script>
   <!-- ▲▲▲ tippy.js ▲▲▲ -->
   <script>window.POEM_NUM = 97;</script>
   <script src="../js/grammar-data.js?20260830"></script>

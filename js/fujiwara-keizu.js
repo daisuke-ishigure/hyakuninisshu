@@ -583,8 +583,8 @@
       var m = line.match(/^<u>(.*)<\/u>$/);
       return m ? '<div class="fk-tip-line is-rule">' + m[1] + '</div>' : '<div class="fk-tip-line">' + line + '</div>';
     });
-    // スマホなど（ホバーできない端末）では、歌人のツールチップの中に歌のページへのリンクを置く
-    if (d.p && touchUI.matches) {
+    // 歌人のツールチップの中に歌のページへのリンクのボタンを置く（PC・スマホとも）
+    if (d.p) {
       body.push('<a class="fk-tip-link" href="/' + d.p + '.html">' + d.p + '番の歌のページへ</a>');
     }
     return '<h3>' + lines[0] + '</h3>' + body.join('');
@@ -705,7 +705,6 @@
   var state = { filter: 'all', scale: 1 };
   var current = null; // { svg, width, height }
   var tips = [];       // tippy のインスタンス（描き直すたびに破棄する）
-  var touchUI = window.matchMedia('(hover: none)'); // スマホなど、ホバーできない端末
 
   function applyScale() {
     if (!current) return;
@@ -734,12 +733,9 @@
     chart.replaceChildren(svg);
     if (window.tippy) {
       // theme: 'fk' … 系図のツールチップだけに効くスタイル（css/fujiwara-keizu.css の [data-theme~="fk"]）
-      var opts = { allowHTML: true, theme: 'fk' };
-      // スマホ：ツールチップの中のリンクをタップできるようにする（interactive は body に置かないと SVG の中に入ってしまう）
-      if (touchUI.matches) {
-        opts.interactive = true;
-        opts.appendTo = document.body;
-      }
+      // ツールチップの中のリンクのボタンを押せるよう、マウスがツールチップに移っても閉じないようにする（PC・スマホとも）。
+      // interactive は body に置かないと SVG の中に入ってしまう
+      var opts = { allowHTML: true, theme: 'fk', interactive: true, interactiveBorder: 8, appendTo: document.body };
       tips = tippy(svg.querySelectorAll('[data-tippy-content]'), opts);
     }
     current = { svg: svg, width: lay.width, height: lay.height };
@@ -854,9 +850,10 @@
   });
   chart.addEventListener('dragstart', function (e) { e.preventDefault(); });
 
-  // スマホ：歌人をタップしてもすぐには移動せず、ツールチップを開くだけにする（移動はツールチップの中のリンクから）
+  // 歌人をクリック・タップしてもすぐには移動せず、ツールチップを開くだけにする（移動はツールチップの中のボタンから。PC・スマホとも）。
+  // キーボードの Enter（detail が 0）では、そのまま歌のページへ移動する
   chart.addEventListener('click', function (e) {
-    if (touchUI.matches && e.target.closest('a')) e.preventDefault();
+    if (e.detail > 0 && e.target.closest('a')) e.preventDefault();
   });
 
   // URL の #nanke などで初期表示の家を指定できる

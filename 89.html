@@ -94,6 +94,7 @@
   <link rel="stylesheet" href="../css/huda_89.css?20240507-02">
   <link rel="stylesheet" href="../css/animate.min.css">
   <link rel="stylesheet" href="../css/grammar-panel.css?20260721">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261001-16">
   <!-- google fontの追加 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -320,15 +321,109 @@
   </div><div class="diagram-section">
       <dl>
         <dt class='title'>式子内親王の系図</dt>
-            <dd class='thumb-image1'>
-              <figure class='portrait'>
-                <img src='../img/89_shokushi_diagram.gif?ver03' alt='式子内親王の系図' usemap="#ImageMap" width="1141" height="1980" />
-                <map name="ImageMap">
-                  <area shape="rect" coords="1014,678,1108,1070" href="/77.html" alt="崇徳院" />
-                  <area shape="rect" coords="726,1512,824,1976" href="/99.html" alt="後鳥羽院" />
-                </map>
-              </figure>
-              <div>
+            <dd class='kd-dd'>
+              <!-- 系図のすぐ上：左に凡例、右に拡大・縮小（tenno-keizu.html と同じ） -->
+              <div class="fk-chart-bar">
+                <ul class="fk-legend kd-legend">
+                  <li><span class="fk-legend__tenno">茶字</span>天皇</li>
+                  <li><span class="fk-legend__tno" aria-hidden="true"></span>天皇の代数</li>
+                  <li><span class="fk-legend__badge" aria-hidden="true"></span>百人一首の歌番号（クリックで歌のページへ）</li>
+                  <li><span class="fk-legend__eq">＝</span>婚姻</li>
+                </ul>
+                <div class="fk-zoom" role="group" aria-label="拡大・縮小">
+                  <button type="button" data-zoom="out" aria-label="縮小">－</button>
+                  <span class="fk-zoom__label" aria-live="polite">100%</span>
+                  <button type="button" data-zoom="in" aria-label="拡大">＋</button>
+                  <button type="button" data-zoom="reset">等倍</button>
+                  <button type="button" data-zoom="fit">幅に合わせる</button>
+                </div>
+              </div>
+              <!-- 相関図のデータ。SVG は node _tools/build-keizu.mjs で下の KEIZU:START〜END に書き込む -->
+              <div class="kd-chart" aria-label="式子内親王の系図">
+                <script type="application/json">
+{
+  "nodes": [
+    { "id": "bifukumonin", "n": "美福門院", "x": 16, "y": 66 },
+    { "id": "toba", "n": "鳥羽", "k": 1, "t": 74, "x": 16, "y": 118 },
+    { "id": "taikenmonin", "n": "待賢門院", "x": 16, "y": 162 },
+    { "id": "akiko", "n": "暲子内親王", "x": 136, "y": 40 },
+    { "id": "konoe", "n": "近衛", "k": 1, "t": 76, "x": 136, "y": 92 },
+    { "id": "shigeko", "n": "平滋子", "x": 136, "y": 160 },
+    { "id": "goshirakawa", "n": "後白河", "k": 1, "t": 77, "x": 136, "y": 212 },
+    { "id": "seishi", "n": "藤原成子", "x": 136, "y": 256 },
+    { "id": "sutoku", "n": "崇徳", "k": 1, "t": 75, "p": 77, "x": 136, "y": 420 },
+    { "id": "takakura", "n": "高倉", "k": 1, "t": 80, "x": 286, "y": 140 },
+    { "id": "nijo", "n": "二条", "k": 1, "t": 78, "x": 286, "y": 212 },
+    { "id": "kyushi", "n": "休子内親王", "x": 286, "y": 260 },
+    { "id": "mochihito", "n": "以仁王", "x": 286, "y": 296 },
+    { "id": "shokushi", "n": "式子内親王", "p": 89, "self": 1, "x": 286, "y": 332 },
+    { "id": "inpumonin", "n": "殷富門院", "x": 286, "y": 368 },
+    { "id": "shigehito", "n": "重仁親王", "x": 286, "y": 420 },
+    { "id": "antoku", "n": "安徳", "k": 1, "t": 81, "x": 436, "y": 110 },
+    { "id": "gotoba", "n": "後鳥羽", "k": 1, "t": 82, "p": 99, "x": 436, "y": 162 },
+    { "id": "rokujo", "n": "六条", "k": 1, "t": 79, "x": 436, "y": 212 }
+  ],
+  "couples": [
+    { "id": "c-bifuku", "top": "bifukumonin", "bottom": "toba" },
+    { "id": "c-taiken", "top": "toba", "bottom": "taikenmonin" },
+    { "id": "c-shigeko", "top": "shigeko", "bottom": "goshirakawa" },
+    { "id": "c-seishi", "top": "goshirakawa", "bottom": "seishi" }
+  ],
+  "kids": [
+    { "from": "c-bifuku", "to": ["akiko", "konoe"] },
+    { "from": "c-taiken", "to": ["goshirakawa", "sutoku"] },
+    { "from": "c-shigeko", "to": ["takakura"] },
+    { "from": "goshirakawa", "to": ["nijo"] },
+    { "from": "c-seishi", "to": ["kyushi", "mochihito", "shokushi", "inpumonin"] },
+    { "from": "sutoku", "to": ["shigehito"] },
+    { "from": "takakura", "to": ["antoku", "gotoba"] },
+    { "from": "nijo", "to": ["rokujo"] }
+  ],
+  "tips": {
+    "美福門院": ["<ruby>美福門院<rt>びふくもんいん</rt></ruby>", "特記：鳥羽天皇の皇后（藤原得子）。近衛天皇・暲子内親王の母"],
+    "待賢門院": ["<ruby>待賢門院<rt>たいけんもんいん</rt></ruby>", "特記：鳥羽天皇の皇后（中宮）の藤原璋子。崇徳天皇・後白河天皇の母"],
+    "暲子内親王": ["<ruby>暲子内親王<rt>あきこないしんのう</rt></ruby>", "系譜：鳥羽天皇と美福門院の皇女", "特記：八条院。式子内親王が身を寄せたが、八条院とその猶子を呪詛したとの疑いをかけられ、式子内親王は退去を余儀なくされた"],
+    "平滋子": ["<ruby>平滋子<rt>たいらのしげこ</rt></ruby>", "特記：後白河天皇の妃。高倉天皇の母"],
+    "藤原成子": ["<ruby>藤原成子<rt>ふじわらのしげこ</rt></ruby>", "系譜：権大納言藤原季成の娘", "特記：後白河天皇の典侍。以仁王・殷富門院（亮子内親王）・式子内親王・休子内親王らの母。1177年没"],
+    "二条": ["<ruby>二条天皇<rt>にじょうてんのう</rt></ruby>", "第78代天皇", "系譜：後白河天皇の皇子。母は源懿子"],
+    "休子内親王": ["休子内親王", "生没年：1157年～1171年", "系譜：後白河天皇と藤原成子の皇女"],
+    "以仁王": ["<ruby>以仁王<rt>もちひとおう</rt></ruby>", "系譜：後白河天皇と藤原成子の皇子。式子内親王と同母", "特記：1180年に平氏打倒の兵を挙げたが、敗死した"],
+    "殷富門院": ["<ruby>殷富門院<rt>いんぷもんいん</rt></ruby>", "系譜：後白河天皇と藤原成子の皇女（亮子内親王）"],
+    "式子内親王": ["<ruby>式子内親王<rt>しょくしないしんのう</rt></ruby>", "系譜：後白河天皇の第三皇女。母は藤原成子", "百人一首：89番「玉の緒よ…」の歌人", "特記：1159年に斎院に卜定され、1169年に病により退下。藤原俊成に師事し、『新古今和歌集』に49首が入集した"],
+    "重仁親王": ["重仁親王", "系譜：崇徳天皇の皇子"]
+  }
+}
+                </script>
+                <!-- KEIZU:START -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 521 446" width="521" height="446" role="img" aria-label="式子内親王の系図" class="fk-svg kd-svg" style="max-width:782px;min-width:min(640px,782px)" data-src="wyh8jc">
+<g class="fk-edges"><path d="M29 75V93M33 75V93" class="fk-edge fk-eq"/><path d="M29 127V153M33 127V153" class="fk-edge fk-eq"/><path d="M156.5 169V203M160.5 169V203" class="fk-edge fk-eq"/><path d="M156.5 221V247M160.5 221V247" class="fk-edge fk-eq"/><path d="M33 83H122" class="fk-edge"/><path d="M122 40V92" class="fk-edge"/><path d="M122 40H133" class="fk-edge"/><path d="M122 92H133" class="fk-edge"/><path d="M33 140H122" class="fk-edge"/><path d="M122 140V420" class="fk-edge"/><path d="M122 212H133" class="fk-edge"/><path d="M122 420H133" class="fk-edge"/><path d="M160.5 177H272" class="fk-edge"/><path d="M272 140V177" class="fk-edge"/><path d="M272 140H283" class="fk-edge"/><path d="M184 212H272" class="fk-edge"/><path d="M272 212H283" class="fk-edge"/><path d="M160.5 234H272" class="fk-edge"/><path d="M272 234V368" class="fk-edge"/><path d="M272 260H283" class="fk-edge"/><path d="M272 296H283" class="fk-edge"/><path d="M272 332H283" class="fk-edge"/><path d="M272 368H283" class="fk-edge"/><path d="M193 420H272" class="fk-edge"/><path d="M272 420H283" class="fk-edge"/><path d="M319 140H422" class="fk-edge"/><path d="M422 110V162" class="fk-edge"/><path d="M422 110H433" class="fk-edge"/><path d="M422 162H433" class="fk-edge"/><path d="M319 212H422" class="fk-edge"/><path d="M422 212H433" class="fk-edge"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node" transform="translate(16,66)" data-tip="&lt;h3&gt;&lt;ruby&gt;美福門院&lt;rt&gt;びふくもんいん&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：鳥羽天皇の皇后（藤原得子）。近衛天皇・暲子内親王の母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">美福門院</text></g>
+<g class="fk-node is-tenno" transform="translate(16,118)" data-tip="&lt;h3&gt;&lt;ruby&gt;鳥羽天皇&lt;rt&gt;とばてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第74代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1103年～1156年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：1107年～1123年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：譲位後は院政を行った&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">鳥羽</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">74</text></g>
+<g class="fk-node" transform="translate(16,162)" data-tip="&lt;h3&gt;&lt;ruby&gt;待賢門院&lt;rt&gt;たいけんもんいん&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：鳥羽天皇の皇后（中宮）の藤原璋子。崇徳天皇・後白河天皇の母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">待賢門院</text></g>
+<g class="fk-node" transform="translate(136,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;暲子内親王&lt;rt&gt;あきこないしんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：鳥羽天皇と美福門院の皇女&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：八条院。式子内親王が身を寄せたが、八条院とその猶子を呪詛したとの疑いをかけられ、式子内親王は退去を余儀なくされた&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">暲子内親王</text></g>
+<g class="fk-node is-tenno" transform="translate(136,92)" data-tip="&lt;h3&gt;&lt;ruby&gt;近衛天皇&lt;rt&gt;このえてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第76代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1139年～1155年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：1141年～1155年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：鳥羽天皇の皇子。母は美福門院（藤原得子）&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：17歳で亡くなり、その後継をめぐる争いが保元の乱の一因となった&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">近衛</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">76</text></g>
+<g class="fk-node" transform="translate(136,160)" data-tip="&lt;h3&gt;&lt;ruby&gt;平滋子&lt;rt&gt;たいらのしげこ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：後白河天皇の妃。高倉天皇の母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">平滋子</text></g>
+<g class="fk-node is-tenno" transform="translate(136,212)" data-tip="&lt;h3&gt;&lt;ruby&gt;後白河天皇&lt;rt&gt;ごしらかわてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第77代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1127年～1192年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：1155年～1158年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：譲位後、長く院政を行った。今様を集めた『梁塵秘抄』を編んだ&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">後白河</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">77</text></g>
+<g class="fk-node" transform="translate(136,256)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原成子&lt;rt&gt;ふじわらのしげこ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：権大納言藤原季成の娘&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：後白河天皇の典侍。以仁王・殷富門院（亮子内親王）・式子内親王・休子内親王らの母。1177年没&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">藤原成子</text></g>
+<g class="fk-node is-tenno is-poet" transform="translate(136,420)" data-tip="&lt;h3&gt;&lt;ruby&gt;崇徳天皇&lt;rt&gt;すとくてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第75代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1119年～1164年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：1123年～1142年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：77番「瀬をはやみ…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;崇徳院&lt;rt&gt;すとくいん&lt;/rt&gt;&lt;/ruby&gt;。保元の乱（1156年）に敗れて讃岐に流された&lt;/div&gt;" data-p="77"><a href="/77.html" aria-label="崇徳天皇（百人一首77番）"><rect class="fk-hit" x="-2" y="-13" width="58" height="26"/><text class="fk-name" x="0" y="0.5">崇徳</text><circle class="fk-badge" cx="44" cy="0" r="10"/><text class="fk-badge-num" x="44" y="0.5">77</text></a><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">75</text></g>
+<g class="fk-node is-tenno" transform="translate(286,140)" data-tip="&lt;h3&gt;&lt;ruby&gt;高倉天皇&lt;rt&gt;たかくらてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第80代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1161年～1181年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：1168年～1180年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：中宮は平清盛の娘・徳子（建礼門院）&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">高倉</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">80</text></g>
+<g class="fk-node is-tenno" transform="translate(286,212)" data-tip="&lt;h3&gt;&lt;ruby&gt;二条天皇&lt;rt&gt;にじょうてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第78代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：後白河天皇の皇子。母は源懿子&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">二条</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">78</text></g>
+<g class="fk-node" transform="translate(286,260)" data-tip="&lt;h3&gt;休子内親王&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1157年～1171年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：後白河天皇と藤原成子の皇女&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">休子内親王</text></g>
+<g class="fk-node" transform="translate(286,296)" data-tip="&lt;h3&gt;&lt;ruby&gt;以仁王&lt;rt&gt;もちひとおう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：後白河天皇と藤原成子の皇子。式子内親王と同母&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：1180年に平氏打倒の兵を挙げたが、敗死した&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">以仁王</text></g>
+<g class="fk-node is-poet is-self" transform="translate(286,332)" data-tip="&lt;h3&gt;&lt;ruby&gt;式子内親王&lt;rt&gt;しょくしないしんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：後白河天皇の第三皇女。母は藤原成子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：89番「玉の緒よ…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：1159年に斎院に卜定され、1169年に病により退下。藤原俊成に師事し、『新古今和歌集』に49首が入集した&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="109" height="28" rx="3"/><text class="fk-name" x="0" y="0.5">式子内親王</text><circle class="fk-badge" cx="89" cy="0" r="10"/><text class="fk-badge-num" x="89" y="0.5">89</text></g>
+<g class="fk-node" transform="translate(286,368)" data-tip="&lt;h3&gt;&lt;ruby&gt;殷富門院&lt;rt&gt;いんぷもんいん&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：後白河天皇と藤原成子の皇女（亮子内親王）&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">殷富門院</text></g>
+<g class="fk-node" transform="translate(286,420)" data-tip="&lt;h3&gt;重仁親王&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：崇徳天皇の皇子&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">重仁親王</text></g>
+<g class="fk-node is-tenno" transform="translate(436,110)" data-tip="&lt;h3&gt;&lt;ruby&gt;安徳天皇&lt;rt&gt;あんとくてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第81代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1178年～1185年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：1180年～1185年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：高倉天皇の皇子。母は平清盛の娘・徳子（建礼門院）&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：平氏とともに都を離れ、壇ノ浦の戦い（1185年）で入水した&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">安徳</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">81</text></g>
+<g class="fk-node is-tenno is-poet" transform="translate(436,162)" data-tip="&lt;h3&gt;&lt;ruby&gt;後鳥羽天皇&lt;rt&gt;ごとばてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第82代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1180年～1239年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：1183年～1198年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：99番「人もをし…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;後鳥羽院&lt;rt&gt;ごとばいん&lt;/rt&gt;&lt;/ruby&gt;。『新古今和歌集』の編纂を命じた。承久の乱（1221年）に敗れて隠岐に流された&lt;/div&gt;" data-p="99"><a href="/99.html" aria-label="後鳥羽天皇（百人一首99番）"><rect class="fk-hit" x="-2" y="-13" width="73" height="26"/><text class="fk-name" x="0" y="0.5">後鳥羽</text><circle class="fk-badge" cx="59" cy="0" r="10"/><text class="fk-badge-num" x="59" y="0.5">99</text></a><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">82</text></g>
+<g class="fk-node is-tenno" transform="translate(436,212)" data-tip="&lt;h3&gt;&lt;ruby&gt;六条天皇&lt;rt&gt;ろくじょうてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第79代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1164年～1176年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：1165年～1168年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：二条天皇の皇子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：生後7か月あまりで即位した、史上最年少の天皇&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">六条</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">79</text></g>
+</g>
+</svg>
+                <!-- KEIZU:END -->
+              </div>
+              <div class="kd-text">
                 <p style="width:100%; margin-bottom:0.5em;">
                   式子内親王は後白河天皇と藤原<ruby>成子<rt>しげこ</rt>
                   </ruby>との間に生まれた第三皇女です。1159年に<span class="tippy saiin">斎院</span>に任じられ、1169年に病気で<ruby>退下<rt>たいげ</rt>
@@ -592,6 +687,9 @@
   <script src="../js/popper.min.js"></script>
   <script src="../js/tippy.umd.min.js"></script>
   <script src="../js/tooltips.js?2026920"></script>
+  <script src="../js/tenno-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/fujiwara-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/keizu-diagram.js?20261001-17"></script>
   <!-- ▲▲▲ tippy.js ▲▲▲ -->
   <script>window.POEM_NUM = 89;</script>
   <script src="../js/grammar-data.js?20260830"></script>

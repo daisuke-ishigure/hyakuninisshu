@@ -91,6 +91,7 @@
   <link rel="stylesheet" href="../css/huda_22.css?20240507-02">
   <link rel="stylesheet" href="../css/animate.min.css">
   <link rel="stylesheet" href="../css/grammar-panel.css?20260721">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261001-16">
   <!-- google fontの追加 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -318,18 +319,75 @@
   </div><div class="diagram-section">
       <dl>
         <dt class='title'>文屋康秀の系図</dt>
-            <dd class='thumb-image1'>
-              <figure class='portrait'>
-                <img src='../img/22_yasuhide_diagram.gif?ver02' alt='文屋康秀の系図' usemap="#ImageMap" width="800" height="1088" />
-                <map name="ImageMap">
-                  <area shape="rect" coords="300,988,629,1070" href="/37.html" alt="文屋朝康" />
-                </map>
-                <p class="kome" style="width:calc(100% - 1em); font-size:0.9em;"><span
-                    style="color:#C32538; margin-right:0.25em;">■</span>の番号が付いている人物をクリックすると、その歌人のページに移動します。</p>
-              </figure>
-              <div>
+            <dd class='kd-dd'>
+              <!-- 系図のすぐ上：左に凡例、右に拡大・縮小（tenno-keizu.html と同じ） -->
+              <div class="fk-chart-bar">
+                <ul class="fk-legend kd-legend">
+                  <li><span class="fk-legend__tenno">茶字</span>天皇</li>
+                  <li><span class="fk-legend__tno" aria-hidden="true"></span>天皇の代数</li>
+                  <li><span class="fk-legend__badge" aria-hidden="true"></span>百人一首の歌番号（クリックで歌のページへ）</li>
+                  <li><span class="fk-legend__dash"></span>系譜未詳</li>
+                </ul>
+                <div class="fk-zoom" role="group" aria-label="拡大・縮小">
+                  <button type="button" data-zoom="out" aria-label="縮小">－</button>
+                  <span class="fk-zoom__label" aria-live="polite">100%</span>
+                  <button type="button" data-zoom="in" aria-label="拡大">＋</button>
+                  <button type="button" data-zoom="reset">等倍</button>
+                  <button type="button" data-zoom="fit">幅に合わせる</button>
+                </div>
+              </div>
+              <!-- 相関図のデータ。SVG は node _tools/build-keizu.mjs で下の KEIZU:START〜END に書き込む -->
+              <div class="kd-chart" aria-label="文屋康秀の系図">
+                <script type="application/json">
+{
+  "nodes": [
+    { "id": "tenmu", "n": "天武", "k": 1, "t": 40, "x": 16, "y": 62 },
+    { "id": "naga", "n": "長皇子", "x": 136, "y": 62 },
+    { "id": "oichi", "n": "文室大市", "x": 256, "y": 40 },
+    { "id": "jozo", "n": "文室浄三", "note": "智努王", "x": 256, "y": 84 },
+    { "id": "ohara", "n": "文室大原", "x": 436, "y": 84 },
+    { "id": "watamaro", "n": "文室綿麻呂", "x": 556, "y": 84 },
+    { "id": "yasuhide", "n": "文屋康秀", "p": 22, "self": 1, "x": 736, "y": 84 },
+    { "id": "asayasu", "n": "文屋朝康", "p": 37, "x": 886, "y": 84 }
+  ],
+  "kids": [
+    { "from": "tenmu", "to": ["naga"] },
+    { "from": "naga", "to": ["oichi", "jozo"] },
+    { "from": "ohara", "to": ["watamaro"] },
+    { "from": "yasuhide", "to": ["asayasu"] }
+  ],
+  "lines": [
+    { "points": [[378, 84], [433, 84]], "dash": true },
+    { "points": [[634, 84], [733, 84]], "dash": true }
+  ],
+  "tips": {
+    "文室浄三": ["<ruby>文室浄三<rt>ふんやのきよみ</rt></ruby>", "系譜：長皇子の子。もとは智努王", "特記：752年、弟の大市王とともに文室の姓を賜った"],
+    "文室大原": ["文室大原", "特記：文室綿麻呂の父。792年に文室真人から三諸朝臣に改姓した（三諸大原）"],
+    "文室綿麻呂": ["<ruby>文室綿麻呂<rt>ふんやのわたまろ</rt></ruby>", "系譜：文室大原（三諸大原）の子", "特記：792年に三諸朝臣に改姓し、809年に三山朝臣、次いで文室朝臣の姓を賜った"]
+  }
+}
+                </script>
+                <!-- KEIZU:START -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 986 110" width="986" height="110" role="img" aria-label="文屋康秀の系図" class="fk-svg kd-svg" style="max-width:1479px;min-width:min(640px,1479px)" data-src="uotdsf">
+<g class="fk-edges"><path d="M49 62H122" class="fk-edge"/><path d="M122 62H133" class="fk-edge"/><path d="M184 62H242" class="fk-edge"/><path d="M242 40V84" class="fk-edge"/><path d="M242 40H253" class="fk-edge"/><path d="M242 84H253" class="fk-edge"/><path d="M499 84H542" class="fk-edge"/><path d="M542 84H553" class="fk-edge"/><path d="M823 84H872" class="fk-edge"/><path d="M872 84H883" class="fk-edge"/><path d="M378 84L433 84" class="fk-edge is-dash"/><path d="M634 84L733 84" class="fk-edge is-dash"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node is-tenno" transform="translate(16,62)" data-tip="&lt;h3&gt;&lt;ruby&gt;天武天皇&lt;rt&gt;てんむてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第40代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：不明～686年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：673年～686年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：天智天皇の弟&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：壬申の乱（672年）に勝って即位した&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">天武</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">40</text></g>
+<g class="fk-node" transform="translate(136,62)" data-tip="&lt;h3&gt;&lt;ruby&gt;長皇子&lt;rt&gt;ながのみこ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：不明～715年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：一品&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：天武天皇の皇子&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">長皇子</text></g>
+<g class="fk-node" transform="translate(256,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;文室大市&lt;rt&gt;ふんやのおおち&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：704年～780年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：大納言&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正二位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：長皇子の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：文室真人の姓を賜って臣籍に下った&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">文室大市</text></g>
+<g class="fk-node" transform="translate(256,84)" data-tip="&lt;h3&gt;&lt;ruby&gt;文室浄三&lt;rt&gt;ふんやのきよみ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：長皇子の子。もとは智努王&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：752年、弟の大市王とともに文室の姓を賜った&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">文室浄三</text><text class="fk-note" x="62" y="1">（智努王）</text></g>
+<g class="fk-node" transform="translate(436,84)" data-tip="&lt;h3&gt;文室大原&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：文室綿麻呂の父。792年に文室真人から三諸朝臣に改姓した（三諸大原）&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">文室大原</text></g>
+<g class="fk-node" transform="translate(556,84)" data-tip="&lt;h3&gt;&lt;ruby&gt;文室綿麻呂&lt;rt&gt;ふんやのわたまろ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：文室大原（三諸大原）の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：792年に三諸朝臣に改姓し、809年に三山朝臣、次いで文室朝臣の姓を賜った&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">文室綿麻呂</text></g>
+<g class="fk-node is-poet is-self" transform="translate(736,84)" data-tip="&lt;h3&gt;&lt;ruby&gt;文屋康秀&lt;rt&gt;ふんやのやすひで&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：不明&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正六位上&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：22番「吹くからに…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：六歌仙の一人。父祖は分かっておらず、長皇子・文室大市とのつながりも不明&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="94" height="28" rx="3"/><text class="fk-name" x="0" y="0.5">文屋康秀</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">22</text></g>
+<g class="fk-node is-poet" transform="translate(886,84)" data-tip="&lt;h3&gt;&lt;ruby&gt;文屋朝康&lt;rt&gt;ふんやのあさやす&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：不明&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従六位下&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：文屋康秀の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：37番「白露に…」の歌人&lt;/div&gt;" data-p="37"><a href="/37.html" aria-label="文屋朝康（百人一首37番）"><rect class="fk-hit" x="-2" y="-13" width="88" height="26"/><text class="fk-name" x="0" y="0.5">文屋朝康</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">37</text></a></g>
+</g>
+</svg>
+                <!-- KEIZU:END -->
+              </div>
+              <div class="kd-text">
                 <p style="width:100%; margin-bottom: 0.75em;">
-                  文屋康秀は天武天皇の<ruby>末裔<rt>まつえい</rt></ruby>であると考えられています。文屋氏は嵯峨天皇の時代に「<ruby>真人<rt>まひと</rt></ruby>」の<ruby>姓
+                  文屋康秀は天武天皇の<ruby>末裔<rt>まつえい</rt></ruby>であると考えられています。文屋氏は奈良時代の752年に文室の氏とともに「<ruby>真人<rt>まひと</rt></ruby>」の<ruby>姓
                     <rt>かばね</rt>
                   </ruby>を授かっています。これは、天武天皇が定めた「<ruby>八色<rt>やくさ</rt></ruby>の<ruby>姓<rt>かばね</rt>
                   </ruby>」の最高位であり、最上位に位置づけられていました。</p>
@@ -551,6 +609,9 @@
   <script src="../js/popper.min.js"></script>
   <script src="../js/tippy.umd.min.js"></script>
   <script src="../js/tooltips.js?2026920"></script>
+  <script src="../js/tenno-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/fujiwara-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/keizu-diagram.js?20261001-17"></script>
   <!-- ▲▲▲ tippy.js ▲▲▲ -->
   <script>window.POEM_NUM = 22;</script>
   <script src="../js/grammar-data.js?20260830"></script>

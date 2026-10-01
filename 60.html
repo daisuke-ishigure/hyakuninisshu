@@ -99,6 +99,7 @@
   <link rel="stylesheet" href="../css/huda_60.css?20240507-02">
   <link rel="stylesheet" href="../css/animate.min.css">
   <link rel="stylesheet" href="../css/grammar-panel.css?20260721">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261001-16">
   <!-- google fontの追加 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -332,22 +333,117 @@
   </div><div class="diagram-section">
       <dl>
         <dt class='title'>小式部内侍の系図</dt>
-            <dd class='thumb-image2'>
-              <figure>
-                <img src='../img/60_koshikibunonaishi_diagram.gif?ver01' usemap="#ImageMap" alt="小式部内侍の系図" width="958" height="1280" />
-                <map name="ImageMap">
-                  <area shape="rect" coords="492,300,589,571" href="/59.html" alt="赤染衛門" />
-                  <area shape="rect" coords="198,543,287,825" href="/56.html" alt="和泉式部" />
-                </map>
-                <figcaption>
-                  <p class="kome" style="width:calc(100% - 1em);">画像上の番号が付いている人物をクリックすると、その歌人のページに移動します。</p>
-                </figcaption>
-              </figure>
-              <div>
+            <dd class='kd-dd'>
+              <!-- 系図のすぐ上：左に凡例、右に拡大・縮小（tenno-keizu.html と同じ） -->
+              <div class="fk-chart-bar">
+                <ul class="fk-legend kd-legend">
+                  <li><span class="fk-legend__tenno">茶字</span>天皇</li>
+                  <li><span class="fk-legend__tno" aria-hidden="true"></span>天皇の代数</li>
+                  <li><span class="fk-legend__kanpaku">紫字</span>摂政・関白になった人物</li>
+                  <li><span class="fk-legend__badge" aria-hidden="true"></span>百人一首の歌番号（クリックで歌のページへ）</li>
+                  <li><span class="fk-legend__dash"></span>異説</li>
+                  <li><span class="fk-legend__eq">＝</span>婚姻</li>
+                </ul>
+                <div class="fk-zoom" role="group" aria-label="拡大・縮小">
+                  <button type="button" data-zoom="out" aria-label="縮小">－</button>
+                  <span class="fk-zoom__label" aria-live="polite">100%</span>
+                  <button type="button" data-zoom="in" aria-label="拡大">＋</button>
+                  <button type="button" data-zoom="reset">等倍</button>
+                  <button type="button" data-zoom="fit">幅に合わせる</button>
+                </div>
+              </div>
+              <!-- 相関図のデータ。SVG は node _tools/build-keizu.mjs で下の KEIZU:START〜END に書き込む -->
+              <div class="kd-chart" aria-label="小式部内侍の系図">
+                <script type="application/json">
+{
+  "tooltips": "fujiwara",
+  "nodes": [
+    { "id": "shigemitsu", "n": "大江重光", "x": 16, "y": 40 },
+    { "id": "masahira", "n": "大江匡衡", "x": 136, "y": 40 },
+    { "id": "akazome", "n": "赤染衛門", "p": 59, "x": 136, "y": 84 },
+    { "id": "masamune", "n": "大江雅致", "x": 136, "y": 150 },
+    { "id": "yasuhirajo", "n": "平保衡の娘", "x": 136, "y": 194 },
+    { "id": "yasumasa", "n": "藤原保昌", "x": 256, "y": 128 },
+    { "id": "izumi", "n": "和泉式部", "p": 56, "x": 256, "y": 172 },
+    { "id": "michisada", "n": "橘道貞", "x": 256, "y": 216 },
+    { "id": "michinaga", "n": "藤原道長", "key": "道長", "kan": 1, "x": 256, "y": 280 },
+    { "id": "rinshi", "n": "源倫子", "x": 256, "y": 324 },
+    { "id": "kiminari", "n": "藤原公成", "x": 376, "y": 150 },
+    { "id": "koshikibu", "n": "小式部内侍", "p": 60, "self": 1, "sub": "中宮彰子に仕えた", "x": 376, "y": 194 },
+    { "id": "norimichi", "n": "教通", "kan": 1, "x": 376, "y": 258 },
+    { "id": "shoshi", "n": "彰子", "x": 376, "y": 340 },
+    { "id": "ichijo", "n": "一条", "k": 1, "t": 66, "x": 376, "y": 392 },
+    { "id": "rainin", "n": "頼忍阿闍梨", "x": 526, "y": 172 },
+    { "id": "joen", "n": "静円", "x": 526, "y": 236 }
+  ],
+  "couples": [
+    { "id": "c-masahira", "top": "masahira", "bottom": "akazome" },
+    { "id": "c-masamune", "top": "masamune", "bottom": "yasuhirajo" },
+    { "id": "c-yasumasa", "top": "yasumasa", "bottom": "izumi" },
+    { "id": "c-michisada", "top": "izumi", "bottom": "michisada" },
+    { "id": "c-michinaga", "top": "michinaga", "bottom": "rinshi" },
+    { "id": "c-kiminari", "top": "kiminari", "bottom": "koshikibu" },
+    { "id": "c-norimichi", "top": "koshikibu", "bottom": "norimichi" },
+    { "id": "c-shoshi", "top": "shoshi", "bottom": "ichijo" }
+  ],
+  "kids": [
+    { "from": "shigemitsu", "to": ["masahira"] },
+    { "from": "c-masamune", "to": ["izumi"] },
+    { "from": "c-michisada", "to": ["koshikibu"] },
+    { "from": "c-michinaga", "to": ["norimichi", "shoshi"] },
+    { "from": "c-kiminari", "to": ["rainin"] },
+    { "from": "c-norimichi", "to": ["joen"] }
+  ],
+  "lines": [
+    { "points": [[122, 40], [122, 150], [133, 150]], "dash": true }
+  ],
+  "tips": {
+    "大江重光": ["大江重光", "系譜：大江維時の子", "特記：大江匡衡の父。大江雅致の父とする系譜もある"],
+    "大江匡衡": ["<ruby>大江匡衡<rt>おおえのまさひら</rt></ruby>", "系譜：大江重光の子", "特記：妻は赤染衛門。大江雅致と兄弟とする系譜・伝承もあるが、確実ではない"],
+    "大江雅致": ["<ruby>大江雅致<rt>おおえのまさむね</rt></ruby>", "官職：越前守", "系譜：父を大江重光とする系譜がある", "特記：和泉式部の父"],
+    "平保衡の娘": ["平保衡の娘", "特記：大江雅致の妻。和泉式部の母"],
+    "藤原保昌": ["<ruby>藤原保昌<rt>ふじわらのやすまさ</rt></ruby>", "特記：和泉式部の再婚相手"],
+    "橘道貞": ["<ruby>橘道貞<rt>たちばなのみちさだ</rt></ruby>", "特記：和泉式部の最初の夫。小式部内侍の父"],
+    "源倫子": ["<ruby>源倫子<rt>みなもとのりんし</rt></ruby>", "特記：藤原道長の正室。教通・彰子らの母"],
+    "藤原公成": ["<ruby>藤原公成<rt>ふじわらのきんなり</rt></ruby>", "特記：小式部内侍との間に頼忍阿闍梨をもうけた"],
+    "小式部内侍": ["<ruby>小式部内侍<rt>こしきぶのないし</rt></ruby>", "系譜：橘道貞と和泉式部の娘", "百人一首：60番「大江山…」の歌人", "特記：母と共に中宮彰子に出仕。藤原教通・頼宗・範永・定頼など多くの男性との交際で知られ、教通との間に静円、範永との間に娘をもうけた。1025年、藤原公成の子を出産した際に28歳前後で死去した"],
+    "頼忍阿闍梨": ["頼忍阿闍梨", "系譜：藤原公成と小式部内侍の子"],
+    "静円": ["<ruby>静円<rt>じょうえん</rt></ruby>", "生没年：1016年～1074年", "系譜：藤原教通と小式部内侍の子"]
+  }
+}
+                </script>
+                <!-- KEIZU:START -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 617 418" width="617" height="418" role="img" aria-label="小式部内侍の系図" class="fk-svg kd-svg" style="max-width:926px;min-width:min(640px,926px)" data-src="ysiz01">
+<g class="fk-edges"><path d="M164 49V75M168 49V75" class="fk-edge fk-eq"/><path d="M164 159V185M168 159V185" class="fk-edge fk-eq"/><path d="M284 137V163M288 137V163" class="fk-edge fk-eq"/><path d="M276.5 181V207M280.5 181V207" class="fk-edge fk-eq"/><path d="M276.5 289V315M280.5 289V315" class="fk-edge fk-eq"/><path d="M404 159V185M408 159V185" class="fk-edge fk-eq"/><path d="M389 222V249M393 222V249" class="fk-edge fk-eq"/><path d="M389 349V367M393 349V367" class="fk-edge fk-eq"/><path d="M79 40H122" class="fk-edge"/><path d="M122 40H133" class="fk-edge"/><path d="M168 172H242" class="fk-edge"/><path d="M242 172H253" class="fk-edge"/><path d="M280.5 194H362" class="fk-edge"/><path d="M362 194H373" class="fk-edge"/><path d="M280.5 302H362" class="fk-edge"/><path d="M362 258V340" class="fk-edge"/><path d="M362 258H373" class="fk-edge"/><path d="M362 340H373" class="fk-edge"/><path d="M408 172H512" class="fk-edge"/><path d="M512 172H523" class="fk-edge"/><path d="M393 235.5H512" class="fk-edge"/><path d="M512 235.5V236" class="fk-edge"/><path d="M512 236H523" class="fk-edge"/><path d="M122 40L122 150L133 150" class="fk-edge is-dash"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node" transform="translate(16,40)" data-tip="&lt;h3&gt;大江重光&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：大江維時の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：大江匡衡の父。大江雅致の父とする系譜もある&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">大江重光</text></g>
+<g class="fk-node" transform="translate(136,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;大江匡衡&lt;rt&gt;おおえのまさひら&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：大江重光の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：妻は赤染衛門。大江雅致と兄弟とする系譜・伝承もあるが、確実ではない&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">大江匡衡</text></g>
+<g class="fk-node is-poet" transform="translate(136,84)" data-tip="&lt;h3&gt;&lt;ruby&gt;赤染衛門&lt;rt&gt;あかぞめえもん&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：赤染時用の娘。『袋草紙』には、実父は平兼盛とする話が載る&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：59番「やすらはで…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：藤原道長の妻・倫子と、娘の彰子に仕えた&lt;/div&gt;" data-p="59"><a href="/59.html" aria-label="赤染衛門（百人一首59番）"><rect class="fk-hit" x="-2" y="-13" width="88" height="26"/><text class="fk-name" x="0" y="0.5">赤染衛門</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">59</text></a></g>
+<g class="fk-node" transform="translate(136,150)" data-tip="&lt;h3&gt;&lt;ruby&gt;大江雅致&lt;rt&gt;おおえのまさむね&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：越前守&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：父を大江重光とする系譜がある&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：和泉式部の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">大江雅致</text></g>
+<g class="fk-node" transform="translate(136,194)" data-tip="&lt;h3&gt;平保衡の娘&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：大江雅致の妻。和泉式部の母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">平保衡の娘</text></g>
+<g class="fk-node" transform="translate(256,128)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原保昌&lt;rt&gt;ふじわらのやすまさ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：和泉式部の再婚相手&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">藤原保昌</text></g>
+<g class="fk-node is-poet" transform="translate(256,172)" data-tip="&lt;h3&gt;和泉式部&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首56番の歌人&lt;/div&gt;" data-p="56"><a href="/56.html" aria-label="和泉式部（百人一首56番）"><rect class="fk-hit" x="-2" y="-13" width="88" height="26"/><text class="fk-name" x="0" y="0.5">和泉式部</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">56</text></a></g>
+<g class="fk-node" transform="translate(256,216)" data-tip="&lt;h3&gt;&lt;ruby&gt;橘道貞&lt;rt&gt;たちばなのみちさだ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：和泉式部の最初の夫。小式部内侍の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">橘道貞</text></g>
+<g class="fk-node is-kanpaku" transform="translate(256,280)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原道長&lt;rt&gt;ふじわらのみちなが&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：966年～1028年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：摂政、左大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;外戚：後一条、後朱雀、後冷泉天皇の外祖父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">藤原道長</text></g>
+<g class="fk-node" transform="translate(256,324)" data-tip="&lt;h3&gt;&lt;ruby&gt;源倫子&lt;rt&gt;みなもとのりんし&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：藤原道長の正室。教通・彰子らの母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">源倫子</text></g>
+<g class="fk-node" transform="translate(376,150)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原公成&lt;rt&gt;ふじわらのきんなり&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：小式部内侍との間に頼忍阿闍梨をもうけた&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">藤原公成</text></g>
+<g class="fk-node is-poet is-self" transform="translate(376,194)" data-tip="&lt;h3&gt;&lt;ruby&gt;小式部内侍&lt;rt&gt;こしきぶのないし&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：橘道貞と和泉式部の娘&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：60番「大江山…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：母と共に中宮彰子に出仕。藤原教通・頼宗・範永・定頼など多くの男性との交際で知られ、教通との間に静円、範永との間に娘をもうけた。1025年、藤原公成の子を出産した際に28歳前後で死去した&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="109" height="28" rx="3"/><text class="fk-name" x="0" y="0.5">小式部内侍</text><circle class="fk-badge" cx="89" cy="0" r="10"/><text class="fk-badge-num" x="89" y="0.5">60</text><rect class="fk-sub-box" x="0" y="11" width="100" height="16" rx="8"/><text class="fk-sub" x="50" y="19.5">中宮彰子に仕えた</text></g>
+<g class="fk-node is-kanpaku" transform="translate(376,258)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原教通&lt;rt&gt;ふじわらののりみち&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：996年～1075年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：関白、太政大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従一位、贈正一位&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">教通</text></g>
+<g class="fk-node" transform="translate(376,340)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原彰子&lt;rt&gt;ふじわらのしょうし&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：988年～1074年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：一条天皇の中宮、後一条天皇・後朱雀天皇の母&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;院号：上東門院&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">彰子</text></g>
+<g class="fk-node is-tenno" transform="translate(376,392)" data-tip="&lt;h3&gt;&lt;ruby&gt;一条天皇&lt;rt&gt;いちじょうてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第66代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：980年～1011年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：986年～1011年&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">一条</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">66</text></g>
+<g class="fk-node" transform="translate(526,172)" data-tip="&lt;h3&gt;頼忍阿闍梨&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：藤原公成と小式部内侍の子&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">頼忍阿闍梨</text></g>
+<g class="fk-node" transform="translate(526,236)" data-tip="&lt;h3&gt;&lt;ruby&gt;静円&lt;rt&gt;じょうえん&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1016年～1074年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：藤原教通と小式部内侍の子&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">静円</text></g>
+</g>
+</svg>
+                <!-- KEIZU:END -->
+              </div>
+              <div class="kd-text">
                 <p style="width:100%; margin-bottom:0.5em;">
                   小式部内侍は和泉式部の娘で、親子で一条天皇の中宮・彰子に仕えました。</p>
                 <p style="width:100%; margin-bottom:0.5em;">
-                  教通（藤原道長の五男）との間には僧正静円、範永との間には娘をもうけました。また、藤原公成との間に頼忍阿闍梨を出産しましたが、出産時に20代で夭折しました。
+                  教通（藤原道長の五男）との間には僧正静円、範永との間には娘をもうけました。また、藤原公成との間に頼忍阿闍梨を出産した際、28歳前後で亡くなりました。
                 </p>
               </div>
             </dd>
@@ -509,6 +605,9 @@
   <script src="../js/popper.min.js"></script>
   <script src="../js/tippy.umd.min.js"></script>
   <script src="../js/tooltips.js?2026920"></script>
+  <script src="../js/tenno-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/fujiwara-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/keizu-diagram.js?20261001-17"></script>
   <!-- ▲▲▲ tippy.js ▲▲▲ -->
   <script>window.POEM_NUM = 60;</script>
   <script src="../js/grammar-data.js?20260830"></script>

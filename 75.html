@@ -94,6 +94,7 @@
   <link rel="stylesheet" href="../css/huda_75.css?20240507-02">
   <link rel="stylesheet" href="../css/animate.min.css">
   <link rel="stylesheet" href="../css/grammar-panel.css?20260721">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261001-16">
   <!-- google fontの追加 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -313,30 +314,135 @@
   </div><div class="diagram-section">
       <dl>
         <dt class='title'>藤原基俊の系図</dt>
-            <dd class='thumb-image2'>
-              <figure class='portrait'>
-                <img src='../img/75_mototoshi_diagram.gif?ver01' alt='藤原基俊の系図' usemap="#ImageMap" width="1280" height="2289" />
-                <map name="ImageMap">
-                  <area shape="rect" coords="1165,1028,1261,1258" href="/87.html" alt="寂連" />
-                  <area shape="rect" coords="1167,1311,1261,1657" href="/98.html" alt="藤原家隆" />
-                  <area shape="rect" coords="1008,836,1102,1198" href="/83.html" alt="藤原俊成" />
-                  <area shape="rect" coords="1006,1245,1100,1599" href="/97.html" alt="藤原定家" />
-                  <area shape="rect" coords="264,1152,353,1507" href="/76.html" alt="藤原忠通" />
-                  <area shape="rect" coords="336,1599,433,1823" href="/95.html" alt="慈円" />
-                  <area shape="rect" coords="178,1924,277,2272" href="/91.html" alt="藤原良経" />
-                  <area shape="rect" coords="46,1155,136,1505" href="/94.html" alt="藤原雅経" />
-                </map>
-                <figcaption>
-                  <p class="kome" style="width:calc(100% - 1em); font-size:0.9em;"><span
-                      style="color:#C32538; margin-right:0.25em;">■</span>の番号が付いている人物をクリックすると、その歌人のページに移動します。</p>
-                </figcaption>
-              </figure>
-              <div>
+            <dd class='kd-dd'>
+              <!-- 系図のすぐ上：左に凡例、右に拡大・縮小（tenno-keizu.html と同じ） -->
+              <div class="fk-chart-bar">
+                <ul class="fk-legend kd-legend">
+                  <li><span class="fk-legend__kanpaku">紫字</span>摂政・関白になった人物</li>
+                  <li><span class="fk-legend__badge" aria-hidden="true"></span>百人一首の歌番号（クリックで歌のページへ）</li>
+                  <li><span class="fk-legend__dash"></span>数代省略</li>
+                  <li><span class="fk-legend__eq">＝</span>婚姻</li>
+                </ul>
+                <div class="fk-zoom" role="group" aria-label="拡大・縮小">
+                  <button type="button" data-zoom="out" aria-label="縮小">－</button>
+                  <span class="fk-zoom__label" aria-live="polite">100%</span>
+                  <button type="button" data-zoom="in" aria-label="拡大">＋</button>
+                  <button type="button" data-zoom="reset">等倍</button>
+                  <button type="button" data-zoom="fit">幅に合わせる</button>
+                </div>
+              </div>
+              <!-- 相関図のデータ。SVG は node _tools/build-keizu.mjs で下の KEIZU:START〜END に書き込む -->
+              <div class="kd-chart" aria-label="藤原基俊の系図">
+                <script type="application/json">
+{
+  "tooltips": "fujiwara",
+  "nodes": [
+    { "id": "rinshi", "n": "源倫子", "x": 16, "y": 130 },
+    { "id": "michinaga", "n": "道長", "kan": 1, "x": 16, "y": 174 },
+    { "id": "meishi", "n": "源明子", "x": 16, "y": 218 },
+    { "id": "yorimichi", "n": "頼通", "kan": 1, "x": 136, "y": 62 },
+    { "id": "norimichi", "n": "教通", "kan": 1, "x": 136, "y": 98 },
+    { "id": "shoshi", "n": "彰子", "x": 136, "y": 134 },
+    { "id": "kenshi", "n": "妍子", "x": 136, "y": 170 },
+    { "id": "ishi", "n": "威子", "x": 136, "y": 206 },
+    { "id": "kishi", "n": "嬉子", "x": 136, "y": 242 },
+    { "id": "yorimune", "n": "頼宗", "x": 136, "y": 300 },
+    { "id": "nagaie", "n": "長家", "x": 136, "y": 350 },
+    { "id": "morozane", "n": "師実", "kan": 1, "x": 256, "y": 62 },
+    { "id": "toshiie", "n": "俊家", "x": 256, "y": 300 },
+    { "id": "tadamichi", "n": "忠通", "kan": 1, "p": 76, "x": 376, "y": 62 },
+    { "id": "masatsune", "n": "飛鳥井雅経", "key": "雅経", "p": 94, "x": 376, "y": 130 },
+    { "id": "mototoshi", "n": "藤原基俊", "key": "基俊", "p": 75, "self": 1, "sub": "藤原俊成の師", "x": 376, "y": 300 },
+    { "id": "shunzei", "n": "藤原俊成", "key": "俊成", "p": 83, "x": 376, "y": 350 },
+    { "id": "shunkai", "n": "俊海", "x": 376, "y": 400 },
+    { "id": "kanezane", "n": "九条兼実", "key": "兼実", "kan": 1, "x": 526, "y": 40 },
+    { "id": "jien", "n": "慈円", "p": 95, "x": 526, "y": 84 },
+    { "id": "kogaku", "n": "光覚", "x": 526, "y": 300 },
+    { "id": "teika", "n": "藤原定家", "key": "定家", "p": 97, "x": 526, "y": 350 },
+    { "id": "jakuren", "n": "寂蓮", "p": 87, "x": 526, "y": 400 },
+    { "id": "yoshitsune", "n": "九条良経", "key": "良経", "p": 91, "x": 676, "y": 40 },
+    { "id": "jakurenjo", "n": "寂蓮の娘", "x": 676, "y": 400 },
+    { "id": "ietaka", "n": "藤原家隆", "key": "家隆", "p": 98, "x": 676, "y": 444 }
+  ],
+  "couples": [
+    { "id": "c-rinshi", "top": "rinshi", "bottom": "michinaga" },
+    { "id": "c-meishi", "top": "michinaga", "bottom": "meishi" },
+    { "id": "c-ietaka", "top": "jakurenjo", "bottom": "ietaka" }
+  ],
+  "kids": [
+    { "from": "c-rinshi", "to": ["yorimichi", "norimichi", "shoshi", "kenshi", "ishi", "kishi"] },
+    { "from": "c-meishi", "to": ["yorimune", "nagaie"], "bar": 110 },
+    { "from": "yorimichi", "to": ["morozane"] },
+    { "from": "yorimune", "to": ["toshiie"] },
+    { "from": "toshiie", "to": ["mototoshi"] },
+    { "from": "tadamichi", "to": ["kanezane", "jien"] },
+    { "from": "kanezane", "to": ["yoshitsune"] },
+    { "from": "mototoshi", "to": ["kogaku"] },
+    { "from": "shunzei", "to": ["teika"] },
+    { "from": "shunkai", "to": ["jakuren"] },
+    { "from": "jakuren", "to": ["jakurenjo"] }
+  ],
+  "lines": [
+    { "points": [[292, 62], [373, 62]], "dash": true, "label": { "text": "2代略", "x": 332, "y": 56 } },
+    { "points": [[300, 62], [300, 130], [373, 130]], "dash": true, "label": { "text": "3代略", "x": 336, "y": 124 } },
+    { "points": [[169, 350], [373, 350]], "dash": true, "label": { "text": "2代略", "x": 300, "y": 344 } },
+    { "points": [[362, 350], [362, 400], [373, 400]], "dash": true }
+  ],
+  "tips": {
+    "源倫子": ["<ruby>源倫子<rt>みなもとのりんし</rt></ruby>", "特記：藤原道長の正室。頼通・教通・彰子・妍子・威子・嬉子の母"],
+    "源明子": ["<ruby>源明子<rt>みなもとのめいし</rt></ruby>", "系譜：源高明の娘", "特記：藤原道長の妻。頼宗・長家らの母"],
+    "妍子": ["<ruby>藤原妍子<rt>ふじわらのけんし</rt></ruby>", "系譜：藤原道長と源倫子の娘", "特記：三条天皇の中宮"],
+    "威子": ["<ruby>藤原威子<rt>ふじわらのいし</rt></ruby>", "系譜：藤原道長と源倫子の娘", "特記：後一条天皇の中宮"],
+    "嬉子": ["<ruby>藤原嬉子<rt>ふじわらのきし</rt></ruby>", "系譜：藤原道長と源倫子の娘", "特記：後冷泉天皇の母"],
+    "俊海": ["俊海", "特記：醍醐寺の阿闍梨。寂蓮の父"],
+    "光覚": ["光覚", "系譜：藤原基俊の子"],
+    "寂蓮の娘": ["寂蓮の娘", "特記：藤原家隆の妻"],
+    "藤原家隆": ["<ruby>藤原家隆<rt>ふじわらのいえたか</rt></ruby>", "系譜：藤原光隆の子", "百人一首：98番「風そよぐ…」の歌人", "特記：寂蓮の婿だったという説もある"]
+  }
+}
+                </script>
+                <!-- KEIZU:START -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 776 470" width="776" height="470" role="img" aria-label="藤原基俊の系図" class="fk-svg kd-svg" style="max-width:1164px;min-width:min(640px,1164px)" data-src="19y8kzb">
+<g class="fk-edges"><path d="M29 139V165M33 139V165" class="fk-edge fk-eq"/><path d="M29 183V209M33 183V209" class="fk-edge fk-eq"/><path d="M704 409V435M708 409V435" class="fk-edge fk-eq"/><path d="M33 152H122" class="fk-edge"/><path d="M122 62V242" class="fk-edge"/><path d="M122 62H133" class="fk-edge"/><path d="M122 98H133" class="fk-edge"/><path d="M122 134H133" class="fk-edge"/><path d="M122 170H133" class="fk-edge"/><path d="M122 206H133" class="fk-edge"/><path d="M122 242H133" class="fk-edge"/><path d="M33 196H110" class="fk-edge"/><path d="M110 196V350" class="fk-edge"/><path d="M110 300H133" class="fk-edge"/><path d="M110 350H133" class="fk-edge"/><path d="M169 62H242" class="fk-edge"/><path d="M242 62H253" class="fk-edge"/><path d="M169 300H242" class="fk-edge"/><path d="M242 300H253" class="fk-edge"/><path d="M289 300H362" class="fk-edge"/><path d="M362 300H373" class="fk-edge"/><path d="M433 62H512" class="fk-edge"/><path d="M512 40V84" class="fk-edge"/><path d="M512 40H523" class="fk-edge"/><path d="M512 84H523" class="fk-edge"/><path d="M589 40H662" class="fk-edge"/><path d="M662 40H673" class="fk-edge"/><path d="M463 300H512" class="fk-edge"/><path d="M512 300H523" class="fk-edge"/><path d="M463 350H512" class="fk-edge"/><path d="M512 350H523" class="fk-edge"/><path d="M409 400H512" class="fk-edge"/><path d="M512 400H523" class="fk-edge"/><path d="M583 400H662" class="fk-edge"/><path d="M662 400H673" class="fk-edge"/><path d="M292 62L373 62" class="fk-edge is-dash"/><text class="fk-adopt" x="332" y="56">2代略</text><path d="M300 62L300 130L373 130" class="fk-edge is-dash"/><text class="fk-adopt" x="336" y="124">3代略</text><path d="M169 350L373 350" class="fk-edge is-dash"/><text class="fk-adopt" x="300" y="344">2代略</text><path d="M362 350L362 400L373 400" class="fk-edge is-dash"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node" transform="translate(16,130)" data-tip="&lt;h3&gt;&lt;ruby&gt;源倫子&lt;rt&gt;みなもとのりんし&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：藤原道長の正室。頼通・教通・彰子・妍子・威子・嬉子の母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">源倫子</text></g>
+<g class="fk-node is-kanpaku" transform="translate(16,174)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原道長&lt;rt&gt;ふじわらのみちなが&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：966年～1028年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：摂政、左大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;外戚：後一条、後朱雀、後冷泉天皇の外祖父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">道長</text></g>
+<g class="fk-node" transform="translate(16,218)" data-tip="&lt;h3&gt;&lt;ruby&gt;源明子&lt;rt&gt;みなもとのめいし&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：源高明の娘&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：藤原道長の妻。頼宗・長家らの母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">源明子</text></g>
+<g class="fk-node is-kanpaku" transform="translate(136,62)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原頼通&lt;rt&gt;ふじわらのよりみち&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：992年～1074年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：摂政、関白、太政大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：平等院鳳凰堂を建立&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">頼通</text></g>
+<g class="fk-node is-kanpaku" transform="translate(136,98)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原教通&lt;rt&gt;ふじわらののりみち&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：996年～1075年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：関白、太政大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従一位、贈正一位&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">教通</text></g>
+<g class="fk-node" transform="translate(136,134)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原彰子&lt;rt&gt;ふじわらのしょうし&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：988年～1074年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：一条天皇の中宮、後一条天皇・後朱雀天皇の母&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;院号：上東門院&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">彰子</text></g>
+<g class="fk-node" transform="translate(136,170)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原妍子&lt;rt&gt;ふじわらのけんし&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：藤原道長と源倫子の娘&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：三条天皇の中宮&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">妍子</text></g>
+<g class="fk-node" transform="translate(136,206)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原威子&lt;rt&gt;ふじわらのいし&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：藤原道長と源倫子の娘&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：後一条天皇の中宮&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">威子</text></g>
+<g class="fk-node" transform="translate(136,242)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原嬉子&lt;rt&gt;ふじわらのきし&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：藤原道長と源倫子の娘&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：後冷泉天皇の母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">嬉子</text></g>
+<g class="fk-node" transform="translate(136,300)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原頼宗&lt;rt&gt;ふじわらのよりむね&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：993年～1065年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：右大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：中御門流の祖&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">頼宗</text></g>
+<g class="fk-node" transform="translate(136,350)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原長家&lt;rt&gt;ふじわらのながいえ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1005年～1064年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：権大納言&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正二位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：御子左家の祖&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">長家</text></g>
+<g class="fk-node is-kanpaku" transform="translate(256,62)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原師実&lt;rt&gt;ふじわらのもろざね&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1042年～1101年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：摂政、関白、太政大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;外戚：養女・白河中宮・賢子が堀河天皇の母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">師実</text></g>
+<g class="fk-node" transform="translate(256,300)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原俊家&lt;rt&gt;ふじわらのとしいえ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1019年～1082年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：右大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正二位&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">俊家</text></g>
+<g class="fk-node is-kanpaku is-poet" transform="translate(376,62)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原忠通&lt;rt&gt;ふじわらのただみち&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1097年～1164年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：摂政、関白、太政大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：76番「わたの原 こぎいでて…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;法性寺入道前関白太政大臣&lt;rt&gt;ほっしょうじにゅうどうさきのかんぱくだいじょうだいじん&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;" data-p="76"><a href="/76.html" aria-label="藤原忠通（百人一首76番）"><rect class="fk-hit" x="-2" y="-13" width="58" height="26"/><text class="fk-name" x="0" y="0.5">忠通</text><circle class="fk-badge" cx="44" cy="0" r="10"/><text class="fk-badge-num" x="44" y="0.5">76</text></a></g>
+<g class="fk-node is-poet" transform="translate(376,130)" data-tip="&lt;h3&gt;&lt;ruby&gt;飛鳥井雅経&lt;rt&gt;あすかいまさつね&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1170年～1221年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：参議&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従三位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：94番「み吉野の…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;参議雅経&lt;rt&gt;さんぎまさつね&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：飛鳥井家の祖&lt;/div&gt;" data-p="94"><a href="/94.html" aria-label="飛鳥井雅経（百人一首94番）"><rect class="fk-hit" x="-2" y="-13" width="103" height="26"/><text class="fk-name" x="0" y="0.5">飛鳥井雅経</text><circle class="fk-badge" cx="89" cy="0" r="10"/><text class="fk-badge-num" x="89" y="0.5">94</text></a></g>
+<g class="fk-node is-poet is-self" transform="translate(376,300)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原基俊&lt;rt&gt;ふじわらのもととし&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1060年～1142年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：左衛門佐&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従五位上&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：75番「契りおきし…」の歌人&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="94" height="28" rx="3"/><text class="fk-name" x="0" y="0.5">藤原基俊</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">75</text><rect class="fk-sub-box" x="0" y="11" width="78" height="16" rx="8"/><text class="fk-sub" x="39" y="19.5">藤原俊成の師</text></g>
+<g class="fk-node is-poet" transform="translate(376,350)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原俊成&lt;rt&gt;ふじわらのとしなり&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1114年～1204年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：皇太后宮大夫&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正三位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首83番「世の中よ…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;皇太后宮大夫俊成&lt;rt&gt;こうたいごうぐうのだいぶとしなり&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;" data-p="83"><a href="/83.html" aria-label="藤原俊成（百人一首83番）"><rect class="fk-hit" x="-2" y="-13" width="88" height="26"/><text class="fk-name" x="0" y="0.5">藤原俊成</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">83</text></a></g>
+<g class="fk-node" transform="translate(376,400)" data-tip="&lt;h3&gt;俊海&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：醍醐寺の阿闍梨。寂蓮の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">俊海</text></g>
+<g class="fk-node is-kanpaku" transform="translate(526,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;九条兼実&lt;rt&gt;くじょうかねざね&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1149年～1207年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：摂政、関白、太政大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：九条家の祖&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">九条兼実</text></g>
+<g class="fk-node is-poet" transform="translate(526,84)" data-tip="&lt;h3&gt;&lt;ruby&gt;慈円&lt;rt&gt;じえん&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;僧侶：大僧正、天台座主&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：95番「おほけなく…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;前大僧正慈円&lt;rt&gt;さきのだいそうじょうじえん&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;" data-p="95"><a href="/95.html" aria-label="慈円（百人一首95番）"><rect class="fk-hit" x="-2" y="-13" width="58" height="26"/><text class="fk-name" x="0" y="0.5">慈円</text><circle class="fk-badge" cx="44" cy="0" r="10"/><text class="fk-badge-num" x="44" y="0.5">95</text></a></g>
+<g class="fk-node" transform="translate(526,300)" data-tip="&lt;h3&gt;光覚&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：藤原基俊の子&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">光覚</text></g>
+<g class="fk-node is-poet" transform="translate(526,350)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原定家&lt;rt&gt;ふじわらのさだいえ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1162年～1241年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：権中納言&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正二位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首97番「来ぬ人を」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;権中納言定家&lt;rt&gt;ごんちゅうなごんさだいえ&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;" data-p="97"><a href="/97.html" aria-label="藤原定家（百人一首97番）"><rect class="fk-hit" x="-2" y="-13" width="88" height="26"/><text class="fk-name" x="0" y="0.5">藤原定家</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">97</text></a></g>
+<g class="fk-node is-poet" transform="translate(526,400)" data-tip="&lt;h3&gt;寂蓮&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首87番の歌人&lt;/div&gt;" data-p="87"><a href="/87.html" aria-label="寂蓮（百人一首87番）"><rect class="fk-hit" x="-2" y="-13" width="58" height="26"/><text class="fk-name" x="0" y="0.5">寂蓮</text><circle class="fk-badge" cx="44" cy="0" r="10"/><text class="fk-badge-num" x="44" y="0.5">87</text></a></g>
+<g class="fk-node is-poet" transform="translate(676,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;九条良経&lt;rt&gt;くじょうよしつね&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1169年～1206年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：摂政、内覧、太政大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：91番「きりぎりす…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;後京極摂政前太政大臣&lt;rt&gt;ごきょうごくせっしょうさきのだいじょうだいじん&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;" data-p="91"><a href="/91.html" aria-label="九条良経（百人一首91番）"><rect class="fk-hit" x="-2" y="-13" width="88" height="26"/><text class="fk-name" x="0" y="0.5">九条良経</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">91</text></a></g>
+<g class="fk-node" transform="translate(676,400)" data-tip="&lt;h3&gt;寂蓮の娘&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：藤原家隆の妻&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">寂蓮の娘</text></g>
+<g class="fk-node is-poet" transform="translate(676,444)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原家隆&lt;rt&gt;ふじわらのいえたか&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1158年～1237年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：宮内卿&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従二位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：98番「風そよぐ…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;従二位家隆&lt;rt&gt;じゅにいいえたか&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;" data-p="98"><a href="/98.html" aria-label="藤原家隆（百人一首98番）"><rect class="fk-hit" x="-2" y="-13" width="88" height="26"/><text class="fk-name" x="0" y="0.5">藤原家隆</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">98</text></a></g>
+</g>
+</svg>
+                <!-- KEIZU:END -->
+              </div>
+              <div class="kd-text">
                 <p style="width:100%; margin-bottom:0.5em;">
-                  藤原基俊は、藤原道長の<span class="tippy souson">曽孫</span>です。若くして21歳頃に従五位上・<ruby>左衛門佐<rt>さえもんのすけ</rt></ruby>（左衛門府の次官）に叙されていますが、間もなく官職を辞しています。
+                  藤原基俊は、藤原道長の<span class="tippy souson">曽孫</span>です。官位は従五位上・<ruby>左衛門佐<rt>さえもんのすけ</rt></ruby>（左衛門府の次官）にとどまりました。
                 </p>
                 <p>
-                  官職がなかったためか、宮廷での和歌の行事にはなかなか参加できなかったと考えられます。基俊が公の和歌行事に参加できたのは「堀河院御時百首和歌」で、すでに46歳頃でした。その後は歌合に歌人や判者として参加し、和歌だけでなく漢詩文にも通じた人物として知られ、源俊頼と並ぶ院政期歌壇の重鎮として活躍しました。
+                  官位が低かったためか、宮廷での和歌の行事にはなかなか参加できなかったと考えられます。基俊が公の和歌行事に参加できたのは「堀河院御時百首和歌」で、すでに46歳頃でした。その後は歌合に歌人や判者として参加し、和歌だけでなく漢詩文にも通じた人物として知られ、源俊頼と並ぶ院政期歌壇の重鎮として活躍しました。
                 </p>
                 <p style="width:100%; margin-bottom:0.5em;">
                   晩年に藤原俊成を弟子にしています。
@@ -428,6 +534,9 @@
   <script src="../js/popper.min.js"></script>
   <script src="../js/tippy.umd.min.js"></script>
   <script src="../js/tooltips.js?2026920"></script>
+  <script src="../js/tenno-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/fujiwara-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/keizu-diagram.js?20261001-17"></script>
   <!-- ▲▲▲ tippy.js ▲▲▲ -->
   <script>window.POEM_NUM = 75;</script>
   <script src="../js/grammar-data.js?20260830"></script>

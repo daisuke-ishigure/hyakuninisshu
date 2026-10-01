@@ -94,6 +94,7 @@
   <link rel="stylesheet" href="../css/huda_78.css?20240507-02">
   <link rel="stylesheet" href="../css/animate.min.css">
   <link rel="stylesheet" href="../css/grammar-panel.css?20260721">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261001-16">
   <!-- google fontの追加 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -329,16 +330,75 @@
   </div><div class="diagram-section">
       <dl>
         <dt class='title'>源兼昌の系図</dt>
-            <dd class='thumb-image15'>
-              <figure class='portrait'>
-                <img src='../img/78_kanemasa_diagram.gif?ver00' alt='源兼昌の相関図' usemap="#ImageMap" width="570" height="1280" />
-              </figure>
-              <div>
+            <dd class='kd-dd'>
+              <!-- 系図のすぐ上：左に凡例、右に拡大・縮小（tenno-keizu.html と同じ） -->
+              <div class="fk-chart-bar">
+                <ul class="fk-legend kd-legend">
+                  <li><span class="fk-legend__tenno">茶字</span>天皇</li>
+                  <li><span class="fk-legend__tno" aria-hidden="true"></span>天皇の代数</li>
+                  <li><span class="fk-legend__badge" aria-hidden="true"></span>百人一首の歌番号（クリックで歌のページへ）</li>
+                </ul>
+                <div class="fk-zoom" role="group" aria-label="拡大・縮小">
+                  <button type="button" data-zoom="out" aria-label="縮小">－</button>
+                  <span class="fk-zoom__label" aria-live="polite">100%</span>
+                  <button type="button" data-zoom="in" aria-label="拡大">＋</button>
+                  <button type="button" data-zoom="reset">等倍</button>
+                  <button type="button" data-zoom="fit">幅に合わせる</button>
+                </div>
+              </div>
+              <!-- 相関図のデータ。SVG は node _tools/build-keizu.mjs で下の KEIZU:START〜END に書き込む -->
+              <div class="kd-chart" aria-label="源兼昌の系図">
+                <script type="application/json">
+{
+  "nodes": [
+    { "id": "uda", "n": "宇多", "k": 1, "t": 59, "x": 16, "y": 40 },
+    { "id": "atsumi", "n": "敦実親王", "x": 106, "y": 40 },
+    { "id": "masanobu", "n": "源雅信", "x": 226, "y": 40 },
+    { "id": "tokinaka", "n": "源時中", "x": 331, "y": 40 },
+    { "id": "asato", "n": "源朝任", "x": 436, "y": 40 },
+    { "id": "moroyoshi", "n": "源師良", "x": 541, "y": 40 },
+    { "id": "toshisuke", "n": "源俊輔", "x": 646, "y": 40 },
+    { "id": "kanemasa", "n": "源兼昌", "p": 78, "self": 1, "x": 751, "y": 40 }
+  ],
+  "kids": [
+    { "from": "uda", "to": ["atsumi"] },
+    { "from": "atsumi", "to": ["masanobu"] },
+    { "from": "masanobu", "to": ["tokinaka"] },
+    { "from": "tokinaka", "to": ["asato"] },
+    { "from": "asato", "to": ["moroyoshi"] },
+    { "from": "moroyoshi", "to": ["toshisuke"] },
+    { "from": "toshisuke", "to": ["kanemasa"] }
+  ],
+  "tips": {
+    "源雅信": ["<ruby>源雅信<rt>みなもとのまさのぶ</rt></ruby>", "系譜：敦実親王の子。宇多天皇の孫", "特記：源倫子の父"],
+    "源兼昌": ["<ruby>源兼昌<rt>みなもとのかねまさ</rt></ruby>", "位階：従五位下", "官職：皇后宮少進", "系譜：美濃介源俊輔の子", "百人一首：78番「淡路島…」の歌人"]
+  }
+}
+                </script>
+                <!-- KEIZU:START -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 836 66" width="836" height="66" role="img" aria-label="源兼昌の系図" class="fk-svg kd-svg" style="max-width:1254px;min-width:min(640px,1254px)" data-src="1xk63yd">
+<g class="fk-edges"><path d="M49 40H92" class="fk-edge"/><path d="M92 40H103" class="fk-edge"/><path d="M169 40H212" class="fk-edge"/><path d="M212 40H223" class="fk-edge"/><path d="M274 40H317" class="fk-edge"/><path d="M317 40H328" class="fk-edge"/><path d="M379 40H422" class="fk-edge"/><path d="M422 40H433" class="fk-edge"/><path d="M484 40H527" class="fk-edge"/><path d="M527 40H538" class="fk-edge"/><path d="M589 40H632" class="fk-edge"/><path d="M632 40H643" class="fk-edge"/><path d="M694 40H737" class="fk-edge"/><path d="M737 40H748" class="fk-edge"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node is-tenno" transform="translate(16,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;宇多天皇&lt;rt&gt;うだてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第59代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：867年～931年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：887年～897年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：菅原道真を重用した&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">宇多</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">59</text></g>
+<g class="fk-node" transform="translate(106,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;敦実親王&lt;rt&gt;あつみしんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：893年～967年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：一品&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：宇多天皇の皇子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：宇多源氏（雅信・重信ら）の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">敦実親王</text></g>
+<g class="fk-node" transform="translate(226,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;源雅信&lt;rt&gt;みなもとのまさのぶ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：敦実親王の子。宇多天皇の孫&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：源倫子の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">源雅信</text></g>
+<g class="fk-node" transform="translate(331,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;源時中&lt;rt&gt;みなもとのときなか&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：大納言&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従二位&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">源時中</text></g>
+<g class="fk-node" transform="translate(436,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;源朝任&lt;rt&gt;みなもとのあさとう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：989年～1034年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：参議&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従三位&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">源朝任</text></g>
+<g class="fk-node" transform="translate(541,40)" data-tip="&lt;h3&gt;源師良&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：源朝任の嫡男&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">源師良</text></g>
+<g class="fk-node" transform="translate(646,40)" data-tip="&lt;h3&gt;源俊輔&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：美濃介&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：源兼昌の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">源俊輔</text></g>
+<g class="fk-node is-poet is-self" transform="translate(751,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;源兼昌&lt;rt&gt;みなもとのかねまさ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従五位下&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：皇后宮少進&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：美濃介源俊輔の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：78番「淡路島…」の歌人&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="79" height="28" rx="3"/><text class="fk-name" x="0" y="0.5">源兼昌</text><circle class="fk-badge" cx="59" cy="0" r="10"/><text class="fk-badge-num" x="59" y="0.5">78</text></g>
+</g>
+</svg>
+                <!-- KEIZU:END -->
+              </div>
+              <div class="kd-text">
                 <p style="margin-bottom:0.5em;">
                   源兼昌は宇多源氏の末裔です。
                 </p>
                 <p style="margin-bottom:0.5em;">
-                  父・源俊輔は、美濃守を務めていました。<br class="br-pc">兼昌の最終官位は、皇后宮少進・従五位下です。
+                  父・源俊輔は、美濃介を務めていました。<br class="br-pc">兼昌の最終官位は、皇后宮少進・従五位下です。
                 </p>
               </div>
             </dd>
@@ -425,6 +485,9 @@
   <script src="../js/popper.min.js"></script>
   <script src="../js/tippy.umd.min.js"></script>
   <script src="../js/tooltips.js?2026920"></script>
+  <script src="../js/tenno-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/fujiwara-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/keizu-diagram.js?20261001-17"></script>
   <!-- ▲▲▲ tippy.js ▲▲▲ -->
   <script>window.POEM_NUM = 78;</script>
   <script src="../js/grammar-data.js?20260830"></script>

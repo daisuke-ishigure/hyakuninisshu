@@ -324,9 +324,12 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-/* スマホ：歌人のツールチップの中の「〇番の歌のページへ」リンク（js で touch 端末のときだけ付ける） */
+/* 歌人のツールチップの中の「〇番の歌のページへ」リンク（js で PC・スマホとも付ける） */
 .tippy-box[data-theme~="fk"] .fk-tip-link {
   display: block;
+  width: fit-content; /* ボタンの幅は文字の幅にし、ツールチップの左右中央に置く */
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 0.5em;
   padding: 0.35em 0.8em;
   border-radius: 4px;
@@ -355,7 +358,7 @@
   margin-left: 0;
 }
 .kd-legend {
-  margin-bottom: 0.4em;
+  margin: 0;
 }
 .kd-chart {
   overflow-x: auto;
@@ -363,12 +366,27 @@
   background: #fffdf7;
   border: 1px solid #d8ccb0;
   border-radius: 6px;
+  /* スクロールバーの代わりにドラッグで動かす（js/keizu-diagram.js。fujiwara-keizu.html と同じ） */
+  scrollbar-width: none;
+  cursor: grab;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.kd-chart::-webkit-scrollbar {
+  display: none;
+}
+.kd-chart.is-dragging,
+.kd-chart.is-dragging a {
+  cursor: grabbing;
 }
 .kd-svg {
   width: 100%;
   height: auto;
-  /* 狭い画面では文字が小さくなりすぎないよう、この幅より縮めずに横スクロールさせる */
+  /* 狭い画面では文字が小さくなりすぎないよう、この幅より縮めずに横スクロールさせる
+     （SVG の style で、本来の大きさの 150% を超えないよう max-width・min-width を上書きしている） */
   min-width: 640px;
+  /* 枠より狭いときは左右中央に置く */
+  margin: 0 auto;
 }
 .kd-text {
   margin-top: 0.8em;
@@ -387,6 +405,19 @@
 }
 .kd-arrow-head {
   fill: #d8243f;
+}
+/* 赤い枠の囲み（「暗殺の嫌疑」など） */
+.kd-box {
+  fill: #fff;
+  stroke: #d8243f;
+  stroke-width: 1.4;
+}
+.kd-box-text {
+  font-size: 13px;
+  font-weight: 700;
+  fill: #d8243f;
+  text-anchor: middle;
+  dominant-baseline: central;
 }
 .kd-arrow-label {
   font-size: 12px;
@@ -433,4 +464,21 @@
 .fk-tag.is-on .fk-sub,
 .fk-tag.is-on .fk-pre {
   fill: #fff;
+}
+/* 離れた位置の夫婦を結ぶ折れ線の「＝」：太い線の上に背景色の細い線を重ねて二重線にする */
+.kd-eq-out {
+  fill: none;
+  stroke: #555;
+  stroke-width: 5.2;
+}
+.kd-eq-in {
+  fill: none;
+  stroke: #fffdf7;
+  stroke-width: 2.8;
+}
+/* 交差する線の上を通す線の縁取り（背景色） */
+.kd-halo {
+  fill: none;
+  stroke: #fffdf7;
+  stroke-width: 7;
 }

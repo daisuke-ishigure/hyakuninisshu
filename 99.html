@@ -96,6 +96,7 @@
   <link rel="stylesheet" href="../css/huda_99.css?20240507-02">
   <link rel="stylesheet" href="../css/animate.min.css">
   <link rel="stylesheet" href="../css/grammar-panel.css?20260721">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261001-16">
   <!-- google fontの追加 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -321,24 +322,563 @@
       <dl>
         <dt class='title'>後鳥羽院の系図・相関図</dt>
             <dd>
-              後鳥羽院は後白河法王の孫で、安徳天皇の異母弟です。彼には、土御門天皇と<a
-                href="100.html">順徳院</a>という2人の子供がいます。土御門天皇は4歳で即位しましたが、16歳のときに後鳥羽院によって譲位させられ、順徳院が新たに天皇となりました。温和な性格の土御門天皇に対し、順徳院は気性が激しかったようです。承久の乱の際、土御門天皇は父である後鳥羽院を思いとどまらせようとしましたが、順徳院は父と共に積極的に倒幕を支持したとされています。
-              <picture
-                style="display:flex; flex-direction:column; justify-content: center; max-width:700px; margin: 0.5em auto 0; margin-bottom: 0.75em;">
-                <img src='../img/99_gotobain_diagram.gif?ver04' alt='後鳥羽院の系図・相関図' usemap="#ImageMap" width="1980" height="1910" />
-                <map name="ImageMap">
-                  <area shape="rect" coords="1170,16,1255,443" href="/76.html" alt="藤原忠通" />
-                  <area shape="rect" coords="1224,547,1321,806" href="/95.html" alt="慈円" />
-                  <area shape="rect" coords="1356,1348,1447,1688" href="/100.html" alt="順徳院" />
-                  <area shape="rect" coords="1086,925,1183,1334" href="/91.html" alt="九条良経" />
-                  <area shape="rect" coords="486,889,592,1385" href="/96.html" alt="西園寺公経" />
-                  <area shape="rect" coords="333,1048,457,1382" href="/93.html" alt="源実朝" />
-                </map>
-                <figcaption>
-                  <p class="kome" style="width:calc(100% - 1em); font-size:0.9em;"><span
-                      style="color:#C32538; margin-right:0.25em;">■</span>の番号が付いている人物をクリックすると、その歌人のページに移動します。</p>
-                </figcaption>
-              </picture>
+              後鳥羽院は後白河法皇の孫で、安徳天皇の異母弟です。彼には、土御門天皇と<a
+                href="100.html">順徳院</a>という2人の子供がいます。土御門天皇は3歳で即位しましたが、15歳のときに後鳥羽院によって譲位させられ、順徳院が新たに天皇となりました。温和な性格の土御門天皇に対し、順徳院は気性が激しかったようです。承久の乱の際、土御門天皇は父である後鳥羽院を思いとどまらせようとしましたが、順徳院は父と共に積極的に倒幕を支持したとされています。
+              <!-- 系図のすぐ上：左に凡例、右に拡大・縮小（tenno-keizu.html と同じ） -->
+              <div class="fk-chart-bar">
+                <ul class="fk-legend kd-legend">
+                  <li><span class="fk-legend__tenno">茶字</span>天皇</li>
+                  <li><span class="fk-legend__tno" aria-hidden="true"></span>天皇の代数</li>
+                  <li><span class="fk-legend__kanpaku">紫字</span>摂政・関白になった人物</li>
+                  <li><span class="fk-legend__badge" aria-hidden="true"></span>百人一首の歌番号（クリックで歌のページへ）</li>
+                  <li><span class="fk-legend__eq">＝</span>婚姻</li>
+                </ul>
+                <div class="fk-zoom" role="group" aria-label="拡大・縮小">
+                  <button type="button" data-zoom="out" aria-label="縮小">－</button>
+                  <span class="fk-zoom__label" aria-live="polite">100%</span>
+                  <button type="button" data-zoom="in" aria-label="拡大">＋</button>
+                  <button type="button" data-zoom="reset">等倍</button>
+                  <button type="button" data-zoom="fit">幅に合わせる</button>
+                </div>
+              </div>
+              <!-- 相関図のデータ。SVG は node _tools/build-keizu.mjs で下の KEIZU:START〜END に書き込む -->
+              <div class="kd-chart" aria-label="後鳥羽院の系図・相関図">
+                <script type="application/json">
+{
+ "tooltips": "fujiwara",
+ "nodes": [
+  {
+   "id": "tokimasa",
+   "n": "北条時政",
+   "x": 16,
+   "y": 62
+  },
+  {
+   "id": "yoshitomo",
+   "n": "源義朝",
+   "x": 16,
+   "y": 172
+  },
+  {
+   "id": "tadamichi",
+   "n": "忠通",
+   "kan": 1,
+   "p": 76,
+   "x": 16,
+   "y": 392
+  },
+  {
+   "id": "goshirakawa",
+   "n": "後白河",
+   "k": 1,
+   "t": 77,
+   "x": 16,
+   "y": 488
+  },
+  {
+   "id": "shigeko",
+   "n": "平滋子",
+   "x": 16,
+   "y": 532
+  },
+  {
+   "id": "yoshitoki",
+   "n": "北条義時",
+   "x": 136,
+   "y": 40
+  },
+  {
+   "id": "masako",
+   "n": "北条政子",
+   "x": 136,
+   "y": 84
+  },
+  {
+   "id": "yoritomo",
+   "n": "源頼朝",
+   "x": 136,
+   "y": 128
+  },
+  {
+   "id": "yoshitsune",
+   "n": "源義経",
+   "x": 136,
+   "y": 172
+  },
+  {
+   "id": "bomonhime",
+   "n": "坊門姫",
+   "x": 136,
+   "y": 216
+  },
+  {
+   "id": "yoshiyasu",
+   "n": "一条能保",
+   "x": 136,
+   "y": 260
+  },
+  {
+   "id": "kanezane",
+   "n": "九条兼実",
+   "key": "兼実",
+   "kan": 1,
+   "x": 136,
+   "y": 370
+  },
+  {
+   "id": "jien",
+   "n": "慈円",
+   "p": 95,
+   "x": 136,
+   "y": 414
+  },
+  {
+   "id": "shokushi",
+   "n": "坊門殖子",
+   "x": 136,
+   "y": 458
+  },
+  {
+   "id": "takakura",
+   "n": "高倉",
+   "k": 1,
+   "t": 80,
+   "x": 136,
+   "y": 510
+  },
+  {
+   "id": "tokuko",
+   "n": "平徳子",
+   "x": 136,
+   "y": 554
+  },
+  {
+   "id": "yoriie",
+   "n": "源頼家",
+   "x": 256,
+   "y": 84
+  },
+  {
+   "id": "sanetomo",
+   "n": "源実朝",
+   "p": 93,
+   "x": 256,
+   "y": 128
+  },
+  {
+   "id": "zenshi",
+   "n": "能保の娘",
+   "key": "一条全子",
+   "x": 256,
+   "y": 238
+  },
+  {
+   "id": "kintsune",
+   "n": "西園寺公経",
+   "key": "公経",
+   "p": 96,
+   "x": 256,
+   "y": 282
+  },
+  {
+   "id": "yoshiyasujo",
+   "n": "能保の娘",
+   "key": "良経室",
+   "x": 256,
+   "y": 326
+  },
+  {
+   "id": "yoshitsune2",
+   "n": "九条良経",
+   "key": "良経",
+   "kan": 1,
+   "p": 91,
+   "x": 256,
+   "y": 370
+  },
+  {
+   "id": "jushi",
+   "n": "藤原重子",
+   "x": 256,
+   "y": 422
+  },
+  {
+   "id": "gotoba",
+   "n": "後鳥羽",
+   "k": 1,
+   "t": 82,
+   "p": 99,
+   "x": 256,
+   "y": 474,
+   "self": 1
+  },
+  {
+   "id": "zaishi",
+   "n": "源在子",
+   "x": 256,
+   "y": 518
+  },
+  {
+   "id": "antoku",
+   "n": "安徳",
+   "k": 1,
+   "t": 81,
+   "x": 256,
+   "y": 568
+  },
+  {
+   "id": "kugyo",
+   "n": "公暁",
+   "x": 386,
+   "y": 84
+  },
+  {
+   "id": "rinshi",
+   "n": "掄子",
+   "x": 386,
+   "y": 260
+  },
+  {
+   "id": "michiie",
+   "n": "九条道家",
+   "key": "道家",
+   "kan": 1,
+   "x": 386,
+   "y": 304
+  },
+  {
+   "id": "risshi",
+   "n": "九条立子",
+   "x": 386,
+   "y": 392
+  },
+  {
+   "id": "juntoku",
+   "n": "順徳",
+   "k": 1,
+   "t": 84,
+   "p": 100,
+   "x": 386,
+   "y": 444
+  },
+  {
+   "id": "tsuchimikado",
+   "n": "土御門",
+   "k": 1,
+   "t": 83,
+   "x": 386,
+   "y": 500
+  },
+  {
+   "id": "yoritsune",
+   "n": "藤原頼経",
+   "key": "頼経",
+   "sub": "鎌倉幕府4代将軍",
+   "x": 516,
+   "y": 282
+  },
+  {
+   "id": "chukyo",
+   "n": "仲恭",
+   "k": 1,
+   "t": 85,
+   "x": 516,
+   "y": 418
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-masako",
+   "top": "masako",
+   "bottom": "yoritomo"
+  },
+  {
+   "id": "c-bomon",
+   "top": "bomonhime",
+   "bottom": "yoshiyasu"
+  },
+  {
+   "id": "c-shokushi",
+   "top": "shokushi",
+   "bottom": "takakura"
+  },
+  {
+   "id": "c-tokuko",
+   "top": "takakura",
+   "bottom": "tokuko"
+  },
+  {
+   "id": "c-shigeko",
+   "top": "goshirakawa",
+   "bottom": "shigeko"
+  },
+  {
+   "id": "c-kintsune",
+   "top": "zenshi",
+   "bottom": "kintsune"
+  },
+  {
+   "id": "c-yoshitsune2",
+   "top": "yoshiyasujo",
+   "bottom": "yoshitsune2"
+  },
+  {
+   "id": "c-jushi",
+   "top": "jushi",
+   "bottom": "gotoba"
+  },
+  {
+   "id": "c-zaishi",
+   "top": "gotoba",
+   "bottom": "zaishi"
+  },
+  {
+   "id": "c-michiie",
+   "top": "rinshi",
+   "bottom": "michiie"
+  },
+  {
+   "id": "c-juntoku",
+   "top": "risshi",
+   "bottom": "juntoku"
+  }
+ ],
+ "kids": [
+  {
+   "from": "tokimasa",
+   "to": [
+    "yoshitoki",
+    "masako"
+   ]
+  },
+  {
+   "from": "yoshitomo",
+   "to": [
+    "yoritomo",
+    "yoshitsune",
+    "bomonhime"
+   ]
+  },
+  {
+   "from": "tadamichi",
+   "to": [
+    "kanezane",
+    "jien"
+   ]
+  },
+  {
+   "from": "c-shigeko",
+   "to": [
+    "takakura"
+   ]
+  },
+  {
+   "from": "c-masako",
+   "to": [
+    "yoriie",
+    "sanetomo"
+   ]
+  },
+  {
+   "from": "c-bomon",
+   "to": [
+    "zenshi",
+    "yoshiyasujo"
+   ]
+  },
+  {
+   "from": "kanezane",
+   "to": [
+    "yoshitsune2"
+   ]
+  },
+  {
+   "from": "c-shokushi",
+   "to": [
+    "gotoba"
+   ]
+  },
+  {
+   "from": "c-tokuko",
+   "to": [
+    "antoku"
+   ]
+  },
+  {
+   "from": "yoriie",
+   "to": [
+    "kugyo"
+   ]
+  },
+  {
+   "from": "c-kintsune",
+   "to": [
+    "rinshi"
+   ]
+  },
+  {
+   "from": "c-yoshitsune2",
+   "to": [
+    "michiie",
+    "risshi"
+   ]
+  },
+  {
+   "from": "c-jushi",
+   "to": [
+    "juntoku"
+   ]
+  },
+  {
+   "from": "c-zaishi",
+   "to": [
+    "tsuchimikado"
+   ]
+  },
+  {
+   "from": "c-michiie",
+   "to": [
+    "yoritsune"
+   ]
+  },
+  {
+   "from": "c-juntoku",
+   "to": [
+    "chukyo"
+   ]
+  }
+ ],
+ "tips": {
+  "北条時政": [
+   "<ruby>北条時政<rt>ほうじょうときまさ</rt></ruby>",
+   "特記：北条政子・義時の父"
+  ],
+  "北条義時": [
+   "<ruby>北条義時<rt>ほうじょうよしとき</rt></ruby>",
+   "系譜：北条時政の子"
+  ],
+  "北条政子": [
+   "<ruby>北条政子<rt>ほうじょうまさこ</rt></ruby>",
+   "特記：源頼朝の妻。頼家・実朝の母"
+  ],
+  "源義朝": [
+   "<ruby>源義朝<rt>みなもとのよしとも</rt></ruby>",
+   "特記：頼朝・義経・坊門姫の父"
+  ],
+  "源義経": [
+   "<ruby>源義経<rt>みなもとのよしつね</rt></ruby>",
+   "系譜：源義朝の子"
+  ],
+  "坊門姫": [
+   "坊門姫",
+   "系譜：源義朝の娘。源頼朝の同母の姉または妹",
+   "特記：一条能保の妻"
+  ],
+  "一条能保": [
+   "<ruby>一条能保<rt>いちじょうよしやす</rt></ruby>",
+   "特記：妻は源頼朝の同母の姉または妹・坊門姫。娘は西園寺公経・九条良経の妻となった"
+  ],
+  "源頼家": [
+   "<ruby>源頼家<rt>みなもとのよりいえ</rt></ruby>",
+   "系譜：源頼朝と北条政子の子"
+  ],
+  "公暁": [
+   "<ruby>公暁<rt>くぎょう</rt></ruby>",
+   "系譜：源頼家の子",
+   "特記：叔父の実朝を暗殺した"
+  ],
+  "一条全子": [
+   "一条全子",
+   "系譜：一条能保の娘",
+   "特記：西園寺公経の妻。掄子らの母"
+  ],
+  "良経室": [
+   "一条能保の娘",
+   "特記：九条良経の正室。道家・立子の母"
+  ],
+  "坊門殖子": [
+   "坊門殖子",
+   "特記：高倉天皇の妃。後鳥羽天皇の母"
+  ],
+  "平徳子": [
+   "<ruby>平徳子<rt>たいらのとくこ</rt></ruby>",
+   "特記：高倉天皇の中宮。安徳天皇の母"
+  ],
+  "平滋子": [
+   "<ruby>平滋子<rt>たいらのしげこ</rt></ruby>",
+   "特記：後白河天皇の妃。高倉天皇の母"
+  ],
+  "藤原重子": [
+   "藤原重子",
+   "特記：後鳥羽天皇の妃。順徳天皇の母"
+  ],
+  "源在子": [
+   "源在子",
+   "特記：後鳥羽天皇の妃。土御門天皇の母"
+  ],
+  "掄子": [
+   "<ruby>西園寺掄子<rt>さいおんじりんし</rt></ruby>",
+   "系譜：西園寺公経の長女",
+   "特記：九条道家の正室。藤原頼経らの母"
+  ],
+  "九条立子": [
+   "<ruby>九条立子<rt>くじょうりっし</rt></ruby>",
+   "系譜：九条良経と一条能保の娘の子",
+   "特記：順徳天皇の中宮。仲恭天皇の母"
+  ],
+  "公経": [
+   "<ruby>西園寺公経<rt>さいおんじきんつね</rt></ruby>",
+   "系譜：藤原実宗の子",
+   "百人一首：96番「花さそふ…」の歌人",
+   "特記：妻は一条能保の娘。承久の乱では乱の情報を幕府に知らせ、後鳥羽上皇に幽閉された。1222年に太政大臣。孫の頼経は鎌倉幕府4代将軍となった"
+  ]
+ }
+}
+                </script>
+                <!-- KEIZU:START -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 632 594" width="632" height="594" role="img" aria-label="後鳥羽院の系図・相関図" class="fk-svg kd-svg" style="max-width:948px;min-width:min(640px,948px)" data-src="mbbuaq">
+<g class="fk-edges"><path d="M156.5 93V119M160.5 93V119" class="fk-edge fk-eq"/><path d="M156.5 225V251M160.5 225V251" class="fk-edge fk-eq"/><path d="M149 467V485M153 467V485" class="fk-edge fk-eq"/><path d="M149 519V545M153 519V545" class="fk-edge fk-eq"/><path d="M36.5 497V523M40.5 497V523" class="fk-edge fk-eq"/><path d="M284 247V273M288 247V273" class="fk-edge fk-eq"/><path d="M284 335V361M288 335V361" class="fk-edge fk-eq"/><path d="M276.5 431V465M280.5 431V465" class="fk-edge fk-eq"/><path d="M276.5 483V509M280.5 483V509" class="fk-edge fk-eq"/><path d="M399 269V295M403 269V295" class="fk-edge fk-eq"/><path d="M399 401V419M403 401V419" class="fk-edge fk-eq"/><path d="M79 62H122" class="fk-edge"/><path d="M122 40V84" class="fk-edge"/><path d="M122 40H133" class="fk-edge"/><path d="M122 84H133" class="fk-edge"/><path d="M64 172H122" class="fk-edge"/><path d="M122 128V216" class="fk-edge"/><path d="M122 128H133" class="fk-edge"/><path d="M122 172H133" class="fk-edge"/><path d="M122 216H133" class="fk-edge"/><path d="M73 392H122" class="fk-edge"/><path d="M122 370V414" class="fk-edge"/><path d="M122 370H133" class="fk-edge"/><path d="M122 414H133" class="fk-edge"/><path d="M40.5 510H122" class="fk-edge"/><path d="M122 510H133" class="fk-edge"/><path d="M160.5 106H242" class="fk-edge"/><path d="M242 84V128" class="fk-edge"/><path d="M242 84H253" class="fk-edge"/><path d="M242 128H253" class="fk-edge"/><path d="M160.5 238H242" class="fk-edge"/><path d="M242 238V326" class="fk-edge"/><path d="M242 238H253" class="fk-edge"/><path d="M242 326H253" class="fk-edge"/><path d="M199 370H242" class="fk-edge"/><path d="M242 370H253" class="fk-edge"/><path d="M153 475H242" class="fk-edge"/><path d="M242 474V475" class="fk-edge"/><path d="M242 474H253" class="fk-edge"/><path d="M153 532H242" class="fk-edge"/><path d="M242 532V568" class="fk-edge"/><path d="M242 568H253" class="fk-edge"/><path d="M304 84H372" class="fk-edge"/><path d="M372 84H383" class="fk-edge"/><path d="M288 260H372" class="fk-edge"/><path d="M372 260H383" class="fk-edge"/><path d="M288 348H372" class="fk-edge"/><path d="M372 304V392" class="fk-edge"/><path d="M372 304H383" class="fk-edge"/><path d="M372 392H383" class="fk-edge"/><path d="M280.5 439H372" class="fk-edge"/><path d="M372 439V444" class="fk-edge"/><path d="M372 444H383" class="fk-edge"/><path d="M280.5 496H372" class="fk-edge"/><path d="M372 496V500" class="fk-edge"/><path d="M372 500H383" class="fk-edge"/><path d="M403 282H502" class="fk-edge"/><path d="M502 282H513" class="fk-edge"/><path d="M403 409H502" class="fk-edge"/><path d="M502 409V418" class="fk-edge"/><path d="M502 418H513" class="fk-edge"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node" transform="translate(16,62)" data-tip="&lt;h3&gt;&lt;ruby&gt;北条時政&lt;rt&gt;ほうじょうときまさ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：北条政子・義時の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">北条時政</text></g>
+<g class="fk-node" transform="translate(16,172)" data-tip="&lt;h3&gt;&lt;ruby&gt;源義朝&lt;rt&gt;みなもとのよしとも&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：頼朝・義経・坊門姫の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">源義朝</text></g>
+<g class="fk-node is-kanpaku is-poet" transform="translate(16,392)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原忠通&lt;rt&gt;ふじわらのただみち&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1097年～1164年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：摂政、関白、太政大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：76番「わたの原 こぎいでて…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;法性寺入道前関白太政大臣&lt;rt&gt;ほっしょうじにゅうどうさきのかんぱくだいじょうだいじん&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;" data-p="76"><a href="/76.html" aria-label="藤原忠通（百人一首76番）"><rect class="fk-hit" x="-2" y="-13" width="58" height="26"/><text class="fk-name" x="0" y="0.5">忠通</text><circle class="fk-badge" cx="44" cy="0" r="10"/><text class="fk-badge-num" x="44" y="0.5">76</text></a></g>
+<g class="fk-node is-tenno" transform="translate(16,488)" data-tip="&lt;h3&gt;&lt;ruby&gt;後白河天皇&lt;rt&gt;ごしらかわてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第77代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1127年～1192年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：1155年～1158年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：譲位後、長く院政を行った。今様を集めた『梁塵秘抄』を編んだ&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">後白河</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">77</text></g>
+<g class="fk-node" transform="translate(16,532)" data-tip="&lt;h3&gt;&lt;ruby&gt;平滋子&lt;rt&gt;たいらのしげこ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：後白河天皇の妃。高倉天皇の母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">平滋子</text></g>
+<g class="fk-node" transform="translate(136,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;北条義時&lt;rt&gt;ほうじょうよしとき&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：北条時政の子&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">北条義時</text></g>
+<g class="fk-node" transform="translate(136,84)" data-tip="&lt;h3&gt;&lt;ruby&gt;北条政子&lt;rt&gt;ほうじょうまさこ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：源頼朝の妻。頼家・実朝の母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">北条政子</text></g>
+<g class="fk-node" transform="translate(136,128)" data-tip="&lt;h3&gt;&lt;ruby&gt;源頼朝&lt;rt&gt;みなもとのよりとも&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1147年～1199年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正二位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：源義朝の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：鎌倉幕府の初代将軍&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">源頼朝</text></g>
+<g class="fk-node" transform="translate(136,172)" data-tip="&lt;h3&gt;&lt;ruby&gt;源義経&lt;rt&gt;みなもとのよしつね&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：源義朝の子&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">源義経</text></g>
+<g class="fk-node" transform="translate(136,216)" data-tip="&lt;h3&gt;坊門姫&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：源義朝の娘。源頼朝の同母の姉または妹&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：一条能保の妻&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">坊門姫</text></g>
+<g class="fk-node" transform="translate(136,260)" data-tip="&lt;h3&gt;&lt;ruby&gt;一条能保&lt;rt&gt;いちじょうよしやす&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：妻は源頼朝の同母の姉または妹・坊門姫。娘は西園寺公経・九条良経の妻となった&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">一条能保</text></g>
+<g class="fk-node is-kanpaku" transform="translate(136,370)" data-tip="&lt;h3&gt;&lt;ruby&gt;九条兼実&lt;rt&gt;くじょうかねざね&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1149年～1207年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：摂政、関白、太政大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：九条家の祖&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">九条兼実</text></g>
+<g class="fk-node is-poet" transform="translate(136,414)" data-tip="&lt;h3&gt;&lt;ruby&gt;慈円&lt;rt&gt;じえん&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;僧侶：大僧正、天台座主&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：95番「おほけなく…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;前大僧正慈円&lt;rt&gt;さきのだいそうじょうじえん&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;" data-p="95"><a href="/95.html" aria-label="慈円（百人一首95番）"><rect class="fk-hit" x="-2" y="-13" width="58" height="26"/><text class="fk-name" x="0" y="0.5">慈円</text><circle class="fk-badge" cx="44" cy="0" r="10"/><text class="fk-badge-num" x="44" y="0.5">95</text></a></g>
+<g class="fk-node" transform="translate(136,458)" data-tip="&lt;h3&gt;坊門殖子&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：高倉天皇の妃。後鳥羽天皇の母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">坊門殖子</text></g>
+<g class="fk-node is-tenno" transform="translate(136,510)" data-tip="&lt;h3&gt;&lt;ruby&gt;高倉天皇&lt;rt&gt;たかくらてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第80代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1161年～1181年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：1168年～1180年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：中宮は平清盛の娘・徳子（建礼門院）&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">高倉</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">80</text></g>
+<g class="fk-node" transform="translate(136,554)" data-tip="&lt;h3&gt;&lt;ruby&gt;平徳子&lt;rt&gt;たいらのとくこ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：高倉天皇の中宮。安徳天皇の母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">平徳子</text></g>
+<g class="fk-node" transform="translate(256,84)" data-tip="&lt;h3&gt;&lt;ruby&gt;源頼家&lt;rt&gt;みなもとのよりいえ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：源頼朝と北条政子の子&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">源頼家</text></g>
+<g class="fk-node is-poet" transform="translate(256,128)" data-tip="&lt;h3&gt;&lt;ruby&gt;源実朝&lt;rt&gt;みなもとのさねとも&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1192年～1219年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：右大臣、鎌倉幕府3代将軍&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正二位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：93番「世の中は…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;鎌倉右大臣&lt;rt&gt;かまくらのうだいじん&lt;/rt&gt;&lt;/ruby&gt;。家集『金槐和歌集』&lt;/div&gt;" data-p="93"><a href="/93.html" aria-label="源実朝（百人一首93番）"><rect class="fk-hit" x="-2" y="-13" width="73" height="26"/><text class="fk-name" x="0" y="0.5">源実朝</text><circle class="fk-badge" cx="59" cy="0" r="10"/><text class="fk-badge-num" x="59" y="0.5">93</text></a></g>
+<g class="fk-node" transform="translate(256,238)" data-tip="&lt;h3&gt;一条全子&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：一条能保の娘&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：西園寺公経の妻。掄子らの母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">能保の娘</text></g>
+<g class="fk-node is-poet" transform="translate(256,282)" data-tip="&lt;h3&gt;&lt;ruby&gt;西園寺公経&lt;rt&gt;さいおんじきんつね&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：藤原実宗の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：96番「花さそふ…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：妻は一条能保の娘。承久の乱では乱の情報を幕府に知らせ、後鳥羽上皇に幽閉された。1222年に太政大臣。孫の頼経は鎌倉幕府4代将軍となった&lt;/div&gt;" data-p="96"><a href="/96.html" aria-label="西園寺公経（百人一首96番）"><rect class="fk-hit" x="-2" y="-13" width="103" height="26"/><text class="fk-name" x="0" y="0.5">西園寺公経</text><circle class="fk-badge" cx="89" cy="0" r="10"/><text class="fk-badge-num" x="89" y="0.5">96</text></a></g>
+<g class="fk-node" transform="translate(256,326)" data-tip="&lt;h3&gt;一条能保の娘&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：九条良経の正室。道家・立子の母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">能保の娘</text></g>
+<g class="fk-node is-kanpaku is-poet" transform="translate(256,370)" data-tip="&lt;h3&gt;&lt;ruby&gt;九条良経&lt;rt&gt;くじょうよしつね&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1169年～1206年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：摂政、内覧、太政大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：91番「きりぎりす…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;後京極摂政前太政大臣&lt;rt&gt;ごきょうごくせっしょうさきのだいじょうだいじん&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;" data-p="91"><a href="/91.html" aria-label="九条良経（百人一首91番）"><rect class="fk-hit" x="-2" y="-13" width="88" height="26"/><text class="fk-name" x="0" y="0.5">九条良経</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">91</text></a></g>
+<g class="fk-node" transform="translate(256,422)" data-tip="&lt;h3&gt;藤原重子&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：後鳥羽天皇の妃。順徳天皇の母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">藤原重子</text></g>
+<g class="fk-node is-tenno is-poet is-self" transform="translate(256,474)" data-tip="&lt;h3&gt;&lt;ruby&gt;後鳥羽天皇&lt;rt&gt;ごとばてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第82代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1180年～1239年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：1183年～1198年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：99番「人もをし…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;後鳥羽院&lt;rt&gt;ごとばいん&lt;/rt&gt;&lt;/ruby&gt;。『新古今和歌集』の編纂を命じた。承久の乱（1221年）に敗れて隠岐に流された&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="79" height="28" rx="3"/><text class="fk-name" x="0" y="0.5">後鳥羽</text><circle class="fk-badge" cx="59" cy="0" r="10"/><text class="fk-badge-num" x="59" y="0.5">99</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">82</text></g>
+<g class="fk-node" transform="translate(256,518)" data-tip="&lt;h3&gt;源在子&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：後鳥羽天皇の妃。土御門天皇の母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">源在子</text></g>
+<g class="fk-node is-tenno" transform="translate(256,568)" data-tip="&lt;h3&gt;&lt;ruby&gt;安徳天皇&lt;rt&gt;あんとくてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第81代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1178年～1185年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：1180年～1185年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：高倉天皇の皇子。母は平清盛の娘・徳子（建礼門院）&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：平氏とともに都を離れ、壇ノ浦の戦い（1185年）で入水した&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">安徳</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">81</text></g>
+<g class="fk-node" transform="translate(386,84)" data-tip="&lt;h3&gt;&lt;ruby&gt;公暁&lt;rt&gt;くぎょう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：源頼家の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：叔父の実朝を暗殺した&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">公暁</text></g>
+<g class="fk-node" transform="translate(386,260)" data-tip="&lt;h3&gt;&lt;ruby&gt;西園寺掄子&lt;rt&gt;さいおんじりんし&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：西園寺公経の長女&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：九条道家の正室。藤原頼経らの母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">掄子</text></g>
+<g class="fk-node is-kanpaku" transform="translate(386,304)" data-tip="&lt;h3&gt;&lt;ruby&gt;九条道家&lt;rt&gt;くじょうみちいえ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1193年～1252年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：摂政、関白、左大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;外戚：四条天皇の外祖父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">九条道家</text></g>
+<g class="fk-node" transform="translate(386,392)" data-tip="&lt;h3&gt;&lt;ruby&gt;九条立子&lt;rt&gt;くじょうりっし&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：九条良経と一条能保の娘の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：順徳天皇の中宮。仲恭天皇の母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">九条立子</text></g>
+<g class="fk-node is-tenno is-poet" transform="translate(386,444)" data-tip="&lt;h3&gt;&lt;ruby&gt;順徳天皇&lt;rt&gt;じゅんとくてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第84代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1197年～1242年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：1210年～1221年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：100番「ももしきや…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;順徳院&lt;rt&gt;じゅんとくいん&lt;/rt&gt;&lt;/ruby&gt;。承久の乱に敗れて佐渡に流された&lt;/div&gt;" data-p="100"><a href="/100.html" aria-label="順徳天皇（百人一首100番）"><rect class="fk-hit" x="-2" y="-13" width="58" height="26"/><text class="fk-name" x="0" y="0.5">順徳</text><circle class="fk-badge" cx="44" cy="0" r="10"/><text class="fk-badge-num" x="44" y="0.5" style="font-size:8.5px">100</text></a><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">84</text></g>
+<g class="fk-node is-tenno" transform="translate(386,500)" data-tip="&lt;h3&gt;&lt;ruby&gt;土御門天皇&lt;rt&gt;つちみかどてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第83代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1196年～1231年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：1198年～1210年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：後鳥羽天皇の皇子。順徳天皇の兄&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：承久の乱には加わらなかったが、自ら望んで土佐（のち阿波）に移った&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">土御門</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">83</text></g>
+<g class="fk-node" transform="translate(516,282)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原頼経&lt;rt&gt;ふじわらのよりつね&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1218年～1256年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：権大納言、鎌倉幕府4代将軍&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正二位&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">藤原頼経</text><rect class="fk-sub-box" x="0" y="11" width="100" height="16" rx="8"/><text class="fk-sub" x="50" y="19.5">鎌倉幕府4代将軍</text></g>
+<g class="fk-node is-tenno" transform="translate(516,418)" data-tip="&lt;h3&gt;仲恭天皇&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第85代天皇&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">仲恭</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">85</text></g>
+</g>
+</svg>
+                <!-- KEIZU:END -->
+              </div>
             </dd>
       </dl>
     </div>
@@ -535,6 +1075,9 @@
   <script src="../js/popper.min.js"></script>
   <script src="../js/tippy.umd.min.js"></script>
   <script src="../js/tooltips.js?2026920"></script>
+  <script src="../js/tenno-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/fujiwara-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/keizu-diagram.js?20261001-17"></script>
   <!-- ▲▲▲ tippy.js ▲▲▲ -->
   <script>window.POEM_NUM = 99;</script>
   <script src="../js/grammar-data.js?20260830"></script>

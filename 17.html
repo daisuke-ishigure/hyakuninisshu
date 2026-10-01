@@ -93,6 +93,7 @@
   <link rel="stylesheet" href="../css/huda_17.css?20240507-02">
   <link rel="stylesheet" href="../css/animate.min.css">
   <link rel="stylesheet" href="../css/grammar-panel.css?20260721">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261001-16">
   <!-- swiper -->
   <link rel="stylesheet" href="../css/swiper-bundle.min.css">
   <!-- google fontの追加 -->
@@ -328,22 +329,120 @@
     <div class="diagram-section">
       <dl>
         <dt class='title'>在原業平の系図</dt>
-        <dd class='thumb-image2'>
-          <figure>
-            <img id="kakeizu" loading='lazy' src='../img/17_narihira_diagram.gif?02' alt='業平の系図' usemap="#ImageMap1" width="1280" height="1254" />
-            <map name="ImageMap1">
-              <area shape="rect" coords="734,971,812,1206" href="/26.html" alt="貞信公" />
-              <area shape="rect" coords="631,969,696,1254" href="/13.html" alt="陽成天皇" />
-              <area shape="rect" coords="3,752,103,1041" href="/16.html" alt="在原行平" />
-            </map>
-            <figcaption>
-              <p class="kome" style="width:calc(100% - 1em); font-size:0.9em;"><span
-                  style="color:#C32538; margin-right:0.25em;">■</span>の番号が付いている人物をクリックすると、その歌人のページに移動します。</p>
-            </figcaption>
-          </figure>
-          <div>
+        <dd class='kd-dd'>
+          <!-- 系図のすぐ上：左に凡例、右に拡大・縮小（tenno-keizu.html と同じ） -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__tenno">茶字</span>天皇</li>
+              <li><span class="fk-legend__tno" aria-hidden="true"></span>天皇の代数</li>
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>百人一首の歌番号（クリックで歌のページへ）</li>
+              <li><span class="fk-legend__dash"></span>数代省略</li>
+              <li><span class="fk-legend__eq">＝</span>婚姻</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="拡大・縮小">
+              <button type="button" data-zoom="out" aria-label="縮小">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="拡大">＋</button>
+              <button type="button" data-zoom="reset">等倍</button>
+              <button type="button" data-zoom="fit">幅に合わせる</button>
+            </div>
+          </div>
+          <!-- 相関図のデータ。SVG は node _tools/build-keizu.mjs で下の KEIZU:START〜END に書き込む -->
+          <div class="kd-chart" aria-label="在原業平の系図">
+            <script type="application/json">
+{
+  "tooltips": "fujiwara",
+  "nodes": [
+    { "id": "heizei", "n": "平城", "k": 1, "t": 51, "x": 16, "y": 62 },
+    { "id": "fuyutsugu", "n": "冬嗣", "x": 16, "y": 310 },
+    { "id": "abo", "n": "阿保親王", "x": 136, "y": 62 },
+    { "id": "yoshifusa", "n": "良房", "x": 136, "y": 150 },
+    { "id": "kiyohime", "n": "源潔姫", "x": 136, "y": 194 },
+    { "id": "ninmyo", "n": "仁明", "k": 1, "t": 54, "x": 136, "y": 246 },
+    { "id": "junshi", "n": "順子", "x": 136, "y": 290 },
+    { "id": "nagara", "n": "長良", "x": 136, "y": 362 },
+    { "id": "yoshikado", "n": "良門", "x": 136, "y": 470 },
+    { "id": "yukihira", "n": "在原行平", "p": 16, "x": 256, "y": 40 },
+    { "id": "narihira", "n": "在原業平", "p": 17, "self": 1, "x": 256, "y": 84 },
+    { "id": "meishi", "n": "明子", "x": 256, "y": 172 },
+    { "id": "montoku", "n": "文徳", "k": 1, "t": 55, "x": 256, "y": 224 },
+    { "id": "mototsune", "n": "基経", "x": 256, "y": 402 },
+    { "id": "kunitsune", "n": "国経", "x": 256, "y": 446 },
+    { "id": "seiwa", "n": "清和", "k": 1, "t": 56, "x": 376, "y": 189 },
+    { "id": "takaiko", "n": "高子", "x": 376, "y": 300 },
+    { "id": "tokihira", "n": "時平", "x": 376, "y": 346 },
+    { "id": "nakahira", "n": "仲平", "x": 376, "y": 386 },
+    { "id": "tadahira", "n": "貞信公", "key": "忠平", "p": 26, "x": 376, "y": 426 },
+    { "id": "onshi", "n": "温子", "x": 376, "y": 466 },
+    { "id": "uda", "n": "宇多", "k": 1, "t": 59, "x": 376, "y": 518 },
+    { "id": "yozei", "n": "陽成", "k": 1, "t": 57, "p": 13, "x": 496, "y": 245 }
+  ],
+  "couples": [
+    { "id": "c-yoshifusa", "top": "yoshifusa", "bottom": "kiyohime" },
+    { "id": "c-junshi", "top": "ninmyo", "bottom": "junshi" },
+    { "id": "c-montoku", "top": "meishi", "bottom": "montoku" },
+    { "id": "c-seiwa", "top": "seiwa", "bottom": "takaiko" },
+    { "id": "c-uda", "top": "onshi", "bottom": "uda" }
+  ],
+  "kids": [
+    { "from": "heizei", "to": ["abo"] },
+    { "from": "abo", "to": ["yukihira", "narihira"] },
+    { "from": "fuyutsugu", "to": ["yoshifusa", "junshi", "nagara", "yoshikado"] },
+    { "from": "c-yoshifusa", "to": ["meishi"] },
+    { "from": "c-junshi", "to": ["montoku"] },
+    { "from": "nagara", "to": ["takaiko", "mototsune", "kunitsune"] },
+    { "from": "c-montoku", "to": ["seiwa"] },
+    { "from": "c-seiwa", "to": ["yozei"] },
+    { "from": "mototsune", "to": ["tokihira", "nakahira", "tadahira", "onshi"] }
+  ],
+  "lines": [
+    { "points": [[343, 84], [456, 84], [456, 300], [409, 300]], "dash": true, "over": true, "label": { "text": "『伊勢物語』で恋人として描かれる", "x": 545, "y": 120 } }
+  ],
+  "tips": {
+    "順子": ["<ruby>藤原順子<rt>ふじわらのじゅんし</rt></ruby>", "系譜：藤原冬嗣の娘", "特記：仁明天皇の妃。文徳天皇の母"],
+    "源潔姫": ["<ruby>源潔姫<rt>みなもとのきよひめ</rt></ruby>", "系譜：嵯峨天皇の皇女", "特記：藤原良房の妻。明子の母"],
+    "明子": ["<ruby>藤原明子<rt>ふじわらのあきらけいこ</rt></ruby>", "生没年：828年～900年", "系譜：藤原良房と源潔姫の娘", "特記：文徳天皇の女御。清和天皇の母。染殿后と呼ばれた"],
+    "国経": ["<ruby>藤原国経<rt>ふじわらのくにつね</rt></ruby>", "生没年：828年～908年", "系譜：藤原長良の長男"],
+    "温子": ["<ruby>藤原温子<rt>ふじわらのおんし</rt></ruby>", "系譜：関白藤原基経の娘", "特記：宇多天皇の女御。藤原胤子の子・敦仁親王（醍醐天皇）を養子とした"]
+  }
+}
+            </script>
+            <!-- KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 641 544" width="641" height="544" role="img" aria-label="在原業平の系図" class="fk-svg kd-svg" style="max-width:962px;min-width:min(640px,962px)" data-src="pjn78a">
+<g class="fk-edges"><path d="M149 159V185M153 159V185" class="fk-edge fk-eq"/><path d="M149 255V281M153 255V281" class="fk-edge fk-eq"/><path d="M269 181V199M273 181V199" class="fk-edge fk-eq"/><path d="M389 198V291M393 198V291" class="fk-edge fk-eq"/><path d="M389 475V493M393 475V493" class="fk-edge fk-eq"/><path d="M49 62H122" class="fk-edge"/><path d="M122 62H133" class="fk-edge"/><path d="M199 62H242" class="fk-edge"/><path d="M242 40V84" class="fk-edge"/><path d="M242 40H253" class="fk-edge"/><path d="M242 84H253" class="fk-edge"/><path d="M49 310H122" class="fk-edge"/><path d="M122 150V470" class="fk-edge"/><path d="M122 150H133" class="fk-edge"/><path d="M122 290H133" class="fk-edge"/><path d="M122 362H133" class="fk-edge"/><path d="M122 470H133" class="fk-edge"/><path d="M153 172H242" class="fk-edge"/><path d="M242 172H253" class="fk-edge"/><path d="M153 268H242" class="fk-edge"/><path d="M242 224V268" class="fk-edge"/><path d="M242 224H253" class="fk-edge"/><path d="M169 362H242" class="fk-edge"/><path d="M242 300V446" class="fk-edge"/><path d="M242 300H373" class="fk-edge"/><path d="M242 402H253" class="fk-edge"/><path d="M242 446H253" class="fk-edge"/><path d="M273 189H362" class="fk-edge"/><path d="M362 189H373" class="fk-edge"/><path d="M393 244.5H482" class="fk-edge"/><path d="M482 244.5V245" class="fk-edge"/><path d="M482 245H493" class="fk-edge"/><path d="M289 402H362" class="fk-edge"/><path d="M362 346V466" class="fk-edge"/><path d="M362 346H373" class="fk-edge"/><path d="M362 386H373" class="fk-edge"/><path d="M362 426H373" class="fk-edge"/><path d="M362 466H373" class="fk-edge"/><path d="M343 84L456 84L456 300L409 300" class="kd-halo"/><path d="M343 84L456 84L456 300L409 300" class="fk-edge is-dash"/><text class="fk-adopt" x="545" y="120">『伊勢物語』で恋人として描かれる</text></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node is-tenno" transform="translate(16,62)" data-tip="&lt;h3&gt;&lt;ruby&gt;平城天皇&lt;rt&gt;へいぜいてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第51代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：774年～824年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：806年～809年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：譲位後、810年の平城太上天皇の変（薬子の変）で出家した&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">平城</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">51</text></g>
+<g class="fk-node" transform="translate(16,310)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原冬嗣&lt;rt&gt;ふじわらのふゆつぐ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：775年～826年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：左大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正二位、贈正一位&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">冬嗣</text></g>
+<g class="fk-node" transform="translate(136,62)" data-tip="&lt;h3&gt;&lt;ruby&gt;阿保親王&lt;rt&gt;あぼしんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：792年～842年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：三品、贈一品&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：平城天皇の皇子、在原行平・業平の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">阿保親王</text></g>
+<g class="fk-node" transform="translate(136,150)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原良房&lt;rt&gt;ふじわらのよしふさ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：804年～872年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：摂政・太政大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従一位、贈正一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：人臣として史上初の摂政&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">良房</text></g>
+<g class="fk-node" transform="translate(136,194)" data-tip="&lt;h3&gt;&lt;ruby&gt;源潔姫&lt;rt&gt;みなもとのきよひめ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：嵯峨天皇の皇女&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：藤原良房の妻。明子の母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">源潔姫</text></g>
+<g class="fk-node is-tenno" transform="translate(136,246)" data-tip="&lt;h3&gt;&lt;ruby&gt;仁明天皇&lt;rt&gt;にんみょうてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第54代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：810年～850年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：833年～850年&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">仁明</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">54</text></g>
+<g class="fk-node" transform="translate(136,290)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原順子&lt;rt&gt;ふじわらのじゅんし&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：藤原冬嗣の娘&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：仁明天皇の妃。文徳天皇の母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">順子</text></g>
+<g class="fk-node" transform="translate(136,362)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原長良&lt;rt&gt;ふじわらのながら&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：802年～856年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：権中納言&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従二位、贈正一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;外戚：文徳天皇の外伯父、陽成天皇の外祖父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">長良</text></g>
+<g class="fk-node" transform="translate(136,470)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原良門&lt;rt&gt;ふじわらのよしかど&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：不明&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：内舎人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正六位上&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">良門</text></g>
+<g class="fk-node is-poet" transform="translate(256,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;在原行平&lt;rt&gt;ありわらのゆきひら&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：818年～893年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：中納言&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正三位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：16番「立ち別れ…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;中納言行平&lt;rt&gt;ちゅうなごんゆきひら&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;" data-p="16"><a href="/16.html" aria-label="在原行平（百人一首16番）"><rect class="fk-hit" x="-2" y="-13" width="88" height="26"/><text class="fk-name" x="0" y="0.5">在原行平</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">16</text></a></g>
+<g class="fk-node is-poet is-self" transform="translate(256,84)" data-tip="&lt;h3&gt;&lt;ruby&gt;在原業平&lt;rt&gt;ありわらのなりひら&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：825年～880年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従四位上&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：17番「ちはやぶる…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;在原業平朝臣&lt;rt&gt;ありわらのなりひらあそん&lt;/rt&gt;&lt;/ruby&gt;。六歌仙の一人&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="94" height="28" rx="3"/><text class="fk-name" x="0" y="0.5">在原業平</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">17</text></g>
+<g class="fk-node" transform="translate(256,172)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原明子&lt;rt&gt;ふじわらのあきらけいこ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：828年～900年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：藤原良房と源潔姫の娘&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：文徳天皇の女御。清和天皇の母。染殿后と呼ばれた&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">明子</text></g>
+<g class="fk-node is-tenno" transform="translate(256,224)" data-tip="&lt;h3&gt;&lt;ruby&gt;文徳天皇&lt;rt&gt;もんとくてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第55代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：827年～858年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：850年～858年&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">文徳</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">55</text></g>
+<g class="fk-node" transform="translate(256,402)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原基経&lt;rt&gt;ふじわらのもとつね&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：実父は長良、良房の養子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：836年～891年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：摂政・関白・太政大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従一位、贈正一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：史上初の事実上の関白&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;外戚：朱雀天皇・村上天皇の外祖父（母は藤原穏子）&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">基経</text></g>
+<g class="fk-node" transform="translate(256,446)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原国経&lt;rt&gt;ふじわらのくにつね&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：828年～908年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：藤原長良の長男&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">国経</text></g>
+<g class="fk-node is-tenno" transform="translate(376,189)" data-tip="&lt;h3&gt;&lt;ruby&gt;清和天皇&lt;rt&gt;せいわてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第56代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：850年～881年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：858年～876年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：9歳で即位し、外祖父の藤原良房が政治を行った&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">清和</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">56</text></g>
+<g class="fk-node" transform="translate(376,300)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原高子&lt;rt&gt;ふじわらのたかいこ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：清和天皇の女御、陽成天皇の母&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：入内前は、『伊勢物語』などで在原業平との恋愛譚が知られる&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">高子</text></g>
+<g class="fk-node" transform="translate(376,346)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原時平&lt;rt&gt;ふじわらのときひら&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：871年～909年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：左大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正二位、贈正一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：昌泰の変で菅原道真を大宰府へ左遷&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">時平</text></g>
+<g class="fk-node" transform="translate(376,386)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原仲平&lt;rt&gt;ふじわらのなかひら&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：875年～945年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：左大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正二位&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">仲平</text></g>
+<g class="fk-node is-poet" transform="translate(376,426)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原忠平&lt;rt&gt;ふじわらのただひら&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;諡号：&lt;ruby&gt;貞信公&lt;rt&gt;ていしんこう&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：880年～949年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：摂政、関白&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従一位、贈正一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首26番「小倉山…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;貞信公&lt;rt&gt;ていしんこう&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;" data-p="26"><a href="/26.html" aria-label="藤原忠平（百人一首26番）"><rect class="fk-hit" x="-2" y="-13" width="73" height="26"/><text class="fk-name" x="0" y="0.5">貞信公</text><circle class="fk-badge" cx="59" cy="0" r="10"/><text class="fk-badge-num" x="59" y="0.5">26</text></a></g>
+<g class="fk-node" transform="translate(376,466)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原温子&lt;rt&gt;ふじわらのおんし&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：関白藤原基経の娘&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：宇多天皇の女御。藤原胤子の子・敦仁親王（醍醐天皇）を養子とした&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">温子</text></g>
+<g class="fk-node is-tenno" transform="translate(376,518)" data-tip="&lt;h3&gt;&lt;ruby&gt;宇多天皇&lt;rt&gt;うだてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第59代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：867年～931年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：887年～897年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：菅原道真を重用した&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">宇多</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">59</text></g>
+<g class="fk-node is-tenno is-poet" transform="translate(496,245)" data-tip="&lt;h3&gt;&lt;ruby&gt;陽成天皇&lt;rt&gt;ようぜいてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第57代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：868年～949年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：876年～884年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：13番「筑波嶺の…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;陽成院&lt;rt&gt;ようぜいいん&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;" data-p="13"><a href="/13.html" aria-label="陽成天皇（百人一首13番）"><rect class="fk-hit" x="-2" y="-13" width="58" height="26"/><text class="fk-name" x="0" y="0.5">陽成</text><circle class="fk-badge" cx="44" cy="0" r="10"/><text class="fk-badge-num" x="44" y="0.5">13</text></a><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">57</text></g>
+</g>
+</svg>
+            <!-- KEIZU:END -->
+          </div>
+          <div class="kd-text">
             <p>在原業平は、平城天皇の皇子・阿保親王の五男として生まれました。母は桓武天皇の皇女・伊都内親王で、父母ともに皇室につながる高い身分の出身です。</p>
-            <p>しかし、薬子の変によって阿保親王が皇位から遠ざかりました。その後、阿保親王は子女の<span class="tippy shinsekikouka">臣籍降下</span>を朝廷に願い出ます。826年、業平は異母兄の行平らとともに臣籍に降下し、「在原朝臣」の姓を賜りました。</p>
+            <p>しかし、阿保親王は薬子の変に連座して大宰権帥に左遷され、皇位から遠ざかりました。その後、阿保親王は子女の<span class="tippy shinsekikouka">臣籍降下</span>を朝廷に願い出ます。826年、業平は異母兄の行平らとともに臣籍に降下し、「在原朝臣」の姓を賜りました。</p>
             <p>業平と、のちに「二条后」と呼ばれる藤原高子との間には、深い恋愛関係があったと『伊勢物語』に描かれています。高子が清和天皇の女御として<span class="tippy judai">入内</span>することが決まると、2人は高子を連れて逃げる「駆け落ち」を試みます。しかし、途中で高子の兄たちに追いつかれ、高子は連れ戻されてしまいます。<br class="br-pc">『伊勢物語』では、その後も高子を思わせる女性がたびたび登場し、業平との恋や別れをめぐる物語が描かれています。</p>
           </div>
         </dd>
@@ -771,6 +870,9 @@
   <script src="../js/popper.min.js"></script>
   <script src="../js/tippy.umd.min.js"></script>
   <script src="../js/tooltips.js?2026920"></script>
+  <script src="../js/tenno-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/fujiwara-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/keizu-diagram.js?20261001-17"></script>
   <!-- ▲▲▲ tippy.js ▲▲▲ -->
   <!-- ▼▼▼ 語句・文法の対話パネル ▼▼▼ -->
   <script>window.POEM_NUM = 17;</script>

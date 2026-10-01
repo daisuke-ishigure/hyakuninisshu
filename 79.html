@@ -96,6 +96,7 @@
   <link rel="stylesheet" href="../css/moon_cloud.css?20240820">
   <link rel="stylesheet" href="../css/animate.min.css">
   <link rel="stylesheet" href="../css/grammar-panel.css?20260721">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261001-16">
   <!-- google fontの追加 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -326,23 +327,69 @@
   </div><div class="diagram-section">
       <dl>
         <dt class='title'>藤原顕輔の系図</dt>
-            <dd class='thumb-image30'>
-              <figure>
-                <img src='../img/79_akisuke_diagram.gif?ver3' alt='藤原顕輔の系図' usemap="#ImageMap" width="740" height="1280" />
-                <map name="ImageMap">
-                  <area shape="rect" coords="434,883,524,1270" href="/84.html" alt="藤原清輔" />
-                </map>
-                <figcaption>
-                  <p class="kome" style="width:calc(100% - 1em); font-size:0.9em;"><span
-                      style="color:#C32538; margin-right:0.25em;">■</span>の番号が付いている人物をクリックすると、その歌人のページに移動します。</p>
-                </figcaption>
-              </figure>
-              <div>
+            <dd class='kd-dd'>
+              <!-- 系図のすぐ上：左に凡例、右に拡大・縮小（tenno-keizu.html と同じ） -->
+              <div class="fk-chart-bar">
+                <ul class="fk-legend kd-legend">
+                  <li><span class="fk-legend__badge" aria-hidden="true"></span>百人一首の歌番号（クリックで歌のページへ）</li>
+                </ul>
+                <div class="fk-zoom" role="group" aria-label="拡大・縮小">
+                  <button type="button" data-zoom="out" aria-label="縮小">－</button>
+                  <span class="fk-zoom__label" aria-live="polite">100%</span>
+                  <button type="button" data-zoom="in" aria-label="拡大">＋</button>
+                  <button type="button" data-zoom="reset">等倍</button>
+                  <button type="button" data-zoom="fit">幅に合わせる</button>
+                </div>
+              </div>
+              <!-- 相関図のデータ。SVG は node _tools/build-keizu.mjs で下の KEIZU:START〜END に書き込む -->
+              <div class="kd-chart" aria-label="藤原顕輔の系図">
+                <script type="application/json">
+{
+  "tooltips": "fujiwara",
+  "nodes": [
+    { "id": "akisue", "n": "藤原顕季", "key": "顕季", "sub": "六条藤家初代", "x": 16, "y": 84 },
+    { "id": "akisuke", "n": "藤原顕輔", "key": "顕輔", "p": 79, "self": 1, "sub": "六条藤家2代", "x": 166, "y": 40 },
+    { "id": "ieyasu", "n": "藤原家保", "x": 166, "y": 100 },
+    { "id": "nagazane", "n": "藤原長実", "x": 166, "y": 140 },
+    { "id": "kiyosuke", "n": "藤原清輔", "key": "清輔", "p": 84, "sub": "六条藤家3代", "x": 316, "y": 30 },
+    { "id": "shigeie", "n": "藤原重家", "sub": "六条藤家4代", "x": 316, "y": 86 },
+    { "id": "kensho", "n": "顕昭", "sub": "猶子", "x": 316, "y": 142 }
+  ],
+  "kids": [
+    { "from": "akisue", "to": ["akisuke", "ieyasu", "nagazane"] },
+    { "from": "akisuke", "to": ["kiyosuke", "shigeie", "kensho"] }
+  ],
+  "tips": {
+    "藤原家保": ["<ruby>藤原家保<rt>ふじわらのいえやす</rt></ruby>", "系譜：藤原顕季の子"],
+    "藤原長実": ["<ruby>藤原長実<rt>ふじわらのながざね</rt></ruby>", "系譜：藤原顕季の子"],
+    "藤原重家": ["<ruby>藤原重家<rt>ふじわらのしげいえ</rt></ruby>", "官職：刑部卿", "系譜：藤原顕輔の子。清輔の弟", "特記：兄・清輔から人麿影供を相伝され、六条藤家の4代となった"],
+    "顕昭": ["<ruby>顕昭<rt>けんしょう</rt></ruby>", "特記：藤原顕輔の猶子。歌学者"]
+  }
+}
+                </script>
+                <!-- KEIZU:START -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 416 182" width="416" height="182" role="img" aria-label="藤原顕輔の系図" class="fk-svg kd-svg" style="max-width:624px;min-width:min(640px,624px)" data-src="13sjvn1">
+<g class="fk-edges"><path d="M79 84H152" class="fk-edge"/><path d="M152 40V140" class="fk-edge"/><path d="M152 40H163" class="fk-edge"/><path d="M152 100H163" class="fk-edge"/><path d="M152 140H163" class="fk-edge"/><path d="M253 40H302" class="fk-edge"/><path d="M302 30V142" class="fk-edge"/><path d="M302 30H313" class="fk-edge"/><path d="M302 86H313" class="fk-edge"/><path d="M302 142H313" class="fk-edge"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node" transform="translate(16,84)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原顕季&lt;rt&gt;ふじわらのあきすえ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1055年～1123年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：修理大夫&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正三位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：六条家（六条藤家）の祖&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">藤原顕季</text><rect class="fk-sub-box" x="0" y="11" width="78" height="16" rx="8"/><text class="fk-sub" x="39" y="19.5">六条藤家初代</text></g>
+<g class="fk-node is-poet is-self" transform="translate(166,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原顕輔&lt;rt&gt;ふじわらのあきすけ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1090年～1155年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：左京大夫&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正三位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：79番「秋風に…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;左京大夫顕輔&lt;rt&gt;さきょうのだいぶあきすけ&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="94" height="28" rx="3"/><text class="fk-name" x="0" y="0.5">藤原顕輔</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">79</text><rect class="fk-sub-box" x="0" y="11" width="78" height="16" rx="8"/><text class="fk-sub" x="39" y="19.5">六条藤家2代</text></g>
+<g class="fk-node" transform="translate(166,100)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原家保&lt;rt&gt;ふじわらのいえやす&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：藤原顕季の子&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">藤原家保</text></g>
+<g class="fk-node" transform="translate(166,140)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原長実&lt;rt&gt;ふじわらのながざね&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：藤原顕季の子&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">藤原長実</text></g>
+<g class="fk-node is-poet" transform="translate(316,30)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原清輔&lt;rt&gt;ふじわらのきよすけ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1104年～1177年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：太皇太后宮大進&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正四位下&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：84番「長らへば」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;藤原清輔朝臣&lt;rt&gt;ふじわらのきよすけあそん&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;" data-p="84"><a href="/84.html" aria-label="藤原清輔（百人一首84番）"><rect class="fk-hit" x="-2" y="-13" width="88" height="26"/><text class="fk-name" x="0" y="0.5">藤原清輔</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">84</text></a><rect class="fk-sub-box" x="0" y="11" width="78" height="16" rx="8"/><text class="fk-sub" x="39" y="19.5">六条藤家3代</text></g>
+<g class="fk-node" transform="translate(316,86)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原重家&lt;rt&gt;ふじわらのしげいえ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：刑部卿&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：藤原顕輔の子。清輔の弟&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：兄・清輔から人麿影供を相伝され、六条藤家の4代となった&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">藤原重家</text><rect class="fk-sub-box" x="0" y="11" width="78" height="16" rx="8"/><text class="fk-sub" x="39" y="19.5">六条藤家4代</text></g>
+<g class="fk-node" transform="translate(316,142)" data-tip="&lt;h3&gt;&lt;ruby&gt;顕昭&lt;rt&gt;けんしょう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：藤原顕輔の猶子。歌学者&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">顕昭</text><rect class="fk-sub-box" x="0" y="11" width="34" height="16" rx="8"/><text class="fk-sub" x="17" y="19.5">猶子</text></g>
+</g>
+</svg>
+                <!-- KEIZU:END -->
+              </div>
+              <div class="kd-text">
                 <p style="margin-bottom: 0.75em;">藤原顕輔は、父・藤原<ruby>顕季<rt>あきすえ</rt></ruby>を祖とする<ruby>六条藤家<rt>ろくじょうとうけ</rt>
                   </ruby>と呼ばれる歌道の名門に生まれた2代目です。ちなみに「六条藤家」の名前は、藤原顕季が京都六条烏丸に住んでいたことに由来します。</p>
                 <p style="margin-bottom: 0.75em;">顕輔は、崇徳院の命を受けて『詞花和歌集』の撰者になりました。この編集には、息子の<a href="/84.html">藤原<ruby>清輔
                       <rt>きよすけ</rt>
-                    </ruby></a>に手伝わせましたが、顕輔は清輔の歌を『詞花和歌集』に一首も採りませんでした。このため、親子関係に確執があったと伝えられています。しかし、顕輔は亡くなる年に、六条藤家の嫡流の証とされる<ruby>人麻呂影供
+                    </ruby></a>に手伝わせましたが、清輔の意見はほとんど採用されなかったといい、親子関係には確執があったと伝えられています。しかし、顕輔は亡くなる年に、六条藤家の嫡流の証とされる<ruby>人麻呂影供
                     <rt>ひとまろえいぐ</rt>
                   </ruby>で使われる人麻呂の肖像を清輔に譲りました。</p>
                 <p>平安末期は、保守的な歌を重んじる六条藤家と革新的な和歌を推進する<span class="tippy mikohidarike"><ruby>御子左家<rt>みこひだりけ</rt></ruby></span>が歌壇の主導権を競い合いました。六条藤家は、顕輔・清輔親子の時代に全盛を迎え、その後は次第に歌人が輩出されずなくなり、以降は御子左家が栄えていきます。</p>
@@ -496,6 +543,9 @@
   <script src="../js/popper.min.js"></script>
   <script src="../js/tippy.umd.min.js"></script>
   <script src="../js/tooltips.js?2026920"></script>
+  <script src="../js/tenno-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/fujiwara-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/keizu-diagram.js?20261001-17"></script>
   <!-- ▲▲▲ tippy.js ▲▲▲ -->
   <script>window.POEM_NUM = 79;</script>
   <script src="../js/grammar-data.js?20260830"></script>

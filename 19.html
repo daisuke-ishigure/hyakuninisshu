@@ -93,6 +93,7 @@
   <link rel="stylesheet" href="../css/huda_19-88.css?20240507-02">
   <link rel="stylesheet" href="../css/animate.min.css">
   <link rel="stylesheet" href="../css/grammar-panel.css?20260721">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261001-16">
   <!-- google fontの追加 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -318,21 +319,88 @@
   </div><div class="diagram-section">
       <dl>
         <dt class='title'>恋愛相関図</dt>
-            <dd class='thumb-image2'>
-              <figure>
-                <img loading='lazy' src='../img/19_ise_diagram.gif' alt='伊勢の相関図' usemap="#ImageMap" width="1140" height="1280" />
-                <map name="ImageMap">
-                  <area shape="rect" coords="679,1061,746,1177" href="/sanjurokkasen.html#nakanotsukasa" alt="中務" />
-                  <area shape="rect" coords="10,324,80,703" href="/26.html" alt="貞信公" />
-                </map>
-                <figcaption>
-                  <p class="kome" style="width:calc(100% - 1em); font-size:0.9em;"><span
-                      style="color:#C32538; margin-right:0.25em;">■</span>の番号が付いている人物をクリックすると、その歌人のページに移動します。</p>
-                </figcaption>
-              </figure>
-              <div>
+            <dd class='kd-dd'>
+              <!-- 系図のすぐ上：左に凡例、右に拡大・縮小（tenno-keizu.html と同じ） -->
+              <div class="fk-chart-bar">
+                <ul class="fk-legend kd-legend">
+                  <li><span class="fk-legend__tenno">茶字</span>天皇</li>
+                  <li><span class="fk-legend__tno" aria-hidden="true"></span>天皇の代数</li>
+                  <li><span class="fk-legend__badge" aria-hidden="true"></span>百人一首の歌番号（クリックで歌のページへ）</li>
+                  <li><span class="fk-legend__eq">＝</span>婚姻</li>
+                </ul>
+                <div class="fk-zoom" role="group" aria-label="拡大・縮小">
+                  <button type="button" data-zoom="out" aria-label="縮小">－</button>
+                  <span class="fk-zoom__label" aria-live="polite">100%</span>
+                  <button type="button" data-zoom="in" aria-label="拡大">＋</button>
+                  <button type="button" data-zoom="reset">等倍</button>
+                  <button type="button" data-zoom="fit">幅に合わせる</button>
+                </div>
+              </div>
+              <!-- 相関図のデータ。SVG は node _tools/build-keizu.mjs で下の KEIZU:START〜END に書き込む -->
+              <div class="kd-chart" aria-label="伊勢の相関図">
+                <script type="application/json">
+{
+  "tooltips": "fujiwara",
+  "nodes": [
+    { "id": "mototsune", "n": "基経", "x": 16, "y": 125 },
+    { "id": "tadahira", "n": "貞信公", "key": "忠平", "p": 26, "x": 136, "y": 40 },
+    { "id": "nakahira", "n": "仲平", "sub": "伊勢と交際", "x": 136, "y": 90 },
+    { "id": "tokihira", "n": "時平", "sub": "伊勢と交際", "x": 136, "y": 150 },
+    { "id": "onshi", "n": "温子", "x": 136, "y": 210 },
+    { "id": "uda", "n": "宇多", "k": 1, "t": 59, "sub": "伊勢を寵愛", "x": 136, "y": 262 },
+    { "id": "inshi", "n": "胤子", "x": 136, "y": 330 },
+    { "id": "sadafun", "n": "平貞文", "sub": "伊勢と交際", "x": 136, "y": 400 },
+    { "id": "kinshi", "n": "均子内親王", "x": 256, "y": 227 },
+    { "id": "atsuyoshi", "n": "敦慶親王", "x": 256, "y": 305 },
+    { "id": "ise", "n": "伊勢", "p": 19, "self": 1, "sub": "温子に仕えた", "x": 256, "y": 349 },
+    { "id": "nakatsukasa", "n": "中務", "x": 406, "y": 327 }
+  ],
+  "couples": [
+    { "id": "c-onshi", "top": "onshi", "bottom": "uda" },
+    { "id": "c-inshi", "top": "uda", "bottom": "inshi" },
+    { "id": "c-kinshi", "top": "kinshi", "bottom": "atsuyoshi" },
+    { "id": "c-ise", "top": "atsuyoshi", "bottom": "ise" }
+  ],
+  "kids": [
+    { "from": "mototsune", "to": ["tadahira", "nakahira", "tokihira", "onshi"] },
+    { "from": "c-onshi", "to": ["kinshi"] },
+    { "from": "c-inshi", "to": ["atsuyoshi"] },
+    { "from": "c-ise", "to": ["nakatsukasa"] }
+  ],
+  "tips": {
+    "温子": ["<ruby>藤原温子<rt>ふじわらのおんし</rt></ruby>", "系譜：関白藤原基経の娘", "特記：宇多天皇の女御。伊勢が女房として仕えた"],
+    "胤子": ["<ruby>藤原胤子<rt>ふじわらのいんし</rt></ruby>", "系譜：藤原高藤の娘", "特記：宇多天皇の女御。醍醐天皇・敦慶親王の母"],
+    "均子内親王": ["均子内親王", "生没年：890年～910年", "系譜：宇多天皇と藤原温子の皇女", "特記：異母兄の敦慶親王の妃となった"],
+    "平貞文": ["<ruby>平貞文<rt>たいらのさだふん</rt></ruby>", "特記：伊勢と交際した"],
+    "伊勢": ["<ruby>伊勢<rt>いせ</rt></ruby>", "系譜：伊勢守藤原継蔭の娘", "百人一首：19番「難波潟…」の歌人", "特記：宇多天皇の中宮温子に女房として仕えた。藤原仲平・時平兄弟や平貞文と交際したのち、宇多天皇の寵愛を受けて皇子を生んだが、皇子は早世した。のちに敦慶親王との間に中務を生んだ"]
+  }
+}
+                </script>
+                <!-- KEIZU:START -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 452 440" width="452" height="440" role="img" aria-label="伊勢の相関図" class="fk-svg kd-svg" style="max-width:678px;min-width:min(640px,678px)" data-src="rbn5y5">
+<g class="fk-edges"><path d="M149 219V237M153 219V237" class="fk-edge fk-eq"/><path d="M149 290V321M153 290V321" class="fk-edge fk-eq"/><path d="M284 236V296M288 236V296" class="fk-edge fk-eq"/><path d="M269 314V340M273 314V340" class="fk-edge fk-eq"/><path d="M49 125H122" class="fk-edge"/><path d="M122 40V210" class="fk-edge"/><path d="M122 40H133" class="fk-edge"/><path d="M122 90H133" class="fk-edge"/><path d="M122 150H133" class="fk-edge"/><path d="M122 210H133" class="fk-edge"/><path d="M153 227H242" class="fk-edge"/><path d="M242 227H253" class="fk-edge"/><path d="M153 305.5H242" class="fk-edge"/><path d="M242 305V305.5" class="fk-edge"/><path d="M242 305H253" class="fk-edge"/><path d="M273 327H392" class="fk-edge"/><path d="M392 327H403" class="fk-edge"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node" transform="translate(16,125)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原基経&lt;rt&gt;ふじわらのもとつね&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：実父は長良、良房の養子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：836年～891年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：摂政・関白・太政大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従一位、贈正一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：史上初の事実上の関白&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;外戚：朱雀天皇・村上天皇の外祖父（母は藤原穏子）&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">基経</text></g>
+<g class="fk-node is-poet" transform="translate(136,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原忠平&lt;rt&gt;ふじわらのただひら&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;諡号：&lt;ruby&gt;貞信公&lt;rt&gt;ていしんこう&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：880年～949年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：摂政、関白&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従一位、贈正一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首26番「小倉山…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;貞信公&lt;rt&gt;ていしんこう&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;" data-p="26"><a href="/26.html" aria-label="藤原忠平（百人一首26番）"><rect class="fk-hit" x="-2" y="-13" width="73" height="26"/><text class="fk-name" x="0" y="0.5">貞信公</text><circle class="fk-badge" cx="59" cy="0" r="10"/><text class="fk-badge-num" x="59" y="0.5">26</text></a></g>
+<g class="fk-node" transform="translate(136,90)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原仲平&lt;rt&gt;ふじわらのなかひら&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：875年～945年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：左大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正二位&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">仲平</text><rect class="fk-sub-box" x="0" y="11" width="67" height="16" rx="8"/><text class="fk-sub" x="33.5" y="19.5">伊勢と交際</text></g>
+<g class="fk-node" transform="translate(136,150)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原時平&lt;rt&gt;ふじわらのときひら&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：871年～909年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：左大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正二位、贈正一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：昌泰の変で菅原道真を大宰府へ左遷&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">時平</text><rect class="fk-sub-box" x="0" y="11" width="67" height="16" rx="8"/><text class="fk-sub" x="33.5" y="19.5">伊勢と交際</text></g>
+<g class="fk-node" transform="translate(136,210)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原温子&lt;rt&gt;ふじわらのおんし&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：関白藤原基経の娘&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：宇多天皇の女御。伊勢が女房として仕えた&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">温子</text></g>
+<g class="fk-node is-tenno" transform="translate(136,262)" data-tip="&lt;h3&gt;&lt;ruby&gt;宇多天皇&lt;rt&gt;うだてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第59代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：867年～931年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：887年～897年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：菅原道真を重用した&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">宇多</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">59</text><rect class="fk-sub-box" x="0" y="11" width="67" height="16" rx="8"/><text class="fk-sub" x="33.5" y="19.5">伊勢を寵愛</text></g>
+<g class="fk-node" transform="translate(136,330)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原胤子&lt;rt&gt;ふじわらのいんし&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：藤原高藤の娘&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：宇多天皇の女御。醍醐天皇・敦慶親王の母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">胤子</text></g>
+<g class="fk-node" transform="translate(136,400)" data-tip="&lt;h3&gt;&lt;ruby&gt;平貞文&lt;rt&gt;たいらのさだふん&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：伊勢と交際した&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">平貞文</text><rect class="fk-sub-box" x="0" y="11" width="67" height="16" rx="8"/><text class="fk-sub" x="33.5" y="19.5">伊勢と交際</text></g>
+<g class="fk-node" transform="translate(256,227)" data-tip="&lt;h3&gt;均子内親王&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：890年～910年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：宇多天皇と藤原温子の皇女&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：異母兄の敦慶親王の妃となった&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">均子内親王</text></g>
+<g class="fk-node" transform="translate(256,305)" data-tip="&lt;h3&gt;&lt;ruby&gt;敦慶親王&lt;rt&gt;あつよししんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：888年～930年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：二品&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：宇多天皇の皇子。母は藤原胤子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：中務卿・式部卿を務めた。伊勢を妻とし、中務が生まれた&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">敦慶親王</text></g>
+<g class="fk-node is-poet is-self" transform="translate(256,349)" data-tip="&lt;h3&gt;&lt;ruby&gt;伊勢&lt;rt&gt;いせ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：伊勢守藤原継蔭の娘&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：19番「難波潟…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：宇多天皇の中宮温子に女房として仕えた。藤原仲平・時平兄弟や平貞文と交際したのち、宇多天皇の寵愛を受けて皇子を生んだが、皇子は早世した。のちに敦慶親王との間に中務を生んだ&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="64" height="28" rx="3"/><text class="fk-name" x="0" y="0.5">伊勢</text><circle class="fk-badge" cx="44" cy="0" r="10"/><text class="fk-badge-num" x="44" y="0.5">19</text><rect class="fk-sub-box" x="0" y="11" width="78" height="16" rx="8"/><text class="fk-sub" x="39" y="19.5">温子に仕えた</text></g>
+<g class="fk-node" transform="translate(406,327)" data-tip="&lt;h3&gt;&lt;ruby&gt;中務&lt;rt&gt;なかつかさ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：912年頃～991年頃&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：敦慶親王と伊勢の娘&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：父の敦慶親王が中務卿だったことから中務と呼ばれた。三十六歌仙の一人。源信明（光孝天皇の曾孫）と深い関係にあった&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">中務</text></g>
+</g>
+</svg>
+                <!-- KEIZU:END -->
+              </div>
+              <div class="kd-text">
                 <p style="width:100%; margin-bottom: 0.5em;">伊勢はいろんな人たちから求愛されました。伊勢が仕えていた<ruby>温子<rt>おんし</rt>
-                  </ruby>の夫である<ruby>宇多<rt>うだ</rt></ruby>天皇との間には皇子が誕生し、伊勢は「伊勢の御息所」と呼ばれました。しかし、その皇子はわずか8歳で亡くなっています。</p>
+                  </ruby>の夫である<ruby>宇多<rt>うだ</rt></ruby>天皇との間には皇子が誕生し、伊勢は「伊勢の御息所」と呼ばれました。しかし、その皇子は幼くして亡くなっています。</p>
                 <p style="width:100%; margin-bottom: 0.75em;">その後、温子の娘婿である<ruby>敦慶<rt>あつよし</rt>
                   </ruby>親王との間には歌人・<ruby>中務<rt>なかのつかさ</rt></ruby>が誕生しました。伊勢と中務は親子で<a
                     href="/sanjurokkasen.html">三十六歌仙</a>に名前を連ねています。</p>
@@ -566,6 +634,9 @@
   <script src="../js/popper.min.js"></script>
   <script src="../js/tippy.umd.min.js"></script>
   <script src="../js/tooltips.js?2026920"></script>
+  <script src="../js/tenno-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/fujiwara-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/keizu-diagram.js?20261001-17"></script>
   <!-- ▲▲▲ tippy.js ▲▲▲ -->
   <!-- ▼▼▼ 語句・文法の対話パネル ▼▼▼ -->
   <script>window.POEM_NUM = 19;</script>

@@ -96,6 +96,7 @@
   <link rel="stylesheet" href="../css/moon.css?20240820">
   <link rel="stylesheet" href="../css/animate.min.css">
   <link rel="stylesheet" href="../css/grammar-panel.css?20260721">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261001-16">
   <!-- google fontの追加 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -323,14 +324,97 @@
   </div><div class="diagram-section">
       <dl>
         <dt class='title'>道綱母の系図</dt>
-            <dd class='thumb-image2'>
-              <figure>
-                <a href='../img/53_michitunanohaha_diagram.gif' data-lightbox='道綱母' data-title='道綱母の系図'>
-                  <img loading='lazy' src='../img/53_michitunanohaha_diagram.gif' alt='道綱母の系図' width="1280" height="1108">
-                </a>
-              </figure>
-              <div>
-                <p>道綱母は、藤原兼家の<ruby>妾<rt>しょう</rt></ruby>でした。妾は正妻よりも立場が弱く、いつ夫が訪ねてくるかわからないまま、ただ待ち続ける日々を過ごすことが多かったようです。</p>
+            <dd class='kd-dd'>
+              <!-- 系図のすぐ上：左に凡例、右に拡大・縮小（tenno-keizu.html と同じ） -->
+              <div class="fk-chart-bar">
+                <ul class="fk-legend kd-legend">
+                  <li><span class="fk-legend__badge" aria-hidden="true"></span>百人一首の歌番号（クリックで歌のページへ）</li>
+                  <li><span class="fk-legend__dash"></span>数代省略</li>
+                  <li><span class="fk-legend__eq">＝</span>婚姻</li>
+                </ul>
+                <div class="fk-zoom" role="group" aria-label="拡大・縮小">
+                  <button type="button" data-zoom="out" aria-label="縮小">－</button>
+                  <span class="fk-zoom__label" aria-live="polite">100%</span>
+                  <button type="button" data-zoom="in" aria-label="拡大">＋</button>
+                  <button type="button" data-zoom="reset">等倍</button>
+                  <button type="button" data-zoom="fit">幅に合わせる</button>
+                </div>
+              </div>
+              <!-- 相関図のデータ。SVG は node _tools/build-keizu.mjs で下の KEIZU:START〜END に書き込む -->
+              <div class="kd-chart" aria-label="道綱母の系図">
+                <script type="application/json">
+{
+  "tooltips": "fujiwara",
+  "nodes": [
+    { "id": "michizane", "n": "菅原道真", "p": 24, "x": 16, "y": 40 },
+    { "id": "tomoyasu", "n": "藤原倫寧", "x": 16, "y": 117 },
+    { "id": "morosuke", "n": "藤原師輔", "key": "師輔", "x": 16, "y": 194 },
+    { "id": "takasue", "n": "菅原孝標", "x": 166, "y": 40 },
+    { "id": "tomoyasujo", "n": "倫寧の娘", "x": 166, "y": 84 },
+    { "id": "michitsunahaha", "n": "右大将道綱母", "key": "道綱母", "p": 53, "self": 1, "x": 166, "y": 150 },
+    { "id": "kaneie", "n": "藤原兼家", "key": "兼家", "x": 166, "y": 194 },
+    { "id": "tokihime", "n": "時姫", "x": 166, "y": 238 },
+    { "id": "takasuejo", "n": "菅原孝標女", "x": 346, "y": 62 },
+    { "id": "michitsuna", "n": "道綱", "x": 346, "y": 172 },
+    { "id": "michitaka", "n": "道隆", "x": 346, "y": 216 },
+    { "id": "michikane", "n": "道兼", "x": 346, "y": 252 },
+    { "id": "michinaga", "n": "道長", "x": 346, "y": 288 },
+    { "id": "choshi", "n": "超子", "x": 346, "y": 324 },
+    { "id": "senshi", "n": "詮子", "x": 346, "y": 360 }
+  ],
+  "couples": [
+    { "id": "c-takasue", "top": "takasue", "bottom": "tomoyasujo" },
+    { "id": "c-michitsuna", "top": "michitsunahaha", "bottom": "kaneie" },
+    { "id": "c-tokihime", "top": "kaneie", "bottom": "tokihime" }
+  ],
+  "kids": [
+    { "from": "tomoyasu", "to": ["tomoyasujo", "michitsunahaha"] },
+    { "from": "morosuke", "to": ["kaneie"] },
+    { "from": "c-takasue", "to": ["takasuejo"] },
+    { "from": "c-michitsuna", "to": ["michitsuna"] },
+    { "from": "c-tokihime", "to": ["michitaka", "michikane", "michinaga", "choshi", "senshi"] }
+  ],
+  "lines": [
+    { "points": [[103, 40], [163, 40]], "dash": true, "label": { "text": "3代略", "x": 133, "y": 34 } }
+  ],
+  "tips": {
+    "藤原倫寧": ["<ruby>藤原倫寧<rt>ふじわらのともやす</rt></ruby>", "特記：右大将道綱母の父。娘は菅原孝標の妻となり、菅原孝標女を生んだ"],
+    "菅原孝標": ["<ruby>菅原孝標<rt>すがわらのたかすえ</rt></ruby>", "系譜：菅原資忠の子。菅原道真の玄孫", "特記：菅原孝標女の父"],
+    "倫寧の娘": ["藤原倫寧の娘", "特記：菅原孝標の妻。菅原孝標女の母。異母姉に右大将道綱母がいる"],
+    "時姫": ["<ruby>藤原時姫<rt>ふじわらのときひめ</rt></ruby>", "系譜：摂津守藤原中正の娘", "特記：藤原兼家の妻。道隆・道兼・道長・超子・詮子らを生んだ"],
+    "菅原孝標女": ["<ruby>菅原孝標女<rt>すがわらのたかすえのむすめ</rt></ruby>", "生没年：1008年～不明", "系譜：菅原孝標と藤原倫寧の娘の子。右大将道綱母の姪", "特記：『更級日記』の作者"],
+    "超子": ["<ruby>藤原超子<rt>ふじわらのちょうし</rt></ruby>", "系譜：藤原兼家と時姫の娘"],
+    "詮子": ["<ruby>藤原詮子<rt>ふじわらのせんし</rt></ruby>", "系譜：藤原兼家と時姫の娘"]
+  }
+}
+                </script>
+                <!-- KEIZU:START -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 437 386" width="437" height="386" role="img" aria-label="道綱母の系図" class="fk-svg kd-svg" style="max-width:656px;min-width:min(640px,656px)" data-src="12jbzqu">
+<g class="fk-edges"><path d="M194 49V75M198 49V75" class="fk-edge fk-eq"/><path d="M194 159V185M198 159V185" class="fk-edge fk-eq"/><path d="M179 203V229M183 203V229" class="fk-edge fk-eq"/><path d="M79 117H152" class="fk-edge"/><path d="M152 84V150" class="fk-edge"/><path d="M152 84H163" class="fk-edge"/><path d="M152 150H163" class="fk-edge"/><path d="M79 194H152" class="fk-edge"/><path d="M152 194H163" class="fk-edge"/><path d="M198 62H332" class="fk-edge"/><path d="M332 62H343" class="fk-edge"/><path d="M198 172H332" class="fk-edge"/><path d="M332 172H343" class="fk-edge"/><path d="M183 216H332" class="fk-edge"/><path d="M332 216V360" class="fk-edge"/><path d="M332 216H343" class="fk-edge"/><path d="M332 252H343" class="fk-edge"/><path d="M332 288H343" class="fk-edge"/><path d="M332 324H343" class="fk-edge"/><path d="M332 360H343" class="fk-edge"/><path d="M103 40L163 40" class="fk-edge is-dash"/><text class="fk-adopt" x="133" y="34">3代略</text></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node is-poet" transform="translate(16,40)" data-tip="&lt;h3&gt;菅原道真&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首24番の歌人&lt;/div&gt;" data-p="24"><a href="/24.html" aria-label="菅原道真（百人一首24番）"><rect class="fk-hit" x="-2" y="-13" width="88" height="26"/><text class="fk-name" x="0" y="0.5">菅原道真</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">24</text></a></g>
+<g class="fk-node" transform="translate(16,117)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原倫寧&lt;rt&gt;ふじわらのともやす&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：右大将道綱母の父。娘は菅原孝標の妻となり、菅原孝標女を生んだ&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">藤原倫寧</text></g>
+<g class="fk-node" transform="translate(16,194)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原師輔&lt;rt&gt;ふじわらのもろすけ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：909年～960年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：右大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正二位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：九条流の祖&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;外戚：冷泉天皇、円融天皇の外祖父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">藤原師輔</text></g>
+<g class="fk-node" transform="translate(166,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;菅原孝標&lt;rt&gt;すがわらのたかすえ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：菅原資忠の子。菅原道真の玄孫&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：菅原孝標女の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">菅原孝標</text></g>
+<g class="fk-node" transform="translate(166,84)" data-tip="&lt;h3&gt;藤原倫寧の娘&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：菅原孝標の妻。菅原孝標女の母。異母姉に右大将道綱母がいる&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">倫寧の娘</text></g>
+<g class="fk-node is-poet is-self" transform="translate(166,150)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原道綱母&lt;rt&gt;ふじわらのみちつなのはは&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：936年頃～995年頃&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：兼家の側室&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：53番「嘆きつつ…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;右大将道綱母&lt;rt&gt;うだいしょうみちつなのはは&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="124" height="28" rx="3"/><text class="fk-name" x="0" y="0.5">右大将道綱母</text><circle class="fk-badge" cx="104" cy="0" r="10"/><text class="fk-badge-num" x="104" y="0.5">53</text></g>
+<g class="fk-node" transform="translate(166,194)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原兼家&lt;rt&gt;ふじわらのかねいえ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：929年～990年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：摂政、関白、太政大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;外戚：一条天皇の外祖父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">藤原兼家</text></g>
+<g class="fk-node" transform="translate(166,238)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原時姫&lt;rt&gt;ふじわらのときひめ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：摂津守藤原中正の娘&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：藤原兼家の妻。道隆・道兼・道長・超子・詮子らを生んだ&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">時姫</text></g>
+<g class="fk-node" transform="translate(346,62)" data-tip="&lt;h3&gt;&lt;ruby&gt;菅原孝標女&lt;rt&gt;すがわらのたかすえのむすめ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1008年～不明&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：菅原孝標と藤原倫寧の娘の子。右大将道綱母の姪&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：『更級日記』の作者&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">菅原孝標女</text></g>
+<g class="fk-node" transform="translate(346,172)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原道綱&lt;rt&gt;ふじわらのみちつな&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：955年～1020年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：大納言&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正二位&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">道綱</text></g>
+<g class="fk-node" transform="translate(346,216)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原道隆&lt;rt&gt;ふじわらのみちたか&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：953年～995年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：摂政、関白、内大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正二位&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">道隆</text></g>
+<g class="fk-node" transform="translate(346,252)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原道兼&lt;rt&gt;ふじわらのみちかね&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：961年～995年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：関白、右大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正二位、贈正一位&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">道兼</text></g>
+<g class="fk-node" transform="translate(346,288)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原道長&lt;rt&gt;ふじわらのみちなが&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：966年～1028年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：摂政、左大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;外戚：後一条、後朱雀、後冷泉天皇の外祖父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">道長</text></g>
+<g class="fk-node" transform="translate(346,324)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原超子&lt;rt&gt;ふじわらのちょうし&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：藤原兼家と時姫の娘&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">超子</text></g>
+<g class="fk-node" transform="translate(346,360)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原詮子&lt;rt&gt;ふじわらのせんし&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：藤原兼家と時姫の娘&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">詮子</text></g>
+</g>
+</svg>
+                <!-- KEIZU:END -->
+              </div>
+              <div class="kd-text">
+                <p>道綱母は、藤原兼家の妻の一人でした。正妻ではない妻は立場が弱く、いつ夫が訪ねてくるかわからないまま、ただ待ち続ける日々を過ごすことが多かったようです。</p>
                 <p>ちなみに、藤原兼家の正妻は時姫という女性で、時姫との間には、中関白家の祖になった藤原道隆と<span
                     class="tippy sekkanseiji">摂関政治</span>の全盛期を作った藤原道長がいます。</p>
                 <p>道綱母の姪には『<ruby>更級<rt>さらしな</rt></ruby><ruby>日記<rt>にっき</rt></ruby>』の作者である<ruby>菅原<rt>すがわらの</rt>
@@ -461,6 +545,9 @@
   <script src="../js/popper.min.js"></script>
   <script src="../js/tippy.umd.min.js"></script>
   <script src="../js/tooltips.js?2026920"></script>
+  <script src="../js/tenno-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/fujiwara-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/keizu-diagram.js?20261001-17"></script>
   <!-- ▲▲▲ tippy.js ▲▲▲ -->
   <script>window.POEM_NUM = 53;</script>
   <script src="../js/grammar-data.js?20260830"></script>

@@ -95,6 +95,7 @@
   <link rel="stylesheet" href="../css/moon.css?20240820">
   <link rel="stylesheet" href="../css/animate.min.css">
   <link rel="stylesheet" href="../css/grammar-panel.css?20260721">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261001-16">
   <!-- google fontの追加 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -325,19 +326,92 @@
   </div><div class="diagram-section">
       <dl>
         <dt class='title'>赤染衛門の系図</dt>
-            <dd class='thumb-image2'>
-              <figure>
-                <img loading='lazy' src='../img/59_akazoeemon_diagram.gif' alt='赤染衛門の系図' usemap="#ImageMap" width="1280" height="1016">
-                <map name="ImageMap">
-                  <area shape="rect" coords="1187,12,1268,242" href="/40.html" alt="平兼盛" />
-                  <area shape="rect" coords="1013,828,1107,1020" href="/73.html" alt="大江匡房" />
-                </map>
-                <figcaption style="margin-top:0.5em;">
-                  <p class="kome" style="width:calc(100% - 1em); font-size:0.9em;"><span
-                      style="color:#C32538; margin-right:0.25em;">■</span>の番号が付いている人物をクリックすると、その歌人のページに移動します。</p>
-                </figcaption>
-              </figure>
-              <div>
+            <dd class='kd-dd'>
+              <!-- 系図のすぐ上：左に凡例、右に拡大・縮小（tenno-keizu.html と同じ） -->
+              <div class="fk-chart-bar">
+                <ul class="fk-legend kd-legend">
+                  <li><span class="fk-legend__kanpaku">紫字</span>摂政・関白になった人物</li>
+                  <li><span class="fk-legend__badge" aria-hidden="true"></span>百人一首の歌番号（クリックで歌のページへ）</li>
+                  <li><span class="fk-legend__eq">＝</span>婚姻</li>
+                </ul>
+                <div class="fk-zoom" role="group" aria-label="拡大・縮小">
+                  <button type="button" data-zoom="out" aria-label="縮小">－</button>
+                  <span class="fk-zoom__label" aria-live="polite">100%</span>
+                  <button type="button" data-zoom="in" aria-label="拡大">＋</button>
+                  <button type="button" data-zoom="reset">等倍</button>
+                  <button type="button" data-zoom="fit">幅に合わせる</button>
+                </div>
+              </div>
+              <!-- 相関図のデータ。SVG は node _tools/build-keizu.mjs で下の KEIZU:START〜END に書き込む -->
+              <div class="kd-chart" aria-label="赤染衛門の系図">
+                <script type="application/json">
+{
+  "tooltips": "fujiwara",
+  "nodes": [
+    { "id": "kanemori", "n": "平兼盛", "p": 40, "x": 16, "y": 40 },
+    { "id": "haha", "n": "赤染衛門の母", "x": 16, "y": 84 },
+    { "id": "tokimochi", "n": "赤染時用", "x": 16, "y": 128 },
+    { "id": "shimai", "n": "姉妹", "sub": "道隆が訪れず、衛門が歌を代作", "x": 166, "y": 84 },
+    { "id": "akazome", "n": "赤染衛門", "p": 59, "self": 1, "sub": "源倫子・中宮彰子に仕えた", "x": 166, "y": 140 },
+    { "id": "masahira", "n": "大江匡衡", "x": 166, "y": 204 },
+    { "id": "michitaka", "n": "藤原道隆", "key": "道隆", "kan": 1, "x": 366, "y": 84 },
+    { "id": "takachika", "n": "大江挙周", "x": 336, "y": 182 },
+    { "id": "michinaga", "n": "藤原道長", "key": "道長", "kan": 1, "x": 336, "y": 250 },
+    { "id": "rinshi", "n": "源倫子", "x": 336, "y": 294 },
+    { "id": "narihira", "n": "大江成衡", "x": 456, "y": 182 },
+    { "id": "shoshi", "n": "彰子", "x": 456, "y": 272 },
+    { "id": "masafusa", "n": "権中納言匡房", "key": "大江匡房", "p": 73, "x": 576, "y": 182 }
+  ],
+  "couples": [
+    { "id": "c-kanemori", "top": "kanemori", "bottom": "haha" },
+    { "id": "c-tokimochi", "top": "haha", "bottom": "tokimochi" },
+    { "id": "c-masahira", "top": "akazome", "bottom": "masahira" },
+    { "id": "c-michinaga", "top": "michinaga", "bottom": "rinshi" }
+  ],
+  "kids": [
+    { "from": "c-tokimochi", "to": ["shimai", "akazome"] },
+    { "from": "c-masahira", "to": ["takachika"] },
+    { "from": "takachika", "to": ["narihira"] },
+    { "from": "narihira", "to": ["masafusa"] },
+    { "from": "c-michinaga", "to": ["shoshi"] }
+  ],
+  "tips": {
+    "平兼盛": ["<ruby>平兼盛<rt>たいらのかねもり</rt></ruby>", "百人一首：40番「しのぶれど…」の歌人", "特記：赤染衛門の母の前夫。赤染衛門を自分の娘だとして引き取りを求め、検非違使庁に訴えたという"],
+    "赤染衛門の母": ["赤染衛門の母", "特記：はじめ平兼盛の妻で、のちに赤染時用と再婚した"],
+    "赤染時用": ["<ruby>赤染時用<rt>あかぞめのときもち</rt></ruby>", "官職：大隅守", "特記：赤染衛門の父とされる。右衛門志・尉を歴任し、娘の呼び名の由来となった"],
+    "姉妹": ["赤染衛門の姉妹", "特記：通っていた藤原道隆が訪れなかったため、赤染衛門が代わりに「やすらはで…」の歌を詠んだ"],
+    "赤染衛門": ["<ruby>赤染衛門<rt>あかぞめえもん</rt></ruby>", "百人一首：59番「やすらはで…」の歌人", "系譜：赤染時用の娘とされるが、実父を平兼盛とする説もある", "特記：源倫子とその娘の彰子に仕えた。夫の大江匡衡とはおしどり夫婦として知られた"],
+    "大江匡衡": ["<ruby>大江匡衡<rt>おおえのまさひら</rt></ruby>", "特記：文章博士。妻は赤染衛門。挙周の父"],
+    "大江挙周": ["<ruby>大江挙周<rt>おおえのたかちか</rt></ruby>", "生没年：不明～1046年", "系譜：大江匡衡と赤染衛門の子"],
+    "大江成衡": ["大江成衡", "系譜：大江挙周の子", "特記：大江匡房の父"],
+    "源倫子": ["<ruby>源倫子<rt>みなもとのりんし</rt></ruby>", "特記：藤原道長の正室。彰子の母。赤染衛門が仕えた"]
+  }
+}
+                </script>
+                <!-- KEIZU:START -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 706 320" width="706" height="320" role="img" aria-label="赤染衛門の系図" class="fk-svg kd-svg" style="max-width:1059px;min-width:min(640px,1059px)" data-src="5z9f7h">
+<g class="fk-edges"><path d="M36.5 49V75M40.5 49V75" class="fk-edge fk-eq"/><path d="M44 93V119M48 93V119" class="fk-edge fk-eq"/><path d="M194 168V195M198 168V195" class="fk-edge fk-eq"/><path d="M356.5 259V285M360.5 259V285" class="fk-edge fk-eq"/><path d="M48 106H152" class="fk-edge"/><path d="M152 84V140" class="fk-edge"/><path d="M152 84H163" class="fk-edge"/><path d="M152 140H163" class="fk-edge"/><path d="M198 181.5H322" class="fk-edge"/><path d="M322 181.5V182" class="fk-edge"/><path d="M322 182H333" class="fk-edge"/><path d="M399 182H442" class="fk-edge"/><path d="M442 182H453" class="fk-edge"/><path d="M519 182H562" class="fk-edge"/><path d="M562 182H573" class="fk-edge"/><path d="M360.5 272H442" class="fk-edge"/><path d="M442 272H453" class="fk-edge"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node is-poet" transform="translate(16,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;平兼盛&lt;rt&gt;たいらのかねもり&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：40番「しのぶれど…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：赤染衛門の母の前夫。赤染衛門を自分の娘だとして引き取りを求め、検非違使庁に訴えたという&lt;/div&gt;" data-p="40"><a href="/40.html" aria-label="平兼盛（百人一首40番）"><rect class="fk-hit" x="-2" y="-13" width="73" height="26"/><text class="fk-name" x="0" y="0.5">平兼盛</text><circle class="fk-badge" cx="59" cy="0" r="10"/><text class="fk-badge-num" x="59" y="0.5">40</text></a></g>
+<g class="fk-node" transform="translate(16,84)" data-tip="&lt;h3&gt;赤染衛門の母&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：はじめ平兼盛の妻で、のちに赤染時用と再婚した&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">赤染衛門の母</text></g>
+<g class="fk-node" transform="translate(16,128)" data-tip="&lt;h3&gt;&lt;ruby&gt;赤染時用&lt;rt&gt;あかぞめのときもち&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：大隅守&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：赤染衛門の父とされる。右衛門志・尉を歴任し、娘の呼び名の由来となった&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">赤染時用</text></g>
+<g class="fk-node" transform="translate(166,84)" data-tip="&lt;h3&gt;赤染衛門の姉妹&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：通っていた藤原道隆が訪れなかったため、赤染衛門が代わりに「やすらはで…」の歌を詠んだ&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">姉妹</text><rect class="fk-sub-box" x="0" y="11" width="166" height="16" rx="8"/><text class="fk-sub" x="83" y="19.5">道隆が訪れず、衛門が歌を代作</text></g>
+<g class="fk-node is-poet is-self" transform="translate(166,140)" data-tip="&lt;h3&gt;&lt;ruby&gt;赤染衛門&lt;rt&gt;あかぞめえもん&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：59番「やすらはで…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：赤染時用の娘とされるが、実父を平兼盛とする説もある&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：源倫子とその娘の彰子に仕えた。夫の大江匡衡とはおしどり夫婦として知られた&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="94" height="28" rx="3"/><text class="fk-name" x="0" y="0.5">赤染衛門</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">59</text><rect class="fk-sub-box" x="0" y="11" width="144" height="16" rx="8"/><text class="fk-sub" x="72" y="19.5">源倫子・中宮彰子に仕えた</text></g>
+<g class="fk-node" transform="translate(166,204)" data-tip="&lt;h3&gt;&lt;ruby&gt;大江匡衡&lt;rt&gt;おおえのまさひら&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：文章博士。妻は赤染衛門。挙周の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">大江匡衡</text></g>
+<g class="fk-node is-kanpaku" transform="translate(366,84)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原道隆&lt;rt&gt;ふじわらのみちたか&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：953年～995年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：摂政、関白、内大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正二位&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">藤原道隆</text></g>
+<g class="fk-node" transform="translate(336,182)" data-tip="&lt;h3&gt;&lt;ruby&gt;大江挙周&lt;rt&gt;おおえのたかちか&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：不明～1046年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：大江匡衡と赤染衛門の子&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">大江挙周</text></g>
+<g class="fk-node is-kanpaku" transform="translate(336,250)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原道長&lt;rt&gt;ふじわらのみちなが&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：966年～1028年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：摂政、左大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;外戚：後一条、後朱雀、後冷泉天皇の外祖父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">藤原道長</text></g>
+<g class="fk-node" transform="translate(336,294)" data-tip="&lt;h3&gt;&lt;ruby&gt;源倫子&lt;rt&gt;みなもとのりんし&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：藤原道長の正室。彰子の母。赤染衛門が仕えた&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">源倫子</text></g>
+<g class="fk-node" transform="translate(456,182)" data-tip="&lt;h3&gt;大江成衡&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：大江挙周の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：大江匡房の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">大江成衡</text></g>
+<g class="fk-node" transform="translate(456,272)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原彰子&lt;rt&gt;ふじわらのしょうし&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：988年～1074年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：一条天皇の中宮、後一条天皇・後朱雀天皇の母&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;院号：上東門院&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">彰子</text></g>
+<g class="fk-node is-poet" transform="translate(576,182)" data-tip="&lt;h3&gt;権中納言匡房&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首73番の歌人&lt;/div&gt;" data-p="73"><a href="/73.html" aria-label="権中納言匡房（百人一首73番）"><rect class="fk-hit" x="-2" y="-13" width="118" height="26"/><text class="fk-name" x="0" y="0.5">権中納言匡房</text><circle class="fk-badge" cx="104" cy="0" r="10"/><text class="fk-badge-num" x="104" y="0.5">73</text></a></g>
+</g>
+</svg>
+                <!-- KEIZU:END -->
+              </div>
+              <div class="kd-text">
                 <p>
                   赤染衛門は赤染<ruby>時用<rt>ときもち</rt></ruby>(官職:<span class="tippy uemonnojou">右衛門尉</span>)の娘ですが、<a
                     href="/40.html">平兼盛</a>が赤染衛門の親権を争って裁判を起こしたものの認められなかったという逸話が残されており、父親は平兼盛だとする説があります。
@@ -515,6 +589,9 @@
   <script src="../js/popper.min.js"></script>
   <script src="../js/tippy.umd.min.js"></script>
   <script src="../js/tooltips.js?2026920"></script>
+  <script src="../js/tenno-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/fujiwara-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/keizu-diagram.js?20261001-17"></script>
   <!-- ▲▲▲ tippy.js ▲▲▲ -->
   <script>window.POEM_NUM = 59;</script>
   <script src="../js/grammar-data.js?20260830"></script>

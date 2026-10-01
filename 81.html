@@ -97,6 +97,7 @@
   <link rel="stylesheet" href="../css/moon_dawn.css?20250701">
   <link rel="stylesheet" href="../css/animate.min.css">
   <link rel="stylesheet" href="../css/grammar-panel.css?20260721">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261001-16">
   <!-- google fontの追加 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -322,7 +323,146 @@
         </dd>
       </dl>
     </div>
-  </div><div class="words">
+  </div><div class="diagram-section">
+      <dl>
+        <dt class='title'>後徳大寺左大臣の系図</dt>
+            <dd class='kd-dd'>
+              <!-- 系図のすぐ上：左に凡例、右に拡大・縮小（tenno-keizu.html と同じ） -->
+              <div class="fk-chart-bar">
+                <ul class="fk-legend kd-legend">
+                  <li><span class="fk-legend__badge" aria-hidden="true"></span>百人一首の歌番号（クリックで歌のページへ）</li>
+                </ul>
+                <div class="fk-zoom" role="group" aria-label="拡大・縮小">
+                  <button type="button" data-zoom="out" aria-label="縮小">－</button>
+                  <span class="fk-zoom__label" aria-live="polite">100%</span>
+                  <button type="button" data-zoom="in" aria-label="拡大">＋</button>
+                  <button type="button" data-zoom="reset">等倍</button>
+                  <button type="button" data-zoom="fit">幅に合わせる</button>
+                </div>
+              </div>
+              <!-- 相関図のデータ。SVG は node _tools/build-keizu.mjs で下の KEIZU:START〜END に書き込む -->
+              <div class="kd-chart" aria-label="後徳大寺左大臣の系図">
+                <script type="application/json">
+{
+ "tooltips": "fujiwara",
+ "nodes": [
+  {
+   "id": "kinzane",
+   "n": "公実",
+   "x": 16,
+   "y": 62
+  },
+  {
+   "id": "michisue",
+   "n": "通季",
+   "pre": "西園寺",
+   "x": 90,
+   "y": 40
+  },
+  {
+   "id": "kinmichi",
+   "n": "公通",
+   "x": 200,
+   "y": 40
+  },
+  {
+   "id": "sanemune",
+   "n": "実宗",
+   "x": 275,
+   "y": 40
+  },
+  {
+   "id": "kintsune",
+   "n": "公経",
+   "p": 96,
+   "x": 350,
+   "y": 40
+  },
+  {
+   "id": "saneyoshi",
+   "n": "実能",
+   "pre": "徳大寺",
+   "x": 90,
+   "y": 84
+  },
+  {
+   "id": "kinyoshi",
+   "n": "公能",
+   "x": 200,
+   "y": 84
+  },
+  {
+   "id": "sanesada",
+   "n": "実定",
+   "p": 81,
+   "self": 1,
+   "x": 275,
+   "y": 84
+  }
+ ],
+ "kids": [
+  {
+   "from": "kinzane",
+   "to": [
+    "michisue",
+    "saneyoshi"
+   ]
+  },
+  {
+   "from": "michisue",
+   "to": [
+    "kinmichi"
+   ]
+  },
+  {
+   "from": "kinmichi",
+   "to": [
+    "sanemune"
+   ]
+  },
+  {
+   "from": "sanemune",
+   "to": [
+    "kintsune"
+   ]
+  },
+  {
+   "from": "saneyoshi",
+   "to": [
+    "kinyoshi"
+   ]
+  },
+  {
+   "from": "kinyoshi",
+   "to": [
+    "sanesada"
+   ]
+  }
+ ]
+}
+                </script>
+                <!-- KEIZU:START -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 110" width="420" height="110" role="img" aria-label="後徳大寺左大臣の系図" class="fk-svg kd-svg" style="max-width:630px;min-width:min(640px,630px)" data-src="1piebe7">
+<g class="fk-edges"><path d="M49 62H76" class="fk-edge"/><path d="M76 40V84" class="fk-edge"/><path d="M76 40H87" class="fk-edge"/><path d="M76 84H87" class="fk-edge"/><path d="M168 40H186" class="fk-edge"/><path d="M186 40H197" class="fk-edge"/><path d="M233 40H261" class="fk-edge"/><path d="M261 40H272" class="fk-edge"/><path d="M308 40H336" class="fk-edge"/><path d="M336 40H347" class="fk-edge"/><path d="M168 84H186" class="fk-edge"/><path d="M186 84H197" class="fk-edge"/><path d="M233 84H261" class="fk-edge"/><path d="M261 84H272" class="fk-edge"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node" transform="translate(16,62)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原公実&lt;rt&gt;ふじわらのきんざね&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1053年～1107年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：権大納言&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正二位&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">公実</text></g>
+<g class="fk-node" transform="translate(90,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;西園寺通季&lt;rt&gt;さいおんじみちすえ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1090年～1128年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：権中納言&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正三位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：西園寺家の祖&lt;/div&gt;"><rect class="fk-pre-box" x="0" y="-9" width="41" height="18" rx="2"/><text class="fk-pre" x="20.5" y="0.5">西園寺</text><text class="fk-name" x="45" y="0.5">通季</text></g>
+<g class="fk-node" transform="translate(200,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;西園寺公通&lt;rt&gt;さいおんじきんみち&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1117年～1173年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：権大納言&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正二位&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">公通</text></g>
+<g class="fk-node" transform="translate(275,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;西園寺実宗&lt;rt&gt;さいおんじさねむね&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1145年～1214年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：内大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正二位&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">実宗</text></g>
+<g class="fk-node is-poet" transform="translate(350,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;西園寺公経&lt;rt&gt;さいおんじきんつね&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1171年～1244年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：太政大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：96番「花さそふ…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;入道前太政大臣&lt;rt&gt;にゅうどうさきのだいじょうだいじん&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;" data-p="96"><a href="/96.html" aria-label="西園寺公経（百人一首96番）"><rect class="fk-hit" x="-2" y="-13" width="58" height="26"/><text class="fk-name" x="0" y="0.5">公経</text><circle class="fk-badge" cx="44" cy="0" r="10"/><text class="fk-badge-num" x="44" y="0.5">96</text></a></g>
+<g class="fk-node" transform="translate(90,84)" data-tip="&lt;h3&gt;&lt;ruby&gt;徳大寺実能&lt;rt&gt;とくだいじさねよし&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1096年～1157年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：左大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：徳大寺家の祖&lt;/div&gt;"><rect class="fk-pre-box" x="0" y="-9" width="41" height="18" rx="2"/><text class="fk-pre" x="20.5" y="0.5">徳大寺</text><text class="fk-name" x="45" y="0.5">実能</text></g>
+<g class="fk-node" transform="translate(200,84)" data-tip="&lt;h3&gt;&lt;ruby&gt;徳大寺公能&lt;rt&gt;とくだいじきんよし&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1115年～1161年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：右大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正二位&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">公能</text></g>
+<g class="fk-node is-poet is-self" transform="translate(275,84)" data-tip="&lt;h3&gt;&lt;ruby&gt;徳大寺実定&lt;rt&gt;とくだいじさねさだ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1139年～1192年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：左大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正二位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：81番「ほととぎす…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;後徳大寺左大臣&lt;rt&gt;ごとくだいじのさだいじん&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="64" height="28" rx="3"/><text class="fk-name" x="0" y="0.5">実定</text><circle class="fk-badge" cx="44" cy="0" r="10"/><text class="fk-badge-num" x="44" y="0.5">81</text></g>
+</g>
+</svg>
+                <!-- KEIZU:END -->
+              </div>
+            </dd>
+      </dl>
+    </div>
+    <div class="words">
       <dl>
         <dt class='title'>付録</dt>
         <dd>
@@ -553,6 +693,9 @@
   <script src="../js/popper.min.js"></script>
   <script src="../js/tippy.umd.min.js"></script>
   <script src="../js/tooltips.js?2026920"></script>
+  <script src="../js/tenno-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/fujiwara-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/keizu-diagram.js?20261001-17"></script>
   <!-- ▲▲▲ tippy.js ▲▲▲ -->
   <script>window.POEM_NUM = 81;</script>
   <script src="../js/grammar-data.js?20260830"></script>

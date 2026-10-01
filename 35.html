@@ -95,6 +95,7 @@
   <link rel="stylesheet" href="../css/huda_35.css?20240507-02">
   <link rel="stylesheet" href="../css/animate.min.css">
   <link rel="stylesheet" href="../css/grammar-panel.css?20260721">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261001-16">
   <!-- google fontの追加 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -323,22 +324,317 @@
     <div class="diagram-section">
       <dl>
         <dt class='title'>紀貫之の系図</dt>
-        <dd class='thumb-image2'>
-          <figure class='portrait'>
-            <img src='../img/35_kinotsurayuki_diagram.gif?ver3' alt='紀貫之の系図' usemap="#ImageMap" width="818" height="1280" />
-            <map name="ImageMap">
-              <area shape="rect" coords="753,670,812,903" href="/17.html" alt="在原業平" />
-              <area shape="rect" coords="427,666,492,904" href="/18.html" alt="藤原敏行" />
-              <area shape="rect" coords="255,989,319,1220" href="/30.html" alt="壬生忠岑" />
-              <area shape="rect" coords="24,782,96,978" href="/33.html" alt="紀友則" />
-              <area shape="rect" coords="26,993,93,1258" href="/29.html" alt="凡河内躬恒" />
-            </map>
-            <figcaption>
-              <p class="kome" style="width:calc(100% - 1em); font-size:0.9em;"><span
-                  style="color:#C32538; margin-right:0.25em;">■</span>の番号が付いている人物をクリックすると、その歌人のページに移動します。</p>
-            </figcaption>
-          </figure>
-          <div>
+        <dd class='kd-dd'>
+          <!-- 系図のすぐ上：左に凡例、右に拡大・縮小（tenno-keizu.html と同じ） -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>百人一首の歌番号（クリックで歌のページへ）</li>
+              <li><span class="fk-legend__eq">＝</span>婚姻</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="拡大・縮小">
+              <button type="button" data-zoom="out" aria-label="縮小">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="拡大">＋</button>
+              <button type="button" data-zoom="reset">等倍</button>
+              <button type="button" data-zoom="fit">幅に合わせる</button>
+            </div>
+          </div>
+          <!-- 相関図のデータ。SVG は node _tools/build-keizu.mjs で下の KEIZU:START〜END に書き込む -->
+          <div class="kd-chart" aria-label="紀貫之の系図">
+            <script type="application/json">
+{
+ "tooltips": "fujiwara",
+ "nodes": [
+  {
+   "id": "katsunaga",
+   "n": "紀勝長",
+   "x": 16,
+   "y": 150
+  },
+  {
+   "id": "okimichi",
+   "n": "紀興道",
+   "x": 136,
+   "y": 70
+  },
+  {
+   "id": "natora",
+   "n": "紀名虎",
+   "x": 136,
+   "y": 238
+  },
+  {
+   "id": "motomichi",
+   "n": "紀本道",
+   "x": 256,
+   "y": 70
+  },
+  {
+   "id": "fujimaro",
+   "n": "藤原富士麻呂",
+   "key": "富士麻呂",
+   "x": 256,
+   "y": 150
+  },
+  {
+   "id": "natorajo",
+   "n": "名虎の娘",
+   "x": 256,
+   "y": 194
+  },
+  {
+   "id": "aritsune",
+   "n": "紀有常",
+   "x": 256,
+   "y": 282
+  },
+  {
+   "id": "aritomo",
+   "n": "紀有友",
+   "x": 406,
+   "y": 40
+  },
+  {
+   "id": "mochiyuki",
+   "n": "紀望行",
+   "x": 406,
+   "y": 100
+  },
+  {
+   "id": "toshiyuki",
+   "n": "藤原敏行",
+   "key": "敏行",
+   "p": 18,
+   "x": 406,
+   "y": 172
+  },
+  {
+   "id": "aritsunejo1",
+   "n": "有常の娘",
+   "x": 406,
+   "y": 216
+  },
+  {
+   "id": "aritsunejo2",
+   "n": "有常の娘",
+   "x": 406,
+   "y": 270
+  },
+  {
+   "id": "narihira",
+   "n": "在原業平",
+   "p": 17,
+   "x": 406,
+   "y": 314
+  },
+  {
+   "id": "tomonori",
+   "n": "紀友則",
+   "p": 33,
+   "x": 526,
+   "y": 40,
+   "sub": "古今和歌集の撰者"
+  },
+  {
+   "id": "tsurayuki",
+   "n": "紀貫之",
+   "p": 35,
+   "x": 526,
+   "y": 100,
+   "sub": "古今和歌集の撰者",
+   "self": 1
+  },
+  {
+   "id": "mitsune",
+   "n": "凡河内躬恒",
+   "p": 29,
+   "sub": "古今和歌集の撰者",
+   "x": 406,
+   "y": 380
+  },
+  {
+   "id": "tadamine",
+   "n": "壬生忠岑",
+   "p": 30,
+   "sub": "古今和歌集の撰者",
+   "x": 556,
+   "y": 380
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-fujimaro",
+   "top": "fujimaro",
+   "bottom": "natorajo"
+  },
+  {
+   "id": "c-toshiyuki",
+   "top": "toshiyuki",
+   "bottom": "aritsunejo1"
+  },
+  {
+   "id": "c-narihira",
+   "top": "aritsunejo2",
+   "bottom": "narihira"
+  }
+ ],
+ "kids": [
+  {
+   "from": "katsunaga",
+   "to": [
+    "okimichi",
+    "natora"
+   ]
+  },
+  {
+   "from": "okimichi",
+   "to": [
+    "motomichi"
+   ]
+  },
+  {
+   "from": "natora",
+   "to": [
+    "natorajo",
+    "aritsune"
+   ]
+  },
+  {
+   "from": "motomichi",
+   "to": [
+    "aritomo",
+    "mochiyuki"
+   ]
+  },
+  {
+   "from": "c-fujimaro",
+   "to": [
+    "toshiyuki"
+   ]
+  },
+  {
+   "from": "aritsune",
+   "to": [
+    "aritsunejo1",
+    "aritsunejo2"
+   ]
+  },
+  {
+   "from": "aritomo",
+   "to": [
+    "tomonori"
+   ]
+  },
+  {
+   "from": "mochiyuki",
+   "to": [
+    "tsurayuki"
+   ]
+  }
+ ],
+ "tips": {
+  "紀勝長": [
+   "<ruby>紀勝長<rt>きのかつなが</rt></ruby>",
+   "官職：中納言",
+   "特記：紀興道・紀名虎の父"
+  ],
+  "紀興道": [
+   "<ruby>紀興道<rt>きのおきみち</rt></ruby>",
+   "生没年：不明～834年",
+   "系譜：紀勝長の子",
+   "特記：紀本道の父"
+  ],
+  "紀本道": [
+   "<ruby>紀本道<rt>きのもとみち</rt></ruby>",
+   "官職：下野守",
+   "系譜：紀興道の子",
+   "特記：紀有友・紀望行の父。紀貫之の祖父"
+  ],
+  "紀有友": [
+   "<ruby>紀有友<rt>きのありとも</rt></ruby>",
+   "生没年：不明～880年",
+   "系譜：紀本道の子（紀興道の子とする記述もある）",
+   "特記：紀友則の父"
+  ],
+  "紀望行": [
+   "<ruby>紀望行<rt>きのもちゆき</rt></ruby>",
+   "系譜：紀本道の子",
+   "特記：紀貫之の父"
+  ],
+  "紀友則": [
+   "<ruby>紀友則<rt>きのとものり</rt></ruby>",
+   "系譜：紀有友の子。紀貫之とはいとこ",
+   "百人一首：33番「ひさかたの…」の歌人",
+   "特記：紀貫之・壬生忠岑と共に『古今和歌集』の撰者となったが、完成を見ずに没した"
+  ],
+  "紀貫之": [
+   "<ruby>紀貫之<rt>きのつらゆき</rt></ruby>",
+   "位階：従五位上",
+   "系譜：紀望行の子。紀友則とはいとこ",
+   "百人一首：35番「人はいさ…」の歌人",
+   "特記：『古今和歌集』の撰者で、仮名序を記した。土佐守を務めたのち『土佐日記』を著した"
+  ],
+  "紀名虎": [
+   "<ruby>紀名虎<rt>きのなとら</rt></ruby>",
+   "官職：刑部卿",
+   "系譜：紀勝長の子",
+   "特記：紀有常の父。娘は藤原富士麻呂の妻で、藤原敏行の母"
+  ],
+  "名虎の娘": [
+   "紀名虎の娘",
+   "特記：藤原富士麻呂の妻。藤原敏行の母"
+  ],
+  "紀有常": [
+   "<ruby>紀有常<rt>きのありつね</rt></ruby>",
+   "生没年：815年～877年",
+   "系譜：紀名虎の子",
+   "特記：娘たちは在原業平・藤原敏行の妻となった"
+  ],
+  "有常の娘": [
+   "紀有常の娘",
+   "特記：姉妹がそれぞれ藤原敏行・在原業平の妻となった"
+  ],
+  "凡河内躬恒": [
+   "<ruby>凡河内躬恒<rt>おおしこうちのみつね</rt></ruby>",
+   "百人一首：29番「心あてに…」の歌人",
+   "特記：『古今和歌集』の撰者の一人"
+  ],
+  "壬生忠岑": [
+   "<ruby>壬生忠岑<rt>みぶのただみね</rt></ruby>",
+   "百人一首：30番「有明の…」の歌人",
+   "特記：『古今和歌集』の撰者の一人"
+  ]
+ }
+}
+            </script>
+            <!-- KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 672 420" width="672" height="420" role="img" aria-label="紀貫之の系図" class="fk-svg kd-svg" style="max-width:1008px;min-width:min(640px,1008px)" data-src="1v4fucr">
+<g class="fk-edges"><path d="M284 159V185M288 159V185" class="fk-edge fk-eq"/><path d="M434 181V207M438 181V207" class="fk-edge fk-eq"/><path d="M434 279V305M438 279V305" class="fk-edge fk-eq"/><path d="M64 150H122" class="fk-edge"/><path d="M122 70V238" class="fk-edge"/><path d="M122 70H133" class="fk-edge"/><path d="M122 238H133" class="fk-edge"/><path d="M184 70H242" class="fk-edge"/><path d="M242 70H253" class="fk-edge"/><path d="M184 238H242" class="fk-edge"/><path d="M242 194V282" class="fk-edge"/><path d="M242 194H253" class="fk-edge"/><path d="M242 282H253" class="fk-edge"/><path d="M304 70H392" class="fk-edge"/><path d="M392 40V100" class="fk-edge"/><path d="M392 40H403" class="fk-edge"/><path d="M392 100H403" class="fk-edge"/><path d="M288 172H392" class="fk-edge"/><path d="M392 172H403" class="fk-edge"/><path d="M304 282H392" class="fk-edge"/><path d="M392 216V282" class="fk-edge"/><path d="M392 216H403" class="fk-edge"/><path d="M392 270H403" class="fk-edge"/><path d="M454 40H512" class="fk-edge"/><path d="M512 40H523" class="fk-edge"/><path d="M454 100H512" class="fk-edge"/><path d="M512 100H523" class="fk-edge"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node" transform="translate(16,150)" data-tip="&lt;h3&gt;&lt;ruby&gt;紀勝長&lt;rt&gt;きのかつなが&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：中納言&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：紀興道・紀名虎の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">紀勝長</text></g>
+<g class="fk-node" transform="translate(136,70)" data-tip="&lt;h3&gt;&lt;ruby&gt;紀興道&lt;rt&gt;きのおきみち&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：不明～834年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：紀勝長の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：紀本道の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">紀興道</text></g>
+<g class="fk-node" transform="translate(136,238)" data-tip="&lt;h3&gt;&lt;ruby&gt;紀名虎&lt;rt&gt;きのなとら&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：刑部卿&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：紀勝長の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：紀有常の父。娘は藤原富士麻呂の妻で、藤原敏行の母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">紀名虎</text></g>
+<g class="fk-node" transform="translate(256,70)" data-tip="&lt;h3&gt;&lt;ruby&gt;紀本道&lt;rt&gt;きのもとみち&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：下野守&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：紀興道の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：紀有友・紀望行の父。紀貫之の祖父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">紀本道</text></g>
+<g class="fk-node" transform="translate(256,150)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原富士麻呂&lt;rt&gt;ふじわらのふじまろ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：804年～850年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：陸奧出羽按察使&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従四位下&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">藤原富士麻呂</text></g>
+<g class="fk-node" transform="translate(256,194)" data-tip="&lt;h3&gt;紀名虎の娘&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：藤原富士麻呂の妻。藤原敏行の母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">名虎の娘</text></g>
+<g class="fk-node" transform="translate(256,282)" data-tip="&lt;h3&gt;&lt;ruby&gt;紀有常&lt;rt&gt;きのありつね&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：815年～877年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：紀名虎の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：娘たちは在原業平・藤原敏行の妻となった&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">紀有常</text></g>
+<g class="fk-node" transform="translate(406,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;紀有友&lt;rt&gt;きのありとも&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：不明～880年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：紀本道の子（紀興道の子とする記述もある）&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：紀友則の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">紀有友</text></g>
+<g class="fk-node" transform="translate(406,100)" data-tip="&lt;h3&gt;&lt;ruby&gt;紀望行&lt;rt&gt;きのもちゆき&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：紀本道の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：紀貫之の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">紀望行</text></g>
+<g class="fk-node is-poet" transform="translate(406,172)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原敏行&lt;rt&gt;ふじわらのとしゆき&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：不明～901年または907年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：右兵衛督&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従四位上&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：18番「住の江の…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;藤原敏行朝臣&lt;rt&gt;ふじわらのとしゆきあそん&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;" data-p="18"><a href="/18.html" aria-label="藤原敏行（百人一首18番）"><rect class="fk-hit" x="-2" y="-13" width="88" height="26"/><text class="fk-name" x="0" y="0.5">藤原敏行</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">18</text></a></g>
+<g class="fk-node" transform="translate(406,216)" data-tip="&lt;h3&gt;紀有常の娘&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：姉妹がそれぞれ藤原敏行・在原業平の妻となった&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">有常の娘</text></g>
+<g class="fk-node" transform="translate(406,270)" data-tip="&lt;h3&gt;紀有常の娘&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：姉妹がそれぞれ藤原敏行・在原業平の妻となった&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">有常の娘</text></g>
+<g class="fk-node is-poet" transform="translate(406,314)" data-tip="&lt;h3&gt;&lt;ruby&gt;在原業平&lt;rt&gt;ありわらのなりひら&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：825年～880年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従四位上&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：17番「ちはやぶる…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;在原業平朝臣&lt;rt&gt;ありわらのなりひらあそん&lt;/rt&gt;&lt;/ruby&gt;。六歌仙の一人&lt;/div&gt;" data-p="17"><a href="/17.html" aria-label="在原業平（百人一首17番）"><rect class="fk-hit" x="-2" y="-13" width="88" height="26"/><text class="fk-name" x="0" y="0.5">在原業平</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">17</text></a></g>
+<g class="fk-node is-poet" transform="translate(526,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;紀友則&lt;rt&gt;きのとものり&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：紀有友の子。紀貫之とはいとこ&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：33番「ひさかたの…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：紀貫之・壬生忠岑と共に『古今和歌集』の撰者となったが、完成を見ずに没した&lt;/div&gt;" data-p="33"><a href="/33.html" aria-label="紀友則（百人一首33番）"><rect class="fk-hit" x="-2" y="-13" width="73" height="26"/><text class="fk-name" x="0" y="0.5">紀友則</text><circle class="fk-badge" cx="59" cy="0" r="10"/><text class="fk-badge-num" x="59" y="0.5">33</text></a><rect class="fk-sub-box" x="0" y="11" width="100" height="16" rx="8"/><text class="fk-sub" x="50" y="19.5">古今和歌集の撰者</text></g>
+<g class="fk-node is-poet is-self" transform="translate(526,100)" data-tip="&lt;h3&gt;&lt;ruby&gt;紀貫之&lt;rt&gt;きのつらゆき&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従五位上&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：紀望行の子。紀友則とはいとこ&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：35番「人はいさ…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：『古今和歌集』の撰者で、仮名序を記した。土佐守を務めたのち『土佐日記』を著した&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="79" height="28" rx="3"/><text class="fk-name" x="0" y="0.5">紀貫之</text><circle class="fk-badge" cx="59" cy="0" r="10"/><text class="fk-badge-num" x="59" y="0.5">35</text><rect class="fk-sub-box" x="0" y="11" width="100" height="16" rx="8"/><text class="fk-sub" x="50" y="19.5">古今和歌集の撰者</text></g>
+<g class="fk-node is-poet" transform="translate(406,380)" data-tip="&lt;h3&gt;&lt;ruby&gt;凡河内躬恒&lt;rt&gt;おおしこうちのみつね&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：29番「心あてに…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：『古今和歌集』の撰者の一人&lt;/div&gt;" data-p="29"><a href="/29.html" aria-label="凡河内躬恒（百人一首29番）"><rect class="fk-hit" x="-2" y="-13" width="103" height="26"/><text class="fk-name" x="0" y="0.5">凡河内躬恒</text><circle class="fk-badge" cx="89" cy="0" r="10"/><text class="fk-badge-num" x="89" y="0.5">29</text></a><rect class="fk-sub-box" x="0" y="11" width="100" height="16" rx="8"/><text class="fk-sub" x="50" y="19.5">古今和歌集の撰者</text></g>
+<g class="fk-node is-poet" transform="translate(556,380)" data-tip="&lt;h3&gt;&lt;ruby&gt;壬生忠岑&lt;rt&gt;みぶのただみね&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：30番「有明の…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：『古今和歌集』の撰者の一人&lt;/div&gt;" data-p="30"><a href="/30.html" aria-label="壬生忠岑（百人一首30番）"><rect class="fk-hit" x="-2" y="-13" width="88" height="26"/><text class="fk-name" x="0" y="0.5">壬生忠岑</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">30</text></a><rect class="fk-sub-box" x="0" y="11" width="100" height="16" rx="8"/><text class="fk-sub" x="50" y="19.5">古今和歌集の撰者</text></g>
+</g>
+</svg>
+            <!-- KEIZU:END -->
+          </div>
+          <div class="kd-text">
             <p style="width:100%; margin-bottom: 0.75em;">
               紀貫之は、<span class="tippy takeuchinosukune"><ruby>武内<rt>たくうちの</rt></ruby><ruby>宿禰<rt>すくね</rt></ruby></span>を祖とする古代豪族・紀氏の出身とされています。平安時代になると、藤原氏が勢力を伸ばす一方で、紀氏の政治的な勢力は次第に弱まっていました。このため、貫之の官位も高いものではありませんでした。
             </p>
@@ -346,7 +642,7 @@
               しかし、和歌に秀でた貫之は、醍醐天皇の勅を受けて、<a href="/33.html">従兄弟の紀友則</a>・<a href="/30.html">壬生忠岑</a>・<a href="/29.html">凡河内躬恒</a>とともに『古今和歌集』の撰者を務めました。和歌を人の心を表現するものと説く<a href="kanajo.html"  target="_blank">『仮名序』</a>も貫之によって記されました。紀友則は、『古今和歌集』が完成する前に亡くなったと考えられています。
             </p>
             <p style="width:100%; margin-bottom: 0.75em;">
-              また、貫之は地方の国司を歴任しますが、<ruby><ruby>土佐守<rt>とさのかみ</rt></ruby>を務めた後、京都へ帰る舟旅の様子を女性のふりをして仮名で記した『<ruby>土佐<rt>とさ</rt></ruby><ruby>日記<rt>にっき</rt></ruby>』を著しました。『土佐日記』は、後の日本文学に大きな影響を与えたといわれています。
+              また、貫之は地方の国司を歴任しますが、<ruby>土佐守<rt>とさのかみ</rt></ruby>を務めた後、京都へ帰る舟旅の様子を女性のふりをして仮名で記した『<ruby>土佐<rt>とさ</rt></ruby><ruby>日記<rt>にっき</rt></ruby>』を著しました。『土佐日記』は、後の日本文学に大きな影響を与えたといわれています。
             </p>
             <p style="width:100%; margin-bottom: 0.75em;">
               最終的な位階は「<ruby>従五位上<rt>じゅごいのじょう</rt></ruby>」と決して高くありませんが、和歌や仮名文化の発展に大きく寄与しました。
@@ -651,6 +947,9 @@
   <script src="../js/popper.min.js"></script>
   <script src="../js/tippy.umd.min.js"></script>
   <script src="../js/tooltips.js?2026920"></script>
+  <script src="../js/tenno-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/fujiwara-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/keizu-diagram.js?20261001-17"></script>
   <!-- ▲▲▲ tippy.js ▲▲▲ -->
   <script>window.POEM_NUM = 35;</script>
   <script src="../js/grammar-data.js?20260830"></script>
