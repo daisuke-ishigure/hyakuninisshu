@@ -854,8 +854,14 @@
     if (window.tippy) {
       // theme: 'fk' … 系図のツールチップだけに効くスタイル（css/fujiwara-keizu.css の [data-theme~="fk"]）
       // ツールチップの中のリンクのボタンを押せるよう、マウスがツールチップに移っても閉じないようにする（PC・スマホとも）。
-      // interactive は body に置かないと SVG の中に入ってしまう
-      var opts = { allowHTML: true, theme: 'fk', interactive: true, interactiveBorder: 8, appendTo: document.body };
+      // interactive は body に置かないと SVG の中に入ってしまう。斜めに動かしても途中で消えないよう、周りの余白を広めにとる
+      var opts = { allowHTML: true, theme: 'fk', interactive: true, interactiveBorder: 20, appendTo: document.body,
+        // 位置は名前の四角（.fk-hit）に合わせる。ノード全体だと、上の代数の札や下の札の分だけツールチップが離れてしまう
+        onCreate: function (inst) {
+          var hit = inst.reference.querySelector('.fk-hit');
+          if (hit) inst.setProps({ getReferenceClientRect: function () { return hit.getBoundingClientRect(); } });
+        }
+      };
       tips = tippy(svg.querySelectorAll('[data-tippy-content]'), opts);
     }
     current = { svg: svg, width: lay.width, height: lay.height };

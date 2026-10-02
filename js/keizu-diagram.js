@@ -307,10 +307,16 @@ HTML の形：
         allowHTML: true,
         theme: 'fk',
         // 歌人のツールチップの中に歌のページへのリンクのボタンを置く（PC・スマホとも）。
-        // ボタンを押せるよう、マウスがツールチップに移っても閉じないようにする
+        // ボタンを押せるよう、マウスがツールチップに移っても閉じないようにする。
+        // 斜めに動かしても途中で消えないよう、ツールチップの周りの余白を広めにとる
         interactive: true,
-        interactiveBorder: 8,
+        interactiveBorder: 20,
         appendTo: document.body,
+        // 位置は名前の四角（.fk-hit）に合わせる。ノード全体だと、上の代数の札や下の札の分だけツールチップが離れてしまう
+        onCreate: function (inst) {
+          var hit = inst.reference.querySelector('.fk-hit');
+          if (hit) inst.setProps({ getReferenceClientRect: function () { return hit.getBoundingClientRect(); } });
+        },
         content: function (ref) {
           var html = ref.getAttribute('data-tip');
           var p = ref.getAttribute('data-p');

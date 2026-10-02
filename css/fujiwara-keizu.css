@@ -176,6 +176,10 @@
 .fk-chart::-webkit-scrollbar {
   display: none;
 }
+/* 歌人のリンクの上でもカーソルを指の形にしない（ほかの名前と同じ grab のまま） */
+.fk-chart a {
+  cursor: inherit;
+}
 .fk-chart.is-dragging,
 .fk-chart.is-dragging a {
   cursor: grabbing;
@@ -371,6 +375,10 @@
 }
 .kd-chart::-webkit-scrollbar {
   display: none;
+}
+/* 歌人のリンクの上でもカーソルを指の形にしない（ほかの名前と同じ grab のまま） */
+.kd-chart a {
+  cursor: inherit;
 }
 .kd-chart.is-dragging,
 .kd-chart.is-dragging a {
