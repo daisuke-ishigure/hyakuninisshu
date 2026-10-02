@@ -738,11 +738,11 @@
     }
 
     // 歌人は名前とバッジをまとめて歌のページへのリンクにする
-    var target = node;
-    if (d.p) {
-      target = el('a', { href: '/' + d.p + '.html', 'aria-label': title }, node);
-      el('rect', { class: 'fk-hit', x: v.nameX - 2, y: -13, width: v.mainW - v.nameX + 4, height: 26 }, target);
-    }
+    // ホバーで名前の背景に色を付ける（歌人以外も）。歌人はリンクにする
+    var target = d.p
+      ? el('a', { href: '/' + d.p + '.html', 'aria-label': title }, node)
+      : el('g', { class: 'fk-main' }, node);
+    el('rect', { class: 'fk-hit', x: v.nameX - 2, y: -13, width: v.mainW - v.nameX + 4, height: 26 }, target);
     el('text', { class: 'fk-name', x: v.nameX, y: 0.5 }, target).textContent = d.n;
     if (d.note) {
       el('text', { class: 'fk-note', x: v.noteX, y: 1 }, target).textContent = '（' + d.note + '）';
@@ -794,11 +794,10 @@
       transform: 'translate(' + (v.x + v.nameX) + ',' + (v.y + COUPLE) + ')'
     }, g);
     node.setAttribute('data-tippy-content', tooltipHtml(w));
-    var target = node;
-    if (w.p) {
-      target = el('a', { href: '/' + w.p + '.html', 'aria-label': tooltipLines(w)[0] + '（百人一首' + w.p + '番）' }, node);
-      el('rect', { class: 'fk-hit', x: -2, y: -13, width: v.wifeW - v.nameX + 4, height: 26 }, target);
-    }
+    var target = w.p
+      ? el('a', { href: '/' + w.p + '.html', 'aria-label': tooltipLines(w)[0] + '（百人一首' + w.p + '番）' }, node)
+      : el('g', { class: 'fk-main' }, node);
+    el('rect', { class: 'fk-hit', x: -2, y: -13, width: v.wifeW - v.nameX + 4, height: 26 }, target);
     el('text', { class: 'fk-name', x: 0, y: 0.5 }, target).textContent = w.n;
     if (w.p) {
       var cx = v.wifeBadgeCx - v.nameX;

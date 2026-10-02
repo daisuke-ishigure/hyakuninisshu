@@ -1,7 +1,7 @@
 /* --------------------------------------------
 歌のページ（N.html）の相関図
 天皇の略系図（js/tenno-keizu.js）と同じ見た目の SVG を、座標を指定したデータから描く。
-スタイルは css/fujiwara-keizu.css を共用する。ツールチップの文面は js/tenno-keizu-tooltips.js。
+スタイルは css/fujiwara-keizu.css を共用する。ツールチップの文面は js/keizu-tips.js（相関図用・最優先）、js/tenno-keizu-tooltips.js、js/fujiwara-keizu-tooltips.js。
 
 SVG は node _tools/build-keizu.mjs で前もって作り、HTML に直接書き込んでおく
 （JavaScript を実行しない検索エンジン・AI のクローラーにも系図が読めるように）。
@@ -10,7 +10,7 @@ SVG は node _tools/build-keizu.mjs で前もって作り、HTML に直接書き
 HTML の形：
   <div class="kd-chart" aria-label="〇〇の相関図">
     <script type="application/json">{…データ…}</script>
-    <!-- KEIZU:START --> …ここに SVG が書き込まれる… <!-- KEIZU:END -->
+    <!-- #region KEIZU:START --> …ここに SVG が書き込まれる… <!-- #endregion KEIZU:END -->
   </div>
 
 データ：
@@ -23,9 +23,11 @@ HTML の形：
            … 決まった形にならない親子の線（上から子に下ろす、養父から養子へ、など）。label は線に添える文字（「養子」など）
   boxes:   [{ text, x, y, w, h }]  … 赤い枠の囲み（「暗殺の嫌疑」など。矢印の行き先・出どころにする）
   bands:   [{ text, from, to }]  … from から to まで（同じ行に並ぶ子孫）の名前の下にまたがる札
-  arrows:  [{ points: [[x, y], …], label: { text, x, y } }]  … 赤い矢印（最後の点が矢の先）
+  arrows:  [{ points: [[x, y], …], label: { text, x, y }, curve: [x, y], head: false }]  … 赤い矢印（最後の点が矢の先）
+           curve を付けると、最初と最後の点を curve の点に引き寄せた曲線にする（「対立」など）。head: false で矢じりを付けない
+  groups:  [{ points: [[x, y], …], label: { text, x, y } }]  … 一族などをまとめて囲む枠（点線の多角形。「中関白家」など）。label は枠に添える文字
   tooltips: 'fujiwara' … ツールチップの文面を js/fujiwara-keizu-tooltips.js から優先して探す（省略時は js/tenno-keizu-tooltips.js を優先。無い人物はもう一方から探す）
-  tips:    { 名前: [見出し, 説明の行, …] }  … ツールチップのファイルに無い人物のツールチップ
+  tips:    { 名前: [見出し, 説明の行, …] }  … このページだけ文面を変えたいときのツールチップ（ふだんは js/keizu-tips.js に書いて共有する）
 -------------------------------------------- */
 (function (root) {
   'use strict';
@@ -106,7 +108,8 @@ HTML の形：
     var main = '';
     // 歌人は名前とバッジをまとめて歌のページへのリンクにする（このページの歌人は除く）
     var link = d.p && !d.self;
-    if (link) main += tag('rect', { class: 'fk-hit', x: -2, y: -13, width: d.w + 4, height: 26 });
+    // ホバーで名前の背景に色を付けるための四角（歌人以外も）
+    main += tag('rect', { class: 'fk-hit', x: -2, y: -13, width: d.w + 4, height: 26 });
     if (d.pre) {
       main += tag('rect', { class: 'fk-pre-box', x: 0, y: -9, width: d.preW, height: 18, rx: 2 });
       main += tag('text', { class: 'fk-pre', x: d.preW / 2, y: 0.5 }, esc(d.pre));
@@ -119,7 +122,7 @@ HTML の形：
     }
     inner += link
       ? tag('a', { href: '/' + d.p + '.html', 'aria-label': plainText(tooltipLines(d, tips)[0]) + '（百人一首' + d.p + '番）' }, main)
-      : main;
+      : tag('g', { class: 'fk-main' }, main);
 
     if (d.t) {
       var tw = tnoWidth(d.t);
@@ -147,14 +150,15 @@ HTML の形：
     return h.toString(36);
   }
 
-  /* data: 相関図のデータ / tipSets: ツールチップの文面 { tenno: TK_TOOLTIPS, fujiwara: FK_TOOLTIPS }
+  /* data: 相関図のデータ / tipSets: ツールチップの文面 { tenno: TK_TOOLTIPS, fujiwara: FK_TOOLTIPS, kd: KD_TIPS }
      label: SVG の aria-label / src: データの文字列（hash 用） */
   function toSvg(data, tipSets, label, src) {
     // 指定したファイル（tooltips）の文面を優先し、無い人物はもう一方のファイルからも探す（天皇と藤原氏が並ぶ系図のため）
     var main = data.tooltips || 'tenno';
     var tips = {};
-    Object.keys(tipSets || {}).forEach(function (k) { if (k !== main) Object.assign(tips, tipSets[k]); });
-    Object.assign(tips, (tipSets || {})[main] || {}, data.tips || {});
+    // 相関図用の共有ファイル（kd：js/keizu-tips.js）、ページごとの tips の順にさらに優先する
+    Object.keys(tipSets || {}).forEach(function (k) { if (k !== main && k !== 'kd') Object.assign(tips, tipSets[k]); });
+    Object.assign(tips, (tipSets || {})[main] || {}, (tipSets || {}).kd || {}, data.tips || {});
     var byId = {};
     var maxX = 0;
     var maxY = 0;
@@ -226,12 +230,28 @@ HTML の形：
       maxY = Math.max(maxY, b.y + b.h);
     });
     (data.arrows || []).forEach(function (a) {
-      arrows += tag('path', { d: pathD(a.points), class: 'kd-arrow', 'marker-end': 'url(#kdArrowHead)' });
+      var p0 = a.points[0];
+      var p1 = a.points[a.points.length - 1];
+      var ad = a.curve ? 'M' + p0[0] + ' ' + p0[1] + 'Q' + a.curve[0] + ' ' + a.curve[1] + ' ' + p1[0] + ' ' + p1[1] : pathD(a.points);
+      var attrs = { d: ad, class: 'kd-arrow' };
+      if (a.head !== false) attrs['marker-end'] = 'url(#kdArrowHead)';
+      arrows += tag('path', attrs);
       a.points.forEach(function (p) { maxX = Math.max(maxX, p[0]); maxY = Math.max(maxY, p[1]); });
       if (a.label) {
         arrows += tag('text', { class: 'kd-arrow-label', x: a.label.x, y: a.label.y }, esc(a.label.text));
         maxY = Math.max(maxY, a.label.y + 8);
         maxX = Math.max(maxX, a.label.x + a.label.text.length * 12); // 文字（12px）が切れないよう幅に含める
+      }
+    });
+
+    // 一族などの囲み枠：線や名前より奥に描く
+    var groups = '';
+    (data.groups || []).forEach(function (gr) {
+      groups += tag('path', { d: pathD(gr.points) + 'Z', class: 'kd-group' });
+      gr.points.forEach(function (p) { maxX = Math.max(maxX, p[0]); maxY = Math.max(maxY, p[1]); });
+      if (gr.label) {
+        groups += tag('text', { class: 'kd-group-label', x: gr.label.x, y: gr.label.y }, esc(gr.label.text));
+        maxX = Math.max(maxX, gr.label.x + gr.label.text.length * 12);
       }
     });
 
@@ -261,7 +281,7 @@ HTML の形：
       class: 'fk-svg kd-svg',
       style: 'max-width:' + maxW + 'px;min-width:min(640px,' + maxW + 'px)',
       'data-src': src === undefined ? '' : hash(src)
-    }, '\n' + tag('g', { class: 'fk-edges' }, edges) + '\n' + defs + '\n' + tag('g', { class: 'kd-arrows' }, arrows) + '\n' + tag('g', {}, '\n' + nodes + '\n') + '\n');
+    }, '\n' + (groups ? tag('g', { class: 'kd-groups' }, groups) + '\n' : '') + tag('g', { class: 'fk-edges' }, edges) + '\n' + defs + '\n' + tag('g', { class: 'kd-arrows' }, arrows) + '\n' + tag('g', {}, '\n' + nodes + '\n') + '\n');
   }
 
   root.KeizuDiagram = { toSvg: toSvg, hash: hash };
@@ -275,7 +295,7 @@ HTML の形：
     if (src && (!svg || svg.getAttribute('data-src') !== hash(src.textContent))) {
       if (svg) console.warn('相関図のデータが変わっています。node _tools/build-keizu.mjs を実行してください');
       var tmp = document.createElement('div');
-      tmp.innerHTML = toSvg(JSON.parse(src.textContent), { tenno: window.TK_TOOLTIPS, fujiwara: window.FK_TOOLTIPS }, box.getAttribute('aria-label'), src.textContent);
+      tmp.innerHTML = toSvg(JSON.parse(src.textContent), { tenno: window.TK_TOOLTIPS, fujiwara: window.FK_TOOLTIPS, kd: window.KD_TIPS }, box.getAttribute('aria-label'), src.textContent);
       if (svg) svg.replaceWith(tmp.firstChild);
       else box.appendChild(tmp.firstChild);
       svg = box.querySelector('svg');

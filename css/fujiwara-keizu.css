@@ -268,12 +268,9 @@
 .fk-hit {
   fill: transparent;
 }
-.fk-node a:hover .fk-name,
-.fk-node a:focus .fk-name {
-  text-decoration: underline;
-}
 .fk-node a:hover .fk-hit,
-.fk-node a:focus .fk-hit {
+.fk-node a:focus .fk-hit,
+.fk-main:hover .fk-hit {
   fill: #fbe9ec;
 }
 
@@ -417,6 +414,20 @@
   font-weight: 700;
   fill: #d8243f;
   text-anchor: middle;
+  dominant-baseline: central;
+}
+/* 「中関白家」など、一族をまとめて囲む枠 */
+.kd-group {
+  fill: rgba(216, 36, 63, 0.04);
+  stroke: #d8243f;
+  stroke-width: 1.2;
+  stroke-dasharray: 5 3;
+  stroke-linejoin: round;
+}
+.kd-group-label {
+  font-size: 12px;
+  font-weight: 700;
+  fill: #d8243f;
   dominant-baseline: central;
 }
 .kd-arrow-label {

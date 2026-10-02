@@ -7,13 +7,13 @@
 //
 // 相関図のデータ（各ページの <div class="kd-chart"> の中の <script type="application/json">）や、
 // ツールチップの文面（js/tenno-keizu-tooltips.js・js/fujiwara-keizu-tooltips.js）、js/keizu-diagram.js を変えたら実行すること。
-// データの直後の <!-- KEIZU:START --> と <!-- KEIZU:END --> の間を書き換える（無ければ足す）。
+// データの直後の <!-- #region KEIZU:START --> と <!-- #endregion KEIZU:END --> の間を書き換える（無ければ足す）。
 // ルートにある .html のうち、class="kd-chart" を含むものをすべて対象にする。
 //
 // あわせて、天皇の略系図（tenno-keizu.html）・藤原氏の略系図（fujiwara-keizu.html）の「全体」の系図も書き込む。
 // こちらは各ページの js（js/tenno-keizu.js・js/fujiwara-keizu.js）を、ブラウザの代わりの簡易 DOM の上でそのまま動かして作る。
 // 系図のデータ（js の TREE・FILTERS）やツールチップの文面を変えたら、同じく実行すること。
-// #fkChart の中の <!-- KEIZU:START -->〜<!-- KEIZU:END --> と、#fkDesc（系統の説明）の中身を書き換える。
+// #fkChart の中の <!-- #region KEIZU:START -->〜<!-- #endregion KEIZU:END --> と、#fkDesc（系統の説明）の中身を書き換える。
 // ブラウザではページを開いたときに js が描き直すので、見た目・操作は変わらない。
 //
 // フォルダ名が「_」で始まるのは、GitHub Pages（Jekyll）の公開対象から外すため（_ 始まりは配信されない）。
@@ -31,15 +31,16 @@ const context = vm.createContext({});
 context.window = context;
 vm.runInContext(read("js/tenno-keizu-tooltips.js"), context);
 vm.runInContext(read("js/fujiwara-keizu-tooltips.js"), context);
+vm.runInContext(read("js/keizu-tips.js"), context);
 vm.runInContext(read("js/keizu-diagram.js"), context);
-const { KeizuDiagram, TK_TOOLTIPS, FK_TOOLTIPS } = context;
-const TIP_SETS = { tenno: TK_TOOLTIPS, fujiwara: FK_TOOLTIPS };
+const { KeizuDiagram, TK_TOOLTIPS, FK_TOOLTIPS, KD_TIPS } = context;
+const TIP_SETS = { tenno: TK_TOOLTIPS, fujiwara: FK_TOOLTIPS, kd: KD_TIPS };
 
 const OPEN = '<div class="kd-chart"';
 const JSON_OPEN = '<script type="application/json">';
 const JSON_CLOSE = "</script>";
-const START = "<!-- KEIZU:START -->";
-const END = "<!-- KEIZU:END -->";
+const START = "<!-- #region KEIZU:START -->";
+const END = "<!-- #endregion KEIZU:END -->";
 
 const pages = readdirSync(root).filter((f) => f.endsWith(".html") && read(f).includes('class="kd-chart"'));
 if (!pages.length) console.log("相関図（class=\"kd-chart\"）のあるページはありません");

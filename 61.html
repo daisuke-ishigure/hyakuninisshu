@@ -96,7 +96,7 @@
   <link rel="stylesheet" href="../css/cherry.css?20240507-02">
   <link rel="stylesheet" href="../css/animate.min.css">
   <link rel="stylesheet" href="../css/grammar-panel.css?20261001-01">
-  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261001-16">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261002-02">
   <!-- google fontの追加 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -358,7 +358,14 @@
     { "id": "maro", "n": "麻呂", "note": "京家", "x": 536, "y": 138 },
     { "id": "yoshinobu", "n": "大中臣能宣", "p": 49, "x": 536, "y": 200 },
     { "id": "sukechika", "n": "大中臣輔親", "x": 686, "y": 200 },
-    { "id": "isenotaifu", "n": "伊勢大輔", "p": 61, "self": 1, "x": 836, "y": 200 }
+    { "id": "isenotaifu", "n": "伊勢大輔", "p": 61, "self": 1, "x": 836, "y": 200 },
+    { "id": "narinobu", "n": "高階成順", "x": 836, "y": 244 },
+    { "id": "naritada", "n": "高階成忠", "x": 536, "y": 310 },
+    { "id": "akinobu", "n": "高階明順", "x": 686, "y": 288 },
+    { "id": "kishi", "n": "高階貴子", "key": "儀同三司母", "p": 54, "x": 686, "y": 332 }
+  ],
+  "couples": [
+    { "id": "c-isenotaifu", "top": "isenotaifu", "bottom": "narinobu" }
   ],
   "kids": [
     { "from": "katanoko", "to": ["mikeko", "kuniko"] },
@@ -367,44 +374,41 @@
     { "from": "fuhito", "to": ["muchimaro", "fusasaki", "umakai", "maro"] },
     { "from": "yorimoto", "to": ["yoshinobu"] },
     { "from": "yoshinobu", "to": ["sukechika"] },
-    { "from": "sukechika", "to": ["isenotaifu"] }
+    { "from": "sukechika", "to": ["isenotaifu"] },
+    { "from": "naritada", "to": ["akinobu", "kishi"] },
+    { "from": "akinobu", "to": ["narinobu"] }
   ],
   "lines": [
     { "points": [[199, 200], [413, 200]], "dash": true, "label": { "text": "数代略", "x": 306, "y": 194 } }
-  ],
-  "tips": {
-    "中臣可多能祜": ["中臣可多能祜", "特記：中臣御食子・国子・糠手子の父"],
-    "中臣御食子": ["中臣御食子", "系譜：中臣可多能祜の子", "特記：中臣鎌足の父"],
-    "中臣国子": ["中臣国子", "系譜：中臣可多能祜の子", "特記：大中臣氏の祖の一人"],
-    "大中臣頼基": ["<ruby>大中臣頼基<rt>おおなかとみのよりもと</rt></ruby>", "系譜：大中臣輔道の子", "特記：大中臣能宣の父"],
-    "大中臣能宣": ["<ruby>大中臣能宣<rt>おおなかとみのよしのぶ</rt></ruby>", "生没年：921年～991年", "系譜：大中臣頼基の子", "百人一首：49番「みかきもり…」の歌人", "特記：梨壺の五人の一人"],
-    "大中臣輔親": ["<ruby>大中臣輔親<rt>おおなかとみのすけちか</rt></ruby>", "生没年：954年～1038年", "系譜：大中臣能宣の子", "特記：伊勢大輔の父"],
-    "伊勢大輔": ["<ruby>伊勢大輔<rt>いせのたいふ</rt></ruby>", "系譜：大中臣輔親の娘", "百人一首：61番「いにしへの…」の歌人", "特記：高階成順の妻"]
-  }
+  ]
 }
                 </script>
-                <!-- KEIZU:START -->
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 936 226" width="936" height="226" role="img" aria-label="伊勢大輔の系図" class="fk-svg kd-svg" style="max-width:1404px;min-width:min(640px,1404px)" data-src="1u2vjrv">
-<g class="fk-edges"><path d="M109 142H122" class="fk-edge"/><path d="M122 84V200" class="fk-edge"/><path d="M122 84H133" class="fk-edge"/><path d="M122 200H133" class="fk-edge"/><path d="M214 84H242" class="fk-edge"/><path d="M242 84H253" class="fk-edge"/><path d="M387 84H402" class="fk-edge"/><path d="M402 84H413" class="fk-edge"/><path d="M494 84H522" class="fk-edge"/><path d="M522 30V138" class="fk-edge"/><path d="M522 30H533" class="fk-edge"/><path d="M522 66H533" class="fk-edge"/><path d="M522 102H533" class="fk-edge"/><path d="M522 138H533" class="fk-edge"/><path d="M494 200H522" class="fk-edge"/><path d="M522 200H533" class="fk-edge"/><path d="M638 200H672" class="fk-edge"/><path d="M672 200H683" class="fk-edge"/><path d="M764 200H822" class="fk-edge"/><path d="M822 200H833" class="fk-edge"/><path d="M199 200L413 200" class="fk-edge is-dash"/><text class="fk-adopt" x="306" y="194">数代略</text></g>
+                <!-- #region KEIZU:START -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 936 358" width="936" height="358" role="img" aria-label="伊勢大輔の系図" class="fk-svg kd-svg" style="max-width:1404px;min-width:min(640px,1404px)" data-src="1pmy9m9">
+<g class="fk-edges"><path d="M864 209V235M868 209V235" class="fk-edge fk-eq"/><path d="M109 142H122" class="fk-edge"/><path d="M122 84V200" class="fk-edge"/><path d="M122 84H133" class="fk-edge"/><path d="M122 200H133" class="fk-edge"/><path d="M214 84H242" class="fk-edge"/><path d="M242 84H253" class="fk-edge"/><path d="M387 84H402" class="fk-edge"/><path d="M402 84H413" class="fk-edge"/><path d="M494 84H522" class="fk-edge"/><path d="M522 30V138" class="fk-edge"/><path d="M522 30H533" class="fk-edge"/><path d="M522 66H533" class="fk-edge"/><path d="M522 102H533" class="fk-edge"/><path d="M522 138H533" class="fk-edge"/><path d="M494 200H522" class="fk-edge"/><path d="M522 200H533" class="fk-edge"/><path d="M638 200H672" class="fk-edge"/><path d="M672 200H683" class="fk-edge"/><path d="M764 200H822" class="fk-edge"/><path d="M822 200H833" class="fk-edge"/><path d="M599 310H672" class="fk-edge"/><path d="M672 288V332" class="fk-edge"/><path d="M672 288H683" class="fk-edge"/><path d="M672 332H683" class="fk-edge"/><path d="M749 288H822" class="fk-edge"/><path d="M822 244V288" class="fk-edge"/><path d="M822 244H833" class="fk-edge"/><path d="M199 200L413 200" class="fk-edge is-dash"/><text class="fk-adopt" x="306" y="194">数代略</text></g>
 <defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
 <g class="kd-arrows"></g>
 <g>
-<g class="fk-node" transform="translate(16,142)" data-tip="&lt;h3&gt;中臣可多能祜&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：中臣御食子・国子・糠手子の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">中臣可多能祜</text></g>
-<g class="fk-node" transform="translate(136,84)" data-tip="&lt;h3&gt;中臣御食子&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：中臣可多能祜の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：中臣鎌足の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">中臣御食子</text></g>
-<g class="fk-node" transform="translate(136,200)" data-tip="&lt;h3&gt;中臣国子&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：中臣可多能祜の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：大中臣氏の祖の一人&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">中臣国子</text></g>
-<g class="fk-node" transform="translate(256,84)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原鎌足&lt;rt&gt;ふじわらのかまたり&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：614年～669年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：内大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：贈正一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：天智天皇から「藤原」の姓を賜る&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">中臣鎌足</text><text class="fk-note" x="62" y="1">（藤原鎌足）</text></g>
-<g class="fk-node" transform="translate(416,84)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原不比等&lt;rt&gt;ふじわらのふひと&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：659年～720年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：右大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正二位、贈正一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;外戚：聖武天皇、孝謙天皇の外祖父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">藤原不比等</text></g>
-<g class="fk-node" transform="translate(416,200)" data-tip="&lt;h3&gt;&lt;ruby&gt;大中臣頼基&lt;rt&gt;おおなかとみのよりもと&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：大中臣輔道の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：大中臣能宣の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">大中臣頼基</text></g>
-<g class="fk-node" transform="translate(536,30)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原武智麻呂&lt;rt&gt;ふじわらのむちまろ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：680年～737年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：左大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：藤原南家の祖&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">武智麻呂</text><text class="fk-note" x="62" y="1">（南家）</text></g>
-<g class="fk-node" transform="translate(536,66)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原房前&lt;rt&gt;ふじわらのふささき&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：681年～737年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：参議&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正三位、贈正一位&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">房前</text><text class="fk-note" x="32" y="1">（北家）</text></g>
-<g class="fk-node" transform="translate(536,102)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原宇合&lt;rt&gt;ふじわらのうまかい&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：694年～737年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：参議&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正三位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：藤原式家の祖&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">宇合</text><text class="fk-note" x="32" y="1">（式家）</text></g>
-<g class="fk-node" transform="translate(536,138)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原麻呂&lt;rt&gt;ふじわらのまろ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：695年～737年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：参議&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従三位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：藤原京家の祖&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">麻呂</text><text class="fk-note" x="32" y="1">（京家）</text></g>
+<g class="fk-node" transform="translate(16,142)" data-tip="&lt;h3&gt;&lt;ruby&gt;中臣可多能祜&lt;rt&gt;なかとみのかたのこ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：中臣御食子・国子・糠手子の父&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="94" height="26"/><text class="fk-name" x="0" y="0.5">中臣可多能祜</text></g></g>
+<g class="fk-node" transform="translate(136,84)" data-tip="&lt;h3&gt;&lt;ruby&gt;中臣御食子&lt;rt&gt;なかとみのみけこ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：中臣可多能祜の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：中臣鎌足の父&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="79" height="26"/><text class="fk-name" x="0" y="0.5">中臣御食子</text></g></g>
+<g class="fk-node" transform="translate(136,200)" data-tip="&lt;h3&gt;&lt;ruby&gt;中臣国子&lt;rt&gt;なかとみのくにこ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：中臣可多能祜の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：大中臣氏の祖の一人&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="64" height="26"/><text class="fk-name" x="0" y="0.5">中臣国子</text></g></g>
+<g class="fk-node" transform="translate(256,84)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原鎌足&lt;rt&gt;ふじわらのかまたり&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：614年～669年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：内大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：贈正一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：天智天皇から「藤原」の姓を賜る&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="132" height="26"/><text class="fk-name" x="0" y="0.5">中臣鎌足</text><text class="fk-note" x="62" y="1">（藤原鎌足）</text></g></g>
+<g class="fk-node" transform="translate(416,84)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原不比等&lt;rt&gt;ふじわらのふひと&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：659年～720年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：右大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正二位、贈正一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;外戚：聖武天皇、孝謙天皇の外祖父&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="79" height="26"/><text class="fk-name" x="0" y="0.5">藤原不比等</text></g></g>
+<g class="fk-node" transform="translate(416,200)" data-tip="&lt;h3&gt;&lt;ruby&gt;大中臣頼基&lt;rt&gt;おおなかとみのよりもと&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：大中臣輔道の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：大中臣能宣の父&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="79" height="26"/><text class="fk-name" x="0" y="0.5">大中臣頼基</text></g></g>
+<g class="fk-node" transform="translate(536,30)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原武智麻呂&lt;rt&gt;ふじわらのむちまろ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：680年～737年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：左大臣&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正一位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：藤原南家の祖&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="110" height="26"/><text class="fk-name" x="0" y="0.5">武智麻呂</text><text class="fk-note" x="62" y="1">（南家）</text></g></g>
+<g class="fk-node" transform="translate(536,66)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原房前&lt;rt&gt;ふじわらのふささき&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：681年～737年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：参議&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正三位、贈正一位&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="80" height="26"/><text class="fk-name" x="0" y="0.5">房前</text><text class="fk-note" x="32" y="1">（北家）</text></g></g>
+<g class="fk-node" transform="translate(536,102)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原宇合&lt;rt&gt;ふじわらのうまかい&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：694年～737年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：参議&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正三位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：藤原式家の祖&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="80" height="26"/><text class="fk-name" x="0" y="0.5">宇合</text><text class="fk-note" x="32" y="1">（式家）</text></g></g>
+<g class="fk-node" transform="translate(536,138)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原麻呂&lt;rt&gt;ふじわらのまろ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：695年～737年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：参議&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従三位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：藤原京家の祖&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="80" height="26"/><text class="fk-name" x="0" y="0.5">麻呂</text><text class="fk-note" x="32" y="1">（京家）</text></g></g>
 <g class="fk-node is-poet" transform="translate(536,200)" data-tip="&lt;h3&gt;&lt;ruby&gt;大中臣能宣&lt;rt&gt;おおなかとみのよしのぶ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：921年～991年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：大中臣頼基の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：49番「みかきもり…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：梨壺の五人の一人&lt;/div&gt;" data-p="49"><a href="/49.html" aria-label="大中臣能宣（百人一首49番）"><rect class="fk-hit" x="-2" y="-13" width="103" height="26"/><text class="fk-name" x="0" y="0.5">大中臣能宣</text><circle class="fk-badge" cx="89" cy="0" r="10"/><text class="fk-badge-num" x="89" y="0.5">49</text></a></g>
-<g class="fk-node" transform="translate(686,200)" data-tip="&lt;h3&gt;&lt;ruby&gt;大中臣輔親&lt;rt&gt;おおなかとみのすけちか&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：954年～1038年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：大中臣能宣の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：伊勢大輔の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">大中臣輔親</text></g>
-<g class="fk-node is-poet is-self" transform="translate(836,200)" data-tip="&lt;h3&gt;&lt;ruby&gt;伊勢大輔&lt;rt&gt;いせのたいふ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：大中臣輔親の娘&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：61番「いにしへの…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：高階成順の妻&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="94" height="28" rx="3"/><text class="fk-name" x="0" y="0.5">伊勢大輔</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">61</text></g>
+<g class="fk-node" transform="translate(686,200)" data-tip="&lt;h3&gt;&lt;ruby&gt;大中臣輔親&lt;rt&gt;おおなかとみのすけちか&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：954年～1038年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：大中臣能宣の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：伊勢大輔の父&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="79" height="26"/><text class="fk-name" x="0" y="0.5">大中臣輔親</text></g></g>
+<g class="fk-node is-poet is-self" transform="translate(836,200)" data-tip="&lt;h3&gt;&lt;ruby&gt;伊勢大輔&lt;rt&gt;いせのたいふ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：大中臣輔親の娘&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：61番「いにしへの…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：高階成順の妻&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="94" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="88" height="26"/><text class="fk-name" x="0" y="0.5">伊勢大輔</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">61</text></g></g>
+<g class="fk-node" transform="translate(836,244)" data-tip="&lt;h3&gt;&lt;ruby&gt;高階成順&lt;rt&gt;たかしなのなりのぶ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：不明～1040年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：筑前守&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：高階明順の子。高階貴子（儀同三司母）の甥&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：伊勢大輔の夫。康資王母らの父。出家して乗蓮と号した&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="64" height="26"/><text class="fk-name" x="0" y="0.5">高階成順</text></g></g>
+<g class="fk-node" transform="translate(536,310)" data-tip="&lt;h3&gt;&lt;ruby&gt;高階成忠&lt;rt&gt;たかしなのなりただ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：高階貴子（儀同三司母）・明順らの父&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="64" height="26"/><text class="fk-name" x="0" y="0.5">高階成忠</text></g></g>
+<g class="fk-node" transform="translate(686,288)" data-tip="&lt;h3&gt;&lt;ruby&gt;高階明順&lt;rt&gt;たかしなのあきのぶ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：不明～1009年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：伊予守&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：高階成忠の子。高階貴子（儀同三司母）の兄弟&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：高階成順の父。娘は大江挙周の妻&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="64" height="26"/><text class="fk-name" x="0" y="0.5">高階明順</text></g></g>
+<g class="fk-node is-poet" transform="translate(686,332)" data-tip="&lt;h3&gt;&lt;ruby&gt;儀同三司母&lt;rt&gt;ぎどうさんしのはは&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;本名：高階貴子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首54番「忘れじの…」の歌人&lt;/div&gt;" data-p="54"><a href="/54.html" aria-label="儀同三司母（百人一首54番）"><rect class="fk-hit" x="-2" y="-13" width="88" height="26"/><text class="fk-name" x="0" y="0.5">高階貴子</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">54</text></a></g>
 </g>
 </svg>
-                <!-- KEIZU:END -->
+                <!-- #endregion KEIZU:END -->
               </div>
               <div class="kd-text">
                 <p>中臣家は神事や祭祀を司る一族で、歌人を多く輩出しています。頼基、能宣、輔親、伊勢大輔は歌人としてよく知られています。中臣鎌足は藤原の姓を賜り、後に<span
@@ -689,7 +693,8 @@
   <script src="../js/tooltips.js?2026920"></script>
   <script src="../js/tenno-keizu-tooltips.js?20261001-01"></script>
   <script src="../js/fujiwara-keizu-tooltips.js?20261001-01"></script>
-  <script src="../js/keizu-diagram.js?20261001-17"></script>
+  <script src="../js/keizu-tips.js?20261002-02"></script>
+  <script src="../js/keizu-diagram.js?20261002-04"></script>
   <!-- ▲▲▲ tippy.js ▲▲▲ -->
   <script>window.POEM_NUM = 61;</script>
   <script src="../js/grammar-data.js?20260830"></script>
