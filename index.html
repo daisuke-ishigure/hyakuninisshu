@@ -846,11 +846,42 @@
       padding-top: 8px;
     }
 
+    /* 「全100首を表示」と同じ見た目（紅色の丸いボタン・白文字。ホバーで墨色）。ふわふわ上下に動きながら少し拡大・縮小する */
     #omikuji #draw-button {
-      padding: 12px 36px;
+      min-width: 12em;
+      padding: 12px 24px;
+      border: 1px solid var(--home-beni);
+      border-radius: 999px;
+      background: var(--home-beni);
+      box-shadow: 0 3px 6px rgba(46, 42, 32, 0.38);
       font-family: "Noto Sans JP", sans-serif;
+      font-size: 1rem;
       font-weight: 700;
+      line-height: 1.5;
       letter-spacing: 0.1em;
+      color: #fff;
+      animation: hyakushu-more-float 2.4s ease-in-out infinite;
+    }
+
+    #omikuji #draw-button:hover {
+      border-color: var(--home-ink);
+      background: var(--home-ink);
+    }
+
+    #omikuji #draw-button:hover,
+    #omikuji #draw-button:focus-visible {
+      animation-play-state: paused;
+    }
+
+    #omikuji #draw-button:disabled {
+      border-color: #aaa;
+      animation: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #omikuji #draw-button {
+        animation: none;
+      }
     }
 
     /* 画像は切らず、縮めず、元の縦横比のまま全体を表示する
@@ -940,21 +971,55 @@
       pointer-events: none;
     }
 
+    /* 大きさは「おみくじを引く」（#omikuji #draw-button）とそろえる */
     .hyakushu__more button {
-      padding: 10px 32px;
-      border: 1px solid var(--home-ink);
+      min-width: 12em;
+      padding: 12px 24px;
+      border: 1px solid var(--home-beni);
       border-radius: 999px;
-      background: #fff;
+      background: var(--home-beni);
       font-family: "Noto Sans JP", sans-serif;
-      font-size: 0.9rem;
+      font-size: 1rem;
       font-weight: 700;
-      color: var(--home-ink);
+      line-height: 1.5;
+      letter-spacing: 0.1em;
+      color: #fff;
+      box-shadow: 0 3px 6px rgba(46, 42, 32, 0.38);
       cursor: pointer;
     }
 
     .hyakushu__more button:hover {
+      border-color: var(--home-ink);
       background: var(--home-ink);
       color: #fff;
+    }
+
+    /* 「全100首を表示」のあいだは、ふわふわ上下に動きながら少しだけ拡大・縮小する（押すときは止める） */
+    .hyakushu__list.is-collapsed .hyakushu__more button {
+      animation: hyakushu-more-float 2.4s ease-in-out infinite;
+    }
+
+    .hyakushu__list.is-collapsed .hyakushu__more button:hover,
+    .hyakushu__list.is-collapsed .hyakushu__more button:focus-visible {
+      animation-play-state: paused;
+    }
+
+    /* 影は浮き上がるほど下にずれて、薄く広がる（ボタンが地面から離れて見えるように） */
+    @keyframes hyakushu-more-float {
+      0%, 100% {
+        transform: translateY(0) scale(1);
+        box-shadow: 0 3px 6px rgba(46, 42, 32, 0.38);
+      }
+      50% {
+        transform: translateY(-6px) scale(1.05);
+        box-shadow: 0 12px 16px rgba(46, 42, 32, 0.24);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hyakushu__list.is-collapsed .hyakushu__more button {
+        animation: none;
+      }
     }
 
     /* すべてのコンテンツ */

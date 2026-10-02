@@ -15,7 +15,8 @@ HTML の形：
 
 データ：
   nodes:   [{ id, n: 名前, x: 名前の左端, y: 名前の中心, k: 天皇（色字）, kan: 摂政・関白になった人物（紫字）, t: 代数, p: 歌番号,
-              note: 名前の後ろの注記, sub: 名前の下の札, pre: 名前の前の赤枠の家名（西園寺・徳大寺など）, self: このページの歌人（黄色の枠）, key: ツールチップを探す名前 }]
+              note: 名前の後ろの注記, sub: 名前の下の札, pre: 名前の前の赤枠の家名（西園寺・徳大寺など）, self: このページの歌人（黄色の枠）, key: ツールチップを探す名前,
+              href: 歌のページ以外へのリンク先（三十六歌仙のページなど。歌番号より優先）, hrefText: そのときのツールチップのボタンの文字 }]
   couples: [{ id, top, bottom }]  … 上下に並べた夫婦を縦の「＝」で結ぶ（同じ x に置くこと）
   eqs:     [{ id, points: [[x, y], …], out: [x, y] }]  … 離れた位置の夫婦を、折れ線の「＝」で結ぶ。子への線は out から出す
   kids:    [{ from: 人物・夫婦の id か [x, y], to: [子の id], bar: 縦線の x（省略時は子の左端 − 14）, over: 交差する線の上を通す }]
@@ -106,8 +107,9 @@ HTML の形：
     if (d.self) inner += tag('rect', { class: 'kd-self-box', x: -5, y: -14, width: d.w + 10, height: 28, rx: 3 });
 
     var main = '';
-    // 歌人は名前とバッジをまとめて歌のページへのリンクにする（このページの歌人は除く）
-    var link = d.p && !d.self;
+    // 歌人は名前とバッジをまとめて歌のページへのリンクにする（このページの歌人は除く）。href があればそちらへのリンクにする
+    var href = d.self ? '' : d.href || (d.p ? '/' + d.p + '.html' : '');
+    var link = !!href;
     // ホバーで名前の背景に色を付けるための四角（歌人以外も）
     main += tag('rect', { class: 'fk-hit', x: -2, y: -13, width: d.w + 4, height: 26 });
     if (d.pre) {
@@ -121,7 +123,7 @@ HTML の形：
       main += tag('text', { class: 'fk-badge-num', x: d.badgeCx, y: 0.5, style: d.p >= 100 ? 'font-size:8.5px' : '' }, esc(d.p));
     }
     inner += link
-      ? tag('a', { href: '/' + d.p + '.html', 'aria-label': plainText(tooltipLines(d, tips)[0]) + '（百人一首' + d.p + '番）' }, main)
+      ? tag('a', { href: href, 'aria-label': plainText(tooltipLines(d, tips)[0]) + (d.href ? '（' + (d.hrefText || 'リンク') + '）' : '（百人一首' + d.p + '番）') }, main)
       : tag('g', { class: 'fk-main' }, main);
 
     if (d.t) {
@@ -138,7 +140,9 @@ HTML の形：
       class: 'fk-node' + (d.k ? ' is-tenno' : '') + (d.kan ? ' is-kanpaku' : '') + (d.p ? ' is-poet' : '') + (d.self ? ' is-self' : ''),
       transform: 'translate(' + d.x + ',' + d.y + ')',
       'data-tip': tooltipHtml(d, tips),
-      'data-p': link ? d.p : ''
+      'data-p': link && !d.href ? d.p : '',
+      'data-href': link && d.href ? d.href : '',
+      'data-href-text': link && d.href ? d.hrefText || 'リンク' : ''
     }, inner);
   }
 
@@ -320,7 +324,9 @@ HTML の形：
         content: function (ref) {
           var html = ref.getAttribute('data-tip');
           var p = ref.getAttribute('data-p');
+          var href = ref.getAttribute('data-href');
           if (p) html += '<a class="fk-tip-link" href="/' + p + '.html">' + p + '番の歌のページへ</a>';
+          else if (href) html += '<a class="fk-tip-link" href="' + esc(href) + '">' + esc(ref.getAttribute('data-href-text')) + '</a>';
           return html;
         }
       });

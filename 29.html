@@ -90,6 +90,7 @@
   <link rel="stylesheet" href="../css/huda_29.css?20240507-02">
   <link rel="stylesheet" href="../css/animate.min.css">
   <link rel="stylesheet" href="../css/grammar-panel.css?20261001-01">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261002-03">
   <!-- google fontの追加 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -309,7 +310,86 @@
         </dd>
       </dl>
     </div>
-  </div><div class="words">
+  </div><div class="diagram-section">
+      <dl>
+        <dt class='title'>凡河内躬恒の系図</dt>
+            <dd class='kd-dd'>
+              <!-- 系図のすぐ上：左に凡例、右に拡大・縮小（tenno-keizu.html と同じ） -->
+              <div class="fk-chart-bar">
+                <ul class="fk-legend kd-legend">
+                  <li><span class="fk-legend__tenno">茶字</span>天皇</li>
+                  <li><span class="fk-legend__tno" aria-hidden="true"></span>天皇の代数</li>
+                  <li><span class="fk-legend__badge" aria-hidden="true"></span>百人一首の歌番号（クリックで歌のページへ）</li>
+                </ul>
+                <div class="fk-zoom" role="group" aria-label="拡大・縮小">
+                  <button type="button" data-zoom="out" aria-label="縮小">－</button>
+                  <span class="fk-zoom__label" aria-live="polite">100%</span>
+                  <button type="button" data-zoom="in" aria-label="拡大">＋</button>
+                  <button type="button" data-zoom="reset">等倍</button>
+                  <button type="button" data-zoom="fit">幅に合わせる</button>
+                </div>
+              </div>
+              <!-- 相関図のデータ。SVG は node _tools/build-keizu.mjs で下の KEIZU:START〜END に書き込む -->
+              <div class="kd-chart" aria-label="凡河内躬恒の系図">
+                <script type="application/json">
+{
+  "nodes": [
+    { "id": "tomonori", "n": "紀友則", "p": 33, "x": 136, "y": 68 },
+    { "id": "tsurayuki", "n": "紀貫之", "p": 35, "x": 136, "y": 108 },
+    { "id": "tadamine", "n": "壬生忠岑", "p": 30, "x": 136, "y": 148 },
+    { "id": "mitsune", "n": "凡河内躬恒", "p": 29, "self": 1, "x": 136, "y": 188 },
+    { "id": "tadatoshi", "n": "凡河内諶利", "x": 16, "y": 188 },
+    { "id": "tsunehisa", "n": "凡河内恒寿", "x": 296, "y": 168 },
+    { "id": "seitsune", "n": "凡河内勢恒", "x": 296, "y": 208 },
+    { "id": "daigo", "n": "醍醐", "k": 1, "t": 60, "x": 450, "y": 68 }
+  ],
+  "kids": [
+    { "from": "tadatoshi", "to": ["mitsune"] },
+    { "from": "mitsune", "to": ["tsunehisa", "seitsune"] }
+  ],
+  "arrows": [
+    { "points": [[446, 68], [259, 68]], "label": { "text": "古今和歌集の編纂を命じる", "x": 286, "y": 56 } }
+  ],
+  "groups": [
+    { "points": [[122, 22], [256, 22], [256, 210], [122, 210]], "label": { "text": "古今和歌集の撰者", "x": 130, "y": 37 } }
+  ]
+}
+                </script>
+                <!-- #region KEIZU:START -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 234" width="496" height="234" role="img" aria-label="凡河内躬恒の系図" class="fk-svg kd-svg" style="max-width:744px;min-width:min(640px,744px)" data-src="1apqg3o">
+<g class="kd-groups"><path d="M122 22L256 22L256 210L122 210Z" class="kd-group"/><text class="kd-group-label" x="130" y="37">古今和歌集の撰者</text></g>
+<g class="fk-edges"><path d="M94 188H122" class="fk-edge"/><path d="M122 188H133" class="fk-edge"/><path d="M238 188H282" class="fk-edge"/><path d="M282 168V208" class="fk-edge"/><path d="M282 168H293" class="fk-edge"/><path d="M282 208H293" class="fk-edge"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"><path d="M446 68L259 68" class="kd-arrow" marker-end="url(#kdArrowHead)"/><text class="kd-arrow-label" x="286" y="56">古今和歌集の編纂を命じる</text></g>
+<g>
+<g class="fk-node is-poet" transform="translate(136,68)" data-tip="&lt;h3&gt;&lt;ruby&gt;紀友則&lt;rt&gt;きのとものり&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：紀有友の子。紀貫之とはいとこ&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：33番「ひさかたの…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：紀貫之・壬生忠岑と共に『古今和歌集』の撰者となったが、完成を見ずに没した&lt;/div&gt;" data-p="33"><a href="/33.html" aria-label="紀友則（百人一首33番）"><rect class="fk-hit" x="-2" y="-13" width="73" height="26"/><text class="fk-name" x="0" y="0.5">紀友則</text><circle class="fk-badge" cx="59" cy="0" r="10"/><text class="fk-badge-num" x="59" y="0.5">33</text></a></g>
+<g class="fk-node is-poet" transform="translate(136,108)" data-tip="&lt;h3&gt;&lt;ruby&gt;紀貫之&lt;rt&gt;きのつらゆき&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従五位上&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：紀望行の子。紀友則とはいとこ&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：35番「人はいさ…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：『古今和歌集』の撰者で、仮名序を記した。土佐守を務めたのち『土佐日記』を著した&lt;/div&gt;" data-p="35"><a href="/35.html" aria-label="紀貫之（百人一首35番）"><rect class="fk-hit" x="-2" y="-13" width="73" height="26"/><text class="fk-name" x="0" y="0.5">紀貫之</text><circle class="fk-badge" cx="59" cy="0" r="10"/><text class="fk-badge-num" x="59" y="0.5">35</text></a></g>
+<g class="fk-node is-poet" transform="translate(136,148)" data-tip="&lt;h3&gt;&lt;ruby&gt;壬生忠岑&lt;rt&gt;みぶのただみね&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：不明&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：右衛門府生。ほかに摂津権大目などを務めたとされる&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：子に壬生忠見&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：30番「有明の…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：『古今和歌集』の撰者の一人で、撰者の中では最も官位が低かった。『大和物語』によると藤原定国の随身であったという&lt;/div&gt;" data-p="30"><a href="/30.html" aria-label="壬生忠岑（百人一首30番）"><rect class="fk-hit" x="-2" y="-13" width="88" height="26"/><text class="fk-name" x="0" y="0.5">壬生忠岑</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">30</text></a></g>
+<g class="fk-node is-poet is-self" transform="translate(136,188)" data-tip="&lt;h3&gt;&lt;ruby&gt;凡河内躬恒&lt;rt&gt;おおしこうちのみつね&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：859年頃～925年頃&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：甲斐権少目・丹波権大目・和泉権掾・淡路権掾など、地方官を歴任&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：凡河内諶利の子（系譜不詳とも伝える）&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：29番「心あてに…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：『古今和歌集』の撰者の一人。紀貫之と親しく、藤原兼輔の邸に出入りしてその庇護を受けた&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="109" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="103" height="26"/><text class="fk-name" x="0" y="0.5">凡河内躬恒</text><circle class="fk-badge" cx="89" cy="0" r="10"/><text class="fk-badge-num" x="89" y="0.5">29</text></g></g>
+<g class="fk-node" transform="translate(16,188)" data-tip="&lt;h3&gt;凡河内諶利&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：淡路権掾&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：凡河内躬恒の父&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="79" height="26"/><text class="fk-name" x="0" y="0.5">凡河内諶利</text></g></g>
+<g class="fk-node" transform="translate(296,168)" data-tip="&lt;h3&gt;凡河内恒寿&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：凡河内躬恒の子&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="79" height="26"/><text class="fk-name" x="0" y="0.5">凡河内恒寿</text></g></g>
+<g class="fk-node" transform="translate(296,208)" data-tip="&lt;h3&gt;凡河内勢恒&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：凡河内躬恒の子&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="79" height="26"/><text class="fk-name" x="0" y="0.5">凡河内勢恒</text></g></g>
+<g class="fk-node is-tenno" transform="translate(450,68)" data-tip="&lt;h3&gt;&lt;ruby&gt;醍醐天皇&lt;rt&gt;だいごてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第60代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：885年～930年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：897年～930年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：『古今和歌集』の編纂を命じた&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="34" height="26"/><text class="fk-name" x="0" y="0.5">醍醐</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">60</text></g>
+</g>
+</svg>
+                <!-- #endregion KEIZU:END -->
+              </div>
+
+              <div class="kd-text">
+                <p style="width:100%; margin-bottom: 0.75em;">
+                  凡河内躬恒は、紀友則・紀貫之・壬生忠岑とともに『古今和歌集』の撰者を務めました。
+                </p>
+                <p style="width:100%; margin-bottom: 0.75em;">
+                  官位は高くなく、甲斐・丹波・和泉・淡路などの地方官を歴任しました。
+                </p>
+                <p style="width:100%; margin-bottom: 0.75em;">
+                  紀貫之と親しく、藤原兼輔の邸に出入りして、その庇護を受けたといわれています。
+                </p>
+              </div>
+            </dd>
+      </dl>
+    </div>
+    <div class="words">
       <dl>
         <dt class='title'>付録</dt>
         <dd>
@@ -484,6 +564,10 @@
   <script src="../js/popper.min.js"></script>
   <script src="../js/tippy.umd.min.js"></script>
   <script src="../js/tooltips.js?2026920"></script>
+  <script src="../js/tenno-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/fujiwara-keizu-tooltips.js?20261001-01"></script>
+  <script src="../js/keizu-tips.js?20261002-05"></script>
+  <script src="../js/keizu-diagram.js?20261002-07"></script>
   <!-- ▲▲▲ tippy.js ▲▲▲ -->
   <script>window.POEM_NUM = 29;</script>
   <script src="../js/grammar-data.js?20260830"></script>
