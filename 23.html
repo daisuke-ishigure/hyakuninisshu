@@ -325,113 +325,185 @@
       <dl>
         <dt class='title'>大江千里の系図</dt>
             <dd class='kd-dd'>
-              <!-- 系図のすぐ上：左に凡例、右に拡大・縮小（tenno-keizu.html と同じ） -->
-              <div class="fk-chart-bar">
-                <ul class="fk-legend kd-legend">
-                  <li><span class="fk-legend__tenno">茶字</span>天皇</li>
-                  <li><span class="fk-legend__tno" aria-hidden="true"></span>天皇の代数</li>
-                  <li><span class="fk-legend__badge" aria-hidden="true"></span>百人一首の歌番号（クリックで歌のページへ）</li>
-                  <li><span class="fk-legend__dash"></span>数代省略・異説</li>
-                  <li><span class="fk-legend__eq">＝</span>婚姻</li>
-                </ul>
-                <div class="fk-zoom" role="group" aria-label="拡大・縮小">
-                  <button type="button" data-zoom="out" aria-label="縮小">－</button>
-                  <span class="fk-zoom__label" aria-live="polite">100%</span>
-                  <button type="button" data-zoom="in" aria-label="拡大">＋</button>
-                  <button type="button" data-zoom="reset">等倍</button>
-                  <button type="button" data-zoom="fit">幅に合わせる</button>
-                </div>
-              </div>
-              <!-- 相関図のデータ。SVG は node _tools/build-keizu.mjs で下の KEIZU:START〜END に書き込む -->
-              <div class="kd-chart" aria-label="大江千里の系図">
-                <script type="application/json">
+          <!-- 系図のすぐ上：左に凡例、右に拡大・縮小（tenno-keizu.html と同じ） -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__tenno">茶字</span>天皇</li>
+              <li><span class="fk-legend__tno" aria-hidden="true"></span>天皇の代数</li>
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>百人一首の歌番号（クリックで歌のページへ）</li>
+              <li><span class="fk-legend__dash"></span>数代省略・異説</li>
+              <li><span class="fk-legend__eq">＝</span>婚姻</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="拡大・縮小">
+              <button type="button" data-zoom="out" aria-label="縮小">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="拡大">＋</button>
+              <button type="button" data-zoom="reset">等倍</button>
+              <button type="button" data-zoom="fit">幅に合わせる</button>
+            </div>
+          </div>
+          <!-- 相関図のデータ。SVG は node _tools/build-keizu.mjs で下の KEIZU:START〜END に書き込む -->
+          <div class="kd-chart" aria-label="大江千里の系図">
+            <script type="application/json">
 {
   "nodes": [
-    { "id": "heizei", "n": "平城", "k": 1, "t": 51, "x": 16, "y": 62 },
-    { "id": "abo", "n": "阿保親王", "x": 136, "y": 62 },
-    { "id": "motonushi", "n": "大枝本主", "x": 136, "y": 150 },
-    { "id": "yukihira", "n": "在原行平", "p": 16, "x": 256, "y": 40 },
-    { "id": "narihira", "n": "在原業平", "p": 17, "x": 256, "y": 84 },
-    { "id": "otondo", "n": "大江音人", "x": 256, "y": 150 },
-    { "id": "chifuru", "n": "大江千古", "x": 376, "y": 128 },
-    { "id": "chisato", "n": "大江千里", "p": 23, "self": 1, "x": 376, "y": 172 },
-    { "id": "naritada", "n": "高階成忠", "x": 376, "y": 264 },
-    { "id": "masahira", "n": "大江匡衡", "x": 496, "y": 128 },
-    { "id": "akazome", "n": "赤染衛門", "p": 59, "x": 496, "y": 172 },
-    { "id": "akinobu", "n": "高階明順", "x": 496, "y": 238 },
-    { "id": "kishi", "n": "儀同三司母", "p": 54, "x": 496, "y": 290 },
-    { "id": "takachika", "n": "大江挙周", "x": 616, "y": 150 },
-    { "id": "akinobujo", "n": "明順の娘", "x": 616, "y": 194 },
-    { "id": "teishi", "n": "藤原定子", "x": 616, "y": 290 },
-    { "id": "narihira2", "n": "大江成衡", "x": 736, "y": 172 },
-    { "id": "takachikajo", "n": "橘孝親の娘", "x": 736, "y": 216 },
-    { "id": "masafusa", "n": "権中納言匡房", "key": "大江匡房", "p": 73, "x": 886, "y": 194 }
+    { "id":  "haji", "n":  "土師宿禰", "x":  16, "y":  130 },
+    { "id":  "maimo", "n":  "土師真妹", "x":  102, "y":  84 },
+    { "id":  "konin", "n":  "光仁", "k":  1, "t":  49, "x":  188, "y":  40 },
+    { "id":  "niigasa", "n":  "高野新笠", "x":  188, "y":  84 },
+    { "id":  "kanmu", "n":  "桓武", "k":  1, "t":  50, "x":  274, "y":  62 },
+    { "id":  "heizei", "n":  "平城", "k":  1, "t":  51, "x":  330, "y":  62 },
+    { "id":  "morogami", "n":  "大枝諸上", "x":  330, "y":  200 },
+    { "id":  "abo", "n":  "阿保親王", "x":  416, "y":  62 },
+    { "id":  "motonushi", "n":  "大枝本主", "x":  416, "y":  200 },
+    { "id":  "yukihira", "n":  "在原行平", "p":  16, "x":  502, "y":  40 },
+    { "id":  "narihira", "n":  "在原業平", "p":  17, "x":  502, "y":  84 },
+    { "id":  "otondo", "n":  "大江音人", "x":  502, "y":  200 },
+    { "id":  "tamabuchi", "n":  "大江玉淵", "x":  612, "y":  150 },
+    { "id":  "chisato", "n":  "大江千里", "p":  23, "x":  612, "y":  200, "self":  1 },
+    { "id":  "chifuru", "n":  "大江千古", "x":  612, "y":  250 },
+    { "id":  "asatsuna", "n":  "大江朝綱", "x":  722, "y":  150 },
+    { "id":  "koretoki", "n":  "大江維時", "x":  722, "y":  250 },
+    { "id":  "tadamitsu", "n":  "大江斉光", "x":  808, "y":  300 },
+    { "id":  "shigemitsu", "n":  "大江重光", "x":  808, "y":  250 },
+    { "id":  "naritada", "n":  "高階成忠", "x":  808, "y":  140 },
+    { "id":  "kishi", "n":  "儀同三司母", "p":  54, "x":  894, "y":  140 },
+    { "id":  "akinobu", "n":  "高階明順", "x":  894, "y":  196 },
+    { "id":  "teishi", "n":  "藤原定子", "x":  1030, "y":  140 },
+    { "id":  "masahira", "n":  "大江匡衡", "x":  894, "y":  250 },
+    { "id":  "akazome", "n":  "赤染衛門", "p":  59, "x":  894, "y":  294 },
+    { "id":  "masamune", "n":  "大江雅致", "x":  894, "y":  372 },
+    { "id":  "yasuhirajo", "n":  "平保衡の娘", "sub":  "昌子内親王の乳母とされる", "x":  894, "y":  416 },
+    { "id":  "gojiju", "n":  "江侍従", "x":  1004, "y":  294 },
+    { "id":  "takachika", "n":  "大江挙周", "x":  1004, "y":  250 },
+    { "id":  "akinobujo", "n":  "明順の娘", "x":  1004, "y":  196 },
+    { "id":  "yasumasa", "n":  "藤原保昌", "x":  1004, "y":  350 },
+    { "id":  "izumi", "n":  "和泉式部", "p":  56, "sub":  "中宮彰子に仕えた", "x":  1004, "y":  394 },
+    { "id":  "michisada", "n":  "橘道貞", "x":  1004, "y":  490 },
+    { "id":  "narihira2", "n":  "大江成衡", "x":  1120, "y":  223 },
+    { "id":  "takachikajo", "n":  "橘孝親の娘", "x":  1120, "y":  267 },
+    { "id":  "koshikibu", "n":  "小式部内侍", "p":  60, "sub":  "中宮彰子に仕えた", "x":  1120, "y":  452 },
+    { "id":  "masafusa", "n":  "大江匡房", "p":  73, "x":  1245, "y":  245 }
   ],
   "couples": [
-    { "id": "c-masahira", "top": "masahira", "bottom": "akazome" },
-    { "id": "c-takachika", "top": "takachika", "bottom": "akinobujo" },
-    { "id": "c-narihira2", "top": "narihira2", "bottom": "takachikajo" }
+    { "id":  "c-konin", "top":  "konin", "bottom":  "niigasa" },
+    { "id":  "c-masahira", "top":  "masahira", "bottom":  "akazome" },
+    { "id":  "c-masamune", "top":  "masamune", "bottom":  "yasuhirajo" },
+    { "id":  "c-takachika", "top":  "akinobujo", "bottom":  "takachika" },
+    { "id":  "c-yasumasa", "top":  "yasumasa", "bottom":  "izumi" },
+    { "id":  "c-michisada", "top":  "izumi", "bottom":  "michisada" },
+    { "id":  "c-narihira2", "top":  "narihira2", "bottom":  "takachikajo" }
   ],
   "kids": [
-    { "from": "heizei", "to": ["abo"] },
-    { "from": "abo", "to": ["yukihira", "narihira"] },
-    { "from": "motonushi", "to": ["otondo"] },
-    { "from": "otondo", "to": ["chifuru", "chisato"] },
-    { "from": "naritada", "to": ["akinobu", "kishi"] },
-    { "from": "c-masahira", "to": ["takachika"] },
-    { "from": "akinobu", "to": ["akinobujo"] },
-    { "from": "kishi", "to": ["teishi"] },
-    { "from": "c-takachika", "to": ["narihira2"] },
-    { "from": "c-narihira2", "to": ["masafusa"] }
+    { "from":  "maimo", "to":  ["niigasa"] },
+    { "from":  "c-konin", "to":  ["kanmu"] },
+    { "from":  "kanmu", "to":  ["heizei"] },
+    { "from":  "heizei", "to":  ["abo"] },
+    { "from":  "abo", "to":  ["yukihira", "narihira"] },
+    { "from":  "morogami", "to":  ["motonushi"] },
+    { "from":  "motonushi", "to":  ["otondo"] },
+    { "from":  "otondo", "to":  ["tamabuchi", "chisato", "chifuru"] },
+    { "from":  "tamabuchi", "to":  ["asatsuna"] },
+    { "from":  "chifuru", "to":  ["koretoki"] },
+    { "from":  "koretoki", "to":  ["tadamitsu", "shigemitsu"] },
+    { "from":  "shigemitsu", "to":  ["masahira"] },
+    { "from":  "c-masahira", "to":  ["takachika", "gojiju"] },
+    { "from":  "c-masamune", "to":  ["izumi"] },
+    { "from":  "c-takachika", "to":  ["narihira2"] },
+    { "from":  "c-michisada", "to":  ["koshikibu"] },
+    { "from":  "c-narihira2", "to":  ["masafusa"] },
+    { "from":  "naritada", "to":  ["kishi", "akinobu"] },
+    { "from":  "akinobu", "to":  ["akinobujo"] },
+    { "from":  "kishi", "to":  ["teishi"] }
   ],
   "lines": [
-    { "points": [[242, 84], [242, 150]], "dash": true, "label": { "text": "実父とする説", "x": 205, "y": 120 } },
-    { "points": [[424, 128], [493, 128]], "dash": true, "label": { "text": "2代略", "x": 458, "y": 122 } }
+    { "points":  [[79, 130], [88, 130], [88, 84], [99, 84]], "dash":  true },
+    { "points":  [[88, 130], [88, 200], [327, 200]], "dash":  true, "label":  { "text":  "数代略", "x":  160, "y":  194 } },
+    { "points":  [[488, 84], [488, 200]], "dash":  true, "label":  { "text":  "実父とする説", "x":  452, "y":  150 } },
+    { "points":  [[880, 250], [880, 372], [891, 372]], "dash":  true, "label":  { "text":  "諸説あり", "x":  852, "y":  345 } }
+  ],
+  "arrows": [
+    { "points":  [[296, 74], [340, 186]], "label":  { "text":  "大枝の姓を与えた", "x":  322, "y":  122 } }
   ],
   "tips": {
-    "大枝本主": ["大枝本主", "特記：公式には大江音人の父とされる"],
-    "大江音人": ["<ruby>大江音人<rt>おおえのおとんど</rt></ruby>", "系譜：公式には大枝本主の子。阿保親王の長子で、本主の養子になったとする説もある", "特記：大枝から大江に改姓した。千古・千里らの父"],
-    "大江千古": ["<ruby>大江千古<rt>おおえのちふる</rt></ruby>", "生没年：866年～924年", "系譜：大江音人の子", "特記：子の維時、孫の重光を経て、曽孫が大江匡衡"],
+    "土師宿禰": ["<ruby>土師氏<rt>はじうじ</rt></ruby>（土師宿禰）", "特記：野見宿禰を祖と伝える氏族。桓武天皇の時代に、一族から秋篠・菅原・大枝（のちの大江）の氏が分かれた"],
+    "土師真妹": ["<ruby>土師真妹<rt>はじのまいも</rt></ruby>", "系譜：土師氏の出身", "特記：和乙継の妻。高野新笠の母で、桓武天皇の外祖母。延暦9年12月、正一位とともに「大枝朝臣」の姓を贈られた"],
+    "高野新笠": ["<ruby>高野新笠<rt>たかののにいがさ</rt></ruby>", "系譜：和乙継と土師真妹の娘", "特記：光仁天皇の夫人。桓武天皇の母"],
+    "大枝諸上": ["<ruby>大枝諸上<rt>おおえのもろがみ</rt></ruby>", "系譜：土師氏の出身", "特記：延暦9年12月（791年2月）、高野新笠の一周忌に際し、土師宿禰から大枝朝臣に改姓した。大江音人の祖父"],
+    "大枝本主": ["<ruby>大枝本主<rt>おおえのもとぬし</rt></ruby>", "官職：備中権介", "特記：大江音人の父。音人の母は阿保親王の侍女だった中臣石根の娘"],
+    "大江音人": ["<ruby>大江音人<rt>おおえのおとんど</rt></ruby>", "生没年：811年～877年", "官職：参議", "系譜：大枝本主の子。阿保親王の子とする説もある", "特記：866年、大枝から大江に改姓した。千古・千里・玉淵らの父"],
+    "大江玉淵": ["<ruby>大江玉淵<rt>おおえのたまふち</rt></ruby>", "系譜：大江音人の子", "特記：大江朝綱の父。歌人の遊女・白女を養女とした"],
     "大江千里": ["<ruby>大江千里<rt>おおえのちさと</rt></ruby>", "系譜：大江音人の子（大江玉淵の子とする説もある）", "百人一首：23番「月見れば…」の歌人", "特記：大学寮で学んだ儒学者"],
-    "高階成忠": ["<ruby>高階成忠<rt>たかしなのなりただ</rt></ruby>", "特記：高階貴子（儀同三司母）・明順らの父"],
-    "大江匡衡": ["<ruby>大江匡衡<rt>おおえのまさひら</rt></ruby>", "系譜：大江重光の子。大江維時の孫", "特記：妻は赤染衛門。挙周の父"],
-    "高階明順": ["<ruby>高階明順<rt>たかしなのあきのぶ</rt></ruby>", "系譜：高階成忠の子", "特記：娘は大江挙周の妻"],
+    "大江千古": ["<ruby>大江千古<rt>おおえのちふる</rt></ruby>", "生没年：866年～924年", "系譜：大江音人の子", "特記：大江維時の父"],
+    "大江朝綱": ["<ruby>大江朝綱<rt>おおえのあさつな</rt></ruby>", "生没年：886年～958年", "官職：参議", "系譜：大江玉淵の子", "特記：祖父・音人の「江相公」に対し「後江相公」と呼ばれた。漢詩や書に優れた"],
+    "大江維時": ["<ruby>大江維時<rt>おおえのこれとき</rt></ruby>", "生没年：888年～963年", "官職：中納言", "系譜：大江千古の子", "特記：重光・斉光の父"],
+    "大江斉光": ["<ruby>大江斉光<rt>おおえのただみつ</rt></ruby>", "生没年：934年～987年", "官職：参議", "系譜：大江維時の子"],
+    "大江重光": ["大江重光", "系譜：大江維時の子", "特記：大江匡衡の父。大江雅致の父とする説もある"],
+    "大江匡衡": ["<ruby>大江匡衡<rt>おおえのまさひら</rt></ruby>", "生没年：952年～1012年", "系譜：大江重光の子", "特記：妻は赤染衛門。挙周・江侍従の父。大江雅致を匡衡の兄とする説もあるが、確実ではない"],
+    "江侍従": ["江侍従", "系譜：大江匡衡と赤染衛門の娘", "特記：名は大江匡子。藤原兼房の妻"],
     "大江挙周": ["<ruby>大江挙周<rt>おおえのたかちか</rt></ruby>", "生没年：不明～1046年", "系譜：大江匡衡と赤染衛門の子", "特記：妻は高階明順の娘。成衡の父"],
-    "明順の娘": ["高階明順の娘", "特記：大江挙周の妻"],
-    "大江成衡": ["大江成衡", "系譜：大江挙周の子", "特記：大江匡房の父"],
-    "橘孝親の娘": ["橘孝親の娘", "特記：大江成衡の妻。大江匡房の母"]
+    "明順の娘": ["高階明順の娘", "特記：大江挙周の妻。大江成衡の母"],
+    "大江成衡": ["大江成衡", "系譜：大江挙周と高階明順の娘の子", "特記：大江匡房の父"],
+    "橘孝親の娘": ["橘孝親の娘", "特記：大江成衡の妻。大江匡房の母"],
+    "大江匡房": ["<ruby>大江匡房<rt>おおえのまさふさ</rt></ruby>", "生没年：1041年～1111年", "官職：権中納言", "系譜：大江成衡の子。大江匡衡と赤染衛門の曽孫", "百人一首：73番「高砂の…」の歌人", "特記：百人一首の歌人名は<ruby>権中納言匡房<rt>ごんちゅうなごんまさふさ</rt></ruby>"],
+    "大江雅致": ["<ruby>大江雅致<rt>おおえのまさむね</rt></ruby>", "官職：太皇太后宮大進（昌子内親王に仕えた）、木工頭、越前守", "系譜：大江重光の子とする説や、大江匡衡の兄とする説がある", "特記：和泉式部の父。文章生出身の式部丞だったことが「式部」の由来とする説がある"],
+    "平保衡の娘": ["平保衡の娘", "特記：大江雅致の妻。和泉式部の母。昌子内親王の乳母（あるいは乳母子）とされる"],
+    "藤原保昌": ["<ruby>藤原保昌<rt>ふじわらのやすまさ</rt></ruby>", "特記：和泉式部の再婚相手"],
+    "橘道貞": ["<ruby>橘道貞<rt>たちばなのみちさだ</rt></ruby>", "特記：和泉式部の最初の夫。小式部内侍の父。任国の和泉が和泉式部の名の由来"],
+    "和泉式部": ["<ruby>和泉式部<rt>いずみしきぶ</rt></ruby>", "系譜：大江雅致と平保衡の娘の子", "百人一首：56番「あらざらむ…」の歌人", "特記：橘道貞と結婚し小式部内侍を生む。為尊親王・敦道親王と恋愛ののち、1009年頃に中宮彰子に出仕。のち藤原保昌と再婚した"],
+    "小式部内侍": ["<ruby>小式部内侍<rt>こしきぶのないし</rt></ruby>", "系譜：橘道貞と和泉式部の娘", "百人一首：60番「大江山…」の歌人", "特記：母と共に中宮彰子に出仕。1025年に没した"],
+    "高階成忠": ["<ruby>高階成忠<rt>たかしなのなりただ</rt></ruby>", "特記：高階貴子（儀同三司母）・明順らの父"],
+    "高階明順": ["<ruby>高階明順<rt>たかしなのあきのぶ</rt></ruby>", "系譜：高階成忠の子", "特記：娘は大江挙周の妻"]
   }
 }
-                </script>
-                <!-- KEIZU:START -->
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1016 316" width="1016" height="316" role="img" aria-label="大江千里の系図" class="fk-svg kd-svg" style="max-width:1524px;min-width:min(640px,1524px)" data-src="5zpjt">
-<g class="fk-edges"><path d="M524 137V163M528 137V163" class="fk-edge fk-eq"/><path d="M644 159V185M648 159V185" class="fk-edge fk-eq"/><path d="M764 181V207M768 181V207" class="fk-edge fk-eq"/><path d="M49 62H122" class="fk-edge"/><path d="M122 62H133" class="fk-edge"/><path d="M199 62H242" class="fk-edge"/><path d="M242 40V84" class="fk-edge"/><path d="M242 40H253" class="fk-edge"/><path d="M242 84H253" class="fk-edge"/><path d="M199 150H242" class="fk-edge"/><path d="M242 150H253" class="fk-edge"/><path d="M319 150H362" class="fk-edge"/><path d="M362 128V172" class="fk-edge"/><path d="M362 128H373" class="fk-edge"/><path d="M362 172H373" class="fk-edge"/><path d="M439 264H482" class="fk-edge"/><path d="M482 238V290" class="fk-edge"/><path d="M482 238H493" class="fk-edge"/><path d="M482 290H493" class="fk-edge"/><path d="M528 150H602" class="fk-edge"/><path d="M602 150H613" class="fk-edge"/><path d="M559 238H602" class="fk-edge"/><path d="M602 194V238" class="fk-edge"/><path d="M602 194H613" class="fk-edge"/><path d="M598 290H602" class="fk-edge"/><path d="M602 290H613" class="fk-edge"/><path d="M648 172H722" class="fk-edge"/><path d="M722 172H733" class="fk-edge"/><path d="M768 194H872" class="fk-edge"/><path d="M872 194H883" class="fk-edge"/><path d="M242 84L242 150" class="fk-edge is-dash"/><text class="fk-adopt" x="205" y="120">実父とする説</text><path d="M424 128L493 128" class="fk-edge is-dash"/><text class="fk-adopt" x="458" y="122">2代略</text></g>
+            </script>
+            <!-- KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1345 516" width="1345" height="516" role="img" aria-label="大江千里の系図" class="fk-svg kd-svg" style="max-width:2018px;min-width:min(640px,2018px)" data-src="xl6e4v">
+<g class="fk-edges"><path d="M201 49V75M205 49V75" class="fk-edge fk-eq"/><path d="M922 259V285M926 259V285" class="fk-edge fk-eq"/><path d="M922 381V407M926 381V407" class="fk-edge fk-eq"/><path d="M1032 205V241M1036 205V241" class="fk-edge fk-eq"/><path d="M1032 359V385M1036 359V385" class="fk-edge fk-eq"/><path d="M1024.5 422V481M1028.5 422V481" class="fk-edge fk-eq"/><path d="M1148 232V258M1152 232V258" class="fk-edge fk-eq"/><path d="M165 84H174" class="fk-edge"/><path d="M174 84H185" class="fk-edge"/><path d="M205 62H260" class="fk-edge"/><path d="M260 62H271" class="fk-edge"/><path d="M307 62H316" class="fk-edge"/><path d="M316 62H327" class="fk-edge"/><path d="M363 62H402" class="fk-edge"/><path d="M402 62H413" class="fk-edge"/><path d="M479 62H488" class="fk-edge"/><path d="M488 40V84" class="fk-edge"/><path d="M488 40H499" class="fk-edge"/><path d="M488 84H499" class="fk-edge"/><path d="M393 200H402" class="fk-edge"/><path d="M402 200H413" class="fk-edge"/><path d="M479 200H488" class="fk-edge"/><path d="M488 200H499" class="fk-edge"/><path d="M565 200H598" class="fk-edge"/><path d="M598 150V250" class="fk-edge"/><path d="M598 150H609" class="fk-edge"/><path d="M598 200H609" class="fk-edge"/><path d="M598 250H609" class="fk-edge"/><path d="M675 150H708" class="fk-edge"/><path d="M708 150H719" class="fk-edge"/><path d="M675 250H708" class="fk-edge"/><path d="M708 250H719" class="fk-edge"/><path d="M785 250H794" class="fk-edge"/><path d="M794 250V300" class="fk-edge"/><path d="M794 300H805" class="fk-edge"/><path d="M794 250H805" class="fk-edge"/><path d="M871 250H880" class="fk-edge"/><path d="M880 250H891" class="fk-edge"/><path d="M926 272H990" class="fk-edge"/><path d="M990 250V294" class="fk-edge"/><path d="M990 250H1001" class="fk-edge"/><path d="M990 294H1001" class="fk-edge"/><path d="M926 394H990" class="fk-edge"/><path d="M990 394H1001" class="fk-edge"/><path d="M1036 223H1106" class="fk-edge"/><path d="M1106 223H1117" class="fk-edge"/><path d="M1028.5 451.5H1106" class="fk-edge"/><path d="M1106 451.5V452" class="fk-edge"/><path d="M1106 452H1117" class="fk-edge"/><path d="M1152 245H1231" class="fk-edge"/><path d="M1231 245H1242" class="fk-edge"/><path d="M871 140H880" class="fk-edge"/><path d="M880 140V196" class="fk-edge"/><path d="M880 140H891" class="fk-edge"/><path d="M880 196H891" class="fk-edge"/><path d="M957 196H990" class="fk-edge"/><path d="M990 196H1001" class="fk-edge"/><path d="M996 140H1016" class="fk-edge"/><path d="M1016 140H1027" class="fk-edge"/><path d="M79 130L88 130L88 84L99 84" class="fk-edge is-dash"/><path d="M88 130L88 200L327 200" class="fk-edge is-dash"/><text class="fk-adopt" x="160" y="194">数代略</text><path d="M488 84L488 200" class="fk-edge is-dash"/><text class="fk-adopt" x="452" y="150">実父とする説</text><path d="M880 250L880 372L891 372" class="fk-edge is-dash"/><text class="fk-adopt" x="852" y="345">諸説あり</text></g>
 <defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
-<g class="kd-arrows"></g>
+<g class="kd-arrows"><path d="M296 74L340 186" class="kd-arrow" marker-end="url(#kdArrowHead)"/><text class="kd-arrow-label" x="322" y="122">大枝の姓を与えた</text></g>
 <g>
-<g class="fk-node is-tenno" transform="translate(16,62)" data-tip="&lt;h3&gt;&lt;ruby&gt;平城天皇&lt;rt&gt;へいぜいてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第51代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：774年～824年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：806年～809年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：譲位後、810年の平城太上天皇の変（薬子の変）で出家した&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">平城</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">51</text></g>
-<g class="fk-node" transform="translate(136,62)" data-tip="&lt;h3&gt;&lt;ruby&gt;阿保親王&lt;rt&gt;あぼしんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：792年～842年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：三品、贈一品&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：平城天皇の皇子、在原行平・業平の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">阿保親王</text></g>
-<g class="fk-node" transform="translate(136,150)" data-tip="&lt;h3&gt;大枝本主&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：公式には大江音人の父とされる&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">大枝本主</text></g>
-<g class="fk-node is-poet" transform="translate(256,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;在原行平&lt;rt&gt;ありわらのゆきひら&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：818年～893年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：中納言&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正三位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：16番「立ち別れ…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;中納言行平&lt;rt&gt;ちゅうなごんゆきひら&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;" data-p="16"><a href="/16.html" aria-label="在原行平（百人一首16番）"><rect class="fk-hit" x="-2" y="-13" width="88" height="26"/><text class="fk-name" x="0" y="0.5">在原行平</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">16</text></a></g>
-<g class="fk-node is-poet" transform="translate(256,84)" data-tip="&lt;h3&gt;&lt;ruby&gt;在原業平&lt;rt&gt;ありわらのなりひら&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：825年～880年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従四位上&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：17番「ちはやぶる…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;在原業平朝臣&lt;rt&gt;ありわらのなりひらあそん&lt;/rt&gt;&lt;/ruby&gt;。六歌仙の一人&lt;/div&gt;" data-p="17"><a href="/17.html" aria-label="在原業平（百人一首17番）"><rect class="fk-hit" x="-2" y="-13" width="88" height="26"/><text class="fk-name" x="0" y="0.5">在原業平</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">17</text></a></g>
-<g class="fk-node" transform="translate(256,150)" data-tip="&lt;h3&gt;&lt;ruby&gt;大江音人&lt;rt&gt;おおえのおとんど&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：公式には大枝本主の子。阿保親王の長子で、本主の養子になったとする説もある&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：大枝から大江に改姓した。千古・千里らの父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">大江音人</text></g>
-<g class="fk-node" transform="translate(376,128)" data-tip="&lt;h3&gt;&lt;ruby&gt;大江千古&lt;rt&gt;おおえのちふる&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：866年～924年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：大江音人の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：子の維時、孫の重光を経て、曽孫が大江匡衡&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">大江千古</text></g>
-<g class="fk-node is-poet is-self" transform="translate(376,172)" data-tip="&lt;h3&gt;&lt;ruby&gt;大江千里&lt;rt&gt;おおえのちさと&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：大江音人の子（大江玉淵の子とする説もある）&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：23番「月見れば…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：大学寮で学んだ儒学者&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="94" height="28" rx="3"/><text class="fk-name" x="0" y="0.5">大江千里</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">23</text></g>
-<g class="fk-node" transform="translate(376,264)" data-tip="&lt;h3&gt;&lt;ruby&gt;高階成忠&lt;rt&gt;たかしなのなりただ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：高階貴子（儀同三司母）・明順らの父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">高階成忠</text></g>
-<g class="fk-node" transform="translate(496,128)" data-tip="&lt;h3&gt;&lt;ruby&gt;大江匡衡&lt;rt&gt;おおえのまさひら&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：大江重光の子。大江維時の孫&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：妻は赤染衛門。挙周の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">大江匡衡</text></g>
-<g class="fk-node is-poet" transform="translate(496,172)" data-tip="&lt;h3&gt;&lt;ruby&gt;赤染衛門&lt;rt&gt;あかぞめえもん&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：赤染時用の娘。『袋草紙』には、実父は平兼盛とする話が載る&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：59番「やすらはで…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：藤原道長の妻・倫子と、娘の彰子に仕えた&lt;/div&gt;" data-p="59"><a href="/59.html" aria-label="赤染衛門（百人一首59番）"><rect class="fk-hit" x="-2" y="-13" width="88" height="26"/><text class="fk-name" x="0" y="0.5">赤染衛門</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">59</text></a></g>
-<g class="fk-node" transform="translate(496,238)" data-tip="&lt;h3&gt;&lt;ruby&gt;高階明順&lt;rt&gt;たかしなのあきのぶ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：高階成忠の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：娘は大江挙周の妻&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">高階明順</text></g>
-<g class="fk-node is-poet" transform="translate(496,290)" data-tip="&lt;h3&gt;&lt;ruby&gt;儀同三司母&lt;rt&gt;ぎどうさんしのはは&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従三位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;本名：高階貴子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：高階成忠の娘。藤原道隆の妻、藤原伊周・定子の母&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：54番「忘れじの…」の歌人&lt;/div&gt;" data-p="54"><a href="/54.html" aria-label="儀同三司母（百人一首54番）"><rect class="fk-hit" x="-2" y="-13" width="103" height="26"/><text class="fk-name" x="0" y="0.5">儀同三司母</text><circle class="fk-badge" cx="89" cy="0" r="10"/><text class="fk-badge-num" x="89" y="0.5">54</text></a></g>
-<g class="fk-node" transform="translate(616,150)" data-tip="&lt;h3&gt;&lt;ruby&gt;大江挙周&lt;rt&gt;おおえのたかちか&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：不明～1046年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：大江匡衡と赤染衛門の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：妻は高階明順の娘。成衡の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">大江挙周</text></g>
-<g class="fk-node" transform="translate(616,194)" data-tip="&lt;h3&gt;高階明順の娘&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：大江挙周の妻&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">明順の娘</text></g>
-<g class="fk-node" transform="translate(616,290)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原定子&lt;rt&gt;ふじわらのていし&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：976年～1001年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：藤原道隆と高階貴子（儀同三司母）の娘&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：一条天皇の中宮、のちに皇后となった。清少納言が仕えた&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">藤原定子</text></g>
-<g class="fk-node" transform="translate(736,172)" data-tip="&lt;h3&gt;大江成衡&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：大江挙周の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：大江匡房の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">大江成衡</text></g>
-<g class="fk-node" transform="translate(736,216)" data-tip="&lt;h3&gt;橘孝親の娘&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：大江成衡の妻。大江匡房の母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">橘孝親の娘</text></g>
-<g class="fk-node is-poet" transform="translate(886,194)" data-tip="&lt;h3&gt;権中納言匡房&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首73番の歌人&lt;/div&gt;" data-p="73"><a href="/73.html" aria-label="権中納言匡房（百人一首73番）"><rect class="fk-hit" x="-2" y="-13" width="118" height="26"/><text class="fk-name" x="0" y="0.5">権中納言匡房</text><circle class="fk-badge" cx="104" cy="0" r="10"/><text class="fk-badge-num" x="104" y="0.5">73</text></a></g>
+<g class="fk-node" transform="translate(16,130)" data-tip="&lt;h3&gt;&lt;ruby&gt;土師氏&lt;rt&gt;はじうじ&lt;/rt&gt;&lt;/ruby&gt;（土師宿禰）&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：野見宿禰を祖と伝える氏族。桓武天皇の時代に、一族から秋篠・菅原・大枝（のちの大江）の氏が分かれた&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">土師宿禰</text></g>
+<g class="fk-node" transform="translate(102,84)" data-tip="&lt;h3&gt;&lt;ruby&gt;土師真妹&lt;rt&gt;はじのまいも&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：土師氏の出身&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：和乙継の妻。高野新笠の母で、桓武天皇の外祖母。延暦9年12月、正一位とともに「大枝朝臣」の姓を贈られた&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">土師真妹</text></g>
+<g class="fk-node is-tenno" transform="translate(188,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;光仁天皇&lt;rt&gt;こうにんてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第49代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：709年～782年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：770年～781年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：天智天皇の孫、志貴皇子の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：称徳天皇のあとに即位し、皇統が天武系から天智系に移った&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">光仁</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">49</text></g>
+<g class="fk-node" transform="translate(188,84)" data-tip="&lt;h3&gt;&lt;ruby&gt;高野新笠&lt;rt&gt;たかののにいがさ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：和乙継と土師真妹の娘&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：光仁天皇の夫人。桓武天皇の母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">高野新笠</text></g>
+<g class="fk-node is-tenno" transform="translate(274,62)" data-tip="&lt;h3&gt;&lt;ruby&gt;桓武天皇&lt;rt&gt;かんむてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第50代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：737年～806年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：781年～806年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：長岡京、ついで平安京（794年）に遷都した&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">桓武</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">50</text></g>
+<g class="fk-node is-tenno" transform="translate(330,62)" data-tip="&lt;h3&gt;&lt;ruby&gt;平城天皇&lt;rt&gt;へいぜいてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第51代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：774年～824年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;在位：806年～809年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：譲位後、810年の平城太上天皇の変（薬子の変）で出家した&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">平城</text><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">51</text></g>
+<g class="fk-node" transform="translate(330,200)" data-tip="&lt;h3&gt;&lt;ruby&gt;大枝諸上&lt;rt&gt;おおえのもろがみ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：土師氏の出身&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：延暦9年12月（791年2月）、高野新笠の一周忌に際し、土師宿禰から大枝朝臣に改姓した。大江音人の祖父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">大枝諸上</text></g>
+<g class="fk-node" transform="translate(416,62)" data-tip="&lt;h3&gt;&lt;ruby&gt;阿保親王&lt;rt&gt;あぼしんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：792年～842年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：三品、贈一品&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：平城天皇の皇子、在原行平・業平の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">阿保親王</text></g>
+<g class="fk-node" transform="translate(416,200)" data-tip="&lt;h3&gt;&lt;ruby&gt;大枝本主&lt;rt&gt;おおえのもとぬし&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：備中権介&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：大江音人の父。音人の母は阿保親王の侍女だった中臣石根の娘&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">大枝本主</text></g>
+<g class="fk-node is-poet" transform="translate(502,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;在原行平&lt;rt&gt;ありわらのゆきひら&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：818年～893年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：中納言&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：正三位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：16番「立ち別れ…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;中納言行平&lt;rt&gt;ちゅうなごんゆきひら&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;" data-p="16"><a href="/16.html" aria-label="在原行平（百人一首16番）"><rect class="fk-hit" x="-2" y="-13" width="88" height="26"/><text class="fk-name" x="0" y="0.5">在原行平</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">16</text></a></g>
+<g class="fk-node is-poet" transform="translate(502,84)" data-tip="&lt;h3&gt;&lt;ruby&gt;在原業平&lt;rt&gt;ありわらのなりひら&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：825年～880年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従四位上&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：17番「ちはやぶる…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;在原業平朝臣&lt;rt&gt;ありわらのなりひらあそん&lt;/rt&gt;&lt;/ruby&gt;。六歌仙の一人&lt;/div&gt;" data-p="17"><a href="/17.html" aria-label="在原業平（百人一首17番）"><rect class="fk-hit" x="-2" y="-13" width="88" height="26"/><text class="fk-name" x="0" y="0.5">在原業平</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">17</text></a></g>
+<g class="fk-node" transform="translate(502,200)" data-tip="&lt;h3&gt;&lt;ruby&gt;大江音人&lt;rt&gt;おおえのおとんど&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：811年～877年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：参議&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：大枝本主の子。阿保親王の子とする説もある&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：866年、大枝から大江に改姓した。千古・千里・玉淵らの父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">大江音人</text></g>
+<g class="fk-node" transform="translate(612,150)" data-tip="&lt;h3&gt;&lt;ruby&gt;大江玉淵&lt;rt&gt;おおえのたまふち&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：大江音人の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：大江朝綱の父。歌人の遊女・白女を養女とした&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">大江玉淵</text></g>
+<g class="fk-node is-poet is-self" transform="translate(612,200)" data-tip="&lt;h3&gt;&lt;ruby&gt;大江千里&lt;rt&gt;おおえのちさと&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：大江音人の子（大江玉淵の子とする説もある）&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：23番「月見れば…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：大学寮で学んだ儒学者&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="94" height="28" rx="3"/><text class="fk-name" x="0" y="0.5">大江千里</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">23</text></g>
+<g class="fk-node" transform="translate(612,250)" data-tip="&lt;h3&gt;&lt;ruby&gt;大江千古&lt;rt&gt;おおえのちふる&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：866年～924年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：大江音人の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：大江維時の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">大江千古</text></g>
+<g class="fk-node" transform="translate(722,150)" data-tip="&lt;h3&gt;&lt;ruby&gt;大江朝綱&lt;rt&gt;おおえのあさつな&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：886年～958年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：参議&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：大江玉淵の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：祖父・音人の「江相公」に対し「後江相公」と呼ばれた。漢詩や書に優れた&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">大江朝綱</text></g>
+<g class="fk-node" transform="translate(722,250)" data-tip="&lt;h3&gt;&lt;ruby&gt;大江維時&lt;rt&gt;おおえのこれとき&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：888年～963年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：中納言&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：大江千古の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：重光・斉光の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">大江維時</text></g>
+<g class="fk-node" transform="translate(808,300)" data-tip="&lt;h3&gt;&lt;ruby&gt;大江斉光&lt;rt&gt;おおえのただみつ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：934年～987年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：参議&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：大江維時の子&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">大江斉光</text></g>
+<g class="fk-node" transform="translate(808,250)" data-tip="&lt;h3&gt;大江重光&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：大江維時の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：大江匡衡の父。大江雅致の父とする説もある&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">大江重光</text></g>
+<g class="fk-node" transform="translate(808,140)" data-tip="&lt;h3&gt;&lt;ruby&gt;高階成忠&lt;rt&gt;たかしなのなりただ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：高階貴子（儀同三司母）・明順らの父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">高階成忠</text></g>
+<g class="fk-node is-poet" transform="translate(894,140)" data-tip="&lt;h3&gt;&lt;ruby&gt;儀同三司母&lt;rt&gt;ぎどうさんしのはは&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;位階：従三位&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;本名：高階貴子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：高階成忠の娘。藤原道隆の妻、藤原伊周・定子の母&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：54番「忘れじの…」の歌人&lt;/div&gt;" data-p="54"><a href="/54.html" aria-label="儀同三司母（百人一首54番）"><rect class="fk-hit" x="-2" y="-13" width="103" height="26"/><text class="fk-name" x="0" y="0.5">儀同三司母</text><circle class="fk-badge" cx="89" cy="0" r="10"/><text class="fk-badge-num" x="89" y="0.5">54</text></a></g>
+<g class="fk-node" transform="translate(894,196)" data-tip="&lt;h3&gt;&lt;ruby&gt;高階明順&lt;rt&gt;たかしなのあきのぶ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：高階成忠の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：娘は大江挙周の妻&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">高階明順</text></g>
+<g class="fk-node" transform="translate(1030,140)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原定子&lt;rt&gt;ふじわらのていし&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：976年～1001年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：藤原道隆と高階貴子（儀同三司母）の娘&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：一条天皇の中宮、のちに皇后となった。清少納言が仕えた&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">藤原定子</text></g>
+<g class="fk-node" transform="translate(894,250)" data-tip="&lt;h3&gt;&lt;ruby&gt;大江匡衡&lt;rt&gt;おおえのまさひら&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：952年～1012年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：大江重光の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：妻は赤染衛門。挙周・江侍従の父。大江雅致を匡衡の兄とする説もあるが、確実ではない&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">大江匡衡</text></g>
+<g class="fk-node is-poet" transform="translate(894,294)" data-tip="&lt;h3&gt;&lt;ruby&gt;赤染衛門&lt;rt&gt;あかぞめえもん&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：赤染時用の娘。『袋草紙』には、実父は平兼盛とする話が載る&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：59番「やすらはで…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：藤原道長の妻・倫子と、娘の彰子に仕えた&lt;/div&gt;" data-p="59"><a href="/59.html" aria-label="赤染衛門（百人一首59番）"><rect class="fk-hit" x="-2" y="-13" width="88" height="26"/><text class="fk-name" x="0" y="0.5">赤染衛門</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">59</text></a></g>
+<g class="fk-node" transform="translate(894,372)" data-tip="&lt;h3&gt;&lt;ruby&gt;大江雅致&lt;rt&gt;おおえのまさむね&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：太皇太后宮大進（昌子内親王に仕えた）、木工頭、越前守&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：大江重光の子とする説や、大江匡衡の兄とする説がある&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：和泉式部の父。文章生出身の式部丞だったことが「式部」の由来とする説がある&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">大江雅致</text></g>
+<g class="fk-node" transform="translate(894,416)" data-tip="&lt;h3&gt;平保衡の娘&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：大江雅致の妻。和泉式部の母。昌子内親王の乳母（あるいは乳母子）とされる&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">平保衡の娘</text><rect class="fk-sub-box" x="0" y="11" width="144" height="16" rx="8"/><text class="fk-sub" x="72" y="19.5">昌子内親王の乳母とされる</text></g>
+<g class="fk-node" transform="translate(1004,294)" data-tip="&lt;h3&gt;江侍従&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：大江匡衡と赤染衛門の娘&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：名は大江匡子。藤原兼房の妻&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">江侍従</text></g>
+<g class="fk-node" transform="translate(1004,250)" data-tip="&lt;h3&gt;&lt;ruby&gt;大江挙周&lt;rt&gt;おおえのたかちか&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：不明～1046年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：大江匡衡と赤染衛門の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：妻は高階明順の娘。成衡の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">大江挙周</text></g>
+<g class="fk-node" transform="translate(1004,196)" data-tip="&lt;h3&gt;高階明順の娘&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：大江挙周の妻。大江成衡の母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">明順の娘</text></g>
+<g class="fk-node" transform="translate(1004,350)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原保昌&lt;rt&gt;ふじわらのやすまさ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：和泉式部の再婚相手&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">藤原保昌</text></g>
+<g class="fk-node is-poet" transform="translate(1004,394)" data-tip="&lt;h3&gt;&lt;ruby&gt;和泉式部&lt;rt&gt;いずみしきぶ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：大江雅致と平保衡の娘の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：56番「あらざらむ…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：橘道貞と結婚し小式部内侍を生む。為尊親王・敦道親王と恋愛ののち、1009年頃に中宮彰子に出仕。のち藤原保昌と再婚した&lt;/div&gt;" data-p="56"><a href="/56.html" aria-label="和泉式部（百人一首56番）"><rect class="fk-hit" x="-2" y="-13" width="88" height="26"/><text class="fk-name" x="0" y="0.5">和泉式部</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">56</text></a><rect class="fk-sub-box" x="0" y="11" width="100" height="16" rx="8"/><text class="fk-sub" x="50" y="19.5">中宮彰子に仕えた</text></g>
+<g class="fk-node" transform="translate(1004,490)" data-tip="&lt;h3&gt;&lt;ruby&gt;橘道貞&lt;rt&gt;たちばなのみちさだ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：和泉式部の最初の夫。小式部内侍の父。任国の和泉が和泉式部の名の由来&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">橘道貞</text></g>
+<g class="fk-node" transform="translate(1120,223)" data-tip="&lt;h3&gt;大江成衡&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：大江挙周と高階明順の娘の子&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：大江匡房の父&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">大江成衡</text></g>
+<g class="fk-node" transform="translate(1120,267)" data-tip="&lt;h3&gt;橘孝親の娘&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：大江成衡の妻。大江匡房の母&lt;/div&gt;"><text class="fk-name" x="0" y="0.5">橘孝親の娘</text></g>
+<g class="fk-node is-poet" transform="translate(1120,452)" data-tip="&lt;h3&gt;&lt;ruby&gt;小式部内侍&lt;rt&gt;こしきぶのないし&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：橘道貞と和泉式部の娘&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：60番「大江山…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：母と共に中宮彰子に出仕。1025年に没した&lt;/div&gt;" data-p="60"><a href="/60.html" aria-label="小式部内侍（百人一首60番）"><rect class="fk-hit" x="-2" y="-13" width="103" height="26"/><text class="fk-name" x="0" y="0.5">小式部内侍</text><circle class="fk-badge" cx="89" cy="0" r="10"/><text class="fk-badge-num" x="89" y="0.5">60</text></a><rect class="fk-sub-box" x="0" y="11" width="100" height="16" rx="8"/><text class="fk-sub" x="50" y="19.5">中宮彰子に仕えた</text></g>
+<g class="fk-node is-poet" transform="translate(1245,245)" data-tip="&lt;h3&gt;&lt;ruby&gt;大江匡房&lt;rt&gt;おおえのまさふさ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;生没年：1041年～1111年&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;官職：権中納言&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;系譜：大江成衡の子。大江匡衡と赤染衛門の曽孫&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;百人一首：73番「高砂の…」の歌人&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;特記：百人一首の歌人名は&lt;ruby&gt;権中納言匡房&lt;rt&gt;ごんちゅうなごんまさふさ&lt;/rt&gt;&lt;/ruby&gt;&lt;/div&gt;" data-p="73"><a href="/73.html" aria-label="大江匡房（百人一首73番）"><rect class="fk-hit" x="-2" y="-13" width="88" height="26"/><text class="fk-name" x="0" y="0.5">大江匡房</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">73</text></a></g>
 </g>
 </svg>
-                <!-- KEIZU:END -->
-              </div>
+            <!-- KEIZU:END -->
+          </div>
               <div class="kd-text">
                 <p style="width:100%; margin-bottom:0.5em;">
                   『尊卑分脈』や『大江氏系図』によると、大江氏の祖は平城天皇になっていますが、
