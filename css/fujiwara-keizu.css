@@ -318,6 +318,20 @@
   padding-bottom: 0.25em;
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
+/* 「項目：本文」の行（js で has-label を付け、項目と本文を分ける）：本文が折り返しても「：」の後ろにそろえる。
+   上端ではなく1行目の文字の並び（ベースライン）でそろえる（本文の1行目にルビがあると、上端そろえでは項目が浮いてしまう） */
+.tippy-box[data-theme~="fk"] .fk-tip-line.has-label {
+  display: flex;
+  align-items: baseline;
+}
+.tippy-box[data-theme~="fk"] .fk-tip-label {
+  flex: none;
+  white-space: nowrap;
+}
+.tippy-box[data-theme~="fk"] .fk-tip-body {
+  flex: 1 1 auto;
+  min-width: 0;
+}
 /* 行の一部だけ <u>…</u> と書いた部分：同じ色・太さの下線 */
 .tippy-box[data-theme~="fk"] u {
   text-decoration: none;

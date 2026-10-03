@@ -5,6 +5,17 @@
 (function () {
   'use strict';
 
+  // 系図のツールチップは一度に1つだけ表示する。interactive のため、となりの人物に移っても前のツールチップがしばらく残るので、
+  // 新しく開くときに前のものを閉じる（ページのほかのツールチップには触れない）
+  var openTip = null;
+  function showOnlyThis(inst) {
+    if (openTip && openTip !== inst) openTip.hide();
+    openTip = inst;
+  }
+  function forgetTip(inst) {
+    if (openTip === inst) openTip = null;
+  }
+
   /* ---------- 系図データ ----------
     n: 名前 / c: 子
     k: 摂政・関白になった者（青字）
@@ -29,7 +40,7 @@
   var TREE = N('鎌足', {}, [
     N('不比等', {}, [
       N('武智麻呂', { sub: '南家', id: 'nanke' }, [
-        N('仲麻呂'),
+        N('仲麻呂', { note: '恵美押勝' }),
         N('巨勢麻呂', {}, [
           N('真作', {}, [
             N('村田', {}, [
@@ -576,12 +587,19 @@
     return lines;
   }
 
+  // 「項目：本文」の行は、項目と本文を分けて、本文が折り返しても「：」の後ろにそろうようにする（css/fujiwara-keizu.css の .fk-tip-label）
+  function tipLineHtml(line, cls) {
+    var m = line.match(/^([^：<]{1,8}：)([\s\S]*)$/);
+    var body = m ? '<span class="fk-tip-label">' + m[1] + '</span><span class="fk-tip-body">' + m[2] + '</span>' : line;
+    return '<div class="fk-tip-line' + (cls ? ' ' + cls : '') + (m ? ' has-label' : '') + '">' + body + '</div>';
+  }
+
   // 説明は1行ずつ div にする。1行まるごと <u>…</u> で囲んだ行は、見出しの下と同じ幅いっぱいの罫線にする
   function tooltipHtml(d) {
     var lines = tooltipLines(d);
     var body = lines.slice(1).map(function (line) {
       var m = line.match(/^<u>(.*)<\/u>$/);
-      return m ? '<div class="fk-tip-line is-rule">' + m[1] + '</div>' : '<div class="fk-tip-line">' + line + '</div>';
+      return m ? tipLineHtml(m[1], 'is-rule') : tipLineHtml(line);
     });
     // 歌人のツールチップの中に歌のページへのリンクのボタンを置く（PC・スマホとも）
     if (d.p) {
@@ -735,6 +753,7 @@
       // ツールチップの中のリンクのボタンを押せるよう、マウスがツールチップに移っても閉じないようにする（PC・スマホとも）。
       // interactive は body に置かないと SVG の中に入ってしまう。斜めに動かしても途中で消えないよう、周りの余白を広めにとる
       var opts = { allowHTML: true, theme: 'fk', interactive: true, interactiveBorder: 20, appendTo: document.body,
+        onShow: showOnlyThis, onHidden: forgetTip, onDestroy: forgetTip,
         // 位置は名前の四角（.fk-hit）に合わせる。ノード全体だと、上の代数の札や下の札の分だけツールチップが離れてしまう
         onCreate: function (inst) {
           var hit = inst.reference.querySelector('.fk-hit');

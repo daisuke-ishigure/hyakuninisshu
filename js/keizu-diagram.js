@@ -33,6 +33,17 @@ HTML の形：
 (function (root) {
   'use strict';
 
+  // 系図のツールチップは一度に1つだけ表示する。interactive のため、となりの人物に移っても前のツールチップがしばらく残るので、
+  // 新しく開くときに前のものを閉じる（ページのほかのツールチップには触れない）
+  var openTip = null;
+  function showOnlyThis(inst) {
+    if (openTip && openTip !== inst) openTip.hide();
+    openTip = inst;
+  }
+  function forgetTip(inst) {
+    if (openTip === inst) openTip = null;
+  }
+
   var FS = 15;          // 名前の文字サイズ（全角1文字の幅とみなす）
   var NOTE_FS = 11;     // 注記・札の文字サイズ
   var BADGE_R = 10;     // 歌番号バッジの半径
@@ -79,12 +90,19 @@ HTML の形：
     return lines;
   }
 
+  // 「項目：本文」の行は、項目と本文を分けて、本文が折り返しても「：」の後ろにそろうようにする（css/fujiwara-keizu.css の .fk-tip-label）
+  function tipLineHtml(line, cls) {
+    var m = line.match(/^([^：<]{1,8}：)([\s\S]*)$/);
+    var body = m ? '<span class="fk-tip-label">' + m[1] + '</span><span class="fk-tip-body">' + m[2] + '</span>' : line;
+    return '<div class="fk-tip-line' + (cls ? ' ' + cls : '') + (m ? ' has-label' : '') + '">' + body + '</div>';
+  }
+
   // js/tenno-keizu.js と同じ形（見出し＋1行ずつの div）。スマホ用の歌のページへのリンクはブラウザで足す
   function tooltipHtml(d, tips) {
     var lines = tooltipLines(d, tips);
     var body = lines.slice(1).map(function (line) {
       var m = line.match(/^<u>(.*)<\/u>$/);
-      return m ? '<div class="fk-tip-line is-rule">' + m[1] + '</div>' : '<div class="fk-tip-line">' + line + '</div>';
+      return m ? tipLineHtml(m[1], 'is-rule') : tipLineHtml(line);
     });
     return '<h3>' + lines[0] + '</h3>' + body.join('');
   }
@@ -315,6 +333,8 @@ HTML の形：
         // 斜めに動かしても途中で消えないよう、ツールチップの周りの余白を広めにとる
         interactive: true,
         interactiveBorder: 20,
+        onShow: showOnlyThis,
+        onHidden: forgetTip,
         appendTo: document.body,
         // 位置は名前の四角（.fk-hit）に合わせる。ノード全体だと、上の代数の札や下の札の分だけツールチップが離れてしまう
         onCreate: function (inst) {
