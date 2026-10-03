@@ -1,34 +1,38 @@
 # ※ hyakuninisshu.com は GitHub Pages で配信しており、このファイルは効かない（Apache ではないため）。
 #   www なし・https への統一は GitHub Pages が行う。
 #   古いURLからの転送は、転送用ページ（_tools/build-redirects.mjs で生成）と 404.html で行っている。
-#   旧ドメイン hyakuninisshu.sakura.ne.jp 側のサーバーでは、同じ内容の .htaccess が動いている。
+#   このファイルは旧ドメイン hyakuninisshu.sakura.ne.jp 側のサーバーに置いて使う（FTP でアップロードする）。
 RewriteEngine on
 
-# 旧ドメイン (hyakuninisshu.sakura.ne.jp) から新ドメインへのリダイレクト
-# 末尾に付与する from_old_domain=1 は、新ドメイン側(js/back-to-top.js)で
-# 「アドレスが変わりました」バナーを出すための目印。
-RewriteCond %{HTTP_HOST} ^hyakuninisshu\.sakura\.ne\.jp$ [NC]
-RewriteRule ^(.*)$ https://hyakuninisshu.com/$1?from_old_domain=1 [R=301,L,QSA]
+# 旧ドメイン (hyakuninisshu.sakura.ne.jp) から新ドメインへの 301 リダイレクト
+# - 末尾の #from_old_domain は、新ドメイン側(js/back-to-top.js)で「アドレスが変わりました」バナーを出すための目印。
+#   # 以降はサーバーにも検索エンジンにも送られないので、Google から見た転送先は canonical と同じURLになる
+#   （以前の ?from_old_domain=1 は、転送先が canonical と食い違っていた）。NE は # をエスケープさせないため。
+# - 名前を変えた・削除したページと古い歌のURLは、転送用ページを経由させず、最終的なページへ直接転送する
+#   （新ドメインの転送用ページ = _tools/build-redirects.mjs の REDIRECTS と同じ対応）。
+# - QSD は元の ? 以降を付け直さないため（# の後ろに ? が付いて壊れるのを防ぐ）。? 以降がある場合は最後のルールで残す。
 
-# www なしにリダイレクト
-RewriteCond %{HTTP_HOST} ^www\.hyakuninisshu\.com$ [NC]
-RewriteRule ^(.*)$ https://hyakuninisshu.com/$1 [R=301,L]
-
-# https 統一
-RewriteCond %{HTTPS} !=on
-RewriteRule ^(.*)$ https://hyakuninisshu.com/$1 [R=301,L]
+# 古い歌のページ（/no17chihayaburu/ など）→ 現行の歌のページ（/17.html）
+RewriteRule ^no([0-9]{1,3})[a-zA-Z0-9_-]*/?(index\.html)?$ https://hyakuninisshu.com/$1.html#from_old_domain [R=301,L,NE,QSD]
 
 RewriteCond %{THE_REQUEST} ^.*/index.html
-RewriteRule ^(.*)index.html$ https://hyakuninisshu.com/$1 [R=301,L]
+RewriteRule ^(.*)index.html$ https://hyakuninisshu.com/$1#from_old_domain [R=301,L,NE,QSD]
 
-RewriteRule ^bozumekuri\.html$ https://hyakuninisshu.com/memory.html [R=301,L]
-RewriteRule ^yakushoku\.html$ https://hyakuninisshu.com/kanshoku.html [R=301,L]
-RewriteRule ^kajin-sort\.html$ https://hyakuninisshu.com/kajin-zukan.html [R=301,L]
-RewriteRule ^hudanagashi\.html$ https://hyakuninisshu.com/hudanagashi-flash.html [R=301,L]
-RewriteRule ^karuta_tokkun\.html$ https://hyakuninisshu.com/karuta.html [R=301,L]
+RewriteRule ^bozumekuri\.html$ https://hyakuninisshu.com/memory.html#from_old_domain [R=301,L,NE,QSD]
+RewriteRule ^yakushoku\.html$ https://hyakuninisshu.com/kanshoku.html#from_old_domain [R=301,L,NE,QSD]
+RewriteRule ^kajin-sort\.html$ https://hyakuninisshu.com/kajin-zukan.html#from_old_domain [R=301,L,NE,QSD]
+RewriteRule ^hudanagashi\.html$ https://hyakuninisshu.com/hudanagashi-flash.html#from_old_domain [R=301,L,NE,QSD]
+RewriteRule ^karuta_tokkun\.html$ https://hyakuninisshu.com/karuta.html#from_old_domain [R=301,L,NE,QSD]
+RewriteRule ^leaflet-map\.html$ https://hyakuninisshu.com/utamakura.html#from_old_domain [R=301,L,NE,QSD]
+RewriteRule ^takaramono-sugoroku\.html$ https://hyakuninisshu.com/mubeyama-sugoroku.html#from_old_domain [R=301,L,NE,QSD]
+RewriteRule ^discontinued_sanjurokkasen\.html$ https://hyakuninisshu.com/sanjurokkasen.html#from_old_domain [R=301,L,NE,QSD]
+RewriteRule ^cosmos_test\.html$ https://hyakuninisshu.com/cosmos.html#from_old_domain [R=301,L,NE,QSD]
+RewriteRule ^sanjurokkasen-zukan\.html$ https://hyakuninisshu.com/sanjurokkasen.html#from_old_domain [R=301,L,NE,QSD]
 
-# 現行の歌ページへのリダイレクト。
-RewriteRule ^no([0-9]{1,3})[a-zA-Z0-9_-]*/?$ https://hyakuninisshu.com/$1.html [R=301,L]
+# それ以外はすべて同じパスへ。? 以降があればそのまま残す
+RewriteCond %{QUERY_STRING} ^(.+)$
+RewriteRule ^(.*)$ https://hyakuninisshu.com/$1?%1#from_old_domain [R=301,L,NE]
+RewriteRule ^(.*)$ https://hyakuninisshu.com/$1#from_old_domain [R=301,L,NE,QSD]
 
 <IfModule mod_deflate.c>
 # mod_deflateを有効にする記述

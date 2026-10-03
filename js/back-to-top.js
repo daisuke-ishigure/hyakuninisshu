@@ -141,16 +141,19 @@
 ////////////////////////////////////////////////////////////
 // 旧ドメインからの訪問者向け「アドレス変更」お知らせバナー（全ページ共通）
 // 旧ドメイン(hyakuninisshu.sakura.ne.jp)の.htaccessが301リダイレクト時に
-// 付与する ?from_old_domain=1 を検知したときだけ表示する。
-// 表示後はURLからこのパラメータを取り除く（履歴・共有URLを汚さないため）。
+// 付与する #from_old_domain を検知したときだけ表示する。
+// （# 以降は検索エンジンに送られないので、転送先が canonical と同じURLになる。
+//   以前の ?from_old_domain=1 も、ブラウザに古い転送が残っている間のために受け付ける）
+// 表示後はURLからこの目印を取り除く（履歴・共有URLを汚さないため）。
 ////////////////////////////////////////////////////////////
 (function () {
   var params = new URLSearchParams(location.search);
-  if (params.get('from_old_domain') !== '1') return;
+  var fromHash = location.hash === '#from_old_domain';
+  if (!fromHash && params.get('from_old_domain') !== '1') return;
 
   params.delete('from_old_domain');
   var newSearch = params.toString();
-  var cleanUrl = location.pathname + (newSearch ? '?' + newSearch : '') + location.hash;
+  var cleanUrl = location.pathname + (newSearch ? '?' + newSearch : '') + (fromHash ? '' : location.hash);
   if (window.history && history.replaceState) {
     history.replaceState(null, '', cleanUrl);
   }
