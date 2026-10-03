@@ -203,12 +203,12 @@
       // 平安時代の前期・中期・後期は、おおよその区切り（900年頃・1050年頃）で分ける
       // 飛鳥時代の始まりと鎌倉時代の終わりは、年表の左右に空白が広がらないよう、歌人のいる範囲（620～1250年）で切る（表記は本来の年）
       var ERAS = [
-        ['飛鳥時代', '592年～710年', 620, 710],
-        ['奈良時代', '710年～794年', 710, 794],
-        ['平安時代前期', '794年～900年頃', 794, 900],
-        ['平安時代中期', '900年～1050年頃', 900, 1050],
-        ['平安時代後期', '1050年～1185年頃', 1050, 1185],
-        ['鎌倉時代', '1185年／1192年～1333年', 1185, 1250]
+        ['飛鳥', '592年～710年', 620, 710],
+        ['奈良', '710年～794年', 710, 794],
+        ['平安前期', '794年～900年頃', 794, 900],
+        ['平安中期', '900年～1050年頃', 900, 1050],
+        ['平安後期', '1050年～1185年頃', 1050, 1185],
+        ['鎌倉', '1185年／1192年～1333年', 1185, 1250]
       ];
       dataTable.insertRows(0, ERAS.map(function (e) {
         return ['時代区分', e[0], e[0] + ':<br>' + e[1], new Date(e[2], 0), new Date(e[3], 0)];
@@ -338,6 +338,62 @@
             sep.setAttribute('fill', 'none');
             bars.appendChild(sep);
           });
+
+          // 時代区分の行を、スクロールしても年表の一番上に残す。
+          // 行の部分だけがスクロールするので、そのスクロールする箱の外側（親の箱）の上端に、この行の複製を重ねる。
+          // スクロールしていないときは、元の行にぴったり重なる
+          var scroller = rowsSvg.parentNode;
+          var holder = scroller && scroller.parentNode;
+          var rowH = y1 + +eraBar.getAttribute('height') + y1; // 行の高さ（帯の上下に同じ余白）
+          var line = grid.querySelector('path[stroke="#b7b7b7"]'); // 行の境目の横線
+          var m2 = line && (line.getAttribute('d') || '').match(/^M[\d.]+,([\d.]+)L/);
+          if (m2) rowH = +m2[1];
+          if (holder) {
+            var NS = 'http://www.w3.org/2000/svg';
+            var sticky = document.createElement('div');
+            sticky.className = 'era-sticky';
+            sticky.style.cssText = 'position:absolute;top:' + scroller.offsetTop + 'px;left:' + scroller.offsetLeft + 'px;' +
+              'width:' + scroller.clientWidth + 'px;height:' + rowH + 'px;overflow:hidden;z-index:1;';
+            var svg = document.createElementNS(NS, 'svg');
+            svg.setAttribute('width', rowsSvg.getAttribute('width'));
+            svg.setAttribute('height', rowH);
+            svg.style.display = 'block';
+            var bg = document.createElementNS(NS, 'rect');
+            bg.setAttribute('x', 0); bg.setAttribute('y', 0);
+            bg.setAttribute('width', rowsSvg.getAttribute('width')); bg.setAttribute('height', rowH);
+            bg.setAttribute('fill', '#ffffff');
+            svg.appendChild(bg);
+            // 時代区分の行（年表の最初の行）にある帯・名前・白の区切り線を複製する
+            Array.prototype.forEach.call(bars.children, function (el) {
+              var top = el.tagName === 'path'
+                ? +((el.getAttribute('d') || '').match(/^M[\d.]+,([\d.]+)/) || [0, Infinity])[1]
+                : +el.getAttribute('y');
+              if (top < rowH) svg.appendChild(el.cloneNode(true));
+            });
+            // 年表は帯に収まらない名前を「平…」のように省略するので、固定表示の帯では省略せずに書き直す。
+            // 帯に収まらないときは文字を小さくする（最小 8px）
+            var eraRects = Array.prototype.filter.call(svg.querySelectorAll('rect'), function (r) { return r.getAttribute('fill') === '#333333'; })
+              .sort(function (p, q) { return +p.getAttribute('x') - +q.getAttribute('x'); });
+            var eraTexts = Array.prototype.slice.call(svg.querySelectorAll('text'))
+              .sort(function (p, q) { return +p.getAttribute('x') - +q.getAttribute('x'); });
+            eraRects.forEach(function (r, i) {
+              var t = eraTexts[i];
+              if (!t || !ERAS[i]) return;
+              var name = ERAS[i][0];
+              var size = +t.getAttribute('font-size') || 12;
+              var room = +r.getAttribute('width') - 8;
+              if (name.length * size > room) size = Math.max(8, Math.floor(room / name.length));
+              t.textContent = name;
+              t.setAttribute('font-size', size);
+              t.setAttribute('x', +r.getAttribute('x') + 4);
+            });
+            var under = document.createElementNS(NS, 'path');
+            under.setAttribute('d', 'M0,' + (rowH - 0.5) + 'L' + rowsSvg.getAttribute('width') + ',' + (rowH - 0.5));
+            under.setAttribute('stroke', '#b7b7b7');
+            svg.appendChild(under);
+            sticky.appendChild(svg);
+            holder.appendChild(sticky);
+          }
         }
       }
       google.visualization.events.addListener(projectTimechart, 'ready', drawEraLines);
