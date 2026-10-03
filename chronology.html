@@ -29,6 +29,7 @@
 
   <link rel="stylesheet" href="../css/style.css?20260928-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261003-03">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -61,6 +62,13 @@
       let dataTable = new google.visualization.DataTable(); -->
 
 
+  <!-- 歌人をクリックしたときのツールチップ（系図のページと同じ文面・見た目） -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips.js?20261003-02"></script>
+  <script src="../js/tenno-keizu-tooltips.js?20261003-02"></script>
+  <script src="../js/fujiwara-keizu-tooltips.js?20261003-01"></script>
+  <script src="../js/chronology-tips.js?20261004-02"></script>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript">
     google.charts.load('current', { 'packages': ['controls', 'timeline'] });
@@ -79,9 +87,15 @@
       dataTable.addRows([
         ['天智天皇', '（1）天智天皇', '天智天皇<br>（626年-671年）', new Date(626, 0), new Date(671, 11)],
         ['持統天皇', '（2）持統天皇', '持統天皇<br>（645年-703年）', new Date(645, 0), new Date(703, 11)],
+        ['柿本人麻呂', '（3）柿本人麻呂', '柿本人麻呂:<br>（生年不詳～708年頃）<br>680年には出仕していたとみられる', new Date(680, 0), new Date(708, 11)],
+        ['山部赤人', '（4）山部赤人', '山部赤人:<br>（生年不詳～736年？）<br>神亀・天平年間の作歌が残る。生年不詳のため、没年の20年前から表示', new Date(716, 0), new Date(736, 11)],
+        ['猿丸太夫', '（5）猿丸太夫（元明天皇の時代とする説）', '猿丸太夫:<br>（生没年不詳）<br>元明天皇の時代（707～715年）の人物ともいわれる', new Date(707, 0), new Date(715, 11)],
         ['阿倍仲麻呂', '（7）阿倍仲麻呂', '阿倍仲麻呂:<br>（698年-770年）', new Date(698, 0), new Date(770, 11)],
         ['阿倍仲麻呂', '阿倍仲麻呂 唐に渡る', '717年に唐の都・長安に留学', new Date(717, 0), new Date(717, 11)],
         ['大伴家持', '（6）中納言家持', '大伴家持<br>（718年頃～785年）', new Date(718, 0), new Date(785, 11)],
+        ['喜撰法師', '（8）喜撰法師（六歌仙の時代）', '喜撰法師:<br>（生没年不詳）<br>平安時代前期の歌人。六歌仙の一人で、9世紀後半は「六歌仙時代」といわれる', new Date(851, 0), new Date(900, 11)],
+        ['小野小町', '（9）小野小町', '小野小町:<br>（生没年不詳）<br>活動期は850～884年ごろ、または834～868年ごろとされる。どちらの見方でも活動していた期間（20年に満たないため、868年の20年前から）を表示', new Date(848, 0), new Date(868, 11)],
+        ['蝉丸', '（10）蝉丸', '蝉丸:<br>（生没年不詳（946年没とする説あり））<br>史料上の初見は『後撰和歌集』（951年）。946年没説の20年前から表示', new Date(926, 0), new Date(946, 11)],
         ['小野篁', '（11）参議篁', '参議篁:<br>（802年～852年）', new Date(802, 0), new Date(852, 11)],
         ['小野篁', '遣唐使船を乗船拒否', '参議篁:遣唐使船を乗船拒否', new Date(838, 0), new Date(838, 11)],
         ['遍昭', '（12）僧正遍昭', '僧正遍昭:<br>（816年～890年）', new Date(816, 0), new Date(890, 11)],
@@ -90,52 +104,88 @@
         ['光孝天皇', '（15）光孝天皇', '光孝天皇:<br>（830年～887年）', new Date(830, 0), new Date(887, 11)],
         ['在原行平', '（16）中納言行平', '中納言行平:<br>（818年～893年）', new Date(818, 0), new Date(893, 11)],
         ['在原業平', '（17）在原業平朝臣', '在原業平朝臣:<br>（825年～880年）', new Date(825, 0), new Date(880, 11)],
+        ['藤原敏行', '（18）藤原敏行朝臣', '藤原敏行:<br>（生年不詳～901年または907年）<br>866年に少内記。記録のある866年から表示', new Date(866, 0), new Date(901, 11)],
+        ['伊勢', '（19）伊勢', '伊勢:<br>（872年頃～938年頃）', new Date(872, 0), new Date(938, 11)],
+        ['素性', '（21）素性法師', '素性:<br>（生没年不詳）<br>909年に醍醐天皇の前で歌を詠んだ記録あり。その20年前から表示', new Date(889, 0), new Date(909, 11)],
+        ['文屋康秀', '（22）文屋康秀', '文屋康秀:<br>（生年不詳～885年（推定））<br>860年に中判事。記録のある860年から表示', new Date(860, 0), new Date(885, 11)],
+        ['大江千里', '（23）大江千里', '大江千里:<br>（生没年不詳）<br>官職の記録がある883年～903年を表示', new Date(883, 0), new Date(903, 11)],
         ['菅原道真', '（24）菅家', '菅家:<br>（845年～903年）', new Date(845, 0), new Date(903, 11)],
         ['元良親王', '（20）元良親王', '元良親王:<br>（890年-943年）', new Date(890, 0), new Date(943, 11)],
         ['朱雀天皇', '第61代 朱雀天皇（在位期間）', '朱雀天皇の在位期間:<br>930年10月16日 - 946年5月23日', new Date(930, 0), new Date(946, 11)],
         ['藤原忠平', '（26）貞信公', '貞信公（藤原忠平）:<br>（880年-949年）', new Date(880, 0), new Date(949, 11)],
         ['藤原兼輔', '（27）中納言兼輔', '藤原兼輔:<br>（877年-933年）', new Date(877, 0), new Date(933, 11)],
+        ['源宗于', '（28）源宗于朝臣', '源宗于:<br>（生年不詳～940年）<br>894年に源姓を賜る。記録のある894年から表示', new Date(894, 0), new Date(940, 11)],
+        ['凡河内躬恒', '（29）凡河内躬恒', '凡河内躬恒:<br>（859年頃～925年頃）', new Date(859, 0), new Date(925, 11)],
+        ['壬生忠岑', '（30）壬生忠岑', '壬生忠岑:<br>（860年頃～920年頃）<br>930年以後に没したとする見方もある', new Date(860, 0), new Date(920, 11)],
+        ['坂上是則', '（31）坂上是則', '坂上是則:<br>（生年不詳～930年）<br>908年に大和権少掾。記録のある908年から表示', new Date(908, 0), new Date(930, 11)],
+        ['春道列樹', '（32）春道列樹', '春道列樹:<br>（生年不詳～920年）<br>910年に文章生。没年の20年前から表示', new Date(900, 0), new Date(920, 11)],
+        ['紀友則', '（33）紀友則', '紀友則:<br>（845年？～907年）', new Date(845, 0), new Date(907, 11)],
+        ['藤原興風', '（34）藤原興風', '藤原興風:<br>（生没年不詳）<br>官職の記録がある900年～914年。最後の記録の20年前から表示', new Date(894, 0), new Date(914, 11)],
         ['紀貫之', '（35）紀貫之', '紀貫之:<br>（868年-945年）', new Date(868, 0), new Date(945, 11)],
         ['紀貫之', '土佐日記', '紀貫之:<br>934年に『土佐日記』完成', new Date(934, 0), new Date(934, 11)],
         ['藤原定方', '（25）三条右大臣', '藤原定方:<br>（873年-932年）', new Date(873, 0), new Date(932, 11)],
+        ['清原深養父', '（36）清原深養父', '清原深養父:<br>（生没年不詳）<br>官職の記録がある908年～930年を表示', new Date(908, 0), new Date(930, 11)],
+        ['文屋朝康', '（37）文屋朝康', '文屋朝康:<br>（生没年不詳）<br>官職の記録がある892年～902年。最後の記録の20年前から表示', new Date(882, 0), new Date(902, 11)],
+        ['右近', '（38）右近', '右近:<br>（生没年不詳）<br>960年～966年の歌合に出詠。最後の記録の20年前から表示', new Date(946, 0), new Date(966, 11)],
         ['源等', '（39）参議等', '源等:<br>（880年-951年）', new Date(880, 0), new Date(951, 11)],
+        ['平兼盛', '（40）平兼盛', '平兼盛:<br>（生年不詳～991年）<br>946年に従五位下。記録のある946年から表示', new Date(946, 0), new Date(991, 11)],
+        ['壬生忠見', '（41）壬生忠見', '壬生忠見:<br>（生没年不詳）<br>953年～960年の歌合などに記録あり。最後の記録の20年前から表示', new Date(940, 0), new Date(960, 11)],
         ['清原元輔', '（42）清原元輔', '清原元輔:<br>（908年-990年）', new Date(908, 0), new Date(990, 11)],
         ['藤原敦忠', '（43）権中納言敦忠', '藤原敦忠:<br>（906年-943年）', new Date(906, 0), new Date(943, 11)],
         ['藤原朝忠', '（44）中納言朝忠', '藤原朝忠:<br>（910年-966年）', new Date(910, 0), new Date(966, 11)],
         ['藤原伊尹', '（45）謙徳公', '藤原伊尹:<br>（924年-972年）', new Date(924, 0), new Date(972, 11)],
+        ['曽禰好忠', '（46）曽禰好忠', '曽禰好忠:<br>（生没年不詳）<br>985年に円融院の歌会に参加。その20年前から表示', new Date(965, 0), new Date(985, 11)],
+        ['恵慶', '（47）恵慶法師', '恵慶:<br>（生没年不詳）<br>962年頃から歌合などで活動。986年に花山院の熊野行幸に供奉', new Date(962, 0), new Date(986, 11)],
+        ['源重之', '（48）源重之', '源重之:<br>（生年不詳～1000年）<br>60余歳で没したとされる', new Date(940, 0), new Date(1000, 11)],
         ['大中臣能宣', '（49）大中臣能宣朝臣', '大中臣能宣:<br>（921年-991年）', new Date(921, 0), new Date(991, 11)],
         ['村上天皇', '後撰和歌集の成立', '959年、村上天皇の命による『後撰和歌集』が成立', new Date(959, 0), new Date(959, 11)],
         ['藤原義孝', '（50）藤原義孝', '藤原義孝:<br>（954年-974年）', new Date(954, 0), new Date(974, 11)],
+        ['藤原実方', '（51）藤原実方朝臣', '藤原実方:<br>（生年不詳～999年）<br>960年代の生まれとみられ、没時は40歳ほどだったという', new Date(960, 0), new Date(999, 11)],
         ['藤原道信', '（52）藤原道信朝臣', '藤原道信:<br>（972年-994年）', new Date(972, 0), new Date(994, 11)],
         ['花山天皇', '拾遺和歌集の成立', '1007年、花山天皇の命による『拾遺和歌集』が成立', new Date(1007, 0), new Date(1007, 11)],
         ['藤原道綱母', '（53）右大将道綱母', '藤原道綱母:<br>（937年-995年）', new Date(937, 0), new Date(995, 11)],
         ['藤原道綱', '藤原道綱', '藤原道綱:<br>（955年-1020年）', new Date(955, 0), new Date(1020, 11)],
+        ['儀同三司母', '（54）儀同三司母', '儀同三司母:<br>（生年不詳～996年）<br>四十代で没したと推定される', new Date(956, 0), new Date(996, 11)],
         ['藤原公任', '（55）大納言公任', '藤原公任:<br>（966年-1041年）', new Date(966, 0), new Date(1041, 11)],
+        ['和泉式部', '（56）和泉式部', '和泉式部:<br>（976年または978年頃～没年不詳）<br>年代を確定できる最晩年の歌は1027年', new Date(976, 0), new Date(1027, 11)],
         ['紫式部', '（57）紫式部', '紫式部:<br>（970年-1031年）', new Date(970, 0), new Date(1031, 11)],
         ['紫式部', '源氏物語完成', '1021年『源氏物語』が完成', new Date(1021, 0), new Date(1021, 11)],
+        ['小式部内侍', '（60）小式部内侍', '小式部内侍:<br>（生年不詳～1025年）<br>享年は28歳前後とされる', new Date(997, 0), new Date(1025, 11)],
+        ['伊勢大輔', '（61）伊勢大輔', '伊勢大輔:<br>（989年？～1060年？）<br>1060年までの生存が確認されている', new Date(989, 0), new Date(1060, 11)],
         ['清少納言', '（62）清少納言', '清少納言:<br>（966年-1025年）', new Date(966, 0), new Date(1025, 11)],
         ['清少納言', '枕草子ほぼ完成', '1001年『枕草子』ほぼ完成', new Date(1001, 0), new Date(1001, 11)],
         ['藤原賢子', '（58）大弐三位', '藤原賢子:<br>（999年-1055年）', new Date(999, 0), new Date(1055, 11)],
         ['赤染衛門', '（59）赤染衛門', '赤染衛門:<br>（959年-1041年）', new Date(959, 0), new Date(1041, 11)],
         ['藤原道雅', '（63）左京大夫道雅', '藤原道雅:<br>（992年-1054年）', new Date(992, 0), new Date(1054, 11)],
         ['藤原定頼', '（64）権中納言定頼', '藤原定頼:<br>（995年-1045年）', new Date(995, 0), new Date(1045, 11)],
+        ['相模', '（65）相模', '相模:<br>（998年頃～1061年以降か）', new Date(998, 0), new Date(1061, 11)],
+        ['周防内侍', '（67）周防内侍', '周防内侍:<br>（1037年頃～1109年以後）<br>1111年までに没したようである', new Date(1037, 0), new Date(1109, 11)],
         ['三条天皇', '（68）三条院', '三条院:<br>（976年-1017年）', new Date(976, 0), new Date(1017, 11)],
         ['行尊', '（66）前大僧正行尊', '行尊:<br>（1055年-1135年）', new Date(1055, 0), new Date(1135, 11)],
+        ['能因', '（69）能因法師', '能因:<br>（988年～1050年または1058年）', new Date(988, 0), new Date(1050, 11)],
+        ['良暹', '（70）良暹法師', '良暹:<br>（生没年不詳）<br>1038年の歌合に出詠。一説に康平年間（1058～1065年）に68歳ほどで没', new Date(997, 0), new Date(1058, 11)],
         ['源経信', '（71）大納言経信', '源経信:<br>（1016年-1097年）', new Date(1016, 0), new Date(1097, 11)],
+        ['祐子内親王家紀伊', '（72）祐子内親王家紀伊', '祐子内親王家紀伊:<br>（生没年不詳）<br>1061年～1113年の歌合などに記録あり', new Date(1061, 0), new Date(1113, 11)],
         ['大江匡房', '（73）権中納言正房', '大江匡房:<br>（1041年-1111年）', new Date(1041, 0), new Date(1111, 11)],
         ['源俊頼', '（74）源俊頼朝臣', '源俊頼:<br>（1055年-1129年）', new Date(1055, 0), new Date(1129, 11)],
         ['藤原基俊', '（75）藤原基俊', '藤原基俊:<br>（1060年-1142年）', new Date(1060, 0), new Date(1142, 11)],
         ['藤原忠通', '（76）法性寺入道前関白太政大臣', '藤原忠通:<br>（1097年-1164年）', new Date(1097, 0), new Date(1164, 11)],
         ['崇徳天皇', '（77）崇徳院', '崇徳院:<br>（1119年-1164年）', new Date(1119, 0), new Date(1164, 11)],
+        ['源兼昌', '（78）源兼昌', '源兼昌:<br>（生没年不詳）<br>1100年の歌合に出詠し、1128年頃には生存していたようである', new Date(1100, 0), new Date(1128, 11)],
         ['藤原顕輔', '（79）左京大夫顕輔', '藤原顕輔:<br>（1090年-1155年）', new Date(1090, 0), new Date(1155, 11)],
+        ['待賢門院堀河', '（80）待賢門院堀河', '待賢門院堀河:<br>（生没年不詳）<br>1126年～1150年の歌合・百首歌に記録あり', new Date(1126, 0), new Date(1150, 11)],
         ['藤原実定', '（81）後徳大寺左大臣', '藤原実定:<br>（1139年-1191年）', new Date(1139, 0), new Date(1191, 11)],
+        ['道因', '（82）道因法師', '道因:<br>（1090年～1182年頃？）<br>俗名は藤原敦頼', new Date(1090, 0), new Date(1182, 11)],
         ['藤原俊成', '（83）皇太后宮大夫俊成', '藤原俊成:<br>（1114年-1204年）', new Date(1114, 0), new Date(1204, 11)],
         ['藤原清輔', '（84）藤原清輔朝臣', '藤原清輔:<br>（1104年-1177年）', new Date(1104, 0), new Date(1177, 11)],
+        ['俊恵', '（85）俊恵法師', '俊恵:<br>（1113年～1191年頃？）', new Date(1113, 0), new Date(1191, 11)],
         ['西行', '（86）西行法師', '西行:<br>（1118年-1190年）', new Date(1118, 0), new Date(1190, 11)],
         ['寂蓮', '（87）寂蓮法師', '寂蓮:<br>（1139年-1202年）', new Date(1139, 0), new Date(1202, 11)],
+        ['皇嘉門院別当', '（88）皇嘉門院別当', '皇嘉門院別当:<br>（生没年不詳）<br>1175年の歌合に出詠、1182年には出家していた。最後の記録の20年前から表示', new Date(1162, 0), new Date(1182, 11)],
         ['式子内親王', '（89）式子内親王', '式子内親王:<br>（1149年-1201年）', new Date(1149, 0), new Date(1201, 11)],
         ['殷富門院大輔', '（90）殷富門院大輔', '殷富門院大輔:<br>（1131年-1200年）', new Date(1131, 0), new Date(1200, 11)],
         ['九条良経', '（91）後京極摂政前太政大臣', '九条良経:<br>（1169年-1206年）', new Date(1169, 0), new Date(1206, 11)],
+        ['二条院讃岐', '（92）二条院讃岐', '二条院讃岐:<br>（1141年頃～1217年以後）<br>1216年の内裏歌合まで活動が確認できる', new Date(1141, 0), new Date(1217, 11)],
         ['源実朝', '（93）鎌倉右大臣', '源実朝:<br>（1192年-1219年）', new Date(1192, 0), new Date(1219, 11)],
         ['藤原雅経', '（94）参議雅経', '藤原雅経:<br>（1170年-1221年）', new Date(1170, 0), new Date(1221, 11)],
         ['慈円', '（95）前大僧正慈円', '慈円:<br>（1155年-1225年）', new Date(1155, 0), new Date(1225, 11)],
@@ -149,25 +199,67 @@
 
 
       // 表示フィルタ条件を決めるコントロール作成
+      // 一番上の行：時代区分。誕生年のスライダーで絞り込んでも消さない
+      // 平安時代の前期・中期・後期は、おおよその区切り（900年頃・1050年頃）で分ける
+      // 飛鳥時代の始まりと鎌倉時代の終わりは、年表の左右に空白が広がらないよう、歌人のいる範囲（620～1250年）で切る（表記は本来の年）
+      var ERAS = [
+        ['飛鳥時代', '592年～710年', 620, 710],
+        ['奈良時代', '710年～794年', 710, 794],
+        ['平安時代前期', '794年～900年頃', 794, 900],
+        ['平安時代中期', '900年～1050年頃', 900, 1050],
+        ['平安時代後期', '1050年～1185年頃', 1050, 1185],
+        ['鎌倉時代', '1185年／1192年～1333年', 1185, 1250]
+      ];
+      dataTable.insertRows(0, ERAS.map(function (e) {
+        return ['時代区分', e[0], e[0] + ':<br>' + e[1], new Date(e[2], 0), new Date(e[3], 0)];
+      }));
+      var eraRows = ERAS.length;
+
+      // 誕生年（整数）の列を足し、スライダーはこの列で絞り込む（時代区分の行は空のまま）。
+      // 日付の列（Start）で絞り込むと、古い日付の時差の扱いで下限がわずかにずれて、最初の歌人（天智天皇・626年）が表示されなくなるため
+      var yearCol = dataTable.addColumn({ type: 'number', id: 'BirthYear' });
+      for (var i = eraRows; i < dataTable.getNumberOfRows(); i++) {
+        dataTable.setValue(i, yearCol, dataTable.getValue(i, 3).getFullYear());
+      }
+
+      // バーの色：男性の歌人は青（#427aa1）、女性の歌人は赤（#b82343）、時代区分の行は濃いグレー（#333333）
+      // 女性歌人は歌番号で判定（js/my-chart-women.js の10首ごとの人数と同じ21人）。歌番号の無い行（出来事など）は、同じ名前の歌人の色にする
+      var FEMALE = [2, 9, 19, 38, 53, 54, 56, 57, 58, 59, 60, 61, 62, 65, 67, 72, 80, 88, 89, 90, 92];
+      var numByName = {};
+      for (var i = eraRows; i < dataTable.getNumberOfRows(); i++) {
+        var m = String(dataTable.getValue(i, 1)).match(/^（(\d+)）/);
+        if (m && !numByName[dataTable.getValue(i, 0)]) numByName[dataTable.getValue(i, 0)] = +m[1];
+      }
+      var styleCol = dataTable.addColumn({ type: 'string', role: 'style' });
+      for (var i = 0; i < dataTable.getNumberOfRows(); i++) {
+        if (i < eraRows) {
+          dataTable.setValue(i, styleCol, '#333333');
+          continue;
+        }
+        var female = FEMALE.indexOf(numByName[dataTable.getValue(i, 0)]) >= 0;
+        dataTable.setValue(i, styleCol, female ? '#b82343' : '#427aa1');
+      }
+
       var projectRange = new google.visualization.ControlWrapper({
-        controlType: 'DateRangeFilter',
+        controlType: 'NumberRangeFilter',
         containerId: 'project_range',
+        dataTable: dataTable,
         options: {
-          filterColumnIndex: 3,               // 3列目の要素'Start'でフィルタ
+          filterColumnIndex: yearCol,         // 誕生年でフィルタ
           ui: {
             showRangeValues: true,          // 選択範囲のラベル表示
-            format: { pattern: "YYYY" }  // 表示フォーマット
+            format: { pattern: '0' },       // 表示フォーマット（年）
+            unitIncrement: 1,
+            blockIncrement: 10
           }
         }
       });
-
-
-
 
       // タイムラインチャート作成
       var projectTimechart = new google.visualization.ChartWrapper({
         'chartType': 'Timeline',
         'containerId': 'project_timechart',
+        dataTable: dataTable,
         options: {
         timeline: { showRowLabels: false }, // 一番左の列を非表示
         hAxis: { format: 'y' },
@@ -175,10 +267,87 @@
       }
       });
 
-      // ダッシュボード作成
-      var dashboard = new google.visualization.Dashboard(document.getElementById('project_dashboard'));
-      dashboard.bind(projectRange, projectTimechart); // ダッシュボードにコントロールとチャートを登録
-      dashboard.draw(dataTable);      // ダッシュボードにデータを入れて描画
+      // スライダーの範囲に誕生年が入る歌人と、時代区分の行だけを年表に渡して描く
+      // （Dashboard で結びつけると、時代区分の行まで絞り込まれてしまうため、自分で絞り込む）
+      function drawChart() {
+        var st = projectRange.getState() || {};
+        var rows = [];
+        for (var r = 0; r < dataTable.getNumberOfRows(); r++) {
+          var y = dataTable.getValue(r, yearCol);
+          if (r < eraRows || ((st.lowValue == null || y >= st.lowValue) && (st.highValue == null || y <= st.highValue))) rows.push(r);
+        }
+        projectTimechart.setView({ columns: [0, 1, 2, styleCol, 3, 4], rows: rows }); // 色の列は Start の前に置く。誕生年の列は年表には渡さない
+        projectTimechart.draw();
+      }
+      // 縦の区切り線：年表の目盛り（100年ごと）の線を消し、時代区分の境目（ERAS の各時代の始まり）に線を引く。
+      // Timeline には線の位置を指定するオプションが無いので、描き終わった SVG を直接書き換える
+      function drawEraLines() {
+        var svgs = document.getElementById('project_timechart').querySelectorAll('svg');
+        if (svgs.length < 2) return;
+        // 目盛りの文字（700・800…）の位置から、年 → x 座標の対応を求める
+        var ticks = Array.prototype.filter.call(svgs[0].querySelectorAll('text'), function (t) { return /^\d+$/.test(t.textContent); })
+          .map(function (t) { return { year: +t.textContent, x: +t.getAttribute('x') }; });
+        if (ticks.length < 2) return;
+        var a = ticks[0];
+        var b = ticks[ticks.length - 1];
+        var perYear = (b.x - a.x) / (b.year - a.year);
+        var xOf = function (year) { return a.x + (year - a.year) * perYear; };
+
+        // 下の目盛りの年（700・800…）を、時代区分の境目の年（710・794…）に置き換える。文字の高さ・書式はもとの目盛りに合わせる
+        var tickEls = Array.prototype.filter.call(svgs[0].querySelectorAll('text'), function (t) { return /^\d+$/.test(t.textContent); });
+        var sample = tickEls[0];
+        tickEls.forEach(function (t) { t.style.display = 'none'; });
+        ERAS.slice(1).forEach(function (e) {
+          var label = sample.cloneNode(false);
+          label.style.display = '';
+          label.setAttribute('x', xOf(e[2]));
+          label.textContent = e[2];
+          sample.parentNode.appendChild(label);
+        });
+        var rowsSvg = svgs[1];
+        var grid = rowsSvg.children[1]; // 行の背景・罫線のグループ（バーより下に描かれる）
+        if (!grid) return;
+        // もとの縦の目盛り線（始点と終点の x が同じ線）を消す
+        Array.prototype.forEach.call(grid.querySelectorAll('path'), function (p) {
+          var m = (p.getAttribute('d') || '').match(/^M([\d.]+),[\d.]+L([\d.]+),[\d.]+$/);
+          if (m && m[1] === m[2]) p.style.display = 'none';
+        });
+        var height = rowsSvg.getAttribute('height');
+        ERAS.slice(1).forEach(function (e) {
+          var x = xOf(e[2]);
+          var line = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+          line.setAttribute('d', 'M' + x + ',0L' + x + ',' + height);
+          line.setAttribute('stroke', '#cccccc'); // 薄いグレー（行の背景の白・グレーのどちらの上でも見える濃さ）
+          line.setAttribute('stroke-width', '1');
+          line.setAttribute('fill', 'none');
+          grid.appendChild(line);
+        });
+
+        // 時代区分の帯どうしの境目に白い線を引く（帯が同じ色なので、隣の時代とつながって見えないように）。バーより上に描く
+        var bars = rowsSvg.children[3];
+        var eraBar = bars && Array.prototype.filter.call(bars.querySelectorAll('rect'), function (r) { return r.getAttribute('fill') === '#333333'; })[0];
+        if (eraBar) {
+          var y1 = +eraBar.getAttribute('y');
+          var y2 = y1 + +eraBar.getAttribute('height');
+          ERAS.slice(1).forEach(function (e) {
+            var x = xOf(e[2]);
+            var sep = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            sep.setAttribute('d', 'M' + x + ',' + y1 + 'L' + x + ',' + y2);
+            sep.setAttribute('stroke', '#ffffff');
+            sep.setAttribute('stroke-width', '1');
+            sep.setAttribute('fill', 'none');
+            bars.appendChild(sep);
+          });
+        }
+      }
+      google.visualization.events.addListener(projectTimechart, 'ready', drawEraLines);
+
+      google.visualization.events.addListener(projectRange, 'ready', drawChart);
+      google.visualization.events.addListener(projectRange, 'statechange', drawChart);
+      projectRange.draw();
+
+      // 歌人をクリックすると、系図のページと同じツールチップを出す（js/chronology-tips.js）
+      if (window.chronologyTips) window.chronologyTips(projectTimechart, dataTable);
     }
 
 
@@ -309,6 +478,7 @@
   <!-- ヘッダーここまで・メインここから -->
   <h1 class="midashi">歌人の生没年年表</h1>
   <p class="lead">スライダーで誕生年を絞り込めます。</p>
+  <p class="lead">生没年がわからない歌人は、推定の年（「頃」「？」が付くものを含む）や、官職・歌合などの記録に現れる年をもとに表示しています。記録の期間が20年に満たない場合は、没年（わからなければ最後の記録の年）から20年さかのぼった期間を表示しています。生没年が伝わらない猿丸太夫・喜撰法師・小野小町は、辞典などに書かれた活動時期を表示しています（猿丸太夫は、元明天皇の時代とする説によっています）。</p>
   <div class="main">
 
     <div id="project_dashboard">
