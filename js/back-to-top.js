@@ -144,6 +144,26 @@
     };
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', reveal);
     else reveal();
+
+    // リンクで別のページへ移るときは、その瞬間にバーを隠す。
+    // iPhone の Chrome / Safari（WebKit）は、ページの読み込みが始まるとアドレスバーとツールバーを広げ、
+    // そのときの再配置の途中で、このバーの半透明の残像を画面の上から下へ描いてしまうため。
+    // 同じページ内のリンク・新しいタブ・スクリプトが止めたクリックでは隠さない。
+    // 戻るボタンで戻ってきたとき（bfcache）や、3秒たってもページが移らなかったときは、表示し直す
+    document.addEventListener('click', function (e) {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      var a = e.target.closest && e.target.closest('a[href]');
+      if (!a || (a.target && a.target !== '_self') || a.hasAttribute('download')) return;
+      var url;
+      try { url = new URL(a.href, location.href); } catch (err) { return; }
+      if (!/^https?:$/.test(url.protocol)) return;
+      if (url.origin === location.origin && url.pathname === location.pathname && url.search === location.search) return;
+      bar.classList.remove('is-ready');
+      setTimeout(function () { bar.classList.add('is-ready'); }, 3000);
+    });
+    window.addEventListener('pageshow', function (e) {
+      if (e.persisted) bar.classList.add('is-ready');
+    });
   }
 })();
 
