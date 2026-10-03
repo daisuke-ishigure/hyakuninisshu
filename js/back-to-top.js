@@ -135,6 +135,15 @@
 
   if (bar.children.length) {
     document.body.appendChild(bar);
+    // ページの HTML を読み終え、配置が落ち着いてから表示する（CSS で .is-ready が付くまでは透明）。
+    // 読み込み中に画面の途中へ一瞬描かれ、上から下へ移動して見えるのを防ぐため
+    var reveal = function () {
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () { bar.classList.add('is-ready'); });
+      });
+    };
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', reveal);
+    else reveal();
   }
 })();
 
