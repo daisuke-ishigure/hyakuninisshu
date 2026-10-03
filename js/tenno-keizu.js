@@ -365,6 +365,88 @@
     poets: { label: '百人一首の歌人', pick: function (d) { return !!d.p || !!(d.wife && d.wife.p); }, desc: 'この系図に登場する百人一首の歌人を表示しています。赤い番号をクリックすると歌のページへ移動します。' }
   };
 
+  /* ---------- 生存期間で絞り込む（スライダー） ----------
+    js/fujiwara-keizu.js と同じ仕組み。生没年は、ふだんはツールチップ（js/tenno-keizu-tooltips.js）の「生没年：〇〇年～〇〇年」から読み取る。
+    生年がわからない人物は、少なくとも YEAR_SPAN 年は生きていたものとする：
+      没年がわかる → 没年の YEAR_SPAN 年前から没年まで（記録がもっと前からあれば、そこから）
+      没年もわからない → 最初の記録の年から YEAR_SPAN 年後まで
+    生没年がまったくわからない人物（源兼信・源俊輔・源師良・貞代王・清原通雄・清原海雄・清原房則・清原春光・磯部王・石見王・高階茂範）は
+    期間の判定から外す（祖先としてだけ薄く出る）。
+
+    LIFE … ツールチップに生没年が無い・「不明」などの人物を、ja.wikipedia・コトバンクの記録で補ったもの（キーはツールチップを探す名前）
+      [年1, 年2, 種類]  種類 'life' … 生年～没年
+                        'death' … 生きていたことが確かな最初の年（記録・子の誕生など）～没年
+                        'record' … 記録に現れる最初の年～最後の年（没年は不明） */
+  var YEAR_SPAN = 20;
+  var LIFE = {
+    '源頼義': [988, 1075, 'life'],
+    '源義朝': [1123, 1160, 'life'],
+    '源基平': [1026, 1064, 'life'],
+    '源顕仲': [1064, 1138, 'life'],       // 生年は1058年、または1064年
+    '源時中': [941, 1002, 'life'],
+    '源道方': [968, 1044, 'life'],
+    '源弘': [812, 863, 'life'],
+    '源希': [849, 902, 'life'],
+    '源定': [815, 863, 'life'],
+    '平惟範': [855, 909, 'life'],
+    '二条院讃岐': [1141, 1217, 'life'],   // 1141年頃～1217年以後
+    '周防内侍': [1037, 1109, 'life'],     // 1037年頃～1109年以後1111年以前
+    '赤染衛門': [964, 1041, 'life'],      // 生年は956年頃（957～964年とする見方も）。没年は1041年以後
+    '清少納言': [966, 1025, 'life'],      // 966年頃～1025年頃
+    '伊勢': [872, 938, 'life'],           // 872年頃～938年頃
+    '俊恵': [1113, 1191, 'life'],         // 没年は1191年頃
+    '高階師尚': [864, 916, 'life'],       // 864～916年とされるが不詳
+    '源義親': [1101, 1108, 'death'],      // 1101年 対馬守
+    '貞元親王': [873, 910, 'death'],      // 873年 親王宣下
+    '篤行王': [886, 910, 'death'],        // 平篤行。886年 臣籍降下
+    '源国紀': [884, 909, 'death'],        // 884年 臣籍降下
+    '源挙': [910, 930, 'death'],          // 子・源順が911年生まれ。930年に急死
+    '清原有雄': [828, 858, 'death'],
+    '文屋康秀': [860, 885, 'death'],      // 860年 中判事。没年は885年と推定
+    '源仲政': [1095, 1135, 'record'],     // 1095年 六位蔵人～保延年間（1135～1141年）に引退
+    '待賢門院堀河': [1126, 1150, 'record'], // 歌合・久安百首
+    '源俊隆': [1118, 1132, 'record'],
+    '皇嘉門院別当': [1175, 1182, 'record'],
+    '源兼昌': [1100, 1128, 'record'],     // 1100年の歌合～1128年頃まで生存
+    '興我王': [860, 886, 'record'],
+    '源至': [851, 886, 'record'],
+    '平重義': [998, 1026, 'record'],
+    '平棟仲': [1018, 1041, 'record'],
+    '素性': [909, 909, 'record'],         // 909年に醍醐天皇の前で歌を詠んだ
+    '清原深養父': [908, 930, 'record'],
+    '文屋朝康': [892, 902, 'record'],
+    '高階峯緒': [844, 868, 'record']
+  };
+
+  // 人物（ツールチップを探す名前）の [生きていたとみなす最初の年, 最後の年]。わからなければ null
+  function lifeSpan(name) {
+    var life = LIFE[name];
+    if (!life) {
+      var t = (window.TK_TOOLTIPS || {})[name] || [];
+      var line = t.filter(function (s) { return /^生没年：/.test(s); })[0];
+      if (!line) return null;
+      var parts = line.replace(/^生没年：/, '').split('～');
+      var b = (parts[0] || '').match(/(\d{3,4})年/);
+      var d = (parts[1] || '').match(/(\d{3,4})年/);
+      if (b && d) life = [+b[1], +d[1], 'life'];
+      else if (d) life = [+d[1], +d[1], 'death'];
+      else if (b) life = [+b[1], +b[1], 'record'];
+      else return null;
+    }
+    if (life[2] === 'life') return [life[0], life[1]];
+    if (life[2] === 'death') return [Math.min(life[0], life[1] - YEAR_SPAN), life[1]];
+    return [life[0], Math.max(life[1], life[0] + YEAR_SPAN)];
+  }
+
+  // 人物（妻を並べている人物は妻も）が、期間 [from, to] のどこかで生きていたか
+  function aliveIn(d, from, to) {
+    if (d.hidden) return false;
+    return [d.key || d.n].concat(d.wife ? [d.wife.n] : []).some(function (name) {
+      var s = lifeSpan(name);
+      return !!s && s[0] <= to && s[1] >= from;
+    });
+  }
+
   /* ---------- 寸法 ---------- */
   var FS = 15;          // 名前の文字サイズ（全角1文字の幅とみなす）
   var NOTE_FS = 11;     // 注記・家名の文字サイズ
@@ -839,9 +921,49 @@
   var filterBox = document.getElementById('fkFilters');
   var zoomLabel = document.getElementById('fkZoomLabel');
 
-  var state = { filter: 'all', scale: 1 };
+  // 期間のスライダーの範囲：系図の人物の生存期間がすべて入るよう、10年単位で切る
+  var YEAR_MIN = Infinity;
+  var YEAR_MAX = -Infinity;
+  (function scanYears(d) {
+    if (!d.hidden) {
+      [d.key || d.n].concat(d.wife ? [d.wife.n] : []).forEach(function (name) {
+        var s = lifeSpan(name);
+        if (!s) return;
+        YEAR_MIN = Math.min(YEAR_MIN, Math.floor(s[0] / 10) * 10);
+        YEAR_MAX = Math.max(YEAR_MAX, Math.ceil(s[1] / 10) * 10);
+      });
+    }
+    d.c.forEach(scanYears);
+  })(TREE);
+
+  var state = { filter: 'all', scale: 1, years: [YEAR_MIN, YEAR_MAX] };
   var current = null; // { svg, width, height }
   var tips = [];       // tippy のインスタンス（描き直すたびに破棄する）
+
+  function yearActive() {
+    return state.years[0] > YEAR_MIN || state.years[1] < YEAR_MAX;
+  }
+
+  // 期間のスライダーが全期間でなければ、選んでいる系統の絞り込みに「その期間に生きていた」条件を重ねる
+  function currentFilter() {
+    var base = FILTERS[state.filter];
+    if (!yearActive()) return base;
+    var from = state.years[0];
+    var to = state.years[1];
+    var inBase = base.pick || (base.roots
+      ? function (d) {
+        return base.roots.some(function (id) {
+          for (var a = d; a; a = a.parent) if (a === byId[id]) return true;
+          return false;
+        });
+      }
+      : function () { return true; });
+    return {
+      label: base.label + '・' + from + '年～' + to + '年',
+      pick: function (d) { return inBase(d) && aliveIn(d, from, to); },
+      desc: base.desc + ' そのうち、' + from + '年～' + to + '年に生きていた人物を表示しています。'
+    };
+  }
 
   function applyScale() {
     if (!current) return;
@@ -851,8 +973,21 @@
   }
 
   function render() {
-    var filter = FILTERS[state.filter];
+    var filter = currentFilter();
     var view = buildView(filter);
+    if (!view || !view.c.length) {
+      // 期間内に生きていた人物がいない
+      tips.forEach(function (t) { t.destroy(); });
+      tips = [];
+      var empty = document.createElement('p');
+      empty.className = 'fk-empty';
+      empty.textContent = 'この期間に生きていた人物は、系図にいません。';
+      chart.replaceChildren(empty);
+      current = null;
+      descEl.textContent = filter.desc;
+      markFilterButtons();
+      return;
+    }
     var lay = layout(view);
 
     var svg = el('svg', {
@@ -888,14 +1023,67 @@
 
     // 絞り込み時は、表示対象の先頭が見える位置までスクロールする
     var firstOn = lay.nodes.filter(function (v) { return v.mode === 'on'; })[0];
-    chart.scrollLeft = state.filter === 'all' || !firstOn ? 0 : Math.max(0, (firstOn.x - 60) * state.scale);
+    chart.scrollLeft = (state.filter === 'all' && !yearActive()) || !firstOn ? 0 : Math.max(0, (firstOn.x - 60) * state.scale);
     chart.scrollTop = 0;
 
     descEl.textContent = filter.desc;
+    markFilterButtons();
+  }
+
+  function markFilterButtons() {
     Array.prototype.forEach.call(filterBox.querySelectorAll('button'), function (b) {
       b.setAttribute('aria-pressed', b.dataset.filter === state.filter ? 'true' : 'false');
     });
   }
+
+  /* 期間のスライダー（つまみ2つ：始まりの年・終わりの年）。js/fujiwara-keizu.js と同じ
+    動かしている間は描き直しを1フレームに1回にまとめる。全期間に戻すと、通常の表示（期間の条件なし）になる */
+  var yearFromEl = document.getElementById('fkYearFrom');
+  var yearToEl = document.getElementById('fkYearTo');
+  var yearTextEl = document.getElementById('fkYearText');
+  var yearRangeEl = document.getElementById('fkYearRange');
+  var yearResetEl = document.getElementById('fkYearReset');
+  var yearFrame = 0;
+
+  function showYears() {
+    yearFromEl.value = state.years[0];
+    yearToEl.value = state.years[1];
+    yearTextEl.textContent = state.years[0] + '年～' + state.years[1] + '年';
+    // つまみの間の帯（css/fujiwara-keizu.css の --from / --to）
+    if (yearRangeEl.style.setProperty) {
+      yearRangeEl.style.setProperty('--from', (state.years[0] - YEAR_MIN) / (YEAR_MAX - YEAR_MIN) * 100 + '%');
+      yearRangeEl.style.setProperty('--to', (state.years[1] - YEAR_MIN) / (YEAR_MAX - YEAR_MIN) * 100 + '%');
+    }
+    yearResetEl.disabled = !yearActive();
+  }
+
+  function setYears(from, to) {
+    state.years = [Math.min(from, to), Math.max(from, to)];
+    showYears();
+    if (yearFrame) return;
+    var later = function () {
+      yearFrame = 0;
+      render();
+    };
+    yearFrame = window.requestAnimationFrame ? window.requestAnimationFrame(later) : setTimeout(later, 16);
+  }
+
+  [yearFromEl, yearToEl].forEach(function (input) {
+    input.min = YEAR_MIN;
+    input.max = YEAR_MAX;
+    input.step = 1;
+  });
+  // つまみが追い越さないよう、もう一方の値で止める
+  yearFromEl.addEventListener('input', function () {
+    var v = Math.min(+yearFromEl.value, state.years[1]);
+    setYears(v, state.years[1]);
+  });
+  yearToEl.addEventListener('input', function () {
+    var v = Math.max(+yearToEl.value, state.years[0]);
+    setYears(state.years[0], v);
+  });
+  yearResetEl.addEventListener('click', function () { setYears(YEAR_MIN, YEAR_MAX); });
+  showYears();
 
   // 絞り込みボタンを生成
   Object.keys(FILTERS).forEach(function (key) {

@@ -19,7 +19,7 @@
   <meta name="fragment" content="!">
   <meta name="google-site-verification" content="a3HHNhawWK8QsasKiSFMC_QeIXmO1tdBc60jhNPTA3s">
   <link rel="stylesheet" href="../css/style.css?20260928-02">
-  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261003-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261003-03">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -89,10 +89,23 @@
         <p class="fk-lead">藤原氏は、<ruby>中臣<rt>なかとみ</rt></ruby>鎌足が天智天皇から「藤原」という<ruby>氏<rt>うじ</rt></ruby>を賜ったことに始まります。<br
             class="br-pc">鎌足の子・不比等の4人の息子がそれぞれ南家・北家・式家・京家をおこし、中でも北家は摂政・関白を独占して大いに栄えました。<br class="br-pc">
           百人一首には、藤原氏の一族から多くの歌人が選ばれています。系図をたどることで、歌人たちがどのような家系につながり、平安時代の宮廷社会の中でどのような位置にいたのかを知ることができます。
-          下のボタンで家を選ぶと、その家の人物だけを表示できます。</p>
+          下のボタンで家を選ぶと、その家の人物だけを表示できます。スライダーで期間を選ぶと、その期間に生きていた人物だけを表示できます。</p>
 
         <div class="fk-controls">
           <div class="fk-filters" id="fkFilters" role="group" aria-label="表示する家を選ぶ"></div>
+          <!-- 生存期間で絞り込むスライダー（js/fujiwara-keizu.js）。家のボタンと組み合わせて使える -->
+          <div class="fk-years" role="group" aria-label="生きていた期間で絞り込む">
+            <div class="fk-years__head">
+              <span class="fk-years__title">生きていた期間</span>
+              <output class="fk-years__text" id="fkYearText" aria-live="polite"></output>
+              <button type="button" class="fk-years__reset" id="fkYearReset">期間をリセット</button>
+            </div>
+            <div class="fk-years__range" id="fkYearRange">
+              <input type="range" id="fkYearFrom" aria-label="期間の始まりの年">
+              <input type="range" id="fkYearTo" aria-label="期間の終わりの年">
+            </div>
+            <p class="fk-years__note">生年がわからない人物は、記録のある年や没年をもとに、少なくとも20年間は生きていたものとして表示しています。生没年がまったくわからない人物は、期間で絞り込むと、子孫につながる場合だけ薄い色で表示されます。</p>
+          </div>
         </div>
 
         <p class="fk-desc" id="fkDesc" aria-live="polite">藤原鎌足から鎌倉時代の五摂家までの主な人物を表示しています。</p>
@@ -205,8 +218,8 @@
   <script src="../js/popper.min.js"></script>
   <script src="../js/tippy.umd.min.js"></script>
   <!-- ▲▲▲ tippy.js ▲▲▲ -->
-  <script src="../js/fujiwara-keizu-tooltips.js?20261001-01"></script>
-  <script src="../js/fujiwara-keizu.js?20261003-04"></script>
+  <script src="../js/fujiwara-keizu-tooltips.js?20261003-01"></script>
+  <script src="../js/fujiwara-keizu.js?20261003-06"></script>
 </body>
 
 </html>

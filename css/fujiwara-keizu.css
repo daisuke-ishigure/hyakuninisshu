@@ -47,6 +47,139 @@
   outline-offset: 2px;
 }
 
+/* 生きていた期間のスライダー（js/fujiwara-keizu.js）：つまみ2つ（始まりの年・終わりの年）。
+   2本の input[type=range] を重ね、つまみだけ押せるようにする。つまみの間の帯は js が --from / --to で指定する */
+.fk-years {
+  margin-top: 0.9em;
+  padding: 0.7em 0.9em 0.6em;
+  background: #fff;
+  border: 1px solid #e4d9bd;
+  border-radius: 8px;
+}
+.fk-years__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.3em 0.8em;
+}
+.fk-years__title {
+  font-weight: 700;
+}
+.fk-years__text {
+  font-weight: 700;
+  color: #b82343;
+}
+.fk-years__reset {
+  margin-left: auto;
+  font: inherit;
+  font-size: 0.85rem;
+  padding: 0.2em 0.8em;
+  border: 1px solid #b82343;
+  border-radius: 999px;
+  background: #fff;
+  color: #b82343;
+  cursor: pointer;
+}
+.fk-years__reset:hover:not(:disabled) {
+  background: #fbe9ec;
+}
+.fk-years__reset:disabled {
+  border-color: #ccc;
+  color: #aaa;
+  cursor: default;
+}
+.fk-years__range {
+  --from: 0%;
+  --to: 100%;
+  position: relative;
+  height: 32px;
+  margin: 0.3em 10px 0;
+}
+/* 溝と、つまみの間の帯 */
+.fk-years__range::before,
+.fk-years__range::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  height: 6px;
+  margin-top: -3px;
+  border-radius: 3px;
+}
+.fk-years__range::before {
+  left: 0;
+  right: 0;
+  background: #e4d9bd;
+}
+.fk-years__range::after {
+  left: var(--from);
+  right: calc(100% - var(--to));
+  background: #b82343;
+}
+.fk-years__range input {
+  position: absolute;
+  top: 0;
+  left: -10px;
+  width: calc(100% + 20px);
+  height: 32px;
+  margin: 0;
+  background: none;
+  pointer-events: none;
+  -webkit-appearance: none;
+  appearance: none;
+  z-index: 1;
+}
+.fk-years__range input::-webkit-slider-runnable-track {
+  height: 32px;
+  background: none;
+}
+.fk-years__range input::-moz-range-track {
+  background: none;
+}
+.fk-years__range input::-webkit-slider-thumb {
+  width: 20px;
+  height: 20px;
+  margin-top: 6px;
+  border: 2px solid #b82343;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  pointer-events: auto;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.fk-years__range input::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #b82343;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  pointer-events: auto;
+}
+.fk-years__range input:focus-visible::-webkit-slider-thumb {
+  outline: 2px solid #1f4fbf;
+  outline-offset: 2px;
+}
+.fk-years__range input:focus-visible::-moz-range-thumb {
+  outline: 2px solid #1f4fbf;
+  outline-offset: 2px;
+}
+.fk-years__note {
+  margin: 0.3em 0 0;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: #6b6454;
+}
+/* 期間内に生きていた人物がいないとき */
+.fk-empty {
+  margin: 0;
+  padding: 2em 1em;
+  text-align: center;
+  color: #6b6454;
+}
+
 /* 系図のすぐ上の行：左に凡例、右端に拡大・縮小（狭い画面では折り返して、拡大・縮小は右寄せのまま） */
 .fk-chart-bar {
   display: flex;

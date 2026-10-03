@@ -19,7 +19,7 @@
   <meta name="fragment" content="!">
   <meta name="google-site-verification" content="a3HHNhawWK8QsasKiSFMC_QeIXmO1tdBc60jhNPTA3s">
   <link rel="stylesheet" href="../css/style.css?20260928-02">
-  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261003-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261003-03">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -92,10 +92,23 @@
           天皇のほかにも、元良親王や式子内親王などの皇族や、在原業平・源融・清少納言のように天皇の子孫にあたる歌人が数多く選ばれています。
           <br class="br-pc">
           皇族の多くは、<ruby>源<rt>みなもと</rt></ruby>・<ruby>平<rt>たいら</rt></ruby>・<ruby>在原<rt>ありわら</rt></ruby>などの<ruby>氏<rt>うじ</rt></ruby>を賜って臣下となりました。これを<ruby>臣籍降下<rt>しんせきこうか</rt></ruby>といいます。こうした歌人たちの系図をたどると、どの天皇につながるのかを確認できます。
-          <br class="br-pc">下のボタンで系統を選ぶと、その系統の人物だけを表示できます。</p>
+          <br class="br-pc">下のボタンで系統を選ぶと、その系統の人物だけを表示できます。スライダーで期間を選ぶと、その期間に生きていた人物だけを表示できます。</p>
 
         <div class="fk-controls">
           <div class="fk-filters" id="fkFilters" role="group" aria-label="表示する系統を選ぶ"></div>
+          <!-- 生存期間で絞り込むスライダー（js/tenno-keizu.js）。系統のボタンと組み合わせて使える -->
+          <div class="fk-years" role="group" aria-label="生きていた期間で絞り込む">
+            <div class="fk-years__head">
+              <span class="fk-years__title">生きていた期間</span>
+              <output class="fk-years__text" id="fkYearText" aria-live="polite"></output>
+              <button type="button" class="fk-years__reset" id="fkYearReset">期間をリセット</button>
+            </div>
+            <div class="fk-years__range" id="fkYearRange">
+              <input type="range" id="fkYearFrom" aria-label="期間の始まりの年">
+              <input type="range" id="fkYearTo" aria-label="期間の終わりの年">
+            </div>
+            <p class="fk-years__note">生年がわからない人物は、記録のある年や没年をもとに、少なくとも20年間は生きていたものとして表示しています。生没年がまったくわからない人物は、期間で絞り込むと、子孫につながる場合だけ薄い色で表示されます。</p>
+          </div>
         </div>
 
         <p class="fk-desc" id="fkDesc" aria-live="polite">天智天皇（第38代）と弟の天武天皇から、百人一首最後の歌人・順徳院（第84代）までの歴代天皇と、百人一首の歌人につながる主な人物を表示しています。</p>
@@ -181,8 +194,8 @@
   <script src="../js/popper.min.js"></script>
   <script src="../js/tippy.umd.min.js"></script>
   <!-- ▲▲▲ tippy.js ▲▲▲ -->
-  <script src="../js/tenno-keizu-tooltips.js?20261001-01"></script>
-  <script src="../js/tenno-keizu.js?20261003-02"></script>
+  <script src="../js/tenno-keizu-tooltips.js?20261003-01"></script>
+  <script src="../js/tenno-keizu.js?20261003-03"></script>
 </body>
 
 </html>
