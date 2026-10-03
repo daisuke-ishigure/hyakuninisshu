@@ -343,6 +343,18 @@
       google.visualization.events.addListener(projectTimechart, 'ready', drawEraLines);
 
       google.visualization.events.addListener(projectRange, 'ready', drawChart);
+      // 画面の大きさ・向きが変わったら描き直す（年表は描いたときの大きさのままになるため）
+      var resizeTimer = 0;
+      var lastSize = window.innerWidth + 'x' + window.innerHeight;
+      window.addEventListener('resize', function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function () {
+          var size = window.innerWidth + 'x' + window.innerHeight;
+          if (size === lastSize) return;
+          lastSize = size;
+          drawChart();
+        }, 200);
+      });
       google.visualization.events.addListener(projectRange, 'statechange', drawChart);
       projectRange.draw();
 
@@ -383,11 +395,14 @@
     }
 
 
+    /* 年表は画面の高さいっぱいにする（高さを決めないと、Google Charts が幅に応じて低く描き、狭い画面では極端に低くなる） */
     #project_timechart {
+      box-sizing: border-box;
       padding: 10px 0;
       margin: 0 auto;
       width: 90%;
-      height: 100%;
+      height: 100vh;
+      height: 100dvh;
     }
 
     .midashi {
