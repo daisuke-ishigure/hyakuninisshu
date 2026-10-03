@@ -5709,6 +5709,12 @@ body.hmenu-active {
   .header_list a.sp-moved {
     display: none;
   }
+  /* back-to-top.js が動く前（スクリプトの読み込み中）に、ヘッダーのアイコンが一瞬並んでから下のバーへ
+     移ったように見えないよう、言語切替（icon_lang.svg）以外のリンクは最初から隠す。
+     :has() に対応していないブラウザでは、上の .sp-moved（JS が付ける）で隠れる */
+  body:not(.no-sp-appbar) .header_list a:has(> img):not(:has(img[src*="icon_lang"])) {
+    display: none;
+  }
   /* ナビはフッターへ。ヘッダーは「サイト名（左）＋ JA/EN（右）」の横並びにして高さを詰める（サイト名は 1.3rem のまま） */
   body:not(.no-sp-appbar) .header {
     flex-direction: row;
