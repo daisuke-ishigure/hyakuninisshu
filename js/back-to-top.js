@@ -133,7 +133,23 @@
     bar.appendChild(a);
   });
 
-  if (bar.children.length) {
+  // ===== 調査用（一時的）：?navdebug=nobar で開くと、そのタブでは下部バーを作らない（帯の原因がバーかを切り分ける）。
+  // ?navdebug=0 で元に戻す。原因がわかったら削除する =====
+  var noBar = false;
+  try {
+    if (/[?&]navdebug=nobar/.test(location.search)) sessionStorage.setItem('navdebug-nobar', '1');
+    if (/[?&]navdebug=0/.test(location.search)) { sessionStorage.removeItem('navdebug-nobar'); sessionStorage.removeItem('navdebug'); }
+    noBar = sessionStorage.getItem('navdebug-nobar') === '1';
+  } catch (err) { /* noop */ }
+  if (noBar) {
+    var note = document.createElement('div');
+    note.textContent = '調査中：下部バーなし（?navdebug=0 で戻す）';
+    note.style.cssText = 'position:absolute;top:0;left:0;z-index:99999;padding:2px 6px;background:#000;color:#ff0;font:11px/1.4 sans-serif;';
+    document.body.appendChild(note);
+  }
+  // ===== 調査用ここまで =====
+
+  if (bar.children.length && !noBar) {
     document.body.appendChild(bar);
     // ページの HTML を読み終え、配置が落ち着いてから表示する（CSS で .is-ready が付くまでは透明）。
     // 読み込み中に画面の途中へ一瞬描かれ、上から下へ移動して見えるのを防ぐため
