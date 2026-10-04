@@ -192,10 +192,17 @@ document.addEventListener("click", function (event) {
   if (event.target.closest(".game-badge")) {
     return;
   }
+  // 番号のバッジ（<a>）そのものを押したときも、ブラウザ標準のリンク遷移に任せる
+  // （js/back-to-top.js が、スマホの下部バーを隠してから移る処理をする）
+  if (event.target.closest("a[href]")) {
+    return;
+  }
   const td = event.target.closest("td");
   if (td && td.parentNode.firstChild === td) {
     const numBadge = td.querySelector(".num-badge");
     const linkNumber = numBadge ? parseInt(numBadge.dataset.number) : parseInt(td.textContent.trim());
-    window.location.href = `/${linkNumber}.html`;
+    // スマホの下部バーを隠してから移る（js/back-to-top.js。無ければそのまま移る）
+    if (window.spLeaveTo) window.spLeaveTo(`/${linkNumber}.html`);
+    else window.location.href = `/${linkNumber}.html`;
   }
 });

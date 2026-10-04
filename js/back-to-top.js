@@ -145,12 +145,28 @@
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', reveal);
     else reveal();
 
-    // リンクで別のページへ移るときは、その瞬間にバーを隠す。
+    // リンクで別のページへ移るときは、先にバーを隠してから移る。
     // iPhone の Chrome / Safari（WebKit）は、ページの読み込みが始まるとアドレスバーとツールバーを広げ、
-    // そのときの再配置の途中で、このバーの半透明の残像を画面の上から下へ描いてしまうため。
-    // 同じページ内のリンク・新しいタブ・スクリプトが止めたクリックでは隠さない。
+    // そのときの再配置の途中で、このバーの半透明の残像を画面の上から下へ描いてしまう。
+    // しかも移動が始まった後の画面の変更は描かれないので、クリックの既定の移動をいったん止め、
+    // バーを隠した画面が描かれてから（2フレーム後）、改めてリンク先へ移る。
+    // ほかのスクリプトのクリック処理がすべて終わった後（window で受ける）に判定し、
+    // 同じページ内のリンク・新しいタブ・ほかのスクリプトが止めたクリックでは何もしない。
     // 戻るボタンで戻ってきたとき（bfcache）や、3秒たってもページが移らなかったときは、表示し直す
-    document.addEventListener('click', function (e) {
+    var leaving = false;
+    var leaveTo = function (href) {
+      if (getComputedStyle(bar).display === 'none') { location.href = href; return; } // PC 幅（バーを出していない）
+      if (leaving) return;
+      leaving = true;
+      bar.classList.remove('is-ready');
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () { location.href = href; });
+      });
+      setTimeout(function () { leaving = false; bar.classList.add('is-ready'); }, 3000);
+    };
+    // 一覧（js/list.js）のように、スクリプトでページを移すところからも使えるようにする
+    window.spLeaveTo = leaveTo;
+    window.addEventListener('click', function (e) {
       if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
       var a = e.target.closest && e.target.closest('a[href]');
       if (!a || (a.target && a.target !== '_self') || a.hasAttribute('download')) return;
@@ -158,11 +174,15 @@
       try { url = new URL(a.href, location.href); } catch (err) { return; }
       if (!/^https?:$/.test(url.protocol)) return;
       if (url.origin === location.origin && url.pathname === location.pathname && url.search === location.search) return;
-      bar.classList.remove('is-ready');
-      setTimeout(function () { bar.classList.add('is-ready'); }, 3000);
+      if (getComputedStyle(bar).display === 'none') return; // バーを出していない（PC 幅）ときは、ふつうに移る
+      e.preventDefault();
+      leaveTo(url.href);
     });
     window.addEventListener('pageshow', function (e) {
-      if (e.persisted) bar.classList.add('is-ready');
+      if (e.persisted) {
+        leaving = false;
+        bar.classList.add('is-ready');
+      }
     });
   }
 })();
