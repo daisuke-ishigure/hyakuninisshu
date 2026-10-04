@@ -133,23 +133,7 @@
     bar.appendChild(a);
   });
 
-  // ===== 調査用（一時的）：?navdebug=nobar で開くと、そのタブでは下部バーを作らない（帯の原因がバーかを切り分ける）。
-  // ?navdebug=0 で元に戻す。原因がわかったら削除する =====
-  var noBar = false;
-  try {
-    if (/[?&]navdebug=nobar/.test(location.search)) sessionStorage.setItem('navdebug-nobar', '1');
-    if (/[?&]navdebug=0/.test(location.search)) { sessionStorage.removeItem('navdebug-nobar'); sessionStorage.removeItem('navdebug'); }
-    noBar = sessionStorage.getItem('navdebug-nobar') === '1';
-  } catch (err) { /* noop */ }
-  if (noBar) {
-    var note = document.createElement('div');
-    note.textContent = '調査中：下部バーなし（?navdebug=0 で戻す）';
-    note.style.cssText = 'position:absolute;top:0;left:0;z-index:99999;padding:2px 6px;background:#000;color:#ff0;font:11px/1.4 sans-serif;';
-    document.body.appendChild(note);
-  }
-  // ===== 調査用ここまで =====
-
-  if (bar.children.length && !noBar) {
+  if (bar.children.length) {
     document.body.appendChild(bar);
     // ページの HTML を読み終え、配置が落ち着いてから表示する（CSS で .is-ready が付くまでは透明）。
     // 読み込み中に画面の途中へ一瞬描かれ、上から下へ移動して見えるのを防ぐため
@@ -160,86 +144,6 @@
     };
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', reveal);
     else reveal();
-
-    // リンクで別のページへ移るときは、先にバーを隠してから移る。
-    // iPhone の Chrome / Safari（WebKit）は、ページの読み込みが始まるとアドレスバーとツールバーを広げ、
-    // そのときの再配置の途中で、このバーの半透明の残像を画面の上から下へ描いてしまう。
-    // しかも移動が始まった後の画面の変更は描かれないので、クリックの既定の移動をいったん止め、
-    // バーを隠した画面が描かれてから（2フレーム後）、改めてリンク先へ移る。
-    // ほかのスクリプトのクリック処理がすべて終わった後（window で受ける）に判定し、
-    // 同じページ内のリンク・新しいタブ・ほかのスクリプトが止めたクリックでは何もしない。
-    // 戻るボタンで戻ってきたとき（bfcache）や、3秒たってもページが移らなかったときは、表示し直す
-    // ===== 調査用（一時的）：URL に ?navdebug=1 を付けて開くと、リンクを押したときの様子を記録し、
-    // 移った先のページの上部に表示する。原因がわかったら、この調査用のコード（navdebug）は削除する =====
-    var NAVDEBUG_KEY = 'navdebug';
-    var debugOn = false;
-    try {
-      if (/[?&]navdebug=1/.test(location.search)) sessionStorage.setItem(NAVDEBUG_KEY, '1');
-      debugOn = sessionStorage.getItem(NAVDEBUG_KEY) === '1';
-    } catch (err) { /* noop */ }
-    var t0 = Date.now();
-    var dlog = function (msg) {
-      if (!debugOn) return;
-      try {
-        var list = JSON.parse(sessionStorage.getItem('navdebug-log') || '[]');
-        list.push((Date.now() - t0) + 'ms ' + msg);
-        sessionStorage.setItem('navdebug-log', JSON.stringify(list.slice(-40)));
-      } catch (err) { /* noop */ }
-    };
-    if (debugOn) {
-      var shown = '';
-      try { shown = JSON.parse(sessionStorage.getItem('navdebug-log') || '[]').join('\n'); sessionStorage.setItem('navdebug-log', '[]'); } catch (err) { /* noop */ }
-      var panel = document.createElement('pre');
-      panel.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:99999;max-height:45vh;overflow:auto;margin:0;padding:6px;' +
-        'background:rgba(0,0,0,0.85);color:#0f0;font:11px/1.4 monospace;white-space:pre-wrap;';
-      panel.textContent = '[navdebug] ' + navigator.userAgent + '\n前のページで記録したこと：\n' + (shown || '（なし）');
-      panel.addEventListener('click', function () { panel.remove(); });
-      document.body.appendChild(panel);
-      var barState = function () { return 'bar class="' + bar.className + '" display=' + getComputedStyle(bar).display + ' opacity=' + getComputedStyle(bar).opacity; };
-      dlog('このページを読み込み: ' + location.pathname + ' / ' + barState());
-      ['touchstart', 'touchend', 'pointerdown', 'pointerup'].forEach(function (type) {
-        document.addEventListener(type, function (e) { dlog(type + ' target=' + (e.target.className || e.target.tagName) + ' prevented=' + e.defaultPrevented); }, true);
-      });
-      window.addEventListener('pagehide', function () { dlog('pagehide / ' + barState()); });
-      document.addEventListener('visibilitychange', function () { dlog('visibility=' + document.visibilityState + ' / ' + barState()); });
-    }
-    // ===== 調査用ここまで =====
-
-    var leaving = false;
-    var leaveTo = function (href) {
-      if (getComputedStyle(bar).display === 'none') { dlog('leaveTo: バー非表示のためすぐ移動'); location.href = href; return; } // PC 幅（バーを出していない）
-      if (leaving) { dlog('leaveTo: すでに移動中'); return; }
-      leaving = true;
-      bar.classList.remove('is-ready');
-      dlog('leaveTo: バーを隠した opacity=' + getComputedStyle(bar).opacity + ' → ' + href);
-      requestAnimationFrame(function () {
-        dlog('leaveTo: 1フレーム目');
-        requestAnimationFrame(function () { dlog('leaveTo: 2フレーム目 → location.href'); location.href = href; });
-      });
-      setTimeout(function () { leaving = false; bar.classList.add('is-ready'); }, 3000);
-    };
-    // 一覧（js/list.js）のように、スクリプトでページを移すところからも使えるようにする
-    window.spLeaveTo = leaveTo;
-    window.addEventListener('click', function (e) {
-      dlog('click(window) target=' + (e.target.className || e.target.tagName) + ' prevented=' + e.defaultPrevented + ' button=' + e.button);
-      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-      var a = e.target.closest && e.target.closest('a[href]');
-      if (!a || (a.target && a.target !== '_self') || a.hasAttribute('download')) { dlog('click: 対象外のリンク'); return; }
-      var url;
-      try { url = new URL(a.href, location.href); } catch (err) { return; }
-      if (!/^https?:$/.test(url.protocol)) return;
-      if (url.origin === location.origin && url.pathname === location.pathname && url.search === location.search) { dlog('click: 同じページ'); return; }
-      if (getComputedStyle(bar).display === 'none') { dlog('click: バー非表示'); return; } // バーを出していない（PC 幅）ときは、ふつうに移る
-      e.preventDefault();
-      dlog('click: 既定の移動を止めた prevented=' + e.defaultPrevented);
-      leaveTo(url.href);
-    });
-    window.addEventListener('pageshow', function (e) {
-      if (e.persisted) {
-        leaving = false;
-        bar.classList.add('is-ready');
-      }
-    });
   }
 })();
 

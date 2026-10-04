@@ -193,7 +193,6 @@ document.addEventListener("click", function (event) {
     return;
   }
   // 番号のバッジ（<a>）そのものを押したときも、ブラウザ標準のリンク遷移に任せる
-  // （js/back-to-top.js が、スマホの下部バーを隠してから移る処理をする）
   if (event.target.closest("a[href]")) {
     return;
   }
@@ -201,8 +200,6 @@ document.addEventListener("click", function (event) {
   if (td && td.parentNode.firstChild === td) {
     const numBadge = td.querySelector(".num-badge");
     const linkNumber = numBadge ? parseInt(numBadge.dataset.number) : parseInt(td.textContent.trim());
-    // スマホの下部バーを隠してから移る（js/back-to-top.js。無ければそのまま移る）
-    if (window.spLeaveTo) window.spLeaveTo(`/${linkNumber}.html`);
-    else window.location.href = `/${linkNumber}.html`;
+    window.location.href = `/${linkNumber}.html`;
   }
 });
