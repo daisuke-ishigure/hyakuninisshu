@@ -153,29 +153,69 @@
     // ほかのスクリプトのクリック処理がすべて終わった後（window で受ける）に判定し、
     // 同じページ内のリンク・新しいタブ・ほかのスクリプトが止めたクリックでは何もしない。
     // 戻るボタンで戻ってきたとき（bfcache）や、3秒たってもページが移らなかったときは、表示し直す
+    // ===== 調査用（一時的）：URL に ?navdebug=1 を付けて開くと、リンクを押したときの様子を記録し、
+    // 移った先のページの上部に表示する。原因がわかったら、この調査用のコード（navdebug）は削除する =====
+    var NAVDEBUG_KEY = 'navdebug';
+    var debugOn = false;
+    try {
+      if (/[?&]navdebug=1/.test(location.search)) sessionStorage.setItem(NAVDEBUG_KEY, '1');
+      debugOn = sessionStorage.getItem(NAVDEBUG_KEY) === '1';
+    } catch (err) { /* noop */ }
+    var t0 = Date.now();
+    var dlog = function (msg) {
+      if (!debugOn) return;
+      try {
+        var list = JSON.parse(sessionStorage.getItem('navdebug-log') || '[]');
+        list.push((Date.now() - t0) + 'ms ' + msg);
+        sessionStorage.setItem('navdebug-log', JSON.stringify(list.slice(-40)));
+      } catch (err) { /* noop */ }
+    };
+    if (debugOn) {
+      var shown = '';
+      try { shown = JSON.parse(sessionStorage.getItem('navdebug-log') || '[]').join('\n'); sessionStorage.setItem('navdebug-log', '[]'); } catch (err) { /* noop */ }
+      var panel = document.createElement('pre');
+      panel.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:99999;max-height:45vh;overflow:auto;margin:0;padding:6px;' +
+        'background:rgba(0,0,0,0.85);color:#0f0;font:11px/1.4 monospace;white-space:pre-wrap;';
+      panel.textContent = '[navdebug] ' + navigator.userAgent + '\n前のページで記録したこと：\n' + (shown || '（なし）');
+      panel.addEventListener('click', function () { panel.remove(); });
+      document.body.appendChild(panel);
+      var barState = function () { return 'bar class="' + bar.className + '" display=' + getComputedStyle(bar).display + ' opacity=' + getComputedStyle(bar).opacity; };
+      dlog('このページを読み込み: ' + location.pathname + ' / ' + barState());
+      ['touchstart', 'touchend', 'pointerdown', 'pointerup'].forEach(function (type) {
+        document.addEventListener(type, function (e) { dlog(type + ' target=' + (e.target.className || e.target.tagName) + ' prevented=' + e.defaultPrevented); }, true);
+      });
+      window.addEventListener('pagehide', function () { dlog('pagehide / ' + barState()); });
+      document.addEventListener('visibilitychange', function () { dlog('visibility=' + document.visibilityState + ' / ' + barState()); });
+    }
+    // ===== 調査用ここまで =====
+
     var leaving = false;
     var leaveTo = function (href) {
-      if (getComputedStyle(bar).display === 'none') { location.href = href; return; } // PC 幅（バーを出していない）
-      if (leaving) return;
+      if (getComputedStyle(bar).display === 'none') { dlog('leaveTo: バー非表示のためすぐ移動'); location.href = href; return; } // PC 幅（バーを出していない）
+      if (leaving) { dlog('leaveTo: すでに移動中'); return; }
       leaving = true;
       bar.classList.remove('is-ready');
+      dlog('leaveTo: バーを隠した opacity=' + getComputedStyle(bar).opacity + ' → ' + href);
       requestAnimationFrame(function () {
-        requestAnimationFrame(function () { location.href = href; });
+        dlog('leaveTo: 1フレーム目');
+        requestAnimationFrame(function () { dlog('leaveTo: 2フレーム目 → location.href'); location.href = href; });
       });
       setTimeout(function () { leaving = false; bar.classList.add('is-ready'); }, 3000);
     };
     // 一覧（js/list.js）のように、スクリプトでページを移すところからも使えるようにする
     window.spLeaveTo = leaveTo;
     window.addEventListener('click', function (e) {
+      dlog('click(window) target=' + (e.target.className || e.target.tagName) + ' prevented=' + e.defaultPrevented + ' button=' + e.button);
       if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
       var a = e.target.closest && e.target.closest('a[href]');
-      if (!a || (a.target && a.target !== '_self') || a.hasAttribute('download')) return;
+      if (!a || (a.target && a.target !== '_self') || a.hasAttribute('download')) { dlog('click: 対象外のリンク'); return; }
       var url;
       try { url = new URL(a.href, location.href); } catch (err) { return; }
       if (!/^https?:$/.test(url.protocol)) return;
-      if (url.origin === location.origin && url.pathname === location.pathname && url.search === location.search) return;
-      if (getComputedStyle(bar).display === 'none') return; // バーを出していない（PC 幅）ときは、ふつうに移る
+      if (url.origin === location.origin && url.pathname === location.pathname && url.search === location.search) { dlog('click: 同じページ'); return; }
+      if (getComputedStyle(bar).display === 'none') { dlog('click: バー非表示'); return; } // バーを出していない（PC 幅）ときは、ふつうに移る
       e.preventDefault();
+      dlog('click: 既定の移動を止めた prevented=' + e.defaultPrevented);
       leaveTo(url.href);
     });
     window.addEventListener('pageshow', function (e) {
