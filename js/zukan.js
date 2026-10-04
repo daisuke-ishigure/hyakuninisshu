@@ -587,20 +587,36 @@ function poemInlineStyle(poemData) {
     if (!poemData) return '';
     const segments = `${poemData.first}<br>${poemData.second}`.split('<br>');
     const numColumns = segments.length;
-    const maxChars = Math.max(...segments.map(seg => {
-        const stripped = seg.replace(/<rt>.*?<\/rt>/g, '').replace(/<\/?ruby>/g, '');
-        return Array.from(stripped).length; // サロゲートペア対応
-    }));
+    // 各句の長さ（em）：通常の文字は1文字1.04em（1em＋letter-spacing .04em）、
+    // ルビ付きの語は「親文字の長さ」と「ルビの長さ（rtは.55em＋字間で約.59em/字）」の
+    // 長い方。ルビが親文字より長いとその分だけ句が伸びるため（例：衣手＝ころもで）。
+    // 全100首でChromiumの実測値（height:max-content）以上・誤差0.73em以内を確認済み。
+    const segmentLength = seg => {
+        let len = 0;
+        const re = /<ruby>(.*?)<rt>(.*?)<\/rt><\/ruby>|([^<])/g;
+        let m;
+        while ((m = re.exec(seg))) {
+            if (m[3] !== undefined) {
+                len += 1.04;
+            } else {
+                // サロゲートペア対応のためArray.fromで数える
+                len += Math.max(Array.from(m[1]).length * 1.04, Array.from(m[2]).length * 0.59);
+            }
+        }
+        return len;
+    };
+    const maxLength = Math.max(...segments.map(segmentLength));
     // 幅：句の数 × 行間（縦書きでは句と句の間隔＝1列分の幅）
     const widthEm = (numColumns * 2.2).toFixed(2);
-    // 高さ：最長句の文字数 × 1文字あたりの目安（全100首中最長の8文字で
-    // 11.2em、元の固定値11emと同等以上の余裕を持たせている）
-    const heightEm = (maxChars * 1.4).toFixed(2);
+    // 高さ：最長の句の長さ＋フォント差を吸収するわずかな余白。
+    // 横並びのカード同士はsubgridで行の高さが揃うため、結果として
+    // 各行で一番長い歌の高さに合わせて揃う
+    const heightEm = (maxLength + 0.2).toFixed(2);
     return ` style="width:${widthEm}em;height:${heightEm}em;"`;
 }
 
 function buildCard(poet) {
-    // クリックしなくても心のチャート・和歌・心境をすべてのカードに常時表示するため、
+    // クリックしなくても和歌・現代語訳をすべてのカードに常時表示するため、
     // カード自体は元通り<a>で歌のページへのリンクにする
     const a = document.createElement('a');
     a.className = 'poet-card';
@@ -620,7 +636,6 @@ function buildCard(poet) {
     const rank = RANK_BY_NUMBER[poet.number];
     const rankText = rank ? `、位階：${rank}` : '';
 
-    const kokoro = window.KOKORO_CHART_DATA && window.KOKORO_CHART_DATA[poet.number];
     const poemData = typeof poems !== 'undefined' ? poems[String(poet.number)] : null;
 
     a.innerHTML = `
@@ -634,132 +649,19 @@ function buildCard(poet) {
       ${poet.outline ? `<div class="card-outline">${poet.outline}</div>` : ''}
       <div class="card-poem"><span class="card-theme" data-theme="${poet.theme}">${theme.icon} ${theme.label}</span>（${sourceText}）</div>
       ${extraImg ? `<img class="card-extra-img" src="${extraImg}" alt="${poet.name}" loading="lazy">` : ''}
-      ${kokoro ? `
+      ${poemData ? `
       <div class="kokoro-panel">
-        <div class="emotion-chart">
-          <div class="kokoro-panel-text">
-            <h3 class="kokoro-panel-poem-title">和歌</h3>
-            <div class="kokoro-panel-poem"${poemInlineStyle(poemData)}>${poemData ? `${poemData.first}<br>${poemData.second}` : ''}</div>
-            <h3 class="kokoro-panel-quotes-title">歌人の心境</h3>
-            <div class="kokoro-panel-quotes">${kokoro.quotes.map(q => `<p>${q}</p>`).join('')}</div>
-          </div>
-          <div class="radarChartWrapper"><canvas class="radarChart"></canvas></div>
+        <div class="kokoro-panel-text">
+          <h3 class="kokoro-panel-poem-title">和歌</h3>
+          <div class="kokoro-panel-poem"${poemInlineStyle(poemData)}>${poemData.first}<br>${poemData.second}</div>
+          <h3 class="kokoro-panel-quotes-title">現代語訳</h3>
+          <div class="kokoro-panel-quotes"><p>${poemData.translation}</p></div>
         </div>
       </div>` : ''}
     </div>`;
 
     return a;
 }
-
-// ─── 心のチャート（トグルせず、すべてのカードに常時表示） ─────────
-// Chart.jsのインスタンス生成は1枚あたり約10ms、100枚同時に作ると1秒以上かかり
-// 体感速度を大きく落とすため、IntersectionObserverで画面に近づいたカードから
-// 順次生成する（画面外の残りは生成そのものを後回しにする）。
-// ※ グリッドのレイアウト・subgridでの行揃えはcanvasの中身ではなく
-//   .radarChartWrapperのCSS（aspect-ratio）だけで決まるため、
-//   チャート生成を後回しにしてもレイアウトのずれ・ガタつきは発生しない。
-
-let chartInstances = [];
-let chartObserver = null;
-
-const AXES_JA = ['愛情', '孤独', '情熱', '哀愁', '無常', '自然'];
-
-// スマホでは軸ラベル（愛情・孤独など）が読みにくいため、幅768px以下では文字を大きくする
-function getPointLabelFontSize() {
-    return window.matchMedia('(max-width: 768px)').matches ? 13 : 10;
-}
-
-function renderOneChart(canvas) {
-    if (canvas.dataset.chartRendered) return;
-    const card = canvas.closest('.poet-card');
-    const data = card && window.KOKORO_CHART_DATA && window.KOKORO_CHART_DATA[card.dataset.number];
-    if (!data) return;
-    const scores = data.scores || {};
-    canvas.dataset.chartRendered = '1';
-
-    const chart = new Chart(canvas, {
-        type: 'radar',
-        data: {
-            labels: AXES_JA,
-            datasets: [{
-                data: AXES_JA.map(a => scores[a] ?? 0),
-                fill: true,
-                borderColor: 'rgba(160, 50, 70, 1)',
-                backgroundColor: 'rgba(160, 50, 70, 0.2)',
-                borderWidth: 1,
-                pointBackgroundColor: 'rgba(184, 35, 67, 1)',
-                pointRadius: 2,
-            }],
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            animation: false, // 100枚を同時表示するため、個別のアニメーションはオフにする
-            plugins: { legend: { display: false } },
-            scales: {
-                r: {
-                    pointLabels: { color: '#222', font: { size: getPointLabelFontSize() } },
-                    min: 0, max: 5,
-                    ticks: { display: false },
-                    grid: { color: 'rgba(0,0,0,0.1)' },
-                    angleLines: { color: 'rgba(0,0,0,0.1)' },
-                },
-            },
-        },
-    });
-    chartInstances.push(chart);
-}
-
-function renderAllCharts() {
-    // グリッドを作り直すたびに、前回分のChartインスタンスと監視を破棄してから作り直す
-    chartInstances.forEach(c => c.destroy());
-    chartInstances = [];
-    if (chartObserver) chartObserver.disconnect();
-
-    const canvases = document.querySelectorAll('.radarChart');
-
-    if (!('IntersectionObserver' in window)) {
-        // 非対応環境ではフォールバックとして即座に全件描画する
-        canvases.forEach(renderOneChart);
-        return;
-    }
-
-    // rootMarginで画面の上下600px手前から先読みしておくことで、
-    // 実際にスクロールで見える頃には描画が完了しているようにする
-    chartObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (!entry.isIntersecting) return;
-            renderOneChart(entry.target);
-            observer.unobserve(entry.target);
-        });
-    }, { rootMargin: '600px 0px' });
-
-    canvases.forEach(canvas => chartObserver.observe(canvas));
-}
-
-// スクロールバーのドラッグやEndキーなど、一気に大きくジャンプするスクロールでは
-// IntersectionObserverの通知が間に合わず未描画のまま取りこぼすことがあるため、
-// スクロール時に画面付近の未描画canvasを直接チェックする保険を掛けておく。
-let fallbackCheckScheduled = false;
-function scheduleFallbackChartCheck() {
-    if (fallbackCheckScheduled) return;
-    fallbackCheckScheduled = true;
-    requestAnimationFrame(() => {
-        fallbackCheckScheduled = false;
-        const remaining = document.querySelectorAll('.radarChart:not([data-chart-rendered])');
-        if (remaining.length === 0) return;
-        const viewH = window.innerHeight;
-        remaining.forEach(canvas => {
-            const rect = canvas.getBoundingClientRect();
-            if (rect.bottom > -600 && rect.top < viewH + 600) {
-                renderOneChart(canvas);
-                if (chartObserver) chartObserver.unobserve(canvas);
-            }
-        });
-    });
-}
-window.addEventListener('scroll', scheduleFallbackChartCheck, { passive: true });
-
 
 function buildSectionHeader(text) {
     const div = document.createElement('div');
@@ -823,9 +725,6 @@ function render() {
 
     // Update count
     count.textContent = `${list.length} 人`;
-
-    // クリックしなくても、すべてのカードに心のチャートを常時表示する
-    renderAllCharts();
 }
 
 // ─── Build Filters ───────────────────────────────────────────

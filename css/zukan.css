@@ -206,7 +206,7 @@ html {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: subgrid;
-    grid-row: span 13;
+    grid-row: span 12;
     row-gap: 0.3rem;
     padding: 2.2rem 0.85rem 0.75rem;
   }
@@ -217,29 +217,20 @@ html {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: subgrid;
-    grid-row: 2/span 12;
+    grid-row: 2/span 11;
     padding: 0;
   }
   .poet-card:has(.kokoro-panel) .kokoro-panel {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: subgrid;
-    grid-row: span 5;
-  }
-  .poet-card:has(.kokoro-panel) .emotion-chart {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: subgrid;
-    grid-row: span 5;
+    grid-row: span 4;
   }
   .poet-card:has(.kokoro-panel) .kokoro-panel-text {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: subgrid;
     grid-row: 1/span 4;
-  }
-  .poet-card:has(.kokoro-panel) .radarChartWrapper {
-    grid-row: 5;
   }
 }
 .card-name {
@@ -570,22 +561,6 @@ body.kokoro-modal-open {
   font-family: "noto-sans-pro", sans-serif;
 }
 
-.kokoro-panel .emotion-chart {
-  flex-direction: column;
-  align-items: stretch;
-  gap: 0.5rem;
-}
-
-.kokoro-panel .radarChartWrapper {
-  flex: 0 0 auto;
-  width: 95%;
-  height: auto;
-  min-width: 0;
-  min-height: 0;
-  aspect-ratio: 1/1;
-  margin: 0 auto;
-  align-self: start;
-}
 
 .kokoro-panel-text {
   text-align: left;
@@ -671,6 +646,7 @@ html[lang=ja] .kokoro-panel-poem {
   align-self: start;
   line-height: 2.2;
   letter-spacing: 0.04em;
+  white-space: nowrap;
   margin: 0 auto 0.75rem;
 }
 html[lang=ja] .kokoro-panel-poem ruby {

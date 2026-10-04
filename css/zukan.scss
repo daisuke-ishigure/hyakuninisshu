@@ -234,16 +234,14 @@ html { font-size: 16px; scroll-behavior: smooth; }
 // 歌・挿絵・心のチャート内の各項目）の先頭位置を、同じ行に並ぶカードの中で一番長いものに
 // 揃える（subgridを多段階で連鎖させる）。非対応ブラウザでは上のflex/blockレイアウトが
 // そのまま使われるので影響なし。
-// ※ :has(.kokoro-panel)で絞り込み、心のチャートを持たない英語版（kajin-zukan_en.html、
-//   同じ.poet-card/.card-bodyクラスを共有）のカードには適用しない
-//   （行数の異なるsubgridテンプレートを当ててしまうと、英語版のカード下部に
-//     空白ができてしまうため）。
+// ※ 日本語版・英語版とも、パネルは「和歌タイトル／和歌本文／現代語訳タイトル／
+//   現代語訳本文」の4行（js/zukan.js・js/zukan_en.jsのbuildCard()と対）。
 @supports (grid-template-rows: subgrid) {
   .poet-card:has(.kokoro-panel) {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: subgrid;
-    grid-row: span 13; // 1: card-img／2〜13: card-bodyへ委譲
+    grid-row: span 12; // 1: card-img／2〜12: card-bodyへ委譲
     row-gap: .3rem;
     padding: 2.2rem .85rem .75rem;
 
@@ -255,8 +253,8 @@ html { font-size: 16px; scroll-behavior: smooth; }
       display: grid;
       grid-template-columns: minmax(0, 1fr);
       grid-template-rows: subgrid;
-      // card-meta, card-name, card-date(era), card-date(date), card-outline, card-poem, card-extra-img(7) + kokoro-panel(5)
-      grid-row: 2 / span 12;
+      // card-meta, card-name, card-date(era), card-date(date), card-outline, card-poem, card-extra-img(7) + kokoro-panel(4)
+      grid-row: 2 / span 11;
       padding: 0;
     }
 
@@ -264,14 +262,7 @@ html { font-size: 16px; scroll-behavior: smooth; }
       display: grid;
       grid-template-columns: minmax(0, 1fr);
       grid-template-rows: subgrid;
-      grid-row: span 5; // 和歌タイトル／和歌本文／心境タイトル／心境本文／チャート
-    }
-
-    .emotion-chart {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      grid-template-rows: subgrid;
-      grid-row: span 5;
+      grid-row: span 4; // 和歌タイトル／和歌本文／現代語訳タイトル／現代語訳本文
     }
 
     .kokoro-panel-text {
@@ -279,10 +270,6 @@ html { font-size: 16px; scroll-behavior: smooth; }
       grid-template-columns: minmax(0, 1fr);
       grid-template-rows: subgrid;
       grid-row: 1 / span 4;
-    }
-
-    .radarChartWrapper {
-      grid-row: 5;
     }
   }
 }
@@ -584,32 +571,13 @@ body.kokoro-modal-open {
   }
 }
 
-// ─── 心のチャート（歌人図鑑：モーダルやカード展開ではなく、常に全カードに表示する） ─────
-// ※ 英語版（kajin-zukan_en.html）は上記の .kokoro-modal* を引き続き使用しているため、
-//   そちらは変更していない
+// ─── 和歌・現代語訳パネル（歌人図鑑：全カードに常時表示する） ─────
 .kokoro-panel {
   margin-top: .75rem;
   padding-top: .75rem;
   border-top: 1px solid $border-lt;
   text-align: center;
   font-family: "noto-sans-pro", sans-serif;
-}
-
-.kokoro-panel .emotion-chart {
-  flex-direction: column;
-  align-items: stretch;
-  gap: .5rem;
-}
-
-.kokoro-panel .radarChartWrapper {
-  flex: 0 0 auto;
-  width: 95%; // 5%縮小
-  height: auto;
-  min-width: 0;
-  min-height: 0;
-  aspect-ratio: 1 / 1;
-  margin: 0 auto;
-  align-self: start;
 }
 
 .kokoro-panel-text {
@@ -642,10 +610,10 @@ body.kokoro-modal-open {
   }
 }
 
-// 和歌と歌人の心境を区切る境界線は、和歌側（.kokoro-panel-poem）に付けると
+// 和歌と現代語訳を区切る境界線は、和歌側（.kokoro-panel-poem）に付けると
 // 縦書き用のwidth:fit-content（テキスト幅ぶんしかない）に引きずられて短くなり、
 // パネル上部の境界線（.kokoro-panel の border-top、カード幅いっぱい）と幅が揃わない。
-// そのため、幅の制約を受けない歌人の心境タイトル側の border-top として持たせる。
+// そのため、幅の制約を受けない現代語訳タイトル側の border-top として持たせる。
 .kokoro-panel-text .kokoro-panel-quotes-title {
   font-size: .8rem;
   font-weight: 700;
@@ -715,6 +683,10 @@ html[lang="ja"] .kokoro-panel-poem {
   align-self: start;
   line-height: 2.2; // 縦書きでは「句（列）と句の間隔」になる。幅の計算式と対
   letter-spacing: .04em;
+  // 高さはpoemInlineStyle()で実際の句の長さぎりぎりに計算しているため、
+  // 実機のフォント差でわずかに足りなくても句の途中で折り返さないようにする
+  // （改行は<br>による句の区切りだけにする）
+  white-space: nowrap;
   margin: 0 auto .75rem;
 
   ruby { ruby-align: center; }

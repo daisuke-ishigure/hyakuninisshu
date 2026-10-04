@@ -715,8 +715,9 @@ function buildCard(poet) {
     const rank = RANK_BY_NUMBER[poet.number];
     const rankText = rank ? `, Rank: ${rank}` : '';
 
-    const kokoro = window.KOKORO_CHART_DATA && window.KOKORO_CHART_DATA[poet.number];
     const poemData = typeof poems !== 'undefined' ? poems[String(poet.number)] : null;
+    // Modern translation, extracted from each N_en.html (js/zukan-translation-en.js)
+    const translation = window.ZUKAN_TRANSLATION_EN && window.ZUKAN_TRANSLATION_EN[poet.number];
 
     a.innerHTML = `
     <span class="card-number">${poet.number}</span>
@@ -729,138 +730,19 @@ function buildCard(poet) {
       ${poet.outline ? `<div class="card-outline">${poet.outline}</div>` : ''}
       <div class="card-poem"><span class="card-theme" data-theme="${poet.theme}">${theme.icon} ${theme.label}</span> (${sourceText})</div>
       ${extraImg ? `<img class="card-extra-img" src="${extraImg}" alt="${poet.name}" loading="lazy">` : ''}
-      ${kokoro ? `
+      ${poemData ? `
       <div class="kokoro-panel">
-        <div class="emotion-chart">
-          <div class="kokoro-panel-text">
-            <h3 class="kokoro-panel-poem-title">The Poem</h3>
-            <div class="kokoro-panel-poem">${poemData ? poemData.eng : ''}</div>
-            <h3 class="kokoro-panel-quotes-title">The Poet's Feelings</h3>
-            <div class="kokoro-panel-quotes">${kokoro.quotes.map(q => `<p>${q}</p>`).join('')}</div>
-          </div>
-          <div class="radarChartWrapper"><canvas class="radarChart"></canvas></div>
+        <div class="kokoro-panel-text">
+          <h3 class="kokoro-panel-poem-title">The Poem</h3>
+          <div class="kokoro-panel-poem">${poemData.eng}</div>
+          <h3 class="kokoro-panel-quotes-title">Modern Translation</h3>
+          <div class="kokoro-panel-quotes"><p>${translation || ''}</p></div>
         </div>
       </div>` : ''}
     </div>`;
 
     return a;
 }
-
-// ─── Chart of the Heart (shown on every card, not toggled) ────
-// Each Chart.js instance costs roughly 10ms to create, so building all 100 at once
-// blocks the main thread for over a second and makes the page feel slow to load.
-// An IntersectionObserver defers chart creation until a card scrolls near the
-// viewport, so only the cards actually visible on load pay that cost up front.
-// (Grid layout / subgrid row-alignment depends only on .radarChartWrapper's CSS
-// aspect-ratio, not on the canvas's contents, so deferring the draw never causes
-// layout shift.)
-
-let chartInstances = [];
-let chartObserver = null;
-
-// Score object keys are always Japanese (matches kokoro-chart-data*.js); only the
-// displayed axis labels are translated.
-const SCORE_KEYS = ['愛情', '孤独', '情熱', '哀愁', '無常', '自然'];
-const LABELS = ['Romance', 'Solitude', 'Passion', 'Melancholy', 'Transience', 'Nature'];
-
-// On mobile the axis labels are hard to read, so use a larger font under 768px.
-// English labels (e.g. "Melancholy") are longer than the Japanese ones, so the
-// increase is kept smaller than the JP version to avoid overlap.
-function getPointLabelFontSize() {
-    return window.matchMedia('(max-width: 768px)').matches ? 11 : 9;
-}
-
-function renderOneChart(canvas) {
-    if (canvas.dataset.chartRendered) return;
-    const card = canvas.closest('.poet-card');
-    const data = card && window.KOKORO_CHART_DATA && window.KOKORO_CHART_DATA[card.dataset.number];
-    if (!data) return;
-    const scores = data.scores || {};
-    canvas.dataset.chartRendered = '1';
-
-    const chart = new Chart(canvas, {
-        type: 'radar',
-        data: {
-            labels: LABELS,
-            datasets: [{
-                data: SCORE_KEYS.map(a => scores[a] ?? 0),
-                fill: true,
-                borderColor: 'rgba(160, 50, 70, 1)',
-                backgroundColor: 'rgba(160, 50, 70, 0.2)',
-                borderWidth: 1,
-                pointBackgroundColor: 'rgba(184, 35, 67, 1)',
-                pointRadius: 2,
-            }],
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            animation: false, // many charts render over time; skip per-chart animation
-            plugins: { legend: { display: false } },
-            scales: {
-                r: {
-                    pointLabels: { color: '#222', font: { size: getPointLabelFontSize() } },
-                    min: 0, max: 5,
-                    ticks: { display: false },
-                    grid: { color: 'rgba(0,0,0,0.1)' },
-                    angleLines: { color: 'rgba(0,0,0,0.1)' },
-                },
-            },
-        },
-    });
-    chartInstances.push(chart);
-}
-
-function renderAllCharts() {
-    // Destroy the previous batch of Chart instances and observer before the grid is rebuilt
-    chartInstances.forEach(c => c.destroy());
-    chartInstances = [];
-    if (chartObserver) chartObserver.disconnect();
-
-    const canvases = document.querySelectorAll('.radarChart');
-
-    if (!('IntersectionObserver' in window)) {
-        // Fallback for unsupported environments: render everything immediately
-        canvases.forEach(renderOneChart);
-        return;
-    }
-
-    // rootMargin pre-renders charts 600px before they'd actually enter the viewport,
-    // so they're already drawn by the time the user scrolls to them.
-    chartObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (!entry.isIntersecting) return;
-            renderOneChart(entry.target);
-            observer.unobserve(entry.target);
-        });
-    }, { rootMargin: '600px 0px' });
-
-    canvases.forEach(canvas => chartObserver.observe(canvas));
-}
-
-// A large, discontinuous scroll (dragging the scrollbar thumb, pressing End, etc.)
-// can outrun the IntersectionObserver notifications and leave some charts unrendered,
-// so also sweep nearby canvases directly whenever the page scrolls, as a safety net.
-let fallbackCheckScheduled = false;
-function scheduleFallbackChartCheck() {
-    if (fallbackCheckScheduled) return;
-    fallbackCheckScheduled = true;
-    requestAnimationFrame(() => {
-        fallbackCheckScheduled = false;
-        const remaining = document.querySelectorAll('.radarChart:not([data-chart-rendered])');
-        if (remaining.length === 0) return;
-        const viewH = window.innerHeight;
-        remaining.forEach(canvas => {
-            const rect = canvas.getBoundingClientRect();
-            if (rect.bottom > -600 && rect.top < viewH + 600) {
-                renderOneChart(canvas);
-                if (chartObserver) chartObserver.unobserve(canvas);
-            }
-        });
-    });
-}
-window.addEventListener('scroll', scheduleFallbackChartCheck, { passive: true });
-
 
 function buildSectionHeader(text) {
     const div = document.createElement('div');
@@ -921,9 +803,6 @@ function render() {
     grid.appendChild(frag);
 
     count.textContent = `${list.length} poet${list.length !== 1 ? 's' : ''}`;
-
-    // Every card shows its own Chart of the Heart; no click needed.
-    renderAllCharts();
 }
 
 // ─── Build Filters ───────────────────────────────────────────
