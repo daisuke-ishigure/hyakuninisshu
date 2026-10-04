@@ -63,13 +63,19 @@
   // name：年表の名前 / num：歌番号（無ければ null） / life：年表に書いた生没年（「生年不詳～708年頃」など）
   function tipHtml(name, num, life) {
     var lines = findLines(name);
+    // 「生没年：生没年不詳」とならないよう、年表の「生没年不詳」は「不詳」にする
+    var lifeLine = life ? '生没年：' + (life === '生没年不詳' ? '不詳' : life) : null;
     if (!lines && EXTRA[name]) {
       var ex = EXTRA[name];
       lines = [ex[0]];
-      if (life) lines.push('生没年：' + life);
+      if (lifeLine) lines.push(lifeLine);
       if (num) lines.push('百人一首：' + num + '番「' + ex[1] + '…」の歌人');
     }
     if (!lines) return null;
+    // 系図の文面に「生没年」の行が無い歌人（紀貫之など）は、年表に書いた生没年を見出しの直後に補う
+    if (lifeLine && !lines.some(function (l) { return /^生没年：/.test(l); })) {
+      lines = [lines[0], lifeLine].concat(lines.slice(1));
+    }
     var body = lines.slice(1).map(function (line) {
       var m = line.match(/^<u>(.*)<\/u>$/);
       return m ? tipLineHtml(m[1], 'is-rule') : tipLineHtml(line);
