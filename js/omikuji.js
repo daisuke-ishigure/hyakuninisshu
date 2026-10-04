@@ -537,7 +537,7 @@ const hyakuninIsshu = [
         love: "魅力に惑わされず、誠実さと尊厳を守りましょう。",
         work: "評価に左右されず、冷静に自分の成果と本質を貫きましょう。",
         poet: "周防内侍",
-        luck: "大吉"
+        luck: "吉"
     },
     {
         poem: "<ruby>心<rt>こころ</rt></ruby>にも あらで<ruby>憂<rt>う</rt></ruby>き<ruby>世<rt>よ</rt></ruby>に ながら<ruby>へ<rt>え</rt></ruby>ば <ruby>恋<rt>こい</rt></ruby>しかるべき <ruby>夜半<rt>よわ</rt></ruby>の<ruby>月<rt>つき</rt></ruby>かな",

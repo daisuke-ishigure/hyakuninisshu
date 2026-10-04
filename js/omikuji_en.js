@@ -604,7 +604,7 @@ const hyakuninIsshu = [
         work: "Without being moved by others' evaluations, calmly hold true to your results and your core.",
         poet: "Suō no Naishi",
         poetJa: "周防内侍",
-        luck: "大吉"
+        luck: "吉"
     },
     {
         poem: "<ruby>心<rt>こころ</rt></ruby>にも あらで<ruby>憂<rt>う</rt></ruby>き<ruby>世<rt>よ</rt></ruby>に ながら<ruby>へ<rt>え</rt></ruby>ば <ruby>恋<rt>こい</rt></ruby>しかるべき <ruby>夜半<rt>よわ</rt></ruby>の<ruby>月<rt>つき</rt></ruby>かな",
