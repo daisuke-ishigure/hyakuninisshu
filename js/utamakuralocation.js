@@ -963,6 +963,22 @@
       {
         "type": "Feature",
         "properties": {
+          "markname": "白峯神宮",
+          "kajin": "崇徳院 参議雅経",
+          "type": "type2",
+          "name": "<a href='../img/shiramine_02_large.webp' data-lightbox='map' data-title='白峯神宮'><img src='../img/shiramine_02_small.webp' width='300' alt='白峯神宮'></a><br><small>2026年8月8日撮影</small><h2 class='utamakura-name'>白峯神宮</h2><p>白峯神宮は、飛鳥井家の邸宅跡に鎮座する神社です。和歌と蹴鞠の家として知られた飛鳥井家ゆかりの地で、百人一首94番・飛鳥井雅経と、祭神である百人一首77番・崇徳院、二人の歌人にゆかりのある場所です。</p><hr><a href='/77.html'>77番歌 崇徳院へのリンク</a><hr><a href='/94.html'>94番歌 参議雅経へのリンク</a>"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            135.75316203458888,
+            35.03011084695753
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
           "markname": "函谷関",
           "kajin": "清少納言（函谷関）",
           "type": "type2",

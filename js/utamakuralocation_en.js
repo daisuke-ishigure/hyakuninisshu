@@ -604,6 +604,16 @@
     {
       "type": "Feature",
       "properties": {
+        "markname": "Shiramine Jingū",
+        "kajin": "Retired Emperor Sutoku, Councillor Masatsune",
+        "type": "type2",
+        "name": "<a href='../img/shiramine_02_large.webp' data-lightbox='map' data-title='Shiramine Jingū'><img src='../img/shiramine_02_small.webp' width='300' alt='Shiramine Jingū'></a><br><small>Photographed August 8, 2026</small><h2 class='utamakura-name'>Shiramine Jingū</h2><p>Shiramine Jingū is a shrine built on the former residence of the Asukai family, a house renowned for waka poetry and kemari (court football). It is a place connected with two poets of the Ogura Hyakunin Isshu: Asukai Masatsune, the poet of Poem 94, and Retired Emperor Sutoku, the poet of Poem 77, who is enshrined here as a deity.</p><hr><a href='/77_en.html'>Link to Poem 77: Retired Emperor Sutoku</a><hr><a href='/94_en.html'>Link to Poem 94: Councillor Masatsune</a>"
+      },
+      "geometry": { "type": "Point", "coordinates": [135.75316203458888, 35.03011084695753] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "markname": "Hangu Pass",
         "kajin": "Sei Shōnagon (Hangu Pass)",
         "type": "type2",
