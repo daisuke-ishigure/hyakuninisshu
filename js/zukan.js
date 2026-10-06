@@ -132,15 +132,15 @@ function eraNumFromNum(n) {
 /* 歌人データ */
 const POETS_RAW = [
     {
-        n: 1, name: '<ruby>天智天皇<rt>てんじてんのう</rt></ruby>', date: '626年～671年', theme: 'autumn',
+        n: 1, name: '<ruby>天智天皇<rt>てんじてんのう</rt></ruby>', date: '626年～672年', theme: 'autumn',
         poem: '<ruby>秋<rt>あき</rt></ruby>の<ruby>田<rt>た</rt></ruby>の…', job: '天皇', source: '後撰集', outline: '大改革を成し遂げた天皇', img: 'img/z01.webp',
     },
     {
-        n: 2, name: '<ruby>持統天皇<rt>じとうてんのう</rt></ruby>', date: '645年～702年', theme: 'summer',
+        n: 2, name: '<ruby>持統天皇<rt>じとうてんのう</rt></ruby>', date: '645年～703年', theme: 'summer',
         poem: '<ruby>春<rt>はる</rt></ruby><ruby>過<rt>す</rt></ruby>ぎて…', job: '天皇', source: '新古今集', outline: '朝廷を主導した女帝', img: 'img/z02.webp',
     },
     {
-        n: 3, name: '<ruby>柿本人麻呂<rt>かきのもとひとまろ</rt></ruby>', date: '生没年不詳', era: 1, theme: 'love',
+        n: 3, name: '<ruby>柿本人麻呂<rt>かきのもとひとまろ</rt></ruby>', date: '生年不詳～708年頃', era: 1, theme: 'love',
         poem: 'あしびきの…', job: '官人', source: '拾遺集', outline: '不遇な最期を遂げた和歌の神様', img: 'img/z03.webp',
     },
     {
@@ -156,7 +156,7 @@ const POETS_RAW = [
         poem: 'かささぎの…', job: '公卿', source: '新古今集', outline: '万葉集編纂の中心人物', img: 'img/z06.webp',
     },
     {
-        n: 7, name: '<ruby>阿倍仲麻呂<rt>あべのなかまろ</rt></ruby>', date: '698年頃～770年', theme: 'travel',
+        n: 7, name: '<ruby>阿倍仲麻呂<rt>あべのなかまろ</rt></ruby>', date: '698年～770年', theme: 'travel',
         poem: '<ruby>天<rt>あま</rt></ruby>の<ruby>原<rt>はら</rt></ruby>…', job: 'その他', source: '古今集', outline: '唐に渡り帰らぬ人となった天才官僚', img: 'img/z07.webp',
     },
     {
@@ -172,7 +172,7 @@ const POETS_RAW = [
         poem: 'これやこの…', job: '伝説', source: '後撰集', outline: '出会いと別れを見つめた琵琶法師', img: 'img/z10.webp',
     },
     {
-        n: 11, name: '<ruby>参議篁<rt>さんぎたかむら</rt></ruby>', date: '802年～852年', theme: 'travel',
+        n: 11, name: '<ruby>参議篁<rt>さんぎたかむら</rt></ruby>', date: '802年～853年', theme: 'travel',
         poem: 'わたの<ruby>原<rt>はら</rt></ruby><br><ruby>八十島<rt>やそしま</rt></ruby>かけて…', job: '公卿', source: '古今集', outline: '流刑にあった反骨の宮廷官人', img: 'img/z11.webp',
     },
     {
@@ -180,7 +180,7 @@ const POETS_RAW = [
         poem: '<ruby>天<rt>あま</rt></ruby>つ<ruby>風<rt>かぜ</rt></ruby>…', job: '僧侶', source: '古今集', outline: '宮廷官人から出家した僧', img: 'img/z12.webp',
     },
     {
-        n: 13, name: '<ruby>陽成院<rt>ようぜいいん</rt></ruby>', date: '868年～949年', theme: 'love',
+        n: 13, name: '<ruby>陽成院<rt>ようぜいいん</rt></ruby>', date: '869年～949年', theme: 'love',
         poem: '<ruby>筑波嶺<rt>つくばね</rt></ruby>の…', job: '天皇', source: '後撰集', outline: '奇行で知られた天皇', img: 'img/z13.webp',
     },
     {
@@ -200,11 +200,11 @@ const POETS_RAW = [
         poem: 'ちはやぶる…', job: '貴族', source: '古今集', outline: '平安随一のプレイボーイ歌人', img: 'img/z17.webp',
     },
     {
-        n: 18, name: '<ruby>藤原敏行朝臣<rt>ふじわらのとしゆきあそん</rt></ruby>', date: '生年不詳～901年頃', theme: 'love',
+        n: 18, name: '<ruby>藤原敏行朝臣<rt>ふじわらのとしゆきあそん</rt></ruby>', date: '生年不詳～901年', theme: 'love',
         poem: '<ruby>住<rt>すみ</rt></ruby>の<ruby>江<rt>え</rt></ruby>の…', job: '貴族', source: '古今集', outline: '早逝した天才書家', img: 'img/z18.webp',
     },
     {
-        n: 19, name: '<ruby>伊勢<rt>いせ</rt></ruby>', date: '生没年不詳', theme: 'love',
+        n: 19, name: '<ruby>伊勢<rt>いせ</rt></ruby>', date: '872年頃～938年頃', theme: 'love',
         poem: '<ruby>難波潟<rt>なにわがた</rt></ruby>…', job: '女房', source: '新古今集', outline: '親子二代の帝に愛された宮廷歌人', img: 'img/z19.webp',
     },
     {
@@ -216,11 +216,11 @@ const POETS_RAW = [
         poem: '<ruby>今<rt>いま</rt></ruby>こ<ruby>む<rt>ん</rt></ruby>と…', job: '僧侶', source: '古今集', outline: '恋歌に優れた歌僧', img: 'img/z21.webp',
     },
     {
-        n: 22, name: '<ruby>文屋康秀<rt>ふんやのやすひで</rt></ruby>', date: '生没年不詳', theme: 'autumn',
+        n: 22, name: '<ruby>文屋康秀<rt>ふんやのやすひで</rt></ruby>', date: '生年不詳～885年頃', theme: 'autumn',
         poem: '<ruby>吹<rt>ふ</rt></ruby>くからに…', job: '貴族', source: '古今集', outline: '機知に富んだ六歌仙の歌人', img: 'img/z22.webp',
     },
     {
-        n: 23, name: '<ruby>大江千里<rt>おおえのちさと</rt></ruby>', date: '生没年不詳', theme: 'autumn',
+        n: 23, name: '<ruby>大江千里<rt>おおえのちさと</rt></ruby>', date: '850年頃～905年頃', theme: 'autumn',
         poem: '<ruby>月<rt>つき</rt></ruby>みれば…', job: '貴族', source: '古今集', outline: '漢詩に通じた下級官人', img: 'img/z23.webp',
     },
     {
@@ -240,19 +240,19 @@ const POETS_RAW = [
         poem: 'みかの<ruby>原<rt>はら</rt></ruby>…', job: '公卿', source: '新古今集', outline: '紫式部の曾祖父にあたる歌人', img: 'img/z27.webp',
     },
     {
-        n: 28, name: '<ruby>源宗于朝臣<rt>みなもとのむねゆきあそん</rt></ruby>', date: '生年不詳～939年', theme: 'winter',
+        n: 28, name: '<ruby>源宗于朝臣<rt>みなもとのむねゆきあそん</rt></ruby>', date: '生年不詳～940年', theme: 'winter',
         poem: '<ruby>山里<rt>やまざと</rt></ruby>は…', job: '貴族', source: '古今集', outline: '皇子から臣籍降下した歌人', img: 'img/z28.webp',
     },
     {
-        n: 29, name: '<ruby>凡河内躬恒<rt>おおしこうちのみつね</rt></ruby>', date: '生没年不詳', theme: 'autumn',
+        n: 29, name: '<ruby>凡河内躬恒<rt>おおしこうちのみつね</rt></ruby>', date: '859年頃～925年頃', theme: 'autumn',
         poem: '<ruby>心当<rt>こころあ</rt></ruby>てに…', job: '官人', source: '古今集', outline: '古今和歌集を編んだ三十六歌仙', img: 'img/z29.webp',
     },
     {
-        n: 30, name: '<ruby>壬生忠岑<rt>みぶのただみね</rt></ruby>', date: '生没年不詳', theme: 'love',
+        n: 30, name: '<ruby>壬生忠岑<rt>みぶのただみね</rt></ruby>', date: '860年頃～920年頃', theme: 'love',
         poem: '<ruby>有明<rt>ありあけ</rt></ruby>の…', job: '貴族', source: '古今集', outline: '藤原定家が絶賛した歌人', img: 'img/z30.webp',
     },
     {
-        n: 31, name: '<ruby>坂上是則<rt>さかのうえのこれのり</rt></ruby>', date: '生没年不詳', theme: 'winter',
+        n: 31, name: '<ruby>坂上是則<rt>さかのうえのこれのり</rt></ruby>', date: '生年不詳～930年', theme: 'winter',
         poem: '<ruby>朝<rt>あさ</rt></ruby>ぼらけ<br><ruby>有明<rt>ありあけ</rt></ruby>の<ruby>月<rt>つき</rt></ruby>と…', job: '貴族', source: '古今集', outline: '蹴鞠に秀でた歌人', img: 'img/z31.webp',
     },
     {
@@ -260,7 +260,7 @@ const POETS_RAW = [
         poem: '<ruby>山川<rt>やまがわ</rt></ruby>に…', job: '官人', source: '古今集', outline: '古代豪族の末裔ながら下級官人', img: 'img/z32.webp',
     },
     {
-        n: 33, name: '<ruby>紀友則<rt>きのとものり</rt></ruby>', date: '生年不詳～904年頃', theme: 'spring',
+        n: 33, name: '<ruby>紀友則<rt>きのとものり</rt></ruby>', date: '845年頃～907年', theme: 'spring',
         poem: '<ruby>久方<rt>ひさかた</rt></ruby>の…', job: '官人', source: '古今集', outline: '古今集完成を見ずに亡くなった撰者', img: 'img/z33.webp',
     },
     {
@@ -268,7 +268,7 @@ const POETS_RAW = [
         poem: '<ruby>誰<rt>たれ</rt></ruby>をかも…', job: '官人', source: '古今集', outline: '老境の孤独を詠んだ歌人', img: 'img/z34.webp',
     },
     {
-        n: 35, name: '<ruby>紀貫之<rt>きのつらゆき</rt></ruby>', date: '868年～945年', theme: 'spring',
+        n: 35, name: '<ruby>紀貫之<rt>きのつらゆき</rt></ruby>', date: '868年頃～945年', theme: 'spring',
         poem: '<ruby>人<rt>ひと</rt></ruby>はいさ…', job: '貴族', source: '古今集', outline: '和歌の型を築いた歌人', img: 'img/z35.webp',
     },
     {
@@ -288,7 +288,7 @@ const POETS_RAW = [
         poem: '<ruby>浅茅生<rt>あさじう</rt></ruby>の…', job: '公卿', source: '後撰集', outline: '嵯峨源氏の名門歌人', img: 'img/z39.webp',
     },
     {
-        n: 40, name: '<ruby>平兼盛<rt>たいらのかねもり</rt></ruby>', date: '生年不詳～990年', theme: 'love',
+        n: 40, name: '<ruby>平兼盛<rt>たいらのかねもり</rt></ruby>', date: '生年不詳～991年', theme: 'love',
         poem: '<ruby>忍<rt>しの</rt></ruby>ぶれど…', job: '貴族', source: '拾遺集', outline: '天徳内裏歌合で名を上げた歌人', img: 'img/z40.webp',
     },
     {
@@ -304,7 +304,7 @@ const POETS_RAW = [
         poem: '<ruby>逢<rt>あ</rt></ruby><ruby>ひ<rt>い</rt></ruby><ruby>見<rt>み</rt></ruby>ての…', job: '公卿', source: '拾遺集', outline: '恋多き貴公子', img: 'img/z43.webp',
     },
     {
-        n: 44, name: '<ruby>中納言朝忠<rt>ちゅうなごんあさただ</rt></ruby>', date: '910年～966年', theme: 'love',
+        n: 44, name: '<ruby>中納言朝忠<rt>ちゅうなごんあさただ</rt></ruby>', date: '910年～967年', theme: 'love',
         poem: '<ruby>逢<rt>あ</rt></ruby><ruby>ふ<rt>う</rt></ruby>ことの…', job: '公卿', source: '拾遺集', outline: '笙に秀でた宮廷歌人', img: 'img/z44.webp',
     },
     {
@@ -312,7 +312,7 @@ const POETS_RAW = [
         poem: 'あ<ruby>は<rt>わ</rt></ruby>れとも…', job: '公卿', source: '拾遺集', outline: '権力を得ても恋は実らなかった公卿', img: 'img/z45.webp',
     },
     {
-        n: 46, name: '<ruby>曽禰好忠<rt>そねのよしただ</rt></ruby>', date: '生没年不詳', theme: 'love',
+        n: 46, name: '<ruby>曽禰好忠<rt>そねのよしただ</rt></ruby>', date: '923年頃～没年不詳', theme: 'love',
         poem: '<ruby>由良<rt>ゆら</rt></ruby>のとを…', job: '官人', source: '新古今集', outline: '新進気鋭の異色歌人', img: 'img/z46.webp',
     },
     {
@@ -320,7 +320,7 @@ const POETS_RAW = [
         poem: '<ruby>八重葎<rt>やえむぐら</rt></ruby>…', job: '僧侶', source: '拾遺集', outline: '歌壇の中心で活躍した歌僧', img: 'img/z47.webp',
     },
     {
-        n: 48, name: '<ruby>源重之<rt>みなもとのしげゆき</rt></ruby>', date: '生没年不詳', theme: 'love',
+        n: 48, name: '<ruby>源重之<rt>みなもとのしげゆき</rt></ruby>', date: '生年不詳～1000年', theme: 'love',
         poem: '<ruby>風<rt>かぜ</rt></ruby>をいたみ…', job: '貴族', source: '詞花集', outline: '高貴な生まれながら地方官として生きた歌人', img: 'img/z48.webp',
     },
     {
@@ -332,7 +332,7 @@ const POETS_RAW = [
         poem: '<ruby>君<rt>きみ</rt></ruby>がため<br><ruby>惜<rt>お</rt></ruby>しからざりし…', job: '貴族', source: '後拾遺集', outline: '夭折した純朴な貴公子', img: 'img/z50.webp',
     },
     {
-        n: 51, name: '<ruby>藤原実方朝臣<rt>ふじわらのさねかたあそん</rt></ruby>', date: '生年不詳～998年', theme: 'love',
+        n: 51, name: '<ruby>藤原実方朝臣<rt>ふじわらのさねかたあそん</rt></ruby>', date: '生年不詳～999年', theme: 'love',
         poem: 'かくとだに…', job: '貴族', source: '後拾遺集', outline: '陸奥に左遷された宮廷の貴公子', img: 'img/z51.webp',
     },
     {
@@ -340,7 +340,7 @@ const POETS_RAW = [
         poem: '明けぬれば…', job: '貴族', source: '後拾遺集', outline: '早世した宮廷歌人', img: 'img/z52.webp',
     },
     {
-        n: 53, name: '<ruby>右大将道綱母<rt>うだいしょうみちつなのはは</rt></ruby>', date: '937年頃～995年頃', theme: 'love',
+        n: 53, name: '<ruby>右大将道綱母<rt>うだいしょうみちつなのはは</rt></ruby>', date: '936年頃～995年', theme: 'love',
         poem: '<ruby>嘆<rt>なげ</rt></ruby>きつつ…', job: 'その他', source: '拾遺集', outline: '結婚生活の苦悩を綴った女性歌人', img: 'img/z53.webp',
     },
     {
@@ -352,7 +352,7 @@ const POETS_RAW = [
         poem: '<ruby>滝<rt>たき</rt></ruby>の<ruby>音<rt>おと</rt></ruby>は…', job: '公卿', source: '千載集', outline: '多才な文化人', img: 'img/z55.webp',
     },
     {
-        n: 56, name: '<ruby>和泉式部<rt>いずみしきぶ</rt></ruby>', date: '生没年不詳', theme: 'love',
+        n: 56, name: '<ruby>和泉式部<rt>いずみしきぶ</rt></ruby>', date: '976年頃～没年不詳', theme: 'love',
         poem: 'あらざら<ruby>む<rt>ん</rt></ruby>…', job: '女房', source: '後拾遺集', outline: '恋多き天性の歌人', img: 'img/z56.webp',
     },
     {
@@ -360,11 +360,11 @@ const POETS_RAW = [
         poem: 'めぐり<ruby>逢<rt>あ</rt></ruby><ruby>ひ<rt>い</rt></ruby>て…', job: '女房', source: '新古今集', outline: '世界最古の女流長編作家', img: 'img/z57.webp',
     },
     {
-        n: 58, name: '<ruby>大弐三位<rt>だいにのさんみ</rt></ruby>', date: '999年～没年不詳', theme: 'love',
+        n: 58, name: '<ruby>大弐三位<rt>だいにのさんみ</rt></ruby>', date: '999年頃～1082年頃', theme: 'love',
         poem: 'ありま<ruby>山<rt>やま</rt></ruby>…', job: '女房', source: '後拾遺集', outline: '劇的な出世を遂げた女流歌人', img: 'img/z58.webp',
     },
     {
-        n: 59, name: '<ruby>赤染衛門<rt>あかぞめえもん</rt></ruby>', date: '956年？～1041年？', theme: 'love',
+        n: 59, name: '<ruby>赤染衛門<rt>あかぞめえもん</rt></ruby>', date: '956年頃～1041年頃', theme: 'love',
         poem: 'やすら<ruby>は<rt>わ</rt></ruby>で…', job: '女房', source: '後拾遺集', outline: '学識豊かな女流歌人', img: 'img/z59.webp',
     },
     {
@@ -372,11 +372,11 @@ const POETS_RAW = [
         poem: '<ruby>大江山<rt>おおえやま</rt></ruby>…', job: '女房', source: '金葉集', outline: '機知に富んだ即興歌人', img: 'img/z60.webp',
     },
     {
-        n: 61, name: '<ruby>伊勢大輔<rt>いせのたいふ</rt></ruby>', date: '生没年不詳', theme: 'spring',
+        n: 61, name: '<ruby>伊勢大輔<rt>いせのたいふ</rt></ruby>', date: '989年頃～没年不詳', theme: 'spring',
         poem: 'いにし<ruby>へ<rt>え</rt></ruby>の…', job: '女房', source: '詞花集', outline: '宮中をどよめかせた当意即妙の歌人', img: 'img/z61.webp',
     },
     {
-        n: 62, name: '<ruby>清少納言<rt>せいしょうなごん</rt></ruby>', date: '生没年不詳', theme: 'misc',
+        n: 62, name: '<ruby>清少納言<rt>せいしょうなごん</rt></ruby>', date: '966年頃～1025年頃', theme: 'misc',
         poem: '<ruby>夜<rt>よ</rt></ruby>をこめて…', job: '女房', source: '後拾遺集', outline: '中宮定子を支えた女流作家', img: 'img/z62.webp',
     },
     {
@@ -388,7 +388,7 @@ const POETS_RAW = [
         poem: '<ruby>朝<rt>あさ</rt></ruby>ぼらけ<br><ruby>宇治<rt>うじ</rt></ruby>の<ruby>川霧<rt>かわぎり</rt></ruby>…', job: '公卿', source: '千載集', outline: '小式部内侍に機知を試みた貴族', img: 'img/z64.webp',
     },
     {
-        n: 65, name: '<ruby>相模<rt>さがみ</rt></ruby>', date: '生没年不詳', theme: 'love',
+        n: 65, name: '<ruby>相模<rt>さがみ</rt></ruby>', date: '998年頃～1061年以降', theme: 'love',
         poem: '<ruby>恨<rt>うら</rt></ruby>みわび…', job: '女房', source: '後拾遺集', outline: '宮廷歌壇をリードした女性歌人', img: 'img/z65.webp',
     },
     {
@@ -396,7 +396,7 @@ const POETS_RAW = [
         poem: 'もろともに…', job: '僧侶', source: '金葉集', outline: '修験道で鍛えた孤高の歌人', img: 'img/z66.webp',
     },
     {
-        n: 67, name: '<ruby>周防内侍<rt>すおうのないし</rt></ruby>', date: '生没年不詳', theme: 'misc',
+        n: 67, name: '<ruby>周防内侍<rt>すおうのないし</rt></ruby>', date: '1037年頃～1111年頃', theme: 'misc',
         poem: '<ruby>春<rt>はる</rt></ruby>の<ruby>夜<rt>よ</rt></ruby>の…', job: '女房', source: '千載集', outline: '当意即妙に貴族をあしらった女流歌人', img: 'img/z67.webp',
     },
     {
@@ -404,7 +404,7 @@ const POETS_RAW = [
         poem: '<ruby>心<rt>こころ</rt></ruby>にも…', job: '天皇', source: '後拾遺集', outline: '道長の圧力に抗った天皇', img: 'img/z68.webp',
     },
     {
-        n: 69, name: '<ruby>能因法師<rt>のういんほうし</rt></ruby>', date: '988年～没年不詳', theme: 'autumn',
+        n: 69, name: '<ruby>能因法師<rt>のういんほうし</rt></ruby>', date: '988年～1050年または1058年', theme: 'autumn',
         poem: '<ruby>嵐<rt>あらし</rt></ruby><ruby>吹<rt>ふ</rt></ruby>く…', job: '僧侶', source: '後拾遺集', outline: '歌枕を愛した数寄者', img: 'img/z69.webp',
     },
     {
@@ -452,11 +452,11 @@ const POETS_RAW = [
         poem: '<ruby>長<rt>なが</rt></ruby>から<ruby>む<rt>ん</rt></ruby>…', job: '女房', source: '千載集', outline: '艶やかな恋歌を詠んだ女房歌人', img: 'img/z80.webp',
     },
     {
-        n: 81, name: '<ruby>後徳大寺左大臣<rt>ごとくだいじのさだいじん</rt></ruby>', date: '1139年～1191年', theme: 'summer',
+        n: 81, name: '<ruby>後徳大寺左大臣<rt>ごとくだいじのさだいじん</rt></ruby>', date: '1139年～1192年', theme: 'summer',
         poem: 'ほととぎす…', job: '公卿', source: '千載集', outline: '風雅を愛した管弦の名手', img: 'img/z81.webp',
     },
     {
-        n: 82, name: '<ruby>道因法師<rt>どういんほうし</rt></ruby>', date: '1090年～没年不詳', theme: 'love',
+        n: 82, name: '<ruby>道因法師<rt>どういんほうし</rt></ruby>', date: '1090年～1182年頃', theme: 'love',
         poem: '<ruby>思<rt>おも</rt></ruby><ruby>ひ<rt>い</rt></ruby>わび…', job: '僧侶', source: '千載集', outline: '晩年まで和歌に情熱を燃やした歌人', img: 'img/z82.webp',
     },
     {
@@ -468,7 +468,7 @@ const POETS_RAW = [
         poem: '<ruby>長<rt>なが</rt></ruby>ら<ruby>へ<rt>え</rt></ruby>ば…', job: '貴族', source: '新古今集', outline: '大器晩成の歌学者', img: 'img/z84.webp',
     },
     {
-        n: 85, name: '<ruby>俊恵法師<rt>しゅんえほうし</rt></ruby>', date: '1113年～没年不詳', theme: 'love',
+        n: 85, name: '<ruby>俊恵法師<rt>しゅんえほうし</rt></ruby>', date: '1113年～1191年頃', theme: 'love',
         poem: '<ruby>夜<rt>よ</rt></ruby>もすがら…', job: '僧侶', source: '千載集', outline: '鴨長明の師となった歌僧', img: 'img/z85.webp',
     },
     {
@@ -488,7 +488,7 @@ const POETS_RAW = [
         poem: '<ruby>玉<rt>たま</rt></ruby>の<ruby>緒<rt>お</rt></ruby>よ…', job: '皇族', source: '新古今集', outline: '気品と孤独をたたえた皇女歌人', img: 'img/z89.webp',
     },
     {
-        n: 90, name: '<ruby>殷富門院大輔<rt>いんぷもんいんのたいふ</rt></ruby>', date: '生没年不詳', theme: 'love',
+        n: 90, name: '<ruby>殷富門院大輔<rt>いんぷもんいんのたいふ</rt></ruby>', date: '1130年頃～1200年頃', theme: 'love',
         poem: '<ruby>見<rt>み</rt></ruby>せばやな…', job: '女房', source: '千載集', outline: '多くの歌を詠んだ女房歌人', img: 'img/z90.webp',
     },
     {

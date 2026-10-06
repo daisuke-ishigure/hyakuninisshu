@@ -2,7 +2,7 @@ let poems = {
     "1": {
         "number": "1",
         "name": "<ruby>天智天皇<rt>てんじてんのう</rt></ruby>",
-        "date": "626年-671年",
+        "date": "626年～672年",
         "source": "後撰集 秋",
         "theme": "autumn",
         "first": "<ruby>秋<rt>あき</rt></ruby>の<ruby>田<rt>た</rt></ruby>の<br>かりほの<ruby>庵<rt>いお</rt></ruby>の<br><ruby>苫<rt>とま</rt></ruby>をあらみ",
@@ -29,7 +29,7 @@ let poems = {
     "2": {
         "number": "2",
         "name": "<ruby>持統天皇<rt>じとうてんのう</rt></ruby>",
-        "date": "645年～702年",
+        "date": "645年～703年",
         "source": "新古今集 夏",
         "theme": "summer",
         "first": "<ruby>春<rt>はる</rt></ruby><ruby>過<rt>す</rt></ruby>ぎて<br><ruby>夏<rt>なつ</rt></ruby><ruby>来<rt>き</rt></ruby>にけらし<br><ruby>白妙<rt>しろたえ</rt></ruby>の",
@@ -56,7 +56,7 @@ let poems = {
     "3": {
         "number": "3",
         "name": "<ruby>柿本人麻呂<rt>かきのもとひとまろ</rt></ruby>",
-        "date": "生没年不詳",
+        "date": "生年不詳～708年頃",
         "source": "拾遺集 恋",
         "theme": "love",
         "first": "あしびきの<br><ruby>山鳥<rt>やまどり</rt></ruby>の<ruby>尾<rt>お</rt></ruby>の<br>しだり<ruby>尾<rt>お</rt></ruby>の",
@@ -164,7 +164,7 @@ let poems = {
     "7": {
         "number": "7",
         "name": "<ruby>阿倍仲麻呂<rt>あべのなかまろ</rt></ruby>",
-        "date": "698年頃～770年",
+        "date": "698年～770年",
         "source": "古今集 羇旅",
         "theme": "travel",
         "first": "<ruby>天<rt>あま</rt></ruby>の<ruby>原<rt>はら</rt></ruby><br>ふりさけみれば<br><ruby>春日<rt>かすが</rt></ruby>なる",
@@ -272,7 +272,7 @@ let poems = {
     "11": {
         "number": "11",
         "name": "<ruby>参議篁<rt>さんぎたかむら</rt></ruby>",
-        "date": "802年～852年",
+        "date": "802年～853年",
         "source": "古今集 羇旅",
         "theme": "travel",
         "first": "わたの<ruby>原<rt>はら</rt></ruby><br><ruby>八十島<rt>やそしま</rt></ruby>かけて<br><ruby>漕<rt>こ</rt></ruby>ぎ<ruby>出<rt>い</rt></ruby>でぬと",
@@ -326,7 +326,7 @@ let poems = {
     "13": {
         "number": "13",
         "name": "<ruby>陽成院<rt>ようぜいいん</rt></ruby>",
-        "date": "868年～949年",
+        "date": "869年～949年",
         "source": "後撰集 恋",
         "theme": "love",
         "first": "<ruby>筑波嶺<rt>つくばね</rt></ruby>の<br><ruby>峰<rt>みね</rt></ruby>より<ruby>落<rt>お</rt></ruby>つる<br>みなの<ruby>川<rt>がわ</rt></ruby>",
@@ -464,7 +464,7 @@ let poems = {
     "18": {
         "number": "18",
         "name": "<ruby>藤原敏行朝臣<rt>ふじわらのとしゆきあそん</rt></ruby>",
-        "date": "生年不詳～901年頃",
+        "date": "生年不詳～901年",
         "source": "古今集 恋",
         "theme": "love",
         "kotobagaki": "寛平の御時后の宮歌合の歌",
@@ -492,7 +492,7 @@ let poems = {
     "19": {
         "number": "19",
         "name": "<ruby>伊勢<rt>いせ</rt></ruby>",
-        "date": "生没年不詳",
+        "date": "872年頃～938年頃",
         "source": "新古今集 恋",
         "theme": "love",
         "first": "<ruby>難波潟<rt>なにわがた</rt></ruby><br>みじかき<ruby>葦<rt>あし</rt></ruby>の<br>ふしのまも",
@@ -574,7 +574,7 @@ let poems = {
     "22": {
         "number": "22",
         "name": "<ruby>文屋康秀<rt>ふんやのやすひで</rt></ruby>",
-        "date": "生没年不詳",
+        "date": "生年不詳～885年頃",
         "source": "古今集 秋",
         "theme": "autumn",
         "first": "<ruby>吹<rt>ふ</rt></ruby>くからに<br><ruby>秋<rt>あき</rt></ruby>の<ruby>草木<rt>くさき</rt></ruby>の<br>しをるれば",
@@ -601,7 +601,7 @@ let poems = {
     "23": {
         "number": "23",
         "name": "<ruby>大江千里<rt>おおえのちさと</rt></ruby>",
-        "date": "生没年不詳",
+        "date": "850年頃～905年頃",
         "source": "古今集 秋",
         "theme": "autumn",
         "first": "<ruby>月<rt>つき</rt></ruby>みれば<br>ちぢにものこそ<br><ruby>悲<rt>かな</rt></ruby>しけれ",
@@ -736,7 +736,7 @@ let poems = {
     "28": {
         "number": "28",
         "name": "<ruby>源宗于朝臣<rt>みなもとのむねゆきあそん</rt></ruby>",
-        "date": "生年不詳～939年",
+        "date": "生年不詳～940年",
         "source": "古今集 冬",
         "theme": "winter",
         "first": "<ruby>山里<rt>やまざと</rt></ruby>は<br><ruby>冬<rt>ふゆ</rt></ruby>ぞさびしさ<br>まさりける",
@@ -763,7 +763,7 @@ let poems = {
     "29": {
         "number": "29",
         "name": "<ruby>凡河内躬恒<rt>おおしこうちのみつね</rt></ruby>",
-        "date": "生没年不詳",
+        "date": "859年頃～925年頃",
         "source": "古今集 秋",
         "theme": "autumn",
         "first": "<ruby>心当<rt>こころあ</rt></ruby>てに<br><ruby>折<rt>お</rt></ruby>らばや<ruby>折<rt>お</rt></ruby>ら<ruby>む<rt>ん</rt></ruby><br><ruby>初霜<rt>はつしも</rt></ruby>の",
@@ -790,7 +790,7 @@ let poems = {
     "30": {
         "number": "30",
         "name": "<ruby>壬生忠岑<rt>みぶのただみね</rt></ruby>",
-        "date": "生没年不詳",
+        "date": "860年頃～920年頃",
         "source": "古今集 恋",
         "theme": "love",
         "first": "<ruby>有明<rt>ありあけ</rt></ruby>の<br>つれなく<ruby>見<rt>み</rt></ruby>えし<br><ruby>別<rt>わか</rt></ruby>れより",
@@ -817,7 +817,7 @@ let poems = {
     "31": {
         "number": "31",
         "name": "<ruby>坂上是則<rt>さかのうえのこれのり</rt></ruby>",
-        "date": "生没年不詳",
+        "date": "生年不詳～930年",
         "source": "古今集 冬",
         "theme": "winter",
         "first": "<ruby>朝<rt>あさ</rt></ruby>ぼらけ<br><ruby>有明<rt>ありあけ</rt></ruby>の<ruby>月<rt>つき</rt></ruby>と<br><ruby>見<rt>み</rt></ruby>るまでに",
@@ -871,7 +871,7 @@ let poems = {
     "33": {
         "number": "33",
         "name": "<ruby>紀友則<rt>きのとものり</rt></ruby>",
-        "date": "生年不詳～904年頃",
+        "date": "845年頃～907年",
         "source": "古今集 春",
         "theme": "spring",
         "first": "<ruby>久方<rt>ひさかた</rt></ruby>の<br><ruby>光<rt>ひかり</rt></ruby>のどけき<br><ruby>春<rt>はる</rt></ruby>の<ruby>日<rt>ひ</rt></ruby>に",
@@ -925,7 +925,7 @@ let poems = {
     "35": {
         "number": "35",
         "name": "<ruby>紀貫之<rt>きのつらゆき</rt></ruby>",
-        "date": "868年～945年",
+        "date": "868年頃～945年",
         "source": "古今集 春",
         "theme": "spring",
         "first": "<ruby>人<rt>ひと</rt></ruby>はいさ<br><ruby>心<rt>こころ</rt></ruby>も<ruby>知<rt>し</rt></ruby>らず<br>ふるさとは",
@@ -1060,7 +1060,7 @@ let poems = {
     "40": {
         "number": "40",
         "name": "<ruby>平兼盛<rt>たいらのかねもり</rt></ruby>",
-        "date": "生年不詳～990年",
+        "date": "生年不詳～991年",
         "source": "拾遺集 恋",
         "theme": "love",
         "first": "<ruby>忍<rt>しの</rt></ruby>ぶれど<br><ruby>色<rt>いろ</rt></ruby>に<ruby>出<rt>い</rt></ruby>でにけり<br><ruby>我<rt>わ</rt></ruby>が<ruby>恋<rt>こい</rt></ruby>は",
@@ -1168,7 +1168,7 @@ let poems = {
     "44": {
         "number": "44",
         "name": "<ruby>中納言朝忠<rt>ちゅうなごんあさただ</rt></ruby>",
-        "date": "910年～966年",
+        "date": "910年～967年",
         "source": "拾遺集 恋",
         "theme": "love",
         "first": "<ruby>逢<rt>あ</rt></ruby><ruby>ふ<rt>う</rt></ruby>ことの<br><ruby>絶<rt>た</rt></ruby>えてしなくは<br>なかなかに",
@@ -1222,7 +1222,7 @@ let poems = {
     "46": {
         "number": "46",
         "name": "<ruby>曽禰好忠<rt>そねのよしただ</rt></ruby>",
-        "date": "生没年不詳",
+        "date": "923年頃～没年不詳",
         "source": "新古今集 恋",
         "theme": "love",
         "first": "<ruby>由良<rt>ゆら</rt></ruby>のとを<br><ruby>渡<rt>わた</rt></ruby>る<ruby>舟人<rt>ふなびと</rt></ruby><br>か<ruby>ぢ<rt>じ</rt></ruby>を<ruby>絶<rt>た</rt></ruby>え",
@@ -1276,7 +1276,7 @@ let poems = {
     "48": {
         "number": "48",
         "name": "<ruby>源重之<rt>みなもとのしげゆき</rt></ruby>",
-        "date": "生没年不詳",
+        "date": "生年不詳～1000年",
         "source": "詞花集 恋",
         "theme": "love",
         "first": "<ruby>風<rt>かぜ</rt></ruby>をいたみ<br><ruby>岩<rt>いわ</rt></ruby>うつ<ruby>波<rt>なみ</rt></ruby>の<br>おのれのみ",
@@ -1357,7 +1357,7 @@ let poems = {
     "51": {
         "number": "51",
         "name": "<ruby>藤原実方朝臣<rt>ふじわらのさねかたあそん</rt></ruby>",
-        "date": "生年不詳～998年",
+        "date": "生年不詳～999年",
         "source": "後拾遺集 恋",
         "theme": "love",
         "first": "かくとだに<br>えやはいぶきの<br>さしも<ruby>草<rt>ぐさ</rt></ruby>",
@@ -1411,7 +1411,7 @@ let poems = {
     "53": {
         "number": "53",
         "name": "<ruby>右大将道綱母<rt>うだいしょうみちつなのはは</rt></ruby>",
-        "date": "937年頃～995年頃",
+        "date": "936年頃～995年",
         "source": "拾遺集 恋",
         "theme": "love",
         "first": "<ruby>嘆<rt>なげ</rt></ruby>きつつ<br>ひとり<ruby>寝<rt>ぬ</rt></ruby>る<ruby>夜<rt>よ</rt></ruby>の<br><ruby>明<rt>あ</rt></ruby>くる<ruby>間<rt>ま</rt></ruby>は",
@@ -1492,7 +1492,7 @@ let poems = {
     "56": {
         "number": "56",
         "name": "<ruby>和泉式部<rt>いずみしきぶ</rt></ruby>",
-        "date": "生没年不詳",
+        "date": "976年頃～没年不詳",
         "source": "後拾遺集 恋",
         "theme": "love",
         "first": "あらざら<ruby>む<rt>ん</rt></ruby><br>この<ruby>世<rt>よ</rt></ruby>のほかの<br><ruby>思<rt>おも</rt></ruby><ruby>ひ<rt>い</rt></ruby><ruby>出<rt>で</rt></ruby>に",
@@ -1546,7 +1546,7 @@ let poems = {
     "58": {
         "number": "58",
         "name": "<ruby>大弐三位<rt>だいにのさんみ</rt></ruby>",
-        "date": "999年～没年不詳",
+        "date": "999年頃～1082年頃",
         "source": "後拾遺集 恋",
         "theme": "love",
         "first": "ありま<ruby>山<rt>やま</rt></ruby><br><ruby>猪名<rt>いな</rt></ruby>の<ruby>笹原<rt>ささはら</rt></ruby><br><ruby>風<rt>かぜ</rt></ruby><ruby>吹<rt>ふ</rt></ruby>けば",
@@ -1573,7 +1573,7 @@ let poems = {
     "59": {
         "number": "59",
         "name": "<ruby>赤染衛門<rt>あかぞめえもん</rt></ruby>",
-        "date": "956年？～1041年？",
+        "date": "956年頃～1041年頃",
         "source": "後拾遺集 恋",
         "theme": "love",
         "first": "やすら<ruby>は<rt>わ</rt></ruby>で<br><ruby>寝<rt>ね</rt></ruby>なましものを<br><ruby>小夜<rt>さよ</rt></ruby><ruby>更<rt>ふ</rt></ruby>けて",
@@ -1627,7 +1627,7 @@ let poems = {
     "61": {
         "number": "61",
         "name": "<ruby>伊勢大輔<rt>いせのたいふ</rt></ruby>",
-        "date": "生没年不詳",
+        "date": "989年頃～没年不詳",
         "source": "詞花集 春",
         "theme": "spring",
         "kotobagaki": "一条院の御時、奈良の八重桜を、人の奉りて侍りけるを、そのおり、御前に侍りければ、その花をたまひて、歌詠めと仰せ言ありければ",
@@ -1655,7 +1655,7 @@ let poems = {
     "62": {
         "number": "62",
         "name": "<ruby>清少納言<rt>せいしょうなごん</rt></ruby>",
-        "date": "生没年不詳",
+        "date": "966年頃～1025年頃",
         "source": "後拾遺集 雑",
         "theme": "misc",
         "first": "<ruby>夜<rt>よ</rt></ruby>をこめて<br><ruby>鳥<rt>とり</rt></ruby>のそらねは<br>はかるとも",
@@ -1736,7 +1736,7 @@ let poems = {
     "65": {
         "number": "65",
         "name": "<ruby>相模<rt>さがみ</rt></ruby>",
-        "date": "生没年不詳",
+        "date": "998年頃～1061年以降",
         "source": "後拾遺集 恋",
         "theme": "love",
         "first": "<ruby>恨<rt>うら</rt></ruby>みわび<br>ほさぬ<ruby>袖<rt>そで</rt></ruby>だに<br>あるものを",
@@ -1790,7 +1790,7 @@ let poems = {
     "67": {
         "number": "67",
         "name": "<ruby>周防内侍<rt>すおうのないし</rt></ruby>",
-        "date": "生没年不詳",
+        "date": "1037年頃～1111年頃",
         "source": "千載集 雑",
         "theme": "misc",
         "first": "<ruby>春<rt>はる</rt></ruby>の<ruby>夜<rt>よ</rt></ruby>の<br><ruby>夢<rt>ゆめ</rt></ruby>ばかりなる<br><ruby>手枕<rt>たまくら</rt></ruby>に",
@@ -1844,7 +1844,7 @@ let poems = {
     "69": {
         "number": "69",
         "name": "<ruby>能因法師<rt>のういんほうし</rt></ruby>",
-        "date": "988年～没年不詳",
+        "date": "988年～1050年または1058年",
         "source": "後拾遺集 秋",
         "theme": "autumn",
         "first": "<ruby>嵐<rt>あらし</rt></ruby><ruby>吹<rt>ふ</rt></ruby>く<br><ruby>三室<rt>みむろ</rt></ruby>の<ruby>山<rt>やま</rt></ruby>の<br><ruby>紅葉<rt>もみじ</rt></ruby><ruby>葉<rt>ば</rt></ruby>は",
@@ -2168,7 +2168,7 @@ let poems = {
     "81": {
         "number": "81",
         "name": "<ruby>後徳大寺左大臣<rt>ごとくだいじのさだいじん</rt></ruby>",
-        "date": "1139年～1191年",
+        "date": "1139年～1192年",
         "source": "千載集 夏",
         "theme": "summer",
         "first": "ほととぎす<br><ruby>鳴<rt>な</rt></ruby>きつる<ruby>方<rt>かた </rt></ruby>を<br>ながむれば",
@@ -2195,7 +2195,7 @@ let poems = {
     "82": {
         "number": "82",
         "name": "<ruby>道因法師<rt>どういんほうし</rt></ruby>",
-        "date": "1090年～没年不詳",
+        "date": "1090年～1182年頃",
         "source": "千載集 恋",
         "theme": "love",
         "first": "<ruby>思<rt>おも</rt></ruby><ruby>ひ<rt>い</rt></ruby>わび<br>さても<ruby>命<rt>いのち</rt></ruby>は<br>あるものを",
@@ -2276,7 +2276,7 @@ let poems = {
     "85": {
         "number": "85",
         "name": "<ruby>俊恵法師<rt>しゅんえほうし</rt></ruby>",
-        "date": "1113年～没年不詳",
+        "date": "1113年～1191年頃",
         "source": "千載集 恋",
         "theme": "love",
         "first": "<ruby>夜<rt>よ</rt></ruby>もすがら<br><ruby>物<rt>もの</rt></ruby><ruby>思<rt>おも</rt></ruby><ruby>ふ<rt>う</rt></ruby>ころは<br><ruby>明<rt>あ</rt></ruby>けやらで",
@@ -2411,7 +2411,7 @@ let poems = {
     "90": {
         "number": "90",
         "name": "<ruby>殷富門院大輔<rt>いんぷもんいんのたいふ</rt></ruby>",
-        "date": "生没年不詳",
+        "date": "1130年頃～1200年頃",
         "source": "千載集 恋",
         "theme": "love",
         "first": "<ruby>見<rt>み</rt></ruby>せばやな<br><ruby>雄島<rt>おじま</rt></ruby>のあまの<br><ruby>袖<rt>そで</rt></ruby>だにも",

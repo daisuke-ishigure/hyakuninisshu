@@ -88,7 +88,7 @@
   ]
   </script>
   <!-- スタイルシートの追加 -->
-  <link rel="stylesheet" href="../css/style.css?20261005-01">
+  <link rel="stylesheet" href="../css/style.css?20261006-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/snow.css?20240507-02">
   <link rel="stylesheet" href="../../css/huda_04.css?20240507-02">
@@ -290,25 +290,6 @@
       </dl>
     </div>
     <div class="chart-image-row">
-    <div class="chart-section">
-      <dl>
-        <dt class='title'>山部赤人の心のチャート</dt>
-            <dd>
-              <p>歌人の心の内をチャートと現代の言葉で描いてみました。</p>
-              <div class="emotion-chart">
-                <div id="radarChartWrapper">
-                  <canvas id="radarChart" width="300" height="300"></canvas>
-                </div>
-                <div>
-                  <p>薄暗い山影を抜け、<br class="br-sp">不意に視界がひらける。</p>
-                    <p>そこにそびえるのは、<br class="br-sp">畏怖を覚えるほどに、<br>
-                    雄大で気高い真っ白な富士だった。
-                    </p>
-                </div>
-              </div>
-            </dd>
-      </dl>
-    </div>
     <div class="image-section">
       <dl>
         <dt class='title'>歌のイメージ</dt>
@@ -318,7 +299,28 @@
         </dd>
       </dl>
     </div>
-  </div><div class="words">
+    <div class="nenpyo-section">
+      <dl>
+        <dt class='title'>山部赤人の略年表</dt>
+        <dd>
+          <p>山部赤人の生没年や詳しい経歴には、不明な点が多くあります。下記は史料などから推定される主な出来事です。</p>
+          <dl class="nenpyo">
+            <dt>724年</dt>
+            <dd>聖武天皇の時代、作歌年の分かる歌が始まる</dd>
+            <dt>736年</dt>
+            <dd>作歌年の分かる最後の歌を詠む</dd>
+            <dt>備考</dt>
+            <dd>
+              <ul>
+                <li><a href="/sanjurokkasen.html#06">三十六歌仙</a>の一人に数えられる</li>
+              </ul>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
+    </div>
+    <div class="words">
       <dl>
         <dt class='title'>付録</dt>
         <dd>
@@ -593,7 +595,7 @@
     </div>
   </footer>
   <!-- フッターここまで -->
-  <script src="../js/poems.js?20261001-01"></script>
+  <script src="../js/poems.js?20261006-04"></script>
   <script src="../js/snow.js?20240507-02"></script>
   <!-- ▼▼▼ tippy.js ▼▼▼▼ -->
   <script src="../js/popper.min.js"></script>
@@ -608,14 +610,6 @@
   <!-- ▼▼▼フッター・ボトムナビ・ハンバーガーメニュー▼▼▼ -->
   <script src="../js/load-bottom.js?20260908"></script>
   <!-- ▲▲▲ フッター・ボトムナビ・ハンバーガーメニュー ▲▲▲ -->
-  <!-- ▼▼▼ レーダーチャート ▼▼▼ -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="/js/kokoro-chart-data.js?20260726"></script>
-  <script>
-    window.radarScores = KOKORO_CHART_DATA[4].scores;
-  </script>
-  <script src="/js/raderChart.js?20260830-01"></script>
-  <!-- ▲▲▲ レーダーチャート ▲▲▲ -->
 </body>
 
 </html>

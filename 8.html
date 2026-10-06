@@ -33,7 +33,7 @@
   <meta property="og:site_name" content="時雨の百人一首">
   <meta name="twitter:card" content="summary_large_image">
   <!-- スタイルシートの追加 -->
-  <link rel="stylesheet" href="../css/style.css?20261005-01">
+  <link rel="stylesheet" href="../css/style.css?20261006-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_08.css?20240507-02">
   <link rel="stylesheet" href="../css/animate.min.css">
@@ -289,24 +289,6 @@
       </dl>
     </div>
     <div class="chart-image-row">
-    <div class="chart-section">
-      <dl>
-        <dt class='title'>喜撰法師の心のチャート</dt>
-            <dd>
-              <p>歌人の心の内をチャートと現代の言葉で描いてみました。</p>
-              <div class="emotion-chart">
-                <div id="radarChartWrapper">
-                  <canvas id="radarChart" width="300" height="300"></canvas>
-                </div>
-                <div>
-                  <p>世を厭うて、山深くに住むのだと<br>世間は噂するけれども、<br>私はただひっそりと暮らしている。</p>
-                  <p style="margin-top: 0.75em;">「憂し山」と呼びたければ、そう呼ぶがいい。<br class="br-pc">私は今日もいつも通りだよ。</p>
-                </div>
-
-              </div>
-            </dd>
-      </dl>
-    </div>
     <div class="image-section">
       <dl>
         <dt class='title'>歌のイメージ</dt>
@@ -316,7 +298,25 @@
         </dd>
       </dl>
     </div>
-  </div><div class="words">
+    <div class="nenpyo-section">
+      <dl>
+        <dt class='title'>喜撰法師の略年表</dt>
+        <dd>
+          <p>喜撰法師の生没年や詳しい経歴には、不明な点が多くあります。下記は史料などから推定される主な出来事です。</p>
+          <dl class="nenpyo">
+            <dt>備考</dt>
+            <dd>
+              <ul>
+                <li>確実な歌は『古今和歌集』の1首のみ</li>
+                <li><a href="/rokkasen.html#kisen">六歌仙</a>の一人に数えられる</li>
+              </ul>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
+    </div>
+    <div class="words">
       <dl>
         <dt class='title'>付録</dt>
         <dd>
@@ -429,7 +429,7 @@
     </div>
   </footer>
   <!-- フッターここまで -->
-  <script src="../js/poems.js?20261001-01"></script>
+  <script src="../js/poems.js?20261006-04"></script>
   <!-- クリッカブルマップここから -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/image-map-resizer/1.0.10/js/imageMapResizer.min.js"></script>
   <script>
@@ -448,14 +448,6 @@
   <!-- ▼▼▼フッター・ボトムナビ・ハンバーガーメニュー▼▼▼ -->
   <script src="../js/load-bottom.js?20260908"></script>
   <!-- ▲▲▲ フッター・ボトムナビ・ハンバーガーメニュー ▲▲▲ -->
-  <!-- ▼▼▼ レーダーチャート ▼▼▼ -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="/js/kokoro-chart-data.js?20260726"></script>
-  <script>
-    window.radarScores = KOKORO_CHART_DATA[8].scores;
-  </script>
-  <script src="/js/raderChart.js?20260830-01"></script>
-  <!-- ▲▲▲ レーダーチャート ▲▲▲ -->
 </body>
 
 </html>

@@ -593,7 +593,8 @@ main {
 }
 
 .chart-section,
-.image-section {
+.image-section,
+.nenpyo-section {
   flex: 1 1 50%;
   min-width: 0;
   background-color: #f7f1e0;
@@ -603,7 +604,8 @@ main {
 }
 
 .chart-section dt.title,
-.image-section dt.title {
+.image-section dt.title,
+.nenpyo-section dt.title {
   font-family: "noto-sans-pro", sans-serif;
   font-size: 1.3rem;
   margin-bottom: 0.35em;
@@ -644,6 +646,43 @@ main {
   height: auto;
   border-radius: 0.5em;
   margin-top: 0.8em;
+}
+
+/* 歌人の略年表（1.html〜100.html。PCでは左に歌のイメージ、右に略年表）
+   年（dt）と出来事（dd）を2列に並べる。年の列は一番長い年（「1050年または1058年」など）に合わせる */
+.nenpyo-section dl.nenpyo {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  margin-top: 0.8em;
+  font-size: 1rem;
+  line-height: 1.6;
+
+  dt,
+  dd {
+    padding: 0.45em 0;
+    border-bottom: 1px dotted #c9b98f;
+  }
+  dt {
+    padding-right: 1em;
+    color: #B82343;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+  dd {
+    margin: 0;
+    color: #333;
+  }
+  // 経歴不詳で年が書けない歌人（8.html の「備考」など）は、ddの中を箇条書きにする
+  dd ul {
+    margin: 0;
+    padding-left: 1.2em;
+  }
+  dd li {
+    list-style: disc;
+  }
+  dd li::marker {
+    color: #a46f3f;
+  }
 }
 
 /* 系図・相関図：main の "diagram" 行に配置し、付録（.words）から独立させる（1.html〜100.html 共通） */

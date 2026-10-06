@@ -91,7 +91,7 @@
   }
   </script>
   <!-- スタイルシートの追加 -->
-  <link rel="stylesheet" href="../css/style.css?20261005-01">
+  <link rel="stylesheet" href="../css/style.css?20261006-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/moon.css?20240820">
   <link rel="stylesheet" href="../css/animate.min.css">
@@ -292,23 +292,6 @@
       </dl>
     </div>
     <div class="chart-image-row">
-    <div class="chart-section">
-      <dl>
-        <dt class='title'>西行法師の心のチャート</dt>
-            <dd>
-              <p>歌人の心の内をチャートと現代の言葉で描いてみました。</p>
-              <div class="emotion-chart">
-                <div id="radarChartWrapper">
-                  <canvas id="radarChart" width="300" height="300"></canvas>
-                </div>
-                <div>
-                  <p>澄み渡る月は何も語らない。<br>それでも胸の奥が静かに揺れていく。</p>
-                  <p style="margin-top:1em;">恋しさを口にできない私は、<br class="br-pc">月明かりに紛れて涙を流している。</p>
-                </div>
-              </div>
-            </dd>
-      </dl>
-    </div>
     <div class="image-section">
       <dl>
         <dt class='title'>歌のイメージ</dt>
@@ -318,7 +301,31 @@
         </dd>
       </dl>
     </div>
-  </div><div class="diagram-section">
+    <div class="nenpyo-section">
+      <dl>
+        <dt class='title'>西行法師の略年表</dt>
+        <dd>
+          <dl class="nenpyo">
+            <dt>1118年</dt>
+            <dd>佐藤康清の子として誕生</dd>
+            <dt>1135年</dt>
+            <dd>左兵衛尉となり、鳥羽院の北面の武士として仕える</dd>
+            <dt>1140年</dt>
+            <dd>出家し、西行と名乗る</dd>
+            <dt>1149年頃</dt>
+            <dd>高野山に入る</dd>
+            <dt>1168年</dt>
+            <dd>崇徳院の白峯陵を訪ねて四国へ旅する</dd>
+            <dt>1186年</dt>
+            <dd>東大寺再建の勧進のため陸奥国へ下る</dd>
+            <dt>1190年</dt>
+            <dd>河内国弘川寺で死去</dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
+    </div>
+    <div class="diagram-section">
       <dl>
         <dt class='title'>西行法師の系図</dt>
             <dd class='kd-dd'>
@@ -985,15 +992,15 @@
     </div>
   </footer>
   <!-- フッターここまで -->
-  <script src="../js/poems.js?20261001-01"></script>
+  <script src="../js/poems.js?20261006-04"></script>
   <script src="../js/moon.js?20240822"></script>
   <!-- ▼▼▼ tippy.js ▼▼▼▼ -->
   <script src="../js/popper.min.js"></script>
   <script src="../js/tippy.umd.min.js"></script>
   <script src="../js/tooltips.js?2026920"></script>
-  <script src="../js/tenno-keizu-tooltips.js?20261003-02"></script>
-  <script src="../js/fujiwara-keizu-tooltips.js?20261003-01"></script>
-  <script src="../js/keizu-tips.js?20261003-02"></script>
+  <script src="../js/tenno-keizu-tooltips.js?20261006-04"></script>
+  <script src="../js/fujiwara-keizu-tooltips.js?20261006-04"></script>
+  <script src="../js/keizu-tips.js?20261006-04"></script>
   <script src="../js/keizu-diagram.js?20261003-02"></script>
   <!-- ▲▲▲ tippy.js ▲▲▲ -->
   <script>window.POEM_NUM = 86;</script>
@@ -1002,14 +1009,6 @@
   <!-- ▼▼▼フッター・ボトムナビ・ハンバーガーメニュー▼▼▼ -->
   <script src="../js/load-bottom.js?20260908"></script>
   <!-- ▲▲▲ フッター・ボトムナビ・ハンバーガーメニュー ▲▲▲ -->
-  <!-- ▼▼▼ レーダーチャート ▼▼▼ -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="/js/kokoro-chart-data.js?20260726"></script>
-  <script>
-    window.radarScores = KOKORO_CHART_DATA[86].scores;
-  </script>
-  <script src="/js/raderChart.js?20260830-01"></script>
-  <!-- ▲▲▲ レーダーチャート ▲▲▲ -->
 </body>
 
 </html>

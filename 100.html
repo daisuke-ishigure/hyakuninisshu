@@ -92,7 +92,7 @@
   }
   </script>
   <!-- スタイルシートの追加 -->
-  <link rel="stylesheet" href="../css/style.css?20261005-01">
+  <link rel="stylesheet" href="../css/style.css?20261006-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_100.css?20240507-02">
   <link rel="stylesheet" href="../css/animate.min.css">
@@ -296,23 +296,6 @@
       </dl>
     </div>
     <div class="chart-image-row">
-    <div class="chart-section">
-      <dl>
-        <dt class='title'>順徳院の心のチャート</dt>
-            <dd>
-              <p>歌人の心の内をチャートと現代の言葉で描いてみました。</p>
-              <div class="emotion-chart">
-                <div id="radarChartWrapper">
-                  <canvas id="radarChart" width="300" height="300"></canvas>
-                </div>
-                <div>
-                  <p>古びた宮の軒に、<br class="br-pc">忍ぶ草が静かに揺れる。<br>
-                    かつて輝いた日々を思えば、<br class="br-pc">失われた時代が恋しくてならない。</p>
-                </div>
-              </div>
-            </dd>
-      </dl>
-    </div>
     <div class="image-section">
       <dl>
         <dt class='title'>歌のイメージ</dt>
@@ -322,7 +305,25 @@
         </dd>
       </dl>
     </div>
-  </div><div class="diagram-section">
+    <div class="nenpyo-section">
+      <dl>
+        <dt class='title'>順徳院の略年表</dt>
+        <dd>
+          <dl class="nenpyo">
+            <dt>1197年</dt>
+            <dd>後鳥羽天皇の皇子として誕生</dd>
+            <dt>1210年</dt>
+            <dd>14歳で天皇に即位</dd>
+            <dt>1221年</dt>
+            <dd>承久の乱に加わって敗れ、佐渡国へ流される</dd>
+            <dt>1242年</dt>
+            <dd>佐渡国で崩御</dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
+    </div>
+    <div class="diagram-section">
       <dl>
         <dt class='title'>順徳院の系図</dt>
             <dd>
@@ -932,7 +933,7 @@
     </div>
   </footer>
   <!-- フッターここまで -->
-  <script src="../js/poems.js?20261001-01"></script>
+  <script src="../js/poems.js?20261006-04"></script>
   <!-- クリッカブルマップここから -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/image-map-resizer/1.0.10/js/imageMapResizer.min.js"></script>
   <script>
@@ -943,9 +944,9 @@
   <script src="../js/popper.min.js"></script>
   <script src="../js/tippy.umd.min.js"></script>
   <script src="../js/tooltips.js?2026920"></script>
-  <script src="../js/tenno-keizu-tooltips.js?20261003-02"></script>
-  <script src="../js/fujiwara-keizu-tooltips.js?20261003-01"></script>
-  <script src="../js/keizu-tips.js?20261003-02"></script>
+  <script src="../js/tenno-keizu-tooltips.js?20261006-04"></script>
+  <script src="../js/fujiwara-keizu-tooltips.js?20261006-04"></script>
+  <script src="../js/keizu-tips.js?20261006-04"></script>
   <script src="../js/keizu-diagram.js?20261003-02"></script>
   <!-- ▲▲▲ tippy.js ▲▲▲ -->
   <script>window.POEM_NUM = 100;</script>
@@ -954,14 +955,6 @@
   <!-- ▼▼▼フッター・ボトムナビ・ハンバーガーメニュー▼▼▼ -->
   <script src="../js/load-bottom.js?20260908"></script>
   <!-- ▲▲▲ フッター・ボトムナビ・ハンバーガーメニュー ▲▲▲ -->
-  <!-- ▼▼▼ レーダーチャート ▼▼▼ -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="/js/kokoro-chart-data.js?20260726"></script>
-  <script>
-    window.radarScores = KOKORO_CHART_DATA[100].scores;
-  </script>
-  <script src="/js/raderChart.js?20260830-01"></script>
-  <!-- ▲▲▲ レーダーチャート ▲▲▲ -->
 </body>
 
 </html>
