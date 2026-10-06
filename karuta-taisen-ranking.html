@@ -515,6 +515,7 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
     import { getDatabase, ref, onValue, off, get, remove, update } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
     import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+    import { setupNickname } from "./js/karuta-nickname.js?20261006-01";
 
     const firebaseConfig = {
       apiKey: "AIzaSyDsKsuYsYZYaNVuFvnzQsZiKIrSAMFZQus",
@@ -528,6 +529,7 @@
     const db = getDatabase(app);
     const auth = getAuth(app);
     const provider = new GoogleAuthProvider();
+    setupNickname(app, auth, 'ja');
 
     // ===== 称号定義 =====
     const TITLES = [
@@ -691,7 +693,7 @@
     }
 
     async function buildNameMap() {
-      // 直近7日分の日別ランキングからユーザー名・アバターを収集する
+      // 直近7日分の日別ランキングからニックネームを収集する（user_stats に無い場合の補完）
       const days = [];
       for (let i = 0; i < 7; i++) {
         const d = new Date(Date.now() + 9 * 60 * 60 * 1000 - i * 86400000);
@@ -705,9 +707,7 @@
         if (!snap) return;
         const data = snap.val() || {};
         Object.entries(data).forEach(([uid, v]) => {
-          if (!nameMap[uid] && v.displayName) {
-            nameMap[uid] = { displayName: v.displayName, photoURL: v.photoURL || null };
-          }
+          if (!nameMap[uid] && v.nickname) nameMap[uid] = v.nickname;
         });
       });
       return nameMap;
@@ -745,8 +745,7 @@
           .map(([uid, v]) => ({
             uid,
             wins: v[winsKey] || 0,
-            displayName: nameMap[uid]?.displayName || v.displayName || null,
-            photoURL: nameMap[uid]?.photoURL || v.photoURL || null,
+            nickname: v.nickname || nameMap[uid] || null,
           }))
           .filter(e => e.wins > 0)
           .sort((a, b) => b.wins - a.wins)
@@ -799,11 +798,9 @@
         else if (currentRank === 3) rankDisplay = `<div class="rank-num bronze">${MEDAL[2]}</div>`;
         else                        rankDisplay = `<div class="rank-num">${currentRank}</div>`;
 
-        const avatarHtml = entry.photoURL
-          ? `<img class="rank-avatar" src="${escapeHtml(entry.photoURL)}" alt="avatar" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="rank-avatar-fallback" style="display:none;">${fallbackIcon(entry.uid)}</div>`
-          : `<div class="rank-avatar-fallback">${fallbackIcon(entry.uid)}</div>`;
+        const avatarHtml = `<div class="rank-avatar-fallback">${fallbackIcon(entry.uid)}</div>`;
 
-        const name = escapeHtml(entry.displayName || '名無しプレイヤー');
+        const name = escapeHtml(entry.nickname || '名無しプレイヤー');
         const meBadge = isMe ? '<span class="is-me-label">あなた</span>' : '';
 
         // 称号バッジ（タブに応じて該当する称号のみ表示）
@@ -848,7 +845,6 @@
         const lb = document.getElementById('loggedin_banner');
         lb.style.display = 'flex';
         document.getElementById('user_avatar').src = user.photoURL || '';
-        document.getElementById('user_display_name').innerText = user.displayName || user.email;
       } else {
         document.getElementById('login_banner').style.display = 'block';
         document.getElementById('loggedin_banner').style.display = 'none';
@@ -863,6 +859,7 @@
 
     document.getElementById('logout_btn').onclick = () => signOut(auth);
     document.getElementById('refresh_btn').onclick = () => loadRanking();
+    document.addEventListener('karuta-nickname-change', () => loadRanking());
 
     document.getElementById('delete_data_btn').onclick = async () => {
       if (!auth.currentUser) return;

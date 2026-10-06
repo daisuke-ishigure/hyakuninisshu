@@ -1,6 +1,7 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
     import { getDatabase, ref, get, runTransaction, remove, update } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
     import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+    import { setupNickname } from "./karuta-nickname.js?20261006-01";
 
     const LANG = window.LANG;
 
@@ -17,6 +18,7 @@
     const db = getDatabase(app);
     const auth = getAuth(app);
     const provider = new GoogleAuthProvider();
+    const nickname = setupNickname(app, auth, document.documentElement.lang === 'en' ? 'en' : 'ja');
 
     // ===== 称号 =====
     const TITLES = LANG.rankTitles;
@@ -61,7 +63,6 @@
         document.getElementById('login_prompt_box').style.display = 'none';
         document.getElementById('user_info_box').style.display = 'flex';
         document.getElementById('user_avatar').src = user.photoURL || '';
-        document.getElementById('user_display_name').innerText = user.displayName || user.email;
         loadAndShowMyBadge(user);
         const loginNote = document.getElementById('ranking_login_note');
         if (loginNote) loginNote.style.display = 'none';
@@ -119,16 +120,16 @@
       try {
         const dateKey = getTodayKey();
         const rankRef = ref(db, `pro_rankings/cpu/${dateKey}/${currentUser.uid}`);
+        // Google の表示名・写真は保存しない（名前は本人が付けたニックネームのみ）
+        const nick = await nickname.get();
         await runTransaction(rankRef, (cur) => {
-          if (cur === null) return { displayName: currentUser.displayName || LANG.defaultName, photoURL: currentUser.photoURL || '', wins: multiplier, updatedAt: Date.now() };
-          return { ...cur, displayName: currentUser.displayName || cur.displayName, photoURL: currentUser.photoURL || cur.photoURL, wins: (cur.wins || 0) + multiplier, updatedAt: Date.now() };
+          const { displayName, photoURL, ...rest } = cur || {};
+          return { ...rest, nickname: nick, wins: (rest.wins || 0) + multiplier, updatedAt: Date.now() };
         });
         const statsRef = ref(db, `pro_user_stats/${currentUser.uid}`);
         await runTransaction(statsRef, (cur) => {
-          const name = currentUser.displayName || (cur && cur.displayName) || null;
-          const photo = currentUser.photoURL || (cur && cur.photoURL) || null;
-          if (cur === null) return { cpu_total_wins: multiplier, displayName: name, photoURL: photo };
-          return { ...cur, cpu_total_wins: (cur.cpu_total_wins || 0) + multiplier, displayName: name, photoURL: photo };
+          const { displayName, photoURL, ...rest } = cur || {};
+          return { ...rest, cpu_total_wins: (rest.cpu_total_wins || 0) + multiplier, nickname: nick };
         });
         const notice = document.getElementById('win_recorded_notice');
         if (notice) {
@@ -163,13 +164,11 @@
           const isMe = currentUser && e.uid === currentUser.uid;
           const cls = isMe ? 'is-me' : (i % 2 === 0 ? 'even-row' : '');
           const medal = rank <= 3 ? MEDALS[rank - 1] : `${rank}.`;
-          const avatar = e.photoURL
-            ? `<img src="${escHtml(e.photoURL)}" style="width:22px;height:22px;border-radius:50%;margin-right:4px;vertical-align:middle;" onerror="this.style.display='none'">`
-            : `<span style="margin-right:4px;">${fallbackIcon(e.uid)}</span>`;
+          const avatar = `<span style="margin-right:4px;">${fallbackIcon(e.uid)}</span>`;
           const meBadge = isMe ? ` <span style="font-size:0.75em;background:#B82343;color:#fff;border-radius:8px;padding:1px 6px;">${LANG.meBadgeText}</span>` : '';
           const titleStr = getTitle(e.wins);
           const titleBadge = titleStr ? ` <span style="font-size:0.72em;background:#555;color:#fff;border-radius:8px;padding:1px 6px;">${titleStr}</span>` : '';
-          const name = escHtml(e.displayName || LANG.defaultName);
+          const name = escHtml(e.nickname || LANG.defaultName);
           html += `<div class="rank-card-simple ${cls}">
             <span>${medal} ${avatar}${name}${titleBadge}${meBadge}</span>
             <span style="color:#666;white-space:nowrap;">${LANG.winCount(e.wins)}</span>
@@ -183,7 +182,7 @@
         const statsSnap = await get(ref(db, 'pro_user_stats'));
         const data = statsSnap.val() || {};
         const entries = Object.entries(data)
-          .map(([uid, v]) => ({ uid, wins: v.cpu_total_wins || 0, displayName: v.displayName, photoURL: v.photoURL }))
+          .map(([uid, v]) => ({ uid, wins: v.cpu_total_wins || 0, nickname: v.nickname }))
           .filter(e => e.wins > 0)
           .sort((a, b) => b.wins - a.wins)
           .slice(0, 100);
@@ -200,6 +199,12 @@
       const el = document.getElementById('inline_ranking_content');
       if (el) await window._fbLoadRanking(el);
     })();
+
+    // ニックネーム変更後にインラインランキングを更新
+    document.addEventListener('karuta-nickname-change', () => {
+      const el = document.getElementById('inline_ranking_content');
+      if (el) window._fbLoadRanking(el);
+    });
 
     // 勝利記録後にインラインランキングも更新
     const _origRecordCpuWin = window.recordCpuWin;

@@ -1202,6 +1202,7 @@
     import {
       getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged
     } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+    import { setupNickname } from "./js/karuta-nickname.js?20261006-01";
 
     const firebaseConfig = {
       apiKey: "AIzaSyDsKsuYsYZYaNVuFvnzQsZiKIrSAMFZQus",
@@ -1215,6 +1216,7 @@
     const db = getDatabase(app);
     const auth = getAuth(app);
     const provider = new GoogleAuthProvider();
+    const nickname = setupNickname(app, auth, 'ja');
 
     const myId = "P-" + Math.floor(Math.random() * 900 + 100);
     document.getElementById('my_id').innerText = myId;
@@ -1229,7 +1231,6 @@
         const uib = document.getElementById('user_info_box');
         uib.style.display = 'flex';
         document.getElementById('user_avatar').src = user.photoURL || '';
-        document.getElementById('user_display_name').innerText = user.displayName || user.email;
         loadAndShowMyBadge();
       } else {
         document.getElementById('login_prompt_box').style.display = 'flex';
@@ -1325,17 +1326,17 @@
         const jst = new Date(Date.now() + 9 * 60 * 60 * 1000);
         const dateKey = jst.toISOString().slice(0, 10);
         const rankRef = ref(db, `rankings/${type}/${dateKey}/${currentUser.uid}`);
+        // Google の表示名・写真は保存しない（名前は本人が付けたニックネームのみ）
+        const nick = await nickname.get();
         await runTransaction(rankRef, (current) => {
-          if (current === null) return { displayName: currentUser.displayName || '名無し', photoURL: currentUser.photoURL || '', wins: 1, updatedAt: Date.now() };
-          return { ...current, displayName: currentUser.displayName || current.displayName, photoURL: currentUser.photoURL || current.photoURL, wins: (current.wins || 0) + 1, updatedAt: Date.now() };
+          const { displayName, photoURL, ...rest } = current || {};
+          return { ...rest, nickname: nick, wins: (rest.wins || 0) + 1, updatedAt: Date.now() };
         });
         const totalKey = type === 'online' ? 'online_total_wins' : 'cpu_total_wins';
         const statsRef = ref(db, `user_stats/${currentUser.uid}`);
         await runTransaction(statsRef, (current) => {
-          const name = currentUser.displayName || (current && current.displayName) || null;
-          const photo = currentUser.photoURL || (current && current.photoURL) || null;
-          if (current === null) return { [totalKey]: 1, displayName: name, photoURL: photo };
-          return { ...current, [totalKey]: (current[totalKey] || 0) + 1, displayName: name, photoURL: photo };
+          const { displayName, photoURL, ...rest } = current || {};
+          return { ...rest, [totalKey]: (rest[totalKey] || 0) + 1, nickname: nick };
         });
         const notice = document.getElementById('win_recorded_notice_result');
         if (notice) {

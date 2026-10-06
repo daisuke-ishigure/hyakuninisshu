@@ -183,7 +183,7 @@
         ]);
         jsonData = await resKaruta.json();
         kimarijiData = await resKimariji.json();
-        hyakuninData = await reshyakunin.json();
+        hyakuninData = await resHyakunin.json();
       } catch (e) { console.error("❌ JSONエラー:", e); }
     }
 

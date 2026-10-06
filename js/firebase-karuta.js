@@ -13,8 +13,9 @@ const KARUTA_FIREBASE_CONFIG = {
     projectId:         "fire-karuta",
     storageBucket:     "fire-karuta.firebasestorage.app",
     messagingSenderId: "202669803794",
-    appId:             "1:202669803794:web:2b2eb18bb0a065dff04bcb"
-    // databaseURL は Realtime DB 用のため省略（本モジュールは Firestore を使用）
+    appId:             "1:202669803794:web:2b2eb18bb0a065dff04bcb",
+    // Realtime DB はニックネーム変更をオンライン対戦側のランキングへ反映するときだけ使う
+    databaseURL:       "https://fire-karuta-default-rtdb.asia-southeast1.firebasedatabase.app"
 };
 // ═══════════════════════════════════════════════════════════════════════════
 
@@ -30,9 +31,11 @@ const KARUTA_FIREBASE_CONFIG = {
     }
     const auth = firebase.auth();
     const db   = firebase.firestore();
+    const rtdb = firebase.database ? firebase.database() : null;
 
     // ── 状態 ─────────────────────────────────────────────────────────────
     let currentUser  = null;
+    let currentNickname = null; // users/{uid}.nickname（未設定なら null）
     let _pendingSave = null;    // 結果画面で未ログイン→ログイン後に自動保存
 
     // ── かるたゲーム 称号（累積スコア基準） ───────────────────────────────
@@ -64,6 +67,15 @@ const KARUTA_FIREBASE_CONFIG = {
     // ── Auth 状態変化 ──────────────────────────────────────────────────────
     auth.onAuthStateChanged(async user => {
         currentUser = user;
+        currentNickname = null;
+        if (user) {
+            try {
+                const snap = await db.collection('users').doc(user.uid).get();
+                currentNickname = (snap.exists && snap.data().nickname) || null;
+            } catch (e) {
+                console.warn('[KarutaAuth] nickname load error:', e);
+            }
+        }
         _refreshAuthAreas();
 
         // 結果画面でログインした場合に自動保存
@@ -92,16 +104,14 @@ const KARUTA_FIREBASE_CONFIG = {
         if (!currentUser) return;
 
         const uid   = currentUser.uid;
-        const name  = currentUser.displayName  || '名無し';
-        const photo = currentUser.photoURL     || '';
-        const now   = firebase.firestore.FieldValue.serverTimestamp();
+        const FV    = firebase.firestore.FieldValue;
 
-        // ゲーム結果ログ（全件保持）
+        // ゲーム結果ログ（全件保持）。Google の表示名・写真は保存しない
         await db.collection('gameResults').add({
-            uid, displayName: name, photoURL: photo,
+            uid,
             totalScore, correctAnswers, totalQuestions,
             color, lang,
-            playedAt: now
+            playedAt: FV.serverTimestamp()
         });
 
         // ユーザー累積スコアをアトミックに更新
@@ -121,14 +131,18 @@ const KARUTA_FIREBASE_CONFIG = {
                 gamesPlayed:     (d.gamesPlayed     || 0) + 1,
                 bestScore:       Math.max(d.bestScore || 0, totalScore),
             };
-            const payload = {
-                displayName:  name,
-                photoURL:     photo,
-                lastPlayedAt: now,
-                ...cumulExtra,
-                ...gameExtra
-            };
-            snap.exists ? tx.update(userRef, payload) : tx.set(userRef, payload);
+            const payload = { ...cumulExtra, ...gameExtra };
+            if (snap.exists) {
+                // 以前保存していた Google の表示名・写真・最終プレイ日時を消す
+                tx.update(userRef, {
+                    ...payload,
+                    displayName:  FV.delete(),
+                    photoURL:     FV.delete(),
+                    lastPlayedAt: FV.delete()
+                });
+            } else {
+                tx.set(userRef, payload);
+            }
         });
     }
 
@@ -202,12 +216,17 @@ const KARUTA_FIREBASE_CONFIG = {
                          style="border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid #81c784;"
                          onerror="this.style.display='none'">
                     <span style="font-weight:bold;color:#2d5a27;font-size:0.88rem;">
-                        ${_esc(currentUser.displayName || (isJa ? 'プレイヤー' : 'Player'))}
+                        ${_esc(currentNickname || (isJa ? '名無し（ニックネーム未設定）' : 'Anonymous (no nickname set)'))}
                     </span>
                     <span id="karuta-title-badge" style="display:none;font-size:11px;padding:2px 8px;
                         border-radius:10px;font-weight:bold;background:#fff3cd;color:#856404;"></span>
                 </div>
                 <div style="display:flex;gap:6px;">
+                    <button id="karuta-nickname-btn"
+                        style="background:none;border:1px solid #aaa;border-radius:12px;
+                               padding:3px 10px;font-size:12px;color:#555;cursor:pointer;font-family:inherit;">
+                        ${isJa ? '名前変更' : 'Change name'}
+                    </button>
                     <button id="karuta-signout-btn"
                         style="background:none;border:1px solid #aaa;border-radius:12px;
                                padding:3px 10px;font-size:12px;color:#666;cursor:pointer;font-family:inherit;">
@@ -220,6 +239,7 @@ const KARUTA_FIREBASE_CONFIG = {
                     </button>
                 </div>
             </div>`;
+            document.getElementById('karuta-nickname-btn').onclick = () => _changeNickname(lang);
             document.getElementById('karuta-signout-btn').onclick = signOut;
             document.getElementById('karuta-delete-btn').onclick = () => {
                 _handleDeleteMyData(el, lang);
@@ -265,7 +285,14 @@ const KARUTA_FIREBASE_CONFIG = {
      * @param {string} containerId
      * @param {string} lang  - 'ja' | 'en'
      */
+    const _leaderboardTargets = new Map(); // id → [lang, scoreField, title]
+
+    function _refreshLeaderboards() {
+        _leaderboardTargets.forEach((args, id) => renderLeaderboard(id, ...args));
+    }
+
     async function renderLeaderboard(containerId, lang = 'ja', scoreField = 'cumulativeScore', title = null) {
+        _leaderboardTargets.set(containerId, [lang, scoreField, title]);
         const el = document.getElementById(containerId);
         if (!el) return;
         const isJa = lang !== 'en';
@@ -332,13 +359,11 @@ const KARUTA_FIREBASE_CONFIG = {
                 <td style="padding:6px 8px;text-align:center;width:36px;">${rankCell}</td>
                 <td style="padding:6px 8px;">
                     <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
-                        <img src="${_esc(r.photoURL || '')}" width="22" height="22"
-                             style="border-radius:50%;object-fit:cover;flex-shrink:0;"
-                             onerror="this.style.display='none'">
+                        <span style="flex-shrink:0;">${_fallbackIcon(r.uid)}</span>
                         <span style="font-size:0.86rem;color:${isMine ? '#B82343' : '#333'};
                                      font-weight:${isMine ? 'bold' : 'normal'};
                                      overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:110px;">
-                            ${_esc(r.displayName || (isJa ? '名無し' : 'Anonymous'))}
+                            ${_esc(r.nickname || (isJa ? '名無し' : 'Anonymous'))}
                         </span>
                         ${titleBadge}
                     </div>
@@ -376,12 +401,10 @@ const KARUTA_FIREBASE_CONFIG = {
                 </td>
                 <td style="padding:6px 8px;">
                     <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
-                        <img src="${_esc(myRow.photoURL || '')}" width="22" height="22"
-                             style="border-radius:50%;object-fit:cover;flex-shrink:0;"
-                             onerror="this.style.display='none'">
+                        <span style="flex-shrink:0;">${_fallbackIcon(myRow.uid)}</span>
                         <span style="font-size:0.86rem;color:#B82343;font-weight:bold;
                                      overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:110px;">
-                            ${_esc(myRow.displayName || (isJa ? '名無し' : 'Anonymous'))}
+                            ${_esc(myRow.nickname || (isJa ? '名無し' : 'Anonymous'))}
                         </span>
                         ${titleBadge}
                     </div>
@@ -473,7 +496,7 @@ const KARUTA_FIREBASE_CONFIG = {
                 <p style="margin:0;font-size:0.9rem;color:#2E9E5B;font-weight:bold;">
                     ✅ ${isJa ? 'スコアを記録しました！' : 'Score saved!'}<br>
                     <span style="font-size:0.8rem;color:#555;font-weight:normal;">
-                        ${_esc(user.displayName || '')} &nbsp;＋${params.totalScore.toLocaleString()} pts
+                        ${_esc(currentNickname || (isJa ? '名無し' : 'Anonymous'))} &nbsp;＋${params.totalScore.toLocaleString()} pts
                     </span>
                 </p>
             </div>`;
@@ -485,6 +508,71 @@ const KARUTA_FIREBASE_CONFIG = {
                 ${isJa ? '⚠ 保存に失敗しました。再度お試しください。' : '⚠ Failed to save. Please try again.'}
             </p>`;
         }
+    }
+
+    // ── ニックネーム変更 ─────────────────────────────────────────────────
+    // js/karuta-nickname.js（モジュール版 SDK 用）と同じ処理。変更するときは両方直すこと。
+    const NICKNAME_MAX = 12;
+
+    async function _changeNickname(lang) {
+        if (!currentUser) return;
+        const isJa = lang !== 'en';
+        const input = prompt(isJa
+            ? `ランキングに表示するニックネームを入力してください（${NICKNAME_MAX}文字まで）。\n空欄にすると「名無し」になります。\n※本名など、個人が特定できる名前は避けてください。`
+            : `Enter a nickname to show on the leaderboard (up to ${NICKNAME_MAX} characters).\nLeave it blank to appear as "Anonymous".\n* Please avoid your real name or anything that identifies you.`,
+            currentNickname || '');
+        if (input === null) return;
+        const nick = String(input).replace(/[\u0000-\u001f\u007f]/g, '').replace(/\s+/g, ' ').trim();
+        if ([...nick].length > NICKNAME_MAX) {
+            alert(isJa ? `ニックネームは${NICKNAME_MAX}文字までです。` : `Nicknames can be up to ${NICKNAME_MAX} characters.`);
+            return;
+        }
+        try {
+            await _saveNicknameEverywhere(currentUser.uid, nick || null);
+        } catch (e) {
+            console.error('[KarutaAuth] nickname save error:', e);
+            alert(isJa ? 'ニックネームの保存に失敗しました。再度お試しください。' : 'Failed to save your nickname. Please try again.');
+            return;
+        }
+        currentNickname = nick || null;
+        _refreshAuthAreas();
+        _refreshLeaderboards();
+    }
+
+    async function _saveNicknameEverywhere(uid, nick) {
+        const FV = firebase.firestore.FieldValue;
+        // 正本（失敗したらエラーにする）
+        await db.collection('users').doc(uid).set({
+            nickname:     nick || FV.delete(),
+            displayName:  FV.delete(),
+            photoURL:     FV.delete(),
+            lastPlayedAt: FV.delete()
+        }, { merge: true });
+
+        // Realtime DB（オンライン対戦側）: 本人の記録があるノードだけ書き換える（無いノードは作らない）
+        if (!rtdb) return;
+        const fix = { nickname: nick, displayName: null, photoURL: null };
+        const paths = [`user_stats/${uid}`, `pro_user_stats/${uid}`];
+        for (const base of ['rankings/online', 'rankings/cpu', 'pro_rankings/cpu']) {
+            try {
+                const snap = await rtdb.ref(base).once('value');
+                snap.forEach(day => { if (day.child(uid).exists()) paths.push(`${base}/${day.key}/${uid}`); });
+            } catch (_) {
+                // 全日付を読めない場合は直近 7 日分（ランキングページの表示範囲）だけ
+                for (let i = 0; i < 7; i++) {
+                    const d = new Date(Date.now() + 9 * 60 * 60 * 1000 - i * 86400000).toISOString().slice(0, 10);
+                    paths.push(`${base}/${d}/${uid}`);
+                }
+            }
+        }
+        await Promise.all(paths.map(async p => {
+            try {
+                const snap = await rtdb.ref(p).once('value');
+                if (snap.exists()) await rtdb.ref(p).update(fix);
+            } catch (e) {
+                console.warn('[KarutaAuth] nickname skip', p, e);
+            }
+        }));
     }
 
     // ── Firestore: ユーザーデータ削除 ────────────────────────────────────
@@ -530,6 +618,15 @@ const KARUTA_FIREBASE_CONFIG = {
                 ${isJa ? '⚠ 削除に失敗しました。再度お試しください。' : '⚠ Failed to delete. Please try again.'}
             </p>`;
         }
+    }
+
+    // ── 写真の代わりのアイコン（uid から決まる絵文字） ─────────────────────
+    function _fallbackIcon(uid) {
+        const icons = ['🐻', '🐼', '🐰', '🐨', '🐱', '🦁', '🐶', '🦊', '🐵'];
+        const s = String(uid);
+        let h = 0;
+        for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) & 0xffff;
+        return icons[h % icons.length];
     }
 
     // ── XSS 防止 ──────────────────────────────────────────────────────────

@@ -97,6 +97,8 @@
   <link rel="stylesheet" href="../css/animate.min.css">
   <link rel="stylesheet" href="../css/grammar-panel.css?20261001-01">
   <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261003-03">
+  <!-- swiper -->
+  <link rel="stylesheet" href="../css/swiper-bundle.min.css">
   <!-- google fontの追加 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -475,6 +477,34 @@
                 </p>
               </div>
             </dd>
+            <dt id="shiramine">白峯神宮</dt>
+            <dd class='thumb-image2'>
+              <div class="swiper" style="min-width: 0;">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img src="/img/shiramine_01_small.webp" alt="白峯神宮" width="800" height="600">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="/img/shiramine_02_small.webp" alt="白峯神宮" width="800" height="600">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="/img/shiramine_03_small.webp" alt="白峯神宮" width="800" height="600">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="/img/shiramine_04_small.webp" alt="白峯神宮" width="800" height="600">
+                  </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+              </div>
+              <div>
+                <p>
+                  白峯神宮は、飛鳥井家の邸宅跡に鎮座する神社です。和歌と蹴鞠の家として知られた飛鳥井家ゆかりの地で、百人一首94番・<a href="/94.html">飛鳥井雅経</a>と、祭神である百人一首77番・崇徳院、二人の歌人にゆかりのある場所です。<a class='no-decoration' href='utamakura.html?lat=35.03011084695753&lng=135.75316203458888&zoom=15'>地図へのリンク</a>
+                </p>
+                <p style="text-align:right; font-size:0.9em">2026年8月8日撮影</p>
+              </div>
+            </dd>
             <dt>歌川国芳の『百人一首之内』</dt>
             <dd class='thumb-image2'>
               <figure class='portrait'>
@@ -545,6 +575,31 @@
       </ul>
     </div>
   </footer>
+  <!-- swiperここから -->
+  <script src="../js/swiper-bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const swiper = new Swiper('.swiper', {
+        // 基本的な設定
+        loop: true, // ループさせる
+        speed: 1500, // 少しゆっくり(デフォルトは300)
+
+        autoplay: { // 自動再生
+          delay: 1500, // 1.5秒後に次のスライド
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: '.swiper-pagination', // ページネーションの要素
+          clickable: true, // クリック可能にする
+        },
+        navigation: {
+          nextEl: '.swiper-button-next', // 次へボタン
+          prevEl: '.swiper-button-prev', // 前へボタン
+        },
+
+      });
+    });
+  </script>
   <!-- フッターここまで -->
   <script src="../js/poems.js?20261006-04"></script>
   <!-- ▼▼▼ tippy.js ▼▼▼▼ -->
