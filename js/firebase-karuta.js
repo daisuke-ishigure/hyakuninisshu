@@ -424,6 +424,12 @@ const KARUTA_FIREBASE_CONFIG = {
                       margin-bottom:8px;letter-spacing:0.08em;">
                 ── ${title || (isJa ? '累積スコア ランキング TOP 10' : 'Cumulative Score Ranking TOP 10')} ──
             </p>
+            <p class="ranking-privacy-note" style="font-size:0.78rem;line-height:1.6;color:#555;background:#faf6ea;
+                      border-left:3px solid #D4AF37;border-radius:4px;padding:6px 10px;margin:0 0 10px;text-align:left;">
+                ${isJa
+                    ? '個人情報保護のため、ランキングにはGoogleのお名前・写真を表示せず、ご自身で付けたニックネームを表示しています。ログイン後の「名前変更」からニックネームを設定できます（これまでの成績はそのまま引き継がれます）。'
+                    : 'To protect your privacy, the leaderboard shows the nickname you choose instead of your Google name or photo. After signing in, use "Change name" to set your nickname (your previous scores carry over).'}
+            </p>
             <div style="border:1.5px solid #D4AF37;border-radius:8px;
                         overflow:hidden;background:#fdf8e8;">
                 <table style="width:100%;border-collapse:collapse;
