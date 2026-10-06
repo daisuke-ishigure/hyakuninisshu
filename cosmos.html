@@ -248,144 +248,6 @@
       color: #c4a882;
     }
 
-    /* テーマフィルターボタン */
-    .cosmos-theme-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px 10px;
-      margin-top: 10px;
-      padding: 10px 14px;
-      background: #f7f3ee;
-      border: 1px solid #ddd0c0;
-      border-radius: 3px;
-      font-size: 12px;
-      color: #5a4535;
-      align-items: center;
-    }
-
-    .cosmos-theme-label {
-      font-size: 11px;
-      color: #7a6655;
-      white-space: nowrap;
-      margin-right: 4px;
-    }
-
-    .theme-btn {
-      padding: 5px 14px;
-      border: 1.5px solid transparent;
-      border-radius: 20px;
-      font-size: 13px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      background: #fff;
-      letter-spacing: 0.08em;
-    }
-
-    /* 部立て */
-    .theme-btn[data-theme="春"] { color: #c05880; border-color: #c05880; }
-    .theme-btn[data-theme="春"]:hover, .theme-btn[data-theme="春"].active { background: #c05880; color: #fff; box-shadow: 0 0 8px rgba(192,88,128,0.55); }
-    .theme-btn[data-theme="夏"] { color: #108850; border-color: #108850; }
-    .theme-btn[data-theme="夏"]:hover, .theme-btn[data-theme="夏"].active { background: #108850; color: #fff; box-shadow: 0 0 8px rgba(16,136,80,0.55); }
-    .theme-btn[data-theme="秋"] { color: #b05818; border-color: #b05818; }
-    .theme-btn[data-theme="秋"]:hover, .theme-btn[data-theme="秋"].active { background: #b05818; color: #fff; box-shadow: 0 0 8px rgba(176,88,24,0.55); }
-    .theme-btn[data-theme="冬"] { color: #3870b0; border-color: #3870b0; }
-    .theme-btn[data-theme="冬"]:hover, .theme-btn[data-theme="冬"].active { background: #3870b0; color: #fff; box-shadow: 0 0 8px rgba(56,112,176,0.55); }
-    .theme-btn[data-theme="雑"] { color: #7a6850; border-color: #7a6850; }
-    .theme-btn[data-theme="雑"]:hover, .theme-btn[data-theme="雑"].active { background: #7a6850; color: #fff; box-shadow: 0 0 8px rgba(122,104,80,0.55); }
-    .theme-btn[data-theme="羇旅"] { color: #a07030; border-color: #a07030; }
-    .theme-btn[data-theme="羇旅"]:hover, .theme-btn[data-theme="羇旅"].active { background: #a07030; color: #fff; box-shadow: 0 0 8px rgba(160,112,48,0.55); }
-    .theme-btn[data-theme="離別"] { color: #906878; border-color: #906878; }
-    .theme-btn[data-theme="離別"]:hover, .theme-btn[data-theme="離別"].active { background: #906878; color: #fff; box-shadow: 0 0 8px rgba(144,104,120,0.55); }
-    .theme-btn[data-theme="恋(部立て)"] { color: #B82343; border-color: #B82343; }
-    .theme-btn[data-theme="恋(部立て)"]:hover, .theme-btn[data-theme="恋(部立て)"].active { background: #B82343; color: #fff; box-shadow: 0 0 8px rgba(184,35,67,0.55); }
-    /* 自然・景物 */
-    .theme-btn[data-theme="桜"] { color: #e06898; border-color: #e06898; }
-    .theme-btn[data-theme="桜"]:hover, .theme-btn[data-theme="桜"].active { background: #e06898; color: #fff; box-shadow: 0 0 8px rgba(224,104,152,0.60); }
-    .theme-btn[data-theme="梅"] { color: #c0507a; border-color: #c0507a; }
-    .theme-btn[data-theme="梅"]:hover, .theme-btn[data-theme="梅"].active { background: #c0507a; color: #fff; box-shadow: 0 0 8px rgba(192,80,122,0.55); }
-    /* 恋の細分類 */
-    .theme-btn[data-theme="情熱的な恋"] { color: #cc2020; border-color: #cc2020; }
-    .theme-btn[data-theme="情熱的な恋"]:hover, .theme-btn[data-theme="情熱的な恋"].active { background: #cc2020; color: #fff; box-shadow: 0 0 8px rgba(200,32,32,0.55); }
-    .theme-btn[data-theme="涙に濡れる恋"] { color: #6868b8; border-color: #6868b8; }
-    .theme-btn[data-theme="涙に濡れる恋"]:hover, .theme-btn[data-theme="涙に濡れる恋"].active { background: #6868b8; color: #fff; box-shadow: 0 0 8px rgba(104,104,184,0.55); }
-    .theme-btn[data-theme="未だ逢わざる恋"] { color: #8878b8; border-color: #8878b8; }
-    .theme-btn[data-theme="未だ逢わざる恋"]:hover, .theme-btn[data-theme="未だ逢わざる恋"].active { background: #8878b8; color: #fff; box-shadow: 0 0 8px rgba(136,120,184,0.55); }
-    .theme-btn[data-theme="逢はざる恋"] { color: #9878a8; border-color: #9878a8; }
-    .theme-btn[data-theme="逢はざる恋"]:hover, .theme-btn[data-theme="逢はざる恋"].active { background: #9878a8; color: #fff; box-shadow: 0 0 8px rgba(152,120,168,0.55); }
-    .theme-btn[data-theme="寂しい恋"] { color: #708090; border-color: #708090; }
-    .theme-btn[data-theme="寂しい恋"]:hover, .theme-btn[data-theme="寂しい恋"].active { background: #708090; color: #fff; box-shadow: 0 0 8px rgba(112,128,144,0.55); }
-    .theme-btn[data-theme="祈れども逢はざる恋"] { color: #9060a0; border-color: #9060a0; }
-    .theme-btn[data-theme="祈れども逢はざる恋"]:hover, .theme-btn[data-theme="祈れども逢はざる恋"].active { background: #9060a0; color: #fff; box-shadow: 0 0 8px rgba(144,96,160,0.55); }
-    .theme-btn[data-theme="想い乱れる恋"] { color: #b04878; border-color: #b04878; }
-    .theme-btn[data-theme="想い乱れる恋"]:hover, .theme-btn[data-theme="想い乱れる恋"].active { background: #b04878; color: #fff; box-shadow: 0 0 8px rgba(176,72,120,0.55); }
-    .theme-btn[data-theme="忍ぶ恋"] { color: #a85870; border-color: #a85870; }
-    .theme-btn[data-theme="忍ぶ恋"]:hover, .theme-btn[data-theme="忍ぶ恋"].active { background: #a85870; color: #fff; box-shadow: 0 0 8px rgba(168,88,112,0.55); }
-    .theme-btn[data-theme="待つ恋"] { color: #a84868; border-color: #a84868; }
-    .theme-btn[data-theme="待つ恋"]:hover, .theme-btn[data-theme="待つ恋"].active { background: #a84868; color: #fff; box-shadow: 0 0 8px rgba(168,72,104,0.55); }
-    .theme-btn[data-theme="恨む恋"] { color: #884060; border-color: #884060; }
-    .theme-btn[data-theme="恨む恋"]:hover, .theme-btn[data-theme="恨む恋"].active { background: #884060; color: #fff; box-shadow: 0 0 8px rgba(136,64,96,0.55); }
-    .theme-btn[data-theme="後朝の恋"] { color: #c08040; border-color: #c08040; }
-    .theme-btn[data-theme="後朝の恋"]:hover, .theme-btn[data-theme="後朝の恋"].active { background: #c08040; color: #fff; box-shadow: 0 0 8px rgba(192,128,64,0.55); }
-    .theme-btn[data-theme="忘れられる恋"] { color: #7890a0; border-color: #7890a0; }
-    .theme-btn[data-theme="忘れられる恋"]:hover, .theme-btn[data-theme="忘れられる恋"].active { background: #7890a0; color: #fff; box-shadow: 0 0 8px rgba(120,144,160,0.55); }
-    .theme-btn[data-theme="別れる恋"] { color: #906070; border-color: #906070; }
-    .theme-btn[data-theme="別れる恋"]:hover, .theme-btn[data-theme="別れる恋"].active { background: #906070; color: #fff; box-shadow: 0 0 8px rgba(144,96,112,0.55); }
-    .theme-btn[data-theme="命がけの恋"] { color: #a83030; border-color: #a83030; }
-    .theme-btn[data-theme="命がけの恋"]:hover, .theme-btn[data-theme="命がけの恋"].active { background: #a83030; color: #fff; box-shadow: 0 0 8px rgba(168,48,48,0.55); }
-    .theme-btn[data-theme="艶めかしい恋"] { color: #b84880; border-color: #b84880; }
-    .theme-btn[data-theme="艶めかしい恋"]:hover, .theme-btn[data-theme="艶めかしい恋"].active { background: #b84880; color: #fff; box-shadow: 0 0 8px rgba(184,72,128,0.55); }
-    .theme-btn[data-theme="純粋な恋"] { color: #d07090; border-color: #d07090; }
-    .theme-btn[data-theme="純粋な恋"]:hover, .theme-btn[data-theme="純粋な恋"].active { background: #d07090; color: #fff; box-shadow: 0 0 8px rgba(208,112,144,0.55); }
-    .theme-btn[data-theme="道ならぬ恋"] { color: #806040; border-color: #806040; }
-    .theme-btn[data-theme="道ならぬ恋"]:hover, .theme-btn[data-theme="不倫の恋"].active { background: #806040; color: #fff; box-shadow: 0 0 8px rgba(128,96,64,0.55); }
-    .theme-btn[data-theme="一夜限りの恋"] { color: #a06888; border-color: #a06888; }
-    .theme-btn[data-theme="一夜限りの恋"]:hover, .theme-btn[data-theme="一夜限りの恋"].active { background: #a06888; color: #fff; box-shadow: 0 0 8px rgba(160,104,136,0.55); }
-    .theme-btn[data-theme="叶わぬ恋"] { color: #6070a0; border-color: #6070a0; }
-    .theme-btn[data-theme="叶わぬ恋"]:hover, .theme-btn[data-theme="叶わぬ恋"].active { background: #6070a0; color: #fff; box-shadow: 0 0 8px rgba(96,112,160,0.55); }
-    /* 人生 */
-    .theme-btn[data-theme="悲運の歌"] { color: #6a5aab; border-color: #6a5aab; }
-    .theme-btn[data-theme="悲運の歌"]:hover, .theme-btn[data-theme="悲運の歌"].active { background: #6a5aab; color: #fff; box-shadow: 0 0 8px rgba(106,90,171,0.55); }
-    .theme-btn[data-theme="偲ぶ歌"] { color: #7a7060; border-color: #7a7060; }
-    .theme-btn[data-theme="偲ぶ歌"]:hover, .theme-btn[data-theme="偲ぶ歌"].active { background: #7a7060; color: #fff; box-shadow: 0 0 8px rgba(122,112,96,0.55); }
-    .theme-btn[data-theme="無常"] { color: #5a7fa0; border-color: #5a7fa0; }
-    .theme-btn[data-theme="無常"]:hover, .theme-btn[data-theme="無常"].active { background: #5a7fa0; color: #fff; box-shadow: 0 0 8px rgba(90,127,160,0.55); }
-    .theme-btn[data-theme="平和を願う歌"] { color: #408868; border-color: #408868; }
-    .theme-btn[data-theme="平和を願う歌"]:hover, .theme-btn[data-theme="平和を願う歌"].active { background: #408868; color: #fff; box-shadow: 0 0 8px rgba(64,136,104,0.55); }
-    .theme-btn[data-theme="涙"] { color: #8090b8; border-color: #8090b8; }
-    .theme-btn[data-theme="涙"]:hover, .theme-btn[data-theme="涙"].active { background: #8090b8; color: #fff; box-shadow: 0 0 8px rgba(128,144,184,0.55); }
-
-    .cosmos-theme-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px 8px;
-      align-items: center;
-    }
-
-    .cosmos-theme-group-label {
-      font-size: 10px;
-      color: #a09080;
-      white-space: nowrap;
-      width: 100%;
-      margin-top: 4px;
-      border-top: 1px solid #e8ddd0;
-      padding-top: 6px;
-    }
-
-    .theme-btn-clear {
-      padding: 4px 10px;
-      border: 1px solid #bbb;
-      border-radius: 20px;
-      font-size: 11px;
-      cursor: pointer;
-      background: transparent;
-      color: #888;
-      transition: all 0.2s;
-    }
-    .theme-btn-clear:hover {
-      background: #eee;
-      color: #555;
-    }
-
     /* ── 歌の一覧パネル ── */
     #cosmos-poem-section {
       margin-top: 14px;
@@ -514,9 +376,6 @@
         </p>
         <h2 class="was-h4">星を絞り込む</h2>
         <p>下にある「つながりの強さ」を調整すると、より似ている星（歌）だけが浮かび上がります。</p>
-        <h2 class="was-h4">テーマで星を光らせる</h2>
-        <p>下にあるテーマボタン（「部立て」や「恋の細分類」など）を押してみてください。データ解析だけでは測れない、歌に込められた「心」をテーマに分類。「忍ぶ恋」や「待つ恋」といったテーマを選ぶと、該当する星たちが一斉に輝き出し、広大な宇宙の中から浮かび上がります。</p>
-        <p>客観的なデータと主観的なテーマが交差する和歌の世界をお愉しみください。</p>
         
         <!-- ========== 3D ネットワークグラフ ========== -->
         <div class="cosmos-section">
@@ -535,63 +394,12 @@
             <button id="star-clear">第<span id="star-clear-num"></span>首の選択を解除</button>
           </div>
 
-          <div class="cosmos-theme-buttons">
-              <h2 style="flex-basis:100%; margin:0;" class="was-h4">テーマで光らせる</h2>
-        
-            <div class="cosmos-theme-group">
-              <span class="cosmos-theme-group-label" style="border:none;">部立て</span>
-              <button class="theme-btn" data-theme="春">春</button>
-              <button class="theme-btn" data-theme="夏">夏</button>
-              <button class="theme-btn" data-theme="秋">秋</button>
-              <button class="theme-btn" data-theme="冬">冬</button>
-              <button class="theme-btn" data-theme="雑">雑</button>
-              <button class="theme-btn" data-theme="羇旅">羇旅</button>
-              <button class="theme-btn" data-theme="離別">離別</button>
-              <button class="theme-btn" data-theme="恋(部立て)">恋</button>
-            </div>
-            <div class="cosmos-theme-group">
-              <span class="cosmos-theme-group-label" style="border:none;">自然・景物</span>
-              <button class="theme-btn" data-theme="桜">桜</button>
-              <button class="theme-btn" data-theme="梅">梅</button>
-            </div>
-            <div class="cosmos-theme-group">
-              <span class="cosmos-theme-group-label">恋の細分類</span>
-              <button class="theme-btn" data-theme="情熱的な恋">情熱的な恋</button>
-              <button class="theme-btn" data-theme="涙に濡れる恋">涙に濡れる恋</button>
-              <button class="theme-btn" data-theme="未だ逢わざる恋">未だ逢わざる恋</button>
-              <button class="theme-btn" data-theme="逢はざる恋">逢はざる恋</button>
-              <button class="theme-btn" data-theme="祈れども逢はざる恋">祈れども逢はざる恋</button>
-              <button class="theme-btn" data-theme="寂しい恋">寂しい恋</button>
-              <button class="theme-btn" data-theme="忍ぶ恋">忍ぶ恋</button>
-              <button class="theme-btn" data-theme="待つ恋">待つ恋</button>
-              <button class="theme-btn" data-theme="後朝の恋">後朝の恋</button>
-              <button class="theme-btn" data-theme="忘れられる恋">忘れられる恋</button>
-              <button class="theme-btn" data-theme="別れる恋">別れる恋</button>
-              <button class="theme-btn" data-theme="恨む恋">恨む恋</button>
-              <button class="theme-btn" data-theme="艶めかしい恋">艶めかしい恋</button>
-              <button class="theme-btn" data-theme="純粋な恋">純粋な恋</button>
-              <button class="theme-btn" data-theme="道ならぬ恋">道ならぬ恋</button>
-              <button class="theme-btn" data-theme="一夜限りの恋">一夜限りの恋</button>
-              <button class="theme-btn" data-theme="叶わぬ恋">叶わぬ恋</button>
-            </div>
-            <!-- <div class="cosmos-theme-group">
-              <span class="cosmos-theme-group-label">人生</span>
-              <button class="theme-btn" data-theme="悲運の歌">悲運の歌</button>
-              <button class="theme-btn" data-theme="偲ぶ歌">偲ぶ歌</button>
-              <button class="theme-btn" data-theme="無常">無常</button>
-              <button class="theme-btn" data-theme="平和を願う歌">平和を願う歌</button>
-              <button class="theme-btn" data-theme="涙">涙</button>
-            </div> -->
-            <button class="theme-btn-clear" id="theme-clear">解除</button>
-          </div>
-
           <div class="cosmos-legend">
             <span><span class="cosmos-legend-dot" style="background:#d4a855"></span>つながりが多い</span>
             <span><span class="cosmos-legend-dot" style="background:#8ab4d8"></span>つながりが普通</span>
             <span><span class="cosmos-legend-dot" style="background:#6a7c6e"></span>つながりが少ない</span>
             <span><span class="cosmos-legend-dot"
                 style="background:#e05c3a;border:2px solid #e05c3a"></span>選択中の歌</span>
-            <span id="theme-legend-item" style="display:none"><span class="cosmos-legend-dot" id="theme-legend-dot" style="background:#fff;box-shadow:0 0 6px #fff"></span><span id="theme-legend-label">テーマの歌</span></span>
           </div>
         </div>
         <!-- ========== 3D ネットワークグラフ ここまで ========== -->
@@ -599,7 +407,7 @@
         <!-- ========== 歌の一覧 ========== -->
         <div id="cosmos-poem-section">
           <button id="cosmos-poem-toggle" class="cosmos-poem-toggle">
-            <span id="cosmos-poem-label">テーマを選ぶと歌を一覧で確認できます</span>
+            <span id="cosmos-poem-label">星をクリックすると歌を一覧で確認できます</span>
             <span id="cosmos-poem-arrow"></span>
           </button>
           <div id="cosmos-poem-body" style="display:none;"></div>
@@ -810,159 +618,9 @@
       return { sx: W / 2 + x2 * s, sy: H / 2 + y1 * s, depth: z2, sc: s };
     }
 
-    /* ---------- テーマ定義 ---------- */
-    const THEMES = {
-      // ── 部立て ──
-      '春': {
-        ids: new Set([9,15,33,35,61,73]),
-        color: '#f090b8', glow: 'rgba(240,100,160,0.55)', legend: '#f090b8'
-      },
-      '夏': {
-        ids: new Set([2,36,81,98]),
-        color: '#30c870', glow: 'rgba(30,180,90,0.55)', legend: '#30c870'
-      },
-      '秋': {
-        ids: new Set([1,5,17,22,23,26,29,32,37,47,69,70,71,79,87,91,94]),
-        color: '#e08830', glow: 'rgba(220,110,30,0.55)', legend: '#e08830'
-      },
-      '冬': {
-        ids: new Set([4,6,28,31,64,78]),
-        color: '#80b8e8', glow: 'rgba(80,150,220,0.55)', legend: '#80b8e8'
-      },
-      '雑': {
-        ids: new Set([8,10,12,34,57,60,62,66,67,68,75,76,83,84,95,96,99,100]),
-        color: '#c0aa80', glow: 'rgba(180,155,100,0.55)', legend: '#c0aa80'
-      },
-      '羇旅': {
-        ids: new Set([7,11,24,93]),
-        color: '#ffc060', glow: 'rgba(255,170,40,0.55)', legend: '#ffc060'
-      },
-      '離別': {
-        ids: new Set([16]),
-        color: '#d0a0b0', glow: 'rgba(200,140,160,0.60)', legend: '#d0a0b0'
-      },
-      '恋(部立て)': {
-        ids: new Set([3,13,14,18,19,20,21,25,26,27,30,38,39,40,41,42,43,44,45,46,48,49,50,51,52,53,54,55,56,58,59,63,65,72,74,77,80,82,85,86,88,89,90,92,97]),
-        color: '#ff6688', glow: 'rgba(255,80,120,0.55)', legend: '#ff6688'
-      },
-      // ── 自然・景物 ──
-      '桜': {
-        ids: new Set([9,33,61,66,73,96]),
-        color: '#ffaacc', glow: 'rgba(255,130,180,0.60)', legend: '#ffaacc'
-      },
-      '梅': {
-        ids: new Set([35]),
-        color: '#e070a0', glow: 'rgba(220,80,140,0.60)', legend: '#e070a0'
-      },
-      // ── 恋の細分類 ──
-      '情熱的な恋': {
-        ids: new Set([17,56,77,89]),
-        color: '#ff5040', glow: 'rgba(255,60,40,0.60)', legend: '#ff5040'
-      },
-      '涙に濡れる恋': {
-        ids: new Set([42,65,72,92]),
-        color: '#8888d8', glow: 'rgba(110,110,210,0.55)', legend: '#8888d8'
-      },
-      '未だ逢わざる恋': {
-        ids: new Set([27]),
-        color: '#a898c8', glow: 'rgba(150,130,190,0.55)', legend: '#a898c8'
-      },
-      '逢はざる恋': {
-        ids: new Set([19]),
-        color: '#b898b8', glow: 'rgba(170,120,170,0.55)', legend: '#b898b8'
-      },
-      '祈れども逢はざる恋': {
-        ids: new Set([74]),
-        color: '#b080c0', glow: 'rgba(160,100,185,0.55)', legend: '#b080c0'
-      },
-      '寂しい恋': {
-        ids: new Set([3,53,85]),
-        color: '#8898a8', glow: 'rgba(120,140,155,0.55)', legend: '#8898a8'
-      },
-      '想い乱れる恋': {
-        ids: new Set([14,46,80]),
-        color: '#c86088', glow: 'rgba(195,75,125,0.55)', legend: '#c86088'
-      },
-      '忍ぶ恋': {
-        ids: new Set([18,39,40,41,51,89]),
-        color: '#c07888', glow: 'rgba(185,100,120,0.55)', legend: '#c07888'
-      },
-
-      '待つ恋': {
-        ids: new Set([21,97]),
-        color: '#d06888', glow: 'rgba(200,90,120,0.55)', legend: '#d06888'
-      },
-      '恨む恋': {
-        ids: new Set([42,53,59,65,82,85]),
-        color: '#a05070', glow: 'rgba(155,70,105,0.55)', legend: '#a05070'
-      },
-      '後朝の恋': {
-        ids: new Set([30,43,50,52]),
-        color: '#d8a050', glow: 'rgba(210,150,60,0.55)', legend: '#d8a050'
-      },
-      '忘れられる恋': {
-        ids: new Set([38,58]),
-        color: '#90a8b8', glow: 'rgba(125,155,170,0.55)', legend: '#90a8b8'
-      },
-      '別れる恋': {
-        ids: new Set([63,77]),
-        color: '#a87888', glow: 'rgba(160,110,125,0.55)', legend: '#a87888'
-      },
-
-      '艶めかしい恋': {
-        ids: new Set([25,80,88]),
-        color: '#d060a0', glow: 'rgba(200,80,150,0.55)', legend: '#d060a0'
-      },
-
-      '純粋な恋': {
-        ids: new Set([13,50]),
-        color: '#e088a8', glow: 'rgba(220,115,150,0.55)', legend: '#e088a8'
-      },
-
-      '道ならぬ恋': {
-        ids: new Set([20,44,65]),
-        color: '#987050', glow: 'rgba(145,105,70,0.55)', legend: '#987050'
-      },
-      '一夜限りの恋': {
-        ids: new Set([88]),
-        color: '#b87898', glow: 'rgba(175,110,145,0.55)', legend: '#b87898'
-      },
-      '叶わぬ恋': {
-        ids: new Set([19,63]),
-        color: '#7888b8', glow: 'rgba(105,120,175,0.55)', legend: '#7888b8'
-      },
-      // ── 人生 ──
-      '悲運の歌': {
-        ids: new Set([65]),
-        color: '#8070c0', glow: 'rgba(115,100,190,0.55)', legend: '#8070c0'
-      },
-      '偲ぶ歌': {
-        ids: new Set([84,100]),
-        color: '#9a9070', glow: 'rgba(145,135,100,0.55)', legend: '#9a9070'
-      },
-      '無常': {
-        ids: new Set([5,10,34,83]),
-        color: '#7ecfff', glow: 'rgba(80,180,255,0.50)', legend: '#7ecfff'
-      },
-      '平和を願う歌': {
-        ids: new Set([93]),
-        color: '#60b888', glow: 'rgba(80,170,125,0.55)', legend: '#60b888'
-      },
-      '涙': {
-        ids: new Set([82,86]),
-        color: '#90a8d0', glow: 'rgba(130,150,200,0.55)', legend: '#90a8d0'
-      }
-    };
-
-    let activeTheme = null;
-    let glowPhase = 0;
-
     /* ---------- 色 ---------- */
     function nodeColor(n) {
       if (selectedId !== null && n.id === selectedId) return '#e05c3a';
-      if (activeTheme && THEMES[activeTheme] && THEMES[activeTheme].ids.has(n.id)) {
-        return THEMES[activeTheme].color;
-      }
       if (n.normDeg > 0.55) return '#d4a855';
       if (n.normDeg > 0.25) return '#8ab4d8';
       return '#5a7a60';
@@ -1002,11 +660,6 @@
       sortedNodes.forEach(n => {
         let baseR = 2.5 + n.normDeg * 4.5;
 
-// テーマ選択中で、このノードがテーマに含まれていればサイズを拡大
-if (activeTheme && THEMES[activeTheme] && THEMES[activeTheme].ids.has(n.id)) {
-    baseR *= 1.8;   // 倍率はお好みで調整 (1.5〜2.0 程度)
-}
-
 const r = baseR * Math.max(0.4, n.sc / (Math.min(W, H) * 0.4));
         const isSel = n.id === selectedId;
         const color = nodeColor(n);
@@ -1019,20 +672,6 @@ const r = baseR * Math.max(0.4, n.sc / (Math.min(W, H) * 0.4));
           ctx.beginPath();
           ctx.arc(n.sx, n.sy, r * 2, 0, Math.PI * 2);
           ctx.fillStyle = 'rgba(224, 92, 58, 0.22)';
-          ctx.fill();
-        }
-
-        /* テーマ選択中のグロー */
-        if (activeTheme && THEMES[activeTheme] && THEMES[activeTheme].ids.has(n.id)) {
-          const pulse = 0.55 + 0.35 * Math.sin(glowPhase + n.id * 0.4);
-          const gRaw = THEMES[activeTheme].glow;
-          ctx.beginPath();
-          ctx.arc(n.sx, n.sy, r * 3.2, 0, Math.PI * 2);
-          ctx.fillStyle = gRaw.replace(/[\d.]+\)$/, `${(pulse * 0.45).toFixed(2)})`);
-          ctx.fill();
-          ctx.beginPath();
-          ctx.arc(n.sx, n.sy, r * 2.0, 0, Math.PI * 2);
-          ctx.fillStyle = gRaw.replace(/[\d.]+\)$/, `${(pulse * 0.65).toFixed(2)})`);
           ctx.fill();
         }
 
@@ -1074,7 +713,6 @@ const r = baseR * Math.max(0.4, n.sc / (Math.min(W, H) * 0.4));
         if (autoRotate && !isDragging) rotY += speedVal * 0.00014;
       }
 
-      if (activeTheme) glowPhase += 0.045;
       draw();
       animId = requestAnimationFrame(loop);
     }
@@ -1210,37 +848,6 @@ const r = baseR * Math.max(0.4, n.sc / (Math.min(W, H) * 0.4));
       buildGraph(); setSelectedId(null);
     });
 
-    /* ---------- テーマボタン ---------- */
-    document.querySelectorAll('.theme-btn').forEach(btn => {
-      btn.addEventListener('click', function () {
-        const theme = this.dataset.theme;
-        if (activeTheme === theme) {
-          activeTheme = null;
-          this.classList.remove('active');
-          document.getElementById('theme-legend-item').style.display = 'none';
-        } else {
-          activeTheme = theme;
-          glowPhase = 0;
-          document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
-          this.classList.add('active');
-          const t = THEMES[theme];
-          const dot = document.getElementById('theme-legend-dot');
-          dot.style.background = t.legend;
-          dot.style.boxShadow = '0 0 6px ' + t.legend;
-          document.getElementById('theme-legend-label').textContent = theme + 'の歌';
-          document.getElementById('theme-legend-item').style.display = '';
-        }
-        updatePoemList();
-      });
-    });
-
-    document.getElementById('theme-clear').addEventListener('click', function () {
-      activeTheme = null;
-      document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
-      document.getElementById('theme-legend-item').style.display = 'none';
-      updatePoemList();
-    });
-
     /* ---------- 歌の一覧 ---------- */
     let poemData = {};
     let listOpen = false;
@@ -1263,7 +870,7 @@ const r = baseR * Math.max(0.4, n.sc / (Math.min(W, H) * 0.4));
       const prev = selectedId;
       selectedId = id;
       if (id !== null && id !== prev) listOpen = true;
-      if (id === null && !activeTheme) listOpen = false;
+      if (id === null) listOpen = false;
       starClearBtn.style.display = id !== null ? 'inline-block' : 'none';
       if (id !== null) starClearNum.textContent = id;
       updatePoemList();
@@ -1313,30 +920,15 @@ const r = baseR * Math.max(0.4, n.sc / (Math.min(W, H) * 0.4));
         }
         return;
       }
-      if (!activeTheme || !THEMES[activeTheme]) {
-        poemToggleBtn.classList.remove('ready');
-        poemLabel.textContent = 'テーマを選ぶか、星をクリックすると歌を確認できます';
-        poemArrow.textContent = '';
-        poemListBody.style.display = 'none';
-        listOpen = false;
-        return;
-      }
-      poemToggleBtn.classList.add('ready');
-      const count = THEMES[activeTheme].ids.size;
-      if (listOpen) {
-        poemLabel.textContent = `「${activeTheme}」の歌 全${count}首`;
-        poemArrow.textContent = '▲ 閉じる';
-        renderPoemList(THEMES[activeTheme].ids);
-        poemListBody.style.display = 'block';
-      } else {
-        poemLabel.textContent = `「${activeTheme}」の歌 全${count}首を一覧で見る`;
-        poemArrow.textContent = '▼';
-        poemListBody.style.display = 'none';
-      }
+      poemToggleBtn.classList.remove('ready');
+      poemLabel.textContent = '星をクリックすると歌を確認できます';
+      poemArrow.textContent = '';
+      poemListBody.style.display = 'none';
+      listOpen = false;
     }
 
     poemToggleBtn.addEventListener('click', function () {
-      if (selectedId === null && !activeTheme) return;
+      if (selectedId === null) return;
       listOpen = !listOpen;
       updatePoemList();
       if (listOpen) {
