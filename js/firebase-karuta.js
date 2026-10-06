@@ -581,16 +581,29 @@ const KARUTA_FIREBASE_CONFIG = {
         }));
     }
 
-    // ── Firestore: ユーザーデータ削除 ────────────────────────────────────
+    // ── データ削除（アカウントごと） ─────────────────────────────────────
+    // 本人確認 → 本人の記録を全削除（Firestore と Realtime DB）→ ログイン情報（アカウント）を削除。
+    // js/karuta-nickname.js の deleteAccount と同じ処理。変更するときは両方直すこと。
+    // アカウントを先に消すと記録を消せなくなる（ルールで本人しか書けない）ので順番を変えないこと。
     async function _handleDeleteMyData(authEl, lang) {
         const isJa = lang !== 'en';
-        const msg = isJa
-            ? '記録したスコアデータをすべて削除します。\nこの操作は元に戻せません。本当に削除しますか？'
-            : 'All your score data will be permanently deleted.\nThis cannot be undone. Are you sure?';
-        if (!confirm(msg)) return;
+        const user = currentUser;
+        if (!user) return;
+        if (!confirm(isJa
+            ? 'スコア・称号・ニックネームなど、ランキングに登録されたデータをすべて削除し、ログイン情報（Googleアカウントのメールアドレス・表示名など）も削除します。\nこの操作は元に戻せません。本当に削除しますか？\n\n※本人確認のため、このあとGoogleのログイン画面が表示されます。'
+            : 'This will delete all your leaderboard data (scores, titles, nickname) and your sign-in information (your Google account email address, display name, etc.).\nThis cannot be undone. Are you sure?\n\n* To confirm it is you, the Google sign-in screen will appear next.')) return;
 
-        if (!currentUser) return;
-        const uid = currentUser.uid;
+        // 1. 本人確認（アカウント削除には直近のログインが必要。ポップアップはクリック直後に開く）
+        try {
+            await user.reauthenticateWithPopup(new firebase.auth.GoogleAuthProvider());
+        } catch (e) {
+            if (e && (e.code === 'auth/popup-closed-by-user' || e.code === 'auth/cancelled-popup-request')) return;
+            console.error('[KarutaAuth] reauth error:', e);
+            alert(isJa
+                ? '本人確認ができなかったため、削除を中止しました。ログイン中と同じGoogleアカウントを選んでください。'
+                : 'Deletion was cancelled because we could not confirm your identity. Please choose the same Google account you are signed in with.');
+            return;
+        }
 
         authEl.innerHTML = `
         <p style="text-align:center;font-size:0.85rem;color:#aaa;
@@ -598,24 +611,9 @@ const KARUTA_FIREBASE_CONFIG = {
             ${isJa ? 'データ削除中…' : 'Deleting data…'}
         </p>`;
 
+        // 2. 記録をすべて削除（1つでも失敗したらアカウントは消さない）
         try {
-            // 1. users ドキュメントを削除
-            await db.collection('users').doc(uid).delete();
-
-            // 2. gameResults を uid で検索してバッチ削除
-            const snap = await db.collection('gameResults').where('uid', '==', uid).get();
-            if (!snap.empty) {
-                const BATCH_SIZE = 400;
-                for (let i = 0; i < snap.docs.length; i += BATCH_SIZE) {
-                    const batch = db.batch();
-                    snap.docs.slice(i, i + BATCH_SIZE).forEach(doc => batch.delete(doc.ref));
-                    await batch.commit();
-                }
-            }
-
-            // 3. サインアウト（_refreshAuthAreas で UI も更新される）
-            await auth.signOut();
-            location.reload();
+            await _deleteAllRecords(user.uid);
         } catch (e) {
             console.error('[KarutaAuth] deleteMyData error:', e);
             authEl.innerHTML = `
@@ -623,7 +621,45 @@ const KARUTA_FIREBASE_CONFIG = {
                       font-family:'Noto Sans JP',sans-serif;margin:10px 0;">
                 ${isJa ? '⚠ 削除に失敗しました。再度お試しください。' : '⚠ Failed to delete. Please try again.'}
             </p>`;
+            return;
         }
+
+        // 3. ログイン情報を削除
+        try {
+            await user.delete();
+        } catch (e) {
+            console.error('[KarutaAuth] account delete error:', e);
+            alert(isJa
+                ? 'ランキングのデータは削除しましたが、ログイン情報の削除に失敗しました。お手数ですが、もう一度「データ削除」を押してください。'
+                : 'Your leaderboard data was deleted, but deleting your sign-in information failed. Please press "Delete my data" again.');
+            _refreshAuthAreas();
+            return;
+        }
+        alert(isJa ? 'すべてのデータとログイン情報を削除しました。' : 'All your data and sign-in information have been deleted.');
+        location.reload();
+    }
+
+    async function _deleteAllRecords(uid) {
+        // Realtime DB: 累計と、全日付の日別ランキングの本人ノード（まとめて削除）
+        if (!rtdb) throw new Error('Realtime Database SDK is not loaded');
+        const updates = {
+            [`user_stats/${uid}`]: null,
+            [`pro_user_stats/${uid}`]: null,
+        };
+        for (const base of ['rankings/online', 'rankings/cpu', 'pro_rankings/cpu']) {
+            const snap = await rtdb.ref(base).once('value');
+            snap.forEach(day => { if (day.child(uid).exists()) updates[`${base}/${day.key}/${uid}`] = null; });
+        }
+        await rtdb.ref().update(updates);
+
+        // Firestore: ゲーム結果ログ → ユーザー記録
+        const results = await db.collection('gameResults').where('uid', '==', uid).get();
+        for (let i = 0; i < results.docs.length; i += 400) {
+            const batch = db.batch();
+            results.docs.slice(i, i + 400).forEach(d => batch.delete(d.ref));
+            await batch.commit();
+        }
+        await db.collection('users').doc(uid).delete();
     }
 
     // ── 写真の代わりのアイコン（uid から決まる絵文字） ─────────────────────

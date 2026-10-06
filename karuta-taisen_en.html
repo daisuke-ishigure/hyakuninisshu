@@ -916,11 +916,10 @@
             (Normal or Hard) to have your wins reflected in real time on Wins Leaderboard. The ranking resets daily at
             midnight (Japan Time).
           </li>
-          <li>When you log in, we retrieve your Google account's display name, email address, and profile picture URL.
-            This information is used solely for ranking display purposes and will not be provided to third parties
-            except as required by law. Please see the <a href="policy_en.html">Privacy Policy</a> for details.</li>
+          <li>When you sign in, we receive your Google account's display name, email address, and profile photo URL.
+            This information is stored by Firebase (Google) Authentication to verify your sign-in, but it is not shown on the leaderboard or saved in the ranking data (the leaderboard shows the nickname you set). It will not be shared with third parties except as required by law. Please see the <a href="policy_en.html">Privacy Policy</a> for details.</li>
           <li>If you log in, a "Delete Data" button will appear next to the "Log Out" button. Pressing the "Delete Data"
-            button will delete the data registered in the ranking. However, please note that once deleted, it cannot be
+            button will delete all your ranking data and your sign-in information (your Google account email address, display name, etc.). However, please note that once deleted, it cannot be
             restored.</li>
           <li>You can enjoy the game without logging in, but in that case your wins will not be recorded in the ranking.
           </li>
@@ -1132,7 +1131,7 @@
     import {
       getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged
     } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-    import { setupNickname } from "./js/karuta-nickname.js?20261006-01";
+    import { setupNickname, deleteAccount } from "./js/karuta-nickname.js?20261006-02";
 
     const firebaseConfig = {
       apiKey: "AIzaSyDsKsuYsYZYaNVuFvnzQsZiKIrSAMFZQus",
@@ -1174,35 +1173,8 @@
     };
     document.getElementById('logout_btn').onclick = () => signOut(auth);
 
-    document.getElementById('delete_data_btn').onclick = async () => {
-      if (!currentUser) return;
-      if (!confirm('This will permanently delete all your score data.\nThis action cannot be undone. Are you sure?')) return;
-      const uid = currentUser.uid;
-      try {
-        await remove(ref(db, `user_stats/${uid}`));
-      } catch (e) {
-        console.error('Delete error:', e);
-        alert('Failed to delete. Please try again.');
-        return;
-      }
-      try {
-        for (const type of ['online', 'cpu']) {
-          const snap = await get(ref(db, `rankings/${type}`));
-          if (!snap.exists()) continue;
-          const updates = {};
-          snap.forEach(dateSnap => {
-            if (dateSnap.child(uid).exists()) {
-              updates[`rankings/${type}/${dateSnap.key}/${uid}`] = null;
-            }
-          });
-          if (Object.keys(updates).length) await update(ref(db), updates);
-        }
-      } catch (e) {
-        console.warn('Ranking cleanup skipped:', e);
-      }
-      await signOut(auth);
-      location.reload();
-    };
+    // データ削除: 記録をすべて消してからログイン情報（アカウント）も消す
+    document.getElementById('delete_data_btn').onclick = () => deleteAccount(app, auth, 'en');
 
     // ===== Titles =====
     const TITLES = [

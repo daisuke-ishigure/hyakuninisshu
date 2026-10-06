@@ -250,8 +250,8 @@ function createSelectionScreen() {
         <h4>Ranking</h4>
         <ul class="em-usage-list">
             <li>Sign in with Google and complete a game to have your score recorded in the cumulative ranking in real time.</li>
-            <li>When you sign in, your Google account display name, email address, and profile photo URL are retrieved. This information is used solely for ranking display and will not be shared with third parties except as required by law. See our <a href="policy.html">Privacy Policy</a> for details.</li>
-            <li>If you log in, a “Delete my data” button will appear next to the “Log Out” button. Pressing the “Delete my data” button will delete the data registered in the ranking. However, please note that once deleted, it cannot be restored.</li>
+            <li>When you sign in, we receive your Google account's display name, email address, and profile photo URL. This information is stored by Firebase (Google) Authentication to verify your sign-in, but it is not shown on the leaderboard or saved in the ranking data (the leaderboard shows the nickname you set). It will not be shared with third parties except as required by law. See our <a href="policy_en.html">Privacy Policy</a> for details.</li>
+            <li>If you log in, a “Delete my data” button will appear next to the “Log Out” button. Pressing the “Delete my data” button will delete all your ranking data and your sign-in information (your Google account email address, display name, etc.). However, please note that once deleted, it cannot be restored.</li>
             <li>You can enjoy the game without signing in, but your score will not be recorded in the ranking.</li>
             <li>A title badge is displayed next to your name based on your cumulative score. Click "🎖 Title List" below for details.</li>
         </ul>

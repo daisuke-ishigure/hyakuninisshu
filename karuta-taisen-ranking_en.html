@@ -502,7 +502,7 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
     import { getDatabase, ref, onValue, off, get, remove, update } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
     import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-    import { setupNickname } from "./js/karuta-nickname.js?20261006-01";
+    import { setupNickname, deleteAccount } from "./js/karuta-nickname.js?20261006-02";
 
     const firebaseConfig = {
       apiKey: "AIzaSyDsKsuYsYZYaNVuFvnzQsZiKIrSAMFZQus",
@@ -848,35 +848,8 @@
     document.getElementById('refresh_btn').onclick = () => loadRanking();
     document.addEventListener('karuta-nickname-change', () => loadRanking());
 
-    document.getElementById('delete_data_btn').onclick = async () => {
-      if (!auth.currentUser) return;
-      if (!confirm('This will permanently delete all your score data.\nThis action cannot be undone. Are you sure?')) return;
-      const uid = auth.currentUser.uid;
-      try {
-        await remove(ref(db, `user_stats/${uid}`));
-      } catch (e) {
-        console.error('Delete error:', e);
-        alert('Failed to delete. Please try again.');
-        return;
-      }
-      try {
-        for (const type of ['online', 'cpu']) {
-          const snap = await get(ref(db, `rankings/${type}`));
-          if (!snap.exists()) continue;
-          const updates = {};
-          snap.forEach(dateSnap => {
-            if (dateSnap.child(uid).exists()) {
-              updates[`rankings/${type}/${dateSnap.key}/${uid}`] = null;
-            }
-          });
-          if (Object.keys(updates).length) await update(ref(db), updates);
-        }
-      } catch (e) {
-        console.warn('Ranking cleanup skipped:', e);
-      }
-      await signOut(auth);
-      location.reload();
-    };
+    // データ削除: 記録をすべて消してからログイン情報（アカウント）も消す
+    document.getElementById('delete_data_btn').onclick = () => deleteAccount(app, auth, 'en');
 
     loadRanking();
   </script>

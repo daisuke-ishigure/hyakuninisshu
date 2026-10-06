@@ -993,10 +993,10 @@
             Googleアカウントでログインして「誰かと対戦（オンライン対戦）」および「ロボットと対戦（ロボット対戦）」（ふつう・つよい）において勝利すると、本日の勝利数ランキングにリアルタイムで反映されます。ランキングは毎日0時（日本時間）にリセットされます。
           </li>
           <li>
-            ログインすると、Googleアカウントの表示名・メールアドレス・プロフィール画像URLの情報を取得します。これらの情報はランキング表示のためにのみ使用し、法令に基づく場合を除き、第三者に提供することはありません。詳しくは<a
+            ログインすると、Googleアカウントの表示名・メールアドレス・プロフィール画像URLの情報を取得します。これらはログインの確認のためにFirebase（Google）の認証機能に保管されますが、ランキングには表示せず、ランキング用のデータにも保存しません（ランキングにはご自身で付けたニックネームが表示されます）。法令に基づく場合を除き、第三者に提供することはありません。詳しくは<a
               href="policy.html">プライバシーポリシー</a>をご参照ください。 </li>
           <li>ログインすると、「ログアウト」ボタンの横に「データ削除」ボタンが表示されます。
-            「データ削除」ボタンを押すと、ランキングに登録されたデータを削除できます。
+            「データ削除」ボタンを押すと、ランキングに登録されたデータと、ログイン情報（Googleアカウントのメールアドレス・表示名など）をすべて削除できます。
             ただし、削除すると元に戻せないのでご注意ください。</li>
           <li>ログインしなくてもゲームは楽しめます。ただし、その場合は勝利数がランキングに記録されません。</li>
           <li>勝利数に応じて、称号バッジが名前の横に表示されます。下記の「🎖称号一覧」をクリックしていただくと、称号バッジの詳細をご覧いただけます。</li>
@@ -1202,7 +1202,7 @@
     import {
       getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged
     } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-    import { setupNickname } from "./js/karuta-nickname.js?20261006-01";
+    import { setupNickname, deleteAccount } from "./js/karuta-nickname.js?20261006-02";
 
     const firebaseConfig = {
       apiKey: "AIzaSyDsKsuYsYZYaNVuFvnzQsZiKIrSAMFZQus",
@@ -1244,40 +1244,8 @@
     };
     document.getElementById('logout_btn').onclick = () => signOut(auth);
 
-    document.getElementById('delete_data_btn').onclick = async () => {
-      if (!currentUser) return;
-      if (!confirm('記録したスコアデータをすべて削除します。\nこの操作は元に戻せません。本当に削除しますか？')) return;
-
-      const uid = currentUser.uid;
-      try {
-        // user_stats 削除
-        await remove(ref(db, `user_stats/${uid}`));
-      } catch (e) {
-        console.error('データ削除エラー:', e);
-        alert('削除に失敗しました。再度お試しください。');
-        return;
-      }
-
-      // rankings 削除（online・cpu 両タイプ、全日付）— 権限不足でも続行
-      try {
-        for (const type of ['online', 'cpu']) {
-          const snap = await get(ref(db, `rankings/${type}`));
-          if (!snap.exists()) continue;
-          const updates = {};
-          snap.forEach(dateSnap => {
-            if (dateSnap.child(uid).exists()) {
-              updates[`rankings/${type}/${dateSnap.key}/${uid}`] = null;
-            }
-          });
-          if (Object.keys(updates).length) await update(ref(db), updates);
-        }
-      } catch (e) {
-        console.warn('ランキング削除スキップ:', e);
-      }
-
-      await signOut(auth);
-      location.reload();
-    };
+    // データ削除: 記録をすべて消してからログイン情報（アカウント）も消す
+    document.getElementById('delete_data_btn').onclick = () => deleteAccount(app, auth, 'ja');
 
     // ===== 称号 =====
     const TITLES = [

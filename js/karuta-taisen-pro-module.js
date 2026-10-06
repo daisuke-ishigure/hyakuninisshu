@@ -1,7 +1,7 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
     import { getDatabase, ref, get, runTransaction, remove, update } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
     import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-    import { setupNickname } from "./karuta-nickname.js?20261006-01";
+    import { setupNickname, deleteAccount } from "./karuta-nickname.js?20261006-02";
 
     const LANG = window.LANG;
 
@@ -79,39 +79,8 @@
     };
     document.getElementById('logout_btn').onclick = () => signOut(auth);
 
-    document.getElementById('delete_data_btn').onclick = async () => {
-      if (!currentUser) return;
-      if (!confirm(LANG.confirmDeleteData)) return;
-
-      const uid = currentUser.uid;
-      try {
-        // pro_user_stats 削除
-        await remove(ref(db, `pro_user_stats/${uid}`));
-      } catch (e) {
-        console.error('データ削除エラー:', e);
-        alert(LANG.alertDeleteFailed);
-        return;
-      }
-
-      // pro_rankings 削除（全日付）— 権限不足でも続行
-      try {
-        const snap = await get(ref(db, 'pro_rankings/cpu'));
-        if (snap.exists()) {
-          const updates = {};
-          snap.forEach(dateSnap => {
-            if (dateSnap.child(uid).exists()) {
-              updates[`pro_rankings/cpu/${dateSnap.key}/${uid}`] = null;
-            }
-          });
-          if (Object.keys(updates).length) await update(ref(db), updates);
-        }
-      } catch (e) {
-        console.warn('ランキング削除スキップ:', e);
-      }
-
-      await signOut(auth);
-      location.reload();
-    };
+    // データ削除: 記録をすべて消してからログイン情報（アカウント）も消す
+    document.getElementById('delete_data_btn').onclick = () => deleteAccount(app, auth, document.documentElement.lang === 'en' ? 'en' : 'ja');
 
     // ===== 勝利記録 =====
     window.recordCpuWin = async (difficulty, mode) => {
