@@ -376,15 +376,10 @@
    フォントを本文と同じ Noto Sans にそろえ、body の字間（letter-spacing）も付けない */
 .kd-svg[lang="en"] .fk-name,
 .kd-svg[lang="en"] .fk-note,
+.kd-svg[lang="en"] .fk-sub,
 .kd-svg[lang="en"] .kd-box-text {
   font-family: "Noto Sans", "Noto Serif JP", sans-serif;
   letter-spacing: 0;
-}
-/* 英語版の札（名前の下の札）の文字は日本語版と同じフォント・字間にする。
-   幅は js/keizu-diagram.js の NOTO_SANS_JP（Noto Sans JP Regular の字幅）と SUB_LS（0.05em）で見積もっているので、変えるときは両方そろえる */
-.kd-svg[lang="en"] .fk-sub {
-  font-family: "noto-sans-pro", "Noto Sans JP", sans-serif;
-  letter-spacing: 0.05em;
 }
 .fk-pre-box {
   fill: #fff;

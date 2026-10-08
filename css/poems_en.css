@@ -519,3 +519,13 @@ html[lang="en"] #utabangou {
 .select-container .selector option {
   font-family: "Noto Sans", "Noto Serif JP", sans-serif;
 }
+
+/* Poem text on the karuta card (front: the poem; back: the matching card) uses
+   Kaisei HarunoUmi, the same as the Japanese pages. The heading/paragraph rules in
+   style.css force the English fonts with !important, so override them here. */
+html[lang="en"] .card-front #frontContent h3,
+html[lang="en"] .card-front #frontContent .was-h3,
+html[lang="en"] .card-back .torihuda > p,
+html[lang="en"] .card-back .torihuda > p span {
+  font-family: "Kaisei HarunoUmi", serif !important;
+}
