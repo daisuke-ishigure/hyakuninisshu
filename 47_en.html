@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-08T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -94,6 +94,8 @@
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
   <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -103,6 +105,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -270,6 +280,283 @@
       </dl>
     </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Priest Egyō's Family Tree</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 47.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__tenno">Brown text</span>Emperor</li>
+              <li><span class="fk-legend__tno" aria-hidden="true"></span>Emperor's number in the line of succession</li>
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+              <li><span class="fk-legend__dash"></span>Generations left out / friendship</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Priest Egyō's family tree">
+            <script type="application/json">
+{
+ "lang": "en",
+ "nodes": [
+  {
+   "id": "saga",
+   "n": "嵯峨",
+   "k": 1,
+   "t": 52,
+   "x": 16,
+   "y": 95
+  },
+  {
+   "id": "hiromu",
+   "n": "源弘",
+   "x": 136,
+   "y": 40
+  },
+  {
+   "id": "ninmyo",
+   "n": "仁明",
+   "k": 1,
+   "t": 54,
+   "x": 136,
+   "y": 100
+  },
+  {
+   "id": "toru",
+   "n": "源融",
+   "p": 14,
+   "x": 136,
+   "y": 150
+  },
+  {
+   "id": "nozomu",
+   "n": "源希",
+   "x": 327,
+   "y": 40
+  },
+  {
+   "id": "koko",
+   "n": "光孝",
+   "k": 1,
+   "t": 58,
+   "p": 15,
+   "x": 327,
+   "y": 100
+  },
+  {
+   "id": "hitoshi",
+   "n": "参議等",
+   "key": "源等",
+   "p": 39,
+   "x": 500,
+   "y": 40
+  },
+  {
+   "id": "anpo",
+   "n": "安法",
+   "sub": "Lived in the Kawara-in",
+   "x": 500,
+   "y": 150
+  },
+  {
+   "id": "egyo",
+   "n": "恵慶",
+   "p": 47,
+   "self": 1,
+   "x": 697,
+   "y": 150
+  }
+ ],
+ "kids": [
+  {
+   "from": "saga",
+   "to": [
+    "hiromu",
+    "ninmyo",
+    "toru"
+   ]
+  },
+  {
+   "from": "hiromu",
+   "to": [
+    "nozomu"
+   ]
+  },
+  {
+   "from": "ninmyo",
+   "to": [
+    "koko"
+   ]
+  },
+  {
+   "from": "nozomu",
+   "to": [
+    "hitoshi"
+   ]
+  }
+ ],
+ "lines": [
+  {
+   "points": [
+    [
+     304,
+     150
+    ],
+    [
+     497,
+     150
+    ]
+   ],
+   "dash": true,
+   "label": {
+    "text": "2 generations left out",
+    "x": 402,
+    "y": 144
+   }
+  },
+  {
+   "points": [
+    [
+     637,
+     150
+    ],
+    [
+     694,
+     150
+    ]
+   ],
+   "dash": true,
+   "label": {
+    "text": "Friends",
+    "x": 667,
+    "y": 144
+   }
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 773 190" width="773" height="190" role="img" aria-label="Priest Egyō's family tree" lang="en" class="fk-svg kd-svg" style="max-width:1160px;min-width:min(640px,1160px)" data-src="vs4ew4">
+<g class="fk-edges"><path d="M55 95H122" class="fk-edge"/><path d="M122 40V150" class="fk-edge"/><path d="M122 40H133" class="fk-edge"/><path d="M122 100H133" class="fk-edge"/><path d="M122 150H133" class="fk-edge"/><path d="M300 40H313" class="fk-edge"/><path d="M313 40H324" class="fk-edge"/><path d="M198 100H313" class="fk-edge"/><path d="M313 100H324" class="fk-edge"/><path d="M473 40H486" class="fk-edge"/><path d="M486 40H497" class="fk-edge"/><path d="M304 150L497 150" class="fk-edge is-dash"/><text class="fk-adopt" x="402" y="144">2 generations left out</text><path d="M637 150L694 150" class="fk-edge is-dash"/><text class="fk-adopt" x="667" y="144">Friends</text></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node is-tenno" transform="translate(16,95)" data-tip="&lt;h3&gt;Emperor Saga&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;52nd emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;786–842&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;809–823&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Gave his sons and daughters the family name Minamoto (the Saga Genji)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="40" height="26"/><text class="fk-name" x="0" y="0.5">Saga</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">52</text></g>
+<g class="fk-node" transform="translate(136,40)" data-tip="&lt;h3&gt;Minamoto no Hiromu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;812–863&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Saga; his mother was from the Kamitsukeno family&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Founder of the Hiromu line of the Saga Genji&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="165" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Hiromu</text></g></g>
+<g class="fk-node is-tenno" transform="translate(136,100)" data-tip="&lt;h3&gt;Emperor Ninmyō&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;54th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;810–850&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;833–850&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="63" height="26"/><text class="fk-name" x="0" y="0.5">Ninmyō</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">54</text></g>
+<g class="fk-node is-poet" transform="translate(136,150)" data-tip="&lt;h3&gt;Minamoto no Tōru&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;822–895&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Minister of the Left&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior First Rank; Senior First Rank after death&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Saga&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 14, &quot;Michinoku no...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called the Minister of the Left of Kawara&lt;/span&gt;&lt;/div&gt;" data-p="14"><a href="/14_en.html" aria-label="Minamoto no Tōru (Hyakunin Isshu Poem 14)"><rect class="fk-hit" x="-2" y="-13" width="167" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Tōru</text><circle class="fk-badge" cx="153" cy="0" r="10"/><text class="fk-badge-num" x="153" y="0.5">14</text></a></g>
+<g class="fk-node" transform="translate(327,40)" data-tip="&lt;h3&gt;Minamoto no Mare&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;849–902&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Middle Counselor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Third Rank&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="147" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Mare</text></g></g>
+<g class="fk-node is-tenno is-poet" transform="translate(327,100)" data-tip="&lt;h3&gt;Emperor Kōkō&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;58th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;830–887&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;884–887&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Ninmyō&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 15, &quot;Kimi ga tame haru no no ni...&quot;&lt;/span&gt;&lt;/div&gt;" data-p="15"><a href="/15_en.html" aria-label="Emperor Kōkō (Hyakunin Isshu Poem 15)"><rect class="fk-hit" x="-2" y="-13" width="67" height="26"/><text class="fk-name" x="0" y="0.5">Kōkō</text><circle class="fk-badge" cx="53" cy="0" r="10"/><text class="fk-badge-num" x="53" y="0.5">15</text></a><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">58</text></g>
+<g class="fk-node is-poet" transform="translate(500,40)" data-tip="&lt;h3&gt;Minamoto no Hitoshi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;880–951&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Councillor (Sangi)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Fourth Rank, Lower Grade&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 39, &quot;Asajiu no...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Councillor Hitoshi&lt;/span&gt;&lt;/div&gt;" data-p="39"><a href="/39_en.html" aria-label="Minamoto no Hitoshi (Hyakunin Isshu Poem 39)"><rect class="fk-hit" x="-2" y="-13" width="162" height="26"/><text class="fk-name" x="0" y="0.5">Councillor Hitoshi</text><circle class="fk-badge" cx="148" cy="0" r="10"/><text class="fk-badge-num" x="148" y="0.5">39</text></a></g>
+<g class="fk-node" transform="translate(500,150)" data-tip="&lt;h3&gt;Priest Anpō&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Sixth son of Minamoto no 適 (reading of the name unknown); great-grandson of Minamoto no Tōru&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Became a monk and lived in the Kawara-in, the mansion built by his great-grandfather Tōru. He was friends with many poets, such as Minamoto no Shitagō, Kiyohara no Motosuke, Taira no Kanemori, and Egyō&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="43" height="26"/><text class="fk-name" x="0" y="0.5">Anpō</text></g><rect class="fk-sub-box" x="0" y="11" width="135" height="16" rx="8"/><text class="fk-sub" x="67.5" y="19.5">Lived in the Kawara-in</text></g>
+<g class="fk-node is-poet is-self" transform="translate(697,150)" data-tip="&lt;h3&gt;Priest Egyō&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 47, &quot;Yaemugura...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;His family and career are unknown. He was close to Anpō, and is said to have been friends with Ōnakatomi no Yoshinobu, Ki no Tokibumi, Kiyohara no Motosuke, and others&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="70" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="64" height="26"/><text class="fk-name" x="0" y="0.5">Egyō</text><circle class="fk-badge" cx="50" cy="0" r="10"/><text class="fk-badge-num" x="50" y="0.5">47</text></g></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+          <div class="kd-text">
+            <p style="width:100%; margin-bottom:0.5em;">
+              Priest Egyō was a friend of Priest Anpō. Anpō was a great-grandson of <a href="/14_en.html">the Minister of the Left of Kawara, Minamoto no Tōru</a>, and lived in part of the Kawara-in, which he had turned into a temple.</p>
+            <p style="width:100%; margin-bottom:0.5em;">
+              At the Kawara-in, Anpō was friends with many poets, such as Minamoto no Shitagō, <a href="/42_en.html">Kiyohara no Motosuke</a>, and <a href="/40_en.html">Taira no Kanemori</a>. Egyō, too, is said to have been friends with <a href="/49_en.html">Ōnakatomi no Yoshinobu</a>, Ki no Tokibumi, Kiyohara no Motosuke, and others.
+            </p>
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <dt>Ki no Tsurayuki's Poem About the Kawara-in</dt>
+            <dd>
+              The Kawara-in was once known as a place of splendor and great glory. But after its master died, it lost its shine and became full of the feeling of decline. Egyō was not the only poet who found beauty in that decline.
+              <div class='quote' style="margin-bottom: 0;">
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>君<rt>きみ</rt></ruby>まさで
+                    <ruby>煙<rt>けぶり</rt></ruby><ruby>絶<rt>た</rt></ruby>えにし
+                    <ruby>塩竃<rt>しおがま</rt></ruby>の
+                    <br>うらさびしくも
+                    <ruby>見<rt>み</rt></ruby>えわたるかな
+                    <span class="shutten"><em>Kokin Wakashū</em>, Ki no Tsurayuki</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p>Now that our lord has passed away, the smoke of the salt kilns is gone,<br class="br-pc"> and the bay of Shiogama looks lonely as far as the eye can see.</p>
+                </q>
+              </div>
+            </dd>
+
+            <dt>Egyō's Poem About the Coming of Autumn</dt>
+            <dd>
+              The next poem, about an autumn field, is by Egyō. It is in the <em>Shūi Wakashū</em>.
+              <div class='quote' style="margin-bottom: 0;">
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>浅茅原<rt>あさじはら</rt></ruby>
+                    <ruby>玉<rt>たま</rt></ruby>まく<ruby>葛<rt>くず</rt></ruby>の
+                    <ruby>裏風<rt>うらかぜ</rt></ruby>の
+                    <br>うらがなしかる
+                    <ruby>秋<rt>あき</rt></ruby>は<ruby>来<rt>き</rt></ruby>にけり
+                    <span class="shutten"><em>Shūi Wakashū</em>, Priest Egyō</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p>Like the wind that curls the kudzu leaves over the field of cogon grass, showing their backs (<em>ura</em>),<br class="br-pc"> sad (<em>uraganashi</em>) autumn has come.</p>
+                </q>
+              </div>
+            </dd>
+
+            <dt>Egyō's Poem About the Winter Night Sky</dt>
+            <dd>
+              The next poem, about the winter night sky, is by Egyō. It is in the <em>Shūi Wakashū</em>.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>天<rt>あま</rt></ruby>の<ruby>原<rt>はら</rt></ruby>
+                    <ruby>空<rt>そら</rt></ruby>さへ<ruby>冴<rt>さ</rt></ruby>えや
+                    <ruby>渡<rt>わた</rt></ruby>るらむ
+                    <br><ruby>氷<rt>こおり</rt></ruby>と<ruby>見<rt>み</rt></ruby>ゆる
+                    <ruby>冬<rt>ふゆ</rt></ruby>の<ruby>夜<rt>よ</rt></ruby>の<ruby>月<rt>つき</rt></ruby>
+                    <span class="shutten"><em>Shūi Wakashū</em>, Priest Egyō</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p>Is even the wide sky frozen clear and cold?<br class="br-pc"> The moon on this winter night looks like ice.</p>
+                </q>
+              </div>
+            </dd>
+
+            <dt>The Kawara-in</dt>
+            <dd>The Kawara-in burned down at the end of the Heian period, but the site still remains today, and you can imagine what it was like.<figure class='photo-3column'><a
+                  href='../img/kawarainn_001.webp' data-lightbox='kawarainn' data-title='Site of the Kawara-in'><img loading='lazy'
+                    src='../img/kawarainn_001.webp' alt='Site of the Kawara-in' width="480" height="640"></a><a href='../img/kawarainn_002.webp'
+                  data-lightbox='kawarainn' data-title='A hackberry (enoki) said to have grown on Magaki-no-shima, an island in the Kawara-in garden'><img loading='lazy'
+                    src='../img/kawarainn_002.webp' alt='Site of the Kawara-in' width="480" height="640"></a><a href='../img/kawarainn_003_big.webp'
+                  data-lightbox='kawarainn' data-title='Information board at the site of the Kawara-in'><img loading='lazy' src='../img/kawarainn_003.webp'
+                    alt='Information board at the site of the Kawara-in' width="480" height="640"></a>
+                <figcaption></figcaption>
+              </figure>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -300,7 +587,12 @@
   </footer>
   <!-- Footer end -->
 
-  <script src="../js/poems_en.js?20261007-04"></script>
+  <script src="../js/poems_en.js?20261008-01"></script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261008-35"></script>
+  <script src="../js/keizu-diagram.js?20261008-02"></script>
 
 </body>
 

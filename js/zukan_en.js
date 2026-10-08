@@ -381,7 +381,7 @@ const POETS_RAW = [
         outline: 'A powerful court noble whose love was never requited', img: 'img/z45.webp',
     },
     {
-        n: 46, name: '<ruby>曽禰好忠<rt>そねのよしただ</rt></ruby>', date: '923年頃～没年不詳', theme: 'love',
+        n: 46, name: '<ruby>曽禰好忠<rt>そねのよしただ</rt></ruby>', date: '生没年不詳', theme: 'love',
         poem: '<ruby>由良<rt>ゆら</rt></ruby>のとを…', job: '官人', source: '新古今集',
         outline: 'A bold and unconventional up-and-coming poet', img: 'img/z46.webp',
     },

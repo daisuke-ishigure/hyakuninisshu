@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-08T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -94,6 +94,9 @@
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
   <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/swiper-bundle.min.css">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -103,6 +106,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -272,7 +283,7 @@
             <dt>1007</dt>
             <dd>Prince Atsumichi dies</dd>
             <dt>c. 1009</dt>
-            <dd>Serves Empress Shōshi as a lady-in-waiting</dd>
+            <dd>Serves Empress Akiko as a lady-in-waiting</dd>
             <dt>Unknown</dt>
             <dd>Marries again, to Fujiwara no Yasumasa</dd>
             <dt>1025</dt>
@@ -282,6 +293,1045 @@
       </dl>
     </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Izumi Shikibu's Family Tree</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 56.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__tenno">Brown text</span>Emperor</li>
+              <li><span class="fk-legend__tno" aria-hidden="true"></span>Emperor's number in the line of succession</li>
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+              <li><span class="fk-legend__dash"></span>Generations left out / other theories</li>
+              <li><span class="fk-legend__eq">＝</span>Marriage</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Izumi Shikibu's family tree">
+            <script type="application/json">
+{
+ "lang": "en",
+ "nodes": [
+  {
+   "id": "haji",
+   "n": "土師宿禰",
+   "x": 16,
+   "y": 130
+  },
+  {
+   "id": "maimo",
+   "n": "土師真妹",
+   "x": 158,
+   "y": 84
+  },
+  {
+   "id": "konin",
+   "n": "光仁",
+   "k": 1,
+   "t": 49,
+   "x": 296,
+   "y": 40
+  },
+  {
+   "id": "niigasa",
+   "n": "高野新笠",
+   "x": 296,
+   "y": 84
+  },
+  {
+   "id": "kanmu",
+   "n": "桓武",
+   "k": 1,
+   "t": 50,
+   "x": 464,
+   "y": 62
+  },
+  {
+   "id": "heizei",
+   "n": "平城",
+   "k": 1,
+   "t": 51,
+   "x": 547,
+   "y": 62
+  },
+  {
+   "id": "morogami",
+   "n": "大枝諸上",
+   "x": 547,
+   "y": 200
+  },
+  {
+   "id": "abo",
+   "n": "阿保親王",
+   "x": 654,
+   "y": 62
+  },
+  {
+   "id": "motonushi",
+   "n": "大枝本主",
+   "x": 654,
+   "y": 200
+  },
+  {
+   "id": "yukihira",
+   "n": "在原行平",
+   "p": 16,
+   "x": 765,
+   "y": 40
+  },
+  {
+   "id": "narihira",
+   "n": "在原業平",
+   "p": 17,
+   "x": 765,
+   "y": 84
+  },
+  {
+   "id": "otondo",
+   "n": "大江音人",
+   "x": 765,
+   "y": 200
+  },
+  {
+   "id": "tamabuchi",
+   "n": "大江玉淵",
+   "x": 875,
+   "y": 150
+  },
+  {
+   "id": "chisato",
+   "n": "大江千里",
+   "p": 23,
+   "x": 875,
+   "y": 200
+  },
+  {
+   "id": "chifuru",
+   "n": "大江千古",
+   "x": 875,
+   "y": 250
+  },
+  {
+   "id": "asatsuna",
+   "n": "大江朝綱",
+   "x": 987,
+   "y": 150
+  },
+  {
+   "id": "koretoki",
+   "n": "大江維時",
+   "x": 987,
+   "y": 250
+  },
+  {
+   "id": "tadamitsu",
+   "n": "大江斉光",
+   "x": 1086,
+   "y": 300
+  },
+  {
+   "id": "shigemitsu",
+   "n": "大江重光",
+   "x": 1086,
+   "y": 250
+  },
+  {
+   "id": "masahira",
+   "n": "大江匡衡",
+   "x": 1200,
+   "y": 250
+  },
+  {
+   "id": "akazome",
+   "n": "赤染衛門",
+   "p": 59,
+   "x": 1200,
+   "y": 294
+  },
+  {
+   "id": "masamune",
+   "n": "大江雅致",
+   "x": 1200,
+   "y": 372
+  },
+  {
+   "id": "yasuhirajo",
+   "n": "平保衡の娘",
+   "sub": "Said to be Princess Shōshi's nurse",
+   "x": 1200,
+   "y": 416
+  },
+  {
+   "id": "gojiju",
+   "n": "江侍従",
+   "x": 1426,
+   "y": 294
+  },
+  {
+   "id": "takachika",
+   "n": "大江挙周",
+   "x": 1426,
+   "y": 250
+  },
+  {
+   "id": "akinobujo",
+   "n": "明順の娘",
+   "x": 1426,
+   "y": 196
+  },
+  {
+   "id": "yasumasa",
+   "n": "藤原保昌",
+   "x": 1426,
+   "y": 350
+  },
+  {
+   "id": "izumi",
+   "n": "和泉式部",
+   "p": 56,
+   "sub": "Served Empress Akiko",
+   "x": 1426,
+   "y": 394,
+   "self": 1
+  },
+  {
+   "id": "michisada",
+   "n": "橘道貞",
+   "x": 1426,
+   "y": 490
+  },
+  {
+   "id": "narihira2",
+   "n": "大江成衡",
+   "x": 1542,
+   "y": 223
+  },
+  {
+   "id": "takachikajo",
+   "n": "橘孝親の娘",
+   "x": 1542,
+   "y": 267,
+   "sub": "Tachibana no Takachika"
+  },
+  {
+   "id": "koshikibu",
+   "n": "小式部内侍",
+   "p": 60,
+   "sub": "Served Empress Akiko",
+   "x": 1542,
+   "y": 451.5
+  },
+  {
+   "id": "masafusa",
+   "n": "大江匡房",
+   "p": 73,
+   "x": 1733,
+   "y": 245
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-konin",
+   "top": "konin",
+   "bottom": "niigasa"
+  },
+  {
+   "id": "c-masahira",
+   "top": "masahira",
+   "bottom": "akazome"
+  },
+  {
+   "id": "c-masamune",
+   "top": "masamune",
+   "bottom": "yasuhirajo"
+  },
+  {
+   "id": "c-takachika",
+   "top": "akinobujo",
+   "bottom": "takachika"
+  },
+  {
+   "id": "c-yasumasa",
+   "top": "yasumasa",
+   "bottom": "izumi"
+  },
+  {
+   "id": "c-michisada",
+   "top": "izumi",
+   "bottom": "michisada"
+  },
+  {
+   "id": "c-narihira2",
+   "top": "narihira2",
+   "bottom": "takachikajo"
+  }
+ ],
+ "kids": [
+  {
+   "from": "maimo",
+   "to": [
+    "niigasa"
+   ]
+  },
+  {
+   "from": "c-konin",
+   "to": [
+    "kanmu"
+   ]
+  },
+  {
+   "from": "kanmu",
+   "to": [
+    "heizei"
+   ]
+  },
+  {
+   "from": "heizei",
+   "to": [
+    "abo"
+   ]
+  },
+  {
+   "from": "abo",
+   "to": [
+    "yukihira",
+    "narihira"
+   ]
+  },
+  {
+   "from": "morogami",
+   "to": [
+    "motonushi"
+   ]
+  },
+  {
+   "from": "motonushi",
+   "to": [
+    "otondo"
+   ]
+  },
+  {
+   "from": "otondo",
+   "to": [
+    "tamabuchi",
+    "chisato",
+    "chifuru"
+   ]
+  },
+  {
+   "from": "tamabuchi",
+   "to": [
+    "asatsuna"
+   ]
+  },
+  {
+   "from": "chifuru",
+   "to": [
+    "koretoki"
+   ]
+  },
+  {
+   "from": "koretoki",
+   "to": [
+    "tadamitsu",
+    "shigemitsu"
+   ]
+  },
+  {
+   "from": "shigemitsu",
+   "to": [
+    "masahira"
+   ]
+  },
+  {
+   "from": "c-masahira",
+   "to": [
+    "gojiju",
+    "takachika"
+   ]
+  },
+  {
+   "from": "c-masamune",
+   "to": [
+    "izumi"
+   ]
+  },
+  {
+   "from": "c-takachika",
+   "to": [
+    "narihira2"
+   ]
+  },
+  {
+   "from": "c-michisada",
+   "to": [
+    "koshikibu"
+   ]
+  },
+  {
+   "from": "c-narihira2",
+   "to": [
+    "masafusa"
+   ]
+  }
+ ],
+ "lines": [
+  {
+   "points": [
+    [
+     131,
+     130
+    ],
+    [
+     144,
+     130
+    ],
+    [
+     144,
+     84
+    ],
+    [
+     155,
+     84
+    ]
+   ],
+   "dash": true
+  },
+  {
+   "points": [
+    [
+     144,
+     130
+    ],
+    [
+     144,
+     200
+    ],
+    [
+     544,
+     200
+    ]
+   ],
+   "dash": true,
+   "label": {
+    "text": "Generations left out",
+    "x": 346,
+    "y": 194
+   }
+  },
+  {
+   "points": [
+    [
+     751,
+     84
+    ],
+    [
+     751,
+     200
+    ]
+   ],
+   "dash": true,
+   "label": {
+    "text": "Possibly his real father",
+    "x": 685,
+    "y": 150
+   }
+  },
+  {
+   "points": [
+    [
+     1186,
+     250
+    ],
+    [
+     1186,
+     372
+    ],
+    [
+     1197,
+     372
+    ]
+   ],
+   "dash": true,
+   "label": {
+    "text": "Theories differ",
+    "x": 1143,
+    "y": 316
+   }
+  }
+ ],
+ "arrows": [
+  {
+   "points": [
+    [
+     486,
+     74
+    ],
+    [
+     557,
+     186
+    ]
+   ],
+   "label": {
+    "text": "Gave the name Ōe",
+    "x": 525,
+    "y": 122
+   }
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1845 516" width="1845" height="516" role="img" aria-label="Izumi Shikibu's family tree" lang="en" class="fk-svg kd-svg" style="max-width:2768px;min-width:min(640px,2768px)" data-src="l9cqyu">
+<g class="fk-edges"><path d="M316 49V75M320 49V75" class="fk-edge fk-eq"/><path d="M1233 259V285M1237 259V285" class="fk-edge fk-eq"/><path d="M1239.5 381V407M1243.5 381V407" class="fk-edge fk-eq"/><path d="M1462.5 205V241M1466.5 205V241" class="fk-edge fk-eq"/><path d="M1475 359V385M1479 359V385" class="fk-edge fk-eq"/><path d="M1475 422V481M1479 422V481" class="fk-edge fk-eq"/><path d="M1595.5 232V258M1599.5 232V258" class="fk-edge fk-eq"/><path d="M269 84H282" class="fk-edge"/><path d="M282 84H293" class="fk-edge"/><path d="M320 62H450" class="fk-edge"/><path d="M450 62H461" class="fk-edge"/><path d="M521 62H533" class="fk-edge"/><path d="M533 62H544" class="fk-edge"/><path d="M596 62H640" class="fk-edge"/><path d="M640 62H651" class="fk-edge"/><path d="M738 62H751" class="fk-edge"/><path d="M751 40V84" class="fk-edge"/><path d="M751 40H762" class="fk-edge"/><path d="M751 84H762" class="fk-edge"/><path d="M628 200H640" class="fk-edge"/><path d="M640 200H651" class="fk-edge"/><path d="M738 200H751" class="fk-edge"/><path d="M751 200H762" class="fk-edge"/><path d="M825 200H861" class="fk-edge"/><path d="M861 150V250" class="fk-edge"/><path d="M861 150H872" class="fk-edge"/><path d="M861 200H872" class="fk-edge"/><path d="M861 250H872" class="fk-edge"/><path d="M961 150H973" class="fk-edge"/><path d="M973 150H984" class="fk-edge"/><path d="M934 250H973" class="fk-edge"/><path d="M973 250H984" class="fk-edge"/><path d="M1055 250H1072" class="fk-edge"/><path d="M1072 250V300" class="fk-edge"/><path d="M1072 300H1083" class="fk-edge"/><path d="M1072 250H1083" class="fk-edge"/><path d="M1173 250H1186" class="fk-edge"/><path d="M1186 250H1197" class="fk-edge"/><path d="M1237 272H1412" class="fk-edge"/><path d="M1412 250V294" class="fk-edge"/><path d="M1412 294H1423" class="fk-edge"/><path d="M1412 250H1423" class="fk-edge"/><path d="M1243.5 394H1412" class="fk-edge"/><path d="M1412 394H1423" class="fk-edge"/><path d="M1466.5 223H1528" class="fk-edge"/><path d="M1528 223H1539" class="fk-edge"/><path d="M1479 451.5H1528" class="fk-edge"/><path d="M1528 451.5H1539" class="fk-edge"/><path d="M1599.5 245H1719" class="fk-edge"/><path d="M1719 245H1730" class="fk-edge"/><path d="M131 130L144 130L144 84L155 84" class="fk-edge is-dash"/><path d="M144 130L144 200L544 200" class="fk-edge is-dash"/><text class="fk-adopt" x="346" y="194">Generations left out</text><path d="M751 84L751 200" class="fk-edge is-dash"/><text class="fk-adopt" x="685" y="150">Possibly his real father</text><path d="M1186 250L1186 372L1197 372" class="fk-edge is-dash"/><text class="fk-adopt" x="1143" y="316">Theories differ</text></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"><path d="M486 74L557 186" class="kd-arrow" marker-end="url(#kdArrowHead)"/><text class="kd-arrow-label" x="525" y="122">Gave the name Ōe</text></g>
+<g>
+<g class="fk-node" transform="translate(16,130)" data-tip="&lt;h3&gt;The Haji clan (Haji no Sukune)&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;A clan said to descend from Nomi no Sukune. In the time of Emperor Kanmu, the Akishino, Sugawara, and Ōe (at first written 大枝, later 大江) families branched off from it&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="117" height="26"/><text class="fk-name" x="0" y="0.5">Haji no Sukune</text></g></g>
+<g class="fk-node" transform="translate(158,84)" data-tip="&lt;h3&gt;Haji no Maimo&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;From the Haji clan&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Wife of Yamato no Ototsugu, mother of Takano no Niigasa, and grandmother (on the mother's side) of Emperor Kanmu. In the 12th month of Enryaku 9 (790) she was granted Senior First Rank and the family name Ōe no Ason&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="112" height="26"/><text class="fk-name" x="0" y="0.5">Haji no Maimo</text></g></g>
+<g class="fk-node is-tenno" transform="translate(296,40)" data-tip="&lt;h3&gt;Emperor Kōnin&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;49th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;709–782&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;770–781&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Grandson of Emperor Tenji and son of Prince Shiki&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Took the throne after Empress Shōtoku, moving the imperial line from Tenmu's descendants back to Tenji's&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="48" height="26"/><text class="fk-name" x="0" y="0.5">Kōnin</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">49</text></g>
+<g class="fk-node" transform="translate(296,84)" data-tip="&lt;h3&gt;Takano no Niigasa&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Yamato no Ototsugu and Haji no Maimo&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;A consort of Emperor Kōnin; mother of Emperor Kanmu&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="143" height="26"/><text class="fk-name" x="0" y="0.5">Takano no Niigasa</text></g></g>
+<g class="fk-node is-tenno" transform="translate(464,62)" data-tip="&lt;h3&gt;Emperor Kanmu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;50th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;737–806&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;781–806&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Moved the capital to Nagaoka-kyō, then to Heian-kyō (794)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="58" height="26"/><text class="fk-name" x="0" y="0.5">Kanmu</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">50</text></g>
+<g class="fk-node is-tenno" transform="translate(547,62)" data-tip="&lt;h3&gt;Emperor Heizei&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;51st emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;774–824&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;806–809&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;After stepping down, he became a monk following the Retired Emperor Heizei Incident (Kusuko Incident) of 810&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="50" height="26"/><text class="fk-name" x="0" y="0.5">Heizei</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">51</text></g>
+<g class="fk-node" transform="translate(547,200)" data-tip="&lt;h3&gt;Ōe no Morogami&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;From the Haji clan&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the 12th month of Enryaku 9 (February 791), on the first anniversary of Takano no Niigasa's death, his family name was changed from Haji no Sukune to Ōe no Ason. Grandfather of Ōe no Otondo&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="82" height="26"/><text class="fk-name" x="0" y="0.5">Morogami</text></g></g>
+<g class="fk-node" transform="translate(654,62)" data-tip="&lt;h3&gt;Prince Abo&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;792–842&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Third Rank for princes; First Rank after death&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Heizei; father of Ariwara no Yukihira and Narihira&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="85" height="26"/><text class="fk-name" x="0" y="0.5">Prince Abo</text></g></g>
+<g class="fk-node" transform="translate(654,200)" data-tip="&lt;h3&gt;Ōe no Motonushi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Acting Assistant Governor of Bitchū&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Ōe no Otondo. Otondo's mother was a daughter of Nakatomi no Iwane, who had served Prince Abo&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="85" height="26"/><text class="fk-name" x="0" y="0.5">Motonushi</text></g></g>
+<g class="fk-node is-poet" transform="translate(765,40)" data-tip="&lt;h3&gt;Ariwara no Yukihira&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;818–893&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Middle Counselor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Third Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 16, &quot;Tachiwakare...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Middle Counselor Yukihira&lt;/span&gt;&lt;/div&gt;" data-p="16"><a href="/16_en.html" aria-label="Ariwara no Yukihira (Hyakunin Isshu Poem 16)"><rect class="fk-hit" x="-2" y="-13" width="177" height="26"/><text class="fk-name" x="0" y="0.5">Ariwara no Yukihira</text><circle class="fk-badge" cx="163" cy="0" r="10"/><text class="fk-badge-num" x="163" y="0.5">16</text></a></g>
+<g class="fk-node is-poet" transform="translate(765,84)" data-tip="&lt;h3&gt;Ariwara no Narihira&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;825–880&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Fourth Rank, Upper Grade&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 17, &quot;Chihayaburu...&quot;&lt;/span&gt;&lt;/div&gt;" data-p="17"><a href="/17_en.html" aria-label="Ariwara no Narihira (Hyakunin Isshu Poem 17)"><rect class="fk-hit" x="-2" y="-13" width="177" height="26"/><text class="fk-name" x="0" y="0.5">Ariwara no Narihira</text><circle class="fk-badge" cx="163" cy="0" r="10"/><text class="fk-badge-num" x="163" y="0.5">17</text></a></g>
+<g class="fk-node" transform="translate(765,200)" data-tip="&lt;h3&gt;Ōe no Otondo&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;811–877&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Councillor (Sangi)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ōe no Motonushi; some say he was a son of Prince Abo&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In 866 he changed the way the family name was written, from 大枝 to 大江. Father of Chifuru, Chisato, Tamabuchi, and others&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="61" height="26"/><text class="fk-name" x="0" y="0.5">Otondo</text></g></g>
+<g class="fk-node" transform="translate(875,150)" data-tip="&lt;h3&gt;Ōe no Tamabuchi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ōe no Otondo&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Ōe no Asatsuna. He adopted Shirome, a courtesan known as a poet&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="87" height="26"/><text class="fk-name" x="0" y="0.5">Tamabuchi</text></g></g>
+<g class="fk-node is-poet" transform="translate(875,200)" data-tip="&lt;h3&gt;Ōe no Chisato&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ōe no Otondo (some say son of Ōe no Tamabuchi)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 23, &quot;Tsuki mireba...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;A Confucian scholar who studied at the Daigakuryō (the court university)&lt;/span&gt;&lt;/div&gt;" data-p="23"><a href="/23_en.html" aria-label="Ōe no Chisato (Hyakunin Isshu Poem 23)"><rect class="fk-hit" x="-2" y="-13" width="85" height="26"/><text class="fk-name" x="0" y="0.5">Chisato</text><circle class="fk-badge" cx="71" cy="0" r="10"/><text class="fk-badge-num" x="71" y="0.5">23</text></a></g>
+<g class="fk-node" transform="translate(875,250)" data-tip="&lt;h3&gt;Ōe no Chifuru&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;866–924&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ōe no Otondo&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Ōe no Koretoki&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="60" height="26"/><text class="fk-name" x="0" y="0.5">Chifuru</text></g></g>
+<g class="fk-node" transform="translate(987,150)" data-tip="&lt;h3&gt;Ōe no Asatsuna&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;886–958&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Councillor (Sangi)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ōe no Tamabuchi&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Called &quot;Nochi no Gōshōkō&quot; (the Later Councillor Ōe), as against his grandfather Otondo, &quot;Gōshōkō.&quot; He was excellent at Chinese poetry and calligraphy&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="74" height="26"/><text class="fk-name" x="0" y="0.5">Asatsuna</text></g></g>
+<g class="fk-node" transform="translate(987,250)" data-tip="&lt;h3&gt;Ōe no Koretoki&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;888–963&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Middle Counselor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ōe no Chifuru&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Shigemitsu and Tadamitsu&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="69" height="26"/><text class="fk-name" x="0" y="0.5">Koretoki</text></g></g>
+<g class="fk-node" transform="translate(1086,300)" data-tip="&lt;h3&gt;Ōe no Tadamitsu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;934–987&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Councillor (Sangi)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ōe no Koretoki&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="84" height="26"/><text class="fk-name" x="0" y="0.5">Tadamitsu</text></g></g>
+<g class="fk-node" transform="translate(1086,250)" data-tip="&lt;h3&gt;Ōe no Shigemitsu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ōe no Koretoki&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Ōe no Masahira. Some say he was also the father of Ōe no Masamune&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="88" height="26"/><text class="fk-name" x="0" y="0.5">Shigemitsu</text></g></g>
+<g class="fk-node" transform="translate(1200,250)" data-tip="&lt;h3&gt;Ōe no Masahira&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;952–1012&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ōe no Shigemitsu&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;A Professor of Letters (Monjō Hakase). His wife was Akazome Emon, and he was the father of Takachika and Gō Jijū. Some say Ōe no Masamune was his elder brother, but this is not certain&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="74" height="26"/><text class="fk-name" x="0" y="0.5">Masahira</text></g></g>
+<g class="fk-node is-poet" transform="translate(1200,294)" data-tip="&lt;h3&gt;Akazome Emon&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;c. 956–c. 1041&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 59, &quot;Yasurawade...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Said to be the daughter of Akazome Tokimochi, but the Fukuro Zōshi says her mother remarried Tokimochi while carrying a child by her former husband, Taira no Kanemori, and then gave birth to Akazome Emon&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Served Minamoto no Tomoko and her daughter Akiko. She and her husband, Ōe no Masahira, were known as a devoted couple&lt;/span&gt;&lt;/div&gt;" data-p="59"><a href="/59_en.html" aria-label="Akazome Emon (Hyakunin Isshu Poem 59)"><rect class="fk-hit" x="-2" y="-13" width="144" height="26"/><text class="fk-name" x="0" y="0.5">Akazome Emon</text><circle class="fk-badge" cx="130" cy="0" r="10"/><text class="fk-badge-num" x="130" y="0.5">59</text></a></g>
+<g class="fk-node" transform="translate(1200,372)" data-tip="&lt;h3&gt;Ōe no Masamune&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Secretary of the Grand Empress Dowager's Household (serving Princess Shōshi), Head of the Carpentry Bureau, Governor of Echizen&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Some say he was a son of Ōe no Shigemitsu, others that he was the elder brother of Ōe no Masahira. One genealogy gives Shigemitsu as his father&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Izumi Shikibu. One theory says her name &quot;Shikibu&quot; comes from his post as Shikibu-no-jō (Secretary of the Ministry of Ceremonies), which he held after studying at the court university&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="87" height="26"/><text class="fk-name" x="0" y="0.5">Masamune</text></g></g>
+<g class="fk-node" transform="translate(1200,416)" data-tip="&lt;h3&gt;Daughter of Taira no Yasuhira&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Wife of Ōe no Masamune and mother of Izumi Shikibu. Said to have been Princess Shōshi's nurse (or the nurse's daughter)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="155" height="26"/><text class="fk-name" x="0" y="0.5">Yasuhira's daughter</text></g><rect class="fk-sub-box" x="0" y="11" width="196" height="16" rx="8"/><text class="fk-sub" x="98" y="19.5">Said to be Princess Shōshi's nurse</text></g>
+<g class="fk-node" transform="translate(1426,294)" data-tip="&lt;h3&gt;Gō Jijū&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Ōe no Masahira and Akazome Emon&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Her name was Ōe no Masako. Wife of Fujiwara no Kanefusa&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="52" height="26"/><text class="fk-name" x="0" y="0.5">Gō Jijū</text></g></g>
+<g class="fk-node" transform="translate(1426,250)" data-tip="&lt;h3&gt;Ōe no Takachika&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown–1046&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ōe no Masahira and Akazome Emon&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;His wife was Takashina no Akinobu's daughter. Father of Ōe no Narihira&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="81" height="26"/><text class="fk-name" x="0" y="0.5">Takachika</text></g></g>
+<g class="fk-node" transform="translate(1426,196)" data-tip="&lt;h3&gt;Daughter of Takashina no Akinobu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Ōe no Takachika's wife; mother of Ōe no Narihira&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="152" height="26"/><text class="fk-name" x="0" y="0.5">Akinobu's daughter</text></g></g>
+<g class="fk-node" transform="translate(1426,350)" data-tip="&lt;h3&gt;Fujiwara no Yasumasa&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Izumi Shikibu's second husband&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="172" height="26"/><text class="fk-name" x="0" y="0.5">Fujiwara no Yasumasa</text></g></g>
+<g class="fk-node is-poet is-self" transform="translate(1426,394)" data-tip="&lt;h3&gt;Izumi Shikibu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Child of Ōe no Masamune and Taira no Yasuhira's daughter&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 56, &quot;Arazaramu...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Married Tachibana no Michisada and gave birth to Koshikibu no Naishi. After love affairs with Prince Tametaka and Prince Atsumichi, she began serving Empress Akiko around 1009. Later she remarried, to Fujiwara no Yasumasa&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="136" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="130" height="26"/><text class="fk-name" x="0" y="0.5">Izumi Shikibu</text><circle class="fk-badge" cx="116" cy="0" r="10"/><text class="fk-badge-num" x="116" y="0.5">56</text></g><rect class="fk-sub-box" x="0" y="11" width="133" height="16" rx="8"/><text class="fk-sub" x="66.5" y="19.5">Served Empress Akiko</text></g>
+<g class="fk-node" transform="translate(1426,490)" data-tip="&lt;h3&gt;Tachibana no Michisada&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Izumi Shikibu's first husband and Koshikibu no Naishi's father. Izumi, the province he governed, gave Izumi Shikibu her name&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="184" height="26"/><text class="fk-name" x="0" y="0.5">Tachibana no Michisada</text></g></g>
+<g class="fk-node" transform="translate(1542,223)" data-tip="&lt;h3&gt;Ōe no Narihira&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Child of Ōe no Takachika and Takashina no Akinobu's daughter&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Ōe no Masafusa&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="115" height="26"/><text class="fk-name" x="0" y="0.5">Ōe no Narihira</text></g></g>
+<g class="fk-node" transform="translate(1542,267)" data-tip="&lt;h3&gt;Daughter of Tachibana no Takachika&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Ōe no Narihira's wife; mother of Ōe no Masafusa&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="166" height="26"/><text class="fk-name" x="0" y="0.5">Takachika's daughter</text></g><rect class="fk-sub-box" x="0" y="11" width="144" height="16" rx="8"/><text class="fk-sub" x="72" y="19.5">Tachibana no Takachika</text></g>
+<g class="fk-node is-poet" transform="translate(1542,451.5)" data-tip="&lt;h3&gt;Koshikibu no Naishi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Tachibana no Michisada and Izumi Shikibu&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 60, &quot;Ōeyama...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Served Empress Akiko together with her mother. Known for her relationships with many men, including Fujiwara no Norimichi, Yorimune, Norinaga, and Sadayori; she had a son, Jōen, with Norimichi and a daughter with Norinaga. In 1025 she died, at about 28, after giving birth to a child of Fujiwara no Kinnari&lt;/span&gt;&lt;/div&gt;" data-p="60"><a href="/60_en.html" aria-label="Koshikibu no Naishi (Hyakunin Isshu Poem 60)"><rect class="fk-hit" x="-2" y="-13" width="177" height="26"/><text class="fk-name" x="0" y="0.5">Koshikibu no Naishi</text><circle class="fk-badge" cx="163" cy="0" r="10"/><text class="fk-badge-num" x="163" y="0.5">60</text></a><rect class="fk-sub-box" x="0" y="11" width="133" height="16" rx="8"/><text class="fk-sub" x="66.5" y="19.5">Served Empress Akiko</text></g>
+<g class="fk-node is-poet" transform="translate(1733,245)" data-tip="&lt;h3&gt;Ōe no Masafusa&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1041–1111&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Acting Middle Counselor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ōe no Narihira; great-grandson of Ōe no Masahira and Akazome Emon&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 73, &quot;Takasago no...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Acting Middle Counselor Masafusa&lt;/span&gt;&lt;/div&gt;" data-p="73"><a href="/73_en.html" aria-label="Ōe no Masafusa (Hyakunin Isshu Poem 73)"><rect class="fk-hit" x="-2" y="-13" width="100" height="26"/><text class="fk-name" x="0" y="0.5">Masafusa</text><circle class="fk-badge" cx="86" cy="0" r="10"/><text class="fk-badge-num" x="86" y="0.5">73</text></a></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+          <div class="kd-text">
+            <p style="width:100%; margin-bottom:0.5em;">Izumi Shikibu's name comes from her first husband, Tachibana no Michisada, who was Governor of Izumi (<em>Izumi no kami</em>), and from her father's post as a secretary of the Ministry of Ceremonial (<em>Shikibu no jō</em>).</p>
+            <p style="width:100%; margin-bottom:0.75em;">Her father was Ōe no Masamune, born into a family of scholars. Her deep learning seems to owe much to his teaching.</p>
+            <p style="width:100%; margin-bottom:0.75em;">With her first husband, Tachibana no Michisada, she had <a
+                href="/60_en.html">Koshikibu no Naishi</a>, but her daughter died young, in her twenties. Izumi Shikibu also left poems of mourning (<em>aishōka</em>) for her daughter.
+            </p>
+            <p style="width:100%; margin-bottom:0.75em;">Her love with her second husband, Fujiwara no Yasumasa, is the subject of a famous legend that became one of the floats of the Gion Festival. It is introduced <a href="#legend-story">further down this page</a>. Please take a look.</p>
+          </div>
+        </dd>
+      </dl>
+      <dl style="margin-top: 1.5em;">
+        <dt class='title'>Family Tree of the Princes Izumi Shikibu Loved</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 56.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__tenno">Brown text</span>Emperor</li>
+              <li><span class="fk-legend__tno" aria-hidden="true"></span>Emperor's number in the line of succession</li>
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+              <li><span class="fk-legend__eq">＝</span>Marriage</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <div class="kd-chart" aria-label="Family tree of the princes Izumi Shikibu loved">
+            <script type="application/json">
+{
+ "lang": "en",
+ "nodes": [
+  {
+   "id": "shoshi",
+   "n": "昌子内親王",
+   "x": 46,
+   "y": 40
+  },
+  {
+   "id": "kaishi",
+   "n": "懐子",
+   "x": 62,
+   "y": 100
+  },
+  {
+   "id": "reizei",
+   "n": "冷泉",
+   "k": 1,
+   "t": 63,
+   "x": 46,
+   "y": 152
+  },
+  {
+   "id": "choshi",
+   "n": "超子",
+   "x": 46,
+   "y": 196
+  },
+  {
+   "id": "kazan",
+   "n": "花山",
+   "k": 1,
+   "t": 65,
+   "x": 166,
+   "y": 117
+  },
+  {
+   "id": "sanjo",
+   "n": "三条",
+   "k": 1,
+   "t": 67,
+   "p": 68,
+   "x": 166,
+   "y": 174
+  },
+  {
+   "id": "tametaka",
+   "n": "為尊親王",
+   "sub": "Loved Izumi Shikibu",
+   "x": 166,
+   "y": 214
+  },
+  {
+   "id": "atsumichi",
+   "n": "敦道親王",
+   "sub": "Loved Izumi Shikibu",
+   "x": 166,
+   "y": 266
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-choshi",
+   "top": "reizei",
+   "bottom": "choshi"
+  }
+ ],
+ "eqs": [
+  {
+   "id": "c-shoshi",
+   "points": [
+    [
+     52,
+     49
+    ],
+    [
+     52,
+     127
+    ]
+   ],
+   "out": [
+    54,
+    88
+   ]
+  },
+  {
+   "id": "c-kaishi",
+   "points": [
+    [
+     70,
+     109
+    ],
+    [
+     70,
+     143
+    ]
+   ],
+   "out": [
+    72,
+    126
+   ]
+  }
+ ],
+ "kids": [
+  {
+   "from": "c-kaishi",
+   "to": [
+    "kazan"
+   ]
+  },
+  {
+   "from": "c-choshi",
+   "to": [
+    "sanjo",
+    "tametaka",
+    "atsumichi"
+   ]
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 309 306" width="309" height="306" role="img" aria-label="Family tree of the princes Izumi Shikibu loved" lang="en" class="fk-svg kd-svg" style="max-width:464px;min-width:min(640px,464px)" data-src="1c4v0jk">
+<g class="fk-edges"><path d="M66.5 161V187M70.5 161V187" class="fk-edge fk-eq"/><path d="M52 49L52 127" class="kd-eq-out"/><path d="M52 49L52 127" class="kd-eq-in"/><path d="M70 109L70 143" class="kd-eq-out"/><path d="M70 109L70 143" class="kd-eq-in"/><path d="M72 126H152" class="fk-edge"/><path d="M152 117V126" class="fk-edge"/><path d="M152 117H163" class="fk-edge"/><path d="M70.5 174H152" class="fk-edge"/><path d="M152 174V266" class="fk-edge"/><path d="M152 174H163" class="fk-edge"/><path d="M152 214H163" class="fk-edge"/><path d="M152 266H163" class="fk-edge"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node" transform="translate(46,40)" data-tip="&lt;h3&gt;Princess Shōshi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Empress of Emperor Reizei. Izumi Shikibu's father, Ōe no Masamune, served her as Senior Secretary of the Grand Empress Dowager's Household, and her mother is said to have been the princess's nurse (or the nurse's daughter)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="120" height="26"/><text class="fk-name" x="0" y="0.5">Princess Shōshi</text></g></g>
+<g class="fk-node" transform="translate(62,100)" data-tip="&lt;h3&gt;Fujiwara no Kaishi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Consort (nyōgo) of Emperor Reizei and mother of Emperor Kazan&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="50" height="26"/><text class="fk-name" x="0" y="0.5">Kaishi</text></g></g>
+<g class="fk-node is-tenno" transform="translate(46,152)" data-tip="&lt;h3&gt;Emperor Reizei&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;63rd emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;950–1011&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;967–969&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="49" height="26"/><text class="fk-name" x="0" y="0.5">Reizei</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">63</text></g>
+<g class="fk-node" transform="translate(46,196)" data-tip="&lt;h3&gt;Fujiwara no Chōshi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Eldest daughter of Fujiwara no Kaneie and Tokihime&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Consort (nyōgo) of Emperor Reizei. Mother of Emperor Sanjō, Prince Tametaka, and Prince Atsumichi&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="55" height="26"/><text class="fk-name" x="0" y="0.5">Chōshi</text></g></g>
+<g class="fk-node is-tenno" transform="translate(166,117)" data-tip="&lt;h3&gt;Emperor Kazan&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;65th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;968–1008&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;984–986&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Tricked by Fujiwara no Kaneie and others into becoming a monk and giving up the throne (the Kanna Incident)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="50" height="26"/><text class="fk-name" x="0" y="0.5">Kazan</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">65</text></g>
+<g class="fk-node is-tenno is-poet" transform="translate(166,174)" data-tip="&lt;h3&gt;Emperor Sanjō&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;67th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;976–1017&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1011–1016&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 68, &quot;Kokoro ni mo...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Retired Emperor Sanjō&lt;/span&gt;&lt;/div&gt;" data-p="68"><a href="/68_en.html" aria-label="Emperor Sanjō (Hyakunin Isshu Poem 68)"><rect class="fk-hit" x="-2" y="-13" width="69" height="26"/><text class="fk-name" x="0" y="0.5">Sanjō</text><circle class="fk-badge" cx="55" cy="0" r="10"/><text class="fk-badge-num" x="55" y="0.5">68</text></a><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">67</text></g>
+<g class="fk-node" transform="translate(166,214)" data-tip="&lt;h3&gt;Prince Tametaka&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Third son of Emperor Reizei&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Had a love affair with Izumi Shikibu&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="130" height="26"/><text class="fk-name" x="0" y="0.5">Prince Tametaka</text></g><rect class="fk-sub-box" x="0" y="11" width="123" height="16" rx="8"/><text class="fk-sub" x="61.5" y="19.5">Loved Izumi Shikibu</text></g>
+<g class="fk-node" transform="translate(166,266)" data-tip="&lt;h3&gt;Prince Atsumichi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Reizei&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;After the death of his elder brother, Prince Tametaka, he became close to Izumi Shikibu&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="131" height="26"/><text class="fk-name" x="0" y="0.5">Prince Atsumichi</text></g><rect class="fk-sub-box" x="0" y="11" width="123" height="16" rx="8"/><text class="fk-sub" x="61.5" y="19.5">Loved Izumi Shikibu</text></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <dt>A Poem by Inpumon'in no Taifu Borrowing from This Poem</dt>
+            <dd>The <a href="/90_en.html">Attendant to Empress Inpu</a> (Inpumon'in no Taifu) wrote the next poem, borrowing from Izumi Shikibu's Hyakunin Isshu poem (<em>honkadori</em>).
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    いかにせむ
+                    <ruby>今<rt>いま</rt></ruby>ひとたびの
+                    <ruby>逢<rt>お</rt></ruby><ruby>ふ<rt>う</rt></ruby>ことを
+                    <br><ruby>夢<rt>ゆめ</rt></ruby>にだに<ruby>見<rt>み</rt></ruby>て
+                    <ruby>寝<rt>ね</rt></ruby><ruby>覚<rt>ざ</rt></ruby>めずもがな
+                    <span class="shutten"><em>Shin Chokusen Wakashū</em>, Attendant to Empress Inpu</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p>What shall I do? I want to meet you once more, even if only in a dream, and never wake from that sleep.</p>
+                </q>
+              </div>
+            </dd>
+            <dt>A Poem for Her Daughter Who Died Young</dt>
+            <dd>Izumi Shikibu's daughter, Koshikibu no Naishi, died in her twenties after giving birth.<br class="br-pc"> The <em>Izumi Shikibu-shū</em> contains many poems of mourning (<em>aishōka</em>) for her daughter. Here is one of them.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    とどめおきて
+                    <ruby>誰<rt>たれ</rt></ruby>をあはれと
+                    <ruby>思<rt>おも</rt></ruby>ふらむ
+                    <br><ruby>子<rt>こ</rt></ruby>はまさるなり
+                    <ruby>子<rt>こ</rt></ruby>はまさりけり
+                    <span class="shutten"><em>Izumi Shikibu-shū</em></span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p>Leaving her child and her mother behind in this world, whom is she thinking of now? Surely her love for her child is stronger, for I, too, am thinking of my child.</p>
+                </q>
+              </div>
+            </dd>
+            <dt id="summer">A Poem About the Summer Heat</dt>
+            <dd>The Heian capital, surrounded by mountains, has merciless summer heat.<br class="br-pc"> Izumi Shikibu wrote lightly about the heat, using the cicada's song and the cicada's wings as images.
+              <div class='quote'>
+                <q class="quote-ja" style="position:relative;">
+                  <img src="/img/cicada.gif" alt="A cicada"
+                    style="position:absolute; width:50px; height:auto; right:5px; top:5px;" width="148" height="200">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>声<rt>こえ</rt></ruby><ruby>聞<rt>き</rt></ruby>けば
+                    <ruby>暑<rt>あつ</rt></ruby>さぞまさる
+                    <ruby>蝉<rt>せみ</rt></ruby>の<ruby>羽<rt>は</rt></ruby>の
+                    <br><ruby>薄<rt>うす</rt></ruby>き<ruby>衣<rt>ころも</rt></ruby>は
+                    <ruby>身<rt>み</rt></ruby>に<ruby>着<rt>き</rt></ruby>たれども
+                    <span class="shutten"><em>Izumi Shikibu-shū</em></span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p>When I hear the cicadas sing, I feel even hotter,<br class="br-pc"> though I am wearing a robe as thin as a cicada's wings.</p>
+                </q>
+              </div>
+            </dd>
+            <dt>A Poem Mourning Prince Tametaka</dt>
+            <dd>In this poem Izumi Shikibu grieves for Prince Tametaka after his death.<br class="br-pc"> It expresses how crushed she felt by the sound of the night wind and the loneliness of no longer having his warmth beside her.
+              <div class='quote'>
+                <q class="quote-ja" style="line-height:1.8">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>寝覚<rt>ねざめ</rt></ruby>する
+                    <ruby>身<rt>み</rt></ruby>を<ruby>吹<rt>ふ</rt></ruby>き<ruby>通<rt>とお</rt></ruby>す
+                    <ruby>風<rt>かぜ</rt></ruby>の<ruby>音<rt>ね</rt></ruby>を
+                    <br><ruby>昔<rt>むかし</rt></ruby>は<ruby>袖<rt>そで</rt></ruby>の
+                    よそに<ruby>聞<rt>き</rt></ruby>きけん
+                    <span class="shutten"><em>Shin Kokin Wakashū</em>, Izumi Shikibu</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p>The sound of the wind that blows right through me as I lie awake: in the old days (when I was with Prince Tametaka), I must have heard it as something that had nothing to do with me.</p>
+                </q>
+              </div>
+            </dd>
+            <dt>A Poem Mourning Prince Atsumichi</dt>
+            <dd>In this poem Izumi Shikibu grieves for Prince Atsumichi after his death. The <em>yobukodori</em> ("calling bird") is the cuckoo.
+              <div class='quote'>
+                <q class="quote-ja" style="line-height:1.8; position:relative;">
+                  <img src="/img/cuckoo.gif" alt="A cuckoo"
+                    style="position:absolute; width:100px; height:auto; right:5px; top:5px;" width="300" height="165">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>鳴<rt>な</rt></ruby>けや<ruby>鳴<rt>な</rt></ruby>け
+                    <br class="br-sp">わが<ruby>諸声<rt>もろごえ</rt></ruby>に
+                    <ruby>呼子鳥<rt>よぶこどり</rt></ruby>
+                    <br><ruby>呼<rt>よ</rt></ruby>ばば<ruby>答<rt>こた</rt></ruby>へて
+                    <ruby>帰<rt>かえ</rt></ruby>り<ruby>来<rt>く</rt></ruby>ばかり
+                    <span class="shutten"><em>Izumi Shikibu Zokushū</em></span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p>Cry, cry on, calling bird, together with my weeping,<br class="br-pc"> until he answers your call and comes back to me.</p>
+                </q>
+              </div>
+            </dd>
+            <dt>A Poem Seeing Fireflies as Her Soul</dt>
+            <dd>
+              Izumi Shikibu wrote this poem when, troubled by her relationship with her husband, she visited Kifune Shrine at Kurama in Kyoto and saw fireflies flying over the Mitarashi Stream. She seems to have been so worn out that she felt her soul had left her body, but afterwards she and her husband got back together. Because of this, Kifune Shrine is said to have become known as a shrine for bringing couples together.
+              <div class='quote'>
+                <q class="quote-ja" style="position:relative;">
+                  <img src="/img/hotaru.gif" alt="A firefly"
+                    style="position:absolute; width:50px; height:auto; right:5px; top:5px;" width="150" height="200">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>物思<rt>ものおも</rt></ruby>へば
+                    <ruby>沢<rt>さは</rt></ruby>の<ruby>蛍<rt>ほたる</rt></ruby>も
+                    <ruby>我<rt>わ</rt></ruby>が<ruby>身<rt>み</rt></ruby>より
+                    <br>あくがれ<ruby>出<rt>い</rt></ruby>づる
+                    <ruby>魂<rt>たま</rt></ruby>かとぞ<ruby>見<rt>み</rt></ruby>る
+                    <span class="shutten"><em>Go Shūi Wakashū</em>, Izumi Shikibu</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p>As I sit lost in thought, even the fireflies over the stream<br class="br-pc"> look to me like my soul, wandering out of my body.</p>
+                </q>
+              </div>
+            </dd>
+            <dt>A Poem Seeking Salvation</dt>
+            <dd>Izumi Shikibu lived freely for love, but at the price of much suffering. She also wrote poems seeking salvation.
+              <div class='quote'>
+                <q class="quote-ja" style="position:relative;">
+                  <img src="/img/moon.gif" alt="The moon"
+                    style="position:absolute; width:65px; height:auto; right:5px; top: 10px;" width="284" height="211">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>暗<rt>くら</rt></ruby>きより
+                    <ruby>暗<rt>くら</rt></ruby>き<ruby>道<rt>みち</rt></ruby>にぞ
+                    <ruby>入<rt>い</rt></ruby>りぬべき
+                    <br>はるかに<ruby>照<rt>て</rt></ruby>らせ
+                    <ruby>山<rt>やま</rt></ruby>の<ruby>端<rt>は</rt></ruby>の<ruby>月<rt>つき</rt></ruby>
+                    <span class="shutten"><em>Shūi Wakashū</em>, Izumi Shikibu</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p>From a dark path I am about to enter a path darker still.<br class="br-pc"> Light the way I should go from far away,<br class="br-pc"> O moon on the mountain's edge.</p>
+                </q>
+              </div>
+            </dd>
+            <dt>A Poem Comparing Love to a Color</dt>
+            <dd>Izumi Shikibu loved many times and went through painful partings.<br class="br-pc"> Her way of comparing love to a color, lightly and simply, shows her special sensitivity.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>世<rt>よ</rt></ruby>の<ruby>中<rt>なか</rt></ruby>に
+                    <ruby>恋<rt>こい</rt></ruby>てふ<ruby>色<rt>いろ</rt></ruby>は
+                    なけれども
+                    <br><ruby>深<rt>ふか</rt></ruby>く<ruby>身<rt>み</rt></ruby>にしむ
+                    ものにぞありける
+                    <span class="shutten"><em>Go Shūi Wakashū</em>, Izumi Shikibu</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p>There is no color in this world called "love," yet love soaks deep into the body like a dye.</p>
+                </q>
+              </div>
+            </dd>
+            <dt>A Sensual Poem of "Tangled Hair"</dt>
+            <dd>Like <a href="/80_en.html">Horikawa, attendant to Empress Taiken</a>, Izumi Shikibu also wrote a poem on the theme of "tangled hair."
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>黒髪<rt>くろかみ</rt></ruby>の
+                    <ruby>乱<rt>みだ</rt></ruby>れも<ruby>知<rt>し</rt></ruby>らず
+                    うち<ruby>伏<rt>ふ</rt></ruby>せば
+                    <br>まづかきやりし
+                    <ruby>人<rt>ひと</rt></ruby>ぞ<ruby>恋<rt>こい</rt></ruby>しき
+                    <span class="shutten"><em>Go Shūi Wakashū</em>, Izumi Shikibu</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p>Lying down, troubled, not even caring that my black hair is tangled, I long for the one who used to brush it aside for me.</p>
+                </q>
+              </div>
+            </dd>
+            <dt>Poems Exchanged with Ise no Taifu</dt>
+            <dd>When Izumi Shikibu and <a href="/61_en.html">Ise no Taifu</a> served Akiko together as ladies-in-waiting, they seem to have been good friends, and the following exchange of poems remains. These poems were written when the two first met.</dd>
+            <dt class="tsugai"><span style="background: linear-gradient(transparent 70%, #d8abf9 30%);">Izumi Shikibu's Poem</span>
+            </dt>
+            <dd>
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>思<rt>おも</rt></ruby>はむと
+                    <ruby>思<rt>おも</rt></ruby>ひし<ruby>人<rt>ひと</rt></ruby>と
+                    <ruby>思<rt>おも</rt></ruby>ひしに
+                    <br><ruby>思<rt>おも</rt></ruby>ひしごとも
+                    <ruby>思<rt>おも</rt></ruby>ほゆるかな
+                    <span class="shutten"><em>Izumi Shikibu Diary</em>, Izumi Shikibu</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p>I thought you were someone who would care for me,<br class="br-pc"> and it is just as I thought.</p>
+                </q>
+              </div>
+            </dd>
+            <dt class="tsugai"><span style="background: linear-gradient(transparent 70%, #f9abbc 30%);">Ise no Taifu's Poem</span>
+            </dt>
+            <dd>
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>君<rt>きみ</rt></ruby>をわれ
+                    <ruby>思<rt>おも</rt></ruby>はざりせば
+                    われをきみ
+                    <br><ruby>思<rt>おも</rt></ruby>はむとしも
+                    <ruby>思<rt>おも</rt></ruby>はましやは
+                    <span class="shutten"><em>Izumi Shikibu Diary</em>, Ise no Taifu</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p>If I had not cared for you,<br class="br-pc"> you would not have cared for me either.</p>
+                </q>
+              </div>
+            </dd>
+            <dt><em>The Izumi Shikibu Diary</em></dt>
+            <dd>
+              A diary written by Izumi Shikibu. She is deep in grief over the sudden death of her lover, Prince Tametaka (the third son of Emperor Reizei), and in despair after her father has cut her off because of her love with a man so far above her. The story begins when a branch of <em>tachibana</em> (mandarin orange) flowers arrives for her from Prince Atsumichi (the Sochi no Miya). It tells, from a third-person point of view and in the style of a poem-tale, how the two exchange poems and grow closer.
+            </dd>
+            <dt id="legend-story">A Love Legend That Became a Gion Festival Float</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/houshouyama_large.webp' data-lightbox='izumi' data-title='Hōshōyama, a float of the Gion Festival'>
+                  <img src="/img/houshouyama.webp" alt="Hōshōyama float" width="640" height="425">
+                </a>
+                <figcaption>
+                  <small>
+                    江戸村のとくぞう (Edomura no Tokuzō), CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia
+                    Commons<br>(The image has been edited so that people cannot be identified.)
+                  </small>
+                </figcaption>
+              </figure>
+              <div>
+                <p>
+                  When Fujiwara no Yasumasa asked Izumi Shikibu to marry him, she tested how serious he was by asking him to bring her a branch of the plum tree at the Shishinden, the palace's main hall. Yasumasa slipped into the Shishinden at night and, at the risk of being shot by the guards, managed to steal a branch of plum blossoms, and Izumi Shikibu accepted his proposal.
+                </p>
+                <p>In honor of this legend, a float called "Hōshōyama" parades in the Gion Festival. If you look at the figure of Yasumasa on the float, you can see that he holds a fine branch of plum blossoms. The float's charms are said to be popular with people hoping for a good match.
+                </p>
+              </div>
+            </dd>
+            <dt>Seishin-in, a Temple Connected with Izumi Shikibu</dt>
+            <dd class='thumb-image2'>
+              <div class="swiper">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img src="/img/seishinin_01.webp" alt="Seishin-in, photo 1" width="800" height="600">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="/img/seishinin_02.webp" alt="Seishin-in, photo 2" width="800" height="600">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="/img/seishinin_03.webp" alt="Seishin-in, photo 3" width="800" height="600">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="/img/seishinin_04.webp" alt="Seishin-in, photo 4" width="800" height="600">
+                  </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+              </div>
+              <div>
+                <p>
+                  A temple connected with Izumi Shikibu, inside the arcade of the Shinkyōgoku shopping street in Nakagyō Ward, Kyoto. According to the temple, it began in 1027 when Kampaku Fujiwara no Michinaga gave Izumi Shikibu, who served his daughter Jōtōmon-in, a small hermitage inside the Tōhoku-in of Hōjō-ji.
+                  It was first in another place, but after several moves it was moved to its present site in Shinkyōgoku on the orders of Toyotomi Hideyoshi. The grounds have a stone pagoda (<em>hōkyōintō</em>) said to be Izumi Shikibu's grave and a stone carved with her poem, and the hall holds the main image, Amida Buddha, along with statues of Izumi Shikibu and Fujiwara no Michinaga. In the middle of a busy shopping district, the history of a Heian poet lives on quietly.
+                </p>
+                <p style="text-align:right;"><small>(Photos taken August 8, 2026)</small></p>
+              </div>
+            </dd>
+            <dt>Izumi Shikibu Park</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/izumishikibukouen_large.webp' data-lightbox='izumi' data-title='Izumi Shikibu Park'>
+                  <img src='../img/izumishikibukouen.webp' alt='Izumi Shikibu Park' width="640" height="480">
+                </a>
+                <figcaption><small>Photo: Saga Prefecture Tourism Federation</small></figcaption>
+              </figure>
+              <div>
+                <p>
+                  A park in Shiota-chō, Ureshino City, Saga Prefecture. It stands on a small hill overlooking the Ariake Sea. Because Izumi Shikibu is said to have been born here and lived here until she was nine, a 5-meter bronze statue of her and a stone carved with her poem stand in the park. It also has an artificial-grass slope for grass skiing, an "athletic forest," and other facilities.<br><a
+                    class='no-decoration'
+                    href='utamakura_en.html?lat=33.11908208960748&lng=130.05840356768368&zoom=15'>See it on the map</a></p>
+              </div>
+            </dd>
+            <dt>Utagawa Kuniyoshi's <em>Hyakunin Isshu no Uchi</em></dt>
+            <dd class='thumb-image2'>
+              <figure class='portrait'>
+                <a href='../img/kuniyoshi_56_large.webp' data-lightbox='izumi' data-title='Ukiyo-e by Utagawa Kuniyoshi'>
+                  <img loading='lazy' src='../img/kuniyoshi_56.webp' alt='Izumi Shikibu, ukiyo-e by Utagawa Kuniyoshi' width="480" height="709">
+                </a>
+                <figcaption><a
+                    href='https://commons.wikimedia.org/wiki/File:No_56_Izumi_Shikibu_(BM_1906,1220,0.1231).jpg' target='_blank' rel='noopener'><small>British
+                      Museum, Public domain, via Wikimedia Commons</small></a></figcaption>
+              </figure>
+              <div>
+                <p>This ukiyo-e print is by Utagawa Kuniyoshi, an artist of the Edo period.<br class="br-pc"> It shows a scene to go with the Hyakunin Isshu poem.<br
+                    class="br-pc"> Could the mother and child sheltering from the rain be Izumi Shikibu and the young Koshikibu no Naishi?</p>
+              </div>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -312,7 +1362,33 @@
   </footer>
   <!-- Footer end -->
 
-  <script src="../js/poems_en.js?20261007-04"></script>
+  <script src="../js/poems_en.js?20261008-01"></script>
+  <script src="../js/swiper-bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      new Swiper('.swiper', {
+        loop: true,
+        speed: 1500,
+        autoplay: {
+          delay: 2000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+    });
+  </script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261008-35"></script>
+  <script src="../js/keizu-diagram.js?20261008-02"></script>
 
 </body>
 

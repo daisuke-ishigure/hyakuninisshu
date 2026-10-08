@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-08T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -94,6 +94,8 @@
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
   <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -103,6 +105,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -282,6 +292,407 @@
       </dl>
     </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Fujiwara no Okikaze's Family Tree</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 34.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__kanpaku">Purple text</span>Became Regent or Kampaku</li>
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+              <li><span class="fk-legend__dash"></span>Generations left out</li>
+              <li><span class="fk-legend__eq">＝</span>Marriage</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Fujiwara no Okikaze's family tree">
+            <script type="application/json">
+{
+ "lang": "en",
+ "tooltips": "fujiwara",
+ "nodes": [
+  {
+   "id": "kamatari",
+   "n": "鎌足",
+   "x": 16,
+   "y": 115
+  },
+  {
+   "id": "fuhito",
+   "n": "不比等",
+   "x": 126,
+   "y": 115
+  },
+  {
+   "id": "fusasaki",
+   "n": "房前",
+   "sub": "Northern House",
+   "x": 236,
+   "y": 40
+  },
+  {
+   "id": "matate",
+   "n": "真楯",
+   "x": 378,
+   "y": 40
+  },
+  {
+   "id": "uchimaro",
+   "n": "内麻呂",
+   "x": 488,
+   "y": 40
+  },
+  {
+   "id": "fuyutsugu",
+   "n": "冬嗣",
+   "x": 598,
+   "y": 40
+  },
+  {
+   "id": "yoshifusa",
+   "n": "良房",
+   "kan": 1,
+   "x": 708,
+   "y": 40
+  },
+  {
+   "id": "muchimaro",
+   "n": "武智麻呂",
+   "sub": "Southern House",
+   "x": 236,
+   "y": 90
+  },
+  {
+   "id": "kosemaro",
+   "n": "巨勢麻呂",
+   "x": 378,
+   "y": 90
+  },
+  {
+   "id": "matsukuri",
+   "n": "真作",
+   "x": 488,
+   "y": 90
+  },
+  {
+   "id": "murata",
+   "n": "村田",
+   "x": 598,
+   "y": 90
+  },
+  {
+   "id": "fujimaro",
+   "n": "富士麻呂",
+   "x": 708,
+   "y": 90
+  },
+  {
+   "id": "toshiyuki",
+   "n": "敏行",
+   "p": 18,
+   "x": 818,
+   "y": 90
+  },
+  {
+   "id": "umakai",
+   "n": "宇合",
+   "sub": "Ceremonial House",
+   "x": 236,
+   "y": 140
+  },
+  {
+   "id": "hirotsugu",
+   "n": "広嗣",
+   "x": 378,
+   "y": 140
+  },
+  {
+   "id": "maro",
+   "n": "麻呂",
+   "sub": "Capital House",
+   "x": 236,
+   "y": 190
+  },
+  {
+   "id": "hamanari",
+   "n": "浜成",
+   "x": 378,
+   "y": 190
+  },
+  {
+   "id": "hoichi",
+   "n": "法壱",
+   "x": 488,
+   "y": 190
+  },
+  {
+   "id": "kawatsugu",
+   "n": "氷上川継",
+   "x": 488,
+   "y": 234
+  },
+  {
+   "id": "okikaze",
+   "n": "興風",
+   "p": 34,
+   "self": 1,
+   "x": 708,
+   "y": 270
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-hoichi",
+   "top": "hoichi",
+   "bottom": "kawatsugu"
+  }
+ ],
+ "kids": [
+  {
+   "from": "kamatari",
+   "to": [
+    "fuhito"
+   ]
+  },
+  {
+   "from": "fuhito",
+   "to": [
+    "fusasaki",
+    "muchimaro",
+    "umakai",
+    "maro"
+   ]
+  },
+  {
+   "from": "fusasaki",
+   "to": [
+    "matate"
+   ]
+  },
+  {
+   "from": "matate",
+   "to": [
+    "uchimaro"
+   ]
+  },
+  {
+   "from": "uchimaro",
+   "to": [
+    "fuyutsugu"
+   ]
+  },
+  {
+   "from": "fuyutsugu",
+   "to": [
+    "yoshifusa"
+   ]
+  },
+  {
+   "from": "muchimaro",
+   "to": [
+    "kosemaro"
+   ]
+  },
+  {
+   "from": "kosemaro",
+   "to": [
+    "matsukuri"
+   ]
+  },
+  {
+   "from": "matsukuri",
+   "to": [
+    "murata"
+   ]
+  },
+  {
+   "from": "murata",
+   "to": [
+    "fujimaro"
+   ]
+  },
+  {
+   "from": "fujimaro",
+   "to": [
+    "toshiyuki"
+   ]
+  },
+  {
+   "from": "umakai",
+   "to": [
+    "hirotsugu"
+   ]
+  },
+  {
+   "from": "maro",
+   "to": [
+    "hamanari"
+   ]
+  },
+  {
+   "from": "hamanari",
+   "to": [
+    "hoichi"
+   ]
+  }
+ ],
+ "lines": [
+  {
+   "points": [
+    [
+     474,
+     190
+    ],
+    [
+     474,
+     270
+    ],
+    [
+     705,
+     270
+    ]
+   ],
+   "dash": true
+  }
+ ],
+ "arrows": [
+  {
+   "points": [
+    [
+     787,
+     40
+    ],
+    [
+     843,
+     40
+    ]
+   ],
+   "label": {
+    "text": "Flourished as the regent family",
+    "x": 849,
+    "y": 40
+   }
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1237 296" width="1237" height="296" role="img" aria-label="Fujiwara no Okikaze's family tree" lang="en" class="fk-svg kd-svg" style="max-width:1856px;min-width:min(640px,1856px)" data-src="1qv3nff">
+<g class="fk-edges"><path d="M510 199V225M514 199V225" class="fk-edge fk-eq"/><path d="M89 115H112" class="fk-edge"/><path d="M112 115H123" class="fk-edge"/><path d="M178 115H222" class="fk-edge"/><path d="M222 40V190" class="fk-edge"/><path d="M222 40H233" class="fk-edge"/><path d="M222 90H233" class="fk-edge"/><path d="M222 140H233" class="fk-edge"/><path d="M222 190H233" class="fk-edge"/><path d="M304 40H364" class="fk-edge"/><path d="M364 40H375" class="fk-edge"/><path d="M436 40H474" class="fk-edge"/><path d="M474 40H485" class="fk-edge"/><path d="M565 40H584" class="fk-edge"/><path d="M584 40H595" class="fk-edge"/><path d="M681 40H694" class="fk-edge"/><path d="M694 40H705" class="fk-edge"/><path d="M325 90H364" class="fk-edge"/><path d="M364 90H375" class="fk-edge"/><path d="M457 90H474" class="fk-edge"/><path d="M474 90H485" class="fk-edge"/><path d="M569 90H584" class="fk-edge"/><path d="M584 90H595" class="fk-edge"/><path d="M657 90H694" class="fk-edge"/><path d="M694 90H705" class="fk-edge"/><path d="M778 90H804" class="fk-edge"/><path d="M804 90H815" class="fk-edge"/><path d="M297 140H364" class="fk-edge"/><path d="M364 140H375" class="fk-edge"/><path d="M279 190H364" class="fk-edge"/><path d="M364 190H375" class="fk-edge"/><path d="M455 190H474" class="fk-edge"/><path d="M474 190H485" class="fk-edge"/><path d="M474 190L474 270L705 270" class="fk-edge is-dash"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"><path d="M787 40L843 40" class="kd-arrow" marker-end="url(#kdArrowHead)"/><text class="kd-arrow-label" x="849" y="40">Flourished as the regent family</text></g>
+<g>
+<g class="fk-node" transform="translate(16,115)" data-tip="&lt;h3&gt;Fujiwara no Kamatari&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;614–669&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Palace Minister&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior First Rank after death&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Given the family name &quot;Fujiwara&quot; by Emperor Tenji&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="74" height="26"/><text class="fk-name" x="0" y="0.5">Kamatari</text></g></g>
+<g class="fk-node" transform="translate(126,115)" data-tip="&lt;h3&gt;Fujiwara no Fuhito&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;659–720&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Minister of the Right&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Second Rank; Senior First Rank after death&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Grandfather (on the mother's side) of Emperor Shōmu and Empress Kōken&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="53" height="26"/><text class="fk-name" x="0" y="0.5">Fuhito</text></g></g>
+<g class="fk-node" transform="translate(236,40)" data-tip="&lt;h3&gt;Fujiwara no Fusasaki&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;681–737&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Councillor (Sangi)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Third Rank; Senior First Rank after death&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="69" height="26"/><text class="fk-name" x="0" y="0.5">Fusasaki</text></g><rect class="fk-sub-box" x="0" y="11" width="101" height="16" rx="8"/><text class="fk-sub" x="50.5" y="19.5">Northern House</text></g>
+<g class="fk-node" transform="translate(378,40)" data-tip="&lt;h3&gt;Fujiwara no Matate&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;715–766&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Upper Counselor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Third Rank&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="59" height="26"/><text class="fk-name" x="0" y="0.5">Matate</text></g></g>
+<g class="fk-node" transform="translate(488,40)" data-tip="&lt;h3&gt;Fujiwara no Uchimaro&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;756–812&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Minister of the Right&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Second Rank; Junior First Rank after death&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="78" height="26"/><text class="fk-name" x="0" y="0.5">Uchimaro</text></g></g>
+<g class="fk-node" transform="translate(598,40)" data-tip="&lt;h3&gt;Fujiwara no Fuyutsugu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;775–826&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Minister of the Left&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Second Rank; Senior First Rank after death&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="84" height="26"/><text class="fk-name" x="0" y="0.5">Fuyutsugu</text></g></g>
+<g class="fk-node is-kanpaku" transform="translate(708,40)" data-tip="&lt;h3&gt;Fujiwara no Yoshifusa&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;804–872&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Regent (Sesshō) and Chancellor of the Realm&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior First Rank; Senior First Rank after death&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;The first regent in history who was not of the imperial family&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="77" height="26"/><text class="fk-name" x="0" y="0.5">Yoshifusa</text></g></g>
+<g class="fk-node" transform="translate(236,90)" data-tip="&lt;h3&gt;Fujiwara no Muchimaro&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;680–737&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Minister of the Left&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior First Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Founder of the Southern House of the Fujiwara&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="90" height="26"/><text class="fk-name" x="0" y="0.5">Muchimaro</text></g><rect class="fk-sub-box" x="0" y="11" width="101" height="16" rx="8"/><text class="fk-sub" x="50.5" y="19.5">Southern House</text></g>
+<g class="fk-node" transform="translate(378,90)" data-tip="&lt;h3&gt;Fujiwara no Kosemaro&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown–764&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Councillor (Sangi)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Third Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Died in the Rebellion of Fujiwara no Nakamaro&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="80" height="26"/><text class="fk-name" x="0" y="0.5">Kosemaro</text></g></g>
+<g class="fk-node" transform="translate(488,90)" data-tip="&lt;h3&gt;Fujiwara no Matsukuri&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Governor of Awa&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Fifth Rank, Upper Grade&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="82" height="26"/><text class="fk-name" x="0" y="0.5">Matsukuri</text></g></g>
+<g class="fk-node" transform="translate(598,90)" data-tip="&lt;h3&gt;Fujiwara no Murata&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Governor of Sanuki&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Fifth Rank, Lower Grade&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="60" height="26"/><text class="fk-name" x="0" y="0.5">Murata</text></g></g>
+<g class="fk-node" transform="translate(708,90)" data-tip="&lt;h3&gt;Fujiwara no Fujimaro&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;804–850&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Inspector of Mutsu and Dewa&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Fourth Rank, Lower Grade&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="71" height="26"/><text class="fk-name" x="0" y="0.5">Fujimaro</text></g></g>
+<g class="fk-node is-poet" transform="translate(818,90)" data-tip="&lt;h3&gt;Fujiwara no Toshiyuki&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown–901&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Commander of the Right Military Guards&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Fourth Rank, Upper Grade&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 18, &quot;Suminoe no...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Fujiwara no Toshiyuki Ason&lt;/span&gt;&lt;/div&gt;" data-p="18"><a href="/18_en.html" aria-label="Fujiwara no Toshiyuki (Hyakunin Isshu Poem 18)"><rect class="fk-hit" x="-2" y="-13" width="100" height="26"/><text class="fk-name" x="0" y="0.5">Toshiyuki</text><circle class="fk-badge" cx="86" cy="0" r="10"/><text class="fk-badge-num" x="86" y="0.5">18</text></a></g>
+<g class="fk-node" transform="translate(236,140)" data-tip="&lt;h3&gt;Fujiwara no Umakai&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;694–737&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Councillor (Sangi)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Third Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Founder of the Shikike branch of the Fujiwara&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="62" height="26"/><text class="fk-name" x="0" y="0.5">Umakai</text></g><rect class="fk-sub-box" x="0" y="11" width="113" height="16" rx="8"/><text class="fk-sub" x="56.5" y="19.5">Ceremonial House</text></g>
+<g class="fk-node" transform="translate(378,140)" data-tip="&lt;h3&gt;Fujiwara no Hirotsugu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Eldest son of Fujiwara no Umakai&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In 740 he rebelled at Dazaifu and was defeated and killed (the Rebellion of Fujiwara no Hirotsugu)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="80" height="26"/><text class="fk-name" x="0" y="0.5">Hirotsugu</text></g></g>
+<g class="fk-node" transform="translate(236,190)" data-tip="&lt;h3&gt;Fujiwara no Maro&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;695–737&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Councillor (Sangi)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Third Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Founder of the Capital House (Kyōke) of the Fujiwara&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="44" height="26"/><text class="fk-name" x="0" y="0.5">Maro</text></g><rect class="fk-sub-box" x="0" y="11" width="88" height="16" rx="8"/><text class="fk-sub" x="44" y="19.5">Capital House</text></g>
+<g class="fk-node" transform="translate(378,190)" data-tip="&lt;h3&gt;Fujiwara no Hamanari&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Councillor (Sangi)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Fujiwara no Maro&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Removed from his post as Councillor because of the rebellion of his son-in-law, Hikami no Kawatsugu (782)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="78" height="26"/><text class="fk-name" x="0" y="0.5">Hamanari</text></g></g>
+<g class="fk-node" transform="translate(488,190)" data-tip="&lt;h3&gt;Fujiwara no Hōichi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Fujiwara no Hamanari&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Wife of Hikami no Kawatsugu&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="52" height="26"/><text class="fk-name" x="0" y="0.5">Hōichi</text></g></g>
+<g class="fk-node" transform="translate(488,234)" data-tip="&lt;h3&gt;Hikami no Kawatsugu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Prince Shioyaki and Princess Fuwa&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In 782 he was accused of plotting a rebellion and exiled (the Hikami no Kawatsugu Incident)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="169" height="26"/><text class="fk-name" x="0" y="0.5">Hikami no Kawatsugu</text></g></g>
+<g class="fk-node is-poet is-self" transform="translate(708,270)" data-tip="&lt;h3&gt;Fujiwara no Okikaze&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Secretary of Shimōsa&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Sixth Rank, Upper Grade&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 34, &quot;Tare o ka mo...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;One of the Thirty-Six Immortal Poets&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="186" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="180" height="26"/><text class="fk-name" x="0" y="0.5">Fujiwara no Okikaze</text><circle class="fk-badge" cx="166" cy="0" r="10"/><text class="fk-badge-num" x="166" y="0.5">34</text></g></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+          <div class="kd-text">
+            <p style="width:100%; margin-bottom: 0.75em;">
+              Fujiwara no Okikaze is the only poet from the Capital House (Kyōke) of the Fujiwara chosen for the Hyakunin Isshu. The Capital House was the line founded by Fujiwara no Maro, and it got its name because Maro served as Master of the Left Capital (<em>Sakyō no Daibu</em>).
+            </p>
+            <p style="width:100%; margin-bottom: 0.75em;">
+              Okikaze's ancestor, the Councillor Fujiwara no Hamanari, was caught up when the plot of his son-in-law Hikami no Kawatsugu to rebel against Emperor Kanmu (the Hikami no Kawatsugu Incident) came to light, and he was removed from his post as Councillor. The Capital House did not play a large part in politics.
+            </p>
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <dt>A Spring Poem</dt>
+            <dd>In this poem, Fujiwara no Okikaze asks the bush warbler, whose song tells of spring's arrival, to sing more.
+              <div class='quote'><q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>声<rt>こえ</rt></ruby><ruby>絶<rt>た</rt></ruby>えず
+                  <ruby>鳴<rt>な</rt></ruby>けや<ruby>鶯<rt>うぐいす</rt></ruby>
+                  ひと<ruby>年<rt>とせ</rt></ruby>に
+                  <br><ruby>再<rt>ふたた</rt></ruby>びとだに
+                  <ruby>来<rt>く</rt></ruby>べき<ruby>春<rt>はる</rt></ruby>かは
+                  <span class="shutten"><em>Kokin Wakashū</em>, Fujiwara no Okikaze</span>
+                </q><q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">
+                    Bush warbler, sing on without a pause.
+                    <br class="br-pc"> Spring does not come even twice a year.
+                  </p>
+                </q></div>
+            </dd>
+            <dt>A Poem That Appeared in <em>Hikaru Kimi e</em></dt>
+            <dd>This poem by Fujiwara no Okikaze, from the <em>Kokin Wakashū</em>, appeared in Episode 10, "The Moonlit Plot," of the NHK historical drama <em>Hikaru Kimi e</em> (<em>Dear Radiant One</em>).<br class="br-pc"> Michinaga sends it to Mahiro (Murasaki Shikibu).
+              <div class='quote'><q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>死<rt>し</rt></ruby>ぬる<ruby>命<rt>いのち</rt></ruby>
+                  <ruby>生<rt>い</rt></ruby>きもやすると
+                  こころみに
+                  <br><ruby>玉<rt>たま</rt></ruby>の<ruby>緒<rt>お</rt></ruby>ばかり
+                  <ruby>逢<rt>あ</rt></ruby>はむと<ruby>言<rt>い</rt></ruby>はなむ
+                  <span class="shutten"><em>Kokin Wakashū</em>, Fujiwara no Okikaze</span>
+                </q><q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">
+                    My life is about to end. It might come back to life,
+                    <br class="br-pc"> so just to try, please say you will meet me, even for a moment.
+                  </p>
+                </q></div>
+            </dd>
+            <dt>The Koto</dt>
+            <dd>
+              <p>The koto is a stringed instrument that came from China in the Nara period. You press the strings with your left hand and pluck them with your right to make sounds. There are several kinds: the <ruby>琴<rt>きん</rt></ruby> (<em>kin</em>) with 7 strings, the <ruby>和琴<rt>わごん</rt></ruby> (<em>wagon</em>) with 6 strings, and the <ruby>筝<rt>そう</rt></ruby> (<em>sō</em>) with 13 strings.</p>
+              <figure>
+                <img loading='lazy' src='../img/koto.webp' alt='A koto' width="1980" height="247">
+              </figure>
+              <figcaption><small><a href="https://www.metmuseum.org/art/collection/search/505626">Metropolitan Museum of
+                    Art, Public domain</a></small></figcaption>
+            </dd>
+            <dt>Utagawa Kuniyoshi's <em>Hyakunin Isshu no Uchi</em></dt>
+            <dd class='thumb-image2'>
+              <figure class='portrait'>
+                <a href='../img/kuniyoshi_34_large.webp' data-lightbox='okikaze' data-title='Ukiyo-e by Utagawa Kuniyoshi'>
+                  <img loading='lazy' src='../img/kuniyoshi_34.webp' alt='Ukiyo-e of Fujiwara no Okikaze by Utagawa Kuniyoshi' width="480" height="714">
+                </a>
+                <figcaption><a
+                    href='https://commons.wikimedia.org/wiki/File:No_34_Fujiwara_no_Okikaze_(BM_1906,1220,0.1229).jpg' target="_blank" rel="noopener"><small>British
+                      Museum, Public domain, via Wikimedia Commons</small></a></figcaption>
+              </figure>
+              <div>
+                <p>This ukiyo-e is by Utagawa Kuniyoshi, an artist of the Edo period.<br class="br-pc"> It shows a scene that matches the poem in the Hyakunin Isshu.</p>
+              </div>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -313,7 +724,12 @@
   </footer>
   <!-- Footer end -->
 
-  <script src="../js/poems_en.js?20261007-04"></script>
+  <script src="../js/poems_en.js?20261008-01"></script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261008-35"></script>
+  <script src="../js/keizu-diagram.js?20261008-02"></script>
 
 </body>
 

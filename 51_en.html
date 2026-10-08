@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-08T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -94,6 +94,9 @@
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
   <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/showtooltips-red-lader.css">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -103,6 +106,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -278,6 +289,637 @@
       </dl>
     </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Fujiwara no Sanekata's Family Tree</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 51.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+              <li><span class="fk-legend__dash"></span>Adoption (<em>yōshi</em> / <em>yūshi</em>)</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Fujiwara no Sanekata's family tree">
+            <script type="application/json">
+{
+ "lang": "en",
+ "tooltips": "fujiwara",
+ "nodes": [
+  {
+   "id": "mototsune",
+   "n": "藤原基経",
+   "key": "基経",
+   "x": 16,
+   "y": 140
+  },
+  {
+   "id": "tokihira",
+   "n": "時平",
+   "x": 140,
+   "y": 40
+  },
+  {
+   "id": "tadahira",
+   "n": "貞信公",
+   "key": "忠平",
+   "p": 26,
+   "x": 140,
+   "y": 240
+  },
+  {
+   "id": "atsutada",
+   "n": "敦忠",
+   "p": 43,
+   "x": 273,
+   "y": 40
+  },
+  {
+   "id": "saneyori",
+   "n": "実頼",
+   "sub": "Ononomiya line",
+   "x": 273,
+   "y": 104
+  },
+  {
+   "id": "morosuke",
+   "n": "師輔",
+   "sub": "Kujō line",
+   "x": 273,
+   "y": 240
+  },
+  {
+   "id": "morotada",
+   "n": "師尹",
+   "sub": "Koichijō line",
+   "x": 273,
+   "y": 375
+  },
+  {
+   "id": "yoritada",
+   "n": "頼忠",
+   "x": 413,
+   "y": 84
+  },
+  {
+   "id": "tadatoshi",
+   "n": "斉敏",
+   "x": 413,
+   "y": 124
+  },
+  {
+   "id": "koretada",
+   "n": "謙徳公",
+   "key": "伊尹",
+   "p": 45,
+   "x": 413,
+   "y": 180
+  },
+  {
+   "id": "kaneie",
+   "n": "兼家",
+   "x": 413,
+   "y": 236
+  },
+  {
+   "id": "tamemitsu",
+   "n": "為光",
+   "x": 413,
+   "y": 300
+  },
+  {
+   "id": "sadatoki",
+   "n": "定時",
+   "x": 413,
+   "y": 350
+  },
+  {
+   "id": "naritoki",
+   "n": "済時",
+   "x": 413,
+   "y": 400
+  },
+  {
+   "id": "kinto",
+   "n": "公任",
+   "p": 55,
+   "x": 556,
+   "y": 84
+  },
+  {
+   "id": "sanesuke",
+   "n": "実資",
+   "x": 556,
+   "y": 124
+  },
+  {
+   "id": "yoshitaka",
+   "n": "義孝",
+   "p": 50,
+   "x": 556,
+   "y": 180
+  },
+  {
+   "id": "michinaga",
+   "n": "道長",
+   "x": 556,
+   "y": 236
+  },
+  {
+   "id": "michinobu",
+   "n": "道信",
+   "p": 52,
+   "x": 556,
+   "y": 300
+  },
+  {
+   "id": "sanekata",
+   "n": "実方",
+   "p": 51,
+   "x": 556,
+   "y": 350,
+   "self": 1
+  },
+  {
+   "id": "sadayori",
+   "n": "定頼",
+   "p": 64,
+   "x": 686,
+   "y": 84
+  },
+  {
+   "id": "yukinari",
+   "n": "行成",
+   "x": 686,
+   "y": 180
+  }
+ ],
+ "kids": [
+  {
+   "from": "mototsune",
+   "to": [
+    "tokihira",
+    "tadahira"
+   ]
+  },
+  {
+   "from": "tokihira",
+   "to": [
+    "atsutada"
+   ]
+  },
+  {
+   "from": "tadahira",
+   "to": [
+    "saneyori",
+    "morosuke",
+    "morotada"
+   ]
+  },
+  {
+   "from": "saneyori",
+   "to": [
+    "yoritada",
+    "tadatoshi"
+   ]
+  },
+  {
+   "from": "morosuke",
+   "to": [
+    "koretada",
+    "kaneie",
+    "tamemitsu"
+   ]
+  },
+  {
+   "from": "morotada",
+   "to": [
+    "sadatoki",
+    "naritoki"
+   ]
+  },
+  {
+   "from": "yoritada",
+   "to": [
+    "kinto"
+   ]
+  },
+  {
+   "from": "kinto",
+   "to": [
+    "sadayori"
+   ]
+  },
+  {
+   "from": "tadatoshi",
+   "to": [
+    "sanesuke"
+   ]
+  },
+  {
+   "from": "koretada",
+   "to": [
+    "yoshitaka"
+   ]
+  },
+  {
+   "from": "yoshitaka",
+   "to": [
+    "yukinari"
+   ]
+  },
+  {
+   "from": "kaneie",
+   "to": [
+    "michinaga"
+   ]
+  },
+  {
+   "from": "tamemitsu",
+   "to": [
+    "michinobu"
+   ]
+  },
+  {
+   "from": "sadatoki",
+   "to": [
+    "sanekata"
+   ]
+  }
+ ],
+ "lines": [
+  {
+   "points": [
+    [
+     399,
+     124
+    ],
+    [
+     399,
+     148
+    ],
+    [
+     571,
+     148
+    ],
+    [
+     571,
+     133
+    ]
+   ],
+   "dash": true,
+   "label": {
+    "text": "Adopted",
+    "x": 485,
+    "y": 142
+   }
+  },
+  {
+   "points": [
+    [
+     542,
+     180
+    ],
+    [
+     542,
+     204
+    ],
+    [
+     701,
+     204
+    ],
+    [
+     701,
+     189
+    ]
+   ],
+   "dash": true,
+   "label": {
+    "text": "Adopted (yūshi)",
+    "x": 747,
+    "y": 207
+   }
+  },
+  {
+   "points": [
+    [
+     542,
+     236
+    ],
+    [
+     542,
+     262
+    ],
+    [
+     571,
+     262
+    ],
+    [
+     571,
+     291
+    ]
+   ],
+   "dash": true,
+   "label": {
+    "text": "Adopted",
+    "x": 597,
+    "y": 272
+   }
+  },
+  {
+   "points": [
+    [
+     478,
+     400
+    ],
+    [
+     571,
+     400
+    ],
+    [
+     571,
+     359
+    ]
+   ],
+   "dash": true,
+   "label": {
+    "text": "Adopted",
+    "x": 524,
+    "y": 394
+   }
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 838 426" width="838" height="426" role="img" aria-label="Fujiwara no Sanekata's family tree" lang="en" class="fk-svg kd-svg" style="max-width:1257px;min-width:min(640px,1257px)" data-src="1fiud8v">
+<g class="fk-edges"><path d="M101 140H126" class="fk-edge"/><path d="M126 40V240" class="fk-edge"/><path d="M126 40H137" class="fk-edge"/><path d="M126 240H137" class="fk-edge"/><path d="M205 40H259" class="fk-edge"/><path d="M259 40H270" class="fk-edge"/><path d="M245 240H259" class="fk-edge"/><path d="M259 104V375" class="fk-edge"/><path d="M259 104H270" class="fk-edge"/><path d="M259 240H270" class="fk-edge"/><path d="M259 375H270" class="fk-edge"/><path d="M342 104H399" class="fk-edge"/><path d="M399 84V124" class="fk-edge"/><path d="M399 84H410" class="fk-edge"/><path d="M399 124H410" class="fk-edge"/><path d="M352 240H399" class="fk-edge"/><path d="M399 180V300" class="fk-edge"/><path d="M399 180H410" class="fk-edge"/><path d="M399 236H410" class="fk-edge"/><path d="M399 300H410" class="fk-edge"/><path d="M350 375H399" class="fk-edge"/><path d="M399 350V400" class="fk-edge"/><path d="M399 350H410" class="fk-edge"/><path d="M399 400H410" class="fk-edge"/><path d="M480 84H542" class="fk-edge"/><path d="M542 84H553" class="fk-edge"/><path d="M624 84H672" class="fk-edge"/><path d="M672 84H683" class="fk-edge"/><path d="M490 124H542" class="fk-edge"/><path d="M542 124H553" class="fk-edge"/><path d="M528 180H542" class="fk-edge"/><path d="M542 180H553" class="fk-edge"/><path d="M658 180H672" class="fk-edge"/><path d="M672 180H683" class="fk-edge"/><path d="M468 236H542" class="fk-edge"/><path d="M542 236H553" class="fk-edge"/><path d="M501 300H542" class="fk-edge"/><path d="M542 300H553" class="fk-edge"/><path d="M482 350H542" class="fk-edge"/><path d="M542 350H553" class="fk-edge"/><path d="M399 124L399 148L571 148L571 133" class="fk-edge is-dash"/><text class="fk-adopt" x="485" y="142">Adopted</text><path d="M542 180L542 204L701 204L701 189" class="fk-edge is-dash"/><text class="fk-adopt" x="747" y="207">Adopted (yūshi)</text><path d="M542 236L542 262L571 262L571 291" class="fk-edge is-dash"/><text class="fk-adopt" x="597" y="272">Adopted</text><path d="M478 400L571 400L571 359" class="fk-edge is-dash"/><text class="fk-adopt" x="524" y="394">Adopted</text></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node" transform="translate(16,140)" data-tip="&lt;h3&gt;Fujiwara no Mototsune&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;His birth father was Nagara; adopted by Yoshifusa&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;836–891&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Regent, Kampaku (chief adviser), and Chancellor of the Realm&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior First Rank; Senior First Rank after death&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In practice, the first Kampaku in history&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Imperial in-law: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Grandfather (on the mother's side) of Emperors Suzaku and Murakami (their mother was Fujiwara no Onshi)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="86" height="26"/><text class="fk-name" x="0" y="0.5">Mototsune</text></g></g>
+<g class="fk-node" transform="translate(140,40)" data-tip="&lt;h3&gt;Fujiwara no Tokihira&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;871–909&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Minister of the Left&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Second Rank; Senior First Rank after death&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Had Sugawara no Michizane sent away to Dazaifu in the Shōtai Incident&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="66" height="26"/><text class="fk-name" x="0" y="0.5">Tokihira</text></g></g>
+<g class="fk-node is-poet" transform="translate(140,240)" data-tip="&lt;h3&gt;Fujiwara no Tadahira&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Name after death: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Teishin-kō&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;880–949&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Regent and Kampaku (chief adviser)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior First Rank; Senior First Rank after death&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 26, &quot;Ogurayama...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Teishin-kō&lt;/span&gt;&lt;/div&gt;" data-p="26"><a href="/26_en.html" aria-label="Fujiwara no Tadahira (Hyakunin Isshu Poem 26)"><rect class="fk-hit" x="-2" y="-13" width="106" height="26"/><text class="fk-name" x="0" y="0.5">Teishin-kō</text><circle class="fk-badge" cx="92" cy="0" r="10"/><text class="fk-badge-num" x="92" y="0.5">26</text></a></g>
+<g class="fk-node is-poet" transform="translate(273,40)" data-tip="&lt;h3&gt;Fujiwara no Atsutada&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;906–943&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Acting Middle Counselor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Third Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 43, &quot;Aimite no...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Acting Middle Counselor Atsutada&lt;/span&gt;&lt;/div&gt;" data-p="43"><a href="/43_en.html" aria-label="Fujiwara no Atsutada (Hyakunin Isshu Poem 43)"><rect class="fk-hit" x="-2" y="-13" width="97" height="26"/><text class="fk-name" x="0" y="0.5">Atsutada</text><circle class="fk-badge" cx="83" cy="0" r="10"/><text class="fk-badge-num" x="83" y="0.5">43</text></a></g>
+<g class="fk-node" transform="translate(273,104)" data-tip="&lt;h3&gt;Fujiwara no Saneyori&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;900–970&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Regent and Kampaku (chief adviser)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior First Rank; Senior First Rank after death&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Founder of the Ononomiya line&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="70" height="26"/><text class="fk-name" x="0" y="0.5">Saneyori</text></g><rect class="fk-sub-box" x="0" y="11" width="99" height="16" rx="8"/><text class="fk-sub" x="49.5" y="19.5">Ononomiya line</text></g>
+<g class="fk-node" transform="translate(273,240)" data-tip="&lt;h3&gt;Fujiwara no Morosuke&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;909–960&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Minister of the Right&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Second Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Founder of the Kujō line&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Imperial in-law: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Grandfather (on the mother's side) of Emperors Reizei and En'yū&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="80" height="26"/><text class="fk-name" x="0" y="0.5">Morosuke</text></g><rect class="fk-sub-box" x="0" y="11" width="60" height="16" rx="8"/><text class="fk-sub" x="30" y="19.5">Kujō line</text></g>
+<g class="fk-node" transform="translate(273,375)" data-tip="&lt;h3&gt;Fujiwara no Morotada&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;920–969&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Minister of the Left&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Second Rank&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="78" height="26"/><text class="fk-name" x="0" y="0.5">Morotada</text></g><rect class="fk-sub-box" x="0" y="11" width="79" height="16" rx="8"/><text class="fk-sub" x="39.5" y="19.5">Koichijō line</text></g>
+<g class="fk-node" transform="translate(413,84)" data-tip="&lt;h3&gt;Fujiwara no Yoritada&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;924–989&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Kampaku (chief adviser) and Chancellor of the Realm&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior First Rank; Senior First Rank after death&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="68" height="26"/><text class="fk-name" x="0" y="0.5">Yoritada</text></g></g>
+<g class="fk-node" transform="translate(413,124)" data-tip="&lt;h3&gt;Fujiwara no Tadatoshi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;928–973&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Councillor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Third Rank&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="78" height="26"/><text class="fk-name" x="0" y="0.5">Tadatoshi</text></g></g>
+<g class="fk-node is-poet" transform="translate(413,180)" data-tip="&lt;h3&gt;Fujiwara no Koretada&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Name after death: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Kentoku-kō&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;924–972&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Regent and Chancellor of the Realm&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Second Rank; Senior First Rank after death&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 45, &quot;Aware tomo...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Kentoku-kō&lt;/span&gt;&lt;/div&gt;" data-p="45"><a href="/45_en.html" aria-label="Fujiwara no Koretada (Hyakunin Isshu Poem 45)"><rect class="fk-hit" x="-2" y="-13" width="116" height="26"/><text class="fk-name" x="0" y="0.5">Kentoku-kō</text><circle class="fk-badge" cx="102" cy="0" r="10"/><text class="fk-badge-num" x="102" y="0.5">45</text></a></g>
+<g class="fk-node" transform="translate(413,236)" data-tip="&lt;h3&gt;Fujiwara no Kaneie&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;929–990&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Regent, Kampaku (chief adviser), and Chancellor of the Realm&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior First Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Imperial in-law: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Grandfather (on the mother's side) of Emperor Ichijō&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="56" height="26"/><text class="fk-name" x="0" y="0.5">Kaneie</text></g></g>
+<g class="fk-node" transform="translate(413,300)" data-tip="&lt;h3&gt;Fujiwara no Tamemitsu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;942–992&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Chancellor of the Realm&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior First Rank; Senior First Rank after death&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="89" height="26"/><text class="fk-name" x="0" y="0.5">Tamemitsu</text></g></g>
+<g class="fk-node" transform="translate(413,350)" data-tip="&lt;h3&gt;Fujiwara no Sadatoki&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Chamberlain (Jijū)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Fifth Rank, Lower Grade&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="70" height="26"/><text class="fk-name" x="0" y="0.5">Sadatoki</text></g></g>
+<g class="fk-node" transform="translate(413,400)" data-tip="&lt;h3&gt;Fujiwara no Naritoki&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;941–995&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Upper Counselor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Second son of Fujiwara no Morotada&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;His elder brother Sadatoki died young, so he adopted Sadatoki's son Sanekata&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="67" height="26"/><text class="fk-name" x="0" y="0.5">Naritoki</text></g></g>
+<g class="fk-node is-poet" transform="translate(556,84)" data-tip="&lt;h3&gt;Fujiwara no Kintō&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;966–1041&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Acting Upper Counselor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Second Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 55, &quot;Taki no oto wa...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Upper Counselor Kintō. Known for his &quot;talent for three boats&quot; (gifted in Chinese poetry, waka, and music)&lt;/span&gt;&lt;/div&gt;" data-p="55"><a href="/55_en.html" aria-label="Fujiwara no Kintō (Hyakunin Isshu Poem 55)"><rect class="fk-hit" x="-2" y="-13" width="69" height="26"/><text class="fk-name" x="0" y="0.5">Kintō</text><circle class="fk-badge" cx="55" cy="0" r="10"/><text class="fk-badge-num" x="55" y="0.5">55</text></a></g>
+<g class="fk-node" transform="translate(556,124)" data-tip="&lt;h3&gt;Fujiwara no Sanesuke&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Fujiwara no Tadatoshi; adopted by his grandfather Saneyori&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;957–1046&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Minister of the Right&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior First Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Author of the diary Shōyūki&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="76" height="26"/><text class="fk-name" x="0" y="0.5">Sanesuke</text></g></g>
+<g class="fk-node is-poet" transform="translate(556,180)" data-tip="&lt;h3&gt;Fujiwara no Yoshitaka&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;954–974&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Minor Captain of the Right Palace Guards&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Fifth Rank, Lower Grade&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 50, &quot;Kimi ga tame oshikarazarishi...&quot;&lt;/span&gt;&lt;/div&gt;" data-p="50"><a href="/50_en.html" aria-label="Fujiwara no Yoshitaka (Hyakunin Isshu Poem 50)"><rect class="fk-hit" x="-2" y="-13" width="103" height="26"/><text class="fk-name" x="0" y="0.5">Yoshitaka</text><circle class="fk-badge" cx="89" cy="0" r="10"/><text class="fk-badge-num" x="89" y="0.5">50</text></a></g>
+<g class="fk-node" transform="translate(556,236)" data-tip="&lt;h3&gt;Fujiwara no Michinaga&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;966–1028&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Regent and Minister of the Left&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior First Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Imperial in-law: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Grandfather (on the mother's side) of Emperors Go-Ichijō, Go-Suzaku, and Go-Reizei&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="82" height="26"/><text class="fk-name" x="0" y="0.5">Michinaga</text></g></g>
+<g class="fk-node is-poet" transform="translate(556,300)" data-tip="&lt;h3&gt;Fujiwara no Michinobu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;972–994&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Middle Captain of the Left Palace Guards&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Fourth Rank, Upper Grade&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 52, &quot;Akenureba...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Fujiwara no Michinobu Ason&lt;/span&gt;&lt;/div&gt;" data-p="52"><a href="/52_en.html" aria-label="Fujiwara no Michinobu (Hyakunin Isshu Poem 52)"><rect class="fk-hit" x="-2" y="-13" width="107" height="26"/><text class="fk-name" x="0" y="0.5">Michinobu</text><circle class="fk-badge" cx="93" cy="0" r="10"/><text class="fk-badge-num" x="93" y="0.5">52</text></a></g>
+<g class="fk-node is-poet is-self" transform="translate(556,350)" data-tip="&lt;h3&gt;Fujiwara no Sanekata&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown–999&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Middle Captain of the Left Palace Guards&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Fourth Rank, Lower Grade&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 51, &quot;Kaku to dani...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Fujiwara no Sanekata Ason&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="104" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="98" height="26"/><text class="fk-name" x="0" y="0.5">Sanekata</text><circle class="fk-badge" cx="84" cy="0" r="10"/><text class="fk-badge-num" x="84" y="0.5">51</text></g></g>
+<g class="fk-node is-poet" transform="translate(686,84)" data-tip="&lt;h3&gt;Fujiwara no Sadayori&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;995–1045&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Acting Middle Counselor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Second Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 64, &quot;Asaborake Uji no kawagiri...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Acting Middle Counselor Sadayori&lt;/span&gt;&lt;/div&gt;" data-p="64"><a href="/64_en.html" aria-label="Fujiwara no Sadayori (Hyakunin Isshu Poem 64)"><rect class="fk-hit" x="-2" y="-13" width="93" height="26"/><text class="fk-name" x="0" y="0.5">Sadayori</text><circle class="fk-badge" cx="79" cy="0" r="10"/><text class="fk-badge-num" x="79" y="0.5">64</text></a></g>
+<g class="fk-node" transform="translate(686,180)" data-tip="&lt;h3&gt;Fujiwara no Yukinari&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;972–1028&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Acting Upper Counselor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Second Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;A master calligrapher, counted as one of the Three Great Calligraphers (Sanseki)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="67" height="26"/><text class="fk-name" x="0" y="0.5">Yukinari</text></g></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+          <div class="kd-text">
+            <p style="width:100%; margin-bottom:0.5em;">
+              Fujiwara no Sanekata was born into the Koichijō line of the Northern House of the Fujiwara. His grandfather Morotada played an important part in the Anna Incident and rose to Minister of the Left and Senior Second Rank. But Sanekata's father, Sadatoki, died young, so his final rank was only Junior Fifth Rank, Lower Grade. Because of his father's early death, Sanekata was adopted by his uncle, Fujiwara no Naritoki.
+            </p>
+            <p style="width:100%; margin-bottom:0.5em;">
+              Sanekata built a career as a military officer and was promoted to Junior Fourth Rank, Lower Grade, in 986. But in front of Emperor Ichijō, he quarreled with Fujiwara no Yukinari about a poem, and in anger he knocked Yukinari's cap (<em>eboshi</em>) to the ground. This angered the emperor, and it is said that in 995 Sanekata was sent away to be governor of Mutsu. He went down to Mutsu with <a href="/48_en.html">Minamoto no Shigeyuki</a>, but in 999 (the 4th year of Chōtoku) he fell from his horse there, was crushed under it, and died. His final rank was Senior Fourth Rank, Lower Grade.
+            </p>
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <dt>Possible Sites of the Poetic Place "Ibukiyama"</dt>
+            <dd>Two places have been suggested for the "Ibukiyama" that Heian poems describe as a place where mugwort grows: Mount Ibuki in Tochigi Prefecture, and Mount Ibuki on the border of Shiga and Gifu Prefectures.</dd>
+            <dt>Mount Ibuki (Tochigi Prefecture)</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/51_zenouji_large.webp' data-lightbox='sanekata' data-title='Mount Ibuki (Tochigi Prefecture)'>
+                  <img src='../img/51_zenouji.webp' alt='Mount Ibuki (Tochigi Prefecture)' width="640" height="479">
+                </a>
+                <figcaption>
+                  <small>
+                    <a href="https://www.flat-local.jp/play/zenouji/">
+                      ©Flat Local (a website supporting the Kita-Kantō border area)
+                    </a>
+                  </small>
+                </figcaption>
+              </figure>
+              <div>
+                <p>
+                  A range of hills in the Fukiage area of Tochigi City, Tochigi Prefecture.
+                </p>
+                <p>
+                  The <em>Dai Nihon Chimei Jisho</em> (Great Dictionary of Japanese Place Names, by Yoshida Tōgo, published by Fuzanbō) has an entry for "Ibukiyama." It quotes three poems, including Sanekata's, and explains: "As for Ibukiyama, Kenshō's <em>Shūchūshō</em> says that Nōin wrote in his <em>Kongengi</em>, 'This mountain is not the one on the border of Mino and Ōmi, but is in Shimotsuke.' The <em>Shōchi Tokaihen</em> also says that all the poems about <em>sashimogusa</em> refer to Shimotsuke."
+                </p>
+                <p>So the "Ibukiyama" in Sanekata's poem is thought to be the mountain in Tochigi Prefecture.</p>
+                <p><a class='no-decoration'
+                    href='utamakura_en.html?lat=36.413495521006666&lng=139.7134336618209&zoom=10'>See it on the map</a>
+                </p>
+              </div>
+            </dd>
+            <dt>Mount Ibuki (Border of Shiga and Gifu Prefectures)</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/ibukiyama_large.webp' data-lightbox='sanekata' data-title='Mount Ibuki on the border of Shiga and Gifu Prefectures'>
+                  <img src='../img/ibukiyama.webp' alt='Mount Ibuki (Shiga and Gifu Prefectures)' width="640" height="480">
+                </a>
+              </figure>
+              <div>
+                <p>Mount Ibuki, on the border of Shiga and Gifu Prefectures. It is close to the Heian capital and has long been known as a treasure house of medicinal herbs. But it is said to have become a source of mugwort only in the Edo period.<br>
+                  <a class='no-decoration' href='utamakura_en.html?lat=35.4179&lng=136.40651&zoom=20'>See it on the map</a>
+                </p>
+              </div>
+            </dd>
+            <dt>The Feud with Fujiwara no Yukinari</dt>
+            <dd>
+              Once, when courtiers went to see the cherry blossoms in Higashiyama, it began to rain.
+              While everyone hurried for cover, Fujiwara no Sanekata recited the next poem.
+              People praised it as elegant, but Yukinari remarked coldly, "The poem is charming, but Sanekata is a fool."
+              When Sanekata heard of this, he is said to have come to resent Yukinari.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>桜狩<rt>さくらがり</rt></ruby>
+                    <ruby>雨<rt>あめ</rt></ruby>は<ruby>降<rt>ふ</rt></ruby>りきぬ
+                    おなじくは
+                    <br><ruby>濡<rt>ぬ</rt></ruby>るとも<ruby>花<rt>はな</rt></ruby>の
+                    <ruby>蔭<rt>かげ</rt></ruby>に<ruby>隠<rt>かく</rt></ruby>れむ
+                    <span class="shutten"><em>Senjūshō</em>, Fujiwara no Sanekata</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p>We came to see the cherry blossoms, and now it has started to rain.<br> If we must get wet anyway, let's shelter under the blossoms.</p>
+                </q>
+              </div>
+            </dd>
+            <dt id="quarrel">A Big Quarrel over a Poem</dt>
+            <dd class='thumb-image2'>
+              <figure style="margin-bottom:0.75em;" class="image-overlay-container">
+                <img src="../img/51_yukinari.webp" alt="Fujiwara no Sanekata throwing down Fujiwara no Yukinari's cap" width="700" height="1080">
+                <div class="marker pulse" style="top: 43%; left: 86%;" onclick="showTooltip(this, 'Fujiwara no Yukinari')"></div>
+                <div class="marker pulse" style="top:24%; left: 33%;" onclick="showTooltip(this, 'Fujiwara no Sanekata')"></div>
+                <div class="marker pulse" style="top: 83%; left: 22%;" onclick="showTooltip(this, 'Fujiwara no Yukinari\'s cap (eboshi)')"></div>
+                <figcaption>
+                  <a href='https://commons.wikimedia.org/wiki/File:Kyod%C5%8D_risshi_no_motoi,_Dainagon_Yukinari.jpg'
+                    target='_blank' rel='noopener'>
+                    <small>Inoue Yasuji, Public domain, via Wikimedia Commons</small>
+                  </a>
+                </figcaption>
+              </figure>
+              <div>
+                <p style="margin-bottom:0.5em; margin-top:0; width:100%;">
+                  This ukiyo-e print is based on a famous story told in the <em>Kojidan</em>, a collection of old tales.
+                </p>
+                <p style="width:100%;">
+                  Fujiwara no Sanekata was furious when Fujiwara no Yukinari harshly criticized his poem about viewing blossoms in the rain. After an argument, he finally knocked Yukinari's cap (<em>eboshi</em>) off his head.
+                </p>
+                <p style="width:100%;">
+                  In those days, grown men wore their <em>eboshi</em> even when they slept, and showing the top of one's head was thought to be the worst kind of shame. It is said to have been even harder to bear than "having one's underwear pulled off" would be today.
+                </p>
+                <p style="width:100%;">
+                  This outrageous behavior became a problem at court.<br
+                    class="br-pc"> It is said that Emperor Ichijō told Sanekata, "Go and see the famous poetic places (and write poems about them)," and ordered him down to Mutsu Province.
+                </p>
+                <p style="width:100%; line-height:1.4;">
+                  <small>Click the red circles in the picture to see the names of the people and things.</small>
+                </p>
+              </div>
+            </dd>
+            <dt>Sanekata's Lover? A Poem by Sei Shōnagon</dt>
+            <dd>
+              <a href="/62_en.html">Sei Shōnagon</a> had many loves, and Fujiwara no Sanekata is said to have been one of her lovers. Once, when someone asked her, "Is it true that Sanekata is going down to Shimotsuke (today's Tochigi Prefecture)?" she wrote the next poem. Behind it, it seems, was a rumor that she would go with Sanekata when he took up his post in Shimotsuke.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>思<rt>おも</rt></ruby>ひだに
+                    かからぬ<ruby>山<rt>やま</rt></ruby>の
+                    させも<ruby>草<rt>くさ</rt></ruby>
+                    <br><ruby>誰<rt>たれ</rt></ruby>か<ruby>伊吹<rt>いぶき</rt></ruby>の
+                    <ruby>里<rt>さと</rt></ruby>は<ruby>告<rt>つ</rt></ruby>げしぞ
+                    <span class="shutten"><em>The Pillow Book</em>, Sei Shōnagon</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p>I never even thought of it. Like the mugwort of the village of Ibuki, who could have "told" (<em>ifu</em>) you such a thing?</p>
+                </q>
+              </div>
+            </dd>
+            <dt>Izumi Shikibu's Poem Borrowing from Sanekata</dt>
+            <dd>
+              The next poem is by <a href="/56_en.html">Izumi Shikibu</a>, who borrowed from Sanekata's Hyakunin Isshu poem (<em>honkadori</em>). Sanekata's original pours out his overflowing love directly, while Izumi Shikibu writes with a generous heart, ready to keep a fire burning inside until the one she loves turns to her.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    けふもまた
+                    かくや<ruby>伊吹<rt>いぶき</rt></ruby>の
+                    さしも<ruby>草<rt>ぐさ</rt></ruby>
+                    <br>さらば<ruby>我<rt>われ</rt></ruby>のみ
+                    <ruby>燃<rt>も</rt></ruby>えや<ruby>渡<rt>わた</rt></ruby>らむ
+                    <span class="shutten"><em>Shin Kokin Wakashū</em>, Izumi Shikibu</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p>Will you say such cold things again today?<br class="br-pc"> Then I alone will keep burning, like the mugwort of Ibuki.</p>
+                </q>
+              </div>
+            </dd>
+            <dt>A Farewell Poem from Prince Okisada</dt>
+            <dd>
+              The next poem was sent to Sanekata by <a href="/68_en.html">Prince Okisada (later Emperor Sanjō)</a> when Sanekata was leaving for Mutsu.<br
+                class="br-pc"> It suggests that Sanekata was someone the prince trusted.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    わかれぢの
+                    <ruby>涙<rt>なみだ</rt></ruby>に<ruby>袖<rt>そで</rt></ruby>も
+                    さそはれて
+                    <br>いかなる<ruby>道<rt>みち</rt></ruby>に
+                    とまらざるらむ
+                    <span class="shutten"><em>Sanekata-shū</em>, Prince Okisada</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p>My sleeves are wet with tears of parting, and the tears do not seem to stop.<br class="br-pc"> What road are you taking, that you will not stay in the capital?</p>
+                </q>
+              </div>
+            </dd>
+            <dt>The Grave of Fujiwara no Sanekata</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/sanekata_tomb_large.webp' data-lightbox='sanekata' data-title='The grave of Fujiwara no Sanekata'>
+                  <img src='../img/sanekata_tomb.webp' alt='The grave of Fujiwara no Sanekata' width="640" height="480">
+                </a>
+                <figcaption>
+                  <a
+                    href="https://commons.wikimedia.org/wiki/File:Tomb_of_Fujiwara-no-Sanekata(also_known_as_%22Sanekata-chuujyou%22).JPG" target="_blank" rel="noopener"><small>Bachstelze,
+                      CC BY-SA 3.0 &lt;https://creativecommons.org/licenses/by-sa/3.0&gt;, via Wikimedia Commons</small></a>
+                </figcaption>
+              </figure>
+              <div>
+                <p>
+                  The grave of Fujiwara no Sanekata is in Natori City, Miyagi Prefecture. While on his way to visit the "Pine of Akoya," a famous poetic place in Dewa Province, he tried to ride past the Kasashima Dōsojin shrine without getting off his horse.
+                </p>
+                <p>
+                  Local people warned him to get off his horse and pray, to avoid the god's anger, but Sanekata ignored them and rode on. Suddenly his horse went wild, and Sanekata fell. It is said that, by bad luck, he was crushed under the horse and died.
+                </p>
+                <p>
+                  Near the grave there is a stone carved with a poem by the priest Saigyō.
+                </p>
+              </div>
+            </dd>
+            <dt>Saigyō's Poem Mourning Sanekata</dt>
+            <dd>This is the poem that <a href="/86_en.html">Saigyō</a> wrote when he visited Sanekata's grave.
+              <div class='quote'>
+                <q class="quote-ja" style="line-height:1.8; position:relative;">
+                  <img src="/img/susuki.gif" alt="Japanese pampas grass (susuki)"
+                    style="position:absolute; width:60px; height:auto; right:10px; bottom:1.8em;" width="130" height="200">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p style="letter-spacing:-0.5px">
+                    <ruby>朽<rt>く</rt></ruby>ちもせぬ
+                    その<ruby>名<rt>な</rt></ruby>ばかりを
+                    <br class="br-sp"><ruby>留<rt>とど</rt></ruby>め<ruby>置<rt>お</rt></ruby>きて
+                    <br class="br-pc"><ruby>枯野<rt>かれの</rt></ruby>のすすき
+                    <br class="br-sp"><ruby>形見<rt>かたみ</rt></ruby>にぞ見る
+                    <span class="shutten"><em>Shin Kokin Wakashū</em>, Saigyō</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p>He left behind only a name that will never decay, and lies buried here;<br class="br-pc"> all I can see as a keepsake of him is the pampas grass of this withered field.</p>
+                </q>
+              </div>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -287,6 +929,7 @@
           <a class="da-link-btn" href="diagram_archtecture_en.html">Relationship Diagram</a>
           <a class="kt-link-btn" href="karuta-taisen-pro_en.html">Competitive Karuta Game</a>
           <a class="kts-link-btn" href="karuta-taisen_en.html">Online Karuta Battle</a>
+          <a class="kg-link-btn" href="kakekotoba-game-051_en.html"><span class="kg-link-btn-inner"><span class="kg-link-btn-face kg-link-btn-front">Spin &amp; Discover Kakekotoba!</span><span class="kg-link-btn-face kg-link-btn-back">Spin &amp; Discover Kakekotoba!</span></span></a>
         </dd>
       </dl>
     </div>
@@ -308,7 +951,13 @@
   </footer>
   <!-- Footer end -->
 
-  <script src="../js/poems_en.js?20261007-04"></script>
+  <script src="../js/poems_en.js?20261008-01"></script>
+  <script src="js/showtooltip.js"></script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261008-35"></script>
+  <script src="../js/keizu-diagram.js?20261008-02"></script>
 
 </body>
 

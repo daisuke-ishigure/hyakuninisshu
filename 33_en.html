@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-08T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -94,6 +94,8 @@
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
   <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -103,6 +105,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -284,6 +294,408 @@
       </dl>
     </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Ki no Tomonori's Family Tree</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 33.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__tenno">Brown text</span>Emperor</li>
+              <li><span class="fk-legend__tno" aria-hidden="true"></span>Emperor's number in the line of succession</li>
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+              <li><span class="fk-legend__eq">＝</span>Marriage</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Ki no Tomonori's family tree">
+            <script type="application/json">
+{
+ "lang": "en",
+ "tooltips": "fujiwara",
+ "nodes": [
+  {
+   "id": "katsunaga",
+   "n": "紀勝長",
+   "x": 16,
+   "y": 150
+  },
+  {
+   "id": "okimichi",
+   "n": "紀興道",
+   "x": 167,
+   "y": 70
+  },
+  {
+   "id": "natora",
+   "n": "紀名虎",
+   "x": 167,
+   "y": 238
+  },
+  {
+   "id": "motomichi",
+   "n": "紀本道",
+   "x": 305,
+   "y": 70
+  },
+  {
+   "id": "fujimaro",
+   "n": "藤原富士麻呂",
+   "key": "富士麻呂",
+   "x": 305,
+   "y": 150
+  },
+  {
+   "id": "natorajo",
+   "n": "名虎の娘",
+   "x": 305,
+   "y": 194
+  },
+  {
+   "id": "aritsune",
+   "n": "紀有常",
+   "x": 305,
+   "y": 282
+  },
+  {
+   "id": "aritomo",
+   "n": "紀有友",
+   "x": 473,
+   "y": 56
+  },
+  {
+   "id": "mochiyuki",
+   "n": "紀望行",
+   "x": 473,
+   "y": 100
+  },
+  {
+   "id": "toshiyuki",
+   "n": "藤原敏行",
+   "key": "敏行",
+   "p": 18,
+   "x": 473,
+   "y": 172
+  },
+  {
+   "id": "aritsunejo1",
+   "n": "有常の娘",
+   "x": 473,
+   "y": 216
+  },
+  {
+   "id": "aritsunejo2",
+   "n": "有常の娘",
+   "x": 473,
+   "y": 270
+  },
+  {
+   "id": "narihira",
+   "n": "在原業平",
+   "p": 17,
+   "x": 473,
+   "y": 314
+  },
+  {
+   "id": "tomonori",
+   "n": "紀友則",
+   "p": 33,
+   "x": 652,
+   "y": 56,
+   "self": 1
+  },
+  {
+   "id": "tsurayuki",
+   "n": "紀貫之",
+   "p": 35,
+   "x": 652,
+   "y": 100
+  },
+  {
+   "id": "mitsune",
+   "n": "凡河内躬恒",
+   "p": 29,
+   "x": 652,
+   "y": 144
+  },
+  {
+   "id": "tadamine",
+   "n": "壬生忠岑",
+   "p": 30,
+   "x": 652,
+   "y": 188
+  },
+  {
+   "id": "daigo",
+   "n": "醍醐",
+   "k": 1,
+   "t": 60,
+   "x": 1082,
+   "y": 136
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-fujimaro",
+   "top": "fujimaro",
+   "bottom": "natorajo"
+  },
+  {
+   "id": "c-toshiyuki",
+   "top": "toshiyuki",
+   "bottom": "aritsunejo1"
+  },
+  {
+   "id": "c-narihira",
+   "top": "aritsunejo2",
+   "bottom": "narihira"
+  }
+ ],
+ "kids": [
+  {
+   "from": "katsunaga",
+   "to": [
+    "okimichi",
+    "natora"
+   ]
+  },
+  {
+   "from": "okimichi",
+   "to": [
+    "motomichi"
+   ]
+  },
+  {
+   "from": "natora",
+   "to": [
+    "natorajo",
+    "aritsune"
+   ]
+  },
+  {
+   "from": "motomichi",
+   "to": [
+    "aritomo",
+    "mochiyuki"
+   ]
+  },
+  {
+   "from": "c-fujimaro",
+   "to": [
+    "toshiyuki"
+   ]
+  },
+  {
+   "from": "aritsune",
+   "to": [
+    "aritsunejo1",
+    "aritsunejo2"
+   ]
+  },
+  {
+   "from": "aritomo",
+   "to": [
+    "tomonori"
+   ]
+  },
+  {
+   "from": "mochiyuki",
+   "to": [
+    "tsurayuki"
+   ]
+  }
+ ],
+ "groups": [
+  {
+   "points": [
+    [
+     638,
+     38
+    ],
+    [
+     852,
+     38
+    ],
+    [
+     852,
+     234
+    ],
+    [
+     638,
+     234
+    ]
+   ],
+   "label": {
+    "text": "Compilers of the Kokin Wakashū",
+    "x": 646,
+    "y": 219
+   }
+  }
+ ],
+ "arrows": [
+  {
+   "points": [
+    [
+     1078,
+     136
+    ],
+    [
+     855,
+     136
+    ]
+   ],
+   "label": {
+    "text": "Ordered the Kokin Wakashū",
+    "x": 876,
+    "y": 124
+   }
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1192 340" width="1192" height="340" role="img" aria-label="Ki no Tomonori's family tree" lang="en" class="fk-svg kd-svg" style="max-width:1788px;min-width:min(640px,1788px)" data-src="1h8153d">
+<g class="kd-groups"><path d="M638 38L852 38L852 234L638 234Z" class="kd-group"/><text class="kd-group-label" x="646" y="219">Compilers of the Kokin Wakashū</text></g>
+<g class="fk-edges"><path d="M336.5 159V185M340.5 159V185" class="fk-edge fk-eq"/><path d="M507 181V207M511 181V207" class="fk-edge fk-eq"/><path d="M545.5 279V305M549.5 279V305" class="fk-edge fk-eq"/><path d="M141 150H153" class="fk-edge"/><path d="M153 70V238" class="fk-edge"/><path d="M153 70H164" class="fk-edge"/><path d="M153 238H164" class="fk-edge"/><path d="M279 70H291" class="fk-edge"/><path d="M291 70H302" class="fk-edge"/><path d="M265 238H291" class="fk-edge"/><path d="M291 194V282" class="fk-edge"/><path d="M291 194H302" class="fk-edge"/><path d="M291 282H302" class="fk-edge"/><path d="M430 70H459" class="fk-edge"/><path d="M459 56V100" class="fk-edge"/><path d="M459 56H470" class="fk-edge"/><path d="M459 100H470" class="fk-edge"/><path d="M340.5 172H459" class="fk-edge"/><path d="M459 172H470" class="fk-edge"/><path d="M414 282H459" class="fk-edge"/><path d="M459 216V282" class="fk-edge"/><path d="M459 216H470" class="fk-edge"/><path d="M459 270H470" class="fk-edge"/><path d="M579 56H638" class="fk-edge"/><path d="M638 56H649" class="fk-edge"/><path d="M595 100H638" class="fk-edge"/><path d="M638 100H649" class="fk-edge"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"><path d="M1078 136L855 136" class="kd-arrow" marker-end="url(#kdArrowHead)"/><text class="kd-arrow-label" x="876" y="124">Ordered the Kokin Wakashū</text></g>
+<g>
+<g class="fk-node" transform="translate(16,150)" data-tip="&lt;h3&gt;Ki no Katsunaga&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Middle Counselor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Ki no Okimichi and Ki no Natora&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="126" height="26"/><text class="fk-name" x="0" y="0.5">Ki no Katsunaga</text></g></g>
+<g class="fk-node" transform="translate(167,70)" data-tip="&lt;h3&gt;Ki no Okimichi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown–834&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ki no Katsunaga&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Ki no Motomichi&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="113" height="26"/><text class="fk-name" x="0" y="0.5">Ki no Okimichi</text></g></g>
+<g class="fk-node" transform="translate(167,238)" data-tip="&lt;h3&gt;Ki no Natora&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Minister of Justice&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ki no Katsunaga&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Ki no Aritsune. His daughter was Fujiwara no Fujimaro's wife and Fujiwara no Toshiyuki's mother&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="99" height="26"/><text class="fk-name" x="0" y="0.5">Ki no Natora</text></g></g>
+<g class="fk-node" transform="translate(305,70)" data-tip="&lt;h3&gt;Ki no Motomichi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Governor of Shimotsuke&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ki no Okimichi&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Ki no Aritomo and Ki no Mochiyuki; Ki no Tsurayuki's grandfather&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="126" height="26"/><text class="fk-name" x="0" y="0.5">Ki no Motomichi</text></g></g>
+<g class="fk-node" transform="translate(305,150)" data-tip="&lt;h3&gt;Fujiwara no Fujimaro&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;804–850&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Inspector of Mutsu and Dewa&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Fourth Rank, Lower Grade&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="71" height="26"/><text class="fk-name" x="0" y="0.5">Fujimaro</text></g></g>
+<g class="fk-node" transform="translate(305,194)" data-tip="&lt;h3&gt;Daughter of Ki no Natora&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Fujiwara no Fujimaro's wife and Fujiwara no Toshiyuki's mother&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="142" height="26"/><text class="fk-name" x="0" y="0.5">Natora's daughter</text></g></g>
+<g class="fk-node" transform="translate(305,282)" data-tip="&lt;h3&gt;Ki no Aritsune&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;815–877&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ki no Natora&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;His daughters became the wives of Ariwara no Narihira and Fujiwara no Toshiyuki&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="110" height="26"/><text class="fk-name" x="0" y="0.5">Ki no Aritsune</text></g></g>
+<g class="fk-node" transform="translate(473,56)" data-tip="&lt;h3&gt;Ki no Aritomo&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown–880&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ki no Motomichi (some records say son of Ki no Okimichi)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Ki no Tomonori&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="107" height="26"/><text class="fk-name" x="0" y="0.5">Ki no Aritomo</text></g></g>
+<g class="fk-node" transform="translate(473,100)" data-tip="&lt;h3&gt;Ki no Mochiyuki&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ki no Motomichi&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Ki no Tsurayuki&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="123" height="26"/><text class="fk-name" x="0" y="0.5">Ki no Mochiyuki</text></g></g>
+<g class="fk-node is-poet" transform="translate(473,172)" data-tip="&lt;h3&gt;Fujiwara no Toshiyuki&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown–901&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Commander of the Right Military Guards&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Fourth Rank, Upper Grade&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 18, &quot;Suminoe no...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Fujiwara no Toshiyuki Ason&lt;/span&gt;&lt;/div&gt;" data-p="18"><a href="/18_en.html" aria-label="Fujiwara no Toshiyuki (Hyakunin Isshu Poem 18)"><rect class="fk-hit" x="-2" y="-13" width="100" height="26"/><text class="fk-name" x="0" y="0.5">Toshiyuki</text><circle class="fk-badge" cx="86" cy="0" r="10"/><text class="fk-badge-num" x="86" y="0.5">18</text></a></g>
+<g class="fk-node" transform="translate(473,216)" data-tip="&lt;h3&gt;Daughter of Ki no Aritsune&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Two sisters became the wives of Fujiwara no Toshiyuki and Ariwara no Narihira&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="154" height="26"/><text class="fk-name" x="0" y="0.5">Aritsune's daughter</text></g></g>
+<g class="fk-node" transform="translate(473,270)" data-tip="&lt;h3&gt;Daughter of Ki no Aritsune&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Two sisters became the wives of Fujiwara no Toshiyuki and Ariwara no Narihira&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="154" height="26"/><text class="fk-name" x="0" y="0.5">Aritsune's daughter</text></g></g>
+<g class="fk-node is-poet" transform="translate(473,314)" data-tip="&lt;h3&gt;Ariwara no Narihira&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;825–880&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Fourth Rank, Upper Grade&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 17, &quot;Chihayaburu...&quot;&lt;/span&gt;&lt;/div&gt;" data-p="17"><a href="/17_en.html" aria-label="Ariwara no Narihira (Hyakunin Isshu Poem 17)"><rect class="fk-hit" x="-2" y="-13" width="177" height="26"/><text class="fk-name" x="0" y="0.5">Ariwara no Narihira</text><circle class="fk-badge" cx="163" cy="0" r="10"/><text class="fk-badge-num" x="163" y="0.5">17</text></a></g>
+<g class="fk-node is-poet is-self" transform="translate(652,56)" data-tip="&lt;h3&gt;Ki no Tomonori&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ki no Aritomo; cousin of Ki no Tsurayuki&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 33, &quot;Hisakata no...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;One of the compilers of the Kokin Wakashū with Ki no Tsurayuki and Mibu no Tadamine, but he died before it was finished&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="148" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="142" height="26"/><text class="fk-name" x="0" y="0.5">Ki no Tomonori</text><circle class="fk-badge" cx="128" cy="0" r="10"/><text class="fk-badge-num" x="128" y="0.5">33</text></g></g>
+<g class="fk-node is-poet" transform="translate(652,100)" data-tip="&lt;h3&gt;Ki no Tsurayuki&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Fifth Rank, Upper Grade&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ki no Mochiyuki; cousin of Ki no Tomonori&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 35, &quot;Hito wa isa...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;A compiler of the Kokin Wakashū, who wrote its Japanese preface. After serving as Governor of Tosa, he wrote the Tosa Diary&lt;/span&gt;&lt;/div&gt;" data-p="35"><a href="/35_en.html" aria-label="Ki no Tsurayuki (Hyakunin Isshu Poem 35)"><rect class="fk-hit" x="-2" y="-13" width="144" height="26"/><text class="fk-name" x="0" y="0.5">Ki no Tsurayuki</text><circle class="fk-badge" cx="130" cy="0" r="10"/><text class="fk-badge-num" x="130" y="0.5">35</text></a></g>
+<g class="fk-node is-poet" transform="translate(652,144)" data-tip="&lt;h3&gt;Ōshikōchi no Mitsune&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;c. 859–c. 925&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Held a series of provincial posts, such as Acting Junior Clerk of Kai, Acting Senior Clerk of Tanba, Acting Secretary of Izumi, and Acting Secretary of Awaji&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ōshikōchi no 諶利 (his family line is also said to be unknown)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 29, &quot;Kokoroate ni...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;One of the compilers of the Kokin Wakashū. He was a close friend of Ki no Tsurayuki and visited the house of Fujiwara no Kanesuke, who supported him&lt;/span&gt;&lt;/div&gt;" data-p="29"><a href="/29_en.html" aria-label="Ōshikōchi no Mitsune (Hyakunin Isshu Poem 29)"><rect class="fk-hit" x="-2" y="-13" width="191" height="26"/><text class="fk-name" x="0" y="0.5">Ōshikōchi no Mitsune</text><circle class="fk-badge" cx="177" cy="0" r="10"/><text class="fk-badge-num" x="177" y="0.5">29</text></a></g>
+<g class="fk-node is-poet" transform="translate(652,188)" data-tip="&lt;h3&gt;Mibu no Tadamine&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;c. 860–c. 920&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior officer of the Right Gate Guards; he is also said to have served as Acting Senior Clerk of Settsu, among other posts&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Mibu no Tadami&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 30, &quot;Ariake no...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;One of the compilers of the Kokin Wakashū, and the lowest in rank among them. The Tales of Yamato says he was a bodyguard of Fujiwara no Sadakuni&lt;/span&gt;&lt;/div&gt;" data-p="30"><a href="/30_en.html" aria-label="Mibu no Tadamine (Hyakunin Isshu Poem 30)"><rect class="fk-hit" x="-2" y="-13" width="167" height="26"/><text class="fk-name" x="0" y="0.5">Mibu no Tadamine</text><circle class="fk-badge" cx="153" cy="0" r="10"/><text class="fk-badge-num" x="153" y="0.5">30</text></a></g>
+<g class="fk-node is-tenno" transform="translate(1082,136)" data-tip="&lt;h3&gt;Emperor Daigo&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;60th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;885–930&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;897–930&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Ordered the compiling of the Kokin Wakashū&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="48" height="26"/><text class="fk-name" x="0" y="0.5">Daigo</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">60</text></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+          <div class="kd-text">
+            <p style="width:100%; margin-bottom: 0.75em;">
+              Ki no Tomonori was a cousin of <a href="/35_en.html">Ki no Tsurayuki</a>.<br> At the order of Emperor Daigo, Ki no Tomonori, Ki no Tsurayuki, Mibu no Tadamine, and Ōshikōchi no Mitsune served as the compilers of the <em>Kokin Wakashū</em>, but Tomonori died while it was still being compiled.
+            </p>
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <dt>A Poem About Plum Blossoms</dt>
+            <dd>
+              Ki no Tomonori is famous for his Hyakunin Isshu poem about cherry blossoms, but he also wrote about plum blossoms.
+              <br class="br-pc"> The headnote in the <em>Kokin Wakashū</em> says, "Written when he broke off a branch of plum blossoms and sent it to someone."
+              <div class='quote'><q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>君<rt>きみ</rt></ruby>ならで
+                  <ruby>誰<rt>たれ</rt></ruby>に<ruby>見<rt>み</rt></ruby>せむ
+                  <ruby>梅<rt>うめ</rt></ruby>の<ruby>花<rt>はな</rt></ruby>
+                  <br><ruby>色<rt>いろ</rt></ruby>をも<ruby>香<rt>か</rt></ruby>をも
+                  <ruby>知<rt>し</rt></ruby>る<ruby>人<rt>ひと</rt></ruby>ぞ<ruby>知<rt>し</rt></ruby>る
+                  <span class="shutten"><em>Kokin Wakashū</em>, Ki no Tomonori</span>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">
+                    Who else but you should I show these plum blossoms to?
+                    <br class="br-pc"> Only you truly know the beauty of both their color and their scent.
+                  </p>
+                </q>
+              </div>
+            </dd>
+            <dt>A Poem About the Coming of Autumn</dt>
+            <dd>
+              Ki no Tomonori wrote this poem based on the following Chinese story. Su Wu, an envoy of the Han dynasty, was held captive for a long time by the Xiongnu. The Xiongnu insisted that Su Wu was dead, but he tied a letter to the leg of a wild goose and let it fly, and the goose carried the letter to the capital, so he was able to return home safely.
+              <div class='quote'>
+                <q class="quote-ja" style="position:relative;">
+                  <img src="/img/kari.gif?02" alt="A wild goose"
+                    style="position:absolute; width:70px; height:auto; right:5px; top:7px;" width="150" height="94">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>秋風<rt>あきかぜ</rt></ruby>に
+                  <ruby>初雁<rt>はつかり</rt></ruby>が<ruby>音<rt>ね</rt></ruby>ぞ
+                  <ruby>聞<rt>き</rt></ruby>こゆなる
+                  <br><ruby>誰<rt>た</rt></ruby>がたまづさを
+                  かけて<ruby>来<rt>き</rt></ruby>つらむ
+                  <span class="shutten"><em>Kokin Wakashū</em>, Ki no Tomonori</span>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">
+                    On the autumn wind I hear the cries of the first wild geese.<br class="br-pc"> Whose letter have they brought with them?
+                  </p>
+                </q>
+              </div>
+            </dd>
+
+            <dt>Ki no Tsurayuki's Poem Mourning<br class="br-sp"> Tomonori's Early Death</dt>
+            <dd>
+              Ki no Tomonori died while the <em>Kokin Wakashū</em> was still being compiled. His cousin Ki no Tsurayuki, grieving his death that came far too soon, wrote the next poem.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>明日<rt>あす</rt></ruby><ruby>知<rt>し</rt></ruby>らぬ
+                    <ruby>我<rt>わ</rt></ruby>が<ruby>身<rt>み</rt></ruby>と<ruby>思<rt>おも</rt></ruby>へど <br class="br-sp">
+                    <ruby>暮<rt>く</rt></ruby>れぬ<ruby>間<rt>ま</rt></ruby>の
+                    <br class="br-pc">
+                    <ruby>今日<rt>きょう</rt></ruby>は<ruby>人<rt>ひと</rt></ruby>こそ <br class="br-sp">
+                    かなしかりけれ
+                  </p>
+                  <span class="shutten"><em>Kokin Wakashū</em>, Ki no Tsurayuki</span>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">
+                    I do not know if I myself will live to see tomorrow, but today, while I am still alive, I cannot stop grieving for him.
+                  </p>
+                </q>
+              </div>
+            </dd>
+
+            <dt>Utagawa Kuniyoshi's <em>Hyakunin Isshu no Uchi</em></dt>
+            <dd class='thumb-image2'>
+              <figure class='portrait'>
+                <a href='../img/kuniyoshi_33_large.webp' data-lightbox='tomonori' data-title='Ukiyo-e by Utagawa Kuniyoshi'>
+                  <img loading='lazy' src='../img/kuniyoshi_33.webp' alt='Ki no Tomonori, from Hyakunin Isshu no Uchi by Utagawa Kuniyoshi' width="480" height="705">
+                </a>
+                <figcaption><small><a
+                      href='https://commons.wikimedia.org/wiki/File:Ki_no_Tomomori_(no._33)_%E7%B4%80%E5%8F%8B%E5%89%87_(BM_2008,3037.10622).jpg' target="_blank" rel="noopener">British
+                      Museum, Public domain, via Wikimedia Commons</a></small></figcaption>
+              </figure>
+              <div>
+                <p>This ukiyo-e is by Utagawa Kuniyoshi, an artist of the Edo period.<br class="br-pc"> It shows a scene that matches the poem in the Hyakunin Isshu.</p>
+              </div>
+            </dd>
+
+            <dt>The Kana Preface (<em>Kanajo</em>)</dt>
+            <dd>The preface to the <em>Kokin Wakashū</em> written in kana (the Japanese syllabary), as opposed to the preface written in Chinese.</dd>
+            <dt>Changing Tastes in Flowers</dt>
+            <dd>Until the Nara period, plum blossoms were the most popular, but from the Heian period on, cherry blossoms became more popular.</dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -315,7 +727,12 @@
   </footer>
   <!-- Footer end -->
 
-  <script src="../js/poems_en.js?20261007-04"></script>
+  <script src="../js/poems_en.js?20261008-01"></script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261008-35"></script>
+  <script src="../js/keizu-diagram.js?20261008-02"></script>
 
 </body>
 

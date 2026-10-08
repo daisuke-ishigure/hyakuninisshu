@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-08T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -94,6 +94,8 @@
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
   <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -103,6 +105,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -284,6 +294,196 @@
       </dl>
     </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Sakanoue no Korenori's Family Tree</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 31.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Sakanoue no Korenori's family tree">
+            <script type="application/json">
+{
+ "lang": "en",
+ "nodes": [
+  {
+   "id": "tamuramaro",
+   "n": "坂上田村麻呂",
+   "x": 16,
+   "y": 40
+  },
+  {
+   "id": "kiyono",
+   "n": "坂上浄野",
+   "x": 166,
+   "y": 40
+  },
+  {
+   "id": "masamichi",
+   "n": "坂上当道",
+   "x": 316,
+   "y": 40
+  },
+  {
+   "id": "yoshikage",
+   "n": "坂上好蔭",
+   "x": 466,
+   "y": 40
+  },
+  {
+   "id": "korenori",
+   "n": "坂上是則",
+   "p": 31,
+   "self": 1,
+   "sub": "Played kemari before Emperor Daigo and was given silk",
+   "x": 616,
+   "y": 40
+  }
+ ],
+ "kids": [
+  {
+   "from": "tamuramaro",
+   "to": [
+    "kiyono"
+   ]
+  },
+  {
+   "from": "kiyono",
+   "to": [
+    "masamichi"
+   ]
+  },
+  {
+   "from": "masamichi",
+   "to": [
+    "yoshikage"
+   ]
+  },
+  {
+   "from": "yoshikage",
+   "to": [
+    "korenori"
+   ]
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 949 80" width="949" height="80" role="img" aria-label="Sakanoue no Korenori's family tree" lang="en" class="fk-svg kd-svg" style="max-width:1424px;min-width:min(640px,1424px)" data-src="rnhmn4">
+<g class="fk-edges"><path d="M117 40H152" class="fk-edge"/><path d="M152 40H163" class="fk-edge"/><path d="M221 40H302" class="fk-edge"/><path d="M302 40H313" class="fk-edge"/><path d="M400 40H452" class="fk-edge"/><path d="M452 40H463" class="fk-edge"/><path d="M547 40H602" class="fk-edge"/><path d="M602 40H613" class="fk-edge"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node" transform="translate(16,40)" data-tip="&lt;h3&gt;Sakanoue no Tamuramaro&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Upper Counselor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Seii Taishōgun (shogun, commander of the campaigns against the Emishi)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="102" height="26"/><text class="fk-name" x="0" y="0.5">Tamuramaro</text></g></g>
+<g class="fk-node" transform="translate(166,40)" data-tip="&lt;h3&gt;Sakanoue no Kiyono&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Sakanoue no Tamuramaro&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Sakanoue no Masamichi (some say Masamichi's father was Sakanoue no Hirono)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="56" height="26"/><text class="fk-name" x="0" y="0.5">Kiyono</text></g></g>
+<g class="fk-node" transform="translate(316,40)" data-tip="&lt;h3&gt;Sakanoue no Masamichi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;813–867&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Governor of Mutsu&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Third son of Sakanoue no Kiyono (some say a son of Sakanoue no Hirono)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="85" height="26"/><text class="fk-name" x="0" y="0.5">Masamichi</text></g></g>
+<g class="fk-node" transform="translate(466,40)" data-tip="&lt;h3&gt;Sakanoue no Yoshikage&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Director of the Right Horse Bureau&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Sakanoue no Masamichi&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Sakanoue no Korenori&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="82" height="26"/><text class="fk-name" x="0" y="0.5">Yoshikage</text></g></g>
+<g class="fk-node is-poet is-self" transform="translate(616,40)" data-tip="&lt;h3&gt;Sakanoue no Korenori&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown–930&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Sakanoue no Yoshikage&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 31, &quot;Asaborake ariake no tsuki to...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In 905, at a game of kemari (court football) before Emperor Daigo, he kicked the ball 206 times in a row without letting it fall and was given silk&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="200" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="194" height="26"/><text class="fk-name" x="0" y="0.5">Sakanoue no Korenori</text><circle class="fk-badge" cx="180" cy="0" r="10"/><text class="fk-badge-num" x="180" y="0.5">31</text></g><rect class="fk-sub-box" x="0" y="11" width="317" height="16" rx="8"/><text class="fk-sub" x="158.5" y="19.5">Played kemari before Emperor Daigo and was given silk</text></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+          <div class="kd-text">
+            <p style="width:100%; margin-bottom: 0.75em;">Sakanoue no Korenori was a descendant of Sakanoue no Tamuramaro, who, as Seii Taishōgun (shogun), made the Emishi, the people of the northeast who resisted the court, surrender.</p>
+            <p style="width:100%; margin-bottom: 0.75em;">
+              Korenori was very good at <em>kemari</em> (court football, keeping a ball in the air by kicking it). It is said that in 905, at a game of <em>kemari</em> before Emperor Daigo, he kicked the ball 206 times without once letting it fall, and the emperor gave him silk as a reward.</p>
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <dt>The Ariake Moon and the Phases of the Moon</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/moon_cycle.gif?02' data-lightbox='korenori' data-title='The phases of the moon'>
+                  <img loading='lazy' src='../img/moon_cycle.gif?02' alt='The phases of the moon' width="1280" height="1096">
+                </a>
+              </figure>
+              <div>
+                <p>
+                  The <em>ariake no tsuki</em> is the moon that is still in the sky after dawn. From about the 15th to the 29th day of the lunar month, the moon can be seen in the early-morning sky.
+                </p>
+                <p>In the Heian period, only privileged people could have calendars. So for ordinary people, the changing shape of the moon probably served as a kind of natural calendar.
+                </p>
+                <table class="moon_cycle">
+                  <tr>
+                    <td>Phase</td>
+                    <td>Moonrise</td>
+                    <td>Moonset</td>
+                  </tr>
+                  <tr>
+                    <td>New moon</td>
+                    <td>6:00</td>
+                    <td>18:00</td>
+                  </tr>
+                  <tr>
+                    <td>First quarter</td>
+                    <td>12:00</td>
+                    <td>24:00</td>
+                  </tr>
+                  <tr>
+                    <td>Full moon</td>
+                    <td>18:00</td>
+                    <td>6:00</td>
+                  </tr>
+                  <tr>
+                    <td>Last quarter</td>
+                    <td>24:00</td>
+                    <td>12:00</td>
+                  </tr>
+                </table>
+              </div>
+            </dd>
+
+            <dt>Li Bai's Chinese Poem "Quiet Night Thoughts"</dt>
+            <dd>Sakanoue no Korenori's Hyakunin Isshu poem is thought to draw on the scene of "Quiet Night Thoughts" (<em>Seiyashi</em>), a famous Chinese poem by Li Bai. In "Quiet Night Thoughts," moonlight shining on the ground is seen as "frost on the ground," and the poet longs for his faraway home. Korenori, in turn, saw the white snow piled up in the village of Yoshino as "the light of the dawn moon left in the sky," and captured the quiet beauty of a winter daybreak. Here we see a tribute in verse across time and place.
+              <div class='quote'><q class="quote-ja">
+                  <h3 class="was-h4">In Chinese</h3>
+                  <p style="line-height:1.7; margin-top: 0.25em;">
+                  <ruby>牀前<rt>しょうぜん</rt></ruby>看月光<br>
+                  疑是地上霜<br>
+                  挙頭望山月<br>
+                  低頭思故郷<br>
+                  <span class="shutten">"Quiet Night Thoughts," Li Bai</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height:1.7; margin-top: 0.25em;">
+                    Before my bed, I see the moonlight.<br>
+                    I wonder if it is frost on the ground.<br>
+                    I raise my head and gaze at the mountain moon,<br>
+                    I lower my head and think of home.
+                  </p>
+                </q>
+              </div>
+            </dd>
+
+            <dt>Sakanoue no Korenori, a Provincial Official</dt>
+            <dd>
+              In the capital, Sakanoue no Korenori held posts such as Senior Secretary (<em>Dainaiki</em>), and he also served in a series of provincial posts (as a <em>kokushi</em>, provincial official), such as Acting Junior Secretary of Yamato, Senior Secretary of Yamato, and Assistant Governor of Kaga. According to the headnote in the <em>Kokin Wakashū</em>, he wrote his Hyakunin Isshu poem while serving as Acting Junior Secretary of Yamato.
+              For the central government offices, see <a href="/kanshoku_nikanhasshou_en.html">this page</a>.
+              For the provincial government system, see <a href="/kanshoku_local_en.html">this page</a>.
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -315,7 +515,12 @@
   </footer>
   <!-- Footer end -->
 
-  <script src="../js/poems_en.js?20261007-04"></script>
+  <script src="../js/poems_en.js?20261008-01"></script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261008-35"></script>
+  <script src="../js/keizu-diagram.js?20261008-02"></script>
 
 </body>
 

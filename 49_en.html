@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-08T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -94,6 +94,8 @@
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
   <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -103,6 +105,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -235,7 +245,7 @@
         <dl>
           <dt>Commentary</dt>
           <dd>
-            "Mikakimori" were guards of the palace gates; here the word leads into "eji" (guardsmen). The poet compares the guards' watch-fires to the fire of his love, burning at night and dying out by day, when he cannot meet his love.
+            "Mikakimori" were guards of the palace gates; here "mikakimori eji (guardsmen) no taku hi no" is a jokotoba, an introductory phrase. The poet compares the guards' watch-fires to the fire of his love, burning at night and dying out by day, when he cannot meet his love.
           </dd>
         </dl>
         <dl class="last-dl">
@@ -284,6 +294,487 @@
       </dl>
     </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Ōnakatomi no Yoshinobu's Family Tree</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 49.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+              <li><span class="fk-legend__dash"></span>Generations left out</li>
+              <li><span class="fk-legend__eq">＝</span>Marriage</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Ōnakatomi no Yoshinobu's family tree">
+            <script type="application/json">
+{
+ "lang": "en",
+ "tooltips": "fujiwara",
+ "nodes": [
+  {
+   "id": "katanoko",
+   "n": "中臣可多能祜",
+   "x": 16,
+   "y": 142
+  },
+  {
+   "id": "mikeko",
+   "n": "中臣御食子",
+   "x": 220,
+   "y": 84
+  },
+  {
+   "id": "kuniko",
+   "n": "中臣国子",
+   "x": 220,
+   "y": 200
+  },
+  {
+   "id": "kamatari",
+   "n": "中臣鎌足",
+   "key": "中臣鎌足",
+   "note": "Fujiwara no Kamatari",
+   "x": 407,
+   "y": 84
+  },
+  {
+   "id": "fuhito",
+   "n": "藤原不比等",
+   "key": "不比等",
+   "x": 740,
+   "y": 84
+  },
+  {
+   "id": "yorimoto",
+   "n": "大中臣頼基",
+   "x": 740,
+   "y": 200
+  },
+  {
+   "id": "muchimaro",
+   "n": "武智麻呂",
+   "note": "Southern House",
+   "x": 951,
+   "y": 30
+  },
+  {
+   "id": "fusasaki",
+   "n": "房前",
+   "note": "Northern House",
+   "x": 951,
+   "y": 66
+  },
+  {
+   "id": "umakai",
+   "n": "宇合",
+   "note": "Ceremonial House",
+   "x": 951,
+   "y": 102
+  },
+  {
+   "id": "maro",
+   "n": "麻呂",
+   "note": "Capital House",
+   "x": 951,
+   "y": 138
+  },
+  {
+   "id": "yoshinobu",
+   "n": "大中臣能宣",
+   "p": 49,
+   "self": 1,
+   "x": 951,
+   "y": 200
+  },
+  {
+   "id": "sukechika",
+   "n": "大中臣輔親",
+   "x": 1197,
+   "y": 200
+  },
+  {
+   "id": "isenotaifu",
+   "n": "伊勢大輔",
+   "p": 61,
+   "x": 1414,
+   "y": 200
+  },
+  {
+   "id": "narinobu",
+   "n": "高階成順",
+   "x": 1414,
+   "y": 244
+  },
+  {
+   "id": "naritada",
+   "n": "高階成忠",
+   "x": 951,
+   "y": 310
+  },
+  {
+   "id": "akinobu",
+   "n": "高階明順",
+   "x": 1197,
+   "y": 288
+  },
+  {
+   "id": "kishi",
+   "n": "高階貴子",
+   "key": "儀同三司母",
+   "p": 54,
+   "x": 1197,
+   "y": 332
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-isenotaifu",
+   "top": "isenotaifu",
+   "bottom": "narinobu"
+  }
+ ],
+ "kids": [
+  {
+   "from": "katanoko",
+   "to": [
+    "mikeko",
+    "kuniko"
+   ]
+  },
+  {
+   "from": "mikeko",
+   "to": [
+    "kamatari"
+   ]
+  },
+  {
+   "from": "kamatari",
+   "to": [
+    "fuhito"
+   ]
+  },
+  {
+   "from": "fuhito",
+   "to": [
+    "muchimaro",
+    "fusasaki",
+    "umakai",
+    "maro"
+   ]
+  },
+  {
+   "from": "yorimoto",
+   "to": [
+    "yoshinobu"
+   ]
+  },
+  {
+   "from": "yoshinobu",
+   "to": [
+    "sukechika"
+   ]
+  },
+  {
+   "from": "sukechika",
+   "to": [
+    "isenotaifu"
+   ]
+  },
+  {
+   "from": "naritada",
+   "to": [
+    "akinobu",
+    "kishi"
+   ]
+  },
+  {
+   "from": "akinobu",
+   "to": [
+    "narinobu"
+   ]
+  }
+ ],
+ "lines": [
+  {
+   "points": [
+    [
+     377,
+     200
+    ],
+    [
+     737,
+     200
+    ]
+   ],
+   "dash": true,
+   "label": {
+    "text": "Several generations left out",
+    "x": 558,
+    "y": 194
+   }
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1541 358" width="1541" height="358" role="img" aria-label="Ōnakatomi no Yoshinobu's family tree" lang="en" class="fk-svg kd-svg" style="max-width:2312px;min-width:min(640px,2312px)" data-src="f00c10">
+<g class="fk-edges"><path d="M1447.5 209V235M1451.5 209V235" class="fk-edge fk-eq"/><path d="M193 142H206" class="fk-edge"/><path d="M206 84V200" class="fk-edge"/><path d="M206 84H217" class="fk-edge"/><path d="M206 200H217" class="fk-edge"/><path d="M380 84H393" class="fk-edge"/><path d="M393 84H404" class="fk-edge"/><path d="M711.106 84H726" class="fk-edge"/><path d="M726 84H737" class="fk-edge"/><path d="M792 84H937" class="fk-edge"/><path d="M937 30V138" class="fk-edge"/><path d="M937 30H948" class="fk-edge"/><path d="M937 66H948" class="fk-edge"/><path d="M937 102H948" class="fk-edge"/><path d="M937 138H948" class="fk-edge"/><path d="M924 200H937" class="fk-edge"/><path d="M937 200H948" class="fk-edge"/><path d="M1168 200H1183" class="fk-edge"/><path d="M1183 200H1194" class="fk-edge"/><path d="M1388 200H1400" class="fk-edge"/><path d="M1400 200H1411" class="fk-edge"/><path d="M1021 310H1183" class="fk-edge"/><path d="M1183 288V332" class="fk-edge"/><path d="M1183 288H1194" class="fk-edge"/><path d="M1183 332H1194" class="fk-edge"/><path d="M1263 288H1400" class="fk-edge"/><path d="M1400 244V288" class="fk-edge"/><path d="M1400 244H1411" class="fk-edge"/><path d="M377 200L737 200" class="fk-edge is-dash"/><text class="fk-adopt" x="558" y="194">Several generations left out</text></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node" transform="translate(16,142)" data-tip="&lt;h3&gt;Nakatomi no Katanoko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Nakatomi no Mikeko, Kuniko, and Nukateko&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="178" height="26"/><text class="fk-name" x="0" y="0.5">Nakatomi no Katanoko</text></g></g>
+<g class="fk-node" transform="translate(220,84)" data-tip="&lt;h3&gt;Nakatomi no Mikeko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Nakatomi no Katanoko&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Nakatomi no Kamatari&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="161" height="26"/><text class="fk-name" x="0" y="0.5">Nakatomi no Mikeko</text></g></g>
+<g class="fk-node" transform="translate(220,200)" data-tip="&lt;h3&gt;Nakatomi no Kuniko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Nakatomi no Katanoko&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;One of the ancestors of the Ōnakatomi clan&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="159" height="26"/><text class="fk-name" x="0" y="0.5">Nakatomi no Kuniko</text></g></g>
+<g class="fk-node" transform="translate(407,84)" data-tip="&lt;h3&gt;Fujiwara no Kamatari&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;614–669&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Palace Minister&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior First Rank after death&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;First named Nakatomi no Kamatari; he was given the family name Fujiwara just before his death&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="305.106" height="26"/><text class="fk-name" x="0" y="0.5">Nakatomi no Kamatari</text><text class="fk-note" x="173" y="1"> (Fujiwara no Kamatari)</text></g></g>
+<g class="fk-node" transform="translate(740,84)" data-tip="&lt;h3&gt;Fujiwara no Fuhito&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;659–720&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Minister of the Right&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Second Rank; Senior First Rank after death&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Grandfather (on the mother's side) of Emperor Shōmu and Empress Kōken&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="53" height="26"/><text class="fk-name" x="0" y="0.5">Fuhito</text></g></g>
+<g class="fk-node" transform="translate(740,200)" data-tip="&lt;h3&gt;Ōnakatomi no Yorimoto&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ōnakatomi no Sukemichi&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Ōnakatomi no Yoshinobu&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="185" height="26"/><text class="fk-name" x="0" y="0.5">Ōnakatomi no Yorimoto</text></g></g>
+<g class="fk-node" transform="translate(951,30)" data-tip="&lt;h3&gt;Fujiwara no Muchimaro&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;680–737&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Minister of the Left&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior First Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Founder of the Southern House of the Fujiwara&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="190.351" height="26"/><text class="fk-name" x="0" y="0.5">Muchimaro</text><text class="fk-note" x="88" y="1"> (Southern House)</text></g></g>
+<g class="fk-node" transform="translate(951,66)" data-tip="&lt;h3&gt;Fujiwara no Fusasaki&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;681–737&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Councillor (Sangi)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Third Rank; Senior First Rank after death&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="170" height="26"/><text class="fk-name" x="0" y="0.5">Fusasaki</text><text class="fk-note" x="67" y="1"> (Northern House)</text></g></g>
+<g class="fk-node" transform="translate(951,102)" data-tip="&lt;h3&gt;Fujiwara no Umakai&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;694–737&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Councillor (Sangi)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Third Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Founder of the Shikike branch of the Fujiwara&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="174.726" height="26"/><text class="fk-name" x="0" y="0.5">Umakai</text><text class="fk-note" x="60" y="1"> (Ceremonial House)</text></g></g>
+<g class="fk-node" transform="translate(951,138)" data-tip="&lt;h3&gt;Fujiwara no Maro&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;695–737&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Councillor (Sangi)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Third Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Founder of the Capital House (Kyōke) of the Fujiwara&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="132.24" height="26"/><text class="fk-name" x="0" y="0.5">Maro</text><text class="fk-note" x="42" y="1"> (Capital House)</text></g></g>
+<g class="fk-node is-poet is-self" transform="translate(951,200)" data-tip="&lt;h3&gt;Ōnakatomi no Yoshinobu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;921–991&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ōnakatomi no Yorimoto&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 49, &quot;Mikakimori...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;One of the Five Men of the Pear Pavilion. In the Hyakunin Isshu he is called Ōnakatomi no Yoshinobu Ason&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="224" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="218" height="26"/><text class="fk-name" x="0" y="0.5">Ōnakatomi no Yoshinobu</text><circle class="fk-badge" cx="204" cy="0" r="10"/><text class="fk-badge-num" x="204" y="0.5">49</text></g></g>
+<g class="fk-node" transform="translate(1197,200)" data-tip="&lt;h3&gt;Ōnakatomi no Sukechika&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;954–1038&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ōnakatomi no Yoshinobu&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Ise no Taifu&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="192" height="26"/><text class="fk-name" x="0" y="0.5">Ōnakatomi no Sukechika</text></g></g>
+<g class="fk-node is-poet" transform="translate(1414,200)" data-tip="&lt;h3&gt;Ise no Taifu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Ōnakatomi no Sukechika&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 61, &quot;Inishie no...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Wife of Takashina no Narinobu&lt;/span&gt;&lt;/div&gt;" data-p="61"><a href="/61_en.html" aria-label="Ise no Taifu (Hyakunin Isshu Poem 61)"><rect class="fk-hit" x="-2" y="-13" width="115" height="26"/><text class="fk-name" x="0" y="0.5">Ise no Taifu</text><circle class="fk-badge" cx="101" cy="0" r="10"/><text class="fk-badge-num" x="101" y="0.5">61</text></a></g>
+<g class="fk-node" transform="translate(1414,244)" data-tip="&lt;h3&gt;Takashina no Narinobu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown–1040&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Governor of Chikuzen&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Takashina no Akinobu; nephew of Takashina no Takako (Mother of the Honorary Grand Minister)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Husband of Ise no Taifu and father of Yasusuke-ō no Haha and others. He became a monk and took the name Jōren&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="75" height="26"/><text class="fk-name" x="0" y="0.5">Narinobu</text></g></g>
+<g class="fk-node" transform="translate(951,310)" data-tip="&lt;h3&gt;Takashina no Naritada&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Takashina no Takako (Mother of the Honorary Grand Minister), Akinobu, and others&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="71" height="26"/><text class="fk-name" x="0" y="0.5">Naritada</text></g></g>
+<g class="fk-node" transform="translate(1197,288)" data-tip="&lt;h3&gt;Takashina no Akinobu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown–1009&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Governor of Iyo&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Takashina no Naritada; elder or younger brother of Takashina no Takako (Mother of the Honorary Grand Minister)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Takashina no Narinobu. His daughter was Ōe no Takachika's wife&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="67" height="26"/><text class="fk-name" x="0" y="0.5">Akinobu</text></g></g>
+<g class="fk-node is-poet" transform="translate(1197,332)" data-tip="&lt;h3&gt;Mother of the Honorary Grand Minister (Gidō Sanshi no Haha)&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown–996&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Third Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Real name: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Takashina no Takako&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Takashina no Naritada. Wife of Fujiwara no Michitaka, and mother of Fujiwara no Korechika and Empress Teishi&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 54, &quot;Wasureji no...&quot;&lt;/span&gt;&lt;/div&gt;" data-p="54"><a href="/54_en.html" aria-label="Mother of the Honorary Grand Minister (Gidō Sanshi no Haha) (Hyakunin Isshu Poem 54)"><rect class="fk-hit" x="-2" y="-13" width="186" height="26"/><text class="fk-name" x="0" y="0.5">Takashina no Takako</text><circle class="fk-badge" cx="172" cy="0" r="10"/><text class="fk-badge-num" x="172" y="0.5">54</text></a></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+          <div class="kd-text">
+            <p style="width:100%; margin-bottom: 0.75em;">If you trace the Ōnakatomi family back, you reach the same ancestors as the Fujiwara clan, which flourished in the Heian period.</p>
+            <p style="width:100%; margin-bottom: 0.75em;">The Nakatomi family led Shinto rites and ceremonies, and produced many poets. Yorimoto, Yoshinobu, Sukechika, and <a href="/61_en.html">Ise no Taifu</a> are well known as poets.
+            </p>
+          </div>
+        </dd>
+      </dl>
+      <dl style="margin-top: 1.5em;">
+        <dt class='title'>The Compilers of the <em>Gosen Wakashū</em></dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 49.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__tenno">Brown text</span>Emperor</li>
+              <li><span class="fk-legend__tno" aria-hidden="true"></span>Emperor's number in the line of succession</li>
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <div class="kd-chart" aria-label="The compilers of the Gosen Wakashū">
+            <script type="application/json">
+{
+ "lang": "en",
+ "nodes": [
+  {
+   "id": "murakami",
+   "n": "村上",
+   "k": 1,
+   "t": 62,
+   "x": 16,
+   "y": 148
+  },
+  {
+   "id": "yoshinobu",
+   "n": "大中臣能宣",
+   "p": 49,
+   "self": 1,
+   "x": 309,
+   "y": 68
+  },
+  {
+   "id": "motosuke",
+   "n": "清原元輔",
+   "p": 42,
+   "x": 309,
+   "y": 108
+  },
+  {
+   "id": "shitago",
+   "n": "源順",
+   "x": 309,
+   "y": 148
+  },
+  {
+   "id": "tokibumi",
+   "n": "紀時文",
+   "x": 309,
+   "y": 188
+  },
+  {
+   "id": "mochiki",
+   "n": "坂上望城",
+   "x": 309,
+   "y": 228
+  }
+ ],
+ "arrows": [
+  {
+   "points": [
+    [
+     96,
+     148
+    ],
+    [
+     292,
+     148
+    ]
+   ],
+   "label": {
+    "text": "Ordered the Gosen Wakashū",
+    "x": 108,
+    "y": 136
+   }
+  }
+ ],
+ "groups": [
+  {
+   "points": [
+    [
+     295,
+     22
+    ],
+    [
+     537,
+     22
+    ],
+    [
+     537,
+     248
+    ],
+    [
+     295,
+     248
+    ]
+   ],
+   "label": {
+    "text": "Compilers of the Gosen Wakashū",
+    "x": 303,
+    "y": 37
+   }
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 679 260" width="679" height="260" role="img" aria-label="The compilers of the Gosen Wakashū" lang="en" class="fk-svg kd-svg" style="max-width:1019px;min-width:min(640px,1019px)" data-src="ngj7iz">
+<g class="kd-groups"><path d="M295 22L537 22L537 248L295 248Z" class="kd-group"/><text class="kd-group-label" x="303" y="37">Compilers of the Gosen Wakashū</text></g>
+<g class="fk-edges"></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"><path d="M96 148L292 148" class="kd-arrow" marker-end="url(#kdArrowHead)"/><text class="kd-arrow-label" x="108" y="136">Ordered the Gosen Wakashū</text></g>
+<g>
+<g class="fk-node is-tenno" transform="translate(16,148)" data-tip="&lt;h3&gt;Emperor Murakami&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;62nd emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;926–967&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;946–967&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Ordered the compiling of the Gosen Wakashū&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="81" height="26"/><text class="fk-name" x="0" y="0.5">Murakami</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">62</text></g>
+<g class="fk-node is-poet is-self" transform="translate(309,68)" data-tip="&lt;h3&gt;Ōnakatomi no Yoshinobu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;921–991&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ōnakatomi no Yorimoto&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 49, &quot;Mikakimori...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;One of the Five Men of the Pear Pavilion. In the Hyakunin Isshu he is called Ōnakatomi no Yoshinobu Ason&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="224" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="218" height="26"/><text class="fk-name" x="0" y="0.5">Ōnakatomi no Yoshinobu</text><circle class="fk-badge" cx="204" cy="0" r="10"/><text class="fk-badge-num" x="204" y="0.5">49</text></g></g>
+<g class="fk-node is-poet" transform="translate(309,108)" data-tip="&lt;h3&gt;Kiyohara no Motosuke&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;908–990&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Grandson of Kiyohara no Fukayabu and father of Sei Shōnagon&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 42, &quot;Chigiriki na...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;As one of the Five Men of the Pear Pavilion, helped compile the Gosen Wakashū&lt;/span&gt;&lt;/div&gt;" data-p="42"><a href="/42_en.html" aria-label="Kiyohara no Motosuke (Hyakunin Isshu Poem 42)"><rect class="fk-hit" x="-2" y="-13" width="197" height="26"/><text class="fk-name" x="0" y="0.5">Kiyohara no Motosuke</text><circle class="fk-badge" cx="183" cy="0" r="10"/><text class="fk-badge-num" x="183" y="0.5">42</text></a></g>
+<g class="fk-node" transform="translate(309,148)" data-tip="&lt;h3&gt;Minamoto no Shitagō&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;911–983&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Governor of Noto&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Fifth Rank, Upper Grade&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Minamoto no Kozoru; great-great-grandson of Emperor Saga&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Compiled the Wamyō Ruijushō dictionary. As one of the Five Men of the Pear Pavilion, he compiled the Gosen Wakashū. One of the Thirty-Six Immortal Poets&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="166" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Shitagō</text></g></g>
+<g class="fk-node" transform="translate(309,188)" data-tip="&lt;h3&gt;Ki no Tokibumi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;922–996&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Master of the Office of the Palace Kitchens&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Fifth Rank, Upper Grade&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ki no Tsurayuki&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;As one of the Five Men of the Pear Pavilion, he worked on reading the Man'yōshū and compiling the Gosen Wakashū&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="116" height="26"/><text class="fk-name" x="0" y="0.5">Ki no Tokibumi</text></g></g>
+<g class="fk-node" transform="translate(309,228)" data-tip="&lt;h3&gt;Sakanoue no Mochiki&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Governor of Iwami&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Fifth Rank, Lower Grade&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Sakanoue no Korenori&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;As one of the Five Men of the Pear Pavilion, he worked on reading the Man'yōshū and compiling the Gosen Wakashū&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="164" height="26"/><text class="fk-name" x="0" y="0.5">Sakanoue no Mochiki</text></g></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+          <div class="kd-text">
+            <p style="width:100%; margin-bottom: 0.75em;">In 951 (the 5th year of Tenryaku), on the orders of Emperor Murakami, an Office of Poetry was set up in the Shōyōsha (Nashitsubo, the Pear Pavilion) of the palace, and five men compiled the <em>Gosen Wakashū</em>: Ōnakatomi no Yoshinobu, <a href="/42_en.html">Kiyohara no Motosuke</a>, Minamoto no Shitagō, Ki no Tokibumi, and Sakanoue no Mochiki. They are called the "Five Men of the Pear Pavilion."</p>
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <dt>A Poem of Blessing</dt>
+            <dd>
+              In the Heian period there was a court custom called <em>komatsu-hiki</em> (pulling up young pines), held on the first Day of the Rat (<em>ne no hi</em>) of the new year. People pulled up young pine trees, hoping to take in the life force of the pine, which lives a thousand years, and so live long themselves. This poem is a blessing that Yoshinobu presented when Prince Atsumi, a son of Emperor Uda, pulled up a young pine. There is a story that when Yoshinobu showed the poem to his father, Yorimoto, Yorimoto scolded him: "(If you write such a fine poem now,) what will you write if you are ever invited to a Day of the Rat held by the emperor?" <em>Komatsu-hiki</em> is also called <em>ne no hi asobi</em> (the Day of the Rat outing).
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>千年<rt>ちとせ</rt></ruby>まで
+                    かぎれる<ruby>松<rt>まつ</rt></ruby>も
+                    けふよりは
+                    <br><ruby>君<rt>きみ</rt></ruby>がひかれて
+                    <ruby>万代<rt>よろづよ</rt></ruby>や<ruby>経<rt>へ</rt></ruby>む
+                    <span class="shutten"><em>Shūi Wakashū</em>, Ōnakatomi no Yoshinobu</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p>Even the pine, whose life is limited to a thousand years,<br class='br-pc'> will, from today, be pulled by you and live for ten thousand.</p>
+                </q>
+              </div>
+            </dd>
+            <dt>Kenshunmon Gate, Kyoto Imperial Palace</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/49_kenshunmon_large.webp' data-lightbox='yoshinobu' data-title='Kenshunmon Gate, Kyoto Imperial Palace'>
+                  <img loading='lazy' src='../img/49_kenshunmon_small.webp' alt='Kenshunmon Gate, Kyoto Imperial Palace' width="640" height="441">
+                </a>
+              </figure>
+              <div>
+                <p>
+                  This is the Kenshunmon Gate of today's Kyoto Imperial Palace. It is the main east gate of the inner palace, where the emperor lived.
+                </p>
+                <p>
+                  The Heian-period inner palace, the emperor's home, burned down many times, and after it burned in 1227 it was never rebuilt.
+                </p>
+                <p>
+                  Today's Kyoto Imperial Palace was rebuilt in 1855, so this gate is not from the Heian period. But it was built following the styles and traditions of the Heian palace buildings, and the <em>mikakimori</em> probably guarded palace gates like this one.
+                </p>
+                <p style="text-align:right; font-size:0.9em">(Photo taken August 8, 2026)</p>
+              </div>
+            </dd>
+            <dt>Katsushika Hokusai's <em>One Hundred Poems Explained by the Nurse</em></dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/hokusai_49_large.webp' data-lightbox='yoshinobu' data-title='Ukiyo-e by Katsushika Hokusai'>
+                  <img loading='lazy' src='../img/hokusai_49.webp' alt='Ōnakatomi no Yoshinobu Ason, from One Hundred Poems Explained by the Nurse, by Katsushika Hokusai' width="640" height="441">
+                </a>
+                <figcaption><small><a
+                      href='https://commons.wikimedia.org/wiki/File:%E7%99%BE%E4%BA%BA%E4%B8%80%E9%A6%96_%E5%A7%A5%E3%81%8B%E6%81%B5%E3%81%A8%E8%B5%B7_%E5%A4%A7%E4%B8%AD%E8%87%A3%E8%83%BD%E5%AE%A3%E6%9C%9D%E8%87%A3-Poem_by_%C5%8Cnakatomi_no_Yoshinobu_Ason,_from_the_series_One_Hundred_Poems_Explained_by_the_Nurse_(Hyakunin_isshu_uba_ga_etoki)_MET_DP140965.jpg'
+                      target='_blank' rel='noopener'>Katsushika Hokusai, CC0, via Wikimedia Commons</a></small></figcaption>
+              </figure>
+              <div>
+                <p>
+                  This print is from <em>One Hundred Poems Explained by the Nurse</em> (<em>Hyakunin Isshu Uba ga Etoki</em>) by Katsushika Hokusai, an ukiyo-e artist of the Edo period. The idea of the series is a nurse explaining the Hyakunin Isshu poems with easy-to-understand pictures. The palace guards seem to be taking a break. The nobleman standing at the back on the left is probably Yoshinobu. Like the smoldering smoke, is he thinking of the lover he cannot meet by day?
+                </p>
+              </div>
+            </dd>
+            <dt>Utagawa Kuniyoshi's <em>Hyakunin Isshu no Uchi</em></dt>
+            <dd class='thumb-image2'>
+              <figure class='portrait'>
+                <a href='../img/kuniyoshi_49_large.webp' data-lightbox='yoshinobu' data-title='Ukiyo-e by Utagawa Kuniyoshi'>
+                  <img loading='lazy' src='../img/kuniyoshi_49.webp' alt='Ōnakatomi no Yoshinobu Ason, ukiyo-e by Utagawa Kuniyoshi' width="480" height="710">
+                </a>
+                <figcaption><a
+                    href='https://commons.wikimedia.org/wiki/File:No_49_Onakatomi_no_Yoshinobu_Ason_(BM_1948,0508,0.16).jpg' target='_blank' rel='noopener'><small>British
+                      Museum, Public domain, via Wikimedia Commons</small></a></figcaption>
+              </figure>
+              <div>
+                <p>This ukiyo-e print is by Utagawa Kuniyoshi, an artist of the Edo period.<br class="br-pc"> It shows a scene to go with the Hyakunin Isshu poem.</p>
+              </div>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -315,7 +806,12 @@
   </footer>
   <!-- Footer end -->
 
-  <script src="../js/poems_en.js?20261007-04"></script>
+  <script src="../js/poems_en.js?20261008-01"></script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261008-35"></script>
+  <script src="../js/keizu-diagram.js?20261008-02"></script>
 
 </body>
 

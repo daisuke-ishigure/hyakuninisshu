@@ -52,7 +52,7 @@ const POET_DATA_EN = {
   39: { name: "Councillor Hitoshi", theme: "love" },
   40: { name: "Taira no Kanemori", theme: "love" },
   41: { name: "Mibu no Tadami", theme: "love" },
-  42: { name: "Master of the Left Capital Michimasa", theme: "love" },
+  42: { name: "Kiyohara no Motosuke", theme: "love" },
   43: { name: "Acting Middle Counselor Atsutada", theme: "love" },
   44: { name: "Middle Counselor Asatada", theme: "love" },
   45: { name: "Kentoku-kō", theme: "love" },

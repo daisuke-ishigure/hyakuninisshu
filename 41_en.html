@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-08T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -94,6 +94,7 @@
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
   <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -283,6 +284,219 @@
       </dl>
     </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Mibu no Tadami's Family Tree</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 41.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__tenno">Brown text</span>Emperor</li>
+              <li><span class="fk-legend__tno" aria-hidden="true"></span>Emperor's number in the line of succession</li>
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+              <li><span class="fk-legend__eq">＝</span>Marriage</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Mibu no Tadami's family tree">
+            <script type="application/json">
+{
+ "lang": "en",
+ "nodes": [
+  {
+   "id": "koko",
+   "n": "光孝",
+   "k": 1,
+   "t": 58,
+   "p": 15,
+   "x": 16,
+   "y": 62
+  },
+  {
+   "id": "koretada",
+   "n": "是忠親王",
+   "x": 136,
+   "y": 62
+  },
+  {
+   "id": "muneyuki",
+   "n": "源宗于",
+   "p": 28,
+   "x": 286,
+   "y": 40
+  },
+  {
+   "id": "okiga",
+   "n": "興我王",
+   "x": 286,
+   "y": 84
+  },
+  {
+   "id": "atsuyuki",
+   "n": "平篤行",
+   "x": 406,
+   "y": 84
+  },
+  {
+   "id": "kanemori",
+   "n": "平兼盛",
+   "p": 40,
+   "x": 612,
+   "y": 84
+  },
+  {
+   "id": "akazomehaha",
+   "n": "赤染衛門の母",
+   "x": 612,
+   "y": 128
+  },
+  {
+   "id": "tokimochi",
+   "n": "赤染時用",
+   "x": 612,
+   "y": 172
+  },
+  {
+   "id": "akazome",
+   "n": "赤染衛門",
+   "p": 59,
+   "x": 828,
+   "y": 150
+  },
+  {
+   "id": "tadamine",
+   "n": "壬生忠岑",
+   "p": 30,
+   "sub": "Bodyguard of Fujiwara no Sadakuni",
+   "x": 286,
+   "y": 240
+  },
+  {
+   "id": "tadami",
+   "n": "壬生忠見",
+   "p": 41,
+   "sub": "Lost to Kanemori in the 960 poetry contest",
+   "x": 522,
+   "y": 240,
+   "self": 1
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-kanemori",
+   "top": "kanemori",
+   "bottom": "akazomehaha"
+  },
+  {
+   "id": "c-tokimochi",
+   "top": "akazomehaha",
+   "bottom": "tokimochi"
+  }
+ ],
+ "kids": [
+  {
+   "from": "koko",
+   "to": [
+    "koretada"
+   ]
+  },
+  {
+   "from": "koretada",
+   "to": [
+    "muneyuki",
+    "okiga"
+   ]
+  },
+  {
+   "from": "okiga",
+   "to": [
+    "atsuyuki"
+   ]
+  },
+  {
+   "from": "atsuyuki",
+   "to": [
+    "kanemori"
+   ]
+  },
+  {
+   "from": "c-tokimochi",
+   "to": [
+    "akazome"
+   ]
+  },
+  {
+   "from": "tadamine",
+   "to": [
+    "tadami"
+   ]
+  }
+ ],
+ "arrows": [
+  {
+   "points": [
+    [
+     604,
+     96
+    ],
+    [
+     556,
+     226
+    ]
+   ],
+   "curve": [
+    559,
+    147
+   ],
+   "head": false,
+   "label": {
+    "text": "Close match",
+    "x": 492,
+    "y": 150
+   }
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 984 280" width="984" height="280" role="img" aria-label="Mibu no Tadami's family tree" lang="en" class="fk-svg kd-svg" style="max-width:1476px;min-width:min(640px,1476px)" data-src="19e4cja">
+<g class="fk-edges"><path d="M679 93V119M683 93V119" class="fk-edge fk-eq"/><path d="M685.5 137V163M689.5 137V163" class="fk-edge fk-eq"/><path d="M82 62H122" class="fk-edge"/><path d="M122 62H133" class="fk-edge"/><path d="M259 62H272" class="fk-edge"/><path d="M272 40V84" class="fk-edge"/><path d="M272 40H283" class="fk-edge"/><path d="M272 84H283" class="fk-edge"/><path d="M378 84H392" class="fk-edge"/><path d="M392 84H403" class="fk-edge"/><path d="M541 84H598" class="fk-edge"/><path d="M598 84H609" class="fk-edge"/><path d="M689.5 150H814" class="fk-edge"/><path d="M814 150H825" class="fk-edge"/><path d="M452 240H508" class="fk-edge"/><path d="M508 240H519" class="fk-edge"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"><path d="M604 96Q559 147 556 226" class="kd-arrow"/><text class="kd-arrow-label" x="492" y="150">Close match</text></g>
+<g>
+<g class="fk-node is-tenno is-poet" transform="translate(16,62)" data-tip="&lt;h3&gt;Emperor Kōkō&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;58th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;830–887&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;884–887&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Ninmyō&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 15, &quot;Kimi ga tame haru no no ni...&quot;&lt;/span&gt;&lt;/div&gt;" data-p="15"><a href="/15_en.html" aria-label="Emperor Kōkō (Hyakunin Isshu Poem 15)"><rect class="fk-hit" x="-2" y="-13" width="67" height="26"/><text class="fk-name" x="0" y="0.5">Kōkō</text><circle class="fk-badge" cx="53" cy="0" r="10"/><text class="fk-badge-num" x="53" y="0.5">15</text></a><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">58</text></g>
+<g class="fk-node" transform="translate(136,62)" data-tip="&lt;h3&gt;Prince Koretada&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Kōkō; his mother was Princess Nakako&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Minamoto no Muneyuki and Prince Koga&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="124" height="26"/><text class="fk-name" x="0" y="0.5">Prince Koretada</text></g></g>
+<g class="fk-node is-poet" transform="translate(286,40)" data-tip="&lt;h3&gt;Minamoto no Muneyuki&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown–940&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Fourth Rank, Lower Grade&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Prince Koretada&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 28, &quot;Yamazato wa...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Minamoto no Muneyuki Ason&lt;/span&gt;&lt;/div&gt;" data-p="28"><a href="/28_en.html" aria-label="Minamoto no Muneyuki (Hyakunin Isshu Poem 28)"><rect class="fk-hit" x="-2" y="-13" width="207" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Muneyuki</text><circle class="fk-badge" cx="193" cy="0" r="10"/><text class="fk-badge-num" x="193" y="0.5">28</text></a></g>
+<g class="fk-node" transform="translate(286,84)" data-tip="&lt;h3&gt;Prince Koga&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Prince Koretada&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="93" height="26"/><text class="fk-name" x="0" y="0.5">Prince Koga</text></g></g>
+<g class="fk-node" transform="translate(406,84)" data-tip="&lt;h3&gt;Taira no Atsuyuki&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Sonpi Bunmyaku (a book of family trees), he is Prince Koga's son and Taira no Kanemori's father&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="136" height="26"/><text class="fk-name" x="0" y="0.5">Taira no Atsuyuki</text></g></g>
+<g class="fk-node is-poet" transform="translate(612,84)" data-tip="&lt;h3&gt;Taira no Kanemori&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 40, &quot;Shinoburedo...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;The Sonpi Bunmyaku makes him Taira no Atsuyuki's son, Prince Koretada's great-grandson (through Prince Koga and Atsuyuki), and Emperor Kōkō's great-great-grandson. But the dates don't fit, so some think he was the son of Prince Atsumochi, a son of Prince Koretada&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Beat Mibu no Tadami at the Poetry Contest of the Imperial Palace in 960. He was the former husband of Akazome Emon's mother; he is said to have claimed Akazome Emon as his own daughter and taken the matter to the police office (Kebiishi-chō) to get her back&lt;/span&gt;&lt;/div&gt;" data-p="40"><a href="/40_en.html" aria-label="Taira no Kanemori (Hyakunin Isshu Poem 40)"><rect class="fk-hit" x="-2" y="-13" width="166" height="26"/><text class="fk-name" x="0" y="0.5">Taira no Kanemori</text><circle class="fk-badge" cx="152" cy="0" r="10"/><text class="fk-badge-num" x="152" y="0.5">40</text></a></g>
+<g class="fk-node" transform="translate(612,128)" data-tip="&lt;h3&gt;Mother of Akazome Emon&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;At first the wife of Taira no Kanemori, she later remarried, to Akazome Tokimochi&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="191" height="26"/><text class="fk-name" x="0" y="0.5">Akazome Emon's mother</text></g></g>
+<g class="fk-node" transform="translate(612,172)" data-tip="&lt;h3&gt;Akazome Tokimochi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Governor of Ōsumi&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Said to be Akazome Emon's father. He served as an officer of the Right Gate Guards (sakan, then jō), which gave his daughter her name&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="155" height="26"/><text class="fk-name" x="0" y="0.5">Akazome Tokimochi</text></g></g>
+<g class="fk-node is-poet" transform="translate(828,150)" data-tip="&lt;h3&gt;Akazome Emon&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;c. 956–c. 1041&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 59, &quot;Yasurawade...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Said to be the daughter of Akazome Tokimochi, but the Fukuro Zōshi says her mother remarried Tokimochi while carrying a child by her former husband, Taira no Kanemori, and then gave birth to Akazome Emon&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Served Minamoto no Tomoko and her daughter Akiko. She and her husband, Ōe no Masahira, were known as a devoted couple&lt;/span&gt;&lt;/div&gt;" data-p="59"><a href="/59_en.html" aria-label="Akazome Emon (Hyakunin Isshu Poem 59)"><rect class="fk-hit" x="-2" y="-13" width="144" height="26"/><text class="fk-name" x="0" y="0.5">Akazome Emon</text><circle class="fk-badge" cx="130" cy="0" r="10"/><text class="fk-badge-num" x="130" y="0.5">59</text></a></g>
+<g class="fk-node is-poet" transform="translate(286,240)" data-tip="&lt;h3&gt;Mibu no Tadamine&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;c. 860–c. 920&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior officer of the Right Gate Guards; he is also said to have served as Acting Senior Clerk of Settsu, among other posts&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Mibu no Tadami&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 30, &quot;Ariake no...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;One of the compilers of the Kokin Wakashū, and the lowest in rank among them. The Tales of Yamato says he was a bodyguard of Fujiwara no Sadakuni&lt;/span&gt;&lt;/div&gt;" data-p="30"><a href="/30_en.html" aria-label="Mibu no Tadamine (Hyakunin Isshu Poem 30)"><rect class="fk-hit" x="-2" y="-13" width="167" height="26"/><text class="fk-name" x="0" y="0.5">Mibu no Tadamine</text><circle class="fk-badge" cx="153" cy="0" r="10"/><text class="fk-badge-num" x="153" y="0.5">30</text></a><rect class="fk-sub-box" x="0" y="11" width="207" height="16" rx="8"/><text class="fk-sub" x="103.5" y="19.5">Bodyguard of Fujiwara no Sadakuni</text></g>
+<g class="fk-node is-poet is-self" transform="translate(522,240)" data-tip="&lt;h3&gt;Mibu no Tadami&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Cook in the Mizushidokoro (the palace kitchen); Senior Clerk of Settsu&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Mibu no Tadamine&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 41, &quot;Koi su chō...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Competed against Taira no Kanemori at the Poetry Contest of the Imperial Palace in 960 and lost&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="154" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="148" height="26"/><text class="fk-name" x="0" y="0.5">Mibu no Tadami</text><circle class="fk-badge" cx="134" cy="0" r="10"/><text class="fk-badge-num" x="134" y="0.5">41</text></g><rect class="fk-sub-box" x="0" y="11" width="246" height="16" rx="8"/><text class="fk-sub" x="123" y="19.5">Lost to Kanemori in the 960 poetry contest</text></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+          <div class="kd-text">
+            <p style="width:100%; margin-bottom: 0.75em;">
+              At the Palace Poetry Contest of 960 (the 4th year of Tentoku), Mibu no Tadami competed against <a href="/40_en.html">Taira no Kanemori</a> and lost, but both poems were fine and it is said to have been a close match.
+            </p>
+            <p style="width:100%; margin-bottom: 0.75em;">
+              Tadami was the son of <a href="/30_en.html">Mibu no Tadamine</a>, one of the compilers of the <em>Kokin Wakashū</em>. Both father and son were chosen for the Hyakunin Isshu.
+            </p>
+          </div>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -314,7 +528,12 @@
   </footer>
   <!-- Footer end -->
 
-  <script src="../js/poems_en.js?20261007-04"></script>
+  <script src="../js/poems_en.js?20261008-01"></script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261008-35"></script>
+  <script src="../js/keizu-diagram.js?20261008-02"></script>
 
 </body>
 

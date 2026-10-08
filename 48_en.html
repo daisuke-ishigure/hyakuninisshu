@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-08T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -94,6 +94,8 @@
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
   <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -103,6 +105,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -282,6 +292,264 @@
       </dl>
     </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Minamoto no Shigeyuki's Family Tree</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 48.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__tenno">Brown text</span>Emperor</li>
+              <li><span class="fk-legend__tno" aria-hidden="true"></span>Emperor's number in the line of succession</li>
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+              <li><span class="fk-legend__dash"></span>Generations left out / adoption</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Minamoto no Shigeyuki's family tree">
+            <script type="application/json">
+{
+ "lang": "en",
+ "nodes": [
+  {
+   "id": "seiwa",
+   "n": "清和",
+   "k": 1,
+   "t": 56,
+   "x": 16,
+   "y": 120
+  },
+  {
+   "id": "sadazumi",
+   "n": "貞純親王",
+   "x": 136,
+   "y": 40
+  },
+  {
+   "id": "sadamoto",
+   "n": "貞元親王",
+   "x": 136,
+   "y": 106
+  },
+  {
+   "id": "yozei",
+   "n": "陽成",
+   "k": 1,
+   "t": 57,
+   "p": 13,
+   "x": 136,
+   "y": 200
+  },
+  {
+   "id": "kanetada",
+   "n": "源兼忠",
+   "x": 292,
+   "y": 84
+  },
+  {
+   "id": "kanenobu",
+   "n": "源兼信",
+   "x": 292,
+   "y": 128
+  },
+  {
+   "id": "motoyoshi",
+   "n": "元良親王",
+   "p": 20,
+   "x": 292,
+   "y": 200
+  },
+  {
+   "id": "yoritomo",
+   "n": "源頼朝",
+   "x": 525,
+   "y": 40
+  },
+  {
+   "id": "shigeyuki",
+   "n": "源重之",
+   "p": 48,
+   "self": 1,
+   "x": 525,
+   "y": 128
+  },
+  {
+   "id": "sanetomo",
+   "n": "源実朝",
+   "p": 93,
+   "x": 729,
+   "y": 40
+  }
+ ],
+ "kids": [
+  {
+   "from": "seiwa",
+   "to": [
+    "sadazumi",
+    "sadamoto",
+    "yozei"
+   ]
+  },
+  {
+   "from": "sadamoto",
+   "to": [
+    "kanetada",
+    "kanenobu"
+   ]
+  },
+  {
+   "from": "kanenobu",
+   "to": [
+    "shigeyuki"
+   ]
+  },
+  {
+   "from": "yozei",
+   "to": [
+    "motoyoshi"
+   ]
+  },
+  {
+   "from": "yoritomo",
+   "to": [
+    "sanetomo"
+   ]
+  }
+ ],
+ "lines": [
+  {
+   "points": [
+    [
+     262,
+     40
+    ],
+    [
+     522,
+     40
+    ]
+   ],
+   "dash": true,
+   "label": {
+    "text": "8 generations left out",
+    "x": 394,
+    "y": 34
+   }
+  },
+  {
+   "points": [
+    [
+     471,
+     84
+    ],
+    [
+     484,
+     84
+    ],
+    [
+     484,
+     128
+    ]
+   ],
+   "dash": true,
+   "label": {
+    "text": "Adopted",
+    "x": 508,
+    "y": 100
+   }
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 226" width="950" height="226" role="img" aria-label="Minamoto no Shigeyuki's family tree" lang="en" class="fk-svg kd-svg" style="max-width:1425px;min-width:min(640px,1425px)" data-src="x2t5vv">
+<g class="fk-edges"><path d="M63 120H122" class="fk-edge"/><path d="M122 40V200" class="fk-edge"/><path d="M122 40H133" class="fk-edge"/><path d="M122 106H133" class="fk-edge"/><path d="M122 200H133" class="fk-edge"/><path d="M266 106H278" class="fk-edge"/><path d="M278 84V128" class="fk-edge"/><path d="M278 84H289" class="fk-edge"/><path d="M278 128H289" class="fk-edge"/><path d="M476 128H511" class="fk-edge"/><path d="M511 128H522" class="fk-edge"/><path d="M203 200H278" class="fk-edge"/><path d="M278 200H289" class="fk-edge"/><path d="M703 40H715" class="fk-edge"/><path d="M715 40H726" class="fk-edge"/><path d="M262 40L522 40" class="fk-edge is-dash"/><text class="fk-adopt" x="394" y="34">8 generations left out</text><path d="M471 84L484 84L484 128" class="fk-edge is-dash"/><text class="fk-adopt" x="508" y="100">Adopted</text></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node is-tenno" transform="translate(16,120)" data-tip="&lt;h3&gt;Emperor Seiwa&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;56th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;850–881&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;858–876&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Took the throne at 9; his grandfather on his mother's side, Fujiwara no Yoshifusa, ran the government&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="48" height="26"/><text class="fk-name" x="0" y="0.5">Seiwa</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">56</text></g>
+<g class="fk-node" transform="translate(136,40)" data-tip="&lt;h3&gt;Prince Sadazumi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown–916&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Fourth Rank for princes&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Seiwa; father of Minamoto no Tsunemoto&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="127" height="26"/><text class="fk-name" x="0" y="0.5">Prince Sadazumi</text></g></g>
+<g class="fk-node" transform="translate(136,106)" data-tip="&lt;h3&gt;Prince Sadamoto&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Fourth Rank for princes&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Seiwa&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="131" height="26"/><text class="fk-name" x="0" y="0.5">Prince Sadamoto</text></g></g>
+<g class="fk-node is-tenno is-poet" transform="translate(136,200)" data-tip="&lt;h3&gt;Emperor Yōzei&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;57th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;869–949&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;876–884&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 13, &quot;Tsukubane no...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Retired Emperor Yōzei&lt;/span&gt;&lt;/div&gt;" data-p="13"><a href="/13_en.html" aria-label="Emperor Yōzei (Hyakunin Isshu Poem 13)"><rect class="fk-hit" x="-2" y="-13" width="68" height="26"/><text class="fk-name" x="0" y="0.5">Yōzei</text><circle class="fk-badge" cx="54" cy="0" r="10"/><text class="fk-badge-num" x="54" y="0.5">13</text></a><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">57</text></g>
+<g class="fk-node" transform="translate(292,84)" data-tip="&lt;h3&gt;Minamoto no Kanetada&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Councillor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Prince Sadamoto&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Adopted Shigeyuki, the son of his younger brother Minamoto no Kanenobu&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="180" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Kanetada</text></g></g>
+<g class="fk-node" transform="translate(292,128)" data-tip="&lt;h3&gt;Minamoto no Kanenobu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Governor of Mikawa&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Prince Sadamoto&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Minamoto no Shigeyuki&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="185" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Kanenobu</text></g></g>
+<g class="fk-node is-poet" transform="translate(292,200)" data-tip="&lt;h3&gt;Prince Motoyoshi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;890–943&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Third Rank for princes&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Yōzei&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 20, &quot;Wabinureba...&quot;&lt;/span&gt;&lt;/div&gt;" data-p="20"><a href="/20_en.html" aria-label="Prince Motoyoshi (Hyakunin Isshu Poem 20)"><rect class="fk-hit" x="-2" y="-13" width="158" height="26"/><text class="fk-name" x="0" y="0.5">Prince Motoyoshi</text><circle class="fk-badge" cx="144" cy="0" r="10"/><text class="fk-badge-num" x="144" y="0.5">20</text></a></g>
+<g class="fk-node" transform="translate(525,40)" data-tip="&lt;h3&gt;Minamoto no Yoritomo&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1147–1199&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Second Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Minamoto no Yoshitomo&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;First shogun of the Kamakura shogunate&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="179" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Yoritomo</text></g></g>
+<g class="fk-node is-poet is-self" transform="translate(525,128)" data-tip="&lt;h3&gt;Minamoto no Shigeyuki&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Acting Governor of Chikuzen&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Fifth Rank, Lower Grade&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Minamoto no Kanenobu; adopted by his uncle Minamoto no Kanetada; grandson of Prince Sadamoto&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 48, &quot;Kaze o itami...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Presented the Shigeyuki Hyakushu (a set of 100 poems) to Crown Prince Norihira (later Emperor Reizei). Later he went down to Mutsu Province with its governor, Fujiwara no Sanekata, and died there in 1000&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="212" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="206" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Shigeyuki</text><circle class="fk-badge" cx="192" cy="0" r="10"/><text class="fk-badge-num" x="192" y="0.5">48</text></g></g>
+<g class="fk-node is-poet" transform="translate(729,40)" data-tip="&lt;h3&gt;Minamoto no Sanetomo&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Fourth son of Minamoto no Yoritomo; second son of Hōjō Masako&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 93, &quot;Yo no naka wa...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Became shogun at 12. The first samurai to become Minister of the Right. Studied waka with Fujiwara no Teika. Murdered by Kugyō in 1219, at 28. In the Hyakunin Isshu he is called the Minister of the Right of Kamakura&lt;/span&gt;&lt;/div&gt;" data-p="93"><a href="/93_en.html" aria-label="Minamoto no Sanetomo (Hyakunin Isshu Poem 93)"><rect class="fk-hit" x="-2" y="-13" width="209" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Sanetomo</text><circle class="fk-badge" cx="195" cy="0" r="10"/><text class="fk-badge-num" x="195" y="0.5">93</text></a></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+          <div class="kd-text">
+            <p style="width:100%; margin-bottom:0.5em;">
+              Minamoto no Shigeyuki was the son of Minamoto no Kanenobu, but he was adopted by his uncle, Councillor Minamoto no Kanetada.
+              He was a great-grandson of Emperor Seiwa, but he never rose high and served in one provincial post after another. His final post and rank were Acting Governor of Chikuzen and Junior Fifth Rank, Lower Grade.
+            </p>
+            <p style="width:100%; margin-bottom:0.5em;">
+              He was friends with Minamoto no Shitagō, Sone no Yoshitada, Taira no Kanemori, and others.</p>
+            <p style="width:100%; margin-bottom:0.5em;">
+              Shigeyuki wrote a set of a hundred poems, the <em>Shigeyuki Hyakushu</em>, and presented it to the future Emperor Reizei when he was crown prince. He was influenced by <a
+                href="/46_en.html">Sone no Yoshitada</a>, who had written a set of a hundred poems earlier, though privately, and the two were friends.
+            </p>
+            <p style="width:100%; margin-bottom:0.5em;">
+              Late in life, when Fujiwara no Sanekata went to Mutsu Province as its governor, Shigeyuki went with him and died there.
+            </p>
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <dt>A Poem About Sleeves Wet with Tears</dt>
+            <dd>
+              The next poem is by Minamoto no Shigeyuki and is in the <em>Go Shūi Wakashū</em>.
+              <br class="br-pc">Later, <a href="/90_en.html">Attendant to Empress Inpu</a> wrote a new poem based on it, and that poem was chosen for the Hyakunin Isshu.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>松島<rt>まつしま</rt></ruby>や
+                    <ruby>雄島<rt>おじま</rt></ruby>の<ruby>磯<rt>いそ</rt></ruby>に
+                    <ruby>漁<rt>あさ</rt></ruby>りせし
+                    <br><ruby>海人<rt>あま</rt></ruby>の<ruby>袖<rt>そで</rt></ruby>こそ
+                    かくは<ruby>濡<rt>ぬ</rt></ruby>れしか
+                    <span class="shutten"><em>Go Shūi Wakashū</em>, Minamoto no Shigeyuki</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p>Would even the sleeves of the divers fishing on the rocky shore of Ojima at Matsushima be as wet as my sleeves, soaked with tears?</p>
+                </q>
+              </div>
+            </dd>
+            <dt>Utagawa Kuniyoshi's <em>Hyakunin Isshu no Uchi</em></dt>
+            <dd class='thumb-image2'>
+              <figure class='portrait'>
+                <a href='../img/kuniyoshi_48_large.webp' data-lightbox='shigeyuki' data-title='Ukiyo-e by Utagawa Kuniyoshi'>
+                  <img loading='lazy' src='../img/kuniyoshi_48.webp' alt='Minamoto no Shigeyuki, ukiyo-e by Utagawa Kuniyoshi' width="480" height="707">
+                </a>
+                <figcaption><a
+                    href='https://commons.wikimedia.org/wiki/File:Minamoto_no_Shigeyuki_(no._48)_%E6%BA%90%E9%87%8D%E4%B9%8B_(BM_2008,3037.10628).jpg' target='_blank' rel='noopener'><small>British
+                      Museum, Public domain, via Wikimedia Commons</small></a></figcaption>
+              </figure>
+              <div>
+                <p>This ukiyo-e print is by Utagawa Kuniyoshi, an artist of the Edo period.<br class="br-pc"> It shows a scene to go with the Hyakunin Isshu poem.</p>
+              </div>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -313,7 +581,12 @@
   </footer>
   <!-- Footer end -->
 
-  <script src="../js/poems_en.js?20261007-04"></script>
+  <script src="../js/poems_en.js?20261008-01"></script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261008-35"></script>
+  <script src="../js/keizu-diagram.js?20261008-02"></script>
 
 </body>
 

@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-08T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -94,6 +94,10 @@
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
   <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/accordion.css?20260721">
+  <link rel="stylesheet" href="../css/timeline.css?20260729">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -103,6 +107,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -241,7 +253,7 @@
         <dl class="last-dl">
           <dt>About the Poet</dt>
           <dd>
-            Daini no Sanmi (Kenshi) was Murasaki Shikibu's daughter and, like her mother, served Empress Shōshi. She later became nurse to the future Emperor Go-Reizei, and when he took the throne she rose to Junior Third Rank (sanmi). "Daini" comes from the post of her second husband, Takashina no Nariakira, at Dazaifu.
+            Daini no Sanmi (Katako) was Murasaki Shikibu's daughter and, like her mother, served Empress Akiko. She later became nurse to the future Emperor Go-Reizei, and after he took the throne she rose to Junior Third Rank (sanmi). "Daini" comes from the post of her second husband, Takashina no Nariakira, at Dazaifu.
           </dd>
         </dl>
       </div>
@@ -266,7 +278,7 @@
             <dt>1001</dt>
             <dd>Her father Nobutaka dies</dd>
             <dt>c. 1017</dt>
-            <dd>Follows her mother in serving Empress Shōshi</dd>
+            <dd>Follows her mother in serving Empress Akiko</dd>
             <dt>Before 1025</dt>
             <dd>First marries Fujiwara no Kanetaka, second son of Fujiwara no Michikane</dd>
             <dt>1025</dt>
@@ -286,6 +298,551 @@
       </dl>
     </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Daini no Sanmi's Family Tree</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 58.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__tenno">Brown text</span>Emperor</li>
+              <li><span class="fk-legend__tno" aria-hidden="true"></span>Emperor's number in the line of succession</li>
+              <li><span class="fk-legend__kanpaku">Purple text</span>Became Regent or Kampaku</li>
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+              <li><span class="fk-legend__eq">＝</span>Marriage</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Daini no Sanmi's family tree">
+            <script type="application/json">
+{
+ "lang": "en",
+ "tooltips": "fujiwara",
+ "nodes": [
+  {
+   "id": "tokihime",
+   "n": "時姫",
+   "x": 16,
+   "y": 40
+  },
+  {
+   "id": "kaneie",
+   "n": "兼家",
+   "kan": 1,
+   "x": 16,
+   "y": 84
+  },
+  {
+   "id": "michitsunahaha",
+   "n": "道綱母",
+   "p": 53,
+   "x": 16,
+   "y": 128
+  },
+  {
+   "id": "michitaka",
+   "n": "道隆",
+   "kan": 1,
+   "x": 368,
+   "y": 30
+  },
+  {
+   "id": "senshi",
+   "n": "詮子",
+   "x": 368,
+   "y": 66
+  },
+  {
+   "id": "michinaga",
+   "n": "道長",
+   "kan": 1,
+   "x": 368,
+   "y": 110
+  },
+  {
+   "id": "rinshi",
+   "n": "源倫子",
+   "x": 368,
+   "y": 154
+  },
+  {
+   "id": "michikane",
+   "n": "道兼",
+   "kan": 1,
+   "x": 368,
+   "y": 250
+  },
+  {
+   "id": "toohakarajo",
+   "n": "遠量の娘",
+   "x": 368,
+   "y": 294
+  },
+  {
+   "id": "murasaki",
+   "n": "紫式部",
+   "p": 57,
+   "x": 368,
+   "y": 340
+  },
+  {
+   "id": "nobutaka",
+   "n": "宣孝",
+   "x": 368,
+   "y": 384
+  },
+  {
+   "id": "teishi",
+   "n": "定子",
+   "key": "藤原定子",
+   "x": 563,
+   "y": 66
+  },
+  {
+   "id": "ichijo",
+   "n": "一条",
+   "k": 1,
+   "t": 66,
+   "x": 563,
+   "y": 118
+  },
+  {
+   "id": "shoshi",
+   "n": "彰子",
+   "x": 563,
+   "y": 162
+  },
+  {
+   "id": "kanetaka",
+   "n": "兼隆",
+   "x": 563,
+   "y": 272
+  },
+  {
+   "id": "katako",
+   "n": "大弐三位",
+   "key": "賢子",
+   "p": 58,
+   "self": 1,
+   "sub": "Served Akiko; nurse to Emperor Go-Reizei",
+   "x": 563,
+   "y": 316
+  },
+  {
+   "id": "nariakira",
+   "n": "高階成章",
+   "x": 563,
+   "y": 380
+  },
+  {
+   "id": "goichijo",
+   "n": "後一条",
+   "k": 1,
+   "t": 68,
+   "x": 836,
+   "y": 118
+  },
+  {
+   "id": "gosuzaku",
+   "n": "後朱雀",
+   "k": 1,
+   "t": 69,
+   "x": 836,
+   "y": 170
+  },
+  {
+   "id": "kishi",
+   "n": "嬉子",
+   "x": 836,
+   "y": 214
+  },
+  {
+   "id": "musume1",
+   "n": "娘",
+   "key": "兼隆との娘",
+   "x": 836,
+   "y": 294
+  },
+  {
+   "id": "tameie",
+   "n": "高階為家",
+   "x": 836,
+   "y": 340
+  },
+  {
+   "id": "musume2",
+   "n": "娘",
+   "key": "成章との娘",
+   "x": 836,
+   "y": 380
+  },
+  {
+   "id": "goreizei",
+   "n": "後冷泉",
+   "k": 1,
+   "t": 70,
+   "x": 956,
+   "y": 192
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-tokihime",
+   "top": "tokihime",
+   "bottom": "kaneie"
+  },
+  {
+   "id": "c-michitsuna",
+   "top": "kaneie",
+   "bottom": "michitsunahaha"
+  },
+  {
+   "id": "c-michinaga",
+   "top": "michinaga",
+   "bottom": "rinshi"
+  },
+  {
+   "id": "c-michikane",
+   "top": "michikane",
+   "bottom": "toohakarajo"
+  },
+  {
+   "id": "c-murasaki",
+   "top": "murasaki",
+   "bottom": "nobutaka"
+  },
+  {
+   "id": "c-teishi",
+   "top": "teishi",
+   "bottom": "ichijo"
+  },
+  {
+   "id": "c-shoshi",
+   "top": "ichijo",
+   "bottom": "shoshi"
+  },
+  {
+   "id": "c-kanetaka",
+   "top": "kanetaka",
+   "bottom": "katako"
+  },
+  {
+   "id": "c-nariakira",
+   "top": "katako",
+   "bottom": "nariakira"
+  },
+  {
+   "id": "c-kishi",
+   "top": "gosuzaku",
+   "bottom": "kishi"
+  }
+ ],
+ "kids": [
+  {
+   "from": "c-tokihime",
+   "to": [
+    "michitaka",
+    "senshi",
+    "michinaga",
+    "michikane"
+   ]
+  },
+  {
+   "from": "michitaka",
+   "to": [
+    "teishi"
+   ]
+  },
+  {
+   "from": "c-michinaga",
+   "to": [
+    "shoshi",
+    "kishi"
+   ]
+  },
+  {
+   "from": "c-michikane",
+   "to": [
+    "kanetaka"
+   ]
+  },
+  {
+   "from": "c-murasaki",
+   "to": [
+    "katako"
+   ]
+  },
+  {
+   "from": "c-shoshi",
+   "to": [
+    "goichijo",
+    "gosuzaku"
+   ]
+  },
+  {
+   "from": "c-kanetaka",
+   "to": [
+    "musume1"
+   ]
+  },
+  {
+   "from": "c-nariakira",
+   "to": [
+    "tameie",
+    "musume2"
+   ]
+  },
+  {
+   "from": "c-kishi",
+   "to": [
+    "goreizei"
+   ]
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1042 410" width="1042" height="410" role="img" aria-label="Daini no Sanmi's family tree" lang="en" class="fk-svg kd-svg" style="max-width:1563px;min-width:min(640px,1563px)" data-src="1q7mlnl">
+<g class="fk-edges"><path d="M40 49V75M44 49V75" class="fk-edge fk-eq"/><path d="M40 93V119M44 93V119" class="fk-edge fk-eq"/><path d="M405 119V145M409 119V145" class="fk-edge fk-eq"/><path d="M405 259V285M409 259V285" class="fk-edge fk-eq"/><path d="M403.5 349V375M407.5 349V375" class="fk-edge fk-eq"/><path d="M582 75V109M586 75V109" class="fk-edge fk-eq"/><path d="M582 127V153M586 127V153" class="fk-edge fk-eq"/><path d="M597 281V307M601 281V307" class="fk-edge fk-eq"/><path d="M617 344V371M621 344V371" class="fk-edge fk-eq"/><path d="M852.5 179V205M856.5 179V205" class="fk-edge fk-eq"/><path d="M44 62H354" class="fk-edge"/><path d="M354 30V250" class="fk-edge"/><path d="M354 30H365" class="fk-edge"/><path d="M354 66H365" class="fk-edge"/><path d="M354 110H365" class="fk-edge"/><path d="M354 250H365" class="fk-edge"/><path d="M446 30H549" class="fk-edge"/><path d="M549 30V66" class="fk-edge"/><path d="M549 66H560" class="fk-edge"/><path d="M409 132H549" class="fk-edge"/><path d="M549 132V214" class="fk-edge"/><path d="M549 162H560" class="fk-edge"/><path d="M549 214H833" class="fk-edge"/><path d="M409 272H549" class="fk-edge"/><path d="M549 272H560" class="fk-edge"/><path d="M407.5 362H549" class="fk-edge"/><path d="M549 316V362" class="fk-edge"/><path d="M549 316H560" class="fk-edge"/><path d="M586 140H822" class="fk-edge"/><path d="M822 118V170" class="fk-edge"/><path d="M822 118H833" class="fk-edge"/><path d="M822 170H833" class="fk-edge"/><path d="M601 294H822" class="fk-edge"/><path d="M822 294H833" class="fk-edge"/><path d="M621 357.5H822" class="fk-edge"/><path d="M822 340V380" class="fk-edge"/><path d="M822 340H833" class="fk-edge"/><path d="M822 380H833" class="fk-edge"/><path d="M856.5 192H942" class="fk-edge"/><path d="M942 192H953" class="fk-edge"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node" transform="translate(16,40)" data-tip="&lt;h3&gt;Fujiwara no Tokihime&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Fujiwara no Nakamasa, Governor of Settsu&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Wife of Fujiwara no Kaneie. Mother of Michitaka, Michikane, Michinaga, Chōshi, Senshi, and others&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="74" height="26"/><text class="fk-name" x="0" y="0.5">Tokihime</text></g></g>
+<g class="fk-node is-kanpaku" transform="translate(16,84)" data-tip="&lt;h3&gt;Fujiwara no Kaneie&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;929–990&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Regent, Kampaku (chief adviser), and Chancellor of the Realm&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior First Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Imperial in-law: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Grandfather (on the mother's side) of Emperor Ichijō&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="56" height="26"/><text class="fk-name" x="0" y="0.5">Kaneie</text></g></g>
+<g class="fk-node is-poet" transform="translate(16,128)" data-tip="&lt;h3&gt;Mother of the Right Captain Michitsuna&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;c. 936–995&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;A secondary wife of Kaneie&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 53, &quot;Nagekitsutsu...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu she is called the Mother of the Right Captain Michitsuna&lt;/span&gt;&lt;/div&gt;" data-p="53"><a href="/53_en.html" aria-label="Mother of the Right Captain Michitsuna (Hyakunin Isshu Poem 53)"><rect class="fk-hit" x="-2" y="-13" width="325" height="26"/><text class="fk-name" x="0" y="0.5">Mother of the Right Captain Michitsuna</text><circle class="fk-badge" cx="311" cy="0" r="10"/><text class="fk-badge-num" x="311" y="0.5">53</text></a></g>
+<g class="fk-node is-kanpaku" transform="translate(368,30)" data-tip="&lt;h3&gt;Fujiwara no Michitaka&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;953–995&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Regent, Chancellor (Kanpaku), and Minister of the Center&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Second Rank&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="79" height="26"/><text class="fk-name" x="0" y="0.5">Michitaka</text></g></g>
+<g class="fk-node" transform="translate(368,66)" data-tip="&lt;h3&gt;Fujiwara no Senshi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;962–1002&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Fujiwara no Kaneie and Tokihime&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Consort (nyōgo) of Emperor En'yū and mother of Emperor Ichijō. Her title as a retired empress was Higashi Sanjō-in&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="53" height="26"/><text class="fk-name" x="0" y="0.5">Senshi</text></g></g>
+<g class="fk-node is-kanpaku" transform="translate(368,110)" data-tip="&lt;h3&gt;Fujiwara no Michinaga&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;966–1028&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Regent and Minister of the Left&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior First Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Imperial in-law: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Grandfather (on the mother's side) of Emperors Go-Ichijō, Go-Suzaku, and Go-Reizei&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="82" height="26"/><text class="fk-name" x="0" y="0.5">Michinaga</text></g></g>
+<g class="fk-node" transform="translate(368,154)" data-tip="&lt;h3&gt;Minamoto no Tomoko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;964–1053&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of the Minister of the Left Minamoto no Masanobu and Fujiwara no Atsuko; great-granddaughter of Fujiwara no Sadakata&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Fujiwara no Michinaga's principal wife; mother of Yorimichi, Norimichi, Akiko, Kenshi, Ishi, and Kishi. A second cousin of Murasaki Shikibu. Akazome Emon served her&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="169" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Tomoko</text></g></g>
+<g class="fk-node is-kanpaku" transform="translate(368,250)" data-tip="&lt;h3&gt;Fujiwara no Michikane&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;961–995&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Kampaku (chief adviser) and Minister of the Right&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Second Rank; Senior First Rank after death&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="82" height="26"/><text class="fk-name" x="0" y="0.5">Michikane</text></g></g>
+<g class="fk-node" transform="translate(368,294)" data-tip="&lt;h3&gt;Daughter of Fujiwara no Tōhakari&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Wife of Fujiwara no Michikane and mother of Kanetaka&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="156" height="26"/><text class="fk-name" x="0" y="0.5">Tōhakari's daughter</text></g></g>
+<g class="fk-node is-poet" transform="translate(368,340)" data-tip="&lt;h3&gt;Murasaki Shikibu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;c. 970–c. 1014&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Served: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Fujiwara no Akiko, empress of Emperor Ichijō&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 57, &quot;Meguriaite...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Her real name is unknown. Author of The Tale of Genji&lt;/span&gt;&lt;/div&gt;" data-p="57"><a href="/57_en.html" aria-label="Murasaki Shikibu (Hyakunin Isshu Poem 57)"><rect class="fk-hit" x="-2" y="-13" width="158" height="26"/><text class="fk-name" x="0" y="0.5">Murasaki Shikibu</text><circle class="fk-badge" cx="144" cy="0" r="10"/><text class="fk-badge-num" x="144" y="0.5">57</text></a></g>
+<g class="fk-node" transform="translate(368,384)" data-tip="&lt;h3&gt;Fujiwara no Nobutaka&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown–1001&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Third son of Fujiwara no Tamesuke; great-grandson of Fujiwara no Sadakata&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Murasaki Shikibu's husband and Daini no Sanmi's father. He also married other women, including a daughter of Fujiwara no Asahira&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="79" height="26"/><text class="fk-name" x="0" y="0.5">Nobutaka</text></g></g>
+<g class="fk-node" transform="translate(563,66)" data-tip="&lt;h3&gt;Fujiwara no Teishi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;976–1001&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Fujiwara no Michitaka and Takashina no Takako (Mother of the Honorary Grand Minister)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Empress (chūgū) of Emperor Ichijō, later named kōgō. Sei Shōnagon served her&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="48" height="26"/><text class="fk-name" x="0" y="0.5">Teishi</text></g></g>
+<g class="fk-node is-tenno" transform="translate(563,118)" data-tip="&lt;h3&gt;Emperor Ichijō&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;66th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;980–1011&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;986–1011&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="46" height="26"/><text class="fk-name" x="0" y="0.5">Ichijō</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">66</text></g>
+<g class="fk-node" transform="translate(563,162)" data-tip="&lt;h3&gt;Fujiwara no Akiko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;988–1074&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Eldest daughter of Fujiwara no Michinaga and Minamoto no Tomoko&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Empress (chūgū) of Emperor Ichijō and mother of Emperors Go-Ichijō and Go-Suzaku; later called Jōtōmon-in. Hyakunin Isshu poets Murasaki Shikibu, Izumi Shikibu, Ise no Taifu, Akazome Emon, and others served her&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="47" height="26"/><text class="fk-name" x="0" y="0.5">Akiko</text></g></g>
+<g class="fk-node" transform="translate(563,272)" data-tip="&lt;h3&gt;Fujiwara no Kanetaka&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Fujiwara no Michikane and Tōhakari's daughter&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;His principal wife was a daughter of Minamoto no Sukenori. He later married Daini no Sanmi (Fujiwara no Katako)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="76" height="26"/><text class="fk-name" x="0" y="0.5">Kanetaka</text></g></g>
+<g class="fk-node is-poet is-self" transform="translate(563,316)" data-tip="&lt;h3&gt;Fujiwara no Katako&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;c. 999–c. 1082&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Served: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Fujiwara no Akiko, empress of Emperor Ichijō&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 58, &quot;Arimayama...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu she is called Daini no Sanmi. She was the nurse of Emperor Go-Reizei&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="146" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="140" height="26"/><text class="fk-name" x="0" y="0.5">Daini no Sanmi</text><circle class="fk-badge" cx="126" cy="0" r="10"/><text class="fk-badge-num" x="126" y="0.5">58</text></g><rect class="fk-sub-box" x="0" y="11" width="243" height="16" rx="8"/><text class="fk-sub" x="121.5" y="19.5">Served Akiko; nurse to Emperor Go-Reizei</text></g>
+<g class="fk-node" transform="translate(563,380)" data-tip="&lt;h3&gt;Takashina no Nariakira&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Assistant Governor-General of Dazaifu (Dazai no Daini)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daini no Sanmi's second husband. He became Senior Assistant Governor-General of Dazaifu in 1054&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="179" height="26"/><text class="fk-name" x="0" y="0.5">Takashina no Nariakira</text></g></g>
+<g class="fk-node is-tenno" transform="translate(836,118)" data-tip="&lt;h3&gt;Emperor Go-Ichijō&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;68th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1008–1036&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1016–1036&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Ichijō; his mother was Akiko, Fujiwara no Michinaga's daughter&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="71" height="26"/><text class="fk-name" x="0" y="0.5">Go-Ichijō</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">68</text></g>
+<g class="fk-node is-tenno" transform="translate(836,170)" data-tip="&lt;h3&gt;Emperor Go-Suzaku&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;69th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1009–1045&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1036–1045&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Ichijō; younger brother of Emperor Go-Ichijō&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="83" height="26"/><text class="fk-name" x="0" y="0.5">Go-Suzaku</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">69</text></g>
+<g class="fk-node" transform="translate(836,214)" data-tip="&lt;h3&gt;Fujiwara no Kishi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1007–1025&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Fujiwara no Michinaga and Minamoto no Tomoko&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Consort of Emperor Go-Suzaku while he was crown prince. She died just after giving birth to Emperor Go-Reizei&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="41" height="26"/><text class="fk-name" x="0" y="0.5">Kishi</text></g></g>
+<g class="fk-node" transform="translate(836,294)" data-tip="&lt;h3&gt;Daughter of Fujiwara no Kanetaka and Daini no Sanmi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Wife of Minamoto no Yoshimune&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="76" height="26"/><text class="fk-name" x="0" y="0.5">Daughter</text></g></g>
+<g class="fk-node" transform="translate(836,340)" data-tip="&lt;h3&gt;Takashina no Tameie&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Takashina no Nariakira and Daini no Sanmi&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="163" height="26"/><text class="fk-name" x="0" y="0.5">Takashina no Tameie</text></g></g>
+<g class="fk-node" transform="translate(836,380)" data-tip="&lt;h3&gt;Daughter of Takashina no Nariakira and Daini no Sanmi&lt;/h3&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="76" height="26"/><text class="fk-name" x="0" y="0.5">Daughter</text></g></g>
+<g class="fk-node is-tenno" transform="translate(956,192)" data-tip="&lt;h3&gt;Emperor Go-Reizei&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;70th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Go-Suzaku; his mother was Kishi, Fujiwara no Michinaga's daughter&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;His empress was Princess Shōshi (Nijō-in)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="74" height="26"/><text class="fk-name" x="0" y="0.5">Go-Reizei</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">70</text></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+          <div class="kd-text">
+            <p style="width:100%; margin-bottom:0.5em;">Like her mother, <a href="/57_en.html">Murasaki Shikibu</a>, Daini no Sanmi served Akiko, the empress of Emperor Ichijō.</p>
+            <p style="width:100%; margin-bottom:0.5em;">
+              She is known to have had relationships with Fujiwara no Yorimune, a son of Fujiwara no Michinaga; Fujiwara no Sadayori, a son of Fujiwara no Kintō; Minamoto no Tomotō; and others. Later she married Fujiwara no Kanetaka, a son of Michinaga's elder brother Fujiwara no Michikane, and had a daughter.
+            </p>
+            <p style="width:100%; margin-bottom:0.5em;">This birth became a turning point: when Akiko's grandson, Prince Chikahito (later Emperor Go-Reizei), was born, she was chosen as his nurse (<em>menoto</em>). When Emperor Go-Reizei took the throne, Daini no Sanmi was made a senior lady of the Palace Attendants' Office (<em>naishi no suke</em>) and was later given Junior Third Rank.</p>
+            <p style="width:100%; margin-bottom:0.5em;">Daini no Sanmi later married Takashina no Nariakira and had a son, Takashina no Tameie, and a daughter. In 1054, her husband Nariakira was made Senior Assistant Governor-General of Dazaifu (<em>Dazai no Daini</em>). The name "Daini no Sanmi" combines her husband's post, "Daini," and her own rank, "Sanmi" (Third Rank).
+            </p>
+            <p style="width:100%; margin-bottom:0.5em;">In her later years she outlived her husband; records such as her taking part in poetry contests suggest that she lived to about 80.</p>
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <div class="acordion-wrapper">
+              <div class="accordion">
+                <div class="accordion-header">Timeline of Daini no Sanmi<br class="br-sp"><span
+                    style="font-size:0.8em;"> (Click to open or close.)</span></div>
+                <div class="accordion-content">
+                  <div class="container">
+
+                    <div class="timeline-item" date-is='999'>
+                      <h2 class="was-h3">Daini no Sanmi (Fujiwara no Katako) is born</h2>
+                      <p>She was born to her mother, <a href="/57_en.html">Murasaki Shikibu</a>, and her father, Fujiwara no Nobutaka.</p>
+                    </div>
+
+                    <div class="timeline-item" date-is='1001 (age 2)'>
+                      <h2 class="was-h3">Her father, Fujiwara no Nobutaka, dies</h2>
+                    </div>
+
+                    <div class="timeline-item" date-is='1014–1020 (age 15–21)'>
+                      <h2 class="was-h3">Her mother, Murasaki Shikibu, dies</h2>
+                    </div>
+
+                    <div class="timeline-item" date-is='1017 (age 18)'>
+                      <h2 class="was-h3">Begins serving Akiko, Emperor Ichijō's empress</h2>
+                      <p>Like her mother, Murasaki Shikibu, she began serving as a lady-in-waiting to Akiko (Jōtōmon-in), Emperor Ichijō's empress.
+                        <br class="br-pc"> She married Kanetaka, the second son of Kampaku Fujiwara no Michikane, and had a daughter.
+                      </p>
+                    </div>
+
+                    <div class="timeline-item" date-is='1025 (age 26)'>
+                      <h2 class="was-h3">Becomes nurse to Prince Chikahito</h2>
+                      <p>She was chosen as nurse to Prince Chikahito, who later became Emperor Go-Reizei.</p>
+                    </div>
+
+                    <div class="timeline-item" date-is='c. 1037 (age 38)'>
+                      <h2 class="was-h3">Marries Takashina no Nariakira</h2>
+                    </div>
+
+                    <div class="timeline-item" date-is='1038 (age 39)'>
+                      <h2 class="was-h3">Takashina no Tameie is born</h2>
+                      <p>She had a son, Takashina no Tameie, with her husband Takashina no Nariakira.</p>
+                    </div>
+
+                    <div class="timeline-item" date-is='1045 (age 46)'>
+                      <h2 class="was-h3">Made <em>naishi no suke</em></h2>
+                      <p>When Emperor Go-Reizei took the throne, Daini no Sanmi, who had been his nurse, was made <em>naishi no suke</em>, the highest post for court ladies.</p>
+                    </div>
+
+                    <div class="timeline-item" date-is='1054 (age 55)'>
+                      <h2 class="was-h3">Her husband, Takashina no Nariakira,<br class="br-sp"> becomes Senior Assistant Governor-General of Dazaifu</h2>
+                      <p>In the same year, Daini no Sanmi was also given Junior Third Rank.</p>
+                      <p>The year after he went to Dazaifu, Takashina no Nariakira was given Junior Third Rank.</p>
+                      <p>The name "Daini no Sanmi" is thought to have come into use around this time.</p>
+                    </div>
+
+                    <div class="timeline-item" date-is='1058 (age 59)'>
+                      <h2 class="was-h3">Her husband, Takashina no Nariakira, dies</h2>
+                      <p>Takashina no Nariakira died at his post in Dazaifu at 69.</p>
+                    </div>
+
+                    <div class="timeline-item" date-is='1074 (age 75)'>
+                      <h2 class="was-h3">Akiko (Jōtōmon-in) dies</h2>
+                    </div>
+
+                    <div class="timeline-item" date-is='c. 1082 (age 83)'>
+                      <h2 class="was-h3">Daini no Sanmi dies</h2>
+                      <p>She lived a long life.</p>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <dt>Daini no Sanmi's Poem to Fujiwara no Yorimune</dt>
+            <dd>The headnote in the <em>Go Shūi Wakashū</em> says it was "sent to the Horikawa Minister of the Right."
+              <br class="br-pc"> Daini no Sanmi sent this poem to Fujiwara no Yorimune, a son of Fujiwara no Michinaga.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>恋<rt>こい</rt></ruby>しさの
+                    <ruby>憂<rt>う</rt></ruby>きにまぎるる
+                    ものならば
+                    <br>またふたたびと
+                    <ruby>君<rt>きみ</rt></ruby>を<ruby>見<rt>み</rt></ruby>ましや
+                    <span class="shutten"><em>Go Shūi Wakashū</em>, Daini no Sanmi</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p>If my longing for you could be forgotten among the troubles of daily life, would I want to see you again? (No, it cannot be forgotten, so I want to see you.)</p>
+                </q>
+              </div>
+            </dd>
+            <dt>Poems Exchanged with Fujiwara no Sadayori</dt>
+            <dd>The next poems were exchanged between <a href="/64_en.html">Fujiwara no Sadayori</a> and Daini no Sanmi.</dd>
+            <dt class="tsugai">
+              <span style="background: linear-gradient(transparent 70%, #b5daff 30%);">Fujiwara no Sadayori's Poem</span>
+            </dt>
+            <dd>
+              Because he could hardly ever meet Daini no Sanmi, Sadayori wrote a poem saying that he looks at plum blossoms instead, thinking of them as her.
+              <br class="br-pc"> He sent the poem to her with a branch of plum blossoms.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>見<rt>み</rt></ruby>ぬ<ruby>人<rt>ひと</rt></ruby>に
+                    よそへて<ruby>見<rt>み</rt></ruby>つる
+                    <ruby>梅<rt>うめ</rt></ruby>の<ruby>花<rt>はな</rt></ruby>
+                    <br><ruby>散<rt>ち</rt></ruby>りなむ<ruby>後<rt>あと</rt></ruby>の
+                    なぐさめぞなき
+                    <span class="shutten"><em>Shin Kokin Wakashū</em>, Fujiwara no Sadayori</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p>I have been looking at these plum blossoms, thinking of you, whom I cannot meet. Once they fall, nothing will be left to comfort me.</p>
+                </q>
+              </div>
+            </dd>
+            <dt class="tsugai"><span style="background: linear-gradient(transparent 70%, #f9abbc 30%);">Daini no Sanmi's Poem</span>
+            </dt>
+            <dd>
+              Daini no Sanmi answered by comparing Sadayori to the plum branch.
+              <br class="br-pc"> She teases the fickle Sadayori, saying the branch carries the scent of another woman.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>春<rt>はる</rt></ruby>ごとに
+                    <ruby>心<rt>こころ</rt></ruby>をしむる
+                    <ruby>花<rt>はな</rt></ruby>の<ruby>枝<rt>え</rt></ruby>に
+                    <br>たがなほざりの
+                    <ruby>袖<rt>そで</rt></ruby>かふれつる
+                    <span class="shutten"><em>Shin Kokin Wakashū</em>, Daini no Sanmi</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p>Every spring this flowering branch has filled my heart. Whose careless sleeve has brushed against it and left its scent?</p>
+                </q>
+              </div>
+            </dd>
+            <dt>A Poem from the <em>Man'yōshū</em></dt>
+            <dd>Poems about Inano and Mount Arima go back to the time of the <em>Man'yōshū</em>.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    しなが<ruby>鳥<rt>どり</rt></ruby>
+                    <ruby>猪名野<rt>いなの</rt></ruby>を<ruby>来<rt>く</rt></ruby>れば
+                    <ruby>有馬山<rt>ありまやま</rt></ruby>
+                    <br><ruby>夕霧<rt>ゆうぎり</rt></ruby><ruby>立<rt>た</rt></ruby>ちぬ
+                    <ruby>宿<rt>やど</rt></ruby>りはなくて
+                    <span class="shutten"><em>Man'yōshū</em>, Anonymous</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p>As I came across Inano, where the <em>shinagadori</em> birds fly,<br> the evening fog rose over Mount Arima,<br class="br-sp"> and there is no place to stay.</p>
+                </q>
+              </div>
+            </dd>
+            <dt>Rozan-ji Temple (Stones Carved with the Poems of Daini no Sanmi and Murasaki Shikibu)</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/58_kahi_large.webp' data-lightbox='daini' data-title='Rozan-ji Temple (stone carved with Daini no Sanmi&#39;s poem)'>
+                  <img src='../img/58_kahi_small.webp' alt="Rozan-ji Temple (stone carved with Daini no Sanmi's poem)" width="800" height="600">
+                </a>
+              </figure>
+              <div>
+                <p>
+                  <a href="/57_en.html#rozanji">Rozan-ji</a> in Kamigyō Ward, Kyoto, is known as a place connected with Daini no Sanmi. The mansion of her great-great-grandfather (four generations back), <a href="/27_en.html">Fujiwara no Kanesuke</a>, once stood in this area, and like her mother, Murasaki Shikibu, she was born and raised here.
+                </p>
+                <p>
+                  The grounds have stones carved with the poems of Daini no Sanmi and Murasaki Shikibu, as well as a beautiful dry landscape garden of white sand and moss, the "Genji Garden." In summer, when they are at their best, lovely purple bellflowers (<em>kikyō</em>), which match the image of Murasaki Shikibu, color the garden.
+                </p>
+                <p style="text-align:right; font-size:0.9em">(Photo taken August 8, 2026)</p>
+              </div>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -295,6 +852,7 @@
           <a class="da-link-btn" href="diagram_archtecture_en.html">Relationship Diagram</a>
           <a class="kt-link-btn" href="karuta-taisen-pro_en.html">Competitive Karuta Game</a>
           <a class="kts-link-btn" href="karuta-taisen_en.html">Online Karuta Battle</a>
+          <a class="kg-link-btn" href="kakekotoba-game-058_en.html"><span class="kg-link-btn-inner"><span class="kg-link-btn-face kg-link-btn-front">Spin &amp; Discover Kakekotoba!</span><span class="kg-link-btn-face kg-link-btn-back">Spin &amp; Discover Kakekotoba!</span></span></a>
         </dd>
       </dl>
     </div>
@@ -316,7 +874,13 @@
   </footer>
   <!-- Footer end -->
 
-  <script src="../js/poems_en.js?20261007-04"></script>
+  <script src="../js/poems_en.js?20261008-01"></script>
+  <script src="../js/accordion.js"></script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261008-35"></script>
+  <script src="../js/keizu-diagram.js?20261008-02"></script>
 
 </body>
 

@@ -312,7 +312,7 @@ const POETS_RAW = [
         poem: 'あ<ruby>は<rt>わ</rt></ruby>れとも…', job: '公卿', source: '拾遺集', outline: '権力を得ても恋は実らなかった公卿', img: 'img/z45.webp',
     },
     {
-        n: 46, name: '<ruby>曽禰好忠<rt>そねのよしただ</rt></ruby>', date: '923年頃～没年不詳', theme: 'love',
+        n: 46, name: '<ruby>曽禰好忠<rt>そねのよしただ</rt></ruby>', date: '生没年不詳', theme: 'love',
         poem: '<ruby>由良<rt>ゆら</rt></ruby>のとを…', job: '官人', source: '新古今集', outline: '新進気鋭の異色歌人', img: 'img/z46.webp',
     },
     {

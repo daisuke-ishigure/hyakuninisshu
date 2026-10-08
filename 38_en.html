@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-08T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -94,6 +94,8 @@
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
   <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -103,6 +105,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -235,7 +245,7 @@
         <dl>
           <dt>Commentary</dt>
           <dd>
-            A lover who swore by the gods to love her has left her, and she worries the gods will punish him. Some read it as deep love, but he may have been frightened. The Yamato Monogatari says he was Middle Counselor Atsutada, who died young at 37. Divine punishment?
+            A lover who swore by the gods to love her has left her, and she worries the gods will punish him. Some read it as deep love, but he may have been frightened. The Yamato Monogatari says he was Acting Middle Counselor Atsutada, who died young at 38. Divine punishment?
           </dd>
         </dl>
         <dl class="last-dl">
@@ -278,6 +288,408 @@
       </dl>
     </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Ukon's Family Tree</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 38.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__tenno">Brown text</span>Emperor</li>
+              <li><span class="fk-legend__tno" aria-hidden="true"></span>Emperor's number in the line of succession</li>
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+              <li><span class="fk-legend__dash" aria-hidden="true"></span>Love affair</li>
+              <li><span class="fk-legend__eq">＝</span>Marriage</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Ukon's family tree">
+            <script type="application/json">
+{
+ "lang": "en",
+ "tooltips": "fujiwara",
+ "nodes": [
+  {
+   "id": "uda",
+   "n": "宇多",
+   "k": 1,
+   "t": 59,
+   "x": 16,
+   "y": 62
+  },
+  {
+   "id": "inshi",
+   "n": "胤子",
+   "x": 16,
+   "y": 106
+  },
+  {
+   "id": "daigo",
+   "n": "醍醐",
+   "k": 1,
+   "t": 60,
+   "x": 136,
+   "y": 84
+  },
+  {
+   "id": "onshi",
+   "n": "穏子",
+   "x": 136,
+   "y": 128
+  },
+  {
+   "id": "suenawa",
+   "n": "藤原季縄",
+   "key": "季縄",
+   "x": 136,
+   "y": 220
+  },
+  {
+   "id": "suzaku",
+   "n": "朱雀",
+   "k": 1,
+   "t": 61,
+   "x": 256,
+   "y": 84
+  },
+  {
+   "id": "murakami",
+   "n": "村上",
+   "k": 1,
+   "t": 62,
+   "x": 256,
+   "y": 136
+  },
+  {
+   "id": "ukon",
+   "n": "右近",
+   "p": 38,
+   "self": 1,
+   "sub": "Served Empress Onshi",
+   "x": 256,
+   "y": 220
+  },
+  {
+   "id": "motoyoshi",
+   "n": "元良親王",
+   "p": 20,
+   "x": 468,
+   "y": 160
+  },
+  {
+   "id": "atsutada",
+   "n": "藤原敦忠",
+   "key": "敦忠",
+   "p": 43,
+   "x": 468,
+   "y": 200
+  },
+  {
+   "id": "asatada",
+   "n": "藤原朝忠",
+   "key": "朝忠",
+   "p": 44,
+   "x": 468,
+   "y": 240
+  },
+  {
+   "id": "morosuke",
+   "n": "藤原師輔",
+   "key": "師輔",
+   "x": 468,
+   "y": 280
+  },
+  {
+   "id": "shitago",
+   "n": "源順",
+   "x": 468,
+   "y": 320
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-inshi",
+   "top": "uda",
+   "bottom": "inshi"
+  },
+  {
+   "id": "c-onshi",
+   "top": "daigo",
+   "bottom": "onshi"
+  }
+ ],
+ "kids": [
+  {
+   "from": "c-inshi",
+   "to": [
+    "daigo"
+   ]
+  },
+  {
+   "from": "c-onshi",
+   "to": [
+    "suzaku",
+    "murakami"
+   ]
+  },
+  {
+   "from": "suenawa",
+   "to": [
+    "ukon"
+   ]
+  }
+ ],
+ "lines": [
+  {
+   "points": [
+    [
+     392,
+     220
+    ],
+    [
+     448,
+     220
+    ]
+   ],
+   "dash": true,
+   "label": {
+    "text": "Love",
+    "x": 420,
+    "y": 213
+   }
+  },
+  {
+   "points": [
+    [
+     448,
+     160
+    ],
+    [
+     448,
+     320
+    ]
+   ],
+   "dash": true
+  },
+  {
+   "points": [
+    [
+     448,
+     160
+    ],
+    [
+     465,
+     160
+    ]
+   ],
+   "dash": true
+  },
+  {
+   "points": [
+    [
+     448,
+     200
+    ],
+    [
+     465,
+     200
+    ]
+   ],
+   "dash": true
+  },
+  {
+   "points": [
+    [
+     448,
+     240
+    ],
+    [
+     465,
+     240
+    ]
+   ],
+   "dash": true
+  },
+  {
+   "points": [
+    [
+     448,
+     280
+    ],
+    [
+     465,
+     280
+    ]
+   ],
+   "dash": true
+  },
+  {
+   "points": [
+    [
+     448,
+     320
+    ],
+    [
+     465,
+     320
+    ]
+   ],
+   "dash": true
+  }
+ ],
+ "arrows": [
+  {
+   "points": [
+    [
+     266,
+     205
+    ],
+    [
+     266,
+     178
+    ],
+    [
+     151,
+     178
+    ],
+    [
+     151,
+     144
+    ]
+   ],
+   "label": {
+    "text": "Served",
+    "x": 180,
+    "y": 169
+   }
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 646 346" width="646" height="346" role="img" aria-label="Ukon's family tree" lang="en" class="fk-svg kd-svg" style="max-width:969px;min-width:min(640px,969px)" data-src="1shjtma">
+<g class="fk-edges"><path d="M29 71V97M33 71V97" class="fk-edge fk-eq"/><path d="M156 93V119M160 93V119" class="fk-edge fk-eq"/><path d="M33 84H122" class="fk-edge"/><path d="M122 84H133" class="fk-edge"/><path d="M160 106H242" class="fk-edge"/><path d="M242 84V136" class="fk-edge"/><path d="M242 84H253" class="fk-edge"/><path d="M242 136H253" class="fk-edge"/><path d="M207 220H242" class="fk-edge"/><path d="M242 220H253" class="fk-edge"/><path d="M392 220L448 220" class="fk-edge is-dash"/><text class="fk-adopt" x="420" y="213">Love</text><path d="M448 160L448 320" class="fk-edge is-dash"/><path d="M448 160L465 160" class="fk-edge is-dash"/><path d="M448 200L465 200" class="fk-edge is-dash"/><path d="M448 240L465 240" class="fk-edge is-dash"/><path d="M448 280L465 280" class="fk-edge is-dash"/><path d="M448 320L465 320" class="fk-edge is-dash"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"><path d="M266 205L266 178L151 178L151 144" class="kd-arrow" marker-end="url(#kdArrowHead)"/><text class="kd-arrow-label" x="180" y="169">Served</text></g>
+<g>
+<g class="fk-node is-tenno" transform="translate(16,62)" data-tip="&lt;h3&gt;Emperor Uda&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;59th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;867–931&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;887–897&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Gave Sugawara no Michizane important posts&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="34" height="26"/><text class="fk-name" x="0" y="0.5">Uda</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">59</text></g>
+<g class="fk-node" transform="translate(16,106)" data-tip="&lt;h3&gt;Fujiwara no Taneko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown–896&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Fujiwara no Takafuji and Miyaji no Ressi; elder or younger sister of Sadakuni and Sadakata (same mother)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;A consort of Emperor Uda; mother of Emperor Daigo, Prince Atsuyoshi and Prince Atsumi&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="60" height="26"/><text class="fk-name" x="0" y="0.5">Taneko</text></g></g>
+<g class="fk-node is-tenno" transform="translate(136,84)" data-tip="&lt;h3&gt;Emperor Daigo&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;60th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;885–930&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;897–930&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Ordered the compiling of the Kokin Wakashū&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="48" height="26"/><text class="fk-name" x="0" y="0.5">Daigo</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">60</text></g>
+<g class="fk-node" transform="translate(136,128)" data-tip="&lt;h3&gt;Fujiwara no Onshi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;885–954&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Empress of Emperor Daigo; mother of Emperors Suzaku and Murakami&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="48" height="26"/><text class="fk-name" x="0" y="0.5">Onshi</text></g></g>
+<g class="fk-node" transform="translate(136,220)" data-tip="&lt;h3&gt;Fujiwara no Suenawa&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown–919&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Minor Captain of the Right Palace Guards&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Fifth Rank, Lower Grade&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="72" height="26"/><text class="fk-name" x="0" y="0.5">Suenawa</text></g></g>
+<g class="fk-node is-tenno" transform="translate(256,84)" data-tip="&lt;h3&gt;Emperor Suzaku&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;61st emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;923–952&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;930–946&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Daigo; elder brother of Emperor Murakami&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;During his reign came the revolts of Taira no Masakado and Fujiwara no Sumitomo (the Jōhei–Tengyō Rebellions)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="58" height="26"/><text class="fk-name" x="0" y="0.5">Suzaku</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">61</text></g>
+<g class="fk-node is-tenno" transform="translate(256,136)" data-tip="&lt;h3&gt;Emperor Murakami&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;62nd emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;926–967&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;946–967&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Ordered the compiling of the Gosen Wakashū&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="81" height="26"/><text class="fk-name" x="0" y="0.5">Murakami</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">62</text></g>
+<g class="fk-node is-poet is-self" transform="translate(256,220)" data-tip="&lt;h3&gt;Ukon&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Fujiwara no Suenawa, Minor Captain of the Right Palace Guards&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 38, &quot;Wasuraruru...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Served Empress Onshi, consort of Emperor Daigo. Had love affairs with Prince Motoyoshi, Fujiwara no Atsutada, Fujiwara no Morosuke, Fujiwara no Asatada, Minamoto no Shitagō, and others&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="74" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="68" height="26"/><text class="fk-name" x="0" y="0.5">Ukon</text><circle class="fk-badge" cx="54" cy="0" r="10"/><text class="fk-badge-num" x="54" y="0.5">38</text></g><rect class="fk-sub-box" x="0" y="11" width="134" height="16" rx="8"/><text class="fk-sub" x="67" y="19.5">Served Empress Onshi</text></g>
+<g class="fk-node is-poet" transform="translate(468,160)" data-tip="&lt;h3&gt;Prince Motoyoshi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;890–943&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Third Rank for princes&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Yōzei&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 20, &quot;Wabinureba...&quot;&lt;/span&gt;&lt;/div&gt;" data-p="20"><a href="/20_en.html" aria-label="Prince Motoyoshi (Hyakunin Isshu Poem 20)"><rect class="fk-hit" x="-2" y="-13" width="158" height="26"/><text class="fk-name" x="0" y="0.5">Prince Motoyoshi</text><circle class="fk-badge" cx="144" cy="0" r="10"/><text class="fk-badge-num" x="144" y="0.5">20</text></a></g>
+<g class="fk-node is-poet" transform="translate(468,200)" data-tip="&lt;h3&gt;Fujiwara no Atsutada&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;906–943&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Acting Middle Counselor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Third Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 43, &quot;Aimite no...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Acting Middle Counselor Atsutada&lt;/span&gt;&lt;/div&gt;" data-p="43"><a href="/43_en.html" aria-label="Fujiwara no Atsutada (Hyakunin Isshu Poem 43)"><rect class="fk-hit" x="-2" y="-13" width="97" height="26"/><text class="fk-name" x="0" y="0.5">Atsutada</text><circle class="fk-badge" cx="83" cy="0" r="10"/><text class="fk-badge-num" x="83" y="0.5">43</text></a></g>
+<g class="fk-node is-poet" transform="translate(468,240)" data-tip="&lt;h3&gt;Fujiwara no Asatada&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;910–967&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Middle Counselor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Third Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 44, &quot;Au koto no...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Middle Counselor Asatada&lt;/span&gt;&lt;/div&gt;" data-p="44"><a href="/44_en.html" aria-label="Fujiwara no Asatada (Hyakunin Isshu Poem 44)"><rect class="fk-hit" x="-2" y="-13" width="89" height="26"/><text class="fk-name" x="0" y="0.5">Asatada</text><circle class="fk-badge" cx="75" cy="0" r="10"/><text class="fk-badge-num" x="75" y="0.5">44</text></a></g>
+<g class="fk-node" transform="translate(468,280)" data-tip="&lt;h3&gt;Fujiwara no Morosuke&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;909–960&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Minister of the Right&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Second Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Founder of the Kujō line&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Imperial in-law: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Grandfather (on the mother's side) of Emperors Reizei and En'yū&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="80" height="26"/><text class="fk-name" x="0" y="0.5">Morosuke</text></g></g>
+<g class="fk-node" transform="translate(468,320)" data-tip="&lt;h3&gt;Minamoto no Shitagō&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;911–983&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Governor of Noto&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Fifth Rank, Upper Grade&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Minamoto no Kozoru; great-great-grandson of Emperor Saga&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Compiled the Wamyō Ruijushō dictionary. As one of the Five Men of the Pear Pavilion, he compiled the Gosen Wakashū. One of the Thirty-Six Immortal Poets&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="166" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Shitagō</text></g></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+          <div class="kd-text">
+            <p style="width:100%; margin-bottom: 0.75em;">
+              Ukon's name comes from the post of her father, Fujiwara no Suenawa, who was a Minor Captain of the Right Palace Guards (<em>Ukon'e no Shōshō</em>).
+            </p>
+            <p style="width:100%; margin-bottom: 0.75em;">She served Empress Onshi, the consort of Emperor Daigo, as a lady-in-waiting, and was known as a poet who had many loves.</p>
+            <p style="width:100%; margin-bottom: 0.75em;">
+              Her poem "Wasuraruru..." is said to have been sent to Fujiwara no Atsutada (Acting Middle Counselor Atsutada). It is not clear whether she truly meant to worry about him or to curse him for leaving her. Katsushika Hokusai made <a
+                href="#hokusai">an interesting ukiyo-e print for Atsutada's Hyakunin Isshu poem</a>. Please take a look.
+            </p>
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <dt>Sei Shōnagon's "Wasuraruru" Poem</dt>
+            <dd><a href="/62_en.html">Sei Shōnagon</a> also wrote a poem that begins with "Wasuraruru." Its headnote says it was sent "to a man whose heart had changed," so it too was written to a man who had lost interest in her. Its feelings are easy for people today to understand.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>忘<rt>わす</rt></ruby>らるる
+                    <ruby>身<rt>み</rt></ruby>のことわりと
+                    <ruby>知<rt>し</rt></ruby>りながら
+                    <br><ruby>思<rt>おも</rt></ruby>ひあへぬは
+                    <ruby>涙<rt>なみだ</rt></ruby>なりけり
+                    <span class="shutten"><em>Shika Wakashū</em>, Sei Shōnagon</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p>I understand why you have forgotten me,<br class="br-pc"> and yet my tears will not stop.</p>
+                </q>
+              </div>
+            </dd>
+
+            <dt>Ukon's Poem in <em>The Tale of Genji</em></dt>
+            <dd>
+              Ukon's Hyakunin Isshu poem is used to great effect in <em>The Tale of Genji</em>, in a scene that shows how a man and a woman can fail to understand each other.
+              Murasaki no Ue waited in the capital, trusting Hikaru Genji's promise, made as he left for Suma, that he would stay with her as long as he lived.
+              But Genji had an affair with the Akashi Lady, who became pregnant, and then came back to the capital. Murasaki no Ue was deeply hurt.
+              At that moment she murmured to Genji, "<em>mi wo ba omowazu</em>" ("I do not think of myself"), part of Ukon's poem. Behind these words was probably her sadness at being betrayed, but Genji took them as jealousy and found her charming. The quotation of Ukon's poem makes the gap between their hearts stand out strongly.
+            </dd>
+            <dt id="hokusai">Ukiyo-e by Katsushika Hokusai</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/hokusai_43_large.webp' data-lightbox='atsutada' data-title='Ukiyo-e by Katsushika Hokusai'>
+                  <img loading='lazy' src='../img/hokusai_43.webp' alt='Acting Middle Counselor Atsutada, from One Hundred Poems Explained by the Nurse, by Katsushika Hokusai' width="640" height="434">
+                </a>
+                <figcaption><small><a
+                      href='https://commons.wikimedia.org/wiki/File:%E7%99%BE%E4%BA%BA%E4%B8%80%E9%A6%96_%E4%B9%B3%E3%81%8B%E3%82%91%E3%81%A8%E3%81%8D_%E4%B8%AD%E7%B4%8D%E8%A8%80%E6%95%A6%E5%BF%A0-Poem_by_Ch%C5%ABnagon_Atsutada_(Fujiwara_no_Asatada),_from_the_series_One_Hundred_Poems_Explained_by_the_Nurse_(Hyakunin_isshu_uba_ga_etoki)_MET_DP141131.jpg'
+                      target='_blank' rel='noopener'>Katsushika Hokusai, CC0, via Wikimedia Commons</a></small></figcaption>
+              </figure>
+              <div>
+                <p style="width:100%; margin-bottom: 0.75em;">
+                  This print is from Hokusai's <em>One Hundred Poems Explained by the Nurse</em>, made for the poem by <a href="/43_en.html">Fujiwara no Atsutada</a>, who is said to have been Ukon's lover.</p>
+                <p style="width:100%; margin-bottom: 0.75em;">
+                  The woman here is doing <em>ushi no koku mairi</em>, a kind of curse in which a person goes to a shrine at around 1 to 3 a.m. and nails a straw doll, standing for the hated person, to the shrine's sacred tree. She may be meant as Ukon, who wrote a poem worrying that the lover who swore eternal love might lose his life as punishment from the gods. Of course, this is not a confirmed historical fact.
+                </p>
+                <p style="width:100%; margin-bottom: 0.75em;">
+                  In the Heian period, a woman who was not a man's principal wife, even if they were married, faced an unfair situation: the relationship simply ended when he stopped visiting her. By the way, <em>ushi no koku mairi</em> seems to have been done only by women.
+                </p>
+              </div>
+            </dd>
+
+            <dt>Utagawa Kuniyoshi's <em>Hyakunin Isshu no Uchi</em></dt>
+            <dd class='thumb-image2'>
+              <figure class='portrait'>
+                <a href='../img/kuniyoshi_38_large.webp' data-lightbox='ukon' data-title='Ukiyo-e by Utagawa Kuniyoshi'>
+                  <img loading='lazy' src='../img/kuniyoshi_38.webp' alt='Ukon, ukiyo-e by Utagawa Kuniyoshi' width="1000" height="1479">
+                </a>
+                <figcaption><a
+                    href='https://commons.wikimedia.org/wiki/File:Ukon_(no._38)_%E5%8F%B3%E8%BF%91_(BM_2008,3037.10624).jpg' target='_blank' rel='noopener'><small>British
+                      Museum, Public domain, via Wikimedia Commons</small></a></figcaption>
+              </figure>
+              <div>
+                <p style="width:100%; margin-bottom: 0.75em;">
+                  This print is by Utagawa Kuniyoshi, an ukiyo-e artist of the Edo period. It is one of a series that pictures the Hyakunin Isshu poems in his own way, and it shows Ukon, who shone in the court salons of the Heian period.
+                </p>
+                <p style="width:100%; margin-bottom: 0.75em;">
+                  Ukon is called a gifted woman not just because she wrote good poems. As a lady-in-waiting to Empress Onshi, consort of Emperor Daigo, she had deep learning and a witty way with words that let her hold her own with leading cultural figures such as Ki no Tsurayuki.
+                </p>
+                <p style="width:100%; margin-bottom: 0.75em;">
+                  Her intelligence shows best in her Hyakunin Isshu poem "Wasuraruru...." Rather than simply grieving over a betrayed love, she seems to have added a deliberate, ironic twist: "I am worried that you, who swore to the gods that you loved me, will be punished by them for breaking that promise."
+                </p>
+              </div>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -308,7 +720,12 @@
   </footer>
   <!-- Footer end -->
 
-  <script src="../js/poems_en.js?20261007-04"></script>
+  <script src="../js/poems_en.js?20261008-01"></script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261008-35"></script>
+  <script src="../js/keizu-diagram.js?20261008-02"></script>
 
 </body>
 

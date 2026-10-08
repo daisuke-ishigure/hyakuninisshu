@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-08T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -94,6 +94,8 @@
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
   <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -103,6 +105,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -290,6 +300,388 @@
       </dl>
     </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Kiyohara no Motosuke's Family Tree</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 42.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__tenno">Brown text</span>Emperor</li>
+              <li><span class="fk-legend__tno" aria-hidden="true"></span>Emperor's number in the line of succession</li>
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+              <li><span class="fk-legend__dash"></span>Generations left out</li>
+              <li><span class="fk-legend__eq">＝</span>Marriage</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Kiyohara no Motosuke's family tree">
+            <script type="application/json">
+{
+ "lang": "en",
+ "nodes": [
+  {
+   "id": "fukayabu",
+   "n": "清原深養父",
+   "p": 36,
+   "x": 16,
+   "y": 150
+  },
+  {
+   "id": "motosuke",
+   "n": "清原元輔",
+   "p": 42,
+   "x": 367,
+   "y": 106,
+   "self": 1,
+   "sub": "One of the Five Men of the Pear Pavilion"
+  },
+  {
+   "id": "muneyo",
+   "n": "藤原棟世",
+   "x": 628,
+   "y": 62
+  },
+  {
+   "id": "sei",
+   "n": "清少納言",
+   "p": 62,
+   "sub": "Served Empress Teishi",
+   "x": 628,
+   "y": 106
+  },
+  {
+   "id": "norimitsu",
+   "n": "橘則光",
+   "x": 628,
+   "y": 170
+  },
+  {
+   "id": "tadamochi",
+   "n": "橘忠望",
+   "x": 628,
+   "y": 213
+  },
+  {
+   "id": "koma",
+   "n": "小馬命婦",
+   "sub": "Served Empress Akiko",
+   "x": 844,
+   "y": 84
+  },
+  {
+   "id": "torinaga",
+   "n": "橘則長",
+   "x": 844,
+   "y": 147.5
+  },
+  {
+   "id": "tadamochijo",
+   "n": "忠望の娘",
+   "x": 844,
+   "y": 191
+  },
+  {
+   "id": "noin",
+   "n": "能因",
+   "p": 69,
+   "x": 844,
+   "y": 235
+  },
+  {
+   "id": "michitaka",
+   "n": "藤原道隆",
+   "key": "道隆",
+   "x": 1048,
+   "y": 40
+  },
+  {
+   "id": "kishi",
+   "n": "儀同三司母",
+   "p": 54,
+   "x": 1048,
+   "y": 84
+  },
+  {
+   "id": "michinaga",
+   "n": "藤原道長",
+   "key": "道長",
+   "x": 1048,
+   "y": 150
+  },
+  {
+   "id": "rinshi",
+   "n": "源倫子",
+   "x": 1048,
+   "y": 194
+  },
+  {
+   "id": "teishi",
+   "n": "定子",
+   "key": "藤原定子",
+   "x": 1262,
+   "y": 62
+  },
+  {
+   "id": "ichijo",
+   "n": "一条",
+   "k": 1,
+   "t": 66,
+   "x": 1262,
+   "y": 114
+  },
+  {
+   "id": "shoshi",
+   "n": "彰子",
+   "x": 1262,
+   "y": 158
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-muneyo",
+   "top": "muneyo",
+   "bottom": "sei"
+  },
+  {
+   "id": "c-norimitsu",
+   "top": "sei",
+   "bottom": "norimitsu"
+  },
+  {
+   "id": "c-norinaga",
+   "top": "torinaga",
+   "bottom": "tadamochijo"
+  },
+  {
+   "id": "c-michitaka",
+   "top": "michitaka",
+   "bottom": "kishi"
+  },
+  {
+   "id": "c-michinaga",
+   "top": "michinaga",
+   "bottom": "rinshi"
+  },
+  {
+   "id": "c-teishi",
+   "top": "teishi",
+   "bottom": "ichijo"
+  },
+  {
+   "id": "c-shoshi",
+   "top": "ichijo",
+   "bottom": "shoshi"
+  }
+ ],
+ "kids": [
+  {
+   "from": "motosuke",
+   "to": [
+    "sei"
+   ]
+  },
+  {
+   "from": "c-muneyo",
+   "to": [
+    "koma"
+   ]
+  },
+  {
+   "from": "c-norimitsu",
+   "to": [
+    "torinaga"
+   ]
+  },
+  {
+   "from": "tadamochi",
+   "to": [
+    "tadamochijo",
+    "noin"
+   ]
+  },
+  {
+   "from": "c-michitaka",
+   "to": [
+    "teishi"
+   ]
+  },
+  {
+   "from": "c-michinaga",
+   "to": [
+    "shoshi"
+   ]
+  }
+ ],
+ "lines": [
+  {
+   "points": [
+    [
+     212,
+     150
+    ],
+    [
+     328,
+     150
+    ],
+    [
+     328,
+     106
+    ],
+    [
+     364,
+     106
+    ]
+   ],
+   "dash": true,
+   "label": {
+    "text": "1 generation left out",
+    "x": 270,
+    "y": 163
+   }
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1322 261" width="1322" height="261" role="img" aria-label="Kiyohara no Motosuke's family tree" lang="en" class="fk-svg kd-svg" style="max-width:1983px;min-width:min(640px,1983px)" data-src="24todp">
+<g class="fk-edges"><path d="M676.5 71V97M680.5 71V97" class="fk-edge fk-eq"/><path d="M676.5 134V161M680.5 134V161" class="fk-edge fk-eq"/><path d="M926 156.5V182M930 156.5V182" class="fk-edge fk-eq"/><path d="M1083.5 49V75M1087.5 49V75" class="fk-edge fk-eq"/><path d="M1085 159V185M1089 159V185" class="fk-edge fk-eq"/><path d="M1281 71V105M1285 71V105" class="fk-edge fk-eq"/><path d="M1281 123V149M1285 123V149" class="fk-edge fk-eq"/><path d="M563 106H614" class="fk-edge"/><path d="M614 106H625" class="fk-edge"/><path d="M680.5 84H830" class="fk-edge"/><path d="M830 84H841" class="fk-edge"/><path d="M680.5 147.5H830" class="fk-edge"/><path d="M830 147.5H841" class="fk-edge"/><path d="M817 213H830" class="fk-edge"/><path d="M830 191V235" class="fk-edge"/><path d="M830 191H841" class="fk-edge"/><path d="M830 235H841" class="fk-edge"/><path d="M1087.5 62H1248" class="fk-edge"/><path d="M1248 62H1259" class="fk-edge"/><path d="M1089 172H1248" class="fk-edge"/><path d="M1248 158V172" class="fk-edge"/><path d="M1248 158H1259" class="fk-edge"/><path d="M212 150L328 150L328 106L364 106" class="fk-edge is-dash"/><text class="fk-adopt" x="270" y="163">1 generation left out</text></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node is-poet" transform="translate(16,150)" data-tip="&lt;h3&gt;Kiyohara no Fukayabu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 36, &quot;Natsu no yo wa...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Grandfather of Kiyohara no Motosuke and great-grandfather of Sei Shōnagon&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;A master of the koto. Friends with Fujiwara no Kanesuke, Ki no Tsurayuki, Ōshikōchi no Mitsune, and others&lt;/span&gt;&lt;/div&gt;" data-p="36"><a href="/36_en.html" aria-label="Kiyohara no Fukayabu (Hyakunin Isshu Poem 36)"><rect class="fk-hit" x="-2" y="-13" width="195" height="26"/><text class="fk-name" x="0" y="0.5">Kiyohara no Fukayabu</text><circle class="fk-badge" cx="181" cy="0" r="10"/><text class="fk-badge-num" x="181" y="0.5">36</text></a></g>
+<g class="fk-node is-poet is-self" transform="translate(367,106)" data-tip="&lt;h3&gt;Kiyohara no Motosuke&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;908–990&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Grandson of Kiyohara no Fukayabu and father of Sei Shōnagon&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 42, &quot;Chigiriki na...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;As one of the Five Men of the Pear Pavilion, helped compile the Gosen Wakashū&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="203" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="197" height="26"/><text class="fk-name" x="0" y="0.5">Kiyohara no Motosuke</text><circle class="fk-badge" cx="183" cy="0" r="10"/><text class="fk-badge-num" x="183" y="0.5">42</text></g><rect class="fk-sub-box" x="0" y="11" width="232" height="16" rx="8"/><text class="fk-sub" x="116" y="19.5">One of the Five Men of the Pear Pavilion</text></g>
+<g class="fk-node" transform="translate(628,62)" data-tip="&lt;h3&gt;Fujiwara no Muneyo&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Sei Shōnagon's husband; father of Koma no Myōbu&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="156" height="26"/><text class="fk-name" x="0" y="0.5">Fujiwara no Muneyo</text></g></g>
+<g class="fk-node is-poet" transform="translate(628,106)" data-tip="&lt;h3&gt;Sei Shōnagon&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;c. 966–c. 1025&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Kiyohara no Motosuke and great-granddaughter of Kiyohara no Fukayabu&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 62, &quot;Yo wo komete...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Married Tachibana no Norimitsu and had a son, Norinaga. From about 993 she served Empress Teishi and wrote The Pillow Book. She later married Fujiwara no Muneyo and had a daughter, Koma no Myōbu&lt;/span&gt;&lt;/div&gt;" data-p="62"><a href="/62_en.html" aria-label="Sei Shōnagon (Hyakunin Isshu Poem 62)"><rect class="fk-hit" x="-2" y="-13" width="129" height="26"/><text class="fk-name" x="0" y="0.5">Sei Shōnagon</text><circle class="fk-badge" cx="115" cy="0" r="10"/><text class="fk-badge-num" x="115" y="0.5">62</text></a><rect class="fk-sub-box" x="0" y="11" width="134" height="16" rx="8"/><text class="fk-sub" x="67" y="19.5">Served Empress Teishi</text></g>
+<g class="fk-node" transform="translate(628,170)" data-tip="&lt;h3&gt;Tachibana no Norimitsu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Sei Shōnagon's husband; father of Tachibana no Norinaga&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="184" height="26"/><text class="fk-name" x="0" y="0.5">Tachibana no Norimitsu</text></g></g>
+<g class="fk-node" transform="translate(628,213)" data-tip="&lt;h3&gt;Tachibana no Tadamochi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Governor of Ōmi&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Nōin and Tachibana no Motoyasu&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="190" height="26"/><text class="fk-name" x="0" y="0.5">Tachibana no Tadamochi</text></g></g>
+<g class="fk-node" transform="translate(844,84)" data-tip="&lt;h3&gt;Koma no Myōbu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Sei Shōnagon; her father was Fujiwara no Muneyo&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Served Jōtōmon-in (Empress Akiko)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="126" height="26"/><text class="fk-name" x="0" y="0.5">Koma no Myōbu</text></g><rect class="fk-sub-box" x="0" y="11" width="133" height="16" rx="8"/><text class="fk-sub" x="66.5" y="19.5">Served Empress Akiko</text></g>
+<g class="fk-node" transform="translate(844,147.5)" data-tip="&lt;h3&gt;Tachibana no Norinaga&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Tachibana no Norimitsu and Sei Shōnagon&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;His wife was Tachibana no Tadamochi's daughter (an elder or younger sister of Nōin)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="178" height="26"/><text class="fk-name" x="0" y="0.5">Tachibana no Norinaga</text></g></g>
+<g class="fk-node" transform="translate(844,191)" data-tip="&lt;h3&gt;Daughter of Tachibana no Tadamochi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Tachibana no Norinaga's wife; an elder or younger sister of Nōin&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="172" height="26"/><text class="fk-name" x="0" y="0.5">Tadamochi's daughter</text></g></g>
+<g class="fk-node is-poet" transform="translate(844,235)" data-tip="&lt;h3&gt;Nōin&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Tachibana no Tadamochi, Governor of Ōmi; he became the adopted son (yūshi) of his elder brother, Tachibana no Motoyasu, Governor of Higo&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 69, &quot;Arashi fuku...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Priest Nōin. His name before becoming a monk was Tachibana no Nagayasu. He became a student of literature but became a monk in 1013, at 26. He had a son, Tachibana no Mototō&lt;/span&gt;&lt;/div&gt;" data-p="69"><a href="/69_en.html" aria-label="Nōin (Hyakunin Isshu Poem 69)"><rect class="fk-hit" x="-2" y="-13" width="64" height="26"/><text class="fk-name" x="0" y="0.5">Nōin</text><circle class="fk-badge" cx="50" cy="0" r="10"/><text class="fk-badge-num" x="50" y="0.5">69</text></a></g>
+<g class="fk-node" transform="translate(1048,40)" data-tip="&lt;h3&gt;Fujiwara no Michitaka&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;953–995&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Regent, Chancellor (Kanpaku), and Minister of the Center&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Second Rank&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="79" height="26"/><text class="fk-name" x="0" y="0.5">Michitaka</text></g></g>
+<g class="fk-node is-poet" transform="translate(1048,84)" data-tip="&lt;h3&gt;Mother of the Honorary Grand Minister (Gidō Sanshi no Haha)&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown–996&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Third Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Real name: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Takashina no Takako&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Takashina no Naritada. Wife of Fujiwara no Michitaka, and mother of Fujiwara no Korechika and Empress Teishi&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 54, &quot;Wasureji no...&quot;&lt;/span&gt;&lt;/div&gt;" data-p="54"><a href="/54_en.html" aria-label="Mother of the Honorary Grand Minister (Gidō Sanshi no Haha) (Hyakunin Isshu Poem 54)"><rect class="fk-hit" x="-2" y="-13" width="186" height="26"/><text class="fk-name" x="0" y="0.5">Takashina no Takako</text><circle class="fk-badge" cx="172" cy="0" r="10"/><text class="fk-badge-num" x="172" y="0.5">54</text></a></g>
+<g class="fk-node" transform="translate(1048,150)" data-tip="&lt;h3&gt;Fujiwara no Michinaga&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;966–1028&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Regent and Minister of the Left&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior First Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Imperial in-law: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Grandfather (on the mother's side) of Emperors Go-Ichijō, Go-Suzaku, and Go-Reizei&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="82" height="26"/><text class="fk-name" x="0" y="0.5">Michinaga</text></g></g>
+<g class="fk-node" transform="translate(1048,194)" data-tip="&lt;h3&gt;Minamoto no Tomoko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;964–1053&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of the Minister of the Left Minamoto no Masanobu and Fujiwara no Atsuko; great-granddaughter of Fujiwara no Sadakata&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Fujiwara no Michinaga's principal wife; mother of Yorimichi, Norimichi, Akiko, Kenshi, Ishi, and Kishi. A second cousin of Murasaki Shikibu. Akazome Emon served her&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="169" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Tomoko</text></g></g>
+<g class="fk-node" transform="translate(1262,62)" data-tip="&lt;h3&gt;Fujiwara no Teishi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;976–1001&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Fujiwara no Michitaka and Takashina no Takako (Mother of the Honorary Grand Minister)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Empress (chūgū) of Emperor Ichijō, later named kōgō. Sei Shōnagon served her&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="48" height="26"/><text class="fk-name" x="0" y="0.5">Teishi</text></g></g>
+<g class="fk-node is-tenno" transform="translate(1262,114)" data-tip="&lt;h3&gt;Emperor Ichijō&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;66th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;980–1011&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;986–1011&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="46" height="26"/><text class="fk-name" x="0" y="0.5">Ichijō</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">66</text></g>
+<g class="fk-node" transform="translate(1262,158)" data-tip="&lt;h3&gt;Fujiwara no Akiko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;988–1074&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Eldest daughter of Fujiwara no Michinaga and Minamoto no Tomoko&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Empress (chūgū) of Emperor Ichijō and mother of Emperors Go-Ichijō and Go-Suzaku; later called Jōtōmon-in. Hyakunin Isshu poets Murasaki Shikibu, Izumi Shikibu, Ise no Taifu, Akazome Emon, and others served her&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="47" height="26"/><text class="fk-name" x="0" y="0.5">Akiko</text></g></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+          <div class="kd-text">
+            <p style="width:100%; margin-bottom:0.5em;">The Kiyohara clan includes many descendants of Prince Toneri, a son of Emperor Tenmu. Like his grandfather, <a href="/36_en.html">Kiyohara no Fukayabu</a>, Kiyohara no Motosuke was a master of waka. On the orders of Emperor Murakami, he compiled the <em>Gosen Wakashū</em> together with Ōnakatomi no Yoshinobu, Minamoto no Shitagō, Sakanoue no Mochiki, and Ki no Tokibumi (Ki no Tsurayuki's son). They worked in the Shōyōsha, a building in the women's quarters of the palace. Because pear trees grew in its garden, they were called the "Five Men of the Pear Pavilion" (<em>Nashitsubo no Gonin</em>).</p>
+            <p style="width:100%; margin-bottom:0.5em;">Motosuke had his daughter, Sei Shōnagon, when he was about 58. He lived a very long life for his time, reaching the age of 83.</p>
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <dt>The Source Poem (<em>Honka</em>)</dt>
+            <dd>Motosuke's Hyakunin Isshu poem is based on the following poem.
+              <br>The original is a poem that vows love that never changes.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>君<rt>きみ</rt></ruby>をおきて
+                    あだし<ruby>心<rt>ごころ</rt></ruby>を
+                    <ruby>我<rt>わ</rt></ruby>が<ruby>持<rt>も</rt></ruby>たば
+                    <br><ruby>末<rt>すえ</rt></ruby>の<ruby>松山<rt>まつやま</rt></ruby>
+                    <ruby>波<rt>なみ</rt></ruby>も<ruby>越<rt>こ</rt></ruby>えなむ
+                    <span class="shutten"><em>Kokin Wakashū</em>, Anonymous</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p>If I should ever give my heart to anyone but you,<br class="br-pc"> the waves would surely cross Sue-no-Matsuyama, which no wave ever crosses.</p>
+                </q>
+              </div>
+            </dd>
+
+            <dt>Sue-no-Matsuyama (Tagajō, Miyagi Prefecture)</dt>
+            <dd class='thumb-image2'>
+              <figure class='portrait'>
+                <a href='../img/suenomatsuyama_large.webp' data-lightbox='motosuke' data-title='Sue-no-Matsuyama (Tagajō, Miyagi Prefecture)'>
+                  <img loading='lazy' src='../img/suenomatsuyama.webp' alt="Sue-no-Matsuyama (Tagajō, Miyagi Prefecture)" width="640" height="807">
+                </a>
+                <figcaption><small>Photo: Miyagi Prefecture Tourism Promotion Office</small></figcaption>
+              </figure>
+              <div>
+                <p>
+                  A small hill in Tagajō, Miyagi Prefecture.<br>In 869, the Jōgan Earthquake struck, as large as the Great East Japan Earthquake of 2011. Even then, the tsunami did not go over Sue-no-Matsuyama, so in waka it was often used as an image of something that could never happen. During the Great East Japan Earthquake, the town around Sue-no-Matsuyama was flooded up to 2 meters deep, but news reports said that the people who took shelter on the hill were safe.<br><a
+                    class='no-decoration'
+                    href='utamakura_en.html?lat=38.287958179367735&lng=141.00347951203332&zoom=15'>See it on the map</a></p>
+              </div>
+            </dd>
+            <dt>Sue-no-Matsuyama (Tagajō):<br class="br-sp"> The Lay of the Land</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href="../img/suenomatsuyama_map.webp" data-lightbox='motosuke' data-title='Sue-no-Matsuyama (Tagajō, Miyagi Prefecture): terrain data'>
+                  <img loading='lazy' src="../img/suenomatsuyama_map.webp" alt="Terrain data around Sue-no-Matsuyama (Tagajō, Miyagi Prefecture)" width="1060" height="1211">
+                </a>
+                <figcaption>
+                  <small>Source: made from GSI Maps (Geospatial Information Authority of Japan)</small>
+                </figcaption>
+              </figure>
+              <div>
+                <p>
+                  Motosuke wrote "nami kosaji" (no wave will cross it). Is Sue-no-Matsuyama really a place that waves cannot cross? We used the map website of the Geospatial Information Authority of Japan to show the land around it.
+                </p>
+                <p>
+                  The cross-section and the color-coded elevation map show that the Sue-no-Matsuyama area rises a little higher than the land around it.
+                </p>
+                <p>
+                  Just as its name ("pine hill") suggests, pine trees still grow on Sue-no-Matsuyama today. Perhaps there were pines here in the Heian period too. Pines, a symbol of long life, and a place no wave can cross: perhaps because of these images of things that never change, Sue-no-Matsuyama became an <em>utamakura</em> (a famous place in poetry) for poems about unchanging love.
+                </p>
+              </div>
+            </dd>
+            <dt>Sue-no-Matsuyama (Ichinohe, Iwate Prefecture)</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/namiuchitouge_large.webp' data-lightbox='motosuke' data-title='Sue-no-Matsuyama (Ichinohe, Iwate Prefecture)'>
+                  <img loading='lazy' src='../img/namiuchitouge.webp' alt="Sue-no-Matsuyama (Ichinohe, Iwate Prefecture)" width="640" height="480">
+                </a>
+                <figcaption><small>Photo: Iwate Prefecture Tourism Association</small></figcaption>
+              </figure>
+              <div>
+                <p>Ichinohe, Iwate Prefecture, between Ichinohe and Fukuoka, two post towns on the old Ōshū Kaidō road. Tagajō in Miyagi Prefecture is thought to be the most likely site of Sue-no-Matsuyama, but one theory says it is Namiuchi Pass in Ichinohe.<br><a class='no-decoration'
+                    href='utamakura_en.html?lat=40.24247713578107&lng=141.30189797267255&zoom=15'>See it on the map</a>
+                </p>
+              </div>
+            </dd>
+            <dt>Utagawa Kuniyoshi's <em>Hyakunin Isshu no Uchi</em></dt>
+            <dd class='thumb-image2'>
+              <figure class='portrait'>
+                <a href='../img/kuniyoshi_42_large.webp' data-lightbox='motosuke' data-title='Ukiyo-e by Utagawa Kuniyoshi'>
+                  <img loading='lazy' src='../img/kuniyoshi_42.webp' alt='Kiyohara no Motosuke, ukiyo-e by Utagawa Kuniyoshi' width="434" height="640">
+                </a>
+                <figcaption><a
+                    href='https://commons.wikimedia.org/wiki/File:Kiyohara_no_Motosuke_(no._42)_%E6%B8%85%E5%8E%9F%E5%85%83%E8%BC%94_(BM_2008,3037.10626).jpg' target='_blank' rel='noopener'><small>British
+                      Museum, Public domain, via Wikimedia Commons</small></a></figcaption>
+              </figure>
+              <div>
+                <p>This ukiyo-e print is by Utagawa Kuniyoshi, an artist of the Edo period.<br
+                    class="br-pc"> It shows a scene to go with the Hyakunin Isshu poem.<br>Because pine trees are drawn near the sea, Kuniyoshi probably had in mind Sue-no-Matsuyama in Tagajō, Miyagi Prefecture, near Sendai Port.
+                </p>
+              </div>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -321,7 +713,12 @@
   </footer>
   <!-- Footer end -->
 
-  <script src="../js/poems_en.js?20261007-04"></script>
+  <script src="../js/poems_en.js?20261008-01"></script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261008-35"></script>
+  <script src="../js/keizu-diagram.js?20261008-02"></script>
 
 </body>
 
