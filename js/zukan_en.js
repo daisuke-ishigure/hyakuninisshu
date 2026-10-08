@@ -303,7 +303,7 @@ const POETS_RAW = [
     {
         n: 30, name: '<ruby>壬生忠岑<rt>みぶのただみね</rt></ruby>', date: '860年頃～920年頃', theme: 'love',
         poem: '<ruby>有明<rt>ありあけ</rt></ruby>の…', job: '貴族', source: '古今集',
-        outline: 'A poet highly praised by Fujiwara no Teika', img: 'img/z30.webp',
+        outline: 'A poet highly praised by Fujiwara no Sadaie', img: 'img/z30.webp',
     },
     {
         n: 31, name: '<ruby>坂上是則<rt>さかのうえのこれのり</rt></ruby>', date: '生年不詳～930年', theme: 'winter',
@@ -643,7 +643,7 @@ const POETS_RAW = [
     {
         n: 98, name: '<ruby>従二位家隆<rt>じゅにいいえたか</rt></ruby>', date: '1158年～1237年', theme: 'summer',
         poem: '<ruby>風<rt>かぜ</rt></ruby>そよぐ…', job: '公卿', source: '新勅撰集',
-        outline: 'A gentle poet who co-led the poetry world alongside Teika', img: 'img/z98.webp',
+        outline: 'A gentle poet who co-led the poetry world alongside Sadaie', img: 'img/z98.webp',
     },
     {
         n: 99, name: '<ruby>後鳥羽院<rt>ごとばいん</rt></ruby>', date: '1180年～1239年', theme: 'misc',

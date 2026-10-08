@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-08T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -94,6 +94,10 @@
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
   <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/accordion.css?20260721">
+  <link rel="stylesheet" href="../css/timeline.css?20260729">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -103,6 +107,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -278,6 +290,564 @@
       </dl>
     </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Retired Emperor Sanjō's Family Tree</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 68.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__tenno">Brown text</span>Emperor</li>
+              <li><span class="fk-legend__tno" aria-hidden="true"></span>Emperor's number in the line of succession</li>
+              <li><span class="fk-legend__kanpaku">Purple text</span>Became Regent or Kampaku</li>
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+              <li><span class="fk-legend__eq">＝</span>Marriage</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Retired Emperor Sanjō's family tree">
+            <script type="application/json">
+{
+ "lang": "en",
+ "nodes": [
+  {
+   "id": "kaneie",
+   "n": "兼家",
+   "key": "兼家",
+   "kan": 1,
+   "x": 16,
+   "y": 110
+  },
+  {
+   "id": "tokihime",
+   "n": "時姫",
+   "x": 16,
+   "y": 154
+  },
+  {
+   "id": "michitaka",
+   "n": "道隆",
+   "kan": 1,
+   "x": 136,
+   "y": 30
+  },
+  {
+   "id": "enyu",
+   "n": "円融",
+   "k": 1,
+   "t": 64,
+   "x": 136,
+   "y": 74
+  },
+  {
+   "id": "senshi",
+   "n": "詮子",
+   "x": 136,
+   "y": 118
+  },
+  {
+   "id": "michinaga",
+   "n": "道長",
+   "kan": 1,
+   "x": 136,
+   "y": 160
+  },
+  {
+   "id": "rinshi",
+   "n": "源倫子",
+   "x": 136,
+   "y": 204
+  },
+  {
+   "id": "choshi",
+   "n": "超子",
+   "x": 136,
+   "y": 250
+  },
+  {
+   "id": "reizei",
+   "n": "冷泉",
+   "k": 1,
+   "t": 63,
+   "x": 136,
+   "y": 302
+  },
+  {
+   "id": "kaishi",
+   "n": "懐子",
+   "x": 136,
+   "y": 346
+  },
+  {
+   "id": "teishi",
+   "n": "定子",
+   "key": "藤原定子",
+   "x": 331,
+   "y": 40
+  },
+  {
+   "id": "ichijo",
+   "n": "一条",
+   "k": 1,
+   "t": 66,
+   "x": 331,
+   "y": 92
+  },
+  {
+   "id": "shoshi",
+   "n": "彰子",
+   "x": 331,
+   "y": 136
+  },
+  {
+   "id": "kenshi",
+   "n": "妍子",
+   "x": 331,
+   "y": 190
+  },
+  {
+   "id": "sanjo",
+   "n": "三条",
+   "k": 1,
+   "t": 67,
+   "p": 68,
+   "self": 1,
+   "x": 331,
+   "y": 242
+  },
+  {
+   "id": "seishi",
+   "n": "娍子",
+   "x": 331,
+   "y": 286
+  },
+  {
+   "id": "kazan",
+   "n": "花山",
+   "k": 1,
+   "t": 65,
+   "x": 331,
+   "y": 350
+  },
+  {
+   "id": "goichijo",
+   "n": "後一条",
+   "k": 1,
+   "t": 68,
+   "x": 451,
+   "y": 100
+  },
+  {
+   "id": "gosuzaku",
+   "n": "後朱雀",
+   "k": 1,
+   "t": 69,
+   "x": 451,
+   "y": 152
+  },
+  {
+   "id": "teishi2",
+   "n": "禎子内親王",
+   "x": 451,
+   "y": 196
+  },
+  {
+   "id": "atsuakira",
+   "n": "敦明親王",
+   "sub": "Gave up being crown prince",
+   "x": 451,
+   "y": 244
+  },
+  {
+   "id": "atsunori",
+   "n": "敦儀親王",
+   "x": 451,
+   "y": 290
+  },
+  {
+   "id": "atsuhira",
+   "n": "敦平親王",
+   "x": 451,
+   "y": 326
+  },
+  {
+   "id": "moroakira",
+   "n": "師明親王",
+   "x": 451,
+   "y": 362
+  },
+  {
+   "id": "toshi",
+   "n": "当子内親王",
+   "x": 451,
+   "y": 398
+  },
+  {
+   "id": "shishi",
+   "n": "禔子内親王",
+   "x": 451,
+   "y": 434
+  },
+  {
+   "id": "gosanjo",
+   "n": "後三条",
+   "k": 1,
+   "t": 71,
+   "x": 606,
+   "y": 174
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-kaneie",
+   "top": "kaneie",
+   "bottom": "tokihime"
+  },
+  {
+   "id": "c-enyu",
+   "top": "enyu",
+   "bottom": "senshi"
+  },
+  {
+   "id": "c-michinaga",
+   "top": "michinaga",
+   "bottom": "rinshi"
+  },
+  {
+   "id": "c-choshi",
+   "top": "choshi",
+   "bottom": "reizei"
+  },
+  {
+   "id": "c-kaishi",
+   "top": "reizei",
+   "bottom": "kaishi"
+  },
+  {
+   "id": "c-teishi",
+   "top": "teishi",
+   "bottom": "ichijo"
+  },
+  {
+   "id": "c-shoshi",
+   "top": "ichijo",
+   "bottom": "shoshi"
+  },
+  {
+   "id": "c-kenshi",
+   "top": "kenshi",
+   "bottom": "sanjo"
+  },
+  {
+   "id": "c-seishi",
+   "top": "sanjo",
+   "bottom": "seishi"
+  },
+  {
+   "id": "c-teishi2",
+   "top": "gosuzaku",
+   "bottom": "teishi2"
+  }
+ ],
+ "kids": [
+  {
+   "from": "c-kaneie",
+   "to": [
+    "michitaka",
+    "senshi",
+    "michinaga",
+    "choshi"
+   ]
+  },
+  {
+   "from": "michitaka",
+   "to": [
+    "teishi"
+   ]
+  },
+  {
+   "from": "c-enyu",
+   "to": [
+    "ichijo"
+   ]
+  },
+  {
+   "from": "c-michinaga",
+   "to": [
+    "shoshi",
+    "kenshi"
+   ]
+  },
+  {
+   "from": "c-choshi",
+   "to": [
+    "sanjo"
+   ]
+  },
+  {
+   "from": "c-kaishi",
+   "to": [
+    "kazan"
+   ]
+  },
+  {
+   "from": "c-shoshi",
+   "to": [
+    "goichijo",
+    "gosuzaku"
+   ]
+  },
+  {
+   "from": "c-kenshi",
+   "to": [
+    "teishi2"
+   ]
+  },
+  {
+   "from": "c-seishi",
+   "to": [
+    "atsuakira",
+    "atsunori",
+    "atsuhira",
+    "moroakira",
+    "toshi",
+    "shishi"
+   ]
+  },
+  {
+   "from": "c-teishi2",
+   "to": [
+    "gosanjo"
+   ]
+  }
+ ],
+ "arrows": [
+  {
+   "points": [
+    [
+     217,
+     158
+    ],
+    [
+     321,
+     236
+    ]
+   ],
+   "curve": [
+    325,
+    160
+   ],
+   "head": false,
+   "label": {
+    "text": "Conflict",
+    "x": 256,
+    "y": 156
+   }
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 688 460" width="688" height="460" role="img" aria-label="Retired Emperor Sanjō's family tree" lang="en" class="fk-svg kd-svg" style="max-width:1032px;min-width:min(640px,1032px)" data-src="1why9p4">
+<g class="fk-edges"><path d="M40 119V145M44 119V145" class="fk-edge fk-eq"/><path d="M154.5 83V109M158.5 83V109" class="fk-edge fk-eq"/><path d="M173 169V195M177 169V195" class="fk-edge fk-eq"/><path d="M156.5 259V293M160.5 259V293" class="fk-edge fk-eq"/><path d="M156.5 311V337M160.5 311V337" class="fk-edge fk-eq"/><path d="M350 49V83M354 49V83" class="fk-edge fk-eq"/><path d="M350 101V127M354 101V127" class="fk-edge fk-eq"/><path d="M349.5 199V217M353.5 199V217" class="fk-edge fk-eq"/><path d="M349.5 251V277M353.5 251V277" class="fk-edge fk-eq"/><path d="M488.5 161V187M492.5 161V187" class="fk-edge fk-eq"/><path d="M44 132H122" class="fk-edge"/><path d="M122 30V250" class="fk-edge"/><path d="M122 30H133" class="fk-edge"/><path d="M122 118H133" class="fk-edge"/><path d="M122 160H133" class="fk-edge"/><path d="M122 250H133" class="fk-edge"/><path d="M214 30H317" class="fk-edge"/><path d="M317 30V40" class="fk-edge"/><path d="M317 40H328" class="fk-edge"/><path d="M158.5 96H317" class="fk-edge"/><path d="M317 92V96" class="fk-edge"/><path d="M317 92H328" class="fk-edge"/><path d="M177 182H317" class="fk-edge"/><path d="M317 136V190" class="fk-edge"/><path d="M317 136H328" class="fk-edge"/><path d="M317 190H328" class="fk-edge"/><path d="M160.5 267H317" class="fk-edge"/><path d="M317 242V267" class="fk-edge"/><path d="M317 242H328" class="fk-edge"/><path d="M160.5 324H317" class="fk-edge"/><path d="M317 324V350" class="fk-edge"/><path d="M317 350H328" class="fk-edge"/><path d="M354 114H437" class="fk-edge"/><path d="M437 100V152" class="fk-edge"/><path d="M437 100H448" class="fk-edge"/><path d="M437 152H448" class="fk-edge"/><path d="M353.5 207H437" class="fk-edge"/><path d="M437 196V207" class="fk-edge"/><path d="M437 196H448" class="fk-edge"/><path d="M353.5 264H437" class="fk-edge"/><path d="M437 244V434" class="fk-edge"/><path d="M437 244H448" class="fk-edge"/><path d="M437 290H448" class="fk-edge"/><path d="M437 326H448" class="fk-edge"/><path d="M437 362H448" class="fk-edge"/><path d="M437 398H448" class="fk-edge"/><path d="M437 434H448" class="fk-edge"/><path d="M492.5 174H592" class="fk-edge"/><path d="M592 174H603" class="fk-edge"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"><path d="M217 158Q325 160 321 236" class="kd-arrow"/><text class="kd-arrow-label" x="256" y="156">Conflict</text></g>
+<g>
+<g class="fk-node is-kanpaku" transform="translate(16,110)" data-tip="&lt;h3&gt;Fujiwara no Kaneie&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;929–990&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Regent, Kampaku (chief adviser), and Chancellor of the Realm&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior First Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Imperial in-law: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Grandfather (on the mother's side) of Emperor Ichijō&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="56" height="26"/><text class="fk-name" x="0" y="0.5">Kaneie</text></g></g>
+<g class="fk-node" transform="translate(16,154)" data-tip="&lt;h3&gt;Fujiwara no Tokihime&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Fujiwara no Nakamasa, Governor of Settsu&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Wife of Fujiwara no Kaneie. Mother of Michitaka, Michikane, Michinaga, Chōshi, Senshi, and others&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="74" height="26"/><text class="fk-name" x="0" y="0.5">Tokihime</text></g></g>
+<g class="fk-node is-kanpaku" transform="translate(136,30)" data-tip="&lt;h3&gt;Fujiwara no Michitaka&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;953–995&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Regent, Chancellor (Kanpaku), and Minister of the Center&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Second Rank&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="79" height="26"/><text class="fk-name" x="0" y="0.5">Michitaka</text></g></g>
+<g class="fk-node is-tenno" transform="translate(136,74)" data-tip="&lt;h3&gt;Emperor En'yū&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;64th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;959–991&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;969–984&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="45" height="26"/><text class="fk-name" x="0" y="0.5">En'yū</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">64</text></g>
+<g class="fk-node" transform="translate(136,118)" data-tip="&lt;h3&gt;Fujiwara no Senshi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;962–1002&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Fujiwara no Kaneie and Tokihime&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Consort (nyōgo) of Emperor En'yū and mother of Emperor Ichijō. Her title as a retired empress was Higashi Sanjō-in&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="53" height="26"/><text class="fk-name" x="0" y="0.5">Senshi</text></g></g>
+<g class="fk-node is-kanpaku" transform="translate(136,160)" data-tip="&lt;h3&gt;Fujiwara no Michinaga&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;966–1028&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Regent and Minister of the Left&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior First Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Imperial in-law: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Grandfather (on the mother's side) of Emperors Go-Ichijō, Go-Suzaku, and Go-Reizei&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="82" height="26"/><text class="fk-name" x="0" y="0.5">Michinaga</text></g></g>
+<g class="fk-node" transform="translate(136,204)" data-tip="&lt;h3&gt;Minamoto no Tomoko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;964–1053&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of the Minister of the Left Minamoto no Masanobu and Fujiwara no Atsuko; great-granddaughter of Fujiwara no Sadakata&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Fujiwara no Michinaga's principal wife; mother of Yorimichi, Norimichi, Akiko, Kenshi, Ishi, and Kishi. A second cousin of Murasaki Shikibu. Akazome Emon served her&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="169" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Tomoko</text></g></g>
+<g class="fk-node" transform="translate(136,250)" data-tip="&lt;h3&gt;Fujiwara no Chōshi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Eldest daughter of Fujiwara no Kaneie and Tokihime&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Consort (nyōgo) of Emperor Reizei. Mother of Emperor Sanjō, Prince Tametaka, and Prince Atsumichi&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="55" height="26"/><text class="fk-name" x="0" y="0.5">Chōshi</text></g></g>
+<g class="fk-node is-tenno" transform="translate(136,302)" data-tip="&lt;h3&gt;Emperor Reizei&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;63rd emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;950–1011&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;967–969&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="49" height="26"/><text class="fk-name" x="0" y="0.5">Reizei</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">63</text></g>
+<g class="fk-node" transform="translate(136,346)" data-tip="&lt;h3&gt;Fujiwara no Kaishi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Consort (nyōgo) of Emperor Reizei and mother of Emperor Kazan&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="50" height="26"/><text class="fk-name" x="0" y="0.5">Kaishi</text></g></g>
+<g class="fk-node" transform="translate(331,40)" data-tip="&lt;h3&gt;Fujiwara no Teishi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;976–1001&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Fujiwara no Michitaka and Takashina no Takako (Mother of the Honorary Grand Minister)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Empress (chūgū) of Emperor Ichijō, later named kōgō. Sei Shōnagon served her&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="48" height="26"/><text class="fk-name" x="0" y="0.5">Teishi</text></g></g>
+<g class="fk-node is-tenno" transform="translate(331,92)" data-tip="&lt;h3&gt;Emperor Ichijō&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;66th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;980–1011&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;986–1011&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="46" height="26"/><text class="fk-name" x="0" y="0.5">Ichijō</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">66</text></g>
+<g class="fk-node" transform="translate(331,136)" data-tip="&lt;h3&gt;Fujiwara no Akiko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;988–1074&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Eldest daughter of Fujiwara no Michinaga and Minamoto no Tomoko&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Empress (chūgū) of Emperor Ichijō and mother of Emperors Go-Ichijō and Go-Suzaku; later called Jōtōmon-in. Hyakunin Isshu poets Murasaki Shikibu, Izumi Shikibu, Ise no Taifu, Akazome Emon, and others served her&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="47" height="26"/><text class="fk-name" x="0" y="0.5">Akiko</text></g></g>
+<g class="fk-node" transform="translate(331,190)" data-tip="&lt;h3&gt;Fujiwara no Kenshi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;994–1027&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Second daughter of Fujiwara no Michinaga and Minamoto no Tomoko&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Empress (chūgū) of Emperor Sanjō and mother of Princess Yoshiko (Teishi)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="55" height="26"/><text class="fk-name" x="0" y="0.5">Kenshi</text></g></g>
+<g class="fk-node is-tenno is-poet is-self" transform="translate(331,242)" data-tip="&lt;h3&gt;Emperor Sanjō&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;67th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;976–1017&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1011–1016&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 68, &quot;Kokoro ni mo...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Retired Emperor Sanjō&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="75" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="69" height="26"/><text class="fk-name" x="0" y="0.5">Sanjō</text><circle class="fk-badge" cx="55" cy="0" r="10"/><text class="fk-badge-num" x="55" y="0.5">68</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">67</text></g>
+<g class="fk-node" transform="translate(331,286)" data-tip="&lt;h3&gt;Fujiwara no Seishi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;972–1025&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Eldest daughter of Fujiwara no Naritoki; her younger brother was Michitō&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Entered the court in 991 as consort of the future Emperor Sanjō while he was crown prince, and later became empress (kōgō). Mother of Prince Atsuakira, Princess Masako, and others&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="48" height="26"/><text class="fk-name" x="0" y="0.5">Seishi</text></g></g>
+<g class="fk-node is-tenno" transform="translate(331,350)" data-tip="&lt;h3&gt;Emperor Kazan&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;65th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;968–1008&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;984–986&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Tricked by Fujiwara no Kaneie and others into becoming a monk and giving up the throne (the Kanna Incident)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="50" height="26"/><text class="fk-name" x="0" y="0.5">Kazan</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">65</text></g>
+<g class="fk-node is-tenno" transform="translate(451,100)" data-tip="&lt;h3&gt;Emperor Go-Ichijō&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;68th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1008–1036&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1016–1036&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Ichijō; his mother was Akiko, Fujiwara no Michinaga's daughter&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="71" height="26"/><text class="fk-name" x="0" y="0.5">Go-Ichijō</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">68</text></g>
+<g class="fk-node is-tenno" transform="translate(451,152)" data-tip="&lt;h3&gt;Emperor Go-Suzaku&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;69th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1009–1045&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1036–1045&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Ichijō; younger brother of Emperor Go-Ichijō&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="83" height="26"/><text class="fk-name" x="0" y="0.5">Go-Suzaku</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">69</text></g>
+<g class="fk-node" transform="translate(451,196)" data-tip="&lt;h3&gt;Princess Yoshiko (Teishi)&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1013–1094&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Emperor Sanjō and Empress Kenshi&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Empress (kōgō) of Emperor Go-Suzaku and mother of Emperor Go-Sanjō. Her title as a retired empress was Yōmeimon-in&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="130" height="26"/><text class="fk-name" x="0" y="0.5">Princess Yoshiko</text></g></g>
+<g class="fk-node" transform="translate(451,244)" data-tip="&lt;h3&gt;Prince Atsuakira&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;994–1051&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Sanjō and Empress Seishi&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;He became crown prince as a condition of Emperor Sanjō's abdication, but under pressure from Michinaga he gave up the position himself in 1017 and received the title Koichijō-in&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="128" height="26"/><text class="fk-name" x="0" y="0.5">Prince Atsuakira</text></g><rect class="fk-sub-box" x="0" y="11" width="165" height="16" rx="8"/><text class="fk-sub" x="82.5" y="19.5">Gave up being crown prince</text></g>
+<g class="fk-node" transform="translate(451,290)" data-tip="&lt;h3&gt;Prince Atsunori&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Sanjō and Empress Seishi&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="120" height="26"/><text class="fk-name" x="0" y="0.5">Prince Atsunori</text></g></g>
+<g class="fk-node" transform="translate(451,326)" data-tip="&lt;h3&gt;Prince Atsuhira&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Sanjō and Empress Seishi&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="119" height="26"/><text class="fk-name" x="0" y="0.5">Prince Atsuhira</text></g></g>
+<g class="fk-node" transform="translate(451,362)" data-tip="&lt;h3&gt;Prince Moroakira&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Sanjō and Empress Seishi; later the priest-prince Shōshin&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="133" height="26"/><text class="fk-name" x="0" y="0.5">Prince Moroakira</text></g></g>
+<g class="fk-node" transform="translate(451,398)" data-tip="&lt;h3&gt;Princess Masako&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1001–1022&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Emperor Sanjō and Empress Seishi&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;After returning from serving as the Ise priestess, she had a secret affair with Fujiwara no Michimasa. They were forced apart, and she later fell ill and became a nun&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="129" height="26"/><text class="fk-name" x="0" y="0.5">Princess Masako</text></g></g>
+<g class="fk-node" transform="translate(451,434)" data-tip="&lt;h3&gt;Princess Shishi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1003–1048&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Emperor Sanjō and Empress Seishi&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Wife of Fujiwara no Norimichi&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="115" height="26"/><text class="fk-name" x="0" y="0.5">Princess Shishi</text></g></g>
+<g class="fk-node is-tenno" transform="translate(606,174)" data-tip="&lt;h3&gt;Emperor Go-Sanjō&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;71st emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1034–1073&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1068–1073&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Go-Suzaku; his mother was Princess Yoshiko, a daughter of Emperor Sanjō&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;An emperor without Fujiwara in-laws, he ruled directly himself&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="70" height="26"/><text class="fk-name" x="0" y="0.5">Go-Sanjō</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">71</text></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+          <div class="kd-text">
+            <p style="width:100%; margin-bottom:0.5em;">
+              While Emperor Sanjō was crown prince, Seishi (Sukeko) entered the court as his consort, and he loved her dearly. But Fujiwara no Michinaga brought his own daughter Kenshi (Kiyoko) into the court and made her empress (<em>chūgū</em>). In response, Emperor Sanjō raised Seishi to empress (<em>kōgō</em>) as well, and this caused friction with Michinaga. In the end Michinaga pressed the emperor to give up the throne, and the emperor stepped down on the condition that his own son, Atsuakira, be made crown prince.
+            </p>
+            <p style="width:100%; margin-bottom:0.5em;">
+              But after Emperor Sanjō died, Michinaga put silent pressure on Prince Atsuakira, for example by not handing over the Tsubokiri sword, which was given to the crown prince. As a result, Prince Atsuakira himself asked to give up his place as crown prince.
+            </p>
+            <p style="width:100%; margin-bottom:0.5em;">
+              Prince Atsuakira never inherited the throne, but Princess Yoshiko, the daughter of Emperor Sanjō and Kenshi, became the empress of Emperor Go-Suzaku and gave birth to Emperor Go-Sanjō, so Emperor Sanjō's bloodline carried on.
+            </p>
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <div class="acordion-wrapper">
+              <div class="accordion">
+                <div class="accordion-header">Timeline of Emperor Sanjō<br class="br-sp"><span
+                    style="font-size:0.8em;"> (Click to open or close.)</span></div>
+                <div class="accordion-content">
+                  <div class="container">
+
+                    <div class="timeline-item" date-is='976'>
+                      <h2 class="was-h3">Emperor Sanjō is born</h2>
+                      <p>He was born as the second son of Emperor Reizei. His mother was Chōshi, the eldest daughter of Fujiwara no Kaneie. His personal name (<em>imina</em>) was Okisada.</p>
+                    </div>
+
+                    <div class="timeline-item" date-is='982 (age 7)'>
+                      <h2 class="was-h3">His mother, Chōshi, dies</h2>
+                      <p>His mother, Chōshi, died when he was 7.</p>
+                    </div>
+
+                    <div class="timeline-item" date-is='986 (age 11)'>
+                      <h2 class="was-h3">Becomes crown prince</h2>
+                      <p>Emperor Kazan, the 65th emperor, became a monk. With the backing of his grandfather, Fujiwara no Kaneie, Sanjō became crown prince.</p>
+                    </div>
+
+                    <div class="timeline-item" date-is='987 (age 12)'>
+                      <h2 class="was-h3">Kaneie's third daughter, Suishi, enters the court</h2>
+                      <p>Kaneie's third daughter, Suishi, entered the court as his consort. But she died young in 1004.</p>
+                    </div>
+
+                    <div class="timeline-item" date-is='991 (age 16)'>
+                      <h2 class="was-h3">Seishi becomes the crown prince's consort</h2>
+                      <p>Seishi, the daughter of Fujiwara no Naritoki, entered the court.</p>
+                    </div>
+
+                    <div class="timeline-item" date-is='994 (age 19)'>
+                      <h2 class="was-h3">Prince Atsuakira is born</h2>
+                      <p>His son with Fujiwara no Seishi, Prince Atsuakira, was born.</p>
+                    </div>
+
+                    <div class="timeline-item" date-is='995 (age 20)'>
+                      <h2 class="was-h3">Fujiwara no Michitaka's second daughter, Genshi, enters the court</h2>
+                      <p>Fujiwara no Michitaka's second daughter, Genshi, entered the court. But she died young in 1002.</p>
+                    </div>
+
+                    <div class="timeline-item" date-is='1011 (age 36)'>
+                      <h2 class="was-h3">Takes the throne as the 67th emperor</h2>
+                      <p>At 36 he finally took the throne.</p>
+                    </div>
+
+                    <div class="timeline-item" date-is='1012 (age 37)'>
+                      <h2 class="was-h3">Michinaga's second daughter, Kenshi, enters the court</h2>
+                      <p>Because Michinaga made Kenshi empress (<em>chūgū</em>), Emperor Sanjō made Seishi empress (<em>kōgō</em>).
+                        <br class="br-pc"> With two empresses at once, friction with Michinaga arose.</p>
+                    </div>
+
+                    <div class="timeline-item" date-is='1013 (age 38)'>
+                      <h2 class="was-h3">Princess Yoshiko is born</h2>
+                      <p>His daughter with Kenshi, Princess Yoshiko, was born.</p>
+                    </div>
+
+                    <div class="timeline-item" date-is='1014 (age 39)'>
+                      <h2 class="was-h3">Eye disease; the palace burns</h2>
+                      <p>In his diary, the <em>Shōyūki</em>, Fujiwara no Sanesuke wrote of Emperor Sanjō's condition: "One eye cannot see, one ear cannot hear."
+                        <br class="br-pc"> Before long, Fujiwara no Michinaga began pressing him again and again to give up the throne because of his eye disease.</p>
+                    </div>
+
+                    <div class="timeline-item" date-is='1015 (age 40)'>
+                      <h2 class="was-h3">The palace burns</h2>
+                      <p>The palace was hit by fire again.</p>
+                    </div>
+
+                    <div class="timeline-item" date-is='1016 (age 41)'>
+                      <h2 class="was-h3">Gives up the throne</h2>
+                      <p>Emperor Sanjō gave up the throne on the condition that his son, Prince Atsuakira, be made crown prince, and passed it to Emperor Go-Ichijō.</p>
+                    </div>
+
+                    <div class="timeline-item" date-is='1017 (age 42)'>
+                      <h2 class="was-h3">Fujiwara no Michimasa's affair with Sanjō's daughter, Princess Masako, is discovered</h2>
+                      <p>Fujiwara no Michimasa's secret affair with Sanjō's daughter, Princess Masako, who had been the Ise priestess, was discovered.<br
+                          class="br-pc"> Retired Emperor Sanjō forbade Michimasa to come to court.</p>
+                    </div>
+
+                    <div class="timeline-item" date-is='1017 (age 42)'>
+                      <h2 class="was-h3">Retired Emperor Sanjō dies</h2>
+                      <p>In despair over his eye disease, the burning of the palace, his conflict with Michinaga, and Michimasa's affair with his daughter Princess Masako, he became a monk in the fourth month and died the next month, at 42.</p>
+                    </div>
+
+                    <div class="timeline-item" date-is='1017'>
+                      <h2 class="was-h3">Prince Atsuakira gives up his place as crown prince</h2>
+                      <p>After Retired Emperor Sanjō died, Prince Atsuakira gave up his place as crown prince in the eighth month of 1017.
+                        <br class="br-pc"> He was given the title Koichijō-in and treated as an honorary retired emperor.</p>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <dt>A Poem Wishing to Gaze at the Moon to His Heart's Content</dt>
+            <dd>
+              Retired Emperor Sanjō was so unwell that he did not know whether he would live until next autumn. So he wrote the next poem, wishing at least to take a good look at tonight's moon.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>秋<rt>あき</rt></ruby>にまた
+                    <ruby>逢<rt>あ</rt></ruby>はむ<ruby>逢<rt>あ</rt></ruby>はじも
+                    <ruby>知<rt>し</rt></ruby>らぬ<ruby>身<rt>み</rt></ruby>は
+                    <br>こよひばかりの
+                    <ruby>月<rt>つき</rt></ruby>をだにみむ
+                    <span class="shutten"><em>Shika Wakashū</em>, Retired Emperor Sanjō</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p>Since I do not know whether I will see another autumn, let me at least gaze at tonight's moon to my heart's content.</p>
+                </q>
+              </div>
+            </dd>
+            <dt>The Treatments Retired Emperor Sanjō Received</dt>
+            <dd>According to the historical tale <em>Ōkagami</em>, as his eyesight grew worse, Retired Emperor Sanjō tried many treatments. A doctor told him to pour cold water over his hair during the coldest weeks of winter, so he poured icy water over his head, and he is also said to have taken <em>kin'ekitan</em>, a medicine said to bring long life. <em>Kin'ekitan</em> contained sulfur and mercury, which are harmful to the body, and it is thought to have made his eye disease even worse.</dd>
+            <dt>Ukiyo-e by Katsushika Hokusai</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/hokusai_68_large.webp' data-lightbox='sanjo' data-title='Ukiyo-e by Katsushika Hokusai'>
+                  <img loading='lazy' src='../img/hokusai_68.webp' alt='Retired Emperor Sanjō, from One Hundred Poems Explained by the Nurse, by Katsushika Hokusai' width="633" height="443">
+                </a>
+                <figcaption><a
+                    href='https://commons.wikimedia.org/wiki/File:%E7%99%BE%E4%BA%BA%E4%B8%80%E9%A6%96_%E3%81%86%E3%81%B0%E3%81%8C%E3%82%91%E3%81%A8%E3%81%8D_%E4%B8%89%E6%9D%A1%E9%99%A2-Poem_by_Sanj%C5%8D-in,_from_the_series_One_Hundred_Poems_Explained_by_the_Nurse_(Hyakunin_isshu_uba_ga_etoki)_MET_DP141105.jpg' target='_blank' rel='noopener'><small>Katsushika
+                      Hokusai, CC0, via Wikimedia Commons</small></a></figcaption>
+              </figure>
+              <div>
+                <p>
+                  This print is from <em>One Hundred Poems Explained by the Nurse</em> (<em>Hyakunin Isshu Uba ga Etoki</em>) by Katsushika Hokusai, an ukiyo-e artist of the Edo period. The idea of the series is a nurse explaining the Hyakunin Isshu poems with easy-to-understand pictures.</p>
+                <p>Emperor Sanjō was pressed to give up the throne because of his eye disease. We do not know what Shinto ceremony the picture shows. Perhaps it is a purification rite to pray for the recovery of his eyes.</p>
+              </div>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -309,6 +879,12 @@
   <!-- Footer end -->
 
   <script src="../js/poems_en.js?20261008-01"></script>
+  <script src="../js/accordion.js"></script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261008-49"></script>
+  <script src="../js/keizu-diagram.js?20261008-02"></script>
 
 </body>
 

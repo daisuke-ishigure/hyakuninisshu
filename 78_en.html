@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-08T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -94,6 +94,8 @@
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
   <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -103,6 +105,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -274,6 +284,235 @@
       </dl>
     </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Minamoto no Kanemasa's Family Tree</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 78.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__tenno">Brown text</span>Emperor</li>
+              <li><span class="fk-legend__tno" aria-hidden="true"></span>Emperor's number in the line of succession</li>
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Minamoto no Kanemasa's family tree">
+            <script type="application/json">
+{
+ "lang": "en",
+ "nodes": [
+  {
+   "id": "uda",
+   "n": "宇多",
+   "k": 1,
+   "t": 59,
+   "x": 16,
+   "y": 40
+  },
+  {
+   "id": "atsumi",
+   "n": "敦実親王",
+   "x": 106,
+   "y": 40
+  },
+  {
+   "id": "masanobu",
+   "n": "源雅信",
+   "x": 240,
+   "y": 40
+  },
+  {
+   "id": "tokinaka",
+   "n": "源時中",
+   "x": 452,
+   "y": 40
+  },
+  {
+   "id": "asato",
+   "n": "源朝任",
+   "x": 106,
+   "y": 110
+  },
+  {
+   "id": "moroyoshi",
+   "n": "源師良",
+   "x": 283,
+   "y": 110
+  },
+  {
+   "id": "toshisuke",
+   "n": "源俊輔",
+   "x": 398,
+   "y": 110
+  },
+  {
+   "id": "kanemasa",
+   "n": "源兼昌",
+   "p": 78,
+   "self": 1,
+   "x": 568,
+   "y": 110
+  }
+ ],
+ "kids": [
+  {
+   "from": "uda",
+   "to": [
+    "atsumi"
+   ]
+  },
+  {
+   "from": "atsumi",
+   "to": [
+    "masanobu"
+   ]
+  },
+  {
+   "from": "masanobu",
+   "to": [
+    "tokinaka"
+   ]
+  },
+  {
+   "from": "asato",
+   "to": [
+    "moroyoshi"
+   ]
+  },
+  {
+   "from": "moroyoshi",
+   "to": [
+    "toshisuke"
+   ]
+  },
+  {
+   "from": "toshisuke",
+   "to": [
+    "kanemasa"
+   ]
+  }
+ ],
+ "lines": [
+  {
+   "points": [
+    [
+     629,
+     40
+    ],
+    [
+     642,
+     40
+    ],
+    [
+     642,
+     75
+    ],
+    [
+     93,
+     75
+    ],
+    [
+     93,
+     110
+    ],
+    [
+     103,
+     110
+    ]
+   ]
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 790 136" width="790" height="136" role="img" aria-label="Minamoto no Kanemasa's family tree" lang="en" class="fk-svg kd-svg" style="max-width:1185px;min-width:min(640px,1185px)" data-src="18vx02m">
+<g class="fk-edges"><path d="M49 40H92" class="fk-edge"/><path d="M92 40H103" class="fk-edge"/><path d="M214 40H226" class="fk-edge"/><path d="M226 40H237" class="fk-edge"/><path d="M426 40H438" class="fk-edge"/><path d="M438 40H449" class="fk-edge"/><path d="M256 110H269" class="fk-edge"/><path d="M269 110H280" class="fk-edge"/><path d="M371 110H384" class="fk-edge"/><path d="M384 110H395" class="fk-edge"/><path d="M541 110H554" class="fk-edge"/><path d="M554 110H565" class="fk-edge"/><path d="M629 40L642 40L642 75L93 75L93 110L103 110" class="fk-edge"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node is-tenno" transform="translate(16,40)" data-tip="&lt;h3&gt;Emperor Uda&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;59th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;867–931&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;887–897&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Gave Sugawara no Michizane important posts&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="34" height="26"/><text class="fk-name" x="0" y="0.5">Uda</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">59</text></g>
+<g class="fk-node" transform="translate(106,40)" data-tip="&lt;h3&gt;Prince Atsumi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;893–967&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;First Rank for princes&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Uda&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Masanobu, Shigenobu, and others of the Uda Genji&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="109" height="26"/><text class="fk-name" x="0" y="0.5">Prince Atsumi</text></g></g>
+<g class="fk-node" transform="translate(240,40)" data-tip="&lt;h3&gt;Minamoto no Masanobu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Prince Atsumi; grandson of Emperor Uda&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;His wife was Fujiwara no Atsuko. Father of Minamoto no Tomoko&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="187" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Masanobu</text></g></g>
+<g class="fk-node" transform="translate(452,40)" data-tip="&lt;h3&gt;Minamoto no Tokinaka&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;941–1002&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Upper Counselor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Second Rank&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="178" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Tokinaka</text></g></g>
+<g class="fk-node" transform="translate(106,110)" data-tip="&lt;h3&gt;Minamoto no Asatō&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;989–1034&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Councillor (Sangi)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Third Rank&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="151" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Asatō</text></g></g>
+<g class="fk-node" transform="translate(283,110)" data-tip="&lt;h3&gt;Minamoto no 師良 (reading of the name unknown)&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Eldest legitimate son of Minamoto no Asatō&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="89" height="26"/><text class="fk-name" x="0" y="0.5">Asatō's son</text></g></g>
+<g class="fk-node" transform="translate(398,110)" data-tip="&lt;h3&gt;Minamoto no 俊輔 (reading of the name unknown)&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Assistant Governor of Mino&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Minamoto no Kanemasa&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="144" height="26"/><text class="fk-name" x="0" y="0.5">Kanemasa's father</text></g></g>
+<g class="fk-node is-poet is-self" transform="translate(568,110)" data-tip="&lt;h3&gt;Minamoto no Kanemasa&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Fifth Rank, Lower Grade&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Secretary of the Empress's Household&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Minamoto no 俊輔, Assistant Governor of Mino&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 78, &quot;Awajishima...&quot;&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="216" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="210" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Kanemasa</text><circle class="fk-badge" cx="196" cy="0" r="10"/><text class="fk-badge-num" x="196" y="0.5">78</text></g></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+          <div class="kd-text">
+            <p style="width:100%; margin-bottom:0.5em;">
+              Minamoto no Kanemasa was a descendant of the Uda Genji, the Minamoto line founded by Emperor Uda.
+            </p>
+            <p style="width:100%; margin-bottom:0.5em;">
+              His father, Minamoto no 俊輔 (reading of the name unknown), served as Assistant Governor of Mino.<br class="br-pc"> Kanemasa's final post and rank were Junior Secretary of the Empress's Household and Junior Fifth Rank, Lower Grade.
+            </p>
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <dt>The Cry of the Plover</dt>
+            <dd>This recording was not made at Suma. It is the cry of a shore bird.
+              <figure class='audio-figure' style="margin:0.5em auto 0.25em 0">
+                <audio controls id='audio' src='../sound/chidori.mp3' controlslist='nodownload'></audio>
+              </figure>
+            </dd>
+            <dt id="genjinouta">Hikaru Genji's Poem</dt>
+            <dd>In this poem, Hikaru Genji hears the plovers crying at Suma and writes of the loneliness of sleeping alone.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>友千鳥<rt>ともちどり</rt></ruby>
+                    <ruby>諸声<rt>もろこえ</rt></ruby>になく
+                    <ruby>暁<rt>あかつき</rt></ruby>は
+                    <br>ひとり<ruby>寝覚<rt>ねざ</rt></ruby>めの
+                    <ruby>床<rt>とこ</rt></ruby>も<ruby>頼<rt>たの</rt></ruby>もし
+                    <span class="shutten"><em>The Tale of Genji</em>, Hikaru Genji</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">At dawn, when the flock of plovers cries together with me,<br class="br-pc"> even the bed where I wake up alone feels less lonely.</p>
+                </q>
+              </div>
+              <p class="kome">"<em>Naku</em>" means both "(birds) cry" and "(people) weep."</p>
+            </dd>
+            <dt>Utagawa Kuniyoshi's <em>Hyakunin Isshu no Uchi</em></dt>
+            <dd class='thumb-image2'>
+              <figure class='portrait'>
+                <a href='../img/kuniyoshi_78_large.webp' data-lightbox='kanemasa' data-title='Ukiyo-e by Utagawa Kuniyoshi'>
+                  <img loading='lazy' src='../img/kuniyoshi_78.webp' alt='Ukiyo-e by Utagawa Kuniyoshi' width="480" height="706">
+                </a>
+                <figcaption><a
+                    href='https://commons.wikimedia.org/wiki/File:Minamoto_no_Kanemasa_(no._78)_%E6%BA%90%E5%85%BC%E6%98%8C_(BM_2008,3037.10640).jpg' target='_blank' rel='noopener'><small>British
+                      Museum, Public domain, via Wikimedia Commons</small></a></figcaption>
+              </figure>
+              <div>
+                <p style="margin-bottom: 0.75em;">
+                  An ukiyo-e print on the Hyakunin Isshu by Utagawa Kuniyoshi, an ukiyo-e artist of the Edo period. Matching the world of the poem, it shows plovers flying over the seashore.
+                </p>
+              </div>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -305,6 +544,11 @@
   <!-- Footer end -->
 
   <script src="../js/poems_en.js?20261008-01"></script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261008-49"></script>
+  <script src="../js/keizu-diagram.js?20261008-02"></script>
 
 </body>
 

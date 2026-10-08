@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-08T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -94,6 +94,8 @@
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
   <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -103,6 +105,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -235,7 +245,7 @@
         <dl>
           <dt>Commentary</dt>
           <dd>
-            The Senzai Wakashū says this was written at a gathering at the home of Fujiwara no Toshitada, Shunzei's father, on the theme "love that prayer cannot win." Hatsuse is in Sakurai, Nara Prefecture, home of Hase-dera, a temple famous for prayers to Kannon.
+            The Senzai Wakashū says this was written at a gathering at the home of Fujiwara no Toshitada, Toshinari's father, on the theme "love that prayer cannot win." Hatsuse is in Sakurai, Nara Prefecture, home of Hase-dera, a temple famous for prayers to Kannon.
           </dd>
         </dl>
         <dl class="last-dl">
@@ -278,6 +288,392 @@
       </dl>
     </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Minamoto no Toshiyori's Family Tree</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 74.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__tenno">Brown text</span>Emperor</li>
+              <li><span class="fk-legend__tno" aria-hidden="true"></span>Emperor's number in the line of succession</li>
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+              <li><span class="fk-legend__dash"></span>Generations left out</li>
+              <li><span class="fk-legend__eq">＝</span>Marriage</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Minamoto no Toshiyori's family tree">
+            <script type="application/json">
+{
+ "lang": "en",
+ "nodes": [
+  {
+   "id": "uda",
+   "n": "宇多",
+   "k": 1,
+   "t": 59,
+   "x": 16,
+   "y": 62
+  },
+  {
+   "id": "inshi",
+   "n": "胤子",
+   "x": 16,
+   "y": 106
+  },
+  {
+   "id": "daigo",
+   "n": "醍醐",
+   "k": 1,
+   "t": 60,
+   "x": 136,
+   "y": 62
+  },
+  {
+   "id": "shushi",
+   "n": "源周子",
+   "x": 136,
+   "y": 106
+  },
+  {
+   "id": "atsumi",
+   "n": "敦実親王",
+   "x": 136,
+   "y": 170
+  },
+  {
+   "id": "tokihirajo",
+   "n": "時平の娘",
+   "x": 136,
+   "y": 214
+  },
+  {
+   "id": "takaakira",
+   "n": "源高明",
+   "x": 320,
+   "y": 84
+  },
+  {
+   "id": "masanobu",
+   "n": "源雅信",
+   "x": 320,
+   "y": 230
+  },
+  {
+   "id": "rinshi",
+   "n": "源倫子",
+   "x": 532,
+   "y": 230
+  },
+  {
+   "id": "toshikata",
+   "n": "源俊賢",
+   "x": 532,
+   "y": 62
+  },
+  {
+   "id": "takaakirajo",
+   "n": "高明の娘",
+   "x": 532,
+   "y": 106
+  },
+  {
+   "id": "shigenobu",
+   "n": "源重信",
+   "x": 532,
+   "y": 150
+  },
+  {
+   "id": "michikata",
+   "n": "源道方",
+   "x": 745,
+   "y": 128
+  },
+  {
+   "id": "tsunenobu",
+   "n": "源経信",
+   "p": 71,
+   "x": 954,
+   "y": 128
+  },
+  {
+   "id": "sadasukejo",
+   "n": "貞亮の娘",
+   "x": 954,
+   "y": 172
+  },
+  {
+   "id": "toshiyori",
+   "n": "源俊頼",
+   "p": 74,
+   "x": 1197,
+   "y": 150,
+   "self": 1
+  },
+  {
+   "id": "atsutakajo",
+   "n": "敦隆の娘",
+   "x": 1197,
+   "y": 194
+  },
+  {
+   "id": "shune",
+   "n": "俊恵",
+   "p": 85,
+   "x": 1426,
+   "y": 172
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-uda",
+   "top": "uda",
+   "bottom": "inshi"
+  },
+  {
+   "id": "c-daigo",
+   "top": "daigo",
+   "bottom": "shushi"
+  },
+  {
+   "id": "c-atsumi",
+   "top": "atsumi",
+   "bottom": "tokihirajo"
+  },
+  {
+   "id": "c-shigenobu",
+   "top": "takaakirajo",
+   "bottom": "shigenobu"
+  },
+  {
+   "id": "c-tsunenobu",
+   "top": "tsunenobu",
+   "bottom": "sadasukejo"
+  },
+  {
+   "id": "c-toshiyori",
+   "top": "toshiyori",
+   "bottom": "atsutakajo"
+  }
+ ],
+ "kids": [
+  {
+   "from": "c-uda",
+   "to": [
+    "daigo",
+    "atsumi"
+   ]
+  },
+  {
+   "from": "c-daigo",
+   "to": [
+    "takaakira"
+   ]
+  },
+  {
+   "from": "c-atsumi",
+   "to": [
+    "shigenobu",
+    "masanobu"
+   ]
+  },
+  {
+   "from": "takaakira",
+   "to": [
+    "toshikata",
+    "takaakirajo"
+   ]
+  },
+  {
+   "from": "c-shigenobu",
+   "to": [
+    "michikata"
+   ]
+  },
+  {
+   "from": "michikata",
+   "to": [
+    "tsunenobu"
+   ]
+  },
+  {
+   "from": "c-tsunenobu",
+   "to": [
+    "toshiyori"
+   ]
+  },
+  {
+   "from": "c-toshiyori",
+   "to": [
+    "shune"
+   ]
+  },
+  {
+   "from": "masanobu",
+   "to": [
+    "rinshi"
+   ]
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1517 256" width="1517" height="256" role="img" aria-label="Minamoto no Toshiyori's family tree" lang="en" class="fk-svg kd-svg" style="max-width:2276px;min-width:min(640px,2276px)" data-src="nw4xyc">
+<g class="fk-edges"><path d="M29 71V97M33 71V97" class="fk-edge fk-eq"/><path d="M156 71V97M160 71V97" class="fk-edge fk-eq"/><path d="M186.5 179V205M190.5 179V205" class="fk-edge fk-eq"/><path d="M610 115V141M614 115V141" class="fk-edge fk-eq"/><path d="M1030.5 137V163M1034.5 137V163" class="fk-edge fk-eq"/><path d="M1271.5 159V185M1275.5 159V185" class="fk-edge fk-eq"/><path d="M33 84H122" class="fk-edge"/><path d="M122 62V170" class="fk-edge"/><path d="M122 62H133" class="fk-edge"/><path d="M122 170H133" class="fk-edge"/><path d="M160 84H306" class="fk-edge"/><path d="M306 84H317" class="fk-edge"/><path d="M190.5 192H306" class="fk-edge"/><path d="M306 150V230" class="fk-edge"/><path d="M306 150H529" class="fk-edge"/><path d="M306 230H317" class="fk-edge"/><path d="M502 84H518" class="fk-edge"/><path d="M518 62V106" class="fk-edge"/><path d="M518 62H529" class="fk-edge"/><path d="M518 106H529" class="fk-edge"/><path d="M614 128H731" class="fk-edge"/><path d="M731 128H742" class="fk-edge"/><path d="M927 128H940" class="fk-edge"/><path d="M940 128H951" class="fk-edge"/><path d="M1034.5 150H1183" class="fk-edge"/><path d="M1183 150H1194" class="fk-edge"/><path d="M1275.5 172H1412" class="fk-edge"/><path d="M1412 172H1423" class="fk-edge"/><path d="M506 230H518" class="fk-edge"/><path d="M518 230H529" class="fk-edge"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node is-tenno" transform="translate(16,62)" data-tip="&lt;h3&gt;Emperor Uda&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;59th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;867–931&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;887–897&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Gave Sugawara no Michizane important posts&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="34" height="26"/><text class="fk-name" x="0" y="0.5">Uda</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">59</text></g>
+<g class="fk-node" transform="translate(16,106)" data-tip="&lt;h3&gt;Fujiwara no Taneko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown–896&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Fujiwara no Takafuji and Miyaji no Ressi; elder or younger sister of Sadakuni and Sadakata (same mother)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;A consort of Emperor Uda; mother of Emperor Daigo, Prince Atsuyoshi and Prince Atsumi&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="60" height="26"/><text class="fk-name" x="0" y="0.5">Taneko</text></g></g>
+<g class="fk-node is-tenno" transform="translate(136,62)" data-tip="&lt;h3&gt;Emperor Daigo&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;60th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;885–930&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;897–930&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Ordered the compiling of the Kokin Wakashū&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="48" height="26"/><text class="fk-name" x="0" y="0.5">Daigo</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">60</text></g>
+<g class="fk-node" transform="translate(136,106)" data-tip="&lt;h3&gt;Minamoto no Shūshi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;A consort of Emperor Daigo. Mother of Minamoto no Takaakira&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="158" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Shūshi</text></g></g>
+<g class="fk-node" transform="translate(136,170)" data-tip="&lt;h3&gt;Prince Atsumi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;893–967&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;First Rank for princes&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Uda&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Masanobu, Shigenobu, and others of the Uda Genji&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="109" height="26"/><text class="fk-name" x="0" y="0.5">Prince Atsumi</text></g></g>
+<g class="fk-node" transform="translate(136,214)" data-tip="&lt;h3&gt;Daughter of Fujiwara no Tokihira&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Consort of Prince Atsumi. Mother of Minamoto no Shigenobu&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="151" height="26"/><text class="fk-name" x="0" y="0.5">Tokihira's daughter</text></g></g>
+<g class="fk-node" transform="translate(320,84)" data-tip="&lt;h3&gt;Minamoto no Takaakira&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Daigo&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;His daughter married Minamoto no Shigenobu and gave birth to Minamoto no Michikata&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="183" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Takaakira</text></g></g>
+<g class="fk-node" transform="translate(320,230)" data-tip="&lt;h3&gt;Minamoto no Masanobu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Prince Atsumi; grandson of Emperor Uda&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;His wife was Fujiwara no Atsuko. Father of Minamoto no Tomoko&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="187" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Masanobu</text></g></g>
+<g class="fk-node" transform="translate(532,230)" data-tip="&lt;h3&gt;Minamoto no Tomoko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;964–1053&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of the Minister of the Left Minamoto no Masanobu and Fujiwara no Atsuko; great-granddaughter of Fujiwara no Sadakata&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Fujiwara no Michinaga's principal wife; mother of Yorimichi, Norimichi, Akiko, Kenshi, Ishi, and Kishi. A second cousin of Murasaki Shikibu. Akazome Emon served her&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="169" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Tomoko</text></g></g>
+<g class="fk-node" transform="translate(532,62)" data-tip="&lt;h3&gt;Minamoto no Toshikata&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;960–1027&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Acting Upper Counselor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Third son of Minamoto no Takaakira&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;With Fujiwara no Kintō, Tadanobu, and Yukinari, he was called one of the &quot;Four Counselors of Emperor Ichijō's Reign&quot;&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="182" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Toshikata</text></g></g>
+<g class="fk-node" transform="translate(532,106)" data-tip="&lt;h3&gt;Daughter of Minamoto no Takaakira&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Wife of Minamoto no Shigenobu and mother of Minamoto no Michikata&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="164" height="26"/><text class="fk-name" x="0" y="0.5">Takaakira's daughter</text></g></g>
+<g class="fk-node" transform="translate(532,150)" data-tip="&lt;h3&gt;Minamoto no Shigenobu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Minister of the Left&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Prince Atsumi and Fujiwara no Tokihira's daughter; younger brother of Minamoto no Masanobu&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;His wives included a daughter of Fujiwara no Asatada and a daughter of Minamoto no Takaakira. Father of Michikata&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="188" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Shigenobu</text></g></g>
+<g class="fk-node" transform="translate(745,128)" data-tip="&lt;h3&gt;Minamoto no Michikata&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;968–1044&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Acting Middle Counselor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Minamoto no Shigenobu; his mother was a daughter of Minamoto no Takaakira&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Minamoto no Tsunenobu&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="183" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Michikata</text></g></g>
+<g class="fk-node is-poet" transform="translate(954,128)" data-tip="&lt;h3&gt;Minamoto no Tsunenobu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Minamoto no Michikata; his mother was a daughter of Minamoto no Kunimori&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 71, &quot;Yū sareba...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Upper Counselor Tsunenobu. His son Minamoto no Toshiyori and grandson Shun'e were also chosen, so three generations have poems in the Hyakunin Isshu&lt;/span&gt;&lt;/div&gt;" data-p="71"><a href="/71_en.html" aria-label="Minamoto no Tsunenobu (Hyakunin Isshu Poem 71)"><rect class="fk-hit" x="-2" y="-13" width="216" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Tsunenobu</text><circle class="fk-badge" cx="202" cy="0" r="10"/><text class="fk-badge-num" x="202" y="0.5">71</text></a></g>
+<g class="fk-node" transform="translate(954,172)" data-tip="&lt;h3&gt;Daughter of Minamoto no Sadasuke&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Wife of Minamoto no Tsunenobu and mother of Minamoto no Toshiyori&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="161" height="26"/><text class="fk-name" x="0" y="0.5">Sadasuke's daughter</text></g></g>
+<g class="fk-node is-poet is-self" transform="translate(1197,150)" data-tip="&lt;h3&gt;Minamoto no Toshiyori&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1055–1129&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Fourth Rank, Upper Grade&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 74, &quot;Ukarikeru...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Minamoto no Toshiyori Ason. Compiler of the Kin'yō Wakashū&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="208" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="202" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Toshiyori</text><circle class="fk-badge" cx="188" cy="0" r="10"/><text class="fk-badge-num" x="188" y="0.5">74</text></g></g>
+<g class="fk-node" transform="translate(1197,194)" data-tip="&lt;h3&gt;Daughter of Tachibana no Atsutaka&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Second wife of Minamoto no Toshiyori&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="157" height="26"/><text class="fk-name" x="0" y="0.5">Atsutaka's daughter</text></g></g>
+<g class="fk-node is-poet" transform="translate(1426,172)" data-tip="&lt;h3&gt;Shun'e&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1113–c. 1191&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Minamoto no Toshiyori&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 85, &quot;Yomosugara...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Priest Shun'e. Poets gathered at his temple lodging, the Karin'en&lt;/span&gt;&lt;/div&gt;" data-p="85"><a href="/85_en.html" aria-label="Shun'e (Hyakunin Isshu Poem 85)"><rect class="fk-hit" x="-2" y="-13" width="79" height="26"/><text class="fk-name" x="0" y="0.5">Shun'e</text><circle class="fk-badge" cx="65" cy="0" r="10"/><text class="fk-badge-num" x="65" y="0.5">85</text></a></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+          <div class="kd-text">
+            <p style="width:100%; margin-bottom:0.5em;">Minamoto no Toshiyori was a descendant of the Uda Genji, the Minamoto line founded by Emperor Uda.</p>
+            <p style="width:100%; margin-bottom:0.5em;">His father was <a href="/71_en.html">Minamoto no Tsunenobu</a>, and his son was <a href="/85_en.html">Priest Shun'e</a>.
+              <br class="br-pc"> Three generations were chosen for the Hyakunin Isshu.
+            </p>
+            <p style="width:100%; margin-bottom:0.5em;">Toshiyori excelled at waka and the <em>hichiriki</em> (a double-reed pipe) and was active as both a poet and a musician. He reached Junior Fourth Rank, Upper Grade, and the post of Head of the Carpentry Bureau (<em>Moku no kami</em>), but in his later years he had no post and spent his time without office (<em>san'i</em>).</p>
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <dt>Hatsuse, the "Hidden Land"</dt>
+            <dd>"<em>Komoriku</em>" (hidden land) is a pillow word (<em>makurakotoba</em>) that leads into "Hatsuse." Hatsuse lies deep in the mountains, surrounded on three sides by peaks; cut off from the everyday world, it seems to have had a mysterious image as a place where the gods dwelt. The fact that the Hatsuse road led to Ise Shrine also seems to have strengthened its sacred image. The next poem is said to have been written by Kakinomoto no Hitomaro when Hijikata no Otome, an <em>uneme</em> (a court lady who served the emperor), died and was cremated, which was still rare at the time (the Nara period).
+              <div class="quote">
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>隠国<rt>こもりく</rt></ruby>の
+                    <ruby>泊瀬<rt>はつせ</rt></ruby>の<ruby>山<rt>やま</rt></ruby>の
+                    <ruby>山際<rt>やまのま</rt></ruby>に
+                    <br>いさよふ<ruby>雲<rt>くも</rt></ruby>は
+                    <ruby>妹<rt>いも</rt></ruby>にかもあらむ
+                    <span class="shutten"><em>Man'yōshū</em>, Kakinomoto no Hitomaro</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">Could the cloud drifting along the ridge of the mountains of Hatsuse<br class="br-pc"> be that young woman?</p>
+                </q>
+              </div>
+            </dd>
+            <dt>Hase-dera Temple</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/Hasedera_large.webp' data-lightbox='toshiyori' data-title='Hase-dera Temple'>
+                  <img loading='lazy' src='../img/Hasedera.webp' alt='Hase-dera Temple' width="640" height="427">
+                </a>
+                <figcaption><a
+                    href='https://commons.wikimedia.org/wiki/File:Hasedera_Sakurai_Nara_pref58s5s4272.jpg' target='_blank' rel='noopener'><small>663highland,
+                      CC BY-SA 3.0
+                      &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;, via Wikimedia Commons
+                    </small></a></figcaption>
+              </figure>
+              <div>
+                <p style="width:100%; margin-bottom: 0.75em;">
+                  Hase-dera is an old temple founded in the Nara period, standing halfway up a mountain at Hase (Hatsuse), Sakurai City, Nara Prefecture. Its main image, an Eleven-Headed Kannon, is a giant figure more than 10 meters tall. In the Heian period, faith in Kannon, which promised blessings in this life, was very popular, and many people made pilgrimages to the temple, called <em>Hase-mōde</em>.
+                </p>
+                <p style="width:100%; margin-bottom: 0.75em;">The Hyakunin Isshu poem by <a href="/35_en.html">Ki no Tsurayuki</a>, "Hito wa isa kokoro mo shirazu furusato wa hana zo mukashi no ka ni nioikeru," is also connected with a pilgrimage to Hase-dera.</p>
+              </div>
+            </dd>
+            <dt>Faith in Kannon</dt>
+            <dd>The belief that by worshipping Kannon (the bodhisattva of compassion) one could be saved or gain blessings in this life. It became popular in the Heian period. Hase-dera (Nara Prefecture), Ishiyama-dera (Shiga Prefecture), and Kiyomizu-dera (Kyoto Prefecture) were said to answer prayers with great power, and many people visited them.</dd>
+            <dt>Minamoto no Toshiyori, a Master of the <em>Hichiriki</em></dt>
+            <dd class='thumb-image1'>
+              <figure>
+                <a href='../img/shichiriki_large.webp' data-lightbox='toshiyori' data-title='Hichiriki'>
+                  <img loading='lazy' src='../img/shichiriki.webp' alt='A hichiriki' width="640" height="479">
+                </a>
+                <figcaption></figcaption>
+              </figure>
+              <div>
+                <p style="width:100%; margin-bottom: 0.75em;">Minamoto no Toshiyori was a master of the <em>hichiriki</em> and was also active as a musician for Emperor Horikawa. The <em>hichiriki</em> is a vertical pipe that plays the main melody in <em>gagaku</em> (court music). It is a small instrument, only about 18 cm long, but it makes a loud sound.</p>
+              </div>
+            </dd>
+            <dt><em>Horikawa Hyakushu</em></dt>
+            <dd>
+              The <em>Horikawa Hyakushu</em> is a set of a hundred poems from the time of Emperor Horikawa. Minamoto no Toshiyori planned it, and Minamoto no Kuninobu had the leading poets of the day compose and present the poems. There are 100 topics in all: 20 for spring, 15 for summer, 20 for autumn, 15 for winter, 10 for love, and 20 miscellaneous, and each poet wrote one poem on each topic. It became the model for later hundred-poem sets.
+            </dd>
+            <dt><em>Sanboku Kikashū</em></dt>
+            <dd>The <em>Sanboku Kikashū</em> is Minamoto no Toshiyori's personal poetry collection. It has 10 volumes and about 1,600 poems. "<em>Sanboku</em>" (useless wood) is said to be a modest name chosen by Toshiyori, who had been Head of the Carpentry Bureau, and "<em>ki</em>" means new and unusual poems.</dd>
+            <dt><em>Toshiyori Zuinō</em></dt>
+            <dd>The <em>Toshiyori Zuinō</em> is a book on poetry (a poetry handbook) by Minamoto no Toshiyori. It is said that Kampaku Fujiwara no Tadazane had him write it for his daughter, Fujiwara no Taishi, who later became the empress of Retired Emperor Toba.</dd>
+            <dt>A Poem Linking His Feelings to the Early-Summer Rain</dt>
+            <dd>
+              <div class="quote">
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    おぼつかな
+                    いつか<ruby>晴<rt>は</rt></ruby>るべき
+                    わび<ruby>人<rt>ひと</rt></ruby>の
+                    <br><ruby>思<rt>おも</rt></ruby>ふ<ruby>心<rt>こころ</rt></ruby>や
+                    <ruby>五月雨<rt>さみだれ</rt></ruby>の<ruby>空<rt>そら</rt></ruby>
+                    <span class="shutten"><em>Senzai Wakashū</em>, Minamoto no Toshiyori</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">How uncertain! Will my sad heart ever clear?<br class="br-pc"> The sky of the early-summer rain (<em>samidare</em>) will clear someday, but...</p>
+                </q>
+              </div>
+            </dd>
+            <dt id="shuka">A Poem Chosen for the <em>Hyakunin Shūka</em></dt>
+            <dd>
+              <p>In the <em>Hyakunin Shūka</em>, which is thought to be the basis of the Hyakunin Isshu, the same poem is included for each poet, except for Minamoto no Toshiyori, for whom a different poem was chosen. The next poem is Toshiyori's poem in the <em>Hyakunin Shūka</em>.</p>
+              <div class="quote">
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>山桜<rt>やまざくら</rt></ruby>
+                    さきそめしより
+                    <ruby>久方<rt>ひさかた</rt></ruby>の
+                    <br>くもゐにみゆる
+                    <ruby>瀧<rt>たき</rt></ruby>の<ruby>白糸<rt>しらいと</rt></ruby>
+                    <span class="shutten"><em>Hyakunin Shūka</em>, Minamoto no Toshiyori</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">Ever since the mountain cherries began to bloom, on the distant mountains<br class="br-pc"> the blossoms look like white threads hanging down from the sky.</p>
+                </q>
+              </div>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -309,6 +705,11 @@
   <!-- Footer end -->
 
   <script src="../js/poems_en.js?20261008-01"></script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261008-49"></script>
+  <script src="../js/keizu-diagram.js?20261008-02"></script>
 
 </body>
 

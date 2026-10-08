@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-08T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -94,6 +94,8 @@
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
   <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -103,6 +105,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -284,6 +294,503 @@
       </dl>
     </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Ise no Taifu's Family Tree</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 61.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+              <li><span class="fk-legend__dash"></span>Generations left out</li>
+              <li><span class="fk-legend__eq">＝</span>Marriage</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Ise no Taifu's family tree">
+            <script type="application/json">
+{
+ "lang": "en",
+ "tooltips": "fujiwara",
+ "nodes": [
+  {
+   "id": "katanoko",
+   "n": "中臣可多能祜",
+   "x": 16,
+   "y": 142
+  },
+  {
+   "id": "mikeko",
+   "n": "中臣御食子",
+   "x": 220,
+   "y": 84
+  },
+  {
+   "id": "kuniko",
+   "n": "中臣国子",
+   "x": 220,
+   "y": 200
+  },
+  {
+   "id": "kamatari",
+   "n": "中臣鎌足",
+   "key": "中臣鎌足",
+   "note": "Fujiwara no Kamatari",
+   "x": 407,
+   "y": 84
+  },
+  {
+   "id": "fuhito",
+   "n": "藤原不比等",
+   "key": "不比等",
+   "x": 740,
+   "y": 84
+  },
+  {
+   "id": "yorimoto",
+   "n": "大中臣頼基",
+   "x": 740,
+   "y": 200
+  },
+  {
+   "id": "muchimaro",
+   "n": "武智麻呂",
+   "note": "Southern House",
+   "x": 951,
+   "y": 30
+  },
+  {
+   "id": "fusasaki",
+   "n": "房前",
+   "note": "Northern House",
+   "x": 951,
+   "y": 66
+  },
+  {
+   "id": "umakai",
+   "n": "宇合",
+   "note": "Ceremonial House",
+   "x": 951,
+   "y": 102
+  },
+  {
+   "id": "maro",
+   "n": "麻呂",
+   "note": "Capital House",
+   "x": 951,
+   "y": 138
+  },
+  {
+   "id": "yoshinobu",
+   "n": "大中臣能宣",
+   "p": 49,
+   "x": 951,
+   "y": 200
+  },
+  {
+   "id": "sukechika",
+   "n": "大中臣輔親",
+   "x": 1197,
+   "y": 200
+  },
+  {
+   "id": "isenotaifu",
+   "n": "伊勢大輔",
+   "p": 61,
+   "x": 1414,
+   "y": 200,
+   "self": 1
+  },
+  {
+   "id": "narinobu",
+   "n": "高階成順",
+   "x": 1414,
+   "y": 244
+  },
+  {
+   "id": "naritada",
+   "n": "高階成忠",
+   "x": 951,
+   "y": 310
+  },
+  {
+   "id": "akinobu",
+   "n": "高階明順",
+   "x": 1197,
+   "y": 288
+  },
+  {
+   "id": "kishi",
+   "n": "高階貴子",
+   "key": "儀同三司母",
+   "p": 54,
+   "x": 1197,
+   "y": 332
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-isenotaifu",
+   "top": "isenotaifu",
+   "bottom": "narinobu"
+  }
+ ],
+ "kids": [
+  {
+   "from": "katanoko",
+   "to": [
+    "mikeko",
+    "kuniko"
+   ]
+  },
+  {
+   "from": "mikeko",
+   "to": [
+    "kamatari"
+   ]
+  },
+  {
+   "from": "kamatari",
+   "to": [
+    "fuhito"
+   ]
+  },
+  {
+   "from": "fuhito",
+   "to": [
+    "muchimaro",
+    "fusasaki",
+    "umakai",
+    "maro"
+   ]
+  },
+  {
+   "from": "yorimoto",
+   "to": [
+    "yoshinobu"
+   ]
+  },
+  {
+   "from": "yoshinobu",
+   "to": [
+    "sukechika"
+   ]
+  },
+  {
+   "from": "sukechika",
+   "to": [
+    "isenotaifu"
+   ]
+  },
+  {
+   "from": "naritada",
+   "to": [
+    "akinobu",
+    "kishi"
+   ]
+  },
+  {
+   "from": "akinobu",
+   "to": [
+    "narinobu"
+   ]
+  }
+ ],
+ "lines": [
+  {
+   "points": [
+    [
+     377,
+     200
+    ],
+    [
+     737,
+     200
+    ]
+   ],
+   "dash": true,
+   "label": {
+    "text": "Several generations left out",
+    "x": 558,
+    "y": 194
+   }
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1541 358" width="1541" height="358" role="img" aria-label="Ise no Taifu's family tree" lang="en" class="fk-svg kd-svg" style="max-width:2312px;min-width:min(640px,2312px)" data-src="cxzk4k">
+<g class="fk-edges"><path d="M1447.5 209V235M1451.5 209V235" class="fk-edge fk-eq"/><path d="M193 142H206" class="fk-edge"/><path d="M206 84V200" class="fk-edge"/><path d="M206 84H217" class="fk-edge"/><path d="M206 200H217" class="fk-edge"/><path d="M380 84H393" class="fk-edge"/><path d="M393 84H404" class="fk-edge"/><path d="M711.106 84H726" class="fk-edge"/><path d="M726 84H737" class="fk-edge"/><path d="M792 84H937" class="fk-edge"/><path d="M937 30V138" class="fk-edge"/><path d="M937 30H948" class="fk-edge"/><path d="M937 66H948" class="fk-edge"/><path d="M937 102H948" class="fk-edge"/><path d="M937 138H948" class="fk-edge"/><path d="M924 200H937" class="fk-edge"/><path d="M937 200H948" class="fk-edge"/><path d="M1168 200H1183" class="fk-edge"/><path d="M1183 200H1194" class="fk-edge"/><path d="M1388 200H1400" class="fk-edge"/><path d="M1400 200H1411" class="fk-edge"/><path d="M1021 310H1183" class="fk-edge"/><path d="M1183 288V332" class="fk-edge"/><path d="M1183 288H1194" class="fk-edge"/><path d="M1183 332H1194" class="fk-edge"/><path d="M1263 288H1400" class="fk-edge"/><path d="M1400 244V288" class="fk-edge"/><path d="M1400 244H1411" class="fk-edge"/><path d="M377 200L737 200" class="fk-edge is-dash"/><text class="fk-adopt" x="558" y="194">Several generations left out</text></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node" transform="translate(16,142)" data-tip="&lt;h3&gt;Nakatomi no Katanoko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Nakatomi no Mikeko, Kuniko, and Nukateko&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="178" height="26"/><text class="fk-name" x="0" y="0.5">Nakatomi no Katanoko</text></g></g>
+<g class="fk-node" transform="translate(220,84)" data-tip="&lt;h3&gt;Nakatomi no Mikeko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Nakatomi no Katanoko&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Nakatomi no Kamatari&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="161" height="26"/><text class="fk-name" x="0" y="0.5">Nakatomi no Mikeko</text></g></g>
+<g class="fk-node" transform="translate(220,200)" data-tip="&lt;h3&gt;Nakatomi no Kuniko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Nakatomi no Katanoko&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;One of the ancestors of the Ōnakatomi clan&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="159" height="26"/><text class="fk-name" x="0" y="0.5">Nakatomi no Kuniko</text></g></g>
+<g class="fk-node" transform="translate(407,84)" data-tip="&lt;h3&gt;Fujiwara no Kamatari&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;614–669&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Palace Minister&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior First Rank after death&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;First named Nakatomi no Kamatari; he was given the family name Fujiwara just before his death&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="305.106" height="26"/><text class="fk-name" x="0" y="0.5">Nakatomi no Kamatari</text><text class="fk-note" x="173" y="1"> (Fujiwara no Kamatari)</text></g></g>
+<g class="fk-node" transform="translate(740,84)" data-tip="&lt;h3&gt;Fujiwara no Fuhito&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;659–720&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Minister of the Right&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Second Rank; Senior First Rank after death&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Grandfather (on the mother's side) of Emperor Shōmu and Empress Kōken&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="53" height="26"/><text class="fk-name" x="0" y="0.5">Fuhito</text></g></g>
+<g class="fk-node" transform="translate(740,200)" data-tip="&lt;h3&gt;Ōnakatomi no Yorimoto&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ōnakatomi no Sukemichi&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Ōnakatomi no Yoshinobu&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="185" height="26"/><text class="fk-name" x="0" y="0.5">Ōnakatomi no Yorimoto</text></g></g>
+<g class="fk-node" transform="translate(951,30)" data-tip="&lt;h3&gt;Fujiwara no Muchimaro&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;680–737&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Minister of the Left&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior First Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Founder of the Southern House of the Fujiwara&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="190.351" height="26"/><text class="fk-name" x="0" y="0.5">Muchimaro</text><text class="fk-note" x="88" y="1"> (Southern House)</text></g></g>
+<g class="fk-node" transform="translate(951,66)" data-tip="&lt;h3&gt;Fujiwara no Fusasaki&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;681–737&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Councillor (Sangi)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Third Rank; Senior First Rank after death&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="170" height="26"/><text class="fk-name" x="0" y="0.5">Fusasaki</text><text class="fk-note" x="67" y="1"> (Northern House)</text></g></g>
+<g class="fk-node" transform="translate(951,102)" data-tip="&lt;h3&gt;Fujiwara no Umakai&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;694–737&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Councillor (Sangi)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Third Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Founder of the Shikike branch of the Fujiwara&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="174.726" height="26"/><text class="fk-name" x="0" y="0.5">Umakai</text><text class="fk-note" x="60" y="1"> (Ceremonial House)</text></g></g>
+<g class="fk-node" transform="translate(951,138)" data-tip="&lt;h3&gt;Fujiwara no Maro&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;695–737&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Councillor (Sangi)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Third Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Founder of the Capital House (Kyōke) of the Fujiwara&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="132.24" height="26"/><text class="fk-name" x="0" y="0.5">Maro</text><text class="fk-note" x="42" y="1"> (Capital House)</text></g></g>
+<g class="fk-node is-poet" transform="translate(951,200)" data-tip="&lt;h3&gt;Ōnakatomi no Yoshinobu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;921–991&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ōnakatomi no Yorimoto&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 49, &quot;Mikakimori...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;One of the Five Men of the Pear Pavilion. In the Hyakunin Isshu he is called Ōnakatomi no Yoshinobu Ason&lt;/span&gt;&lt;/div&gt;" data-p="49"><a href="/49_en.html" aria-label="Ōnakatomi no Yoshinobu (Hyakunin Isshu Poem 49)"><rect class="fk-hit" x="-2" y="-13" width="218" height="26"/><text class="fk-name" x="0" y="0.5">Ōnakatomi no Yoshinobu</text><circle class="fk-badge" cx="204" cy="0" r="10"/><text class="fk-badge-num" x="204" y="0.5">49</text></a></g>
+<g class="fk-node" transform="translate(1197,200)" data-tip="&lt;h3&gt;Ōnakatomi no Sukechika&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;954–1038&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ōnakatomi no Yoshinobu&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Ise no Taifu&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="192" height="26"/><text class="fk-name" x="0" y="0.5">Ōnakatomi no Sukechika</text></g></g>
+<g class="fk-node is-poet is-self" transform="translate(1414,200)" data-tip="&lt;h3&gt;Ise no Taifu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Ōnakatomi no Sukechika&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 61, &quot;Inishie no...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Wife of Takashina no Narinobu&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="121" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="115" height="26"/><text class="fk-name" x="0" y="0.5">Ise no Taifu</text><circle class="fk-badge" cx="101" cy="0" r="10"/><text class="fk-badge-num" x="101" y="0.5">61</text></g></g>
+<g class="fk-node" transform="translate(1414,244)" data-tip="&lt;h3&gt;Takashina no Narinobu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown–1040&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Governor of Chikuzen&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Takashina no Akinobu; nephew of Takashina no Takako (Mother of the Honorary Grand Minister)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Husband of Ise no Taifu and father of Yasusuke-ō no Haha and others. He became a monk and took the name Jōren&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="75" height="26"/><text class="fk-name" x="0" y="0.5">Narinobu</text></g></g>
+<g class="fk-node" transform="translate(951,310)" data-tip="&lt;h3&gt;Takashina no Naritada&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Takashina no Takako (Mother of the Honorary Grand Minister), Akinobu, and others&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="71" height="26"/><text class="fk-name" x="0" y="0.5">Naritada</text></g></g>
+<g class="fk-node" transform="translate(1197,288)" data-tip="&lt;h3&gt;Takashina no Akinobu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown–1009&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Governor of Iyo&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Takashina no Naritada; elder or younger brother of Takashina no Takako (Mother of the Honorary Grand Minister)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Takashina no Narinobu. His daughter was Ōe no Takachika's wife&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="67" height="26"/><text class="fk-name" x="0" y="0.5">Akinobu</text></g></g>
+<g class="fk-node is-poet" transform="translate(1197,332)" data-tip="&lt;h3&gt;Mother of the Honorary Grand Minister (Gidō Sanshi no Haha)&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown–996&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Third Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Real name: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Takashina no Takako&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Takashina no Naritada. Wife of Fujiwara no Michitaka, and mother of Fujiwara no Korechika and Empress Teishi&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 54, &quot;Wasureji no...&quot;&lt;/span&gt;&lt;/div&gt;" data-p="54"><a href="/54_en.html" aria-label="Mother of the Honorary Grand Minister (Gidō Sanshi no Haha) (Hyakunin Isshu Poem 54)"><rect class="fk-hit" x="-2" y="-13" width="186" height="26"/><text class="fk-name" x="0" y="0.5">Takashina no Takako</text><circle class="fk-badge" cx="172" cy="0" r="10"/><text class="fk-badge-num" x="172" y="0.5">54</text></a></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+          <div class="kd-text">
+            <p style="width:100%; margin-bottom:0.5em;">The Nakatomi family led Shinto rites and ceremonies, and produced many poets. Yorimoto, <a href="/49_en.html">Yoshinobu</a>, Sukechika, and Ise no Taifu are well known as poets. Nakatomi no Kamatari was given the family name Fujiwara and became the founder of the Fujiwara clan, which later flourished as the regents' family (<em>sekkanke</em>).</p>
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <dt>Where the Word "Onara" Comes From</dt>
+            <dd>
+              There are several theories about where the Japanese word <em>onara</em> (a fart) comes from. The best known is that it comes from the verb <em>narasu</em> (to make a sound). A more unusual theory says it comes from Ise no Taifu's Hyakunin Isshu poem, which mentions <em>nioi</em> and "the double cherry blossoms of the old capital of Nara." <em>Nioi</em> in the poem is usually taken to mean "blooming beautifully," but it can also be read as "smelling." So "Nara" became the source of a smell, and with the polite prefix <em>o</em> it turned into <em>onara</em>.
+            </dd>
+            <dt>The Nara Double Cherry</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/naranoyaezakura.webp' data-lightbox='isenotaifu' data-title='Nara double cherry blossoms (Nara no Yaezakura)'>
+                  <img src='../img/naranoyaezakura.webp' alt='Nara double cherry blossoms (Nara no Yaezakura)' width="640" height="427">
+                </a>
+              </figure>
+              <div>
+                <p>
+                  The cherry in Ise no Taifu's poem is said to be the variety called <em>Nara no Yaezakura</em> (Nara double cherry). This is not a general name for double cherries growing in Nara, but one particular variety. It is a double-flowered form of the <em>kasumizakura</em> cherry and has small flowers for a double cherry.
+                </p>
+                <p>
+                  It is the official flower of Nara Prefecture and of Nara City.
+                </p>
+              </div>
+            </dd>
+            <dt>Akiko's Answer</dt>
+            <dd>Akiko, the empress of Emperor Ichijō whom Ise no Taifu served, answered her poem "Inishie no Nara no miyako no yaezakura..." with the following poem.
+              <div class='quote'>
+                <q class="quote-ja" style="position:relative;">
+                  <img src="/img/sakura.gif" alt="Cherry blossoms"
+                    style="position:absolute; width:80px; height:auto; right:2px; top:5px;" width="200" height="154">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>九重<rt>ここのえ</rt></ruby>に
+                    <ruby>匂<rt>にお</rt></ruby>ふを<ruby>見<rt>み</rt></ruby>れば
+                    <ruby>桜<rt>さくら</rt></ruby>がり
+                    <br><ruby>重<rt>かさ</rt></ruby>ねてきたる
+                    <ruby>春<rt>はる</rt></ruby>かとぞ<ruby>思<rt>おも</rt></ruby>ふ
+                    <span class="shutten"><em>Ise no Taifu-shū</em>, Akiko</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p>Seeing the (late-blooming) double cherries in full bloom in the palace, I feel as if I have come cherry-blossom viewing. It seems as though spring has come again.</p>
+                </q>
+              </div>
+            </dd>
+            <dt>Poems Exchanged with Izumi Shikibu</dt>
+            <dd>When Ise no Taifu and <a href="/56_en.html">Izumi Shikibu</a> served Akiko together as ladies-in-waiting, they seem to have been good friends, and the following exchange of poems remains. These poems were written when the two first met.</dd>
+            <dt class="tsugai"><span style="background: linear-gradient(transparent 70%, #d8abf9 30%);">Izumi Shikibu's Poem</span>
+            </dt>
+            <dd>
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>思<rt>おも</rt></ruby>はむと
+                    <ruby>思<rt>おも</rt></ruby>ひし<ruby>人<rt>ひと</rt></ruby>と
+                    <ruby>思<rt>おも</rt></ruby>ひしに
+                    <br><ruby>思<rt>おも</rt></ruby>ひしごとも
+                    <ruby>思<rt>おも</rt></ruby>ほゆるかな
+                    <span class="shutten"><em>Izumi Shikibu Diary</em>, Izumi Shikibu</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p>I thought you were someone who would care for me,<br class="br-pc"> and it is just as I thought.</p>
+                </q>
+              </div>
+            </dd>
+            <dt class="tsugai"><span style="background: linear-gradient(transparent 70%, #f9abbc 30%);">Ise no Taifu's Poem</span>
+            </dt>
+            <dd>
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>君<rt>きみ</rt></ruby>をわれ
+                    <ruby>思<rt>おも</rt></ruby>はざりせば
+                    われをきみ
+                    <br><ruby>思<rt>おも</rt></ruby>はむとしも
+                    <ruby>思<rt>おも</rt></ruby>はましやは
+                    <span class="shutten"><em>Izumi Shikibu Diary</em>, Ise no Taifu</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p>If I had not cared for you,<br class="br-pc"> you would not have cared for me either.</p>
+                </q>
+              </div>
+            </dd>
+            <dt>Poems Exchanged with Minamoto no Tsunenobu</dt>
+            <dd>
+              This is the story of a poem of thanks that Ise no Taifu sent to <a href="/71_en.html">Minamoto no Tsunenobu</a> when he visited her while she was ill. The two were more than 20 years apart in age, and Tsunenobu, given a poem as beautiful as white dew (a treasure) by Ise no Taifu, the finest poet of the day, is said to have been so moved that he wrote a poem in reply.
+            </dd>
+            <dt class="tsugai"><span style="background: linear-gradient(transparent 70%, #f9abbc 30%);">Ise no Taifu's Poem</span>
+            </dt>
+            <dd>
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    うれしさは
+                    <ruby>忘<rt>わす</rt></ruby>れやはする
+                    <ruby>忍<rt>しの</rt></ruby>ぶ<ruby>草<rt>ぐさ</rt></ruby>
+                    <br>しのぶるものを
+                    <ruby>秋<rt>あき</rt></ruby>の<ruby>夕暮<rt>ゆうぐれ</rt></ruby>
+                    <span class="shutten"><em>Shin Kokin Wakashū</em>, Ise no Taifu</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p>How could I forget my joy? Like the <em>shinobu</em> fern,<br class="br-pc"> I fondly think (<em>shinobu</em>) of you this autumn evening.</p>
+                </q>
+              </div>
+            </dd>
+            <dt class="tsugai"><span style="background: linear-gradient(transparent 70%, #B5DAFF 30%);">Minamoto no Tsunenobu's Poem</span>
+            </dt>
+            <dd>
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>秋風<rt>あきかぜ</rt></ruby>の
+                    おとせざりせば
+                    <ruby>白露<rt>しらつゆ</rt></ruby>の
+                    <br><ruby>軒<rt>のき</rt></ruby>のしのぶに
+                    かからましやは
+                    <span class="shutten"><em>Shin Kokin Wakashū</em>, Minamoto no Tsunenobu</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p>If the autumn wind had not come calling,<br class="br-pc"> would white dew have settled on the <em>shinobu</em> fern under the eaves?</p>
+                </q>
+              </div>
+            </dd>
+            <dt>A Poem About the Hototogisu</dt>
+            <dd>For Heian nobles, hearing the first call of the <em>hototogisu</em> (lesser cuckoo), which announced the coming of summer, was something especially elegant.<br class="br-pc"> Ise no Taifu wrote this poem at a poetry contest held by Princess Yūshi.
+              <div class='quote'>
+                <q class="quote-ja" style="position:relative;">
+                  <img src="/img/hototogisu.gif" alt="A hototogisu (lesser cuckoo)"
+                    style="position:absolute; width:50px; height:auto; right:2px; top:5px;" width="150" height="206">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>聞<rt>き</rt></ruby>きつとも
+                    <ruby>聞<rt>き</rt></ruby>かずともなく
+                    <ruby>時鳥<rt>ほととぎす</rt></ruby>
+                    <br><ruby>心<rt>こころ</rt></ruby>まどはす
+                    さ<ruby>夜<rt>よ</rt></ruby>のひと<ruby>声<rt>こえ</rt></ruby>
+                    <span class="shutten"><em>Go Shūi Wakashū</em>, Ise no Taifu</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p>I cannot tell whether I heard it or not. O hototogisu, your single call in the night leaves my heart confused.</p>
+                </q>
+              </div>
+            </dd>
+            <dt>A Poem About the House Her Lover Left</dt>
+            <dd>
+              The headnote in the <em>Ise no Taifu-shū</em>, where this poem appears, says it was written on the fifth day of the fifth month, the year after she left the place where she had lived for years and moved elsewhere. It probably expresses this feeling: the lover she lived with left on this very day a year ago, and though the irises (<em>ayame</em>) in the garden bloom just as they did last year, her present home no longer feels like the home she shared with him.
+              <div class='quote'>
+                <q class="quote-ja" style="position:relative;">
+                  <img src="/img/ayame.gif" alt="Irises (ayame)"
+                    style="position:absolute; width:60px; height:auto; right:5px; top:5px;" width="206" height="250">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    けふも<ruby>今日<rt>けふ</rt></ruby>
+                    あやめもあやめ
+                    <br class="br-sp"><ruby>変<rt>か</rt></ruby>らぬに
+                    <br class="br-pc"><ruby>宿<rt>やど</rt></ruby>こそありし
+                    <br class="br-sp"><ruby>宿<rt>やど</rt></ruby>とおぼえぬ
+                    <span class="shutten"><em>Ise no Taifu-shū</em>, Ise no Taifu</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p>Today is the fifth day of the fifth month, the same as last year, and the irises bloom just as before, but this house does not feel at all like the home I once had.</p>
+                </q>
+              </div>
+            </dd>
+            <dt>Linked Verse with Fujiwara no Michinobu</dt>
+            <dd>The next poem is a linked verse (<em>renga</em>) by Ise no Taifu and <a href="/52_en.html">Fujiwara no Michinobu</a>.<br
+                class="br-pc"> When Michinobu was passing the rooms of Akiko, Emperor Ichijō's empress, holding <em>yamabuki</em> (kerria) flowers, the ladies-in-waiting begged him to compose a poem. So <span style="color:#327CC6">Michinobu wrote the upper verse</span>, and <span
+                style="color:#B82343">Ise no Taifu wrote the lower verse</span>.
+              <div class='quote'>
+                <q class="quote-ja" style="position:relative;">
+                  <img src="/img/yamabuki.gif" alt="Yamabuki (kerria) flowers"
+                    style="position:absolute; width:45px; height:auto; right:5px; top:5px;" width="255" height="300">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <span style="color:#327CC6">くちなしに ちしほやちしほ
+                      <br class="br-sp"><ruby>染<rt>そ</rt></ruby>めてけり</span>
+                    <br class="br-pc"><span style="color:#B82343">こはえも<ruby>言<rt>い</rt></ruby>はぬ
+                      <br class="br-sp"><ruby>花<rt>はな</rt></ruby>の<ruby>色<rt>いろ</rt></ruby>かな</span>
+                    <span class="shutten"><em>Toshiyori Zuinō</em></span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p>
+                    <span style="color:#327CC6">I, who hold feelings I cannot speak, like the <em>kuchinashi</em> (gardenia, "no mouth"),
+                      <br class="br-pc">carry these yamabuki flowers, dyed again and again in gardenia yellow.</span>
+                    <br><span style="color:#B82343">What a color, too lovely for words!</span>
+                  </p>
+                </q>
+              </div>
+              <p class="kome"><em>Yamabuki</em> has yellow flowers. The fruit of the <em>kuchinashi</em> (gardenia) is used as a dye and gives a yellow color. "<em>Kuchinashi</em>" also means "no mouth."</p>
+            </dd>
+            <dt>Utagawa Kuniyoshi's <em>Hyakunin Isshu no Uchi</em></dt>
+            <dd class='thumb-image2'>
+              <figure class='portrait'>
+                <a href='../img/kuniyoshi_61.webp' data-lightbox='isenotaifu' data-title='Ukiyo-e by Utagawa Kuniyoshi'>
+                  <img loading='lazy' src='../img/kuniyoshi_61.webp' alt='Ise no Taifu, ukiyo-e by Utagawa Kuniyoshi' width="480" height="704">
+                </a>
+                <figcaption><a
+                    href='https://commons.wikimedia.org/wiki/File:Object-_Ise_no_Osuke_(no._61)_%E4%BC%8A%E5%8B%A2%E5%A4%A7%E8%BC%94_(BM_2008,3037.10633).jpg' target='_blank' rel='noopener'><small>British
+                      Museum, Public domain, via Wikimedia Commons</small></a></figcaption>
+              </figure>
+              <div>
+                <p>This ukiyo-e print is by Utagawa Kuniyoshi, an artist of the Edo period.</p>
+                <p>
+                  The <em>Shasekishū</em>, a Kamakura-period collection of Buddhist tales, tells this story. Empress Akiko wanted to bring the famous double cherry tree in front of the Tōendō hall to the Heian palace. The head (<em>bettō</em>) of Kōfuku-ji ordered his men to dig up and move the tree, but a monk objected: "How can we give away such a famous cherry tree? Please stop."
+                </p>
+                <p>When Akiko heard of the commotion and learned how much the tree was treasured, she praised their care and sent "flower guards" (<em>hanamori</em>). Afterward, Kōfuku-ji presented a branch of the cherry tree to the Heian palace.
+                </p>
+              </div>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -315,6 +822,11 @@
   <!-- Footer end -->
 
   <script src="../js/poems_en.js?20261008-01"></script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261008-49"></script>
+  <script src="../js/keizu-diagram.js?20261008-02"></script>
 
 </body>
 

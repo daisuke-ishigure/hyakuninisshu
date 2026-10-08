@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-08T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -94,6 +94,8 @@
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
   <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -103,6 +105,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -241,7 +251,7 @@
         <dl class="last-dl">
           <dt>About the Poet</dt>
           <dd>
-            Horikawa served Taikenmon-in, Sutoku's mother, and was active as a poet in his time. After the Hōgen Rebellion and Sutoku's exile, she became a nun with Taikenmon-in and spent her last years at Ninna-ji.
+            Horikawa served Taikenmon-in, Sutoku's mother, and was active as a poet in his time. In 1142 she became a nun with Taikenmon-in, and she spent her last years at Ninna-ji.
           </dd>
         </dl>
       </div>
@@ -274,6 +284,274 @@
       </dl>
     </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Horikawa's Relationship Chart</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 80.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__tenno">Brown text</span>Emperor</li>
+              <li><span class="fk-legend__tno" aria-hidden="true"></span>Emperor's number in the line of succession</li>
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+              <li><span class="fk-legend__eq">＝</span>Marriage</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Horikawa's relationship chart">
+            <script type="application/json">
+{
+ "lang": "en",
+ "nodes": [
+  {
+   "id": "bifukumonin",
+   "n": "美福門院",
+   "x": 16,
+   "y": 40
+  },
+  {
+   "id": "toba",
+   "n": "鳥羽",
+   "k": 1,
+   "t": 74,
+   "x": 16,
+   "y": 92
+  },
+  {
+   "id": "taikenmonin",
+   "n": "待賢門院",
+   "x": 16,
+   "y": 136
+  },
+  {
+   "id": "konoe",
+   "n": "近衛",
+   "k": 1,
+   "t": 76,
+   "x": 166,
+   "y": 66
+  },
+  {
+   "id": "goshirakawa",
+   "n": "後白河",
+   "k": 1,
+   "t": 77,
+   "x": 166,
+   "y": 130
+  },
+  {
+   "id": "sutoku",
+   "n": "崇徳",
+   "k": 1,
+   "t": 75,
+   "p": 77,
+   "x": 166,
+   "y": 190
+  },
+  {
+   "id": "horikawa",
+   "n": "待賢門院堀河",
+   "p": 80,
+   "self": 1,
+   "sub": "One of the poets of Retired Emperor Sutoku's Kyūan Hyakushu",
+   "x": 16,
+   "y": 250
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-bifuku",
+   "top": "bifukumonin",
+   "bottom": "toba"
+  },
+  {
+   "id": "c-taiken",
+   "top": "toba",
+   "bottom": "taikenmonin"
+  }
+ ],
+ "kids": [
+  {
+   "from": "c-bifuku",
+   "to": [
+    "konoe"
+   ]
+  },
+  {
+   "from": "c-taiken",
+   "to": [
+    "goshirakawa",
+    "sutoku"
+   ]
+  }
+ ],
+ "arrows": [
+  {
+   "points": [
+    [
+     46,
+     235
+    ],
+    [
+     46,
+     147
+    ]
+   ],
+   "label": {
+    "text": "Served",
+    "x": 53,
+    "y": 191
+   }
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 388 290" width="388" height="290" role="img" aria-label="Horikawa's relationship chart" lang="en" class="fk-svg kd-svg" style="max-width:582px;min-width:min(640px,582px)" data-src="nq99zi">
+<g class="fk-edges"><path d="M32.5 49V67M36.5 49V67" class="fk-edge fk-eq"/><path d="M32.5 101V127M36.5 101V127" class="fk-edge fk-eq"/><path d="M36.5 57H152" class="fk-edge"/><path d="M152 57V66" class="fk-edge"/><path d="M152 66H163" class="fk-edge"/><path d="M36.5 114H152" class="fk-edge"/><path d="M152 114V190" class="fk-edge"/><path d="M152 130H163" class="fk-edge"/><path d="M152 190H163" class="fk-edge"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"><path d="M46 235L46 147" class="kd-arrow" marker-end="url(#kdArrowHead)"/><text class="kd-arrow-label" x="53" y="191">Served</text></g>
+<g>
+<g class="fk-node" transform="translate(16,40)" data-tip="&lt;h3&gt;Bifukumon-in&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Empress (kōgō) of Emperor Toba (Fujiwara no Tokuko). Mother of Emperor Konoe and Princess Akiko (Shōshi)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="106" height="26"/><text class="fk-name" x="0" y="0.5">Bifukumon-in</text></g></g>
+<g class="fk-node is-tenno" transform="translate(16,92)" data-tip="&lt;h3&gt;Emperor Toba&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;74th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1103–1156&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1107–1123&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;After giving up the throne, he ruled as retired emperor&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="41" height="26"/><text class="fk-name" x="0" y="0.5">Toba</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">74</text></g>
+<g class="fk-node" transform="translate(16,136)" data-tip="&lt;h3&gt;Taikenmon-in&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Empress (chūgū) of Emperor Toba (Fujiwara no Shōshi). Mother of Emperors Sutoku and Go-Shirakawa. The Kojidan has a story that Sutoku was really the son of Retired Emperor Shirakawa and Shōshi. Horikawa, attendant to Empress Taiken, served her&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="107" height="26"/><text class="fk-name" x="0" y="0.5">Taikenmon-in</text></g></g>
+<g class="fk-node is-tenno" transform="translate(166,66)" data-tip="&lt;h3&gt;Emperor Konoe&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;76th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1139–1155&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1141–1155&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Toba; his mother was Bifukumon-in (Fujiwara no Tokuko)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;He died at 17, and the struggle over who would succeed him was one cause of the Hōgen Rebellion&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="52" height="26"/><text class="fk-name" x="0" y="0.5">Konoe</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">76</text></g>
+<g class="fk-node is-tenno" transform="translate(166,130)" data-tip="&lt;h3&gt;Emperor Go-Shirakawa&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;77th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1127–1192&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1155–1158&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;After giving up the throne, he ruled as retired emperor for a long time. He compiled the Ryōjin Hishō, a collection of popular songs (imayō)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="108" height="26"/><text class="fk-name" x="0" y="0.5">Go-Shirakawa</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">77</text></g>
+<g class="fk-node is-tenno is-poet" transform="translate(166,190)" data-tip="&lt;h3&gt;Emperor Sutoku&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;75th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1119–1164&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1123–1142&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 77, &quot;Se wo hayami...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Retired Emperor Sutoku. He lost the Hōgen Rebellion (1156) and was exiled to Sanuki&lt;/span&gt;&lt;/div&gt;" data-p="77"><a href="/77_en.html" aria-label="Emperor Sutoku (Hyakunin Isshu Poem 77)"><rect class="fk-hit" x="-2" y="-13" width="81" height="26"/><text class="fk-name" x="0" y="0.5">Sutoku</text><circle class="fk-badge" cx="67" cy="0" r="10"/><text class="fk-badge-num" x="67" y="0.5">77</text></a><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">75</text></g>
+<g class="fk-node is-poet is-self" transform="translate(16,250)" data-tip="&lt;h3&gt;Horikawa, attendant to Empress Taiken&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Minamoto no Akinaka, Head of the Office of Shrine Affairs&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 80, &quot;Nagakaran...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;She is said to have served Princess Reishi and then Taikenmon-in. In 1150 she was one of the 14 poets of the Kyūan Hyakushu, a set of poems ordered by Retired Emperor Sutoku&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="331" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="325" height="26"/><text class="fk-name" x="0" y="0.5">Horikawa, attendant to Empress Taiken</text><circle class="fk-badge" cx="311" cy="0" r="10"/><text class="fk-badge-num" x="311" y="0.5">80</text></g><rect class="fk-sub-box" x="0" y="11" width="356" height="16" rx="8"/><text class="fk-sub" x="178" y="19.5">One of the poets of Retired Emperor Sutoku's Kyūan Hyakushu</text></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+          <div class="kd-text">
+            <p style="width:100%;">Horikawa served Taikenmon-in (Fujiwara no Shōshi), the empress of Emperor Toba.</p>
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <div class="hensen">
+              <dt class="hensen-title">How Poems About "Tangled Hair" Changed over Time</dt>
+              <dd class="hensen-lead">
+                Since ancient times, "black hair" (<em>kurokami</em>) has often appeared in Japanese literature as a way to show love, sorrow, and a woman's beauty. "Tangled hair" (<em>midaregami</em>) in particular has expressed different feelings of love in each age. In the <em>Man'yōshū</em>, it stands for a heart thrown into confusion by love itself; in the Heian period, tangled hair became a scene that brings back memories of a lover; and in modern times, Yosano Akiko gave it a new meaning, as a way to express passion and her own self.
+              </dd>
+              <dt>The <em>Man'yōshū</em> Age<br class="br-sp"><span style="font-weight:normal"> — A Heart Thrown into Confusion by Love —</span></dt>
+              <dd>In the <em>Man'yōshū</em> age, tangled hair was not a carefully planned mood. The poems simply express a heart in turmoil, unable to bear the pain of love.
+                <div class='quote'>
+                  <q class="quote-ja">
+                    <h3 class="was-h4">In Japanese</h3>
+                    <p>
+                      ぬばたまの <ruby>我<rt>わ</rt></ruby>が<ruby>黒髪<rt>くろかみ</rt></ruby>を
+                      <ruby>引<rt>ひ</rt></ruby>きぬらし
+                      <br><ruby>乱<rt>みだ</rt></ruby>れてさらに
+                      <ruby>恋<rt>こ</rt></ruby>ひわたるかも
+                      <span class="shutten"><em>Man'yōshū</em>, Anonymous</span>
+                    </p>
+                  </q>
+                  <q>
+                    <h3 class="was-h4">In English</h3>
+                    <p style="line-height:1.7; margin-top: 0.25em;">I let down my black hair, and with my heart in turmoil too, I go on longing for you.</p>
+                  </q>
+                </div>
+                <p class="kome">"<em>Nubatama no</em>" is a pillow word (<em>makurakotoba</em>) that leads into "black."</p>
+              </dd>
+
+              <dt>The Mid-Heian Period<br class="br-sp"><span style="font-weight:normal"> — Memories of a Lover's Touch —</span></dt>
+              <dd>In <a href="/56_en.html">Izumi Shikibu</a>'s poem, tangled black hair brings back the memory of a lover who once stroked her hair aside. The hair is shown as a symbol that holds the warmth and touch of a beloved person.
+                <div class='quote'>
+                  <q class="quote-ja">
+                    <h3 class="was-h4">In Japanese</h3>
+                    <p>
+                      <ruby>黒髪<rt>くろかみ</rt></ruby>の
+                      <ruby>乱<rt>みだ</rt></ruby>れも<ruby>知<rt>し</rt></ruby>らず
+                      うち<ruby>伏<rt>ふ</rt></ruby>せば
+                      <br>まづかきやりし
+                      <ruby>人<rt>ひと</rt></ruby>ぞ<ruby>恋<rt>こい</rt></ruby>しき
+                      <span class="shutten"><em>Goshūi Wakashū</em>, Izumi Shikibu</span>
+                    </p>
+                  </q>
+                  <q>
+                    <h3 class="was-h4">In English</h3>
+                    <p style="line-height:1.7; margin-top: 0.25em;">As I lie down, lost in thought, not caring that my black hair is tangled, I long for the one who used to stroke my hair aside.</p>
+                  </q>
+                </div>
+              </dd>
+
+              <dt>The Late Heian Period<br class="br-sp"><span style="font-weight:normal"> — Lingering Love, Worry About the Future, and Memories of a Face —</span></dt>
+              <dd>
+                In the late Heian period, "black hair" grew into a theme that reflected the lingering feelings of love and worry about the future. Horikawa, attendant to Empress Taiken, linked her tangled hair on the morning after a night together with her worry about where the love would lead. Fujiwara no Sadaie, on the other hand, described how the face of a lover comes back to him with every strand of black hair.
+                <div class='quote'>
+                  <q class="quote-ja">
+                    <h3 class="was-h4">In Japanese</h3>
+                    <p>
+                      <ruby>長<rt>なが</rt></ruby>から<ruby>む<rt>ん</rt></ruby>
+                      <ruby>心<rt>こころ</rt></ruby>もしらず
+                      <ruby>黒髪<rt>くろがみ</rt></ruby>の
+                      <br>みだれてけさは
+                      <ruby>物<rt>もの</rt></ruby>をこそ<ruby>思<rt>おも</rt></ruby><ruby>へ<rt>え</rt></ruby>
+                      <span class="shutten"><em>Senzai Wakashū</em>, Horikawa, attendant to Empress Taiken</span>
+                    </p>
+                  </q>
+                  <q>
+                    <h3 class="was-h4">In English</h3>
+                    <p style="line-height:1.7; margin-top: 0.25em;">I cannot tell whether your heart, which promised to love me forever, will last. This morning after we parted, my heart is as tangled as my black hair, and I am lost in thought.</p>
+                  </q>
+                </div>
+                <div class='quote'>
+                  <q class="quote-ja">
+                    <h3 class="was-h4">In Japanese</h3>
+                    <p>
+                      かきやりし
+                      その<ruby>黒髪<rt>くろかみ</rt></ruby>の
+                      すぢごとに
+                      <br>うち<ruby>臥<rt>ふ</rt></ruby>すほどは
+                      <ruby>面影<rt>おもかげ</rt></ruby>ぞ<ruby>立<rt>た</rt></ruby>つ
+                      <span class="shutten"><em>Shin Kokin Wakashū</em>, Fujiwara no Sadaie</span>
+                    </p>
+                  </q>
+                  <q>
+                    <h3 class="was-h4">In English</h3>
+                    <p style="line-height:1.7; margin-top: 0.25em;">In every strand of the black hair I stroked aside, your face appears before me.</p>
+                  </q>
+                </div>
+              </dd>
+
+              <dt>Modern Times<br class="br-sp"><span style="font-weight:normal"> — Self-Expression and Passion —</span></dt>
+              <dd><em>Midaregami</em> (Tangled Hair) is a poetry collection born from the love between Yosano Akiko and Yosano Tekkan, who had a wife and child.<br class="br-pc"> At a time when society's rules were strict, it became known as a work that openly expressed her own love and passion.
+                <div class='quote'>
+                  <q class="quote-ja">
+                    <h3 class="was-h4">In Japanese</h3>
+                    <p>
+                      <ruby>黒髪<rt>くろかみ</rt></ruby>の
+                      <ruby>千<rt>ち</rt></ruby>すぢの<ruby>髪<rt>かみ</rt></ruby>の
+                      みだれ<ruby>髪<rt>がみ</rt></ruby>
+                      <br>かつおもひみだれ
+                      おもひみだるる
+                      <span class="shutten"><em>Midaregami</em>, Yosano Akiko</span>
+                    </p>
+                  </q>
+                  <q>
+                    <h3 class="was-h4">In English</h3>
+                    <p style="line-height:1.7; margin-top: 0.25em;">Just as my black hair is tangled in a thousand strands, my heart too is tangled, and I worry over this and that.</p>
+                  </q>
+                </div>
+              </dd>
+            </div>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -305,6 +583,11 @@
   <!-- Footer end -->
 
   <script src="../js/poems_en.js?20261008-01"></script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261008-49"></script>
+  <script src="../js/keizu-diagram.js?20261008-02"></script>
 
 </body>
 

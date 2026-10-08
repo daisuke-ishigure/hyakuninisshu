@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-08T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -94,6 +94,9 @@
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
   <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/swiper-bundle.min.css">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -103,6 +106,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -280,6 +291,333 @@
       </dl>
     </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Retired Emperor Sutoku's Family Tree</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 77.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__tenno">Brown text</span>Emperor</li>
+              <li><span class="fk-legend__tno" aria-hidden="true"></span>Emperor's number in the line of succession</li>
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+              <li><span class="fk-legend__eq">＝</span>Marriage</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Retired Emperor Sutoku's family tree">
+            <script type="application/json">
+{
+ "lang": "en",
+ "nodes": [
+  {
+   "id": "shirakawa",
+   "n": "白河",
+   "k": 1,
+   "t": 72,
+   "x": 16,
+   "y": 40
+  },
+  {
+   "id": "horikawa",
+   "n": "堀河",
+   "k": 1,
+   "t": 73,
+   "x": 136,
+   "y": 40
+  },
+  {
+   "id": "bifukumonin",
+   "n": "美福門院",
+   "x": 256,
+   "y": 40
+  },
+  {
+   "id": "toba",
+   "n": "鳥羽",
+   "k": 1,
+   "t": 74,
+   "x": 256,
+   "y": 92
+  },
+  {
+   "id": "taikenmonin",
+   "n": "待賢門院",
+   "x": 256,
+   "y": 136
+  },
+  {
+   "id": "konoe",
+   "n": "近衛",
+   "k": 1,
+   "t": 76,
+   "x": 406,
+   "y": 66
+  },
+  {
+   "id": "goshirakawa",
+   "n": "後白河",
+   "k": 1,
+   "t": 77,
+   "x": 406,
+   "y": 130
+  },
+  {
+   "id": "sutoku",
+   "n": "崇徳",
+   "k": 1,
+   "t": 75,
+   "p": 77,
+   "self": 1,
+   "x": 406,
+   "y": 190
+  },
+  {
+   "id": "nijo",
+   "n": "二条",
+   "k": 1,
+   "t": 78,
+   "x": 539,
+   "y": 110
+  },
+  {
+   "id": "takakura",
+   "n": "高倉",
+   "k": 1,
+   "t": 80,
+   "x": 539,
+   "y": 160
+  },
+  {
+   "id": "shigehito",
+   "n": "重仁親王",
+   "x": 539,
+   "y": 210
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-bifuku",
+   "top": "bifukumonin",
+   "bottom": "toba"
+  },
+  {
+   "id": "c-taiken",
+   "top": "toba",
+   "bottom": "taikenmonin"
+  }
+ ],
+ "kids": [
+  {
+   "from": "shirakawa",
+   "to": [
+    "horikawa"
+   ]
+  },
+  {
+   "from": "horikawa",
+   "to": [
+    "toba"
+   ],
+   "bar": 242
+  },
+  {
+   "from": "c-bifuku",
+   "to": [
+    "konoe"
+   ]
+  },
+  {
+   "from": "c-taiken",
+   "to": [
+    "goshirakawa",
+    "sutoku"
+   ]
+  },
+  {
+   "from": "goshirakawa",
+   "to": [
+    "nijo",
+    "takakura"
+   ]
+  },
+  {
+   "from": "sutoku",
+   "to": [
+    "shigehito"
+   ]
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 677 236" width="677" height="236" role="img" aria-label="Retired Emperor Sutoku's family tree" lang="en" class="fk-svg kd-svg" style="max-width:1016px;min-width:min(640px,1016px)" data-src="173tavf">
+<g class="fk-edges"><path d="M272.5 49V67M276.5 49V67" class="fk-edge fk-eq"/><path d="M272.5 101V127M276.5 101V127" class="fk-edge fk-eq"/><path d="M98 40H122" class="fk-edge"/><path d="M122 40H133" class="fk-edge"/><path d="M212 40H242" class="fk-edge"/><path d="M242 40V92" class="fk-edge"/><path d="M242 92H253" class="fk-edge"/><path d="M276.5 57H392" class="fk-edge"/><path d="M392 57V66" class="fk-edge"/><path d="M392 66H403" class="fk-edge"/><path d="M276.5 114H392" class="fk-edge"/><path d="M392 114V190" class="fk-edge"/><path d="M392 130H403" class="fk-edge"/><path d="M392 190H403" class="fk-edge"/><path d="M513 130H525" class="fk-edge"/><path d="M525 110V160" class="fk-edge"/><path d="M525 110H536" class="fk-edge"/><path d="M525 160H536" class="fk-edge"/><path d="M486 190H525" class="fk-edge"/><path d="M525 190V210" class="fk-edge"/><path d="M525 210H536" class="fk-edge"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node is-tenno" transform="translate(16,40)" data-tip="&lt;h3&gt;Emperor Shirakawa&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;72nd emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1053–1129&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1073–1087&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;After giving up the throne, he began rule by retired emperors (insei)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="83" height="26"/><text class="fk-name" x="0" y="0.5">Shirakawa</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">72</text></g>
+<g class="fk-node is-tenno" transform="translate(136,40)" data-tip="&lt;h3&gt;Emperor Horikawa&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;73rd emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1079–1107&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1087–1107&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="77" height="26"/><text class="fk-name" x="0" y="0.5">Horikawa</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">73</text></g>
+<g class="fk-node" transform="translate(256,40)" data-tip="&lt;h3&gt;Bifukumon-in&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Empress (kōgō) of Emperor Toba (Fujiwara no Tokuko). Mother of Emperor Konoe and Princess Akiko (Shōshi)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="106" height="26"/><text class="fk-name" x="0" y="0.5">Bifukumon-in</text></g></g>
+<g class="fk-node is-tenno" transform="translate(256,92)" data-tip="&lt;h3&gt;Emperor Toba&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;74th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1103–1156&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1107–1123&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;After giving up the throne, he ruled as retired emperor&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="41" height="26"/><text class="fk-name" x="0" y="0.5">Toba</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">74</text></g>
+<g class="fk-node" transform="translate(256,136)" data-tip="&lt;h3&gt;Taikenmon-in&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Empress (chūgū) of Emperor Toba (Fujiwara no Shōshi). Mother of Emperors Sutoku and Go-Shirakawa. The Kojidan has a story that Sutoku was really the son of Retired Emperor Shirakawa and Shōshi. Horikawa, attendant to Empress Taiken, served her&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="107" height="26"/><text class="fk-name" x="0" y="0.5">Taikenmon-in</text></g></g>
+<g class="fk-node is-tenno" transform="translate(406,66)" data-tip="&lt;h3&gt;Emperor Konoe&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;76th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1139–1155&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1141–1155&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Toba; his mother was Bifukumon-in (Fujiwara no Tokuko)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;He died at 17, and the struggle over who would succeed him was one cause of the Hōgen Rebellion&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="52" height="26"/><text class="fk-name" x="0" y="0.5">Konoe</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">76</text></g>
+<g class="fk-node is-tenno" transform="translate(406,130)" data-tip="&lt;h3&gt;Emperor Go-Shirakawa&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;77th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1127–1192&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1155–1158&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;After giving up the throne, he ruled as retired emperor for a long time. He compiled the Ryōjin Hishō, a collection of popular songs (imayō)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="108" height="26"/><text class="fk-name" x="0" y="0.5">Go-Shirakawa</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">77</text></g>
+<g class="fk-node is-tenno is-poet is-self" transform="translate(406,190)" data-tip="&lt;h3&gt;Emperor Sutoku&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;75th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1119–1164&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1123–1142&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 77, &quot;Se wo hayami...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Retired Emperor Sutoku. He lost the Hōgen Rebellion (1156) and was exiled to Sanuki&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="87" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="81" height="26"/><text class="fk-name" x="0" y="0.5">Sutoku</text><circle class="fk-badge" cx="67" cy="0" r="10"/><text class="fk-badge-num" x="67" y="0.5">77</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">75</text></g>
+<g class="fk-node is-tenno" transform="translate(539,110)" data-tip="&lt;h3&gt;Emperor Nijō&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;78th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Go-Shirakawa; his mother was Minamoto no Ishi&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="35" height="26"/><text class="fk-name" x="0" y="0.5">Nijō</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">78</text></g>
+<g class="fk-node is-tenno" transform="translate(539,160)" data-tip="&lt;h3&gt;Emperor Takakura&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;80th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1161–1181&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1168–1180&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;His empress was Taira no Tokuko (Kenreimon-in), Taira no Kiyomori's daughter&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="75" height="26"/><text class="fk-name" x="0" y="0.5">Takakura</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">80</text></g>
+<g class="fk-node" transform="translate(539,210)" data-tip="&lt;h3&gt;Prince Shigehito&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1140–1162&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;First son of Emperor Sutoku; his mother was Hyōe no Suke no Tsubone&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;After Emperor Konoe died, he was seen as the most likely heir, but Emperor Go-Shirakawa took the throne instead&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="126" height="26"/><text class="fk-name" x="0" y="0.5">Prince Shigehito</text></g></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+          <div class="kd-text">
+            <p style="width:100%; margin-bottom:0.5em;">
+              Retired Emperor Sutoku was born as Emperor Toba's first child. But there was a rumor that his great-grandfather, Retired Emperor Shirakawa, had been the lover of Taikenmon-in (Fujiwara no Shōshi), and Emperor Toba treated Sutoku coldly, calling him <em>oji-go</em> ("uncle-son," meaning both his uncle and his child).</p>
+            <p style="width:100%; margin-bottom:0.5em;">
+              Emperor Toba urged Sutoku to adopt Emperor Konoe, and Sutoku gave up the throne. But the imperial edict of abdication called Konoe the emperor's "younger brother" (<em>kōtaitei</em>), and if Konoe was Sutoku's younger brother, Sutoku could not rule as retired emperor. In this way, Sutoku fell into Emperor Toba's trap.
+            </p>
+            <p style="width:100%; margin-bottom:0.5em;">
+              Then, when Emperor Konoe died, Sutoku's son Prince Shigehito was seen as the most likely next emperor, but Emperor Toba put Emperor Go-Shirakawa on the throne.</p>
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <dt id="hogennoran">The Hōgen Rebellion</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/hogennoran.gif' data-lightbox='sutoku' data-title='Diagram of the Hōgen Rebellion'>
+                  <img src='../img/hogennoran.gif' alt='Diagram of the Hōgen Rebellion (in Japanese)' width="1102" height="1280">
+                </a>
+              </figure>
+              <div>
+                <p style="width:100%; margin-bottom:0.5em;">When Emperor Go-Shirakawa and Retired Emperor Sutoku clashed over who would hold power as retired emperor, Fujiwara no Tadamichi was fighting his younger brother, Fujiwara no Yorinaga, within the regents' family.</p>
+                <p style="width:100%; margin-bottom:0.5em;">
+                  This struggle over the imperial family and the regents' family grew into fierce fighting between the side of Retired Emperor Sutoku and Fujiwara no Yorinaga, centered on the warrior Minamoto no Tameyoshi, and the side of Emperor Go-Shirakawa and Fujiwara no Tadamichi, led by the warriors Taira no Kiyomori and Minamoto no Yoshitomo.
+                </p>
+                <p style="width:100%; margin-bottom:0.5em;">
+                  In the end, Retired Emperor Sutoku lost and was exiled to Sanuki (Kagawa Prefecture). Fujiwara no Yorinaga was hit by a stray arrow and died. Taira no Tadamasa was beheaded by Taira no Kiyomori, Minamoto no Tameyoshi was beheaded by Minamoto no Yoshitomo, and Minamoto no Tametomo was exiled to Izu Ōshima.</p>
+              </div>
+            </dd>
+            <dt>Sutoku-in, a Place Name (Amagasaki, Hyōgo Prefecture)</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/Matsubara_Shrine_large.webp' data-lightbox='sutoku' data-title='Matsubara Shrine (Amagasaki, Hyōgo Prefecture)'>
+                  <img src="/img/Matsubara_Shrine.webp" alt="Matsubara Shrine" width="640" height="427">
+                </a>
+                <figcaption>
+                  <small>
+                    <a href="https://commons.wikimedia.org/wiki/File:Matsubara_Shrine_Ama.jpg" target="_blank" rel="noopener">Bittercup, CC BY-SA 4.0
+                      &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons
+                    </a>
+                  </small>
+                </figcaption>
+              </figure>
+              <div>
+                <p>
+                  After losing the Hōgen Rebellion, Retired Emperor Sutoku was exiled to Sanuki (today's Kagawa Prefecture). On the way, his ship was hit by an unexpected storm and took shelter for a time at what is now Amagasaki City, Hyōgo Prefecture. The villagers are said to have welcomed him with <em>konoshiro</em> (gizzard shad), clams, oysters, <em>yomena</em> (a wild aster), burdock, and roasted rice. Because of this, nearby Matsubara Shrine (in the photo) came to enshrine Sutoku as a co-enshrined deity (<em>aidono-shin</em>), together with Susanoo-no-Mikoto and Miwa Myōjin.
+                </p>
+                <p>The place name "Sutoku-in" also remains in this area; Amagasaki still has Sutoku-in 1-chōme to 3-chōme today.</p>
+              </div>
+            </dd>
+            <dt>Shiramine-ji Temple</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/shiramine_large.webp' data-lightbox='sutoku' data-title='Shiramine-ji Temple'>
+                  <img src='../img/shiramineji.webp' alt='Shiramine-ji Temple' width="640" height="359">
+                </a>
+              </figure>
+              <div>
+                <p>A temple in Sakaide City, Kagawa Prefecture. Along the approach stands the "Thirteen-Story Stone Pagoda of Shiramine-ji," which Minamoto no Yoritomo is said to have built to pray for the soul of Emperor Sutoku.<br><a class='no-decoration'
+                    href='utamakura_en.html?lat=34.33371424743123&lng=133.92674829927043&zoom=12'>See it on the map</a>
+                </p>
+              </div>
+            </dd>
+            <dt id="shiramine">Shiramine Jingū Shrine</dt>
+            <dd class='thumb-image2'>
+              <div class="swiper" style="min-width: 0;">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img src="/img/shiramine_01_small.webp" alt="Shiramine Jingū Shrine, photo 1" width="800" height="600">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="/img/shiramine_02_small.webp" alt="Shiramine Jingū Shrine, photo 2" width="800" height="600">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="/img/shiramine_03_small.webp" alt="Shiramine Jingū Shrine, photo 3" width="800" height="600">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="/img/shiramine_04_small.webp" alt="Shiramine Jingū Shrine, photo 4" width="800" height="600">
+                  </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+              </div>
+              <div>
+                <p>
+                  Shiramine Jingū stands on the site of the Asukai family's mansion. It is connected with the Asukai family, known for waka and <em>kemari</em> (court football), and so with two Hyakunin Isshu poets: <a href="/94_en.html">Asukai Masatsune</a> (Poem 94) and Retired Emperor Sutoku (Poem 77), the shrine's deity.<br><a class='no-decoration' href='utamakura_en.html?lat=35.03011084695753&lng=135.75316203458888&zoom=15'>See it on the map</a>
+                </p>
+                <p style="text-align:right; font-size:0.9em">(Photos taken August 8, 2026)</p>
+              </div>
+            </dd>
+            <dt>Utagawa Kuniyoshi's <em>Hyakunin Isshu no Uchi</em></dt>
+            <dd class='thumb-image2'>
+              <figure class='portrait'>
+                <a href='../img/kuniyoshi_77_large.webp' data-lightbox='sutoku' data-title='Ukiyo-e by Utagawa Kuniyoshi'>
+                  <img loading='lazy' src='../img/kuniyoshi_77.webp' alt='Retired Emperor Sutoku, ukiyo-e by Utagawa Kuniyoshi' width="425" height="640">
+                </a>
+                <figcaption><a
+                    href='https://commons.wikimedia.org/wiki/File:Sotoku_invoking_a_thunder_storm.jpg' target='_blank' rel='noopener'><small>Public
+                      domain</small></a></figcaption>
+              </figure>
+              <div>
+                <p>
+                  After he was exiled to Sanuki, Retired Emperor Sutoku was never allowed to return to the capital. Turning to Buddhism for comfort, he spent three years copying many sutras by hand, and asked that at least these copies be sent to the capital. But Emperor Go-Shirakawa, fearing a curse, refused to accept them.
+                </p>
+                <p>Bitter at this, Sutoku is said to have bitten off his own tongue and written in his blood on the sutras: "I will become a great demon... I will take the emperor and make him a commoner, and make a commoner the emperor." These words were a curse on Emperor Go-Shirakawa.</p>
+                <p>In his last years, it is said, Sutoku let his hair, beard, and nails grow, as shown in the print, until he looked like a <em>tengu</em> (a mountain goblin).</p>
+              </div>
+            </dd>
+            <dt>The Three Great Vengeful Spirits of Japan</dt>
+            <dd>Sugawara no Michizane, Taira no Masakado, and Retired Emperor Sutoku lost political struggles and died in despair, still full of resentment, and people believed they became vengeful spirits that brought disaster to the capital.
+              Ten years after Sutoku's death, people close to Emperor Go-Shirakawa died one after another, and the Great Angen Fire burned a third of Kyoto. People seem to have feared that these disasters were Sutoku's curse.</dd>
+            <dt>Saigyō's Poem for Retired Emperor Sutoku</dt>
+            <dd>Three years after Retired Emperor Sutoku died, Saigyō visited the Shiramine Imperial Tomb to calm his spirit. This poem is thought to have been offered by Saigyō to Sutoku, who had died without his wish to return to the capital coming true and had not found peace.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>永<rt>なが</rt></ruby>らへて
+                    つひに<ruby>住<rt>す</rt></ruby>むべき
+                    <ruby>都<rt>みやこ</rt></ruby>かは
+                    <br>この<ruby>世<rt>よ</rt></ruby>はよしや
+                    とてもかくても
+                    <span class="shutten"><em>Sankashū</em>, Saigyō</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.8; margin-top: 0.2em;">However long you lived, you could not stay in the capital forever. Whatever happened, let the things of this world go.</p>
+                </q>
+              </div>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -289,6 +627,7 @@
           <a class="da-link-btn" href="diagram_archtecture_en.html">Relationship Diagram</a>
           <a class="kt-link-btn" href="karuta-taisen-pro_en.html">Competitive Karuta Game</a>
           <a class="kts-link-btn" href="karuta-taisen_en.html">Online Karuta Battle</a>
+          <a class="kg-link-btn" href="kakekotoba-game-077_en.html"><span class="kg-link-btn-inner"><span class="kg-link-btn-face kg-link-btn-front">Spin &amp; Discover Kakekotoba!</span><span class="kg-link-btn-face kg-link-btn-back">Spin &amp; Discover Kakekotoba!</span></span></a>
         </dd>
       </dl>
     </div>
@@ -311,6 +650,32 @@
   <!-- Footer end -->
 
   <script src="../js/poems_en.js?20261008-01"></script>
+  <script src="../js/swiper-bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      new Swiper('.swiper', {
+        loop: true,
+        speed: 1500,
+        autoplay: {
+          delay: 2000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+    });
+  </script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261008-49"></script>
+  <script src="../js/keizu-diagram.js?20261008-02"></script>
 
 </body>
 

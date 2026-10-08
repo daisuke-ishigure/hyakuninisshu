@@ -675,7 +675,7 @@
   ],
   "28": [
     "The poem captures the compounded silence of a mountain hamlet in winter. The word \"karu\" performs a subtle double duty: it means both \"to wither\" (as plants do) and \"to be absent\" (as people withdraw). In one stroke, the natural world and the human world go quiet at the same time, deepening the loneliness beyond what either would produce alone.",
-    "Minamoto no Muneyuki Ason held a modest position at court, but his poetry was highly regarded. This poem was included in the imperial anthology Gosen Wakashū and later selected by Fujiwara no Teika for the Hyakunin Isshu, where it stands as one of the collection's most evocative winter poems."
+    "Minamoto no Muneyuki Ason held a modest position at court, but his poetry was highly regarded. This poem was included in the imperial anthology Gosen Wakashū and later selected by Fujiwara no Sadaie for the Hyakunin Isshu, where it stands as one of the collection's most evocative winter poems."
   ],
   "29": [
     "This is a poem of delightful visual confusion. On a morning when frost has settled across the garden, the white chrysanthemums and the white frost look so similar that the poet cannot tell them apart at a glance. Rather than being frustrated, the speaker turns this into a playful game — reaching for a chrysanthemum by guesswork alone.",
@@ -895,7 +895,7 @@
   ],
   "83": [
     "The speaker retreats into the mountains seeking solitude and peace, only to find that the deer's cry — itself one of the most mournful sounds in classical poetry — is waiting there too. Sadness follows you everywhere. \"Michi koso nakere\" (there is no road, no escape) is the poem's flat, honest conclusion.",
-    "Fujiwara no Toshinari (Shunzei) was one of the supreme poetic masters of the Heian-Kamakura transition. He compiled the Senzai Wakashū and developed the aesthetic ideal of yūgen (mysterious, profound beauty). He lived to ninety, composing poetry throughout his long life, and was deeply revered by the next generation of poets."
+    "Fujiwara no Toshinari was one of the supreme poetic masters of the Heian-Kamakura transition. He compiled the Senzai Wakashū and developed the aesthetic ideal of yūgen (mysterious, profound beauty). He lived to ninety, composing poetry throughout his long life, and was deeply revered by the next generation of poets."
   ],
   "84": [
     "The poem reflects on how time transforms perception. Something once painful becomes, in retrospect, precious. The speaker projects this pattern forward: even these current difficult days will one day be remembered with nostalgia. The logical structure is elegant and philosophically rich — time redeems what it has wounded.",
@@ -919,7 +919,7 @@
   ],
   "89": [
     "\"Tama no o\" (thread of gems) is a metaphor for the fragile thread of life. The speaker commands her life to end rather than continue — because the longer she lives, the harder it becomes to conceal a forbidden love. The logic is extreme but poetically coherent: endurance weakens over time, so death is preferable to eventual exposure.",
-    "Princess Shikishi was an imperial princess who served as High Priestess of the Kamo Shrine and was therefore forbidden to marry. Her poems suggest a deep, secret, and possibly forbidden love — some scholars believe for Fujiwara no Teika. The combination of noble restraint and barely contained passion makes her one of the most admired poets in the Shin Kokinshū."
+    "Princess Shikishi was an imperial princess who served as High Priestess of the Kamo Shrine and was therefore forbidden to marry. Her poems suggest a deep, secret, and possibly forbidden love — some scholars believe for Fujiwara no Sadaie. The combination of noble restraint and barely contained passion makes her one of the most admired poets in the Shin Kokinshū."
   ],
   "90": [
     "The comparison is precise and unexpected: seawater wets the fisherwomen's sleeves constantly but doesn't alter their color. The speaker's tears, by contrast, have literally or figuratively faded the dye from her sleeves — implying that her sorrow is of a different, deeper quality than even the most relentless physical labor of the sea.",
@@ -935,7 +935,7 @@
   ],
   "93": [
     "\"Tsuna-de\" (tow rope) carries undertones of \"tsuna\" (bond) and \"te\" (hand) — human ties. The small boat being gently pulled along the shore evokes fragility and sweetness. The poem wishes not for change or improvement, but simply for the present moment — and by extension, peace itself — to last.",
-    "Minamoto no Sanetomo, third shogun of Kamakura, was assassinated at age twenty-seven by his own nephew at Tsurugaoka Hachiman Shrine. He was also a gifted poet who studied under Fujiwara no Teika. His poetry longs for peace in an era of violence, giving this quiet poem an especially poignant resonance."
+    "Minamoto no Sanetomo, third shogun of Kamakura, was assassinated at age twenty-seven by his own nephew at Tsurugaoka Hachiman Shrine. He was also a gifted poet who studied under Fujiwara no Sadaie. His poetry longs for peace in an era of violence, giving this quiet poem an especially poignant resonance."
   ],
   "94": [
     "\"Koromo-utsu\" (beating cloth) was the process of softening newly woven fabric by beating it on a fulling block. The sound carried far through the night air. At Yoshino, that sound mingles with the autumn wind to create an atmosphere of deep seasonal melancholy. The \"old village\" (furusato) adds a layer of nostalgic desolation.",
@@ -951,11 +951,11 @@
   ],
   "97": [
     "\"Matsuho no ura\" plays on \"matsu\" (to wait) and the place name. \"Moshio\" (seaweed salt) was produced by burning seaweed on the shore; \"kogare\" means both \"to smolder/burn\" (for the fires) and \"to burn with longing\" (for the speaker). Place, sound, and emotion are unified through a single verb that carries both meanings simultaneously.",
-    "Fujiwara no Teika (Sadaie) was the compiler of the Hyakunin Isshu itself — one of the greatest figures in the history of Japanese poetry. He placed his own poem at number 97 in the anthology. Its technical mastery — multiple puns, precise imagery, emotional depth — is characteristic of his mature style and poetic philosophy."
+    "Fujiwara no Sadaie was the compiler of the Hyakunin Isshu itself — one of the greatest figures in the history of Japanese poetry. He placed his own poem at number 97 in the anthology. Its technical mastery — multiple puns, precise imagery, emotional depth — is characteristic of his mature style and poetic philosophy."
   ],
   "98": [
     "The scene is the eve of the Kamo purification ceremony (misogi) at a stream near the Kamo Shrine. The air is already cool enough to feel like autumn; only the ritual marks it as summer. \"Soyo-gu\" (to rustle gently) gives the breeze through the Nara oaks a light, delicate sound. The poem balances on the exact threshold between seasons.",
-    "Fujiwara no Ietaka was a close colleague of Teika (poem 97) and co-led the waka world of the Shin Kokinshū era. He was known for his lyrical grace and emotional subtlety. This poem, suspended between summer and autumn, is considered one of the most elegant seasonal poems in the entire anthology."
+    "Fujiwara no Ietaka was a close colleague of Sadaie (poem 97) and co-led the waka world of the Shin Kokinshū era. He was known for his lyrical grace and emotional subtlety. This poem, suspended between summer and autumn, is considered one of the most elegant seasonal poems in the entire anthology."
   ],
   "99": [
     "The poem opens with a paradox: the same people provoke both tenderness and resentment. \"Ajiki-naku\" (bitter/futile) qualifies the act of world-brooding itself. Unusually direct in expressing ambivalence — toward people, toward the world, and toward the self — it reads less like court verse than a private confession.",
@@ -963,7 +963,7 @@
   ],
   "100": [
     "\"Momoshiki\" is a pillow word for the imperial palace; \"shinobugusa\" (fern, but also \"shinoburu\" = to recall/endure) grows on the ruined eaves. The plant's very name evokes memory. \"Naho amari aru\" (still more, still overflowing) conveys a nostalgia so immense it cannot be exhausted — the old imperial world exceeds any poem's power to contain it.",
-    "Retired Emperor Juntoku, like his father Go-Toba, was exiled after the failed Jōkyū Disturbance (1221) — to Sado Island, where he died. His poem, placed last in the anthology by Teika, was likely a deliberate coda: an elegy for the old imperial order, composed by one of its tragic final adherents, closing the anthology with inexhaustible longing."
+    "Retired Emperor Juntoku, like his father Go-Toba, was exiled after the failed Jōkyū Disturbance (1221) — to Sado Island, where he died. His poem, placed last in the anthology by Sadaie, was likely a deliberate coda: an elegy for the old imperial order, composed by one of its tragic final adherents, closing the anthology with inexhaustible longing."
   ]
 };
   const PHRASE_ROMAJI = {

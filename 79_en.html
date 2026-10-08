@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-08T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -95,6 +95,8 @@
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
   <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -104,6 +106,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -277,6 +287,235 @@
       </dl>
     </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Fujiwara no Akisuke's Family Tree</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 79.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Fujiwara no Akisuke's family tree">
+            <script type="application/json">
+{
+ "lang": "en",
+ "tooltips": "fujiwara",
+ "nodes": [
+  {
+   "id": "akisue",
+   "n": "藤原顕季",
+   "key": "顕季",
+   "sub": "Rokujō family, 1st head",
+   "x": 16,
+   "y": 84
+  },
+  {
+   "id": "akisuke",
+   "n": "藤原顕輔",
+   "key": "顕輔",
+   "p": 79,
+   "self": 1,
+   "sub": "Rokujō family, 2nd head",
+   "x": 186,
+   "y": 40
+  },
+  {
+   "id": "ieyasu",
+   "n": "藤原家保",
+   "x": 186,
+   "y": 100
+  },
+  {
+   "id": "nagazane",
+   "n": "藤原長実",
+   "x": 186,
+   "y": 140
+  },
+  {
+   "id": "kiyosuke",
+   "n": "藤原清輔",
+   "key": "清輔",
+   "p": 84,
+   "sub": "Rokujō family, 3rd head",
+   "x": 360,
+   "y": 30
+  },
+  {
+   "id": "shigeie",
+   "n": "藤原重家",
+   "sub": "Rokujō family, 4th head",
+   "x": 360,
+   "y": 86
+  },
+  {
+   "id": "kensho",
+   "n": "顕昭",
+   "sub": "Adopted (yūshi)",
+   "x": 360,
+   "y": 142
+  }
+ ],
+ "kids": [
+  {
+   "from": "akisue",
+   "to": [
+    "akisuke",
+    "ieyasu",
+    "nagazane"
+   ]
+  },
+  {
+   "from": "akisuke",
+   "to": [
+    "kiyosuke",
+    "shigeie",
+    "kensho"
+   ]
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 518 182" width="518" height="182" role="img" aria-label="Fujiwara no Akisuke's family tree" lang="en" class="fk-svg kd-svg" style="max-width:777px;min-width:min(640px,777px)" data-src="1f5cmrq">
+<g class="fk-edges"><path d="M70 84H172" class="fk-edge"/><path d="M172 40V140" class="fk-edge"/><path d="M172 40H183" class="fk-edge"/><path d="M172 100H183" class="fk-edge"/><path d="M172 140H183" class="fk-edge"/><path d="M273 40H346" class="fk-edge"/><path d="M346 30V142" class="fk-edge"/><path d="M346 30H357" class="fk-edge"/><path d="M346 86H357" class="fk-edge"/><path d="M346 142H357" class="fk-edge"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node" transform="translate(16,84)" data-tip="&lt;h3&gt;Fujiwara no Akisue&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1055–1123&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Master of the Office of Palace Repairs&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Third Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Founder of the Rokujō family (Rokujō Tōke)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="55" height="26"/><text class="fk-name" x="0" y="0.5">Akisue</text></g><rect class="fk-sub-box" x="0" y="11" width="141" height="16" rx="8"/><text class="fk-sub" x="70.5" y="19.5">Rokujō family, 1st head</text></g>
+<g class="fk-node is-poet is-self" transform="translate(186,40)" data-tip="&lt;h3&gt;Fujiwara no Akisuke&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1090–1155&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Master of the Left Capital&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Third Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 79, &quot;Akikaze ni...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;His name in the Hyakunin Isshu is &quot;Master of the Left Capital Akisuke&quot;&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="94" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="88" height="26"/><text class="fk-name" x="0" y="0.5">Akisuke</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5">79</text></g><rect class="fk-sub-box" x="0" y="11" width="144" height="16" rx="8"/><text class="fk-sub" x="72" y="19.5">Rokujō family, 2nd head</text></g>
+<g class="fk-node" transform="translate(186,100)" data-tip="&lt;h3&gt;Fujiwara no Ieyasu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Fujiwara no Akisue&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="54" height="26"/><text class="fk-name" x="0" y="0.5">Ieyasu</text></g></g>
+<g class="fk-node" transform="translate(186,140)" data-tip="&lt;h3&gt;Fujiwara no Nagazane&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Fujiwara no Akisue&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="79" height="26"/><text class="fk-name" x="0" y="0.5">Nagazane</text></g></g>
+<g class="fk-node is-poet" transform="translate(360,30)" data-tip="&lt;h3&gt;Fujiwara no Kiyosuke&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1104–1177&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Secretary of the Grand Empress Dowager&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Fourth Rank, Lower Grade&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 84, &quot;Nagaraeba...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;His name in the Hyakunin Isshu is &quot;Fujiwara no Kiyosuke Ason&quot;&lt;/span&gt;&lt;/div&gt;" data-p="84"><a href="/84_en.html" aria-label="Fujiwara no Kiyosuke (Hyakunin Isshu Poem 84)"><rect class="fk-hit" x="-2" y="-13" width="96" height="26"/><text class="fk-name" x="0" y="0.5">Kiyosuke</text><circle class="fk-badge" cx="82" cy="0" r="10"/><text class="fk-badge-num" x="82" y="0.5">84</text></a><rect class="fk-sub-box" x="0" y="11" width="142" height="16" rx="8"/><text class="fk-sub" x="71" y="19.5">Rokujō family, 3rd head</text></g>
+<g class="fk-node" transform="translate(360,86)" data-tip="&lt;h3&gt;Fujiwara no Shigeie&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Minister of Justice&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Fujiwara no Akisuke; Kiyosuke's younger brother&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Received the Hitomaro portrait ceremony (Hitomaro eigu) from his elder brother Kiyosuke and became the fourth head of the Rokujō family&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="59" height="26"/><text class="fk-name" x="0" y="0.5">Shigeie</text></g><rect class="fk-sub-box" x="0" y="11" width="142" height="16" rx="8"/><text class="fk-sub" x="71" y="19.5">Rokujō family, 4th head</text></g>
+<g class="fk-node" transform="translate(360,142)" data-tip="&lt;h3&gt;Kenshō&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Adopted son (yūshi) of Fujiwara no Akisuke. A scholar of poetry&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="60" height="26"/><text class="fk-name" x="0" y="0.5">Kenshō</text></g><rect class="fk-sub-box" x="0" y="11" width="99" height="16" rx="8"/><text class="fk-sub" x="49.5" y="19.5">Adopted (yūshi)</text></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+          <div class="kd-text">
+            <p style="width:100%; margin-bottom: 0.75em;">Fujiwara no Akisuke was the second head of the Rokujō family (<em>Rokujō Tōke</em>), a leading family of poets founded by his father, Fujiwara no Akisue. The name "Rokujō Tōke" comes from Akisue's home at Rokujō Karasuma in Kyoto.</p>
+            <p style="width:100%; margin-bottom: 0.75em;">Akisuke was chosen by Retired Emperor Sutoku to compile the <em>Shika Wakashū</em>. He had his son, <a href="/84_en.html">Fujiwara no Kiyosuke</a>, help with the work, but it is said that Kiyosuke's opinions were hardly ever accepted, and that father and son did not get along. Even so, in the year of his death, Akisuke gave Kiyosuke the portrait of Hitomaro used in the <em>Hitomaro eigu</em> ceremony, which was the sign of the family's main heir.</p>
+            <p style="width:100%; margin-bottom: 0.75em;">At the end of the Heian period, the Rokujō family, which valued traditional poetry, and the Mikohidari family, which pushed for new styles, competed to lead the poetry world. The Rokujō family was at its height in the time of Akisuke and Kiyosuke, but after that it produced fewer and fewer poets, and the Mikohidari family flourished instead.</p>
+            <p style="width:100%;">Akisuke also took a poet-monk, Kenshō, as his adopted son (<em>yūshi</em>). Kenshō left many commentaries on waka and books on poetry.</p>
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <dt>A Poem About a Lover</dt>
+            <dd>This poem is in the <em>Kin'yō Wakashū</em>.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>逢<rt>あ</rt></ruby>ふと見て
+                    うつつの<ruby>甲斐<rt>かい</rt></ruby>は
+                    なけれども
+                    <br>はかなき<ruby>夢<rt>ゆめ</rt></ruby>ぞ
+                    <ruby>命<rt>いのち</rt></ruby>なりける
+                    <span class="shutten"><em>Kin'yō Wakashū</em>, Fujiwara no Akisuke</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height:1.7; margin-top: 0.25em;">Even if I meet my love in a dream, nothing changes in real life;<br class="br-pc"> yet that fleeting dream is my very life.</p>
+                </q>
+              </div>
+            </dd>
+            <dt>A Poem About the Moon on the Water</dt>
+            <dd>Akisuke seems to have seen the moon reflected on the water at the foot of tall reeds and compared it to himself, stuck in a low position without promotion. This poem is in the <em>Shika Wakashū</em>.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>難波江<rt>なにわえ</rt></ruby>の
+                    <ruby>蘆間<rt>あしま</rt></ruby>に<ruby>宿<rt>やど</rt></ruby>る
+                    <ruby>月<rt>つき</rt></ruby>みれば
+                    <br><ruby>我<rt>わ</rt></ruby>が<ruby>身<rt>み</rt></ruby>ひとつも
+                    <ruby>沈<rt>しず</rt></ruby>まざりけり
+                    <span class="shutten"><em>Shika Wakashū</em>, Fujiwara no Akisuke</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height:1.7; margin-top: 0.25em;">Looking at the moon reflected on the water between the reeds of Naniwa Bay,<br class="br-pc"> I realized I am not the only one sunk low.</p>
+                </q>
+              </div>
+            </dd>
+            <dt>A Poem Like the "Spring Is Dawn" Scene of <em>The Pillow Book</em></dt>
+            <dd>This poem reads like a waka version of the scene at the start of <em>The Pillow Book</em> (<em>Makura no Sōshi</em>): "In spring, it is the dawn. The sky above the mountains slowly grows light, and thin purple clouds trail across it." It is in Akisuke's personal collection, the <em>Akisuke-shū</em>.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>月影<rt>つきかげ</rt></ruby>に
+                    たづねきつれば
+                    ほととぎす
+                    <br><ruby>鳴<rt>な</rt></ruby>く<ruby>山<rt>やま</rt></ruby>の<ruby>端<rt>は</rt></ruby>に
+                    <ruby>横雲<rt>よこぐも</rt></ruby>わたる
+                    <span class="shutten"><em>Akisuke-shū</em></span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height:1.7; margin-top: 0.25em;">When I came looking by the light of the moon,<br class="br-pc"> clouds were trailing sideways along the ridge where the <em>hototogisu</em> (cuckoo) sang.</p>
+                </q>
+              </div>
+            </dd>
+            <dt>A Poem Borrowing from "Aki no ta no..."</dt>
+            <dd>Akisuke wrote a poem using <em>honkadori</em> (borrowing from an older poem) on <a href="/1_en.html">Emperor Tenji</a>'s poem.<br class="br-pc"> This poem, too, is about moonlight leaking through.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>秋<rt>あき</rt></ruby>の<ruby>田<rt>た</rt></ruby>に
+                    <ruby>庵<rt>いお</rt></ruby>さす<ruby>賤<rt>しず</rt></ruby>の
+                    <ruby>苫<rt>とま</rt></ruby>をあらみ
+                    <br><ruby>月<rt>つき</rt></ruby>とともにや
+                    もり<ruby>明<rt>あか</rt></ruby>すらん
+                    <span class="shutten"><em>Shin Kokin Wakashū</em>, Fujiwara no Akisuke</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height:1.7; margin-top: 0.25em;">The farmer who builds a hut by the autumn rice field has a roof of coarsely woven rush mats,<br class="br-pc"> so he will spend the night until dawn with the moonlight shining in.</p>
+                </q>
+              </div>
+            </dd>
+            <dt>Utagawa Kuniyoshi's <em>Hyakunin Isshu no Uchi</em></dt>
+            <dd class='thumb-image2'>
+              <figure class='portrait'>
+                <a href='../img/kuniyoshi_79_large.webp' data-lightbox='akisuke' data-title='Ukiyo-e by Utagawa Kuniyoshi'>
+                  <img loading='lazy' src='../img/kuniyoshi_79.webp' alt='Ukiyo-e by Utagawa Kuniyoshi' width="480" height="714">
+                </a>
+                <figcaption><a
+                    href='https://commons.wikimedia.org/wiki/File:No_79_Sakyo-no-tayu_Aisuke_(BM_1906,1220,0.1209).jpg' target='_blank' rel='noopener'><small>British
+                      Museum, Public domain, via Wikimedia Commons</small></a></figcaption>
+              </figure>
+              <div>
+                <p>An ukiyo-e print by Utagawa Kuniyoshi, an ukiyo-e artist of the Edo period.<br class="br-pc"> It shows a scene that matches the Hyakunin Isshu poem.</p>
+              </div>
+            </dd>
+            <dt>The <em>Hitomaro Eigu</em> Ceremony</dt>
+            <dd>A ceremony started by Fujiwara no Akisue, founder of the Rokujō family, to honor Kakinomoto no Hitomaro, the "saint of poetry." A portrait of Hitomaro was hung and poems were offered to it, so that poets would take Hitomaro's poems as their model and work hard at waka. In the Rokujō family, inheriting the portrait of Hitomaro was the sign of the main heir.</dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -308,6 +547,11 @@
   <!-- Footer end -->
 
   <script src="../js/poems_en.js?20261008-01"></script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261008-49"></script>
+  <script src="../js/keizu-diagram.js?20261008-02"></script>
 
 </body>
 

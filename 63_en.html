@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-08T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -95,6 +95,8 @@
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
   <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -104,6 +106,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -279,6 +289,425 @@
       </dl>
     </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Michimasa's Family Tree</dt>
+        <dd class='kd-dd'>
+          <p>When Michimasa's father, Fujiwara no Korechika, was sent away from the capital after the Chōtoku Incident, the Naka-no-Kanpaku family, which had been at the height of its power, quickly fell. Fujiwara no Michimasa rose to Middle Captain of the Left Palace Guards at 25 and was given Junior Third Rank, but the next year his secret affair with Princess Masako was discovered. <a
+              href="/68_en.html">Emperor Sanjō</a> punished him, and the lovers were torn apart. His Hyakunin Isshu poem was written at that time. The poem seems to accept the fate he brought on himself, but his life afterward was so wild that he was called "the wild third rank" (<em>Ara-sanmi</em>) and "the wicked third rank" (<em>Aku-sanmi</em>); in his despair he sometimes turned to violence.</p>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 63.html) -->
+          <div class="fk-chart-bar" style="margin-top:0.75em;">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__tenno">Brown text</span>Emperor</li>
+              <li><span class="fk-legend__tno" aria-hidden="true"></span>Emperor's number in the line of succession</li>
+              <li><span class="fk-legend__kanpaku">Purple text</span>Became Regent or Kampaku</li>
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+              <li><span class="fk-legend__eq">＝</span>Marriage</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Michimasa's family tree">
+            <script type="application/json">
+{
+ "lang": "en",
+ "tooltips": "fujiwara",
+ "nodes": [
+  {
+   "id": "kaneie",
+   "n": "兼家",
+   "kan": 1,
+   "x": 16,
+   "y": 100
+  },
+  {
+   "id": "tokihime",
+   "n": "時姫",
+   "x": 16,
+   "y": 144
+  },
+  {
+   "id": "michitaka",
+   "n": "道隆",
+   "kan": 1,
+   "x": 136,
+   "y": 40
+  },
+  {
+   "id": "kishi",
+   "n": "儀同三司母",
+   "p": 54,
+   "x": 136,
+   "y": 84
+  },
+  {
+   "id": "michinaga",
+   "n": "道長",
+   "kan": 1,
+   "x": 136,
+   "y": 160
+  },
+  {
+   "id": "rinshi",
+   "n": "源倫子",
+   "x": 136,
+   "y": 204
+  },
+  {
+   "id": "reizei",
+   "n": "冷泉",
+   "k": 1,
+   "t": 63,
+   "x": 136,
+   "y": 260
+  },
+  {
+   "id": "choshi",
+   "n": "超子",
+   "x": 136,
+   "y": 304
+  },
+  {
+   "id": "korechika",
+   "n": "伊周",
+   "x": 350,
+   "y": 84
+  },
+  {
+   "id": "takaie",
+   "n": "隆家",
+   "x": 350,
+   "y": 128
+  },
+  {
+   "id": "kenshi",
+   "n": "妍子",
+   "x": 350,
+   "y": 182
+  },
+  {
+   "id": "sanjo",
+   "n": "三条",
+   "k": 1,
+   "t": 67,
+   "p": 68,
+   "x": 350,
+   "y": 234
+  },
+  {
+   "id": "seishi",
+   "n": "娍子",
+   "x": 350,
+   "y": 278
+  },
+  {
+   "id": "nobutakajo",
+   "n": "宣孝の娘",
+   "x": 470,
+   "y": 40
+  },
+  {
+   "id": "michimasa",
+   "n": "左京大夫道雅",
+   "key": "藤原道雅",
+   "p": 63,
+   "self": 1,
+   "x": 470,
+   "y": 84
+  },
+  {
+   "id": "korenakajo",
+   "n": "惟仲の娘",
+   "x": 470,
+   "y": 140
+  },
+  {
+   "id": "toshi",
+   "n": "当子内親王",
+   "sub": "Former Ise priestess",
+   "x": 470,
+   "y": 256
+  },
+  {
+   "id": "chujo",
+   "n": "上東門院中将",
+   "x": 802,
+   "y": 62
+  },
+  {
+   "id": "kanson",
+   "n": "観尊",
+   "x": 802,
+   "y": 112
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-kaneie",
+   "top": "kaneie",
+   "bottom": "tokihime"
+  },
+  {
+   "id": "c-michitaka",
+   "top": "michitaka",
+   "bottom": "kishi"
+  },
+  {
+   "id": "c-michinaga",
+   "top": "michinaga",
+   "bottom": "rinshi"
+  },
+  {
+   "id": "c-reizei",
+   "top": "reizei",
+   "bottom": "choshi"
+  },
+  {
+   "id": "c-kenshi",
+   "top": "kenshi",
+   "bottom": "sanjo"
+  },
+  {
+   "id": "c-seishi",
+   "top": "sanjo",
+   "bottom": "seishi"
+  },
+  {
+   "id": "c-nobutakajo",
+   "top": "nobutakajo",
+   "bottom": "michimasa"
+  },
+  {
+   "id": "c-korenakajo",
+   "top": "michimasa",
+   "bottom": "korenakajo"
+  }
+ ],
+ "kids": [
+  {
+   "from": "c-kaneie",
+   "to": [
+    "michitaka",
+    "michinaga",
+    "choshi"
+   ]
+  },
+  {
+   "from": "c-michitaka",
+   "to": [
+    "korechika",
+    "takaie"
+   ]
+  },
+  {
+   "from": "c-michinaga",
+   "to": [
+    "kenshi"
+   ]
+  },
+  {
+   "from": "c-reizei",
+   "to": [
+    "sanjo"
+   ]
+  },
+  {
+   "from": "korechika",
+   "to": [
+    "michimasa"
+   ]
+  },
+  {
+   "from": "c-seishi",
+   "to": [
+    "toshi"
+   ]
+  },
+  {
+   "from": "c-nobutakajo",
+   "to": [
+    "chujo"
+   ]
+  },
+  {
+   "from": "c-korenakajo",
+   "to": [
+    "kanson"
+   ]
+  }
+ ],
+ "arrows": [
+  {
+   "points": [
+    [
+     775,
+     84
+    ],
+    [
+     875,
+     84
+    ],
+    [
+     875,
+     256
+    ],
+    [
+     597,
+     256
+    ]
+   ],
+   "label": {
+    "text": "Secret affair",
+    "x": 706,
+    "y": 250
+   }
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 971 330" width="971" height="330" role="img" aria-label="Michimasa's family tree" lang="en" class="fk-svg kd-svg" style="max-width:1457px;min-width:min(640px,1457px)" data-src="1d2d4iw">
+<g class="fk-edges"><path d="M40 109V135M44 109V135" class="fk-edge fk-eq"/><path d="M171.5 49V75M175.5 49V75" class="fk-edge fk-eq"/><path d="M173 169V195M177 169V195" class="fk-edge fk-eq"/><path d="M156.5 269V295M160.5 269V295" class="fk-edge fk-eq"/><path d="M368.5 191V209M372.5 191V209" class="fk-edge fk-eq"/><path d="M368.5 243V269M372.5 243V269" class="fk-edge fk-eq"/><path d="M548 49V75M552 49V75" class="fk-edge fk-eq"/><path d="M547 93V131M551 93V131" class="fk-edge fk-eq"/><path d="M44 122H122" class="fk-edge"/><path d="M122 40V304" class="fk-edge"/><path d="M122 40H133" class="fk-edge"/><path d="M122 160H133" class="fk-edge"/><path d="M122 304H133" class="fk-edge"/><path d="M175.5 62H336" class="fk-edge"/><path d="M336 62V128" class="fk-edge"/><path d="M336 84H347" class="fk-edge"/><path d="M336 128H347" class="fk-edge"/><path d="M177 182H336" class="fk-edge"/><path d="M336 182H347" class="fk-edge"/><path d="M160.5 282H336" class="fk-edge"/><path d="M336 234V282" class="fk-edge"/><path d="M336 234H347" class="fk-edge"/><path d="M429 84H456" class="fk-edge"/><path d="M456 84H467" class="fk-edge"/><path d="M372.5 256H456" class="fk-edge"/><path d="M456 256H467" class="fk-edge"/><path d="M552 62H788" class="fk-edge"/><path d="M788 62H799" class="fk-edge"/><path d="M551 112H788" class="fk-edge"/><path d="M788 112H799" class="fk-edge"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"><path d="M775 84L875 84L875 256L597 256" class="kd-arrow" marker-end="url(#kdArrowHead)"/><text class="kd-arrow-label" x="706" y="250">Secret affair</text></g>
+<g>
+<g class="fk-node is-kanpaku" transform="translate(16,100)" data-tip="&lt;h3&gt;Fujiwara no Kaneie&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;929–990&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Regent, Kampaku (chief adviser), and Chancellor of the Realm&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior First Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Imperial in-law: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Grandfather (on the mother's side) of Emperor Ichijō&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="56" height="26"/><text class="fk-name" x="0" y="0.5">Kaneie</text></g></g>
+<g class="fk-node" transform="translate(16,144)" data-tip="&lt;h3&gt;Fujiwara no Tokihime&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Fujiwara no Nakamasa, Governor of Settsu&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Wife of Fujiwara no Kaneie. Mother of Michitaka, Michikane, Michinaga, Chōshi, Senshi, and others&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="74" height="26"/><text class="fk-name" x="0" y="0.5">Tokihime</text></g></g>
+<g class="fk-node is-kanpaku" transform="translate(136,40)" data-tip="&lt;h3&gt;Fujiwara no Michitaka&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;953–995&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Regent, Chancellor (Kanpaku), and Minister of the Center&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Second Rank&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="79" height="26"/><text class="fk-name" x="0" y="0.5">Michitaka</text></g></g>
+<g class="fk-node is-poet" transform="translate(136,84)" data-tip="&lt;h3&gt;Mother of the Honorary Grand Minister (Gidō Sanshi no Haha)&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown–996&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Third Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Real name: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Takashina no Takako&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Takashina no Naritada. Wife of Fujiwara no Michitaka, and mother of Fujiwara no Korechika and Empress Teishi&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 54, &quot;Wasureji no...&quot;&lt;/span&gt;&lt;/div&gt;" data-p="54"><a href="/54_en.html" aria-label="Mother of the Honorary Grand Minister (Gidō Sanshi no Haha) (Hyakunin Isshu Poem 54)"><rect class="fk-hit" x="-2" y="-13" width="186" height="26"/><text class="fk-name" x="0" y="0.5">Takashina no Takako</text><circle class="fk-badge" cx="172" cy="0" r="10"/><text class="fk-badge-num" x="172" y="0.5">54</text></a></g>
+<g class="fk-node is-kanpaku" transform="translate(136,160)" data-tip="&lt;h3&gt;Fujiwara no Michinaga&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;966–1028&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Regent and Minister of the Left&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior First Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Imperial in-law: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Grandfather (on the mother's side) of Emperors Go-Ichijō, Go-Suzaku, and Go-Reizei&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="82" height="26"/><text class="fk-name" x="0" y="0.5">Michinaga</text></g></g>
+<g class="fk-node" transform="translate(136,204)" data-tip="&lt;h3&gt;Minamoto no Tomoko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;964–1053&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of the Minister of the Left Minamoto no Masanobu and Fujiwara no Atsuko; great-granddaughter of Fujiwara no Sadakata&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Fujiwara no Michinaga's principal wife; mother of Yorimichi, Norimichi, Akiko, Kenshi, Ishi, and Kishi. A second cousin of Murasaki Shikibu. Akazome Emon served her&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="169" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Tomoko</text></g></g>
+<g class="fk-node is-tenno" transform="translate(136,260)" data-tip="&lt;h3&gt;Emperor Reizei&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;63rd emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;950–1011&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;967–969&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="49" height="26"/><text class="fk-name" x="0" y="0.5">Reizei</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">63</text></g>
+<g class="fk-node" transform="translate(136,304)" data-tip="&lt;h3&gt;Fujiwara no Chōshi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Eldest daughter of Fujiwara no Kaneie and Tokihime&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Consort (nyōgo) of Emperor Reizei. Mother of Emperor Sanjō, Prince Tametaka, and Prince Atsumichi&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="55" height="26"/><text class="fk-name" x="0" y="0.5">Chōshi</text></g></g>
+<g class="fk-node" transform="translate(350,84)" data-tip="&lt;h3&gt;Fujiwara no Korechika&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;974–1010&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Nairan (reviewer of state papers) and Minister of the Center&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Second Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Fell from power in the Chōtoku Incident (an arrow was shot at Retired Emperor Kazan)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="80" height="26"/><text class="fk-name" x="0" y="0.5">Korechika</text></g></g>
+<g class="fk-node" transform="translate(350,128)" data-tip="&lt;h3&gt;Fujiwara no Takaie&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;979–1044&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Middle Counselor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Second Rank&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="54" height="26"/><text class="fk-name" x="0" y="0.5">Takaie</text></g></g>
+<g class="fk-node" transform="translate(350,182)" data-tip="&lt;h3&gt;Fujiwara no Kenshi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;994–1027&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Second daughter of Fujiwara no Michinaga and Minamoto no Tomoko&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Empress (chūgū) of Emperor Sanjō and mother of Princess Yoshiko (Teishi)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="55" height="26"/><text class="fk-name" x="0" y="0.5">Kenshi</text></g></g>
+<g class="fk-node is-tenno is-poet" transform="translate(350,234)" data-tip="&lt;h3&gt;Emperor Sanjō&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;67th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;976–1017&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1011–1016&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 68, &quot;Kokoro ni mo...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Retired Emperor Sanjō&lt;/span&gt;&lt;/div&gt;" data-p="68"><a href="/68_en.html" aria-label="Emperor Sanjō (Hyakunin Isshu Poem 68)"><rect class="fk-hit" x="-2" y="-13" width="69" height="26"/><text class="fk-name" x="0" y="0.5">Sanjō</text><circle class="fk-badge" cx="55" cy="0" r="10"/><text class="fk-badge-num" x="55" y="0.5">68</text></a><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">67</text></g>
+<g class="fk-node" transform="translate(350,278)" data-tip="&lt;h3&gt;Fujiwara no Seishi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;972–1025&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Eldest daughter of Fujiwara no Naritoki; her younger brother was Michitō&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Entered the court in 991 as consort of the future Emperor Sanjō while he was crown prince, and later became empress (kōgō). Mother of Prince Atsuakira, Princess Masako, and others&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="48" height="26"/><text class="fk-name" x="0" y="0.5">Seishi</text></g></g>
+<g class="fk-node" transform="translate(470,40)" data-tip="&lt;h3&gt;Daughter of Fujiwara no Nobutaka&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Principal wife of Fujiwara no Michimasa&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="164" height="26"/><text class="fk-name" x="0" y="0.5">Nobutaka's daughter</text></g></g>
+<g class="fk-node is-poet is-self" transform="translate(470,84)" data-tip="&lt;h3&gt;Fujiwara no Michimasa&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Fujiwara no Korechika&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 63, &quot;Ima wa tada...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In 1016 he became Middle Captain of the Left Palace Guards and Junior Third Rank. He had a secret affair with Princess Masako after she returned from serving as the Ise priestess; it was discovered the next year, and Retired Emperor Sanjō punished him. His wild behavior never stopped, and he was called &quot;the wild third rank&quot; (Ara-sanmi) and &quot;the wicked third rank&quot; (Aku-sanmi)&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="310" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="304" height="26"/><text class="fk-name" x="0" y="0.5">Master of the Left Capital Michimasa</text><circle class="fk-badge" cx="290" cy="0" r="10"/><text class="fk-badge-num" x="290" y="0.5">63</text></g></g>
+<g class="fk-node" transform="translate(470,140)" data-tip="&lt;h3&gt;Daughter of Taira no Korenaka (Yamato no Senji)&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Second wife of Fujiwara no Michimasa&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="162" height="26"/><text class="fk-name" x="0" y="0.5">Korenaka's daughter</text></g></g>
+<g class="fk-node" transform="translate(470,256)" data-tip="&lt;h3&gt;Princess Masako&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1001–1022&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Emperor Sanjō and Empress Seishi&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;After returning from serving as the Ise priestess, she had a secret affair with Fujiwara no Michimasa. They were forced apart, and she later fell ill and became a nun&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="129" height="26"/><text class="fk-name" x="0" y="0.5">Princess Masako</text></g><rect class="fk-sub-box" x="0" y="11" width="124" height="16" rx="8"/><text class="fk-sub" x="62" y="19.5">Former Ise priestess</text></g>
+<g class="fk-node" transform="translate(802,62)" data-tip="&lt;h3&gt;Jōtōmon-in no Chūjō&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Fujiwara no Michimasa&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="157" height="26"/><text class="fk-name" x="0" y="0.5">Jōtōmon-in no Chūjō</text></g></g>
+<g class="fk-node" transform="translate(802,112)" data-tip="&lt;h3&gt;Kanson&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Fujiwara no Michimasa&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="60" height="26"/><text class="fk-name" x="0" y="0.5">Kanson</text></g></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <dt>Poems of Tears for a Love He Could Not Meet</dt>
+            <dd>Fujiwara no Michimasa was a man suspected of rough words and deeds, brawls, and even of being behind a murder, and he was called "the wicked third rank."
+              <br class="br-pc"> Yet when his love with Princess Masako was torn apart, even he wrote poems of tragic love full of feeling.
+              <div class='quote' style="margin-bottom: 0;">
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>逢坂<rt>あふさか</rt></ruby>は
+                    あづま<ruby>路<rt>ぢ</rt></ruby>とこそ
+                    <ruby>聞<rt>き</rt></ruby>きしかど
+                    <br><ruby>心<rt>こころ</rt></ruby>づくしの
+                    <ruby>関<rt>せき</rt></ruby>にぞありける
+                    <span class="shutten"><em>Go Shūi Wakashū</em>, Fujiwara no Michimasa</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height:1.8;">I had heard that the Ōsaka Barrier was on the road to the eastern lands, but in fact it was a barrier that wears out the heart (<em>kokorozukushi</em>), like a barrier in faraway Tsukushi.</p>
+                </q>
+              </div>
+              <p class="kome" style="margin-top: 0.2em;">"<em>Kokorozukushi</em>" also contains "Tsukushi," the old name of Kyūshū (today's Fukuoka Prefecture).</p>
+              <div class='quote' style="margin-bottom: 0;">
+                <q class="quote-ja" style="position:relative;">
+                  <img src="/img/tamagushi.gif" alt="A tamagushi (sacred sakaki branch)"
+                    style="position:absolute; width:80px; height:auto; right:5px; top:5px;" width="200" height="199">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>榊葉<rt>さかきば</rt></ruby>の
+                    <ruby>木綿四手<rt>ゆふしで</rt></ruby>かけし
+                    <br class="br-sp">そのかみに
+                    <br class="br-pc"><ruby>押<rt>お</rt></ruby>し<ruby>返<rt>かえ</rt></ruby>しても
+                    <br class="br-sp"><ruby>似<rt>に</rt></ruby>たる<ruby>頃<rt>ころ</rt></ruby>かな
+                    <span class="shutten"><em>Go Shūi Wakashū</em>, Fujiwara no Michimasa</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height:1.8;">When you were the Ise priestess, you served the gods, hanging <em>yūshide</em> on <em>sakaki</em> branches, and no one was allowed to touch you. These days, when nothing goes as I wish, it is as if we have been pushed back to that time.</p>
+                </q>
+              </div>
+              <p class="kome" style="margin-top: 0.2em;"><em>Yūshide</em> are <em>shide</em> made of <em>yū</em> (mulberry-bark fiber). <em>Shide</em> are the strips of paper hung on a <em>tamagushi</em> (sacred branch).</p>
+              <div class='quote' style="margin-bottom: 0;">
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    みちのくの
+                    <ruby>緒絶<rt>をだえ</rt></ruby>の<ruby>橋<rt>はし</rt></ruby>や
+                    これならむ
+                    <br>ふみみふまずみ
+                    心まどはす
+                    <span class="shutten"><em>Go Shūi Wakashū</em>, Fujiwara no Michimasa</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height:1.8;">So this is what they mean by the "Odae Bridge" (the bridge where the cord breaks) in Michinoku. Now that I no longer see your letters (<em>fumi</em>), I am thrown into confusion, afraid our bond will break.</p>
+                </q>
+              </div>
+              <p class="kome" style="margin-top: 0.2em;">
+                The "Odae Bridge" is Odae-bashi in Ōsaki City, Miyagi Prefecture. A tragic legend says that Princess Odae, loved by Emperor Saga, was driven from the capital and threw herself from this bridge.</p>
+              <div class='quote' style="margin-bottom: 0;">
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>涙<rt>なみだ</rt></ruby>やは
+                    またも<ruby>逢<rt>あ</rt></ruby>ふべき
+                    つまならん
+                    <br><ruby>泣<rt>な</rt></ruby>くよりほかの
+                    なくさめぞなき
+                    <span class="shutten"><em>Go Shūi Wakashū</em>, Fujiwara no Michimasa</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height:1.8;">Will shedding tears give me a chance to meet her again? Of course not. Yet I have no comfort but to weep.</p>
+                </q>
+              </div>
+              <p class="kome" style="margin-top: 0.2em;">"<em>Tsuma</em>," written with the character for "edge," means a chance or a clue.</p>
+            </dd>
+            <dt>His Father Korechika's Last Words</dt>
+            <dd>His father, Korechika, who had brought about the fall of the Naka-no-Kanpaku family, told Michimasa in his will: "Rather than live by flattering others, become a monk."<br
+                class="br-pc"> Late in life, in 1054, Michimasa became a monk, just as his father had told him.</dd>
+            <dt>Utagawa Kuniyoshi's <em>Hyakunin Isshu no Uchi</em></dt>
+            <dd class='thumb-image2'>
+              <figure class='portrait'>
+                <a href='../img/kuniyoshi_63.webp' data-lightbox='michimasa' data-title='Ukiyo-e by Utagawa Kuniyoshi'>
+                  <img loading='lazy' src='../img/kuniyoshi_63.webp' alt='Master of the Left Capital Michimasa, ukiyo-e by Utagawa Kuniyoshi' width="1002" height="1473">
+                </a>
+                <figcaption><a
+                    href='https://commons.wikimedia.org/wiki/File:Sakyo_no_Daibu_Michimasa_(no._63)_%E5%B7%A6%E4%BA%AC%E5%A4%A7%E5%A4%AB%E9%81%93%E9%9B%85_(Fujiwara_no_Michimasa)_(BM_2008,3037.10635).jpg' target='_blank' rel='noopener'><small>British
+                      Museum, Public domain, via Wikimedia Commons</small></a></figcaption>
+              </figure>
+              <div>
+                <p>This ukiyo-e print is by Utagawa Kuniyoshi, an artist of the Edo period.<br class="br-pc"> It shows a scene to go with the Hyakunin Isshu poem.</p>
+              </div>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -310,6 +739,11 @@
   <!-- Footer end -->
 
   <script src="../js/poems_en.js?20261008-01"></script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261008-49"></script>
+  <script src="../js/keizu-diagram.js?20261008-02"></script>
 
 </body>
 

@@ -167,7 +167,7 @@
         "markname": "Matsuho no Ura",
         "kajin": "Acting Middle Counselor Sadaie (Matsuho no Ura)",
         "type": "type1",
-        "name": "<a href='../img/matsuhonoura_large.webp' data-lightbox='Fujiwara no Teika' data-title='Matsuho no Ura, at the northern tip of Awaji Island, Hyogo'><img src='../img/matsuhonoura.webp?20240424' width='300' alt='Matsuho no Ura'></a><br><small>Photo: photoAC</small><h2 class='utamakura-name'>Utamakura: Matsuho no Ura</h2><p>Iwaya, Awaji City, Hyogo Prefecture. A shoreline at the northern tip of Awaji Island. Its name, meaning \"pine-sail shore,\" is said to derive from people waiting there for favorable winds or tides when the strait grew rough.</p><hr><a href='/97_en.html'>Link to Poem 97: Acting Middle Counselor Sadaie</a>"
+        "name": "<a href='../img/matsuhonoura_large.webp' data-lightbox='Fujiwara no Sadaie' data-title='Matsuho no Ura, at the northern tip of Awaji Island, Hyogo'><img src='../img/matsuhonoura.webp?20240424' width='300' alt='Matsuho no Ura'></a><br><small>Photo: photoAC</small><h2 class='utamakura-name'>Utamakura: Matsuho no Ura</h2><p>Iwaya, Awaji City, Hyogo Prefecture. A shoreline at the northern tip of Awaji Island. Its name, meaning \"pine-sail shore,\" is said to derive from people waiting there for favorable winds or tides when the strait grew rough.</p><hr><a href='/97_en.html'>Link to Poem 97: Acting Middle Counselor Sadaie</a>"
       },
       "geometry": { "type": "Point", "coordinates": [135.00183, 34.60925] }
     },
@@ -637,7 +637,7 @@
         "markname": "Enri-an (Site of Shigure-tei)",
         "kajin": "Acting Middle Counselor Sadaie (Enri-an / Site of Shigure-tei)",
         "type": "type2",
-        "name": "<a href='../img/enrian_large.webp' data-lightbox='map' data-title='Ukyo Ward, Kyoto: Enri-an (Shigure-tei)'><img src='../img/enrian.webp' width='300' alt='Enri-an'></a><br><small>Photo courtesy of <a href='https://photo53.com/'>Kyoto Free Photo Material</a></small><h2 class='utamakura-name'>Enri-an (Site of Shigure-tei)</h2><p>A temple in Ukyo Ward, Kyoto City. Known as standing on the site of the Ogurayama villa where Fujiwara no Teika compiled the Hyakunin Isshu.</p><hr><a href='/97_en.html'>Link to Poem 97: Acting Middle Counselor Sadaie</a>"
+        "name": "<a href='../img/enrian_large.webp' data-lightbox='map' data-title='Ukyo Ward, Kyoto: Enri-an (Shigure-tei)'><img src='../img/enrian.webp' width='300' alt='Enri-an'></a><br><small>Photo courtesy of <a href='https://photo53.com/'>Kyoto Free Photo Material</a></small><h2 class='utamakura-name'>Enri-an (Site of Shigure-tei)</h2><p>A temple in Ukyo Ward, Kyoto City. Known as standing on the site of the Ogurayama villa where Fujiwara no Sadaie compiled the Hyakunin Isshu.</p><hr><a href='/97_en.html'>Link to Poem 97: Acting Middle Counselor Sadaie</a>"
       },
       "geometry": { "type": "Point", "coordinates": [135.67085303380034, 35.02306030659191] }
     },

@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-08T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -94,6 +94,8 @@
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
   <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -103,6 +105,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -280,6 +290,658 @@
       </dl>
     </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Sei Shōnagon's Family Tree</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 62.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__tenno">Brown text</span>Emperor</li>
+              <li><span class="fk-legend__tno" aria-hidden="true"></span>Emperor's number in the line of succession</li>
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+              <li><span class="fk-legend__dash"></span>Generations left out</li>
+              <li><span class="fk-legend__eq">＝</span>Marriage</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Sei Shōnagon's family tree">
+            <script type="application/json">
+{
+ "lang": "en",
+ "nodes": [
+  {
+   "id": "fukayabu",
+   "n": "清原深養父",
+   "p": 36,
+   "x": 16,
+   "y": 106
+  },
+  {
+   "id": "motosuke",
+   "n": "清原元輔",
+   "p": 42,
+   "x": 185,
+   "y": 150
+  },
+  {
+   "id": "muneyo",
+   "n": "藤原棟世",
+   "x": 410,
+   "y": 62
+  },
+  {
+   "id": "sei",
+   "n": "清少納言",
+   "p": 62,
+   "sub": "Served Empress Teishi",
+   "x": 410,
+   "y": 106,
+   "self": 1
+  },
+  {
+   "id": "norimitsu",
+   "n": "橘則光",
+   "x": 410,
+   "y": 170
+  },
+  {
+   "id": "tadamochi",
+   "n": "橘忠望",
+   "x": 410,
+   "y": 213
+  },
+  {
+   "id": "koma",
+   "n": "小馬命婦",
+   "sub": "Served Empress Akiko",
+   "x": 626,
+   "y": 84
+  },
+  {
+   "id": "torinaga",
+   "n": "橘則長",
+   "x": 626,
+   "y": 147.5
+  },
+  {
+   "id": "tadamochijo",
+   "n": "忠望の娘",
+   "x": 626,
+   "y": 191
+  },
+  {
+   "id": "noin",
+   "n": "能因",
+   "p": 69,
+   "x": 626,
+   "y": 235
+  },
+  {
+   "id": "yoshitaka",
+   "n": "藤原義孝",
+   "key": "義孝",
+   "p": 50,
+   "x": 16,
+   "y": 40
+  },
+  {
+   "id": "yukinari",
+   "n": "藤原行成",
+   "key": "行成",
+   "x": 185,
+   "y": 40
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-muneyo",
+   "top": "muneyo",
+   "bottom": "sei"
+  },
+  {
+   "id": "c-norimitsu",
+   "top": "sei",
+   "bottom": "norimitsu"
+  },
+  {
+   "id": "c-norinaga",
+   "top": "torinaga",
+   "bottom": "tadamochijo"
+  }
+ ],
+ "kids": [
+  {
+   "from": "motosuke",
+   "to": [
+    "sei"
+   ]
+  },
+  {
+   "from": "c-muneyo",
+   "to": [
+    "koma"
+   ]
+  },
+  {
+   "from": "c-norimitsu",
+   "to": [
+    "torinaga"
+   ]
+  },
+  {
+   "from": "tadamochi",
+   "to": [
+    "tadamochijo",
+    "noin"
+   ]
+  },
+  {
+   "from": "yoshitaka",
+   "to": [
+    "yukinari"
+   ]
+  }
+ ],
+ "lines": [
+  {
+   "points": [
+    [
+     60,
+     114
+    ],
+    [
+     60,
+     150
+    ],
+    [
+     182,
+     150
+    ]
+   ],
+   "dash": true,
+   "label": {
+    "text": "1 generation left out",
+    "x": 122,
+    "y": 144
+   }
+  }
+ ],
+ "arrows": [
+  {
+   "points": [
+    [
+     251,
+     40
+    ],
+    [
+     390,
+     40
+    ],
+    [
+     390,
+     84
+    ],
+    [
+     422,
+     84
+    ],
+    [
+     422,
+     91
+    ]
+   ],
+   "label": {
+    "text": "Exchanged poems",
+    "x": 260,
+    "y": 30
+   }
+  },
+  {
+   "points": [
+    [
+     422,
+     91
+    ],
+    [
+     422,
+     84
+    ],
+    [
+     390,
+     84
+    ],
+    [
+     390,
+     40
+    ],
+    [
+     251,
+     40
+    ]
+   ]
+  }
+ ],
+ "tooltips": "fujiwara"
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 816 261" width="816" height="261" role="img" aria-label="Sei Shōnagon's family tree" lang="en" class="fk-svg kd-svg" style="max-width:1224px;min-width:min(640px,1224px)" data-src="s1qi61">
+<g class="fk-edges"><path d="M458.5 71V97M462.5 71V97" class="fk-edge fk-eq"/><path d="M458.5 134V161M462.5 134V161" class="fk-edge fk-eq"/><path d="M708 156.5V182M712 156.5V182" class="fk-edge fk-eq"/><path d="M381 150H396" class="fk-edge"/><path d="M396 106V150" class="fk-edge"/><path d="M396 106H407" class="fk-edge"/><path d="M462.5 84H612" class="fk-edge"/><path d="M612 84H623" class="fk-edge"/><path d="M462.5 147.5H612" class="fk-edge"/><path d="M612 147.5H623" class="fk-edge"/><path d="M599 213H612" class="fk-edge"/><path d="M612 191V235" class="fk-edge"/><path d="M612 191H623" class="fk-edge"/><path d="M612 235H623" class="fk-edge"/><path d="M118 40H171" class="fk-edge"/><path d="M171 40H182" class="fk-edge"/><path d="M60 114L60 150L182 150" class="fk-edge is-dash"/><text class="fk-adopt" x="122" y="144">1 generation left out</text></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"><path d="M251 40L390 40L390 84L422 84L422 91" class="kd-arrow" marker-end="url(#kdArrowHead)"/><text class="kd-arrow-label" x="260" y="30">Exchanged poems</text><path d="M422 91L422 84L390 84L390 40L251 40" class="kd-arrow" marker-end="url(#kdArrowHead)"/></g>
+<g>
+<g class="fk-node is-poet" transform="translate(16,106)" data-tip="&lt;h3&gt;Kiyohara no Fukayabu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 36, &quot;Natsu no yo wa...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Grandfather of Kiyohara no Motosuke and great-grandfather of Sei Shōnagon&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;A master of the koto. Friends with Fujiwara no Kanesuke, Ki no Tsurayuki, Ōshikōchi no Mitsune, and others&lt;/span&gt;&lt;/div&gt;" data-p="36"><a href="/36_en.html" aria-label="Kiyohara no Fukayabu (Hyakunin Isshu Poem 36)"><rect class="fk-hit" x="-2" y="-13" width="195" height="26"/><text class="fk-name" x="0" y="0.5">Kiyohara no Fukayabu</text><circle class="fk-badge" cx="181" cy="0" r="10"/><text class="fk-badge-num" x="181" y="0.5">36</text></a></g>
+<g class="fk-node is-poet" transform="translate(185,150)" data-tip="&lt;h3&gt;Kiyohara no Motosuke&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;908–990&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Grandson of Kiyohara no Fukayabu and father of Sei Shōnagon&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 42, &quot;Chigiriki na...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;As one of the Five Men of the Pear Pavilion, helped compile the Gosen Wakashū&lt;/span&gt;&lt;/div&gt;" data-p="42"><a href="/42_en.html" aria-label="Kiyohara no Motosuke (Hyakunin Isshu Poem 42)"><rect class="fk-hit" x="-2" y="-13" width="197" height="26"/><text class="fk-name" x="0" y="0.5">Kiyohara no Motosuke</text><circle class="fk-badge" cx="183" cy="0" r="10"/><text class="fk-badge-num" x="183" y="0.5">42</text></a></g>
+<g class="fk-node" transform="translate(410,62)" data-tip="&lt;h3&gt;Fujiwara no Muneyo&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Sei Shōnagon's husband; father of Koma no Myōbu&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="156" height="26"/><text class="fk-name" x="0" y="0.5">Fujiwara no Muneyo</text></g></g>
+<g class="fk-node is-poet is-self" transform="translate(410,106)" data-tip="&lt;h3&gt;Sei Shōnagon&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;c. 966–c. 1025&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Kiyohara no Motosuke and great-granddaughter of Kiyohara no Fukayabu&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 62, &quot;Yo wo komete...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Married Tachibana no Norimitsu and had a son, Norinaga. From about 993 she served Empress Teishi and wrote The Pillow Book. She later married Fujiwara no Muneyo and had a daughter, Koma no Myōbu&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="135" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="129" height="26"/><text class="fk-name" x="0" y="0.5">Sei Shōnagon</text><circle class="fk-badge" cx="115" cy="0" r="10"/><text class="fk-badge-num" x="115" y="0.5">62</text></g><rect class="fk-sub-box" x="0" y="11" width="134" height="16" rx="8"/><text class="fk-sub" x="67" y="19.5">Served Empress Teishi</text></g>
+<g class="fk-node" transform="translate(410,170)" data-tip="&lt;h3&gt;Tachibana no Norimitsu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Sei Shōnagon's husband; father of Tachibana no Norinaga&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="184" height="26"/><text class="fk-name" x="0" y="0.5">Tachibana no Norimitsu</text></g></g>
+<g class="fk-node" transform="translate(410,213)" data-tip="&lt;h3&gt;Tachibana no Tadamochi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Governor of Ōmi&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Nōin and Tachibana no Motoyasu&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="190" height="26"/><text class="fk-name" x="0" y="0.5">Tachibana no Tadamochi</text></g></g>
+<g class="fk-node" transform="translate(626,84)" data-tip="&lt;h3&gt;Koma no Myōbu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Sei Shōnagon; her father was Fujiwara no Muneyo&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Served Jōtōmon-in (Empress Akiko)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="126" height="26"/><text class="fk-name" x="0" y="0.5">Koma no Myōbu</text></g><rect class="fk-sub-box" x="0" y="11" width="133" height="16" rx="8"/><text class="fk-sub" x="66.5" y="19.5">Served Empress Akiko</text></g>
+<g class="fk-node" transform="translate(626,147.5)" data-tip="&lt;h3&gt;Tachibana no Norinaga&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Tachibana no Norimitsu and Sei Shōnagon&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;His wife was Tachibana no Tadamochi's daughter (an elder or younger sister of Nōin)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="178" height="26"/><text class="fk-name" x="0" y="0.5">Tachibana no Norinaga</text></g></g>
+<g class="fk-node" transform="translate(626,191)" data-tip="&lt;h3&gt;Daughter of Tachibana no Tadamochi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Tachibana no Norinaga's wife; an elder or younger sister of Nōin&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="172" height="26"/><text class="fk-name" x="0" y="0.5">Tadamochi's daughter</text></g></g>
+<g class="fk-node is-poet" transform="translate(626,235)" data-tip="&lt;h3&gt;Nōin&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Tachibana no Tadamochi, Governor of Ōmi; he became the adopted son (yūshi) of his elder brother, Tachibana no Motoyasu, Governor of Higo&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 69, &quot;Arashi fuku...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Priest Nōin. His name before becoming a monk was Tachibana no Nagayasu. He became a student of literature but became a monk in 1013, at 26. He had a son, Tachibana no Mototō&lt;/span&gt;&lt;/div&gt;" data-p="69"><a href="/69_en.html" aria-label="Nōin (Hyakunin Isshu Poem 69)"><rect class="fk-hit" x="-2" y="-13" width="64" height="26"/><text class="fk-name" x="0" y="0.5">Nōin</text><circle class="fk-badge" cx="50" cy="0" r="10"/><text class="fk-badge-num" x="50" y="0.5">69</text></a></g>
+<g class="fk-node is-poet" transform="translate(16,40)" data-tip="&lt;h3&gt;Fujiwara no Yoshitaka&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;954–974&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Minor Captain of the Right Palace Guards&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Fifth Rank, Lower Grade&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 50, &quot;Kimi ga tame oshikarazarishi...&quot;&lt;/span&gt;&lt;/div&gt;" data-p="50"><a href="/50_en.html" aria-label="Fujiwara no Yoshitaka (Hyakunin Isshu Poem 50)"><rect class="fk-hit" x="-2" y="-13" width="103" height="26"/><text class="fk-name" x="0" y="0.5">Yoshitaka</text><circle class="fk-badge" cx="89" cy="0" r="10"/><text class="fk-badge-num" x="89" y="0.5">50</text></a></g>
+<g class="fk-node" transform="translate(185,40)" data-tip="&lt;h3&gt;Fujiwara no Yukinari&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;972–1028&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Acting Upper Counselor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Second Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;A master calligrapher, counted as one of the Three Great Calligraphers (Sanseki)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="67" height="26"/><text class="fk-name" x="0" y="0.5">Yukinari</text></g></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+          <div class="kd-text">
+            <p style="width:100%; margin-bottom:0.5em;">
+              Sei Shōnagon's name comes from her family name, Kiyohara (the "Sei" is another reading of the first character). The Kiyohara clan includes many descendants of Prince Toneri, a son of Emperor Tenmu.
+            </p>
+            <p style="width:100%; margin-bottom:0.5em;">
+              Her great-grandfather was <a href="/36_en.html">Kiyohara no Fukayabu</a>, and her father was <a href="/42_en.html">Kiyohara no Motosuke</a>. From about age 9 to 12, Sei Shōnagon lived in Suō Province with her father, Motosuke, who was its governor.
+            </p>
+            <p style="width:100%; margin-bottom:0.5em;">
+              At about 16 she married Tachibana no Norimitsu and had a son, Tachibana no Norinaga. Norinaga is said to have later married an elder or younger sister of <a href="/69_en.html">Priest Nōin</a>.
+            </p>
+            <p style="width:100%; margin-bottom:0.5em;">
+              At about 27, Sei Shōnagon began serving Teishi, empress (<em>chūgū</em>) of Emperor Ichijō, and she is said to have written <em>The Pillow Book</em> around age 30. At about 33 she drifted apart from Tachibana no Norimitsu and later married Fujiwara no Muneyo. Their daughter, Koma no Myōbu, served Akiko, empress (<em>chūgū</em>) of Emperor Ichijō.</p>
+          </div>
+        </dd>
+      </dl>
+      <dl style="margin-top: 1.5em;">
+        <dt class='title'>Sei Shōnagon, Who Served Empress Teishi</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 62.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__tenno">Brown text</span>Emperor</li>
+              <li><span class="fk-legend__tno" aria-hidden="true"></span>Emperor's number in the line of succession</li>
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+              <li><span class="fk-legend__eq">＝</span>Marriage</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <div class="kd-chart" aria-label="Sei Shōnagon, who served Empress Teishi">
+            <script type="application/json">
+{
+ "lang": "en",
+ "tooltips": "fujiwara",
+ "nodes": [
+  {
+   "id": "michitaka",
+   "n": "藤原道隆",
+   "key": "道隆",
+   "x": 16,
+   "y": 40
+  },
+  {
+   "id": "kishi",
+   "n": "儀同三司母",
+   "p": 54,
+   "x": 16,
+   "y": 84
+  },
+  {
+   "id": "michinaga",
+   "n": "藤原道長",
+   "key": "道長",
+   "x": 16,
+   "y": 150
+  },
+  {
+   "id": "rinshi",
+   "n": "源倫子",
+   "x": 16,
+   "y": 194
+  },
+  {
+   "id": "teishi",
+   "n": "定子",
+   "key": "藤原定子",
+   "x": 230,
+   "y": 62
+  },
+  {
+   "id": "ichijo",
+   "n": "一条",
+   "k": 1,
+   "t": 66,
+   "x": 230,
+   "y": 114
+  },
+  {
+   "id": "shoshi",
+   "n": "彰子",
+   "x": 230,
+   "y": 158
+  },
+  {
+   "id": "sei",
+   "n": "清少納言",
+   "p": 62,
+   "self": 1,
+   "x": 380,
+   "y": 62
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-michitaka",
+   "top": "michitaka",
+   "bottom": "kishi"
+  },
+  {
+   "id": "c-michinaga",
+   "top": "michinaga",
+   "bottom": "rinshi"
+  },
+  {
+   "id": "c-teishi",
+   "top": "teishi",
+   "bottom": "ichijo"
+  },
+  {
+   "id": "c-shoshi",
+   "top": "ichijo",
+   "bottom": "shoshi"
+  }
+ ],
+ "kids": [
+  {
+   "from": "c-michitaka",
+   "to": [
+    "teishi"
+   ]
+  },
+  {
+   "from": "c-michinaga",
+   "to": [
+    "shoshi"
+   ]
+  }
+ ],
+ "arrows": [
+  {
+   "points": [
+    [
+     374,
+     62
+    ],
+    [
+     277,
+     62
+    ]
+   ],
+   "label": {
+    "text": "Served",
+    "x": 310,
+    "y": 54
+   }
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 521 220" width="521" height="220" role="img" aria-label="Sei Shōnagon, who served Empress Teishi" lang="en" class="fk-svg kd-svg" style="max-width:782px;min-width:min(640px,782px)" data-src="8pttpd">
+<g class="fk-edges"><path d="M51.5 49V75M55.5 49V75" class="fk-edge fk-eq"/><path d="M53 159V185M57 159V185" class="fk-edge fk-eq"/><path d="M249 71V105M253 71V105" class="fk-edge fk-eq"/><path d="M249 123V149M253 123V149" class="fk-edge fk-eq"/><path d="M55.5 62H216" class="fk-edge"/><path d="M216 62H227" class="fk-edge"/><path d="M57 172H216" class="fk-edge"/><path d="M216 158V172" class="fk-edge"/><path d="M216 158H227" class="fk-edge"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"><path d="M374 62L277 62" class="kd-arrow" marker-end="url(#kdArrowHead)"/><text class="kd-arrow-label" x="310" y="54">Served</text></g>
+<g>
+<g class="fk-node" transform="translate(16,40)" data-tip="&lt;h3&gt;Fujiwara no Michitaka&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;953–995&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Regent, Chancellor (Kanpaku), and Minister of the Center&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Second Rank&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="79" height="26"/><text class="fk-name" x="0" y="0.5">Michitaka</text></g></g>
+<g class="fk-node is-poet" transform="translate(16,84)" data-tip="&lt;h3&gt;Mother of the Honorary Grand Minister (Gidō Sanshi no Haha)&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown–996&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Third Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Real name: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Takashina no Takako&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Takashina no Naritada. Wife of Fujiwara no Michitaka, and mother of Fujiwara no Korechika and Empress Teishi&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 54, &quot;Wasureji no...&quot;&lt;/span&gt;&lt;/div&gt;" data-p="54"><a href="/54_en.html" aria-label="Mother of the Honorary Grand Minister (Gidō Sanshi no Haha) (Hyakunin Isshu Poem 54)"><rect class="fk-hit" x="-2" y="-13" width="186" height="26"/><text class="fk-name" x="0" y="0.5">Takashina no Takako</text><circle class="fk-badge" cx="172" cy="0" r="10"/><text class="fk-badge-num" x="172" y="0.5">54</text></a></g>
+<g class="fk-node" transform="translate(16,150)" data-tip="&lt;h3&gt;Fujiwara no Michinaga&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;966–1028&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Regent and Minister of the Left&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior First Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Imperial in-law: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Grandfather (on the mother's side) of Emperors Go-Ichijō, Go-Suzaku, and Go-Reizei&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="82" height="26"/><text class="fk-name" x="0" y="0.5">Michinaga</text></g></g>
+<g class="fk-node" transform="translate(16,194)" data-tip="&lt;h3&gt;Minamoto no Tomoko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;964–1053&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of the Minister of the Left Minamoto no Masanobu and Fujiwara no Atsuko; great-granddaughter of Fujiwara no Sadakata&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Fujiwara no Michinaga's principal wife; mother of Yorimichi, Norimichi, Akiko, Kenshi, Ishi, and Kishi. A second cousin of Murasaki Shikibu. Akazome Emon served her&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="169" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Tomoko</text></g></g>
+<g class="fk-node" transform="translate(230,62)" data-tip="&lt;h3&gt;Fujiwara no Teishi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;976–1001&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Fujiwara no Michitaka and Takashina no Takako (Mother of the Honorary Grand Minister)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Empress (chūgū) of Emperor Ichijō, later named kōgō. Sei Shōnagon served her&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="48" height="26"/><text class="fk-name" x="0" y="0.5">Teishi</text></g></g>
+<g class="fk-node is-tenno" transform="translate(230,114)" data-tip="&lt;h3&gt;Emperor Ichijō&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;66th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;980–1011&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;986–1011&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="46" height="26"/><text class="fk-name" x="0" y="0.5">Ichijō</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">66</text></g>
+<g class="fk-node" transform="translate(230,158)" data-tip="&lt;h3&gt;Fujiwara no Akiko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;988–1074&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Eldest daughter of Fujiwara no Michinaga and Minamoto no Tomoko&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Empress (chūgū) of Emperor Ichijō and mother of Emperors Go-Ichijō and Go-Suzaku; later called Jōtōmon-in. Hyakunin Isshu poets Murasaki Shikibu, Izumi Shikibu, Ise no Taifu, Akazome Emon, and others served her&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="47" height="26"/><text class="fk-name" x="0" y="0.5">Akiko</text></g></g>
+<g class="fk-node is-poet is-self" transform="translate(380,62)" data-tip="&lt;h3&gt;Sei Shōnagon&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;c. 966–c. 1025&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Kiyohara no Motosuke and great-granddaughter of Kiyohara no Fukayabu&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 62, &quot;Yo wo komete...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Married Tachibana no Norimitsu and had a son, Norinaga. From about 993 she served Empress Teishi and wrote The Pillow Book. She later married Fujiwara no Muneyo and had a daughter, Koma no Myōbu&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="135" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="129" height="26"/><text class="fk-name" x="0" y="0.5">Sei Shōnagon</text><circle class="fk-badge" cx="115" cy="0" r="10"/><text class="fk-badge-num" x="115" y="0.5">62</text></g></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <dt>Fujiwara no Yukinari's Answer</dt>
+            <dd>Fujiwara no Yukinari, to whom Sei Shōnagon sent the poem "Yo wo komete...," answered as follows.
+              <br class="br-pc"> His poem says he hopes she will be waiting for him.
+              <div class='quote'>
+                <q class="quote-ja" style="position:relative;">
+                  <img src="/img/niwatori.gif" alt="A rooster"
+                    style="position:absolute; width:60px; height:auto; right:5px; top:5px;" width="148" height="152">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>逢坂<rt>おうさか</rt></ruby>は
+                    <ruby>人<rt>ひと</rt></ruby><ruby>越<rt>こ</rt></ruby>えやすき
+                    <ruby>関<rt>せき</rt></ruby>なれば
+                    <br><ruby>鳥<rt>とり</rt></ruby><ruby>鳴<rt>な</rt></ruby>かぬにも
+                    <ruby>開<rt>あ</rt></ruby>けて<ruby>待<rt>ま</rt></ruby>つとか
+                    <span class="shutten"><em>The Pillow Book</em>, Fujiwara no Yukinari</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p>The Ōsaka Barrier is easy for people to cross,<br class="br-pc"> so I hear it opens and waits even before the rooster crows.</p>
+                </q>
+              </div>
+            </dd>
+            <dt>A Rooster's Crow</dt>
+            <dd>Click the play button to hear a rooster's crow.
+              <figure class='audio-figure' style="margin-top: 0.75em;">
+                <audio controls id='audio' src='../sound/niwatori.m4a' controlslist='nodownload'></audio>
+                <figcaption>
+                  <small style="letter-spacing: -0.1px;">(Audio: NHK Creative Library)</small>
+                </figcaption>
+              </figure>
+            </dd>
+            <dt id="kankokukan">Hangu Pass</dt>
+            <dd class='thumb-image1'>
+              <figure>
+                <a href='../img/shiikashashinkyou_large.webp' data-lightbox='sei' data-title='Sei Shōnagon, from Shiika Shashinkyō'>
+                  <img src='../img/shiikashashinkyou.webp' alt='Sei Shōnagon, from Shiika Shashinkyō by Katsushika Hokusai' width="568" height="1280">
+                </a>
+                <figcaption><a href='https://colbase.nich.go.jp/collection_items/tnm/A-10569-656?locale=ja'><small>Source: ColBase (Integrated Collections Database of the National Museums, Japan)</small></a></figcaption>
+              </figure>
+              <div>
+                <p style="margin-bottom: 0.75em;">
+                  This ukiyo-e print by Katsushika Hokusai shows the old Chinese story of Hangu Pass (<em>Kankokukan</em>).
+                </p>
+                <h3 class="was-h4">The Story of Hangu Pass</h3>
+                <p style="margin-bottom: 0.75em;">
+                  The story of Hangu Pass is known as a legendary escape made possible by cleverness and quick wits. Lord Mengchang of the state of Qi was being chased by King Zhaoxiang of Qin, and with the gate of Hangu Pass shut, he had nowhere to run. But one of his men was very good at imitating a rooster's crow. The gatekeepers of Hangu Pass opened the gate when they heard the rooster announce dawn, so, fooled by the man's crowing, they opened the gate in the middle of the night. With this trick, Lord Mengchang escaped safely.
+                </p>
+                <p style="margin-bottom: 0.75em;">
+                  The well-known four-character phrase <em>keimei kutō</em> ("crowing like a rooster and stealing like a dog") comes from this story. Among Lord Mengchang's men were one who was light-footed like a dog and good at stealing, and one who could imitate a rooster to fake the dawn. Lord Mengchang used their skills to escape danger. So <em>keimei kutō</em> is used to mean that even people who seem useless can be useful at the right moment, and also, on the other hand, to describe people who can only do petty things.
+                </p>
+                <p style="margin-bottom: 0.75em;">
+                  <a class='no-decoration' href='utamakura_en.html?lat=34.65030881058312&lng=110.93147894044522&zoom=12'>See it on the map</a>
+                </p>
+              </div>
+            </dd>
+            <dt>The Snow of Xianglu Peak (<em>Kōrohō no Yuki</em>)</dt>
+            <dd class='thumb-image1'>
+              <figure>
+                <a href='../img/kunisada_62_large.webp' data-lightbox='sei' data-title='Ukiyo-e by Utagawa Kunisada'>
+                  <img src='../img/kunisada_62.webp' alt='Sei Shōnagon, ukiyo-e by Utagawa Kunisada' width="441" height="640">
+                </a>
+                <figcaption><a
+                    href='https://commons.wikimedia.org/wiki/File:NDL-DC_1304224-Utagawa_Kunisada-%E5%8F%A4%E4%BB%8A%E5%90%8D%E5%A9%A6%E4%BC%9D_%E6%B8%85%E5%B0%91%E7%B4%8D%E8%A8%80-%E6%96%87%E4%B9%853-crd.jpg' target='_blank' rel='noopener'><small>Utagawa
+                      Kunisada, Public domain, via Wikimedia Commons</small></a></figcaption>
+              </figure>
+              <div>
+                <p>
+                  This ukiyo-e print is by Utagawa Kunisada, an artist of the Edo period. It shows the moment when Teishi, whom Sei Shōnagon served, asked, "Shōnagon, how is the snow on Xianglu Peak?" and Sei Shōnagon quickly rolled up the blind to show her the snowy view.</p>
+                <p>Teishi's question was based on a line by the Chinese poet Bai Juyi: "The snow on Xianglu Peak, I view by raising the blind." Thinking quickly, Sei Shōnagon met her expectations perfectly.</p>
+                <p>This episode is told in <em>The Pillow Book</em> and shows how well Teishi and Sei Shōnagon understood each other.</p>
+              </div>
+            </dd>
+            <dt>Teishi's Letter<br class="br-sp"> Urging Her to Return to Court</dt>
+            <dd>
+              <p>When Teishi's elder brother Korechika and younger brother Takaie shot arrows at Retired Emperor Kazan, mistaking him for a rival in love, Fujiwara no Tadanobu reported the incident to Fujiwara no Michinaga. Because Sei Shōnagon was friendly with Tadanobu, the other ladies-in-waiting suspected her of being Michinaga's spy. Hurt by this, Sei Shōnagon left the palace and shut herself up at home.</p>
+              <p style="margin-top: 0.75em;">Then a letter came to her from Teishi. When she opened it, she found a note that said "<span style="background: linear-gradient(transparent 70%, #f9abbc 30%);">iwade omou zo</span>" (I think of you without saying so) and a single petal of <em>yamabuki</em> (kerria).</p>
+              <p style="margin-top: 0.75em;">The words were quoted from the following poem. When she saw them, Sei Shōnagon decided to go back to Teishi.
+                <br> This anonymous poem is in the <em>Kokin Waka Rokujō</em>.</p>
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>心<rt>こころ</rt></ruby>には
+                    <ruby>下<rt>した</rt></ruby>ゆく<ruby>水<rt>みず</rt></ruby>の
+                    わきかへり
+                    <br><span style="background: linear-gradient(transparent 70%, #f9abbc 30%);">
+                      <ruby>言<rt>い</rt></ruby>はで<ruby>思<rt>おも</rt></ruby>ふぞ</span>
+                    <ruby>言<rt>い</rt></ruby>ふにまされる
+                    <span class="shutten"><em>Kokin Waka Rokujō</em>, Anonymous</span>
+                  </p>
+                </q>
+                <q style="line-height: 1.8;">
+                  <h3 class="was-h4">In English</h3>
+                  <p>In my heart, like water welling up underground, I think of you without saying a word.<br> Such feelings run far deeper than words.</p>
+                </q>
+              </div>
+              <p style="margin-top: 1em;">
+                Teishi is thought to have wrapped the <em>yamabuki</em> petal in the letter with the next poem, by the priest Sosei, in mind.
+                <br class="br-pc"> This poem is in the <em>Kokin Wakashū</em>.
+              </p>
+              <div class='quote'>
+                <q class="quote-ja" style="position:relative;">
+                  <img src="/img/yamabuki.gif" alt="Yamabuki (kerria) flowers"
+                    style="position:absolute; width:60px; height:auto; right:5px; top:5px;" width="255" height="300">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>山吹<rt>やまぶき</rt></ruby>の
+                    <ruby>花色衣<rt>はないろごろも</rt></ruby>
+                    ぬしや<ruby>誰<rt>たれ</rt></ruby>
+                    <br><ruby>問<rt>と</rt></ruby>へど<ruby>答<rt>こた</rt></ruby>へず
+                    くちなしにして
+                    <span class="shutten"><em>Kokin Wakashū</em>, Priest Sosei</span>
+                  </p>
+                </q>
+                <q style="line-height: 1.8;">
+                  <h3 class="was-h4">In English</h3>
+                  <p>O robe the yellow of <em>yamabuki</em> flowers, who is your owner? I ask, but there is no answer, for you were dyed with <em>kuchinashi</em> (gardenia, "no mouth").</p>
+                </q>
+              </div>
+            </dd>
+            <dt>A Poem Teishi Gave to Sei Shōnagon</dt>
+            <dd>
+              <p>After Fujiwara no Michinaga's daughter Akiko became Emperor Ichijō's empress (<em>chūgū</em>) and everyone's attention turned to her, Teishi was suffering from morning sickness.
+                <br class="br-pc"> To cheer up Teishi, who could hardly eat during her pregnancy, Sei Shōnagon gave her a sweet called <em>aozashi</em>.<br
+                  class="br-pc"> Touched by her kindness, Teishi wrote the next poem to thank her.</p>
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    みな<ruby>人<rt>ひと</rt></ruby>の
+                    <ruby>花<rt>はな</rt></ruby>や<ruby>蝶<rt>ちょう</rt></ruby>やと
+                    いそぐ<ruby>日<rt>ひ</rt></ruby>も
+                    <br>わが<ruby>心<rt>こころ</rt></ruby>をば
+                    <ruby>君<rt>きみ</rt></ruby>ぞ<ruby>知<rt>し</rt></ruby>りける
+                    <span class="shutten"><em>The Pillow Book</em>, Fujiwara no Teishi</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p>Even on days when everyone rushes after flowers and butterflies (the latest fashion),<br class="br-pc"> you alone understand my heart.</p>
+                </q>
+              </div>
+            </dd>
+            <dt id="nanshinnoyuki">Linked Verse with Fujiwara no Kintō</dt>
+            <dd>The next poem appears in the section of <em>The Pillow Book</em> that begins "Around the end of the second month."
+              <br class="br-pc"> Fujiwara no Kintō gave Sei Shōnagon a lower verse, and she added the upper verse.
+              <br class="br-pc"> Seeing falling snow as scattering blossoms is something it shares with <a href="/36_en.html#yuki">a poem by her great-grandfather, Kiyohara no Fukayabu</a>.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <span style="color:#B82343"><ruby>空<rt>そら</rt></ruby><ruby>寒<rt>さむ</rt></ruby>み
+                      <ruby>花<rt>はな</rt></ruby>にまがへて
+                      <ruby>散<rt>ち</rt></ruby>る<ruby>雪<rt>ゆき</rt></ruby>に</span>
+                    <br><span style="color:#327CC6"><ruby>少<rt>すこ</rt></ruby>し<ruby>春<rt>はる</rt></ruby>ある
+                      <ruby>心地<rt>ここち</rt></ruby>こそすれ</span>
+                    <span class="shutten"><em>The Pillow Book</em></span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p>The sky is so cold that the falling snow looks like blossoms,<br class="br-pc"> and I feel a little touch of spring.</p>
+                </q>
+              </div>
+              <p style="margin-top:0;">
+                Sei Shōnagon understood that Kintō had based his lower verse on a passage of Bai Juyi's poem "Snow in Nanqin," and she added the upper verse at once. The following lines are from that poem.
+              </p>
+              <div class="quote">
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Chinese</h3>
+                  <p style="line-height:1.8">
+                    三時<span style="color:#B82343">雲冷多飛雪</span>
+                    <br>二月山寒<span style="color:#327CC6">少有春</span>
+                    <span class="shutten"><em>Bai's Collected Works</em>, vol. 14, "Snow in Nanqin," Bai Juyi</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height:1.8">For three seasons the clouds are cold and much snow flies;<br class="br-pc"> in the second month the mountains are cold, and there is little of spring.</p>
+                </q>
+              </div>
+              <p style="margin-top:0;">
+                Kintō gave the same challenge to other people as well. The <em>Dainagon Kintō-shū</em> includes a linked verse with another poet, as follows. The author of the upper verse is unknown.</p>
+              <div class="quote">
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <span style="color:#B82343"><ruby>吹<rt>ふ</rt></ruby>きそむる
+                      <ruby>風<rt>かぜ</rt></ruby>もぬるまぬ
+                      <ruby>山里<rt>やまざと</rt></ruby>は</span>
+                    <br><span style="color:#327CC6"><ruby>少<rt>すこ</rt></ruby>し<ruby>春<rt>はる</rt></ruby>ある
+                      <ruby>心地<rt>ここち</rt></ruby>こそすれ</span>
+                    <span class="shutten"><em>Dainagon Kintō-shū</em>, Anonymous</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height:1.8">In this mountain village, where even the first breezes of spring are not yet warm,<br class="br-pc"> I feel only a little of spring.</p>
+                </q>
+              </div>
+            </dd>
+            <dt><em>The Pillow Book</em></dt>
+            <dd><em>The Pillow Book</em> (<em>Makura no Sōshi</em>) is Japan's oldest collection of essays, written by Sei Shōnagon. It has about 300 sections, which fall into three broad groups: list sections such as "Insects" and "Flowering trees"; essay sections, such as the famous "In spring, the dawn"; and memoir sections that look back on and praise her days with Teishi. The word <em>okashi</em> (charming, delightful) is used so often that it is called the literature of <em>okashi</em>.</dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -289,6 +951,7 @@
           <a class="da-link-btn" href="diagram_archtecture_en.html">Relationship Diagram</a>
           <a class="kt-link-btn" href="karuta-taisen-pro_en.html">Competitive Karuta Game</a>
           <a class="kts-link-btn" href="karuta-taisen_en.html">Online Karuta Battle</a>
+          <a class="kg-link-btn" href="kakekotoba-game-062_en.html"><span class="kg-link-btn-inner"><span class="kg-link-btn-face kg-link-btn-front">Spin &amp; Discover Kakekotoba!</span><span class="kg-link-btn-face kg-link-btn-back">Spin &amp; Discover Kakekotoba!</span></span></a>
         </dd>
       </dl>
     </div>
@@ -311,6 +974,11 @@
   <!-- Footer end -->
 
   <script src="../js/poems_en.js?20261008-01"></script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261008-49"></script>
+  <script src="../js/keizu-diagram.js?20261008-02"></script>
 
 </body>
 
