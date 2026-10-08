@@ -162,7 +162,7 @@ function buildPoemRowHTML(poem) {
 
   // The line break between upper and lower verse only shows below 960px (.waka-br in list.css)
   return (
-    `<tr data-number="${num}" data-color="${escapeHTMLText(poem.color || "")}" data-hiragana="${escapeHTMLText(hiragana)}">` +
+    `<tr data-number="${num}" data-color="${escapeHTMLText(poem.color || "")}" data-theme="${escapeHTMLText(poem.theme || "")}" data-hiragana="${escapeHTMLText(hiragana)}">` +
     `<td${bg ? ` style="background-color: ${bg};"` : ""}>` +
     `<a class="num-badge" href="/${num}_en.html" data-number="${num}" data-tooltip="Poem details">${num}</a></td>` +
     `<td style="background-color: #F7F1E0; cursor: pointer; position: relative;"${modernText ? ' data-has-modern="1"' : ""}>` +

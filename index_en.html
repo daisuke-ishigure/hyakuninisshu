@@ -46,10 +46,15 @@
   </script>
   <link rel="stylesheet" href="../css/style.css?20261008-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
+  <!-- "Choose from the 100 Poems" uses the list_en.html table (search, sort, colour filter) -->
+  <link rel="stylesheet" href="../css/list.css?20260927-01">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@500&family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:wght@500;700&display=swap"
     rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -60,7 +65,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" href="/favicon.ico">
 
-  <title>Hyakunin Isshu: Read, Learn &amp; Play All 100 Poems | Shigure no Hyakunin Isshu</title>
+  <title>百人一首を愉しむ｜全100首と歌人100人｜時雨の百人一首</title>
   <style>
     /* ========== リセット ========== */
     html,
@@ -71,11 +76,10 @@
       overscroll-behavior: none;
     }
 
-    @media (max-width: 760px) {
-      body {
-        height: auto;
-        min-height: 100svh;
-      }
+    /* style.css の body{height:100vh} だとヒーロー＋カードセクションが縮むため、通常スクロールに戻す */
+    body {
+      height: auto;
+      min-height: 100svh;
     }
 
     #vanta-bg canvas {
@@ -99,28 +103,25 @@
       color: #333;
       display: flex;
       flex-direction: column;
+      flex-shrink: 0;
       height: 100svh;
+      overflow: hidden;
     }
 
-    /* 動画 */
+    /* 動画（ヒーロー内に収める。fixedだと下のカードセクションの背後にも出てしまう） */
     .video-box {
-      position: relative;
+      position: absolute;
+      inset: 0;
       overflow: hidden;
-      width: 100%;
-      display: flex;
-      flex-grow: 1;
     }
 
     .video {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      min-width: 100%;
-      min-height: 100%;
-      width: auto;
-      height: auto;
-      transform: translate(-50%, -50%);
-      z-index: -100;
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
     }
 
     .overlay::after {
@@ -132,6 +133,7 @@
       height: 100%;
       content: "";
       background: rgba(0, 0, 0, 0.4);
+      z-index: 1;
     }
 
     @media (max-width: 800px) {
@@ -170,46 +172,49 @@
       }
     }
 
+    /* タイトル（横書き）＋導入文（縦書き）を動画の中央に重ねる */
     .text-box {
       position: absolute;
-      top:35%;
-      left: 50%;
-      width: 100%;
-      transform: translate(-50%, -50%);
+      top: 44%;
+      /* left:50%だと幅が画面の半分に制限されスマホで見出しがはみ出すため、左右いっぱいに取って中央寄せ */
+      left: 0;
+      right: 0;
+      transform: translateY(-50%);
       display: flex;
-      flex-direction:column;
-      justify-content: center;
-      align-items:center;
-      gap:1.8em;
+      flex-direction: column;
+      align-items: center;
+      gap: 2em;
       z-index: 2;
     }
 
-    .text-box h1,  .text-box p{
-      font-size: 2.4em;
-      letter-spacing: 0.1em;
-      white-space: nowrap;
+    .text-box h1,
+    .text-box p {
+      margin: 0;
       color: #FFF8E7;
       font-family: "Kaisei HarunoUmi", serif;
-      text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+      white-space: nowrap;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
     }
-    .text-box h1{
-      font-size: 2.7em;
+
+    .text-box h1 {
+      font-size: 2.6em;
+      letter-spacing: 0.2em;
+      line-height: 1.3;
+      /* letter-spacingの右端の余白ぶん中心がずれるのを打ち消す */
+      padding-left: 0.2em;
     }
-    /* EN版：日本語版は縦書きの詩的テキストだが、英語は縦書きにすると可読性が
-       著しく下がるため、横書き・中央揃えに変更（構成は日本語版を踏襲） */
-    .text-box p{
-      writing-mode: horizontal-tb;
-      white-space: normal;
-      text-align: center;
-      max-width: 90vw;
-      margin-right: 0;
-      margin-top: 0;
-      font-size: 1.05em;
-      line-height: 1.8;
+
+    /* 「日本の詩歌。」の行と次の行の間を空ける（縦書きなのでブロック方向＝左側に余白） */
+    .text-box__stanza {
+      display: block;
+      margin-block-end: 0.5em;
     }
-    /* PC版では非表示（スマホのヘッダー折り返し用の区切り要素） */
-    .header-break {
-      display: none;
+
+    .text-box p {
+      writing-mode: vertical-rl;
+      font-size: 1.3em;
+      letter-spacing: 0.18em;
+      line-height: 2.2;
     }
 
     /* ========== 画像切替 ========== */
@@ -229,288 +234,1049 @@
       .desktop-only {
         display: block;
       }
-
-      .hero {
-        overflow: hidden;
-      }
     }
 
-
-    .top-nav {
-      background: transparent;
-      max-width:1400px;
-      padding: 0 40px 30px;
-      position: absolute;
-      bottom: 5%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100%;
-      box-sizing: border-box;
-      z-index: 5;
-    }
-
-    .top-nav-grid {
-      display: flex;
-      flex-direction: row;
-      align-items: stretch;
-      justify-content: center;
-      gap: 16px;
-      width: 100%;
-    }
-
-    .top-nav-item {
-      display: block;
-      text-decoration: none;
-      position: relative;
-      flex: 1;
-      overflow: visible;
-      opacity: 0;
-      animation: fadeInUp 0.6s ease forwards;
-    }
-
-    .top-nav-item:nth-child(1) { animation-delay: 0.1s; }
-    .top-nav-item:nth-child(2) { animation-delay: 0.3s; }
-    .top-nav-item:nth-child(3) { animation-delay: 0.5s; }
-    .top-nav-item:nth-child(4) { animation-delay: 0.7s; }
-
-    .top-nav-img-wrap {
-      width: 100%;
-      height: auto;
-      position: static;
-    }
-
-    /* PC版のみ、扇ナビの画像サイズを現在の90%にする */
-    @media (min-width: 800px) {
-      .top-nav-img-wrap {
-        width: 90%;
-        margin: 0 auto;
-      }
-    }
-
-    .top-nav-img-wrap img {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-      display: block;
-      transition: transform 0.35s ease, filter 0.35s ease;
-    }
-
-    .top-nav-item:hover .top-nav-img-wrap img {
-      transform: scale(1.04);
-      filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.85)) drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
-    }
-
-    /* ========== アニメーション ========== */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
 
     /* ========== スマホ（760px以下） ========== */
     @media (max-width: 760px) {
-      /* 左右の歌番号ティッカーと重ならないよう、サイトタイトルを少し縮小 */
-      .header .site-title {
-        font-size: 1.2rem;
-      }
-
-      /* 左右の歌番号ティッカーと重ならないよう、ヘッダーのアイコン一覧を折り返す */
-      .header_list {
-        flex-wrap: wrap;
-        justify-content: center;
-        max-width: calc(100vw - 110px);
-        margin: 0 auto;
-      }
-
-      /* JA/EN以降を強制的に2行目にする */
-      .header-break {
-        display: block;
-        flex-basis: 100%;
-        height: 0;
-      }
-
       .hero {
-        flex: 1;
-        height: auto;
-        overflow: visible;
-        padding-top:40px;
-        padding-bottom:0;
         background: transparent !important;
-        box-sizing: border-box;
       }
 
-      .text-box h1,.text-box p {
-        writing-mode: horizontal-tb !important;
-        font-size: 1.6em;
-        letter-spacing: 0.2em;
-        text-align: center;
-        filter: drop-shadow(0 0 2px rgba(24, 24, 24, 0.4));
-      }
-      /* EN版：見出しが日本語版より長いため折り返しを許可し、収まるようフォントサイズを縮小 */
       .text-box h1 {
-        white-space: normal;
-        font-size: 1.3em;
-        letter-spacing: 0.05em;
-        padding: 0 0.5em;
-      }
-      .text-box p{
-        font-size:0.85em !important;
-        letter-spacing: 0;
-        text-align:center;
-        margin-top:0.2em;
-        margin-right:0;
-        line-height:1.7;
-        max-width: 100%;
+        font-size: 1.9em;
+        letter-spacing: 0.15em;
+        padding-left: 0.15em;
       }
 
-      .text-box {
-        position: static;
-        transform: none;
-        display: flex;
-        align-items: center;
-        height: auto;
-        width: calc(100% - 110px);
-        margin: 0 auto;
-        box-sizing: border-box;
-        z-index: 2;
+      .text-box p {
+        font-size: 0.95em;
+        line-height: 2.1;
       }
 
-      .top-nav {
-        position: static;
-        transform: none;
-        padding: 20px;
-        width: 330px;
-        margin:0 auto 0;
-        z-index: 2;
-      }
-
-      .top-nav-grid {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-      }
-
-      .top-nav-item {
-        width: 100%;
-        max-width: 300px;
-        flex: none;
-      }
-
-      .top-nav-item:nth-child(1) { animation-delay: 0.1s; }
-      .top-nav-item:nth-child(2) { animation-delay: 0.2s; }
-      .top-nav-item:nth-child(3) { animation-delay: 0.3s; }
-      .top-nav-item:nth-child(4) { animation-delay: 0.4s; }
     }
 
     @media (max-width: 400px) {
-      h1 {
+      .text-box h1 {
         font-size: 1.7em;
-        letter-spacing: 0;
-        padding: 0;
-        width: 100%;
       }
     }
 
     /* ===============================
-   歌番号ティッカー（ドラッグ可能。PC：ヒーロー上部を右から左へ／SP：画面左端を下から上へ）
-   =============================== */
-.number-ticker {
-  display: block;
-  z-index: 20;
-  overflow: hidden;
-  background: rgba(0, 0, 0, 0.25);
-  cursor: grab;
-}
+       トップページ：コンテンツハブ（目的から探す・検索・今日の一首・百首・全コンテンツ）
+       =============================== */
+    :root {
+      --home-washi: #F7F1E0;
+      --home-paper: #FFFDF8;
+      --home-ink: #2E2A20;
+      --home-sub: #6B6454;
+      --home-line: #E4D9BD;
+      --home-beni: #B82343;
+      --home-moegi: #7EA549;
+    }
 
-.number-ticker.dragging {
-  cursor: grabbing;
-}
+    .visually-hidden {
+      position: absolute !important;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
 
-.number-ticker-track {
-  display: flex;
-  gap: 22px;
-  width: max-content;
-  will-change: transform;
-  user-select: none;
-}
+    /* ヒーロー下端のスクロール誘導 */
+    .scroll-cue {
+      position: absolute;
+      left: 50%;
+      bottom: 24px;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      font-family: "Kaisei HarunoUmi", serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      color: #FFF8E7;
+      text-decoration: none;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    }
 
-.number-ticker-item {
-  flex: 0 0 auto;
-  width: 32px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #fffdf8;
-  border: 3px solid #7EA549;
-  font-size: 12px;
-  font-family: 'Noto Sans JP', sans-serif;
-  color: #333;
-  text-decoration: none;
-  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-}
+    .scroll-cue::after {
+      content: "";
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(#FFF8E7, rgba(255, 248, 231, 0));
+      animation: scrollCue 2s ease-in-out infinite;
+      transform-origin: top;
+    }
 
-.number-ticker.dragging .number-ticker-item {
-  transition: none;
-}
+    @keyframes scrollCue {
+      0% { transform: scaleY(0); opacity: 1; }
+      60% { transform: scaleY(1); opacity: 1; }
+      100% { transform: scaleY(1); opacity: 0; }
+    }
 
-.number-ticker-item:hover {
-  background: #B82343;
-  border-color: #B82343;
-  color: #fff;
-}
+    @media (prefers-reduced-motion: reduce) {
+      .scroll-cue::after { animation: none; }
+    }
 
-/* PC：ヒーロー内の上端・下端に横向きで配置（スマホの左右ティッカーと同じ考え方を、
-   横長画面なので上下に置き換えたもの。ヘッダー・フッターとは重ねない） */
-@media (min-width: 800px) {
-  .number-ticker {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 8px 0;
-    touch-action: pan-y;
-  }
+    /* 見出し共通 */
+    .home-kicker {
+      margin: 0 0 4px;
+      text-align: center;
+      font-family: "Noto Serif JP", serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--home-beni);
+    }
 
-  .number-ticker-right {
-    top: auto;
-    bottom: 0;
-  }
-}
+    .home-heading {
+      margin: 0 0 12px;
+      text-align: center;
+      font-family: "Kaisei HarunoUmi", serif;
+      font-weight: 500;
+      font-size: 1.8em;
+      letter-spacing: 0.15em;
+      color: var(--home-ink);
+    }
 
-/* スマホ：画面左端に縦向きで配置（ヘッダー・フッターは通常のフロー要素なので、
-   ティッカーを画面全体の高さにすることでヘッダー・フッターの上も途切れずに流れる） */
-@media (max-width: 799px) {
-  .number-ticker {
-    position: fixed;
-    top: 0;
-    left: 0;
-    /* bottom:0だとアドレスバーの表示/非表示でレイアウトビューポートが変わり、
-       スクロール中に縦幅の基準がずれて位置がガクつくため、dvhで実際に見えている高さを直接指定する */
-    height: 100vh;
-    height: 100dvh;
-    padding: 10px 6px;
-    touch-action: pan-x;
-    transform: translateZ(0);
-  }
+    .home-heading::after {
+      content: "";
+      display: block;
+      width: 32px;
+      height: 2px;
+      margin: 12px auto 0;
+      background: var(--home-beni);
+    }
 
-  .number-ticker-track {
-    flex-direction: column;
-    width: auto;
-    height: max-content;
-  }
+    .home-lead {
+      margin: 0 auto 28px;
+      max-width: 40em;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--home-sub);
+    }
 
-  /* 右側ティッカーは左端ではなく右端に配置（流れる向き自体はJS側で逆にする） */
-  .number-ticker-right {
-    left: auto;
-    right: 0;
-  }
-}
+    /* 目的から探す */
+    .quick-nav {
+      background: var(--home-paper);
+      border-bottom: 1px solid var(--home-line);
+      padding: 56px 16px 48px;
+    }
+
+    .quick-nav .home-heading {
+      margin-bottom: 28px;
+    }
+
+    /* PCは3列×3段（9項目）のグリッド。ボタンはセルいっぱいに広げて端をそろえる */
+    .quick-nav ul {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0;
+      list-style: none;
+    }
+
+    .quick-nav a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      height: 100%;
+      box-sizing: border-box;
+      padding: 6px 16px 6px 6px;
+      border: 1px solid var(--home-line);
+      border-radius: 999px;
+      background: #fff;
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--home-ink);
+      text-decoration: none;
+      transition: border-color 0.15s, color 0.15s, background 0.15s;
+    }
+
+    .quick-nav a:hover {
+      border-color: var(--home-beni);
+      color: var(--home-beni);
+    }
+
+    .quick-nav__mon {
+      display: inline-grid;
+      place-items: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--home-beni);
+      color: #fff;
+      font-family: "Kaisei HarunoUmi", serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    /* 今日の一首 */
+    .quick-nav + .today {
+      border-top: 0;
+    }
+
+    .today {
+      scroll-margin-top: 16px;
+      padding: 64px 16px;
+      background: #F7F1E0;
+      border-top: 1px solid var(--home-line);
+      border-bottom: 1px solid var(--home-line);
+    }
+
+    .today__inner {
+      margin: 0 auto;
+    }
+
+    /* ===== 今日の一首（おみくじ）：css/omikuji.css の箱・棒・結果の紙の見た目とアニメーションを
+       #omikuji 配下に限定してコピー（omikuji.css を丸ごと読むと h2/p 等のグローバル指定がトップに効くため）。
+       omikuji.css を変えたときはここも合わせること ===== */
+    /* おみくじ箱のコンテナを中央寄せ */
+    #omikuji #omikuji-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      transition: padding-bottom 0.6s ease-out;
+    }
+
+    #omikuji #omikuji-container.stick-out {
+      padding-bottom: 86px; /* 20px(元) + 66px(棒の突出量) */
+    }
+
+
+    /* おみくじ箱 */
+    #omikuji #omikuji-box {
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+      transform-origin: center;
+    }
+
+    /* 背面画像（z-index: 0）*/
+    #omikuji #omikuji-image-back {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 200px;
+      height: auto;
+      display: block;
+      z-index: 0;
+    }
+
+    /* 前面画像（z-index: 2）。この画像がボックスの高さを決める */
+    #omikuji #omikuji-image-front {
+      display: block;
+      width: 200px;
+      height: auto;
+      position: relative;
+      z-index: 2;
+    }
+
+
+    @media (max-width: 760px) {
+      #omikuji #omikuji-image-back,
+      #omikuji #omikuji-image-front {
+        width: 150px;
+      }
+    }
+
+    /*
+      180°回転後の座標変換:
+        top: 0 (LOCAL上端) → 回転後はビジュアル下端（穴の位置）になる
+        translateY(+N)    → LOCAL下方向 = ビジュアル上方向 = 箱の内部（非表示）
+        translateY(-N)    → LOCAL上方向 = ビジュアル下方向 = 箱の外（表示）
+    */
+    #omikuji #omikuji-stick-wrap {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      margin-left: -8px;
+      transform: translateY(120px);  /* 初期状態: 箱の内部に隠れている */
+      z-index: 1;
+    }
+
+    #omikuji #omikuji-stick {
+      width: 16px;
+      height: 120px;
+      background: linear-gradient(to right, #a07818, #f0d060, #d4a830, #a07818);
+      border-radius: 5px 5px 2px 2px;  /* LOCAL上端（=ビジュアル先端）を丸く */
+      box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.35);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding-top: 6px;
+    }
+
+    #omikuji #omikuji-stick-number {
+      font-size: 9px;
+      font-weight: bold;
+      color: #3a1800;
+      writing-mode: vertical-rl;
+      line-height: 1.2;
+      letter-spacing: 1px;
+      display: inline-block;
+      transform: rotate(180deg);  /* 親の180°回転を打ち消して文字を正立させる */
+    }
+
+    /* 180°反転 → コトコト揺れ → ピタッと静止 */
+    @keyframes boxFlipShake {
+      0%   { transform: rotate(0deg); }
+      18%  { transform: rotate(180deg); }
+      28%  { transform: rotate(174deg); }
+      38%  { transform: rotate(186deg); }
+      48%  { transform: rotate(174deg); }
+      58%  { transform: rotate(186deg); }
+      68%  { transform: rotate(174deg); }
+      78%  { transform: rotate(186deg); }
+      88%  { transform: rotate(174deg); }
+      96%  { transform: rotate(180deg); }
+      100% { transform: rotate(180deg); }
+    }
+
+    #omikuji .is-flipping {
+      animation: boxFlipShake 1.5s ease-in-out forwards;
+    }
+
+    /* 棒がするっと下に出てくるアニメーション（引っ込みなし） */
+    @keyframes stickPop {
+      from { transform: translateY(120px); }  /* 箱の内部 */
+      to   { transform: translateY(-66px); }  /* 66px分がビジュアル下に出る */
+    }
+
+    #omikuji #omikuji-stick-wrap.stick-out {
+      animation: stickPop 0.6s ease-out forwards;
+    }
+
+    /* ボタンのスタイル（任意） */
+    #omikuji #draw-button,
+    #omikuji #reset-button,
+    #omikuji #poem-link-btn {
+      padding: 8px 15px;
+      font-size: 1em;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #b82343;
+      color: white;
+      box-shadow: 0 4px #8e1c35;
+      transition: background-color 0.3s;
+    }
+
+    #omikuji #draw-button:hover,
+    #omikuji #reset-button:hover {
+      background-color: #8e1c35;
+    }
+
+    #omikuji .result-btn-group {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 1em;
+    }
+
+    #omikuji #poem-link-btn {
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      background-color: #007e5e;
+      box-shadow: 0 4px #005e46;
+    }
+
+    #omikuji #poem-link-btn:hover {
+      background-color: #005e46;
+    }
+
+    #omikuji #draw-button:disabled {
+      background-color: #aaa;
+      box-shadow: none;
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    /* 結果表示エリア（紙のスタイル） */
+    #omikuji #result-area {
+      width: 97%;
+      max-width: 800px;
+      margin: 10px auto;
+      padding: 32px 28px;
+      border: 1px solid #c8a96e;
+      border-radius: 2px;
+      background-color: #fffef8;
+      text-align: center;
+      box-shadow: 3px 8px 24px rgba(0, 0, 0, 0.18), 0 2px 4px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+
+    /* するする：紙が上から伸びてくる */
+    @keyframes paperSlide {
+      from { clip-path: inset(0 0 100% 0); }
+      to   { clip-path: inset(0 0 0% 0); }
+    }
+
+    /* ふわっ：紙がわずかに膨らんで落ち着く */
+    @keyframes paperBloom {
+      0%   { transform: scale(1); }
+      45%  { transform: scale(1.018); }
+      100% { transform: scale(1); }
+    }
+
+    #omikuji #result-area.paper-sliding {
+      animation: paperSlide 0.65s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    #omikuji #result-area.paper-blooming {
+      animation: paperBloom 0.5s ease-out forwards;
+    }
+
+    /* 和歌の画像（カード） */
+    #omikuji .waka-card-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 15px 0 0;
+      border-radius: 4px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    @media (min-width: 750px) {
+      /* PC: 画像を和歌の左側に並べる。高さは#waka-poemの実測値をJSで.waka-card-imageに反映する */
+      #omikuji #waka-row {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 24px;
+      }
+
+      #omikuji #waka-content {
+        flex: 0 1 480px;
+      }
+
+      #omikuji .waka-card-image {
+        width: 260px;
+        height: auto;
+        margin: 10px 0 0;
+        flex-shrink: 0;
+        object-fit: contain;
+        background-color: #fffaf0;
+      }
+    }
+
+    /* 和歌の表示 */
+    #omikuji #waka-poem {
+      background-color: #fffaf0;
+      padding: 20px;
+      border: 1px solid #333;
+      margin-top: 10px;
+      position: relative;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    #omikuji .poem-number {
+      position: absolute;
+      bottom: 6px;
+      left: 8px;
+      font-size: 0.65em;
+      color: #999;
+      writing-mode: horizontal-tb;
+      font-family: "Noto Sans JP", sans-serif;
+      line-height: 1;
+    }
+
+    #omikuji .poem {
+      font-family: "Kaisei HarunoUmi", serif;
+      margin: 15px auto;
+      line-height: 1.8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #omikuji .waka-body {
+      writing-mode: vertical-rl;
+      text-align: start;
+      font-size: 1.3em;
+    }
+
+    #omikuji .poet-name {
+      font-size: 0.75em;
+      margin: 0 0 0 5px;
+      writing-mode: vertical-rl;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    #omikuji .meaning {
+      font-size: 0.95em;
+      color: #333;
+      margin-bottom: 20px;
+      white-space: pre-wrap;
+      text-align: left;
+    }
+
+    /* 解釈のセクション */
+    #omikuji .interpretation-section {
+      margin: 0.5em 0 2em;
+      padding: 10px;
+      border-left: 5px solid #b82343;
+      text-align: left;
+      background-color: #fffaf0;
+    }
+
+    #omikuji .interpretation-section h4,
+    #omikuji .interpretation-section .was-h4 {
+      color: #b82343;
+      margin-top: 0;
+      font-size: 1.1em;
+    }
+
+    /* 非表示にするクラス */
+    #omikuji .hidden {
+      display: none !important;
+    }
+
+    /* 結果表示エリア内の各要素の初期状態（透明）。#waka-poem は別途管理 */
+    #omikuji #result-area h2,
+    #omikuji #result-area hr,
+    #omikuji #result-area .interpretation-section,
+    #omikuji #result-area .result-btn-group,
+    #omikuji #result-area .waka-card-image {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    }
+
+    /* JavaScriptでこのクラスを付与し、要素を表示させる */
+    #omikuji .show-item {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+
+    /* 和歌：初期状態（中央に巻かれた状態） */
+    #omikuji #waka-poem {
+      opacity: 0;
+      clip-path: inset(0 50% 0 50%);
+      transition: none;
+    }
+
+    /* 巻物がするすると開いてふわっと落ち着くアニメーション */
+    @keyframes scrollUnroll {
+      0% {
+        clip-path: inset(0 50% 0 50%);
+        opacity: 0;
+        transform: scale(1);
+      }
+      12% {
+        opacity: 1;
+      }
+      62% {
+        clip-path: inset(0 0% 0 0%);
+        transform: scale(1);
+      }
+      78% {
+        clip-path: inset(0 0% 0 0%);
+        transform: scale(1.018);
+      }
+      100% {
+        clip-path: inset(0 0% 0 0%);
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    #omikuji #waka-poem.show-item {
+      animation: scrollUnroll 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+    #omikuji #result-area h2 {
+      font-family: "Kaisei HarunoUmi", serif;
+      font-weight: normal;
+      color: #b82343;
+    }
+
+    #omikuji #waka-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    #omikuji #poet-image {
+      width: 56px;
+      height: 56px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 1px solid #c8a96e;
+      flex-shrink: 0;
+    }
+
+    #omikuji #result-area p {
+      font-size: 1em;
+      margin-top: 0.5em;
+    }
+
+    #omikuji #interp-love,
+    #omikuji #interp-work {
+      white-space: pre-wrap;
+    }
+
+
+    /* トップページ用の調整 */
+    #omikuji .today__inner {
+      max-width: 860px;
+    }
+
+    #omikuji #omikuji-container {
+      padding-top: 8px;
+    }
+
+    /* 「全100首を表示」と同じ見た目（紅色の丸いボタン・白文字。ホバーで墨色）。ふわふわ上下に動きながら少し拡大・縮小する */
+    #omikuji #draw-button {
+      min-width: 12em;
+      padding: 12px 24px;
+      border: 1px solid var(--home-beni);
+      border-radius: 999px;
+      background: var(--home-beni);
+      box-shadow: 0 3px 6px rgba(46, 42, 32, 0.38);
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.5;
+      letter-spacing: 0.1em;
+      color: #fff;
+      animation: hyakushu-more-float 2.4s ease-in-out infinite;
+    }
+
+    #omikuji #draw-button:hover {
+      border-color: var(--home-ink);
+      background: var(--home-ink);
+    }
+
+    #omikuji #draw-button:hover,
+    #omikuji #draw-button:focus-visible {
+      animation-play-state: paused;
+    }
+
+    #omikuji #draw-button:disabled {
+      border-color: #aaa;
+      animation: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #omikuji #draw-button {
+        animation: none;
+      }
+    }
+
+    /* 画像は切らず、縮めず、元の縦横比のまま全体を表示する
+       （omikuji.js がPCで和歌の高さに合わせて付けるインラインの height を打ち消す） */
+    #omikuji .waka-card-image {
+      max-width: 100%;
+      height: auto !important;
+      object-fit: contain;
+    }
+
+    #omikuji #result-area {
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+    #omikuji #result-area h3 {
+      font-size: 1rem;
+      margin: 0 0 4px;
+    }
+
+    /* 百首から選ぶ */
+    /* 背景色は画面幅いっぱいに敷き、中身は最大1120pxで中央寄せ */
+    .hyakushu {
+      /* bodyがflex columnなので、width指定がないとmargin:autoで内容幅まで縮んでしまう */
+      width: 100%;
+      padding: 64px 40px 56px;
+      box-sizing: border-box;
+      background: #FFFDF8;
+    }
+
+    .hyakushu > * {
+      max-width: 1120px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* list.html から移植した一覧（見た目は css/list.css。ここはトップページ用の調整だけ） */
+    .hyakushu #input-wrapper {
+      margin-bottom: 12px;
+    }
+
+    .hyakushu #searchInput {
+      border: 2px solid var(--home-line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .hyakushu #searchInput:focus {
+      outline: none;
+      border-color: var(--home-beni);
+    }
+
+    .hyakushu #table {
+      background: #fff;
+    }
+
+    /* 2列目（和歌）の背景。list.js がインラインで #F7F1E0 を付けるので !important で上書き（トップページのみ） */
+    .hyakushu #table td:nth-child(2) {
+      background-color: #fffdf8 !important;
+    }
+
+    /* 「▼ 現代語訳」が途中で折り返さないように */
+    .hyakushu .modern-toggle {
+      white-space: nowrap;
+    }
+
+    /* 最初は5首だけ見せ、残りは「全100首を表示」で開く（検索・並べ替え・色フィルターを使うと自動で開く） */
+    .hyakushu__list.is-collapsed #table tr:nth-child(n+6) {
+      display: none;
+    }
+
+    .hyakushu__more {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      padding-top: 16px;
+    }
+
+    .hyakushu__list.is-collapsed .hyakushu__more::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 100%;
+      height: 80px;
+      background: linear-gradient(rgba(255, 253, 248, 0), #FFFDF8);
+      pointer-events: none;
+    }
+
+    /* 大きさは「おみくじを引く」（#omikuji #draw-button）とそろえる */
+    .hyakushu__more button {
+      min-width: 12em;
+      padding: 12px 24px;
+      border: 1px solid var(--home-beni);
+      border-radius: 999px;
+      background: var(--home-beni);
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.5;
+      letter-spacing: 0.1em;
+      color: #fff;
+      box-shadow: 0 3px 6px rgba(46, 42, 32, 0.38);
+      cursor: pointer;
+    }
+
+    .hyakushu__more button:hover {
+      border-color: var(--home-ink);
+      background: var(--home-ink);
+      color: #fff;
+    }
+
+    /* 「全100首を表示」のあいだは、ふわふわ上下に動きながら少しだけ拡大・縮小する（押すときは止める） */
+    .hyakushu__list.is-collapsed .hyakushu__more button {
+      animation: hyakushu-more-float 2.4s ease-in-out infinite;
+    }
+
+    .hyakushu__list.is-collapsed .hyakushu__more button:hover,
+    .hyakushu__list.is-collapsed .hyakushu__more button:focus-visible {
+      animation-play-state: paused;
+    }
+
+    /* 影は浮き上がるほど下にずれて、薄く広がる（ボタンが地面から離れて見えるように） */
+    @keyframes hyakushu-more-float {
+      0%, 100% {
+        transform: translateY(0) scale(1);
+        box-shadow: 0 3px 6px rgba(46, 42, 32, 0.38);
+      }
+      50% {
+        transform: translateY(-6px) scale(1.05);
+        box-shadow: 0 12px 16px rgba(46, 42, 32, 0.24);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hyakushu__list.is-collapsed .hyakushu__more button {
+        animation: none;
+      }
+    }
+
+    /* すべてのコンテンツ */
+    .hub {
+      padding: 64px 40px 72px;
+      background: #F7F1E0;
+      border-top: 1px solid var(--home-line);
+    }
+
+    .hub-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hub-panel {
+      padding: 24px 24px 18px;
+      border-radius: 14px;
+      background: var(--home-paper);
+      box-shadow: 0 2px 10px rgba(46, 42, 32, 0.06);
+      scroll-margin-top: 16px;
+    }
+
+    .hub-panel__head {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 14px;
+      padding-bottom: 14px;
+      border-bottom: 1px dashed var(--home-line);
+    }
+
+    .hub-panel__mon {
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid var(--home-beni);
+      color: var(--home-beni);
+      font-family: "Kaisei HarunoUmi", serif;
+      font-size: 1.4rem;
+    }
+
+    .hub-panel h3 {
+      margin: 0;
+      font-family: "Kaisei HarunoUmi", serif;
+      font-weight: 500;
+      font-size: 1.2rem;
+      letter-spacing: 0.08em;
+      color: var(--home-ink);
+    }
+
+    .hub-panel__count {
+      margin-left: 8px;
+      padding: 1px 8px;
+      border-radius: 999px;
+      background: var(--home-washi);
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0;
+      color: var(--home-sub);
+      vertical-align: middle;
+    }
+
+    .hub-panel__head p {
+      margin: 2px 0 0;
+      font-size: 0.8rem;
+      line-height: 1.5;
+      color: var(--home-sub);
+    }
+
+    .hub-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 2px 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .hub-links a {
+      display: block;
+      padding: 8px 10px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+
+    .hub-links a:hover {
+      background: var(--home-washi);
+    }
+
+    .hub-link__title {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--home-ink);
+    }
+
+    .hub-links a:hover .hub-link__title {
+      color: var(--home-beni);
+    }
+
+    .hub-link__desc {
+      display: block;
+      font-size: 0.72rem;
+      line-height: 1.5;
+      color: var(--home-sub);
+    }
+
+    @media (max-width: 900px) {
+      .hub-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      /* 画面下の固定ナビ（トップ・図鑑…）に隠れないよう持ち上げる */
+      .scroll-cue {
+        bottom: 84px;
+      }
+
+      /* 目的ナビはスマホでは2列のグリッド（9つ目の「百首から選ぶ」も1列分の幅） */
+      .quick-nav {
+        padding: 44px 16px 36px;
+      }
+
+      .quick-nav ul {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .quick-nav a {
+        gap: 6px;
+        padding: 4px 10px 4px 4px;
+        font-size: 0.78rem;
+        line-height: 1.35;
+      }
+
+      .quick-nav__mon {
+        width: 24px;
+        height: 24px;
+        font-size: 0.75rem;
+      }
+
+      .home-heading {
+        font-size: 1.45em;
+      }
+
+      .today {
+        padding: 48px 16px;
+      }
+
+      .hyakushu {
+        padding: 48px 16px 40px;
+      }
+
+      /* 並べ替え（1行目）・色（2行目）・部立て（3行目）を行ごとに分ける。
+         区切り線を幅100%・高さ0にして改行の代わりにする */
+      .hyakushu #sort-buttons .sort-divider {
+        flex-basis: 100%;
+        height: 0;
+        margin: 0;
+        background: none;
+      }
+
+      .hyakushu #sort-buttons {
+        gap: 0.5em 0.4em;
+      }
+
+      .hyakushu .color-filter-btn,
+      .hyakushu .theme-filter-btn {
+        padding: 5px 10px;
+      }
+
+      .hub {
+        padding: 48px 16px 56px;
+      }
+
+      .hub-panel {
+        padding: 20px 16px 14px;
+      }
+
+      .hub-links {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* 幅の狭いスマホ（〜359px）でも部立て7つが1行に収まるように */
+    @media (max-width: 359px) {
+      .hyakushu .theme-filter-btn {
+        padding: 5px 7px;
+      }
+
+      /* 目的ナビ：狭い画面でもラベルが途中で折れにくいように少し詰める */
+      .quick-nav a {
+        gap: 5px;
+        padding-right: 6px;
+        font-size: 0.72rem;
+        letter-spacing: 0;
+      }
+
+      .quick-nav__mon {
+        width: 22px;
+        height: 22px;
+        font-size: 0.7rem;
+      }
+    }
+
+    /* ===============================
+       English version (index_en.html): same layout as index.html. Only what differs for English text.
+       =============================== */
+    /* The intro under the title is horizontal (English can't be set vertically) */
+    .text-box h1 {
+      letter-spacing: 0.04em;
+      padding: 0 16px;
+      white-space: normal;
+      text-align: center;
+    }
+    html[lang="en"] .text-box p,
+    html[lang="en"] .text-box p span {
+      font-family: "Lora", serif !important;
+    }
+    html[lang="en"] .text-box p {
+      writing-mode: horizontal-tb;
+      white-space: normal;
+      text-align: center;
+      letter-spacing: 0.02em;
+      line-height: 1.9;
+      max-width: 34em;
+      padding: 0 16px;
+    }
+    @media (max-width: 760px) {
+      .text-box h1 {
+        letter-spacing: 0.02em;
+        padding: 0 16px;
+      }
+    }
+    /* The kanji crests and the poems stay in Kaisei HarunoUmi
+       (style.css forces Noto Sans on span/p/a for English pages, so override with !important) */
+    html[lang="en"] .quick-nav__mon,
+    html[lang="en"] .hub-panel__mon,
+    html[lang="en"] #omikuji .poem,
+    html[lang="en"] #omikuji .poem .waka-body,
+    html[lang="en"] #omikuji .poem .poet-name {
+      font-family: "Kaisei HarunoUmi", serif !important;
+    }
+    /* The scroll cue at the bottom of the hero: one centred line */
+    html[lang="en"] .scroll-cue {
+      font-family: "Lora", serif !important;
+      white-space: nowrap;
+      letter-spacing: 0.06em;
+    }
+    html[lang="en"] #omikuji .poem .poem-number {
+      font-family: "Noto Sans", sans-serif !important;
+    }
   </style>
   <!-- Cloudflare Web Analytics -->
   <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d2f01c23361b402aadede990ea58da0b"}'></script>
@@ -533,20 +1299,10 @@
   </header>
 <script src="../js/back-to-top.js?20261004-06"></script>
 
-  <!-- ★ ヒーローセクション（タイトル＋扇ナビのみ。歌人グリッドは外へ） -->
+  <!-- Hero (video and title) -->
   <section class="hero" style="position:relative;">
 
-    <!-- 歌番号ティッカー（PC専用・右から左へ流れる） -->
-    <div class="number-ticker" id="number-ticker-left">
-      <div class="number-ticker-track" id="number-ticker-track"></div>
-    </div>
-
-    <!-- 歌番号ティッカー（右側・スマホ専用・100→1の逆順で、左側とは反対方向へ流れる） -->
-    <div class="number-ticker number-ticker-right" id="number-ticker-right">
-      <div class="number-ticker-track" id="number-ticker-track-right"></div>
-    </div>
-
-    <!-- Vanta.js スマホ背景 -->
+    <!-- Vanta.js background (smartphones) -->
     <div id="vanta-bg"></div>
 
     <div class="video-box overlay desktop-only">
@@ -555,42 +1311,374 @@
       </video>
     </div>
 
-    <!-- タイトル（上部18%に配置） -->
+    <!-- Title and intro, centred on the video -->
     <div class="text-box">
-      <h1>Enjoying <br class="br-sp">the Hyakunin Isshu</h1>
-      <p>100 Poems. 100 Poets. 700 Years of Japanese Poetry.<br>Discover love, loneliness, longing, nature, and the beauty of the human heart through the poetry of medieval Japan.</p>
+      <h1>Enjoying the Hyakunin Isshu</h1>
+      <p><span class="text-box__stanza">100 poets. 100 poems.<br>Japanese poetry handed down<br>for more than a thousand years.</span>Read. Learn. Play.<br>The poets, Heian court culture,<br>court ranks and offices,<br>karuta, and the art of waka.</p>
     </div>
 
-    <!-- 扇ナビ（下部5%に配置、max-width: 860px） -->
-    <section class="top-nav">
-      <div class="top-nav-grid">
-        <a href="introduction-app_en.html" class="top-nav-item">
-          <div class="top-nav-img-wrap">
-            <img src="/img/top_karuta_en.webp" alt="Karuta Games">
-            <div class="top-nav-overlay"></div>
-          </div>
-        </a>
-        <a href="/kajin-zukan_en.html" class="top-nav-item">
-          <div class="top-nav-img-wrap">
-            <img src="/img/top_kajin_en.webp" alt="Poet Encyclopedia">
-            <div class="top-nav-overlay"></div>
-          </div>
-        </a>
-        <a href="/list_en.html" class="top-nav-item">
-          <div class="top-nav-img-wrap">
-            <img src="/img/waka_en.webp" alt="Poem List">
-            <div class="top-nav-overlay"></div>
-          </div>
-        </a>
-        <a href="introduction_en.html" class="top-nav-item">
-          <div class="top-nav-img-wrap">
-            <img src="/img/top_column_en.webp" alt="Columns">
-            <div class="top-nav-overlay"></div>
-          </div>
-        </a>
-      </div>
-    </section>
+    <a class="scroll-cue" href="#start">Into the world of the 100 poems</a>
 
+  </section>
+
+  <!-- Find what you're looking for (jumps to each category) -->
+  <nav class="quick-nav" id="start" aria-label="Find what you're looking for">
+    <p class="home-kicker">Explore</p>
+    <h2 class="home-heading">Find What You're Looking For</h2>
+    <ul>
+      <li><a href="#hyakushu"><span class="quick-nav__mon" aria-hidden="true">百</span>Choose from the 100 Poems</a></li>
+      <li><a href="#kajin"><span class="quick-nav__mon" aria-hidden="true">知</span>Know the Poems and Poets</a></li>
+      <li><a href="#oboeru"><span class="quick-nav__mon" aria-hidden="true">覚</span>Memorize</a></li>
+      <li><a href="#kyogi"><span class="quick-nav__mon" aria-hidden="true">競</span>Train for Competitive Karuta</a></li>
+      <li><a href="#asobu"><span class="quick-nav__mon" aria-hidden="true">遊</span>Play Games</a></li>
+      <li><a href="#gihou"><span class="quick-nav__mon" aria-hidden="true">技</span>Waka Techniques</a></li>
+      <li><a href="#yomu"><span class="quick-nav__mon" aria-hidden="true">読</span>Read History and Stories</a></li>
+      <li><a href="#kanshoku"><span class="quick-nav__mon" aria-hidden="true">官</span>Heian Court Ranks and Offices</a></li>
+      <li><a href="#miru"><span class="quick-nav__mon" aria-hidden="true">見</span>Explore with Maps and Data</a></li>
+    </ul>
+  </nav>
+
+  <!-- Today's poem (Hyakunin Isshu fortune. Uses js/omikuji_en.js as is, and shares the result with omikuji_en.html) -->
+  <section class="today" id="omikuji" aria-labelledby="today-title">
+    <div class="today__inner">
+      <p class="home-kicker">Omikuji</p>
+      <h2 id="today-title" class="home-heading">Today's Poem</h2>
+      <p class="home-lead">One of the 100 poems tells your fortune for today.<br>If you draw again on the same day, you get the same poem (result).</p>
+
+      <div id="omikuji-container">
+        <div id="omikuji-box">
+          <img id="omikuji-image-back" src="img/omikuji_back.webp" alt="" width="435" height="800">
+          <div id="omikuji-stick-wrap">
+            <div id="omikuji-stick">
+              <span id="omikuji-stick-number"></span>
+            </div>
+          </div>
+          <img id="omikuji-image-front" src="img/omikuji_front.webp" alt="Fortune box" width="435" height="800">
+        </div>
+        <button type="button" id="draw-button">Draw Your Fortune</button>
+      </div>
+
+      <div id="result-area" class="hidden">
+        <h2 id="waka-title">Today's Poem<img id="poet-image" alt="Illustration of the poet" width="100" height="100"></h2>
+        <div id="waka-row">
+          <div id="waka-content">
+            <p id="waka-poem" class="poem"></p>
+          </div>
+          <img id="waka-card-image" class="waka-card-image" alt="" width="640" height="516">
+        </div>
+
+        <div class="interpretation-section">
+          <h3 class="was-h4">Meaning of the Poem</h3>
+          <p id="waka-meaning" class="meaning"></p>
+        </div>
+
+        <h2 id="waka-luck" class="luck-result"></h2>
+
+        <hr style="margin:0.5em 0 1em">
+
+        <div class="interpretation-section">
+          <h3 class="was-h4">Love &amp; Relationships</h3>
+          <p id="interp-love"></p>
+        </div>
+
+        <div class="interpretation-section">
+          <h3 class="was-h4">Work &amp; Life</h3>
+          <p id="interp-work"></p>
+        </div>
+
+        <div class="result-btn-group">
+          <button type="button" id="reset-button">Back</button>
+          <a id="poem-link-btn" href="#">View Poem</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Choose from the 100 poems (links to all 100 poems, with search and filters) -->
+  <section class="hyakushu" id="hyakushu" aria-labelledby="hyakushu-title">
+    <p class="home-kicker">100 poems</p>
+    <h2 id="hyakushu-title" class="home-heading">Choose from the 100 Poems</h2>
+    <p class="home-lead">Click a poem to see its translation, or a number to go to that poem's commentary page.<br>You can search by poet, part of a poem, or romaji, and sort the list.</p>
+    <div class="hyakushu__list is-collapsed" id="hyakushu-list">
+      <div id="input-wrapper">
+        <input type="search" id="searchInput" placeholder="Search by poem, poet, or romaji…" aria-label="Search poems and poets" autocomplete="off">
+        <div id="sort-buttons">
+          <button type="button" id="sortByNumber" class="sort-btn active">By number</button>
+          <button type="button" id="sortByColor" class="sort-btn">By colour</button>
+          <button type="button" id="sortByKana" class="sort-btn">Alphabetical (kana)</button>
+          <span class="sort-divider"></span>
+          <button type="button" class="sort-btn color-filter-btn" data-color="青">Blue</button>
+          <button type="button" class="sort-btn color-filter-btn" data-color="ピンク">Pink</button>
+          <button type="button" class="sort-btn color-filter-btn" data-color="黄">Yellow</button>
+          <button type="button" class="sort-btn color-filter-btn" data-color="緑">Green</button>
+          <button type="button" class="sort-btn color-filter-btn" data-color="橙">Orange</button>
+          <span class="sort-divider"></span>
+          <button type="button" class="sort-btn theme-filter-btn" data-theme="autumn">Autumn</button>
+          <button type="button" class="sort-btn theme-filter-btn" data-theme="summer">Summer</button>
+          <button type="button" class="sort-btn theme-filter-btn" data-theme="spring">Spring</button>
+          <button type="button" class="sort-btn theme-filter-btn" data-theme="winter">Winter</button>
+          <button type="button" class="sort-btn theme-filter-btn" data-theme="love">Love</button>
+          <button type="button" class="sort-btn theme-filter-btn" data-theme="travel">Travel</button>
+          <button type="button" class="sort-btn theme-filter-btn" data-theme="farewell">Farewell</button>
+        </div>
+      </div>
+      <div id="table" class="active">
+        <!-- POEM-TABLE:START -->
+        <table>
+          <tbody>
+            <tr data-number="1" data-color="ピンク" data-theme="autumn" data-hiragana="あきのたのかりおのいおのとまをあらみわがころもではつゆにぬれつつ"><td style="background-color: #fde8f3;"><a class="num-badge" href="/1_en.html" data-number="1" data-tooltip="Poem details">1</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">秋の田の かりほの庵の 苫をあらみ <br class="waka-br">我が衣手は 露にぬれつつ</span> <span class="romaji-text">akinotano karihonoihono tomaoarami <br class="waka-br">wagakoromodeha tsuyuninuretsutsu</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">By the rice fields, in a makeshift hut with a loosely woven roof, my sleeves are wet with the night dew.</span><div class="waka-game-links"><span class="small">天智天皇（Emperor Tenji）</span></div></td><td style="background-color: #F7F1E0;">あきのたの<br>かりほのいほの<br>とまをあらみ<br>わがころもでは<br>つゆにぬれつつ</td><td style="background-color: #F7F1E0;">akinotano karihonoihono tomaoarami wagakoromodeha tsuyuninuretsutsu</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="2" data-color="黄" data-theme="summer" data-hiragana="はるすぎてなつきにけらししろたえのころもほすちょうあまのかぐやま"><td style="background-color: #fefbe0;"><a class="num-badge" href="/2_en.html" data-number="2" data-tooltip="Poem details">2</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">春過ぎて 夏来にけらし 白妙の <br class="waka-br">衣ほすてふ 天の香具山</span> <span class="romaji-text">harusugite natsukinikerashi shirotaheno <br class="waka-br">koromohosutefu amanokaguyama</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">Spring has passed and summer seems to have come — white robes are said to be hung out to dry on the heavenly Mount Kagu.</span><div class="waka-game-links"><span class="small">持統天皇（Empress Jitō）</span></div></td><td style="background-color: #F7F1E0;">はるすぎて<br>なつきにけらし<br>しろたへの<br>ころもほすてふ<br>あまのかぐやま</td><td style="background-color: #F7F1E0;">harusugite natsukinikerashi shirotaheno koromohosutefu amanokaguyama</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="3" data-color="青" data-theme="love" data-hiragana="あしびきのやまどりのおのしだりおのながながしよをひとりかもねん"><td style="background-color: #e8f0fe;"><a class="num-badge" href="/3_en.html" data-number="3" data-tooltip="Poem details">3</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">あしびきの 山鳥の尾の しだり尾の <br class="waka-br">ながながし夜を ひとりかも寝む</span> <span class="romaji-text">ashibikino yamadorinoono shidariono <br class="waka-br">naganagashiyoo hitorikamonemu</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">As long as the trailing tail feathers of the mountain bird — through these long, long nights, must I sleep alone?</span><div class="waka-game-links"><span class="small">柿本人麻呂（Kakinomoto no Hitomaro）</span></div></td><td style="background-color: #F7F1E0;">あしびきの<br>やまどりのをの<br>しだりをの<br>ながながしよを<br>ひとりかもねむ</td><td style="background-color: #F7F1E0;">ashibikino yamadorinoono shidariono naganagashiyoo hitorikamonemu</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="4" data-color="ピンク" data-theme="winter" data-hiragana="たごのうらにうちいでてみればしろたえのふじのたかねにゆきはふりつつ"><td style="background-color: #fde8f3;"><a class="num-badge" href="/4_en.html" data-number="4" data-tooltip="Poem details">4</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">田子の浦に うちいでてみれば 白妙の <br class="waka-br">富士の高嶺に 雪は降りつつ</span> <span class="romaji-text">tagonourani uchiidetemireba shirotaheno <br class="waka-br">fujinotakaneni yukihafuritsutsu</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">Going out to Tago Bay and looking around, I see snow falling ceaselessly on the high peak of Fuji, white as freshly woven cloth.</span><div class="waka-game-links"><span class="small">山部赤人（Yamabe no Akahito）</span></div></td><td style="background-color: #F7F1E0;">たごのうらに<br>うちいでてみれば<br>しろたへの<br>ふじのたかねに<br>ゆきはふりつつ</td><td style="background-color: #F7F1E0;">tagonourani uchiidetemireba shirotaheno fujinotakaneni yukihafuritsutsu</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="5" data-color="青" data-theme="autumn" data-hiragana="おくやまにもみじふみわけなくしかのこえきくときぞあきはかなしき"><td style="background-color: #e8f0fe;"><a class="num-badge" href="/5_en.html" data-number="5" data-tooltip="Poem details">5</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">奥山に 紅葉踏み分け 鳴く鹿の <br class="waka-br">声聞く時ぞ 秋はかなしき</span> <span class="romaji-text">okuyamani momijifumiwake nakushikano <br class="waka-br">koekikutokizo akihakanashiki</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">Deep in the mountains, treading through the scattered autumn leaves, I hear a deer cry. Listening to that voice, I feel the sadness of autumn all the more.</span><div class="waka-game-links"><span class="small">猿丸太夫（Sarumaru Dayū）</span></div></td><td style="background-color: #F7F1E0;">おくやまに<br>もみぢふみわけ<br>なくしかの<br>こゑきくときぞ<br>あきはかなしき</td><td style="background-color: #F7F1E0;">okuyamani momijifumiwake nakushikano koekikutokizo akihakanashiki</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="6" data-color="青" data-theme="winter" data-hiragana="かささぎのわたせるはしにおくしものしろきをみればよぞふけにける"><td style="background-color: #e8f0fe;"><a class="num-badge" href="/6_en.html" data-number="6" data-tooltip="Poem details">6</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">かささぎの 渡せる橋に おく霜の <br class="waka-br">白きをみれば 夜ぞふけにける</span> <span class="romaji-text">kasasagino wataseruhashini okushimono <br class="waka-br">shirokiomireba yozofukenikeru</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">Looking up at the Milky Way that magpies wing across — its white shimmer seems to be scattered frost. The night deepens.</span><div class="waka-game-links"><span class="small">中納言家持（Middle Counselor Yakamochi）</span></div></td><td style="background-color: #F7F1E0;">かささぎの<br>わたせるはしに<br>おくしもの<br>しろきをみれば<br>よぞふけにける</td><td style="background-color: #F7F1E0;">kasasagino wataseruhashini okushimono shirokiomireba yozofukenikeru</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="7" data-color="黄" data-theme="travel" data-hiragana="あまのはらふりさけみればかすがなるみかさのやまにいでしつきかも"><td style="background-color: #fefbe0;"><a class="num-badge" href="/7_en.html" data-number="7" data-tooltip="Poem details">7</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">天の原 ふりさけみれば 春日なる <br class="waka-br">三笠の山に 出でし月かも</span> <span class="romaji-text">amanohara furisakemireba kasuganaru <br class="waka-br">mikasanoyamani ideshitsukikamo</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">Looking up at the vast sky, I see the moon. Is that the same moon that rose over Mount Mikasa in Kasuga, so long ago?</span><div class="waka-game-links"><span class="small">阿倍仲麻呂（Abe no Nakamaro）</span></div></td><td style="background-color: #F7F1E0;">あまのはら<br>ふりさけみれば<br>かすがなる<br>みかさのやまに<br>いでしつきかも</td><td style="background-color: #F7F1E0;">amanohara furisakemireba kasuganaru mikasanoyamani ideshitsukikamo</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="8" data-color="緑" data-theme="misc" data-hiragana="わがいおはみやこのたつみしかぞすむよをうじやまとひとはいふなり"><td style="background-color: #e8f5e8;"><a class="num-badge" href="/8_en.html" data-number="8" data-tooltip="Poem details">8</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">わが庵は 都の辰巳 しかぞすむ <br class="waka-br">世をうぢ山と 人はいふなり</span> <span class="romaji-text">wagaihoha miyakonotatsumi shikazosumu <br class="waka-br">yooujiyamato hitohaifunari</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">My home is in the southeast of the capital, and I live here at peace. People say I moved to Mount Uji because I found the world hard to bear — but that is only what others say.</span><div class="waka-game-links"><span class="small">喜撰法師（Priest Kisen）</span></div></td><td style="background-color: #F7F1E0;">わがいほは<br>みやこのたつみ<br>しかぞすむ<br>よをうぢやまと<br>ひとはいふなり</td><td style="background-color: #F7F1E0;">wagaihoha miyakonotatsumi shikazosumu yooujiyamato hitohaifunari</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="9" data-color="緑" data-theme="spring" data-hiragana="はなのいろはうつりにけりないたずらにわがみよにふるながめせしまに"><td style="background-color: #e8f5e8;"><a class="num-badge" href="/9_en.html" data-number="9" data-tooltip="Poem details">9</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">花の色は うつりにけりな いたづらに <br class="waka-br">わが身よにふる ながめせしまに</span> <span class="romaji-text">hananoiroha utsurinikerina itazurani <br class="waka-br">wagamiyonifuru nagameseshimani</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">How the beauty of the cherry blossoms faded away, soaked by the long spring rains. And just like them, my own looks have faded too, lost in a haze of endless longing.</span><div class="waka-game-links"><span class="small">小野小町（Ono no Komachi ）</span></div></td><td style="background-color: #F7F1E0;">はなのいろは<br>うつりにけりな<br>いたづらに<br>わがみよにふる<br>ながめせしまに</td><td style="background-color: #F7F1E0;">hananoiroha utsurinikerina itazurani wagamiyonifuru nagameseshimani</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="10" data-color="黄" data-theme="misc" data-hiragana="これやこのゆくもかえるもわかれてはしるもしらぬもおうさかのせき"><td style="background-color: #fefbe0;"><a class="num-badge" href="/10_en.html" data-number="10" data-tooltip="Poem details">10</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">これやこの 行くも帰るも わかれては <br class="waka-br">しるもしらぬも 逢坂の関</span> <span class="romaji-text">koreyakono yukumokaherumo wakareteha <br class="waka-br">shirumoshiranumo afusakanoseki</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">So this is it — the Barrier of Ōsaka, where those who leave and those who return, those who know each other and those who do not, all meet and part.</span><div class="waka-game-links"><span class="small">蝉丸（Semimaru）</span></div></td><td style="background-color: #F7F1E0;">これやこの<br>ゆくもかへるも<br>わかれては<br>しるもしらぬも<br>あふさかのせき</td><td style="background-color: #F7F1E0;">koreyakono yukumokaherumo wakareteha shirumoshiranumo afusakanoseki</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="11" data-color="緑" data-theme="travel" data-hiragana="わたのはらやそしまかけてこぎいでぬとひとにはつげよあまのつりぶね"><td style="background-color: #e8f5e8;"><a class="num-badge" href="/11_en.html" data-number="11" data-tooltip="Poem details">11</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">わたの原 八十島かけて 漕ぎ出でぬと <br class="waka-br">人にはつげよ あまのつり舟</span> <span class="romaji-text">watanohara yasoshimakakete kogiidenuto <br class="waka-br">hitonihatsugeyo amanotsuribune</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">I have set out rowing across the vast sea, heading for the many islands far away. Tell the people back home.</span><div class="waka-game-links"><span class="small">参議篁（Councillor Takamura）</span></div></td><td style="background-color: #F7F1E0;">わたのはら<br>やそしまかけて<br>こぎいでぬと<br>ひとにはつげよ<br>あまのつりぶね</td><td style="background-color: #F7F1E0;">watanohara yasoshimakakete kogiidenuto hitonihatsugeyo amanotsuribune</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="12" data-color="青" data-theme="misc" data-hiragana="あまつかぜくものかよいじふきとじよおとめのすがたしばしとどめん"><td style="background-color: #e8f0fe;"><a class="num-badge" href="/12_en.html" data-number="12" data-tooltip="Poem details">12</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">天つ風 雲のかよひ路 吹きとぢよ <br class="waka-br">をとめの姿 しばしとどめむ</span> <span class="romaji-text">amatsukaze kumonokayohiji fukitojiyo <br class="waka-br">otomenosugata shibashitodomemu</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">Heavenly wind, please close the path through the clouds! I want to keep the celestial maidens here a little longer.</span><div class="waka-game-links"><span class="small">僧正遍昭（High Priest Henjō）</span></div></td><td style="background-color: #F7F1E0;">あまつかぜ<br>くものかよひぢ<br>ふきとぢよ<br>をとめのすがた<br>しばしとどめむ</td><td style="background-color: #F7F1E0;">amatsukaze kumonokayohiji fukitojiyo otomenosugata shibashitodomemu</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="13" data-color="ピンク" data-theme="love" data-hiragana="つくばねのみねよりおつるみなのがわこいぞつもりてふちとなりぬる"><td style="background-color: #fde8f3;"><a class="num-badge" href="/13_en.html" data-number="13" data-tooltip="Poem details">13</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">筑波嶺の 峰より落つる みなの川 <br class="waka-br">こひぞつもりて 淵となりぬる</span> <span class="romaji-text">tsukubaneno mineyoriotsuru minanogaha <br class="waka-br">kohizotsumorite fuchitonarinuru</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">Just as the streams from the peak of Tsukuba flow down to fill the deep pools of the Mina River, so my love for you has gathered deep within me.</span><div class="waka-game-links"><span class="small">陽成院（Retired Emperor Yōzei）</span></div></td><td style="background-color: #F7F1E0;">つくばねの<br>みねよりおつる<br>みなのがは<br>こひぞつもりて<br>ふちとなりぬる</td><td style="background-color: #F7F1E0;">tsukubaneno mineyoriotsuru minanogaha kohizotsumorite fuchitonarinuru</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="14" data-color="青" data-theme="love" data-hiragana="みちのくのしのぶもじずりたれゆえにみだれそめにしわれならなくに"><td style="background-color: #e8f0fe;"><a class="num-badge" href="/14_en.html" data-number="14" data-tooltip="Poem details">14</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">陸奥の しのぶもぢずり 誰ゆゑに <br class="waka-br">乱れそめにし 我ならなくに</span> <span class="romaji-text">michinokuno shinobumojizuri tareyueni <br class="waka-br">midaresomenishi warenaranakuni</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">For whose sake has my heart become as disordered as the tangled patterns of Shinobu-mojizuri cloth of Mutsu? It is certainly not my own doing.</span><div class="waka-game-links"><span class="small">河原左大臣（Minister of the Left of Kawara）</span></div></td><td style="background-color: #F7F1E0;">みちのくの<br>しのぶもぢずり<br>たれゆゑに<br>みだれそめにし<br>われならなくに</td><td style="background-color: #F7F1E0;">michinokuno shinobumojizuri tareyueni midaresomenishi warenaranakuni</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="15" data-color="緑" data-theme="spring" data-hiragana="きみがためはるののにいでてわかなつむわがころもでにゆきはふりつつ"><td style="background-color: #e8f5e8;"><a class="num-badge" href="/15_en.html" data-number="15" data-tooltip="Poem details">15</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">君がため 春の野に出でて 若菜つむ <br class="waka-br">わが衣手に 雪は降りつつ</span> <span class="romaji-text">kimigatame harunononiidete wakanatsumu <br class="waka-br">wagakoromodeni yukihafuritsutsu</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">Going out into the spring fields to pick young greens for you — the snow falls on my sleeves.</span><div class="waka-game-links"><span class="small">光孝天皇（Emperor Kōkō）</span></div></td><td style="background-color: #F7F1E0;">きみがため<br>はるののにいでて<br>わかなつむ<br>わがころもでに<br>ゆきはふりつつ</td><td style="background-color: #F7F1E0;">kimigatame harunononiidete wakanatsumu wagakoromodeni yukihafuritsutsu</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="16" data-color="ピンク" data-theme="farewell" data-hiragana="たちわかれいなばのやまのみねにおうるまつとしきかばいまかえりこん"><td style="background-color: #fde8f3;"><a class="num-badge" href="/16_en.html" data-number="16" data-tooltip="Poem details">16</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">立ち別れ いなばの山の 峰に生ふる <br class="waka-br">まつとし聞かば 今帰りこむ</span> <span class="romaji-text">tachiwakare inabanoyamano mineniofuru <br class="waka-br">matsutoshikikaba imakaherikomu</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">I am leaving for the province of Inaba, where the pines grow on the mountain peak. If I hear that you are waiting for me, I will come back right away.</span><div class="waka-game-links"><span class="small">中納言行平（Middle Counselor Yukihira ）</span></div></td><td style="background-color: #F7F1E0;">たちわかれ<br>いなばのやまの<br>みねにおふる<br>まつとしきかば<br>いまかへりこむ</td><td style="background-color: #F7F1E0;">tachiwakare inabanoyamano mineniofuru matsutoshikikaba imakaherikomu</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="17" data-color="緑" data-theme="autumn" data-hiragana="ちはやぶるかみよもきかずたつたがわからくれないにみずくくるとは"><td style="background-color: #e8f5e8;"><a class="num-badge" href="/17_en.html" data-number="17" data-tooltip="Poem details">17</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">ちはやぶる 神代もきかず 竜田川 <br class="waka-br">から紅に 水くくるとは</span> <span class="romaji-text">chihayaburu kamiyomokikazu tatsutagaha <br class="waka-br">karakurenaini mizukukurutoha</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">Even the ancient gods never heard of this — the Tatsuta River, dyeing its waters a deep crimson with fallen maple leaves.</span><div class="waka-game-links"><span class="small">在原業平朝臣（Ariwara no Narihira Ason）</span></div></td><td style="background-color: #F7F1E0;">ちはやぶる<br>かみよもきかず<br>たつたがは<br>からくれなゐに<br>みづくくるとは</td><td style="background-color: #F7F1E0;">chihayaburu kamiyomokikazu tatsutagaha karakurenaini mizukukurutoha</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="18" data-color="黄" data-theme="love" data-hiragana="すみのえのきしによるなみよるさえやゆめのかよいじひとめよくらん"><td style="background-color: #fefbe0;"><a class="num-badge" href="/18_en.html" data-number="18" data-tooltip="Poem details">18</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">住の江の 岸による波 よるさへや <br class="waka-br">夢のかよひ路 人目よくらむ</span> <span class="romaji-text">suminoeno kishiniyorunami yorusaheya <br class="waka-br">yumenokayohiji hitomeyokuramu</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">Even in my dreams, I find myself longing to go to you along the path of dreams — but do I hide from others' eyes even in the night?</span><div class="waka-game-links"><span class="small">藤原敏行朝臣（Fujiwara no Toshiyuki Ason）</span></div></td><td style="background-color: #F7F1E0;">すみのえの<br>きしによるなみ<br>よるさへや<br>ゆめのかよひぢ<br>ひとめよくらむ</td><td style="background-color: #F7F1E0;">suminoeno kishiniyorunami yorusaheya yumenokayohiji hitomeyokuramu</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="19" data-color="橙" data-theme="love" data-hiragana="なにわがたみじかきあしのふしのまもあわでこのよをすぐしてよとや"><td style="background-color: #fef0e0;"><a class="num-badge" href="/19_en.html" data-number="19" data-tooltip="Poem details">19</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">難波潟 みじかき葦の ふしのまも <br class="waka-br">逢はでこの世を 過ぐしてよとや</span> <span class="romaji-text">nanihagata mijikakiashino fushinomamo <br class="waka-br">ahadekonoyoo sugushiteyotoya</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">In this short life, even as brief as a joint of reed at Naniwa Bay, must I pass through this world without ever meeting you?</span><div class="waka-game-links"><span class="small">伊勢（Ise）</span></div></td><td style="background-color: #F7F1E0;">なにはがた<br>みじかきあしの<br>ふしのまも<br>あはでこのよを<br>すぐしてよとや</td><td style="background-color: #F7F1E0;">nanihagata mijikakiashino fushinomamo ahadekonoyoo sugushiteyotoya</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="20" data-color="緑" data-theme="love" data-hiragana="わびぬればいまはたおなじなにわなるみをつくしてもあわんとぞおもう"><td style="background-color: #e8f5e8;"><a class="num-badge" href="/20_en.html" data-number="20" data-tooltip="Poem details">20</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">わびぬれば いまはたおなじ 難波なる <br class="waka-br">みをつくしても 逢はむとぞ思ふ</span> <span class="romaji-text">wabinureba imahataonaji nanihanaru <br class="waka-br">miotsukushitemo ahamutozoomofu</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">Since things have come to this, it no longer matters. Even if I must sacrifice everything, I still want to meet you.</span><div class="waka-game-links"><span class="small">元良親王（Prince Motoyoshi）</span></div></td><td style="background-color: #F7F1E0;">わびぬれば<br>いまはたおなじ<br>なにはなる<br>みをつくしても<br>あはむとぞおもふ</td><td style="background-color: #F7F1E0;">wabinureba imahataonaji nanihanaru miotsukushitemo ahamutozoomofu</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="21" data-color="橙" data-theme="love" data-hiragana="いまこんといひしばかりにながつきのありあけのつきをまちいでつるかな"><td style="background-color: #fef0e0;"><a class="num-badge" href="/21_en.html" data-number="21" data-tooltip="Poem details">21</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">今こむと いひしばかりに 長月の <br class="waka-br">有明の月を 待ち出でつるかな</span> <span class="romaji-text">imakomuto ihishibakarini nagatsukino <br class="waka-br">ariakenotsukio machiidetsurukana</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">Just because you said "I will come right away" — I waited all night for you, watching the moon of the long autumn month until it set at dawn.</span><div class="waka-game-links"><span class="small">素性法師（Priest Sosei）</span></div></td><td style="background-color: #F7F1E0;">いまこむと<br>いひしばかりに<br>ながつきの<br>ありあけのつきを<br>まちいでつるかな</td><td style="background-color: #F7F1E0;">imakomuto ihishibakarini nagatsukino ariakenotsukio machiidetsurukana</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="22" data-color="ピンク" data-theme="autumn" data-hiragana="ふくからにあきのくさきのしおるればむべやまかぜをあらしというらん"><td style="background-color: #fde8f3;"><a class="num-badge" href="/22_en.html" data-number="22" data-tooltip="Poem details">22</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">吹くからに 秋の草木の しをるれば <br class="waka-br">むべ山風を 嵐といふらむ</span> <span class="romaji-text">fukukarani akinokusakino shiorureba <br class="waka-br">mubeyamakazeo arashitoifuramu</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">The moment the autumn wind blows, the grasses and trees wither. Now I understand why the mountain wind is called "arashi" — storm.</span><div class="waka-game-links"><span class="small">文屋康秀（Fun'ya no Yasuhide ）</span></div></td><td style="background-color: #F7F1E0;">ふくからに<br>あきのくさきの<br>しをるれば<br>むべやまかぜを<br>あらしといふらむ</td><td style="background-color: #F7F1E0;">fukukarani akinokusakino shiorureba mubeyamakazeo arashitoifuramu</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="23" data-color="緑" data-theme="autumn" data-hiragana="つきみればちぢにものこそかなしけれわがみひとつのあきにはあらねど"><td style="background-color: #e8f5e8;"><a class="num-badge" href="/23_en.html" data-number="23" data-tooltip="Poem details">23</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">月みれば ちぢにものこそ 悲しけれ <br class="waka-br">わが身一つの 秋にはあらねど</span> <span class="romaji-text">tsukimireba chijinimonokoso kanashikere <br class="waka-br">wagamihitotsuno akinihaaranedo</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">When I look at the moon, a thousand thoughts rise up and fill me with sadness. Yet this autumn is not mine alone.</span><div class="waka-game-links"><span class="small">大江千里（Ōe no Chisato）</span></div></td><td style="background-color: #F7F1E0;">つきみれば<br>ちぢにものこそ<br>かなしけれ<br>わがみひとつの<br>あきにはあらねど</td><td style="background-color: #F7F1E0;">tsukimireba chijinimonokoso kanashikere wagamihitotsuno akinihaaranedo</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="24" data-color="青" data-theme="travel" data-hiragana="このたびはぬさもとりあえずたむけやまもみじのにしきかみのまにまに"><td style="background-color: #e8f0fe;"><a class="num-badge" href="/24_en.html" data-number="24" data-tooltip="Poem details">24</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">このたびは 幣もとりあへず 手向山 <br class="waka-br">もみぢのにしき 神のまにまに</span> <span class="romaji-text">konotabiha nusamotoriahezu tamukeyama <br class="waka-br">momijinonishiki kaminomanimani</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">This time I have no offerings ready, O Tamukeyama. Please, grant me safe passage — I leave it in the hands of the gods.</span><div class="waka-game-links"><span class="small">菅家（Kanke）</span></div></td><td style="background-color: #F7F1E0;">このたびは<br>ぬさもとりあへず<br>たむけやま<br>もみぢのにしき<br>かみのまにまに</td><td style="background-color: #F7F1E0;">konotabiha nusamotoriahezu tamukeyama momijinonishiki kaminomanimani</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="25" data-color="橙" data-theme="love" data-hiragana="なにしおわばおうさかやまのさねかずらひとにしられでくるよしもがな"><td style="background-color: #fef0e0;"><a class="num-badge" href="/25_en.html" data-number="25" data-tooltip="Poem details">25</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">名にし負はば 逢坂山の さねかづら <br class="waka-br">人にしられで くるよしもがな</span> <span class="romaji-text">nanishiohaba afusakayamano sanekazura <br class="waka-br">hitonishirarede kuruyoshimogana</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">If the name of Ōsaka carries its meaning — then let me secretly follow the vine I draw toward me, and come to you unseen.</span><div class="waka-game-links"><span class="small">三条右大臣（Minister of the Right of Sanjō）</span></div></td><td style="background-color: #F7F1E0;">なにしおはば<br>あふさかやまの<br>さねかづら<br>ひとにしられで<br>くるよしもがな</td><td style="background-color: #F7F1E0;">nanishiohaba afusakayamano sanekazura hitonishirarede kuruyoshimogana</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="26" data-color="緑" data-theme="autumn" data-hiragana="おぐらやまみねのもみじばこころあらばいまひとたびのみゆきまたなむ"><td style="background-color: #e8f5e8;"><a class="num-badge" href="/26_en.html" data-number="26" data-tooltip="Poem details">26</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">小倉山 峰のもみぢ葉 心あらば <br class="waka-br">今ひとたびの みゆき待たなむ</span> <span class="romaji-text">ogurayama minenomomijiba kokoroaraba <br class="waka-br">imahitotabino miyukimatanamu</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">O maple leaves of Ogura Mountain, if you have a heart — hold on a little longer, until the emperor's visit.</span><div class="waka-game-links"><span class="small">貞信公（Teishin-kō）</span></div></td><td style="background-color: #F7F1E0;">をぐらやま<br>みねのもみぢば<br>こころあらば<br>いまひとたびの<br>みゆきまたなむ</td><td style="background-color: #F7F1E0;">ogurayama minenomomijiba kokoroaraba imahitotabino miyukimatanamu</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="27" data-color="橙" data-theme="love" data-hiragana="みかのはらわきてながるるいずみがわいつみきとてかこいしかるらん"><td style="background-color: #fef0e0;"><a class="num-badge" href="/27_en.html" data-number="27" data-tooltip="Poem details">27</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">みかの原 わきて流るる いづみ川 <br class="waka-br">いつ見きとてか 恋しかるらむ</span> <span class="romaji-text">mikanohara wakitenagaruru izumigaha <br class="waka-br">itsumikitoteka kohishikaruramu</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">Like the Izumi River that wells up and flows through Mika Plain — when did I first see you, that I should long for you so?</span><div class="waka-game-links"><span class="small">中納言兼輔（Middle Counselor Kanesuke）</span></div></td><td style="background-color: #F7F1E0;">みかのはら<br>わきてながるる<br>いづみがは<br>いつみきとてか<br>こひしかるらむ</td><td style="background-color: #F7F1E0;">mikanohara wakitenagaruru izumigaha itsumikitoteka kohishikaruramu</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="28" data-color="ピンク" data-theme="winter" data-hiragana="やまざとはふゆぞさびしさまさりけるひとめもくさもかれぬとおもえば"><td style="background-color: #fde8f3;"><a class="num-badge" href="/28_en.html" data-number="28" data-tooltip="Poem details">28</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">山里は 冬ぞさびしさ まさりける <br class="waka-br">人目も草も かれぬと思へば</span> <span class="romaji-text">yamazatoha fuyuzosabishisa masarikeru <br class="waka-br">hitomemokusamo karenutoomoheba</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">In a mountain village, loneliness deepens in winter. Not only people disappear — the grass too withers away.</span><div class="waka-game-links"><span class="small">源宗于朝臣（Minamoto no Muneyuki Ason）</span></div></td><td style="background-color: #F7F1E0;">やまざとは<br>ふゆぞさびしさ<br>まさりける<br>ひとめもくさも<br>かれぬとおもへば</td><td style="background-color: #F7F1E0;">yamazatoha fuyuzosabishisa masarikeru hitomemokusamo karenutoomoheba</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="29" data-color="緑" data-theme="autumn" data-hiragana="こころあてにおらばやおらんはつしものおきまどわせるしらぎくのはな"><td style="background-color: #e8f5e8;"><a class="num-badge" href="/29_en.html" data-number="29" data-tooltip="Poem details">29</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">心当てに 折らばや折らむ 初霜の <br class="waka-br">おきまどはせる 白菊の花</span> <span class="romaji-text">kokoroateni orabayaoramu hatsushimono <br class="waka-br">okimadohaseru shiragikunohana</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">Shall I pick it or not? The white chrysanthemum lies hidden beneath the first frost, and I cannot tell them apart.</span><div class="waka-game-links"><span class="small">凡河内躬恒（Ōshikōchi no Mitsune）</span></div></td><td style="background-color: #F7F1E0;">こころあてに<br>をらばやをらむ<br>はつしもの<br>おきまどはせる<br>しらぎくのはな</td><td style="background-color: #F7F1E0;">kokoroateni orabayaoramu hatsushimono okimadohaseru shiragikunohana</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="30" data-color="青" data-theme="love" data-hiragana="ありあけのつれなくみえしわかれよりあかつきばかりうきものはなし"><td style="background-color: #e8f0fe;"><a class="num-badge" href="/30_en.html" data-number="30" data-tooltip="Poem details">30</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">有明の つれなく見えし 別れより <br class="waka-br">あかつきばかり 憂きものはなし</span> <span class="romaji-text">ariakeno tsurenakumieshi wakareyori <br class="waka-br">akatsukibakari ukimonohanashi</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">Ever since that cold dawn when we parted, I have come to dread the break of day more than anything in the world.</span><div class="waka-game-links"><span class="small">壬生忠岑（Mibu no Tadamine）</span></div></td><td style="background-color: #F7F1E0;">ありあけの<br>つれなくみえし<br>わかれより<br>あかつきばかり<br>うきものはなし</td><td style="background-color: #F7F1E0;">ariakeno tsurenakumieshi wakareyori akatsukibakari ukimonohanashi</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="31" data-color="青" data-theme="winter" data-hiragana="あさぼらけありあけのつきとみるまでによしののさとにふれるしらゆき"><td style="background-color: #e8f0fe;"><a class="num-badge" href="/31_en.html" data-number="31" data-tooltip="Poem details">31</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">朝ぼらけ 有明の月と 見るまでに <br class="waka-br">吉野の里に 降れる白雪</span> <span class="romaji-text">asaborake ariakenotsukito mirumadeni <br class="waka-br">yoshinonosatoni furerushirayuki</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">In the early morning light, the village of Yoshino is blanketed in white — it looks just like the pale glow of the dawn moon.</span><div class="waka-game-links"><span class="small">坂上是則（Sakanoue no Korenori）</span></div></td><td style="background-color: #F7F1E0;">あさぼらけ<br>ありあけのつきと<br>みるまでに<br>よしののさとに<br>ふれるしらゆき</td><td style="background-color: #F7F1E0;">asaborake ariakenotsukito mirumadeni yoshinonosatoni furerushirayuki</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="32" data-color="黄" data-theme="autumn" data-hiragana="やまかわにかぜのかけたるしがらみはながれもあえぬもみじなりけり"><td style="background-color: #fefbe0;"><a class="num-badge" href="/32_en.html" data-number="32" data-tooltip="Poem details">32</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">山川に 風のかけたる しがらみは <br class="waka-br">流れもあへぬ 紅葉なりけり</span> <span class="romaji-text">yamagahani kazenokaketaru shigaramiha <br class="waka-br">nagaremoahenu momijinarikeri</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">The weir of fallen maple leaves, caught by the mountain wind across the stream — the water cannot flow through.</span><div class="waka-game-links"><span class="small">春道列樹（Harumichi no Tsuraki）</span></div></td><td style="background-color: #F7F1E0;">やまがはに<br>かぜのかけたる<br>しがらみは<br>ながれもあへぬ<br>もみぢなりけり</td><td style="background-color: #F7F1E0;">yamagahani kazenokaketaru shigaramiha nagaremoahenu momijinarikeri</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="33" data-color="黄" data-theme="spring" data-hiragana="ひさかたのひかりのどけきはるのひにしずこころなくはなのちるらん"><td style="background-color: #fefbe0;"><a class="num-badge" href="/33_en.html" data-number="33" data-tooltip="Poem details">33</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">久方の 光のどけき 春の日に <br class="waka-br">しづ心なく 花の散るらむ</span> <span class="romaji-text">hisakatano hikarinodokeki harunohini <br class="waka-br">shizukokoronaku hananochiruramu</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">In the peaceful light of a spring day, why do the cherry blossoms scatter so restlessly?</span><div class="waka-game-links"><span class="small">紀友則（Ki no Tomonori）</span></div></td><td style="background-color: #F7F1E0;">ひさかたの<br>ひかりのどけき<br>はるのひに<br>しづこころなく<br>はなのちるらむ</td><td style="background-color: #F7F1E0;">hisakatano hikarinodokeki harunohini shizukokoronaku hananochiruramu</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="34" data-color="ピンク" data-theme="misc" data-hiragana="たれをかもしるひとにせんたかさごのまつもむかしのともならなくに"><td style="background-color: #fde8f3;"><a class="num-badge" href="/34_en.html" data-number="34" data-tooltip="Poem details">34</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">誰をかも 知る人にせむ 高砂の <br class="waka-br">松も昔の 友ならなくに</span> <span class="romaji-text">tareokamo shiruhitonisemu takasagono <br class="waka-br">matsumomukashino tomonaranakuni</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">Who can I call a true friend now? Even the old pine of Takasago knew the friends of long ago no longer.</span><div class="waka-game-links"><span class="small">藤原興風（Fujiwara no Okikaze）</span></div></td><td style="background-color: #F7F1E0;">たれをかも<br>しるひとにせむ<br>たかさごの<br>まつもむかしの<br>ともならなくに</td><td style="background-color: #F7F1E0;">tareokamo shiruhitonisemu takasagono matsumomukashino tomonaranakuni</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="35" data-color="緑" data-theme="spring" data-hiragana="ひとはいさこころもしらずふるさとははなぞむかしのかににおいける"><td style="background-color: #e8f5e8;"><a class="num-badge" href="/35_en.html" data-number="35" data-tooltip="Poem details">35</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">人はいさ 心も知らず ふるさとは <br class="waka-br">花ぞ昔の 香に匂ひける</span> <span class="romaji-text">hitohaisa kokoromoshirazu furusatoha <br class="waka-br">hanazomukashino kaninihohikeru</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">I cannot know what is in your heart. But here in the old village, the plum blossoms still carry the same fragrance as before.</span><div class="waka-game-links"><span class="small">紀貫之（Ki no Tsurayuki）</span></div></td><td style="background-color: #F7F1E0;">ひとはいさ<br>こころもしらず<br>ふるさとは<br>はなぞむかしの<br>かににほひける</td><td style="background-color: #F7F1E0;">hitohaisa kokoromoshirazu furusatoha hanazomukashino kaninihohikeru</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="36" data-color="緑" data-theme="summer" data-hiragana="なつのよはまたよいながらあけぬるをくものいずこにつきやどるらん"><td style="background-color: #e8f5e8;"><a class="num-badge" href="/36_en.html" data-number="36" data-tooltip="Poem details">36</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">夏の夜は まだ宵ながら あけぬるを <br class="waka-br">雲のいづこに 月やどるらむ</span> <span class="romaji-text">natsunoyoha madayohinagara akenuruo <br class="waka-br">kumonoizukoni tsukiyadoruramu</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">On a summer night, the day has already dawned while it still feels like early evening. Where in the clouds is the moon hiding?</span><div class="waka-game-links"><span class="small">清原深養父（Kiyohara no Fukayabu）</span></div></td><td style="background-color: #F7F1E0;">なつのよは<br>まだよひながら<br>あけぬるを<br>くものいづこに<br>つきやどるらむ</td><td style="background-color: #F7F1E0;">natsunoyoha madayohinagara akenuruo kumonoizukoni tsukiyadoruramu</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="37" data-color="黄" data-theme="autumn" data-hiragana="しらつゆにかぜのふきしくあきののはつらぬきとめぬたまぞちりける"><td style="background-color: #fefbe0;"><a class="num-badge" href="/37_en.html" data-number="37" data-tooltip="Poem details">37</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">白露に 風の吹きしく 秋の野は <br class="waka-br">つらぬきとめぬ 玉ぞ散りける</span> <span class="romaji-text">shiratsuyuni kazenofukishiku akinonoha <br class="waka-br">tsuranukitomenu tamazochirikeru</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">In the autumn fields lashed by the wind and dew, the scattered drops look like beads of jade that cannot be strung together.</span><div class="waka-game-links"><span class="small">文屋朝康（Fun'ya no Asayasu）</span></div></td><td style="background-color: #F7F1E0;">しらつゆに<br>かぜのふきしく<br>あきののは<br>つらぬきとめぬ<br>たまぞちりける</td><td style="background-color: #F7F1E0;">shiratsuyuni kazenofukishiku akinonoha tsuranukitomenu tamazochirikeru</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="38" data-color="緑" data-theme="love" data-hiragana="わすらるるみをばおもわずちかいてしひとのいのちのおしくもあるかな"><td style="background-color: #e8f5e8;"><a class="num-badge" href="/38_en.html" data-number="38" data-tooltip="Poem details">38</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">忘らるる 身をば思はず 誓ひてし <br class="waka-br">人の命の 惜しくもあるかな</span> <span class="romaji-text">wasuraruru miobaomohazu chikahiteshi <br class="waka-br">hitonoinochino oshikumoarukana</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">I do not grieve for myself, though I am forgotten. But I worry for you — you who swore an oath. What will become of you?</span><div class="waka-game-links"><span class="small">右近（Ukon）</span></div></td><td style="background-color: #F7F1E0;">わすらるる<br>みをばおもはず<br>ちかひてし<br>ひとのいのちの<br>をしくもあるかな</td><td style="background-color: #F7F1E0;">wasuraruru miobaomohazu chikahiteshi hitonoinochino oshikumoarukana</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="39" data-color="黄" data-theme="love" data-hiragana="あさじうのおののしのはらしのぶれどあまりてなどかひとのこいしき"><td style="background-color: #fefbe0;"><a class="num-badge" href="/39_en.html" data-number="39" data-tooltip="Poem details">39</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">浅茅生の 小野の篠原 しのぶれど <br class="waka-br">あまりてなどか 人の恋しき</span> <span class="romaji-text">asajifuno ononoshinohara shinoburedo <br class="waka-br">amaritenadoka hitonokohishiki</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">Though I try to hide it, my longing spills over. Why is it that I cannot stop thinking of that person?</span><div class="waka-game-links"><span class="small">参議等（Councillor Hitoshi）</span></div></td><td style="background-color: #F7F1E0;">あさぢふの<br>をののしのはら<br>しのぶれど<br>あまりてなどか<br>ひとのこひしき</td><td style="background-color: #F7F1E0;">asajifuno ononoshinohara shinoburedo amaritenadoka hitonokohishiki</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="40" data-color="ピンク" data-theme="love" data-hiragana="しのぶれどいろにいでにけりわがこいはものやおもうとひとのとうまて"><td style="background-color: #fde8f3;"><a class="num-badge" href="/40_en.html" data-number="40" data-tooltip="Poem details">40</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">忍ぶれど 色に出でにけり 我が恋は <br class="waka-br">物や思ふと 人の問ふまで</span> <span class="romaji-text">shinoburedo ironiidenikeri wagakohiha <br class="waka-br">monoyaomofuto hitonotofumade</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">Though I tried to keep it secret, my love showed itself on my face — to the point where people asked if something was on my mind.</span><div class="waka-game-links"><span class="small">平兼盛（Taira no Kanemori）</span></div></td><td style="background-color: #F7F1E0;">しのぶれど<br>いろにいでにけり<br>わがこひは<br>ものやおもふと<br>ひとのとふまで</td><td style="background-color: #F7F1E0;">shinoburedo ironiidenikeri wagakohiha monoyaomofuto hitonotofumade</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="41" data-color="緑" data-theme="love" data-hiragana="こいすちょうわがなはまだきたちにけりひとしれずこそおもいそめしか"><td style="background-color: #e8f5e8;"><a class="num-badge" href="/41_en.html" data-number="41" data-tooltip="Poem details">41</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">恋すてふ 我が名はまだき 立ちにけり <br class="waka-br">人しれずこそ 思ひそめしか</span> <span class="romaji-text">kohisutefu waganahamadaki tachinikeri <br class="waka-br">hitoshirezukoso omohisomeshika</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">They say my name as a lover is already known far and wide, even before the affair began. I had kept it so quietly in my heart.</span><div class="waka-game-links"><span class="small">壬生忠見（Mibu no Tadami）</span></div></td><td style="background-color: #F7F1E0;">こひすてふ<br>わがなはまだき<br>たちにけり<br>ひとしれずこそ<br>おもひそめしか</td><td style="background-color: #F7F1E0;">kohisutefu waganahamadaki tachinikeri hitoshirezukoso omohisomeshika</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="42" data-color="緑" data-theme="love" data-hiragana="ちぎりきなかたみにそでをしぼりつつすえのまつやま なみこさじとは"><td style="background-color: #e8f5e8;"><a class="num-badge" href="/42_en.html" data-number="42" data-tooltip="Poem details">42</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">契りきな かたみに袖を しぼりつつ <br class="waka-br">末の松山 波こさじとは</span> <span class="romaji-text">chigirikina kataminisodeo shiboritsutsu <br class="waka-br">suenomatsuyama namikosajitoha</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">We promised each other, wringing out our tear-soaked sleeves, that our love would last forever, never to be swept away like the waves beyond Suenomatsu.</span><div class="waka-game-links"><span class="small">清原元輔（Kiyohara no Motosuke）</span></div></td><td style="background-color: #F7F1E0;">ちぎりきな<br>かたみにそでを<br>しぼりつつ<br>すゑのまつやま<br>なみこさじとは</td><td style="background-color: #F7F1E0;">chigirikina kataminisodeo shiboritsutsu suenomatsuyama namikosajitoha</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="43" data-color="橙" data-theme="love" data-hiragana="あいみてののちのこころにくらぶればむかしはものをおもわざりけり"><td style="background-color: #fef0e0;"><a class="num-badge" href="/43_en.html" data-number="43" data-tooltip="Poem details">43</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">逢ひ見ての のちの心に くらぶれば <br class="waka-br">昔は物を 思はざりけり</span> <span class="romaji-text">ahimiteno nochinokokoroni kurabureba <br class="waka-br">mukashihamonoo omohazarikeri</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">Compared to this feeling after meeting you, the longing I felt before seems like nothing at all.</span><div class="waka-game-links"><span class="small">権中納言敦忠（Acting Middle Counselor Atsutada）</span></div></td><td style="background-color: #F7F1E0;">あひみての<br>のちのこころに<br>くらぶれば<br>むかしはものを<br>おもはざりけり</td><td style="background-color: #F7F1E0;">ahimiteno nochinokokoroni kurabureba mukashihamonoo omohazarikeri</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="44" data-color="橙" data-theme="love" data-hiragana="あうことのたえてしなくはなかなかにひとをもみをもうらみざらまし"><td style="background-color: #fef0e0;"><a class="num-badge" href="/44_en.html" data-number="44" data-tooltip="Poem details">44</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">逢ふことの 絶えてしなくは なかなかに <br class="waka-br">人をも身をも 恨みざらまし</span> <span class="romaji-text">afukotono taeteshinakuha nakanakani <br class="waka-br">hitoomomiomo uramizaramashi</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">If there were no meetings at all, I would not have to suffer. It is because we meet that parting brings such pain.</span><div class="waka-game-links"><span class="small">中納言朝忠（Middle Counselor Asatada）</span></div></td><td style="background-color: #F7F1E0;">あふことの<br>たえてしなくは<br>なかなかに<br>ひとをもみをも<br>うらみざらまし</td><td style="background-color: #F7F1E0;">afukotono taeteshinakuha nakanakani hitoomomiomo uramizaramashi</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="45" data-color="橙" data-theme="love" data-hiragana="あわれともいうべきひとはおもおえでみのいたずらになりぬべきかな"><td style="background-color: #fef0e0;"><a class="num-badge" href="/45_en.html" data-number="45" data-tooltip="Poem details">45</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">あはれとも いふべき人は 思ほえで <br class="waka-br">身のいたづらに なりぬべきかな</span> <span class="romaji-text">aharetomo ifubekihitoha omohoede <br class="waka-br">minoitazurani narinubekikana</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">There is no one who might show even a little compassion. I feel as though my life will simply fade away, just like that.</span><div class="waka-game-links"><span class="small">謙徳公（Kentoku-kō）</span></div></td><td style="background-color: #F7F1E0;">あはれとも<br>いふべきひとは<br>おもほえで<br>みのいたづらに<br>なりぬべきかな</td><td style="background-color: #F7F1E0;">aharetomo ifubekihitoha omohoede minoitazurani narinubekikana</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="46" data-color="黄" data-theme="love" data-hiragana="ゆらのとをわたるふなびとかじをたえゆくえもしらぬこいのみちかな"><td style="background-color: #fefbe0;"><a class="num-badge" href="/46_en.html" data-number="46" data-tooltip="Poem details">46</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">由良のとを 渡る舟人 かぢを絶え <br class="waka-br">ゆくへも知らぬ 恋の道かな</span> <span class="romaji-text">yuranotoo watarufunabito kajiotae <br class="waka-br">yukuhemoshiranu kohinomichikana</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">Like a boatman who has lost his oar on the swift straits of Yura — I drift, not knowing where my love is taking me.</span><div class="waka-game-links"><span class="small">曽禰好忠（Sone no Yoshitada）</span></div></td><td style="background-color: #F7F1E0;">ゆらのとを<br>わたるふなびと<br>かぢをたえ<br>ゆくへもしらぬ<br>こひのみちかな</td><td style="background-color: #F7F1E0;">yuranotoo watarufunabito kajiotae yukuhemoshiranu kohinomichikana</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="47" data-color="黄" data-theme="autumn" data-hiragana="やえむぐらしげれるやどのさびしきにひとこそみえねあきはきにけり"><td style="background-color: #fefbe0;"><a class="num-badge" href="/47_en.html" data-number="47" data-tooltip="Poem details">47</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">八重葎 しげれる宿の さびしきに <br class="waka-br">人こそ見えね 秋は来にけり</span> <span class="romaji-text">yahemugura shigereruyadono sabishikini <br class="waka-br">hitokosomiene akihakinikeri</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">Weeds grow thick around the deserted house. No one comes to visit. And yet — autumn has arrived.</span><div class="waka-game-links"><span class="small">恵慶法師（Priest Egyō）</span></div></td><td style="background-color: #F7F1E0;">やへむぐら<br>しげれるやどの<br>さびしきに<br>ひとこそみえね<br>あきはきにけり</td><td style="background-color: #F7F1E0;">yahemugura shigereruyadono sabishikini hitokosomiene akihakinikeri</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="48" data-color="ピンク" data-theme="love" data-hiragana="かぜをいたみいわうつなみのおのれのみくだけてものをおもうころかな"><td style="background-color: #fde8f3;"><a class="num-badge" href="/48_en.html" data-number="48" data-tooltip="Poem details">48</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">風をいたみ 岩うつ波の おのれのみ <br class="waka-br">くだけて物を 思ふころかな</span> <span class="romaji-text">kazeoitami ihautsunamino onorenomi <br class="waka-br">kudaketemonoo omofukorokana</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">Like the waves crashing against the rocks in the fierce wind, I alone am broken to pieces by this sorrow.</span><div class="waka-game-links"><span class="small">源重之（Minamoto no Shigeyuki）</span></div></td><td style="background-color: #F7F1E0;">かぜをいたみ<br>いはうつなみの<br>おのれのみ<br>くだけてものを<br>おもふころかな</td><td style="background-color: #F7F1E0;">kazeoitami ihautsunamino onorenomi kudaketemonoo omofukorokana</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="49" data-color="橙" data-theme="love" data-hiragana="みかきもりえじのたくひのよるはもえひるはきえつつものをこそおもえ"><td style="background-color: #fef0e0;"><a class="num-badge" href="/49_en.html" data-number="49" data-tooltip="Poem details">49</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">御垣守 衛士のたく火の 夜はもえ <br class="waka-br">昼は消えつつ 物をこそ思へ</span> <span class="romaji-text">mikakimori ejinotakuhino yoruhamoe <br class="waka-br">hiruhakietsutsu monookosoomohe</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">Like the fire tended by the palace guards, I burn at night and fade in the day — lost in endless longing.</span><div class="waka-game-links"><span class="small">大中臣能宣朝臣（Ōnakatomi no Yoshinobu Ason）</span></div></td><td style="background-color: #F7F1E0;">みかきもり<br>ゑじのたくひの<br>よるはもえ<br>ひるはきえつつ<br>ものをこそおもへ</td><td style="background-color: #F7F1E0;">mikakimori ejinotakuhino yoruhamoe hiruhakietsutsu monookosoomohe</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="50" data-color="青" data-theme="love" data-hiragana="きみがためおしからざりしいのちさえながくもがなとおもいけるかな"><td style="background-color: #e8f0fe;"><a class="num-badge" href="/50_en.html" data-number="50" data-tooltip="Poem details">50</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">君がため 惜しからざりし いのちさへ <br class="waka-br">長くもがなと 思ひけるかな</span> <span class="romaji-text">kimigatame oshikarazarishi inochisahe <br class="waka-br">nagakumoganato omohikerukana</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">A life I once did not mind losing — now, for your sake, I wish it would last forever.</span><div class="waka-game-links"><span class="small">藤原義孝（Fujiwara no Yoshitaka）</span></div></td><td style="background-color: #F7F1E0;">きみがため<br>をしからざりし<br>いのちさへ<br>ながくもがなと<br>おもひけるかな</td><td style="background-color: #F7F1E0;">kimigatame oshikarazarishi inochisahe nagakumoganato omohikerukana</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="51" data-color="ピンク" data-theme="love" data-hiragana="かくとだにえやはいぶきのさしもぐささしもしらじなもゆるおもいを"><td style="background-color: #fde8f3;"><a class="num-badge" href="/51_en.html" data-number="51" data-tooltip="Poem details">51</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">かくとだに えやはいぶきの さしも草 <br class="waka-br">さしも知らじな もゆる思ひを</span> <span class="romaji-text">kakutodani eyahaibukino sashimogusa <br class="waka-br">sashimoshirajina moyuruomohio</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">I cannot even tell you how I feel — like the smoldering fire of ibuki wormwood, my hidden love quietly burns.</span><div class="waka-game-links"><span class="small">藤原実方朝臣（Fujiwara no Sanekata Ason）</span></div></td><td style="background-color: #F7F1E0;">かくとだに<br>えやはいぶきの<br>さしもぐさ<br>さしもしらじな<br>もゆるおもひを</td><td style="background-color: #F7F1E0;">kakutodani eyahaibukino sashimogusa sashimoshirajina moyuruomohio</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="52" data-color="橙" data-theme="love" data-hiragana="あけぬればくるるものとはしりながらなおうらめしきあさぼらけかな"><td style="background-color: #fef0e0;"><a class="num-badge" href="/52_en.html" data-number="52" data-tooltip="Poem details">52</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">明けぬれば 暮るるものとは 知りながら <br class="waka-br">なほうらめしき 朝ぼらけかな</span> <span class="romaji-text">akenureba kururumonotoha shirinagara <br class="waka-br">nahourameshiki asaborakekana</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">I know that after dawn comes dusk — and yet how I resent this pale morning sky.</span><div class="waka-game-links"><span class="small">藤原道信朝臣（Fujiwara no Michinobu Ason）</span></div></td><td style="background-color: #F7F1E0;">あけぬれば<br>くるるものとは<br>しりながら<br>なほうらめしき<br>あさぼらけかな</td><td style="background-color: #F7F1E0;">akenureba kururumonotoha shirinagara nahourameshiki asaborakekana</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="53" data-color="橙" data-theme="love" data-hiragana="なげきつつひとりぬるよのあくるまはいかにひさしきものとかはしる"><td style="background-color: #fef0e0;"><a class="num-badge" href="/53_en.html" data-number="53" data-tooltip="Poem details">53</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">嘆きつつ ひとり寝る夜の 明くる間は <br class="waka-br">いかに久しき ものとかは知る</span> <span class="romaji-text">nagekitsutsu hitorinuruyono akurumaha <br class="waka-br">ikanihisashiki monotokahashiru</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">Lying alone, waiting for the long night to end — how endless it feels. Does the person who left me even know?</span><div class="waka-game-links"><span class="small">右大将道綱母（Mother of the Right Captain Michitsuna）</span></div></td><td style="background-color: #F7F1E0;">なげきつつ<br>ひとりぬるよの<br>あくるまは<br>いかにひさしき<br>ものとかはしる</td><td style="background-color: #F7F1E0;">nagekitsutsu hitorinuruyono akurumaha ikanihisashiki monotokahashiru</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="54" data-color="緑" data-theme="love" data-hiragana="わすれじのゆくすえまではかたければきょうをかぎりのいのちともがな"><td style="background-color: #e8f5e8;"><a class="num-badge" href="/54_en.html" data-number="54" data-tooltip="Poem details">54</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">忘れじの ゆく末までは かたければ <br class="waka-br">今日を限りの 命ともがな</span> <span class="romaji-text">wasurejino yukusuemadeha katakereba <br class="waka-br">kefuokagirino inochitomogana</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">The promise that you would never forget me — that is too much to ask forever. I only wish my life would end today, while the vow still holds.</span><div class="waka-game-links"><span class="small">儀同三司母（Mother of the Honorary Grand Minister）</span></div></td><td style="background-color: #F7F1E0;">わすれじの<br>ゆくすゑまでは<br>かたければ<br>けふをかぎりの<br>いのちともがな</td><td style="background-color: #F7F1E0;">wasurejino yukusuemadeha katakereba kefuokagirino inochitomogana</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="55" data-color="黄" data-theme="misc" data-hiragana="たきのおとはたえてひさしくなりぬれどなこそながれてなおきこえけれ"><td style="background-color: #fefbe0;"><a class="num-badge" href="/55_en.html" data-number="55" data-tooltip="Poem details">55</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">滝の音は たえて久しく なりぬれど <br class="waka-br">名こそ流れて なほ聞こえけれ</span> <span class="romaji-text">takinootoha taetehisashiku narinuredo <br class="waka-br">nakosonagarete nahokikoekere</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">The sound of the waterfall has long since faded, but its name flows on and is still heard by the world.</span><div class="waka-game-links"><span class="small">大納言公任（Upper Counselor Kintō）</span></div></td><td style="background-color: #F7F1E0;">たきのおとは<br>たえてひさしく<br>なりぬれど<br>なこそながれて<br>なほきこえけれ</td><td style="background-color: #F7F1E0;">takinootoha taetehisashiku narinuredo nakosonagarete nahokikoekere</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="56" data-color="橙" data-theme="love" data-hiragana="あらざらんこのよのほかのおもいいでにいまひとたびのおうこともがな"><td style="background-color: #fef0e0;"><a class="num-badge" href="/56_en.html" data-number="56" data-tooltip="Poem details">56</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">あらざらむ この世のほかの 思ひ出に <br class="waka-br">いまひとたびの 逢ふこともがな</span> <span class="romaji-text">arazaramu konoyonohokano omohideni <br class="waka-br">imahitotabino afukotomogana</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">I may not be long for this world. As a memory to take beyond — let me meet you just one more time.</span><div class="waka-game-links"><span class="small">和泉式部（Izumi Shikibu）</span></div></td><td style="background-color: #F7F1E0;">あらざらむ<br>このよのほかの<br>おもひでに<br>いまひとたびの<br>あふこともがな</td><td style="background-color: #F7F1E0;">arazaramu konoyonohokano omohideni imahitotabino afukotomogana</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="57" data-color="青" data-theme="misc" data-hiragana="めぐりあいてみしやそれともわかぬまにくもがくれにしよわのつきかな"><td style="background-color: #e8f0fe;"><a class="num-badge" href="/57_en.html" data-number="57" data-tooltip="Poem details">57</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">めぐり逢ひて 見しやそれとも わかぬ間に <br class="waka-br">雲隠れにし 夜半の月かな</span> <span class="romaji-text">meguriahite mishiyasoretomo wakanumani <br class="waka-br">kumogakurenishi yohanotsukikana</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">We met for just a moment, yet I could not be sure it was really you — and then you vanished behind the clouds, like the midnight moon.</span><div class="waka-game-links"><span class="small">紫式部（Murasaki Shikibu）</span></div></td><td style="background-color: #F7F1E0;">めぐりあひて<br>みしやそれとも<br>わかぬまに<br>くもがくれにし<br>よはのつきかな</td><td style="background-color: #F7F1E0;">meguriahite mishiyasoretomo wakanumani kumogakurenishi yohanotsukikana</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="58" data-color="ピンク" data-theme="love" data-hiragana="ありまやまいなのささはらかぜふけばいでそよひとをわすれやはする"><td style="background-color: #fde8f3;"><a class="num-badge" href="/58_en.html" data-number="58" data-tooltip="Poem details">58</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">ありま山 猪名の笹原 風吹けば <br class="waka-br">いでそよ人を 忘れやはする</span> <span class="romaji-text">arimayama inanosasahara kazefukeba <br class="waka-br">idesoyohitoo wasureyahasuru</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">When the wind blows through the bamboo groves of Arima and Ina — of course I have not forgotten you.</span><div class="waka-game-links"><span class="small">大弐三位（Daini no Sanmi）</span></div></td><td style="background-color: #F7F1E0;">ありまやま<br>ゐなのささはら<br>かぜふけば<br>いでそよひとを<br>わすれやはする</td><td style="background-color: #F7F1E0;">arimayama inanosasahara kazefukeba idesoyohitoo wasureyahasuru</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="59" data-color="緑" data-theme="love" data-hiragana="やすらわでねなましものをさよふけてかたぶくまでのつきをみしかな"><td style="background-color: #e8f5e8;"><a class="num-badge" href="/59_en.html" data-number="59" data-tooltip="Poem details">59</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">やすらはで 寝なましものを 小夜更けて <br class="waka-br">かたぶくまでの 月を見しかな</span> <span class="romaji-text">yasurahade nenamashimonoo sayofukete <br class="waka-br">katabukumadeno tsukiomishikana</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">I waited and waited without sleep, watching the moon sink slowly toward the horizon in the deepening night. How I regret it.</span><div class="waka-game-links"><span class="small">赤染衛門（Akazome Emon）</span></div></td><td style="background-color: #F7F1E0;">やすらはで<br>ねなましものを<br>さよふけて<br>かたぶくまでの<br>つきをみしかな</td><td style="background-color: #F7F1E0;">yasurahade nenamashimonoo sayofukete katabukumadeno tsukiomishikana</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="60" data-color="黄" data-theme="misc" data-hiragana="おおえやまいくののみちのとおければまだふみもみずあまのはしだて"><td style="background-color: #fefbe0;"><a class="num-badge" href="/60_en.html" data-number="60" data-tooltip="Poem details">60</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">大江山 いく野の道の 遠ければ <br class="waka-br">まだふみもみず 天の橋立</span> <span class="romaji-text">ohoeyama ikunonomichino tohokereba <br class="waka-br">madafumimomizu amanohashidate</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">The road to Oe Mountain and Ikuno is so long and far — I have not yet set foot on it, nor received a letter from my mother.</span><div class="waka-game-links"><span class="small">小式部内侍（Koshikibu no Naishi）</span></div></td><td style="background-color: #F7F1E0;">おほえやま<br>いくののみちの<br>とほければ<br>まだふみもみず<br>あまのはしだて</td><td style="background-color: #F7F1E0;">ohoeyama ikunonomichino tohokereba madafumimomizu amanohashidate</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="61" data-color="青" data-theme="spring" data-hiragana="いにしえのならのみやこのやえざくらきょうここのえににおいぬるかな"><td style="background-color: #e8f0fe;"><a class="num-badge" href="/61_en.html" data-number="61" data-tooltip="Poem details">61</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">いにしへの 奈良の都の 八重桜 <br class="waka-br">けふ九重に 匂ひぬるかな</span> <span class="romaji-text">inishiheno naranomiyakono yahezakura <br class="waka-br">kefukokonoheni nihohinurukana</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">The ancient eightfold cherry blossoms of Nara — today they bloom gloriously in the ninefold imperial palace.</span><div class="waka-game-links"><span class="small">伊勢大輔（Ise no Taifu）</span></div></td><td style="background-color: #F7F1E0;">いにしへの<br>ならのみやこの<br>やへざくら<br>けふここのへに<br>にほひぬるかな</td><td style="background-color: #F7F1E0;">inishiheno naranomiyakono yahezakura kefukokonoheni nihohinurukana</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="62" data-color="青" data-theme="misc" data-hiragana="よをこめてとりのそらねははかるともよにおうさかのせきはゆるさじ"><td style="background-color: #e8f0fe;"><a class="num-badge" href="/62_en.html" data-number="62" data-tooltip="Poem details">62</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">夜をこめて 鳥のそらねは はかるとも <br class="waka-br">よに逢坂の 関は許さじ</span> <span class="romaji-text">yookomete torinosoraneha hakarutomo <br class="waka-br">yoniafusakano sekihayurusaji</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">Even if you try to fool me with a crowing rooster in the night — I will not open the Barrier of Ōsaka for you.</span><div class="waka-game-links"><span class="small">清少納言（Sei Shōnagon）</span></div></td><td style="background-color: #F7F1E0;">よをこめて<br>とりのそらねは<br>はかるとも<br>よにあふさかの<br>せきはゆるさじ</td><td style="background-color: #F7F1E0;">yookomete torinosoraneha hakarutomo yoniafusakano sekihayurusaji</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="63" data-color="橙" data-theme="love" data-hiragana="いまはただおもいたえなんとばかりをひとづてならでいうよしもがな"><td style="background-color: #fef0e0;"><a class="num-badge" href="/63_en.html" data-number="63" data-tooltip="Poem details">63</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">いまはただ 思ひ絶えなむ とばかりを <br class="waka-br">人づてならで 言ふよしもがな</span> <span class="romaji-text">imahatada omohitaenamu tobakario <br class="waka-br">hitozutenarade ifuyoshimogana</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">If only I could say it directly: all I want is to end this love. But there is no way to tell you in person.</span><div class="waka-game-links"><span class="small">左京大夫道雅（Master of the Left Capital Michimasa）</span></div></td><td style="background-color: #F7F1E0;">いまはただ<br>おもひたえなむ<br>とばかりを<br>ひとづてならで<br>いふよしもがな</td><td style="background-color: #F7F1E0;">imahatada omohitaenamu tobakario hitozutenarade ifuyoshimogana</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="64" data-color="橙" data-theme="winter" data-hiragana="あさぼらけうじのかわぎりたえだえにあらわれわたるせぜのあじろぎ"><td style="background-color: #fef0e0;"><a class="num-badge" href="/64_en.html" data-number="64" data-tooltip="Poem details">64</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">朝ぼらけ 宇治の川霧 絶え絶えに <br class="waka-br">あらはれわたる 瀬々の網代木</span> <span class="romaji-text">asaborake ujinokahagiri taedaeni <br class="waka-br">araharewataru sezenoajirogi</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">In the early dawn mist over the Uji River, here and there the wooden stakes of fish weirs begin to appear through the haze.</span><div class="waka-game-links"><span class="small">権中納言定頼（Acting Middle Counselor Sadayori）</span></div></td><td style="background-color: #F7F1E0;">あさぼらけ<br>うぢのかはぎり<br>たえだえに<br>あらはれわたる<br>せぜのあじろぎ</td><td style="background-color: #F7F1E0;">asaborake ujinokahagiri taedaeni araharewataru sezenoajirogi</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="65" data-color="ピンク" data-theme="love" data-hiragana="うらみわびほさぬそでだにあるものをこいにくちなんなこそおしけれ"><td style="background-color: #fde8f3;"><a class="num-badge" href="/65_en.html" data-number="65" data-tooltip="Poem details">65</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">恨みわび ほさぬ袖だに あるものを <br class="waka-br">恋にくちなむ 名こそをしけれ</span> <span class="romaji-text">uramiwabi hosanusodedani arumonoo <br class="waka-br">kohinikuchinamu nakosooshikere</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">My sleeves are never dry — and I grieve not for myself, but that my name as a lover will be ruined before it is known.</span><div class="waka-game-links"><span class="small">相模（Sagami）</span></div></td><td style="background-color: #F7F1E0;">うらみわび<br>ほさぬそでだに<br>あるものを<br>こひにくちなむ<br>なこそをしけれ</td><td style="background-color: #F7F1E0;">uramiwabi hosanusodedani arumonoo kohinikuchinamu nakosooshikere</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="66" data-color="ピンク" data-theme="misc" data-hiragana="もろともにあわれとおもえやまざくらはなよりほかにしるひともなし"><td style="background-color: #fde8f3;"><a class="num-badge" href="/66_en.html" data-number="66" data-tooltip="Poem details">66</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">もろともに あはれと思へ 山桜 <br class="waka-br">花よりほかに 知る人もなし</span> <span class="romaji-text">morotomoni aharetoomohe yamazakura <br class="waka-br">hanayorihokani shiruhitomonashi</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">O mountain cherry — feel moved together with me. There is no one else here who knows me but you.</span><div class="waka-game-links"><span class="small">前大僧正行尊（Senior High Priest Gyōson）</span></div></td><td style="background-color: #F7F1E0;">もろともに<br>あはれとおもへ<br>やまざくら<br>はなよりほかに<br>しるひともなし</td><td style="background-color: #F7F1E0;">morotomoni aharetoomohe yamazakura hanayorihokani shiruhitomonashi</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="67" data-color="橙" data-theme="misc" data-hiragana="はるのよのゆめばかりなるたまくらにかいなくたたんなこそおしけれ"><td style="background-color: #fef0e0;"><a class="num-badge" href="/67_en.html" data-number="67" data-tooltip="Poem details">67</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">春の夜の 夢ばかりなる 手枕に <br class="waka-br">かひなく立たむ 名こそをしけれ</span> <span class="romaji-text">harunoyono yumebakarinaru tamakurani <br class="waka-br">kahinakutatamu nakosooshikere</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">In the spring night, resting my head on an arm for just a brief dream — how I grieve that my name might spread for such a fleeting thing.</span><div class="waka-game-links"><span class="small">周防内侍（Suō no Naishi）</span></div></td><td style="background-color: #F7F1E0;">はるのよの<br>ゆめばかりなる<br>たまくらに<br>かひなくたたむ<br>なこそをしけれ</td><td style="background-color: #F7F1E0;">harunoyono yumebakarinaru tamakurani kahinakutatamu nakosooshikere</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="68" data-color="緑" data-theme="misc" data-hiragana="こころにもあらでうきよにながらえばこいしかるべきよわのつきかな"><td style="background-color: #e8f5e8;"><a class="num-badge" href="/68_en.html" data-number="68" data-tooltip="Poem details">68</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">心にも あらで憂き世に ながらへば <br class="waka-br">恋しかるべき 夜半の月かな</span> <span class="romaji-text">kokoronimo aradeukiyoni nagaraheba <br class="waka-br">kohishikarubeki yohanotsukikana</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">If I live on in this painful world without purpose, I am sure I will come to miss this night and its lonely moon.</span><div class="waka-game-links"><span class="small">三条院（Retired Emperor Sanjō）</span></div></td><td style="background-color: #F7F1E0;">こころにも<br>あらでうきよに<br>ながらへば<br>こひしかるべき<br>よはのつきかな</td><td style="background-color: #F7F1E0;">kokoronimo aradeukiyoni nagaraheba kohishikarubeki yohanotsukikana</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="69" data-color="青" data-theme="autumn" data-hiragana="あらしふくみむろのやまのもみじばはたつたのかわのにしきなりけり"><td style="background-color: #e8f0fe;"><a class="num-badge" href="/69_en.html" data-number="69" data-tooltip="Poem details">69</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">嵐吹く 三室の山の 紅葉葉は <br class="waka-br">竜田の川の 錦なりけり</span> <span class="romaji-text">arashifuku mimuronoyamano momijibaha <br class="waka-br">tatsutanokahano nishikinarikeri</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">The storm blows through Mimuro Mountain, and the scattered maple leaves become a brocade on the Tatsuta River.</span><div class="waka-game-links"><span class="small">能因法師（Priest Nōin）</span></div></td><td style="background-color: #F7F1E0;">あらしふく<br>みむろのやまの<br>もみぢばは<br>たつたのかはの<br>にしきなりけり</td><td style="background-color: #F7F1E0;">arashifuku mimuronoyamano momijibaha tatsutanokahano nishikinarikeri</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="70" data-color="青" data-theme="autumn" data-hiragana="さびしさにやどをたちいでてながむればいずこもおなじあきのゆうぐれ"><td style="background-color: #e8f0fe;"><a class="num-badge" href="/70_en.html" data-number="70" data-tooltip="Poem details">70</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">さびしさに 宿を立ち出でて ながむれば <br class="waka-br">いづくも同じ 秋の夕暮</span> <span class="romaji-text">sabishisani yadootachiidete nagamureba <br class="waka-br">izukumoonaji akinoyufugure</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">Feeling lonely, I stepped outside to gaze at the view — and everywhere I looked, it was the same twilight of autumn.</span><div class="waka-game-links"><span class="small">良暹法師（Priest Ryōzen）</span></div></td><td style="background-color: #F7F1E0;">さびしさに<br>やどをたちいでて<br>ながむれば<br>いづくもおなじ<br>あきのゆふぐれ</td><td style="background-color: #F7F1E0;">sabishisani yadootachiidete nagamureba izukumoonaji akinoyufugure</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="71" data-color="緑" data-theme="autumn" data-hiragana="ゆうさればかどたのいなばおとずれてあしのまろやにあきかぜぞふく"><td style="background-color: #e8f5e8;"><a class="num-badge" href="/71_en.html" data-number="71" data-tooltip="Poem details">71</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">夕されば 門田の稲葉 おとづれて <br class="waka-br">蘆のまろやに 秋風ぞ吹く</span> <span class="romaji-text">yufusareba kadotanoinaba otozurete <br class="waka-br">ashinomaroyani akikazezofuku</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">As evening falls, the breeze comes rustling through the rice stalks by the gate, and the autumn wind blows through the reed-thatched hut.</span><div class="waka-game-links"><span class="small">大納言経信（Upper Counselor Tsunenobu）</span></div></td><td style="background-color: #F7F1E0;">ゆふされば<br>かどたのいなば<br>おとづれて<br>あしのまろやに<br>あきかぜぞふく</td><td style="background-color: #F7F1E0;">yufusareba kadotanoinaba otozurete ashinomaroyani akikazezofuku</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="72" data-color="ピンク" data-theme="love" data-hiragana="おとにきくたかしのはまのあだなみはかけじやそでのぬれもこそすれ"><td style="background-color: #fde8f3;"><a class="num-badge" href="/72_en.html" data-number="72" data-tooltip="Poem details">72</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">音に聞く 高師の浜の あだ波は <br class="waka-br">かけじや袖の ぬれもこそすれ</span> <span class="romaji-text">otonikiku takashinohamano adanamiha <br class="waka-br">kakejiyasodeno nuremokososure</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">I have heard how fickle the waves at Takashi Beach are. I will not let them wet my sleeves — I will keep my heart guarded.</span><div class="waka-game-links"><span class="small">祐子内親王家紀伊（Kii of Princess Yūshi's Household）</span></div></td><td style="background-color: #F7F1E0;">おとにきく<br>たかしのはまの<br>あだなみは<br>かけじやそでの<br>ぬれもこそすれ</td><td style="background-color: #F7F1E0;">otonikiku takashinohamano adanamiha kakejiyasodeno nuremokososure</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="73" data-color="ピンク" data-theme="spring" data-hiragana="たかさごのおのえのさくらさきにけりとやまのかすみたたずもあらなん"><td style="background-color: #fde8f3;"><a class="num-badge" href="/73_en.html" data-number="73" data-tooltip="Poem details">73</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">高砂の 尾の上の桜 咲きにけり <br class="waka-br">外山の霞 立たずもあらなむ</span> <span class="romaji-text">takasagono onohenosakura sakinikeri <br class="waka-br">toyamanokasumi tatazumoaranamu</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">The cherry blossoms on the high peaks of Takasago have already bloomed. Let the mist not rise over the foothills and hide them from view.</span><div class="waka-game-links"><span class="small">権中納言匡房（Acting Middle Counselor Masafusa）</span></div></td><td style="background-color: #F7F1E0;">たかさごの<br>をのへのさくら<br>さきにけり<br>とやまのかすみ<br>たたずもあらなむ</td><td style="background-color: #F7F1E0;">takasagono onohenosakura sakinikeri toyamanokasumi tatazumoaranamu</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="74" data-color="青" data-theme="love" data-hiragana="うかりけるひとをはつせのやまおろしよはげしかれとはいのらぬものを"><td style="background-color: #e8f0fe;"><a class="num-badge" href="/74_en.html" data-number="74" data-tooltip="Poem details">74</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">憂かりける 人を初瀬の 山おろしよ <br class="waka-br">はげしかれとは 祈らぬものを</span> <span class="romaji-text">ukarikeru hitoohatsuseno yamaoroshiyo <br class="waka-br">hageshikaretoha inoranumonoo</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">I prayed to the storm wind of Hatsuse — but I never prayed for it to grow fiercer. Why has this person become so cold to me?</span><div class="waka-game-links"><span class="small">源俊頼朝臣（Minamoto no Toshiyori Ason）</span></div></td><td style="background-color: #F7F1E0;">うかりける<br>ひとをはつせの<br>やまおろしよ<br>はげしかれとは<br>いのらぬものを</td><td style="background-color: #F7F1E0;">ukarikeru hitoohatsuseno yamaoroshiyo hageshikaretoha inoranumonoo</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="75" data-color="青" data-theme="misc" data-hiragana="ちぎりおきしさせもがつゆをいのちにてあわれことしのあきもいぬめり"><td style="background-color: #e8f0fe;"><a class="num-badge" href="/75_en.html" data-number="75" data-tooltip="Poem details">75</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">契りおきし させもが露を いのちにて <br class="waka-br">あはれ今年の 秋もいぬめり</span> <span class="romaji-text">chigiriokishi sasemogatsuyuo inochinite <br class="waka-br">aharekotoshino akimoinumeri</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">You promised me, and I staked my life on it like the morning dew on the wormwood. But another autumn is passing, alas.</span><div class="waka-game-links"><span class="small">藤原基俊（Fujiwara no Mototoshi）</span></div></td><td style="background-color: #F7F1E0;">ちぎりおきし<br>させもがつゆを<br>いのちにて<br>あはれことしの<br>あきもいぬめり</td><td style="background-color: #F7F1E0;">chigiriokishi sasemogatsuyuo inochinite aharekotoshino akimoinumeri</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="76" data-color="青" data-theme="misc" data-hiragana="わたのはらこぎいでてみればひさかたのくもいにまがうおきつしらなみ"><td style="background-color: #e8f0fe;"><a class="num-badge" href="/76_en.html" data-number="76" data-tooltip="Poem details">76</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">わたの原 こぎいでてみれば 久方の <br class="waka-br">雲居にまがふ 沖つ白波</span> <span class="romaji-text">watanohara kogiidetemireba hisakatano <br class="waka-br">kumoinimagafu okitsushiranami</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">Rowing out onto the open sea and looking around — the white waves far off on the water seem to blur into the clouds.</span><div class="waka-game-links"><span class="small">法性寺入道前関白太政大臣（Lay Novice of Hosshō-ji Temple, former Kampaku and Chancellor of the Realm）</span></div></td><td style="background-color: #F7F1E0;">わたのはら<br>こぎいでてみれば<br>ひさかたの<br>くもゐにまがふ<br>おきつしらなみ</td><td style="background-color: #F7F1E0;">watanohara kogiidetemireba hisakatano kumoinimagafu okitsushiranami</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="77" data-color="橙" data-theme="love" data-hiragana="せをはやみいわにせかるるたきがわのわれてもすえにあわんとぞおもう"><td style="background-color: #fef0e0;"><a class="num-badge" href="/77_en.html" data-number="77" data-tooltip="Poem details">77</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">瀬をはやみ 岩にせかるる 滝川の <br class="waka-br">われても末に あはむとぞ思ふ</span> <span class="romaji-text">seohayami ihanisekaruru takigahano <br class="waka-br">waretemosueni ahamutozoomofu</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">Like the river that is split by rocks and flows apart — though we are separated now, I believe we will meet again in the end.</span><div class="waka-game-links"><span class="small">崇徳院（Retired Emperor Sutoku）</span></div></td><td style="background-color: #F7F1E0;">せをはやみ<br>いはにせかるる<br>たきがはの<br>われてもすゑに<br>あはむとぞおもふ</td><td style="background-color: #F7F1E0;">seohayami ihanisekaruru takigahano waretemosueni ahamutozoomofu</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="78" data-color="黄" data-theme="winter" data-hiragana="あわじしまかようちどりのなくこえにいくよねざめぬすまのせきもり"><td style="background-color: #fefbe0;"><a class="num-badge" href="/78_en.html" data-number="78" data-tooltip="Poem details">78</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">淡路島 かよふ千鳥の 鳴く声に <br class="waka-br">幾夜寝覚めぬ 須磨の関守</span> <span class="romaji-text">ahajishima kayofuchidorino nakukoeni <br class="waka-br">ikuyonezamenu sumanosekimori</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">The cry of the plovers flying between Awaji Island — how many nights have I lain awake listening to them at the Suma Barrier?</span><div class="waka-game-links"><span class="small">源兼昌（Minamoto no Kanemasa）</span></div></td><td style="background-color: #F7F1E0;">あはぢしま<br>かよふちどりの<br>なくこゑに<br>いくよねざめぬ<br>すまのせきもり</td><td style="background-color: #F7F1E0;">ahajishima kayofuchidorino nakukoeni ikuyonezamenu sumanosekimori</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="79" data-color="黄" data-theme="autumn" data-hiragana="あきかぜにたなびくくものたえまよりもれいずるつきのかげのさやけさ"><td style="background-color: #fefbe0;"><a class="num-badge" href="/79_en.html" data-number="79" data-tooltip="Poem details">79</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">秋風に たなびく雲の たえ間より <br class="waka-br">もれいづる月の 影のさやけさ</span> <span class="romaji-text">akikazeni tanabikukumono taemayori <br class="waka-br">moreizurutsukino kagenosayakesa</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">Through the gaps in the clouds trailing in the autumn wind, the moonlight filters through, so clear and still.</span><div class="waka-game-links"><span class="small">左京大夫顕輔（Master of the Left Capital Akisuke）</span></div></td><td style="background-color: #F7F1E0;">あきかぜに<br>たなびくくもの<br>たえまより<br>もれいずるつきの<br>かげのさやけさ</td><td style="background-color: #F7F1E0;">akikazeni tanabikukumono taemayori moreizurutsukino kagenosayakesa</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="80" data-color="ピンク" data-theme="love" data-hiragana="ながからむこころもしらずくろかみのみだれてけさはものをこそおもえ"><td style="background-color: #fde8f3;"><a class="num-badge" href="/80_en.html" data-number="80" data-tooltip="Poem details">80</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">長からむ 心もしらず 黒髪の <br class="waka-br">みだれてけさは 物をこそ思へ</span> <span class="romaji-text">nagakaramu kokoromoshirazu kurokamino <br class="waka-br">midaretekesaha monookosoomohe</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">Not knowing whether your heart will last — I woke this morning with my long black hair in tangles, lost in thought.</span><div class="waka-game-links"><span class="small">待賢門院堀河（Horikawa, attendant to Empress Taiken）</span></div></td><td style="background-color: #F7F1E0;">ながからむ<br>こころもしらず<br>くろかみの<br>みだれてけさは<br>ものをこそおもへ</td><td style="background-color: #F7F1E0;">nagakaramu kokoromoshirazu kurokamino midaretekesaha monookosoomohe</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="81" data-color="黄" data-theme="summer" data-hiragana="ほととぎすなきつるかたをながむればただありあけのつきぞのこれる"><td style="background-color: #fefbe0;"><a class="num-badge" href="/81_en.html" data-number="81" data-tooltip="Poem details">81</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">ほととぎす 鳴きつる方を ながむれば <br class="waka-br">ただありあけの 月ぞ残れる</span> <span class="romaji-text">hototogisu nakitsurukatao nagamureba <br class="waka-br">tadaariakeno tsukizonokoreru</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">I looked toward where the cuckoo had just called — and all that remained was the pale moon at dawn.</span><div class="waka-game-links"><span class="small">後徳大寺左大臣（Later Tokudaiji Minister of the Left）</span></div></td><td style="background-color: #F7F1E0;">ほととぎす<br>なきつるかたを<br>ながむれば<br>ただありあけの<br>つきぞのこれる</td><td style="background-color: #F7F1E0;">hototogisu nakitsurukatao nagamureba tadaariakeno tsukizonokoreru</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="82" data-color="青" data-theme="love" data-hiragana="おもいわびさてもいのちはあるものをうきにたえぬはなみだなりけり"><td style="background-color: #e8f0fe;"><a class="num-badge" href="/82_en.html" data-number="82" data-tooltip="Poem details">82</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">思ひわび さても命は あるものを <br class="waka-br">憂きにたへぬは 涙なりけり</span> <span class="romaji-text">omohiwabi satemoinochiha arumonoo <br class="waka-br">ukinitahenuha namidanarikeri</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">I am exhausted with sorrow, yet somehow I am still alive. What cannot endure is not my life — but my tears.</span><div class="waka-game-links"><span class="small">道因法師（Priest Dōin）</span></div></td><td style="background-color: #F7F1E0;">おもひわび<br>さてもいのちは<br>あるものを<br>うきにたへぬは<br>なみだなりけり</td><td style="background-color: #F7F1E0;">omohiwabi satemoinochiha arumonoo ukinitahenuha namidanarikeri</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="83" data-color="ピンク" data-theme="misc" data-hiragana="よのなかよみちこそなけれおもいいるやまのおくにもしかぞなくなる"><td style="background-color: #fde8f3;"><a class="num-badge" href="/83_en.html" data-number="83" data-tooltip="Poem details">83</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">世の中よ 道こそなけれ 思ひ入る <br class="waka-br">山の奥にも 鹿ぞ鳴くなる</span> <span class="romaji-text">yononakayo michikosonakere omohiiru <br class="waka-br">yamanookunimo shikazonakunaru</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">There is no escape from this world. Even deep in the mountains, the deer cry out.</span><div class="waka-game-links"><span class="small">皇太后宮大夫俊成（Master of the Empress Dowager's Household Toshinari）</span></div></td><td style="background-color: #F7F1E0;">よのなかよ<br>みちこそなけれ<br>おもひいる<br>やまのおくにも<br>しかぞなくなる</td><td style="background-color: #F7F1E0;">yononakayo michikosonakere omohiiru yamanookunimo shikazonakunaru</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="84" data-color="ピンク" data-theme="misc" data-hiragana="ながらえばまたこのごろやしのばれんうしとみしよぞいまはこいしき"><td style="background-color: #fde8f3;"><a class="num-badge" href="/84_en.html" data-number="84" data-tooltip="Poem details">84</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">長らへば またこのごろや しのばれむ <br class="waka-br">憂しと見し世ぞ 今は恋しき</span> <span class="romaji-text">nagaraheba matakonogoroya shinobaremu <br class="waka-br">ushitomishiyozo imahakohishiki</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">If I live on long enough, perhaps even these painful days will become dear to me, as something I once longed to leave behind.</span><div class="waka-game-links"><span class="small">藤原清輔朝臣（Fujiwara no Kiyosuke Ason）</span></div></td><td style="background-color: #F7F1E0;">ながらへば<br>またこのごろや<br>しのばれむ<br>うしとみしよぞ<br>いまはこひしき</td><td style="background-color: #F7F1E0;">nagaraheba matakonogoroya shinobaremu ushitomishiyozo imahakohishiki</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="85" data-color="黄" data-theme="love" data-hiragana="よもすがらものおもうころはあけやらでねやのひまさえつれなかりけり"><td style="background-color: #fefbe0;"><a class="num-badge" href="/85_en.html" data-number="85" data-tooltip="Poem details">85</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">夜もすがら 物思ふころは 明けやらで <br class="waka-br">閨のひまさへ つれなかりけり</span> <span class="romaji-text">yomosugara monoomofukoroha akeyarade <br class="waka-br">neyanohimasahe tsurenakarikeri</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">All through the night, lost in thought, the dawn will not come. Even the crack of light through the bedroom door seems cold and distant.</span><div class="waka-game-links"><span class="small">俊恵法師（Priest Shun'e）</span></div></td><td style="background-color: #F7F1E0;">よもすがら<br>ものおもふころは<br>あけやらで<br>ねやのひまさへ<br>つれなかりけり</td><td style="background-color: #F7F1E0;">yomosugara monoomofukoroha akeyarade neyanohimasahe tsurenakarikeri</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="86" data-color="ピンク" data-theme="love" data-hiragana="なげけとてつきやはものをおもわするかこちがおなるわがなみだかな"><td style="background-color: #fde8f3;"><a class="num-badge" href="/86_en.html" data-number="86" data-tooltip="Poem details">86</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">嘆けとて 月やは物を 思はする <br class="waka-br">かこち顔なる わが涙かな</span> <span class="romaji-text">nageketote tsukiyahamonoo omohasuru <br class="waka-br">kakochigahonaru waganamidakana</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">Did the moon ask me to grieve? These tears on my face — it is as if I am blaming the moon for making me feel this way.</span><div class="waka-game-links"><span class="small">西行法師（Priest Saigyō）</span></div></td><td style="background-color: #F7F1E0;">なげけとて<br>つきやはものを<br>おもはする<br>かこちがほなる<br>わがなみだかな</td><td style="background-color: #F7F1E0;">nageketote tsukiyahamonoo omohasuru kakochigahonaru waganamidakana</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="87" data-color="黄" data-theme="autumn" data-hiragana="むらさめのつゆもまだひぬまきのはにきりたちのぼるあきのゆうぐれ"><td style="background-color: #fefbe0;"><a class="num-badge" href="/87_en.html" data-number="87" data-tooltip="Poem details">87</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">村雨の 露もまだひぬ まきの葉に <br class="waka-br">霧たちのぼる 秋の夕暮</span> <span class="romaji-text">murasameno tsuyumomadahinu makinohani <br class="waka-br">kiritachinoboru akinoyufugure</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">After the passing shower, the mist rises slowly through the rain-drenched leaves of the cedar. An autumn evening.</span><div class="waka-game-links"><span class="small">寂蓮法師（Priest Jakuren）</span></div></td><td style="background-color: #F7F1E0;">むらさめの<br>つゆもまだひぬ<br>まきのはに<br>きりたちのぼる<br>あきのゆふぐれ</td><td style="background-color: #F7F1E0;">murasameno tsuyumomadahinu makinohani kiritachinoboru akinoyufugure</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="88" data-color="橙" data-theme="love" data-hiragana="なにわえのあしのかりねのひとよゆえみをつくしてやこいわたるべきみおつくし"><td style="background-color: #fef0e0;"><a class="num-badge" href="/88_en.html" data-number="88" data-tooltip="Poem details">88</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">難波江の 葦のかりねの ひとよゆゑ <br class="waka-br">みをつくしてや 恋ひわたるべき</span> <span class="romaji-text">nanihaeno ashinokarineno hitoyoyue <br class="waka-br">miotsukushiteya kohiwatarubeki</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">For just one brief night together, like the cut end of a reed at Naniwa — must I go on longing for you forever?</span><div class="waka-game-links"><span class="small">皇嘉門院別当（Attendant to Empress Kōka）</span></div></td><td style="background-color: #F7F1E0;">なにはえの<br>あしのかりねの<br>ひとよゆゑ<br>みをつくしてや<br>こひわたるべき</td><td style="background-color: #F7F1E0;">nanihaeno ashinokarineno hitoyoyue miotsukushiteya kohiwatarubeki</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="89" data-color="黄" data-theme="love" data-hiragana="たまのおよたえなばたえねながらえばしのぶることのよわりもぞする"><td style="background-color: #fefbe0;"><a class="num-badge" href="/89_en.html" data-number="89" data-tooltip="Poem details">89</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">玉の緒よ 絶えなば絶えね ながらへば <br class="waka-br">忍ぶることの 弱りもぞする</span> <span class="romaji-text">tamanooyo taenabataene nagaraheba <br class="waka-br">shinoburukotono yowarimozosuru</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">Let my life end now, if it must. For if I go on living, my power to endure this secret love may weaken.</span><div class="waka-game-links"><span class="small">式子内親王（Princess Shikishi）</span></div></td><td style="background-color: #F7F1E0;">たまのをよ<br>たえなばたえね<br>ながらへば<br>しのぶることの<br>よわりもぞする</td><td style="background-color: #F7F1E0;">tamanooyo taenabataene nagaraheba shinoburukotono yowarimozosuru</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="90" data-color="橙" data-theme="love" data-hiragana="みせばやなおじまのあまのそでだにもぬれにぞぬれしいろはかわらず"><td style="background-color: #fef0e0;"><a class="num-badge" href="/90_en.html" data-number="90" data-tooltip="Poem details">90</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">見せばやな 雄島のあまの 袖だにも <br class="waka-br">ぬれにぞぬれし 色はかはらず</span> <span class="romaji-text">misebayana ojimanoamano sodedanimo <br class="waka-br">nurenizonureshi irohakaharazu</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">I wish I could show you — these sleeves of mine, soaked through and through with tears that never change color, never dry.</span><div class="waka-game-links"><span class="small">殷富門院大輔（Attendant to Empress Inpu）</span></div></td><td style="background-color: #F7F1E0;">みせばやな<br>をじまのあまの<br>そでだにも<br>ぬれにぞぬれし<br>いろはかはらず</td><td style="background-color: #F7F1E0;">misebayana ojimanoamano sodedanimo nurenizonureshi irohakaharazu</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="91" data-color="青" data-theme="autumn" data-hiragana="きりぎりすなくやしもよのさむしろにころもかたしきひとりかもねむ"><td style="background-color: #e8f0fe;"><a class="num-badge" href="/91_en.html" data-number="91" data-tooltip="Poem details">91</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">きりぎりす 鳴くや霜夜の さむしろに <br class="waka-br">衣かたしき ひとりかも寝む</span> <span class="romaji-text">kirigirisu nakuyashimoyono samushironi <br class="waka-br">koromokatashiki hitorikamonemu</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">On a cold, frosty night, the cricket cries. Lying alone with one sleeve folded beneath me — how lonely it is.</span><div class="waka-game-links"><span class="small">後京極摂政前太政大臣（Gokyōgoku Regent and former Chancellor of the Realm）</span></div></td><td style="background-color: #F7F1E0;">きりぎりす<br>なくやしもよの<br>さむしろに<br>ころもかたしき<br>ひとりかもねむ</td><td style="background-color: #F7F1E0;">kirigirisu nakuyashimoyono samushironi koromokatashiki hitorikamonemu</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="92" data-color="緑" data-theme="love" data-hiragana="わがそではしおひにみえぬおきのいしのひとこそしらねかわくまもなし"><td style="background-color: #e8f5e8;"><a class="num-badge" href="/92_en.html" data-number="92" data-tooltip="Poem details">92</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">わが袖は 潮干に見えぬ 沖の石の <br class="waka-br">人こそ知らね かわくまもなし</span> <span class="romaji-text">wagasodeha shihohinimienu okinoishino <br class="waka-br">hitokososhirane kawakumamonashi</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">My sleeves are like a rock hidden beneath the tides — unseen by others, they are never dry.</span><div class="waka-game-links"><span class="small">二条院讃岐（Sanuki, attendant to retired Emperor Nijō）</span></div></td><td style="background-color: #F7F1E0;">わがそでは<br>しほひにみえぬ<br>おきのいしの<br>ひとこそしらね<br>かわくまもなし</td><td style="background-color: #F7F1E0;">wagasodeha shihohinimienu okinoishino hitokososhirane kawakumamonashi</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="93" data-color="緑" data-theme="travel" data-hiragana="よのなかはつねにもがもななぎさこぐあまのおぶねのつなでかなしも"><td style="background-color: #e8f5e8;"><a class="num-badge" href="/93_en.html" data-number="93" data-tooltip="Poem details">93</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">世の中は つねにもがもな 渚こぐ <br class="waka-br">あまの小舟の 綱手かなしも</span> <span class="romaji-text">yononakaha tsunenimogamona nagisakogu <br class="waka-br">amanoobuneno tsunadekanashimo</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">I wish the world could stay just as it is forever. How moving it is to watch the small fishing boats being towed along the shore.</span><div class="waka-game-links"><span class="small">鎌倉右大臣（Minister of the Right of Kamakura）</span></div></td><td style="background-color: #F7F1E0;">よのなかは<br>つねにもがもな<br>なぎさこぐ<br>あまのをぶねの<br>つなでかなしも</td><td style="background-color: #F7F1E0;">yononakaha tsunenimogamona nagisakogu amanoobuneno tsunadekanashimo</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="94" data-color="黄" data-theme="autumn" data-hiragana="みよしののやまのあきかぜさよふけてふるさとさむくころもうつなり"><td style="background-color: #fefbe0;"><a class="num-badge" href="/94_en.html" data-number="94" data-tooltip="Poem details">94</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">み吉野の 山の秋風 さ夜ふけて <br class="waka-br">ふるさと寒く 衣うつなり</span> <span class="romaji-text">miyoshinono yamanoakikaze sayofukete <br class="waka-br">furusatosamuku koromoutsunari</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">On an autumn night, the mountain wind of Yoshino blows cold. In the old village, I can hear the sound of someone beating cloth.</span><div class="waka-game-links"><span class="small">参議雅経（Councillor Masatsune）</span></div></td><td style="background-color: #F7F1E0;">みよしのの<br>やまのあきかぜ<br>さよふけて<br>ふるさとさむく<br>ころもうつなり</td><td style="background-color: #F7F1E0;">miyoshinono yamanoakikaze sayofukete furusatosamuku koromoutsunari</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="95" data-color="橙" data-theme="misc" data-hiragana="おおけなくうきよのたみにおおうかなわがたつそまにすみぞめのそで"><td style="background-color: #fef0e0;"><a class="num-badge" href="/95_en.html" data-number="95" data-tooltip="Poem details">95</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">おほけなく 憂き世の民に おほふかな <br class="waka-br">わがたつ杣に 墨染の袖</span> <span class="romaji-text">ohokenaku ukiyonotamini ohofukana <br class="waka-br">wagatatsusomani sumizomenosode</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">How bold it is of me — yet I spread my ink-black sleeves to shelter the people of this troubled world.</span><div class="waka-game-links"><span class="small">前大僧正慈円（Former Senior High Priest Jien）</span></div></td><td style="background-color: #F7F1E0;">おほけなく<br>うきよのたみに<br>おほふかな<br>わがたつそまに<br>すみぞめのそで</td><td style="background-color: #F7F1E0;">ohokenaku ukiyonotamini ohofukana wagatatsusomani sumizomenosode</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="96" data-color="黄" data-theme="misc" data-hiragana="はなさそうあらしのにわのゆきならでふりゆくものはわがみなりけり"><td style="background-color: #fefbe0;"><a class="num-badge" href="/96_en.html" data-number="96" data-tooltip="Poem details">96</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">花さそふ 嵐の庭の 雪ならで <br class="waka-br">ふりゆくものは わが身なりけり</span> <span class="romaji-text">hanasasofu arashinonihano yukinarade <br class="waka-br">furiyukumonoha wagaminarikeri</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">It is not the snow of blossoms scattered by the storm in the garden — it is I myself who am fading with the years.</span><div class="waka-game-links"><span class="small">入道前太政大臣（Lay Novice and former Chancellor of the Realm）</span></div></td><td style="background-color: #F7F1E0;">はなさそふ<br>あらしのにはの<br>ゆきならで<br>ふりゆくものは<br>わがみなりけり</td><td style="background-color: #F7F1E0;">hanasasofu arashinonihano yukinarade furiyukumonoha wagaminarikeri</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="97" data-color="ピンク" data-theme="love" data-hiragana="こぬひとをまつほのうらのゆうなぎにやくやもしおのみもこがれつつ"><td style="background-color: #fde8f3;"><a class="num-badge" href="/97_en.html" data-number="97" data-tooltip="Poem details">97</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">来ぬ人を 松帆の浦の 夕なぎに <br class="waka-br">焼くやもしほの 身もこがれつつ</span> <span class="romaji-text">konuhitoo matsuhonourano yuunagini <br class="waka-br">yakuyamoshihono mimokogaretsutsu</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">Waiting for someone who will not come, at the quiet evening shore — like salt burned from the seaweed, I too am consumed by longing.</span><div class="waka-game-links"><span class="small">権中納言定家（Acting Middle Counselor Sadaie）</span></div></td><td style="background-color: #F7F1E0;">こぬひとを<br>まつほのうらの<br>ゆうなぎに<br>やくやもしほの<br>みもこがれつつ</td><td style="background-color: #F7F1E0;">konuhitoo matsuhonourano yuunagini yakuyamoshihono mimokogaretsutsu</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="98" data-color="橙" data-theme="summer" data-hiragana="かぜそよぐならのおがわのゆうぐれはみそぎぞなつのしるしなりける"><td style="background-color: #fef0e0;"><a class="num-badge" href="/98_en.html" data-number="98" data-tooltip="Poem details">98</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">風そよぐ ならの小川の 夕暮は <br class="waka-br">みそぎぞ夏の しるしなりける</span> <span class="romaji-text">kazesoyogu naranoogahano yufugureha <br class="waka-br">misogizonatsuno shirushinarikeru</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">The breeze rustles through the leaves of the sacred oak trees by the river at dusk. The purification rite is the only sign that summer is here.</span><div class="waka-game-links"><span class="small">従二位家隆（Junior Second Rank Ietaka）</span></div></td><td style="background-color: #F7F1E0;">かぜそよぐ<br>ならのをがはの<br>ゆふぐれは<br>みそぎぞなつの<br>しるしなりける</td><td style="background-color: #F7F1E0;">kazesoyogu naranoogahano yufugureha misogizonatsuno shirushinarikeru</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="99" data-color="橙" data-theme="misc" data-hiragana="ひともおしひともうらめしあじきなくよをおもうゆえにものおもうみは"><td style="background-color: #fef0e0;"><a class="num-badge" href="/99_en.html" data-number="99" data-tooltip="Poem details">99</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">人もをし 人もうらめし あぢきなく <br class="waka-br">世を思ふゆゑに 物思ふ身は</span> <span class="romaji-text">hitomooshi hitomourameshi ajikinaku <br class="waka-br">yooomofuyueeni monoomofumiha</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">I find people both dear and hateful. It is because I care so deeply about this troubled world that I am always lost in thought.</span><div class="waka-game-links"><span class="small">後鳥羽院（Retired Emperor Go-Toba）</span></div></td><td style="background-color: #F7F1E0;">ひともをし<br>ひともうらめし<br>あぢきなく<br>よをおもふゆゑえに<br>ものおもふみは</td><td style="background-color: #F7F1E0;">hitomooshi hitomourameshi ajikinaku yooomofuyueeni monoomofumiha</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="100" data-color="青" data-theme="misc" data-hiragana="ももしきやふるきのきばのしのぶにもなおあまりあるむかしなりけり"><td style="background-color: #e8f0fe;"><a class="num-badge" href="/100_en.html" data-number="100" data-tooltip="Poem details">100</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">ももしきや ふるき軒ばの しのぶにも <br class="waka-br">なほあまりある 昔なりけり</span> <span class="romaji-text">momoshikiya furukinokibano shinobunimo <br class="waka-br">nahoamariaru mukashinarikeri</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">Even the ancient ferns on the old eaves of the palace — there is more than enough of the past that they call to mind.</span><div class="waka-game-links"><span class="small">順徳院（Retired Emperor Juntoku）</span></div></td><td style="background-color: #F7F1E0;">ももしきや<br>ふるきのきばの<br>しのぶにも<br>なほあまりある<br>むかしなりけり</td><td style="background-color: #F7F1E0;">momoshikiya furukinokibano shinobunimo nahoamariaru mukashinarikeri</td><td style="background-color: #F7F1E0;"></td></tr>
+          </tbody>
+        </table>
+        <!-- POEM-TABLE:END -->
+      </div>
+      <div class="hyakushu__more">
+        <button type="button" id="hyakushu-more" aria-controls="table" aria-expanded="false">Show all 100 poems</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- All contents (every page on the site, by category) -->
+  <section class="hub" aria-labelledby="hub-title">
+    <p class="home-kicker">Contents</p>
+    <h2 id="hub-title" class="home-heading">All Contents</h2>
+    <p class="home-lead">Read, memorize, play, and explore. Choose whatever interests you.</p>
+    <div class="hub-grid">
+      <section class="hub-panel" id="kajin" aria-labelledby="kajin-title">
+        <div class="hub-panel__head">
+          <span class="hub-panel__mon" aria-hidden="true">知</span>
+          <div>
+            <h3 id="kajin-title">Know the Poems and Poets<span class="hub-panel__count">6</span></h3>
+            <p>Explore the meaning of all 100 poems and the lives of the 100 poets</p>
+          </div>
+        </div>
+        <ul class="hub-links">
+          <li><a href="list_en.html"><span class="hub-link__title">Complete Poem List</span><span class="hub-link__desc">All 100 poems with translations. Search by poem, poet, or romaji</span></a></li>
+          <li><a href="kajin-zukan_en.html"><span class="hub-link__title">Poet Encyclopedia</span><span class="hub-link__desc">Find the 100 poets by era, social standing, and theme</span></a></li>
+          <li><a href="diagram_archtecture_en.html"><span class="hub-link__title">Relationship Diagram</span><span class="hub-link__desc">Parents and children, lovers, teachers, and rivals, era by era</span></a></li>
+          <li><a href="kajin-kanshoku_en.html"><span class="hub-link__title">Court Rank &amp; Office by Poet</span><span class="hub-link__desc">Search which poet held which office</span></a></li>
+          <li><a href="rokkasen_en.html"><span class="hub-link__title">The Rokkasen (Six Poetic Immortals)</span><span class="hub-link__desc">The poets harshly judged in the kana preface of the <em>Kokin Wakashū</em></span></a></li>
+          <li><a href="sound-list_en.html"><span class="hub-link__title">Listen to All 100 Poems</span><span class="hub-link__desc">Play all 100 recitations in order or shuffled</span></a></li>
+        </ul>
+      </section>
+
+      <section class="hub-panel" id="oboeru" aria-labelledby="oboeru-title">
+        <div class="hub-panel__head">
+          <span class="hub-panel__mon" aria-hidden="true">覚</span>
+          <div>
+            <h3 id="oboeru-title">Memorize<span class="hub-panel__count">4</span></h3>
+            <p>Learn the upper verses, lower verses, and kimariji at your own pace</p>
+          </div>
+        </div>
+        <ul class="hub-links">
+          <li><a href="typing_en.html"><span class="hub-link__title">Memorize by Typing</span><span class="hub-link__desc">Learn the 100 poems by typing them on a keyboard</span></a></li>
+          <li><a href="typing-flick_en.html"><span class="hub-link__title">Memorize by Flick Typing</span><span class="hub-link__desc">Learn them with flick input on your smartphone</span></a></li>
+          <li><a href="kimariji_en.html"><span class="hub-link__title">Karuta Quiz</span><span class="hub-link__desc">A card-taking game played with your eyes, with a kimariji mode</span></a></li>
+          <li><a href="mindmap_en.html"><span class="hub-link__title">Kimariji Mind Map</span><span class="hub-link__desc">How the kimariji branch out, all in one diagram</span></a></li>
+        </ul>
+      </section>
+
+      <section class="hub-panel" id="kyogi" aria-labelledby="kyogi-title">
+        <div class="hub-panel__head">
+          <span class="hub-panel__mon" aria-hidden="true">競</span>
+          <div>
+            <h3 id="kyogi-title">Train for Competitive Karuta<span class="hub-panel__count">8</span></h3>
+            <p>From matches to card-flow drills, a practice ground for players</p>
+          </div>
+        </div>
+        <ul class="hub-links">
+          <li><a href="karuta-taisen_en.html"><span class="hub-link__title">Online Battle</span><span class="hub-link__desc">Take cards against other players in real time</span></a></li>
+          <li><a href="karuta-taisen-pro_en.html"><span class="hub-link__title">Competitive Karuta Game</span><span class="hub-link__desc">Full rules, including sending cards</span></a></li>
+          <li><a href="karuta_en.html"><span class="hub-link__title">Karuta Game</span><span class="hub-link__desc">With audio recitation. Play on your own</span></a></li>
+          <li><a href="otetsuki_en.html"><span class="hub-link__title">False Start Simulation</span><span class="hub-link__desc">Experience the false-start rules of competitive karuta</span></a></li>
+          <li><a href="hudanagashi-practice_en.html"><span class="hub-link__title">Card Flow</span><span class="hub-link__desc">Learn the kimariji by flipping through the cards</span></a></li>
+          <li><a href="hudanagashi-game_en.html"><span class="hub-link__title">Kimariji 3-Choice Quiz</span><span class="hub-link__desc">Check the kimariji quickly with three choices</span></a></li>
+          <li><a href="hudanagashi-flash_en.html"><span class="hub-link__title">Kimariji Flash Training</span><span class="hub-link__desc">Spot the kimariji in an instant</span></a></li>
+          <li><a href="kimariji-hanabi_en.html"><span class="hub-link__title">Kimariji Fireworks</span><span class="hub-link__desc">Learn the kimariji with a fireworks game</span></a></li>
+        </ul>
+      </section>
+
+      <section class="hub-panel" id="asobu" aria-labelledby="asobu-title">
+        <div class="hub-panel__head">
+          <span class="hub-panel__mon" aria-hidden="true">遊</span>
+          <div>
+            <h3 id="asobu-title">Play Games<span class="hub-panel__count">7</span></h3>
+            <p>Quizzes and puzzles, for families and classrooms too</p>
+          </div>
+        </div>
+        <ul class="hub-links">
+          <li><a href="gokunarabe_01_en.html"><span class="hub-link__title">Meet the Poets: Put the Five Lines in Order</span><span class="hub-link__desc">Put the jumbled five lines of a poem back in order</span></a></li>
+          <li><a href="daruma-otoshi-01_en.html"><span class="hub-link__title">Daruma-otoshi</span><span class="hub-link__desc">Enjoy a poem while playing daruma-otoshi</span></a></li>
+          <li><a href="kaminoku-dango_en.html"><span class="hub-link__title">Kaminoku Dango</span><span class="hub-link__desc">Guess the upper verse from the lower verse on a dango skewer</span></a></li>
+          <li><a href="shimonoku-dango_en.html"><span class="hub-link__title">Shimonoku Dango</span><span class="hub-link__desc">Guess the lower verse from the upper verse on a dango skewer</span></a></li>
+          <li><a href="memory_en.html"><span class="hub-link__title">Memory Match</span><span class="hub-link__desc">Turn over and match the cards to learn them</span></a></li>
+          <li><a href="bingo_en.html"><span class="hub-link__title">Bingo</span><span class="hub-link__desc">A bingo game that is perfect for memorizing</span></a></li>
+          <li><a href="omikuji_en.html"><span class="hub-link__title">Hyakunin Isshu Fortune</span><span class="hub-link__desc">Tell today's fortune with one poem</span></a></li>
+        </ul>
+      </section>
+
+      <section class="hub-panel" id="gihou" aria-labelledby="gihou-title">
+        <div class="hub-panel__head">
+          <span class="hub-panel__mon" aria-hidden="true">技</span>
+          <div>
+            <h3 id="gihou-title">Waka Techniques<span class="hub-panel__count">4</span></h3>
+            <p>Uncover the devices hidden in the 5-7-5-7-7 form</p>
+          </div>
+        </div>
+        <ul class="hub-links">
+          <li><a href="utamakura_en.html"><span class="hub-link__title">Utamakura</span><span class="hub-link__desc">Famous places that were sung of again and again in waka</span></a></li>
+          <li><a href="kakekotoba-game-001_en.html"><span class="hub-link__title">Spin &amp; Discover Kakekotoba!</span><span class="hub-link__desc">A game to find the kakekotoba hidden in the poems</span></a></li>
+          <li><a href="makurakotoba-game_en.html"><span class="hub-link__title">Makurakotoba Master</span><span class="hub-link__desc">A 3-choice quiz on makurakotoba and the words they lead into</span></a></li>
+          <li><a href="jokotoba-dango_en.html"><span class="hub-link__title">Jokotoba Dango</span><span class="hub-link__desc">Learn jokotoba with a dango skewer game</span></a></li>
+        </ul>
+      </section>
+
+      <section class="hub-panel" id="yomu" aria-labelledby="yomu-title">
+        <div class="hub-panel__head">
+          <span class="hub-panel__mon" aria-hidden="true">読</span>
+          <div>
+            <h3 id="yomu-title">Read History and Stories<span class="hub-panel__count">1</span></h3>
+            <p>The human drama and the age behind the poems</p>
+          </div>
+        </div>
+        <ul class="hub-links">
+          <li><a href="about_en.html"><span class="hub-link__title">What Is the Hyakunin Isshu?</span><span class="hub-link__desc">Its origins and Fujiwara no Sadaie's sense of beauty</span></a></li>
+        </ul>
+      </section>
+
+      <section class="hub-panel" id="kanshoku" aria-labelledby="kanshoku-title">
+        <div class="hub-panel__head">
+          <span class="hub-panel__mon" aria-hidden="true">官</span>
+          <div>
+            <h3 id="kanshoku-title">Heian Court Ranks and Offices<span class="hub-panel__count">7</span></h3>
+            <p>Knowing the poets' titles makes the poems even more interesting</p>
+          </div>
+        </div>
+        <ul class="hub-links">
+          <li><a href="kanshoku_en.html"><span class="hub-link__title">Basics of Court Ranks and Offices</span><span class="hub-link__desc">The Heian status system, explained through the poets</span></a></li>
+          <li><a href="kanshoku_salary_en.html"><span class="hub-link__title">Annual Income of Heian Nobles</span><span class="hub-link__desc">Each rank's income in today's yen</span></a></li>
+          <li><a href="kanshoku_column_en.html"><span class="hub-link__title">How the Poets Got Their Names</span><span class="hub-link__desc">The mystery of poets called by the names of their offices</span></a></li>
+          <li><a href="kanshoku_hierarchy_en.html"><span class="hub-link__title">Overview of the Status Hierarchy</span><span class="hub-link__desc">The whole picture, from the emperor to commoners</span></a></li>
+          <li><a href="kanshoku_nikanhasshou_en.html"><span class="hub-link__title">Two Offices and Eight Ministries</span><span class="hub-link__desc">The court's central government</span></a></li>
+          <li><a href="kanshoku_koukyu_en.html"><span class="hub-link__title">The Inner Palace (Kōkyū)</span><span class="hub-link__desc">The world of consorts, ladies of the wardrobe, and ladies-in-waiting</span></a></li>
+          <li><a href="kanshoku_local_column_en.html"><span class="hub-link__title">Lower Nobles and Provincial Officials</span><span class="hub-link__desc">Why they aimed to become provincial governors</span></a></li>
+        </ul>
+      </section>
+
+      <section class="hub-panel" id="miru" aria-labelledby="miru-title">
+        <div class="hub-panel__head">
+          <span class="hub-panel__mon" aria-hidden="true">見</span>
+          <div>
+            <h3 id="miru-title">Explore with Maps and Data<span class="hub-panel__count">4</span></h3>
+            <p>See the 100 poems as a map, as emotions, and as a starry sky of words</p>
+          </div>
+        </div>
+        <ul class="hub-links">
+          <li><a href="utamakura_en.html"><span class="hub-link__title">Utamakura Map</span><span class="hub-link__desc">The famous places in the Hyakunin Isshu on a map</span></a></li>
+          <li><a href="kokoro-map_en.html"><span class="hub-link__title">Emotional Map</span><span class="hub-link__desc">The emotions of the 100 poems, visualized</span></a></li>
+          <li><a href="words_en.html"><span class="hub-link__title">Word Frequency Map</span><span class="hub-link__desc">The most-used words, found by morphological analysis</span></a></li>
+          <li><a href="cosmos_en.html"><span class="hub-link__title">The Hyakunin Isshu Cosmos</span><span class="hub-link__desc">A 3D map of words built with TF-IDF</span></a></li>
+        </ul>
+      </section>
+    </div>
   </section>
 
   <footer>
@@ -607,9 +1695,10 @@
     </div>
   </footer>
 
-  <script src="../js/poems_en.js?20261008-01"></script>
+  <script src="../js/list-rows_en.js?20261009-01"></script>
+  <script src="../js/list_en.js?20261009-01"></script>
 
-  <!-- Vanta.js 初期化（スマホのみ） -->
+  <!-- Vanta.js (smartphones only) -->
   <script>
     (function () {
       if (window.innerWidth <= 800) {
@@ -626,154 +1715,80 @@
     })();
   </script>
 
+
   <script>
-/* ===== 歌番号ティッカーの自動生成（1セット分を2セット並べてシームレスにループ） ===== */
-/* reverse=trueのときは100→1の逆順で並べる（右側ティッカー用） */
-/* EN版：各番号は英語版の詩ページ（N_en.html）へリンクする */
-function buildTicker(containerId, reverse) {
-  const track = document.getElementById(containerId);
-  if (!track) return;
-  track.innerHTML = "";
-  const nums = [];
-  for (let i = 1; i <= 100; i++) nums.push(i);
-  if (reverse) nums.reverse();
-  for (let set = 0; set < 2; set++) {
-    nums.forEach((i) => {
-      const a = document.createElement('a');
-      a.className = 'number-ticker-item';
-      a.href = '/' + i + '_en.html';
-      a.textContent = i;
-      if (set === 1) a.setAttribute('aria-hidden', 'true');
-      track.appendChild(a);
-    });
-  }
-}
-
-buildTicker("number-ticker-track");
-buildTicker("number-ticker-track-right");
-
-/* ===== 歌番号ティッカーのドラッグ操作＋自動スクロール ===== */
-/* PC：横向き（translateX、右から左）／SP：縦向き（translateY、下から上）
-   右側ティッカー（direction:1）は逆向き（translateY、上から下）に流す */
+/* ===== Today's poem (Hyakunin Isshu fortune) =====
+   Uses js/omikuji_en.js as is, including the box flip, the stick, and the paper animation. */
 (function () {
-  const mq = window.matchMedia('(max-width: 799px)');
-  function isVertical() { return mq.matches; }
-  const SPEED = 56;          // 自動スクロール速度（px/秒）
-  const HOVER_PAUSE_MS = 5000; // 数字にホバーしたら止めておく時間
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const OMIKUJI_SRC = "/js/omikuji_en.js?20261004-01";
+  const section = document.getElementById("omikuji");
+  const drawBtn = document.getElementById("draw-button");
+  if (!section || !drawBtn) return;
 
-  // direction: -1＝左側ティッカー（0から負方向へ、上へ流れる）
-  //             1＝右側ティッカー（-singleSetSizeから0へ、下へ流れる＝逆方向）
-  function initTicker(wrap, track, direction) {
-    if (!wrap || !track) return;
+  let ready = false;
+  let loading = null;
 
-    let pos = 0;               // 現在のtranslateX/Y（px、-singleSetSize〜0の範囲）
-    let singleSetSize = 0;     // 歌番号100個、1セット分のサイズ（横幅 or 縦幅）
-    let isDragging = false;
-    let dragStart = 0;
-    let dragStartPos = 0;
-    let dragMoved = 0;
-    let pauseUntil = 0;
-
-    function measure() {
-      singleSetSize = isVertical() ? track.scrollHeight / 2 : track.scrollWidth / 2;
+  function loadOmikuji() {
+    if (!loading) {
+      loading = new Promise(function (resolve, reject) {
+        const sc = document.createElement("script");
+        sc.src = OMIKUJI_SRC;
+        sc.onload = function () { ready = true; resolve(); };
+        sc.onerror = function () { loading = null; reject(); };
+        document.body.appendChild(sc);
+      });
     }
-    measure();
-    pos = direction > 0 ? -singleSetSize : 0;
-    window.addEventListener('resize', measure);
-
-    // 向きが変わったら位置をリセットして測り直す
-    function handleOrientationChange() {
-      measure();
-      pos = direction > 0 ? -singleSetSize : 0;
-      apply();
-    }
-    if (mq.addEventListener) {
-      mq.addEventListener('change', handleOrientationChange);
-    } else if (mq.addListener) {
-      mq.addListener(handleOrientationChange);
-    }
-
-    // 2セット分ループしているので、範囲外に出たら1セット分ワープさせてシームレスに見せる
-    function wrapPos(val) {
-      if (!singleSetSize) return val;
-      while (val <= -singleSetSize) val += singleSetSize;
-      while (val > 0) val -= singleSetSize;
-      return val;
-    }
-
-    function apply() {
-      track.style.transform = isVertical() ? `translateY(${pos}px)` : `translateX(${pos}px)`;
-    }
-
-    let lastTime = null;
-    function tick(now) {
-      if (lastTime === null) lastTime = now;
-      const dt = (now - lastTime) / 1000;
-      lastTime = now;
-      if (!isDragging && !reduceMotion && now >= pauseUntil) {
-        pos = wrapPos(pos + direction * SPEED * dt);
-        apply();
-      }
-      requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
-
-    function coord(e) {
-      return isVertical() ? e.clientY : e.clientX;
-    }
-
-    // 数字にホバーしている間（＋離れてから5秒間）は自動スクロールを止める
-    wrap.addEventListener('mousemove', (e) => {
-      if (e.target.closest('.number-ticker-item')) {
-        pauseUntil = performance.now() + HOVER_PAUSE_MS;
-      }
-    });
-
-    // ※ setPointerCaptureは使わない。捕捉するとクリックのtargetがwrap自身に
-    //   すり替わり、<a>のリンク遷移が起きなくなってしまうため。
-    //   代わりに、ドラッグ中だけwindowにmove/upを一時的に登録する。
-    function pointerDown(e) {
-      isDragging = true;
-      dragMoved = 0;
-      dragStart = coord(e);
-      dragStartPos = pos;
-      wrap.classList.add('dragging');
-      window.addEventListener('pointermove', pointerMove);
-      window.addEventListener('pointerup', pointerUp);
-      window.addEventListener('pointercancel', pointerUp);
-    }
-
-    function pointerMove(e) {
-      if (!isDragging) return;
-      const d = coord(e) - dragStart;
-      dragMoved = Math.max(dragMoved, Math.abs(d));
-      pos = wrapPos(dragStartPos + d);
-      apply();
-    }
-
-    function pointerUp() {
-      if (!isDragging) return;
-      isDragging = false;
-      wrap.classList.remove('dragging');
-      window.removeEventListener('pointermove', pointerMove);
-      window.removeEventListener('pointerup', pointerUp);
-      window.removeEventListener('pointercancel', pointerUp);
-    }
-
-    wrap.addEventListener('pointerdown', pointerDown);
-
-    // ドラッグでリンクを動かした後は、離した瞬間のクリックでページ遷移しないようにする
-    track.addEventListener('click', (e) => {
-      if (dragMoved > 5) {
-        e.preventDefault();
-        e.stopPropagation();
-      }
-    }, true);
+    return loading;
   }
 
-  initTicker(document.getElementById('number-ticker-left'), document.getElementById('number-ticker-track'), -1);
-  initTicker(document.getElementById('number-ticker-right'), document.getElementById('number-ticker-track-right'), 1);
+  // If the button is pressed before the script loads, click it again after loading so omikuji_en.js handles it
+  drawBtn.addEventListener("click", function () {
+    if (ready) return;
+    drawBtn.disabled = true;
+    loadOmikuji().then(function () {
+      drawBtn.disabled = false;
+      drawBtn.click();
+    }).catch(function () {
+      drawBtn.disabled = false;
+    });
+  });
+
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver(function (entries) {
+      if (entries.some(function (e) { return e.isIntersecting; })) {
+        io.disconnect();
+        loadOmikuji().catch(function () {});
+      }
+    }, { rootMargin: "600px 0px" });
+    io.observe(section);
+  }
+})();
+
+/* ===== Choose from the 100 poems: collapse the list_en.js table and link it to the search form ===== */
+(function () {
+  const wrap = document.getElementById("hyakushu-list");
+  const moreBtn = document.getElementById("hyakushu-more");
+  const input = document.getElementById("searchInput");
+  if (!wrap || !moreBtn || !input) return;
+
+  function setCollapsed(collapsed) {
+    wrap.classList.toggle("is-collapsed", collapsed);
+    moreBtn.textContent = collapsed ? "Show all 100 poems" : "Collapse";
+    moreBtn.setAttribute("aria-expanded", collapsed ? "false" : "true");
+  }
+
+  moreBtn.addEventListener("click", function () {
+    const collapse = !wrap.classList.contains("is-collapsed");
+    setCollapsed(collapse);
+    if (collapse) document.getElementById("hyakushu").scrollIntoView({ behavior: "smooth" });
+  });
+
+  // When search, sort, or a filter is used, show all rows so results are not hidden
+  input.addEventListener("input", function () { setCollapsed(false); });
+  document.getElementById("sort-buttons").addEventListener("click", function (e) {
+    if (e.target.closest(".sort-btn")) setCollapsed(false);
+  });
+
 })();
 </script>
 </body>

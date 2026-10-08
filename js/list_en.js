@@ -50,16 +50,20 @@ if (prebuiltTable) {
 // Sort & filter
 ////////////////////////////////////////////////////////////
 
+// Current colour / theme filter (null = no filter)
+// The theme filter buttons (.theme-filter-btn) are only used on pages that have them (currently the top page)
 let activeColorFilter = null;
+let activeThemeFilter = null;
 
-// Show only rows that match both the colour filter and the search text
+// Show only rows that match the colour filter, the theme filter and the search text
 function applyFilters(table) {
   const rows = Array.from(table.getElementsByTagName("tr"));
   const searchValue = searchInput.value.toLowerCase();
   rows.forEach((row) => {
     const colorOk = !activeColorFilter || row.dataset.color === activeColorFilter;
+    const themeOk = !activeThemeFilter || row.dataset.theme === activeThemeFilter;
     const textOk = !searchValue || row.textContent.toLowerCase().includes(searchValue);
-    row.style.display = colorOk && textOk ? "" : "none";
+    row.style.display = colorOk && themeOk && textOk ? "" : "none";
   });
 }
 
@@ -68,6 +72,7 @@ function initSortButtons(table) {
   const btnColor  = document.getElementById("sortByColor");
   const btnKana   = document.getElementById("sortByKana");
   const colorFilterBtns = document.querySelectorAll(".color-filter-btn");
+  const themeFilterBtns = document.querySelectorAll(".theme-filter-btn");
 
   function setActiveSort(activeBtn) {
     [btnNumber, btnColor, btnKana].forEach((b) => b.classList.remove("active"));
@@ -87,7 +92,9 @@ function initSortButtons(table) {
     sortRows((a, b) => parseInt(a.dataset.number) - parseInt(b.dataset.number));
     setActiveSort(btnNumber);
     activeColorFilter = null;
+    activeThemeFilter = null;
     colorFilterBtns.forEach((b) => b.classList.remove("active"));
+    themeFilterBtns.forEach((b) => b.classList.remove("active"));
     applyFilters(table);
   });
 
@@ -119,6 +126,22 @@ function initSortButtons(table) {
       } else {
         colorFilterBtns.forEach((b) => b.classList.remove("active"));
         activeColorFilter = color;
+        btn.classList.add("active");
+      }
+      applyFilters(table);
+    });
+  });
+
+  // Theme filter buttons (toggle, same behaviour as the colour filter)
+  themeFilterBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const theme = btn.dataset.theme;
+      if (activeThemeFilter === theme) {
+        activeThemeFilter = null;
+        btn.classList.remove("active");
+      } else {
+        themeFilterBtns.forEach((b) => b.classList.remove("active"));
+        activeThemeFilter = theme;
         btn.classList.add("active");
       }
       applyFilters(table);

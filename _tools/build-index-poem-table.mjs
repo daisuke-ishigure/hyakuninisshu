@@ -20,7 +20,7 @@ const read = (p) => readFileSync(join(root, p), "utf8");
 // 行テンプレート（ブラウザ側と同じファイル）と、その表を直書きするページ
 const TARGETS = [
   { template: "js/list-rows.js", pages: ["index.html", "list.html"] },
-  { template: "js/list-rows_en.js", pages: ["list_en.html"] },
+  { template: "js/list-rows_en.js", pages: ["index_en.html", "list_en.html"] },
 ];
 
 const data = JSON.parse(read("js/hyakunin.json"));
