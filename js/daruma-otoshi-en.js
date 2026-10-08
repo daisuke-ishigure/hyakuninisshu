@@ -775,7 +775,7 @@
   ],
   "53": [
     "This poem is addressed to an absent husband. The image of a woman lying alone in the dark, sighing (nagekitsutsu), is quietly devastating. The rhetorical question — \"do you know how long?\" — accuses without openly accusing, placing the burden of ignorance on the man who rarely visits.",
-    "The Mother of Michitsuna is the author of the Kagerō Nikki (Gossamer Diary), one of the earliest Japanese personal diaries written by a woman. It records the anguish of her marriage to Fujiwara no Kaneie, who had many wives and often neglected her."
+    "The Mother of the Right Captain Michitsuna is the author of the Kagerō Nikki (Gossamer Diary), one of the earliest Japanese personal diaries written by a woman. It records the anguish of her marriage to Fujiwara no Kaneie, who had many wives and often neglected her."
   ],
   "54": [
     "The poem captures a moment of peak happiness shaded by dread. While the promise of undying love is still fresh, the speaker wishes she could die now — before the vow has a chance to fade. It is a poem of paradoxical love logic: the wish to end life at its happiest point.",

@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-08T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -72,13 +72,13 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Shigure's Hyakunin Isshu",
-          "item": "https://hyakuninisshu.com/"
+          "item": "https://hyakuninisshu.com/index_en.html"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Poem List",
-          "item": "https://hyakuninisshu.com/list.html"
+          "item": "https://hyakuninisshu.com/list_en.html"
         },
         {
           "@type": "ListItem",
@@ -91,10 +91,13 @@
   ]
   </script>
   <!-- stylesheets -->
-  <link rel="stylesheet" href="../css/style.css?20261006-05">
+  <link rel="stylesheet" href="../css/style.css?20261008-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
-  <link rel="stylesheet" href="../css/poems_en.css?20260803-04">
+  <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/swiper-bundle.min.css">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -104,6 +107,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -134,6 +145,13 @@
   <main>
     <div class="card">
       <div class="column-wrapper">
+        <nav class="breadcrumb-poem" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index_en.html">Top</a></li>
+            <li><a href="list_en.html">Poem List</a></li>
+            <li aria-current="page">No. 11 Councillor Takamura</li>
+          </ol>
+        </nav>
         <div class="select-container">
           <label for="themeSelector" id="themeSelector-label">Select a theme:</label>
           <select id="themeSelector" class="selector">
@@ -154,9 +172,9 @@
           <div class="checkbox1">
             <div style="display:flex; align-items:center;">
               <label for="toggle2" id="toggle2-label">Switch between the picture card and the matching card</label>
-              <p>Front</p>
+              <p>Front of the Card</p>
               <input type="checkbox" id="toggle2">
-              <p>Back</p>
+              <p>Back of the Card</p>
             </div>
             <div style="display:flex; align-items:center;">
               <div id="play-pause-btn"></div>
@@ -167,7 +185,7 @@
           </div>
           <div class="audio-credit-row">
             <p id="audio-credit">Audio: NHK Creative Library</p>
-            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox (Public Domain).</p>
+            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox</p>
           </div>
 
         </div><!-- column-wrapper end -->
@@ -229,36 +247,18 @@
         <dl>
           <dt>Commentary</dt>
           <dd>
-            The Kokin Wakashū's headnote reads, "Sent to someone in the capital as he set out by boat, having been exiled to Oki Province." Takamura composed this poem for the family he left behind in the capital, as he was being banished to the island of Oki.
+            The Kokin Wakashū says this was sent to someone in the capital as Takamura set off by boat into exile on the island of Oki. He wrote it for the family he left behind.
           </dd>
         </dl>
         <dl class="last-dl">
           <dt>About the Poet</dt>
           <dd>
-            Councillor Takamura's real name was Ono no Takamura, and he was the grandfather of Ono no Komachi. While traveling to Tang China as deputy envoy, he was ordered by a superior to swap ships with a leaking vessel, and he refused. He further angered Retired Emperor Saga by writing a Chinese poem, "Saidōyō," criticizing the incompetence of the embassy, and was banished to the remote island of Oki, where he endured a harsh existence. Two years later he was pardoned, returned to the capital, and was restored to office.
+            Councillor Takamura (Ono no Takamura) was Ono no Komachi's grandfather. Sent as deputy envoy to Tang China, he refused an order to swap his ship for a leaking one, and wrote a Chinese poem mocking the mission. This angered Retired Emperor Saga, who exiled him to Oki. He was pardoned two years later and returned to office.
           </dd>
         </dl>
       </div>
     </div>
     <div class="chart-image-row">
-    <div class="chart-section">
-      <dl>
-        <dt class='title'>Councillor Takamura's Chart of the Heart</dt>
-            <dd>
-              <p>A chart and a modern-language reflection of the poet's inner feelings.</p>
-              <div class="emotion-chart">
-                <div id="radarChartWrapper">
-                  <canvas id="radarChart" width="300" height="300"></canvas>
-                </div>
-                <div>
-                  <p class="chart-quotes-title">The Poet's Feelings (A Personal Interpretation)</p>
-                  <p>I row out toward the edge of the endless sea.<br class="br-pc">Tell my family waiting in the capital how I looked.</p>
-                  <p style="margin-top:1em;">Alone on this vast ocean, with nothing to hold onto,<br class="br-pc">I picture their faces in the waves.</p>
-                </div>
-              </div>
-            </dd>
-      </dl>
-    </div>
     <div class="image-section">
       <dl>
         <dt class='title'>Poem Illustration</dt>
@@ -268,7 +268,385 @@
         </dd>
       </dl>
     </div>
+    <div class="nenpyo-section">
+      <dl>
+        <dt class='title'>Ono no Takamura: A Short Timeline</dt>
+        <dd>
+          <dl class="nenpyo">
+            <dt>802</dt>
+            <dd>Born</dd>
+            <dt>822</dt>
+            <dd>Passes the exam to become a student of literature at the court university</dd>
+            <dt>833</dt>
+            <dd>Writes the preface to the Ryō no Gige, an official commentary on the law</dd>
+            <dt>834</dt>
+            <dd>Named deputy envoy to Tang China</dd>
+            <dt>838</dt>
+            <dd>Refuses to board the envoy ship and is exiled to Oki Province</dd>
+            <dt>840</dt>
+            <dd>Pardoned and returns to the capital</dd>
+            <dt>847</dt>
+            <dd>Becomes Councillor (Sangi)</dd>
+            <dt>852</dt>
+            <dd>Given Junior Third Rank</dd>
+            <dt>853</dt>
+            <dd>Dies</dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Ono no Takamura's Family Tree</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 11.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+              <li><span class="fk-legend__dash"></span>Several generations skipped</li>
+              <li><span class="fk-legend__eq">＝</span>Marriage</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Ono no Takamura's family tree">
+            <script type="application/json">
+{
+ "lang": "en",
+ "nodes": [
+  {
+   "id": "imoko",
+   "n": "小野妹子",
+   "x": 16,
+   "y": 95
+  },
+  {
+   "id": "minemori",
+   "n": "小野岑守",
+   "x": 190,
+   "y": 95
+  },
+  {
+   "id": "toshiyukishitsu",
+   "n": "藤原敏行室",
+   "x": 350,
+   "y": 40
+  },
+  {
+   "id": "toshiyuki",
+   "n": "藤原敏行",
+   "key": "敏行",
+   "p": 18,
+   "x": 350,
+   "y": 84
+  },
+  {
+   "id": "takamura",
+   "n": "小野篁",
+   "p": 11,
+   "x": 350,
+   "y": 150,
+   "self": 1
+  },
+  {
+   "id": "yoshizane",
+   "n": "小野良真",
+   "x": 540,
+   "y": 128
+  },
+  {
+   "id": "kuzuo",
+   "n": "小野葛絃",
+   "x": 540,
+   "y": 172
+  },
+  {
+   "id": "komachi",
+   "n": "小野小町",
+   "p": 9,
+   "x": 710,
+   "y": 128
+  },
+  {
+   "id": "michikaze",
+   "n": "小野道風",
+   "x": 710,
+   "y": 172
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-toshiyuki",
+   "top": "toshiyukishitsu",
+   "bottom": "toshiyuki"
+  }
+ ],
+ "kids": [
+  {
+   "from": "minemori",
+   "to": [
+    "toshiyukishitsu",
+    "takamura"
+   ]
+  },
+  {
+   "from": "takamura",
+   "to": [
+    "yoshizane",
+    "kuzuo"
+   ]
+  },
+  {
+   "from": "yoshizane",
+   "to": [
+    "komachi"
+   ]
+  },
+  {
+   "from": "kuzuo",
+   "to": [
+    "michikaze"
+   ]
+  }
+ ],
+ "lines": [
+  {
+   "points": [
+    [
+     128,
+     95
+    ],
+    [
+     187,
+     95
+    ]
+   ],
+   "dash": true
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 873 198" width="873" height="198" role="img" aria-label="Ono no Takamura's family tree" lang="en" class="fk-svg kd-svg" style="max-width:1310px;min-width:min(640px,1310px)" data-src="2pez34">
+<g class="fk-edges"><path d="M427 49V75M431 49V75" class="fk-edge fk-eq"/><path d="M324 95H336" class="fk-edge"/><path d="M336 40V150" class="fk-edge"/><path d="M336 40H347" class="fk-edge"/><path d="M336 150H347" class="fk-edge"/><path d="M511 150H526" class="fk-edge"/><path d="M526 128V172" class="fk-edge"/><path d="M526 128H537" class="fk-edge"/><path d="M526 172H537" class="fk-edge"/><path d="M677 128H696" class="fk-edge"/><path d="M696 128H707" class="fk-edge"/><path d="M648 172H696" class="fk-edge"/><path d="M696 172H707" class="fk-edge"/><path d="M128 95L187 95" class="fk-edge is-dash"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node" transform="translate(16,95)" data-tip="&lt;h3&gt;Ono no Imoko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Sent to Sui China as an envoy. The family line from him down to Ono no Minemori is not clear&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="111" height="26"/><text class="fk-name" x="0" y="0.5">Ono no Imoko</text></g></g>
+<g class="fk-node" transform="translate(190,95)" data-tip="&lt;h3&gt;Ono no Minemori&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;778–830&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Third son of Ono no Nagami&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Ono no Takamura; said to be the great-grandfather of Ono no Komachi&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="135" height="26"/><text class="fk-name" x="0" y="0.5">Ono no Minemori</text></g></g>
+<g class="fk-node" transform="translate(350,40)" data-tip="&lt;h3&gt;Daughter of Ono no Minemori&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Wife of Fujiwara no Toshiyuki; Ono no Takamura's elder or younger sister&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="162" height="26"/><text class="fk-name" x="0" y="0.5">Minemori's daughter</text></g></g>
+<g class="fk-node is-poet" transform="translate(350,84)" data-tip="&lt;h3&gt;Fujiwara no Toshiyuki&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown–901&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Commander of the Right Military Guards&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Fourth Rank, Upper Grade&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 18, &quot;Suminoe no...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Fujiwara no Toshiyuki Ason&lt;/span&gt;&lt;/div&gt;" data-p="18"><a href="/18_en.html" aria-label="Fujiwara no Toshiyuki (Hyakunin Isshu Poem 18)"><rect class="fk-hit" x="-2" y="-13" width="192" height="26"/><text class="fk-name" x="0" y="0.5">Fujiwara no Toshiyuki</text><circle class="fk-badge" cx="178" cy="0" r="10"/><text class="fk-badge-num" x="178" y="0.5">18</text></a></g>
+<g class="fk-node is-poet is-self" transform="translate(350,150)" data-tip="&lt;h3&gt;Ono no Takamura&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;802–853&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Councillor (Sangi)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ono no Minemori&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 11, &quot;Wata no hara yasoshima kakete...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;One theory says he was the grandfather of Ono no Komachi and Ono no Michikaze&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="168" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="162" height="26"/><text class="fk-name" x="0" y="0.5">Ono no Takamura</text><circle class="fk-badge" cx="148" cy="0" r="10"/><text class="fk-badge-num" x="148" y="0.5">11</text></g></g>
+<g class="fk-node" transform="translate(540,128)" data-tip="&lt;h3&gt;Ono no Yoshizane&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ono no Takamura (his name is also written 良貞 or 良実)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Said to be the father of Ono no Komachi&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="138" height="26"/><text class="fk-name" x="0" y="0.5">Ono no Yoshizane</text></g></g>
+<g class="fk-node" transform="translate(540,172)" data-tip="&lt;h3&gt;Ono no Kuzuo&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Assistant Governor-General of Dazaifu&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ono no Takamura&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Ono no Yoshifuru and Ono no Michikaze&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="109" height="26"/><text class="fk-name" x="0" y="0.5">Ono no Kuzuo</text></g></g>
+<g class="fk-node is-poet" transform="translate(710,128)" data-tip="&lt;h3&gt;Ono no Komachi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 9, &quot;Hana no iro wa...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Her origins are not clear. She is usually said to be the daughter of Ono no Yoshizane, but some say she was the daughter of Ono no Takamura&lt;/span&gt;&lt;/div&gt;" data-p="9"><a href="/9_en.html" aria-label="Ono no Komachi (Hyakunin Isshu Poem 9)"><rect class="fk-hit" x="-2" y="-13" width="151" height="26"/><text class="fk-name" x="0" y="0.5">Ono no Komachi</text><circle class="fk-badge" cx="137" cy="0" r="10"/><text class="fk-badge-num" x="137" y="0.5">9</text></a></g>
+<g class="fk-node" transform="translate(710,172)" data-tip="&lt;h3&gt;Ono no Michikaze&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Third son of Ono no Kuzuo; grandson of Ono no Takamura&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Famous as a calligrapher, one of the Three Great Calligraphers (Sanseki)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="138" height="26"/><text class="fk-name" x="0" y="0.5">Ono no Michikaze</text></g></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+          <div class="kd-text">
+            <h3 class="was-h4">Takamura's ancestor, the first to go to China</h3>
+            <p>
+              The Ono clan was active from the Asuka period to the Heian period. Above all, Ono no Imoko of the Asuka period is remembered in history as the head of the mission to Sui China who delivered a letter written by Prince Shōtoku, beginning "The Son of Heaven in the land where the sun rises...," to the Sui emperor.
+            </p>
+            <h3 class="was-h4">Takamura refuses to sail</h3>
+            <p>
+              With such an ancestor, Takamura too was supposed to go to China as deputy envoy. But it is said that he refused to board because he was given a faulty ship for the dangerous voyage. However, since Takamura also wrote "Saidōyō," a Chinese poem mocking the missions to China, it seems that by his time Tang China was in decline, there was less to learn from it, and the missions had lost much of their purpose.
+            </p>
+            <h3 class="was-h4">Takamura's father, Minemori</h3>
+            <p>Takamura's father, Minemori, was a high court official who served as Councillor and Senior Assistant Governor-General of Dazaifu. He was good at Chinese poetry and tutored the emperor in reading, and Takamura seems to have inherited his talent. Takamura is said to have been called "the Bai Juyi of Japan."</p>
+            <h3 class="was-h4">Takamura's descendants</h3>
+            <p>Takamura's descendants include Ono no Komachi, whose poem is No. 9 in the Hyakunin Isshu, and the famous calligrapher <a href="#michikaze">Ono no Michikaze</a>.</p>
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <dt>A Poem Written on Oki</dt>
+            <dd>This poem shows the hard life Takamura was forced to live after he was exiled to Oki.
+              <div class='quote'><q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>思<rt>おも</rt></ruby>ひきや
+                  <ruby>鄙<rt>ひな</rt></ruby>の<ruby>別<rt>わか</rt></ruby>れに
+                  <ruby>衰<rt>おとろ</rt></ruby>へて
+                  <br><ruby>海人<rt>あま</rt></ruby>の<ruby>縄<rt>なわ</rt></ruby>たぎ
+                  <ruby>漁<rt>いさ</rt></ruby>りせむとは
+                  <span class="shutten"><em>Kokin Wakashū</em>, Ono no Takamura</span>
+                </q><q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.8; margin-top: 0.2em;">I never dreamed of this: parted from the capital, worn out in the countryside, pulling a fisherman's net to catch fish.</p>
+                </q>
+              </div>
+            </dd>
+
+            <dt>A Poem About Plum Blossoms</dt>
+            <dd>The scene of lingering winter snow mixed with plum blossoms, which announce the coming of spring, has a special beauty, and it was a traditional theme from the time of the <em>Man'yōshū</em>. The learned Ono no Takamura carried on this tradition in the next poem.
+              <div class='quote'><q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>花<rt>はな</rt></ruby>の<ruby>色<rt>いろ</rt></ruby>は
+                  <ruby>雪<rt>ゆき</rt></ruby>にまじりて
+                  <ruby>見<rt>み</rt></ruby>えずとも
+                  <br><ruby>香<rt>か</rt></ruby>をだに<ruby>匂<rt>にお</rt></ruby>え
+                  <ruby>人<rt>ひと</rt></ruby>の<ruby>知<rt>し</rt></ruby>るべく
+                  <span class="shutten"><em>Kokin Wakashū</em>, Ono no Takamura</span>
+                </q><q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.8; margin-top: 0.2em;">Even if the color of the plum blossoms is lost among the snow, at least let your scent drift, so that people will know you are there.
+                  </p>
+                </q>
+              </div>
+            </dd>
+
+            <dt>The Poem Behind <em>The Tale of Takamura</em></dt>
+            <dd><em>The Tale of Takamura</em> (<em>Takamura Monogatari</em>) is a tale told through poems about the sad, doomed love between Ono no Takamura and his half-sister.
+              Takamura wrote the next poem in deep despair after the half-sister he loved died. The heartbreaking world of this poem later grew into <em>The Tale of Takamura</em>. However, no one knows who wrote the tale or when.
+              <div class='quote'><q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>泣<rt>な</rt></ruby>く<ruby>涙<rt>なみだ</rt></ruby>
+                  <ruby>雨<rt>あめ</rt></ruby>と<ruby>降<rt>ふ</rt></ruby>らなむ
+                  <ruby>渡<rt>わた</rt></ruby>り<ruby>川<rt>がわ</rt></ruby>
+                  <br><ruby>水<rt>みず</rt></ruby>まさりなば
+                  <ruby>帰<rt>かえ</rt></ruby>り<ruby>来<rt>く</rt></ruby>るがに
+                  <span class="shutten"><em>Kokin Wakashū</em>, Ono no Takamura</span>
+                </q><q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.8; margin-top: 0.2em;">Let the tears I cry fall as rain. If the river of the dead rises, perhaps she will turn back to me.
+                  </p>
+                </q>
+              </div>
+            </dd>
+
+            <dt>The Envoy Ships to Tang China</dt>
+            <dd>
+              These were the ships that carried the Japanese missions to Tang China. From the Nara period on, a mission usually sailed in four ships, each thought to carry about 120 to 160 people. The voyage was dangerous, and crossings often failed. In 838, the ship of the ambassador, Fujiwara no Tsunetsugu, was damaged, and it was decided that he would take the ship of the deputy envoy, Ono no Takamura, instead. Takamura protested and refused to board.
+            </dd>
+            <dt>The Deputy Envoy</dt>
+            <dd>
+              Each mission to China was basically made up of an ambassador (first rank), a deputy envoy (second rank), secretaries (third rank), and clerks (fourth rank). Takamura was the deputy envoy, the second rank. The superior who pressed him to swap ships for a leaking one was the ambassador, Fujiwara no Tsunetsugu, a high court official from the Northern branch of the Fujiwara clan.</dd>
+            <dt>"Saidōyō"</dt>
+            <dd>"Saidōyō" is the Chinese poem Takamura wrote to protest against his superior on the envoy ship. Writing it angered Retired Emperor Saga, and Takamura was exiled to Oki.<br class="br-pc">Sadly, "Saidōyō" does not survive, so we do not know what it said. At the time Tang China was in decline and there was little to learn from it, and the envoy ships often sank and many people died. So Takamura may have had doubts about a policy of sending missions to China with no thought for the lives lost.
+            </dd>
+            <dt>"Aku mu zen"</dt>
+            <dd>The <em>Gōdanshō</em>, a Heian-period collection of tales, tells that in the reign of Emperor Saga, a graffiti message reading "悪無善" ("aku mu zen") appeared in the capital. No one could work out what it meant, but when it was shown to Takamura, he read it at once as "<em>saga nakuba yokarinamashi</em>" ("It would be good if there were no Saga," that is, no Emperor Saga). Because he read it so quickly, Takamura was suspected of having written it himself. As a test, he was ordered to read the string "子子子子子子子子子子子子," and he solved that easily too. His brilliant wit is said to have cleared him of suspicion.
+            </dd>
+            <dt>子子子子子子子子子子子子</dt>
+            <dd>A word game read as "<em>neko no ko koneko, shishi no ko kojishi</em>" ("the cat's child is a kitten, the lion's child is a lion cub"), using the different readings of the character 子 (<em>ne, ko, shi, ji</em>). The <em>Uji Shūi Monogatari</em> says Emperor Saga made it up and Ono no Takamura solved it.</dd>
+
+            <dt id="michikaze">Ono no Michikaze and the Frog</dt>
+            <dd class='thumb-image1'>
+              <figure style="display:flex; justify-content: center;">
+                <img loading='lazy' src='../img/hanahuda_michikaze.jpg' style='width: 400px; height:auto;' alt='The hanafuda card "Ono no Michikaze and the willow"' width="1181" height="1748">
+              </figure>
+              <div>
+                <p>
+                  Ono no Takamura was a proud, rebellious man who even refused his mission to China, and there is even a legend that he helped King Enma, the judge of the dead, in hell at night. His grandson, Ono no Michikaze, was very different: though wonderfully talented, he was a sensitive man who worried about his own limits and nearly gave up calligraphy.
+                </p>
+                <p style="margin-top:1em;">
+                  What woke Michikaze up was a frog in the rain, jumping again and again to reach a willow branch. He watched coldly, thinking, "It will never reach it." But then a sudden gust of wind bent the willow, and the frog caught the branch. At that moment he understood: "Those who are not prepared cannot make use of a lucky chance." Through steady effort he went on to become a "god of calligraphy," as great as his grandfather, who was called "the Bai Juyi of Japan."
+                </p>
+                <p style="margin-top:1em;">This dramatic turning point is still loved today as the picture on the hanafuda card "Ono no Michikaze and the willow."</p>
+              </div>
+            </dd>
+            <dt>Legends of Ono no Takamura<br class="br-sp"> in the <em>Konjaku Monogatari</em> and the <em>Gōdanshō</em></dt>
+            <dd class='thumb-image1'>
+              <figure>
+                <a href='../img/Rokudo-Chinnoji_large.webp' data-lightbox='takamura' data-title='The well at Rokudō Chinnō-ji Temple'>
+                  <img loading='lazy' src='../img/Rokudo-Chinnoji.webp' alt='The well at Rokudō Chinnō-ji Temple' width="427" height="640">
+                </a>
+                <figcaption><small><a
+                      href='https://commons.wikimedia.org/wiki/File:150124_Rokudo-Chinnoji_Kyoto_Japan08s3.jpg'
+                      target='_blank'>663highland, CC BY-SA 3.0
+                      &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;, via Wikimedia Commons
+                    </a></small>
+                </figcaption>
+              </figure>
+              <div>
+                <p>According to the <em>Konjaku Monogatari Shū</em> and the <em>Gōdanshō</em>, Ono no Takamura served at court by day and went to the underworld at night to work for King Enma.
+                  <br class="br-pc"> <br class="br-pc">No one knows for sure how this legend began. But perhaps it grew from the fact that Takamura was a powerful man over 180 cm tall, rebellious and passionate, and held a post in charge of punishments.<br
+                    class="br-pc"><br class="br-pc">At Rokudō Chinnō-ji Temple in Higashiyama Ward, Kyoto, there is a well (at the back left of the photo) through which Takamura is said to have traveled to and from hell.
+                </p>
+              </div>
+            </dd>
+
+            <dt>The Graves of Ono no Takamura and Murasaki Shikibu</dt>
+            <dd class='thumb-image2'>
+              <div class="swiper">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img src="/img/57_tomb_entrance.webp" alt="Entrance to the graves of Ono no Takamura and Murasaki Shikibu" width="800" height="600">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="/img/57_tomb_overview.webp" alt="The graves of Ono no Takamura and Murasaki Shikibu" width="800" height="600">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="/img/57_tomb_murasakishikibu.webp" alt="The grave of Murasaki Shikibu" width="800" height="600">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="/img/57_tomb_ononotakamura.webp" alt="The grave of Ono no Takamura" width="800" height="600">
+                  </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+              </div>
+              <div>
+                <p>Ono no Takamura's grave stands side by side with the grave of <a href="/57_en.html">Murasaki Shikibu (Poem 57)</a>.</p>
+                <p>In the late Heian period, people worried that Murasaki Shikibu, author of <em>The Tale of Genji</em>, a story about love and desire, might have fallen into hell after death.</p>
+                <p>A legend says that her grave was moved next to Takamura's so that Takamura, who worked at King Enma's court, could help save her. The graves still stand there quietly today.</p>
+                <p style="text-align:right; font-size:0.9em">(Photo taken August 8, 2026)</p>
+              </div>
+            </dd>
+            <dt>Ukiyo-e by Katsushika Hokusai</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/hokusai_11_large.webp' data-lightbox='takamura' data-title='Ukiyo-e by Katsushika Hokusai'>
+                  <img loading='lazy' src='../img/hokusai_11.webp' alt='Woodblock print by Katsushika Hokusai' width="640" height="449">
+                </a>
+                <figcaption><small><a
+                      href='https://commons.wikimedia.org/wiki/File:NDL1308997_%E7%99%BE%E4%BA%BA%E4%B8%80%E9%A6%96%E4%B9%B3%E6%AF%8D%E3%81%8B%E7%B5%B5%E3%81%A8%E3%81%8D_%E5%8F%82%E8%AD%B0%E7%AF%81.jpg'
+                      target='_blank'>National Diet Library, Public domain, via Wikimedia Commons</a></small>
+                </figcaption>
+              </figure>
+              <div>
+                <p>This print is from <em>One Hundred Poems Explained by the Nurse</em> (<em>Hyakunin Isshu Uba ga Etoki</em>) by Katsushika Hokusai, an ukiyo-e artist of the Edo period. The idea of the series is a nurse explaining the Hyakunin Isshu poems with easy-to-understand pictures.</p>
+                <p>It shows women diving for abalone and men waiting on a boat for their catch. Islands are drawn in the distance, recreating the "many islands" (<em>yasoshima</em>, the countless islands of the Seto Inland Sea) of the poem.
+                </p>
+              </div>
+            </dd>
+
+            <dt>Utagawa Kuniyoshi's <em>Hyakunin Isshu no Uchi</em></dt>
+            <dd class='thumb-image2'>
+              <figure class='portrait'>
+                <a href='../img/kuniyoshi_11_large.webp' data-lightbox='takamura' data-title='Ukiyo-e by Utagawa Kuniyoshi'>
+                  <img loading='lazy' src='../img/kuniyoshi_11.webp' alt='Ukiyo-e of Councillor Takamura by Utagawa Kuniyoshi' width="480" height="712">
+                </a>
+                <figcaption><small><a title='British Museum, Public domain, via Wikimedia Commons'
+                      href='https://commons.wikimedia.org/wiki/File:Sangi_Takamura_(no._11)_%E5%8F%82%E8%AD%B0%E7%AF%81_(BM_2008,3037.10611).jpg'
+                      target='_blank'>British Museum, Public domain, via Wikimedia Commons</a></small></figcaption>
+              </figure>
+              <div>
+                <p style="margin-bottom:0;">This ukiyo-e is by Utagawa Kuniyoshi, an artist of the Edo period.</p>
+                <p>If it shows the scene of the poem, the large ship would be the boat taking Takamura into exile, but it does not quite feel that way.</p>
+                <p>Perhaps the large ship is the envoy ship Takamura refused to board. Or is the small boat in front the one taking him into exile?</p>
+                <p>It is hard to imagine the envoy ship and the exile boat, both closely tied to Takamura, in the same place. So the large ship may stand for Takamura's longing for the past, and the small boat tossed by big waves for his uneasy feelings as he is about to be exiled.</p>
+              </div>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -299,15 +677,35 @@
   </footer>
   <!-- Footer end -->
 
-  <script src="../js/poems_en.js?20260803-03"></script>
-
-  <!-- Chart of the Heart -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="/js/kokoro-chart-data-en.js?20260726"></script>
+  <script src="../js/poems_en.js?20261007-04"></script>
+  <!-- swiper -->
+  <script src="../js/swiper-bundle.min.js"></script>
   <script>
-    window.radarScores = KOKORO_CHART_DATA[11].scores;
+    document.addEventListener('DOMContentLoaded', () => {
+      new Swiper('.swiper', {
+        loop: true,
+        speed: 1500,
+        autoplay: {
+          delay: 2000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+    });
   </script>
-  <script src="/js/raderChart.js?20260830-01"></script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261008-21"></script>
+  <script src="../js/keizu-diagram.js?20261008-02"></script>
+
 </body>
 
 </html>

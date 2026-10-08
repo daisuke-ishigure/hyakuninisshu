@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-08T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -71,13 +71,13 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Shigure's Hyakunin Isshu",
-          "item": "https://hyakuninisshu.com/"
+          "item": "https://hyakuninisshu.com/index_en.html"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Poem List",
-          "item": "https://hyakuninisshu.com/list.html"
+          "item": "https://hyakuninisshu.com/list_en.html"
         },
         {
           "@type": "ListItem",
@@ -90,10 +90,12 @@
   ]
   </script>
   <!-- stylesheets -->
-  <link rel="stylesheet" href="../css/style.css?20261006-05">
+  <link rel="stylesheet" href="../css/style.css?20261008-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
-  <link rel="stylesheet" href="../css/poems_en.css?20260803-04">
+  <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/swiper-bundle.min.css">
+  <link href="/css/lightbox.css" rel="stylesheet">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -103,6 +105,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -133,6 +143,13 @@
   <main>
     <div class="card">
       <div class="column-wrapper">
+        <nav class="breadcrumb-poem" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index_en.html">Top</a></li>
+            <li><a href="list_en.html">Poem List</a></li>
+            <li aria-current="page">No. 10 Semimaru</li>
+          </ol>
+        </nav>
         <div class="select-container">
           <label for="themeSelector" id="themeSelector-label">Select a theme:</label>
           <select id="themeSelector" class="selector">
@@ -153,9 +170,9 @@
           <div class="checkbox1">
             <div style="display:flex; align-items:center;">
               <label for="toggle2" id="toggle2-label">Switch between the picture card and the matching card</label>
-              <p>Front</p>
+              <p>Front of the Card</p>
               <input type="checkbox" id="toggle2">
-              <p>Back</p>
+              <p>Back of the Card</p>
             </div>
             <div style="display:flex; align-items:center;">
               <div id="play-pause-btn"></div>
@@ -166,7 +183,7 @@
           </div>
           <div class="audio-credit-row">
             <p id="audio-credit">Audio: NHK Creative Library</p>
-            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox (Public Domain).</p>
+            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox</p>
           </div>
 
         </div><!-- column-wrapper end -->
@@ -228,35 +245,18 @@
         <dl>
           <dt>Commentary</dt>
           <dd>
-            The Gosen Wakashū's headnote reads, "Composed while living in a hermitage built at the Barrier of Ōsaka, watching the people passing to and fro." This tells us that Semimaru built a small hermitage at the Barrier of Ōsaka, a key crossing point linking the capital to the eastern provinces, and watched the many travelers who passed through. Though light and rhythmic in sound, the poem is grounded in the Buddhist sense of impermanence — the truth that all who meet must eventually part.
+            The Gosen Wakashū says Semimaru wrote this while living in a hut at the Ōsaka Barrier, watching people come and go. The barrier was a busy crossing between the capital and the eastern provinces. The poem sounds light and rhythmic, but it rests on the Buddhist idea that all who meet must part.
           </dd>
         </dl>
         <dl class="last-dl">
           <dt>About the Poet</dt>
           <dd>
-            Semimaru is said to have been the fourth son of Emperor Daigo, yet was abandoned on Mount Ōsaka because of his blindness. He went on to make his living as a biwa-playing minstrel-priest, and according to one theory, his singing voice — accompanied by the biwa — reminded listeners of a cicada's cry (semi), which is how he came to be called "Semimaru."
+            Semimaru is said to have been the fourth son of Emperor Daigo, abandoned on Mount Ōsaka because he was blind. He made a living as a biwa-playing monk, and one story says he was called Semimaru because his singing to the biwa sounded like a cicada (semi).
           </dd>
         </dl>
       </div>
     </div>
     <div class="chart-image-row">
-    <div class="chart-section">
-      <dl>
-        <dt class='title'>Semimaru's Chart of the Heart</dt>
-            <dd>
-              <p>A chart and a modern-language reflection of the poet's inner feelings.</p>
-              <div class="emotion-chart">
-                <div id="radarChartWrapper">
-                  <canvas id="radarChart" width="300" height="300"></canvas>
-                </div>
-                <div>
-                  <p class="chart-quotes-title">The Poet's Feelings (A Personal Interpretation)</p>
-                  <p>I watch the travelers come and go, and think —<br class="br-pc">how fleeting are these brushing sleeves, these chance encounters.</p>
-                </div>
-              </div>
-            </dd>
-      </dl>
-    </div>
     <div class="image-section">
       <dl>
         <dt class='title'>Poem Illustration</dt>
@@ -266,7 +266,271 @@
         </dd>
       </dl>
     </div>
+    <div class="nenpyo-section">
+      <dl>
+        <dt class='title'>Semimaru: A Short Timeline</dt>
+        <dd>
+          <dl class="nenpyo">
+            <dt>Notes</dt>
+            <dd>
+              <p>Little is known for sure about Semimaru's life, including when he was born and died.</p>
+              <ul>
+                <li>Legend says he died at the foot of Mount Ōsaka</li>
+                <li>His poem "Kore ya kono" appears in the Gosen Wakashū</li>
+              </ul>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
   </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <dt>The <em>Biwa</em> (Japanese Lute)</dt>
+            <dd class='thumb-image'>
+              <a href='../img/biwa_large.webp' data-lightbox='semimaru' data-title='Biwa'>
+                <img loading='lazy' src='../img/biwa_large.webp' alt='Biwa' style='width:150px; height: auto;' width="393" height="620">
+              </a>
+              <p>The <em>biwa</em> is an instrument with a flat, oval wooden body and four or five strings, played by plucking the strings with a <em>bachi</em> (plectrum).<br>It came to Japan from mainland China around the 7th or 8th century.</p>
+            </dd>
+
+            <dt>Travelers on the Tōkaidō Road Near the Ōsaka Barrier</dt>
+            <dd class='thumb-image2'>
+              <figure style='margin-top: 0.5em'>
+                <a href='../img/osakayama_large.webp' data-lightbox='semimaru' data-title='Mount Ōsaka, from the Ise Sangū Meisho Zue'>
+                  <img loading='lazy' src='../img/osakayama.webp' alt='Mount Ōsaka, from the Ise Sangū Meisho Zue' width="1000" height="745">
+                </a>
+                <figcaption><a title='Shitomi Kangetsu, Public domain, via Wikimedia Commons'
+                    href='https://commons.wikimedia.org/wiki/File:%E4%BC%8A%E5%8B%A2%E5%8F%82%E5%AE%AE%E5%90%8D%E6%89%80%E5%9B%B3%E4%BC%9A%E3%80%81%E9%80%A2%E5%9D%82%E5%B1%B1.jpg'
+                    target='_blank'><small>Shitomi Kangetsu, Public domain, via Wikimedia Commons</small></a></figcaption>
+              </figure>
+              <div>
+                <p>The Ōsaka Barrier was a checkpoint on the border between Yamashiro Province and Ōmi Province (present-day Kyoto and Shiga).
+                  <br class="br-pc">
+                  This picture, from the <em>Ise Sangū Meisho Zue</em> (an illustrated guide to famous places on the pilgrimage to Ise), shows people coming and going on the Tōkaidō road near the site of the Ōsaka Barrier.
+                </p>
+                <p>
+                  <a class='no-decoration' href='utamakura_en.html?lat=34.99422&lng=135.85559&zoom=15'>See it on the map</a>
+                </p>
+              </div>
+            </dd>
+            <dt>The Monument at the Site of the Ōsakayama Barrier</dt>
+            <dd class='thumb-image2'>
+              <figure style="margin-top: 0.5em;">
+                <video controls src='/img/ousakanoseki-ato.mp4'></video>
+              </figure>
+              <div>
+                <p>
+                  In Ōtani-chō, Ōtsu City, Shiga Prefecture, near the top of the pass on National Route 1, stands a monument marking the site of the Ōsakayama Barrier.
+                </p>
+                <p>
+                  Some point out that the monument is not where the barrier actually stood. Even so, the place helps us picture how it once was. Today cars speed over the pass, and almost no one walks there.
+                </p>
+                <p>
+                  But standing in front of the monument, it is fun to imagine the bustle of travelers and the sound of ox carts carrying loads that Semimaru may have heard.
+                </p>
+                <p style="text-align:right;"><small>(Video taken August 12, 2025)</small></p>
+              </div>
+            </dd>
+
+            <dt>Izumi Shikibu's Poem About the Ōsaka Barrier</dt>
+            <dd><a href="/56_en.html">Izumi Shikibu</a> also wrote about the Ōsaka Barrier. She was known for her many love affairs, and once Fujiwara no Michinaga, the most powerful man of the time, wrote "the fan of a fickle woman" on her fan. She answered with the next poem. Because "Ōsaka" (逢坂, "the slope of meeting") calls to mind "au" (to meet), it was also used in waka to suggest meetings and love between men and women.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>越<rt>こ</rt></ruby>えもせむ
+                  <ruby>越<rt>こ</rt></ruby>さずもあらむ
+                  <ruby>逢坂<rt>おうざか</rt></ruby>の
+                  <br><ruby>関守<rt>せきもり</rt></ruby>ならぬ
+                  <ruby>人<rt>ひと</rt></ruby>な<ruby>咎<rt>とが</rt></ruby>めそ
+                  <span class="shutten"><em>Izumi Shikibu Shū</em>, Izumi Shikibu</span>
+                </q><q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height:1.7; margin-top: 0.25em;">
+                    Whether I cross the road of love or not is my own affair. You are not the guard of the Ōsaka Barrier, so do not blame me.
+                  </p>
+                </q>
+              </div>
+            </dd>
+
+            <dt>The Ōsaka Barrier in <em>The Tale of Genji</em></dt>
+            <dd>
+            <div>
+                <p>
+                  Chapter 16 of <em>The Tale of Genji</em>, "At the Pass" (<em>Sekiya</em>), is set at the Ōsaka Barrier. Hikaru Genji and Utsusemi, who were once close but had to part, unexpectedly pass each other there after twelve years.
+                </p>
+                <hr  style="margin-top:1em; margin-bottom:1em;">
+
+                <p>The first poem is one Utsusemi composes in her heart.</p>
+                <div class='quote'>
+                  <q class="quote-ja">
+                    <h3 class="was-h4">In Japanese</h3>
+                    <ruby>行<rt>い</rt></ruby>くと<ruby>来<rt>く</rt></ruby>と
+                    せきとめがたき
+                    <ruby>涙<rt>なみだ</rt></ruby>をや
+                    <br><ruby>絶<rt>た</rt></ruby>えぬ<ruby>清水<rt>しみず</rt></ruby>と
+                    <ruby>人<rt>ひと</rt></ruby>は<ruby>見<rt>み</rt></ruby>るらむ
+                    <span class="shutten"><em>The Tale of Genji</em>, Utsusemi (Murasaki Shikibu)</span>
+                  </q>
+                  <q>
+                    <h3 class="was-h4">In English</h3>
+                    <p style="line-height:1.7; margin-top: 0.25em;">
+                      Going and coming back (and never able to meet you), my tears flow and cannot be held back. Will you see them as just the spring water that never stops flowing at the barrier?
+                    </p>
+                  </q>
+                </div>
+
+                <hr  style="margin-top:1em; margin-bottom:1em;">
+
+                <p>
+                   Hikaru Genji sends her the next poem.
+                </p>
+                <div class='quote'>
+                  <q class="quote-ja">
+                    <h3 class="was-h4">In Japanese</h3>
+                    わくらばに
+                    <ruby>行<rt>い</rt></ruby>き<ruby>逢<rt>あ</rt></ruby><ruby>ふ<rt>う</rt></ruby><ruby>道<rt>みち</rt></ruby>を
+                    <ruby>頼<rt>たの</rt></ruby>みしも
+                    <br>なほかひなしや
+                    <ruby>潮<rt>しほ</rt></ruby>ならぬ<ruby>海<rt>うみ</rt></ruby>
+                    <span class="shutten"><em>The Tale of Genji</em>, Hikaru Genji (Murasaki Shikibu)</span>
+                  </q>
+                  <q>
+                    <h3 class="was-h4">In English</h3>
+                    <p style="line-height:1.7; margin-top: 0.25em;">
+                      Meeting you by chance on the Ōmi road, I hoped it meant we were fated to meet again. But if I cannot see you, it is all in vain (<em>kai nashi</em>), like a sea without salt (Lake Biwa), where there are no shells (<em>kai</em>).
+                    </p>
+                  </q>
+                </div>
+
+                <hr  style="margin-top:1em; margin-bottom:1em;">
+
+                <p>
+                  Utsusemi answers Genji with the next poem. "Ōsaka" is a place name that calls to mind "meeting," while a "barrier" stops people from passing. So in waka, the "Ōsaka Barrier" can stand for both "meeting" and "separation" at once. In <em>The Tale of Genji</em>, too, the Ōsaka Barrier, where Semimaru wrote of "those going and those coming back, parting," is a place where distance between people and the wish to meet again cross paths.
+                </p>
+                <div class='quote'>
+                  <q class="quote-ja">
+                    <h3 class="was-h4">In Japanese</h3>
+                    <ruby>逢坂<rt>おうさか</rt></ruby>の
+                    <ruby>関<rt>せき</rt></ruby>やいかなる
+                    <ruby>関<rt>せき</rt></ruby>なれば
+                    <br>しげき<ruby>嘆<rt>なげ</rt></ruby>きの
+                    <ruby>仲<rt>なか</rt></ruby>をわくらむ
+                    <span class="shutten"><em>The Tale of Genji</em>, Utsusemi (Murasaki Shikibu)</span>
+                  </q>
+                  <q>
+                    <h3 class="was-h4">In English</h3>
+                    <p style="line-height:1.7; margin-top: 0.25em;">
+                      What kind of barrier is the Ōsaka Barrier, that we must push our way through so much grief?
+                    </p>
+                  </q>
+                </div>
+
+              </div>
+            </dd>
+
+            <dt>The <em>Genji</em> Screens of "At the Pass" and "Channel Buoys"</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/10_genjimonogatari_ousakanoseki_large.webp' data-lightbox='semimaru' data-title='Screens of The Tale of Genji: "At the Pass" and "Channel Buoys"'>
+                  <img loading='lazy' src='../img/10_genjimonogatari_ousakanoseki_small.webp' alt='Screens of The Tale of Genji: "At the Pass" and "Channel Buoys"' width="640" height="273">
+                </a>
+                <figcaption><a href='https://commons.wikimedia.org/wiki/File:Sc%C3%A8ne_de_Sekiya_du_Roman_de_Genji_par_S%C5%8Dtatsu.jpg'
+                    target='_blank'><small>Sōtatsu, Public domain, via Wikimedia Commons</small></a></figcaption>
+              </figure>
+              <div>
+                <p>
+                  This is part of the folding screens of scenes from <em>The Tale of Genji</em>, "At the Pass" and "Channel Buoys" (<em>Genji Monogatari Sekiya Miotsukushi-zu Byōbu</em>), painted by Tawaraya Sōtatsu, an artist of the Edo period. It shows Chapter 16, "At the Pass": Hikaru Genji's party, on its way from Kyoto to Ishiyama-dera Temple to give thanks, happens to pass Utsusemi's party at the Ōsaka Barrier as she returns to Kyoto with her husband, whose term as Vice-Governor of Hitachi has ended. Genji seems to be in the ox carriage on the right of the screen, and Utsusemi in the carriage stopped by the mountainside on the left.
+                </p>
+              </div>
+            </dd>
+
+            <dt>Semimaru Shrine</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/10_semimaru-shrine-large.webp' data-lightbox='semimaru' data-title='Semimaru Shrine'>
+                  <img loading='lazy' src='../img/10_semimaru-shrine.webp' alt='Semimaru Shrine' width="640" height="480">
+                </a>
+              </figure>
+              <div>
+                <p>
+                  Semimaru Shrine, in Ōtsu City, Shiga Prefecture, was founded in 946. It stands right by the monument at the site of the Ōsakayama Barrier. It honors two gods: Semimaru, known as a master of the <em>biwa</em>, and Sarutahiko no Mikoto. Semimaru is worshipped as a god of the performing arts, and Sarutahiko as a god who protects travelers on the road.
+                </p>
+                <p style="text-align:right;"><small>(Photo taken August 12, 2025)</small></p>
+              </div>
+            </dd>
+
+            <dt id="sekijinja">Seki Shrine, a Branch Shrine of Ōji Shrine</dt>
+            <dd class='thumb-image2'>
+              <div class="swiper">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img loading='lazy' src='../img/10_sekijinja_front_large.webp' alt='Seki Shrine, front' width="1280" height="853">
+                  </div>
+                  <div class="swiper-slide">
+                    <img loading='lazy' src='../img/10_sekijinja_oblique_large.webp' alt='Seki Shrine, from the side' width="1280" height="853">
+                  </div>
+                  <div class="swiper-slide">
+                    <img loading='lazy' src='../img/10_sekijinja_inside_large.webp' alt='Seki Shrine grounds' width="1280" height="853">
+                  </div>
+                  <div class="swiper-slide">
+                    <img loading='lazy' src='../img/10_sekijinja_kezuka.webp' alt='Kezuka, the hair memorial' width="1280" height="853">
+                  </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+              </div>
+              <div>
+                <p>At Seki Shrine, a branch shrine of Ōji Shrine in Kita City, Tokyo, Semimaru is honored as the ancestral god of hair.</p>
+                <p>According to a story, Semimaru invented the <em>kamoji</em> (a hairpiece) for his elder sister, who was troubled about her hair, so he came to be worshipped as a god of hair.</p>
+                <p>On the grounds stands the <em>Kezuka</em>, a memorial built in thanks for hair, and the stone fence around it lists the names of many hair-related businesses, such as wig makers and the hairdressers who tie sumo wrestlers' hair.</p>
+                <p>It is about a 5-minute walk from the North Exit of Ōji Station on the JR Keihin-Tōhoku Line.</p>
+                <p style="text-align:right;"><small>(Photo taken August 23, 2025)</small></p>
+              </div>
+            </dd>
+
+            <dt>Utagawa Kuniyoshi's <em>Hyakunin Isshu no Uchi</em></dt>
+            <dd class='thumb-image2'>
+              <figure class='portrait'>
+                <a href='../img/kuniyoshi_10_large.webp' data-lightbox='semimaru' data-title='Ukiyo-e by Utagawa Kuniyoshi'>
+                  <img loading='lazy' src='../img/kuniyoshi_10.webp' alt='Ukiyo-e of Semimaru by Utagawa Kuniyoshi' width="480" height="717">
+                </a>
+                <figcaption><a
+                    href='https://commons.wikimedia.org/wiki/File:Object-_Semimaru_(no._10)_%E8%9D%89%E4%B8%B8_(BM_2008,3037.10610).jpg' target='_blank' rel='noopener'><small>British
+                      Museum, Public domain, via Wikimedia Commons</small></a></figcaption>
+              </figure>
+              <div>
+                <p>This print is by Utagawa Kuniyoshi, one of the greatest ukiyo-e artists of the Edo period.<br class="br-pc">It shows the lively Ōsaka Barrier, with many travelers hurrying past.</p>
+                <p>Look at the poor thatched hut: Semimaru is peeking out of its small window. With a calm face, he quietly watches people meeting and parting again and again.</p>
+                <p>The red cord-like sashes the women wear also catch the eye. One theory says such red cords were thought to ward off evil. To people in Edo, too, this kind of dress must have looked old-fashioned, so it may have helped create the feeling of an earlier age.</p>
+              </div>
+            </dd>
+            <dt>Tsukioka Yoshitoshi's <em>One Hundred Aspects of the Moon</em></dt>
+            <dd class='thumb-image2'>
+              <figure class='portrait'>
+                <a href='../img/yoshitoshi_10_large.webp' data-lightbox='semimaru' data-title='Ukiyo-e by Tsukioka Yoshitoshi'>
+                  <img loading='lazy' src='../img/yoshitoshi_10.webp' alt='Ukiyo-e by Tsukioka Yoshitoshi' width="438" height="640">
+                </a>
+                <figcaption><a href='https://dl.ndl.go.jp/pid/1311541'><small>Yoshitoshi, <em>One Hundred Aspects of the Moon: "Four Strings Under the Moon: Semimaru"</em>, Akiyama Buemon, 1891.
+                      National Diet Library Digital Collections https://dl.ndl.go.jp/pid/1311541 (accessed 2024-07-12)</small></a></figcaption>
+              </figure>
+              <div>
+                <p>Tsukioka Yoshitoshi was a brilliant ukiyo-e artist active from the end of the Edo period into the Meiji period. His late masterpiece, <em>One Hundred Aspects of the Moon</em> (<em>Tsuki Hyakushi</em>), shows Semimaru playing the <em>biwa</em> alone and quietly under the moonlight.
+                </p>
+
+                <p>The cracked walls and rough pillars with the bark still on them, and his long, untrimmed hair and beard after cutting himself off from the world, show the striking presence of a hermit who lives freely, unafraid of being alone.</p>
+
+                <p>He plays for no one, a deep and mysterious sound that seems to answer the moonlight. Only the rustle of the pampas grass in the wind softly joins the music of his <em>biwa</em>, and it all seems to melt into the quiet darkness of the night.</p>
+              </div>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -276,6 +540,7 @@
           <a class="da-link-btn" href="diagram_archtecture_en.html">Relationship Diagram</a>
           <a class="kt-link-btn" href="karuta-taisen-pro_en.html">Competitive Karuta Game</a>
           <a class="kts-link-btn" href="karuta-taisen_en.html">Online Karuta Battle</a>
+          <a class="kg-link-btn" href="kakekotoba-game-010_en.html"><span class="kg-link-btn-inner"><span class="kg-link-btn-face kg-link-btn-front">Spin &amp; Discover Kakekotoba!</span><span class="kg-link-btn-face kg-link-btn-back">Spin &amp; Discover Kakekotoba!</span></span></a>
         </dd>
       </dl>
     </div>
@@ -297,15 +562,30 @@
   </footer>
   <!-- Footer end -->
 
-  <script src="../js/poems_en.js?20260803-03"></script>
-
-  <!-- Chart of the Heart -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="/js/kokoro-chart-data-en.js?20260726"></script>
+  <script src="../js/poems_en.js?20261007-04"></script>
+  <!-- swiper -->
+  <script src="../js/swiper-bundle.min.js"></script>
   <script>
-    window.radarScores = KOKORO_CHART_DATA[10].scores;
+    document.addEventListener('DOMContentLoaded', () => {
+      new Swiper('.swiper', {
+        loop: true,
+        speed: 1500,
+        autoplay: {
+          delay: 2000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+    });
   </script>
-  <script src="/js/raderChart.js?20260830-01"></script>
+
 </body>
 
 </html>

@@ -68,13 +68,13 @@
         {
           "@type": "ListItem",
           "position": 1,
-          "name": "時雨の百人一首",
+          "name": "時雨の百人一首 TOP",
           "item": "https://hyakuninisshu.com/"
         },
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "和歌一覧",
+          "name": "百人一首一覧",
           "item": "https://hyakuninisshu.com/list.html"
         },
         {
@@ -88,7 +88,7 @@
   ]
   </script>
   <!-- スタイルシートの追加 -->
-  <link rel="stylesheet" href="../css/style.css?20261006-05">
+  <link rel="stylesheet" href="../css/style.css?20261008-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/snow.css?20240507-02">
   <link rel="stylesheet" href="../../css/huda_04.css?20240507-02">
@@ -160,6 +160,13 @@
   <main>
     <div class="card">
       <div class="column-wrapper">
+        <nav class="breadcrumb-poem" aria-label="パンくずリスト">
+          <ol>
+            <li><a href="index.html">トップ</a></li>
+            <li><a href="list.html">百人一首一覧</a></li>
+            <li aria-current="page">第4番 山部赤人</li>
+          </ol>
+        </nav>
         <div class="select-container">
           <label for="themeSelector" id="themeSelector-label">テーマを選択:</label>
           <select id="themeSelector" class="selector">
@@ -412,7 +419,7 @@
                   <ruby>潮満<rt>しおみ</rt></ruby>ち<ruby>来<rt>く</rt></ruby>れば
                   <ruby>潟<rt>かた</rt></ruby>をなみ
                   <br><ruby>葦辺<rt>あしべ</rt></ruby>をさして
-                  <ruby>鶴<rt>たづ</rt><ruby>鳴<rt>な</rt></ruby></ruby>き<ruby>渡<rt>わた</rt></ruby>る
+                  <ruby>鶴<rt>たづ</rt></ruby><ruby>鳴<rt>な</rt></ruby>き<ruby>渡<rt>わた</rt></ruby>る
                   <span class="shutten">『万葉集』山部赤人</span>
                 </q>
                 <q>
@@ -482,7 +489,7 @@
                 <q>
                   <h3 class="was-h4">現代語訳</h3>
                   <p style="line-height: 1.7; margin-top: 0.25em;">
-                    あなたのこととなると、逢っているときも逢えないときも、富士山の嶺ように、私の恋心はいつも噴煙を上げて燃え続けています。
+                    あなたのこととなると、逢っているときも逢えないときも、富士山の嶺のように、私の恋心はいつも噴煙を上げて燃え続けています。
                   </p>
                 </q>
               </div>
@@ -516,8 +523,8 @@
                   <img loading='lazy' src='../img/Kanbara_Wakamiya_Shrine.webp' alt='和歌宮神社' width="640" height="427">
                 </a>
                 <figcaption>
-                  <small><a href='https://commons.wikimedia.org/wiki/File:Kanbara_Wakamiya_Shrine.jpg'>Sablier de
-                      Verrie, CC BY-SA 4.0 <https: //creativecommons.org/licenses/by-sa/4.0>, via Wikimedia
+                  <small><a href='https://commons.wikimedia.org/wiki/File:Kanbara_Wakamiya_Shrine.jpg' target='_blank' rel='noopener'>Sablier de
+                      Verrie, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia
                         Commons</a></small>
                 </figcaption>
               </figure>
@@ -532,11 +539,11 @@
             <dd class='thumb-image2'>
               <figure>
                 <a href='../img/hokusai_04_large.webp' data-lightbox='山部赤人' data-title='葛飾北斎による浮世絵'>
-                  <img loading='lazy' src='../img/hokusai_04.webp' alt='百人一首うばが絵解  葛飾北斎  貞信公' width="640" height="432">
+                  <img loading='lazy' src='../img/hokusai_04.webp' alt='百人一首うばが絵解  葛飾北斎  山部赤人' width="640" height="432">
                 </a>
                 <figcaption>
                   <small><a
-                      href='https://commons.wikimedia.org/wiki/File:NDL1308993_%E7%99%BE%E4%BA%BA%E4%B8%80%E9%A6%96%E3%81%86%E3%81%AF%E3%81%8B%E3%82%91%E3%81%A8%E3%81%8D_%E5%B1%B1%E8%BE%BA%E3%81%AE%E8%B5%A4%E4%BA%BA.jpg'>National
+                      href='https://commons.wikimedia.org/wiki/File:NDL1308993_%E7%99%BE%E4%BA%BA%E4%B8%80%E9%A6%96%E3%81%86%E3%81%AF%E3%81%8B%E3%82%91%E3%81%A8%E3%81%8D_%E5%B1%B1%E8%BE%BA%E3%81%AE%E8%B5%A4%E4%BA%BA.jpg' target='_blank' rel='noopener'>National
                       Diet Library, Public domain, via Wikimedia Commons</a></small>
                 </figcaption>
               </figure>
@@ -557,7 +564,7 @@
                   <img loading='lazy' src='../img/kuniyoshi_04.webp' alt='歌川国芳による浮世絵' width="480" height="714">
                 </a>
                 <figcaption><a
-                    href='https://commons.wikimedia.org/wiki/File:Kuniyoshi_Utagawa,_Yamabe_no_Akahito,_famous_poet.jpg'><small>Utagawa
+                    href='https://commons.wikimedia.org/wiki/File:Kuniyoshi_Utagawa,_Yamabe_no_Akahito,_famous_poet.jpg' target='_blank' rel='noopener'><small>Utagawa
                       Kuniyoshi, Public domain, via Wikimedia Commons</small></a></figcaption>
               </figure>
               <div>
@@ -569,14 +576,6 @@
           </dl>
         </dd>
       </dl>
-    </div>
-    <div class="bottom_arrow">
-      <div id="next2" class="bottom">
-        <p id="next2_arrow">次の和歌へ</p>
-      </div>
-      <div id="back2" class="bottom">
-        <p id="back2_arrow">前の和歌へ</p>
-      </div>
     </div>
   </main>
 
@@ -595,7 +594,7 @@
     </div>
   </footer>
   <!-- フッターここまで -->
-  <script src="../js/poems.js?20261006-04"></script>
+  <script src="../js/poems.js?20261008-01"></script>
   <script src="../js/snow.js?20240507-02"></script>
   <!-- ▼▼▼ tippy.js ▼▼▼▼ -->
   <script src="../js/popper.min.js"></script>

@@ -187,7 +187,7 @@
         "markname": "Inaba",
         "kajin": "Middle Counselor Yukihira (Inaba)",
         "type": "type1",
-        "name": "<a href='../img/Inaba_Kokucho_Site_large.webp' data-lightbox='map' data-title='Site of the Inaba Provincial Office'><img src='../img/Inaba_Kokucho_Site.webp?20240425' width='300' alt='Inaba'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:Inaba_Kokucho_Site,_seiden_and_koden-2.jpg'>Saigen Jiro, CC0, via Wikimedia Commons</a></small><h2 class='utamakura-name'>Utamakura: Mt. Inaba</h2><p>Kokufu-cho, Tottori City, Tottori Prefecture. Pictured is the site of the Inaba provincial government office, near Mt. Inaba (now called Mt. Inaba-yama).</p><hr><a href='/16_en.html'>Link to Poem 16: Middle Counselor Yukihira</a>"
+        "name": "<a href='../img/Inaba_Kokucho_Site_large.webp' data-lightbox='map' data-title='Site of the Inaba Provincial Office'><img src='../img/Inaba_Kokucho_Site.webp?20240425' width='300' alt='Inaba'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:Inaba_Kokucho_Site,_seiden_and_koden-2.jpg' target='_blank' rel='noopener'>Saigen Jiro, CC0, via Wikimedia Commons</a></small><h2 class='utamakura-name'>Utamakura: Mt. Inaba</h2><p>Kokufu-cho, Tottori City, Tottori Prefecture. Pictured is the site of the Inaba provincial government office, near Mt. Inaba (now called Mt. Inaba-yama).</p><hr><a href='/16_en.html'>Link to Poem 16: Middle Counselor Yukihira</a>"
       },
       "geometry": { "type": "Point", "coordinates": [134.26616273373548, 35.475068831090105] }
     },
@@ -297,7 +297,7 @@
         "markname": "Hirokawa-dera",
         "kajin": "Priest Saigyō (Hirokawa-dera)",
         "type": "type2",
-        "name": "<a href='/img/Hirokawadera.webp' data-lightbox='map' data-title='Hirokawa-dera'><img src='../img/Hirokawadera.webp' width='300' alt='Sumiyoshi Takatourou'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:Hirokawadera-200001.jpg'>Otraff, CC BY-SA 3.0, via Wikimedia Commons</a></small><h2 class='utamakura-name'>Hirokawa-dera</h2><p>Hirokawa-dera (Kanan, Minamikawachi District, Osaka Prefecture) is an ancient temple at the foot of Mt. Yamato-Katsuragi. Saigyō spent his final days here. The temple grounds include Saigyō's grave mound, a poem monument, and a Saigyō memorial hall. The temple and its surroundings are also known as a cherry-blossom viewing spot.</p><hr><a href='/86_en.html'>Link to Poem 86: Priest Saigyō</a>"
+        "name": "<a href='/img/Hirokawadera.webp' data-lightbox='map' data-title='Hirokawa-dera'><img src='../img/Hirokawadera.webp' width='300' alt='Sumiyoshi Takatourou'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:Hirokawadera-200001.jpg' target='_blank' rel='noopener'>Otraff, CC BY-SA 3.0, via Wikimedia Commons</a></small><h2 class='utamakura-name'>Hirokawa-dera</h2><p>Hirokawa-dera (Kanan, Minamikawachi District, Osaka Prefecture) is an ancient temple at the foot of Mt. Yamato-Katsuragi. Saigyō spent his final days here. The temple grounds include Saigyō's grave mound, a poem monument, and a Saigyō memorial hall. The temple and its surroundings are also known as a cherry-blossom viewing spot.</p><hr><a href='/86_en.html'>Link to Poem 86: Priest Saigyō</a>"
       },
       "geometry": { "type": "Point", "coordinates": [135.65233839610542, 34.474750876551454] }
     },
@@ -407,7 +407,7 @@
         "markname": "Mt. Mikasa",
         "kajin": "Abe no Nakamaro (Mt. Mikasa)",
         "type": "type1",
-        "name": "<a href='../img/mikasayama_large.webp' data-lightbox='map' data-title='Mt. Mikasa'><img src='../img/mikasayama.webp' width='300' alt='Mt. Mikasa'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:Mikasayama_201611a.jpg'>Degueulasse, CC BY 3.0, via Wikimedia Commons</a></small><h2 class='utamakura-name'>Utamakura: Mt. Mikasa</h2><p>Eastern Nara City, Nara Prefecture. A 283m mountain whose name comes from its cone shape, resembling an upturned kasa (bamboo hat). Kasuga Taisha shrine stands at its foot.</p><hr><a href='/7_en.html'>Link to Poem 7: Abe no Nakamaro</a>"
+        "name": "<a href='../img/mikasayama_large.webp' data-lightbox='map' data-title='Mt. Mikasa'><img src='../img/mikasayama.webp' width='300' alt='Mt. Mikasa'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:Mikasayama_201611a.jpg' target='_blank' rel='noopener'>Degueulasse, CC BY 3.0, via Wikimedia Commons</a></small><h2 class='utamakura-name'>Utamakura: Mt. Mikasa</h2><p>Eastern Nara City, Nara Prefecture. A 283m mountain whose name comes from its cone shape, resembling an upturned kasa (bamboo hat). Kasuga Taisha shrine stands at its foot.</p><hr><a href='/7_en.html'>Link to Poem 7: Abe no Nakamaro</a>"
       },
       "geometry": { "type": "Point", "coordinates": [135.852642, 34.681420] }
     },
@@ -447,7 +447,7 @@
         "markname": "Site of the Tosa Provincial Office",
         "kajin": "Ki no Tsurayuki (Site of the Tosa Provincial Office)",
         "type": "type2",
-        "name": "<a href='../img/Tosakokuga-ato_large.webp' data-lightbox='map' data-title='Naniwae'><img src='../img/Tosakokuga-ato.webp' width='300' alt='Site of the Tosa Provincial Office'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:Tosakokuga-ato.JPG'>Photo: Saigen Jiro, CC0, via Wikimedia Commons</a></small><h2 class='utamakura-name'>Site of the Tosa Provincial Office</h2><p>Ki no Tsurayuki, famed as the author of the <em>Tosa Nikki</em>, served four years in Tosa as its governor.</p><hr><a href='/35_en.html'>Link to Poem 35: Ki no Tsurayuki</a>"
+        "name": "<a href='../img/Tosakokuga-ato_large.webp' data-lightbox='map' data-title='Naniwae'><img src='../img/Tosakokuga-ato.webp' width='300' alt='Site of the Tosa Provincial Office'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:Tosakokuga-ato.JPG' target='_blank' rel='noopener'>Photo: Saigen Jiro, CC0, via Wikimedia Commons</a></small><h2 class='utamakura-name'>Site of the Tosa Provincial Office</h2><p>Ki no Tsurayuki, famed as the author of the <em>Tosa Nikki</em>, served four years in Tosa as its governor.</p><hr><a href='/35_en.html'>Link to Poem 35: Ki no Tsurayuki</a>"
       },
       "geometry": { "type": "Point", "coordinates": [133.64880789837818, 33.59997934426076] }
     },
@@ -487,7 +487,7 @@
         "markname": "Abe no Nakamaro Memorial (Xingqing Palace Park)",
         "kajin": "Abe no Nakamaro (Xingqing Palace Park)",
         "type": "type2",
-        "name": "<a href='../img/abenonakamaro_kinenhi_large.webp' data-lightbox='map' data-title='The Abe no Nakamaro memorial in Xingqing Palace Park'><img src='../img/abenonakamaro_kinenhi.webp' width='300' alt='Abe no Nakamaro Memorial'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:%E9%98%BF%E5%80%8D%E4%BB%B2%E9%BA%BB%E5%91%82%E7%A2%91.JPG'>Photo: Indiana jo, CC BY-SA 4.0, via Wikimedia Commons</a></small><h2 class='utamakura-name'>Xingqing Palace Park</h2><p>Xingqing Palace Park, in Xi'an, China, was built on the ruins of the palace where Emperor Xuanzong once conducted affairs of state. A memorial to Abe no Nakamaro stands within the park.</p><hr><a href='/7_en.html'>Link to Poem 7: Abe no Nakamaro</a>"
+        "name": "<a href='../img/abenonakamaro_kinenhi_large.webp' data-lightbox='map' data-title='The Abe no Nakamaro memorial in Xingqing Palace Park'><img src='../img/abenonakamaro_kinenhi.webp' width='300' alt='Abe no Nakamaro Memorial'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:%E9%98%BF%E5%80%8D%E4%BB%B2%E9%BA%BB%E5%91%82%E7%A2%91.JPG' target='_blank' rel='noopener'>Photo: Indiana jo, CC BY-SA 4.0, via Wikimedia Commons</a></small><h2 class='utamakura-name'>Xingqing Palace Park</h2><p>Xingqing Palace Park, in Xi'an, China, was built on the ruins of the palace where Emperor Xuanzong once conducted affairs of state. A memorial to Abe no Nakamaro stands within the park.</p><hr><a href='/7_en.html'>Link to Poem 7: Abe no Nakamaro</a>"
       },
       "geometry": { "type": "Point", "coordinates": [108.98370203180075, 34.25255820820475] }
     },
@@ -617,7 +617,7 @@
         "markname": "Hangu Pass",
         "kajin": "Sei Shōnagon (Hangu Pass)",
         "type": "type2",
-        "name": "<a href='../img/Hangu_Pass_large.webp' data-lightbox='map' data-title='Ruins of Hangu Pass, Henan, China'><img src='../img/Hangu_Pass.webp' width='300' alt='Ruins of Hangu Pass'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:Hangu_Pass.jpg'>Flaumfeder, CC BY-SA 4.0, via Wikimedia Commons</a></small><h2 class='utamakura-name'>Ruins of Hangu Pass</h2><p>Hangu Pass was a checkpoint in Henan Province, China. In her Hyakunin Isshu poem, Sei Shōnagon alludes to the story of Lord Mengchang, who had a retainer imitate a rooster's crow to trick the guards into opening the pass, which was never opened until the cocks crowed, in the middle of the night.</p><hr><a href='/62_en.html'>Link to Poem 62: Sei Shōnagon</a>"
+        "name": "<a href='../img/Hangu_Pass_large.webp' data-lightbox='map' data-title='Ruins of Hangu Pass, Henan, China'><img src='../img/Hangu_Pass.webp' width='300' alt='Ruins of Hangu Pass'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:Hangu_Pass.jpg' target='_blank' rel='noopener'>Flaumfeder, CC BY-SA 4.0, via Wikimedia Commons</a></small><h2 class='utamakura-name'>Ruins of Hangu Pass</h2><p>Hangu Pass was a checkpoint in Henan Province, China. In her Hyakunin Isshu poem, Sei Shōnagon alludes to the story of Lord Mengchang, who had a retainer imitate a rooster's crow to trick the guards into opening the pass, which was never opened until the cocks crowed, in the middle of the night.</p><hr><a href='/62_en.html'>Link to Poem 62: Sei Shōnagon</a>"
       },
       "geometry": { "type": "Point", "coordinates": [110.93147894044522, 34.65030881058312] }
     },
@@ -647,7 +647,7 @@
         "markname": "Murasaki Shikibu Park",
         "kajin": "Murasaki Shikibu (Murasaki Shikibu Park)",
         "type": "type2",
-        "name": "<a href='../img/Murasaki_shikibu_garden_large.webp' data-lightbox='map' data-title='Murasaki Shikibu Park'><img src='../img/Murasaki_shikibu_garden.webp' width='300' alt='Murasaki Shikibu Park'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:Murasaki_shikibu_garden.jpg'>Opqr, CC BY-SA 4.0, via Wikimedia Commons</a></small><h2 class='utamakura-name'>Murasaki Shikibu Park</h2><p>A park in Echizen, Fukui Prefecture, home to Japan's only reconstructed garden in the Heian-period shinden-zukuri style. Murasaki Shikibu spent a little over a year in Echizen with her father, Fujiwara no Tametoki, who had been appointed governor of the province.</p><hr><a href='/57_en.html'>Link to Poem 57: Murasaki Shikibu</a>"
+        "name": "<a href='../img/Murasaki_shikibu_garden_large.webp' data-lightbox='map' data-title='Murasaki Shikibu Park'><img src='../img/Murasaki_shikibu_garden.webp' width='300' alt='Murasaki Shikibu Park'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:Murasaki_shikibu_garden.jpg' target='_blank' rel='noopener'>Opqr, CC BY-SA 4.0, via Wikimedia Commons</a></small><h2 class='utamakura-name'>Murasaki Shikibu Park</h2><p>A park in Echizen, Fukui Prefecture, home to Japan's only reconstructed garden in the Heian-period shinden-zukuri style. Murasaki Shikibu spent a little over a year in Echizen with her father, Fujiwara no Tametoki, who had been appointed governor of the province.</p><hr><a href='/57_en.html'>Link to Poem 57: Murasaki Shikibu</a>"
       },
       "geometry": { "type": "Point", "coordinates": [136.15767202544416, 35.89001714304461] }
     },
@@ -667,7 +667,7 @@
         "markname": "Saion-ji",
         "kajin": "Lay Novice and former Chancellor (Saion-ji)",
         "type": "type2",
-        "name": "<a href='../img/Saion-ji_large.webp' data-lightbox='map' data-title='Kamigyo Ward, Kyoto: Saion-ji'><img src='../img/Saion-ji.webp' width='300' alt='Saion-ji'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:Saion-ji_Kyoto_007.jpg'>Brakeet, CC0, via Wikimedia Commons</a></small><h2 class='utamakura-name'>Saion-ji</h2><p>A Jōdo-school temple in Kamigyo Ward, Kyoto. It began when Saionji Kintsune converted his villa in Kyoto's Kitayama district into a Shingon-school temple. Later, when Ashikaga Yoshimitsu wished to build Kinkaku-ji on the site, Saion-ji was relocated to its present location.</p><hr><a href='/96_en.html'>Link to Poem 96: Lay Novice and former Chancellor</a>"
+        "name": "<a href='../img/Saion-ji_large.webp' data-lightbox='map' data-title='Kamigyo Ward, Kyoto: Saion-ji'><img src='../img/Saion-ji.webp' width='300' alt='Saion-ji'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:Saion-ji_Kyoto_007.jpg' target='_blank' rel='noopener'>Brakeet, CC0, via Wikimedia Commons</a></small><h2 class='utamakura-name'>Saion-ji</h2><p>A Jōdo-school temple in Kamigyo Ward, Kyoto. It began when Saionji Kintsune converted his villa in Kyoto's Kitayama district into a Shingon-school temple. Later, when Ashikaga Yoshimitsu wished to build Kinkaku-ji on the site, Saion-ji was relocated to its present location.</p><hr><a href='/96_en.html'>Link to Poem 96: Lay Novice and former Chancellor</a>"
       },
       "geometry": { "type": "Point", "coordinates": [135.76402188308523, 35.03707945636577] }
     },
@@ -687,7 +687,7 @@
         "markname": "Hosshō-ji",
         "kajin": "Lay Novice of Hosshō-ji Temple, former Kampaku and Chancellor (Hosshō-ji)",
         "type": "type2",
-        "name": "<a href='../img/hosshoji_large.webp' data-lightbox='map' data-title='Higashiyama Ward, Kyoto: Hosshō-ji'><img src='../img/hosshoji.webp' width='300' alt='Hosshō-ji'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:Hosshoji-temple.jpg'>Undōkai Protein Power, CC BY-SA 4.0, via Wikimedia Commons</a></small><h2 class='utamakura-name'>Hosshō-ji</h2><p>A temple of the Jōdo-shū Seizan Zenrin-ji school in Higashiyama Ward, Kyoto. Traditionally said to have been founded by Teishin-kō (Fujiwara no Tadahira). Fujiwara no Tadamichi — the \"Lay Novice of Hosshō-ji Temple, former Kampaku and Chancellor\" — took up residence within the temple after taking holy orders, and became known as the Hosshō-ji Novice.</p><hr><a href='/26_en.html'>Link to Poem 26: Teishin-kō</a><br><hr><a href='/76_en.html'>Link to Poem 76: Lay Novice of Hosshō-ji Temple, former Kampaku and Chancellor</a>"
+        "name": "<a href='../img/hosshoji_large.webp' data-lightbox='map' data-title='Higashiyama Ward, Kyoto: Hosshō-ji'><img src='../img/hosshoji.webp' width='300' alt='Hosshō-ji'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:Hosshoji-temple.jpg' target='_blank' rel='noopener'>Undōkai Protein Power, CC BY-SA 4.0, via Wikimedia Commons</a></small><h2 class='utamakura-name'>Hosshō-ji</h2><p>A temple of the Jōdo-shū Seizan Zenrin-ji school in Higashiyama Ward, Kyoto. Traditionally said to have been founded by Teishin-kō (Fujiwara no Tadahira). Fujiwara no Tadamichi — the \"Lay Novice of Hosshō-ji Temple, former Kampaku and Chancellor\" — took up residence within the temple after taking holy orders, and became known as the Hosshō-ji Novice.</p><hr><a href='/26_en.html'>Link to Poem 26: Teishin-kō</a><br><hr><a href='/76_en.html'>Link to Poem 76: Lay Novice of Hosshō-ji Temple, former Kampaku and Chancellor</a>"
       },
       "geometry": { "type": "Point", "coordinates": [135.773200, 35.028299] }
     },

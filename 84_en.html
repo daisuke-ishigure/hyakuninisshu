@@ -71,13 +71,13 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Shigure's Hyakunin Isshu",
-          "item": "https://hyakuninisshu.com/"
+          "item": "https://hyakuninisshu.com/index_en.html"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Poem List",
-          "item": "https://hyakuninisshu.com/list.html"
+          "item": "https://hyakuninisshu.com/list_en.html"
         },
         {
           "@type": "ListItem",
@@ -90,10 +90,10 @@
   ]
   </script>
   <!-- stylesheets -->
-  <link rel="stylesheet" href="../css/style.css?20261006-05">
+  <link rel="stylesheet" href="../css/style.css?20261008-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
-  <link rel="stylesheet" href="../css/poems_en.css?20260803-04">
+  <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -133,6 +133,13 @@
   <main>
     <div class="card">
       <div class="column-wrapper">
+        <nav class="breadcrumb-poem" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index_en.html">Top</a></li>
+            <li><a href="list_en.html">Poem List</a></li>
+            <li aria-current="page">No. 84 Fujiwara no Kiyosuke Ason</li>
+          </ol>
+        </nav>
         <div class="select-container">
           <label for="themeSelector" id="themeSelector-label">Select a theme:</label>
           <select id="themeSelector" class="selector">
@@ -153,9 +160,9 @@
           <div class="checkbox1">
             <div style="display:flex; align-items:center;">
               <label for="toggle2" id="toggle2-label">Switch between the picture card and the matching card</label>
-              <p>Front</p>
+              <p>Front of the Card</p>
               <input type="checkbox" id="toggle2">
-              <p>Back</p>
+              <p>Back of the Card</p>
             </div>
             <div style="display:flex; align-items:center;">
               <div id="play-pause-btn"></div>
@@ -166,7 +173,7 @@
           </div>
           <div class="audio-credit-row">
             <p id="audio-credit">Audio: NHK Creative Library</p>
-            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox (Public Domain).</p>
+            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox</p>
           </div>
 
         </div><!-- column-wrapper end -->
@@ -228,42 +235,45 @@
         <dl>
           <dt>Commentary</dt>
           <dd>
-            According to the headnote in the Kiyosuke Shū, this poem was "sent when the Sanjō Minister of the Center was still a Middle Captain." The Sanjō Minister of the Center is said to refer to Fujiwara no Kinnori. One theory holds that Kiyosuke composed this poem to encourage Kinnori, who had remained stuck in the rank of Middle Captain for many years without advancement.
+            The Kiyosuke Shū says this was sent to the Sanjō Palace Minister while he was still a Middle Captain, thought to be Fujiwara no Kinnori. One theory says Kiyosuke wrote it to cheer him up, as he had been stuck at that rank for years.
           </dd>
         </dl>
         <dl class="last-dl">
           <dt>About the Poet</dt>
           <dd>
-            Fujiwara no Kiyosuke was the son of the Master of the Left Capital Akisuke (Poem 79), compiler of the Shika Wakashū. Because of tension between father and son, however, not a single one of Kiyosuke's poems was included in that anthology. Later, Kiyosuke was honored with the task of compiling the Shoku Shika Wakashū by order of Emperor Nijō, but Emperor Nijō died just before it could be presented, and the collection sadly never saw the light of day.
+            Fujiwara no Kiyosuke was the son of Fujiwara no Akisuke, compiler of the Shika Wakashū, but because of tension between them, none of Kiyosuke's poems were included. Later, Emperor Nijō had him compile the Shoku Shika Wakashū, but the emperor died just before it was presented, and it was never made official.
           </dd>
         </dl>
       </div>
     </div>
     <div class="chart-image-row">
-    <div class="chart-section">
-      <dl>
-        <dt class='title'>Fujiwara no Kiyosuke Ason's Chart of the Heart</dt>
-            <dd>
-              <p>A chart and a modern-language reflection of the poet's inner feelings.</p>
-              <div class="emotion-chart">
-                <div id="radarChartWrapper">
-                  <canvas id="radarChart" width="300" height="300"></canvas>
-                </div>
-                <div>
-                  <p class="chart-quotes-title">The Poet's Feelings (A Personal Interpretation)</p>
-                  <p>However hard things are now,<br class="br-pc">a day will come when I can look back and smile.</p>
-                  <p style="margin-top:1em;">Even sorrow, with the passing of time,<br class="br-pc">turns into a fond memory.</p>
-                </div>
-              </div>
-            </dd>
-      </dl>
-    </div>
     <div class="image-section">
       <dl>
         <dt class='title'>Poem Illustration</dt>
         <dd>
           <img loading='lazy' src='../img/c_084.webp' alt="Illustration for Fujiwara no Kiyosuke Ason's poem">
           <p><small>This image is based on an illustration from William N. Porter's <em>A Hundred Verses from Old Japan</em>, his 1909 English translation of the Hyakunin Isshu published in England, colorized and reworked using Adobe Firefly (generative AI).</small></p>
+        </dd>
+      </dl>
+    </div>
+    <div class="nenpyo-section">
+      <dl>
+        <dt class='title'>Fujiwara no Kiyosuke: A Short Timeline</dt>
+        <dd>
+          <dl class="nenpyo">
+            <dt>1104</dt>
+            <dd>Born as a son of Fujiwara no Akisuke</dd>
+            <dt>1124–1144</dt>
+            <dd>Writes the Ōgishō, a book on poetry</dd>
+            <dt>1144</dt>
+            <dd>Helps his father compile the Shika Wakashū</dd>
+            <dt>1155</dt>
+            <dd>Receives the Hitomaro portrait ceremony from his father and becomes head of the Rokujō poetry family</dd>
+            <dt>1160s</dt>
+            <dd>Compiles the Shoku Shika Wakashū, but it does not become an imperial anthology because Emperor Nijō dies</dd>
+            <dt>1177</dt>
+            <dd>Dies</dd>
+          </dl>
         </dd>
       </dl>
     </div>
@@ -298,15 +308,8 @@
   </footer>
   <!-- Footer end -->
 
-  <script src="../js/poems_en.js?20260803-03"></script>
+  <script src="../js/poems_en.js?20261007-04"></script>
 
-  <!-- Chart of the Heart -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="/js/kokoro-chart-data-en.js?20260726"></script>
-  <script>
-    window.radarScores = KOKORO_CHART_DATA[84].scores;
-  </script>
-  <script src="/js/raderChart.js?20260830-01"></script>
 </body>
 
 </html>

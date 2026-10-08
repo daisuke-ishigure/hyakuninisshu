@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-08T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -72,13 +72,13 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Shigure's Hyakunin Isshu",
-          "item": "https://hyakuninisshu.com/"
+          "item": "https://hyakuninisshu.com/index_en.html"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Poem List",
-          "item": "https://hyakuninisshu.com/list.html"
+          "item": "https://hyakuninisshu.com/list_en.html"
         },
         {
           "@type": "ListItem",
@@ -91,10 +91,13 @@
   ]
   </script>
   <!-- stylesheets -->
-  <link rel="stylesheet" href="../css/style.css?20261006-05">
+  <link rel="stylesheet" href="../css/style.css?20261008-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
-  <link rel="stylesheet" href="../css/poems_en.css?20260803-04">
+  <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/swiper-bundle.min.css">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -104,6 +107,20 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- inview (starts the chart when it scrolls into view) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/protonet-jquery.inview/1.1.2/jquery.inview.min.js"></script>
+  <!-- chart: the poets with the most poems in the Man'yōshū -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+  <script src="../js/manyo-chart_en.js?20261008-01"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -134,6 +151,13 @@
   <main>
     <div class="card">
       <div class="column-wrapper">
+        <nav class="breadcrumb-poem" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index_en.html">Top</a></li>
+            <li><a href="list_en.html">Poem List</a></li>
+            <li aria-current="page">No. 6 Middle Counselor Yakamochi</li>
+          </ol>
+        </nav>
         <div class="select-container">
           <label for="themeSelector" id="themeSelector-label">Select a theme:</label>
           <select id="themeSelector" class="selector">
@@ -154,9 +178,9 @@
           <div class="checkbox1">
             <div style="display:flex; align-items:center;">
               <label for="toggle2" id="toggle2-label">Switch between the picture card and the matching card</label>
-              <p>Front</p>
+              <p>Front of the Card</p>
               <input type="checkbox" id="toggle2">
-              <p>Back</p>
+              <p>Back of the Card</p>
             </div>
             <div style="display:flex; align-items:center;">
               <div id="play-pause-btn"></div>
@@ -167,7 +191,7 @@
           </div>
           <div class="audio-credit-row">
             <p id="audio-credit">Audio: NHK Creative Library</p>
-            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox (Public Domain).</p>
+            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox</p>
           </div>
 
         </div><!-- column-wrapper end -->
@@ -229,37 +253,18 @@
         <dl>
           <dt>Commentary</dt>
           <dd>
-            The legend of Tanabata, born in China, was transmitted to Japan during the Nara period. This poem describes the glittering Milky Way spread across the winter night sky, its brilliance appearing as though frost had settled over it.
+            The Tanabata legend came to Japan from China in the Nara period. The poem describes the Milky Way across the winter night sky, sparkling as if frost had settled on it.
           </dd>
         </dl>
         <dl class="last-dl">
           <dt>About the Poet</dt>
           <dd>
-            Middle Counselor Yakamochi (Ōtomo no Yakamochi) was a Nara-period poet traditionally credited as the compiler of the Man'yōshū. Caught up in political rivalry with the Fujiwara clan, he rose and fell in rank repeatedly before finally reaching the office of Middle Counselor. After the assassination of Fujiwara no Tanetsugu, the Fujiwara accused him of plotting treason against Emperor Kanmu — even after his death, he was stripped of his court rank and his remains were exiled to distant Oki. About twenty years later, Emperor Kanmu, gravely ill and fearing the vengeful spirit of Yakamochi, finally granted him a pardon and restored his rank.
+            Ōtomo no Yakamochi was a Nara-period poet thought to have compiled the Man'yōshū. He clashed with the Fujiwara clan and was demoted and promoted many times before reaching Middle Counselor. After his death he was accused of a plot and stripped of his rank, but some 20 years later Emperor Kanmu, fearing his angry spirit, pardoned him.
           </dd>
         </dl>
       </div>
     </div>
     <div class="chart-image-row">
-    <div class="chart-section">
-      <dl>
-        <dt class='title'>Middle Counselor Yakamochi's Chart of the Heart</dt>
-            <dd>
-              <p>A chart and a modern-language reflection of the poet's inner feelings.</p>
-              <div class="emotion-chart">
-                <div id="radarChartWrapper">
-                  <canvas id="radarChart" width="300" height="300"></canvas>
-                </div>
-                <div>
-                  <p class="chart-quotes-title">The Poet's Feelings (A Personal Interpretation)</p>
-                  <p>The bridge of magpies across the night sky<br class="br-pc">gleams white as frost.</p>
-                  <p style="margin-top:1em;">As I watch, the night deepens<br class="br-pc">without a sound.</p>
-                  <p style="margin-top:1em;">And I am left standing there, alone.</p>
-                </div>
-              </div>
-            </dd>
-      </dl>
-    </div>
     <div class="image-section">
       <dl>
         <dt class='title'>Poem Illustration</dt>
@@ -269,7 +274,731 @@
         </dd>
       </dl>
     </div>
+    <div class="nenpyo-section">
+      <dl>
+        <dt class='title'>Ōtomo no Yakamochi: A Short Timeline</dt>
+        <dd>
+          <dl class="nenpyo">
+            <dt>c. 718</dt>
+            <dd>Born as a son of Ōtomo no Tabito</dd>
+            <dt>738</dt>
+            <dd>Becomes a palace guard (Udoneri)</dd>
+            <dt>746</dt>
+            <dd>Becomes governor of Etchū Province</dd>
+            <dt>751</dt>
+            <dd>Becomes Minor Counselor and returns to the capital</dd>
+            <dt>758</dt>
+            <dd>Becomes governor of Inaba Province</dd>
+            <dt>759</dt>
+            <dd>In Inaba, writes the last poem of the Man'yōshū</dd>
+            <dt>780</dt>
+            <dd>Becomes Councillor (Sangi)</dd>
+            <dt>783</dt>
+            <dd>Becomes Middle Counselor</dd>
+            <dt>785</dt>
+            <dd>Dies<br>After his death, he is blamed for the murder of Fujiwara no Tanetsugu and stripped of his rank</dd>
+            <dt>806</dt>
+            <dd>Pardoned and given back his rank</dd>
+            <dt>Notes</dt>
+            <dd>
+              <ul>
+                <li>Counted as one of the Thirty-Six Immortal Poets</li>
+              </ul>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Ōtomo no Yakamochi's Family Tree and the Fall of the Ōtomo Clan</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 6.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__tenno">Brown text</span>Emperor</li>
+              <li><span class="fk-legend__tno" aria-hidden="true"></span>Emperor's number in the line of succession</li>
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Ōtomo no Yakamochi's family tree">
+            <script type="application/json">
+{
+ "lang": "en",
+ "nodes": [
+  {
+   "id": "yasumaro",
+   "n": "大伴安麻呂",
+   "x": 16,
+   "y": 62
+  },
+  {
+   "id": "tabito",
+   "n": "大伴旅人",
+   "x": 200,
+   "y": 62
+  },
+  {
+   "id": "kakimochi",
+   "n": "大伴書持",
+   "x": 384,
+   "y": 40
+  },
+  {
+   "id": "yakamochi",
+   "n": "大伴家持",
+   "p": 6,
+   "self": 1,
+   "sub": "Stripped of rank",
+   "x": 384,
+   "y": 84
+  },
+  {
+   "id": "naganushi",
+   "n": "大伴永主",
+   "sub": "Exiled to Oki",
+   "x": 600,
+   "y": 84
+  },
+  {
+   "id": "komaro",
+   "n": "大伴古麻呂",
+   "x": 200,
+   "y": 182
+  },
+  {
+   "id": "tsuguhito",
+   "n": "大伴継人",
+   "sub": "Beheaded",
+   "x": 384,
+   "y": 150
+  },
+  {
+   "id": "takeyoshi",
+   "n": "大伴竹良",
+   "sub": "Beheaded",
+   "x": 384,
+   "y": 214
+  },
+  {
+   "id": "kunimichi",
+   "n": "伴国道",
+   "sub": "Exiled to Sado",
+   "x": 600,
+   "y": 150
+  },
+  {
+   "id": "yoshio",
+   "n": "伴善男",
+   "sub": "Exiled to Izu (Ōtenmon Incident)",
+   "x": 800,
+   "y": 150
+  },
+  {
+   "id": "konin",
+   "n": "光仁",
+   "k": 1,
+   "t": 49,
+   "x": 16,
+   "y": 336
+  },
+  {
+   "id": "sawara",
+   "n": "早良親王",
+   "sub": "Died going into exile",
+   "x": 200,
+   "y": 290
+  },
+  {
+   "id": "kanmu",
+   "n": "桓武",
+   "k": 1,
+   "t": 50,
+   "x": 200,
+   "y": 382
+  },
+  {
+   "id": "heizei",
+   "n": "平城",
+   "k": 1,
+   "t": 51,
+   "x": 384,
+   "y": 330
+  },
+  {
+   "id": "saga",
+   "n": "嵯峨",
+   "k": 1,
+   "t": 52,
+   "x": 384,
+   "y": 382
+  },
+  {
+   "id": "junna",
+   "n": "淳和",
+   "k": 1,
+   "t": 53,
+   "x": 384,
+   "y": 434
+  },
+  {
+   "id": "fuhito",
+   "n": "藤原不比等",
+   "key": "不比等",
+   "x": 16,
+   "y": 496
+  },
+  {
+   "id": "umakai",
+   "n": "藤原宇合",
+   "key": "宇合",
+   "x": 200,
+   "y": 496
+  },
+  {
+   "id": "kiyonari",
+   "n": "藤原清成",
+   "key": "清成",
+   "x": 384,
+   "y": 496
+  },
+  {
+   "id": "tanetsugu",
+   "n": "藤原種継",
+   "key": "種継",
+   "sub": "Assassinated",
+   "x": 600,
+   "y": 496
+  }
+ ],
+ "kids": [
+  {
+   "from": "yasumaro",
+   "to": [
+    "tabito"
+   ]
+  },
+  {
+   "from": "tabito",
+   "to": [
+    "kakimochi",
+    "yakamochi"
+   ]
+  },
+  {
+   "from": "yakamochi",
+   "to": [
+    "naganushi"
+   ]
+  },
+  {
+   "from": "komaro",
+   "to": [
+    "tsuguhito",
+    "takeyoshi"
+   ]
+  },
+  {
+   "from": "tsuguhito",
+   "to": [
+    "kunimichi"
+   ]
+  },
+  {
+   "from": "kunimichi",
+   "to": [
+    "yoshio"
+   ]
+  },
+  {
+   "from": "konin",
+   "to": [
+    "sawara",
+    "kanmu"
+   ]
+  },
+  {
+   "from": "kanmu",
+   "to": [
+    "heizei",
+    "saga",
+    "junna"
+   ]
+  },
+  {
+   "from": "fuhito",
+   "to": [
+    "umakai"
+   ]
+  },
+  {
+   "from": "umakai",
+   "to": [
+    "kiyonari"
+   ]
+  },
+  {
+   "from": "kiyonari",
+   "to": [
+    "tanetsugu"
+   ]
+  }
+ ],
+ "boxes": [
+  {
+   "text": "Suspected in the assassination",
+   "x": 440,
+   "y": 255,
+   "w": 220,
+   "h": 40
+  }
+ ],
+ "arrows": [
+  {
+   "points": [
+    [
+     630,
+     486
+    ],
+    [
+     630,
+     298
+    ]
+   ]
+  },
+  {
+   "points": [
+    [
+     440,
+     285
+    ],
+    [
+     307,
+     285
+    ]
+   ]
+  },
+  {
+   "points": [
+    [
+     560,
+     255
+    ],
+    [
+     560,
+     214
+    ],
+    [
+     544,
+     214
+    ]
+   ]
+  },
+  {
+   "points": [
+    [
+     575,
+     255
+    ],
+    [
+     575,
+     195
+    ],
+    [
+     416,
+     195
+    ],
+    [
+     416,
+     180
+    ]
+   ]
+  },
+  {
+   "points": [
+    [
+     590,
+     255
+    ],
+    [
+     590,
+     128
+    ],
+    [
+     432,
+     128
+    ],
+    [
+     432,
+     114
+    ]
+   ]
+  },
+  {
+   "points": [
+    [
+     645,
+     255
+    ],
+    [
+     645,
+     180
+    ]
+   ]
+  },
+  {
+   "points": [
+    [
+     660,
+     270
+    ],
+    [
+     790,
+     270
+    ],
+    [
+     790,
+     84
+    ],
+    [
+     765,
+     84
+    ]
+   ]
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1006 536" width="1006" height="536" role="img" aria-label="Ōtomo no Yakamochi's family tree" lang="en" class="fk-svg kd-svg" style="max-width:1509px;min-width:min(640px,1509px)" data-src="5ebget">
+<g class="fk-edges"><path d="M174 62H186" class="fk-edge"/><path d="M186 62H197" class="fk-edge"/><path d="M330 62H370" class="fk-edge"/><path d="M370 40V84" class="fk-edge"/><path d="M370 40H381" class="fk-edge"/><path d="M370 84H381" class="fk-edge"/><path d="M573 84H586" class="fk-edge"/><path d="M586 84H597" class="fk-edge"/><path d="M341 182H370" class="fk-edge"/><path d="M370 150V214" class="fk-edge"/><path d="M370 150H381" class="fk-edge"/><path d="M370 214H381" class="fk-edge"/><path d="M541 150H586" class="fk-edge"/><path d="M586 150H597" class="fk-edge"/><path d="M747 150H786" class="fk-edge"/><path d="M786 150H797" class="fk-edge"/><path d="M63 336H186" class="fk-edge"/><path d="M186 290V382" class="fk-edge"/><path d="M186 290H197" class="fk-edge"/><path d="M186 382H197" class="fk-edge"/><path d="M257 382H370" class="fk-edge"/><path d="M370 330V434" class="fk-edge"/><path d="M370 330H381" class="fk-edge"/><path d="M370 382H381" class="fk-edge"/><path d="M370 434H381" class="fk-edge"/><path d="M159 496H186" class="fk-edge"/><path d="M186 496H197" class="fk-edge"/><path d="M353 496H370" class="fk-edge"/><path d="M370 496H381" class="fk-edge"/><path d="M541 496H586" class="fk-edge"/><path d="M586 496H597" class="fk-edge"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"><rect class="kd-box" x="440" y="255" width="220" height="40" rx="3"/><text class="kd-box-text" x="550" y="275.5">Suspected in the assassination</text><path d="M630 486L630 298" class="kd-arrow" marker-end="url(#kdArrowHead)"/><path d="M440 285L307 285" class="kd-arrow" marker-end="url(#kdArrowHead)"/><path d="M560 255L560 214L544 214" class="kd-arrow" marker-end="url(#kdArrowHead)"/><path d="M575 255L575 195L416 195L416 180" class="kd-arrow" marker-end="url(#kdArrowHead)"/><path d="M590 255L590 128L432 128L432 114" class="kd-arrow" marker-end="url(#kdArrowHead)"/><path d="M645 255L645 180" class="kd-arrow" marker-end="url(#kdArrowHead)"/><path d="M660 270L790 270L790 84L765 84" class="kd-arrow" marker-end="url(#kdArrowHead)"/></g>
+<g>
+<g class="fk-node" transform="translate(16,62)" data-tip="&lt;h3&gt;Ōtomo no Yasumaro&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Upper Counselor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Ōtomo no Tabito&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="159" height="26"/><text class="fk-name" x="0" y="0.5">Ōtomo no Yasumaro</text></g></g>
+<g class="fk-node" transform="translate(200,62)" data-tip="&lt;h3&gt;Ōtomo no Tabito&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ōtomo no Yasumaro&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Ōtomo no Yakamochi and Kakimochi&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="131" height="26"/><text class="fk-name" x="0" y="0.5">Ōtomo no Tabito</text></g></g>
+<g class="fk-node" transform="translate(384,40)" data-tip="&lt;h3&gt;Ōtomo no Kakimochi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ōtomo no Tabito; Yakamochi's elder or younger brother&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="162" height="26"/><text class="fk-name" x="0" y="0.5">Ōtomo no Kakimochi</text></g></g>
+<g class="fk-node is-poet is-self" transform="translate(384,84)" data-tip="&lt;h3&gt;Ōtomo no Yakamochi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Middle Counselor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Third Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ōtomo no Tabito and Tajihi no Iratsume&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 6, &quot;Kasasagi no...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Died in the 8th month of 785. Blamed for the murder of Fujiwara no Tanetsugu the next month, he was refused burial and removed from the official records. He was pardoned in 806&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="196" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="190" height="26"/><text class="fk-name" x="0" y="0.5">Ōtomo no Yakamochi</text><circle class="fk-badge" cx="176" cy="0" r="10"/><text class="fk-badge-num" x="176" y="0.5">6</text></g><rect class="fk-sub-box" x="0" y="11" width="101" height="16" rx="8"/><text class="fk-sub" x="50.5" y="19.5">Stripped of rank</text></g>
+<g class="fk-node" transform="translate(600,84)" data-tip="&lt;h3&gt;Ōtomo no Naganushi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ōtomo no Yakamochi&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Punished along with others for the murder of Fujiwara no Tanetsugu and exiled to Oki Province&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="164" height="26"/><text class="fk-name" x="0" y="0.5">Ōtomo no Naganushi</text></g><rect class="fk-sub-box" x="0" y="11" width="81" height="16" rx="8"/><text class="fk-sub" x="40.5" y="19.5">Exiled to Oki</text></g>
+<g class="fk-node" transform="translate(200,182)" data-tip="&lt;h3&gt;Ōtomo no Komaro&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Major Controller of the Left&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;There are several theories about his father; nothing is certain&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Ōtomo no Tsuguhito&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="142" height="26"/><text class="fk-name" x="0" y="0.5">Ōtomo no Komaro</text></g></g>
+<g class="fk-node" transform="translate(384,150)" data-tip="&lt;h3&gt;Ōtomo no Tsuguhito&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ōtomo no Komaro&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Beheaded as the leader of the plot to murder Fujiwara no Tanetsugu. Pardoned in 806 and given Senior Fifth Rank, Upper Grade, after death&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="158" height="26"/><text class="fk-name" x="0" y="0.5">Ōtomo no Tsuguhito</text></g><rect class="fk-sub-box" x="0" y="11" width="67" height="16" rx="8"/><text class="fk-sub" x="33.5" y="19.5">Beheaded</text></g>
+<g class="fk-node" transform="translate(384,214)" data-tip="&lt;h3&gt;Ōtomo no Takeyoshi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Some family trees show him as a son of Ōtomo no Komaro; of the same clan as Tsuguhito&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;The first to be arrested for the murder of Fujiwara no Tanetsugu, and beheaded&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="159" height="26"/><text class="fk-name" x="0" y="0.5">Ōtomo no Takeyoshi</text></g><rect class="fk-sub-box" x="0" y="11" width="67" height="16" rx="8"/><text class="fk-sub" x="33.5" y="19.5">Beheaded</text></g>
+<g class="fk-node" transform="translate(600,150)" data-tip="&lt;h3&gt;Tomo no Kunimichi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;768–828&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ōtomo no Tsuguhito&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Punished along with others for the murder of Fujiwara no Tanetsugu and exiled to Sado Province. Father of Tomo no Yoshio&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="148" height="26"/><text class="fk-name" x="0" y="0.5">Tomo no Kunimichi</text></g><rect class="fk-sub-box" x="0" y="11" width="89" height="16" rx="8"/><text class="fk-sub" x="44.5" y="19.5">Exiled to Sado</text></g>
+<g class="fk-node" transform="translate(800,150)" data-tip="&lt;h3&gt;Tomo no Yoshio&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Upper Counselor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Tomo no Kunimichi&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Exiled to Izu Province after the Ōtenmon Incident of 866&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="123" height="26"/><text class="fk-name" x="0" y="0.5">Tomo no Yoshio</text></g><rect class="fk-sub-box" x="0" y="11" width="190" height="16" rx="8"/><text class="fk-sub" x="95" y="19.5">Exiled to Izu (Ōtenmon Incident)</text></g>
+<g class="fk-node is-tenno" transform="translate(16,336)" data-tip="&lt;h3&gt;Emperor Kōnin&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;49th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;709–782&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;770–781&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Grandson of Emperor Tenji and son of Prince Shiki&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Took the throne after Empress Shōtoku, moving the imperial line from Tenmu's descendants back to Tenji's&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="48" height="26"/><text class="fk-name" x="0" y="0.5">Kōnin</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">49</text></g>
+<g class="fk-node" transform="translate(200,290)" data-tip="&lt;h3&gt;Prince Sawara&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Kōnin and Takano no Niigasa; younger brother of Emperor Kanmu by the same mother&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Became a monk at Tōdai-ji at 11. He returned to lay life in 781 and became crown prince, but lost that position over the murder of Fujiwara no Tanetsugu and died after refusing food on the way to exile in Awaji&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="110" height="26"/><text class="fk-name" x="0" y="0.5">Prince Sawara</text></g><rect class="fk-sub-box" x="0" y="11" width="125" height="16" rx="8"/><text class="fk-sub" x="62.5" y="19.5">Died going into exile</text></g>
+<g class="fk-node is-tenno" transform="translate(200,382)" data-tip="&lt;h3&gt;Emperor Kanmu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;50th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;737–806&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;781–806&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Moved the capital to Nagaoka-kyō, then to Heian-kyō (794)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="58" height="26"/><text class="fk-name" x="0" y="0.5">Kanmu</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">50</text></g>
+<g class="fk-node is-tenno" transform="translate(384,330)" data-tip="&lt;h3&gt;Emperor Heizei&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;51st emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;774–824&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;806–809&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;After stepping down, he became a monk following the Retired Emperor Heizei Incident (Kusuko Incident) of 810&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="50" height="26"/><text class="fk-name" x="0" y="0.5">Heizei</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">51</text></g>
+<g class="fk-node is-tenno" transform="translate(384,382)" data-tip="&lt;h3&gt;Emperor Saga&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;52nd emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;786–842&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;809–823&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Gave his sons and daughters the family name Minamoto (the Saga Genji)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="40" height="26"/><text class="fk-name" x="0" y="0.5">Saga</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">52</text></g>
+<g class="fk-node is-tenno" transform="translate(384,434)" data-tip="&lt;h3&gt;Emperor Junna&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;53rd emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;786–840&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;823–833&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Kanmu and younger brother of Emperor Saga&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="48" height="26"/><text class="fk-name" x="0" y="0.5">Junna</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">53</text></g>
+<g class="fk-node" transform="translate(16,496)" data-tip="&lt;h3&gt;Fujiwara no Fuhito&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;659–720&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Minister of the Right&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Second Rank; Senior First Rank after death&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Grandfather (on the mother's side) of Emperor Shōmu and Empress Kōken&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="144" height="26"/><text class="fk-name" x="0" y="0.5">Fujiwara no Fuhito</text></g></g>
+<g class="fk-node" transform="translate(200,496)" data-tip="&lt;h3&gt;Fujiwara no Umakai&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;694–737&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Councillor (Sangi)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Third Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Founder of the Shikike branch of the Fujiwara&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="154" height="26"/><text class="fk-name" x="0" y="0.5">Fujiwara no Umakai</text></g></g>
+<g class="fk-node" transform="translate(384,496)" data-tip="&lt;h3&gt;Fujiwara no Kiyonari&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;c. 716–c. 777&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;None&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="158" height="26"/><text class="fk-name" x="0" y="0.5">Fujiwara no Kiyonari</text></g></g>
+<g class="fk-node" transform="translate(600,496)" data-tip="&lt;h3&gt;Fujiwara no Tanetsugu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;737–785&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Middle Counselor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Third Rank; Senior First Rank after death&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Murdered while overseeing the building of Nagaoka-kyō&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="175" height="26"/><text class="fk-name" x="0" y="0.5">Fujiwara no Tanetsugu</text></g><rect class="fk-sub-box" x="0" y="11" width="84" height="16" rx="8"/><text class="fk-sub" x="42" y="19.5">Assassinated</text></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+          <div class="kd-text">
+            <p>
+              In 785, Middle Counselor Fujiwara no Tanetsugu, who was overseeing the building of the new capital Nagaoka-kyō, was shot dead with arrows. Ōtomo no Takeyoshi was arrested as one of the killers, and after questioning, Ōtomo no Yakamochi (Middle Counselor, Junior Third Rank) was named as the leader of the plot, and the Ōtomo clan was punished as a group. Although Yakamochi had died about a month before the murder, he was refused burial and removed from the official records.
+              But in 806, more than 20 years after his death, Yakamochi was cleared and given back the Junior Third Rank.
+            </p>
+            <p>
+              Emperor Kanmu's younger brother, Prince Sawara, was also said to be involved. He lost his place as crown prince and is said to have died after refusing food on the way to exile in Awaji. Before becoming crown prince, he had been a monk at Tōdai-ji Temple. One reason for moving the capital from Heijō-kyō to Nagaoka-kyō was to get away from the powerful Buddhist temples of Heijō-kyō. Because Prince Sawara had close ties to Tōdai-ji, he may have been seen as against the move and suspected of the murder.
+            </p>
+            <p>
+              Later, in 866, the Ōtenmon gate of the Heian palace was set on fire (the Ōtenmon Incident). Tomo no Yoshio, an Upper Counselor, was named as the culprit and exiled, and once again his whole clan was punished with him. After this incident, the Ōtomo clan fell into decline.
+            </p>
+            <p>
+              As the Ōtomo clan declined, the Northern branch of the Fujiwara grew powerful, so some believe the Northern Fujiwara were secretly behind both incidents.
+            </p>
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <dt>Tanabata</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/tanabata_large.webp' data-lightbox='yakamochi' data-title='Tanabata decorations'>
+                  <img loading='lazy' src='../img/tanabata.webp' alt='Tanabata decorations' width="640" height="493">
+                </a>
+              </figure>
+              <div>
+                <p>Tanabata is a legend that began in China. The Weaver Girl, who wove clothes by order of the Emperor of Heaven (the highest god), married the Cowherd. After that, the two only played and stopped working. The gods' clothes became ragged, and the Cowherd's cattle grew thin and sick. In anger, the Emperor of Heaven separated them on opposite banks of the Milky Way. Then the two did nothing but cry and could not work, so he allowed them to meet once a year, on the night of the seventh day of the seventh month. On that night, magpies form a bridge so the two can meet. This is the story of Tanabata.
+                </p>
+                <p>In Japan, the Chinese Tanabata story was joined with an old Japanese legend of the weaving maiden (<em>Tanabatatsume</em>), and the Cowherd came to be called Hikoboshi. The custom of writing wishes on strips of paper in five colors and hanging them on bamboo is unique to Japan.</p>
+              </div>
+            </dd>
+
+            <dt>The <em>Man'yōshū</em></dt>
+            <dd>
+              The <em>Man'yōshū</em>, compiled in the 7th–8th centuries, is the oldest surviving collection of Japanese poetry. Hiragana did not yet exist, so it was written in <em>man'yōgana</em>, Chinese characters used for their sounds or meanings, the way hiragana is used today.<br
+                class="br-pc">Besides about 4,200 <em>tanka</em> (5-7-5-7-7 syllables), it has about 260 <em>chōka</em>, long poems that repeat lines of 5 and 7 syllables and end with 5-7-7, and about 60 <em>sedōka</em>, which repeat 5-7-7 twice.</dd>
+            <dt>The Top 4 Poets in the <em>Man'yōshū</em></dt>
+            <dd class='thumb-image2'>
+              <div class="chart-wrapper">
+                <canvas id="chart"></canvas>
+              </div>
+              <div>
+                <p style="width:100%;">
+                  This graph shows the top 4 poets in the <em>Man'yōshū</em>, along with the number of poems by unknown authors. The <em>Man'yōshū</em> holds 4,516 poems by people of every class, from farmers to emperors, written all over Japan from Tōhoku to Kyushu. Nearly half of them, about 2,000, are by unknown authors. The poets with the most poems are:
+                </p>
+                <ul style="margin-top:0.5em;">
+                  <li style="list-style:disc; margin-left:1em;">Ōtomo no Yakamochi: 473 poems</li>
+                  <li style="list-style:disc; margin-left:1em;">Kakinomoto no Hitomaro: 88 poems</li>
+                  <li style="list-style:disc; margin-left:1em;">Lady Ōtomo no Sakanoue<br class="br-sp"> (who raised Yakamochi): 84 poems</li>
+                  <li style="list-style:disc; margin-left:1em;">Ōtomo no Tabito<br class="br-sp"> (Yakamochi's father): 78 poems</li>
+                </ul>
+              </div>
+            </dd>
+
+            <dt>Takaoka, Home of the <em>Man'yōshū</em></dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/06_yakamochizou_large.webp' data-lightbox='yakamochi' data-title='Statue of Ōtomo no Yakamochi'>
+                  <img loading='lazy' src='../img/06_yakamochizou.webp' alt='Statue of Ōtomo no Yakamochi' width="640" height="480">
+                </a>
+              </figure>
+              <div>
+                <p>The photo shows the statue of Ōtomo no Yakamochi on Mount Futagami (274 m) in Takaoka City, Toyama Prefecture. Yakamochi lived in Etchū Province for about five years, from 746 to 751, as its governor.</p>
+                <p>Of the 4,516 poems in the <em>Man'yōshū</em>, 473, about one in ten, are by Yakamochi. Nearly half of them, 223 poems, were written while he was in Etchū.</p>
+                <p>Because Yakamochi wrote so many poems there, Takaoka is called "the home of the <em>Man'yōshū</em>."</p>
+              </div>
+            </dd>
+
+            <dt>A Poem About a Calm Spring Day</dt>
+            <dd>Yakamochi went to Etchū Province (present-day Toyama Prefecture) as its governor in 746. He wrote this poem there.
+              <div class='quote'>
+                <q class="quote-ja" style="line-height:1.8; position:relative;">
+                  <img src="/img/peach-flower.png" alt="Peach blossom"
+                    style="position:absolute; width:55px; height:auto; right:5px; top:8px;" width="80" height="76">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>春<rt>はる</rt></ruby>の<ruby>苑<rt>その</rt></ruby>
+                  <ruby>紅<rt>くれない</rt></ruby>にほふ
+                  <ruby>桃<rt>もも</rt></ruby>の<ruby>花<rt>はな</rt></ruby>
+                  <br><ruby>下<rt>した</rt></ruby><ruby>照<rt>て</rt></ruby>る<ruby>道<rt>みち</rt></ruby>に
+                  <ruby>出<rt>い</rt></ruby>で<ruby>立<rt>た</rt></ruby>つ<ruby>娘子<rt>おとめ</rt></ruby>
+                  <span class="shutten"><em>Man'yōshū</em>, Ōtomo no Yakamochi</span>
+                </q><q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 2;">The spring garden glows with crimson peach blossoms.<br>On the path lit by their color, a young girl appears and stands.</p>
+                </q>
+              </div>
+            </dd>
+
+            <dt>A Poem of Spring Sadness</dt>
+            <dd>Yakamochi wrote the next poem in Yamato Province (present-day Nara Prefecture) in 753.
+              <div class='quote'><q class="quote-ja" style="line-height:1.8; position:relative;">
+                  <img src="/img/hibari.gif" alt="Skylark"
+                    style="position:absolute; width:70px; height:auto; right:5px; top:5px;" width="300" height="353">
+                  <h3 class="was-h4">In Japanese</h3>
+                  うらうらに
+                  <ruby>照<rt>て</rt></ruby>れる<ruby>春日<rt>かすが</rt></ruby>に
+                  <br class="br-sp">ひばり<ruby>上<rt>あ</rt></ruby>がり
+                  <br class="br-pc"><ruby>心<rt>こころ</rt></ruby><ruby>悲<rt>かな</rt></ruby>しも
+                  <br class="br-sp"><ruby>独<rt>ひと</rt></ruby>りし<ruby>思<rt>おも</rt></ruby>へば
+                  <span class="shutten"><em>Man'yōshū</em>, Ōtomo no Yakamochi</span>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 2;">On a bright, mild spring day, a skylark soars high into the sky.<br class="br-pc">Alone with my thoughts, I feel drawn into the sky, and sad.</p>
+                </q>
+              </div>
+            </dd>
+
+            <dt>A Poem for the New Year</dt>
+            <dd>Yakamochi went to Inaba Province (present-day Tottori Prefecture) as its governor in 758 and wrote this poem on New Year's Day the next year. It is the very last poem in the <em>Man'yōshū</em>. "Iya shike" means "more and more often," linking the falling snow with good things (<em>yogoto</em>).
+              <div class='quote'><q class="quote-ja" style="line-height:1.8; position:relative;">
+                  <img src="/img/kagamimochi.gif" alt="Kagami mochi (New Year rice cakes)"
+                    style="position:absolute; width:60px; height:auto; right:5px; top:5px;" width="171" height="200">
+                  <h3 class="was-h4">In Japanese</h3><ruby>新<rt>あたら</rt></ruby>しき
+                  <ruby>年<rt>とし</rt></ruby>の<ruby>初<rt>はじ</rt></ruby>めの
+                  <ruby>初春<rt>はつはる</rt></ruby>の
+                  <br><ruby>今日<rt>けふ</rt></ruby><ruby>降<rt>ふ</rt></ruby>る<ruby>雪<rt>ゆき</rt></ruby>の
+                  いや<ruby>重<rt>し</rt></ruby>け<ruby>吉事<rt>よごと</rt></ruby>
+                  <span class="shutten"><em>Man'yōshū</em>, Ōtomo no Yakamochi</span>
+                </q><q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 2;">At the start of the new year, in early spring,<br class="br-pc">may good things pile up more and more, like the snow falling today.</p>
+                </q></div>
+            </dd>
+
+            <dt>Poems by Lady Kasa, Who Loved Yakamochi in Vain</dt>
+            <dd>
+              <p>Lady Kasa (Kasa no Iratsume) loved Yakamochi with all her heart and wrote many poems for him. Twenty-nine of her poems are in the <em>Man'yōshū</em>, and every one is about her love for Yakamochi. But her love was never returned. Here is one of them.
+              </p>
+              <div class='quote'>
+                <q class="quote-ja" style="line-height:1.8; position:relative;">
+                  <img src="/img/broken-heart.png" alt="Broken heart"
+                    style="position:absolute; width:60px; height:auto; right:5px; top:8px;" width="80" height="62">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>思<rt>おも</rt></ruby>ふにし
+                  <ruby>死<rt>し</rt></ruby>にするものに
+                  <br class="br-sp">あらませば
+                  <br class="br-pc"><ruby>千遍<rt>ちたび</rt></ruby>そわれは
+                  <ruby>死<rt>し</rt></ruby>に<ruby>返<rt>かえ</rt></ruby>らまし
+                  <span class="shutten"><em>Man'yōshū</em>, Lady Kasa</span>
+                </q><q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 2;">If one could die of love,<br class="br-pc">I would have died a thousand times over.</p>
+                </q>
+              </div>
+            </dd>
+
+            <dt>Mibu no Tadamine's Poem Based on This One</dt>
+            <dd>
+              Mibu no Tadamine, who served as an attendant to Fujiwara no Sadakuni, wrote the next poem borrowing from Yakamochi's (<em>honkadori</em>). One night, Sadakuni, drunk, dropped in on Minister of the Left Fujiwara no Tokihira, who asked suspiciously, "Did you just stop by on your way somewhere?" Tadamine then made this poem on the spot, borrowing from Yakamochi's poem. The <em>Yamato Monogatari</em> says his quick wit eased the mood.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  かささぎの
+                  <ruby>渡<rt>わた</rt></ruby>せる<ruby>橋<rt>はし</rt></ruby>の
+                  <ruby>霜<rt>しも</rt></ruby>の<ruby>上<rt>うえ</rt></ruby>を
+                  <br><ruby>夜半<rt>よわ</rt></ruby>にふみわけ
+                  ことさらにこそ
+                  <span class="shutten"><em>Yamato Monogatari</em>, Mibu no Tadamine</span>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.8;">Treading at midnight through the frost on the steps of your hall, like the bridge the magpies make,
+                    <br class="br-pc">I have come here to you on purpose.
+                  </p>
+                </q>
+              </div>
+            </dd>
+
+            <dt id="sekijinja">Kasasagi Bridge</dt>
+            <dd class='thumb-image2'>
+              <div class="swiper">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img loading='lazy' src='../img/06_kasasagibashi_02.webp' alt='Kasasagi Bridge' width="800" height="600">
+                  </div>
+                  <div class="swiper-slide">
+                    <img loading='lazy' src='../img/06_kasasagibashi_01.webp' alt='Monument at Kasasagi Bridge' width="800" height="600">
+                  </div>
+                  <div class="swiper-slide">
+                    <img loading='lazy' src='../img/06_kasasagibashi_03.webp' alt='Close-up of the monument at Kasasagi Bridge' width="800" height="600">
+                  </div>
+                  <div class="swiper-slide">
+                    <img loading='lazy' src='../img/06_kasasagibashi_04.webp' alt='The Amanogawa River seen from Kasasagi Bridge' width="800" height="600">
+                  </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+              </div>
+              <div>
+                <p>In Katano City, Osaka Prefecture, flows the Amanogawa River, named after the Milky Way (<em>Amanogawa</em>) of the Tanabata legend. "Kasasagi Bridge" crosses its lowest stretch. The bridge's name also comes from the magpies (<em>kasasagi</em>) of the Tanabata story.</p>
+                <p>It is about a 5-minute walk from Hirakatashi Station on the Keihan Line.</p>
+                <p style="text-align:right;"><small>(Photo taken August 10, 2026)</small></p>
+              </div>
+            </dd>
+
+            <dt>The Amanogawa River, Visited by Ariwara no Narihira</dt>
+            <dd class='thumb-image2'>
+              <div class="swiper">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img loading='lazy' src='../img/06_amanogawa_narihira-kahi_small.webp' alt="Stone monument with Ariwara no Narihira's poem" width="800" height="600">
+                  </div>
+                  <div class="swiper-slide">
+                    <img loading='lazy' src='../img/06_kisaichi_kasasagibashi_01.webp' alt='Kisaichi Kasasagi Bridge and the poem monument' width="800" height="600">
+                  </div>
+                  <div class="swiper-slide">
+                    <img loading='lazy' src='../img/06_kisaichi_kasasagibashi_02.webp' alt='Kisaichi Kasasagi Bridge and the poem monument' width="800" height="600">
+                  </div>
+                  <div class="swiper-slide">
+                    <img loading='lazy' src='../img/06_kisaichi_mizube-plaza.webp' alt='Kisaichi Waterside Plaza' width="800" height="600">
+                  </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+              </div>
+              <div>
+                <p>Going upstream along the Amanogawa, you reach Kisaichi Waterside Plaza (Kisaichi Mizube Plaza), where you can play in the river and walk in rich nature.</p>
+                <p>In the Heian period, the area around Katano was a hunting ground for the imperial family and nobles. Ariwara no Narihira is known to have come here for falconry, and a stone monument with the poem he is said to have written here stands quietly nearby. Next to it is a charming little bridge, Kisaichi Kasasagi Bridge.</p>
+                <p>It is about a 5-minute walk from Kisaichi Station on the Keihan Katano Line.</p>
+                <p style="text-align:right;"><small>(Photo taken August 10, 2026)</small></p>
+              </div>
+            </dd>
+
+            <dt>Narihira's Poem About the Amanogawa</dt>
+            <dd>
+              This poem by Ariwara no Narihira is carved on the monument at Kisaichi Waterside Plaza. What did Narihira feel about the Tanabata legend?
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>狩<rt>か</rt></ruby>り<ruby>暮<rt>く</rt></ruby>らし
+                  <ruby>棚機<rt>たなばた</rt></ruby>つめに
+                  <ruby>宿<rt>やど</rt></ruby>からむ
+                  <br><ruby>天<rt>あま</rt></ruby>の<ruby>河原<rt>かわら</rt></ruby>に
+                  <ruby>我<rt>われ</rt></ruby>は<ruby>来<rt>き</rt></ruby>にけり
+                  <span class="shutten"><em>Kokin Wakashū</em>, Ariwara no Narihira</span>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.8;">I have hunted until evening, so tonight I will ask the Weaver Girl for a place to stay, for I have come to the banks of the River of Heaven.
+                  </p>
+                </q>
+              </div>
+            </dd>
+
+            <dt>Ukiyo-e by Katsushika Hokusai</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/hokusai_06_large.webp' data-lightbox='yakamochi' data-title='Ukiyo-e by Katsushika Hokusai'>
+                  <img loading='lazy' src='../img/hokusai_06.webp' alt='Woodblock print by Katsushika Hokusai' width="640" height="429">
+                </a>
+                <figcaption><small><a
+                      href='https://commons.wikimedia.org/wiki/File:%E7%99%BE%E4%BA%BA%E4%B8%80%E9%A6%96_%E4%B9%B3%E6%AF%8D%E3%81%8B%E7%B8%81%E8%AA%AC_%E4%B8%AD%E7%B4%8D%E8%A8%80%E5%AE%B6%E6%8C%81-Poem_by_Ch%C5%ABnagon_Yakamochi_(%C5%8Ctomo_no_Yakamochi),_from_the_series_One_Hundred_Poems_Explained_by_the_Nurse_(Hyakunin_isshu_uba_ga_etoki)_MET_DP141109.jpg'
+                      target='_blank'>Katsushika Hokusai, CC0, via Wikimedia Commons</a></small>
+                </figcaption>
+              </figure>
+              <div>
+                <p>
+                  This print is from <em>One Hundred Poems Explained by the Nurse</em> (<em>Hyakunin Isshu Uba ga Etoki</em>) by Katsushika Hokusai, an ukiyo-e artist of the Edo period.
+                </p>
+                <p>
+                  Perhaps because the Tanabata legend (the bridge of magpies) came from China, Hokusai drew a Chinese ship. Could the bird the sailor at the bow is pointing at be a magpie?
+                </p>
+              </div>
+            </dd>
+
+            <dt>Utagawa Kuniyoshi's <em>Hyakunin Isshu no Uchi</em></dt>
+            <dd class='thumb-image2'>
+              <figure class='portrait'>
+                <a href='../img/kuniyoshi_06_large.webp' data-lightbox='yakamochi' data-title='Ukiyo-e by Utagawa Kuniyoshi'>
+                  <img loading='lazy' src='../img/kuniyoshi_06.webp' alt='Ukiyo-e by Utagawa Kuniyoshi' width="480" height="726">
+                </a>
+                <figcaption><a
+                    href='https://commons.wikimedia.org/wiki/File:Chunagon_Yakamochi_(no._6)_%E4%B8%AD%E7%B4%8D%E8%A8%80%E5%AE%B6%E6%8C%81_(BM_2008,3037.10606).jpg' target='_blank' rel='noopener'><small>British
+                      Museum, Public domain, via Wikimedia Commons</small></a></figcaption>
+              </figure>
+              <div>
+                <p>This ukiyo-e is by Utagawa Kuniyoshi, an artist of the Edo period.<br class="br-pc">It shows a scene that matches the poem in the Hyakunin Isshu.</p>
+              </div>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -301,15 +1030,35 @@
   </footer>
   <!-- Footer end -->
 
-  <script src="../js/poems_en.js?20260803-03"></script>
-
-  <!-- Chart of the Heart -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="/js/kokoro-chart-data-en.js?20260726"></script>
+  <script src="../js/poems_en.js?20261007-04"></script>
+  <!-- swiper -->
+  <script src="../js/swiper-bundle.min.js"></script>
   <script>
-    window.radarScores = KOKORO_CHART_DATA[6].scores;
+    document.addEventListener('DOMContentLoaded', () => {
+      new Swiper('.swiper', {
+        loop: true,
+        speed: 1500,
+        autoplay: {
+          delay: 2000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+    });
   </script>
-  <script src="/js/raderChart.js?20260830-01"></script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261008-21"></script>
+  <script src="../js/keizu-diagram.js?20261008-02"></script>
+
 </body>
 
 </html>

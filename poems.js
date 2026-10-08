@@ -309,7 +309,7 @@ let poems = {
         "eng":"Oh Wind,<br>close the cloud path of celestial maidens,<br>Let the dancers stay<br>a while longer.",
         "eng_name":"High Priest Henjō",
         "translation": "空吹く風よ。天女が帰る雲の通り道を吹き閉じておくれ。舞姫たちをもうしばらくとどめておきたい。",
-        "background": "『古今集』の詞書に「<ruby>五節<rt>ごせち</rt></ruby>の<ruby>舞姫<rt>まいひめ</rt></ruby>を見てよめる」とあります。この歌は、「<ruby>五節<rt>ごせち</rt></ruby>の<ruby>舞<rt>まい</rt></ruby>」を見た遍照が舞姫たちを天女に見立てて詠んだものです。詠まれた時期は出家前の若き宮廷人だった頃だと考えられています。",
+        "background": "『古今集』の詞書に「<ruby>五節<rt>ごせち</rt></ruby>の<ruby>舞姫<rt>まいひめ</rt></ruby>を見てよめる」とあります。この歌は、「<ruby>五節<rt>ごせち</rt></ruby>の<ruby>舞<rt>まい</rt></ruby>」を見た遍昭が舞姫たちを天女に見立てて詠んだものです。詠まれた時期は出家前の若き宮廷人だった頃だと考えられています。",
         "personality": "僧正遍昭は桓武天皇の孫で、本名は<ruby>良岑宗貞<rt>よしみねのむねさだ</rt></ruby>といいます。仁明天皇に<ruby>蔵人頭<rt>くろうどのとう</rt></ruby>として仕えていましたが、仁明天皇が急逝され、喪に服す<ruby>諒闇<rt>りょうあん</rt></ruby>という期間が終わると、同僚たちは喪が明けたことを喜びました。その様子を見た作者は世の無常を感じ、出家を決意したといわれています。後に僧の最高位「僧正」の地位に就きました。",
         "kakekotobaMark": "<img src='../img/mark_kakekotoba_none.svg' alt='掛詞'>",
         "kakekotobaLink": "<p>この歌に掛詞はありません。</p>",

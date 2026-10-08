@@ -71,13 +71,13 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Shigure's Hyakunin Isshu",
-          "item": "https://hyakuninisshu.com/"
+          "item": "https://hyakuninisshu.com/index_en.html"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Poem List",
-          "item": "https://hyakuninisshu.com/list.html"
+          "item": "https://hyakuninisshu.com/list_en.html"
         },
         {
           "@type": "ListItem",
@@ -90,10 +90,10 @@
   ]
   </script>
   <!-- stylesheets -->
-  <link rel="stylesheet" href="../css/style.css?20261006-05">
+  <link rel="stylesheet" href="../css/style.css?20261008-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
-  <link rel="stylesheet" href="../css/poems_en.css?20260803-04">
+  <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -133,6 +133,13 @@
   <main>
     <div class="card">
       <div class="column-wrapper">
+        <nav class="breadcrumb-poem" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index_en.html">Top</a></li>
+            <li><a href="list_en.html">Poem List</a></li>
+            <li aria-current="page">No. 33 Ki no Tomonori</li>
+          </ol>
+        </nav>
         <div class="select-container">
           <label for="themeSelector" id="themeSelector-label">Select a theme:</label>
           <select id="themeSelector" class="selector">
@@ -153,9 +160,9 @@
           <div class="checkbox1">
             <div style="display:flex; align-items:center;">
               <label for="toggle2" id="toggle2-label">Switch between the picture card and the matching card</label>
-              <p>Front</p>
+              <p>Front of the Card</p>
               <input type="checkbox" id="toggle2">
-              <p>Back</p>
+              <p>Back of the Card</p>
             </div>
             <div style="display:flex; align-items:center;">
               <div id="play-pause-btn"></div>
@@ -166,7 +173,7 @@
           </div>
           <div class="audio-credit-row">
             <p id="audio-credit">Audio: NHK Creative Library</p>
-            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox (Public Domain).</p>
+            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox</p>
           </div>
 
         </div><!-- column-wrapper end -->
@@ -228,42 +235,51 @@
         <dl>
           <dt>Commentary</dt>
           <dd>
-            According to the headnote in the Ki no Tomonori Shū, this poem was composed for a poetry contest held at the Empress's palace during the Kanpyō era, likely on the set theme of "falling blossoms." On a calm, windless spring day, the cherry blossoms flutter down all the same — and the poet personifies them, as though they were rushing to scatter without a moment's peace of mind. The poem conveys both the fleeting nature of the blossoms' life, gone almost as soon as they bloom, and the poet's own delicate sensitivity in watching them fall.
+            This was likely written for a contest on the theme "falling blossoms." On a calm, windless spring day the cherry blossoms still fall, and the poet asks why they hurry so, as if they had no peace of heart. It shows how quickly blossoms fade and the poet's gentle feeling as he watches.
           </dd>
         </dl>
         <dl class="last-dl">
           <dt>About the Poet</dt>
           <dd>
-            Ki no Tomonori was a cousin of Ki no Tsurayuki, who wrote the Tosa Nikki and the kana preface to the Kokin Wakashū. Tomonori was himself one of the Kokin Wakashū's compilers, but died before the collection was completed. His poetic talent was highly regarded — many of his works were included in imperially commissioned anthologies, and he was named one of the Thirty-Six Poetry Immortals.
+            Ki no Tomonori was a cousin of Ki no Tsurayuki. He was one of the compilers of the Kokin Wakashū but died before it was finished. His poems were highly praised, many appear in imperial anthologies, and he is one of the Thirty-Six Immortal Poets.
           </dd>
         </dl>
       </div>
     </div>
     <div class="chart-image-row">
-    <div class="chart-section">
-      <dl>
-        <dt class='title'>Ki no Tomonori's Chart of the Heart</dt>
-            <dd>
-              <p>A chart and a modern-language reflection of the poet's inner feelings.</p>
-              <div class="emotion-chart">
-                <div id="radarChartWrapper">
-                  <canvas id="radarChart" width="300" height="300"></canvas>
-                </div>
-                <div>
-                  <p class="chart-quotes-title">The Poet's Feelings (A Personal Interpretation)</p>
-                  <p>The sky is so calm and still —<br class="br-pc">why must the cherry blossoms fall in such a hurry?</p>
-                  <p style="margin-top:1em;">I want to hold them here,<br class="br-pc">but I cannot.</p>
-                </div>
-              </div>
-            </dd>
-      </dl>
-    </div>
     <div class="image-section">
       <dl>
         <dt class='title'>Poem Illustration</dt>
         <dd>
           <img loading='lazy' src='../img/c_033.webp' alt="Illustration for Ki no Tomonori's poem">
           <p><small>This image is based on an illustration from William N. Porter's <em>A Hundred Verses from Old Japan</em>, his 1909 English translation of the Hyakunin Isshu published in England, colorized and reworked using Adobe Firefly (generative AI).</small></p>
+        </dd>
+      </dl>
+    </div>
+    <div class="nenpyo-section">
+      <dl>
+        <dt class='title'>Ki no Tomonori: A Short Timeline</dt>
+        <dd>
+          <dl class="nenpyo">
+            <dt>c. 845</dt>
+            <dd>Born</dd>
+            <dt>897</dt>
+            <dd>Becomes an official of Tosa Province</dd>
+            <dt>898</dt>
+            <dd>Becomes a junior palace secretary</dd>
+            <dt>904</dt>
+            <dd>Becomes a senior palace secretary</dd>
+            <dt>905</dt>
+            <dd>Chosen to compile the Kokin Wakashū</dd>
+            <dt>907</dt>
+            <dd>Dies</dd>
+            <dt>Notes</dt>
+            <dd>
+              <ul>
+                <li>Counted as one of the Thirty-Six Immortal Poets</li>
+              </ul>
+            </dd>
+          </dl>
         </dd>
       </dl>
     </div>
@@ -299,15 +315,8 @@
   </footer>
   <!-- Footer end -->
 
-  <script src="../js/poems_en.js?20260803-03"></script>
+  <script src="../js/poems_en.js?20261007-04"></script>
 
-  <!-- Chart of the Heart -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="/js/kokoro-chart-data-en.js?20260726"></script>
-  <script>
-    window.radarScores = KOKORO_CHART_DATA[33].scores;
-  </script>
-  <script src="/js/raderChart.js?20260830-01"></script>
 </body>
 
 </html>

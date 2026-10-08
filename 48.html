@@ -89,12 +89,12 @@
   }
   </script>
   <!-- スタイルシートの追加 -->
-  <link rel="stylesheet" href="../css/style.css?20261006-05">
+  <link rel="stylesheet" href="../css/style.css?20261008-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_48.css?20240507-02">
   <link rel="stylesheet" href="../css/animate.min.css">
   <link rel="stylesheet" href="../css/grammar-panel.css?20261001-01">
-  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261003-03">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261007-02">
   <!-- google fontの追加 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -161,6 +161,13 @@
   <main>
     <div class="card">
       <div class="column-wrapper">
+        <nav class="breadcrumb-poem" aria-label="パンくずリスト">
+          <ol>
+            <li><a href="index.html">トップ</a></li>
+            <li><a href="list.html">百人一首一覧</a></li>
+            <li aria-current="page">第48番 源重之</li>
+          </ol>
+        </nav>
         <div class="select-container">
           <label for="themeSelector" id="themeSelector-label">テーマを選択:</label>
           <select id="themeSelector" class="selector">
@@ -448,7 +455,7 @@
                   <img loading='lazy' src='../img/kuniyoshi_48.webp' alt='歌川国芳による源重之の浮世絵' width="480" height="707">
                 </a>
                 <figcaption><a
-                    href='https://commons.wikimedia.org/wiki/File:Minamoto_no_Shigeyuki_(no._48)_%E6%BA%90%E9%87%8D%E4%B9%8B_(BM_2008,3037.10628).jpg'><small>British
+                    href='https://commons.wikimedia.org/wiki/File:Minamoto_no_Shigeyuki_(no._48)_%E6%BA%90%E9%87%8D%E4%B9%8B_(BM_2008,3037.10628).jpg' target='_blank' rel='noopener'><small>British
                       Museum, Public domain, via Wikimedia Commons</small></a></figcaption>
               </figure>
               <div>
@@ -458,14 +465,6 @@
           </dl>
         </dd>
       </dl>
-    </div>
-    <div class="bottom_arrow">
-      <div id="next2" class="bottom">
-        <p id="next2_arrow">次の和歌へ</p>
-      </div>
-      <div id="back2" class="bottom">
-        <p id="back2_arrow">前の和歌へ</p>
-      </div>
     </div>
   </main>
 
@@ -484,7 +483,7 @@
     </div>
   </footer>
   <!-- フッターここまで -->
-  <script src="../js/poems.js?20261006-04"></script>
+  <script src="../js/poems.js?20261008-01"></script>
   <!-- クリッカブルマップ -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/image-map-resizer/1.0.10/js/imageMapResizer.min.js"></script>
   <script>
@@ -496,9 +495,9 @@
   <script src="../js/tippy.umd.min.js"></script>
   <script src="../js/tooltips.js?20261007-01"></script>
   <script src="../js/tenno-keizu-tooltips.js?20261006-04"></script>
-  <script src="../js/fujiwara-keizu-tooltips.js?20261006-04"></script>
-  <script src="../js/keizu-tips.js?20261006-04"></script>
-  <script src="../js/keizu-diagram.js?20261003-02"></script>
+  <script src="../js/fujiwara-keizu-tooltips.js?20261008-02"></script>
+  <script src="../js/keizu-tips.js?20261008-03"></script>
+  <script src="../js/keizu-diagram.js?20261007-01"></script>
   <!-- ▲▲▲ tippy.js ▲▲▲ -->
   <script>window.POEM_NUM = 48;</script>
   <script src="../js/grammar-data.js?20260830"></script>

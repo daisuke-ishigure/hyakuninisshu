@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-08T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -71,13 +71,13 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Shigure's Hyakunin Isshu",
-          "item": "https://hyakuninisshu.com/"
+          "item": "https://hyakuninisshu.com/index_en.html"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Poem List",
-          "item": "https://hyakuninisshu.com/list.html"
+          "item": "https://hyakuninisshu.com/list_en.html"
         },
         {
           "@type": "ListItem",
@@ -90,10 +90,14 @@
   ]
   </script>
   <!-- stylesheets -->
-  <link rel="stylesheet" href="../css/style.css?20261006-05">
+  <link rel="stylesheet" href="../css/style.css?20261008-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
-  <link rel="stylesheet" href="../css/poems_en.css?20260803-04">
+  <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/accordion.css?20260721">
+  <link rel="stylesheet" href="../css/timeline.css?20260729">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -103,6 +107,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -133,6 +145,13 @@
   <main>
     <div class="card">
       <div class="column-wrapper">
+        <nav class="breadcrumb-poem" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index_en.html">Top</a></li>
+            <li><a href="list_en.html">Poem List</a></li>
+            <li aria-current="page">No. 19 Ise</li>
+          </ol>
+        </nav>
         <div class="select-container">
           <label for="themeSelector" id="themeSelector-label">Select a theme:</label>
           <select id="themeSelector" class="selector">
@@ -153,9 +172,9 @@
           <div class="checkbox1">
             <div style="display:flex; align-items:center;">
               <label for="toggle2" id="toggle2-label">Switch between the picture card and the matching card</label>
-              <p>Front</p>
+              <p>Front of the Card</p>
               <input type="checkbox" id="toggle2">
-              <p>Back</p>
+              <p>Back of the Card</p>
             </div>
             <div style="display:flex; align-items:center;">
               <div id="play-pause-btn"></div>
@@ -166,7 +185,7 @@
           </div>
           <div class="audio-credit-row">
             <p id="audio-credit">Audio: NHK Creative Library</p>
-            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox (Public Domain).</p>
+            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox</p>
           </div>
 
         </div><!-- column-wrapper end -->
@@ -228,36 +247,18 @@
         <dl>
           <dt>Commentary</dt>
           <dd>
-            The Ise Shū's headnote reads, "In autumn, when someone said something unpleasant." This poem is said to express Ise's complicated feelings after being abandoned by her former lover, Fujiwara no Nakahira.
+            The Ise Shū says this was written in autumn when someone said something unpleasant. It is said to show Ise's mixed feelings when her former lover, Fujiwara no Nakahira, left her.
           </dd>
         </dl>
         <dl class="last-dl">
           <dt>About the Poet</dt>
           <dd>
-            Ise was one of the leading poets of the Kokin Wakashū era, and her life was marked by many romances. After parting from Fujiwara no Nakahira, she bore a son to Emperor Uda and came to be known as "Ise no Miyasudokoro." She later had a daughter, Nakatsukasa, with Emperor Uda's son Prince Atsuyoshi — Nakatsukasa would go on to become a celebrated poet in her own right.
+            Ise was a leading poet of the Kokin Wakashū period, and her life was full of love affairs. After parting from Nakahira she had a son with Emperor Uda, and later a daughter, Nakatsukasa, with Uda's son Prince Atsuyoshi. Nakatsukasa also became a famous poet.
           </dd>
         </dl>
       </div>
     </div>
     <div class="chart-image-row">
-    <div class="chart-section">
-      <dl>
-        <dt class='title'>Ise's Chart of the Heart</dt>
-            <dd>
-              <p>A chart and a modern-language reflection of the poet's inner feelings.</p>
-              <div class="emotion-chart">
-                <div id="radarChartWrapper">
-                  <canvas id="radarChart" width="300" height="300"></canvas>
-                </div>
-                <div>
-                  <p class="chart-quotes-title">The Poet's Feelings (A Personal Interpretation)</p>
-                  <p>Even just a moment —<br class="br-pc">all I want is to see you.</p>
-                  <p style="margin-top:1em;">If even that wish won't be granted,<br class="br-pc">what am I supposed to live for?</p>
-                </div>
-              </div>
-            </dd>
-      </dl>
-    </div>
     <div class="image-section">
       <dl>
         <dt class='title'>Poem Illustration</dt>
@@ -267,7 +268,377 @@
         </dd>
       </dl>
     </div>
+    <div class="nenpyo-section">
+      <dl>
+        <dt class='title'>Ise: A Short Timeline</dt>
+        <dd>
+          <dl class="nenpyo">
+            <dt>c. 872</dt>
+            <dd>Born as a daughter of Fujiwara no Tsugukage</dd>
+            <dt>890s</dt>
+            <dd>Serves Onshi, empress of Emperor Uda, as a lady-in-waiting</dd>
+            <dt>c. 912</dt>
+            <dd>Gives birth to Nakatsukasa, her daughter with Prince Atsuyoshi</dd>
+            <dt>c. 938</dt>
+            <dd>Dies</dd>
+            <dt>Notes</dt>
+            <dd>
+              <ul>
+                <li>Her name comes from Ise Province, where her father served as governor</li>
+                <li>Counted as one of the Thirty-Six Immortal Poets</li>
+              </ul>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Ise's Family Tree</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 19.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__tenno">Brown text</span>Emperor</li>
+              <li><span class="fk-legend__tno" aria-hidden="true"></span>Emperor's number in the line of succession</li>
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+              <li><span class="fk-legend__eq">＝</span>Marriage</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Ise's family tree">
+            <script type="application/json">
+{
+ "lang": "en",
+ "tooltips": "fujiwara",
+ "nodes": [
+  {
+   "id": "mototsune",
+   "n": "基経",
+   "x": 16,
+   "y": 125
+  },
+  {
+   "id": "tadahira",
+   "n": "貞信公",
+   "key": "忠平",
+   "p": 26,
+   "x": 136,
+   "y": 40
+  },
+  {
+   "id": "nakahira",
+   "n": "仲平",
+   "sub": "Ise's lover",
+   "x": 136,
+   "y": 90
+  },
+  {
+   "id": "tokihira",
+   "n": "時平",
+   "sub": "Ise's lover",
+   "x": 136,
+   "y": 150
+  },
+  {
+   "id": "onshi",
+   "n": "温子",
+   "x": 136,
+   "y": 210
+  },
+  {
+   "id": "uda",
+   "n": "宇多",
+   "k": 1,
+   "t": 59,
+   "sub": "Loved Ise",
+   "x": 136,
+   "y": 262
+  },
+  {
+   "id": "inshi",
+   "n": "胤子",
+   "x": 136,
+   "y": 330
+  },
+  {
+   "id": "kinshi",
+   "n": "均子内親王",
+   "x": 270,
+   "y": 227
+  },
+  {
+   "id": "atsuyoshi",
+   "n": "敦慶親王",
+   "x": 270,
+   "y": 305.5
+  },
+  {
+   "id": "ise",
+   "n": "伊勢",
+   "p": 19,
+   "self": 1,
+   "sub": "Served Onshi",
+   "x": 270,
+   "y": 349
+  },
+  {
+   "id": "nakatsukasa",
+   "n": "中務",
+   "x": 430,
+   "y": 327.25
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-onshi",
+   "top": "onshi",
+   "bottom": "uda"
+  },
+  {
+   "id": "c-inshi",
+   "top": "uda",
+   "bottom": "inshi"
+  },
+  {
+   "id": "c-kinshi",
+   "top": "kinshi",
+   "bottom": "atsuyoshi"
+  },
+  {
+   "id": "c-ise",
+   "top": "atsuyoshi",
+   "bottom": "ise"
+  }
+ ],
+ "kids": [
+  {
+   "from": "mototsune",
+   "to": [
+    "tadahira",
+    "nakahira",
+    "tokihira",
+    "onshi"
+   ]
+  },
+  {
+   "from": "c-onshi",
+   "to": [
+    "kinshi"
+   ]
+  },
+  {
+   "from": "c-inshi",
+   "to": [
+    "atsuyoshi"
+   ]
+  },
+  {
+   "from": "c-ise",
+   "to": [
+    "nakatsukasa"
+   ]
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 545 389" width="545" height="389" role="img" aria-label="Ise's family tree" lang="en" class="fk-svg kd-svg" style="max-width:818px;min-width:min(640px,818px)" data-src="caug7g">
+<g class="fk-edges"><path d="M149 219V237M153 219V237" class="fk-edge fk-eq"/><path d="M149 290V321M153 290V321" class="fk-edge fk-eq"/><path d="M324 236V296.5M328 236V296.5" class="fk-edge fk-eq"/><path d="M279.5 314.5V340M283.5 314.5V340" class="fk-edge fk-eq"/><path d="M101 125H122" class="fk-edge"/><path d="M122 40V210" class="fk-edge"/><path d="M122 40H133" class="fk-edge"/><path d="M122 90H133" class="fk-edge"/><path d="M122 150H133" class="fk-edge"/><path d="M122 210H133" class="fk-edge"/><path d="M153 227H256" class="fk-edge"/><path d="M256 227H267" class="fk-edge"/><path d="M153 305.5H256" class="fk-edge"/><path d="M256 305.5H267" class="fk-edge"/><path d="M283.5 327.25H416" class="fk-edge"/><path d="M416 327.25H427" class="fk-edge"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node" transform="translate(16,125)" data-tip="&lt;h3&gt;Fujiwara no Mototsune&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;His birth father was Nagara; adopted by Yoshifusa&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;836–891&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Regent, Kampaku (chief adviser), and Chancellor of the Realm&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior First Rank; Senior First Rank after death&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In practice, the first Kampaku in history&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Imperial in-law: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Grandfather (on the mother's side) of Emperors Suzaku and Murakami (their mother was Fujiwara no Onshi)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="86" height="26"/><text class="fk-name" x="0" y="0.5">Mototsune</text></g></g>
+<g class="fk-node is-poet" transform="translate(136,40)" data-tip="&lt;h3&gt;Fujiwara no Tadahira&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Name after death: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Teishin-kō&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;880–949&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Regent and Kampaku (chief adviser)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior First Rank; Senior First Rank after death&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 26, &quot;Ogurayama...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Teishin-kō&lt;/span&gt;&lt;/div&gt;" data-p="26"><a href="/26_en.html" aria-label="Fujiwara no Tadahira (Hyakunin Isshu Poem 26)"><rect class="fk-hit" x="-2" y="-13" width="106" height="26"/><text class="fk-name" x="0" y="0.5">Teishin-kō</text><circle class="fk-badge" cx="92" cy="0" r="10"/><text class="fk-badge-num" x="92" y="0.5">26</text></a></g>
+<g class="fk-node" transform="translate(136,90)" data-tip="&lt;h3&gt;Fujiwara no Nakahira&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;875–945&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Minister of the Left&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Second Rank&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="74" height="26"/><text class="fk-name" x="0" y="0.5">Nakahira</text></g><rect class="fk-sub-box" x="0" y="11" width="68" height="16" rx="8"/><text class="fk-sub" x="34" y="19.5">Ise's lover</text></g>
+<g class="fk-node" transform="translate(136,150)" data-tip="&lt;h3&gt;Fujiwara no Tokihira&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;871–909&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Minister of the Left&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Second Rank; Senior First Rank after death&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Had Sugawara no Michizane sent away to Dazaifu in the Shōtai Incident&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="66" height="26"/><text class="fk-name" x="0" y="0.5">Tokihira</text></g><rect class="fk-sub-box" x="0" y="11" width="68" height="16" rx="8"/><text class="fk-sub" x="34" y="19.5">Ise's lover</text></g>
+<g class="fk-node" transform="translate(136,210)" data-tip="&lt;h3&gt;Fujiwara no Onshi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of the Kampaku (chief adviser) Fujiwara no Mototsune&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;A consort of Emperor Uda. She adopted Prince Atsuhito (later Emperor Daigo), the son of Fujiwara no Taneko. The poet Ise served her as a lady-in-waiting&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="48" height="26"/><text class="fk-name" x="0" y="0.5">Onshi</text></g></g>
+<g class="fk-node is-tenno" transform="translate(136,262)" data-tip="&lt;h3&gt;Emperor Uda&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;59th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;867–931&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;887–897&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Gave Sugawara no Michizane important posts&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="34" height="26"/><text class="fk-name" x="0" y="0.5">Uda</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">59</text><rect class="fk-sub-box" x="0" y="11" width="65" height="16" rx="8"/><text class="fk-sub" x="32.5" y="19.5">Loved Ise</text></g>
+<g class="fk-node" transform="translate(136,330)" data-tip="&lt;h3&gt;Fujiwara no Taneko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown–896&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Fujiwara no Takafuji and Miyaji no Ressi; elder or younger sister of Sadakuni and Sadakata (same mother)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;A consort of Emperor Uda; mother of Emperor Daigo, Prince Atsuyoshi and Prince Atsumi&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="60" height="26"/><text class="fk-name" x="0" y="0.5">Taneko</text></g></g>
+<g class="fk-node" transform="translate(270,227)" data-tip="&lt;h3&gt;Princess Kinshi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;890–910&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Emperor Uda and Fujiwara no Onshi&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Became the wife of her half-brother, Prince Atsuyoshi&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="116" height="26"/><text class="fk-name" x="0" y="0.5">Princess Kinshi</text></g></g>
+<g class="fk-node" transform="translate(270,305.5)" data-tip="&lt;h3&gt;Prince Atsuyoshi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;888–930&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Second Rank for princes&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Uda; his mother was Fujiwara no Taneko&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Served as Minister of the Center (Nakatsukasa-kyō) and Minister of Ceremonies. He married Ise, and their daughter Nakatsukasa was born&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="129" height="26"/><text class="fk-name" x="0" y="0.5">Prince Atsuyoshi</text></g></g>
+<g class="fk-node is-poet is-self" transform="translate(270,349)" data-tip="&lt;h3&gt;Ise&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;c. 872–c. 938&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Fujiwara no Tsugukage, Governor of Ise&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 19, &quot;Naniwagata...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Served Emperor Uda's empress Onshi as a lady-in-waiting. After relationships with the brothers Fujiwara no Nakahira and Tokihira and with Taira no Sadafun, she was loved by Emperor Uda and bore him a son, who died young. Later she and Prince Atsuyoshi had a daughter, Nakatsukasa&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="57" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="51" height="26"/><text class="fk-name" x="0" y="0.5">Ise</text><circle class="fk-badge" cx="37" cy="0" r="10"/><text class="fk-badge-num" x="37" y="0.5">19</text></g><rect class="fk-sub-box" x="0" y="11" width="85" height="16" rx="8"/><text class="fk-sub" x="42.5" y="19.5">Served Onshi</text></g>
+<g class="fk-node" transform="translate(430,327.25)" data-tip="&lt;h3&gt;Nakatsukasa&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;c. 912–c. 991&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Prince Atsuyoshi and Ise&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Called Nakatsukasa because her father, Prince Atsuyoshi, was Minister of the Center (Nakatsukasa-kyō). One of the Thirty-Six Immortal Poets. She had a close relationship with Minamoto no Saneakira (a great-grandson of Emperor Kōkō)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="103" height="26"/><text class="fk-name" x="0" y="0.5">Nakatsukasa</text></g></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+          <div class="kd-text">
+            <p style="width:100%; margin-bottom: 0.5em;">Many people courted Ise. She had a son with Emperor Uda, the husband of Onshi, whom she served, and she came to be called "Ise no Miyasudokoro" (Lady Ise, mother of an imperial child). But the boy died young.</p>
+            <p style="width:100%; margin-bottom: 0.75em;">Later, with Prince Atsuyoshi, the husband of Onshi's daughter, she had a daughter, the poet Nakatsukasa. Mother and daughter are both counted among the Thirty-Six Immortal Poets.</p>
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <dt>What Is "Ashi no Fushi"?</dt>
+            <dd class='thumb-image30'>
+              <figure class='portrait'>
+                <a href='../img/ashi_large.webp?ver04' data-lightbox='ise' data-title='Ashi (common reed)'>
+                  <img loading='lazy' src='/img/ashi.webp?ver04' alt='Ashi (common reed)' width="380" height="640">
+                </a>
+              </figure>
+              <div>
+                <p style="width:100%; margin-bottom:0.75em;"><em>Ashi</em> (also called <em>yoshi</em>) is the common reed, a plant of the grass family that grows by the water. Its stem is thin and has joints (<em>fushi</em>) like bamboo.<br
+                    class="br-pc"> It sprouts in late April and grows very fast until about June, and its stem can reach 3 m.<br class="br-pc"> Its underground stems spread sideways, so it grows in large clumps.</p>
+                <p style="width:100%; margin-bottom:0.75em;"><em>Fushi no ma</em>, "the space between the joints," is used as an image of something very short.<br
+                    class="br-pc"> Naniwa was famous for its reeds and appears in many poems.</p>
+                <p style="width:100%; margin-bottom:0.75em;">
+                  When you look at a real reed, the space between the joints does not seem short. One theory says that the phrase stands for "a short time" because a reed grows so quickly, adding joint after joint to its stem.</p>
+              </div>
+            </dd>
+
+            <div class="acordion-wrapper">
+              <div class="accordion">
+                <div class="accordion-header">Timeline of Ise<br class="br-sp"><span style="font-size:0.8em;"> (Click to open or close.)</span>
+                </div>
+                <div class="accordion-content">
+                  <div class="container">
+
+                    <div class="timeline-item" date-is='c. 872'>
+                      <h2 class="was-h3">Born the daughter of Fujiwara no Tsugukage, Governor of Ise</h2>
+                    </div>
+                    <div class="timeline-item" date-is='888 (age 16)'>
+                      <h2 class="was-h3">Begins serving Fujiwara no Onshi, a consort of Emperor Uda</h2>
+                      <p>She falls in love with Onshi's younger brother, Fujiwara no Nakahira, but they later part. Heartbroken, she goes to stay in the province of Yamato, where her father is serving. After returning to the capital, she becomes known for her romances with Onshi's elder brother, Fujiwara no Tokihira, and with Taira no Sadafun, a famous lover of women.</p>
+                    </div>
+
+                    <div class="timeline-item" date-is='896 (age 24)'>
+                      <h2 class="was-h3">Gives birth to a son of Emperor Uda</h2>
+                    </div>
+
+                    <div class="timeline-item" date-is='897 (age 25)'>
+                      <h2 class="was-h3">Emperor Uda steps down and becomes retired emperor</h2>
+                    </div>
+
+                    <div class="timeline-item" date-is='899 (age 27)'>
+                      <h2 class="was-h3">Retired Emperor Uda becomes a monk (cloistered emperor)</h2>
+                    </div>
+
+                    <div class="timeline-item" date-is='905 (age 33)'>
+                      <h2 class="was-h3">The <em>Kokin Wakashū</em> is completed</h2>
+                      <p>Twenty-two of Ise's poems are included in the <em>Kokin Wakashū</em>, the most of any woman poet.</p>
+                    </div>
+
+                    <div class="timeline-item" date-is='907 (age 35)'>
+                      <h2 class="was-h3">Fujiwara no Onshi dies</h2>
+                      <p>After that, Ise serves Onshi's daughter, Princess Kinshi. Princess Kinshi later becomes the wife of her half-brother, Prince Atsuyoshi.</p>
+                    </div>
+
+                    <div class="timeline-item" date-is='c. 910 (age 38)'>
+                      <h2 class="was-h3">Gives birth to Nakatsukasa, the child of Prince Atsuyoshi, Emperor Uda's fourth son</h2>
+                      <p>In the same year, Princess Kinshi dies.</p>
+                    </div>
+
+                    <div class="timeline-item" date-is='930 (age 58)'>
+                      <h2 class="was-h3">Prince Atsuyoshi dies</h2>
+                    </div>
+
+                    <div class="timeline-item" date-is='931 (age 59)'>
+                      <h2 class="was-h3">Cloistered Emperor Uda dies</h2>
+                      <p>After the death of Cloistered Emperor Uda, Ise retires to Kosobe in the province of Settsu (now Takatsuki City).</p>
+                    </div>
+
+                    <div class="timeline-item" date-is='c. 938 (age 66)'>
+                      <h2 class="was-h3">Ise dies</h2>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <dt>A Poem Ise Wrote About Lost Love</dt>
+            <dd>
+              Ise had once been passionately in love with Fujiwara no Nakahira, but at some point their love grew cold. Sunk in loneliness, as if she had lost her place at court, Ise decided to go to the province of Yamato (now Nara Prefecture), where her father, Fujiwara no Tsugukage, was serving as governor. She wrote the next poem as she left the glittering capital to travel alone, still unable to let go of her feelings.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>三輪<rt>みわ</rt></ruby>の<ruby>山<rt>やま</rt></ruby>
+                  いかに<ruby>待<rt>ま</rt></ruby>ち<ruby>見<rt>み</rt></ruby>む
+                  <ruby>年<rt>とし</rt></ruby><ruby>経<rt>ふ</rt></ruby>とも
+                  <br><ruby>尋<rt>たず</rt></ruby>ぬる人も
+                  あらじと<ruby>思<rt>おも</rt></ruby>へば<br>
+                  <span class="shutten"><em>Ise-shū</em>, Ise</span>
+                </q><q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.8; margin-top: 0.2em;">
+                    How shall I wait for you at Mount Miwa?<br class='br-pc'> I think that no one will come to visit me, however many years go by.
+                  </p>
+                </q>
+              </div>
+            </dd>
+            <dt>A Poem Ise Wrote When She Gave Up Her House</dt>
+            <dd>Ise is said to have written the next poem, with a touch of humor, when she gave up the house she had long lived in. <em>Se ni</em> is thought to be a <em>kakekotoba</em> (a word with two meanings): <em>se ni</em>, "into shallows," and <em>zeni</em>, "money." Another theory says <em>fuchi</em> is also a <em>kakekotoba</em>: <em>fuchi</em>, "a deep pool," and <ruby>扶持<rt>ふち</rt></ruby> (<em>fuchi</em>), meaning a living or wages, a word known today in the phrase <em>kuibuchi</em>, "one's living."
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  あすか<ruby>川<rt>がわ</rt></ruby>
+                  ふちにもあらぬ
+                  わが<ruby>宿<rt>やど</rt></ruby>も
+                  <br>せにかはりゆく
+                  ものにぞありける
+                  <span class="shutten"><em>Kokin Wakashū</em>, Ise</span>
+                </q><q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.8; margin-top: 0.2em;">
+                    Just as the deep pools of the Asuka River turn into shallows, my house, too, is turning into money to live on.
+                  </p>
+                </q>
+              </div>
+            </dd>
+            <dt>A Poem Quoted in "Utsusemi" in <em>The Tale of Genji</em></dt>
+            <dd>The next poem is in <em>Ise-shū</em>, Ise's personal poetry collection.
+              It also became famous because Murasaki Shikibu quoted it in "Utsusemi," the third chapter of <em>The Tale of Genji</em>. Comparing herself, her heart left empty by lost love, to the empty shell of a cicada, the poet expresses her loneliness.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>空蝉<rt>うつせみ</rt></ruby>の
+                  <ruby>羽<rt>はね</rt></ruby>におく<ruby>露<rt>つゆ</rt></ruby>の
+                  <ruby>木隠<rt>こがく</rt></ruby>れて
+                  <br>しのびしのびに
+                  <ruby>濡<rt>ぬ</rt></ruby>るる<ruby>袖<rt>そで</rt></ruby>かな
+                  <span class="shutten"><em>Ise-shū</em>, Ise</span>
+                </q><q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.8; margin-top: 0.2em;">
+                    Just as the morning dew on the wings of a cicada's shell is hidden in the shade of the leaves, my sleeves, too, are secretly wet with tears of a hidden love.
+                  </p>
+                </q>
+              </div>
+            </dd>
+            <dt>Ukiyo-e by Katsushika Hokusai</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/hokusai_19_large.webp' data-lightbox='ise' data-title='Ukiyo-e by Katsushika Hokusai'>
+                  <img loading='lazy' src='../img/hokusai_19.webp' alt='Woodblock print by Katsushika Hokusai' width="640" height="454">
+                </a>
+                <figcaption><small><a
+                      href='https://commons.wikimedia.org/wiki/File:%E7%99%BE%E4%BA%BA%E4%B8%80%E9%A6%96_%E3%81%86%E3%81%B0%E3%81%8C%E3%82%91%E3%81%A8%E3%81%8D_%E4%BC%8A%E5%8B%A2-Poem_by_Ise,_from_the_series_One_Hundred_Poems_Explained_by_the_Nurse_(Hyakunin_isshu_uba_ga_etoki)_MET_DP141102.jpg' target='_blank' rel='noopener'>Katsushika Hokusai, CC0, via Wikimedia Commons</a></small>
+                </figcaption>
+              </figure>
+              <div>
+                <p>
+                  This print is from <em>One Hundred Poems Explained by the Nurse</em> (<em>Hyakunin Isshu Uba ga Etoki</em>) by Katsushika Hokusai, an ukiyo-e artist of the Edo period. The idea of the series is a nurse explaining the Hyakunin Isshu poems with easy-to-understand pictures. It shows a woman viewing plum blossoms against the scenery of Naniwa Bay. Could this woman be Ise? The workers laying new roof tiles also seem to express the feelings of a woman putting a lid on memories she cannot forget.
+                </p>
+              </div>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -299,15 +670,14 @@
   </footer>
   <!-- Footer end -->
 
-  <script src="../js/poems_en.js?20260803-03"></script>
+  <script src="../js/poems_en.js?20261007-04"></script>
+  <script src="../js/accordion.js"></script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261008-21"></script>
+  <script src="../js/keizu-diagram.js?20261008-02"></script>
 
-  <!-- Chart of the Heart -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="/js/kokoro-chart-data-en.js?20260726"></script>
-  <script>
-    window.radarScores = KOKORO_CHART_DATA[19].scores;
-  </script>
-  <script src="/js/raderChart.js?20260830-01"></script>
 </body>
 
 </html>

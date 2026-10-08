@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-08T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -71,13 +71,13 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Shigure's Hyakunin Isshu",
-          "item": "https://hyakuninisshu.com/"
+          "item": "https://hyakuninisshu.com/index_en.html"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Poem List",
-          "item": "https://hyakuninisshu.com/list.html"
+          "item": "https://hyakuninisshu.com/list_en.html"
         },
         {
           "@type": "ListItem",
@@ -90,10 +90,11 @@
   ]
   </script>
   <!-- stylesheets -->
-  <link rel="stylesheet" href="../css/style.css?20261006-05">
+  <link rel="stylesheet" href="../css/style.css?20261008-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
-  <link rel="stylesheet" href="../css/poems_en.css?20260803-04">
+  <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -103,6 +104,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -133,6 +142,13 @@
   <main>
     <div class="card">
       <div class="column-wrapper">
+        <nav class="breadcrumb-poem" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index_en.html">Top</a></li>
+            <li><a href="list_en.html">Poem List</a></li>
+            <li aria-current="page">No. 4 Yamabe no Akahito</li>
+          </ol>
+        </nav>
         <div class="select-container">
           <label for="themeSelector" id="themeSelector-label">Select a theme:</label>
           <select id="themeSelector" class="selector">
@@ -153,9 +169,9 @@
           <div class="checkbox1">
             <div style="display:flex; align-items:center;">
               <label for="toggle2" id="toggle2-label">Switch between the picture card and the matching card</label>
-              <p>Front</p>
+              <p>Front of the Card</p>
               <input type="checkbox" id="toggle2">
-              <p>Back</p>
+              <p>Back of the Card</p>
             </div>
             <div style="display:flex; align-items:center;">
               <div id="play-pause-btn"></div>
@@ -166,7 +182,7 @@
           </div>
           <div class="audio-credit-row">
             <p id="audio-credit">Audio: NHK Creative Library</p>
-            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox (Public Domain).</p>
+            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox</p>
           </div>
 
         </div><!-- column-wrapper end -->
@@ -228,36 +244,18 @@
         <dl>
           <dt>Commentary</dt>
           <dd>
-            Tago Bay refers to the western shore of Suruga Bay, around the coastline near present-day Yui and Kanbara. Mountains press close to the shoreline throughout this area, and it is only at Tago Bay that Mount Fuji's full form first comes into view. In Japan, snow has long been regarded as sacred, ranked alongside the moon and blossoms in the phrase "snow, moon, and flowers." This poem captures the poet's awe at seeing snow piling upon the majestic, towering peak of Mount Fuji.
+            Tago Bay is the western shore of Suruga Bay. Mountains come right down to the coast there, so Tago Bay is where the whole of Mount Fuji first comes into view. In Japan, snow has long been treasured along with the moon and flowers. The poem holds the poet's awe at snow falling on Fuji's grand peak.
           </dd>
         </dl>
         <dl class="last-dl">
           <dt>About the Poet</dt>
           <dd>
-            Yamabe no Akahito was a Man'yōshū-era poet of the Nara period who served Emperor Shōmu. Though only a minor court official, he had a gift for capturing nature in verse, and left behind many poems composed while accompanying the emperor's imperial progresses to various regions. Alongside Kakinomoto no Hitomaro, he came to be celebrated by later generations as one of the two "Sages of Poetry."
+            Yamabe no Akahito was a Man'yōshū poet of the Nara period who served Emperor Shōmu. Though a minor official, he had a gift for nature poetry and wrote many poems while traveling with the emperor. Later ages praised him, with Kakinomoto no Hitomaro, as one of the two "Sages of Poetry."
           </dd>
         </dl>
       </div>
     </div>
     <div class="chart-image-row">
-    <div class="chart-section">
-      <dl>
-        <dt class='title'>Yamabe no Akahito's Chart of the Heart</dt>
-            <dd>
-              <p>A chart and a modern-language reflection of the poet's inner feelings.</p>
-              <div class="emotion-chart">
-                <div id="radarChartWrapper">
-                  <canvas id="radarChart" width="300" height="300"></canvas>
-                </div>
-                <div>
-                  <p class="chart-quotes-title">The Poet's Feelings (A Personal Interpretation)</p>
-                  <p>Passing through the shadowed hills,<br class="br-pc">the view suddenly opens wide.</p>
-                  <p style="margin-top:1em;">And there it stood —<br class="br-pc">Mount Fuji, vast, white, and awe-inspiring.</p>
-                </div>
-              </div>
-            </dd>
-      </dl>
-    </div>
     <div class="image-section">
       <dl>
         <dt class='title'>Poem Illustration</dt>
@@ -267,7 +265,273 @@
         </dd>
       </dl>
     </div>
+    <div class="nenpyo-section">
+      <dl>
+        <dt class='title'>Yamabe no Akahito: A Short Timeline</dt>
+        <dd>
+          <dl class="nenpyo">
+            <dt>724</dt>
+            <dd>In Emperor Shōmu's reign, his first poems with a known date appear</dd>
+            <dt>736</dt>
+            <dd>Writes his last poem with a known date</dd>
+            <dt>Notes</dt>
+            <dd>
+              <ul>
+                <li>Counted as one of the Thirty-Six Immortal Poets</li>
+              </ul>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
   </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <dt>The Original Poem</dt>
+            <dd>The original of Akahito's poem in the Hyakunin Isshu is a <em>hanka</em> in the <em>Man'yōshū</em> (Book 3, Poem 317). A <em>hanka</em> is a short poem added after a <em>chōka</em> (long poem). A <em>chōka</em> repeats pairs of 5- and 7-syllable lines three or more times and ends with lines of 5, 7, and 7 syllables.</dd>
+            <dt>The Original: The Long Poem (<em>Chōka</em>)</dt>
+            <dd>
+              <div class='quote'><q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p style="line-height: 1.95;">
+                    <ruby>天地<rt>あまつち</rt></ruby>の
+                    <ruby>分<rt>わか</rt></ruby>れし<ruby>時<rt>とき</rt></ruby>ゆ
+                    <br><ruby>神<rt>かむ</rt></ruby>さびて
+                    <ruby>高<rt>たか</rt></ruby>く<ruby>貴<rt>たふと</rt></ruby>き
+                    <br><ruby>駿河<rt>するが</rt></ruby>なる
+                    <ruby>富士<rt>ふじ</rt></ruby>の<ruby>高嶺<rt>たかね</rt></ruby>を
+                    <br><ruby>天<rt>あま</rt></ruby>の<ruby>原<rt>はら</rt></ruby>
+                    ふりさけ<ruby>見<rt>み</rt></ruby>れば
+                    <br><ruby>渡<rt>わた</rt></ruby>る<ruby>日<rt>ひ</rt></ruby>の
+                    <ruby>影<rt>かげ</rt></ruby>も<ruby>隠<rt>かく</rt></ruby>らひ
+                    <br><ruby>照<rt>て</rt></ruby>る<ruby>月<rt>つき</rt></ruby>の
+                    <ruby>光<rt>ひかり</rt></ruby>も<ruby>見<rt>み</rt></ruby>えず
+                    <br><ruby>白雲<rt>しらくも</rt></ruby>も
+                    い<ruby>行<rt>ゆ</rt></ruby>きはばかり
+                    <br><ruby>時<rt>とき</rt></ruby>じくそ
+                    <ruby>雪<rt>ゆき</rt></ruby>は<ruby>降<rt>ふ</rt></ruby>りける
+                    <br><ruby>語<rt>かた</rt></ruby>り<ruby>継<rt>つ</rt></ruby>ぎ
+                    <ruby>言<rt>い</rt></ruby>ひ<ruby>継<rt>つ</rt></ruby>ぎ<ruby>行<rt>ゆ</rt></ruby>かむ
+                    <br><ruby>富士<rt>ふじ</rt></ruby>の<ruby>高嶺<rt>たかね</rt></ruby>は
+                    <span class="shutten"><em>Man'yōshū</em>, Yamabe no Akahito</span>
+                  </p>
+                </q><q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.77;">
+                    Since heaven and earth were parted,<br>godlike, high, and noble<br>stands the lofty peak of Fuji in Suruga.<br>When I look up at it in the wide sky,<br>the sun crossing the sky hides behind it,<br>and the shining moon cannot be seen.<br>Even the white clouds cannot pass,<br>and snow falls on it in every season.<br>Let us keep telling of it,<br>and pass on its story forever,<br>this lofty peak of Fuji.
+                  </p>
+                </q>
+              </div>
+            </dd>
+            <dt>The Original: The Short Poem (<em>Hanka</em>)</dt>
+            <dd>
+              <div class='quote'><q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p style="letter-spacing:-0.5px">
+                    <ruby>田子<rt>たご</rt></ruby>の<ruby>浦<rt>うら</rt></ruby>ゆ
+                    うち<ruby>出<rt>い</rt></ruby>でてみれば
+                    <ruby>真白<rt>ましろ</rt></ruby>にそ
+                    <br><ruby>富士<rt>ふじ</rt></ruby>の<ruby>高嶺<rt>たかね</rt></ruby>に
+                    <ruby>雪<rt>ゆき</rt></ruby>は<ruby>降<rt>ふ</rt></ruby>りける
+                    <span class="shutten"><em>Man'yōshū</em>, Yamabe no Akahito</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">When I came out onto Tago Bay,<br class="br-pc">I saw pure white snow had fallen on the high peak of Fuji.</p>
+                </q>
+              </div>
+            </dd>
+
+            <dt id="nikitatsu">A Poem Akahito Wrote When He Visited Iyo Province</dt>
+            <dd>Akahito wrote the next poem when he visited a hot spring in Iyo Province. In 661, when Empress Saimei's party stayed at Nikitatsu on its way to Kyushu to help the kingdom of Baekje, Princess Nukata wrote a poem about Nikitatsu (see <a href="1_en.html">Emperor Tenji's page</a>). About half a century later, Akahito visited Iyo and, with her poem in mind, is thought to have written this poem thinking back on the courtiers who once sailed from Nikitatsu.
+              <div class='quote'><q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p style="letter-spacing:-0.5px">
+                    ももしきの
+                    <ruby>大宮人<rt>おおみやびと</rt></ruby>の
+                    <ruby>熟田津<rt>にきたつ</rt></ruby>に
+                    <br><ruby>船乗<rt>ふなの</rt></ruby>りしけむ
+                    <ruby>年<rt>とし</rt></ruby>の<ruby>知<rt>し</rt></ruby>らなく
+                    <span class="shutten"><em>Man'yōshū</em>, Yamabe no Akahito</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">The people of the court must have boarded their ships here at Nikitatsu, but no one knows anymore what year it was.</p>
+                </q>
+              </div>
+            </dd>
+
+            <dt>Poems Written on Imperial Journeys (<em>Man'yōshū</em>)</dt>
+            <dd>Yamabe no Akahito was a master of poems describing scenery, and he sometimes wrote poems on the emperor's journeys.<br
+                class="br-pc">He wrote the next poem when Emperor Shōmu visited Kii Province (present-day Wakayama Prefecture). "Waka no Ura" is the name for a group of scenic spots in the southwest of Wakayama City, recognized in 2017 as a Japan Heritage site, "Waka-no-ura, a Treasure Trove of Scenic Beauty."
+              <div class='quote'><q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>若<rt>わか</rt></ruby>の<ruby>浦<rt>うら</rt></ruby>に
+                  <ruby>潮満<rt>しおみ</rt></ruby>ち<ruby>来<rt>く</rt></ruby>れば
+                  <ruby>潟<rt>かた</rt></ruby>をなみ
+                  <br><ruby>葦辺<rt>あしべ</rt></ruby>をさして
+                  <ruby>鶴<rt>たづ</rt></ruby><ruby>鳴<rt>な</rt></ruby>き<ruby>渡<rt>わた</rt></ruby>る
+                  <span class="shutten"><em>Man'yōshū</em>, Yamabe no Akahito</span>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">
+                    When the tide comes in at Waka no Ura, the tidal flats disappear, and the cranes fly crying toward the reeds.
+                  </p>
+                </q>
+              </div>
+              <p style="margin-top: 1em; margin-bottom: 0;">
+                He wrote the next poem when Emperor Shōmu visited Yoshino.
+              </p>
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p style="line-height: 2.2;">
+                    ぬばたまの
+                    <ruby>夜<rt>よ</rt></ruby>の<ruby>更<rt>ふ</rt></ruby>けゆけば
+                    <br class="br-sp"><ruby>久木<rt>ひさぎ</rt></ruby><ruby>生<rt>お</rt></ruby>ふる
+                    <br class="br-pc"><ruby>清<rt>きよ</rt></ruby>き<ruby>川原<rt>かわら</rt></ruby>に
+                    <br class="br-sp"><ruby>千鳥<rt>ちどり</rt></ruby>しば<ruby>鳴<rt>な</rt></ruby>く
+                    <span class="shutten"><em>Man'yōshū</em>, Yamabe no Akahito</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 2.1; margin-top: 0.25em;">
+                    As the night grows late, on the clear riverbank where the <em>hisagi</em> trees grow,
+                    <br class="br-pc">the plovers cry again and again.
+                  </p>
+                </q>
+              </div>
+            </dd>
+
+            <dt>A Poem About the Spring Fields</dt>
+            <dd>The next poem, about the fields in spring, is in the <em>Man'yōshū</em>.
+              <div class='quote'><q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>春<rt>はる</rt></ruby>の<ruby>野<rt>の</rt></ruby>に
+                  すみれ<ruby>摘<rt>つ</rt></ruby>みにと
+                  <ruby>来<rt>こ</rt></ruby>し<ruby>我<rt>われ</rt></ruby>ぞ
+                  <br><ruby>野<rt>の</rt></ruby>をなつかしみ
+                  <ruby>一夜<rt>ひとよ</rt></ruby><ruby>寝<rt>ね</rt></ruby>にける
+                  <span class="shutten"><em>Man'yōshū</em>, Yamabe no Akahito</span>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">
+                    I came to the spring fields to pick violets, but the fields were so lovely that I ended up staying the night.
+                  </p>
+                </q>
+              </div>
+            </dd>
+
+            <dt>A Waka About Mount Fuji</dt>
+            <dd>The next poem is by Fujiwara no Tadayuki, a poet of the early Heian period. He served as governor of Tōtōmi Province, a post a bit like today's governor of Shizuoka Prefecture. Mount Fuji then was not the calm mountain we know today, but a wild, active volcano sending smoke high into the sky.
+              Standing there as the local governor, Tadayuki must have seen a Fuji far grander and more full of life than the one we see now.
+              <div class='quote'><q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>君<rt>きみ</rt></ruby>といへば
+                  <ruby>見<rt>み</rt></ruby>まれ<ruby>見<rt>め</rt></ruby>ずまれ
+                  <ruby>富士<rt>ふじ</rt></ruby>の<ruby>嶺<rt>ね</rt></ruby>の
+                  <br><ruby>珍<rt>めづら</rt></ruby>しげなく
+                  <ruby>燃<rt>も</rt></ruby>ゆるわが<ruby>恋<rt>こひ</rt></ruby>
+                  <span class="shutten"><em>Kokin Wakashū</em>, Fujiwara no Tadayuki</span>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">
+                    When it comes to you, whether I see you or not, my love keeps burning, always sending up smoke like the peak of Mount Fuji.
+                  </p>
+                </q>
+              </div>
+            </dd>
+
+            <dt>Mount Fuji</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='/img/fujisan_shinkansen_large.webp' data-lightbox='akahito' data-title='Mount Fuji seen from a Shinkansen window'>
+                  <img loading='lazy' src='/img/fujisan_shinkansen_small.webp' alt='Mount Fuji' width="640" height="480">
+                </a>
+                <figcaption>
+                  <small>(Photo taken December 29, 2025, from a Shinkansen window)</small>
+                </figcaption>
+              </figure>
+              <div>
+                <p>
+                  Seen from the window of a Shinkansen bullet train, Mount Fuji looks calm today, but it is said that it once showed a wild face, sending up smoke that seemed to scorch the sky.
+                </p>
+                <p>
+                  Seeing that endless smoke, people of the time may have seen in it a passion that burned in their own hearts.
+                </p>
+              </div>
+            </dd>
+
+            <dt>Wakamiya Shrine</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/Kanbara_Wakamiya_Shrine_large.webp' data-lightbox='akahito' data-title='Wakamiya Shrine, where Yamabe no Akahito is honored'>
+                  <img loading='lazy' src='../img/Kanbara_Wakamiya_Shrine.webp' alt='Wakamiya Shrine' width="640" height="427">
+                </a>
+                <figcaption>
+                  <small><a href='https://commons.wikimedia.org/wiki/File:Kanbara_Wakamiya_Shrine.jpg' target='_blank' rel='noopener'>Sablier de
+                      Verrie, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia
+                        Commons</a></small>
+                </figcaption>
+              </figure>
+              <div>
+                <p>
+                  This shrine in Kanbara, Shimizu Ward, Shizuoka City, honors Yamabe no Akahito. No one knows exactly when it was founded, but it is said to have been built because of his Hyakunin Isshu poem, written at Fukiage Beach near the Kanbara post town (a little west of the Fuji River).
+                </p>
+              </div>
+            </dd>
+
+            <dt>Ukiyo-e by Katsushika Hokusai</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/hokusai_04_large.webp' data-lightbox='akahito' data-title='Ukiyo-e by Katsushika Hokusai'>
+                  <img loading='lazy' src='../img/hokusai_04.webp' alt="Ukiyo-e of Yamabe no Akahito's poem by Katsushika Hokusai" width="640" height="432">
+                </a>
+                <figcaption>
+                  <small><a
+                      href='https://commons.wikimedia.org/wiki/File:NDL1308993_%E7%99%BE%E4%BA%BA%E4%B8%80%E9%A6%96%E3%81%86%E3%81%AF%E3%81%8B%E3%82%91%E3%81%A8%E3%81%8D_%E5%B1%B1%E8%BE%BA%E3%81%AE%E8%B5%A4%E4%BA%BA.jpg' target='_blank' rel='noopener'>National
+                      Diet Library, Public domain, via Wikimedia Commons</a></small>
+                </figcaption>
+              </figure>
+              <div>
+                <p>
+                  This print is from <em>One Hundred Poems Explained by the Nurse</em> (<em>Hyakunin Isshu Uba ga Etoki</em>) by Katsushika Hokusai, an ukiyo-e artist of the Edo period. The idea of the series is a nurse explaining the Hyakunin Isshu poems with easy-to-understand pictures.
+                </p>
+                <p>
+                  Hokusai seems to have drawn the area around Satta Pass, where the mountains come right down to the sea on the way to Tago Bay. The composition, with travelers crossing the pass in front and Mount Fuji far behind, is very appealing.
+                </p>
+              </div>
+            </dd>
+
+            <dt>Utagawa Kuniyoshi's <em>Hyakunin Isshu no Uchi</em></dt>
+            <dd class='thumb-image2'>
+              <figure class='portrait'>
+                <a href='../img/kuniyoshi_04_large.webp' data-lightbox='akahito' data-title='Ukiyo-e by Utagawa Kuniyoshi'>
+                  <img loading='lazy' src='../img/kuniyoshi_04.webp' alt='Ukiyo-e by Utagawa Kuniyoshi' width="480" height="714">
+                </a>
+                <figcaption><a
+                    href='https://commons.wikimedia.org/wiki/File:Kuniyoshi_Utagawa,_Yamabe_no_Akahito,_famous_poet.jpg' target='_blank' rel='noopener'><small>Utagawa
+                      Kuniyoshi, Public domain, via Wikimedia Commons</small></a></figcaption>
+              </figure>
+              <div>
+                <p>This ukiyo-e is by Utagawa Kuniyoshi, an artist of the Edo period.<br class="br-pc">It shows a scene that matches the poem in the Hyakunin Isshu.</p>
+                <p>By Kuniyoshi's time in the Edo period, Mount Fuji had already calmed down, looking much like what we see from the Shinkansen today.</p>
+                <p>It gives us a glimpse of a Mount Fuji loved across the ages.</p>
+              </div>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -299,15 +563,8 @@
   </footer>
   <!-- Footer end -->
 
-  <script src="../js/poems_en.js?20260803-03"></script>
+  <script src="../js/poems_en.js?20261007-04"></script>
 
-  <!-- Chart of the Heart -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="/js/kokoro-chart-data-en.js?20260726"></script>
-  <script>
-    window.radarScores = KOKORO_CHART_DATA[4].scores;
-  </script>
-  <script src="/js/raderChart.js?20260830-01"></script>
 </body>
 
 </html>

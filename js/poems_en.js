@@ -315,16 +315,7 @@ const TECH_DEFS_EN = {
   },
 };
 
-const NONE_TEXT_EN = {
-  kakekotoba: "This poem has no kakekotoba.",
-  engo: "This poem has no engo.",
-  jokotoba: "This poem has no jokotoba.",
-  makurakotoba: "This poem has no makurakotoba.",
-  honkadori: "This poem is not a honkadori (allusive variation).",
-  utamakura: "This poem has no utamakura.",
-};
-
-// 各歌の技法データ（poems.js の *Link を英訳して移植。キーが無い技法は「なし」扱い。
+// 各歌の技法データ（poems.js の *Link を英訳して移植。キーが無い技法はバッジを出さない。
 // utamakuraは utamakura_en.html への lat/lng/zoom クエリ文字列）
 const MARK_DATA_EN = {
   1: { kakekotoba: "\"Kariho\" is a kakekotoba combining \"kari-io\" (a makeshift hut) and \"kariho\" (harvested ears of rice)." },
@@ -390,30 +381,31 @@ $(document).ready(function () {
   if (!num) return;
   const marks = MARK_DATA_EN[num] || {};
 
-  $(".explanation").prepend("<div class='mark'></div>");
-  const $mark = $(".explanation .mark");
+  // 「Poem N」の文字を span で包む（技法が無い歌でも。赤い縦線をこの文字だけに付け、バッジが2段になっても線が伸びないように）
+  $("#utabangou").contents().filter(function () { return this.nodeType === 3 && this.textContent.trim(); })
+    .first().wrap("<span class='utabangou-label'></span>");
+  // 英語版は、その歌で使われている技法のバッジだけを出す（無いものは出さない）。
+  // バッジは「Poem N」（#utabangou）の行の右端に置く（css/poems_en.css の #utabangou .mark）
+  const techs = ["makurakotoba", "kakekotoba", "engo", "jokotoba", "honkadori"].filter(function (tech) {
+    return !!marks[tech];
+  });
+  if (!techs.length && !marks.utamakura) return;
 
-  ["makurakotoba", "kakekotoba", "engo", "jokotoba", "honkadori"].forEach(function (tech) {
-    const has = !!marks[tech];
+  $("#utabangou").append("<div class='mark'></div>");
+  const $mark = $("#utabangou .mark");
+
+  techs.forEach(function (tech) {
     const def = TECH_DEFS_EN[tech];
-    $mark.append(
-      `<span id='${tech}' class='mark-badge${has ? " has-badge" : " none-badge"}'>${def.title}</span>`
-    );
-    const body = has ? marks[tech] : `<p>${NONE_TEXT_EN[tech]}</p>`;
+    $mark.append(`<span id='${tech}' class='mark-badge has-badge'>${def.title}</span>`);
     $(".explanation").append(
-      `<div class='${tech}'><dt>${def.title}</dt><dd>${def.def}</dd><hr>${has ? "<p>" + body + "</p>" : body}</div>`
+      `<div class='${tech}'><dt>${def.title}</dt><dd>${def.def}</dd><hr><p>${marks[tech]}</p></div>`
     );
   });
 
-  // 歌枕：ありなら地図ページへのリンク、なしならクリックでポップアップ表示するバッジ
+  // 歌枕：地図ページへのリンク
   if (marks.utamakura) {
     $mark.append(
       `<a id='utamakura' href='utamakura_en.html?${marks.utamakura}' class='mark-badge has-badge'>${TECH_DEFS_EN.utamakura.title}</a>`
-    );
-  } else {
-    $mark.append(`<span id='utamakura' class='mark-badge none-badge'>${TECH_DEFS_EN.utamakura.title}</span>`);
-    $(".explanation").append(
-      `<div class='utamakura'><dt>${TECH_DEFS_EN.utamakura.title}</dt><dd>${TECH_DEFS_EN.utamakura.def}</dd><hr><p>${NONE_TEXT_EN.utamakura}</p></div>`
     );
   }
 });
@@ -527,9 +519,25 @@ fetch("../js/hyakunin.json?04")
     const romaji = yomihudaToRomajiPartsForPoem(p.yomihuda);
     const line = [romaji.first, romaji.second].filter(Boolean).join("<br>");
     if (!line) return;
-    const $small = $("#utabangou").next("dd").find("span.small").first();
-    if ($small.length) {
-      $small.before(`<span class="romaji-line">${line}</span><br>`);
+    // Show the Japanese poem and the romaji side by side (.poem-pair in css/poems_en.css):
+    // move the dd's nodes before the author line (span.small) into .poem-ja, and put the romaji next to it
+    const $dd = $("#utabangou").next("dd");
+    const small = $dd.find("span.small").get(0);
+    if (!small || small.parentNode !== $dd.get(0)) return;
+    const nodes = [];
+    for (let n = $dd.get(0).firstChild; n && n !== small; n = n.nextSibling) nodes.push(n);
+    // the <br> before the author line is no longer needed: the pair is its own block
+    while (nodes.length) {
+      const last = nodes[nodes.length - 1];
+      if (last.nodeName === "BR" || (last.nodeType === 3 && !last.textContent.trim())) {
+        nodes.pop();
+        if (last.nodeName === "BR") last.remove();
+      } else break;
     }
+    if (!nodes.length) return;
+    const $pair = $('<span class="poem-pair"><span class="poem-ja"></span><span class="romaji-line"></span></span>');
+    $pair.find(".romaji-line").html(line);
+    $(nodes[0]).before($pair);
+    $pair.find(".poem-ja").append(nodes);
   })
   .catch(() => {});

@@ -72,13 +72,13 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Shigure's Hyakunin Isshu",
-          "item": "https://hyakuninisshu.com/"
+          "item": "https://hyakuninisshu.com/index_en.html"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Poem List",
-          "item": "https://hyakuninisshu.com/list.html"
+          "item": "https://hyakuninisshu.com/list_en.html"
         },
         {
           "@type": "ListItem",
@@ -91,10 +91,10 @@
   ]
   </script>
   <!-- stylesheets -->
-  <link rel="stylesheet" href="../css/style.css?20261006-05">
+  <link rel="stylesheet" href="../css/style.css?20261008-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
-  <link rel="stylesheet" href="../css/poems_en.css?20260803-04">
+  <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -134,6 +134,13 @@
   <main>
     <div class="card">
       <div class="column-wrapper">
+        <nav class="breadcrumb-poem" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index_en.html">Top</a></li>
+            <li><a href="list_en.html">Poem List</a></li>
+            <li aria-current="page">No. 97 Acting Middle Counselor Sadaie</li>
+          </ol>
+        </nav>
         <div class="select-container">
           <label for="themeSelector" id="themeSelector-label">Select a theme:</label>
           <select id="themeSelector" class="selector">
@@ -154,9 +161,9 @@
           <div class="checkbox1">
             <div style="display:flex; align-items:center;">
               <label for="toggle2" id="toggle2-label">Switch between the picture card and the matching card</label>
-              <p>Front</p>
+              <p>Front of the Card</p>
               <input type="checkbox" id="toggle2">
-              <p>Back</p>
+              <p>Back of the Card</p>
             </div>
             <div style="display:flex; align-items:center;">
               <div id="play-pause-btn"></div>
@@ -167,7 +174,7 @@
           </div>
           <div class="audio-credit-row">
             <p id="audio-credit">Audio: NHK Creative Library</p>
-            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox (Public Domain).</p>
+            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox</p>
           </div>
 
         </div><!-- column-wrapper end -->
@@ -229,41 +236,49 @@
         <dl>
           <dt>Commentary</dt>
           <dd>
-            This poem is an allusive variation on a long poem (chōka) from the Man'yōshū. In the original poem, a man living in Akashi falls in love, across the sea, with a young fisherwoman at Matsuho Bay on Awaji Island. Teika's version, however, reverses the perspective — describing instead the young woman at Matsuho Bay, burning with longing as she waits for her lover.
+            The poem borrows from a long poem in the Man'yōshū, in which a man in Akashi loves a young fisher girl at Matsuho Bay across the sea. Teika turns it around: here it is the girl at Matsuho Bay who waits, burning with longing, for her lover.
           </dd>
         </dl>
         <dl class="last-dl">
           <dt>About the Poet</dt>
           <dd>
-            The Acting Middle Counselor Sadaie was better known by his given name, Fujiwara no Teika, the great poet-scholar who compiled the Hyakunin Isshu and was entrusted with compiling the Shin Kokin Wakashū. Teika was also a scholar of classical literature, hand-copying Heian-period works such as The Tale of Genji, The Sarashina Diary, and The Tales of Ise, and leaving behind Kenchū Mikkan, his commentary on the Kokin Wakashū. Thanks to his efforts, many works of classical literature survive to this day.
+            Fujiwara no Teika compiled the Hyakunin Isshu and was a compiler of the Shin Kokin Wakashū, a giant of waka. He also studied the classics, copying The Tale of Genji, the Sarashina Diary, and The Tales of Ise, and wrote a commentary on the Kokin Wakashū. Many classics survive today thanks to him.
           </dd>
         </dl>
       </div>
     </div>
     <div class="chart-image-row">
-    <div class="chart-section">
-      <dl>
-        <dt class='title'>Acting Middle Counselor Sadaie's Chart of the Heart</dt>
-            <dd>
-              <p>A chart and a modern-language reflection of the poet's inner feelings.</p>
-              <div class="emotion-chart">
-                <div id="radarChartWrapper">
-                  <canvas id="radarChart" width="300" height="300"></canvas>
-                </div>
-                <div>
-                  <p class="chart-quotes-title">The Poet's Feelings (A Personal Interpretation)</p>
-                  <p>I stand on a quiet shore,<br class="br-pc">simply waiting for someone who will not come.<br class="br-pc">My burning heart dissolves into the sea wind,<br class="br-pc">and still, I go on longing for you.</p>
-                </div>
-              </div>
-            </dd>
-      </dl>
-    </div>
     <div class="image-section">
       <dl>
         <dt class='title'>Poem Illustration</dt>
         <dd>
           <img loading='lazy' src='../img/c_097.webp' alt="Illustration for Acting Middle Counselor Sadaie's poem">
           <p><small>This image is based on an illustration from William N. Porter's <em>A Hundred Verses from Old Japan</em>, his 1909 English translation of the Hyakunin Isshu published in England, colorized and reworked using Adobe Firefly (generative AI).</small></p>
+        </dd>
+      </dl>
+    </div>
+    <div class="nenpyo-section">
+      <dl>
+        <dt class='title'>Fujiwara no Sadaie (Teika): A Short Timeline</dt>
+        <dd>
+          <dl class="nenpyo">
+            <dt>1162</dt>
+            <dd>Born as a son of Fujiwara no Toshinari (Shunzei)</dd>
+            <dt>1175</dt>
+            <dd>Becomes a Chamberlain (Jijū)</dd>
+            <dt>1201</dt>
+            <dd>Chosen to compile the Shin Kokin Wakashū</dd>
+            <dt>1211</dt>
+            <dd>Given Junior Third Rank</dd>
+            <dt>1232</dt>
+            <dd>Becomes Acting Middle Counselor</dd>
+            <dt>1235</dt>
+            <dd>The Shin Chokusen Wakashū is completed</dd>
+            <dt>1235</dt>
+            <dd>Chooses the poems for the paper squares at his Ogura mountain villa (later the Ogura Hyakunin Isshu)</dd>
+            <dt>1241</dt>
+            <dd>Dies</dd>
+          </dl>
         </dd>
       </dl>
     </div>
@@ -298,15 +313,8 @@
   </footer>
   <!-- Footer end -->
 
-  <script src="../js/poems_en.js?20260803-03"></script>
+  <script src="../js/poems_en.js?20261007-04"></script>
 
-  <!-- Chart of the Heart -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="/js/kokoro-chart-data-en.js?20260726"></script>
-  <script>
-    window.radarScores = KOKORO_CHART_DATA[97].scores;
-  </script>
-  <script src="/js/raderChart.js?20260830-01"></script>
 </body>
 
 </html>

@@ -1,20 +1,38 @@
 /* English poem pages (NN_en.html) only — not loaded on the Japanese pages.
    English commentary tends to run longer than the Japanese original, so on
-   desktop (where .explanation sits beside the card in a fixed-height row)
-   let it scroll internally instead of just overflowing past its max-height. */
+   desktop (where .explanation sits beside the card) let it scroll internally. */
 @media screen and (min-width: 1001px) {
+  /* Make .explanation exactly as tall as the card column, so its bottom edge lines up with
+     the bottom of .card-item: take it out of the flow (absolute in .makimono), so the grid
+     row's height comes from the card column alone, and stretch it from top to bottom of
+     .makimono (which the grid stretches to the row). */
+  .makimono {
+    position: relative;
+  }
+  /* Line the card + explanation row up with the 988px-wide boxes below it (.chart-image-row,
+     .link-section): the card's left edge = .image-section's left edge, the explanation's right
+     edge = .nenpyo-section's right edge. The columns split at the page center (c), so:
+     card 380px ending at c - 114px (left edge c - 494px), explanation 550px from c - 56px
+     (right edge c + 494px), leaving a 58px gap between them. */
+  .card {
+    margin-right: 114px;
+  }
   .explanation {
-    overflow-y: auto;
-    /* Match the bottom edge of .explanation to the bottom edge of the card
-       column (.select-container + .card-item stacked in .column-wrapper).
-       Both components have fixed/consistent heights across every poem page
-       (select-container: fixed labels/buttons; card-item: fixed 550px), so
-       their combined height (measured: card-item bottom at 994.609px minus
-       column top at 76px = 918.609px) is effectively constant — hardcoding
-       it here is safe and keeps the two columns' bottoms flush instead of
-       .explanation stopping short at its own max-height. */
-    height: 919px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -56px;
+    height: auto;
     max-height: none;
+    overflow-y: auto;
+    /* English text needs more room than Japanese, so it is 550px wide (Japanese: 500px).
+       Just above 1001px the page is narrower than 988px; keep it inside the page there. */
+    width: min(550px, calc(100% + 46px));
+  }
+  main {
+    column-gap: 0;
+    /* .explanation is out of the flow, so the columns can't size from it: keep them half and half */
+    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -25,21 +43,28 @@
   text-align: left;
 }
 
-/* style.scss already switches to Lora/Playfair Display for html[lang="en"] pages
+/* style.scss already switches to Noto Sans/Playfair Display for html[lang="en"] pages
    (see the html[lang="en"]:not([data-font="legacy"]) rule), but only for
    body/p/li/a/span/td/th/button/input/label and h1–h6. dt/dd — used throughout
    this page for section labels ("Modern Translation", "Commentary", …) and their
    content — aren't covered, so they'd otherwise fall back to the Japanese-oriented
    fonts. Extend the same treatment: Playfair Display for the dt labels (matching
-   h1–h6), Lora for the dd content (matching body/p). */
+   h1–h6), Noto Sans for the dd content (matching body/p). */
 .explanation dt,
 .link-section dt.title,
 .chart-section dt.title,
-.image-section dt.title {
+.image-section dt.title,
+.nenpyo-section dt.title,
+.diagram-section dt.title,
+.words dt.title,
+.word dt {
   font-family: "Playfair Display", "Kaisei HarunoUmi", serif;
 }
-.explanation dd {
-  font-family: "Lora", "Noto Serif JP", serif;
+/* Appendix / family tree text sometimes sits directly in the dd (not in a p), so it needs the body font (Noto Sans) too */
+.explanation dd,
+.word dd,
+.diagram-section dd {
+  font-family: "Noto Sans", "Noto Serif JP", sans-serif;
 }
 
 /* English labels ("Matching card", "Audio") run longer than the Japanese originals,
@@ -86,24 +111,97 @@
 
 /* Audio credits sit below the play buttons, Japanese credit on the left and
    English credit on the right, instead of the Japanese page's single centered line. */
-.audio-credit-row {
-  display: flex;
+/* Card toggle row ("Front of the Card ○ Back of the Card"): keep it on one line.
+   Like the audio row below, it cancels .checkbox1's side padding to use the full width,
+   and the labels are a little smaller than the rest of the box. */
+.checkbox1 > div:nth-child(1) {
+  flex: 0 0 calc(100% + 3em);
+  max-width: none;
+  margin: 0 -1.5em;
+  /* "Front of the Card" starts at the left edge of the NHK credit and "Back of the Card"
+     ends at the right edge of the LibriVox credit (same width as .audio-credit-row);
+     the switch stretches to fill the space between them */
   justify-content: space-between;
-  align-items: flex-start;
-  gap: 1em;
+}
+.checkbox1 > div:nth-child(1) p {
+  flex: none;
+  margin: 0;
+  white-space: nowrap;
+  font-size: 0.85em;
+}
+.checkbox1 input#toggle2 {
+  flex: 1 1 auto;
+  min-width: 60px;
+  margin: 0 12px;
+}
+@media (max-width: 1000px) {
+  .checkbox1 > div:nth-child(1) {
+    gap: 0;
+  }
+  .checkbox1 input#toggle2 {
+    margin: 0 8px;
+  }
+}
+/* the knob moves to the right end of the (now wider) switch */
+.checkbox1 input#toggle2:checked::before {
+  left: calc(100% - 30px);
+}
+
+/* The audio buttons row (inside .checkbox1) and the credit row below share the same
+   4-column grid — icon | label | icon | label — at the same width, so each credit starts
+   exactly at the left edge of its play button: NHK under ▶ Japanese, LibriVox under ▶ English.
+   The buttons row cancels .checkbox1's side padding (1.5em) to match the credit row's width. */
+.checkbox1 > div:nth-child(2) {
+  display: grid !important; /* the HTML has an inline style="display:flex" on this div */
+  grid-template-columns: 30px 1fr 30px 1fr;
+  column-gap: 8px;
+  align-items: center;
+  flex: 0 0 calc(100% + 3em);
+  max-width: none;
+  margin: 0 -1.5em;
+}
+.checkbox1 #play-pause-btn,
+.checkbox1 #play-pause-btn-en {
+  margin: 0;
+  transform: none; /* style.css nudges #play-pause-btn left by 0.8em */
+}
+.checkbox1 #japanese,
+.checkbox1 #english {
+  transform: none;
+  margin: 0;
+}
+.audio-credit-row {
+  display: grid;
+  grid-template-columns: 30px 1fr 30px 1fr;
+  column-gap: 8px;
+  align-items: start;
   width: 100%;
   margin-top: 0.5em;
 }
 .audio-credit-row #audio-credit,
 .audio-credit-row #audio-credit-en {
   display: block;
-  flex: 1;
   min-width: 0;
   transform: none;
   height: auto;
   margin-bottom: 0;
   text-align: left;
   line-height: 1.4;
+}
+.audio-credit-row #audio-credit {
+  grid-column: 1 / 3;
+}
+.audio-credit-row #audio-credit-en {
+  grid-column: 3 / 5;
+}
+/* On tablets/phones .checkbox1 has side margins (0.5em at its 1.1rem font size); give the
+   credit row the same so both rows stay the same width */
+@media (max-width: 1000px) {
+  .audio-credit-row {
+    width: auto;
+    margin-left: 0.55rem;
+    margin-right: 0.55rem;
+  }
 }
 
 /* Title inserted above the poet's-feelings quotes in the Chart of the Heart
@@ -117,12 +215,6 @@
   color: #a68f78;
 }
 
-/* main has padding-top but no padding-bottom in the shared stylesheet, so the
-   page content (currently ending at .image-section, since the appendix is
-   skipped on English pages) runs flush into the footer. */
-main {
-  padding-bottom: 1em;
-}
 
 /* Chart of the Heart (radar chart): the shared stylesheet fixes #radarChartWrapper
    at 280x280 inside .chart-section. Chart.js's radial scale shrinks its drawn
@@ -143,17 +235,40 @@ main {
 /* Kakekotoba/engo/jokotoba/makurakotoba/honkadori/utamakura marks (js/poems_en.js).
    The shared stylesheet's .mark row is 6 image icons (each has the technique's
    kanji drawn into the SVG itself, so it can't be localized) absolutely positioned
-   in the corner of .explanation. The English version swaps in text badges instead,
-   so .mark needs to flow normally (wrap to as many lines as the labels need) rather
-   than being pinned to a fixed-width absolute box. */
-.explanation .mark {
+   in the corner of .explanation. The English version uses text badges instead, shows
+   only the techniques the poem actually uses, and puts them on the "Poem N" heading
+   row (#utabangou), right-aligned. #utabangou becomes a full-width flex row for that;
+   its red left border is unchanged. On narrow screens the badges wrap below. */
+#utabangou {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: auto;
+  /* the red bar moves to the "Poem N" text (.utabangou-label), so it stays one line tall */
+  border-left: none;
+  padding-left: 0;
+}
+#utabangou .utabangou-label {
+  /* it is a <span>, which style.css forces to the body font with !important; keep the heading font */
+  font-family: "Playfair Display", "Kaisei HarunoUmi", serif !important;
+  flex: none;
+  border-left: 5px solid #b82343;
+  padding: 3px 0 0 6px;
+}
+/* badges take the rest of the row, right-aligned; if they don't fit on one line they wrap among themselves */
+#utabangou .mark {
   position: static;
+  flex: 1 1 0;
+  min-width: 0;
   width: auto;
   height: auto;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: flex-end;
   gap: 6px;
-  margin: 0 0 0.8em;
+  margin: 0;
+}
+#utabangou .mark .mark-badge {
+  text-decoration: none;
 }
 
 .mark-badge {
@@ -177,14 +292,6 @@ main {
 .mark-badge:hover {
   background: #B82343;
   color: #fff;
-}
-.mark-badge.none-badge {
-  border-color: #ccc;
-  color: #999;
-}
-.mark-badge.none-badge:hover {
-  background: #eee;
-  color: #999;
 }
 
 /* has-badge: same per-technique colors as the Japanese icon badges
@@ -275,4 +382,140 @@ main {
   color: #7a6655;
   line-height: 1.6;
   margin: 0.3em 0;
+}
+
+/* Kakekotoba game link button (.kg-link-btn, style.css): the shared style fixes it at
+   130px wide for the Japanese label, and both flip faces are absolutely positioned, so
+   "Spin & Discover Kakekotoba!" overflows. Let the front face size the button instead;
+   the back face still fills it (inset: 0). */
+.link-section .kg-link-btn {
+  width: auto;
+}
+.link-section .kg-link-btn-front {
+  position: relative;
+  height: 100%;
+  padding: 0 12px;
+}
+
+/* English pages are often shorter than the screen. main grows to push the footer down
+   (flex-grow in style.css), and its grid rows then stretch to fill it, making the boxes
+   (e.g. .link-section) tall with big gaps. Keep the rows at their natural height. */
+main {
+  align-content: start;
+}
+
+/* ---------- Text size and spacing for English ----------
+   style.css is tuned for Japanese: letter-spacing 0.05em on body, body text at 1.05–1.1rem,
+   and line-height up to 1.8. With a large x-height Latin font this makes English look
+   oversized and loose. The html[lang="en"] prefix outranks every media-query variant in
+   style.css, so no !important is needed. */
+html[lang="en"] body {
+  letter-spacing: 0;
+}
+html[lang="en"] p {
+  line-height: 1.65;
+}
+/* Body text: 1rem (16px) on phones/tablets, 15px on PC (below) */
+html[lang="en"] .explanation dd,
+html[lang="en"] .word dd,
+html[lang="en"] .diagram-section dd,
+html[lang="en"] .words dl dd dl dd p,
+html[lang="en"] .word dd.thumb-image2 div p,
+html[lang="en"] .words .quote,
+html[lang="en"] .nenpyo-section dl.nenpyo,
+html[lang="en"] .timeline-item p,
+html[lang="en"] .kd-text p {
+  font-size: 1rem;
+  line-height: 1.65;
+  letter-spacing: 0;
+}
+@media screen and (min-width: 1001px) {
+  html[lang="en"] .explanation dd,
+  html[lang="en"] .word dd,
+  html[lang="en"] .diagram-section dd,
+  html[lang="en"] .words dl dd dl dd p,
+  html[lang="en"] .word dd.thumb-image2 div p,
+  html[lang="en"] .words .quote,
+  html[lang="en"] .nenpyo-section dl.nenpyo,
+  html[lang="en"] .timeline-item p,
+  html[lang="en"] .kd-text p {
+    font-size: 0.9375rem;
+  }
+}
+
+/* Poem under "Poem N" (#utabangou): the Japanese poem and its romaji side by side.
+   js/poems_en.js wraps the Japanese in .poem-ja and puts .romaji-line next to it.
+   When there isn't room (narrow screens), the romaji wraps below the Japanese. */
+.explanation .poem-pair {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4em 1.2em;
+  margin-bottom: 0.3em;
+}
+.explanation .poem-pair .poem-ja {
+  flex: none;
+  font-weight: 700;
+}
+/* Appendix: the Japanese poem under "In Japanese" (<q class="quote-ja">) is bold too;
+   the source line (.shutten) stays normal */
+.words .quote q.quote-ja {
+  font-weight: 700;
+}
+.words .quote q.quote-ja .shutten {
+  font-weight: 400;
+}
+/* The romaji takes the rest of the row (wrapping its own lines if needed);
+   it only moves below the Japanese when less than 9em is left */
+.explanation .poem-pair .romaji-line {
+  flex: 1 1 9em;
+  min-width: 9em;
+  margin: 0;
+}
+
+/* No top margin on the .explanation headings ("Poem N", "English Verse Translation", …).
+   style.css sets 0.2–0.4em on .explanation dl dt (by screen width) and 0.3em on #utabangou;
+   the html[lang="en"] / #id selectors outrank all of them. */
+html[lang="en"] .explanation dl dt,
+html[lang="en"] #utabangou {
+  margin-top: 0;
+}
+
+/* Card arrows (#next / #back): smaller on English pages, 30 x 40px at every width.
+   They are absolutely positioned inside .card-item, so the card and .explanation don't move.
+   The edge facing the card stays where style.css puts it at each breakpoint, so the gap
+   between card and arrow is unchanged:
+   >1050px  50px wide at -55px (5px gap)          -> 30px wide at -35px
+   1025–1050px  40px wide at -10px (30px inside)  -> 30px wide at 0
+   <=1024px  already 30px wide at 0               -> only the height changes */
+#next,
+#back {
+  width: 30px;
+  height: 40px;
+}
+#next {
+  right: -35px;
+}
+#back {
+  left: -35px;
+}
+@media screen and (max-width: 1050px) {
+  #next,
+  #back {
+    width: 30px;
+    height: 40px;
+  }
+  #next {
+    right: 0;
+  }
+  #back {
+    left: 0;
+  }
+}
+
+/* Theme / poet dropdowns: the same Noto Sans as the body text (style.css uses "Optima",
+   "noto-sans-jp", which most systems don't have, so it fell back to the system sans-serif) */
+.select-container .selector,
+.select-container .selector option {
+  font-family: "Noto Sans", "Noto Serif JP", sans-serif;
 }

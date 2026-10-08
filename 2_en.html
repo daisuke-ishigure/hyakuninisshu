@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-01T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-01T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-07T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -72,13 +72,13 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Shigure's Hyakunin Isshu",
-          "item": "https://hyakuninisshu.com/"
+          "item": "https://hyakuninisshu.com/index_en.html"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Poem List",
-          "item": "https://hyakuninisshu.com/list.html"
+          "item": "https://hyakuninisshu.com/list_en.html"
         },
         {
           "@type": "ListItem",
@@ -91,10 +91,15 @@
   ]
   </script>
   <!-- stylesheets -->
-  <link rel="stylesheet" href="../css/style.css?20261006-05">
+  <link rel="stylesheet" href="../css/style.css?20261008-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
-  <link rel="stylesheet" href="../css/poems_en.css?20260803-04">
+  <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/accordion.css?20260721">
+  <link rel="stylesheet" href="../css/timeline.css?20260729">
+  <link rel="stylesheet" href="../css/swiper-bundle.min.css">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -104,6 +109,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -134,6 +147,13 @@
   <main>
     <div class="card">
       <div class="column-wrapper">
+        <nav class="breadcrumb-poem" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index_en.html">Top</a></li>
+            <li><a href="list_en.html">Poem List</a></li>
+            <li aria-current="page">No. 2 Empress Jitō</li>
+          </ol>
+        </nav>
         <div class="select-container">
           <label for="themeSelector" id="themeSelector-label">Select a theme:</label>
           <select id="themeSelector" class="selector">
@@ -154,9 +174,9 @@
           <div class="checkbox1">
             <div style="display:flex; align-items:center;">
               <label for="toggle2" id="toggle2-label">Switch between the picture card and the matching card</label>
-              <p>Front</p>
+              <p>Front of the Card</p>
               <input type="checkbox" id="toggle2">
-              <p>Back</p>
+              <p>Back of the Card</p>
             </div>
             <div style="display:flex; align-items:center;">
               <div id="play-pause-btn"></div>
@@ -167,7 +187,7 @@
           </div>
           <div class="audio-credit-row">
             <p id="audio-credit">Audio: NHK Creative Library</p>
-            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox (Public Domain).</p>
+            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox</p>
           </div>
 
         </div><!-- column-wrapper end -->
@@ -229,35 +249,18 @@
         <dl>
           <dt>Commentary</dt>
           <dd>
-            Mount Kagu is a low hill in present-day Kashihara, Nara Prefecture, visible to the east from Fujiwara-kyō, the capital where Empress Jitō governed. In early summer, it was customary to hang pure white robes out to dry on this mountain — a seasonal sight that, in its day, heralded the arrival of summer.
+            Mount Kagu is a low hill in present-day Kashihara, Nara Prefecture. From Fujiwara-kyō, where Empress Jitō ruled, it could be seen to the east. In early summer, white robes were hung out to dry on this mountain, a sight that told people summer had come.
           </dd>
         </dl>
         <dl class="last-dl">
           <dt>About the Poet</dt>
           <dd>
-            Her personal name was Uno no Sarara. She was the daughter of Emperor Tenji, though her maternal grandfather was driven to suicide after being accused of plotting treason against him. In the Jinshin War — the largest civil war in ancient Japanese history — she fought alongside her husband, Emperor Tenmu, for the succession following Emperor Tenji's death, and they won. After Emperor Tenmu's death, her son Prince Kusakabe died young, so in her mid-forties she ascended the throne herself. Carrying on Emperor Tenmu's wishes, she oversaw the construction of the capital at Fujiwara-kyō and the establishment of the ritsuryō legal system.
+            Her personal name was Uno no Sarara, and she was a daughter of Emperor Tenji. In the Jinshin War, the largest civil war of ancient Japan, she fought beside her husband, Emperor Tenmu, and won. After he died and her son died young, she took the throne herself in her mid-40s, building Fujiwara-kyō and a system of written law as he had wished.
           </dd>
         </dl>
       </div>
     </div>
     <div class="chart-image-row">
-    <div class="chart-section">
-      <dl>
-        <dt class='title'>Empress Jitō's Chart of the Heart</dt>
-            <dd>
-              <p>A chart and a modern-language reflection of the poet's inner feelings.</p>
-              <div class="emotion-chart">
-                <div id="radarChartWrapper">
-                  <canvas id="radarChart" width="300" height="300"></canvas>
-                </div>
-                <div>
-                  <p class="chart-quotes-title">The Poet's Feelings (A Personal Interpretation)</p>
-                  <p>I look up, and the green of Mount Kagu dazzles my eyes.<br class="br-pc">White robes drifting in the wind —<br class="br-pc">summer has come again, just as it should.</p>
-                </div>
-              </div>
-            </dd>
-      </dl>
-    </div>
     <div class="image-section">
       <dl>
         <dt class='title'>Poem Illustration</dt>
@@ -267,7 +270,941 @@
         </dd>
       </dl>
     </div>
+    <div class="nenpyo-section">
+      <dl>
+        <dt class='title'>Empress Jitō: A Short Timeline</dt>
+        <dd>
+          <dl class="nenpyo">
+            <dt>645</dt>
+            <dd>Born as a daughter of Emperor Tenji</dd>
+            <dt>657</dt>
+            <dd>Marries Prince Ōama (later Emperor Tenmu) at age 13</dd>
+            <dt>662</dt>
+            <dd>Gives birth to Prince Kusakabe</dd>
+            <dt>672</dt>
+            <dd>Wins the Jinshin War against Prince Ōtomo</dd>
+            <dt>673</dt>
+            <dd>Becomes Emperor Tenmu's empress</dd>
+            <dt>686</dt>
+            <dd>Runs the government after Emperor Tenmu dies</dd>
+            <dt>686</dt>
+            <dd>Drives Prince Ōtsu to take his own life</dd>
+            <dt>689</dt>
+            <dd>Puts the Asuka Kiyomihara Code into effect</dd>
+            <dt>690</dt>
+            <dd>Becomes empress regnant (ruler)</dd>
+            <dt>694</dt>
+            <dd>Moves the capital to Fujiwara-kyō</dd>
+            <dt>697</dt>
+            <dd>Hands the throne to Emperor Monmu and becomes retired empress</dd>
+            <dt>703</dt>
+            <dd>Dies</dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Empress Jitō's Family Tree</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 2.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__tenno">Brown text</span>Emperor</li>
+              <li><span class="fk-legend__tno" aria-hidden="true"></span>Emperor's number in the line of succession</li>
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+              <li><span class="fk-legend__dash"></span>Several generations skipped</li>
+              <li><span class="fk-legend__eq">＝</span>Marriage</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Empress Jitō's family tree">
+            <script type="application/json">
+{
+ "lang": "en",
+ "nodes": [
+  {
+   "id": "tenji",
+   "n": "天智",
+   "k": 1,
+   "t": 38,
+   "p": 1,
+   "x": 16,
+   "y": 342
+  },
+  {
+   "id": "tenmu",
+   "n": "天武",
+   "k": 1,
+   "t": 40,
+   "x": 136,
+   "y": 216
+  },
+  {
+   "id": "jito",
+   "n": "持統",
+   "k": 1,
+   "t": 41,
+   "p": 2,
+   "x": 136,
+   "y": 268,
+   "self": 1
+  },
+  {
+   "id": "genmei",
+   "n": "元明",
+   "k": 1,
+   "t": 43,
+   "x": 136,
+   "y": 320
+  },
+  {
+   "id": "shiki",
+   "n": "志貴皇子",
+   "x": 136,
+   "y": 364
+  },
+  {
+   "id": "kobun",
+   "n": "弘文",
+   "k": 1,
+   "t": 39,
+   "x": 136,
+   "y": 416
+  },
+  {
+   "id": "takechi",
+   "n": "高市皇子",
+   "x": 260,
+   "y": 62
+  },
+  {
+   "id": "toneri",
+   "n": "舎人親王",
+   "x": 260,
+   "y": 106
+  },
+  {
+   "id": "naga",
+   "n": "長皇子",
+   "x": 260,
+   "y": 150
+  },
+  {
+   "id": "otsu",
+   "n": "大津皇子",
+   "x": 260,
+   "y": 194
+  },
+  {
+   "id": "kusakabe",
+   "n": "草壁皇子",
+   "x": 260,
+   "y": 233
+  },
+  {
+   "id": "konin",
+   "n": "光仁",
+   "k": 1,
+   "t": 49,
+   "x": 260,
+   "y": 364
+  },
+  {
+   "id": "gido",
+   "n": "儀同三司母",
+   "p": 54,
+   "x": 420,
+   "y": 62
+  },
+  {
+   "id": "fukayabu",
+   "n": "清原深養父",
+   "p": 36,
+   "x": 420,
+   "y": 106
+  },
+  {
+   "id": "yasuhide",
+   "n": "文屋康秀",
+   "p": 22,
+   "x": 420,
+   "y": 150
+  },
+  {
+   "id": "monmu",
+   "n": "文武",
+   "k": 1,
+   "t": 42,
+   "x": 420,
+   "y": 233
+  },
+  {
+   "id": "gensho",
+   "n": "元正",
+   "k": 1,
+   "t": 44,
+   "x": 420,
+   "y": 285
+  },
+  {
+   "id": "kanmu",
+   "n": "桓武",
+   "k": 1,
+   "t": 50,
+   "x": 420,
+   "y": 364
+  },
+  {
+   "id": "harumitsu",
+   "n": "清原春光",
+   "x": 650,
+   "y": 106
+  },
+  {
+   "id": "asayasu",
+   "n": "文屋朝康",
+   "p": 37,
+   "x": 650,
+   "y": 150
+  },
+  {
+   "id": "shomu",
+   "n": "聖武",
+   "k": 1,
+   "t": 45,
+   "x": 650,
+   "y": 233
+  },
+  {
+   "id": "yasuyo",
+   "n": "良岑安世",
+   "x": 650,
+   "y": 364
+  },
+  {
+   "id": "motosuke",
+   "n": "清原元輔",
+   "p": 42,
+   "x": 855,
+   "y": 106
+  },
+  {
+   "id": "koken",
+   "n": "孝謙・称徳",
+   "k": 1,
+   "t": "46·48",
+   "x": 855,
+   "y": 233
+  },
+  {
+   "id": "henjo",
+   "n": "遍昭",
+   "p": 12,
+   "x": 855,
+   "y": 364
+  },
+  {
+   "id": "sei",
+   "n": "清少納言",
+   "p": 62,
+   "x": 1085,
+   "y": 106
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-jito",
+   "top": "tenmu",
+   "bottom": "jito"
+  }
+ ],
+ "kids": [
+  {
+   "from": "tenmu",
+   "to": [
+    "takechi",
+    "toneri",
+    "naga",
+    "otsu"
+   ]
+  },
+  {
+   "from": "tenji",
+   "to": [
+    "jito",
+    "genmei",
+    "shiki",
+    "kobun"
+   ]
+  },
+  {
+   "from": "c-jito",
+   "to": [
+    "kusakabe"
+   ]
+  },
+  {
+   "from": "kusakabe",
+   "to": [
+    "monmu",
+    "gensho"
+   ]
+  },
+  {
+   "from": "monmu",
+   "to": [
+    "shomu"
+   ]
+  },
+  {
+   "from": "shomu",
+   "to": [
+    "koken"
+   ]
+  },
+  {
+   "from": "shiki",
+   "to": [
+    "konin"
+   ]
+  },
+  {
+   "from": "konin",
+   "to": [
+    "kanmu"
+   ]
+  },
+  {
+   "from": "kanmu",
+   "to": [
+    "yasuyo"
+   ]
+  },
+  {
+   "from": "yasuyo",
+   "to": [
+    "henjo"
+   ]
+  },
+  {
+   "from": "fukayabu",
+   "to": [
+    "harumitsu"
+   ]
+  },
+  {
+   "from": "harumitsu",
+   "to": [
+    "motosuke"
+   ]
+  },
+  {
+   "from": "motosuke",
+   "to": [
+    "sei"
+   ]
+  },
+  {
+   "from": "yasuhide",
+   "to": [
+    "asayasu"
+   ]
+  }
+ ],
+ "lines": [
+  {
+   "points": [
+    [
+     369,
+     62
+    ],
+    [
+     417,
+     62
+    ]
+   ],
+   "dash": true
+  },
+  {
+   "points": [
+    [
+     359,
+     106
+    ],
+    [
+     417,
+     106
+    ]
+   ],
+   "dash": true
+  },
+  {
+   "points": [
+    [
+     350,
+     150
+    ],
+    [
+     417,
+     150
+    ]
+   ],
+   "dash": true
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1226 442" width="1226" height="442" role="img" aria-label="Empress Jitō's family tree" lang="en" class="fk-svg kd-svg" style="max-width:1839px;min-width:min(640px,1839px)" data-src="7z9747">
+<g class="fk-edges"><path d="M147 225V243M151 225V243" class="fk-edge fk-eq"/><path d="M191 216H246" class="fk-edge"/><path d="M246 62V216" class="fk-edge"/><path d="M246 62H257" class="fk-edge"/><path d="M246 106H257" class="fk-edge"/><path d="M246 150H257" class="fk-edge"/><path d="M246 194H257" class="fk-edge"/><path d="M80 342H122" class="fk-edge"/><path d="M122 268V416" class="fk-edge"/><path d="M122 268H133" class="fk-edge"/><path d="M122 320H133" class="fk-edge"/><path d="M122 364H133" class="fk-edge"/><path d="M122 416H133" class="fk-edge"/><path d="M151 233H246" class="fk-edge"/><path d="M246 233H257" class="fk-edge"/><path d="M387 233H406" class="fk-edge"/><path d="M406 233V285" class="fk-edge"/><path d="M406 233H417" class="fk-edge"/><path d="M406 285H417" class="fk-edge"/><path d="M481 233H636" class="fk-edge"/><path d="M636 233H647" class="fk-edge"/><path d="M705 233H841" class="fk-edge"/><path d="M841 233H852" class="fk-edge"/><path d="M227 364H246" class="fk-edge"/><path d="M246 364H257" class="fk-edge"/><path d="M307 364H406" class="fk-edge"/><path d="M406 364H417" class="fk-edge"/><path d="M477 364H636" class="fk-edge"/><path d="M636 364H647" class="fk-edge"/><path d="M812 364H841" class="fk-edge"/><path d="M841 364H852" class="fk-edge"/><path d="M614 106H636" class="fk-edge"/><path d="M636 106H647" class="fk-edge"/><path d="M827 106H841" class="fk-edge"/><path d="M841 106H852" class="fk-edge"/><path d="M1051 106H1071" class="fk-edge"/><path d="M1071 106H1082" class="fk-edge"/><path d="M592 150H636" class="fk-edge"/><path d="M636 150H647" class="fk-edge"/><path d="M369 62L417 62" class="fk-edge is-dash"/><path d="M359 106L417 106" class="fk-edge is-dash"/><path d="M350 150L417 150" class="fk-edge is-dash"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node is-tenno is-poet" transform="translate(16,342)" data-tip="&lt;h3&gt;Emperor Tenji&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;38th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;626–672&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;668–672&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 1, &quot;Aki no ta no...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Known as Prince Naka no Ōe before taking the throne. Carried out the Taika Reforms with Nakatomi no Kamatari&lt;/span&gt;&lt;/div&gt;" data-p="1"><a href="/1_en.html" aria-label="Emperor Tenji (Hyakunin Isshu Poem 1)"><rect class="fk-hit" x="-2" y="-13" width="65" height="26"/><text class="fk-name" x="0" y="0.5">Tenji</text><circle class="fk-badge" cx="51" cy="0" r="10"/><text class="fk-badge-num" x="51" y="0.5">1</text></a><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">38</text></g>
+<g class="fk-node is-tenno" transform="translate(136,216)" data-tip="&lt;h3&gt;Emperor Tenmu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;40th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown–686&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;673–686&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Younger brother of Emperor Tenji&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Took the throne after winning the Jinshin War (672)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="56" height="26"/><text class="fk-name" x="0" y="0.5">Tenmu</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">40</text></g>
+<g class="fk-node is-tenno is-poet is-self" transform="translate(136,268)" data-tip="&lt;h3&gt;Empress Jitō&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;41st emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;645–703&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;690–697&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Emperor Tenji and empress of Emperor Tenmu&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 2, &quot;Haru sugite...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Moved the capital to Fujiwara-kyō&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="60" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="54" height="26"/><text class="fk-name" x="0" y="0.5">Jitō</text><circle class="fk-badge" cx="40" cy="0" r="10"/><text class="fk-badge-num" x="40" y="0.5">2</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">41</text></g>
+<g class="fk-node is-tenno" transform="translate(136,320)" data-tip="&lt;h3&gt;Empress Genmei&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;43rd emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;661–721&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;707–715&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Emperor Tenji. Wife of Prince Kusakabe, and mother of Emperor Monmu and Empress Genshō&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Moved the capital to Heijō-kyō (710)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="62" height="26"/><text class="fk-name" x="0" y="0.5">Genmei</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">43</text></g>
+<g class="fk-node" transform="translate(136,364)" data-tip="&lt;h3&gt;Prince Shiki&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown–716&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Second Rank for princes&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Tenji and father of Emperor Kōnin&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;A poet of the Man'yōshū&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="92" height="26"/><text class="fk-name" x="0" y="0.5">Prince Shiki</text></g></g>
+<g class="fk-node is-tenno" transform="translate(136,416)" data-tip="&lt;h3&gt;Emperor Kōbun&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;39th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;648–672&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;671–672&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Tenji. Known as Prince Ōtomo before taking the throne&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Lost the Jinshin War to Prince Ōama (Emperor Tenmu)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="53" height="26"/><text class="fk-name" x="0" y="0.5">Kōbun</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">39</text></g>
+<g class="fk-node" transform="translate(260,62)" data-tip="&lt;h3&gt;Prince Takechi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;654–696&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Jōkōichi (a court rank of the time)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Eldest son of Emperor Tenmu&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Played a major role in the Jinshin War and became Grand Minister (Daijō-daijin). His son was Prince Nagaya&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="113" height="26"/><text class="fk-name" x="0" y="0.5">Prince Takechi</text></g></g>
+<g class="fk-node" transform="translate(260,106)" data-tip="&lt;h3&gt;Prince Toneri&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;676–735&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;First Rank for princes&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Tenmu&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Led the compiling of the Nihon Shoki. Ancestor of the Kiyohara clan&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="103" height="26"/><text class="fk-name" x="0" y="0.5">Prince Toneri</text></g></g>
+<g class="fk-node" transform="translate(260,150)" data-tip="&lt;h3&gt;Prince Naga&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown–715&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;First Rank for princes&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Tenmu&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="95" height="26"/><text class="fk-name" x="0" y="0.5">Prince Naga</text></g></g>
+<g class="fk-node" transform="translate(260,194)" data-tip="&lt;h3&gt;Prince Ōtsu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;663–686&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Jōdaini (a court rank of the time)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Tenmu. His mother was Princess Ōta, a daughter of Emperor Tenji (Empress Jitō's elder sister)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Soon after Emperor Tenmu died, he was suspected of plotting a rebellion and took his own life. His Chinese poems remain in the Kaifūsō, and his waka in the Man'yōshū&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="91" height="26"/><text class="fk-name" x="0" y="0.5">Prince Ōtsu</text></g></g>
+<g class="fk-node" transform="translate(260,233)" data-tip="&lt;h3&gt;Prince Kusakabe&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;662–689&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Jōkōichi (a court rank of the time)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Tenmu and Empress Jitō. His wife was Empress Genmei&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Became crown prince but died without taking the throne&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="128" height="26"/><text class="fk-name" x="0" y="0.5">Prince Kusakabe</text></g></g>
+<g class="fk-node is-tenno" transform="translate(260,364)" data-tip="&lt;h3&gt;Emperor Kōnin&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;49th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;709–782&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;770–781&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Grandson of Emperor Tenji and son of Prince Shiki&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Took the throne after Empress Shōtoku, moving the imperial line from Tenmu's descendants back to Tenji's&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="48" height="26"/><text class="fk-name" x="0" y="0.5">Kōnin</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">49</text></g>
+<g class="fk-node is-poet" transform="translate(420,62)" data-tip="&lt;h3&gt;Mother of the Honorary Grand Minister (Gidō Sanshi no Haha)&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown–996&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Third Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Real name: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Takashina no Takako&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Takashina no Naritada. Wife of Fujiwara no Michitaka, and mother of Fujiwara no Korechika and Empress Teishi&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 54, &quot;Wasureji no...&quot;&lt;/span&gt;&lt;/div&gt;" data-p="54"><a href="/54_en.html" aria-label="Mother of the Honorary Grand Minister (Gidō Sanshi no Haha) (Hyakunin Isshu Poem 54)"><rect class="fk-hit" x="-2" y="-13" width="186" height="26"/><text class="fk-name" x="0" y="0.5">Takashina no Takako</text><circle class="fk-badge" cx="172" cy="0" r="10"/><text class="fk-badge-num" x="172" y="0.5">54</text></a></g>
+<g class="fk-node is-poet" transform="translate(420,106)" data-tip="&lt;h3&gt;Kiyohara no Fukayabu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 36, &quot;Natsu no yo wa...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Grandfather of Kiyohara no Motosuke and great-grandfather of Sei Shōnagon&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;A master of the koto. Friends with Fujiwara no Kanesuke, Ki no Tsurayuki, Ōshikōchi no Mitsune, and others&lt;/span&gt;&lt;/div&gt;" data-p="36"><a href="/36_en.html" aria-label="Kiyohara no Fukayabu (Hyakunin Isshu Poem 36)"><rect class="fk-hit" x="-2" y="-13" width="195" height="26"/><text class="fk-name" x="0" y="0.5">Kiyohara no Fukayabu</text><circle class="fk-badge" cx="181" cy="0" r="10"/><text class="fk-badge-num" x="181" y="0.5">36</text></a></g>
+<g class="fk-node is-poet" transform="translate(420,150)" data-tip="&lt;h3&gt;Fun'ya no Yasuhide&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown–c. 885&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Sixth Rank, Upper Grade&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 22, &quot;Fuku kara ni...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;One of the Six Immortal Poets. His ancestors are not known, and his link to Prince Naga and Fun'ya no Ōchi is unclear&lt;/span&gt;&lt;/div&gt;" data-p="22"><a href="/22_en.html" aria-label="Fun'ya no Yasuhide (Hyakunin Isshu Poem 22)"><rect class="fk-hit" x="-2" y="-13" width="173" height="26"/><text class="fk-name" x="0" y="0.5">Fun'ya no Yasuhide</text><circle class="fk-badge" cx="159" cy="0" r="10"/><text class="fk-badge-num" x="159" y="0.5">22</text></a></g>
+<g class="fk-node is-tenno" transform="translate(420,233)" data-tip="&lt;h3&gt;Emperor Monmu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;42nd emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;683–707&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;697–707&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Prince Kusakabe and Empress Genmei. Grandson of Emperor Tenmu and Empress Jitō&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;The Taihō Code was completed during his reign (701)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="62" height="26"/><text class="fk-name" x="0" y="0.5">Monmu</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">42</text></g>
+<g class="fk-node is-tenno" transform="translate(420,285)" data-tip="&lt;h3&gt;Empress Genshō&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;44th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;680–748&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;715–724&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Prince Kusakabe and Empress Genmei. Elder sister of Emperor Monmu&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Took the throne when her mother, Empress Genmei, stepped down&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="61" height="26"/><text class="fk-name" x="0" y="0.5">Genshō</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">44</text></g>
+<g class="fk-node is-tenno" transform="translate(420,364)" data-tip="&lt;h3&gt;Emperor Kanmu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;50th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;737–806&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;781–806&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Moved the capital to Nagaoka-kyō, then to Heian-kyō (794)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="58" height="26"/><text class="fk-name" x="0" y="0.5">Kanmu</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">50</text></g>
+<g class="fk-node" transform="translate(650,106)" data-tip="&lt;h3&gt;Kiyohara no Harumitsu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Fifth Rank, Lower Grade&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Kiyohara no Fukayabu&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="178" height="26"/><text class="fk-name" x="0" y="0.5">Kiyohara no Harumitsu</text></g></g>
+<g class="fk-node is-poet" transform="translate(650,150)" data-tip="&lt;h3&gt;Fun'ya no Asayasu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Sixth Rank, Lower Grade&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Fun'ya no Yasuhide&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 37, &quot;Shiratsuyu ni...&quot;&lt;/span&gt;&lt;/div&gt;" data-p="37"><a href="/37_en.html" aria-label="Fun'ya no Asayasu (Hyakunin Isshu Poem 37)"><rect class="fk-hit" x="-2" y="-13" width="166" height="26"/><text class="fk-name" x="0" y="0.5">Fun'ya no Asayasu</text><circle class="fk-badge" cx="152" cy="0" r="10"/><text class="fk-badge-num" x="152" y="0.5">37</text></a></g>
+<g class="fk-node is-tenno" transform="translate(650,233)" data-tip="&lt;h3&gt;Emperor Shōmu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;45th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;701–756&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;724–749&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;His empress was Empress Kōmyō, daughter of Fujiwara no Fuhito&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Ordered provincial temples (kokubunji) to be built and the Great Buddha of Tōdai-ji to be made&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="56" height="26"/><text class="fk-name" x="0" y="0.5">Shōmu</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">45</text></g>
+<g class="fk-node" transform="translate(650,364)" data-tip="&lt;h3&gt;Yoshimine no Yasuyo&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;785–830&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Upper Counselor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Third Rank; given Junior Second Rank after death&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Kanmu&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Given the family name Yoshimine and left the imperial family&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="163" height="26"/><text class="fk-name" x="0" y="0.5">Yoshimine no Yasuyo</text></g></g>
+<g class="fk-node is-poet" transform="translate(855,106)" data-tip="&lt;h3&gt;Kiyohara no Motosuke&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;908–990&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Grandson of Kiyohara no Fukayabu and father of Sei Shōnagon&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 42, &quot;Chigiriki na...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;As one of the Five Men of the Pear Pavilion, helped compile the Gosen Wakashū&lt;/span&gt;&lt;/div&gt;" data-p="42"><a href="/42_en.html" aria-label="Kiyohara no Motosuke (Hyakunin Isshu Poem 42)"><rect class="fk-hit" x="-2" y="-13" width="197" height="26"/><text class="fk-name" x="0" y="0.5">Kiyohara no Motosuke</text><circle class="fk-badge" cx="183" cy="0" r="10"/><text class="fk-badge-num" x="183" y="0.5">42</text></a></g>
+<g class="fk-node is-tenno" transform="translate(855,233)" data-tip="&lt;h3&gt;Empress Kōken / Empress Shōtoku&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;46th and 48th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;718–770&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;749–758 (as Kōken), 764–770 (as Shōtoku)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Emperor Shōmu and Empress Kōmyō&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;After stepping down for Emperor Junnin, she took the throne again as Empress Shōtoku. She gave great power to the monk Dōkyō&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="128" height="26"/><text class="fk-name" x="0" y="0.5">Kōken / Shōtoku</text></g><rect class="fk-tno-box" x="0" y="-25" width="37.5" height="13" rx="1.5"/><text class="fk-tno" x="18.75" y="-18">46·48</text></g>
+<g class="fk-node is-poet" transform="translate(855,364)" data-tip="&lt;h3&gt;Henjō&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;816–890&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Fifth Rank, Upper Grade (before becoming a monk)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Grandson of Emperor Kanmu. His name before becoming a monk was Yoshimine no Munesada&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 12, &quot;Amatsukaze...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called High Priest Henjō (Sōjō Henjō).&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;He served Emperor Ninmyō as a Chamberlain and became a monk after the emperor died. One of the Six Immortal Poets&lt;/div&gt;" data-p="12"><a href="/12_en.html" aria-label="Henjō (Hyakunin Isshu Poem 12)"><rect class="fk-hit" x="-2" y="-13" width="73" height="26"/><text class="fk-name" x="0" y="0.5">Henjō</text><circle class="fk-badge" cx="59" cy="0" r="10"/><text class="fk-badge-num" x="59" y="0.5">12</text></a></g>
+<g class="fk-node is-poet" transform="translate(1085,106)" data-tip="&lt;h3&gt;Sei Shōnagon&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;c. 966–c. 1025&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Kiyohara no Motosuke and great-granddaughter of Kiyohara no Fukayabu&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 62, &quot;Yo wo komete...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Married Tachibana no Norimitsu and had a son, Norinaga. From about 993 she served Empress Teishi and wrote The Pillow Book. She later married Fujiwara no Muneyo and had a daughter, Koma no Myōbu&lt;/span&gt;&lt;/div&gt;" data-p="62"><a href="/62_en.html" aria-label="Sei Shōnagon (Hyakunin Isshu Poem 62)"><rect class="fk-hit" x="-2" y="-13" width="129" height="26"/><text class="fk-name" x="0" y="0.5">Sei Shōnagon</text><circle class="fk-badge" cx="115" cy="0" r="10"/><text class="fk-badge-num" x="115" y="0.5">62</text></a></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+          <div class="kd-text">
+            <p>Empress Jitō was the daughter of <a href="/1_en.html">Emperor Tenji</a> (Poem 1).</p>
+            <p>After Emperor Tenji died, a fight over the throne — the <strong>Jinshin War</strong> — broke out in 672. Empress Jitō fought alongside her husband, <strong>Prince Ōama</strong> (Emperor Tenmu), against the court army led by <strong>Prince Ōtomo</strong> (Emperor Kōbun), and they won.</p>
+            <p>In 686, when Emperor Tenmu died, <strong>Prince Ōtsu</strong> was charged with plotting a rebellion and took his own life. There are different views about this. One says that Empress Jitō wanted her own son, <strong>Prince Kusakabe</strong>, to take the throne, so she removed Prince Ōtsu, who was well liked and could have become Prince Kusakabe's rival.
+              <br class="br-pc"><a href="#ootsu">Prince Ōtsu's farewell poem</a> is introduced below.
+            </p>
+            <p>In 689, Prince Kusakabe fell ill and died at just 27. Empress Jitō wanted his son, Prince Karu (later Emperor Monmu), to take the throne, but Prince Karu was only 7 years old, so she took the throne herself.</p>
+            <p>In 697, when Emperor Monmu took the throne, Empress Jitō became the first retired sovereign (<em>Daijō Tennō</em>).</p>
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <dd>
+            <div class="acordion-wrapper">
+              <div class="accordion">
+                <div class="accordion-header">Timeline of Empress Jitō<br class="br-sp"><span
+                    style="font-size:0.8em;"> (Click to open or close.)</span></div>
+                <div class="accordion-content">
+                  <div class="container">
+
+                    <div class="timeline-item" date-is='645'>
+                      <h2 class="was-h3">Empress Jitō is born</h2>
+                      <p>She was born to Emperor Tenji and Ochi no Iratsume. Her personal name was Uno no Sarara.</p>
+                      <p>In the same year, her father, Emperor Tenji, killed Soga no Iruka together with Nakatomi no Kamatari and others in the Isshi Incident.</p>
+                    </div>
+
+                    <div class="timeline-item" date-is='649 (age 4)'>
+                      <h2 class="was-h3">Soga no Ishikawa-maro takes his own life</h2>
+                      <p>Her grandfather on her mother's side, Soga no Ishikawa-maro, was falsely accused by his half-brother, Soga no Himuka, of plotting a rebellion, and took his own life.</p>
+                    </div>
+
+                    <div class="timeline-item" date-is='657 (age 12)'>
+                      <h2 class="was-h3">Marries Prince Ōama (Emperor Tenmu)</h2>
+                      <p>
+                        At 13, she married Prince Ōama, Emperor Tenji's younger brother, who later became Emperor Tenmu.
+                      </p>
+                    </div>
+
+                    <div class="timeline-item" date-is='662 (age 17)'>
+                      <h2 class="was-h3">Gives birth to Prince Kusakabe</h2>
+                      <p>
+                        She and Emperor Tenmu had a son, Prince Kusakabe.
+                      </p>
+                    </div>
+
+                    <div class="timeline-item" date-is='672'>
+                      <h2 class="was-h3">Her father, Emperor Tenji, dies (age 27)</h2>
+                      <p>
+                        After Emperor Tenji died, she withdrew to Yoshino with Prince Ōama.
+                      </p>
+                    </div>
+
+                    <div class="timeline-item" date-is='672 (age 27)'>
+                      <h2 class="was-h3">The Jinshin War breaks out</h2>
+                      <p>
+                        Learning that Prince Ōtomo was moving to attack her husband, Prince Ōama, she and her husband started the Jinshin War and defeated the court army led by Prince Ōtomo.
+                      </p>
+                    </div>
+
+                    <div class="timeline-item" date-is='673 (age 28)'>
+                      <h2 class="was-h3">Her husband takes the throne as Emperor Tenmu</h2>
+                      <p>
+                        At Asuka Kiyomihara Palace, her husband, Prince Ōama, became Emperor Tenmu. One theory says the name "Kiyomihara" came from a wish for Emperor Tenmu to recover from an illness.
+                      </p>
+                    </div>
+
+                    <div class="timeline-item" date-is='683 (age 38)'>
+                      <h2 class="was-h3">Her grandson Prince Karu is born</h2>
+                      <p>
+                        Her son, Prince Kusakabe, had a son, Prince Karu.
+                      </p>
+                    </div>
+
+                    <div class="timeline-item" date-is='686 (age 41)'>
+                      <h2 style="margin-top:1em;" class="was-h3">Her husband, Emperor Tenmu, dies</h2>
+                      <p>She held funeral rites called <em>mogari</em> for more than two years, using the time to prepare for her son Prince Kusakabe to take the throne. She ruled as the real head of the country without formally taking the throne, a form of rule called <em>shōsei</em>.</p>
+                      <h2 style="margin-top:1em;" class="was-h3">She drives Prince Ōtsu to take his own life</h2>
+                      <p>She had Prince Ōtsu arrested for plotting a rebellion and drove him to take his own life. Some say she was removing a rival to her son Prince Kusakabe; others say it was a hard but necessary political choice to keep the country from splitting apart.</p>
+                    </div>
+
+                    <div class="timeline-item" date-is='689 (age 44)'>
+                      <h2 style="margin-top:1em;" class="was-h3">April: Her son Prince Kusakabe dies</h2>
+                      <p>The cause of his death is not clear. Some say he was weak from birth; others say the forced death of Prince Ōtsu and the pressure of being heir to the throne put too much stress on him.</p>
+                      <h2 style="margin-top:1em;" class="was-h3">June: The Asuka Kiyomihara Code is put into effect</h2>
+                      <p>Japan's first organized code of law, begun by Emperor Tenmu, was put into effect by Empress Jitō. Under this code, the country's name was officially set as "Nihon" (Japan).</p>
+                    </div>
+
+                    <div class="timeline-item" date-is='690 (age 45)'>
+                      <h2 style="margin-top:1em;" class="was-h3">She takes the throne as Empress Jitō</h2>
+                      <h2 style="margin-top:1em;" class="was-h3">The Kōin Nenjaku family register is made</h2>
+                      <p>Building on the Kōgo Nenjaku made by Emperor Tenji, she had the Kōin Nenjaku made — the first family register based on the <em>ritsuryō</em> law codes. It included a rule to remake the registers every six years, and this rule was actually put into practice.</p>
+                    </div>
+
+                    <div class="timeline-item" date-is='694 (age 49)'>
+                      <h2 style="margin-top:1em;" class="was-h3">The capital moves to Fujiwara-kyō</h2>
+                      <p>She led the move to Fujiwara-kyō that her husband, Emperor Tenmu, had planned. Eight years after his death, she finally completed Japan's first true planned capital.</p>
+                    </div>
+
+                    <div class="timeline-item" date-is='697 (age 52)'>
+                      <h2 style="margin-top:1em;" class="was-h3">Empress Jitō steps down</h2>
+                      <h2 style="margin-top:1em;" class="was-h3">Emperor Monmu takes the throne</h2>
+                      <p>Her grandson Prince Karu became Emperor Monmu at age 15. Empress Jitō became the first retired sovereign and helped him rule.</p>
+                    </div>
+
+                    <div class="timeline-item" date-is='703 (age 58)'>
+                      <h2 class="was-h3">Empress Jitō dies</h2>
+                      <p>
+                        As she had wished, she became the first emperor to be cremated.
+                        She was given the posthumous name "Takamanohara Hironohime no Sumeramikoto," which shows her as an heir of the sun goddess Amaterasu.
+                      </p>
+                    </div>
+
+                    <div class="timeline-item" date-is='1235'>
+                      <h2 class="was-h3">Her tomb is robbed</h2>
+                      <p>
+                        Fujiwara no Teika's diary, the <em>Meigetsuki</em>, records that Hinokuma no Ōuchi no Misasagi, the tomb of Emperor Tenmu and Empress Jitō, was robbed. The silver urn holding Empress Jitō's remains was stolen, and her remains were thrown away near the tomb.
+                      </p>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            </dd>
+
+            <dt>The Original Poem</dt>
+            <dd>This poem is taken from the <em>Shin Kokin Wakashū</em>, but its original version is in the <em>Man'yōshū</em>, Japan's oldest poetry collection (Book 1, Poem 28). The original simply describes what the poet sees: "white robes are hung out to dry." The Hyakunin Isshu version changes this to something heard from others: "white robes are <em>said</em> to be hung out to dry."
+              <div class='quote'><q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>春<rt>はる</rt></ruby><ruby>過<rt>す</rt></ruby>ぎて
+                  <ruby>夏<rt>なつ</rt></ruby><ruby>来<rt>きた</rt></ruby>るらし
+                  <ruby>白妙<rt>しろたえ</rt></ruby>の
+                  <br><ruby>衣<rt>ころも</rt></ruby><ruby>干<rt>ほ</rt></ruby>したり
+                  <ruby>天<rt>あま</rt></ruby>の<ruby>香具山<rt>かぐやま</rt></ruby>
+                  <span class="shutten"><em>Man'yōshū</em>, Empress Jitō</span>
+                </q><q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">Spring has passed, and summer seems to have come.<br class="br-pc">
+                    Pure white robes are hung out to dry on heavenly Mount Kagu.</p>
+                </q></div>
+            </dd>
+
+            <dt>A Poem That Borrows Across Time and Seasons</dt>
+            <dd>This poem by Fujiwara no Yoshitsune (Kujō Yoshitsune) borrows from Empress Jitō's poem in the Hyakunin Isshu, a technique called <em>honkadori</em>. In the Hyakunin Isshu he appears as <a
+                href="91_en.html">Poem 91, under the name Gokyōgoku Regent and Former Chancellor of the Realm</a>. By borrowing a summer poem to describe a winter scene, Yoshitsune may have wanted to give his poem a feeling that goes beyond time and season.
+              <div class='quote'><q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>雲<rt>くも</rt></ruby><ruby>晴<rt>は</rt></ruby>るる
+                  <ruby>雪<rt>ゆき</rt></ruby>の<ruby>光<rt>ひかり</rt></ruby>や
+                  <ruby>白妙<rt>しろたえ</rt></ruby>の
+                  <br><ruby>衣<rt>ころも</rt></ruby>ほすてふ
+                  <ruby>天<rt>あま</rt></ruby>の<ruby>香久山<rt>かぐやま</rt></ruby>
+                  <span class="shutten"><em>Akishino Gesseishū</em>, Fujiwara no Yoshitsune</span>
+                </q><q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">On heavenly Mount Kagu, where white robes are said to be hung out to dry in summer,<br
+                      class="br-pc">the clouds have now cleared, and the light of the snow shines like those white robes.</p>
+                </q></div>
+            </dd>
+
+            <dt>A Poem Empress Jitō Drew On</dt>
+            <dd>This poem by an unknown author is in the <em>Man'yōshū</em>. As winter turns into spring, it quietly contrasts two things: the year becomes new, but people only grow older.
+              <div class='quote'><q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>冬<rt>ふゆ</rt></ruby><ruby>過<rt>す</rt></ruby>ぎて
+                  <ruby>春<rt>はる</rt></ruby>の<ruby>来<rt>きた</rt></ruby>れば
+                  <ruby>年月<rt>としつき</rt></ruby>は
+                  <br><ruby>新<rt>あら</rt></ruby>たなれども
+                  <ruby>人<rt>ひと</rt></ruby>は<ruby>古<rt>ふ</rt></ruby>り<ruby>行<rt>ゆ</rt></ruby>く
+                  <span class="shutten"><em>Man'yōshū</em>, author unknown</span>
+                </q><q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">When winter has passed and spring has come, the months and years become new,<br class="br-pc">
+                    but people only grow old.</p>
+                </q></div>
+            </dd>
+
+            <dt id="ootsu">The Farewell Poem of Prince Ōtsu,<br class="br-sp"> Who Was Forced to Take His Own Life</dt>
+            <dd>The next poem is by Prince Ōtsu, who was driven to take his own life — perhaps by Empress Jitō's scheming.<br class="br-pc">Did he leave this world feeling the brightness of life in the cries of the ducks?<br class="br-pc">This is the farewell poem of a tragic prince who was forced to die at just 24.
+              <div class='quote' style="margin-bottom: 0;">
+                <q class="quote-ja" style="position:relative;">
+                  <img src="/img/kamo.png" alt="Duck"
+                    style="position:absolute; width:120px; height:auto; right:5px; top:8px;" width="332" height="150">
+                  <h3 class="was-h4">In Japanese</h3>
+                  ももづたふ
+                  <br class="br-sp"><ruby>磐余<rt>いわれ</rt></ruby>の<ruby>池<rt>いけ</rt></ruby>に
+                  <br><ruby>鳴<rt>な</rt></ruby>く<ruby>鴨<rt>かも</rt></ruby>を
+                  <br class="br-sp"><ruby>今日<rt>きょう</rt></ruby>のみみてや
+                  <br class="br-sp"><ruby>雲<rt>くも</rt></ruby><ruby>隠<rt>がく</rt></ruby>りなむ
+                  <span class="shutten"><em>Man'yōshū</em>, Prince Ōtsu</span>
+                </q><q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">
+                    Is today the last time I will see the ducks crying on Iware Pond, before I hide behind the clouds and die?
+                  </p>
+                </q>
+              </div>
+              <p class="kome" style="margin-top: 0.25em;">"Momozutau" is a <em>makurakotoba</em> (pillow word), a set phrase used before "Iware."</p>
+            </dd>
+
+            <dt>A Poem Empress Jitō Wrote When Her Husband,<br class="br-sp"> Emperor Tenmu, Died</dt>
+            <dd>When Emperor Tenmu died, the palace was Asuka Kiyomihara Palace, in Asuka, Asuka Village, Nara Prefecture. Mount Kagu lies to the north of the palace, so the "northern mountain" in the poem is thought to mean Mount Kagu. Empress Jitō seems to have seen her husband's spirit in the blue clouds trailing over Mount Kagu.
+              <div class='quote'><q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>北山<rt>きたやま</rt></ruby>に
+                  たなびく<ruby>雲<rt>くも</rt></ruby>の
+                  <ruby>青雲<rt>せいうん</rt></ruby>の
+                  <br><ruby>星<rt>ほし</rt></ruby><ruby>離<rt>はな</rt></ruby>れ<ruby>行<rt>ゆ</rt></ruby>き
+                  <ruby>月<rt>つき</rt></ruby>を<ruby>離<rt>はな</rt></ruby>れて
+                  <span class="shutten"><em>Man'yōshū</em>, Empress Jitō</span>
+                </q><q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">
+                    The blue clouds trailing over the northern mountain are drifting far away,<br class="br-pc">leaving the stars, leaving the moon.
+                  </p>
+                </q></div>
+            </dd>
+
+            <dt>Emperor Jomei's Poem About Mount Kagu</dt>
+            <dd>Empress Jitō's grandfather, Emperor Jomei, wrote a poem praising Mount Kagu.
+              <div class='quote' style="margin-bottom: 0;"><q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p style="line-height:2.1">
+                    <ruby>大和<rt>やまと</rt></ruby>には
+                    <ruby>群山<rt>むらやま</rt></ruby>あれど
+                    とりよろふ
+                    <br><ruby>天<rt>あま</rt></ruby>の<ruby>香具山<rt>かぐやま</rt></ruby>
+                    <ruby>登<rt>のぼ</rt></ruby>り<ruby>立<rt>た</rt></ruby>ち
+                    <br><ruby>国見<rt>くにみ</rt></ruby>をすれば <ruby>国原<rt>くにはら</rt></ruby>は
+                    <ruby>煙<rt>けぶり</rt></ruby><ruby>立<rt>た</rt></ruby>ち<ruby>立<rt>た</rt></ruby>つ
+                    <br><ruby>海原<rt>うなばら</rt></ruby>は
+                    かまめ<ruby>立<rt>た</rt></ruby>ち<ruby>立<rt>た</rt></ruby>つ
+                    <br>うまし<ruby>国<rt>くに</rt></ruby>そ
+                    <ruby>蜻蛉島<rt>あきづしま</rt></ruby>
+                    <ruby>大和<rt>やまと</rt></ruby>の<ruby>国<rt>くに</rt></ruby>は
+                    <span class="shutten"><em>Man'yōshū</em>, Emperor Jomei</span>
+                  </p>
+                </q><q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">
+                    There are many mountains in Yamato,
+                    <br>but the finest of all is heavenly Mount Kagu.
+                    <br>When I climb to its top and look out over the land,
+                    <br>smoke from cooking fires rises all over the plain,
+                    <br>and over the water, gulls fly up again and again.
+                    <br>What a fine land it is — Akizushima, the land of Yamato!
+                  </p>
+                </q></div>
+              <p class="kome" style="margin-top: 0.25em;">"Akizushima" is an old poetic name for Yamato (Japan).</p>
+            </dd>
+
+            <dt>A Poem About Yamato</dt>
+            <dd>
+              <p>The next poem was written by Yamato Takeru no Mikoto, thinking of Yamato (present-day Nara Prefecture). Empress Jitō, too, lived in an age when Yamato was the center of the country. The character 倭 can be read "Wa," but from early times it was also read "Yamato." 大和 is also read "Yamato," and in ancient times the name was also used for Japan as a whole.</p>
+              <p>The late 7th century, when Empress Jitō lived, was a time when a state run by written law was being built on the base of ancient Wa (Yamato). There are different views on how the country's name changed from "Wa" to "Nihon" (Japan), but some say the name "Nihon" was established under Emperor Tenmu and Empress Jitō.</p>
+              <div class='quote' style="margin-bottom: 0;"><q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p style="line-height:2.1">
+                    <ruby>大和<rt>やまと</rt></ruby>は
+                    <ruby>国<rt>くに</rt></ruby>の<ruby>真秀<rt>まほ</rt></ruby>ろば
+                    <ruby>畳<rt>たた</rt></ruby>なづく<ruby>青垣<rt>あおがき</rt></ruby>
+                    <br><ruby>山籠<rt>やまごも</rt></ruby>れる
+                    <ruby>大和<rt>やまと</rt></ruby>しうるはし
+                    <span class="shutten"><em>Kojiki</em>, Yamato Takeru no Mikoto</span>
+                  </p>
+                </q><q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">
+                    Yamato is the finest place in the land. Wrapped in green mountains that rise layer upon layer like a fence, Yamato is beautiful.
+                  </p>
+                </q></div>
+            </dd>
+
+            <dt>The Jinshin War</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/jinshinoran.gif?20250921' data-lightbox='jito' data-title='The Jinshin War'>
+                  <img loading='lazy' src='../img/jinshinoran.gif?20250921' alt='Map of the Jinshin War' width="1155" height="1280">
+                </a>
+              </figure>
+              <div>
+                <p style="margin-bottom: 0.75em;">
+                  The Jinshin War was the largest civil war of ancient Japan. It was a fight over the throne between Emperor Tenji's younger brother, Prince Ōama, and Emperor Tenji's son, Prince Ōtomo. When Emperor Tenji died, Prince Ōama felt his life was in danger. He became a monk and withdrew to Yoshino (present-day Yoshino Town, Nara Prefecture) with only a few followers. Meanwhile, in the capital, the Ōmi court led by Prince Ōtomo took control.
+                </p>
+                <p style="margin-bottom: 0.75em;">
+                  When Prince Ōama learned that Prince Ōtomo's side had begun gathering soldiers to attack him, he rose up against the court in the 6th month of 672. This was the start of the Jinshin War.
+                </p>
+                <p style="margin-bottom: 0.75em;">
+                  Prince Ōama's side had fewer soldiers, but he blocked the Fuwa road (in present-day Sekigahara Town, Gifu Prefecture) and gathered troops from eastern Japan, and this let him fight back. The plan worked, and his army surrounded the capital at Ōmi (present-day Shiga Prefecture) from the east and the west.
+                </p>
+                <p>Cornered, Prince Ōtomo took his own life at Yamasaki (in present-day Yamashina Ward, Kyoto) on the 23rd day of the 7th month, and Prince Ōama won.</p>
+                <p style="margin-bottom: 0.75em;">Empress Jitō was with Prince Ōama from the time he became a monk and went to Yoshino. She helped plan the strategy and contributed to the victory.
+                </p>
+              </div>
+            </dd>
+
+            <dt>Akitsumikami: Empress Jitō as a Living God</dt>
+            <dd>
+              <p>Empress Jitō's enthronement was different from those before her. Until then, the support of the court officials had mattered a great deal, but Empress Jitō is said to have taken the throne as an <em>akitsumikami</em> — a living god who received her authority from the gods.</p>
+              <p>The <em>Nihon Shoki</em> describes the ceremony: a sword and a mirror were presented to her, the officials clapped their hands to worship her as they would a god, and Empress Jitō appeared from the Takamikura, the imperial throne.</p>
+              <p>This ceremony was handed down to later ages and became part of the 8th-century <em>ritsuryō</em> system. It is thought that by making the right to the throne clear in this way, the country built a system that made fights over the throne less likely.</p>
+            </dd>
+            <dt>Fujiwara-kyō and Fujiwara Palace</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/02_fujiwarakyu_large.webp' data-lightbox='fujiwarakyu' data-title='Site of the south gate of the Great Hall of State, Fujiwara Palace'>
+                  <img loading='lazy' src='../img/02_fujiwarakyu.webp' alt='Fujiwara Palace site' width="800" height="600">
+                </a>
+              </figure>
+              <div>
+                <p>
+                  Fujiwara-kyō, built across present-day Kashihara City and Asuka Village in Nara Prefecture, was Japan's first true capital city planned on the Chinese model. It was also the first in Japan to use a grid of streets laid out like a go board (the <em>jōbō</em> system).</p>
+                <p>It was a grand capital where about 30,000 people are thought to have lived. But in 710, about 15 years after it was completed, the capital moved to Heijō-kyō. The area of Fujiwara-kyō became rice fields, and even its size was forgotten.
+                </p>
+                <p>
+                  Its size only became clear in the 1990s. Many years of digging showed where the main buildings, such as the Great Hall of State (<em>Daigokuden</em>) and the State Halls (<em>Chōdōin</em>), stood and how they were built. This showed that Fujiwara Palace covered 1 km<sup><small>2</small></sup>, and that Fujiwara-kyō as a whole was a huge capital, about 5.2 km from east to west and 4.8 km from north to south.
+                </p>
+                <p>The photo shows the site of the south gate of the Great Hall of State. Replica pillars mark where the gate stood. The hill-like mound in the back is the site of the Great Hall itself (the Ōmiya earthen platform).</p>
+                <p style="text-align:right;"><small>(Photo taken August 15, 2025)</small></p>
+              </div>
+            </dd>
+            <dt>Kamokimi Shrine (Site of the Great Hall of State)</dt>
+            <dd class='thumb-image2'>
+              <div class="swiper">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img loading='lazy' src='../img/02_kamokimi-jinja-long.webp' alt='Kamokimi Shrine (site of the Great Hall of State)' width="640" height="480">
+                  </div>
+                  <div class="swiper-slide">
+                    <img loading='lazy' src='../img/02_kamokimi-jinja.webp' alt='Kamokimi Shrine (site of the Great Hall of State)' width="640" height="480">
+                  </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+              </div>
+              <div>
+                <p>
+                  Kamokimi Shrine, which stands on the site of the Great Hall of State, honors Empress Jitō's throne. This land was originally home to the Kamo, an ancient powerful clan, and it is said that the Kamo clan offered it to Empress Jitō when Fujiwara Palace was built. "Kamokimi" in the shrine's name seems to have been a title showing high rank within the Kamo clan.
+                </p>
+                <p>
+                  The Kamo clan is also known for having been in charge of the emperor's religious ceremonies. Their name lives on today, in changed forms, in places like the Kamo River in Kyoto and the Kamigamo and Shimogamo Shrines.
+                </p>
+                <p style="text-align:right;"><small>(Photo taken August 15, 2025)</small></p>
+              </div>
+            </dd>
+
+            <dt>The Three Mountains of Yamato and Fujiwara Palace</dt>
+            <dd class='thumb-image2'>
+              <div class="swiper">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img loading='lazy' src='../img/fujiwarakyu.webp' alt='Google Earth image of Fujiwara Palace and the Three Mountains of Yamato' width="640" height="480">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="/img/02_amanokaguyama.webp" alt="Mount Ama-no-Kagu" width="640" height="480">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="/img/02_miminashiyama.webp" alt="Mount Miminashi" width="640" height="480">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="/img/02_unebiyama.webp" alt="Mount Unebi" width="640" height="480">
+                  </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+              </div>
+              <div>
+                <p>Mount Ama-no-Kagu (152 m), Mount Miminashi (140 m), and Mount Unebi (199 m) are called the Three Mountains of Yamato. They are in Kashihara City, Nara Prefecture, and Fujiwara Palace is surrounded by them.
+                </p>
+                <p>Empress Jitō was given the posthumous name "Takamanohara Hironohime no Sumeramikoto," which shows her as an heir of the sun goddess Amaterasu. In myth, Mount Kagu was said to have come down from Takamanohara, the heavenly world. By building Fujiwara-kyō at the foot of this sacred mountain, she may have made her husband Emperor Tenmu's dream come true: bringing the world of myth to life on earth.</p>
+                <p style="text-align:right;"><small>(Photo taken August 15, 2025)</small></p>
+              </div>
+            </dd>
+
+            <dt>A Poem by Emperor Tenji About<br class="br-sp"> a Fight Over a Woman</dt>
+            <dd>
+              The next poem was written by Emperor Tenji when he was still Prince Naka no Ōe. It is about the Three Mountains of Yamato: Kagu, Unebi, and Miminashi. There are different views on which mountains were male and which female, but in the age of myth, these mountains were said to be caught in a love triangle.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>香具山<rt>かぐやま</rt></ruby>は
+                  <ruby>畝傍<rt>うねび</rt></ruby>ををしと
+                  <br class="br-sp"><ruby>耳梨<rt>みみなし</rt></ruby>と
+                  <ruby>相争<rt>あひあらそ</rt></ruby>ひき
+                  <br><ruby>神代<rt>かみよ</rt></ruby>より
+                  かくにあるらし
+                  <br class="br-sp"><ruby>古<rt>いにしへ</rt></ruby>も
+                  <ruby>然<rt>しか</rt></ruby>にあれこそ
+                  <br>うつせみも
+                  <ruby>妻<rt>つま</rt></ruby>を
+                  <ruby>争<rt>あらそ</rt></ruby>ふらしき
+                  <span class="shutten"><em>Man'yōshū</em>, Prince Naka no Ōe</span>
+                </q><q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height:1.7; margin-top: 0.25em;">
+                    Mount Kagu, not wanting to lose Mount Unebi, fought with Mount Miminashi.
+                    <br class="br-pc">It seems it has been this way since the age of the gods.
+                    <br class="br-pc">Because it was so in ancient times, people today also fight over wives.
+                  </p>
+                </q>
+              </div>
+            </dd>
+
+            <dt id="misasagi">Empress Jitō's Tomb</dt>
+            <dd class='thumb-image2'>
+              <figure class='portrait'>
+                <a href='../img/02_jitou_tomb_large.webp' data-lightbox='jito' data-title='Hinokuma no Ōuchi no Misasagi (tomb of Empress Jitō)'>
+                  <img loading='lazy' src='../img/02_jitou_tomb_small.webp' alt='Hinokuma no Ōuchi no Misasagi' width="640" height="480">
+                </a>
+                <figcaption>
+                  <a
+                    href='https://commons.wikimedia.org/wiki/File:NoguchiObo_TenmuJito-ryo_201909a.jpg' target='_blank' rel='noopener'>
+                    <small>8-hachiro, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons</small>
+                  </a>
+                </figcaption>
+              </figure>
+              <div>
+                <p>
+                  Empress Jitō died in 703 and was cremated about a year later — the first cremation of any emperor. Her ashes were placed in a silver urn and laid next to the coffin of her husband, Emperor Tenmu, who had already been buried.
+                </p>
+                <p>
+                  However, according to records from the Kamakura period, the tomb was robbed in 1235, and Empress Jitō's silver urn was taken away. Because this robbery was recorded, we know for certain that she was cremated.
+                </p>
+                <p>
+                  There are different views on why she was cremated. One says that she cared about her people and wanted a simple funeral. It is truly sad that the tomb of such an empress was robbed. The records tell of the people who robbed the tomb, but no one knows what became of the stolen silver urn. Its fate has been lost to history.
+                </p>
+              </div>
+            </dd>
+
+            <dt>Ukiyo-e by Katsushika Hokusai</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/hokusai_02_large.webp' data-lightbox='jito' data-title='Ukiyo-e by Katsushika Hokusai'>
+                  <img loading='lazy' src='../img/hokusai_02.webp' alt='Woodblock print by Katsushika Hokusai' width="640" height="439">
+                </a>
+                <figcaption>
+                  <a href='https://commons.wikimedia.org/wiki/File:%E7%99%BE%E4%BA%BA%E4%B8%80%E9%A6%96_%E3%81%86%E3%81%AF%E3%81%8B%E3%82%91%E3%81%A8%E3%81%8D_%E6%8C%81%E7%B5%B1%E5%A4%A9%E7%9A%87-Poem_by_Jit%C5%8D_Tenno_(Empress_Jit%C5%8D),_from_the_series_One_Hundred_Poems_Explained_by_the_Nurse_(Hyakunin_isshu_uba_ga_etoki)_MET_DP140961.jpg'
+                    target='_blank'><small>Katsushika Hokusai, CC0, via Wikimedia Commons</small></a>
+                </figcaption>
+              </figure>
+              <div>
+                <p>
+                  This print is from <em>One Hundred Poems Explained by the Nurse</em> (<em>Hyakunin Isshu Uba ga Etoki</em>) by Katsushika Hokusai, an ukiyo-e artist of the Edo period. The idea of the series is a nurse explaining the Hyakunin Isshu poems with easy-to-understand pictures.
+                </p>
+                <p>
+                  It shows workers carrying clothes, probably washed in the river, up the mountain. Taking wet clothes all the way up a mountain to dry is a lot of work. Mount Kagu was thought to be sacred, so this was probably for some religious ceremony, but the details are not known.
+                </p>
+              </div>
+            </dd>
+
+            <dt>Utagawa Kuniyoshi's <em>Hyakunin Isshu no Uchi</em></dt>
+            <dd class='thumb-image2'>
+              <figure class='portrait'>
+                <a href='../img/kuniyoshi_02_large.webp' data-lightbox='jito' data-title='Ukiyo-e by Utagawa Kuniyoshi'>
+                  <img loading='lazy' src='../img/kuniyoshi_02.webp' alt='Ukiyo-e of Empress Jitō by Utagawa Kuniyoshi' width="480" height="725">
+                </a>
+                <figcaption>
+                  <a
+                    href='https://commons.wikimedia.org/wiki/File:Jito_Tenno_(no._2)_%E6%8C%81%E7%B5%B1%E5%A4%A9%E7%9A%87_(Empress_Jito)_(BM_2008,3037.10602).jpg' target='_blank' rel='noopener'>
+                    <small>British Museum, Public domain, via Wikimedia Commons</small>
+                  </a>
+                </figcaption>
+              </figure>
+              <div>
+                <p>
+                  This ukiyo-e is by Utagawa Kuniyoshi, an artist of the Edo period. It shows a scene that matches the poem in the Hyakunin Isshu.
+                </p>
+                <p>
+                  In the picture, Mount Kagu is a rugged peak with bare rock, but the real mountain looks very different. The real Mount Kagu is a low hill, only 152 m high, with gentle slopes.
+                </p>
+                <p>
+                  Empress Jitō is wearing a splendid <em>jūni-hitoe</em> (twelve-layered robe). This is probably because the Hyakunin Isshu was loved as a symbol of Heian court culture, so the artist chose to dress her in the formal wear of the Heian period.
+                </p>
+              </div>
+            </dd>
+
+            <dt>Ukiyo-e by Suzuki Harunobu</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/harunobu_02.webp' data-lightbox='jito' data-title='Ukiyo-e by Suzuki Harunobu'>
+                  <img loading='lazy' src='../img/harunobu_02.webp' alt='Ukiyo-e by Suzuki Harunobu' width="734" height="990">
+                </a>
+                <figcaption>
+                  <a href="https://webarchives.tnm.jp/"><small>Courtesy of Tokyo National Museum</small></a>
+                </figcaption>
+              </figure>
+              <div>
+                <p>
+                  This work is by Suzuki Harunobu, an ukiyo-e artist of the Edo period. It moves Empress Jitō's poem into the everyday life of Edo.
+                </p>
+                <p>White summer clothes are hung out to dry, showing that summer has come in Edo. The water in the tub looks cloudy: at the time, people are said to have washed clothes with <em>aku</em>, an alkaline water made by mixing ashes into water.
+                </p>
+              </div>
+            </dd>
+
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -298,15 +1235,36 @@
   </footer>
   <!-- Footer end -->
 
-  <script src="../js/poems_en.js?20260803-03"></script>
-
-  <!-- Chart of the Heart -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="/js/kokoro-chart-data-en.js?20260726"></script>
+  <script src="../js/accordion.js"></script>
+  <script src="../js/poems_en.js?20261007-04"></script>
+  <!-- swiper -->
+  <script src="../js/swiper-bundle.min.js"></script>
   <script>
-    window.radarScores = KOKORO_CHART_DATA[2].scores;
+    document.addEventListener('DOMContentLoaded', () => {
+      new Swiper('.swiper', {
+        loop: true,
+        speed: 1500,
+        autoplay: {
+          delay: 2000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+    });
   </script>
-  <script src="/js/raderChart.js?20260830-01"></script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261008-21"></script>
+  <script src="../js/keizu-diagram.js?20261008-02"></script>
+
 </body>
 
 </html>

@@ -1,6 +1,6 @@
 @charset "UTF-8";
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
-@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:wght@400;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:wght@400;600;700;800&display=swap");
 /* 変数定義 */
 /* 共通スタイル */
 * {
@@ -77,9 +77,12 @@ p {
 }
 
 html[lang=en]:not([data-font=legacy]) body, html[lang=en]:not([data-font=legacy]) p, html[lang=en]:not([data-font=legacy]) li, html[lang=en]:not([data-font=legacy]) a, html[lang=en]:not([data-font=legacy]) span, html[lang=en]:not([data-font=legacy]) td, html[lang=en]:not([data-font=legacy]) th, html[lang=en]:not([data-font=legacy]) button, html[lang=en]:not([data-font=legacy]) input, html[lang=en]:not([data-font=legacy]) label {
-  font-family: "Lora", "Noto Serif JP", serif !important;
+  font-family: "Noto Sans", "Noto Serif JP", sans-serif !important;
 }
 html[lang=en]:not([data-font=legacy]) h1, html[lang=en]:not([data-font=legacy]) h2, html[lang=en]:not([data-font=legacy]) h3, html[lang=en]:not([data-font=legacy]) h4, html[lang=en]:not([data-font=legacy]) h5, html[lang=en]:not([data-font=legacy]) h6 {
+  font-family: "Playfair Display", "Kaisei HarunoUmi", serif !important;
+}
+html[lang=en]:not([data-font=legacy]) .header .site-title, html[lang=en]:not([data-font=legacy]) .header .site-title a {
   font-family: "Playfair Display", "Kaisei HarunoUmi", serif !important;
 }
 
@@ -321,6 +324,59 @@ main {
   }
 }
 
+/* 歌ページ（N.html / N_en.html）のパンくずリスト（.column-wrapper の先頭の nav.breadcrumb-poem）
+   パンくずの高さぶん main の上余白を広げる（札と説明が同じだけ下がるので下端の揃いは崩れない） */
+main:has(.breadcrumb-poem) {
+  padding-top: 2.6em;
+}
+.column-wrapper:has(> .breadcrumb-poem) {
+  position: relative;
+}
+/* 札の列の真上に置き、左端を札（.card-item, 幅380px）の左端に揃える */
+.breadcrumb-poem {
+  position: absolute;
+  bottom: calc(100% + 0.45em);
+  left: 0;
+  right: 0;
+  width: min(380px, 100%);
+  margin: 0 auto;
+}
+.breadcrumb-poem ol {
+  display: inline-flex;
+  max-width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0.25em 0.9em;
+  background-color: rgba(247, 241, 224, 0.88); /* 札・説明と同じクリーム色を少し透かす */
+  border-radius: 999px;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: #555;
+  white-space: nowrap;
+}
+.breadcrumb-poem li {
+  flex-shrink: 0;
+}
+/* 現在のページ名だけは長ければ … で省略 */
+.breadcrumb-poem li:last-child {
+  flex-shrink: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.breadcrumb-poem li + li::before {
+  content: "»";
+  margin: 0 0.5em;
+  color: #999;
+}
+.breadcrumb-poem a {
+  color: #555;
+  text-decoration: none;
+}
+.breadcrumb-poem a:hover {
+  text-decoration: underline;
+}
+
 .card {
   grid-area: card;
   display: flex;
@@ -450,7 +506,7 @@ main {
   background-color: #f7f1e0;
   width: 988px;
   max-width: 100%;
-  margin: 1em auto 0;
+  margin: 1em auto 1.5em;
   padding: 1em;
   border-radius: 1em;
   box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.2);
@@ -459,14 +515,14 @@ main {
   .link-section {
     max-width: 910px;
     width: 95%;
-    margin: 0.5em auto 0;
+    margin: 0.5em auto 1.5em;
   }
 }
 @media screen and (max-width: 750px) {
   .link-section {
     width: calc(100vw - 10px);
     max-width: 100%;
-    margin: 0 auto;
+    margin: 0 auto 1em;
   }
 }
 

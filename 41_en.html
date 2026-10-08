@@ -71,13 +71,13 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Shigure's Hyakunin Isshu",
-          "item": "https://hyakuninisshu.com/"
+          "item": "https://hyakuninisshu.com/index_en.html"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Poem List",
-          "item": "https://hyakuninisshu.com/list.html"
+          "item": "https://hyakuninisshu.com/list_en.html"
         },
         {
           "@type": "ListItem",
@@ -90,10 +90,10 @@
   ]
   </script>
   <!-- stylesheets -->
-  <link rel="stylesheet" href="../css/style.css?20261006-05">
+  <link rel="stylesheet" href="../css/style.css?20261008-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
-  <link rel="stylesheet" href="../css/poems_en.css?20260803-04">
+  <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -133,6 +133,13 @@
   <main>
     <div class="card">
       <div class="column-wrapper">
+        <nav class="breadcrumb-poem" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index_en.html">Top</a></li>
+            <li><a href="list_en.html">Poem List</a></li>
+            <li aria-current="page">No. 41 Mibu no Tadami</li>
+          </ol>
+        </nav>
         <div class="select-container">
           <label for="themeSelector" id="themeSelector-label">Select a theme:</label>
           <select id="themeSelector" class="selector">
@@ -153,9 +160,9 @@
           <div class="checkbox1">
             <div style="display:flex; align-items:center;">
               <label for="toggle2" id="toggle2-label">Switch between the picture card and the matching card</label>
-              <p>Front</p>
+              <p>Front of the Card</p>
               <input type="checkbox" id="toggle2">
-              <p>Back</p>
+              <p>Back of the Card</p>
             </div>
             <div style="display:flex; align-items:center;">
               <div id="play-pause-btn"></div>
@@ -166,7 +173,7 @@
           </div>
           <div class="audio-credit-row">
             <p id="audio-credit">Audio: NHK Creative Library</p>
-            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox (Public Domain).</p>
+            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox</p>
           </div>
 
         </div><!-- column-wrapper end -->
@@ -228,42 +235,50 @@
         <dl>
           <dt>Commentary</dt>
           <dd>
-            This poem was composed for the "Tentoku Poetry Contest at the Imperial Palace," on the set theme of "love not yet met." It was an evenly matched contest against a poem by Taira no Kanemori. In the end, though, Tadami lost narrowly — reportedly because Emperor Murakami was overheard humming Kanemori's line "shinoburedo…" According to an anecdote recorded in the Shasekishū, Tadami was so devastated by the loss that he could no longer eat, fell ill, and died.
+            Written for the Tentoku palace poetry contest (960) on the theme "love not yet met," it was evenly matched with Taira no Kanemori's poem, but lost because Emperor Murakami was heard reciting Kanemori's. A tale in the Shasekishū says Tadami was so crushed that he stopped eating, fell ill, and died.
           </dd>
         </dl>
         <dl class="last-dl">
           <dt>About the Poet</dt>
           <dd>
-            Mibu no Tadami was the son of Mibu no Tadamine (Poem 30). He served Emperor Murakami as a low-ranking court official. He inherited his father's poetic gift, showing talent for poetry from a young age; he was summoned to serve at the palace, working in the Mizushidokoro (imperial kitchen office), and later became Junior Secretary of Settsu Province.
+            Mibu no Tadami was the son of Mibu no Tadamine and a low-ranking official under Emperor Murakami. He inherited his father's gift and wrote fine poems from childhood. Called to the palace, he worked in the imperial kitchen office and later became an official of Settsu Province.
           </dd>
         </dl>
       </div>
     </div>
     <div class="chart-image-row">
-    <div class="chart-section">
-      <dl>
-        <dt class='title'>Mibu no Tadami's Chart of the Heart</dt>
-            <dd>
-              <p>A chart and a modern-language reflection of the poet's inner feelings.</p>
-              <div class="emotion-chart">
-                <div id="radarChartWrapper">
-                  <canvas id="radarChart" width="300" height="300"></canvas>
-                </div>
-                <div>
-                  <p class="chart-quotes-title">The Poet's Feelings (A Personal Interpretation)</p>
-                  <p>I've only just begun to think of you —<br class="br-pc">I haven't told a soul.</p>
-                  <p style="margin-top:1em;">And yet this small, quiet love<br class="br-pc">has already spread like word on the wind.</p>
-                </div>
-              </div>
-            </dd>
-      </dl>
-    </div>
     <div class="image-section">
       <dl>
         <dt class='title'>Poem Illustration</dt>
         <dd>
           <img loading='lazy' src='../img/c_041.webp' alt="Illustration for Mibu no Tadami's poem">
           <p><small>This image is based on an illustration from William N. Porter's <em>A Hundred Verses from Old Japan</em>, his 1909 English translation of the Hyakunin Isshu published in England, colorized and reworked using Adobe Firefly (generative AI).</small></p>
+        </dd>
+      </dl>
+    </div>
+    <div class="nenpyo-section">
+      <dl>
+        <dt class='title'>Mibu no Tadami: A Short Timeline</dt>
+        <dd>
+          <dl class="nenpyo">
+            <dt>953</dt>
+            <dd>Takes part in the Palace Chrysanthemum Contest</dd>
+            <dt>954</dt>
+            <dd>Becomes a cook in the palace kitchen office</dd>
+            <dt>956</dt>
+            <dd>Takes part in poetry contests, including one held by Princess Shōshi, consort of the Reikeiden</dd>
+            <dt>958</dt>
+            <dd>Becomes a senior secretary of Settsu Province</dd>
+            <dt>960</dt>
+            <dd>Competes against Taira no Kanemori at the Palace Poetry Contest of the Tentoku Era</dd>
+            <dt>Notes</dt>
+            <dd>
+              <ul>
+                <li>36 of his poems appear in imperial anthologies from the Gosenshū on</li>
+                <li>Counted as one of the Thirty-Six Immortal Poets</li>
+              </ul>
+            </dd>
+          </dl>
         </dd>
       </dl>
     </div>
@@ -299,15 +314,8 @@
   </footer>
   <!-- Footer end -->
 
-  <script src="../js/poems_en.js?20260803-03"></script>
+  <script src="../js/poems_en.js?20261007-04"></script>
 
-  <!-- Chart of the Heart -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="/js/kokoro-chart-data-en.js?20260726"></script>
-  <script>
-    window.radarScores = KOKORO_CHART_DATA[41].scores;
-  </script>
-  <script src="/js/raderChart.js?20260830-01"></script>
 </body>
 
 </html>

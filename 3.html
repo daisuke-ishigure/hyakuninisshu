@@ -69,13 +69,13 @@
       {
         "@type": "ListItem",
         "position": 1,
-        "name": "時雨の百人一首",
+        "name": "時雨の百人一首 TOP",
         "item": "https://hyakuninisshu.com/"
       },
       {
         "@type": "ListItem",
         "position": 2,
-        "name": "和歌一覧",
+        "name": "百人一首一覧",
         "item": "https://hyakuninisshu.com/list.html"
       },
       {
@@ -89,7 +89,7 @@
 ]
 </script>
   <!-- スタイルシートの追加 -->
-  <link rel="stylesheet" href="../css/style.css?20261006-05">
+  <link rel="stylesheet" href="../css/style.css?20261008-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/moon.css?20240820">
   <link rel="stylesheet" href="../css/animate.min.css">
@@ -158,6 +158,13 @@
   <main>
     <div class="card">
       <div class="column-wrapper">
+        <nav class="breadcrumb-poem" aria-label="パンくずリスト">
+          <ol>
+            <li><a href="index.html">トップ</a></li>
+            <li><a href="list.html">百人一首一覧</a></li>
+            <li aria-current="page">第3番 柿本人麻呂</li>
+          </ol>
+        </nav>
         <div class="select-container">
           <label for="themeSelector" id="themeSelector-label">テーマを選択:</label>
           <select id="themeSelector" class="selector">
@@ -540,7 +547,7 @@
                 </a>
                 <figcaption><a href='https://commons.wikimedia.org/wiki/File:Statue_of_Kakinomoto_no_hitomaro.jpg'
                     target='_blank'>
-                    <small>Yanajin33, CC BY-SA 3.0 <https: //creativecommons.org/licenses/by-sa/3.0>, via Wikimedia
+                    <small>Yanajin33, CC BY-SA 3.0 &lt;https://creativecommons.org/licenses/by-sa/3.0&gt;, via Wikimedia
                         Commons</small>
                   </a>
                 </figcaption>
@@ -589,7 +596,7 @@
                   <img loading='lazy' src='../img/kuniyoshi_03.webp' alt='歌川国芳による柿本人麻呂の浮世絵' width="480" height="705">
                 </a>
                 <figcaption>
-                  <a href='https://commons.wikimedia.org/wiki/File:Kakinomoto_no_hitomaro_no_restore.jpg'>
+                  <a href='https://commons.wikimedia.org/wiki/File:Kakinomoto_no_hitomaro_no_restore.jpg' target='_blank' rel='noopener'>
                     <small>Utagawa, Kuniyoshi, 1798-1861, Public domain, via Wikimedia Commons</small>
                   </a>
                 </figcaption>
@@ -601,14 +608,6 @@
           </dl>
         </dd>
       </dl>
-    </div>
-    <div class="bottom_arrow">
-      <div id="next2" class="bottom">
-        <p id="next2_arrow">次の和歌へ</p>
-      </div>
-      <div id="back2" class="bottom">
-        <p id="back2_arrow">前の和歌へ</p>
-      </div>
     </div>
   </main>
 
@@ -627,7 +626,7 @@
     </div>
   </footer>
   <!-- フッターここまで -->
-  <script src="../js/poems.js?20261006-04"></script>
+  <script src="../js/poems.js?20261008-01"></script>
   <script src="../js/moon.js?20240821"></script>
   <!-- ▼▼▼ tippy.js ▼▼▼▼ -->
   <script src="../js/popper.min.js"></script>

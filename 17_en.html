@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-08T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -71,13 +71,13 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Shigure's Hyakunin Isshu",
-          "item": "https://hyakuninisshu.com/"
+          "item": "https://hyakuninisshu.com/index_en.html"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Poem List",
-          "item": "https://hyakuninisshu.com/list.html"
+          "item": "https://hyakuninisshu.com/list_en.html"
         },
         {
           "@type": "ListItem",
@@ -90,10 +90,13 @@
   ]
   </script>
   <!-- stylesheets -->
-  <link rel="stylesheet" href="../css/style.css?20261006-05">
+  <link rel="stylesheet" href="../css/style.css?20261008-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
-  <link rel="stylesheet" href="../css/poems_en.css?20260803-04">
+  <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/swiper-bundle.min.css">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -103,6 +106,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -133,6 +144,13 @@
   <main>
     <div class="card">
       <div class="column-wrapper">
+        <nav class="breadcrumb-poem" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index_en.html">Top</a></li>
+            <li><a href="list_en.html">Poem List</a></li>
+            <li aria-current="page">No. 17 Ariwara no Narihira Ason</li>
+          </ol>
+        </nav>
         <div class="select-container">
           <label for="themeSelector" id="themeSelector-label">Select a theme:</label>
           <select id="themeSelector" class="selector">
@@ -153,9 +171,9 @@
           <div class="checkbox1">
             <div style="display:flex; align-items:center;">
               <label for="toggle2" id="toggle2-label">Switch between the picture card and the matching card</label>
-              <p>Front</p>
+              <p>Front of the Card</p>
               <input type="checkbox" id="toggle2">
-              <p>Back</p>
+              <p>Back of the Card</p>
             </div>
             <div style="display:flex; align-items:center;">
               <div id="play-pause-btn"></div>
@@ -166,7 +184,7 @@
           </div>
           <div class="audio-credit-row">
             <p id="audio-credit">Audio: NHK Creative Library</p>
-            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox (Public Domain).</p>
+            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox</p>
           </div>
 
         </div><!-- column-wrapper end -->
@@ -228,36 +246,18 @@
         <dl>
           <dt>Commentary</dt>
           <dd>
-            The Kokin Wakashū's headnote reads, "Composed on the theme of a folding screen painted with maple leaves flowing down the Tatsuta River, at the request of the Nijō Consort when she was Consort to the Crown Prince." Invited by Fujiwara no Takaiko, Ariwara no Narihira composed this screen poem on the painted scene of autumn leaves flowing down the Tatsuta River. The two had once been lovers, but Takaiko had since become a consort of Emperor Seiwa, placing her far above him in status. It is thought that Narihira poured into this poem feelings of love he could no longer express directly.
+            The Kokin Wakashū says this was written about a painted screen showing autumn leaves flowing down the Tatsuta River, at the invitation of Fujiwara no Takaiko. She and Narihira had once been lovers, but she had become a consort of Emperor Seiwa, far above him. He is thought to have hidden in this poem the love he could no longer speak.
           </dd>
         </dl>
         <dl class="last-dl">
           <dt>About the Poet</dt>
           <dd>
-            Ariwara no Narihira was a son of Prince Abo, himself a son of Emperor Heizei, but was removed from the imperial family and made a subject. Free-spirited and gifted at poetry, he is considered the model for the protagonist of The Tales of Ise.
+            Ariwara no Narihira was a son of Prince Abo (a son of Emperor Heizei) but became a commoner. Free-spirited and a gifted poet, he is believed to be the hero of The Tales of Ise.
           </dd>
         </dl>
       </div>
     </div>
     <div class="chart-image-row">
-    <div class="chart-section">
-      <dl>
-        <dt class='title'>Ariwara no Narihira Ason's Chart of the Heart</dt>
-            <dd>
-              <p>A chart and a modern-language reflection of the poet's inner feelings.</p>
-              <div class="emotion-chart">
-                <div id="radarChartWrapper">
-                  <canvas id="radarChart" width="300" height="300"></canvas>
-                </div>
-                <div>
-                  <p class="chart-quotes-title">The Poet's Feelings (A Personal Interpretation)</p>
-                  <p>The river buried in crimson leaves overflows —<br class="br-pc">just like my feelings for you.</p>
-                  <p style="margin-top:1em;">I want to tell you, but I can't find the words<br class="br-pc">to make this wild love last forever.</p>
-                </div>
-              </div>
-            </dd>
-      </dl>
-    </div>
     <div class="image-section">
       <dl>
         <dt class='title'>Poem Illustration</dt>
@@ -267,7 +267,721 @@
         </dd>
       </dl>
     </div>
+    <div class="nenpyo-section">
+      <dl>
+        <dt class='title'>Ariwara no Narihira: A Short Timeline</dt>
+        <dd>
+          <dl class="nenpyo">
+            <dt>825</dt>
+            <dd>Born as a son of Prince Abo</dd>
+            <dt>826</dt>
+            <dd>Given the family name Ariwara</dd>
+            <dt>841</dt>
+            <dd>Becomes an officer of the Right Palace Guards</dd>
+            <dt>849</dt>
+            <dd>Given Junior Fifth Rank, Lower Grade</dd>
+            <dt>865</dt>
+            <dd>Becomes Head of the Right Stables</dd>
+            <dt>877</dt>
+            <dd>Given Junior Fourth Rank, Upper Grade, and becomes Acting Middle Captain of the Right Palace Guards</dd>
+            <dt>879</dt>
+            <dd>Becomes Head Chamberlain (Kurōdo no Tō)</dd>
+            <dt>880</dt>
+            <dd>Dies</dd>
+            <dt>Notes</dt>
+            <dd>
+              <ul>
+                <li>Counted as one of the Six Immortal Poets</li>
+                <li>Counted as one of the Thirty-Six Immortal Poets</li>
+              </ul>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Ariwara no Narihira's Family Tree</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 17.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__tenno">Brown text</span>Emperor</li>
+              <li><span class="fk-legend__tno" aria-hidden="true"></span>Emperor's number in the line of succession</li>
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+              <li><span class="fk-legend__eq">＝</span>Marriage</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Ariwara no Narihira's family tree">
+            <script type="application/json">
+{
+ "lang": "en",
+ "tooltips": "fujiwara",
+ "nodes": [
+  {
+   "id": "heizei",
+   "n": "平城",
+   "k": 1,
+   "t": 51,
+   "x": 16,
+   "y": 62
+  },
+  {
+   "id": "fuyutsugu",
+   "n": "冬嗣",
+   "x": 16,
+   "y": 310
+  },
+  {
+   "id": "abo",
+   "n": "阿保親王",
+   "x": 136,
+   "y": 62
+  },
+  {
+   "id": "yoshifusa",
+   "n": "良房",
+   "x": 136,
+   "y": 150
+  },
+  {
+   "id": "kiyohime",
+   "n": "源潔姫",
+   "x": 136,
+   "y": 194
+  },
+  {
+   "id": "ninmyo",
+   "n": "仁明",
+   "k": 1,
+   "t": 54,
+   "x": 136,
+   "y": 246
+  },
+  {
+   "id": "junshi",
+   "n": "順子",
+   "x": 136,
+   "y": 290
+  },
+  {
+   "id": "nagara",
+   "n": "長良",
+   "x": 136,
+   "y": 362
+  },
+  {
+   "id": "yoshikado",
+   "n": "良門",
+   "x": 136,
+   "y": 470
+  },
+  {
+   "id": "yukihira",
+   "n": "在原行平",
+   "p": 16,
+   "x": 260,
+   "y": 40
+  },
+  {
+   "id": "narihira",
+   "n": "在原業平",
+   "p": 17,
+   "self": 1,
+   "x": 260,
+   "y": 84
+  },
+  {
+   "id": "meishi",
+   "n": "明子",
+   "x": 260,
+   "y": 172
+  },
+  {
+   "id": "montoku",
+   "n": "文徳",
+   "k": 1,
+   "t": 55,
+   "x": 260,
+   "y": 224
+  },
+  {
+   "id": "mototsune",
+   "n": "基経",
+   "x": 260,
+   "y": 402
+  },
+  {
+   "id": "kunitsune",
+   "n": "国経",
+   "x": 260,
+   "y": 446
+  },
+  {
+   "id": "seiwa",
+   "n": "清和",
+   "k": 1,
+   "t": 56,
+   "x": 380,
+   "y": 189
+  },
+  {
+   "id": "takaiko",
+   "n": "高子",
+   "x": 380,
+   "y": 300
+  },
+  {
+   "id": "tokihira",
+   "n": "時平",
+   "x": 380,
+   "y": 346
+  },
+  {
+   "id": "nakahira",
+   "n": "仲平",
+   "x": 380,
+   "y": 386
+  },
+  {
+   "id": "tadahira",
+   "n": "貞信公",
+   "key": "忠平",
+   "p": 26,
+   "x": 380,
+   "y": 426
+  },
+  {
+   "id": "onshi",
+   "n": "温子",
+   "x": 380,
+   "y": 466
+  },
+  {
+   "id": "uda",
+   "n": "宇多",
+   "k": 1,
+   "t": 59,
+   "x": 380,
+   "y": 518
+  },
+  {
+   "id": "yozei",
+   "n": "陽成",
+   "k": 1,
+   "t": 57,
+   "p": 13,
+   "x": 520,
+   "y": 244.5
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-yoshifusa",
+   "top": "yoshifusa",
+   "bottom": "kiyohime"
+  },
+  {
+   "id": "c-junshi",
+   "top": "ninmyo",
+   "bottom": "junshi"
+  },
+  {
+   "id": "c-montoku",
+   "top": "meishi",
+   "bottom": "montoku"
+  },
+  {
+   "id": "c-seiwa",
+   "top": "seiwa",
+   "bottom": "takaiko"
+  },
+  {
+   "id": "c-uda",
+   "top": "onshi",
+   "bottom": "uda"
+  }
+ ],
+ "kids": [
+  {
+   "from": "heizei",
+   "to": [
+    "abo"
+   ]
+  },
+  {
+   "from": "abo",
+   "to": [
+    "yukihira",
+    "narihira"
+   ]
+  },
+  {
+   "from": "fuyutsugu",
+   "to": [
+    "yoshifusa",
+    "junshi",
+    "nagara",
+    "yoshikado"
+   ]
+  },
+  {
+   "from": "c-yoshifusa",
+   "to": [
+    "meishi"
+   ]
+  },
+  {
+   "from": "c-junshi",
+   "to": [
+    "montoku"
+   ]
+  },
+  {
+   "from": "nagara",
+   "to": [
+    "takaiko",
+    "mototsune",
+    "kunitsune"
+   ]
+  },
+  {
+   "from": "c-montoku",
+   "to": [
+    "seiwa"
+   ]
+  },
+  {
+   "from": "c-seiwa",
+   "to": [
+    "yozei"
+   ]
+  },
+  {
+   "from": "mototsune",
+   "to": [
+    "tokihira",
+    "nakahira",
+    "tadahira",
+    "onshi"
+   ]
+  }
+ ],
+ "arrows": [
+  {
+   "points": [
+    [
+     438,
+     84
+    ],
+    [
+     470,
+     84
+    ],
+    [
+     470,
+     300
+    ],
+    [
+     439,
+     300
+    ]
+   ],
+   "head": false,
+   "label": {
+    "text": "Lovers in The Tales of Ise",
+    "x": 478,
+    "y": 150
+   }
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 806 544" width="806" height="544" role="img" aria-label="Ariwara no Narihira's family tree" lang="en" class="fk-svg kd-svg" style="max-width:1209px;min-width:min(640px,1209px)" data-src="llihki">
+<g class="fk-edges"><path d="M169.5 159V185M173.5 159V185" class="fk-edge fk-eq"/><path d="M163.5 255V281M167.5 255V281" class="fk-edge fk-eq"/><path d="M292.5 181V215M296.5 181V215" class="fk-edge fk-eq"/><path d="M400 198V291M404 198V291" class="fk-edge fk-eq"/><path d="M393 475V493M397 475V493" class="fk-edge fk-eq"/><path d="M65 62H122" class="fk-edge"/><path d="M122 62H133" class="fk-edge"/><path d="M220 62H246" class="fk-edge"/><path d="M246 40V84" class="fk-edge"/><path d="M246 40H257" class="fk-edge"/><path d="M246 84H257" class="fk-edge"/><path d="M99 310H122" class="fk-edge"/><path d="M122 150V470" class="fk-edge"/><path d="M122 150H133" class="fk-edge"/><path d="M122 290H133" class="fk-edge"/><path d="M122 362H133" class="fk-edge"/><path d="M122 470H133" class="fk-edge"/><path d="M173.5 172H246" class="fk-edge"/><path d="M246 172H257" class="fk-edge"/><path d="M167.5 268H246" class="fk-edge"/><path d="M246 224V268" class="fk-edge"/><path d="M246 224H257" class="fk-edge"/><path d="M195 362H246" class="fk-edge"/><path d="M246 300V446" class="fk-edge"/><path d="M246 300H377" class="fk-edge"/><path d="M246 402H257" class="fk-edge"/><path d="M246 446H257" class="fk-edge"/><path d="M296.5 189H366" class="fk-edge"/><path d="M366 189H377" class="fk-edge"/><path d="M404 244.5H506" class="fk-edge"/><path d="M506 244.5H517" class="fk-edge"/><path d="M345 402H366" class="fk-edge"/><path d="M366 346V466" class="fk-edge"/><path d="M366 346H377" class="fk-edge"/><path d="M366 386H377" class="fk-edge"/><path d="M366 426H377" class="fk-edge"/><path d="M366 466H377" class="fk-edge"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"><path d="M438 84L470 84L470 300L439 300" class="kd-arrow"/><text class="kd-arrow-label" x="478" y="150">Lovers in The Tales of Ise</text></g>
+<g>
+<g class="fk-node is-tenno" transform="translate(16,62)" data-tip="&lt;h3&gt;Emperor Heizei&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;51st emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;774–824&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;806–809&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;After stepping down, he became a monk following the Retired Emperor Heizei Incident (Kusuko Incident) of 810&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="50" height="26"/><text class="fk-name" x="0" y="0.5">Heizei</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">51</text></g>
+<g class="fk-node" transform="translate(16,310)" data-tip="&lt;h3&gt;Fujiwara no Fuyutsugu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;775–826&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Minister of the Left&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Second Rank; Senior First Rank after death&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="84" height="26"/><text class="fk-name" x="0" y="0.5">Fuyutsugu</text></g></g>
+<g class="fk-node" transform="translate(136,62)" data-tip="&lt;h3&gt;Prince Abo&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;792–842&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Third Rank for princes; First Rank after death&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Heizei; father of Ariwara no Yukihira and Narihira&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="85" height="26"/><text class="fk-name" x="0" y="0.5">Prince Abo</text></g></g>
+<g class="fk-node" transform="translate(136,150)" data-tip="&lt;h3&gt;Fujiwara no Yoshifusa&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;804–872&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Regent (Sesshō) and Chancellor of the Realm&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior First Rank; Senior First Rank after death&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;The first regent in history who was not of the imperial family&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="77" height="26"/><text class="fk-name" x="0" y="0.5">Yoshifusa</text></g></g>
+<g class="fk-node" transform="translate(136,194)" data-tip="&lt;h3&gt;Minamoto no Kiyohime&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Emperor Saga&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Wife of Fujiwara no Yoshifusa; mother of Akirakeiko&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="75" height="26"/><text class="fk-name" x="0" y="0.5">Kiyohime</text></g></g>
+<g class="fk-node is-tenno" transform="translate(136,246)" data-tip="&lt;h3&gt;Emperor Ninmyō&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;54th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;810–850&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;833–850&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="63" height="26"/><text class="fk-name" x="0" y="0.5">Ninmyō</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">54</text></g>
+<g class="fk-node" transform="translate(136,290)" data-tip="&lt;h3&gt;Fujiwara no Nobuko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Fujiwara no Fuyutsugu&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;A consort of Emperor Ninmyō; mother of Emperor Montoku&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="64" height="26"/><text class="fk-name" x="0" y="0.5">Nobuko</text></g></g>
+<g class="fk-node" transform="translate(136,362)" data-tip="&lt;h3&gt;Fujiwara no Nagara&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;802–856&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Acting Middle Counselor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Second Rank; Senior First Rank after death&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Imperial in-law: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Uncle (on the mother's side) of Emperor Montoku; grandfather (on the mother's side) of Emperor Yōzei&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="60" height="26"/><text class="fk-name" x="0" y="0.5">Nagara</text></g></g>
+<g class="fk-node" transform="translate(136,470)" data-tip="&lt;h3&gt;Fujiwara no Yoshikado&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Palace guard (Udoneri)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Sixth Rank, Upper Grade&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="82" height="26"/><text class="fk-name" x="0" y="0.5">Yoshikado</text></g></g>
+<g class="fk-node is-poet" transform="translate(260,40)" data-tip="&lt;h3&gt;Ariwara no Yukihira&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;818–893&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Middle Counselor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Third Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 16, &quot;Tachiwakare...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Middle Counselor Yukihira&lt;/span&gt;&lt;/div&gt;" data-p="16"><a href="/16_en.html" aria-label="Ariwara no Yukihira (Hyakunin Isshu Poem 16)"><rect class="fk-hit" x="-2" y="-13" width="177" height="26"/><text class="fk-name" x="0" y="0.5">Ariwara no Yukihira</text><circle class="fk-badge" cx="163" cy="0" r="10"/><text class="fk-badge-num" x="163" y="0.5">16</text></a></g>
+<g class="fk-node is-poet is-self" transform="translate(260,84)" data-tip="&lt;h3&gt;Ariwara no Narihira&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;825–880&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Fourth Rank, Upper Grade&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 17, &quot;Chihayaburu...&quot;&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="183" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="177" height="26"/><text class="fk-name" x="0" y="0.5">Ariwara no Narihira</text><circle class="fk-badge" cx="163" cy="0" r="10"/><text class="fk-badge-num" x="163" y="0.5">17</text></g></g>
+<g class="fk-node" transform="translate(260,172)" data-tip="&lt;h3&gt;Fujiwara no Akirakeiko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;828–900&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Fujiwara no Yoshifusa and Minamoto no Kiyohime&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;A consort of Emperor Montoku and mother of Emperor Seiwa; called the Somedono Empress&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="86" height="26"/><text class="fk-name" x="0" y="0.5">Akirakeiko</text></g></g>
+<g class="fk-node is-tenno" transform="translate(260,224)" data-tip="&lt;h3&gt;Emperor Montoku&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;55th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;827–858&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;850–858&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="73" height="26"/><text class="fk-name" x="0" y="0.5">Montoku</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">55</text></g>
+<g class="fk-node" transform="translate(260,402)" data-tip="&lt;h3&gt;Fujiwara no Mototsune&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;His birth father was Nagara; adopted by Yoshifusa&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;836–891&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Regent, Kampaku (chief adviser), and Chancellor of the Realm&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior First Rank; Senior First Rank after death&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In practice, the first Kampaku in history&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Imperial in-law: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Grandfather (on the mother's side) of Emperors Suzaku and Murakami (their mother was Fujiwara no Onshi)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="86" height="26"/><text class="fk-name" x="0" y="0.5">Mototsune</text></g></g>
+<g class="fk-node" transform="translate(260,446)" data-tip="&lt;h3&gt;Fujiwara no Kunitsune&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;828–908&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Eldest son of Fujiwara no Nagara&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="81" height="26"/><text class="fk-name" x="0" y="0.5">Kunitsune</text></g></g>
+<g class="fk-node is-tenno" transform="translate(380,189)" data-tip="&lt;h3&gt;Emperor Seiwa&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;56th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;850–881&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;858–876&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Took the throne at 9; his grandfather on his mother's side, Fujiwara no Yoshifusa, ran the government&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="48" height="26"/><text class="fk-name" x="0" y="0.5">Seiwa</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">56</text></g>
+<g class="fk-node" transform="translate(380,300)" data-tip="&lt;h3&gt;Fujiwara no Takaiko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;842–910&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;A consort of Emperor Seiwa; mother of Emperor Yōzei&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Before entering the palace, she was known for her love affair with Ariwara no Narihira, told in The Tales of Ise and elsewhere&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="64" height="26"/><text class="fk-name" x="0" y="0.5">Takaiko</text></g></g>
+<g class="fk-node" transform="translate(380,346)" data-tip="&lt;h3&gt;Fujiwara no Tokihira&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;871–909&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Minister of the Left&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Second Rank; Senior First Rank after death&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Had Sugawara no Michizane sent away to Dazaifu in the Shōtai Incident&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="66" height="26"/><text class="fk-name" x="0" y="0.5">Tokihira</text></g></g>
+<g class="fk-node" transform="translate(380,386)" data-tip="&lt;h3&gt;Fujiwara no Nakahira&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;875–945&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Minister of the Left&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Second Rank&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="74" height="26"/><text class="fk-name" x="0" y="0.5">Nakahira</text></g></g>
+<g class="fk-node is-poet" transform="translate(380,426)" data-tip="&lt;h3&gt;Fujiwara no Tadahira&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Name after death: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Teishin-kō&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;880–949&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Regent and Kampaku (chief adviser)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior First Rank; Senior First Rank after death&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 26, &quot;Ogurayama...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Teishin-kō&lt;/span&gt;&lt;/div&gt;" data-p="26"><a href="/26_en.html" aria-label="Fujiwara no Tadahira (Hyakunin Isshu Poem 26)"><rect class="fk-hit" x="-2" y="-13" width="106" height="26"/><text class="fk-name" x="0" y="0.5">Teishin-kō</text><circle class="fk-badge" cx="92" cy="0" r="10"/><text class="fk-badge-num" x="92" y="0.5">26</text></a></g>
+<g class="fk-node" transform="translate(380,466)" data-tip="&lt;h3&gt;Fujiwara no Onshi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of the Kampaku (chief adviser) Fujiwara no Mototsune&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;A consort of Emperor Uda. She adopted Prince Atsuhito (later Emperor Daigo), the son of Fujiwara no Taneko. The poet Ise served her as a lady-in-waiting&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="48" height="26"/><text class="fk-name" x="0" y="0.5">Onshi</text></g></g>
+<g class="fk-node is-tenno" transform="translate(380,518)" data-tip="&lt;h3&gt;Emperor Uda&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;59th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;867–931&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;887–897&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Gave Sugawara no Michizane important posts&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="34" height="26"/><text class="fk-name" x="0" y="0.5">Uda</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">59</text></g>
+<g class="fk-node is-tenno is-poet" transform="translate(520,244.5)" data-tip="&lt;h3&gt;Emperor Yōzei&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;57th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;869–949&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;876–884&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 13, &quot;Tsukubane no...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Retired Emperor Yōzei&lt;/span&gt;&lt;/div&gt;" data-p="13"><a href="/13_en.html" aria-label="Emperor Yōzei (Hyakunin Isshu Poem 13)"><rect class="fk-hit" x="-2" y="-13" width="68" height="26"/><text class="fk-name" x="0" y="0.5">Yōzei</text><circle class="fk-badge" cx="54" cy="0" r="10"/><text class="fk-badge-num" x="54" y="0.5">13</text></a><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">57</text></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+          <div class="kd-text">
+            <p>Ariwara no Narihira was born the fifth son of Prince Abo, a son of Emperor Heizei. His mother was Princess Ito, a daughter of Emperor Kanmu, so both his father and his mother came from the imperial family.</p>
+            <p>Prince Abo, however, was caught up in the Kusuko Incident and sent away to Dazaifu in Kyushu as its acting governor-general, which took him far from the throne. Later he asked the court to let his children leave the imperial family and become subjects. In 826, Narihira, together with his elder half-brother Yukihira and others, left the imperial family and was given the family name "Ariwara no Ason."</p>
+            <p><em>The Tales of Ise</em> describes a deep love between Narihira and Fujiwara no Takaiko, who was later called the "Nijō Empress." When it was decided that Takaiko would enter the palace as a consort of Emperor Seiwa, the two tried to run away together. But on the way, Takaiko's elder brothers caught up with them and took her back.<br class="br-pc"> After that, women who remind readers of Takaiko appear again and again in <em>The Tales of Ise</em>, in stories of love and parting with Narihira.</p>
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <dt>Tatsuta-age</dt>
+            <dd style='display:flex; gap:10px; align-items:center;'><img loading='lazy' src='../img/tatsutaage.webp'
+                style='width:100px; height:67px;' alt='Tatsuta-age (Japanese fried chicken)' width="300" height="210">
+              <div style='display:flex; align-items:center;'>
+                <span><em>Tatsuta-age</em> is Japanese fried chicken marinated in soy sauce, which turns its surface red when fried. Its name is said to come from this poem, which describes autumn leaves floating on the Tatsuta River.</span></div>
+            </dd>
+
+            <dt>Prince Abo</dt>
+            <dd class='thumb-image'><img loading='lazy' src='../img/Abo_Shinno.gif' alt='Prince Abo' width="1106" height="880">
+              <div>The first son of Emperor Heizei, and the father of <a href="/16_en.html">Ariwara no Yukihira</a> and <a href="/17_en.html">Ariwara no Narihira</a>.<br class="br-pc"> He is also said to be the real grandfather of <a
+                  href="/23_en.html">Ōe no Chisato</a>.</div>
+            </dd>
+
+            <dt>Why Narihira Left the Imperial Family</dt>
+            <dd>
+              After stepping down, Retired Emperor Heizei, urged on by Fujiwara no Kusuko, tried to take back power and clashed with his younger brother, Emperor Saga. Because of this "Retired Emperor Heizei Incident" (also called the "Kusuko Incident"), Heizei's first son, Prince Abo, was also punished and sent away to Dazaifu as its acting governor-general. Later, Prince Abo asked the emperor to let his sons leave the imperial family and become subjects, and Yukihira and Narihira were given the family name "Ariwara."
+            </dd>
+
+            <dt>The Six Poetic Sages (<em>Rokkasen</em>)</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <img src="/img/rokkasen.gif?ver-02" alt="The Six Poetic Sages" usemap="#ImageMap" width="1280" height="1440">
+                <map name="ImageMap">
+                  <area shape="rect" coords="681,27,1138,372" href="/9_en.html" alt="Ono no Komachi" />
+                  <area shape="rect" coords="717,465,1100,812" href="/22_en.html" alt="Fun'ya no Yasuhide" />
+                  <area shape="rect" coords="713,913,1106,1278" href="/12_en.html" alt="High Priest Henjō" />
+                  <area shape="rect" coords="13,39,395,370" href="/8_en.html" alt="Priest Kisen" />
+                </map>
+                <figcaption><small>Click a poet to go to their poem page.</small></figcaption>
+              </figure>
+              <div>
+                <p style="width:100%; margin-bottom: 0.75em;">
+                  When the <em>Kokin Wakashū</em> was compiled, these six poets, including Ariwara no Narihira, were very famous poets of the generation before. In the Japanese preface to the <em>Kokin Wakashū</em>, Ki no Tsurayuki picked them out as "people whose names were known in recent times" and judged their poetry. His judgments were quite harsh, but the six later came to be called the <em>Rokkasen</em>, the Six Poetic Sages, and were highly praised as great poets.
+                </p>
+                <p style="width:100%; margin-bottom: 0.75em;">See <a
+                    href="/rokkasen_en.html">Ki no Tsurayuki's judgments of the six poets</a>.</p>
+                <p style="width:100%; margin-bottom: 0.75em;">
+                  One of the Six Poetic Sages, Ōtomo no Kuronushi, has no poem in the Hyakunin Isshu, while the other five were all chosen.</p>
+              </div>
+            </dd>
+            <dt>Narihira, the Hero of <em>The Tales of Ise</em></dt>
+            <dd><em>The Tales of Ise</em> is a collection of poem-tales, mostly about love, made in the early Heian period. Each story begins "Long ago, there was a man." Because of this opening line, the hero is called <em>Mukashi-otoko</em>, "the man of long ago." Of the roughly 200 poems he writes in the work, as many as 34 are known to be by Ariwara no Narihira, so Narihira is thought to be the model for the hero.</dd>
+            <dt>Poems Beginning "Chihayaburu"</dt>
+            <dd>
+              <p>The next two poems are an exchange in <em>The Tales of Ise</em> between the hero (Ariwara no Narihira) and a lady-in-waiting at the shrine of the Ise Priestess who had fallen in love with him.</p>
+            </dd>
+            <dt class="tsugai">
+              <span style="background: linear-gradient(transparent 70%, #f9abbc 30%);">The Lady-in-Waiting's Poem</span>
+            </dt>
+            <dd>
+              <div class='quote'><q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>ちはやぶる
+                    <ruby>神<rt>かみ</rt></ruby>の<ruby>斎垣<rt>いかき</rt></ruby>も
+                    <ruby>越<rt>こ</rt></ruby>えぬべし
+                    <br><ruby>大宮人<rt>おおみやびと</rt></ruby>の
+                    <ruby>見<rt>み</rt></ruby>まくほしさに
+                    <span class="shutten"><em>The Tales of Ise</em></span>
+                  </p>
+                </q><q style="line-height:1.8;">
+                  <h3 class="was-h4">In English</h3>
+                  <p>I feel I could even cross the sacred fence of the gods,<br>just to catch a glimpse of you, a man of the court.</p>
+                </q></div>
+            </dd>
+            <dt class="tsugai">
+              <span style="background: linear-gradient(transparent 70%, #b5daff 30%);">Ariwara no Narihira's Poem</span>
+            </dt>
+            <dd>
+              <div class='quote'><q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>恋<rt>こひ</rt></ruby>しくは
+                  <ruby>来<rt>き</rt></ruby>ても<ruby>見<rt>み</rt></ruby>よかし
+                  ちはやぶる
+                  <br><ruby>神<rt>かみ</rt></ruby>のいさむる
+                  <ruby>道<rt>みち</rt></ruby>ならなくに
+                  <span class="shutten"><em>The Tales of Ise</em></span>
+                </q><q style="line-height:1.8;">
+                  <h3 class="was-h4">In English</h3>
+                  <p>If you miss me, come and see me.<br>This is not a path the gods forbid.</p>
+                </q></div>
+            </dd>
+
+            <dt>A Poem from "The Journey East" in <em>The Tales of Ise</em></dt>
+            <dd>
+              The next poem appears in "The Journey East" (<em>Azuma Kudari</em>) in <em>The Tales of Ise</em>. On a journey to the eastern provinces, at the Sumida River between the provinces of Musashi and Shimōsa, the hero learns that the birds he sees are called <em>miyakodori</em>, "birds of the capital," and writes this poem thinking of the woman he loves, whom he left in the capital.
+              <div class='quote' style="margin-bottom: 0;">
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>名<rt>な</rt></ruby>にし<ruby>負<rt>お</rt></ruby>はば
+                    いざ<ruby>言<rt>こと</rt></ruby><ruby>問<rt>と</rt></ruby>はむ
+                    <ruby>都鳥<rt>みやこどり</rt></ruby>
+                    <br>わが<ruby>思<rt>おも</rt></ruby>ふ<ruby>人<rt>ひと</rt></ruby>は
+                    ありやなしやと
+                  </p>
+                  <span class="shutten"><em>The Tales of Ise</em>, Ariwara no Narihira</span>
+                </q>
+                <q style="line-height:1.8; position:relative;">
+                  <img src="/img/yurikamome.gif" alt="A black-headed gull"
+                    style="position:absolute; width:70px; height:auto; right:5px; top:5px;" width="640" height="501">
+                  <h3 class="was-h4">In English</h3>
+                  <p>Bird of the capital,<br class="br-sp"> if you are true to your name, tell me:<br>is the one I love in the capital<br class="br-sp"> still well, or not?</p>
+                </q>
+              </div>
+              <p class="kome" style="margin-top: 0.25em;">The <em>miyakodori</em> is the black-headed gull. Today it is known as the official bird of Tokyo.</p>
+            </dd>
+
+            <dt>Kototoi Dango and Kototoi Monaka</dt>
+            <dd class='thumb-image2'>
+              <div class="swiper">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img src="/img/kototoidango.webp" alt="Kototoi Dango" width="774" height="516">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="/img/kototoimonaka.webp" alt="Kototoi Monaka" width="800" height="533">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="/img/kototoidango_gaikan.webp" alt="The Mukōjima Kototoi Dango shop" width="800" height="533">
+                  </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+              </div>
+              <div>
+                <p><em>Kototoi Dango</em>, named after Narihira's poem "Na ni shi owaba iza koto towamu miyakodori...," was created at the end of the Edo period.</p>
+                <p>At <a href="https://kototoidango.co.jp/">Mukōjima Kototoi Dango</a>, a long-established shop in Mukōjima on the banks of the Sumida River, these dumplings, served without skewers, have been made in the same place since the shop opened.</p>
+                <p>The round dumplings come in three colors, white, yellow, and black. Because they are not put together on one skewer, you can enjoy the flavor of each one. <em>Kototoi Monaka</em>, a wafer sweet shaped like a <em>miyakodori</em>, is also recommended: it looks lovely and has the same gentle sweetness as the dumplings.</p>
+                <p>Both are carefully made from selected Japanese ingredients and have been loved by many people across the ages.</p>
+                <p>In the shop, you can take your time and enjoy these sweets with fragrant tea.</p>
+                <p style="text-align:right; font-size:0.9em">March 20, 2025</p>
+              </div>
+            </dd>
+
+            <dt>Kototoi Bridge</dt>
+            <dd class='thumb-image2'>
+              <div class="swiper">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img src="/img/kototoibashi_01.webp" alt="Kototoi Bridge" width="800" height="533">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="/img/kototoibashi_02.webp" alt="Kototoi Bridge" width="800" height="533">
+                  </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+              </div>
+              <div>
+                <p>Kototoi Bridge crosses the Sumida River. Its name is said to come from Narihira's poem. As I looked out over the river from the bridge, black-headed gulls were flying gracefully.</p>
+                <p>The story goes that when Narihira first saw these birds, he did not know their name and asked the ferryman. The ferryman told him they were called <em>miyakodori</em>, "birds of the capital." Hearing the name reminded Narihira of the woman he loved, whom he had left in the capital, and he wrote the poem "Na ni shi owaba iza koto towamu miyakodori waga omou hito wa ari ya nashi ya to."</p>
+                <p style="text-align:right; font-size:0.9em">March 20, 2025</p>
+              </div>
+            </dd>
+
+            <dt>Another Poem from "The Journey East" in <em>The Tales of Ise</em></dt>
+            <dd>
+              The next poem also appears in "The Journey East" in <em>The Tales of Ise</em>. On his journey to the eastern provinces, the hero saw <em>kakitsubata</em> (rabbit-ear irises) blooming at Yatsuhashi in the province of Mikawa and wrote this poem. The word <em>tsuma</em> in the poem is a <em>kakekotoba</em> (a word with two meanings): <ruby>妻<rt>つま</rt></ruby>, "wife," and <ruby>褄<rt>つま</rt></ruby>, "the hem of a robe." The poem also places the five sounds "ka-ki-tsu-ha-ta" at the start of its five lines. This technique is called <em>oriku</em>.
+              <div class='quote' style="margin-bottom: 0;">
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>唐衣<rt>からころも</rt></ruby>
+                    <ruby>着<rt>き</rt></ruby>つつなれにし
+                    つましあれば
+                    <br>はるばる<ruby>来<rt>き</rt></ruby>ぬる
+                    <ruby>旅<rt>たび</rt></ruby>をしぞ<ruby>思<rt>おも</rt></ruby>ふ
+                  </p>
+                  <span class="shutten"><em>The Tales of Ise</em>, Ariwara no Narihira</span>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p>Like a Chinese robe I have worn so long it feels part of me, I have a dear wife I left in the capital, so I feel deeply how far I have come on this journey.</p>
+                </q>
+              </div>
+            </dd>
+
+            <dt>Ukiyo-e by Katsukawa Shunshō</dt>
+            <dd class='thumb-image2'>
+              <figure class='portrait'>
+                <a href='../img/17-ise-monogatari_large.webp' data-lightbox='narihira' data-title='Ukiyo-e by Katsukawa Shunshō'>
+                  <img loading='lazy' src='../img/17-ise-monogatari.webp' alt='Ukiyo-e of Ariwara no Narihira by Katsukawa Shunshō' width="459" height="640">
+                </a>
+                <figcaption>
+                  <a href='https://commons.wikimedia.org/wiki/File:Shunsho-ise-monogatari.jpg' target='_blank' rel='noopener'>
+                    <small>Katsukawa Shunshō, Public domain, via Wikimedia Commons</small>
+                  </a>
+                </figcaption>
+              </figure>
+              <div>
+                <p>
+                  This ukiyo-e shows Ariwara no Narihira writing the poem "Na ni shi owaba iza koto towamu...." Later, a nearby dumpling shop began selling <em>Kototoi Dango</em>, named after the poem. They became popular, and it is said that this is why the nearby bridge came to be called Kototoi Bridge, and the street Kototoi Street.
+                </p>
+                <p>
+                  The birds floating on the river in the upper left of the print are <em>miyakodori</em>. There are several theories, but the most widely accepted one is that the <em>miyakodori</em> is the black-headed gull, which is now known as the official bird of Tokyo.
+                </p>
+              </div>
+            </dd>
+
+            <dt>Ogata Kōrin's <em>Irises at Yatsuhashi</em></dt>
+            <dd>
+              <p>
+                <em>Irises at Yatsuhashi</em> (<em>Yatsuhashi-zu Byōbu</em>), a folding screen by the Edo-period painter and craftsman Ogata Kōrin, takes as its subject the story of Yatsuhashi in Mikawa from "The Journey East" in <em>The Tales of Ise</em>.
+              </p>
+              <figure>
+                <a href='../img/yatsuhashizubyoubu_large.webp' data-lightbox='narihira' data-title='Irises at Yatsuhashi by Ogata Kōrin'>
+                  <img loading='lazy' src='../img/yatsuhashizubyoubu.webp' alt='Irises at Yatsuhashi by Ogata Kōrin'
+                    style="width:100%; height:auto;" width="1280" height="621">
+                </a>
+                <figcaption>
+                  <a href='https://www.metmuseum.org/art/collection/search/39664'>
+                    <small>Public domain (The Metropolitan Museum of Art)</small>
+                  </a>
+                </figcaption>
+              </figure>
+            </dd>
+
+            <dt>A Poem from "Nagisa-no-in" in <em>The Tales of Ise</em></dt>
+            <dd>
+              The next poem also appears in <em>The Tales of Ise</em>.<br class="br-pc"> Ariwara no Narihira wrote it while viewing cherry blossoms at Nagisa-no-in, the country house of Prince Koretaka (the first son of Emperor Montoku) at Katano-ga-hara (now Hirakata City, Osaka).
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p><ruby>世<rt>よ</rt></ruby>の<ruby>中<rt>なか</rt></ruby>に たえて<ruby>桜<rt>さくら</rt></ruby>の
+                    なかりせば <br><ruby>春<rt>はる</rt></ruby>の<ruby>心<rt>こころ</rt></ruby>は
+                    のどけからまし</p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">If there were no cherry blossoms at all in this world,<br
+                      class='br-pc'> how calm people's hearts would be in spring.</p>
+                </q>
+              </div>
+            </dd>
+            <dt>The Site of Nagisa-no-in</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/nagisa-no-inn_large.webp' data-lightbox='narihira' data-title='Nagisa-no-in'>
+                  <img loading='lazy' src='../img/nagisa-no-inn_small.webp' alt='The site of Nagisa-no-in' width="640" height="480">
+                </a>
+                <figcaption><small>(Photo taken August 10, 2026)</small></figcaption>
+              </figure>
+              <div>
+                <p>Nagisa-motomachi, Hirakata City, Osaka. This was the country house of Prince Koretaka, the first son of Emperor Montoku. <em>The Tales of Ise</em> describes Prince Koretaka, Ariwara no Narihira, and others visiting this place and enjoying the cherry blossoms. Narihira's poem "Yo no naka ni taete sakura no nakariseba haru no kokoro wa nodokekaramashi" is said to have been written at Nagisa-no-in. Today a stone monument with this poem stands at the site.</p>
+              </div>
+            </dd>
+
+            <dt>Folding Screen of Cherry-Blossom Viewing</dt>
+            <dd>
+              <p>This folding screen shows a scene from "Nagisa-no-in" in <em>The Tales of Ise</em>. It is a work by Sumiyoshi Gukei, a painter of the early Edo period.</p>
+              <figure>
+                <a href='../img/nagisanoin_large.webp' data-lightbox='narihira' data-title='Folding Screen of Cherry-Blossom Viewing'>
+                  <img loading='lazy' src="/img/nagisanoin.webp" alt="Folding Screen of Cherry-Blossom Viewing" style="width:100%; height:auto;" width="1280" height="589">
+                </a>
+                <figcaption>
+                  <small>Source: ColBase (https://colbase.nich.go.jp/)</small>
+                </figcaption>
+              </figure>
+            </dd>
+
+            <dt>Narihira's Farewell Poem</dt>
+            <dd>The next poem is the last one in <em>The Tales of Ise</em>. Its headnote says, "Long ago, a man fell ill and felt that he was about to die." It is Narihira's death poem, written when he fell ill and knew his end was near.
+              <div class='quote'><q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  つひに<ruby>行<rt>ゆ</rt></ruby>く
+                  <ruby>道<rt>みち</rt></ruby>とはかねて
+                  <ruby>聞<rt>き</rt></ruby>きしかど
+                  <br><ruby>昨日<rt>きのう</rt></ruby><ruby>今日<rt>けふ</rt></ruby>とは
+                  <ruby>思<rt>おも</rt></ruby>はざりしを
+                </q><q style="line-height: 1.7; margin-top: 0.25em;">
+                  <h3 class="was-h4">In English</h3>I had long heard it is the road we all must take in the end,<br>but I never thought it would be so soon, today or tomorrow.
+                </q></div>
+            </dd>
+
+            <dt>Ukiyo-e by Tsukioka Yoshitoshi</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/yoshitoshi_17_large.webp' data-lightbox='narihira' data-title='Tsukioka Yoshitoshi, "Narihira Carrying the Lady Nijō on His Back as They Flee"'>
+                  <img loading='lazy' src='../img/yoshitoshi_17.webp' alt='Tsukioka Yoshitoshi, Narihira Carrying the Lady Nijō on His Back as They Flee' width="640" height="485">
+                </a>
+                <figcaption><a
+                    href='https://commons.wikimedia.org/wiki/File:Tsukioka_Yoshitoshi_-_Narihira_and_Nijo_no_Tsubone_at_the_Fuji_River_-_Google_Art_Project.jpg' target='_blank' rel='noopener'><small>Yoshitoshi,
+                      Public domain, via Wikimedia Commons</small></a></figcaption>
+              </figure>
+              <div>
+                <p>
+                  This ukiyo-e is <em>Narihira Ason Carrying the Lady Nijō on His Back as They Flee</em> by Tsukioka Yoshitoshi. <em>The Tales of Ise</em> has a scene in which Narihira runs away with the Nijō Empress (Fujiwara no Takaiko), carrying her on his back, and this print shows that scene.
+                </p>
+              </div>
+            </dd>
+            <dt>Ukiyo-e by Katsushika Hokusai</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/hokusai_17_large.webp' data-lightbox='narihira' data-title='Ukiyo-e by Katsushika Hokusai'>
+                  <img loading='lazy' src='../img/hokusai_17.webp' alt='Ariwara no Narihira, from One Hundred Poems Explained by the Nurse, by Katsushika Hokusai' width="640" height="440">
+                </a>
+                <figcaption><a
+                    href='https://commons.wikimedia.org/wiki/File:%E7%99%BE%E4%BA%BA%E4%B8%80%E9%A6%96_%E4%B9%B3%E6%AF%8D%E3%81%8B%E7%B8%81%E8%AA%AC_%E5%9C%A8%E5%8E%9F%E6%A5%AD%E5%B9%B3-Poem_by_Ariwara_no_Narihira,_from_the_series_One_Hundred_Poems_Explained_by_the_Nurse_(Hyakunin_isshu_uba_ga_etoki)_MET_DP141099.jpg' target='_blank' rel='noopener'><small>Katsushika
+                      Hokusai, CC0, via Wikimedia Commons</small></a></figcaption>
+              </figure>
+              <div>
+                <p>
+                  This print is from <em>One Hundred Poems Explained by the Nurse</em> (<em>Hyakunin Isshu Uba ga Etoki</em>) by Katsushika Hokusai, an ukiyo-e artist of the Edo period. The idea of the series is a nurse explaining the Hyakunin Isshu poems with easy-to-understand pictures. You can see people on a bridge enjoying the autumn leaves floating down the Tatsuta River, and people fishing on the riverbank. The words <em>mizu kukuru</em> in the poem are usually taken to mean "tie-dyeing," but they are sometimes read as "flowing under the water." Looking at Hokusai's print, which reading do you think it shows?
+                </p>
+              </div>
+            </dd>
+            <dt>Utagawa Kuniyoshi's <em>Hyakunin Isshu no Uchi</em></dt>
+            <dd class='thumb-image2'>
+              <figure class='portrait'>
+                <a href='../img/kuniyoshi_17_large.webp' data-lightbox='narihira' data-title='Ukiyo-e by Utagawa Kuniyoshi'>
+                  <img loading='lazy' src='../img/kuniyoshi_17.webp' alt='Ukiyo-e of Ariwara no Narihira by Utagawa Kuniyoshi' width="2428" height="3611">
+                </a>
+                <figcaption>
+                  <a href='https://commons.wikimedia.org/wiki/File:MET_DP124485.jpg' target='_blank' rel='noopener'>
+                    <small>Utagawa Kuniyoshi, CC0, via Wikimedia Commons</small>
+                  </a>
+                </figcaption>
+              </figure>
+              <div>
+                <p>This ukiyo-e is by Utagawa Kuniyoshi, an artist of the Edo period.<br class="br-pc"> It shows a scene that matches the poem in the Hyakunin Isshu.</p>
+                <p>Narihira's Hyakunin Isshu poem was written while looking at a painted folding screen, but this print shows the autumn leaves spreading over the Tatsuta River as if he were really seeing them.</p>
+                <p>Perhaps Narihira has come across a scene just like the one in his poem, and is fondly remembering the day he wrote it for the screen.</p>
+              </div>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -299,15 +1013,40 @@
   </footer>
   <!-- Footer end -->
 
-  <script src="../js/poems_en.js?20260803-03"></script>
-
-  <!-- Chart of the Heart -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="/js/kokoro-chart-data-en.js?20260726"></script>
+  <script src="../js/poems_en.js?20261007-04"></script>
+  <!-- photo sliders (swiper) -->
+  <script src="../js/swiper-bundle.min.js"></script>
   <script>
-    window.radarScores = KOKORO_CHART_DATA[17].scores;
+    document.addEventListener('DOMContentLoaded', () => {
+      new Swiper('.swiper', {
+        loop: true,
+        speed: 1500,
+        autoplay: {
+          delay: 1500,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+    });
   </script>
-  <script src="/js/raderChart.js?20260830-01"></script>
+  <!-- clickable image map (Six Poetic Sages) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/image-map-resizer/1.0.10/js/imageMapResizer.min.js"></script>
+  <script>
+    imageMapResize();
+  </script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261008-21"></script>
+  <script src="../js/keizu-diagram.js?20261008-02"></script>
+
 </body>
 
 </html>

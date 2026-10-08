@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-08T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -71,13 +71,13 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Shigure's Hyakunin Isshu",
-          "item": "https://hyakuninisshu.com/"
+          "item": "https://hyakuninisshu.com/index_en.html"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Poem List",
-          "item": "https://hyakuninisshu.com/list.html"
+          "item": "https://hyakuninisshu.com/list_en.html"
         },
         {
           "@type": "ListItem",
@@ -90,10 +90,14 @@
   ]
   </script>
   <!-- stylesheets -->
-  <link rel="stylesheet" href="../css/style.css?20261006-05">
+  <link rel="stylesheet" href="../css/style.css?20261008-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
-  <link rel="stylesheet" href="../css/poems_en.css?20260803-04">
+  <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
+  <link rel="stylesheet" href="../css/jquery.bxslider.css">
+  <link rel="stylesheet" href="../css/bxslider.css">
+  <link href="/css/lightbox.css" rel="stylesheet">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -103,6 +107,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -133,6 +145,13 @@
   <main>
     <div class="card">
       <div class="column-wrapper">
+        <nav class="breadcrumb-poem" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index_en.html">Top</a></li>
+            <li><a href="list_en.html">Poem List</a></li>
+            <li aria-current="page">No. 9 Ono no Komachi</li>
+          </ol>
+        </nav>
         <div class="select-container">
           <label for="themeSelector" id="themeSelector-label">Select a theme:</label>
           <select id="themeSelector" class="selector">
@@ -153,9 +172,9 @@
           <div class="checkbox1">
             <div style="display:flex; align-items:center;">
               <label for="toggle2" id="toggle2-label">Switch between the picture card and the matching card</label>
-              <p>Front</p>
+              <p>Front of the Card</p>
               <input type="checkbox" id="toggle2">
-              <p>Back</p>
+              <p>Back of the Card</p>
             </div>
             <div style="display:flex; align-items:center;">
               <div id="play-pause-btn"></div>
@@ -166,7 +185,7 @@
           </div>
           <div class="audio-credit-row">
             <p id="audio-credit">Audio: NHK Creative Library</p>
-            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox (Public Domain).</p>
+            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox</p>
           </div>
 
         </div><!-- column-wrapper end -->
@@ -228,36 +247,18 @@
         <dl>
           <dt>Commentary</dt>
           <dd>
-            This poem expresses the feelings of a beautiful woman who, having spent her days searching for sincere love, realizes that time has slipped away — leaving her aged and enveloped in solitude. Interpretations of this poem, however, have varied across the centuries.
+            A beautiful woman who spent her days looking for true love realizes that time has passed and she has grown old and lonely. How this poem is read, however, has changed from age to age.
           </dd>
         </dl>
         <dl class="last-dl">
           <dt>About the Poet</dt>
           <dd>
-            Little is confirmed about Ono no Komachi's birth, though she is said to have been the daughter of Ono no Yoshizane, a district governor in Dewa Province. A poet of the early Heian period, her origins and life remain shrouded in mystery. In Japan she is counted, alongside Cleopatra and Yang Guifei, as one of the "Three Great Beauties of the World," and countless legends surround her fabled beauty. She is also said to have served in the imperial household under Emperors Ninmyō and Montoku, displaying her poetic talent at court.
+            Little is known for sure about Ono no Komachi. She is said to have been the daughter of Ono no Yoshizane, an official in Dewa Province. In Japan she is counted with Cleopatra and Yang Guifei as one of the "three great beauties of the world," and many legends surround her. She is also said to have served at the courts of Emperors Ninmyō and Montoku.
           </dd>
         </dl>
       </div>
     </div>
     <div class="chart-image-row">
-    <div class="chart-section">
-      <dl>
-        <dt class='title'>Ono no Komachi's Chart of the Heart</dt>
-            <dd>
-              <p>A chart and a modern-language reflection of the poet's inner feelings.</p>
-              <div class="emotion-chart">
-                <div id="radarChartWrapper">
-                  <canvas id="radarChart" width="300" height="300"></canvas>
-                </div>
-                <div>
-                  <p class="chart-quotes-title">The Poet's Feelings (A Personal Interpretation)</p>
-                  <p>The bloom of love has long since faded,<br class="br-pc">leaving only a quiet sorrow behind.</p>
-                  <p style="margin-top:1em;">In the fading cherry blossoms,<br class="br-pc">I see what has become of me.</p>
-                </div>
-              </div>
-            </dd>
-      </dl>
-    </div>
     <div class="image-section">
       <dl>
         <dt class='title'>Poem Illustration</dt>
@@ -267,7 +268,464 @@
         </dd>
       </dl>
     </div>
+    <div class="nenpyo-section">
+      <dl>
+        <dt class='title'>Ono no Komachi: A Short Timeline</dt>
+        <dd>
+          <dl class="nenpyo">
+            <dt>Notes</dt>
+            <dd>
+              <p>Little is known for sure about Ono no Komachi's life, including when she was born and died.</p>
+              <ul>
+                <li>Counted as one of the Six Immortal Poets</li>
+                <li>Counted as one of the Thirty-Six Immortal Poets</li>
+              </ul>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Ono no Komachi's Family Tree</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 9.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+              <li><span class="fk-legend__dash"></span>Several generations skipped</li>
+              <li><span class="fk-legend__eq">＝</span>Marriage</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Ono no Komachi's family tree">
+            <script type="application/json">
+{
+ "lang": "en",
+ "nodes": [
+  {
+   "id": "imoko",
+   "n": "小野妹子",
+   "x": 16,
+   "y": 95
+  },
+  {
+   "id": "minemori",
+   "n": "小野岑守",
+   "x": 190,
+   "y": 95
+  },
+  {
+   "id": "toshiyukishitsu",
+   "n": "藤原敏行室",
+   "x": 350,
+   "y": 40
+  },
+  {
+   "id": "toshiyuki",
+   "n": "藤原敏行",
+   "key": "敏行",
+   "p": 18,
+   "x": 350,
+   "y": 84
+  },
+  {
+   "id": "takamura",
+   "n": "小野篁",
+   "p": 11,
+   "x": 350,
+   "y": 150
+  },
+  {
+   "id": "yoshizane",
+   "n": "小野良真",
+   "x": 540,
+   "y": 128
+  },
+  {
+   "id": "kuzuo",
+   "n": "小野葛絃",
+   "x": 540,
+   "y": 172
+  },
+  {
+   "id": "komachi",
+   "n": "小野小町",
+   "p": 9,
+   "self": 1,
+   "x": 710,
+   "y": 128
+  },
+  {
+   "id": "michikaze",
+   "n": "小野道風",
+   "x": 710,
+   "y": 172
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-toshiyuki",
+   "top": "toshiyukishitsu",
+   "bottom": "toshiyuki"
+  }
+ ],
+ "kids": [
+  {
+   "from": "minemori",
+   "to": [
+    "toshiyukishitsu",
+    "takamura"
+   ]
+  },
+  {
+   "from": "takamura",
+   "to": [
+    "yoshizane",
+    "kuzuo"
+   ]
+  },
+  {
+   "from": "yoshizane",
+   "to": [
+    "komachi"
+   ]
+  },
+  {
+   "from": "kuzuo",
+   "to": [
+    "michikaze"
+   ]
+  }
+ ],
+ "lines": [
+  {
+   "points": [
+    [
+     128,
+     95
+    ],
+    [
+     187,
+     95
+    ]
+   ],
+   "dash": true
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 873 198" width="873" height="198" role="img" aria-label="Ono no Komachi's family tree" lang="en" class="fk-svg kd-svg" style="max-width:1310px;min-width:min(640px,1310px)" data-src="1guwpq8">
+<g class="fk-edges"><path d="M427 49V75M431 49V75" class="fk-edge fk-eq"/><path d="M324 95H336" class="fk-edge"/><path d="M336 40V150" class="fk-edge"/><path d="M336 40H347" class="fk-edge"/><path d="M336 150H347" class="fk-edge"/><path d="M511 150H526" class="fk-edge"/><path d="M526 128V172" class="fk-edge"/><path d="M526 128H537" class="fk-edge"/><path d="M526 172H537" class="fk-edge"/><path d="M677 128H696" class="fk-edge"/><path d="M696 128H707" class="fk-edge"/><path d="M648 172H696" class="fk-edge"/><path d="M696 172H707" class="fk-edge"/><path d="M128 95L187 95" class="fk-edge is-dash"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node" transform="translate(16,95)" data-tip="&lt;h3&gt;Ono no Imoko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Sent to Sui China as an envoy. The family line from him down to Ono no Minemori is not clear&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="111" height="26"/><text class="fk-name" x="0" y="0.5">Ono no Imoko</text></g></g>
+<g class="fk-node" transform="translate(190,95)" data-tip="&lt;h3&gt;Ono no Minemori&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;778–830&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Third son of Ono no Nagami&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Ono no Takamura; said to be the great-grandfather of Ono no Komachi&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="135" height="26"/><text class="fk-name" x="0" y="0.5">Ono no Minemori</text></g></g>
+<g class="fk-node" transform="translate(350,40)" data-tip="&lt;h3&gt;Daughter of Ono no Minemori&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Wife of Fujiwara no Toshiyuki; Ono no Takamura's elder or younger sister&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="162" height="26"/><text class="fk-name" x="0" y="0.5">Minemori's daughter</text></g></g>
+<g class="fk-node is-poet" transform="translate(350,84)" data-tip="&lt;h3&gt;Fujiwara no Toshiyuki&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown–901&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Commander of the Right Military Guards&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Fourth Rank, Upper Grade&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 18, &quot;Suminoe no...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Fujiwara no Toshiyuki Ason&lt;/span&gt;&lt;/div&gt;" data-p="18"><a href="/18_en.html" aria-label="Fujiwara no Toshiyuki (Hyakunin Isshu Poem 18)"><rect class="fk-hit" x="-2" y="-13" width="192" height="26"/><text class="fk-name" x="0" y="0.5">Fujiwara no Toshiyuki</text><circle class="fk-badge" cx="178" cy="0" r="10"/><text class="fk-badge-num" x="178" y="0.5">18</text></a></g>
+<g class="fk-node is-poet" transform="translate(350,150)" data-tip="&lt;h3&gt;Ono no Takamura&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;802–853&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Councillor (Sangi)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ono no Minemori&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 11, &quot;Wata no hara yasoshima kakete...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;One theory says he was the grandfather of Ono no Komachi and Ono no Michikaze&lt;/span&gt;&lt;/div&gt;" data-p="11"><a href="/11_en.html" aria-label="Ono no Takamura (Hyakunin Isshu Poem 11)"><rect class="fk-hit" x="-2" y="-13" width="162" height="26"/><text class="fk-name" x="0" y="0.5">Ono no Takamura</text><circle class="fk-badge" cx="148" cy="0" r="10"/><text class="fk-badge-num" x="148" y="0.5">11</text></a></g>
+<g class="fk-node" transform="translate(540,128)" data-tip="&lt;h3&gt;Ono no Yoshizane&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ono no Takamura (his name is also written 良貞 or 良実)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Said to be the father of Ono no Komachi&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="138" height="26"/><text class="fk-name" x="0" y="0.5">Ono no Yoshizane</text></g></g>
+<g class="fk-node" transform="translate(540,172)" data-tip="&lt;h3&gt;Ono no Kuzuo&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Assistant Governor-General of Dazaifu&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ono no Takamura&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Ono no Yoshifuru and Ono no Michikaze&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="109" height="26"/><text class="fk-name" x="0" y="0.5">Ono no Kuzuo</text></g></g>
+<g class="fk-node is-poet is-self" transform="translate(710,128)" data-tip="&lt;h3&gt;Ono no Komachi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 9, &quot;Hana no iro wa...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Her origins are not clear. She is usually said to be the daughter of Ono no Yoshizane, but some say she was the daughter of Ono no Takamura&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="157" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="151" height="26"/><text class="fk-name" x="0" y="0.5">Ono no Komachi</text><circle class="fk-badge" cx="137" cy="0" r="10"/><text class="fk-badge-num" x="137" y="0.5">9</text></g></g>
+<g class="fk-node" transform="translate(710,172)" data-tip="&lt;h3&gt;Ono no Michikaze&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Third son of Ono no Kuzuo; grandson of Ono no Takamura&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Famous as a calligrapher, one of the Three Great Calligraphers (Sanseki)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="138" height="26"/><text class="fk-name" x="0" y="0.5">Ono no Michikaze</text></g></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+          <div class="kd-text">
+            <p>The Ono clan played an important part in both politics and culture from the Asuka period to the Heian period.</p>
+            <p>In the Asuka period, Ono no Imoko went to Sui China as head of a Japanese mission. He is famous for carrying a letter for Prince Shōtoku to the Sui emperor that began, "The Son of Heaven in the land where the sun rises..."</p>
+            <p>In the Heian period, Ono no Takamura became known as a learned and gifted official and writer, and Ono no Michikaze, one of the Three Great Calligraphers, had a great influence on Japanese calligraphy.</p>
+            <p>And Ono no Komachi, one of the Six Poetic Sages, is remembered for her elegant poems and her legendary beauty.</p>
+            <p>The poet Fujiwara no Toshiyuki married a daughter of Ono no Minemori, who was Ono no Takamura's elder or younger sister, so the Ono and Fujiwara clans were also linked by marriage.</p>
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <dt id="interpretation">What Komachi Meant by the Cherry Blossoms</dt>
+            <dd>
+              <p style="width:100%; margin-bottom: 0.75em;">
+                Ono no Komachi's Hyakunin Isshu poem, "Hana no iro wa...," has two main readings. In the Middle Ages, it was read as a poem that links the cherry blossoms to love between a man and a woman, and to fading beauty: the fading color of the blossoms stands for her own youth and for love that changes.
+              </p>
+              <p style="width:100%; margin-bottom: 0.75em;">But in the Edo period, scholars of Japanese classics such as Keichū, Kamo no Mabuchi, and Motoori Norinaga offered a different reading. Focusing on what the words originally meant, they argued that the poem need not be a metaphor for love; it can also be read simply as a poem about cherry blossoms losing their color. In other words, Komachi may have just been describing a spring scene: "While I gazed at the long spring rain, the color of the cherry blossoms faded."
+              </p>
+              <p style="width:100%; margin-bottom: 0.75em;">
+                In Japanese schools today, the poem is usually taught as one about love and growing old. Perhaps being read in so many ways over the ages is part of what makes it a great poem.</p>
+            </dd>
+
+            <dt>The Six Poetic Sages (<em>Rokkasen</em>)</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <img src="/img/rokkasen.gif?ver-02" alt="The Six Poetic Sages" usemap="#ImageMap" width="1280" height="1440">
+                <map name="ImageMap">
+                  <area shape="rect" coords="717,465,1100,812" href="/22_en.html" alt="Fun'ya no Yasuhide" />
+                  <area shape="rect" coords="713,913,1106,1278" href="/12_en.html" alt="High Priest Henjō" />
+                  <area shape="rect" coords="13,39,395,370" href="/8_en.html" alt="Priest Kisen" />
+                  <area shape="rect" coords="13,443,402,806" href="/17_en.html" alt="Ariwara no Narihira" />
+                </map>
+                <figcaption><small>Click a poet to go to their poem page.</small></figcaption>
+              </figure>
+              <div>
+                <p style="width:100%; margin-bottom: 0.75em;">
+                  When the <em>Kokin Wakashū</em> was compiled, these six poets, including Ono no Komachi, were very famous poets of the generation before. In the Japanese preface to the <em>Kokin Wakashū</em>, Ki no Tsurayuki picked them out as "people whose names were known in recent times" and judged their poetry. His judgments were quite harsh, but the six later came to be called the <em>Rokkasen</em>, the Six Poetic Sages, and were highly praised as great poets.
+                </p>
+                <p style="width:100%; margin-bottom: 0.75em;">See <a
+                    href="/rokkasen_en.html">Ki no Tsurayuki's judgments of the six poets</a>.</p>
+                <p style="width:100%; margin-bottom: 0.75em;">
+                  One of the Six Poetic Sages, Ōtomo no Kuronushi, has no poem in the Hyakunin Isshu, while the other five were all chosen.</p>
+              </div>
+            </dd>
+
+            <dt>A Poem About the Heart in Love</dt>
+            <dd>
+              After throwing herself into many loves, Ono no Komachi seems to have reached a calm understanding of how easily people's hearts change. "Yo no naka" in this poem can mean "the world" but also "the relationship between a man and a woman," and here it is thought to mean the second. Her quiet gaze, seeing a change of heart as part of nature, has the depth of someone who has known both the sweet and the bitter.
+              <div class='quote'><q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>色<rt>いろ</rt></ruby><ruby>見<rt>み</rt></ruby>えで
+                  <ruby>移<rt>うつ</rt></ruby>ろふものは
+                  <ruby>世<rt>よ</rt></ruby>の<ruby>中<rt>なか</rt></ruby>の
+                  <br><ruby>人<rt>ひと</rt></ruby>の<ruby>心<rt>こころ</rt></ruby>の
+                  <ruby>花<rt>はな</rt></ruby>にぞありける
+                  <span class="shutten"><em>Kokin Wakashū</em>, Ono no Komachi</span>
+                </q><q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">
+                    What fades without showing its color<br class="br-pc">is the flower of the heart between lovers.
+                  </p>
+                </q></div>
+            </dd>
+
+            <dt>A Poem on Life, Death, and Impermanence</dt>
+            <dd>Komachi wrote of how nothing in life lasts. Thinking of what she would become after death, she also wrote about the impermanence of life and death.
+              <div class='quote'><q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  あはれなり
+                  わが<ruby>身<rt>み</rt></ruby>の<ruby>果<rt>は</rt></ruby>てや
+                  <ruby>浅緑<rt>あさみどり</rt></ruby>
+                  <br>つひには<ruby>野辺<rt>のべ</rt></ruby>の
+                  <ruby>霞<rt>かすみ</rt></ruby>と思へば
+                  <span class="shutten"><em>Shin Kokin Wakashū</em>, Ono no Komachi</span>
+                </q><q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.8; margin-top: 0.2em;">How sad it is that life and death never stay the same,<br class="br-pc">when I think that my body will become pale green smoke<br class="br-pc">and at last a haze drifting over the fields.</p>
+                </q></div>
+            </dd>
+
+            <dt>A Poem by Ise, in Contrast to Komachi</dt>
+            <dd>
+              Ono no Komachi wrote with sadness that she could never get back the youth and beauty she was losing. Ise, on the other hand, wrote that even if she withered like winter fields, she would wait for spring to come again, as the seasons turn. The two poems are opposites, but perhaps everyone has both feelings: missing the past and finding hope in the future.
+              <div class='quote'><q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>冬枯<rt>ふゆが</rt></ruby>れの
+                  <ruby>野辺<rt>のべ</rt></ruby>とわが<ruby>身<rt>み</rt></ruby>を
+                  <ruby>思<rt>おも</rt></ruby>ひせば
+                  <br>もえても<ruby>春<rt>はる</rt></ruby>を
+                  <ruby>待<rt>ま</rt></ruby>たましものを
+                  <span class="shutten"><em>Kokin Wakashū</em>, Ise</span>
+                </q><q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">
+                    If I thought of myself as a withered winter field,<br class="br-pc">then even if I were burned, I would wait for spring, when new shoots come up.
+                  </p>
+                </q></div>
+            </dd>
+
+            <dt>A Poem Hoping to Meet in a Dream</dt>
+            <dd>
+              Ono no Komachi wrote that she wanted to meet her lover, even if only in a fleeting dream. At the time, people believed that if someone you loved appeared in your dream, it was because they were thinking of you strongly. The wish to love and be loved in return seems the same in every age.
+              <div class='quote'><q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  うたた<ruby>寝<rt>ね</rt></ruby>に
+                  <ruby>恋<rt>こい</rt></ruby>しき<ruby>人<rt>ひと</rt></ruby>を
+                  <ruby>見<rt>み</rt></ruby>てしより
+                  <br><ruby>夢<rt>ゆめ</rt></ruby>てふものは
+                  <ruby>頼<rt>たの</rt></ruby>み<ruby>初<rt>そ</rt></ruby>めてき
+                  <span class="shutten"><em>Kokin Wakashū</em>, Ono no Komachi</span>
+                </q><q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">
+                    Ever since I saw the one I love while dozing,<br class="br-pc">I have begun to put my trust in dreams.
+                  </p>
+                </q></div>
+            </dd>
+            <dt>A Poem About a Dream She Did Not Want to Wake From</dt>
+            <dd>
+              The next poem expresses deep regret at waking from a dream in which she met the one she loved. In another poem she calmly watches people's hearts change, yet here she is driven by a love she cannot control and cannot help wishing to meet him, even in a dream. Her honesty in putting even such contradictory feelings into her poems, just as they are, is part of what makes them true and appealing.
+              <div class='quote'><q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>思<rt>おも</rt></ruby>ひつつ
+                  <ruby>寝<rt>ね</rt></ruby>ればや<ruby>人<rt>ひと</rt></ruby>の
+                  <ruby>見<rt>み</rt></ruby>えつらむ
+                  <br><ruby>夢<rt>ゆめ</rt></ruby>と<ruby>知<rt>し</rt></ruby>りせば
+                  <ruby>覚<rt>さ</rt></ruby>めざらましを
+                  <span class="shutten"><em>Kokin Wakashū</em>, Ono no Komachi</span>
+                </q><q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">
+                    Did he appear because I fell asleep thinking of him again and again? Had I known it was a dream, I would never have woken up.
+                  </p>
+                </q></div>
+            </dd>
+
+            <dt>A Poem Using "Nagame"</dt>
+            <dd>The next poem is by <a href="/17_en.html">Ariwara no Narihira</a>.
+              <br class="br-pc">Ono no Komachi and Ariwara no Narihira, two great poets of the Heian period, each used the same pun, <em>nagame</em> ("long rain" and "gazing in thought"), to show the depths of their love.
+              <div class='quote'><q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>起<rt>お</rt></ruby>きもせず
+                  <ruby>寝<rt>ね</rt></ruby>もせで<ruby>夜<rt>よる</rt></ruby>を
+                  <ruby>明<rt>あ</rt></ruby>かしては
+                  <br><ruby>春<rt>はる</rt></ruby>のものとて
+                  ながめくらしつ
+                  <span class="shutten"><em>Kokin Wakashū</em>, Ariwara no Narihira</span>
+                </q><q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">
+                    Thinking of you, I spent the night neither getting up nor sleeping, and now I spend the day lost in thought, gazing at the long rain that comes with spring.
+                  </p>
+                </q></div>
+            </dd>
+
+            <dt id="yasuhide">A Poem to Fun'ya no Yasuhide</dt>
+            <dd>When <a href="/22_en.html">Fun'ya no Yasuhide</a> was posted to Mikawa Province, he asked Ono no Komachi to come with him.
+              <br class="br-pc">The next poem is her answer.
+              <div class='quote'><q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  わびぬれば
+                  <ruby>身<rt>み</rt></ruby>を<ruby>浮草<rt>うきくさ</rt></ruby>の
+                  <ruby>根<rt>ね</rt></ruby>を<ruby>絶<rt>た</rt></ruby>えて
+                  <br><ruby>誘<rt>さそ</rt></ruby>ふ<ruby>水<rt>みづ</rt></ruby>あらば
+                  いなむとぞ<ruby>思<rt>おも</rt></ruby>ふ
+                  <span class="shutten"><em>Kokin Wakashū</em>, Ono no Komachi</span>
+                </q><q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.8; margin-top: 0.2em;">I am so unhappy that, like a floating weed cut from its roots,<br
+                      class="br-pc">I think I would go wherever the water invites me.</p>
+                </q></div>
+            </dd>
+
+            <dt>How the Legend of Her Beauty Began</dt>
+            <dd>Ono no Komachi is the only woman among the Six Poetic Sages. In the Japanese preface to the <em>Kokin Wakashū</em>, <a href="/35_en.html">Ki no Tsurayuki</a> judged her poems as follows. He says that Komachi follows the style of Princess Sotoori, a legendary beauty. This remark is thought to be how so many legends about Komachi's beauty began.<div
+                class='quote'><q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>小野小町は、いにしへの衣通姫の流なり。あはれなるやうにて強からず。いはば、よき女のなやめるところあるに似たり。
+                </q><q>
+                  <h3 class="was-h4">In English</h3>Ono no Komachi follows the style of Princess Sotoori of long ago. Her poems are deeply moving, but they lack strength. It is like a beautiful woman who is unwell.
+                </q></div>
+            </dd>
+
+            <dt>The Legend of the "Hundred Nights' Visits"</dt>
+            <dd>
+              <em>Momoyo-gayoi</em> (the Hundred Nights' Visits) is a love story, also famous from Zeami's Noh plays. Ono no Komachi made a harsh promise: "If you visit me for a hundred nights in a row, I will accept your love." Believing her, Captain Fukakusa visited her for ninety-nine nights, but just before his wish came true, he died in a heavy snowstorm. It is a tale of his devotion and his tragic end.
+              <br class="br-pc">One theory says the model for Captain Fukakusa was <a href="12_en.html">High Priest Henjō</a>.
+            </dd>
+
+            <dt>Ukiyo-e by Katsushika Hokusai</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/hokusai_09_large.webp' data-lightbox='komachi' data-title='Ukiyo-e by Katsushika Hokusai'>
+                  <img loading='lazy' src='../img/hokusai_09.webp' alt='Woodblock print by Katsushika Hokusai' width="640" height="439">
+                </a>
+                <figcaption><small><a
+                      href='https://commons.wikimedia.org/wiki/File:NDL1308998_%E7%99%BE%E4%BA%BA%E4%B8%80%E9%A6%96%E3%81%86%E3%81%AF%E3%81%8B%E3%82%91%E3%81%A8%E3%81%8D_%E5%B0%8F%E9%87%8E%E3%81%AE%E5%B0%8F%E7%94%BA.jpg'
+                      target='_blank'>National Diet Library, Public domain, via Wikimedia Commons</a></small>
+                </figcaption>
+              </figure>
+              <div>
+                <p>
+                  This print is from <em>One Hundred Poems Explained by the Nurse</em> (<em>Hyakunin Isshu Uba ga Etoki</em>) by Katsushika Hokusai, an ukiyo-e artist of the Edo period. The idea of the series is a nurse explaining the Hyakunin Isshu poems with easy-to-understand pictures. Komachi is said to have wandered on a journey late in life. Could the woman leaning on a cane and looking up at the cherry blossoms be Ono no Komachi?
+                </p>
+              </div>
+            </dd>
+            <dt>Utagawa Kuniyoshi's <em>Hyakunin Isshu no Uchi</em></dt>
+            <dd class='thumb-image2'>
+              <figure class='portrait'>
+                <a href='../img/kuniyoshi_09_large.webp' data-lightbox='komachi' data-title='Ukiyo-e by Utagawa Kuniyoshi'>
+                  <img loading='lazy' src='../img/kuniyoshi_09.webp' alt='Ukiyo-e of Ono no Komachi by Utagawa Kuniyoshi' width="480" height="715">
+                </a>
+                <figcaption><a
+                    href='https://commons.wikimedia.org/wiki/File:No_9_Ono_no_Komachi_(BM_1906,1220,0.1226).jpg' target='_blank' rel='noopener'><small>British
+                      Museum, Public domain, via Wikimedia Commons</small></a></figcaption>
+              </figure>
+              <div>
+                <p>This ukiyo-e is by Utagawa Kuniyoshi, an artist of the Edo period.<br class="br-pc">It shows a scene that matches the poem in the Hyakunin Isshu.</p>
+                <p>The cherry blossoms Komachi looks up at are starting to scatter in the wind. Is she feeling that, like the blossoms, her beauty lasts only a short time?</p>
+                <p>Perhaps the blue flower ornament in her hair and the colors of her kimono show her thoughtful mood.</p>
+              </div>
+            </dd>
+
+            <dt>Legends of Ono no Komachi's Old Age</dt>
+            <dd>
+              <div>
+                <p>There is a famous legend that Ono no Komachi fell into poverty in her old age and wandered the fields, but it is not based on any record of her real later life.</p>
+                <p style="margin-top:0.5em;">The <em>Tamatsukuri Komachi Sōsuisho</em>, a work in Chinese written in the late Heian period, describes a woman who was proud and prosperous when young but sank into poverty in old age. Its heroine is not Ono no Komachi, but later readers took it as Komachi's story, and it greatly shaped the image of Komachi "fallen in her old age."</p>
+                <p style="margin-top:0.5em;">These stories of Komachi's decline in old age later found their way into tales and Noh plays. The Noh play <em>Sotoba Komachi</em> is a typical example.</p>
+              </div>
+            </dd>
+
+            <dt>Tsukioka Yoshitoshi's <em>One Hundred Aspects of the Moon</em></dt>
+            <dd class='thumb-image2'>
+              <figure class='portrait'>
+                <a href='../img/sotobakomachi_large.webp' data-lightbox='komachi' data-title='Ukiyo-e by Tsukioka Yoshitoshi'>
+                  <img loading='lazy' src='../img/sotobakomachi.webp' alt='Ukiyo-e by Tsukioka Yoshitoshi' width="440" height="640">
+                </a>
+                <figcaption><a
+                    href='https://commons.wikimedia.org/wiki/File:Maan_van_de_grafsteen-Rijksmuseum_RP-P-2008-186.jpeg' target='_blank' rel='noopener'><small>Tsukioka
+                      Yoshitoshi; Tsukioka Yoshitoshi died 1892; Yamamoto; Akiyama Buemon, Public domain, via Wikimedia
+                      Commons</small></a></figcaption>
+              </figure>
+              <div>
+                <p>This ukiyo-e is by Tsukioka Yoshitoshi, an artist active from the end of the Edo period into the early Meiji period. Its subject is the Noh play <em>Sotoba Komachi</em>.</p>
+                <p><em>Sotoba Komachi</em> tells of an old woman sitting on a <em>sotoba</em> (a wooden grave marker) and a monk from Mount Kōya. When the monk tells her not to sit there, she turns the tables and teaches him that "the mercy of the Buddha is not so shallow." She reveals that she was once the beautiful Ono no Komachi and begins to talk about her past. Then the spirit of Captain Fukakusa appears and possesses her, and she becomes half mad. As she acts out the hundred nights' visits, she comes back to her senses, turns to the way of the Buddha, and prays to be reborn in paradise.
+                </p>
+              </div>
+            </dd>
+
+            <dt><em>Kusōzu</em> (Paintings of the Nine Stages of Decay)</dt>
+            <dd class='thumb-image2'>
+              <ul class="slider" style="background: #000;">
+                <li><img src="/img/kusouzu_01.webp" alt="Kusōzu, stage 1" width="640" height="480"></li>
+                <li><img src="/img/kusouzu_02.webp" alt="Kusōzu, stage 2" width="640" height="480"></li>
+                <li><img src="/img/kusouzu_03.webp" alt="Kusōzu, stage 3" width="640" height="480"></li>
+                <li><img src="/img/kusouzu_04.webp" alt="Kusōzu, stage 4" width="640" height="480"></li>
+                <li><img src="/img/kusouzu_05.webp" alt="Kusōzu, stage 5" width="640" height="480"></li>
+                <li><img src="/img/kusouzu_06.webp" alt="Kusōzu, stage 6" width="640" height="480"></li>
+                <li><img src="/img/kusouzu_07.webp" alt="Kusōzu, stage 7" width="640" height="480"></li>
+                <li><img src="/img/kusouzu_08.webp" alt="Kusōzu, stage 8" width="640" height="480"></li>
+                <li><img src="/img/kusouzu_09.webp" alt="Kusōzu, stage 9" width="640" height="480"></li>
+              </ul>
+              <div class="tb-change">
+                <p>
+                  <em>Kusōzu</em> are Buddhist paintings that show, in nine stages, a dead body left outdoors as it decays. Women who had been beautiful were often chosen as the subject, and the <em>Kusōzu</em> of Ono no Komachi is well known. They are said to have been made to help monks free themselves from worldly desires, by showing that even the most beautiful woman becomes a skeleton after death, and that nothing in this world lasts.
+                </p>
+                <p style="line-height:1; ">
+                  <small><a
+                      href="https://commons.wikimedia.org/wiki/File:Kusozu;_the_death_of_a_noble_lady_and_the_decay_of_her_body._Wellcome_L0070289.jpg"
+                      style="font-size:0.7rem; font-weight: normal; text-decoration:none; letter-spacing:-0.1px;" target="_blank" rel="noopener">See
+                      page
+                      for author, CC BY 4.0 &lt;https://creativecommons.org/licenses/by/4.0&gt;, via Wikimedia
+                        Commons</a></small>
+                </p>
+              </div>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -277,6 +735,7 @@
           <a class="da-link-btn" href="diagram_archtecture_en.html">Relationship Diagram</a>
           <a class="kt-link-btn" href="karuta-taisen-pro_en.html">Competitive Karuta Game</a>
           <a class="kts-link-btn" href="karuta-taisen_en.html">Online Karuta Battle</a>
+          <a class="kg-link-btn" href="kakekotoba-game-009_en.html"><span class="kg-link-btn-inner"><span class="kg-link-btn-face kg-link-btn-front">Spin &amp; Discover Kakekotoba!</span><span class="kg-link-btn-face kg-link-btn-back">Spin &amp; Discover Kakekotoba!</span></span></a>
           <a class="sk-link-btn" href="sanjurokkasen.html">Thirty-Six Immortal Poets</a>
         </dd>
       </dl>
@@ -299,15 +758,29 @@
   </footer>
   <!-- Footer end -->
 
-  <script src="../js/poems_en.js?20260803-03"></script>
-
-  <!-- Chart of the Heart -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="/js/kokoro-chart-data-en.js?20260726"></script>
+  <script src="../js/poems_en.js?20261007-04"></script>
+  <!-- vertical slider (Kusōzu) -->
+  <script src="../js/jquery.bxslider.min.js"></script>
   <script>
-    window.radarScores = KOKORO_CHART_DATA[9].scores;
+    $(document).ready(function () {
+      $('.slider').bxSlider({
+        mode: "vertical",
+        auto: true,
+        pager: true,
+      });
+    });
   </script>
-  <script src="/js/raderChart.js?20260830-01"></script>
+  <!-- clickable image map (Six Poetic Sages) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/image-map-resizer/1.0.10/js/imageMapResizer.min.js"></script>
+  <script>
+    imageMapResize();
+  </script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261008-21"></script>
+  <script src="../js/keizu-diagram.js?20261008-02"></script>
+
 </body>
 
 </html>

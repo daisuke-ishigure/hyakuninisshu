@@ -71,13 +71,13 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Shigure's Hyakunin Isshu",
-          "item": "https://hyakuninisshu.com/"
+          "item": "https://hyakuninisshu.com/index_en.html"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Poem List",
-          "item": "https://hyakuninisshu.com/list.html"
+          "item": "https://hyakuninisshu.com/list_en.html"
         },
         {
           "@type": "ListItem",
@@ -90,10 +90,10 @@
   ]
   </script>
   <!-- stylesheets -->
-  <link rel="stylesheet" href="../css/style.css?20261006-05">
+  <link rel="stylesheet" href="../css/style.css?20261008-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
-  <link rel="stylesheet" href="../css/poems_en.css?20260803-04">
+  <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -133,6 +133,13 @@
   <main>
     <div class="card">
       <div class="column-wrapper">
+        <nav class="breadcrumb-poem" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index_en.html">Top</a></li>
+            <li><a href="list_en.html">Poem List</a></li>
+            <li aria-current="page">No. 53 Mother of the Right Captain Michitsuna</li>
+          </ol>
+        </nav>
         <div class="select-container">
           <label for="themeSelector" id="themeSelector-label">Select a theme:</label>
           <select id="themeSelector" class="selector">
@@ -153,9 +160,9 @@
           <div class="checkbox1">
             <div style="display:flex; align-items:center;">
               <label for="toggle2" id="toggle2-label">Switch between the picture card and the matching card</label>
-              <p>Front</p>
+              <p>Front of the Card</p>
               <input type="checkbox" id="toggle2">
-              <p>Back</p>
+              <p>Back of the Card</p>
             </div>
             <div style="display:flex; align-items:center;">
               <div id="play-pause-btn"></div>
@@ -166,7 +173,7 @@
           </div>
           <div class="audio-credit-row">
             <p id="audio-credit">Audio: NHK Creative Library</p>
-            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox (Public Domain).</p>
+            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox</p>
           </div>
 
         </div><!-- column-wrapper end -->
@@ -228,42 +235,43 @@
         <dl>
           <dt>Commentary</dt>
           <dd>
-            The poet married Fujiwara no Kaneie, though he already had a principal wife, Tokihime. After she gave birth to their first child, Kaneie grew ever more distant from home and deepened his relationships with other women. One evening, when he came calling, she refused to let him in. The next day, she sent him this poem, together with a single faded chrysanthemum.
+            The poet married Fujiwara no Kaneie, who already had a chief wife. After she bore their first child, he came home less and began seeing another woman. One night she refused to let him in, and the next day sent him this poem with a single faded chrysanthemum.
           </dd>
         </dl>
         <dl class="last-dl">
           <dt>About the Poet</dt>
           <dd>
-            The Mother of the Right Captain Michitsuna was a secondary wife of Fujiwara no Kaneie, who would go on to become Chancellor. Her diary, the Kagerō Nikki, records her anguish over her husband's infidelities, while also subtly revealing the proud spirit of a woman who held her own against a powerful man and endured adversity. She is counted as one of Japan's "Three Great Beauties."
+            The Mother of the Right Captain Michitsuna was a secondary wife of Fujiwara no Kaneie, who later became chief adviser to the emperor. Her Kagerō Diary tells of her pain over his affairs, but also shows a proud woman who stood up to a powerful man. She is counted among Japan's three great beauties.
           </dd>
         </dl>
       </div>
     </div>
     <div class="chart-image-row">
-    <div class="chart-section">
-      <dl>
-        <dt class='title'>Mother of the Right Captain Michitsuna's Chart of the Heart</dt>
-            <dd>
-              <p>A chart and a modern-language reflection of the poet's inner feelings.</p>
-              <div class="emotion-chart">
-                <div id="radarChartWrapper">
-                  <canvas id="radarChart" width="300" height="300"></canvas>
-                </div>
-                <div>
-                  <p class="chart-quotes-title">The Poet's Feelings (A Personal Interpretation)</p>
-                  <p>The night deepens on and on,<br class="br-pc">and I am the only one left waiting for you.</p>
-                  <p style="margin-top:1em;">Do you even know,<br class="br-pc">even a little, how lonely this long night is?</p>
-                </div>
-              </div>
-            </dd>
-      </dl>
-    </div>
     <div class="image-section">
       <dl>
         <dt class='title'>Poem Illustration</dt>
         <dd>
           <img loading='lazy' src='../img/c_053.webp' alt="Illustration for the poem by the Mother of the Right Captain Michitsuna">
           <p><small>This image is based on an illustration from William N. Porter's <em>A Hundred Verses from Old Japan</em>, his 1909 English translation of the Hyakunin Isshu published in England, colorized and reworked using Adobe Firefly (generative AI).</small></p>
+        </dd>
+      </dl>
+    </div>
+    <div class="nenpyo-section">
+      <dl>
+        <dt class='title'>Mother of the Right Captain Michitsuna: A Short Timeline</dt>
+        <dd>
+          <dl class="nenpyo">
+            <dt>c. 936</dt>
+            <dd>Born as a daughter of Fujiwara no Tomoyasu</dd>
+            <dt>954</dt>
+            <dd>Becomes a wife of Fujiwara no Kaneie</dd>
+            <dt>955</dt>
+            <dd>Gives birth to Fujiwara no Michitsuna</dd>
+            <dt>c. 974</dt>
+            <dd>Finishes The Kagerō Diary</dd>
+            <dt>995</dt>
+            <dd>Dies</dd>
+          </dl>
         </dd>
       </dl>
     </div>
@@ -298,15 +306,8 @@
   </footer>
   <!-- Footer end -->
 
-  <script src="../js/poems_en.js?20260803-03"></script>
+  <script src="../js/poems_en.js?20261007-04"></script>
 
-  <!-- Chart of the Heart -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="/js/kokoro-chart-data-en.js?20260726"></script>
-  <script>
-    window.radarScores = KOKORO_CHART_DATA[53].scores;
-  </script>
-  <script src="/js/raderChart.js?20260830-01"></script>
 </body>
 
 </html>

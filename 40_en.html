@@ -71,13 +71,13 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Shigure's Hyakunin Isshu",
-          "item": "https://hyakuninisshu.com/"
+          "item": "https://hyakuninisshu.com/index_en.html"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Poem List",
-          "item": "https://hyakuninisshu.com/list.html"
+          "item": "https://hyakuninisshu.com/list_en.html"
         },
         {
           "@type": "ListItem",
@@ -90,10 +90,10 @@
   ]
   </script>
   <!-- stylesheets -->
-  <link rel="stylesheet" href="../css/style.css?20261006-05">
+  <link rel="stylesheet" href="../css/style.css?20261008-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
-  <link rel="stylesheet" href="../css/poems_en.css?20260803-04">
+  <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -133,6 +133,13 @@
   <main>
     <div class="card">
       <div class="column-wrapper">
+        <nav class="breadcrumb-poem" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index_en.html">Top</a></li>
+            <li><a href="list_en.html">Poem List</a></li>
+            <li aria-current="page">No. 40 Taira no Kanemori</li>
+          </ol>
+        </nav>
         <div class="select-container">
           <label for="themeSelector" id="themeSelector-label">Select a theme:</label>
           <select id="themeSelector" class="selector">
@@ -153,9 +160,9 @@
           <div class="checkbox1">
             <div style="display:flex; align-items:center;">
               <label for="toggle2" id="toggle2-label">Switch between the picture card and the matching card</label>
-              <p>Front</p>
+              <p>Front of the Card</p>
               <input type="checkbox" id="toggle2">
-              <p>Back</p>
+              <p>Back of the Card</p>
             </div>
             <div style="display:flex; align-items:center;">
               <div id="play-pause-btn"></div>
@@ -166,7 +173,7 @@
           </div>
           <div class="audio-credit-row">
             <p id="audio-credit">Audio: NHK Creative Library</p>
-            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox (Public Domain).</p>
+            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox</p>
           </div>
 
         </div><!-- column-wrapper end -->
@@ -228,42 +235,49 @@
         <dl>
           <dt>Commentary</dt>
           <dd>
-            This poem was composed for the "Tentoku Poetry Contest at the Imperial Palace," on the set theme of "love not yet met." It was a close contest against a poem by Mibu no Tadami. In the end, Taira no Kanemori's poem was declared the winner — reportedly because Emperor Murakami himself was overheard humming its opening line, "shinoburedo…"
+            Written for the Tentoku palace poetry contest (960) on the theme "love not yet met," it was in a close match with Mibu no Tadami's poem. It is said to have won because Emperor Murakami was heard softly reciting its opening, "shinoburedo."
           </dd>
         </dl>
         <dl class="last-dl">
           <dt>About the Poet</dt>
           <dd>
-            Taira no Kanemori was a great-great-grandson of Emperor Kōkō, but was removed from the imperial family and took the Taira surname. His name resembles that of Taira no Kiyomori, but he belonged to a different branch from Kiyomori's Ise Taira line. He is also sometimes said to have been the father of Akazome Emon, thought to be the author of A Tale of Flowering Fortunes, though this has not been confirmed.
+            Taira no Kanemori was a great-great-grandson of Emperor Kōkō but became a commoner with the name Taira. He is not of the same branch as Taira no Kiyomori. Some say he was the father of Akazome Emon, but this is not certain.
           </dd>
         </dl>
       </div>
     </div>
     <div class="chart-image-row">
-    <div class="chart-section">
-      <dl>
-        <dt class='title'>Taira no Kanemori's Chart of the Heart</dt>
-            <dd>
-              <p>A chart and a modern-language reflection of the poet's inner feelings.</p>
-              <div class="emotion-chart">
-                <div id="radarChartWrapper">
-                  <canvas id="radarChart" width="300" height="300"></canvas>
-                </div>
-                <div>
-                  <p class="chart-quotes-title">The Poet's Feelings (A Personal Interpretation)</p>
-                  <p>We haven't even spoken yet,<br class="br-pc">but my heart is already drawn to you.</p>
-                  <p style="margin-top:1em;">This love I meant to keep hidden<br class="br-pc">has shown itself in the color of my cheeks.</p>
-                </div>
-              </div>
-            </dd>
-      </dl>
-    </div>
     <div class="image-section">
       <dl>
         <dt class='title'>Poem Illustration</dt>
         <dd>
           <img loading='lazy' src='../img/c_040.webp' alt="Illustration for Taira no Kanemori's poem">
           <p><small>This image is based on an illustration from William N. Porter's <em>A Hundred Verses from Old Japan</em>, his 1909 English translation of the Hyakunin Isshu published in England, colorized and reworked using Adobe Firefly (generative AI).</small></p>
+        </dd>
+      </dl>
+    </div>
+    <div class="nenpyo-section">
+      <dl>
+        <dt class='title'>Taira no Kanemori: A Short Timeline</dt>
+        <dd>
+          <dl class="nenpyo">
+            <dt>946</dt>
+            <dd>Given Junior Fifth Rank, Lower Grade</dd>
+            <dt>950</dt>
+            <dd>Leaves the imperial family and is given the family name Taira</dd>
+            <dt>960</dt>
+            <dd>Competes against Mibu no Tadami at the Palace Poetry Contest of the Tentoku Era</dd>
+            <dt>979</dt>
+            <dd>Becomes governor of Suruga Province</dd>
+            <dt>991</dt>
+            <dd>Dies</dd>
+            <dt>Notes</dt>
+            <dd>
+              <ul>
+                <li>Counted as one of the Thirty-Six Immortal Poets</li>
+              </ul>
+            </dd>
+          </dl>
         </dd>
       </dl>
     </div>
@@ -299,15 +313,8 @@
   </footer>
   <!-- Footer end -->
 
-  <script src="../js/poems_en.js?20260803-03"></script>
+  <script src="../js/poems_en.js?20261007-04"></script>
 
-  <!-- Chart of the Heart -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="/js/kokoro-chart-data-en.js?20260726"></script>
-  <script>
-    window.radarScores = KOKORO_CHART_DATA[40].scores;
-  </script>
-  <script src="/js/raderChart.js?20260830-01"></script>
 </body>
 
 </html>

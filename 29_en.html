@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-08T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -71,13 +71,13 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Shigure's Hyakunin Isshu",
-          "item": "https://hyakuninisshu.com/"
+          "item": "https://hyakuninisshu.com/index_en.html"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Poem List",
-          "item": "https://hyakuninisshu.com/list.html"
+          "item": "https://hyakuninisshu.com/list_en.html"
         },
         {
           "@type": "ListItem",
@@ -90,10 +90,11 @@
   ]
   </script>
   <!-- stylesheets -->
-  <link rel="stylesheet" href="../css/style.css?20261006-05">
+  <link rel="stylesheet" href="../css/style.css?20261008-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
-  <link rel="stylesheet" href="../css/poems_en.css?20260803-04">
+  <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -133,6 +134,13 @@
   <main>
     <div class="card">
       <div class="column-wrapper">
+        <nav class="breadcrumb-poem" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index_en.html">Top</a></li>
+            <li><a href="list_en.html">Poem List</a></li>
+            <li aria-current="page">No. 29 Ōshikōchi no Mitsune</li>
+          </ol>
+        </nav>
         <div class="select-container">
           <label for="themeSelector" id="themeSelector-label">Select a theme:</label>
           <select id="themeSelector" class="selector">
@@ -153,9 +161,9 @@
           <div class="checkbox1">
             <div style="display:flex; align-items:center;">
               <label for="toggle2" id="toggle2-label">Switch between the picture card and the matching card</label>
-              <p>Front</p>
+              <p>Front of the Card</p>
               <input type="checkbox" id="toggle2">
-              <p>Back</p>
+              <p>Back of the Card</p>
             </div>
             <div style="display:flex; align-items:center;">
               <div id="play-pause-btn"></div>
@@ -166,7 +174,7 @@
           </div>
           <div class="audio-credit-row">
             <p id="audio-credit">Audio: NHK Creative Library</p>
-            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox (Public Domain).</p>
+            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox</p>
           </div>
 
         </div><!-- column-wrapper end -->
@@ -228,36 +236,18 @@
         <dl>
           <dt>Commentary</dt>
           <dd>
-            How this poem is read depends on the interpretation of "kokoro ate ni." Taken as "at a guess," it describes how the white chrysanthemums have become indistinguishable, blending into the first frost. Taken instead as "with great care," it expresses the poet's reluctance to pick a flower so beautiful.
+            The meaning depends on "kokoro ate ni." Read as "by guessing," the poem says the white chrysanthemums are hard to tell from the first frost. Read as "with care," it says: how could I pick such a beautiful white chrysanthemum?
           </dd>
         </dl>
         <dl class="last-dl">
           <dt>About the Poet</dt>
           <dd>
-            Ōshikōchi no Mitsune held no high office, but he was renowned for his exceptional gift for descriptive nature poetry. He was regarded as one of the finest poets of his age, ranked alongside Ki no Tsurayuki, and was chosen as one of the compilers of the Kokin Wakashū.
+            Ōshikōchi no Mitsune held only a low rank but was known for his great skill at nature poems. He was ranked with Ki no Tsurayuki as one of the best poets of his time and was chosen as a compiler of the Kokin Wakashū.
           </dd>
         </dl>
       </div>
     </div>
     <div class="chart-image-row">
-    <div class="chart-section">
-      <dl>
-        <dt class='title'>Ōshikōchi no Mitsune's Chart of the Heart</dt>
-            <dd>
-              <p>A chart and a modern-language reflection of the poet's inner feelings.</p>
-              <div class="emotion-chart">
-                <div id="radarChartWrapper">
-                  <canvas id="radarChart" width="300" height="300"></canvas>
-                </div>
-                <div>
-                  <p class="chart-quotes-title">The Poet's Feelings (A Personal Interpretation)</p>
-                  <p>Even reaching out gently,<br class="br-pc">I cannot touch the white chrysanthemum.</p>
-                  <p style="margin-top:1em;">I only want to keep this beauty<br class="br-pc">born of the first frost, just as it is.</p>
-                </div>
-              </div>
-            </dd>
-      </dl>
-    </div>
     <div class="image-section">
       <dl>
         <dt class='title'>Poem Illustration</dt>
@@ -267,7 +257,346 @@
         </dd>
       </dl>
     </div>
+    <div class="nenpyo-section">
+      <dl>
+        <dt class='title'>Ōshikōchi no Mitsune: A Short Timeline</dt>
+        <dd>
+          <dl class="nenpyo">
+            <dt>c. 859</dt>
+            <dd>Born</dd>
+            <dt>894</dt>
+            <dd>Becomes a junior official of Kai Province</dd>
+            <dt>905</dt>
+            <dd>Chosen with Ki no Tsurayuki and others to compile the Kokin Wakashū</dd>
+            <dt>907</dt>
+            <dd>Becomes an official of Tanba Province</dd>
+            <dt>916</dt>
+            <dd>Writes poems while traveling with Retired Emperor Uda to Ishiyama-dera Temple</dd>
+            <dt>921</dt>
+            <dd>Becomes an official of Awaji Province</dd>
+            <dt>c. 925</dt>
+            <dd>Dies</dd>
+            <dt>Notes</dt>
+            <dd>
+              <ul>
+                <li>Counted as one of the Thirty-Six Immortal Poets</li>
+              </ul>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Ōshikōchi no Mitsune's Family Tree</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 29.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__tenno">Brown text</span>Emperor</li>
+              <li><span class="fk-legend__tno" aria-hidden="true"></span>Emperor's number in the line of succession</li>
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Ōshikōchi no Mitsune's family tree">
+            <script type="application/json">
+{
+ "lang": "en",
+ "nodes": [
+  {
+   "id": "tomonori",
+   "n": "紀友則",
+   "p": 33,
+   "x": 169,
+   "y": 68
+  },
+  {
+   "id": "tsurayuki",
+   "n": "紀貫之",
+   "p": 35,
+   "x": 169,
+   "y": 108
+  },
+  {
+   "id": "tadamine",
+   "n": "壬生忠岑",
+   "p": 30,
+   "x": 169,
+   "y": 148
+  },
+  {
+   "id": "mitsune",
+   "n": "凡河内躬恒",
+   "p": 29,
+   "self": 1,
+   "x": 169,
+   "y": 188
+  },
+  {
+   "id": "tadatoshi",
+   "n": "凡河内諶利",
+   "x": 16,
+   "y": 188
+  },
+  {
+   "id": "tsunehisa",
+   "n": "凡河内恒寿",
+   "x": 405,
+   "y": 168
+  },
+  {
+   "id": "seitsune",
+   "n": "凡河内勢恒",
+   "x": 405,
+   "y": 208
+  },
+  {
+   "id": "daigo",
+   "n": "醍醐",
+   "k": 1,
+   "t": 60,
+   "x": 599,
+   "y": 68
+  }
+ ],
+ "kids": [
+  {
+   "from": "tadatoshi",
+   "to": [
+    "mitsune"
+   ]
+  },
+  {
+   "from": "mitsune",
+   "to": [
+    "tsunehisa",
+    "seitsune"
+   ]
+  }
+ ],
+ "arrows": [
+  {
+   "points": [
+    [
+     595,
+     68
+    ],
+    [
+     372,
+     68
+    ]
+   ],
+   "label": {
+    "text": "Ordered the Kokin Wakashū",
+    "x": 393,
+    "y": 56
+   }
+  }
+ ],
+ "groups": [
+  {
+   "points": [
+    [
+     155,
+     22
+    ],
+    [
+     369,
+     22
+    ],
+    [
+     369,
+     210
+    ],
+    [
+     155,
+     210
+    ]
+   ],
+   "label": {
+    "text": "Compilers of the Kokin Wakashū",
+    "x": 163,
+    "y": 37
+   }
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 709 234" width="709" height="234" role="img" aria-label="Ōshikōchi no Mitsune's family tree" lang="en" class="fk-svg kd-svg" style="max-width:1064px;min-width:min(640px,1064px)" data-src="1favyn6">
+<g class="kd-groups"><path d="M155 22L369 22L369 210L155 210Z" class="kd-group"/><text class="kd-group-label" x="163" y="37">Compilers of the Kokin Wakashū</text></g>
+<g class="fk-edges"><path d="M143 188H155" class="fk-edge"/><path d="M155 188H166" class="fk-edge"/><path d="M359 188H391" class="fk-edge"/><path d="M391 168V208" class="fk-edge"/><path d="M391 168H402" class="fk-edge"/><path d="M391 208H402" class="fk-edge"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"><path d="M595 68L372 68" class="kd-arrow" marker-end="url(#kdArrowHead)"/><text class="kd-arrow-label" x="393" y="56">Ordered the Kokin Wakashū</text></g>
+<g>
+<g class="fk-node is-poet" transform="translate(169,68)" data-tip="&lt;h3&gt;Ki no Tomonori&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ki no Aritomo; cousin of Ki no Tsurayuki&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 33, &quot;Hisakata no...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;One of the compilers of the Kokin Wakashū with Ki no Tsurayuki and Mibu no Tadamine, but he died before it was finished&lt;/span&gt;&lt;/div&gt;" data-p="33"><a href="/33_en.html" aria-label="Ki no Tomonori (Hyakunin Isshu Poem 33)"><rect class="fk-hit" x="-2" y="-13" width="142" height="26"/><text class="fk-name" x="0" y="0.5">Ki no Tomonori</text><circle class="fk-badge" cx="128" cy="0" r="10"/><text class="fk-badge-num" x="128" y="0.5">33</text></a></g>
+<g class="fk-node is-poet" transform="translate(169,108)" data-tip="&lt;h3&gt;Ki no Tsurayuki&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Fifth Rank, Upper Grade&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ki no Mochiyuki; cousin of Ki no Tomonori&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 35, &quot;Hito wa isa...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;A compiler of the Kokin Wakashū, who wrote its Japanese preface. After serving as Governor of Tosa, he wrote the Tosa Diary&lt;/span&gt;&lt;/div&gt;" data-p="35"><a href="/35_en.html" aria-label="Ki no Tsurayuki (Hyakunin Isshu Poem 35)"><rect class="fk-hit" x="-2" y="-13" width="144" height="26"/><text class="fk-name" x="0" y="0.5">Ki no Tsurayuki</text><circle class="fk-badge" cx="130" cy="0" r="10"/><text class="fk-badge-num" x="130" y="0.5">35</text></a></g>
+<g class="fk-node is-poet" transform="translate(169,148)" data-tip="&lt;h3&gt;Mibu no Tadamine&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;c. 860–c. 920&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior officer of the Right Gate Guards; he is also said to have served as Acting Senior Clerk of Settsu, among other posts&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Mibu no Tadami&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 30, &quot;Ariake no...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;One of the compilers of the Kokin Wakashū, and the lowest in rank among them. The Tales of Yamato says he was a bodyguard of Fujiwara no Sadakuni&lt;/span&gt;&lt;/div&gt;" data-p="30"><a href="/30_en.html" aria-label="Mibu no Tadamine (Hyakunin Isshu Poem 30)"><rect class="fk-hit" x="-2" y="-13" width="167" height="26"/><text class="fk-name" x="0" y="0.5">Mibu no Tadamine</text><circle class="fk-badge" cx="153" cy="0" r="10"/><text class="fk-badge-num" x="153" y="0.5">30</text></a></g>
+<g class="fk-node is-poet is-self" transform="translate(169,188)" data-tip="&lt;h3&gt;Ōshikōchi no Mitsune&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;c. 859–c. 925&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Held a series of provincial posts, such as Acting Junior Clerk of Kai, Acting Senior Clerk of Tanba, Acting Secretary of Izumi, and Acting Secretary of Awaji&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ōshikōchi no 諶利 (his family line is also said to be unknown)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 29, &quot;Kokoroate ni...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;One of the compilers of the Kokin Wakashū. He was a close friend of Ki no Tsurayuki and visited the house of Fujiwara no Kanesuke, who supported him&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="197" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="191" height="26"/><text class="fk-name" x="0" y="0.5">Ōshikōchi no Mitsune</text><circle class="fk-badge" cx="177" cy="0" r="10"/><text class="fk-badge-num" x="177" y="0.5">29</text></g></g>
+<g class="fk-node" transform="translate(16,188)" data-tip="&lt;h3&gt;Ōshikōchi no 諶利 (reading of the name unknown)&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Acting Secretary of Awaji&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Ōshikōchi no Mitsune&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="128" height="26"/><text class="fk-name" x="0" y="0.5">Mitsune's father</text></g></g>
+<g class="fk-node" transform="translate(405,168)" data-tip="&lt;h3&gt;Ōshikōchi no 恒寿 (reading of the name unknown)&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ōshikōchi no Mitsune&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="108" height="26"/><text class="fk-name" x="0" y="0.5">Mitsune's son</text></g></g>
+<g class="fk-node" transform="translate(405,208)" data-tip="&lt;h3&gt;Ōshikōchi no 勢恒 (reading of the name unknown)&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ōshikōchi no Mitsune&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="108" height="26"/><text class="fk-name" x="0" y="0.5">Mitsune's son</text></g></g>
+<g class="fk-node is-tenno" transform="translate(599,68)" data-tip="&lt;h3&gt;Emperor Daigo&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;60th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;885–930&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;897–930&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Ordered the compiling of the Kokin Wakashū&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="48" height="26"/><text class="fk-name" x="0" y="0.5">Daigo</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">60</text></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+          <div class="kd-text">
+            <p style="width:100%; margin-bottom: 0.75em;">
+              Ōshikōchi no Mitsune was one of the compilers of the <em>Kokin Wakashū</em>, together with Ki no Tomonori, Ki no Tsurayuki, and Mibu no Tadamine.
+            </p>
+            <p style="width:100%; margin-bottom: 0.75em;">
+              His rank was not high, and he served in a series of provincial posts in Kai, Tanba, Izumi, Awaji, and elsewhere.
+            </p>
+            <p style="width:100%; margin-bottom: 0.75em;">
+              He is said to have been a close friend of Ki no Tsurayuki and to have visited the house of <a href="/27_en.html">Fujiwara no Kanesuke</a>, who supported him.
+            </p>
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <dt>The Chrysanthemum Festival</dt>
+            <dd>
+              Chrysanthemums are said to have come to Japan from China in the Nara period. They first arrived as medicinal plants, but later became popular at court as flowers to enjoy. At the Heian court, the custom of the Chōyō no Sekku (the Chrysanthemum Festival on the ninth day of the ninth month) came from China, and chrysanthemums often appeared in <em>waka</em>.
+            </dd>
+
+            <dt>The Compilers of the <em>Kokin Wakashū</em></dt>
+            <dd class='thumb-image1'>
+              <figure>
+                <img loading='lazy' src='../img/kokinwakashu-senja.gif?ver02' alt='The compilers of the Kokin Wakashū' usemap="#ImageMap" width="1280" height="846" />
+                <map name="ImageMap">
+                  <area shape="rect" coords="558,518,962,634" href="/33_en.html" alt="Ki no Tomonori" />
+                  <area shape="rect" coords="609,668,1193,805" href="/29_en.html" alt="Ōshikōchi no Mitsune" />
+                  <area shape="rect" coords="85,501,509,645" href="/35_en.html" alt="Ki no Tsurayuki" />
+                  <area shape="rect" coords="88,680,590,808" href="/30_en.html" alt="Mibu no Tadamine" />
+                </map>
+                <figcaption style="margin-top:0.5em;">
+                  <p class="kome" style="width:calc(100% - 1em); font-size:0.9em;">Click a poet marked with a <span
+                      style="color:#C32538; margin-right:0.25em;">■</span>number to go to that poet's page.</p>
+                </figcaption>
+              </figure>
+              <div>
+                <p style="width:100%; margin-bottom: 0.75em;">
+                  The <em>Kokin Wakashū</em> was the first imperial anthology of <em>waka</em>, compiled at the order of Emperor Daigo. Four poets, Ki no Tsurayuki, Ki no Tomonori, Mibu no Tadamine, and Ōshikōchi no Mitsune, served as its compilers and gathered about 1,100 poems, including poems not in the <em>Man'yōshū</em> and poems of their own time. It was completed around 913, but Ki no Tomonori died before it was finished.
+                </p>
+              </div>
+            </dd>
+
+            <dt>A Poem Worrying About a Small Child Growing Up</dt>
+            <dd>
+              Mitsune wrote the next poem when he saw a small child while he was troubled by something.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>今<rt>いま</rt></ruby><ruby>更<rt>さら</rt></ruby>に
+                  なに<ruby>生<rt>お</rt></ruby>ひいづらむ
+                  <ruby>竹<rt>たけ</rt></ruby>の<ruby>子<rt>こ</rt></ruby>の
+                  <br><ruby>憂<rt>う</rt></ruby>き<ruby>節<rt>ふし</rt></ruby>しげき
+                  <ruby>世<rt>よ</rt></ruby>とは<ruby>知<rt>し</rt></ruby>らずや
+                  <span class="shutten"><em>Kokin Wakashū</em>, Ōshikōchi no Mitsune</span>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.8;">
+                    Why, now of all times, should you grow up in this sad world, shooting up like a bamboo shoot, little one? Don't you know this world is full of painful times, as a bamboo is full of joints (<em>fushi</em>)?
+                  </p>
+                </q></div>
+            </dd>
+
+            <dt>Poems About the Scent of Plum Blossoms</dt>
+            <dd>
+              <p>The next two poems by Ōshikōchi no Mitsune are both in the <em>Kokin Wakashū</em>.
+                <br class="br-pc"> They describe the scent of plum blossoms on spring nights.</p>
+
+              <div class='quote'><q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>春<rt>はる</rt></ruby>の<ruby>夜<rt>よ</rt></ruby>の
+                  <ruby>闇<rt>やみ</rt></ruby>はあやなし
+                  <ruby>梅<rt>うめ</rt></ruby>の<ruby>花<rt>はな</rt></ruby>
+                  <br><ruby>色<rt>いろ</rt></ruby>こそ<ruby>見<rt>み</rt></ruby>えね
+                  <ruby>香<rt>か</rt></ruby>やはかくるる
+                  <span class="shutten"><em>Kokin Wakashū</em>, Ōshikōchi no Mitsune</span>
+                </q><q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.8; margin-top: 0.2em;">The darkness of a spring night makes no sense.<br class="br-pc"> It hides the color of the plum blossoms, but can it hide their scent?</p>
+                </q></div>
+
+              <div class='quote'><q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>月夜<rt>つきよ</rt></ruby>には
+                  それとも<ruby>見<rt>み</rt></ruby>えず
+                  <ruby>梅<rt>うめ</rt></ruby>の<ruby>花<rt>はな</rt></ruby>
+                  <br><ruby>香<rt>か</rt></ruby>をたづねてぞ
+                  <ruby>知<rt>し</rt></ruby>るべかりける
+                  <span class="shutten"><em>Kokin Wakashū</em>, Ōshikōchi no Mitsune</span>
+                </q><q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.8; margin-top: 0.2em;">On a moonlit night, the plum blossoms can hardly be seen,<br class="br-pc"> but if you follow their scent, you can find where they bloom.</p>
+                </q></div>
+            </dd>
+
+            <dt>A Poem in <em>The Tale of Genji</em> That Begins "Kokoroate ni"</dt>
+            <dd>
+              <p>The next poem appears in "Yūgao," the fourth chapter of <em>The Tale of Genji</em>.<br class="br-pc">
+              On his way to visit his sickly old nurse, Hikaru Genji notices <em>yūgao</em> (moonflowers) blooming at the house next door and tells his attendant to go and pick one. A little girl comes out of that house, holds out a fan scented with incense, and says that since the flowers are so delicate, he should place one on the fan to present it. This poem was written on the fan. The word <em>kokoroate</em> ("guessing") is used in a scene about picking a flower, so it feels as if Murasaki Shikibu had Ōshikōchi no Mitsune's poem in mind.</p>
+              <div class='quote'><q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>心<rt>こころ</rt></ruby>あてに
+                  それかとぞ<ruby>見<rt>み</rt></ruby>る
+                  <ruby>白露<rt>しらつゆ</rt></ruby>の
+                  <br><ruby>光<rt>ひかり</rt></ruby>そへたる
+                  <ruby>夕顔<rt>ゆうがお</rt></ruby>の<ruby>花<rt>はな</rt></ruby>
+                  <span class="shutten"><em>The Tale of Genji</em>, "Yūgao"</span>
+                </q><q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.8; margin-top: 0.2em;">It is only a guess, but I look and wonder if it is you,
+                  <br>this moonflower to which the white dew adds its light.</p>
+                </q></div>
+            </dd>
+
+            <dt>A Poem of White Flowers Lost in the Snow</dt>
+            <dd>
+              <p>The next poem, by <a href="/33_en.html">Ki no Tomonori</a>, is in the <em>Kokin Wakashū</em>. <br class="br-pc">It describes plum blossoms that cannot be told apart from the snow. It is similar to Ōshikōchi no Mitsune's poem, and the idea of white flowers mixing with snow seems to have been a popular way of writing poems at the time.</p>
+              <div class='quote'><q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>雪<rt>ゆき</rt></ruby><ruby>降<rt>ふ</rt></ruby>れば
+                  <ruby>木毎<rt>きごと</rt></ruby>に<ruby>花<rt>はな</rt></ruby>ぞ
+                  <ruby>咲<rt>さ</rt></ruby>きにける
+                  <br>いづれを<ruby>梅<rt>うめ</rt></ruby>と
+                  わきて<ruby>折<rt>お</rt></ruby>らまし
+                  <span class="shutten"><em>Kokin Wakashū</em>, Ki no Tomonori</span>
+                </q><q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.8; margin-top: 0.2em;">When snow falls, every tree seems to bloom with white flowers.<br
+                      class="br-pc"> Since the snow and blossoms look alike, how can I tell which tree is the plum, to break off a branch?</p>
+                </q></div>
+            </dd>
+            <dt>Masaoka Shiki's Opinion</dt>
+            <dd>
+              In <em>Letters to a Waka Poet</em> (<em>Utayomi ni Atauru Sho</em>), Masaoka Shiki criticized Ōshikōchi no Mitsune's poem: "Because this poem by Mitsune is in the Hyakunin Isshu, everyone recites it, but it is a worthless poem, not worth a penny. Its idea is a lie: there is no danger of white chrysanthemums becoming invisible just because the first frost has fallen." This judgment is typical of Masaoka Shiki, who aimed for realism in <em>waka</em>. But <em>mitate</em>, the technique of seeing one thing as something else, developed in the age of the <em>Kokin Wakashū</em>.
+            </dd>
+            <dt>Priest Shun'e's Opinion</dt>
+            <dd>
+              In <em>Mumyōshō</em>, <a href="/85_en.html">Priest Shun'e</a>, the poet of Poem 85 in the Hyakunin Isshu, praised Mitsune highly as a poet without equal in the way he thought deeply about his subject before writing: "In truly thinking deeply into his words, Mitsune has no match." While Masaoka Shiki judged the wording of the poem itself, Shun'e focused on the poet's attitude toward his poems and the depth of his thought.
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -299,15 +628,18 @@
   </footer>
   <!-- Footer end -->
 
-  <script src="../js/poems_en.js?20260803-03"></script>
-
-  <!-- Chart of the Heart -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="/js/kokoro-chart-data-en.js?20260726"></script>
+  <script src="../js/poems_en.js?20261007-04"></script>
+  <!-- clickable image map (compilers of the Kokin Wakashū) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/image-map-resizer/1.0.10/js/imageMapResizer.min.js"></script>
   <script>
-    window.radarScores = KOKORO_CHART_DATA[29].scores;
+    imageMapResize();
   </script>
-  <script src="/js/raderChart.js?20260830-01"></script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261008-21"></script>
+  <script src="../js/keizu-diagram.js?20261008-02"></script>
+
 </body>
 
 </html>

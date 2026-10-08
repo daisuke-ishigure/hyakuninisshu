@@ -87,12 +87,12 @@
   }
   </script>
   <!-- スタイルシートの追加 -->
-  <link rel="stylesheet" href="../css/style.css?20261006-05">
+  <link rel="stylesheet" href="../css/style.css?20261008-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/moon_dawn.css?20250701">
   <link rel="stylesheet" href="../css/animate.min.css">
   <link rel="stylesheet" href="../css/grammar-panel.css?20261001-01">
-  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261003-03">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261007-02">
   <!-- google fontの追加 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -158,6 +158,13 @@
   <main>
     <div class="card">
       <div class="column-wrapper">
+        <nav class="breadcrumb-poem" aria-label="パンくずリスト">
+          <ol>
+            <li><a href="index.html">トップ</a></li>
+            <li><a href="list.html">百人一首一覧</a></li>
+            <li aria-current="page">第30番 壬生忠岑</li>
+          </ol>
+        </nav>
         <div class="select-container">
           <label for="themeSelector" id="themeSelector-label">テーマを選択:</label>
           <select id="themeSelector" class="selector">
@@ -444,7 +451,7 @@
             <dt>有明の月と月の満ち欠け</dt>
             <dd class='thumb-image2'>
               <figure>
-                <a href='../img/moon_cycle.gif?02' data-lightbox='素性法師' data-title='月の満ち欠け'>
+                <a href='../img/moon_cycle.gif?02' data-lightbox='壬生忠岑' data-title='月の満ち欠け'>
                   <img loading='lazy' src='../img/moon_cycle.gif?02' alt='月の満ち欠け' width="1280" height="1096">
                 </a>
               </figure>
@@ -501,11 +508,11 @@
               <div>
                 <p style="width:100%; margin-bottom: 0.75em;">
                   『古今和歌集』は<span
-                    class="tippy daigo">醍醐天皇</span>の勅命により編纂された初の勅撰和歌集です。紀貫之、紀友則、壬生忠岑、凡河内躬恒の4名が撰者となり、万葉集に掲載されなかった歌や当時の歌など1500首を集めて編纂しました。913年頃に完成しましたが、紀友則は完成前に亡くなりました。
+                    class="tippy daigo">醍醐天皇</span>の勅命により編纂された初の勅撰和歌集です。紀貫之、紀友則、壬生忠岑、凡河内躬恒の4名が撰者となり、万葉集に掲載されなかった歌や当時の歌など約1100首を集めて編纂しました。913年頃に完成しましたが、紀友則は完成前に亡くなりました。
                 </p>
               </div>
             </dd>
-            <dt id="yasuhide">大伴家持の歌を本歌取りして、<br class="br-sp">当意即妙に詠まれた歌</dt>
+            <dt id="kasasagi">大伴家持の歌を本歌取りして、<br class="br-sp">当意即妙に詠まれた歌</dt>
             <dd>
               壬生忠岑は藤原定国の随身をしていました。藤原定国が夜中にお酒に酔った状態で左大臣・藤原時平を訪ねてしまいました。時平は驚き「どこかのついでに来たのか？」と問いかけましたが、随身だった壬生忠岑が当意即妙に次の歌を詠み、場を和ませたと『<span
                 class="tippy yamatomonogatari">大和物語</span>』に書かれています。この歌は<a href="/6.html">大伴家持の歌</a>がモチーフになっています。
@@ -566,14 +573,6 @@
         </dd>
       </dl>
     </div>
-    <div class="bottom_arrow">
-      <div id="next2" class="bottom">
-        <p id="next2_arrow">次の和歌へ</p>
-      </div>
-      <div id="back2" class="bottom">
-        <p id="back2_arrow">前の和歌へ</p>
-      </div>
-    </div>
   </main>
 
   <!-- メインここまで・フッターここから -->
@@ -591,7 +590,7 @@
     </div>
   </footer>
   <!-- フッターここまで -->
-  <script src="../js/poems.js?20261006-04"></script>
+  <script src="../js/poems.js?20261008-01"></script>
   <script src="../js/moon.js?20240822"></script>
   <!-- クリッカブルマップここから -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/image-map-resizer/1.0.10/js/imageMapResizer.min.js"></script>
@@ -604,9 +603,9 @@
   <script src="../js/tippy.umd.min.js"></script>
   <script src="../js/tooltips.js?20261007-01"></script>
   <script src="../js/tenno-keizu-tooltips.js?20261006-04"></script>
-  <script src="../js/fujiwara-keizu-tooltips.js?20261006-04"></script>
-  <script src="../js/keizu-tips.js?20261006-04"></script>
-  <script src="../js/keizu-diagram.js?20261003-02"></script>
+  <script src="../js/fujiwara-keizu-tooltips.js?20261008-02"></script>
+  <script src="../js/keizu-tips.js?20261008-03"></script>
+  <script src="../js/keizu-diagram.js?20261007-01"></script>
   <!-- ▲▲▲ tippy.js ▲▲▲ -->
   <script>window.POEM_NUM = 30;</script>
   <script src="../js/grammar-data.js?20260830"></script>

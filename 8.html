@@ -33,7 +33,7 @@
   <meta property="og:site_name" content="時雨の百人一首">
   <meta name="twitter:card" content="summary_large_image">
   <!-- スタイルシートの追加 -->
-  <link rel="stylesheet" href="../css/style.css?20261006-05">
+  <link rel="stylesheet" href="../css/style.css?20261008-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_08.css?20240507-02">
   <link rel="stylesheet" href="../css/animate.min.css">
@@ -158,6 +158,13 @@
   <main>
     <div class="card">
       <div class="column-wrapper">
+        <nav class="breadcrumb-poem" aria-label="パンくずリスト">
+          <ol>
+            <li><a href="index.html">トップ</a></li>
+            <li><a href="list.html">百人一首一覧</a></li>
+            <li aria-current="page">第8番 喜撰法師</li>
+          </ol>
+        </nav>
         <div class="select-container">
           <label for="themeSelector" id="themeSelector-label">テーマを選択:</label>
           <select id="themeSelector" class="selector">
@@ -325,7 +332,7 @@
             <dt>宇治のイメージ</dt>
             <dd class='thumb-image2'>
               <figure>
-                <a href='../img/genjimonogatari_large.webp' data-lightbox='紫式部' data-title='宇治十帖モニュメント'>
+                <a href='../img/genjimonogatari_large.webp' data-lightbox='喜撰法師' data-title='宇治十帖モニュメント'>
                   <img loading='lazy' src='../img/genjimonogatari.webp?20240502' alt='宇治十帖モニュメント' width="640" height="480">
                 </a>
                 <!-- <figcaption><small>写真:photoAC</small></figcaption> -->
@@ -368,7 +375,7 @@
                   <img loading='lazy' src='../img/kuniyoshi_08.webp' alt='歌川国芳による喜撰法師の浮世絵' width="480" height="727">
                 </a>
                 <figcaption><a
-                    href='https://commons.wikimedia.org/wiki/File:Kisen-hoshi_(no._8)_%E5%96%9C%E6%92%B0%E6%B3%95%E5%B8%AB_(The_Monk_Kisen)_(BM_2008,3037.10608).jpg'><small>British
+                    href='https://commons.wikimedia.org/wiki/File:Kisen-hoshi_(no._8)_%E5%96%9C%E6%92%B0%E6%B3%95%E5%B8%AB_(The_Monk_Kisen)_(BM_2008,3037.10608).jpg' target='_blank' rel='noopener'><small>British
                       Museum, Public domain, via Wikimedia Commons</small></a></figcaption>
               </figure>
               <div>
@@ -387,7 +394,7 @@
                   <img loading='lazy' src='../img/PerryVisit.webp' alt='黒船来航の絵' width="640" height="408">
                 </a>
                 <figcaption><small><a
-                      href="https://commons.wikimedia.org/wiki/File:Commodore-Perry-Visit-Kanagawa-1854.jpg">Wilhelm
+                      href="https://commons.wikimedia.org/wiki/File:Commodore-Perry-Visit-Kanagawa-1854.jpg" target="_blank" rel="noopener">Wilhelm
                       Heine, Public domain, via Wikimedia Commons</a></small></figcaption>
               </figure>
               <div>
@@ -403,14 +410,6 @@
           </dl>
         </dd>
       </dl>
-    </div>
-    <div class="bottom_arrow">
-      <div id="next2" class="bottom">
-        <p id="next2_arrow">次の和歌へ</p>
-      </div>
-      <div id="back2" class="bottom">
-        <p id="back2_arrow">前の和歌へ</p>
-      </div>
     </div>
   </main>
 
@@ -429,7 +428,7 @@
     </div>
   </footer>
   <!-- フッターここまで -->
-  <script src="../js/poems.js?20261006-04"></script>
+  <script src="../js/poems.js?20261008-01"></script>
   <!-- クリッカブルマップここから -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/image-map-resizer/1.0.10/js/imageMapResizer.min.js"></script>
   <script>

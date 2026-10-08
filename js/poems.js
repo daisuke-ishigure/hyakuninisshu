@@ -308,7 +308,7 @@ let poems = {
         "eng": "OH stormy winds, bring up the clouds, And paint the heavens grey; Lest these fair maids of form divine Should angel wings display, And fly far far away.",
         "eng_name": "Bishop Henjo",
         "translation": "空吹く風よ。天女が帰る雲の通り道を吹き閉じておくれ。舞姫たちをもうしばらくとどめておきたい。",
-        "background": "『古今集』の詞書に「五節の舞姫を見て詠んだ歌」とあります。この歌は「五節の舞」を見た遍照が、舞姫たちを天女に見立てて詠んだものです。『古今集』では作者名が「<ruby>良岑宗貞<rt>よしみねのむねさだ</rt></ruby>」と記されており、この歌が詠まれたとき、彼はまだ出家していなかったことがわかります。",
+        "background": "『古今集』の詞書に「五節の舞姫を見て詠んだ歌」とあります。この歌は「五節の舞」を見た遍昭が、舞姫たちを天女に見立てて詠んだものです。『古今集』では作者名が「<ruby>良岑宗貞<rt>よしみねのむねさだ</rt></ruby>」と記されており、この歌が詠まれたとき、彼はまだ出家していなかったことがわかります。",
         "personality": "僧正遍昭は桓武天皇の孫で、俗名は良岑宗貞です。仁明天皇に<ruby>蔵人頭<rt>くろうどのとう</rt></ruby>として仕えていましたが、仁明天皇が急逝され、喪に服す<ruby>諒闇<rt>りょうあん</rt></ruby>という期間が終わると、同僚たちは喪が明けたことを喜びました。その様子を見た遍昭は、世の無常を感じ、出家を決意したといわれています。後に僧の最高位「僧正」の地位に就きました。",
         "kakekotobaMark": "<img src='../img/mark_kakekotoba_none.svg' alt='掛詞'>",
         "kakekotobaLink": "<p>この歌に掛詞はありません。</p>",

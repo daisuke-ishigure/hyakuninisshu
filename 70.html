@@ -92,7 +92,7 @@
   }
   </script>
   <!-- スタイルシートの追加 -->
-  <link rel="stylesheet" href="../css/style.css?20261006-05">
+  <link rel="stylesheet" href="../css/style.css?20261008-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_70.css?20240507-02">
   <link rel="stylesheet" href="../css/animate.min.css">
@@ -163,6 +163,13 @@
   <main>
     <div class="card">
       <div class="column-wrapper">
+        <nav class="breadcrumb-poem" aria-label="パンくずリスト">
+          <ol>
+            <li><a href="index.html">トップ</a></li>
+            <li><a href="list.html">百人一首一覧</a></li>
+            <li aria-current="page">第70番 良暹法師</li>
+          </ol>
+        </nav>
         <div class="select-container">
           <label for="themeSelector" id="themeSelector-label">テーマを選択:</label>
           <select id="themeSelector" class="selector">
@@ -386,7 +393,7 @@
                   <img loading='lazy' src='../img/kuniyoshi_70.webp' alt='歌川国芳による浮世絵' width="480" height="713">
                 </a>
                 <figcaption><a
-                    href='https://commons.wikimedia.org/wiki/File:Ryosen-hoshi_(no._70)_%E8%89%AF%E6%9A%B9%E6%B3%95%E5%B8%AB_(The_Monk_Ryosen)_(BM_2008,3037.10637).jpg'><small>British
+                    href='https://commons.wikimedia.org/wiki/File:Ryosen-hoshi_(no._70)_%E8%89%AF%E6%9A%B9%E6%B3%95%E5%B8%AB_(The_Monk_Ryosen)_(BM_2008,3037.10637).jpg' target='_blank' rel='noopener'><small>British
                       Museum, Public domain, via Wikimedia Commons</small></a></figcaption>
               </figure>
               <div>
@@ -397,14 +404,6 @@
           </dl>
         </dd>
       </dl>
-    </div>
-    <div class="bottom_arrow">
-      <div id="next2" class="bottom">
-        <p id="next2_arrow">次の和歌へ</p>
-      </div>
-      <div id="back2" class="bottom">
-        <p id="back2_arrow">前の和歌へ</p>
-      </div>
     </div>
   </main>
 
@@ -423,7 +422,7 @@
     </div>
   </footer>
   <!-- フッターここまで -->
-  <script src="../js/poems.js?20261006-04"></script>
+  <script src="../js/poems.js?20261008-01"></script>
   <!-- ▼▼▼ tippy.js ▼▼▼▼ -->
   <script src="../js/popper.min.js"></script>
   <script src="../js/tippy.umd.min.js"></script>

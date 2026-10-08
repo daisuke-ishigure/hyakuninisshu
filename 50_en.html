@@ -71,13 +71,13 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Shigure's Hyakunin Isshu",
-          "item": "https://hyakuninisshu.com/"
+          "item": "https://hyakuninisshu.com/index_en.html"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Poem List",
-          "item": "https://hyakuninisshu.com/list.html"
+          "item": "https://hyakuninisshu.com/list_en.html"
         },
         {
           "@type": "ListItem",
@@ -90,10 +90,10 @@
   ]
   </script>
   <!-- stylesheets -->
-  <link rel="stylesheet" href="../css/style.css?20261006-05">
+  <link rel="stylesheet" href="../css/style.css?20261008-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
-  <link rel="stylesheet" href="../css/poems_en.css?20260803-04">
+  <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -133,6 +133,13 @@
   <main>
     <div class="card">
       <div class="column-wrapper">
+        <nav class="breadcrumb-poem" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index_en.html">Top</a></li>
+            <li><a href="list_en.html">Poem List</a></li>
+            <li aria-current="page">No. 50 Fujiwara no Yoshitaka</li>
+          </ol>
+        </nav>
         <div class="select-container">
           <label for="themeSelector" id="themeSelector-label">Select a theme:</label>
           <select id="themeSelector" class="selector">
@@ -153,9 +160,9 @@
           <div class="checkbox1">
             <div style="display:flex; align-items:center;">
               <label for="toggle2" id="toggle2-label">Switch between the picture card and the matching card</label>
-              <p>Front</p>
+              <p>Front of the Card</p>
               <input type="checkbox" id="toggle2">
-              <p>Back</p>
+              <p>Back of the Card</p>
             </div>
             <div style="display:flex; align-items:center;">
               <div id="play-pause-btn"></div>
@@ -166,7 +173,7 @@
           </div>
           <div class="audio-credit-row">
             <p id="audio-credit">Audio: NHK Creative Library</p>
-            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox (Public Domain).</p>
+            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox</p>
           </div>
 
         </div><!-- column-wrapper end -->
@@ -228,42 +235,43 @@
         <dl>
           <dt>Commentary</dt>
           <dd>
-            This "morning-after poem" was sent by Fujiwara no Yoshitaka to a woman he had spent the night with. It delicately captures the shift in his feelings before and after their meeting.
+            A morning-after poem sent by Fujiwara no Yoshitaka to a woman after their night together. It delicately shows how his feelings changed before and after they met.
           </dd>
         </dl>
         <dl class="last-dl">
           <dt>About the Poet</dt>
           <dd>
-            Fujiwara no Yoshitaka was born the son of Kentoku-kō (Fujiwara no Koretada, Poem 45). A young man of striking looks and great promise, he nonetheless died of smallpox at only twenty-one — despite having composed a poem wishing for a long life. He held a deep Buddhist faith, and is said to have refrained from eating meat or fish throughout his life. His eldest son, Fujiwara no Yukinari, was counted among the Three Great Calligraphers (Sanseki).
+            Fujiwara no Yoshitaka was the son of Kentoku-kō (Poem 45). Handsome and full of promise, he died of smallpox at only 21, even though he had written a poem wishing to live long. A devout Buddhist, he is said never to have eaten meat or fish. His eldest son, Fujiwara no Yukinari, was one of the Three Great Calligraphers.
           </dd>
         </dl>
       </div>
     </div>
     <div class="chart-image-row">
-    <div class="chart-section">
-      <dl>
-        <dt class='title'>Fujiwara no Yoshitaka's Chart of the Heart</dt>
-            <dd>
-              <p>A chart and a modern-language reflection of the poet's inner feelings.</p>
-              <div class="emotion-chart">
-                <div id="radarChartWrapper">
-                  <canvas id="radarChart" width="300" height="300"></canvas>
-                </div>
-                <div>
-                  <p class="chart-quotes-title">The Poet's Feelings (A Personal Interpretation)</p>
-                  <p>The moment I finally met you,<br class="br-pc">my life became something worth holding onto.</p>
-                  <p style="margin-top:1em;">So this happiness won't end,<br class="br-pc">I only want to walk beside you, for a long, long time.</p>
-                </div>
-              </div>
-            </dd>
-      </dl>
-    </div>
     <div class="image-section">
       <dl>
         <dt class='title'>Poem Illustration</dt>
         <dd>
           <img loading='lazy' src='../img/c_050.webp' alt="Illustration for Fujiwara no Yoshitaka's poem">
           <p><small>This image is based on an illustration from William N. Porter's <em>A Hundred Verses from Old Japan</em>, his 1909 English translation of the Hyakunin Isshu published in England, colorized and reworked using Adobe Firefly (generative AI).</small></p>
+        </dd>
+      </dl>
+    </div>
+    <div class="nenpyo-section">
+      <dl>
+        <dt class='title'>Fujiwara no Yoshitaka: A Short Timeline</dt>
+        <dd>
+          <dl class="nenpyo">
+            <dt>954</dt>
+            <dd>Born as a son of Fujiwara no Koretada</dd>
+            <dt>970</dt>
+            <dd>Becomes Acting Assistant Captain of the Left Military Guards</dd>
+            <dt>971</dt>
+            <dd>Becomes Minor Captain of the Right Palace Guards</dd>
+            <dt>972</dt>
+            <dd>His son Yukinari is born. His father, Koretada, dies</dd>
+            <dt>974</dt>
+            <dd>Dies of smallpox at age 21</dd>
+          </dl>
         </dd>
       </dl>
     </div>
@@ -298,15 +306,8 @@
   </footer>
   <!-- Footer end -->
 
-  <script src="../js/poems_en.js?20260803-03"></script>
+  <script src="../js/poems_en.js?20261007-04"></script>
 
-  <!-- Chart of the Heart -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="/js/kokoro-chart-data-en.js?20260726"></script>
-  <script>
-    window.radarScores = KOKORO_CHART_DATA[50].scores;
-  </script>
-  <script src="/js/raderChart.js?20260830-01"></script>
 </body>
 
 </html>

@@ -48,19 +48,6 @@ const sectionNameEN = {
   "哀傷": "Elegy",
 };
 
-// Same poem numbers as js/list-rows.js — keep the two lists in sync when new
-// game pages are added via /kakekotoba-game or /gokunarabe-en.
-// Kakekotoba game (kakekotoba-game-NNN_en.html) is not yet available for all
-// 100 poems; only list numbers that already have a page here.
-const KAKEKOTOBA_GAME_NUMS = new Set([
-  1, 8, 9, 10, 13, 14, 16, 20, 22, 24, 25, 27, 28,
-  51, 58, 60, 62, 67, 72, 77, 88, 91, 95, 96, 97, 98, 100,
-]);
-// Poems that actually contain a jokotoba (序詞). Used for the Jokotoba Dango badge.
-const JOKOTOBA_NUMS = new Set([
-  3, 13, 14, 18, 19, 27, 39, 46, 48, 49, 51, 58, 77, 88, 92, 97,
-]);
-
 function escapeHTMLText(s) {
   return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
@@ -150,12 +137,6 @@ function stripRuby(html) {
 // Build the <tr>…</tr> HTML string for one poem from hyakunin.json
 function buildPoemRowHTML(poem) {
   const num = poem.number;
-  // poem.number is a string in hyakunin.json, so it must be converted with
-  // Number() before comparing against the numeric Sets above (forgetting
-  // this makes .has() always return false and hides every badge).
-  const poemNum = Number(num);
-  const paddedNum = String(num).padStart(2, "0");
-  const paddedNum3 = String(num).padStart(3, "0");
   const hiragana = poem.hiragana || (poem.yomihuda || "").replace(/<br\s*\/?>/g, "");
   const bg = poem.color && colorMap[poem.color];
 
@@ -173,17 +154,9 @@ function buildPoemRowHTML(poem) {
   const dates = poem.date ? translateDate(poem.date) : "";
   const modernText = poem.modern_en || "";
 
+  // Poet name (the commentary/game buttons that used to sit here were removed, same as js/list-rows.js)
   const gameLinksHTML =
     '<div class="waka-game-links">' +
-    `<a class="game-badge game-badge--poet" href="/${num}_en.html" data-tooltip="Poem details">${poetNameEN}'s Poem</a>` +
-    `<a class="game-badge game-badge--daruma" href="/daruma-otoshi-${paddedNum}_en.html" data-tooltip="Play Daruma Otoshi">Daruma Otoshi</a>` +
-    `<a class="game-badge game-badge--gokunarabe" href="/gokunarabe_${paddedNum}_en.html" data-tooltip="Meet the poet">Meet the Poet</a>` +
-    (KAKEKOTOBA_GAME_NUMS.has(poemNum)
-      ? `<a class="game-badge game-badge--kakekotoba" href="/kakekotoba-game-${paddedNum3}_en.html" data-tooltip="Play Spin &amp; Discover Kakekotoba">Spin &amp; Discover Kakekotoba</a>`
-      : "") +
-    (JOKOTOBA_NUMS.has(poemNum)
-      ? `<a class="game-badge game-badge--jokotoba-dango" href="/jokotoba-dango_en.html" data-tooltip="Play Jokotoba Dango">Jokotoba Dango</a>`
-      : "") +
     `<span class="small">${poetName}（${poetNameEN || dates}）</span>` +
     "</div>";
 

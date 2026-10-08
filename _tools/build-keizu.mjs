@@ -6,7 +6,7 @@
 //   node _tools/build-keizu.mjs
 //
 // 相関図のデータ（各ページの <div class="kd-chart"> の中の <script type="application/json">）や、
-// ツールチップの文面（js/tenno-keizu-tooltips.js・js/fujiwara-keizu-tooltips.js）、js/keizu-diagram.js を変えたら実行すること。
+// ツールチップの文面（js/tenno-keizu-tooltips.js・js/fujiwara-keizu-tooltips.js・js/keizu-tips.js、英語版は js/keizu-tips_en.js）、js/keizu-diagram.js を変えたら実行すること。
 // データの直後の <!-- #region KEIZU:START --> と <!-- #endregion KEIZU:END --> の間を書き換える（無ければ足す）。
 // ルートにある .html のうち、class="kd-chart" を含むものをすべて対象にする。
 //
@@ -32,9 +32,10 @@ context.window = context;
 vm.runInContext(read("js/tenno-keizu-tooltips.js"), context);
 vm.runInContext(read("js/fujiwara-keizu-tooltips.js"), context);
 vm.runInContext(read("js/keizu-tips.js"), context);
+vm.runInContext(read("js/keizu-tips_en.js"), context);
 vm.runInContext(read("js/keizu-diagram.js"), context);
-const { KeizuDiagram, TK_TOOLTIPS, FK_TOOLTIPS, KD_TIPS } = context;
-const TIP_SETS = { tenno: TK_TOOLTIPS, fujiwara: FK_TOOLTIPS, kd: KD_TIPS };
+const { KeizuDiagram, TK_TOOLTIPS, FK_TOOLTIPS, KD_TIPS, KD_TIPS_EN } = context;
+const TIP_SETS = { tenno: TK_TOOLTIPS, fujiwara: FK_TOOLTIPS, kd: KD_TIPS, en: KD_TIPS_EN };
 
 const OPEN = '<div class="kd-chart"';
 const JSON_OPEN = '<script type="application/json">';

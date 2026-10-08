@@ -90,12 +90,12 @@
   }
   </script>
   <!-- スタイルシートの追加 -->
-  <link rel="stylesheet" href="../css/style.css?20261006-05">
+  <link rel="stylesheet" href="../css/style.css?20261008-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/moon.css?20240820">
   <link rel="stylesheet" href="../css/animate.min.css">
   <link rel="stylesheet" href="../css/grammar-panel.css?20261001-01">
-  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261003-03">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261007-02">
   <!-- google fontの追加 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -162,6 +162,13 @@
   <main>
     <div class="card">
       <div class="column-wrapper">
+        <nav class="breadcrumb-poem" aria-label="パンくずリスト">
+          <ol>
+            <li><a href="index.html">トップ</a></li>
+            <li><a href="list.html">百人一首一覧</a></li>
+            <li aria-current="page">第59番 赤染衛門</li>
+          </ol>
+        </nav>
         <div class="select-container">
           <label for="themeSelector" id="themeSelector-label">テーマを選択:</label>
           <select id="themeSelector" class="selector">
@@ -681,7 +688,7 @@
                 </a>
                 <figcaption><small><a
                       href='https://commons.wikimedia.org/wiki/File:%E7%99%BE%E4%BA%BA%E4%B8%80%E9%A6%96_%E3%81%86%E3%81%AF%E3%81%8B%E3%82%91%E3%81%A8%E3%81%8D_%E8%B5%A4%E6%9F%93%E8%A1%9B%E9%96%80-Poem_by_Akazome_Emon,_from_the_series_One_Hundred_Poems_Explained_by_the_Nurse_(Hyakunin_isshu_uba_ga_etoki)_MET_DP141130.jpg'
-                      target='_target'>Katsushika Hokusai, CC0, via Wikimedia Commons</a></small></figcaption>
+                      target='_blank'>Katsushika Hokusai, CC0, via Wikimedia Commons</a></small></figcaption>
               </figure>
               <div>
                 <p>
@@ -697,7 +704,7 @@
                 </a>
                 <figcaption><small><a
                       href='https://commons.wikimedia.org/wiki/File:Yoshitoshi_-_100_Aspects_of_the_Moon_-_44.jpg'
-                      target='_target'>Yoshitoshi, Public domain, via Wikimedia Commons</a></small></figcaption>
+                      target='_blank'>Yoshitoshi, Public domain, via Wikimedia Commons</a></small></figcaption>
               </figure>
               <div>
                 <p>幕末から明治中期にかけて活動した浮世絵師・月岡芳年。月にまつわる場面を題材にした『<ruby>月百姿<rt>つきひゃくし</rt></ruby>』に赤染衛門も描かれています。</p>
@@ -706,14 +713,6 @@
           </dl>
         </dd>
       </dl>
-    </div>
-    <div class="bottom_arrow">
-      <div id="next2" class="bottom">
-        <p id="next2_arrow">次の和歌へ</p>
-      </div>
-      <div id="back2" class="bottom">
-        <p id="back2_arrow">前の和歌へ</p>
-      </div>
     </div>
   </main>
 
@@ -732,7 +731,7 @@
     </div>
   </footer>
   <!-- フッターここまで -->
-  <script src="../js/poems.js?20261006-04"></script>
+  <script src="../js/poems.js?20261008-01"></script>
   <script src="../js/moon.js?20240822"></script>
   <!-- クリッカブルマップここから -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/image-map-resizer/1.0.10/js/imageMapResizer.min.js"></script>
@@ -745,9 +744,9 @@
   <script src="../js/tippy.umd.min.js"></script>
   <script src="../js/tooltips.js?20261007-01"></script>
   <script src="../js/tenno-keizu-tooltips.js?20261006-04"></script>
-  <script src="../js/fujiwara-keizu-tooltips.js?20261006-04"></script>
-  <script src="../js/keizu-tips.js?20261006-04"></script>
-  <script src="../js/keizu-diagram.js?20261003-02"></script>
+  <script src="../js/fujiwara-keizu-tooltips.js?20261008-02"></script>
+  <script src="../js/keizu-tips.js?20261008-03"></script>
+  <script src="../js/keizu-diagram.js?20261007-01"></script>
   <!-- ▲▲▲ tippy.js ▲▲▲ -->
   <script>window.POEM_NUM = 59;</script>
   <script src="../js/grammar-data.js?20260830"></script>

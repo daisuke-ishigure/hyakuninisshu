@@ -85,7 +85,7 @@
   }
   </script>
   <!-- スタイルシートの追加 -->
-  <link rel="stylesheet" href="../css/style.css?20261006-05">
+  <link rel="stylesheet" href="../css/style.css?20261008-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../../css/fall.css?20240507-02">
   <link rel="stylesheet" href="../../css/huda_32.css?20240507-02">
@@ -156,6 +156,13 @@
   <main>
     <div class="card">
       <div class="column-wrapper">
+        <nav class="breadcrumb-poem" aria-label="パンくずリスト">
+          <ol>
+            <li><a href="index.html">トップ</a></li>
+            <li><a href="list.html">百人一首一覧</a></li>
+            <li aria-current="page">第32番 春道列樹</li>
+          </ol>
+        </nav>
         <div class="select-container">
           <label for="themeSelector" id="themeSelector-label">テーマを選択:</label>
           <select id="themeSelector" class="selector">
@@ -363,7 +370,7 @@
                   <img loading='lazy' src='../img/hokusai_32.webp' alt='百人一首うばが絵解  葛飾北斎  春道列樹' width="640" height="418">
                 </a>
                 <figcaption><small><a
-                      href='https://commons.wikimedia.org/wiki/File:NDL1309004_%E7%99%BE%E4%BA%BA%E4%B8%80%E9%A6%96%E3%81%86%E3%81%AF%E3%81%8B%E3%82%91%E3%81%A8%E3%81%8D_%E6%98%A5%E9%81%93%E5%88%97%E6%A8%B9.jpg'>National
+                      href='https://commons.wikimedia.org/wiki/File:NDL1309004_%E7%99%BE%E4%BA%BA%E4%B8%80%E9%A6%96%E3%81%86%E3%81%AF%E3%81%8B%E3%82%91%E3%81%A8%E3%81%8D_%E6%98%A5%E9%81%93%E5%88%97%E6%A8%B9.jpg' target='_blank' rel='noopener'>National
                       Diet Library, Public domain, via Wikimedia Commons</a></small></figcaption>
               </figure>
               <div>
@@ -379,7 +386,7 @@
                   <img loading='lazy' src='../img/kuniyoshi_32.webp' alt='歌川国芳による春道列樹の浮世絵' width="480" height="708">
                 </a>
                 <figcaption><a
-                    href='https://commons.wikimedia.org/wiki/File:No_32Harumichi-no-Tsuraki_(BM_1906,1220,0.1225).jpg'><small>British
+                    href='https://commons.wikimedia.org/wiki/File:No_32Harumichi-no-Tsuraki_(BM_1906,1220,0.1225).jpg' target='_blank' rel='noopener'><small>British
                       Museum, Public domain, via Wikimedia Commons</small></a></figcaption>
               </figure>
               <div>
@@ -390,14 +397,6 @@
           </dl>
         </dd>
       </dl>
-    </div>
-    <div class="bottom_arrow">
-      <div id="next2" class="bottom">
-        <p id="next2_arrow">次の和歌へ</p>
-      </div>
-      <div id="back2" class="bottom">
-        <p id="back2_arrow">前の和歌へ</p>
-      </div>
     </div>
   </main>
 
@@ -416,7 +415,7 @@
     </div>
   </footer>
   <!-- フッターここまで -->
-  <script src="../js/poems.js?20261006-04"></script>
+  <script src="../js/poems.js?20261008-01"></script>
   <script src="../js/fall.js?20240507-02"></script>
   <!-- ▼▼▼ tippy.js ▼▼▼▼ -->
   <script src="../js/popper.min.js"></script>

@@ -86,12 +86,12 @@
   }
   </script>
   <!-- スタイルシートの追加 -->
-  <link rel="stylesheet" href="../css/style.css?20261006-05">
+  <link rel="stylesheet" href="../css/style.css?20261008-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_22.css?20240507-02">
   <link rel="stylesheet" href="../css/animate.min.css">
   <link rel="stylesheet" href="../css/grammar-panel.css?20261001-01">
-  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261003-03">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261007-02">
   <!-- google fontの追加 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -157,6 +157,13 @@
   <main>
     <div class="card">
       <div class="column-wrapper">
+        <nav class="breadcrumb-poem" aria-label="パンくずリスト">
+          <ol>
+            <li><a href="index.html">トップ</a></li>
+            <li><a href="list.html">百人一首一覧</a></li>
+            <li aria-current="page">第22番 文屋康秀</li>
+          </ol>
+        </nav>
         <div class="select-container">
           <label for="themeSelector" id="themeSelector-label">テーマを選択:</label>
           <select id="themeSelector" class="selector">
@@ -392,7 +399,7 @@
               </div>
               <div class="kd-text">
                 <p style="width:100%; margin-bottom: 0.75em;">
-                  文屋康秀は天武天皇の<ruby>末裔<rt>まつえい</rt></ruby>であると考えられています。文屋氏は奈良時代の752年に文室の氏とともに「<ruby>真人<rt>まひと</rt></ruby>」の<ruby>姓<rt>かばね</rt></ruby>を授かっています。これは、天武天皇が定めた「<ruby>八色<rt>やくさ</rt></ruby>の<ruby>姓<rt>かばね</rt></ruby>」の最高位であり、最上位に位置づけられていました。</p>
+                  文屋康秀は天武天皇の<ruby>末裔<rt>まつえい</rt></ruby>であると考えられています。文屋氏は奈良時代の752年に文室の氏とともに「<ruby>真人<rt>まひと</rt></ruby>」の<ruby>姓<rt>かばね</rt></ruby>を授かっています。これは、天武天皇が定めた「<ruby>八色<rt>やくさ</rt></ruby>の<ruby>姓<rt>かばね</rt></ruby>」の最高位でした。</p>
                 <p style="width:100%; margin-bottom: 0.75em;">
                   しかし、平安時代に入り藤原氏が中央官制を独占して政治構造を塗り替えていくと、文屋氏の政治的地位は相対的に低下していきます。康秀自身の<span
                     class="tippy kyokkan">極官</span>も<span class="tippy nuidononosuke"><ruby>縫殿助<rt>ぬいどののすけ</rt></ruby></span>に留まり、血統の高さとは裏腹に、官界では下級貴族としての苦労を余儀なくされました。</p>
@@ -415,7 +422,7 @@
             
             
             <dt>果物「ムベ」</dt>
-            <dd class='thumb-image2'>　
+            <dd class='thumb-image2'>
               <figure>
                 <a href='../img/mube_large.webp' data-lightbox='文屋康秀' data-title='ムベの実'>
                   <img loading='lazy' src='../img/mube.webp?20240420' alt='ムベの実' width="640" height="480">
@@ -529,7 +536,7 @@
             <dd class='thumb-image2'>
               <figure>
                 <a href='../img/mubeyama_large.webp' data-lightbox='文屋康秀' data-title='江戸時代につくられた双六『新板百人一首むべ山雙六』'>
-                  <img loading='lazy' src='../img/mubeyama.webp' alt='歌川国芳による文屋康秀の浮世絵' width="640" height="438">
+                  <img loading='lazy' src='../img/mubeyama.webp' alt='新板百人一首むべ山雙六' width="640" height="438">
                 </a>
                 <figcaption><small><a href="https://dl.ndl.go.jp/ja/pid/1310603">国立国会図書館デジタルコレクション</a></small>
                 </figcaption>
@@ -553,7 +560,7 @@
                   <img loading='lazy' src='../img/kuniyoshi_22.webp' alt='歌川国芳による文屋康秀の浮世絵' width="480" height="718">
                 </a>
                 <figcaption><a
-                    href='https://commons.wikimedia.org/wiki/File:No_22_Bunya_no_Yasuhide_(BM_1906,1220,0.1206).jpg'><small>British
+                    href='https://commons.wikimedia.org/wiki/File:No_22_Bunya_no_Yasuhide_(BM_1906,1220,0.1206).jpg' target='_blank' rel='noopener'><small>British
                       Museum, Public domain, via Wikimedia Commons</small></a></figcaption>
               </figure>
               <div>
@@ -567,14 +574,6 @@
           </dl>
         </dd>
       </dl>
-    </div>
-    <div class="bottom_arrow">
-      <div id="next2" class="bottom">
-        <p id="next2_arrow">次の和歌へ</p>
-      </div>
-      <div id="back2" class="bottom">
-        <p id="back2_arrow">前の和歌へ</p>
-      </div>
     </div>
   </main>
 
@@ -593,7 +592,7 @@
     </div>
   </footer>
   <!-- フッターここまで -->
-  <script src="../js/poems.js?20261006-04"></script>
+  <script src="../js/poems.js?20261008-01"></script>
   <!-- クリッカブルマップここから -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/image-map-resizer/1.0.10/js/imageMapResizer.min.js"></script>
   <script>
@@ -605,9 +604,9 @@
   <script src="../js/tippy.umd.min.js"></script>
   <script src="../js/tooltips.js?20261007-01"></script>
   <script src="../js/tenno-keizu-tooltips.js?20261006-04"></script>
-  <script src="../js/fujiwara-keizu-tooltips.js?20261006-04"></script>
-  <script src="../js/keizu-tips.js?20261006-04"></script>
-  <script src="../js/keizu-diagram.js?20261003-02"></script>
+  <script src="../js/fujiwara-keizu-tooltips.js?20261008-02"></script>
+  <script src="../js/keizu-tips.js?20261008-03"></script>
+  <script src="../js/keizu-diagram.js?20261007-01"></script>
   <!-- ▲▲▲ tippy.js ▲▲▲ -->
   <script>window.POEM_NUM = 22;</script>
   <script src="../js/grammar-data.js?20260830"></script>

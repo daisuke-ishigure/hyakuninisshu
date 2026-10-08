@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-08T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -71,13 +71,13 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Shigure's Hyakunin Isshu",
-          "item": "https://hyakuninisshu.com/"
+          "item": "https://hyakuninisshu.com/index_en.html"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Poem List",
-          "item": "https://hyakuninisshu.com/list.html"
+          "item": "https://hyakuninisshu.com/list_en.html"
         },
         {
           "@type": "ListItem",
@@ -90,10 +90,11 @@
   ]
   </script>
   <!-- stylesheets -->
-  <link rel="stylesheet" href="../css/style.css?20261006-05">
+  <link rel="stylesheet" href="../css/style.css?20261008-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
-  <link rel="stylesheet" href="../css/poems_en.css?20260803-04">
+  <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -103,6 +104,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -133,6 +142,13 @@
   <main>
     <div class="card">
       <div class="column-wrapper">
+        <nav class="breadcrumb-poem" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index_en.html">Top</a></li>
+            <li><a href="list_en.html">Poem List</a></li>
+            <li aria-current="page">No. 7 Abe no Nakamaro</li>
+          </ol>
+        </nav>
         <div class="select-container">
           <label for="themeSelector" id="themeSelector-label">Select a theme:</label>
           <select id="themeSelector" class="selector">
@@ -153,9 +169,9 @@
           <div class="checkbox1">
             <div style="display:flex; align-items:center;">
               <label for="toggle2" id="toggle2-label">Switch between the picture card and the matching card</label>
-              <p>Front</p>
+              <p>Front of the Card</p>
               <input type="checkbox" id="toggle2">
-              <p>Back</p>
+              <p>Back of the Card</p>
             </div>
             <div style="display:flex; align-items:center;">
               <div id="play-pause-btn"></div>
@@ -166,7 +182,7 @@
           </div>
           <div class="audio-credit-row">
             <p id="audio-credit">Audio: NHK Creative Library</p>
-            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox (Public Domain).</p>
+            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox</p>
           </div>
 
         </div><!-- column-wrapper end -->
@@ -228,36 +244,18 @@
         <dl>
           <dt>Commentary</dt>
           <dd>
-            The Kokin Wakashū's headnote reads, "Composed while gazing at the moon in Tang China." Abe no Nakamaro, who had spent many years in Tang China, wrote this poem at a farewell banquet held in Mingzhou (present-day Ningbo) as he prepared to return home. It is said that envoys to Tang China would perform rites at Mount Mikasa to pray for a safe voyage.
+            The Kokin Wakashū says this was "written while looking at the moon in China." Abe no Nakamaro wrote it at a farewell party in Mingzhou (now Ningbo) as he was leaving for home after many years in Tang China. At Mount Mikasa, envoys to China are said to have prayed for a safe voyage.
           </dd>
         </dl>
         <dl class="last-dl">
           <dt>About the Poet</dt>
           <dd>
-            Abe no Nakamaro traveled to Tang China as a student in his late teens, accompanying a Japanese embassy. In his twenties he passed the imperial examinations and rose to serve Emperor Xuanzong in high office. His talents were so highly valued that he was never permitted to leave his post in China; only past the age of fifty did he finally set out for home, but his ship was caught in a storm and drifted to Vietnam. He eventually returned to Chang'an, where he died at the age of seventy-three.
+            Abe no Nakamaro went to Tang China as a student in his late teens. He passed the imperial exams in his twenties and served Emperor Xuanzong in high posts. Too valued to be let go, he set out for home only after 50, but his ship was blown to Vietnam by a storm. He returned to Chang'an and died there at 73.
           </dd>
         </dl>
       </div>
     </div>
     <div class="chart-image-row">
-    <div class="chart-section">
-      <dl>
-        <dt class='title'>Abe no Nakamaro's Chart of the Heart</dt>
-            <dd>
-              <p>A chart and a modern-language reflection of the poet's inner feelings.</p>
-              <div class="emotion-chart">
-                <div id="radarChartWrapper">
-                  <canvas id="radarChart" width="300" height="300"></canvas>
-                </div>
-                <div>
-                  <p class="chart-quotes-title">The Poet's Feelings (A Personal Interpretation)</p>
-                  <p>A moon over foreign skies —<br class="br-pc">and still, it feels so familiar.</p>
-                  <p style="margin-top:1em;">Though far from home, the sky is one.<br class="br-pc">I look up at the moon, and think of home.</p>
-                </div>
-              </div>
-            </dd>
-      </dl>
-    </div>
     <div class="image-section">
       <dl>
         <dt class='title'>Poem Illustration</dt>
@@ -267,7 +265,195 @@
         </dd>
       </dl>
     </div>
+    <div class="nenpyo-section">
+      <dl>
+        <dt class='title'>Abe no Nakamaro: A Short Timeline</dt>
+        <dd>
+          <dl class="nenpyo">
+            <dt>698</dt>
+            <dd>Born as the eldest son of Abe no Funamori</dd>
+            <dt>717</dt>
+            <dd>Goes to Tang China with a Japanese mission and studies in Chang'an</dd>
+            <dt>725</dt>
+            <dd>Becomes an official of the Tang government</dd>
+            <dt>733</dt>
+            <dd>Asks to return home, but is not allowed</dd>
+            <dt>753</dt>
+            <dd>His ship home is wrecked and drifts far south</dd>
+            <dt>c. 760</dt>
+            <dd>Becomes military governor of Annam (in present-day Vietnam)</dd>
+            <dt>770</dt>
+            <dd>Dies in Tang China</dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
   </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <dt>Kasuga Taisha Shrine at the Foot of Mount Mikasa</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/kasugataisha_large.webp' data-lightbox='nakamaro' data-title='Kasuga Taisha Shrine'>
+                  <img loading='lazy' src='../img/kasugataisha.webp' alt='Kasuga Taisha Shrine' width="640" height="480">
+                </a>
+              </figure>
+              <div>
+                <p>This shrine stands in a corner of Nara Park, at the foot of Mount Mikasa, and honors the guardian gods of the Fujiwara clan.
+                  The fields of Kasuga around it are a sacred place surrounded by gentle nature, where people have prayed since ancient times.
+                  Far away in Tang China, Abe no Nakamaro may have looked up at a foreign sky, picturing the moon over these fields of Kasuga.</p>
+              </div>
+            </dd>
+
+            <dt>A Tasty Japanese Sweet, "Tsukikamo"</dt>
+            <dd class="thumb-image2">
+              <figure>
+                <a href="img/mikasa-big.jpg" data-lightbox='nakamaro' data-title='"Tsukikamo" from Kanshundo'>
+                  <img src="img/mikasa-big.jpg" alt="Tsukikamo dorayaki" width="600" height="400">
+                </a>
+              </figure>
+              <div>
+                <p>"Tsukikamo" is a <em>dorayaki</em> (a pancake sandwich with sweet bean paste) from <a href="https://shop.kanshundo.co.jp/" style="font-weight:normal">Kanshundo</a>, a long-established Japanese sweets shop in Kyoto. Its name comes from Abe no Nakamaro's Hyakunin Isshu poem.</p>
+              </div>
+            </dd>
+
+            <dt>The Sea Routes of the Envoys to Tang China</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/kentoshi_route.gif?20240629' data-lightbox='nakamaro' data-title='The sea routes of the envoys to Tang China'>
+                  <img loading='lazy' src='../img/kentoshi_route.gif?20240629' alt='Map of the sea routes of the envoys to Tang China' width="1280" height="927">
+                </a>
+                <figcaption><small>Click to enlarge.</small></figcaption>
+              </figure>
+              <div>
+                <p>The envoys to Tang China left from Naniwa (Osaka), sailed through the Seto Inland Sea to Hakata, and crossed to China from there. At first they used the "northern route" along the Korean Peninsula, but when relations with the Korean kingdom of Silla grew worse, they switched to the "southern route," crossing the open sea away from Korea. The ships had no compass, and on the southern route there were no landmarks to guide them, so the voyage was far more dangerous and difficult than on the northern route.
+                </p>
+              </div>
+            </dd>
+
+            <dt>A Poem by Fujiwara no Kiyokawa</dt>
+            <dd>
+              Fujiwara no Kiyokawa was one of the envoys who, like Abe no Nakamaro, hoped to return home. But he too never made it back, and died in Tang China. He wrote the next poem before leaving for China.
+              <div class='quote'><q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>春日野<rt>かすがの</rt></ruby>に
+                  <ruby>斎<rt>いつ</rt></ruby>く<ruby>三諸<rt>みもろ</rt></ruby>の
+                  <ruby>梅<rt>うめ</rt></ruby>の<ruby>花<rt>はな</rt></ruby><br>
+                  <ruby>栄<rt>さか</rt></ruby>えてあり<ruby>待<rt>ま</rt></ruby>て
+                  <ruby>帰<rt>かえ</rt></ruby>り<ruby>来<rt>く</rt></ruby>るまで
+                  <span class="shutten"><em>Man'yōshū</em>, Fujiwara no Kiyokawa</span>
+                </q><q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">
+                    Plum blossoms at the sacred shrine in the fields of Kasuga,<br class="br-pc">please keep blooming beautifully,<br class="br-pc">and wait for me until I return.
+                  </p>
+                </q></div>
+            </dd>
+
+            <dt>Li Bai's Poem on Hearing of Nakamaro's Death</dt>
+            <dd>
+              In Tang China, Abe no Nakamaro was friends with Chinese poets such as Li Bai and Wang Wei. The next poem is Li Bai's "Weeping for Chao Heng," a poem of four lines with seven characters each. "Chao Heng" was Nakamaro's Chinese name. Li Bai wrote it in grief when he heard that Nakamaro's ship had been lost at sea.
+              <div class="quote">
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Chinese</h3>
+                  <p style="margin-bottom:0.5em;">日本晁卿辞帝都<br>
+                    征帆一片遶蓬壷<br>
+                    明月不帰沈碧海<br>
+                    白雲愁色満蒼梧</p>
+                  <hr>
+                  <h3 style="margin-top:0.5em;" class="was-h4">As read in Japanese:</h3>
+                  <p>
+                    <ruby>日本<rt>にほん</rt></ruby>の<ruby>晁卿<rt>ちょうこう</rt></ruby>、<ruby>帝都<rt>ていと</rt></ruby>を<ruby>辞<rt>じ</rt></ruby>し<br>
+                    <ruby>征帆<rt>せいはん</rt></ruby><ruby>一片<rt>いっぺん</rt></ruby><ruby>蓬壺<rt>ほうこ</rt></ruby>を<ruby>遶<rt>めぐ</rt></ruby>る<br>
+                    <ruby>明月<rt>めいげつ</rt></ruby><ruby>帰<rt>かえ</rt></ruby>らず<ruby>碧海<rt>へきかい</rt></ruby>に<ruby>沈<rt>しず</rt></ruby>み<br>
+                    <ruby>白雲<rt>はくうん</rt></ruby><ruby>愁色<rt>しゅうしょく</rt></ruby><ruby>蒼梧<rt>そうご</rt></ruby>に<ruby>満<rt>み</rt></ruby>つ
+                  </p>
+                </q>
+
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p>Chao Heng of Japan left the capital, Chang'an,<br>
+                    and on a single small boat<br>
+                    tried to cross the great eastern sea.<br>
+                    But he, as noble as the bright moon,<br>
+                    sank into the blue sea and never returned.<br>
+                    White clouds, full of sorrow, fill the sky over Cangwu.</p>
+                  <p class="kome" style="font-size:1rem;">Chao Heng: Abe no Nakamaro's name in China.</p>
+                  <p class="kome" style="font-size:1rem; margin-top:0.3em">Penghu (<em>Hōko</em>): a legendary mountain believed to lie in the eastern sea. Some read it as meaning Japan.</p>
+                  <p class="kome" style="font-size:1rem; margin-top:0.3em">Cangwu (<em>Sōgo</em>): a place in eastern Guangxi.</p>
+                </q>
+              </div>
+            </dd>
+            <dt>A Symbol of Japan–China Friendship: The Abe no Nakamaro Monument</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/abenonakamaro_kinenhi_large.webp' data-lightbox='nakamaro' data-title='The Abe no Nakamaro monument in Xingqinggong Park'>
+                  <img src='../img/abenonakamaro_kinenhi.webp' alt='The Abe no Nakamaro monument' width="640" height="427">
+                </a>
+                <figcaption><small><a
+                      href='https://commons.wikimedia.org/wiki/File:%E9%98%BF%E5%80%8D%E4%BB%B2%E9%BA%BB%E5%91%82%E7%A2%91.JPG' target='_blank' rel='noopener'>Indiana
+                      jo, CC BY-SA 4.0 , via Wikimedia Commons</a></small></figcaption>
+              </figure>
+              <div>
+                <p>
+                  A monument to Abe no Nakamaro stands in a park on the site of the Xingqing Palace in Xi'an, China (the old capital, Chang'an). It was built as a symbol of friendship between Japan and China, inspired by the friendship of Nakamaro and Li Bai. On its sides are carved a Chinese translation of Nakamaro's Hyakunin Isshu poem and Li Bai's poem "Weeping for Chao Heng," written when he heard of Nakamaro's death. <a
+                    class='no-decoration'
+                    href='utamakura_en.html?lat=34.25255820820475&lng=108.98370203180075&zoom=15'>See it on the map</a>
+                </p>
+              </div>
+            </dd>
+            <dt>Ukiyo-e by Katsushika Hokusai</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/hokusai_07_large.webp' data-lightbox='nakamaro' data-title='Ukiyo-e by Katsushika Hokusai'>
+                  <img loading='lazy' src='../img/hokusai_07.webp' alt='Ukiyo-e by Katsushika Hokusai' width="680" height="464">
+                </a>
+                <figcaption><a
+                    href='https://commons.wikimedia.org/wiki/File:Abe_no_Nakamaro_kijkend_naar_de_maan-Rijksmuseum_RP-P-1966-333.jpeg'
+                    target='_blank'><small>Katsushika Hokusai; Katsushika Hokusai died 1849-05-10; Nishimura Yohachi,
+                      Public domain, via Wikimedia Commons</small></a></figcaption>
+              </figure>
+              <div>
+                <p>
+                  This print is from <em>One Hundred Poems Explained by the Nurse</em> (<em>Hyakunin Isshu Uba ga Etoki</em>) by Katsushika Hokusai, an ukiyo-e artist of the Edo period. The idea of the series is a nurse explaining the Hyakunin Isshu poems with easy-to-understand pictures. It shows Nakamaro gazing out to sea. Surely he is looking at the eastern sea and thinking of his homeland. The moon floating on the water and the flags streaming in the east wind are also striking.
+                </p>
+              </div>
+            </dd>
+            <dt>Utagawa Kuniyoshi's <em>Hyakunin Isshu no Uchi</em></dt>
+            <dd class='thumb-image2'>
+              <figure class='portrait'>
+                <a href='../img/kuniyoshi_07_large.webp' data-lightbox='nakamaro' data-title='Ukiyo-e by Utagawa Kuniyoshi'>
+                  <img loading='lazy' src='../img/kuniyoshi_07.webp' alt='Ukiyo-e by Utagawa Kuniyoshi' width="480" height="706">
+                </a>
+                <figcaption><a
+                    href='https://commons.wikimedia.org/wiki/File:Abe_no_Nakamaro_(no._7)_%E5%AE%89%E5%80%8D%E4%BB%B2%E9%BA%BB%E5%91%82_(BM_2008,3037.10607).jpg' target='_blank' rel='noopener'><small>British
+                      Museum, Public domain, via Wikimedia Commons</small></a></figcaption>
+              </figure>
+              <div>
+                <p>This ukiyo-e is by Utagawa Kuniyoshi, an artist of the Edo period.<br class="br-pc">It shows a scene that matches the poem in the Hyakunin Isshu.</p>
+              </div>
+            </dd>
+            <dt>Tsukioka Yoshitoshi's <em>One Hundred Aspects of the Moon</em></dt>
+            <dd class='thumb-image2'>
+              <figure class='portrait'>
+                <a href='../img/yoshitoshi_07_large.webp' data-lightbox='nakamaro' data-title='Ukiyo-e by Tsukioka Yoshitoshi'>
+                  <img loading='lazy' src='../img/yoshitoshi_07.webp' alt='Ukiyo-e by Tsukioka Yoshitoshi' width="435" height="640">
+                </a>
+                <figcaption><a
+                    href='https://dl.ndl.go.jp/ja/pid/1306326'><small>Yoshitoshi, <em>One Hundred Aspects of the Moon: "Ama no hara furisake mireba Kasuga naru Mikasa no yama ni ideshi tsuki kamo"</em>, Akiyama Buemon, 1888.
+                      National Diet Library Digital Collections https://dl.ndl.go.jp/pid/1306326 (accessed 2024-06-29)</small></a></figcaption>
+              </figure>
+              <div>
+                <p>This ukiyo-e is by Tsukioka Yoshitoshi, an artist active from the end of the Edo period into the early Meiji period. The figure on the right is probably Abe no Nakamaro, gazing at the moon over the great sea while longing for the moon over the fields of Kasuga. The figure on the left is not known; it may be one of the poets Nakamaro befriended, such as Li Bai or Wang Wei.</p>
+              </div>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -298,15 +484,8 @@
   </footer>
   <!-- Footer end -->
 
-  <script src="../js/poems_en.js?20260803-03"></script>
+  <script src="../js/poems_en.js?20261007-04"></script>
 
-  <!-- Chart of the Heart -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="/js/kokoro-chart-data-en.js?20260726"></script>
-  <script>
-    window.radarScores = KOKORO_CHART_DATA[7].scores;
-  </script>
-  <script src="/js/raderChart.js?20260830-01"></script>
 </body>
 
 </html>

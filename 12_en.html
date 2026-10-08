@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-08T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -72,13 +72,13 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Shigure's Hyakunin Isshu",
-          "item": "https://hyakuninisshu.com/"
+          "item": "https://hyakuninisshu.com/index_en.html"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Poem List",
-          "item": "https://hyakuninisshu.com/list.html"
+          "item": "https://hyakuninisshu.com/list_en.html"
         },
         {
           "@type": "ListItem",
@@ -91,10 +91,12 @@
   ]
   </script>
   <!-- stylesheets -->
-  <link rel="stylesheet" href="../css/style.css?20261006-05">
+  <link rel="stylesheet" href="../css/style.css?20261008-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
-  <link rel="stylesheet" href="../css/poems_en.css?20260803-04">
+  <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -104,6 +106,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -134,6 +144,13 @@
   <main>
     <div class="card">
       <div class="column-wrapper">
+        <nav class="breadcrumb-poem" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index_en.html">Top</a></li>
+            <li><a href="list_en.html">Poem List</a></li>
+            <li aria-current="page">No. 12 High Priest Henjō</li>
+          </ol>
+        </nav>
         <div class="select-container">
           <label for="themeSelector" id="themeSelector-label">Select a theme:</label>
           <select id="themeSelector" class="selector">
@@ -154,9 +171,9 @@
           <div class="checkbox1">
             <div style="display:flex; align-items:center;">
               <label for="toggle2" id="toggle2-label">Switch between the picture card and the matching card</label>
-              <p>Front</p>
+              <p>Front of the Card</p>
               <input type="checkbox" id="toggle2">
-              <p>Back</p>
+              <p>Back of the Card</p>
             </div>
             <div style="display:flex; align-items:center;">
               <div id="play-pause-btn"></div>
@@ -167,7 +184,7 @@
           </div>
           <div class="audio-credit-row">
             <p id="audio-credit">Audio: NHK Creative Library</p>
-            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox (Public Domain).</p>
+            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox</p>
           </div>
 
         </div><!-- column-wrapper end -->
@@ -229,36 +246,18 @@
         <dl>
           <dt>Commentary</dt>
           <dd>
-            The Kokin Wakashū's headnote reads, "A poem composed on watching the dancers of the Gosechi Festival." Having watched the Gosechi dance, Henjō likened the dancers to heavenly maidens in this poem. In the Kokin Wakashū, the author is recorded under his lay name, Yoshimine no Munesada, showing that this poem was composed before he took holy orders.
+            The Kokin Wakashū says this was written on seeing the Gosechi dancers at court. Henjō compares the dancing girls to heavenly maidens. The author is listed under his lay name, Yoshimine no Munesada, so he wrote it before he became a monk.
           </dd>
         </dl>
         <dl class="last-dl">
           <dt>About the Poet</dt>
           <dd>
-            High Priest Henjō was a grandson of Emperor Kanmu, and his lay name was Yoshimine no Munesada. He served Emperor Ninmyō as Head Chamberlain, but when the emperor died suddenly and the period of mourning came to an end, Henjō watched his colleagues celebrating the mourning's close and was struck by a deep sense of the world's impermanence, resolving to take holy orders. He went on to rise to the highest rank of Buddhist priest, "Sōjō" (Archbishop).
+            Henjō was a grandson of Emperor Kanmu; his lay name was Yoshimine no Munesada. He served Emperor Ninmyō as Head Chamberlain. When the emperor died and the mourning period ended, he saw his colleagues celebrating, felt how fleeting the world is, and became a monk. He rose to Sōjō, a top rank among monks.
           </dd>
         </dl>
       </div>
     </div>
     <div class="chart-image-row">
-    <div class="chart-section">
-      <dl>
-        <dt class='title'>High Priest Henjō's Chart of the Heart</dt>
-            <dd>
-              <p>A chart and a modern-language reflection of the poet's inner feelings.</p>
-              <div class="emotion-chart">
-                <div id="radarChartWrapper">
-                  <canvas id="radarChart" width="300" height="300"></canvas>
-                </div>
-                <div>
-                  <p class="chart-quotes-title">The Poet's Feelings (A Personal Interpretation)</p>
-                  <p>Wind, close the path the clouds travel through —<br class="br-pc">don't let the heavenly maidens go home yet.</p>
-                  <p style="margin-top:1em;">I want this dreamlike moment<br class="br-pc">to last just a little longer.</p>
-                </div>
-              </div>
-            </dd>
-      </dl>
-    </div>
     <div class="image-section">
       <dl>
         <dt class='title'>Poem Illustration</dt>
@@ -268,7 +267,600 @@
         </dd>
       </dl>
     </div>
+    <div class="nenpyo-section">
+      <dl>
+        <dt class='title'>High Priest Henjō: A Short Timeline</dt>
+        <dd>
+          <dl class="nenpyo">
+            <dt>816</dt>
+            <dd>Born as a grandson of Emperor Kanmu</dd>
+            <dt>845</dt>
+            <dd>Becomes Assistant Captain of the Left Palace Guards</dd>
+            <dt>849</dt>
+            <dd>Becomes Head Chamberlain (Kurōdo no Tō)</dd>
+            <dt>850</dt>
+            <dd>Becomes a monk after Emperor Ninmyō dies</dd>
+            <dt>869</dt>
+            <dd>Also becomes head of Urin-in Temple</dd>
+            <dt>885</dt>
+            <dd>Becomes High Priest (Sōjō)</dd>
+            <dt>890</dt>
+            <dd>Dies</dd>
+            <dt>Notes</dt>
+            <dd>
+              <ul>
+                <li>Counted as one of the Six Immortal Poets</li>
+                <li>Counted as one of the Thirty-Six Immortal Poets</li>
+              </ul>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>High Priest Henjō's Family Tree</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 12.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__tenno">Brown text</span>Emperor</li>
+              <li><span class="fk-legend__tno" aria-hidden="true"></span>Emperor's number in the line of succession</li>
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+              <li><span class="fk-legend__eq">＝</span>Marriage</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="High Priest Henjō's family tree">
+            <script type="application/json">
+{
+ "lang": "en",
+ "nodes": [
+  {
+   "id": "otomuro",
+   "n": "藤原乙牟漏",
+   "x": 46,
+   "y": 86
+  },
+  {
+   "id": "kanmu",
+   "n": "桓武",
+   "k": 1,
+   "t": 50,
+   "x": 46,
+   "y": 138
+  },
+  {
+   "id": "nagatsugu",
+   "n": "百済永継",
+   "x": 64,
+   "y": 182
+  },
+  {
+   "id": "tabiko",
+   "n": "藤原旅子",
+   "x": 46,
+   "y": 250
+  },
+  {
+   "id": "heizei",
+   "n": "平城",
+   "k": 1,
+   "t": 51,
+   "x": 280,
+   "y": 62
+  },
+  {
+   "id": "saga",
+   "n": "嵯峨",
+   "k": 1,
+   "t": 52,
+   "x": 280,
+   "y": 162
+  },
+  {
+   "id": "yasuyo",
+   "n": "良岑安世",
+   "x": 280,
+   "y": 232
+  },
+  {
+   "id": "junna",
+   "n": "淳和",
+   "k": 1,
+   "t": 53,
+   "x": 280,
+   "y": 290
+  },
+  {
+   "id": "abo",
+   "n": "阿保親王",
+   "x": 470,
+   "y": 62
+  },
+  {
+   "id": "ninmyo",
+   "n": "仁明",
+   "k": 1,
+   "t": 54,
+   "x": 470,
+   "y": 162
+  },
+  {
+   "id": "henjo",
+   "n": "遍昭",
+   "p": 12,
+   "x": 470,
+   "y": 232,
+   "self": 1
+  },
+  {
+   "id": "yukihira",
+   "n": "在原行平",
+   "p": 16,
+   "x": 590,
+   "y": 40
+  },
+  {
+   "id": "narihira",
+   "n": "在原業平",
+   "p": 17,
+   "x": 590,
+   "y": 84
+  },
+  {
+   "id": "montoku",
+   "n": "文徳",
+   "k": 1,
+   "t": 55,
+   "x": 590,
+   "y": 140
+  },
+  {
+   "id": "koko",
+   "n": "光孝",
+   "k": 1,
+   "t": 58,
+   "p": 15,
+   "x": 590,
+   "y": 192
+  },
+  {
+   "id": "sosei",
+   "n": "素性",
+   "p": 21,
+   "x": 590,
+   "y": 232
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-otomuro",
+   "top": "otomuro",
+   "bottom": "kanmu"
+  }
+ ],
+ "eqs": [
+  {
+   "id": "c-nagatsugu",
+   "points": [
+    [
+     74,
+     147
+    ],
+    [
+     74,
+     173
+    ]
+   ],
+   "out": [
+    76,
+    160
+   ]
+  },
+  {
+   "id": "c-tabiko",
+   "points": [
+    [
+     52,
+     147
+    ],
+    [
+     52,
+     241
+    ]
+   ],
+   "out": [
+    54,
+    216
+   ]
+  }
+ ],
+ "kids": [
+  {
+   "from": "c-otomuro",
+   "to": [
+    "heizei",
+    "saga"
+   ],
+   "bar": 256
+  },
+  {
+   "from": "c-nagatsugu",
+   "to": [
+    "yasuyo"
+   ],
+   "bar": 244
+  },
+  {
+   "from": "c-tabiko",
+   "to": [
+    "junna"
+   ],
+   "bar": 232
+  },
+  {
+   "from": "heizei",
+   "to": [
+    "abo"
+   ]
+  },
+  {
+   "from": "saga",
+   "to": [
+    "ninmyo"
+   ]
+  },
+  {
+   "from": "yasuyo",
+   "to": [
+    "henjo"
+   ]
+  },
+  {
+   "from": "abo",
+   "to": [
+    "yukihira",
+    "narihira"
+   ]
+  },
+  {
+   "from": "ninmyo",
+   "to": [
+    "montoku",
+    "koko"
+   ]
+  },
+  {
+   "from": "henjo",
+   "to": [
+    "sosei"
+   ]
+  }
+ ],
+ "arrows": [
+  {
+   "points": [
+    [
+     484,
+     213
+    ],
+    [
+     484,
+     174
+    ]
+   ],
+   "label": {
+    "text": "Served",
+    "x": 490,
+    "y": 198
+   }
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 779 316" width="779" height="316" role="img" aria-label="High Priest Henjō's family tree" lang="en" class="fk-svg kd-svg" style="max-width:1169px;min-width:min(640px,1169px)" data-src="bh0pk3">
+<g class="fk-edges"><path d="M71 95V129M75 95V129" class="fk-edge fk-eq"/><path d="M74 147L74 173" class="kd-eq-out"/><path d="M74 147L74 173" class="kd-eq-in"/><path d="M52 147L52 241" class="kd-eq-out"/><path d="M52 147L52 241" class="kd-eq-in"/><path d="M75 103H256" class="fk-edge"/><path d="M256 62V162" class="fk-edge"/><path d="M256 62H277" class="fk-edge"/><path d="M256 162H277" class="fk-edge"/><path d="M76 160H244" class="fk-edge"/><path d="M244 160V232" class="fk-edge"/><path d="M244 232H277" class="fk-edge"/><path d="M54 216H232" class="fk-edge"/><path d="M232 216V290" class="fk-edge"/><path d="M232 290H277" class="fk-edge"/><path d="M329 62H456" class="fk-edge"/><path d="M456 62H467" class="fk-edge"/><path d="M319 162H456" class="fk-edge"/><path d="M456 162H467" class="fk-edge"/><path d="M442 232H456" class="fk-edge"/><path d="M456 232H467" class="fk-edge"/><path d="M554 62H576" class="fk-edge"/><path d="M576 40V84" class="fk-edge"/><path d="M576 40H587" class="fk-edge"/><path d="M576 84H587" class="fk-edge"/><path d="M532 162H576" class="fk-edge"/><path d="M576 140V192" class="fk-edge"/><path d="M576 140H587" class="fk-edge"/><path d="M576 192H587" class="fk-edge"/><path d="M542 232H576" class="fk-edge"/><path d="M576 232H587" class="fk-edge"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"><path d="M484 213L484 174" class="kd-arrow" marker-end="url(#kdArrowHead)"/><text class="kd-arrow-label" x="490" y="198">Served</text></g>
+<g>
+<g class="fk-node" transform="translate(46,86)" data-tip="&lt;h3&gt;Fujiwara no Otomuro&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;760–790&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Fujiwara no Yoshitsugu&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Empress of Emperor Kanmu; mother of Emperors Heizei and Saga&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="164" height="26"/><text class="fk-name" x="0" y="0.5">Fujiwara no Otomuro</text></g></g>
+<g class="fk-node is-tenno" transform="translate(46,138)" data-tip="&lt;h3&gt;Emperor Kanmu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;50th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;737–806&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;781–806&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Moved the capital to Nagaoka-kyō, then to Heian-kyō (794)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="58" height="26"/><text class="fk-name" x="0" y="0.5">Kanmu</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">50</text></g>
+<g class="fk-node" transform="translate(64,182)" data-tip="&lt;h3&gt;Kudara no Nagatsugu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Asukabe no Natomaro&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;A lady serving Emperor Kanmu and mother of Yoshimine no Yasuyo. She was also a wife of Fujiwara no Uchimaro&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="168" height="26"/><text class="fk-name" x="0" y="0.5">Kudara no Nagatsugu</text></g></g>
+<g class="fk-node" transform="translate(46,250)" data-tip="&lt;h3&gt;Fujiwara no Tabiko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;759–788&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Fujiwara no Momokawa&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;A consort of Emperor Kanmu; mother of Emperor Junna&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="146" height="26"/><text class="fk-name" x="0" y="0.5">Fujiwara no Tabiko</text></g></g>
+<g class="fk-node is-tenno" transform="translate(280,62)" data-tip="&lt;h3&gt;Emperor Heizei&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;51st emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;774–824&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;806–809&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;After stepping down, he became a monk following the Retired Emperor Heizei Incident (Kusuko Incident) of 810&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="50" height="26"/><text class="fk-name" x="0" y="0.5">Heizei</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">51</text></g>
+<g class="fk-node is-tenno" transform="translate(280,162)" data-tip="&lt;h3&gt;Emperor Saga&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;52nd emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;786–842&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;809–823&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Gave his sons and daughters the family name Minamoto (the Saga Genji)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="40" height="26"/><text class="fk-name" x="0" y="0.5">Saga</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">52</text></g>
+<g class="fk-node" transform="translate(280,232)" data-tip="&lt;h3&gt;Yoshimine no Yasuyo&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;785–830&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Upper Counselor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Third Rank; given Junior Second Rank after death&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Kanmu&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Given the family name Yoshimine and left the imperial family&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="163" height="26"/><text class="fk-name" x="0" y="0.5">Yoshimine no Yasuyo</text></g></g>
+<g class="fk-node is-tenno" transform="translate(280,290)" data-tip="&lt;h3&gt;Emperor Junna&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;53rd emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;786–840&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;823–833&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Kanmu and younger brother of Emperor Saga&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="48" height="26"/><text class="fk-name" x="0" y="0.5">Junna</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">53</text></g>
+<g class="fk-node" transform="translate(470,62)" data-tip="&lt;h3&gt;Prince Abo&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;792–842&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Third Rank for princes; First Rank after death&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Heizei; father of Ariwara no Yukihira and Narihira&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="85" height="26"/><text class="fk-name" x="0" y="0.5">Prince Abo</text></g></g>
+<g class="fk-node is-tenno" transform="translate(470,162)" data-tip="&lt;h3&gt;Emperor Ninmyō&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;54th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;810–850&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;833–850&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="63" height="26"/><text class="fk-name" x="0" y="0.5">Ninmyō</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">54</text></g>
+<g class="fk-node is-poet is-self" transform="translate(470,232)" data-tip="&lt;h3&gt;Henjō&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;816–890&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Fifth Rank, Upper Grade (before becoming a monk)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Grandson of Emperor Kanmu. His name before becoming a monk was Yoshimine no Munesada&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 12, &quot;Amatsukaze...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called High Priest Henjō (Sōjō Henjō).&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;He served Emperor Ninmyō as a Chamberlain and became a monk after the emperor died. One of the Six Immortal Poets&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="79" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="73" height="26"/><text class="fk-name" x="0" y="0.5">Henjō</text><circle class="fk-badge" cx="59" cy="0" r="10"/><text class="fk-badge-num" x="59" y="0.5">12</text></g></g>
+<g class="fk-node is-poet" transform="translate(590,40)" data-tip="&lt;h3&gt;Ariwara no Yukihira&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;818–893&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Middle Counselor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Third Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 16, &quot;Tachiwakare...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Middle Counselor Yukihira&lt;/span&gt;&lt;/div&gt;" data-p="16"><a href="/16_en.html" aria-label="Ariwara no Yukihira (Hyakunin Isshu Poem 16)"><rect class="fk-hit" x="-2" y="-13" width="177" height="26"/><text class="fk-name" x="0" y="0.5">Ariwara no Yukihira</text><circle class="fk-badge" cx="163" cy="0" r="10"/><text class="fk-badge-num" x="163" y="0.5">16</text></a></g>
+<g class="fk-node is-poet" transform="translate(590,84)" data-tip="&lt;h3&gt;Ariwara no Narihira&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;825–880&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Fourth Rank, Upper Grade&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 17, &quot;Chihayaburu...&quot;&lt;/span&gt;&lt;/div&gt;" data-p="17"><a href="/17_en.html" aria-label="Ariwara no Narihira (Hyakunin Isshu Poem 17)"><rect class="fk-hit" x="-2" y="-13" width="177" height="26"/><text class="fk-name" x="0" y="0.5">Ariwara no Narihira</text><circle class="fk-badge" cx="163" cy="0" r="10"/><text class="fk-badge-num" x="163" y="0.5">17</text></a></g>
+<g class="fk-node is-tenno" transform="translate(590,140)" data-tip="&lt;h3&gt;Emperor Montoku&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;55th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;827–858&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;850–858&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="73" height="26"/><text class="fk-name" x="0" y="0.5">Montoku</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">55</text></g>
+<g class="fk-node is-tenno is-poet" transform="translate(590,192)" data-tip="&lt;h3&gt;Emperor Kōkō&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;58th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;830–887&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;884–887&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Ninmyō&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 15, &quot;Kimi ga tame haru no no ni...&quot;&lt;/span&gt;&lt;/div&gt;" data-p="15"><a href="/15_en.html" aria-label="Emperor Kōkō (Hyakunin Isshu Poem 15)"><rect class="fk-hit" x="-2" y="-13" width="67" height="26"/><text class="fk-name" x="0" y="0.5">Kōkō</text><circle class="fk-badge" cx="53" cy="0" r="10"/><text class="fk-badge-num" x="53" y="0.5">15</text></a><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">58</text></g>
+<g class="fk-node is-poet" transform="translate(590,232)" data-tip="&lt;h3&gt;Sosei&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Henjō&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 21, &quot;Ima komu to...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Priest Sosei&lt;/span&gt;&lt;/div&gt;" data-p="21"><a href="/21_en.html" aria-label="Sosei (Hyakunin Isshu Poem 21)"><rect class="fk-hit" x="-2" y="-13" width="67" height="26"/><text class="fk-name" x="0" y="0.5">Sosei</text><circle class="fk-badge" cx="53" cy="0" r="10"/><text class="fk-badge-num" x="53" y="0.5">21</text></a></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+          <div class="kd-text">
+            <p style="margin-bottom:0.5em; width:100%;">
+              High Priest Henjō's grandfather was Emperor Kanmu. His father, Yoshimine no Yasuyo, was not made an imperial prince; he was given the family name Yoshimine and left the imperial family to become a subject, yet he still rose to Senior Third Rank and Upper Counselor.</p>
+            <p style="margin-bottom:0.5em; width:100%;">
+              Henjō also served Emperor Ninmyō, became Head Chamberlain, and was given Junior Fifth Rank, Upper Grade. When Emperor Ninmyō died that same year, Henjō became a monk in 850.</p>
+            <p style="margin-bottom:0.5em; width:100%;">He studied under Ennin and Enchin, monks who had studied in Tang China, became a monk of the Tendai school, and in 885 rose to <em>Sōjō</em>, the highest rank for monks. His son was <a
+                href="/21_en.html">Priest Sosei</a>.</p>
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <dt id="gosechinomai">The Gosechi Dance</dt>
+            <dd class='thumb-image1'>
+              <figure class='portrait'>
+                <a href='../img/gosechinomai_large.webp' data-lightbox='henjo' data-title='A woman dressed as a Gosechi dancer'>
+                  <img loading='lazy' src='../img/gosechinomai.webp' alt='A woman dressed as a Gosechi dancer' width="434" height="680">
+                </a>
+                <figcaption><small><a
+                      href='http://vintagepostcardsjapan.com'>http://vintagepostcardsjapan.com</a></small>
+                </figcaption>
+              </figure>
+              <div>
+                <p style="margin-bottom:0.5em; width:100%;">
+                  The Gosechi dance is performed at the Toyo-no-Akari banquet held after the Daijōsai (the first harvest festival of a new emperor) and the Niinamesai (the yearly harvest festival). It is offered by four or five unmarried young women wearing the <em>jūni-hitoe</em> (twelve-layered robe), holding cypress-wood fans, with ornamental combs in their hair.
+                </p>
+                <p style="margin-bottom:0.5em;width:100%;">
+                  The dance is said to come from a legend: when Emperor Tenmu was playing the koto in Yoshino, a heavenly maiden appeared and danced, waving her sleeves five times.
+                </p>
+                <p style="margin-bottom:0.5em;width:100%;">
+                  This image is a postcard of the Gosechi dance, thought to have been performed at the enthronement of Emperor Shōwa. The dancer on the postcard wears her hair puffed out at the sides, but Heian-period dancers are thought to have worn their hair hanging down naturally.
+                </p>
+              </div>
+            </dd>
+
+            <dt>Another "Amatsukaze" and Maiden, by Princess Shikishi</dt>
+            <dd>
+              <p><a href="/89_en.html">Princess Shikishi</a> wrote the next poem based on Henjō's poem. The holy glow of a maiden shines in the stillness of a winter night, cold and clear as ice.</p>
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>天<rt>あま</rt></ruby>つ<ruby>風<rt>かぜ</rt></ruby>
+                  <ruby>氷<rt>こおり</rt></ruby>をわたる
+                  <ruby>冬<rt>ふゆ</rt></ruby>の<ruby>夜<rt>よ</rt></ruby>の
+                  <br>をとめの<ruby>袖<rt>そで</rt></ruby>を
+                  みがく<ruby>月影<rt>つきかげ</rt></ruby>
+                  <span class="shutten"><em>Shin Chokusen Wakashū</em>, Princess Shikishi</span>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="margin-top: 0.25em;">
+                    On a winter night when the wind of heaven<br class="br-pc">blows cold and clear as ice,<br class="br-pc">the moonlight shines white on the maidens' sleeves.
+                  </p>
+                </q>
+              </div>
+            </dd>
+
+            <dt>The Six Poetic Sages (<em>Rokkasen</em>)</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <img src="/img/rokkasen.gif?ver-02" alt="The Six Poetic Sages" usemap="#ImageMap1" width="1280" height="1440">
+                <map name="ImageMap1">
+                  <area shape="rect" coords="681,27,1138,372" href="/9_en.html" alt="Ono no Komachi" />
+                  <area shape="rect" coords="717,465,1100,812" href="/22_en.html" alt="Fun'ya no Yasuhide" />
+                  <area shape="rect" coords="13,39,395,370" href="/8_en.html" alt="Priest Kisen" />
+                  <area shape="rect" coords="13,443,402,806" href="/17_en.html" alt="Ariwara no Narihira" />
+                </map>
+                <figcaption><small>Click a poet to go to their poem page.</small></figcaption>
+              </figure>
+              <div>
+                <p style="width:100%; margin-bottom: 0.75em;">
+                  When the <em>Kokin Wakashū</em> was compiled, these six poets, including High Priest Henjō, were very famous poets of the generation before. In the Japanese preface to the <em>Kokin Wakashū</em>, Ki no Tsurayuki picked them out as "people whose names were known in recent times" and judged their poetry. His judgments were quite harsh, but the six later came to be called the <em>Rokkasen</em>, the Six Poetic Sages, and were highly praised as great poets.
+                </p>
+                <p style="width:100%; margin-bottom: 0.75em;">See <a
+                    href="/rokkasen_en.html">Ki no Tsurayuki's judgments of the six poets</a>.</p>
+                <p style="width:100%; margin-bottom: 0.75em;">
+                  One of the Six Poetic Sages, Ōtomo no Kuronushi, has no poem in the Hyakunin Isshu, while the other five were all chosen.</p>
+              </div>
+            </dd>
+
+            <dt>A Haiku by Kobayashi Issa<br class="br-sp"> Based on Henjō's Poem</dt>
+            <dd>
+              <p>Issa moves the scene to spring, when the rapeseed flowers are in full bloom, and writes about a free-spirited cat.</p>
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  なの<ruby>花<rt>はな</rt></ruby>も
+                  <ruby>猫<rt>ねこ</rt></ruby>の<ruby>通<rt>かよ</rt></ruby>ひ<ruby>路<rt>じ</rt></ruby>
+                  <ruby>吹<rt>ふ</rt></ruby>とぢよ
+                  <span class="shutten">Kobayashi Issa</span>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.8;">
+                    Rapeseed flowers, blow in the wind<br class="br-sp"> and close the cat's path.
+                  </p>
+                </q>
+              </div>
+            </dd>
+
+            <dt>A Poem That Sees Willow Branches as Thread<br class="br-sp"> and White Dew as Pearls</dt>
+            <dd>
+              <p>With a delicate eye, Henjō captures the moment a spring willow shines with morning dew.</p>
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>浅緑<rt>あさみどり</rt></ruby>
+                  <ruby>糸縒<rt>いとよ</rt></ruby>りかけて
+                  <ruby>白露<rt>しらつゆ</rt></ruby>を
+                  <br><ruby>玉<rt>たま</rt></ruby>にも<ruby>貫<rt>つらぬ</rt></ruby>ける
+                  <ruby>春<rt>はる</rt></ruby>の<ruby>柳<rt>やなぎ</rt></ruby>か
+                  <span class="shutten"><em>Kokin Wakashū</em>, High Priest Henjō</span>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.8;">
+                    The spring willow twists its pale green branches like thread, and strings the white dew on them like pearls.
+                  </p>
+                </q>
+              </div>
+            </dd>
+
+            <dt>A Poem Henjō Wrote When the Mourning<br class="br-sp"> for Emperor Ninmyō Ended</dt>
+            <dd>
+              <p>
+                In the next poem, the official period of mourning for Emperor Ninmyō has ended and everyone around him has moved on, but Henjō alone is still left in his grief. The heartfelt feelings of Henjō, who had just become a monk, are preserved in the <em>Kokin Wakashū</em>.
+              </p>
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  みな<ruby>人<rt>びと</rt></ruby>は
+                  <ruby>花<rt>はな</rt></ruby>の<ruby>衣<rt>ころも</rt></ruby>に
+                  なりぬなり
+                  <br><ruby>苔<rt>こけ</rt></ruby>の<ruby>袂<rt>たもと</rt></ruby>よ
+                  <ruby>乾<rt>かわ</rt></ruby>きだにせよ
+                  <span class="shutten"><em>Kokin Wakashū</em>, High Priest Henjō</span>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.8;">
+                    Everyone has taken off their mourning clothes and put on bright robes. O sleeves of my monk's robe, wet with tears, at least please dry.
+                  </p>
+                </q>
+              </div>
+            </dd>
+
+            <dt>A Poem in Memory of Prince Tsuneyasu, Son of Emperor Ninmyō</dt>
+            <dd>
+              Just before he died, Prince Tsuneyasu gave Urin-in, his residence, to Henjō.
+              <br class="br-pc">This poem is in the <em>Kokin Wakashū</em>, whose headnote says it was "written while standing in the shade of a tree at Urin-in."
+              <br class="br-pc">It is thought that Henjō, crushed by the prince's death, wrote it at Urin-in.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  わび<ruby>人<rt>びと</rt></ruby>の
+                  わきて<ruby>立<rt>た</rt></ruby>ち<ruby>寄<rt>よ</rt></ruby>る
+                  <ruby>木<rt>こ</rt></ruby>の<ruby>下<rt>もと</rt></ruby>は
+                  <br>たのむかげなく
+                  <ruby>紅葉<rt>もみぢ</rt></ruby><ruby>散<rt>ち</rt></ruby>りけり
+                  <span class="shutten"><em>Kokin Wakashū</em>, High Priest Henjō</span>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.8;">
+                    The tree I come to for comfort in my sorrow gives no shade to rely on, for its autumn leaves have all fallen.
+                  </p>
+                </q>
+              </div>
+            </dd>
+
+            <dt>A Poem That Coolly Looks at<br class="br-sp"> the Bloom of Young Women</dt>
+            <dd>
+              The next poem is in the <em>Kokin Wakashū</em>'s section of <em>haikaika</em> (humorous poems).
+              <br class="br-sp">It gently warns young women who are carried away by their youth: "Your bloom will soon be over."
+              <div class='quote'>
+                <q class="quote-ja" style="position:relative;">
+                  <img src="/img/ominaeshi.webp" alt="Ominaeshi (patrinia) flowers"
+                    style="position:absolute; width:90px; height:auto; right:8px; top:5px;" width="200" height="218">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>秋<rt>あき</rt></ruby>の<ruby>野<rt>の</rt></ruby>に
+                  なまめき立てる
+                  <br class="br-sp"><ruby>女郎花<rt>おみなえし</rt></ruby>
+                  <br>あなかしがまし
+                  <ruby>花<rt>はな</rt></ruby>も<ruby>一時<rt>ひととき</rt></ruby>
+                  <span class="shutten"><em>Kokin Wakashū</em>, High Priest Henjō</span>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.8;">
+                    How noisy are the <em>ominaeshi</em> flowers ("maiden flowers"), showing off their charms in the autumn fields! Even beautiful flowers last only a short while.
+                  </p>
+                </q>
+              </div>
+            </dd>
+
+            <dt>A Poem Hoping Visitors Would Stay<br class="br-sp"> the Night at His Temple</dt>
+            <dd>
+              Henjō wrote the next poem hoping that people who came to pray at his temple would not go home, but stay the night.
+              The wish not to let something beautiful or a precious time end here is the same idea as in his Hyakunin Isshu poem, "Amatsukaze...," where he asks the wind to close the path through the clouds.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>夕暮<rt>ゆうぐ</rt></ruby>れの
+                  <ruby>籬<rt>まがき</rt></ruby>は<ruby>山<rt>やま</rt></ruby>と
+                  <ruby>見<rt>み</rt></ruby>えななむ
+                  <br><ruby>夜<rt>よる</rt></ruby>は<ruby>越<rt>こ</rt></ruby>えじと
+                  <ruby>宿<rt>やど</rt></ruby>りとるべく
+                  <span class="shutten"><em>Kokin Wakashū</em>, High Priest Henjō</span>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.8;">
+                    I wish the hedge at dusk would look like a mountain. Then (the visitors to this Gangyō-ji temple) would decide not to cross it at night, and stay here.
+                  </p>
+                </q>
+              </div>
+            </dd>
+
+            <dt>Gangyō-ji Temple</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/gangyoji_large.webp' data-lightbox='henjo' data-title='Gangyō-ji Temple'>
+                  <img loading='lazy' src='../img/gangyoji.webp' alt='Gangyō-ji Temple' width="640" height="480">
+                </a>
+              </figure>
+              <div>
+                <p style="width:100%; margin-bottom:0.75em;">
+                  A Tendai temple in Kitakazan Kawara-chō, Yamashina Ward, Kyoto. In 868, High Priest Henjō proposed it to celebrate the birth of the 57th emperor, Emperor Yōzei, and Fujiwara no Takaiko (Emperor Seiwa's consort and Emperor Yōzei's mother) built it.</p>
+                <p style="width:100%; margin-bottom:0.75em;">Later, in 986, the 65th emperor, Emperor Kazan, was tricked by Fujiwara no Kaneie and his son Michikane into becoming a monk at this temple.<br
+                    class="br-pc">Kaneie then put his daughter Senshi's son on the throne as Emperor Ichijō. This political upheaval, which included Emperor Kazan becoming a monk, is called the Kanna Incident.</p>
+              </div>
+            </dd>
+
+            <dt>Ukiyo-e by Katsushika Hokusai</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/hokusai_12_large.webp' data-lightbox='henjo' data-title='Ukiyo-e by Katsushika Hokusai'>
+                  <img loading='lazy' src='../img/hokusai_12.webp' alt='Woodblock print by Katsushika Hokusai' width="640" height="437">
+                </a>
+                <figcaption><small>© The Trustees of the British Museum</small></figcaption>
+              </figure>
+              <div>
+                <p>This print is from <em>One Hundred Poems Explained by the Nurse</em> (<em>Hyakunin Isshu Uba ga Etoki</em>) by Katsushika Hokusai, an ukiyo-e artist of the Edo period. The idea of the series is a nurse explaining the Hyakunin Isshu poems with easy-to-understand pictures. On the stage, women performing the Gosechi dance and court musicians are drawn.
+                </p>
+              </div>
+            </dd>
+            <dt>Utagawa Kuniyoshi's <em>Hyakunin Isshu no Uchi</em></dt>
+            <dd class='thumb-image2'>
+              <figure class='portrait'>
+                <a href='../img/kuniyoshi_12_large.webp' data-lightbox='henjo' data-title='Ukiyo-e by Utagawa Kuniyoshi'>
+                  <img loading='lazy' src='../img/kuniyoshi_12.webp' alt='Ukiyo-e of High Priest Henjō by Utagawa Kuniyoshi' width="480" height="708">
+                </a>
+                <figcaption><a
+                    href='https://commons.wikimedia.org/wiki/File:Sojo_Henjo_(no._12)_%E5%83%A7%E6%AD%A3%E9%81%8D%E6%98%AD(The_Monk_Henjo)_(BM_2008,3037.10612).jpg' target='_blank' rel='noopener'><small>British
+                      Museum, Public domain, via Wikimedia Commons</small></a></figcaption>
+              </figure>
+              <div>
+                <p>This ukiyo-e is by Utagawa Kuniyoshi, an artist of the Edo period.<br class="br-pc">It shows a scene that matches the poem in the Hyakunin Isshu. No dancers are to be seen, but a huge, beautifully decorated <em>dadaiko</em> (great drum) catches the eye.</p>
+              </div>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -300,15 +892,18 @@
   </footer>
   <!-- Footer end -->
 
-  <script src="../js/poems_en.js?20260803-03"></script>
-
-  <!-- Chart of the Heart -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="/js/kokoro-chart-data-en.js?20260726"></script>
+  <script src="../js/poems_en.js?20261007-04"></script>
+  <!-- clickable image map (Six Poetic Sages) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/image-map-resizer/1.0.10/js/imageMapResizer.min.js"></script>
   <script>
-    window.radarScores = KOKORO_CHART_DATA[12].scores;
+    imageMapResize();
   </script>
-  <script src="/js/raderChart.js?20260830-01"></script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261008-21"></script>
+  <script src="../js/keizu-diagram.js?20261008-02"></script>
+
 </body>
 
 </html>

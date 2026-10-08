@@ -89,12 +89,12 @@
   }
   </script>
   <!-- スタイルシートの追加 -->
-  <link rel="stylesheet" href="../css/style.css?20261006-05">
+  <link rel="stylesheet" href="../css/style.css?20261008-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_90.css?20240507-02">
   <link rel="stylesheet" href="../css/animate.min.css">
   <link rel="stylesheet" href="../css/grammar-panel.css?20261001-01">
-  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261003-03">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261007-02">
   <!-- google fontの追加 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -161,6 +161,13 @@
   <main>
     <div class="card">
       <div class="column-wrapper">
+        <nav class="breadcrumb-poem" aria-label="パンくずリスト">
+          <ol>
+            <li><a href="index.html">トップ</a></li>
+            <li><a href="list.html">百人一首一覧</a></li>
+            <li aria-current="page">第90番 殷富門院大輔</li>
+          </ol>
+        </nav>
         <div class="select-container">
           <label for="themeSelector" id="themeSelector-label">テーマを選択:</label>
           <select id="themeSelector" class="selector">
@@ -344,295 +351,58 @@
               <div class="kd-chart" aria-label="殷富門院大輔の相関図">
                 <script type="application/json">
 {
- "nodes": [
-  {
-   "id": "bifukumonin",
-   "n": "美福門院",
-   "x": 16,
-   "y": 66
-  },
-  {
-   "id": "toba",
-   "n": "鳥羽",
-   "k": 1,
-   "t": 74,
-   "x": 16,
-   "y": 118
-  },
-  {
-   "id": "taikenmonin",
-   "n": "待賢門院",
-   "x": 16,
-   "y": 162
-  },
-  {
-   "id": "akiko",
-   "n": "暲子内親王",
-   "x": 136,
-   "y": 40
-  },
-  {
-   "id": "konoe",
-   "n": "近衛",
-   "k": 1,
-   "t": 76,
-   "x": 136,
-   "y": 92
-  },
-  {
-   "id": "shigeko",
-   "n": "平滋子",
-   "x": 136,
-   "y": 160
-  },
-  {
-   "id": "goshirakawa",
-   "n": "後白河",
-   "k": 1,
-   "t": 77,
-   "x": 136,
-   "y": 212
-  },
-  {
-   "id": "seishi",
-   "n": "藤原成子",
-   "x": 136,
-   "y": 256
-  },
-  {
-   "id": "sutoku",
-   "n": "崇徳",
-   "k": 1,
-   "t": 75,
-   "p": 77,
-   "x": 136,
-   "y": 420
-  },
-  {
-   "id": "takakura",
-   "n": "高倉",
-   "k": 1,
-   "t": 80,
-   "x": 286,
-   "y": 140
-  },
-  {
-   "id": "iko",
-   "n": "源懿子",
-   "x": 286,
-   "y": 212
-  },
-  {
-   "id": "kyushi",
-   "n": "休子内親王",
-   "x": 286,
-   "y": 260
-  },
-  {
-   "id": "mochihito",
-   "n": "以仁王",
-   "x": 286,
-   "y": 296
-  },
-  {
-   "id": "shokushi",
-   "n": "式子内親王",
-   "p": 89,
-   "x": 286,
-   "y": 332
-  },
-  {
-   "id": "inpumonin",
-   "n": "殷富門院",
-   "x": 286,
-   "y": 368
-  },
-  {
-   "id": "shigehito",
-   "n": "重仁親王",
-   "x": 286,
-   "y": 420
-  },
-  {
-   "id": "nobunari",
-   "n": "藤原信成",
-   "key": "信成",
-   "x": 286,
-   "y": 470
-  },
-  {
-   "id": "antoku",
-   "n": "安徳",
-   "k": 1,
-   "t": 81,
-   "x": 436,
-   "y": 110
-  },
-  {
-   "id": "gotoba",
-   "n": "後鳥羽",
-   "k": 1,
-   "t": 82,
-   "p": 99,
-   "x": 436,
-   "y": 162
-  },
-  {
-   "id": "nijo",
-   "n": "二条",
-   "k": 1,
-   "t": 78,
-   "x": 436,
-   "y": 212
-  },
-  {
-   "id": "taifu",
-   "n": "殷富門院大輔",
-   "p": 90,
-   "self": 1,
-   "x": 436,
-   "y": 470
-  },
-  {
-   "id": "rokujo",
-   "n": "六条",
-   "k": 1,
-   "t": 79,
-   "x": 586,
-   "y": 212
-  }
- ],
- "couples": [
-  {
-   "id": "c-bifuku",
-   "top": "bifukumonin",
-   "bottom": "toba"
-  },
-  {
-   "id": "c-taiken",
-   "top": "toba",
-   "bottom": "taikenmonin"
-  },
-  {
-   "id": "c-shigeko",
-   "top": "shigeko",
-   "bottom": "goshirakawa"
-  },
-  {
-   "id": "c-seishi",
-   "top": "goshirakawa",
-   "bottom": "seishi"
-  }
- ],
- "eqs": [
-  {
-   "id": "c-iko",
-   "points": [
-    [
-     184,
-     212
-    ],
-    [
-     283,
-     212
-    ]
-   ],
-   "out": [
-    334,
-    212
-   ]
-  }
- ],
- "kids": [
-  {
-   "from": "c-bifuku",
-   "to": [
-    "akiko",
-    "konoe"
-   ]
-  },
-  {
-   "from": "c-taiken",
-   "to": [
-    "goshirakawa",
-    "sutoku"
-   ]
-  },
-  {
-   "from": "c-shigeko",
-   "to": [
-    "takakura"
-   ]
-  },
-  {
-   "from": "c-iko",
-   "to": [
-    "nijo"
-   ]
-  },
-  {
-   "from": "c-seishi",
-   "to": [
-    "kyushi",
-    "mochihito",
-    "shokushi",
-    "inpumonin"
-   ]
-  },
-  {
-   "from": "sutoku",
-   "to": [
-    "shigehito"
-   ]
-  },
-  {
-   "from": "takakura",
-   "to": [
-    "antoku",
-    "gotoba"
-   ]
-  },
-  {
-   "from": "nijo",
-   "to": [
-    "rokujo"
-   ]
-  },
-  {
-   "from": "nobunari",
-   "to": [
-    "taifu"
-   ]
-  }
- ],
- "arrows": [
-  {
-   "points": [
-    [
-     480,
-     455
-    ],
-    [
-     480,
-     368
-    ],
-    [
-     350,
-     368
-    ]
-   ],
-   "label": {
-    "text": "仕える",
-    "x": 486,
-    "y": 412
-   }
-  }
- ]
+  "nodes": [
+    { "id": "bifukumonin", "n": "美福門院", "x": 16, "y": 66 },
+    { "id": "toba", "n": "鳥羽", "k": 1, "t": 74, "x": 16, "y": 118 },
+    { "id": "taikenmonin", "n": "待賢門院", "x": 16, "y": 162 },
+    { "id": "akiko", "n": "暲子内親王", "x": 136, "y": 40 },
+    { "id": "konoe", "n": "近衛", "k": 1, "t": 76, "x": 136, "y": 92 },
+    { "id": "shigeko", "n": "平滋子", "x": 136, "y": 160 },
+    { "id": "goshirakawa", "n": "後白河", "k": 1, "t": 77, "x": 136, "y": 212 },
+    { "id": "seishi", "n": "藤原成子", "x": 136, "y": 300 },
+    { "id": "sutoku", "n": "崇徳", "k": 1, "t": 75, "p": 77, "x": 136, "y": 420 },
+    { "id": "takakura", "n": "高倉", "k": 1, "t": 80, "x": 286, "y": 140 },
+    { "id": "iko", "n": "源懿子", "x": 152, "y": 256 },
+    { "id": "kyushi", "n": "休子内親王", "x": 286, "y": 260 },
+    { "id": "mochihito", "n": "以仁王", "x": 286, "y": 296 },
+    { "id": "shokushi", "n": "式子内親王", "p": 89, "x": 286, "y": 332 },
+    { "id": "inpumonin", "n": "殷富門院", "x": 286, "y": 368 },
+    { "id": "shigehito", "n": "重仁親王", "x": 286, "y": 420 },
+    { "id": "nobunari", "n": "藤原信成", "key": "信成", "x": 286, "y": 470 },
+    { "id": "antoku", "n": "安徳", "k": 1, "t": 81, "x": 436, "y": 110 },
+    { "id": "gotoba", "n": "後鳥羽", "k": 1, "t": 82, "p": 99, "x": 436, "y": 162 },
+    { "id": "nijo", "n": "二条", "k": 1, "t": 78, "x": 436, "y": 212 },
+    { "id": "taifu", "n": "殷富門院大輔", "p": 90, "self": 1, "x": 436, "y": 470 },
+    { "id": "rokujo", "n": "六条", "k": 1, "t": 79, "x": 586, "y": 212 }
+  ],
+  "couples": [
+    { "id": "c-bifuku", "top": "bifukumonin", "bottom": "toba" },
+    { "id": "c-taiken", "top": "toba", "bottom": "taikenmonin" },
+    { "id": "c-shigeko", "top": "shigeko", "bottom": "goshirakawa" }
+  ],
+  "eqs": [
+    { "id": "c-iko", "points": [[164, 221], [164, 247]], "out": [166, 234] },
+    { "id": "c-seishi", "points": [[142, 221], [142, 291]], "out": [144, 278] }
+  ],
+  "kids": [
+    { "from": "c-bifuku", "to": ["akiko", "konoe"] },
+    { "from": "c-taiken", "to": ["goshirakawa", "sutoku"] },
+    { "from": "c-shigeko", "to": ["takakura"] },
+    { "from": "c-iko", "to": ["nijo"] },
+    { "from": "c-seishi", "to": ["kyushi", "mochihito", "shokushi", "inpumonin"] },
+    { "from": "sutoku", "to": ["shigehito"] },
+    { "from": "takakura", "to": ["antoku", "gotoba"] },
+    { "from": "nijo", "to": ["rokujo"] },
+    { "from": "nobunari", "to": ["taifu"] }
+  ],
+  "arrows": [
+    { "points": [[480, 455], [480, 368], [350, 368]], "label": {"text": "仕える", "x": 486, "y": 412} }
+  ]
 }
                 </script>
                 <!-- #region KEIZU:START -->
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 632 496" width="632" height="496" role="img" aria-label="殷富門院大輔の相関図" class="fk-svg kd-svg" style="max-width:948px;min-width:min(640px,948px)" data-src="4fg33r">
-<g class="fk-edges"><path d="M29 75V93M33 75V93" class="fk-edge fk-eq"/><path d="M29 127V153M33 127V153" class="fk-edge fk-eq"/><path d="M156.5 169V203M160.5 169V203" class="fk-edge fk-eq"/><path d="M156.5 221V247M160.5 221V247" class="fk-edge fk-eq"/><path d="M184 212L283 212" class="kd-eq-out"/><path d="M184 212L283 212" class="kd-eq-in"/><path d="M33 83H122" class="fk-edge"/><path d="M122 40V92" class="fk-edge"/><path d="M122 40H133" class="fk-edge"/><path d="M122 92H133" class="fk-edge"/><path d="M33 140H122" class="fk-edge"/><path d="M122 140V420" class="fk-edge"/><path d="M122 212H133" class="fk-edge"/><path d="M122 420H133" class="fk-edge"/><path d="M160.5 177H272" class="fk-edge"/><path d="M272 140V177" class="fk-edge"/><path d="M272 140H283" class="fk-edge"/><path d="M334 212H422" class="fk-edge"/><path d="M422 212H433" class="fk-edge"/><path d="M160.5 234H272" class="fk-edge"/><path d="M272 234V368" class="fk-edge"/><path d="M272 260H283" class="fk-edge"/><path d="M272 296H283" class="fk-edge"/><path d="M272 332H283" class="fk-edge"/><path d="M272 368H283" class="fk-edge"/><path d="M193 420H272" class="fk-edge"/><path d="M272 420H283" class="fk-edge"/><path d="M319 140H422" class="fk-edge"/><path d="M422 110V162" class="fk-edge"/><path d="M422 110H433" class="fk-edge"/><path d="M422 162H433" class="fk-edge"/><path d="M469 212H572" class="fk-edge"/><path d="M572 212H583" class="fk-edge"/><path d="M349 470H422" class="fk-edge"/><path d="M422 470H433" class="fk-edge"/></g>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 632 496" width="632" height="496" role="img" aria-label="殷富門院大輔の相関図" class="fk-svg kd-svg" style="max-width:948px;min-width:min(640px,948px)" data-src="190rm2i">
+<g class="fk-edges"><path d="M29 75V93M33 75V93" class="fk-edge fk-eq"/><path d="M29 127V153M33 127V153" class="fk-edge fk-eq"/><path d="M156.5 169V203M160.5 169V203" class="fk-edge fk-eq"/><path d="M164 221L164 247" class="kd-eq-out"/><path d="M164 221L164 247" class="kd-eq-in"/><path d="M142 221L142 291" class="kd-eq-out"/><path d="M142 221L142 291" class="kd-eq-in"/><path d="M33 83H122" class="fk-edge"/><path d="M122 40V92" class="fk-edge"/><path d="M122 40H133" class="fk-edge"/><path d="M122 92H133" class="fk-edge"/><path d="M33 140H122" class="fk-edge"/><path d="M122 140V420" class="fk-edge"/><path d="M122 212H133" class="fk-edge"/><path d="M122 420H133" class="fk-edge"/><path d="M160.5 177H272" class="fk-edge"/><path d="M272 140V177" class="fk-edge"/><path d="M272 140H283" class="fk-edge"/><path d="M166 234H422" class="fk-edge"/><path d="M422 212V234" class="fk-edge"/><path d="M422 212H433" class="fk-edge"/><path d="M144 278H272" class="fk-edge"/><path d="M272 260V368" class="fk-edge"/><path d="M272 260H283" class="fk-edge"/><path d="M272 296H283" class="fk-edge"/><path d="M272 332H283" class="fk-edge"/><path d="M272 368H283" class="fk-edge"/><path d="M193 420H272" class="fk-edge"/><path d="M272 420H283" class="fk-edge"/><path d="M319 140H422" class="fk-edge"/><path d="M422 110V162" class="fk-edge"/><path d="M422 110H433" class="fk-edge"/><path d="M422 162H433" class="fk-edge"/><path d="M469 212H572" class="fk-edge"/><path d="M572 212H583" class="fk-edge"/><path d="M349 470H422" class="fk-edge"/><path d="M422 470H433" class="fk-edge"/></g>
 <defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
 <g class="kd-arrows"><path d="M480 455L480 368L350 368" class="kd-arrow" marker-end="url(#kdArrowHead)"/><text class="kd-arrow-label" x="486" y="412">仕える</text></g>
 <g>
@@ -643,10 +413,10 @@
 <g class="fk-node is-tenno" transform="translate(136,92)" data-tip="&lt;h3&gt;&lt;ruby&gt;近衛天皇&lt;rt&gt;このえてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第76代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;生没年：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1139年～1155年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;在位：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1141年～1155年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;系譜：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;鳥羽天皇の皇子。母は美福門院（藤原得子）&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;17歳で亡くなり、その後継をめぐる争いが保元の乱の一因となった&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="34" height="26"/><text class="fk-name" x="0" y="0.5">近衛</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">76</text></g>
 <g class="fk-node" transform="translate(136,160)" data-tip="&lt;h3&gt;&lt;ruby&gt;平滋子&lt;rt&gt;たいらのしげこ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;後白河天皇の妃。高倉天皇の母&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="49" height="26"/><text class="fk-name" x="0" y="0.5">平滋子</text></g></g>
 <g class="fk-node is-tenno" transform="translate(136,212)" data-tip="&lt;h3&gt;&lt;ruby&gt;後白河天皇&lt;rt&gt;ごしらかわてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第77代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;生没年：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1127年～1192年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;在位：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1155年～1158年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;譲位後、長く院政を行った。今様を集めた『梁塵秘抄』を編んだ&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="49" height="26"/><text class="fk-name" x="0" y="0.5">後白河</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">77</text></g>
-<g class="fk-node" transform="translate(136,256)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原成子&lt;rt&gt;ふじわらのしげこ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;系譜：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;権大納言藤原季成の娘&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;後白河天皇の典侍。以仁王・殷富門院（亮子内親王）・式子内親王・休子内親王らの母。1177年没&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="64" height="26"/><text class="fk-name" x="0" y="0.5">藤原成子</text></g></g>
+<g class="fk-node" transform="translate(136,300)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原成子&lt;rt&gt;ふじわらのしげこ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;系譜：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;権大納言藤原季成の娘&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;後白河天皇の典侍。以仁王・殷富門院（亮子内親王）・式子内親王・休子内親王らの母。1177年没&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="64" height="26"/><text class="fk-name" x="0" y="0.5">藤原成子</text></g></g>
 <g class="fk-node is-tenno is-poet" transform="translate(136,420)" data-tip="&lt;h3&gt;&lt;ruby&gt;崇徳天皇&lt;rt&gt;すとくてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第75代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;生没年：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1119年～1164年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;在位：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1123年～1142年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;百人一首：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;77番「瀬をはやみ…」の歌人&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;百人一首の歌人名は&lt;ruby&gt;崇徳院&lt;rt&gt;すとくいん&lt;/rt&gt;&lt;/ruby&gt;。保元の乱（1156年）に敗れて讃岐に流された&lt;/span&gt;&lt;/div&gt;" data-p="77"><a href="/77.html" aria-label="崇徳天皇（百人一首77番）"><rect class="fk-hit" x="-2" y="-13" width="58" height="26"/><text class="fk-name" x="0" y="0.5">崇徳</text><circle class="fk-badge" cx="44" cy="0" r="10"/><text class="fk-badge-num" x="44" y="0.5">77</text></a><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">75</text></g>
 <g class="fk-node is-tenno" transform="translate(286,140)" data-tip="&lt;h3&gt;&lt;ruby&gt;高倉天皇&lt;rt&gt;たかくらてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第80代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;生没年：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1161年～1181年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;在位：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1168年～1180年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;中宮は平清盛の娘・徳子（建礼門院）&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="34" height="26"/><text class="fk-name" x="0" y="0.5">高倉</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">80</text></g>
-<g class="fk-node" transform="translate(286,212)" data-tip="&lt;h3&gt;&lt;ruby&gt;源懿子&lt;rt&gt;みなもとのよしこ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;生没年：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1116年～1143年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;系譜：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;藤原経実の娘。源有仁の養女&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;後白河天皇（即位前の雅仁親王）の妃。1143年に二条天皇を産み、同じ月に疱瘡のため死去した&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="49" height="26"/><text class="fk-name" x="0" y="0.5">源懿子</text></g></g>
+<g class="fk-node" transform="translate(152,256)" data-tip="&lt;h3&gt;&lt;ruby&gt;源懿子&lt;rt&gt;みなもとのよしこ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;生没年：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1116年～1143年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;系譜：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;藤原経実の娘。源有仁の養女&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;後白河天皇（即位前の雅仁親王）の妃。1143年に二条天皇を産み、同じ月に疱瘡のため死去した&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="49" height="26"/><text class="fk-name" x="0" y="0.5">源懿子</text></g></g>
 <g class="fk-node" transform="translate(286,260)" data-tip="&lt;h3&gt;&lt;ruby&gt;休子内親王&lt;rt&gt;きゅうしないしんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;生没年：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1157年～1171年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;系譜：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;後白河天皇と藤原成子の皇女&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="79" height="26"/><text class="fk-name" x="0" y="0.5">休子内親王</text></g></g>
 <g class="fk-node" transform="translate(286,296)" data-tip="&lt;h3&gt;&lt;ruby&gt;以仁王&lt;rt&gt;もちひとおう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;系譜：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;後白河天皇と藤原成子の皇子。式子内親王と同母&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1180年に源頼政とともに平家打倒の兵を挙げたが、敗死した&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="49" height="26"/><text class="fk-name" x="0" y="0.5">以仁王</text></g></g>
 <g class="fk-node is-poet" transform="translate(286,332)" data-tip="&lt;h3&gt;&lt;ruby&gt;式子内親王&lt;rt&gt;しょくしないしんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;系譜：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;後白河天皇の第三皇女。母は藤原成子&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;百人一首：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;89番「玉の緒よ…」の歌人&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1159年に斎院に卜定され、1169年に病により退下。藤原俊成に師事し、『新古今和歌集』に49首が入集した&lt;/span&gt;&lt;/div&gt;" data-p="89"><a href="/89.html" aria-label="式子内親王（百人一首89番）"><rect class="fk-hit" x="-2" y="-13" width="103" height="26"/><text class="fk-name" x="0" y="0.5">式子内親王</text><circle class="fk-badge" cx="89" cy="0" r="10"/><text class="fk-badge-num" x="89" y="0.5">89</text></a></g>
@@ -763,7 +533,7 @@
                   <img loading='lazy' src='../img/kuniyoshi_90.webp' alt='歌川国芳による浮世絵' width="480" height="712">
                 </a>
                 <figcaption><a
-                    href='https://commons.wikimedia.org/wiki/File:Inpumon%27in_no_Osuke_(no._90)_%E6%AE%B7%E5%AF%8C%E9%96%80%E9%99%A2%E5%A4%A7%E8%BC%94(Attendant_to_Empress_Inpu)_(BM_2008,3037.10645).jpg'><small>British
+                    href='https://commons.wikimedia.org/wiki/File:Inpumon%27in_no_Osuke_(no._90)_%E6%AE%B7%E5%AF%8C%E9%96%80%E9%99%A2%E5%A4%A7%E8%BC%94(Attendant_to_Empress_Inpu)_(BM_2008,3037.10645).jpg' target='_blank' rel='noopener'><small>British
                       Museum, Public domain, via Wikimedia Commons</small></a></figcaption>
               </figure>
               <div>
@@ -774,14 +544,6 @@
           </dl>
         </dd>
       </dl>
-    </div>
-    <div class="bottom_arrow">
-      <div id="next2" class="bottom">
-        <p id="next2_arrow">次の和歌へ</p>
-      </div>
-      <div id="back2" class="bottom">
-        <p id="back2_arrow">前の和歌へ</p>
-      </div>
     </div>
   </main>
 
@@ -800,7 +562,7 @@
     </div>
   </footer>
   <!-- フッターここまで -->
-  <script src="../js/poems.js?20261006-04"></script>
+  <script src="../js/poems.js?20261008-01"></script>
   <!-- クリッカブルマップここから -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/image-map-resizer/1.0.10/js/imageMapResizer.min.js"></script>
   <script>
@@ -812,9 +574,9 @@
   <script src="../js/tippy.umd.min.js"></script>
   <script src="../js/tooltips.js?20261007-01"></script>
   <script src="../js/tenno-keizu-tooltips.js?20261006-04"></script>
-  <script src="../js/fujiwara-keizu-tooltips.js?20261006-04"></script>
-  <script src="../js/keizu-tips.js?20261006-04"></script>
-  <script src="../js/keizu-diagram.js?20261003-02"></script>
+  <script src="../js/fujiwara-keizu-tooltips.js?20261008-02"></script>
+  <script src="../js/keizu-tips.js?20261008-03"></script>
+  <script src="../js/keizu-diagram.js?20261007-01"></script>
   <!-- ▲▲▲ tippy.js ▲▲▲ -->
   <script>window.POEM_NUM = 90;</script>
   <script src="../js/grammar-data.js?20260830"></script>

@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-08T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -71,13 +71,13 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Shigure's Hyakunin Isshu",
-          "item": "https://hyakuninisshu.com/"
+          "item": "https://hyakuninisshu.com/index_en.html"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Poem List",
-          "item": "https://hyakuninisshu.com/list.html"
+          "item": "https://hyakuninisshu.com/list_en.html"
         },
         {
           "@type": "ListItem",
@@ -90,10 +90,12 @@
   ]
   </script>
   <!-- stylesheets -->
-  <link rel="stylesheet" href="../css/style.css?20261006-05">
+  <link rel="stylesheet" href="../css/style.css?20261008-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
-  <link rel="stylesheet" href="../css/poems_en.css?20260803-04">
+  <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -103,6 +105,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -133,6 +143,13 @@
   <main>
     <div class="card">
       <div class="column-wrapper">
+        <nav class="breadcrumb-poem" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index_en.html">Top</a></li>
+            <li><a href="list_en.html">Poem List</a></li>
+            <li aria-current="page">No. 28 Minamoto no Muneyuki Ason</li>
+          </ol>
+        </nav>
         <div class="select-container">
           <label for="themeSelector" id="themeSelector-label">Select a theme:</label>
           <select id="themeSelector" class="selector">
@@ -153,9 +170,9 @@
           <div class="checkbox1">
             <div style="display:flex; align-items:center;">
               <label for="toggle2" id="toggle2-label">Switch between the picture card and the matching card</label>
-              <p>Front</p>
+              <p>Front of the Card</p>
               <input type="checkbox" id="toggle2">
-              <p>Back</p>
+              <p>Back of the Card</p>
             </div>
             <div style="display:flex; align-items:center;">
               <div id="play-pause-btn"></div>
@@ -166,7 +183,7 @@
           </div>
           <div class="audio-credit-row">
             <p id="audio-credit">Audio: NHK Creative Library</p>
-            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox (Public Domain).</p>
+            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox</p>
           </div>
 
         </div><!-- column-wrapper end -->
@@ -228,36 +245,18 @@
         <dl>
           <dt>Commentary</dt>
           <dd>
-            A mountain village is already a lonely place, but in winter that loneliness deepens further. The scene of no visitors coming and the grasses withering away seems to overlap with the poet's own lament over his stalled career. He may have seen his own circumstances — overlooked by others — reflected in the desolate winter mountain village.
+            A mountain village is lonely, and in winter it is lonelier still. No visitors come, and the grass and trees wither. This scene seems to match the poet's grief over his stalled career; he may have seen himself in the forgotten village.
           </dd>
         </dl>
         <dl class="last-dl">
           <dt>About the Poet</dt>
           <dd>
-            Minamoto no Muneyuki Ason, despite his high birth as a grandson of Emperor Kōkō, was removed from the imperial family and served the court as a subject. He presented poems to Emperor Uda and had his talent recognized, but was never rewarded with high rank. Because the Heian imperial family practiced polygamy, princes had many children, and by the time one reached the rank of grandson, special treatment was rarely extended.
+            Minamoto no Muneyuki was a grandson of Emperor Kōkō but became a commoner and served the court. Emperor Uda praised his poems, but he never rose to high rank. Heian emperors had many wives and children, so grandsons rarely received special treatment.
           </dd>
         </dl>
       </div>
     </div>
     <div class="chart-image-row">
-    <div class="chart-section">
-      <dl>
-        <dt class='title'>Minamoto no Muneyuki Ason's Chart of the Heart</dt>
-            <dd>
-              <p>A chart and a modern-language reflection of the poet's inner feelings.</p>
-              <div class="emotion-chart">
-                <div id="radarChartWrapper">
-                  <canvas id="radarChart" width="300" height="300"></canvas>
-                </div>
-                <div>
-                  <p class="chart-quotes-title">The Poet's Feelings (A Personal Interpretation)</p>
-                  <p>The winter mountain village lies in silence —<br class="br-pc">not a single visitor in sight.</p>
-                  <p style="margin-top:1em;">Watching the grasses wither away,<br class="br-pc">I feel myself fading from memory too.</p>
-                </div>
-              </div>
-            </dd>
-      </dl>
-    </div>
     <div class="image-section">
       <dl>
         <dt class='title'>Poem Illustration</dt>
@@ -267,7 +266,292 @@
         </dd>
       </dl>
     </div>
+    <div class="nenpyo-section">
+      <dl>
+        <dt class='title'>Minamoto no Muneyuki: A Short Timeline</dt>
+        <dd>
+          <dl class="nenpyo">
+            <dt>894</dt>
+            <dd>Given the family name Minamoto and Junior Fourth Rank, Lower Grade</dd>
+            <dt>905</dt>
+            <dd>Becomes Senior Assistant Minister of Military Affairs</dd>
+            <dt>908</dt>
+            <dd>Becomes Head of the Right Stables</dd>
+            <dt>915</dt>
+            <dd>Becomes governor of Sagami Province</dd>
+            <dt>933</dt>
+            <dd>Becomes Master of the Right Capital</dd>
+            <dt>939</dt>
+            <dd>Given Senior Fourth Rank, Lower Grade</dd>
+            <dt>940</dt>
+            <dd>Dies</dd>
+            <dt>Notes</dt>
+            <dd>
+              <ul>
+                <li>Counted as one of the Thirty-Six Immortal Poets</li>
+              </ul>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Minamoto no Muneyuki Ason's Family Tree</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 28.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__tenno">Brown text</span>Emperor</li>
+              <li><span class="fk-legend__tno" aria-hidden="true"></span>Emperor's number in the line of succession</li>
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+              <li><span class="fk-legend__dash"></span>Generations left out</li>
+              <li><span class="fk-legend__eq">＝</span>Marriage</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Minamoto no Muneyuki's family tree">
+            <script type="application/json">
+{
+ "lang": "en",
+ "nodes": [
+  {
+   "id": "koko",
+   "n": "光孝",
+   "k": 1,
+   "t": 58,
+   "p": 15,
+   "x": 16,
+   "y": 40
+  },
+  {
+   "id": "hanshi",
+   "n": "班子女王",
+   "x": 16,
+   "y": 84
+  },
+  {
+   "id": "koretada",
+   "n": "是忠親王",
+   "x": 170,
+   "y": 40
+  },
+  {
+   "id": "uda",
+   "n": "宇多",
+   "k": 1,
+   "t": 59,
+   "x": 170,
+   "y": 130
+  },
+  {
+   "id": "muneyuki",
+   "n": "源宗于",
+   "p": 28,
+   "self": 1,
+   "sub": "Told Emperor Uda of his hard luck in a poem",
+   "x": 320,
+   "y": 40
+  },
+  {
+   "id": "kanemori",
+   "n": "平兼盛",
+   "p": 40,
+   "x": 440,
+   "y": 92
+  },
+  {
+   "id": "tsunenobu",
+   "n": "源経信",
+   "p": 71,
+   "x": 440,
+   "y": 130
+  },
+  {
+   "id": "toshiyori",
+   "n": "源俊頼",
+   "p": 74,
+   "x": 683,
+   "y": 130
+  },
+  {
+   "id": "shune",
+   "n": "俊恵",
+   "p": 85,
+   "x": 912,
+   "y": 130
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-koko",
+   "top": "koko",
+   "bottom": "hanshi"
+  }
+ ],
+ "kids": [
+  {
+   "from": "c-koko",
+   "to": [
+    "koretada",
+    "uda"
+   ]
+  },
+  {
+   "from": "koretada",
+   "to": [
+    "muneyuki"
+   ]
+  },
+  {
+   "from": "tsunenobu",
+   "to": [
+    "toshiyori"
+   ]
+  },
+  {
+   "from": "toshiyori",
+   "to": [
+    "shune"
+   ]
+  }
+ ],
+ "lines": [
+  {
+   "points": [
+    [
+     306,
+     40
+    ],
+    [
+     306,
+     92
+    ],
+    [
+     437,
+     92
+    ]
+   ],
+   "dash": true,
+   "label": {
+    "text": "2 generations left out",
+    "x": 372,
+    "y": 86
+   }
+  },
+  {
+   "points": [
+    [
+     203,
+     130
+    ],
+    [
+     437,
+     130
+    ]
+   ],
+   "dash": true,
+   "label": {
+    "text": "3 generations left out",
+    "x": 320,
+    "y": 124
+   }
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1003 156" width="1003" height="156" role="img" aria-label="Minamoto no Muneyuki's family tree" lang="en" class="fk-svg kd-svg" style="max-width:1505px;min-width:min(640px,1505px)" data-src="heyo3x">
+<g class="fk-edges"><path d="M33.5 49V75M37.5 49V75" class="fk-edge fk-eq"/><path d="M37.5 62H156" class="fk-edge"/><path d="M156 40V130" class="fk-edge"/><path d="M156 40H167" class="fk-edge"/><path d="M156 130H167" class="fk-edge"/><path d="M293 40H306" class="fk-edge"/><path d="M306 40H317" class="fk-edge"/><path d="M655 130H669" class="fk-edge"/><path d="M669 130H680" class="fk-edge"/><path d="M884 130H898" class="fk-edge"/><path d="M898 130H909" class="fk-edge"/><path d="M306 40L306 92L437 92" class="fk-edge is-dash"/><text class="fk-adopt" x="372" y="86">2 generations left out</text><path d="M203 130L437 130" class="fk-edge is-dash"/><text class="fk-adopt" x="320" y="124">3 generations left out</text></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node is-tenno is-poet" transform="translate(16,40)" data-tip="&lt;h3&gt;Emperor Kōkō&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;58th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;830–887&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;884–887&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Ninmyō&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 15, &quot;Kimi ga tame haru no no ni...&quot;&lt;/span&gt;&lt;/div&gt;" data-p="15"><a href="/15_en.html" aria-label="Emperor Kōkō (Hyakunin Isshu Poem 15)"><rect class="fk-hit" x="-2" y="-13" width="67" height="26"/><text class="fk-name" x="0" y="0.5">Kōkō</text><circle class="fk-badge" cx="53" cy="0" r="10"/><text class="fk-badge-num" x="53" y="0.5">15</text></a><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">58</text></g>
+<g class="fk-node" transform="translate(16,84)" data-tip="&lt;h3&gt;Princess Nakako&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;833–900&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Prince Nakano&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Consort of Emperor Kōkō; mother of Emperor Uda and Prince Koretada&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="129" height="26"/><text class="fk-name" x="0" y="0.5">Princess Nakako</text></g></g>
+<g class="fk-node" transform="translate(170,40)" data-tip="&lt;h3&gt;Prince Koretada&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Kōkō; his mother was Princess Nakako&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Minamoto no Muneyuki and Prince Koga&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="124" height="26"/><text class="fk-name" x="0" y="0.5">Prince Koretada</text></g></g>
+<g class="fk-node is-tenno" transform="translate(170,130)" data-tip="&lt;h3&gt;Emperor Uda&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;59th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;867–931&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;887–897&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Gave Sugawara no Michizane important posts&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="34" height="26"/><text class="fk-name" x="0" y="0.5">Uda</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">59</text></g>
+<g class="fk-node is-poet is-self" transform="translate(320,40)" data-tip="&lt;h3&gt;Minamoto no Muneyuki&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown–940&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Fourth Rank, Lower Grade&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Prince Koretada&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 28, &quot;Yamazato wa...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Minamoto no Muneyuki Ason&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="213" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="207" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Muneyuki</text><circle class="fk-badge" cx="193" cy="0" r="10"/><text class="fk-badge-num" x="193" y="0.5">28</text></g><rect class="fk-sub-box" x="0" y="11" width="254" height="16" rx="8"/><text class="fk-sub" x="127" y="19.5">Told Emperor Uda of his hard luck in a poem</text></g>
+<g class="fk-node is-poet" transform="translate(440,92)" data-tip="&lt;h3&gt;Taira no Kanemori&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 40, &quot;Shinoburedo...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;The Sonpi Bunmyaku makes him Taira no Atsuyuki's son, Prince Koretada's great-grandson (through Prince Koga and Atsuyuki), and Emperor Kōkō's great-great-grandson. But the dates don't fit, so some think he was the son of Prince Atsumochi, a son of Prince Koretada&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Beat Mibu no Tadami at the Poetry Contest of the Imperial Palace in 960. He was the former husband of Akazome Emon's mother; he is said to have claimed Akazome Emon as his own daughter and taken the matter to the police office (Kebiishi-chō) to get her back&lt;/span&gt;&lt;/div&gt;" data-p="40"><a href="/40_en.html" aria-label="Taira no Kanemori (Hyakunin Isshu Poem 40)"><rect class="fk-hit" x="-2" y="-13" width="166" height="26"/><text class="fk-name" x="0" y="0.5">Taira no Kanemori</text><circle class="fk-badge" cx="152" cy="0" r="10"/><text class="fk-badge-num" x="152" y="0.5">40</text></a></g>
+<g class="fk-node is-poet" transform="translate(440,130)" data-tip="&lt;h3&gt;Minamoto no Tsunenobu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Minamoto no Michikata; his mother was a daughter of Minamoto no Kunimori&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 71, &quot;Yū sareba...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Upper Counselor Tsunenobu. His son Minamoto no Toshiyori and grandson Shun'e were also chosen, so three generations have poems in the Hyakunin Isshu&lt;/span&gt;&lt;/div&gt;" data-p="71"><a href="/71_en.html" aria-label="Minamoto no Tsunenobu (Hyakunin Isshu Poem 71)"><rect class="fk-hit" x="-2" y="-13" width="216" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Tsunenobu</text><circle class="fk-badge" cx="202" cy="0" r="10"/><text class="fk-badge-num" x="202" y="0.5">71</text></a></g>
+<g class="fk-node is-poet" transform="translate(683,130)" data-tip="&lt;h3&gt;Minamoto no Toshiyori&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1055–1129&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Fourth Rank, Upper Grade&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 74, &quot;Ukarikeru...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Minamoto no Toshiyori Ason. Compiler of the Kin'yō Wakashū&lt;/span&gt;&lt;/div&gt;" data-p="74"><a href="/74_en.html" aria-label="Minamoto no Toshiyori (Hyakunin Isshu Poem 74)"><rect class="fk-hit" x="-2" y="-13" width="202" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Toshiyori</text><circle class="fk-badge" cx="188" cy="0" r="10"/><text class="fk-badge-num" x="188" y="0.5">74</text></a></g>
+<g class="fk-node is-poet" transform="translate(912,130)" data-tip="&lt;h3&gt;Shun'e&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1113–c. 1191&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Minamoto no Toshiyori&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 85, &quot;Yomosugara...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Priest Shun'e. Poets gathered at his temple lodging, the Karin'en&lt;/span&gt;&lt;/div&gt;" data-p="85"><a href="/85_en.html" aria-label="Shun'e (Hyakunin Isshu Poem 85)"><rect class="fk-hit" x="-2" y="-13" width="79" height="26"/><text class="fk-name" x="0" y="0.5">Shun'e</text><circle class="fk-badge" cx="65" cy="0" r="10"/><text class="fk-badge-num" x="65" y="0.5">85</text></a></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+          <div class="kd-text">
+            <p style="width:100%; margin-bottom:0.5em;">Minamoto no Muneyuki was a grandson of <a href="/15_en.html">Emperor Kōkō</a> and a nephew of Emperor Uda.</p>
+            <p style="width:100%; margin-bottom:0.5em;">
+              He was given the family name Minamoto and left the imperial family to become a subject. He did not rise far in rank, and he told Emperor Uda of his hard luck in a poem. <em>The Tales of Yamato</em> says, however, that he still was not promoted.</p>
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <dt>A Poem to Emperor Uda About His Hard Luck</dt>
+            <dd>Minamoto no Muneyuki wrote this poem on <em>miru</em> seaweed still attached to a stone, which had been presented to Emperor Uda from the province of Kii.
+              <div class='quote'><q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>沖<rt>おき</rt></ruby>つ<ruby>風<rt>かぜ</rt></ruby>
+                  ふけゐの<ruby>浦<rt>うら</rt></ruby>に
+                  <ruby>立<rt>た</rt></ruby>つ<ruby>浪<rt>なみ</rt></ruby>の
+                  <br><ruby>名残<rt>なごり</rt></ruby>にさへや
+                  <ruby>我<rt>われ</rt></ruby>はしづまむ
+                  <span class="shutten"><em>The Tales of Yamato</em>, Minamoto no Muneyuki</span>
+                </q><q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="width:100%; margin-top: 0.25em ;margin-bottom: 0.75em;">
+                    The wind blows from the open sea, but I am not lifted even by the last of the waves rising at Fukei Bay; (like seaweed clinging to a stone) I will sink to the bottom.
+                  </p>
+                </q></div>
+            </dd>
+            <dt><em>Miru</em> (Codium Seaweed)</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/miru_large.webp' data-lightbox='muneyuki' data-title='Miru (codium seaweed)'>
+                  <img loading='lazy' src='../img/miru.webp' alt='Miru (codium seaweed)' width="640" height="468">
+                </a>
+                <figcaption><a href='https://commons.wikimedia.org/wiki/File:Codiumfragile.jpg' target="_blank" rel="noopener"><small>Flyingdream at Wikipedia, Public domain, via Wikimedia Commons</small></a>
+                </figcaption>
+              </figure>
+              <div>
+                <p style="width:100%; margin-bottom: 0.25em;"><em>Miru</em> is a dark green seaweed that grows on rocks on the floor of shallow seas. It is not often eaten today, but long ago it was a common seaweed for food.</p>
+                <p style="width:100%; margin-bottom: 0.75em;">Because of its unusual shape and beauty, <em>miru</em> was used as a decorative pattern called <em>mirumon</em> in clothing designs of the Heian period.</p>
+              </div>
+            </dd>
+
+            <dt>Ukiyo-e by Katsushika Hokusai</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/hokusai_28_large.webp' data-lightbox='muneyuki' data-title='Ukiyo-e by Katsushika Hokusai'>
+                  <img loading='lazy' src='../img/hokusai_28.webp' alt='Minamoto no Muneyuki Ason, from One Hundred Poems Explained by the Nurse, by Katsushika Hokusai' width="640" height="436">
+                </a>
+                <figcaption><a
+                    href='https://commons.wikimedia.org/wiki/File:%E7%99%BE%E4%BA%BA%E4%B8%80%E9%A6%96_%E3%81%86%E3%81%AF%E3%81%8B%E3%82%91%E3%81%A8%E3%81%8D_%E6%BA%90%E5%AE%97%E4%BA%8E%E6%9C%9D%E8%87%A3-Poem_by_Minamoto_no_Muneyuki_Ason,_from_the_series_One_Hundred_Poems_Explained_by_the_Nurse_(Hyakunin_isshu_uba_ga_etoki)_MET_DP140964.jpg' target="_blank" rel="noopener"><small>Katsushika
+                      Hokusai, CC0, via Wikimedia Commons</small></a></figcaption>
+              </figure>
+              <div>
+                <p style="width:100%; margin-bottom: 0.75em;">
+                  This print is from <em>One Hundred Poems Explained by the Nurse</em> (<em>Hyakunin Isshu Uba ga Etoki</em>) by Katsushika Hokusai, an ukiyo-e artist of the Edo period. The idea of the series is a nurse explaining the Hyakunin Isshu poems with easy-to-understand pictures.</p>
+                <p style="width:100%; margin-bottom: 0.75em;">It shows fishermen warming themselves in a mountain village in winter. Unlike the mood of the poem, Hokusai's picture is full of cheerfulness.</p>
+              </div>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -277,6 +561,7 @@
           <a class="da-link-btn" href="diagram_archtecture_en.html">Relationship Diagram</a>
           <a class="kt-link-btn" href="karuta-taisen-pro_en.html">Competitive Karuta Game</a>
           <a class="kts-link-btn" href="karuta-taisen_en.html">Online Karuta Battle</a>
+          <a class="kg-link-btn" href="kakekotoba-game-028_en.html"><span class="kg-link-btn-inner"><span class="kg-link-btn-face kg-link-btn-front">Spin &amp; Discover Kakekotoba!</span><span class="kg-link-btn-face kg-link-btn-back">Spin &amp; Discover Kakekotoba!</span></span></a>
           <a class="sk-link-btn" href="sanjurokkasen.html">Thirty-Six Immortal Poets</a>
         </dd>
       </dl>
@@ -299,15 +584,13 @@
   </footer>
   <!-- Footer end -->
 
-  <script src="../js/poems_en.js?20260803-03"></script>
+  <script src="../js/poems_en.js?20261007-04"></script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261008-21"></script>
+  <script src="../js/keizu-diagram.js?20261008-02"></script>
 
-  <!-- Chart of the Heart -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="/js/kokoro-chart-data-en.js?20260726"></script>
-  <script>
-    window.radarScores = KOKORO_CHART_DATA[28].scores;
-  </script>
-  <script src="/js/raderChart.js?20260830-01"></script>
 </body>
 
 </html>

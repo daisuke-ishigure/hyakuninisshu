@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-08T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -71,13 +71,13 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Shigure's Hyakunin Isshu",
-          "item": "https://hyakuninisshu.com/"
+          "item": "https://hyakuninisshu.com/index_en.html"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Poem List",
-          "item": "https://hyakuninisshu.com/list.html"
+          "item": "https://hyakuninisshu.com/list_en.html"
         },
         {
           "@type": "ListItem",
@@ -90,10 +90,12 @@
   ]
   </script>
   <!-- stylesheets -->
-  <link rel="stylesheet" href="../css/style.css?20261006-05">
+  <link rel="stylesheet" href="../css/style.css?20261008-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
-  <link rel="stylesheet" href="../css/poems_en.css?20260803-04">
+  <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -103,6 +105,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -133,6 +143,13 @@
   <main>
     <div class="card">
       <div class="column-wrapper">
+        <nav class="breadcrumb-poem" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index_en.html">Top</a></li>
+            <li><a href="list_en.html">Poem List</a></li>
+            <li aria-current="page">No. 22 Fun'ya no Yasuhide</li>
+          </ol>
+        </nav>
         <div class="select-container">
           <label for="themeSelector" id="themeSelector-label">Select a theme:</label>
           <select id="themeSelector" class="selector">
@@ -153,9 +170,9 @@
           <div class="checkbox1">
             <div style="display:flex; align-items:center;">
               <label for="toggle2" id="toggle2-label">Switch between the picture card and the matching card</label>
-              <p>Front</p>
+              <p>Front of the Card</p>
               <input type="checkbox" id="toggle2">
-              <p>Back</p>
+              <p>Back of the Card</p>
             </div>
             <div style="display:flex; align-items:center;">
               <div id="play-pause-btn"></div>
@@ -166,7 +183,7 @@
           </div>
           <div class="audio-credit-row">
             <p id="audio-credit">Audio: NHK Creative Library</p>
-            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox (Public Domain).</p>
+            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox</p>
           </div>
 
         </div><!-- column-wrapper end -->
@@ -228,35 +245,18 @@
         <dl>
           <dt>Commentary</dt>
           <dd>
-            This poem applies a technique borrowed from Chinese verse called rigōshi, which plays on splitting and recombining characters — here, the characters for "mountain" (山) and "wind" (風) combine to form the character for "storm" (嵐). Today "arashi" refers to a violent storm, but at the time it meant simply the wind blowing down from the mountains.
+            The poem uses a Chinese word game of splitting and joining characters: 山 (mountain) and 風 (wind) make 嵐 (arashi, storm). Today "arashi" means a violent storm, but then it meant wind blowing down from the mountains.
           </dd>
         </dl>
         <dl class="last-dl">
           <dt>About the Poet</dt>
           <dd>
-            Fun'ya no Yasuhide was one of the leading poets of the Heian period, counted among the Six Poetic Sages. He is also known as the father of Fun'ya no Asayasu. His friendship with fellow Sage Ono no Komachi is well documented — when Yasuhide was posted to Mikawa Province as junior secretary, he asked Komachi to accompany him, and she replied with a poem comparing herself to a rootless floating weed, willing to drift along if a stream should invite her. Whether she actually went with him is not recorded, but the exchange shows the literary bond between the two.
+            Fun'ya no Yasuhide was a leading Heian poet, one of the Six Poetic Sages, and the father of Fun'ya no Asayasu. His friendship with Ono no Komachi is famous: when he was posted to Mikawa he invited her along, and she answered with a poem saying she might drift along like floating weed. Whether she went is unknown.
           </dd>
         </dl>
       </div>
     </div>
     <div class="chart-image-row">
-    <div class="chart-section">
-      <dl>
-        <dt class='title'>Fun'ya no Yasuhide's Chart of the Heart</dt>
-            <dd>
-              <p>A chart and a modern-language reflection of the poet's inner feelings.</p>
-              <div class="emotion-chart">
-                <div id="radarChartWrapper">
-                  <canvas id="radarChart" width="300" height="300"></canvas>
-                </div>
-                <div>
-                  <p class="chart-quotes-title">The Poet's Feelings (A Personal Interpretation)</p>
-                  <p>In the wind blowing down from the mountains,<br class="br-pc">the autumn grasses lose their color.<br class="br-pc">Ah — I see now why "mountain" and "wind"<br class="br-pc">together make "storm."</p>
-                </div>
-              </div>
-            </dd>
-      </dl>
-    </div>
     <div class="image-section">
       <dl>
         <dt class='title'>Poem Illustration</dt>
@@ -266,7 +266,355 @@
         </dd>
       </dl>
     </div>
+    <div class="nenpyo-section">
+      <dl>
+        <dt class='title'>Fun'ya no Yasuhide: A Short Timeline</dt>
+        <dd>
+          <dl class="nenpyo">
+            <dt>860</dt>
+            <dd>Becomes a middle judge in the Ministry of Justice</dd>
+            <dt>Unknown</dt>
+            <dd>Becomes a junior official of Mikawa Province; said to have invited Ono no Komachi to come along</dd>
+            <dt>877</dt>
+            <dd>Becomes a senior secretary of Yamashiro Province</dd>
+            <dt>880</dt>
+            <dd>Becomes Assistant Head of the Palace Sewing Office</dd>
+            <dt>c. 885</dt>
+            <dd>Dies</dd>
+            <dt>Notes</dt>
+            <dd>
+              <ul>
+                <li>Counted as one of the Six Immortal Poets</li>
+              </ul>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Fun'ya no Yasuhide's Family Tree</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 22.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__tenno">Brown text</span>Emperor</li>
+              <li><span class="fk-legend__tno" aria-hidden="true"></span>Emperor's number in the line of succession</li>
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+              <li><span class="fk-legend__dash" aria-hidden="true"></span>Family line unclear</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Fun'ya no Yasuhide's family tree">
+            <script type="application/json">
+{
+ "lang": "en",
+ "nodes": [
+  {
+   "id": "tenmu",
+   "n": "天武",
+   "k": 1,
+   "t": 40,
+   "x": 16,
+   "y": 62
+  },
+  {
+   "id": "naga",
+   "n": "長皇子",
+   "x": 136,
+   "y": 62
+  },
+  {
+   "id": "oichi",
+   "n": "文室大市",
+   "x": 256,
+   "y": 40
+  },
+  {
+   "id": "jozo",
+   "n": "文室浄三",
+   "note": "Prince Chinu",
+   "x": 256,
+   "y": 84
+  },
+  {
+   "id": "ohara",
+   "n": "文室大原",
+   "x": 520,
+   "y": 84
+  },
+  {
+   "id": "watamaro",
+   "n": "文室綿麻呂",
+   "x": 672,
+   "y": 84
+  },
+  {
+   "id": "yasuhide",
+   "n": "文屋康秀",
+   "p": 22,
+   "self": 1,
+   "x": 900,
+   "y": 84
+  },
+  {
+   "id": "asayasu",
+   "n": "文屋朝康",
+   "p": 37,
+   "x": 1100,
+   "y": 84
+  }
+ ],
+ "kids": [
+  {
+   "from": "tenmu",
+   "to": [
+    "naga"
+   ]
+  },
+  {
+   "from": "naga",
+   "to": [
+    "oichi",
+    "jozo"
+   ]
+  },
+  {
+   "from": "ohara",
+   "to": [
+    "watamaro"
+   ]
+  },
+  {
+   "from": "yasuhide",
+   "to": [
+    "asayasu"
+   ]
+  }
+ ],
+ "lines": [
+  {
+   "points": [
+    [
+     470,
+     84
+    ],
+    [
+     517,
+     84
+    ]
+   ],
+   "dash": true
+  },
+  {
+   "points": [
+    [
+     830,
+     84
+    ],
+    [
+     897,
+     84
+    ]
+   ],
+   "dash": true
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1278 110" width="1278" height="110" role="img" aria-label="Fun'ya no Yasuhide's family tree" lang="en" class="fk-svg kd-svg" style="max-width:1917px;min-width:min(640px,1917px)" data-src="1tfveuw">
+<g class="fk-edges"><path d="M71 62H122" class="fk-edge"/><path d="M122 62H133" class="fk-edge"/><path d="M230 62H242" class="fk-edge"/><path d="M242 40V84" class="fk-edge"/><path d="M242 40H253" class="fk-edge"/><path d="M242 84H253" class="fk-edge"/><path d="M646 84H658" class="fk-edge"/><path d="M658 84H669" class="fk-edge"/><path d="M1072 84H1086" class="fk-edge"/><path d="M1086 84H1097" class="fk-edge"/><path d="M470 84L517 84" class="fk-edge is-dash"/><path d="M830 84L897 84" class="fk-edge is-dash"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node is-tenno" transform="translate(16,62)" data-tip="&lt;h3&gt;Emperor Tenmu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;40th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown–686&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;673–686&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Younger brother of Emperor Tenji&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Took the throne after winning the Jinshin War (672)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="56" height="26"/><text class="fk-name" x="0" y="0.5">Tenmu</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">40</text></g>
+<g class="fk-node" transform="translate(136,62)" data-tip="&lt;h3&gt;Prince Naga&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown–715&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;First Rank for princes&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Tenmu&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="95" height="26"/><text class="fk-name" x="0" y="0.5">Prince Naga</text></g></g>
+<g class="fk-node" transform="translate(256,40)" data-tip="&lt;h3&gt;Fun'ya no Ōchi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;704–780&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Upper Counselor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Second Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Prince Naga&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Was given the family name Fun'ya no Mahito and left the imperial family to become a subject&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="115" height="26"/><text class="fk-name" x="0" y="0.5">Fun'ya no Ōchi</text></g></g>
+<g class="fk-node" transform="translate(256,84)" data-tip="&lt;h3&gt;Fun'ya no Kiyomi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Prince Naga; originally Prince Chinu&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In 752, he and his younger brother, Prince Ōchi, were given the family name Fun'ya&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="213.409" height="26"/><text class="fk-name" x="0" y="0.5">Fun'ya no Kiyomi</text><text class="fk-note" x="130" y="1"> (Prince Chinu)</text></g></g>
+<g class="fk-node" transform="translate(520,84)" data-tip="&lt;h3&gt;Fun'ya no Ōhara&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Fun'ya no Watamaro. In 792 his family name was changed from Fun'ya no Mahito to Mimoro no Ason (Mimoro no Ōhara)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="127" height="26"/><text class="fk-name" x="0" y="0.5">Fun'ya no Ōhara</text></g></g>
+<g class="fk-node" transform="translate(672,84)" data-tip="&lt;h3&gt;Fun'ya no Watamaro&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Fun'ya no Ōhara (Mimoro no Ōhara)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;His family name was changed to Mimoro no Ason in 792; in 809 he was given Miyama no Ason, and then Fun'ya no Ason&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="159" height="26"/><text class="fk-name" x="0" y="0.5">Fun'ya no Watamaro</text></g></g>
+<g class="fk-node is-poet is-self" transform="translate(900,84)" data-tip="&lt;h3&gt;Fun'ya no Yasuhide&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown–c. 885&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Sixth Rank, Upper Grade&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 22, &quot;Fuku kara ni...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;One of the Six Immortal Poets. His ancestors are not known, and his link to Prince Naga and Fun'ya no Ōchi is unclear&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="179" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="173" height="26"/><text class="fk-name" x="0" y="0.5">Fun'ya no Yasuhide</text><circle class="fk-badge" cx="159" cy="0" r="10"/><text class="fk-badge-num" x="159" y="0.5">22</text></g></g>
+<g class="fk-node is-poet" transform="translate(1100,84)" data-tip="&lt;h3&gt;Fun'ya no Asayasu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Sixth Rank, Lower Grade&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Fun'ya no Yasuhide&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 37, &quot;Shiratsuyu ni...&quot;&lt;/span&gt;&lt;/div&gt;" data-p="37"><a href="/37_en.html" aria-label="Fun'ya no Asayasu (Hyakunin Isshu Poem 37)"><rect class="fk-hit" x="-2" y="-13" width="166" height="26"/><text class="fk-name" x="0" y="0.5">Fun'ya no Asayasu</text><circle class="fk-badge" cx="152" cy="0" r="10"/><text class="fk-badge-num" x="152" y="0.5">37</text></a></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+          <div class="kd-text">
+            <p style="width:100%; margin-bottom: 0.75em;">
+              Fun'ya no Yasuhide is thought to have been a descendant of Emperor Tenmu. In 752, in the Nara period, the Fun'ya family was given the family name Fun'ya together with the title <em>Mahito</em>. This was the highest of the "Eight Titles" (<em>Yakusa no Kabane</em>) that Emperor Tenmu had set up.</p>
+            <p style="width:100%; margin-bottom: 0.75em;">
+              In the Heian period, however, as the Fujiwara took over the central government and reshaped politics, the Fun'ya family lost standing. Yasuhide himself rose no higher than Assistant Director of the Bureau of Sewing (<em>Nuidono no Suke</em>). Despite his noble bloodline, he had to struggle at court as a low-ranking noble.</p>
+            <p style="width:100%; margin-bottom: 0.75em;">
+              As a poet, though, he was highly praised. Ki no Tsurayuki chose him as one of the Six Poetic Sages, and he is remembered as a master of clever wording. There is also a charming story: when he was going to take up a post in the province of Mikawa, he invited his friend Ono no Komachi, another of the Six Poetic Sages, to come with him, and Komachi answered with a witty poem, "Wabinureba..." ("I have fallen so low that I will go anywhere I am invited"). See <a
+                href="/9_en.html#yasuhide">Ono no Komachi's page</a> for more.
+            </p>
+            <p style="width:100%; margin-bottom: 0.75em;">
+              In some old manuscripts of the <em>Kokin Wakashū</em>, Yasuhide's Hyakunin Isshu poem is credited to his son Asayasu. So although father and son both have poems in the Hyakunin Isshu, one theory says both poems are really Asayasu's.
+            </p>
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <dt>The Mube Fruit</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/mube_large.webp' data-lightbox='yasuhide' data-title='Mube fruit'>
+                  <img loading='lazy' src='../img/mube.webp?20240420' alt='Mube fruit' width="640" height="480">
+                </a>
+              </figure>
+              <div>
+                <p>
+                  Do you know <em>mube</em>, a plant of the akebia family?
+                  Its name is said to come from an old legend about Emperor Tenji, who had his capital in Ōmi (Shiga Prefecture).
+                </p>
+                <p>
+                  According to the legend, when Emperor Tenji was traveling through the province of Ōmi, he met an old couple living in the mountains. Though old, they were amazingly healthy and had many children. When the emperor asked the secret of their long life, the couple offered him a fruit that grew in the mountains and said, "We eat this every day."
+                </p>
+                <p>
+                  When the emperor tasted the fruit, he was deeply impressed by its goodness and flavor and said, "<em>Mube naru kana</em>" ("No wonder!"). <em>Mube</em> is an old word used when you are fully convinced of something.
+                </p>
+                <p>
+                  The emperor's words left such an impression that people came to call the fruit <em>mube</em>.
+                </p>
+                <p>
+                  Fun'ya no Yasuhide wrote "<em>mube</em> yamakaze o arashi to iuramu." His choice of the word <em>mube</em> may have carried respect for a beautiful word linked to the imperial family, his own ancestors.
+                </p>
+              </div>
+            </dd>
+            <dt>"Mube Yamakaze o" in <em>The Pillow Book</em></dt>
+            <dd>
+              In the section "The Day After a Typhoon" (<em>Nowaki no mata no hi koso</em>) of <em>The Pillow Book</em> by <a href="/62_en.html">Sei Shōnagon</a>,
+              she describes the scene on the day after a typhoon has passed. Sei Shōnagon watches with interest the plants of the garden scattered by the wind
+              and a beautiful woman with her hair tousled, just out of bed.
+              She also writes about gazing thoughtfully at the scene outside, murmuring "<em>mube yamakaze o</em>," a phrase from Fun'ya no Yasuhide's poem,
+              and feeling how elegant it is.
+            </dd>
+
+            <dt>Poems That Play with Kanji</dt>
+            <dd>
+              <p>Fujiwara no Suemichi wrote a poem that splits the kanji 愁 ("sorrow") into 秋 ("autumn") and 心 ("heart").</p>
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>事毎<rt>ことごと</rt></ruby>に
+                  <ruby>悲<rt>かな</rt></ruby>しかりけり むべしこそ
+                  <br><span style="background: linear-gradient(transparent 60%, #f9abbc 40%);"><ruby>秋<rt>あき</rt></ruby></span>の
+                  <span style="background: linear-gradient(transparent 60%, #b5daff 40%);"><ruby>心<rt>こころ</rt></ruby></span>を
+                  <span style="background: linear-gradient(transparent 60%, #caabf9 40%);"><ruby>愁<rt>うれひ</rt></ruby></span>と
+                  <ruby>言<rt>い</rt></ruby>ひけれ
+                  <span class="shutten"><em>Senzai Wakashū</em>, Fujiwara no Suemichi</span>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.8; margin-top: 0.2em;">
+                    Everything feels sad.
+                    No wonder people write "autumn" and "heart" together and call it "sorrow."
+                  </p>
+                </q>
+              </div>
+              <p>
+                Ki no Tomonori wrote a poem that splits 梅 ("plum") into 木 ("tree") and 毎 ("every").
+              </p>
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>雪<rt>ゆき</rt></ruby><ruby>降<rt>ふ</rt></ruby>れば
+                  <span style="background: linear-gradient(transparent 60%, #f9abbc 40%);"><ruby>木<rt>き</rt></ruby></span>
+                  <span style="background: linear-gradient(transparent 60%, #b5daff 40%);"><ruby>毎<rt>ごと</rt></ruby></span>に
+                  <ruby>花<rt>はな</rt></ruby>ぞ <ruby>咲<rt>さ</rt></ruby>きにける
+                  <br>いづれを<span style="background: linear-gradient(transparent 60%, #caabf9 40%);"><ruby>梅<rt>うめ</rt></ruby></span>と
+                  わきて<ruby>折<rt>お</rt></ruby>らまし
+                  <span class="shutten"><em>Kokin Wakashū</em>, Ki no Tomonori</span>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.8; margin-top: 0.2em;">
+                    When snow falls, every tree seems to bloom with white flowers.
+                    <br class="br-pc"> Since the snow and blossoms look alike, how can I tell which tree is the plum, to break off a branch?
+                  </p>
+                </q>
+              </div>
+            </dd>
+
+            <dt>The Six Poetic Sages (<em>Rokkasen</em>)</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <img src="/img/rokkasen.gif?ver-02" alt="The Six Poetic Sages" usemap="#ImageMap1" width="1280" height="1440">
+                <map name="ImageMap1">
+                  <area shape="rect" coords="681,27,1138,372" href="/9_en.html" alt="Ono no Komachi" />
+                  <area shape="rect" coords="713,913,1106,1278" href="/12_en.html" alt="High Priest Henjō" />
+                  <area shape="rect" coords="13,39,395,370" href="/8_en.html" alt="Priest Kisen" />
+                  <area shape="rect" coords="13,443,402,806" href="/17_en.html" alt="Ariwara no Narihira" />
+                </map>
+                <figcaption><small>Click a poet to go to their poem page.</small></figcaption>
+              </figure>
+              <div>
+                <p style="width:100%; margin-bottom: 0.75em;">
+                  When the <em>Kokin Wakashū</em> was compiled, these six poets, including Fun'ya no Yasuhide, were very famous poets of the generation before. In the Japanese preface to the <em>Kokin Wakashū</em>, Ki no Tsurayuki picked them out as "people whose names were known in recent times" and judged their poetry. His judgments were quite harsh, but the six later came to be called the <em>Rokkasen</em>, the Six Poetic Sages, and were highly praised as great poets.
+                </p>
+                <p style="width:100%; margin-bottom: 0.75em;">See <a
+                    href="/rokkasen_en.html">Ki no Tsurayuki's judgments of the six poets</a>.</p>
+                <p style="width:100%; margin-bottom: 0.75em;">
+                  One of the Six Poetic Sages, Ōtomo no Kuronushi, has no poem in the Hyakunin Isshu, while the other five were all chosen.</p>
+              </div>
+            </dd>
+            <dt>The Mube-yama Sugoroku</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/mubeyama_large.webp' data-lightbox='yasuhide' data-title='Shinpan Hyakunin Isshu Mube-yama Sugoroku, a board game made in the Edo period'>
+                  <img loading='lazy' src='../img/mubeyama.webp' alt='Shinpan Hyakunin Isshu Mube-yama Sugoroku' width="640" height="438">
+                </a>
+                <figcaption><small><a href="https://dl.ndl.go.jp/ja/pid/1310603">National Diet Library Digital Collections</a></small>
+                </figcaption>
+              </figure>
+              <div>
+                <p>
+                  This is a Hyakunin Isshu <em>sugoroku</em> (a board game like snakes and ladders) made in the Edo period,
+                  called <em>Shinpan Hyakunin Isshu Mube-yama Sugoroku</em>.
+                  Poem 1, by Emperor Tenji, is at the lower right, and the cards are lined up counterclockwise, almost in order.
+                  It is said that a player who landed on Poem 22, Fun'ya no Yasuhide's "Fuku kara ni aki no kusaki no shiorureba <strong>mube yama</strong>kaze o arashi to iuramu,"
+                  won a prize.
+                  <br class="br-pc"> It is about 52 cm tall and 75 cm wide.
+                </p>
+              </div>
+            </dd>
+
+            <dt>Utagawa Kuniyoshi's <em>Hyakunin Isshu no Uchi</em></dt>
+            <dd class='thumb-image2'>
+              <figure class='portrait'>
+                <a href='../img/kuniyoshi_22_large.webp' data-lightbox='yasuhide' data-title='Ukiyo-e by Utagawa Kuniyoshi'>
+                  <img loading='lazy' src='../img/kuniyoshi_22.webp' alt="Ukiyo-e of Fun'ya no Yasuhide by Utagawa Kuniyoshi" width="480" height="718">
+                </a>
+                <figcaption><a
+                    href='https://commons.wikimedia.org/wiki/File:No_22_Bunya_no_Yasuhide_(BM_1906,1220,0.1206).jpg' target="_blank" rel="noopener"><small>British
+                      Museum, Public domain, via Wikimedia Commons</small></a></figcaption>
+              </figure>
+              <div>
+                <p>This ukiyo-e is by Utagawa Kuniyoshi, an artist of the Edo period.<br class="br-pc"> It shows a scene that matches the poem in the Hyakunin Isshu.</p>
+                <p>Yasuhide used the word play "mountain + wind = storm" (山 + 風 = 嵐) to explain, with reasoning, why the storm is so strong: "No wonder (<em>mube</em>)." Kuniyoshi turned that power into a dynamic picture of people tossed about by a fierce wind.</p>
+                <p>
+                  A man desperately chasing his blown-away umbrella, a woman holding down her kimono as it flaps up: Kuniyoshi deliberately turns Yasuhide's clever poem into a playful scene of Edo townspeople in a panic. It is a very interesting picture that, with Kuniyoshi's typical humor, brings the poem of Yasuhide, a descendant of the noble <em>Mahito</em>, into the everyday life of ordinary people.
+                </p>
+              </div>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -276,6 +624,7 @@
           <a class="da-link-btn" href="diagram_archtecture_en.html">Relationship Diagram</a>
           <a class="kt-link-btn" href="karuta-taisen-pro_en.html">Competitive Karuta Game</a>
           <a class="kts-link-btn" href="karuta-taisen_en.html">Online Karuta Battle</a>
+          <a class="kg-link-btn" href="kakekotoba-game-022_en.html"><span class="kg-link-btn-inner"><span class="kg-link-btn-face kg-link-btn-front">Spin &amp; Discover Kakekotoba!</span><span class="kg-link-btn-face kg-link-btn-back">Spin &amp; Discover Kakekotoba!</span></span></a>
         </dd>
       </dl>
     </div>
@@ -297,15 +646,18 @@
   </footer>
   <!-- Footer end -->
 
-  <script src="../js/poems_en.js?20260803-03"></script>
-
-  <!-- Chart of the Heart -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="/js/kokoro-chart-data-en.js?20260726"></script>
+  <script src="../js/poems_en.js?20261007-04"></script>
+  <!-- clickable image map (Six Poetic Sages) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/image-map-resizer/1.0.10/js/imageMapResizer.min.js"></script>
   <script>
-    window.radarScores = KOKORO_CHART_DATA[22].scores;
+    imageMapResize();
   </script>
-  <script src="/js/raderChart.js?20260830-01"></script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261008-21"></script>
+  <script src="../js/keizu-diagram.js?20261008-02"></script>
+
 </body>
 
 </html>

@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-08T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -72,13 +72,13 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Shigure's Hyakunin Isshu",
-          "item": "https://hyakuninisshu.com/"
+          "item": "https://hyakuninisshu.com/index_en.html"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Poem List",
-          "item": "https://hyakuninisshu.com/list.html"
+          "item": "https://hyakuninisshu.com/list_en.html"
         },
         {
           "@type": "ListItem",
@@ -91,10 +91,15 @@
   ]
   </script>
   <!-- stylesheets -->
-  <link rel="stylesheet" href="../css/style.css?20261006-05">
+  <link rel="stylesheet" href="../css/style.css?20261008-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
-  <link rel="stylesheet" href="../css/poems_en.css?20260803-04">
+  <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/accordion.css?20260721">
+  <link rel="stylesheet" href="../css/timeline.css?20260729">
+  <link rel="stylesheet" href="../css/swiper-bundle.min.css">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -104,6 +109,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -134,6 +147,13 @@
   <main>
     <div class="card">
       <div class="column-wrapper">
+        <nav class="breadcrumb-poem" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index_en.html">Top</a></li>
+            <li><a href="list_en.html">Poem List</a></li>
+            <li aria-current="page">No. 24 Kanke</li>
+          </ol>
+        </nav>
         <div class="select-container">
           <label for="themeSelector" id="themeSelector-label">Select a theme:</label>
           <select id="themeSelector" class="selector">
@@ -154,9 +174,9 @@
           <div class="checkbox1">
             <div style="display:flex; align-items:center;">
               <label for="toggle2" id="toggle2-label">Switch between the picture card and the matching card</label>
-              <p>Front</p>
+              <p>Front of the Card</p>
               <input type="checkbox" id="toggle2">
-              <p>Back</p>
+              <p>Back of the Card</p>
             </div>
             <div style="display:flex; align-items:center;">
               <div id="play-pause-btn"></div>
@@ -167,7 +187,7 @@
           </div>
           <div class="audio-credit-row">
             <p id="audio-credit">Audio: NHK Creative Library</p>
-            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox (Public Domain).</p>
+            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox</p>
           </div>
 
         </div><!-- column-wrapper end -->
@@ -229,36 +249,18 @@
         <dl>
           <dt>Commentary</dt>
           <dd>
-            This poem was composed during an excursion of Retired Emperor Uda. At the time, it was customary to offer nusa — strips of paper or hemp — when visiting a wayside deity. But Michizane had none with him, and in a moment of quick wit, offered the mountain's beautiful autumn leaves to the deity instead.
+            This poem was written on a journey of Retired Emperor Uda. People then offered nusa, strips of paper or cloth, to the gods of the road. Michizane had none with him, so on the spot he offered the beautiful autumn leaves instead.
           </dd>
         </dl>
         <dl class="last-dl">
           <dt>About the Poet</dt>
           <dd>
-            Kanke — Sugawara no Michizane — showed literary gifts from early childhood, excelling at both waka and Chinese poetry. Though he came from a family of scholars, he achieved an extraordinary rise, eventually becoming Minister of the Right. However, efforts begun in his father's generation to marry daughters into the imperial family and build influence as imperial in-laws seem to have alarmed the Fujiwara clan. As a result, on false accusations by Fujiwara no Tokihira, Michizane was demoted and exiled to Dazaifu, where he struggled even for food and shelter, dying two years later.
+            Sugawara no Michizane was a gifted writer of waka and Chinese poems from childhood. From a family of scholars, he rose unusually high, to Minister of the Right. Seen as a threat by the Fujiwara, he was falsely accused by Fujiwara no Tokihira and sent to Dazaifu, where he lived in hardship and died two years later.
           </dd>
         </dl>
       </div>
     </div>
     <div class="chart-image-row">
-    <div class="chart-section">
-      <dl>
-        <dt class='title'>Kanke's Chart of the Heart</dt>
-            <dd>
-              <p>A chart and a modern-language reflection of the poet's inner feelings.</p>
-              <div class="emotion-chart">
-                <div id="radarChartWrapper">
-                  <canvas id="radarChart" width="300" height="300"></canvas>
-                </div>
-                <div>
-                  <p class="chart-quotes-title">The Poet's Feelings (A Personal Interpretation)</p>
-                  <p>Struck by the beauty of the autumn leaves<br class="br-pc">painting the mountain, I stop in my tracks.</p>
-                  <p style="margin-top:1em;">This very scenery<br class="br-pc">will be the finest offering to the gods.</p>
-                </div>
-              </div>
-            </dd>
-      </dl>
-    </div>
     <div class="image-section">
       <dl>
         <dt class='title'>Poem Illustration</dt>
@@ -268,7 +270,791 @@
         </dd>
       </dl>
     </div>
+    <div class="nenpyo-section">
+      <dl>
+        <dt class='title'>Sugawara no Michizane (Kanke): A Short Timeline</dt>
+        <dd>
+          <dl class="nenpyo">
+            <dt>845</dt>
+            <dd>Born</dd>
+            <dt>862</dt>
+            <dd>Becomes a student of literature at the court university</dd>
+            <dt>877</dt>
+            <dd>Becomes Professor of Literature</dd>
+            <dt>886</dt>
+            <dd>Becomes governor of Sanuki Province</dd>
+            <dt>893</dt>
+            <dd>Becomes Councillor (Sangi) and Major Controller of the Left</dd>
+            <dt>894</dt>
+            <dd>Named envoy to Tang China, but advises ending the missions</dd>
+            <dt>899</dt>
+            <dd>Becomes Minister of the Right</dd>
+            <dt>901</dt>
+            <dd>Sent away from the capital to Dazaifu in Kyushu</dd>
+            <dt>903</dt>
+            <dd>Dies at Dazaifu</dd>
+            <dt>923</dt>
+            <dd>Given back the post of Minister of the Right and given Senior Second Rank after death</dd>
+            <dt>993</dt>
+            <dd>Given Senior First Rank and Minister of the Left after death, and later Chancellor of the Realm</dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Kanke's Family Tree</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 24.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__tenno">Brown text</span>Emperor</li>
+              <li><span class="fk-legend__tno" aria-hidden="true"></span>Emperor's number in the line of succession</li>
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+              <li><span class="fk-legend__dash"></span>Generations left out / presumed</li>
+              <li><span class="fk-legend__eq">＝</span>Marriage</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Sugawara no Michizane's family tree">
+            <script type="application/json">
+{
+ "lang": "en",
+ "nodes": [
+  {
+   "id": "koreyoshi",
+   "n": "是善",
+   "x": 16,
+   "y": 154
+  },
+  {
+   "id": "takafuji",
+   "n": "高藤",
+   "x": 136,
+   "y": 40
+  },
+  {
+   "id": "ruishi",
+   "n": "類子",
+   "x": 136,
+   "y": 84
+  },
+  {
+   "id": "koko",
+   "n": "光孝",
+   "k": 1,
+   "t": 58,
+   "p": 15,
+   "x": 136,
+   "y": 136
+  },
+  {
+   "id": "hanshi",
+   "n": "班子女王",
+   "x": 136,
+   "y": 180
+  },
+  {
+   "id": "michizane",
+   "n": "菅原道真",
+   "p": 24,
+   "self": 1,
+   "x": 136,
+   "y": 224
+  },
+  {
+   "id": "nobukiko",
+   "n": "島田宣来子",
+   "x": 136,
+   "y": 268
+  },
+  {
+   "id": "inshi",
+   "n": "胤子",
+   "x": 354,
+   "y": 106
+  },
+  {
+   "id": "uda",
+   "n": "宇多",
+   "k": 1,
+   "t": 59,
+   "x": 354,
+   "y": 158
+  },
+  {
+   "id": "yoshiko",
+   "n": "橘義子",
+   "x": 364,
+   "y": 202
+  },
+  {
+   "id": "enshi",
+   "n": "衍子",
+   "x": 340,
+   "y": 258
+  },
+  {
+   "id": "takami",
+   "n": "高視",
+   "x": 354,
+   "y": 358
+  },
+  {
+   "id": "daigo",
+   "n": "醍醐",
+   "k": 1,
+   "t": 60,
+   "x": 564,
+   "y": 123
+  },
+  {
+   "id": "tokiyo",
+   "n": "斉世親王",
+   "x": 564,
+   "y": 180
+  },
+  {
+   "id": "neishi",
+   "n": "寧子",
+   "x": 564,
+   "y": 224
+  },
+  {
+   "id": "mototsune",
+   "n": "基経",
+   "x": 564,
+   "y": 324
+  },
+  {
+   "id": "takasue",
+   "n": "孝標",
+   "x": 564,
+   "y": 358
+  },
+  {
+   "id": "tomoyasujo",
+   "n": "倫寧娘",
+   "x": 564,
+   "y": 402
+  },
+  {
+   "id": "hideakira",
+   "n": "源英明",
+   "x": 744,
+   "y": 202
+  },
+  {
+   "id": "junshi",
+   "n": "源順子",
+   "x": 744,
+   "y": 258
+  },
+  {
+   "id": "tadahira",
+   "n": "貞信公",
+   "key": "忠平",
+   "p": 26,
+   "x": 744,
+   "y": 302
+  },
+  {
+   "id": "tokihira",
+   "n": "時平",
+   "x": 744,
+   "y": 346
+  },
+  {
+   "id": "takasuejo",
+   "n": "孝標女",
+   "x": 744,
+   "y": 380
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-ruishi",
+   "top": "ruishi",
+   "bottom": "koko"
+  },
+  {
+   "id": "c-hanshi",
+   "top": "koko",
+   "bottom": "hanshi"
+  },
+  {
+   "id": "c-nobukiko",
+   "top": "michizane",
+   "bottom": "nobukiko"
+  },
+  {
+   "id": "c-inshi",
+   "top": "inshi",
+   "bottom": "uda"
+  },
+  {
+   "id": "c-yoshiko",
+   "top": "uda",
+   "bottom": "yoshiko"
+  },
+  {
+   "id": "c-enshi",
+   "top": "uda",
+   "bottom": "enshi"
+  },
+  {
+   "id": "c-tokiyo",
+   "top": "tokiyo",
+   "bottom": "neishi"
+  },
+  {
+   "id": "c-junshi",
+   "top": "junshi",
+   "bottom": "tadahira"
+  },
+  {
+   "id": "c-takasue",
+   "top": "takasue",
+   "bottom": "tomoyasujo"
+  }
+ ],
+ "kids": [
+  {
+   "from": "koreyoshi",
+   "to": [
+    "ruishi",
+    "michizane"
+   ]
+  },
+  {
+   "from": "takafuji",
+   "to": [
+    "inshi"
+   ]
+  },
+  {
+   "from": "c-hanshi",
+   "to": [
+    "uda"
+   ]
+  },
+  {
+   "from": "c-nobukiko",
+   "to": [
+    "enshi",
+    "takami"
+   ]
+  },
+  {
+   "from": "michizane",
+   "to": [
+    "neishi"
+   ],
+   "over": true
+  },
+  {
+   "from": "c-inshi",
+   "to": [
+    "daigo"
+   ]
+  },
+  {
+   "from": "c-yoshiko",
+   "to": [
+    "tokiyo"
+   ],
+   "over": true
+  },
+  {
+   "from": "c-tokiyo",
+   "to": [
+    "hideakira"
+   ]
+  },
+  {
+   "from": "mototsune",
+   "to": [
+    "tadahira",
+    "tokihira"
+   ]
+  },
+  {
+   "from": "c-takasue",
+   "to": [
+    "takasuejo"
+   ]
+  }
+ ],
+ "lines": [
+  {
+   "points": [
+    [
+     388,
+     258
+    ],
+    [
+     741,
+     258
+    ]
+   ],
+   "dash": true,
+   "label": {
+    "text": "Presumed",
+    "x": 454,
+    "y": 252
+   }
+  },
+  {
+   "points": [
+    [
+     412,
+     358
+    ],
+    [
+     561,
+     358
+    ]
+   ],
+   "dash": true,
+   "label": {
+    "text": "2 generations left out",
+    "x": 486,
+    "y": 352
+   }
+  }
+ ],
+ "arrows": [
+  {
+   "points": [
+    [
+     809,
+     346
+    ],
+    [
+     929,
+     346
+    ],
+    [
+     929,
+     123
+    ],
+    [
+     611,
+     123
+    ]
+   ],
+   "label": {
+    "text": "Slander",
+    "x": 784,
+    "y": 113
+   }
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 945 428" width="945" height="428" role="img" aria-label="Sugawara no Michizane's family tree" lang="en" class="fk-svg kd-svg" style="max-width:1418px;min-width:min(640px,1418px)" data-src="966lkc">
+<g class="fk-edges"><path d="M153.5 93V111M157.5 93V111" class="fk-edge fk-eq"/><path d="M153.5 145V171M157.5 145V171" class="fk-edge fk-eq"/><path d="M172 233V259M176 233V259" class="fk-edge fk-eq"/><path d="M367 115V133M371 115V133" class="fk-edge fk-eq"/><path d="M377 167V193M381 167V193" class="fk-edge fk-eq"/><path d="M353 167V249M357 167V249" class="fk-edge fk-eq"/><path d="M589.5 189V215M593.5 189V215" class="fk-edge fk-eq"/><path d="M781 267V293M785 267V293" class="fk-edge fk-eq"/><path d="M593.5 367V393M597.5 367V393" class="fk-edge fk-eq"/><path d="M94 154H122" class="fk-edge"/><path d="M122 84V224" class="fk-edge"/><path d="M122 84H133" class="fk-edge"/><path d="M122 224H133" class="fk-edge"/><path d="M200 40H340" class="fk-edge"/><path d="M340 40V106" class="fk-edge"/><path d="M340 106H351" class="fk-edge"/><path d="M157.5 158H340" class="fk-edge"/><path d="M340 158H351" class="fk-edge"/><path d="M176 246H326" class="fk-edge"/><path d="M326 246V358" class="fk-edge"/><path d="M326 258H337" class="fk-edge"/><path d="M326 358H351" class="fk-edge"/><path d="M239 224H550" class="kd-halo"/><path d="M239 224H550" class="fk-edge"/><path d="M550 224H561" class="kd-halo"/><path d="M550 224H561" class="fk-edge"/><path d="M371 123H550" class="fk-edge"/><path d="M550 123H561" class="fk-edge"/><path d="M381 180H550" class="kd-halo"/><path d="M381 180H550" class="fk-edge"/><path d="M550 180H561" class="kd-halo"/><path d="M550 180H561" class="fk-edge"/><path d="M593.5 202H730" class="fk-edge"/><path d="M730 202H741" class="fk-edge"/><path d="M649 324H730" class="fk-edge"/><path d="M730 302V346" class="fk-edge"/><path d="M730 302H741" class="fk-edge"/><path d="M730 346H741" class="fk-edge"/><path d="M597.5 380H730" class="fk-edge"/><path d="M730 380H741" class="fk-edge"/><path d="M388 258L741 258" class="fk-edge is-dash"/><text class="fk-adopt" x="454" y="252">Presumed</text><path d="M412 358L561 358" class="fk-edge is-dash"/><text class="fk-adopt" x="486" y="352">2 generations left out</text></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"><path d="M809 346L929 346L929 123L611 123" class="kd-arrow" marker-end="url(#kdArrowHead)"/><text class="kd-arrow-label" x="784" y="113">Slander</text></g>
+<g>
+<g class="fk-node" transform="translate(16,154)" data-tip="&lt;h3&gt;Sugawara no Koreyoshi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Sugawara no Kiyotomo&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Sugawara no Michizane and Ruishi&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="79" height="26"/><text class="fk-name" x="0" y="0.5">Koreyoshi</text></g></g>
+<g class="fk-node" transform="translate(136,40)" data-tip="&lt;h3&gt;Fujiwara no Takafuji&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;838–900&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Palace Minister&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Third Rank; Senior First Rank after death&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Founder of the Kajūji family&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Imperial in-law: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Grandfather (on the mother's side) of Emperor Daigo&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="65" height="26"/><text class="fk-name" x="0" y="0.5">Takafuji</text></g></g>
+<g class="fk-node" transform="translate(136,84)" data-tip="&lt;h3&gt;Sugawara no Ruishi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Sugawara no Koreyoshi; elder or younger sister of Michizane&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;A court lady of Emperor Kōkō. Some think she was the mother of Minamoto no Nobuko&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="50" height="26"/><text class="fk-name" x="0" y="0.5">Ruishi</text></g></g>
+<g class="fk-node is-tenno is-poet" transform="translate(136,136)" data-tip="&lt;h3&gt;Emperor Kōkō&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;58th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;830–887&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;884–887&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Ninmyō&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 15, &quot;Kimi ga tame haru no no ni...&quot;&lt;/span&gt;&lt;/div&gt;" data-p="15"><a href="/15_en.html" aria-label="Emperor Kōkō (Hyakunin Isshu Poem 15)"><rect class="fk-hit" x="-2" y="-13" width="67" height="26"/><text class="fk-name" x="0" y="0.5">Kōkō</text><circle class="fk-badge" cx="53" cy="0" r="10"/><text class="fk-badge-num" x="53" y="0.5">15</text></a><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">58</text></g>
+<g class="fk-node" transform="translate(136,180)" data-tip="&lt;h3&gt;Princess Nakako&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;833–900&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Prince Nakano&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Consort of Emperor Kōkō; mother of Emperor Uda and Prince Koretada&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="129" height="26"/><text class="fk-name" x="0" y="0.5">Princess Nakako</text></g></g>
+<g class="fk-node is-poet is-self" transform="translate(136,224)" data-tip="&lt;h3&gt;Sugawara no Michizane&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;845–903&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Minister of the Right&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Second Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 24, &quot;Kono tabi wa...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Kanke. In the Shōtai Incident (901) he was sent away to Dazaifu&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="110" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="104" height="26"/><text class="fk-name" x="0" y="0.5">Michizane</text><circle class="fk-badge" cx="90" cy="0" r="10"/><text class="fk-badge-num" x="90" y="0.5">24</text></g></g>
+<g class="fk-node" transform="translate(136,268)" data-tip="&lt;h3&gt;Shimada no Nobukiko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Shimada no Tadaomi&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Sugawara no Michizane's principal wife; mother of Takami and Enshi&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="169" height="26"/><text class="fk-name" x="0" y="0.5">Shimada no Nobukiko</text></g></g>
+<g class="fk-node" transform="translate(354,106)" data-tip="&lt;h3&gt;Fujiwara no Taneko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown–896&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Fujiwara no Takafuji and Miyaji no Ressi; elder or younger sister of Sadakuni and Sadakata (same mother)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;A consort of Emperor Uda; mother of Emperor Daigo, Prince Atsuyoshi and Prince Atsumi&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="60" height="26"/><text class="fk-name" x="0" y="0.5">Taneko</text></g></g>
+<g class="fk-node is-tenno" transform="translate(354,158)" data-tip="&lt;h3&gt;Emperor Uda&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;59th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;867–931&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;887–897&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Gave Sugawara no Michizane important posts&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="34" height="26"/><text class="fk-name" x="0" y="0.5">Uda</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">59</text></g>
+<g class="fk-node" transform="translate(364,202)" data-tip="&lt;h3&gt;Tachibana no Yoshiko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Tachibana no Hiromi&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;She and Emperor Uda had a son, Prince Tokiyo&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="167" height="26"/><text class="fk-name" x="0" y="0.5">Tachibana no Yoshiko</text></g></g>
+<g class="fk-node" transform="translate(340,258)" data-tip="&lt;h3&gt;Sugawara no Enshi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Sugawara no Michizane and Shimada no Nobukiko&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Became a consort of Emperor Uda in 896&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="44" height="26"/><text class="fk-name" x="0" y="0.5">Enshi</text></g></g>
+<g class="fk-node" transform="translate(354,358)" data-tip="&lt;h3&gt;Sugawara no Takami&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;876–913&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Eldest son of Sugawara no Michizane&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Shōtai Incident he was punished along with his father and sent away as Assistant Governor of Tosa&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="60" height="26"/><text class="fk-name" x="0" y="0.5">Takami</text></g></g>
+<g class="fk-node is-tenno" transform="translate(564,123)" data-tip="&lt;h3&gt;Emperor Daigo&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;60th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;885–930&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;897–930&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Ordered the compiling of the Kokin Wakashū&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="48" height="26"/><text class="fk-name" x="0" y="0.5">Daigo</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">60</text></g>
+<g class="fk-node" transform="translate(564,180)" data-tip="&lt;h3&gt;Prince Tokiyo&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;886–927&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Uda and Tachibana no Yoshiko&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;His wife was Michizane's daughter Yasuko. In the Shōtai Incident he was caught up with his father-in-law Michizane, became a monk, and took the name Shinjaku&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="105" height="26"/><text class="fk-name" x="0" y="0.5">Prince Tokiyo</text></g></g>
+<g class="fk-node" transform="translate(564,224)" data-tip="&lt;h3&gt;Sugawara no Yasuko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Third daughter of Sugawara no Michizane&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Prince Tokiyo's wife; mother of Minamoto no Hideakira&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="59" height="26"/><text class="fk-name" x="0" y="0.5">Yasuko</text></g></g>
+<g class="fk-node" transform="translate(564,324)" data-tip="&lt;h3&gt;Fujiwara no Mototsune&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;His birth father was Nagara; adopted by Yoshifusa&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;836–891&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Regent, Kampaku (chief adviser), and Chancellor of the Realm&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior First Rank; Senior First Rank after death&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In practice, the first Kampaku in history&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Imperial in-law: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Grandfather (on the mother's side) of Emperors Suzaku and Murakami (their mother was Fujiwara no Onshi)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="86" height="26"/><text class="fk-name" x="0" y="0.5">Mototsune</text></g></g>
+<g class="fk-node" transform="translate(564,358)" data-tip="&lt;h3&gt;Sugawara no Takasue&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Sugawara no Suketada; Michizane's great-great-grandson&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Sugawara no Takasue's Daughter&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="67" height="26"/><text class="fk-name" x="0" y="0.5">Takasue</text></g></g>
+<g class="fk-node" transform="translate(564,402)" data-tip="&lt;h3&gt;Daughter of Fujiwara no Tomoyasu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Sugawara no Takasue's wife and mother of Sugawara no Takasue's Daughter. Her elder half-sister was the Mother of the Right Captain Michitsuna&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="166" height="26"/><text class="fk-name" x="0" y="0.5">Tomoyasu's daughter</text></g></g>
+<g class="fk-node" transform="translate(744,202)" data-tip="&lt;h3&gt;Minamoto no Hideakira&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown–939&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Middle Captain of the Left Palace Guards&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Fourth Rank, Upper Grade&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Eldest son of Prince Tokiyo; his mother was Sugawara no Yasuko&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Because his father had become a monk, his childhood was unfortunate&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="182" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Hideakira</text></g></g>
+<g class="fk-node" transform="translate(744,258)" data-tip="&lt;h3&gt;Minamoto no Nobuko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Said to be a daughter of Emperor Uda. Her mother is thought to be Sugawara no Enshi, but another view says her mother was Sugawara no Ruishi, a court lady of Emperor Kōkō, and that she was later adopted by Emperor Uda&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Fujiwara no Tadahira's wife; mother of Fujiwara no Saneyori&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="168" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Nobuko</text></g></g>
+<g class="fk-node is-poet" transform="translate(744,302)" data-tip="&lt;h3&gt;Fujiwara no Tadahira&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Name after death: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Teishin-kō&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;880–949&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Regent and Kampaku (chief adviser)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior First Rank; Senior First Rank after death&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 26, &quot;Ogurayama...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Teishin-kō&lt;/span&gt;&lt;/div&gt;" data-p="26"><a href="/26_en.html" aria-label="Fujiwara no Tadahira (Hyakunin Isshu Poem 26)"><rect class="fk-hit" x="-2" y="-13" width="106" height="26"/><text class="fk-name" x="0" y="0.5">Teishin-kō</text><circle class="fk-badge" cx="92" cy="0" r="10"/><text class="fk-badge-num" x="92" y="0.5">26</text></a></g>
+<g class="fk-node" transform="translate(744,346)" data-tip="&lt;h3&gt;Fujiwara no Tokihira&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;871–909&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Minister of the Left&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Second Rank; Senior First Rank after death&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Had Sugawara no Michizane sent away to Dazaifu in the Shōtai Incident&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="66" height="26"/><text class="fk-name" x="0" y="0.5">Tokihira</text></g></g>
+<g class="fk-node" transform="translate(744,380)" data-tip="&lt;h3&gt;Sugawara no Takasue's Daughter&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1008–Unknown&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Child of Sugawara no Takasue and Fujiwara no Tomoyasu's daughter; niece of the Mother of the Right Captain Michitsuna&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Author of the Sarashina Diary&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="153" height="26"/><text class="fk-name" x="0" y="0.5">Takasue's Daughter</text></g></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+          <div class="kd-text">
+            <p style="width:100%; margin-bottom:0.5em;">
+              Sugawara no Michizane was given important posts by Emperor Uda and rose unusually high for a scholar, becoming Minister of the Right in the reign of Emperor Daigo.
+            </p>
+            <p style="width:100%; margin-bottom:0.5em;">
+              Ruishi, the daughter of Michizane's father Koreyoshi, entered the court of Emperor Kōkō, and Michizane made his own daughter Enshi a consort of Emperor Uda and his daughter Yasuko the wife of Uda's son, Prince Tokiyo. But false accusations by the Minister of the Left, Fujiwara no Tokihira, led to the Shōtai Incident, and Michizane was sent away to Dazaifu.
+            </p>
+            <p style="width:100%; margin-bottom:0.5em;">
+              When Michizane was sent to Dazaifu, his son Sugawara no Takami was also punished and sent away as Assistant Governor of Tosa. Prince Tokiyo, too, was caught up and became a monk, and his son Minamoto no Hideakira had an unhappy childhood. Many others were punished as well.
+            </p>
+            <p style="width:100%; margin-bottom:0.5em;">
+              By the way, among Michizane's descendants is Sugawara no Takasue's Daughter, famous as the author of the <em>Sarashina Diary</em>.
+            </p>
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <div class="acordion-wrapper">
+              <div class="accordion">
+                <div class="accordion-header">Timeline of Sugawara no Michizane<br class="br-sp"><span
+                    style="font-size:0.8em;"> (Click to open or close.)</span></div>
+                <div class="accordion-content">
+                  <div class="container">
+
+                    <div class="timeline-item" date-is='845'>
+                      <h2 class="was-h3">Sugawara no Michizane is born</h2>
+                      <p>
+                        Born the third son of Sugawara no Koreyoshi.<br>He studied hard from childhood and wrote a Chinese poem at 11.
+                      </p>
+                    </div>
+
+                    <div class="timeline-item" date-is='862 (age 17)'>
+                      <h2 class="was-h3">Becomes a student of literature (<em>monjōshō</em>)</h2>
+                      <p>He became a student of literature.</p>
+                    </div>
+
+                    <div class="timeline-item" date-is='867 (age 22)'>
+                      <h2 class="was-h3">Becomes an advanced student of literature (<em>monjō tokugōshō</em>)</h2>
+                      <p>He became an advanced student of literature, a place given to only two of the students.</p>
+                    </div>
+
+                    <div class="timeline-item" date-is='870 (age 25)'>
+                      <h2 class="was-h3">Passes the <em>hōryakushi</em> exam</h2>
+                      <p>He passed the <em>hōryakushi</em>, the examination for government officials, and was given Senior Sixth Rank, Upper Grade.</p>
+                    </div>
+
+                    <div class="timeline-item" date-is='877 (age 32)'>
+                      <h2 class="was-h3">Becomes Junior Assistant Minister of Ceremonies and Professor of Literature</h2>
+                      <p>He became Professor of Literature (<em>monjō hakase</em>), the highest post for a scholar.</p>
+                    </div>
+
+                    <div class="timeline-item" date-is='886 (age 41)'>
+                      <h2 class="was-h3">Leaves those posts and becomes Governor of Sanuki</h2>
+                    </div>
+
+                    <div class="timeline-item" date-is='888 (age 43)'>
+                      <h2 class="was-h3">The Akō Dispute (a political conflict) breaks out</h2>
+                      <p>
+                        To ask Fujiwara no Mototsune to assist him, Emperor Uda had Tachibana no Hiromi write an edict saying, "Let the duties of <em>akō</em> be your duties." But Mototsune claimed that <em>akō</em> was only an honorary title with no real duties, stopped working, and brought the government to a standstill. This political conflict, called the Akō Dispute, was settled by Sugawara no Michizane.
+                      </p>
+                    </div>
+
+                    <div class="timeline-item" date-is='891 (age 46)'>
+                      <h2 class="was-h3">Becomes Head Chamberlain</h2>
+                    </div>
+
+                    <div class="timeline-item" date-is='894 (age 49)'>
+                      <h2 class="was-h3">Advises ending the missions to Tang China</h2>
+                      <p>Fujiwara no Tokihira arranged for Michizane to be named chief envoy to Tang China to keep him away from politics, but Michizane advised ending the missions, because Tang China was in a state of civil war.</p>
+                    </div>
+
+                    <div class="timeline-item" date-is='899 (age 54)'>
+                      <h2 class="was-h3">Becomes Minister of the Right</h2>
+                      <p>He became Minister of the Right, the second-highest post in the Council of State after the Minister of the Left, Fujiwara no Tokihira.</p>
+                    </div>
+
+                    <div class="timeline-item" date-is='900 (age 55)'>
+                      <h2 class="was-h3">Receives a letter from Miyoshi no Kiyoyuki</h2>
+                      <p>Michizane received a letter from Miyoshi no Kiyoyuki, a Professor of Literature, telling him to know his limits and retire, but he would not listen.</p>
+                    </div>
+
+                    <div class="timeline-item" date-is='901 (age 56)'>
+                      <h2 class="was-h3">The Shōtai Incident</h2>
+                      <p>Fujiwara no Tokihira falsely accused Michizane of plotting to remove Emperor Daigo and put his son-in-law, Prince Tokiyo, on the throne, and Michizane was sent away to Dazaifu as Acting Governor-General (<em>Dazai no Gon no Sochi</em>).</p>
+                    </div>
+
+                    <div class="timeline-item" date-is='903 (age 58)'>
+                      <h2 class="was-h3">Dies of illness</h2>
+                      <p>Living in poverty, he fell ill and died at Dazaifu.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <dt>The Roots of the Sugawara Family:<br class="br-sp"> From the Haji Clan to a "House of Learning"</dt>
+            <dd>
+              <p>The history of the Sugawara family began when Michizane's great-grandfather, Furuhito, changed the family name to Sugawara. Originally the family was called Haji. Since the Kofun period, they had been an officially recognized group of craftsmen in charge of emperors' funerals and the building of huge burial mounds (<em>kofun</em>), and they also made <em>haniwa</em> clay figures. It was a family of fine lineage, given <em>Sukune</em>, the third of the "Eight Titles" (<em>Yakusa no Kabane</em>) set up by Emperor Tenmu.</p>
+
+              <p>
+                In the Nara period, however, the spread of Buddhism changed funeral customs, and the work of building burial mounds no longer fit the times. To help the family survive, Furuhito decided to turn it from a family of craftsmen into a class of scholars specializing in learning. In 781, he asked to change the family name to Sugawara, after the place where they lived, and to be raised to the higher title of <em>Ason</em>.
+              </p>
+
+              <p>It was Michizane's grandfather, Kiyotomo, who turned Furuhito's bold decision into a firm position. Kiyotomo was one of the elite who sailed on the same mission to Tang China as Saichō and Kūkai and took in the advanced government systems and learning of the Tang. After returning, he rose to Head of the Daigakuryō (the court university) and finally reached Junior Third Rank, the first Sugawara to join the top court nobles. At his home he also opened a private school called the Kanke Rōka, which produced many elite officials of the time.</p>
+
+              <p>Michizane's father, Koreyoshi, was given the honor of being a <em>jitō</em>, a scholar who taught the emperor in person. Seeing the remarkable gifts Michizane showed from an early age, he gave him a thorough elite education that sharpened his powers of expression and logical thinking, rather than simply stuffing him with knowledge.</p>
+
+              <p>In this way, in only four generations, the family changed dramatically from the Haji, craftsmen who built burial mounds, to the Sugawara, who moved the nation with words, and it gave the world Michizane, a genius without equal.</p>
+            </dd>
+
+            <dt>A Poem Priest Sosei Wrote<br class="br-sp"> in Response to Michizane's</dt>
+            <dd>The next poem was written by <a href="/21_en.html">Priest Sosei</a>, influenced by Michizane's Hyakunin Isshu poem. Sosei's dates are not known, but he lived at the same time as Sugawara no Michizane and, like Michizane, seems to have gone with Retired Emperor Uda on his journeys and written poems.
+              <div class="quote">
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>手向<rt>たむ</rt></ruby>けには
+                  つづりの<ruby>袖<rt>そで</rt></ruby>も
+                  <ruby>切<rt>き</rt></ruby>るべきに
+                  <br>もみぢに<ruby>飽<rt>あ</rt></ruby>ける
+                  <ruby>神<rt>かみ</rt></ruby>や<ruby>返<rt>かえ</rt></ruby>さむ
+                  <span class="shutten"><em>Kokin Wakashū</em>, Priest Sosei</span>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">
+                    I ought to cut even the sleeve of my shabby robe to offer to the gods, but the gods, who have had their fill of these beautiful autumn leaves, would probably send it back.
+                  </p>
+                </q>
+              </div>
+            </dd>
+
+            <dt>Michizane's Poem to the Plum Tree</dt>
+            <dd>In the next poem, Michizane, about to be sent away to Dazaifu, calls out to the plum tree in his garden.
+              <br class="br-pc"> According to the "Flying Plum" legend, the plum tree missed him so much that it flew all the way to Dazaifu in a single night.
+              <div class="quote">
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>東風<rt>こち</rt></ruby><ruby>吹<rt>ふ</rt></ruby>かば
+                  <ruby>匂<rt>にほ</rt></ruby>ひおこせよ
+                  <ruby>梅<rt>うめ</rt></ruby>の<ruby>花<rt>はな</rt></ruby>
+                  <br><ruby>主<rt>あるじ</rt></ruby>なしとて
+                  <ruby>春<rt>はる</rt></ruby>な<ruby>忘<rt>わす</rt></ruby>るな
+                  <span class="shutten"><em>Shūi Wakashū</em>, Sugawara no Michizane</span>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">
+                    When the east wind blows in spring, send me your fragrance, plum blossoms.
+                    <br class="br-pc"> Even though your master is gone, do not forget the spring.
+                  </p>
+                </q>
+              </div>
+            </dd>
+
+            <dt>A Poem by Minamoto no Shitagō Remembering Michizane</dt>
+            <dd>In the next poem, Minamoto no Shitagō, a poet of the mid-Heian period, remembers Michizane, who was sent away to Dazaifu, drawing on the Flying Plum legend.
+              <div class="quote">
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>梅<rt>うめ</rt></ruby>は<ruby>飛<rt>と</rt></ruby>び
+                  <ruby>桜<rt>さくら</rt></ruby>は<ruby>枯<rt>か</rt></ruby>れぬ
+                  <ruby>菅原<rt>すがはら</rt></ruby>や
+                  <br><ruby>深<rt>ふか</rt></ruby>くぞ<ruby>頼<rt>たの</rt></ruby>む
+                  <ruby>神<rt>かみ</rt></ruby>の<ruby>誓<rt>ちか</rt></ruby>いを
+                  <span class="shutten"><em>Genpei Jōsuiki</em>, Minamoto no Shitagō</span>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">
+                    The plum tree, loved by its master, flew all the way to Tsukushi, but the cherry tree in the same garden was forgotten and withered. Such is the power of deep faith in the gods.
+                  </p>
+                </q>
+              </div>
+            </dd>
+
+            <dt>A Poem in Which Michizane, Now a Criminal,<br class="br-sp"> Declared His Innocence</dt>
+            <dd>Sent away to Dazaifu for a crime he had not committed, Michizane wrote a poem declaring his innocence.
+              <div class="quote">
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>海<rt>うみ</rt></ruby>ならず
+                  たたへる<ruby>水<rt>みず</rt></ruby>の
+                  <ruby>底<rt>そこ</rt></ruby>までに
+                  <br><ruby>清<rt>きよ</rt></ruby>き<ruby>心<rt>こころ</rt></ruby>は
+                  <ruby>月<rt>つき</rt></ruby>ぞ<ruby>照<rt>て</rt></ruby>らさむ
+                  <span class="shutten"><em>Shin Kokin Wakashū</em>, Sugawara no Michizane</span>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">
+                    The moon, which shines not only on the sea but down to the very bottom of the deepest waters,
+                    will surely make my pure heart clear to all.
+                  </p>
+                </q>
+              </div>
+            </dd>
+
+            <dt>A Poem to the Wife He Left in the Capital</dt>
+            <dd>The next poem is said to have been sent by Michizane, after he was sent away to Dazaifu, to the wife he had left in the capital.
+              <div class="quote">
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>君<rt>きみ</rt></ruby>が<ruby>住<rt>す</rt></ruby>む
+                  <ruby>宿<rt>やど</rt></ruby>の<ruby>梢<rt>こずえ</rt></ruby>を
+                  ゆくゆくと
+                  <br><ruby>隠<rt>かく</rt></ruby>るるまでも
+                  <ruby>返<rt>かえ</rt></ruby>り<ruby>見<rt>み</rt></ruby>しはや
+                  <span class="shutten"><em>Ōkagami</em>, Sugawara no Michizane</span>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">
+                    As I went on my way, I kept looking back at the treetops of the house where you live, until they were hidden from sight.
+                  </p>
+                </q>
+              </div>
+            </dd>
+
+            <dt>The Mystery of a Criminal Made<br class="br-sp"> Acting Governor-General of Dazaifu</dt>
+            <dd>
+              <p>When Sugawara no Michizane was sent away to Dazaifu, he was given the post of <em>Dazai no Gon no Sochi</em>, Acting Governor-General of Dazaifu. In practice this was the real head of Dazaifu, a high position that only top court nobles could hold. But it was given only to save his honor; in reality he was being banished as a criminal.</p>
+              <p>
+                He had to pay his own travel costs to Dazaifu, and he had to take many attendants befitting his high rank, all at his own expense. What is more, the post came with no salary despite its high rank, so he fell into hardship. In these harsh conditions, Michizane died only two years after moving to Dazaifu.
+              </p>
+            </dd>
+
+            <dt>The <em>Kitano Tenjin Engi</em> Picture Scroll</dt>
+            <dd class='thumb-image2'>
+              <figure class='landscape'>
+                <a href='../img/Kitano_Tenjin_Shrine_large.webp' data-lightbox='kanke' data-title='The Kitano Tenjin Engi picture scroll'>
+                  <img loading='lazy' src='../img/Kitano_Tenjin_Shrine.webp' alt='The Kitano Tenjin Engi picture scroll' width="960" height="480">
+                </a>
+                <figcaption><a
+                    href='https://commons.wikimedia.org/wiki/File:Illustrated_Legends_of_the_Kitano_Tenjin_Shrine,_Metropolitan_Museum_of_Art_01.jpg' target="_blank" rel="noopener"><small>Metropolitan
+                      Museum of Art, Public domain, via Wikimedia Commons</small></a></figcaption>
+              </figure>
+              <div>
+                <p>
+                  After Sugawara no Michizane died with his grievances unresolved at Dazaifu, lightning struck the Seiryōden hall of the imperial palace, killing the Upper Counselor Fujiwara no Kiyotsura and Taira no Mareyo, Middle Controller of the Right and Head of the Treasury. Three months later, even Emperor Daigo, who had banished Michizane, died. Seeing this chain of disasters, the nobles trembled in fear, saying, "This must be a curse from Michizane's vengeful spirit." To calm his anger, they built Kitano Tenmangū Shrine and worshipped his spirit with great care. In time, Michizane, who had shown the overwhelming power of lightning, also came to be worshipped as a "god of thunder." Because of these legends, Sugawara no Michizane is still spoken of today, along with Taira no Masakado and Retired Emperor Sutoku, as one of the "Three Great Vengeful Spirits of Japan."
+                </p>
+              </div>
+            </dd>
+
+            <dt>Gakumon no Michi, "The Road of Learning"</dt>
+            <dd class='thumb-image2'>
+              <div class="swiper">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img src="/img/study-road_001.webp" alt="Gakumon no Michi 1" width="640" height="640">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="/img/study-road_panda_01.webp" alt="The Teppanda panda statue" width="640" height="640">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="/img/study-road_panda_02.webp" alt="The Teppanda panda statue" width="640" height="640">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="/img/study-road_002.webp" alt="Gakumon no Michi 2" width="640" height="640">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="/img/study-road_003.webp" alt="Gakumon no Michi: the Otoko-zaka steps" width="640" height="640">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="/img/study-road_004.webp" alt="Gakumon no Michi: the Otoko-zaka steps" width="640" height="640">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="/img/study-road_008.webp" alt="Gakumon no Michi: the Onna-zaka steps" width="640" height="640">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="/img/study-road_005.webp" alt="Gakumon no Michi: the worship hall" width="640" height="640">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="/img/study-road_006.webp" alt="Gakumon no Michi: the small lying ox" width="640" height="640">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="/img/study-road_007.webp" alt="Gakumon no Michi: the large lying ox" width="640" height="640">
+                  </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+              </div>
+              <div>
+                <p>
+                  Gakumon no Michi, "The Road of Learning" (Bunkyō City, Tokyo), is a straight street about 700 meters long between Yushima Tenmangū Shrine, which honors Sugawara no Michizane as the god of learning, and Naka-Okachimachi Station on the Tokyo Metro. At Okachimachi Panda Square near JR Okachimachi Station stands an iron panda statue called "Teppanda," and the white gravel and black stepping stones made a panda pattern.
+                </p>
+                <p>
+                  As you get closer to Yushima Tenmangū, the atmosphere becomes old-fashioned and nostalgic, and a steep stone stairway of 38 steps called Tenjin Ishizaka (Tenjin Otoko-zaka) appears. If you don't like steep slopes, you can take the gentler Onna-zaka steps, though it is a little farther. At the top of the stairs you can see the worship hall.
+                </p>
+                <p>
+                  Near the purification fountain sit two lying oxen, one large and one small, and people hoping for blessings were waiting in line to stroke the large one. At this shrine to Michizane, the god of learning, so many people stroke the ox's head that it shines brightly.
+                  <br>(January 25, 2025)
+                </p>
+              </div>
+            </dd>
+
+            <dt><em>Kankō Haisho no Zu</em> (Michizane in Exile)</dt>
+            <dd class='thumb-image2'>
+              <figure class='landscape'>
+                <a href='../img/kankouhaishonozu_large.webp' data-lightbox='kanke' data-title='Kankō Haisho no Zu'>
+                  <img loading='lazy' src='../img/kankouhaishonozu.webp' alt='Kankō Haisho no Zu by Kobayashi Kiyochika' width="640" height="330">
+                </a>
+                <figcaption>
+                  <small><a href="https://www.metmuseum.org/art/collection/search/73579">Metropolitan Museum of Art,
+                      Public domain</a></small>
+                </figcaption>
+              </figure>
+              <div>
+                <p>
+                  This is <em>Kankō Haisho no Zu</em> by Kobayashi Kiyochika, an ukiyo-e artist of the Meiji period. <em>Haisho</em> means a place of exile.
+                </p>
+              </div>
+            </dd>
+
+            <dt>Ukiyo-e by Katsushika Hokusai</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/hokusai_24_large.webp' data-lightbox='kanke' data-title='Ukiyo-e by Katsushika Hokusai'>
+                  <img loading='lazy' src='../img/hokusai_24.webp' alt='Woodblock print by Katsushika Hokusai' width="640" height="437">
+                </a>
+                <figcaption><small><a
+                      href='https://commons.wikimedia.org/wiki/File:%E7%99%BE%E4%BA%BA%E4%B8%80%E9%A6%96_%E3%81%86%E3%81%AF%E3%81%8B%E3%82%91%E3%81%A8%E3%81%8D_%E8%8F%85%E5%AE%B6-Poem_by_Kanke_(Sugawara_Michizane),_from_the_series_One_Hundred_Poems_Explained_by_the_Nurse_(Hyakunin_isshu_uba_ga_etoki)_MET_DP140963.jpg'
+                      target="_blank" rel="noopener">Katsushika Hokusai, CC0, via Wikimedia Commons</a></small>
+                </figcaption>
+              </figure>
+              <div>
+                <p>
+                  This print is from <em>One Hundred Poems Explained by the Nurse</em> (<em>Hyakunin Isshu Uba ga Etoki</em>) by Katsushika Hokusai, an ukiyo-e artist of the Edo period.
+                  The idea of the series is a nurse explaining the Hyakunin Isshu poems with easy-to-understand pictures.
+                </p>
+                <p>
+                  It shows an ox lying in the road, people watching over the ox that will not move, and someone telling the person inside the ox carriage why it has stopped.
+                  As Michizane was dying at Dazaifu, he left word to "bury me where the ox stops." It is said that when his body was carried on an ox carriage, the ox lay down on the way and would not move,
+                  so Michizane was buried there. Today Dazaifu Tenmangū Shrine stands on that spot.
+                </p>
+              </div>
+            </dd>
+            <dt>Utagawa Kuniyoshi's <em>Hyakunin Isshu no Uchi</em></dt>
+            <dd class='thumb-image2'>
+              <figure class='portrait'>
+                <a href='../img/kuniyoshi_24_large.webp' data-lightbox='kanke' data-title='Ukiyo-e of Kanke by Utagawa Kuniyoshi'>
+                  <img loading='lazy' src='../img/kuniyoshi_24.webp' alt='Ukiyo-e of Kanke by Utagawa Kuniyoshi' width="480" height="710">
+                </a>
+                <figcaption><a
+                    href='https://commons.wikimedia.org/wiki/File:Kan_Ke_(no._24)_%E8%8F%85%E5%AE%B6_(Sugawara_no_Michizane)_(BM_2008,3037.10620).jpg' target="_blank" rel="noopener"><small>British
+                      Museum, Public domain, via Wikimedia Commons</small></a></figcaption>
+              </figure>
+              <div>
+                <p>This ukiyo-e is by Utagawa Kuniyoshi, an artist of the Edo period.<br class="br-pc"> It shows a scene that matches the poem in the Hyakunin Isshu.</p>
+                <p>Kanke's Hyakunin Isshu poem was written during Emperor Uda's journey to the Miyataki detached palace in Yoshino. Looking at the print, it seems to show just the moment in the poem when he is about to offer beautiful autumn leaves to the gods.</p>
+                <p>Look around, though, and there are only pine trees; the autumn leaves themselves are nowhere to be seen. By drawing a scene full of pines, Kuniyoshi may have wanted to show the rising excitement of the attendants, eagerly waiting for Kanke's offering to the gods to begin.</p>
+              </div>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -278,6 +1064,7 @@
           <a class="da-link-btn" href="diagram_archtecture_en.html">Relationship Diagram</a>
           <a class="kt-link-btn" href="karuta-taisen-pro_en.html">Competitive Karuta Game</a>
           <a class="kts-link-btn" href="karuta-taisen_en.html">Online Karuta Battle</a>
+          <a class="kg-link-btn" href="kakekotoba-game-024_en.html"><span class="kg-link-btn-inner"><span class="kg-link-btn-face kg-link-btn-front">Spin &amp; Discover Kakekotoba!</span><span class="kg-link-btn-face kg-link-btn-back">Spin &amp; Discover Kakekotoba!</span></span></a>
         </dd>
       </dl>
     </div>
@@ -299,15 +1086,36 @@
   </footer>
   <!-- Footer end -->
 
-  <script src="../js/poems_en.js?20260803-03"></script>
-
-  <!-- Chart of the Heart -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="/js/kokoro-chart-data-en.js?20260726"></script>
+  <script src="../js/poems_en.js?20261007-04"></script>
+  <script src="../js/accordion.js"></script>
+  <!-- photo slider (swiper) -->
+  <script src="../js/swiper-bundle.min.js"></script>
   <script>
-    window.radarScores = KOKORO_CHART_DATA[24].scores;
+    document.addEventListener('DOMContentLoaded', () => {
+      new Swiper('.swiper', {
+        loop: true,
+        speed: 1500,
+        autoplay: {
+          delay: 1500,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+    });
   </script>
-  <script src="/js/raderChart.js?20260830-01"></script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261008-21"></script>
+  <script src="../js/keizu-diagram.js?20261008-02"></script>
+
 </body>
 
 </html>

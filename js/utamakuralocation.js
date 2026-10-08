@@ -295,7 +295,7 @@
           "markname": "因幡",
           "kajin": "中納言行平（因幡）",
           "type": "type1",
-          "name": "<a href='../img/Inaba_Kokucho_Site_large.webp' data-lightbox='map' data-title='因幡国庁跡'><img src='../img/Inaba_Kokucho_Site.webp?20240425' width='300' alt='因幡'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:Inaba_Kokucho_Site,_seiden_and_koden-2.jpg'>Saigen Jiro, CC0, via Wikimedia Commons</a></small><h2 class='utamakura-name'>歌枕：因幡の山</h2><p>鳥取県鳥取市国府町。写真は因幡の山（現在は稲葉山）の近くにある因幡国庁跡。</p><hr><a href='/16.html'>16番歌 中納言行平へのリンク</a>"
+          "name": "<a href='../img/Inaba_Kokucho_Site_large.webp' data-lightbox='map' data-title='因幡国庁跡'><img src='../img/Inaba_Kokucho_Site.webp?20240425' width='300' alt='因幡'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:Inaba_Kokucho_Site,_seiden_and_koden-2.jpg' target='_blank' rel='noopener'>Saigen Jiro, CC0, via Wikimedia Commons</a></small><h2 class='utamakura-name'>歌枕：因幡の山</h2><p>鳥取県鳥取市国府町。写真は因幡の山（現在は稲葉山）の近くにある因幡国庁跡。</p><hr><a href='/16.html'>16番歌 中納言行平へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -471,7 +471,7 @@
           "markname": "弘川寺",
           "kajin": "西行法師（弘川寺）",
           "type": "type2",
-          "name": "<a href='/img/Hirokawadera.webp' data-lightbox='map' data-title='弘川寺'><img src='../img/Hirokawadera.webp' width='300' alt='住吉高燈籠'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:Hirokawadera-200001.jpg'>Otraff, CC BY-SA 3.0 <http://creativecommons.org/licenses/by-sa/3.0/>, via Wikimedia Commons</a></small><h2 class='utamakura-name'>弘川寺</h2><p>弘川寺（大阪府南河内郡河南町）は、大和葛城山の麓にある古刹です。西行はここで生涯を閉じました。境内には西行の西行墳や歌碑、西行記念館があります。お寺やその周辺は桜の名所としても知られています。</p><hr><a href='/86.html'>86番歌西行法師へのリンク</a>"
+          "name": "<a href='/img/Hirokawadera.webp' data-lightbox='map' data-title='弘川寺'><img src='../img/Hirokawadera.webp' width='300' alt='住吉高燈籠'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:Hirokawadera-200001.jpg' target='_blank' rel='noopener'>Otraff, CC BY-SA 3.0 <http://creativecommons.org/licenses/by-sa/3.0/>, via Wikimedia Commons</a></small><h2 class='utamakura-name'>弘川寺</h2><p>弘川寺（大阪府南河内郡河南町）は、大和葛城山の麓にある古刹です。西行はここで生涯を閉じました。境内には西行の西行墳や歌碑、西行記念館があります。お寺やその周辺は桜の名所としても知られています。</p><hr><a href='/86.html'>86番歌西行法師へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -646,7 +646,7 @@
           "markname": "御蓋山",
           "kajin": "阿倍仲麻呂（御蓋山）",
           "type": "type1",
-          "name": "<a href='../img/mikasayama_large.webp' data-lightbox='map' data-title='御蓋山'><img src='../img/mikasayama.webp' width='300' alt='御蓋山'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:Mikasayama_201611a.jpg'>Degueulasse, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons</a></small><h2 class='utamakura-name'>歌枕：三笠山</h2><p>奈良県奈良市東部。標高283mの山で、笠を伏せたような円錐状の形が名前の由来になっています。麓には春日大社があります。</p><hr><a href='/7.html'>7番歌 阿倍仲麻呂へのリンク</a>"
+          "name": "<a href='../img/mikasayama_large.webp' data-lightbox='map' data-title='御蓋山'><img src='../img/mikasayama.webp' width='300' alt='御蓋山'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:Mikasayama_201611a.jpg' target='_blank' rel='noopener'>Degueulasse, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons</a></small><h2 class='utamakura-name'>歌枕：三笠山</h2><p>奈良県奈良市東部。標高283mの山で、笠を伏せたような円錐状の形が名前の由来になっています。麓には春日大社があります。</p><hr><a href='/7.html'>7番歌 阿倍仲麻呂へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -710,7 +710,7 @@
           "markname": "土佐国衙跡",
           "kajin": "紀貫之（土佐国衙跡）",
           "type": "type2",
-          "name": "<a href='../img/Tosakokuga-ato_large.webp' data-lightbox='map' data-title='難波江'><img src='../img/Tosakokuga-ato.webp' width='300' alt='土佐国衙跡'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:Tosakokuga-ato.JPG'>写真:Saigen Jiro, CC0, via Wikimedia Commons</a></small><h2 class='utamakura-name'>土佐国衙跡</h2><p>土佐日記の作者として有名な紀貫之は土佐守として土佐に4年間赴任していました。</p><hr><a href='/35.html'>35番歌 紀貫之へのリンク</a>"
+          "name": "<a href='../img/Tosakokuga-ato_large.webp' data-lightbox='map' data-title='難波江'><img src='../img/Tosakokuga-ato.webp' width='300' alt='土佐国衙跡'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:Tosakokuga-ato.JPG' target='_blank' rel='noopener'>写真:Saigen Jiro, CC0, via Wikimedia Commons</a></small><h2 class='utamakura-name'>土佐国衙跡</h2><p>土佐日記の作者として有名な紀貫之は土佐守として土佐に4年間赴任していました。</p><hr><a href='/35.html'>35番歌 紀貫之へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -774,7 +774,7 @@
           "markname": "阿倍仲麻呂の記念碑（興慶宮公園）",
           "kajin": "阿倍仲麻呂（興慶宮公園）",
           "type": "type2",
-          "name": "<a href='../img/abenonakamaro_kinenhi_large.webp' data-lightbox='map' data-title='興慶宮公園にある阿倍仲麻呂の記念碑'><img src='../img/abenonakamaro_kinenhi.webp' width='300' alt='阿倍仲麻呂の記念碑'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:%E9%98%BF%E5%80%8D%E4%BB%B2%E9%BA%BB%E5%91%82%E7%A2%91.JPG'>写真:Indiana jo, CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>, via Wikimedia Commons</a></small><h2 class='utamakura-name'>興慶宮公園</h2><p>興慶宮公園は、かつて玄宗皇帝が執務を行っていた興慶宮の遺跡の上に築かれた公園で、この場所には阿倍仲麻呂の記念碑が建てられています。</p><hr><a href='/7.html'>7番歌 阿倍仲麻呂へのリンク</a>"
+          "name": "<a href='../img/abenonakamaro_kinenhi_large.webp' data-lightbox='map' data-title='興慶宮公園にある阿倍仲麻呂の記念碑'><img src='../img/abenonakamaro_kinenhi.webp' width='300' alt='阿倍仲麻呂の記念碑'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:%E9%98%BF%E5%80%8D%E4%BB%B2%E9%BA%BB%E5%91%82%E7%A2%91.JPG' target='_blank' rel='noopener'>写真:Indiana jo, CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>, via Wikimedia Commons</a></small><h2 class='utamakura-name'>興慶宮公園</h2><p>興慶宮公園は、かつて玄宗皇帝が執務を行っていた興慶宮の遺跡の上に築かれた公園で、この場所には阿倍仲麻呂の記念碑が建てられています。</p><hr><a href='/7.html'>7番歌 阿倍仲麻呂へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -982,7 +982,7 @@
           "markname": "函谷関",
           "kajin": "清少納言（函谷関）",
           "type": "type2",
-          "name": "<a href='../img/Hangu_Pass_large.webp' data-lightbox='map' data-title='中国河南省:函谷関遺跡'><img src='../img/Hangu_Pass.webp' width='300' alt='函谷関遺址'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:Hangu_Pass.jpg'>Flaumfeder, CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>, via Wikimedia Commons</a></small><h2 class='utamakura-name'>函谷関遺跡</h2><p>函谷関とは、中国河南省にあった関所のことです。清少納言が百人一首に収められた歌で孟嘗君が部下に鶏の鳴き真似をさせて、鶏が鳴くまで開かない函谷関の関を夜に開門させたという故事を引用しています。</p><hr><a href='/62.html'>62番歌 清少納言へのリンク</a>"
+          "name": "<a href='../img/Hangu_Pass_large.webp' data-lightbox='map' data-title='中国河南省:函谷関遺跡'><img src='../img/Hangu_Pass.webp' width='300' alt='函谷関遺址'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:Hangu_Pass.jpg' target='_blank' rel='noopener'>Flaumfeder, CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>, via Wikimedia Commons</a></small><h2 class='utamakura-name'>函谷関遺跡</h2><p>函谷関とは、中国河南省にあった関所のことです。清少納言が百人一首に収められた歌で孟嘗君が部下に鶏の鳴き真似をさせて、鶏が鳴くまで開かない函谷関の関を夜に開門させたという故事を引用しています。</p><hr><a href='/62.html'>62番歌 清少納言へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -1030,7 +1030,7 @@
           "markname": "紫式部公園",
           "kajin": "紫式部（紫式部公園）",
           "type": "type2",
-          "name": "<a href='../img/Murasaki_shikibu_garden_large.webp' data-lightbox='map' data-title='紫式部公園'><img src='../img/Murasaki_shikibu_garden.webp' width='300' alt='紫式部公園'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:Murasaki_shikibu_garden.jpg'>Opqr, CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>, via Wikimedia Commons</a></small><h2 class='utamakura-name'>紫式部公園</h2><p>福井県越前市にある公園。国内で唯一、平安時代の寝殿造りが再現された庭園があります。紫式部は、越前の国司となった父・藤原為時と共に一年余りを越前で過ごしました。</p><hr><a href='/57.html'>57番歌 紫式部へのリンク</a>"
+          "name": "<a href='../img/Murasaki_shikibu_garden_large.webp' data-lightbox='map' data-title='紫式部公園'><img src='../img/Murasaki_shikibu_garden.webp' width='300' alt='紫式部公園'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:Murasaki_shikibu_garden.jpg' target='_blank' rel='noopener'>Opqr, CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>, via Wikimedia Commons</a></small><h2 class='utamakura-name'>紫式部公園</h2><p>福井県越前市にある公園。国内で唯一、平安時代の寝殿造りが再現された庭園があります。紫式部は、越前の国司となった父・藤原為時と共に一年余りを越前で過ごしました。</p><hr><a href='/57.html'>57番歌 紫式部へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -1062,7 +1062,7 @@
           "markname": "西園寺",
           "kajin": "西園寺公経（西園寺）",
           "type": "type2",
-          "name": "<a href='../img/Saion-ji_large.webp' data-lightbox='map' data-title='京都市上京区:西園寺'><img src='../img/Saion-ji.webp' width='300' alt='西園寺'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:Saion-ji_Kyoto_007.jpg'>Brakeet, CC0, via Wikimedia Commons</a></small><h2 class='utamakura-name'>西園寺</h2><p>京都市上京区にある浄土宗の寺院。浄土宗の寺院である西園寺は、京都市上京区に位置しています。創建は、西園寺公経が京都北山の山荘を改修して真言宗の寺院として建てたことに始まります。その後、足利義満が金閣寺の建立に際し、西園寺の地を希望したため、現在の場所に移転されました。</p><hr><a href='/96.html'>96番歌 入道前太政大臣へのリンク</a>"
+          "name": "<a href='../img/Saion-ji_large.webp' data-lightbox='map' data-title='京都市上京区:西園寺'><img src='../img/Saion-ji.webp' width='300' alt='西園寺'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:Saion-ji_Kyoto_007.jpg' target='_blank' rel='noopener'>Brakeet, CC0, via Wikimedia Commons</a></small><h2 class='utamakura-name'>西園寺</h2><p>京都市上京区にある浄土宗の寺院。浄土宗の寺院である西園寺は、京都市上京区に位置しています。創建は、西園寺公経が京都北山の山荘を改修して真言宗の寺院として建てたことに始まります。その後、足利義満が金閣寺の建立に際し、西園寺の地を希望したため、現在の場所に移転されました。</p><hr><a href='/96.html'>96番歌 入道前太政大臣へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -1094,7 +1094,7 @@
           "markname": "法性寺",
           "kajin": "法性寺入道前関白太政大臣（法性寺）",
           "type": "type2",
-          "name": "<a href='../img/hosshoji_large.webp' data-lightbox='map' data-title='京都市東山区:法性寺'><img src='../img/hosshoji.webp' width='300' alt='法性寺'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:Hosshoji-temple.jpg'>運動会プロテインパワー, CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>, via Wikimedia Commons</a></small><h2 class='utamakura-name'>法性寺</h2><p>京都市東山区にある浄土宗西山禅林寺派の寺院。貞信公（藤原忠平）により創建されたと伝えられています。法性寺入道前関白太政大臣（藤原忠通）が出家後寺内に住み法性寺入道と称しました。</p><hr><a href='/26.html'>26番歌 貞信公へのリンク</a><br><hr><a href='/76.html'>76番歌 法性寺入道前関白太政大臣へのリンク</a>"
+          "name": "<a href='../img/hosshoji_large.webp' data-lightbox='map' data-title='京都市東山区:法性寺'><img src='../img/hosshoji.webp' width='300' alt='法性寺'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:Hosshoji-temple.jpg' target='_blank' rel='noopener'>運動会プロテインパワー, CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>, via Wikimedia Commons</a></small><h2 class='utamakura-name'>法性寺</h2><p>京都市東山区にある浄土宗西山禅林寺派の寺院。貞信公（藤原忠平）により創建されたと伝えられています。法性寺入道前関白太政大臣（藤原忠通）が出家後寺内に住み法性寺入道と称しました。</p><hr><a href='/26.html'>26番歌 貞信公へのリンク</a><br><hr><a href='/76.html'>76番歌 法性寺入道前関白太政大臣へのリンク</a>"
         },
         "geometry": {
           "type": "Point",

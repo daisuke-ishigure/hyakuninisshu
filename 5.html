@@ -82,7 +82,7 @@
   }
   </script>
   <!-- スタイルシートの追加 -->
-  <link rel="stylesheet" href="../css/style.css?20261006-05">
+  <link rel="stylesheet" href="../css/style.css?20261008-02">
   <link rel="stylesheet" href="../../css/fall.css?20240507-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_05.css?20240507-02">
@@ -156,6 +156,13 @@
   <main>
     <div class="card">
       <div class="column-wrapper">
+        <nav class="breadcrumb-poem" aria-label="パンくずリスト">
+          <ol>
+            <li><a href="index.html">トップ</a></li>
+            <li><a href="list.html">百人一首一覧</a></li>
+            <li aria-current="page">第5番 猿丸太夫</li>
+          </ol>
+        </nav>
         <div class="select-container">
           <label for="themeSelector" id="themeSelector-label">テーマを選択:</label>
           <select id="themeSelector" class="selector">
@@ -394,7 +401,7 @@
                   <ruby>鳴<rt>な</rt></ruby>く<ruby>鹿<rt>しか</rt></ruby>は
                   <br><ruby>今夜<rt>こよい</rt></ruby>は<ruby>鳴<rt>な</rt></ruby>かず
                   <ruby>寝<rt>い</rt></ruby>ねにけらしも
-                  <span class="shutten">『古今和歌集』崗本天皇（舒明天皇）</span>
+                  <span class="shutten">『万葉集』崗本天皇（舒明天皇）</span>
                 </q><q>
                   <h3 class="was-h4">現代語訳</h3>
                   <p style="line-height: 1.75; margin-top: 0.25em; letter-spacing:-0.005px">夕方になると小倉山で鳴く鹿が<br
@@ -443,7 +450,7 @@
               </figure>
               <div>
                 <p>萩は「<ruby>鹿鳴草<rt>しかなくぐさ</rt></ruby>」という別名があります。<br
-                    class="br-pc">雄鹿が鳴く頃（6月頃）に咲くことが名前の由来ではといわれています。百人一首には萩を詠んだ歌はありませんが、『万葉集』ではその存在感が際立っています。なんと141首もの歌に詠まれており、これは桜や梅よりも多く、万葉集に登場する植物の中では最多を誇ります。
+                    class="br-pc">雄鹿が鳴く頃に咲くことが名前の由来ではといわれています。百人一首には萩を詠んだ歌はありませんが、『万葉集』ではその存在感が際立っています。なんと141首もの歌に詠まれており、これは桜や梅よりも多く、万葉集に登場する植物の中では最多を誇ります。
                 </p>
               </div>
             </dd>
@@ -456,7 +463,7 @@
                 </a>
                 <figcaption><small><a
                       href='https://commons.wikimedia.org/wiki/File:%E7%99%BE%E4%BA%BA%E4%B8%80%E9%A6%96_%E4%B9%B3%E6%AF%8D%E3%81%8B%E3%82%91%E3%81%A8%E3%81%8D_%E7%8C%BF%E4%B8%B8%E5%A4%AA%E5%A4%AB-Poem_by_Sarumaru_Day%C5%AB,_from_the_series_One_Hundred_Poems_Explained_by_the_Nurse_(Hyakunin_isshu_uba_ga_etoki)_MET_DP141101.jpg'
-                      target='_target'>Katsushika Hokusai, CC0, via Wikimedia Commons</a></small>
+                      target='_blank'>Katsushika Hokusai, CC0, via Wikimedia Commons</a></small>
                 </figcaption>
               </figure>
               <div>
@@ -477,7 +484,7 @@
                   <img loading='lazy' src='../img/kuniyoshi_05.webp' alt='歌川国芳による猿丸太夫の浮世絵' width="480" height="703">
                 </a>
                 <figcaption><a
-                    href='https://commons.wikimedia.org/wiki/File:Sarumaru_Dayu_(no._5)_%E7%8C%BF%E4%B8%B8%E5%A4%A7%E5%A4%AB_(BM_2008,3037.10605).jpg'><small>British
+                    href='https://commons.wikimedia.org/wiki/File:Sarumaru_Dayu_(no._5)_%E7%8C%BF%E4%B8%B8%E5%A4%A7%E5%A4%AB_(BM_2008,3037.10605).jpg' target='_blank' rel='noopener'><small>British
                       Museum, Public domain, via Wikimedia Commons</small></a></figcaption>
               </figure>
               <div>
@@ -493,14 +500,6 @@
           </dl>
         </dd>
       </dl>
-    </div>
-    <div class="bottom_arrow">
-      <div id="next2" class="bottom">
-        <p id="next2_arrow">次の和歌へ</p>
-      </div>
-      <div id="back2" class="bottom">
-        <p id="back2_arrow">前の和歌へ</p>
-      </div>
     </div>
   </main>
 
@@ -519,7 +518,7 @@
     </div>
   </footer>
   <!-- フッターここまで -->
-  <script src="../js/poems.js?20261006-04"></script>
+  <script src="../js/poems.js?20261008-01"></script>
   <script src="../js/fall.js?20240507-02"></script>
   <!-- ▼▼▼ swiper ▼▼▼ -->
   <script src="../js/swiper-bundle.min.js"></script>

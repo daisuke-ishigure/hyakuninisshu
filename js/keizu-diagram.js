@@ -29,6 +29,8 @@ HTML の形：
   groups:  [{ points: [[x, y], …], label: { text, x, y } }]  … 一族などをまとめて囲む枠（点線の多角形。「中関白家」など）。label は枠に添える文字
   tooltips: 'fujiwara' … ツールチップの文面を js/fujiwara-keizu-tooltips.js から優先して探す（省略時は js/tenno-keizu-tooltips.js を優先。無い人物はもう一方から探す）
   tips:    { 名前: [見出し, 説明の行, …] }  … このページだけ文面を変えたいときのツールチップ（ふだんは js/keizu-tips.js に書いて共有する）
+  lang:    'en' … 英語版のページ（N_en.html）用。名前・ツールチップは js/keizu-tips_en.js（KD_TIPS_EN）から n（または key）で引き、
+           歌人のリンク先を N_en.html にする。英語の名前は全角1文字＝FS の計算が合わないので、文字ごとのおおよその幅で長さを見積もる
 -------------------------------------------- */
 (function (root) {
   'use strict';
@@ -70,18 +72,50 @@ HTML の形：
     return String(t).length * 6.3 + 6;
   }
 
-  function measure(d) {
+  // 英語の文字の幅（Noto Sans Bold の字幅。1000 = 文字の大きさ。ブラウザの canvas で実測）。英語版では css/fujiwara-keizu.css で名前を Noto Sans にしている
+  var NOTO_SANS_BOLD = {
+    " ": 260, a: 599, b: 632, c: 516, d: 632, e: 597, f: 387, g: 632, h: 650, i: 299, j: 298, k: 620, l: 298, m: 975,
+    n: 650, o: 625, p: 632, q: 632, r: 447, s: 502, t: 434, u: 650, v: 571, w: 856, x: 578, y: 571, z: 493,
+    A: 692, B: 665, C: 642, D: 732, E: 560, F: 549, G: 724, H: 765, I: 389, J: 331, K: 664, L: 559, M: 943,
+    N: 813, O: 791, P: 621, Q: 791, R: 656, S: 551, T: 577, U: 756, V: 650, W: 967, X: 670, Y: 626, Z: 579,
+    "'": 266, '’': 266, '.': 281, ',': 285, '-': 320, '/': 415, '(': 339, ')': 339, '·': 281, '&': 750
+  };
+  function latinWidth(s, size) {
+    var w = 0;
+    for (var i = 0; i < s.length; i++) {
+      // 長音記号つきの文字（ō など）は元の文字の幅
+      var c = s.charAt(i).normalize ? s.charAt(i).normalize('NFD').charAt(0) : s.charAt(i);
+      w += NOTO_SANS_BOLD[c] || (/\d/.test(c) ? 572 : 632);
+    }
+    return w * size / 1000;
+  }
+
+  // 名前の下の札の幅（英語版は文字ごとの幅で見積もる）
+  function subWidth(d, en) {
+    return (en ? Math.ceil(latinWidth(d.sub, NOTE_FS)) : d.sub.length * NOTE_FS) + 12;
+  }
+
+  function measure(d, en) {
     var w = 0;
     d.preW = d.pre ? d.pre.length * NOTE_FS + 8 : 0;
     if (d.preW) w += d.preW + 4;
     d.nameX = w;
-    w += d.n.length * FS;
-    if (d.note) { d.noteX = w + 2; w += (d.note.length + 2) * NOTE_FS + 2; }
+    d.nameW = en ? Math.ceil(latinWidth(d.label, FS)) : d.label.length * FS;
+    w += d.nameW;
+    if (d.note) { d.noteX = w + 2; w += (en ? latinWidth(' (' + d.note + ')', NOTE_FS) : (d.note.length + 2) * NOTE_FS) + 2; }
     if (d.p) { d.badgeCx = w + 4 + BADGE_R; w += 4 + BADGE_R * 2; }
     d.w = w;
   }
 
-  function tooltipLines(d, tips) {
+  function tooltipLines(d, tips, en) {
+    if (en) {
+      var e = en[d.key || d.n];
+      if (e && e.tip && e.tip.length) return e.tip;
+      var enLines = [d.k ? 'Emperor ' + d.label : d.label];
+      if (d.t) enLines.push('Emperor no. ' + d.t);
+      if (d.p) enLines.push('Poet of Hyakunin Isshu Poem ' + d.p);
+      return enLines;
+    }
     var t = tips[d.key || d.n];
     if (t && t.length) return t;
     var lines = [d.k ? d.n + '天皇' : d.n];
@@ -91,18 +125,19 @@ HTML の形：
   }
 
   // 「項目：本文」の行は、項目と本文を分けて、本文が折り返しても「：」の後ろにそろうようにする（css/fujiwara-keizu.css の .fk-tip-label）
-  function tipLineHtml(line, cls) {
-    var m = line.match(/^([^：<]{1,8}：)([\s\S]*)$/);
+  // 英語は「Label: text」（項目は大文字で始まる短い語句）
+  function tipLineHtml(line, cls, en) {
+    var m = en ? line.match(/^([A-Z][^:<]{0,20}:\s)([\s\S]*)$/) : line.match(/^([^：<]{1,8}：)([\s\S]*)$/);
     var body = m ? '<span class="fk-tip-label">' + m[1] + '</span><span class="fk-tip-body">' + m[2] + '</span>' : line;
     return '<div class="fk-tip-line' + (cls ? ' ' + cls : '') + (m ? ' has-label' : '') + '">' + body + '</div>';
   }
 
   // js/tenno-keizu.js と同じ形（見出し＋1行ずつの div）。スマホ用の歌のページへのリンクはブラウザで足す
-  function tooltipHtml(d, tips) {
-    var lines = tooltipLines(d, tips);
+  function tooltipHtml(d, tips, en) {
+    var lines = tooltipLines(d, tips, en);
     var body = lines.slice(1).map(function (line) {
       var m = line.match(/^<u>(.*)<\/u>$/);
-      return m ? tipLineHtml(m[1], 'is-rule') : tipLineHtml(line);
+      return m ? tipLineHtml(m[1], 'is-rule', en) : tipLineHtml(line, '', en);
     });
     return '<h3>' + lines[0] + '</h3>' + body.join('');
   }
@@ -120,13 +155,13 @@ HTML の形：
     return html.replace(/<rt>.*?<\/rt>/g, '').replace(/<[^>]+>/g, '');
   }
 
-  function nodeSvg(d, tips) {
+  function nodeSvg(d, tips, en) {
     var inner = '';
     if (d.self) inner += tag('rect', { class: 'kd-self-box', x: -5, y: -14, width: d.w + 10, height: 28, rx: 3 });
 
     var main = '';
     // 歌人は名前とバッジをまとめて歌のページへのリンクにする（このページの歌人は除く）。href があればそちらへのリンクにする
-    var href = d.self ? '' : d.href || (d.p ? '/' + d.p + '.html' : '');
+    var href = d.self ? '' : d.href || (d.p ? '/' + d.p + (en ? '_en' : '') + '.html' : '');
     var link = !!href;
     // ホバーで名前の背景に色を付けるための四角（歌人以外も）
     main += tag('rect', { class: 'fk-hit', x: -2, y: -13, width: d.w + 4, height: 26 });
@@ -134,14 +169,16 @@ HTML の形：
       main += tag('rect', { class: 'fk-pre-box', x: 0, y: -9, width: d.preW, height: 18, rx: 2 });
       main += tag('text', { class: 'fk-pre', x: d.preW / 2, y: 0.5 }, esc(d.pre));
     }
-    main += tag('text', { class: 'fk-name', x: d.nameX, y: 0.5 }, esc(d.n));
-    if (d.note) main += tag('text', { class: 'fk-note', x: d.noteX, y: 1 }, esc('（' + d.note + '）'));
+    main += tag('text', { class: 'fk-name', x: d.nameX, y: 0.5 }, esc(d.label));
+    if (d.note) main += tag('text', { class: 'fk-note', x: d.noteX, y: 1 }, esc(en ? ' (' + d.note + ')' : '（' + d.note + '）'));
     if (d.p) {
       main += tag('circle', { class: 'fk-badge', cx: d.badgeCx, cy: 0, r: BADGE_R });
       main += tag('text', { class: 'fk-badge-num', x: d.badgeCx, y: 0.5, style: d.p >= 100 ? 'font-size:8.5px' : '' }, esc(d.p));
     }
     inner += link
-      ? tag('a', { href: href, 'aria-label': plainText(tooltipLines(d, tips)[0]) + (d.href ? '（' + (d.hrefText || 'リンク') + '）' : '（百人一首' + d.p + '番）') }, main)
+      ? tag('a', { href: href, 'aria-label': plainText(tooltipLines(d, tips, en)[0]) + (en
+        ? (d.href ? ' (' + (d.hrefText || 'Link') + ')' : ' (Hyakunin Isshu Poem ' + d.p + ')')
+        : (d.href ? '（' + (d.hrefText || 'リンク') + '）' : '（百人一首' + d.p + '番）')) }, main)
       : tag('g', { class: 'fk-main' }, main);
 
     if (d.t) {
@@ -150,17 +187,17 @@ HTML の形：
       inner += tag('text', { class: 'fk-tno', x: tw / 2, y: -TNO_TOP + TNO_H / 2 + 0.5 }, esc(d.t));
     }
     if (d.sub) {
-      var sw = d.sub.length * NOTE_FS + 12;
+      var sw = subWidth(d, en);
       inner += tag('rect', { class: 'fk-sub-box', x: 0, y: 11, width: sw, height: 16, rx: 8 });
       inner += tag('text', { class: 'fk-sub', x: sw / 2, y: 19.5 }, esc(d.sub));
     }
     return tag('g', {
       class: 'fk-node' + (d.k ? ' is-tenno' : '') + (d.kan ? ' is-kanpaku' : '') + (d.p ? ' is-poet' : '') + (d.self ? ' is-self' : ''),
       transform: 'translate(' + d.x + ',' + d.y + ')',
-      'data-tip': tooltipHtml(d, tips),
+      'data-tip': tooltipHtml(d, tips, en),
       'data-p': link && !d.href ? d.p : '',
       'data-href': link && d.href ? d.href : '',
-      'data-href-text': link && d.href ? d.hrefText || 'リンク' : ''
+      'data-href-text': link && d.href ? d.hrefText || (en ? 'Link' : 'リンク') : ''
     }, inner);
   }
 
@@ -172,22 +209,26 @@ HTML の形：
     return h.toString(36);
   }
 
-  /* data: 相関図のデータ / tipSets: ツールチップの文面 { tenno: TK_TOOLTIPS, fujiwara: FK_TOOLTIPS, kd: KD_TIPS }
+  /* data: 相関図のデータ / tipSets: ツールチップの文面 { tenno: TK_TOOLTIPS, fujiwara: FK_TOOLTIPS, kd: KD_TIPS, en: KD_TIPS_EN }
      label: SVG の aria-label / src: データの文字列（hash 用） */
   function toSvg(data, tipSets, label, src) {
     // 指定したファイル（tooltips）の文面を優先し、無い人物はもう一方のファイルからも探す（天皇と藤原氏が並ぶ系図のため）
     var main = data.tooltips || 'tenno';
     var tips = {};
     // 相関図用の共有ファイル（kd：js/keizu-tips.js）、ページごとの tips の順にさらに優先する
-    Object.keys(tipSets || {}).forEach(function (k) { if (k !== main && k !== 'kd') Object.assign(tips, tipSets[k]); });
+    Object.keys(tipSets || {}).forEach(function (k) { if (k !== main && k !== 'kd' && k !== 'en') Object.assign(tips, tipSets[k]); });
     Object.assign(tips, (tipSets || {})[main] || {}, (tipSets || {}).kd || {}, data.tips || {});
+    // 英語版：名前・ツールチップは KD_TIPS_EN から引く
+    var en = data.lang === 'en' ? (tipSets || {}).en || {} : null;
     var byId = {};
     var maxX = 0;
     var maxY = 0;
     data.nodes.forEach(function (d) {
-      measure(d);
+      var e = en && en[d.key || d.n];
+      d.label = e && e.n ? e.n : d.n;
+      measure(d, en);
       byId[d.id] = d;
-      maxX = Math.max(maxX, d.x + d.w, d.sub ? d.x + d.sub.length * NOTE_FS + 12 : 0); // 名前より長い札も切れないように
+      maxX = Math.max(maxX, d.x + d.w, d.sub ? d.x + subWidth(d, en) : 0); // 名前より長い札も切れないように
       maxY = Math.max(maxY, d.y + (d.sub ? 28 : 14));
     });
 
@@ -196,7 +237,7 @@ HTML の形：
     (data.couples || []).forEach(function (c) {
       var a = byId[c.top];
       var b = byId[c.bottom];
-      var ex = b.x + Math.min(a.n.length, b.n.length) * FS / 2;
+      var ex = b.x + Math.min(a.nameW, b.nameW) / 2;
       var y1 = a.y + (a.sub ? 28 : 9);
       var y2 = b.y - (b.t ? TNO_TOP + 2 : 9);
       // 子への線を出す高さ（＝の中ほど）。代数の札の上端までの＝で決める
@@ -277,7 +318,7 @@ HTML の形：
       }
     });
 
-    var nodes = data.nodes.map(function (d) { return nodeSvg(d, tips); }).join('\n');
+    var nodes = data.nodes.map(function (d) { return nodeSvg(d, tips, en); }).join('\n');
     // band：from から to までの名前の下にまたがる札（奥州藤原氏の4代など）
     (data.bands || []).forEach(function (b) {
       var a = byId[b.from];
@@ -299,7 +340,8 @@ HTML の形：
       width: width,
       height: height,
       role: 'img',
-      'aria-label': label || '相関図',
+      'aria-label': label || (en ? 'Family chart' : '相関図'),
+      lang: en ? 'en' : '',
       class: 'fk-svg kd-svg',
       style: 'max-width:' + maxW + 'px;min-width:min(640px,' + maxW + 'px)',
       'data-src': src === undefined ? '' : hash(src)
@@ -317,12 +359,13 @@ HTML の形：
     if (src && (!svg || svg.getAttribute('data-src') !== hash(src.textContent))) {
       if (svg) console.warn('相関図のデータが変わっています。node _tools/build-keizu.mjs を実行してください');
       var tmp = document.createElement('div');
-      tmp.innerHTML = toSvg(JSON.parse(src.textContent), { tenno: window.TK_TOOLTIPS, fujiwara: window.FK_TOOLTIPS, kd: window.KD_TIPS }, box.getAttribute('aria-label'), src.textContent);
+      tmp.innerHTML = toSvg(JSON.parse(src.textContent), { tenno: window.TK_TOOLTIPS, fujiwara: window.FK_TOOLTIPS, kd: window.KD_TIPS, en: window.KD_TIPS_EN }, box.getAttribute('aria-label'), src.textContent);
       if (svg) svg.replaceWith(tmp.firstChild);
       else box.appendChild(tmp.firstChild);
       svg = box.querySelector('svg');
     }
     if (!svg) return;
+    var en = svg.getAttribute('lang') === 'en';
 
     if (window.tippy) {
       tippy(svg.querySelectorAll('[data-tip]'), {
@@ -345,7 +388,9 @@ HTML の形：
           var html = ref.getAttribute('data-tip');
           var p = ref.getAttribute('data-p');
           var href = ref.getAttribute('data-href');
-          if (p) html += '<a class="fk-tip-link" href="/' + p + '.html">' + p + '番の歌のページへ</a>';
+          if (p) html += en
+            ? '<a class="fk-tip-link" href="/' + p + '_en.html">Go to Poem ' + p + '</a>'
+            : '<a class="fk-tip-link" href="/' + p + '.html">' + p + '番の歌のページへ</a>';
           else if (href) html += '<a class="fk-tip-link" href="' + esc(href) + '">' + esc(ref.getAttribute('data-href-text')) + '</a>';
           return html;
         }

@@ -21,7 +21,7 @@
     p9: { id: "p9", name: "小町の美の香木", baseValue: 100, category: "kaori", icon: "🪷", poemNum: 9, poet: "小野小町", flavor: "絶世の美女と謳われた小野小町が愛用したという香木。" },
     p10: { id: "p10", name: "琵琶", baseValue: 150, category: "gakki", icon: "🪕", poemNum: 10, poet: "蝉丸", flavor: "逢坂の関に庵を結んだ盲目の琵琶法師・蝉丸が愛用したと伝わる琵琶。" },
     p11: { id: "p11", name: "閻魔王の笏", baseValue: 190, category: "bugu", icon: "🪄", poemNum: 11, poet: "参議篁", flavor: "小野篁は昼は朝廷に仕え、夜は閻魔庁で裁きを補佐したという伝説を持つ人物。その証にと授かった笏。" },
-    p12: { id: "p12", name: "天女の羽衣", baseValue: 170, category: "shinkou", icon: "🪶", poemNum: 12, poet: "僧正遍照", flavor: "出家前は美男の貴公子だった遍照が、天女の姿を歌に詠んだことにちなむ羽衣。" },
+    p12: { id: "p12", name: "天女の羽衣", baseValue: 170, category: "shinkou", icon: "🪶", poemNum: 12, poet: "僧正遍昭", flavor: "出家前は美男の貴公子だった遍昭が、天女の姿を歌に詠んだことにちなむ羽衣。" },
     p13: { id: "p13", name: "男女川の酒", baseValue: 120, category: "mikado", icon: "🍶", poemNum: 13, poet: "陽成院", flavor: "「筑波嶺の峰より落つる男女川…」の歌に由来する、恋の思いを映すという銘酒。" },
     p14: { id: "p14", name: "しのぶもぢずりの衣", baseValue: 140, category: "kinu", icon: "🧣", poemNum: 14, poet: "源融", flavor: "「みちのくのしのぶもぢずり…」と乱れる恋心を詠んだ源融ゆかりの、乱れ模様に染められた衣。" },
     p15: { id: "p15", name: "若菜の御手箱", baseValue: 130, category: "shizen", icon: "🌱", poemNum: 15, poet: "光孝天皇", flavor: "「君がため春の野に出でて若菜つむ…」と詠んだ光孝天皇が、贈り物の若菜を納めたという手箱。" },
@@ -30,7 +30,7 @@
     p18: { id: "p18", name: "名筆の筆", baseValue: 170, category: "gakumon", icon: "🖋️", poemNum: 18, poet: "藤原敏行", flavor: "「住の江の岸による波よるさへや…」と詠んだ藤原敏行朝臣は能書家としても名高く、後世「名筆」と称されたその筆。" },
     p19: { id: "p19", name: "蘆笛", baseValue: 110, category: "gakki", icon: "🎋", poemNum: 19, poet: "伊勢", flavor: "難波潟の芦にちなむ歌を残した女流歌人・伊勢が奏でたという蘆の笛。" },
     p20: { id: "p20", name: "難波の澪標", baseValue: 130, category: "tabi", icon: "⚓", poemNum: 20, poet: "元良親王", flavor: "「わびぬれば今はた同じ…」と大胆な恋歌を詠んだ元良親王にちなむ、澪標（水路の標識）。" },
-    p21: { id: "p21", name: "雲林院の数珠", baseValue: 140, category: "shinkou", icon: "☸️", poemNum: 21, poet: "素性法師", flavor: "「今来むと言ひしばかりに長月の…」と詠んだ素性法師は、父・僧正遍照とともに雲林院に住持したと伝わる。その数珠。" },
+    p21: { id: "p21", name: "雲林院の数珠", baseValue: 140, category: "shinkou", icon: "☸️", poemNum: 21, poet: "素性法師", flavor: "「今来むと言ひしばかりに長月の…」と詠んだ素性法師は、父・僧正遍昭とともに雲林院に住持したと伝わる。その数珠。" },
     p22: { id: "p22", name: "不老長寿の果物", baseValue: 180, category: "shiki", icon: "🍑", poemNum: 22, poet: "文屋康秀", flavor: "「吹くからに秋の草木の…」の歌で知られる文屋康秀が、六歌仙の一人として授かったという伝説の果実。" },
     p23: { id: "p23", name: "漢学の巻物", baseValue: 160, category: "gakumon", icon: "🎓", poemNum: 23, poet: "大江千里", flavor: "「月見れば千々に物こそ悲しけれ…」と詠んだ大江千里は漢詩文にも通じた学者で、漢学の書をまとめた巻物を遺したという。" },
     p24: { id: "p24", name: "手向山の御幣", baseValue: 190, category: "saishi", icon: "🍁", poemNum: 24, poet: "菅原道真", flavor: "「このたびは幣もとりあへず手向山…」と旅の途中で手向けたと詠んだ菅原道真にちなむ、手向山の御幣。" },
@@ -239,9 +239,9 @@
       ]
     },
     {
-      poemNum: 12, poet: "僧正遍照", quizzes: [
-        { q: "僧正遍照は、生涯を通じて出家せず、俗人のまま歌人として活躍した。", answer: false, explain: "実際は出家して僧正の位にまで昇った人物で、出家前は美男の貴公子として知られました。" },
-        { q: "僧正遍照は、出家する前に蔵人頭として天皇に仕えていた。", answer: true, explain: "遍照は出家前、良岑宗貞という名前で、蔵人頭として仁明天皇に仕えていました。仁明天皇の崩御を機に出家し、後に僧正となりました。" }
+      poemNum: 12, poet: "僧正遍昭", quizzes: [
+        { q: "僧正遍昭は、生涯を通じて出家せず、俗人のまま歌人として活躍した。", answer: false, explain: "実際は出家して僧正の位にまで昇った人物で、出家前は美男の貴公子として知られました。" },
+        { q: "僧正遍昭は、出家する前に蔵人頭として天皇に仕えていた。", answer: true, explain: "遍昭は出家前、良岑宗貞という名前で、蔵人頭として仁明天皇に仕えていました。仁明天皇の崩御を機に出家し、後に僧正となりました。" }
       ]
     },
     {
@@ -301,7 +301,7 @@
     },
     {
       poemNum: 21, poet: "素性法師", quizzes: [
-        { q: "素性法師は、僧正遍照の子で、雲林院に住んだと伝えられている。", answer: true, explain: "素性法師は僧正遍照の子で、出家後は雲林院に住んだと伝えられています。父と同じく、平安時代を代表する歌人の一人です。" },
+        { q: "素性法師は、僧正遍昭の子で、雲林院に住んだと伝えられている。", answer: true, explain: "素性法師は僧正遍昭の子で、出家後は雲林院に住んだと伝えられています。父と同じく、平安時代を代表する歌人の一人です。" },
         { q: "素性法師の「今こむと…」の歌は、女性の立場になって詠まれた歌とされている。", answer: true, explain: "この歌は、恋人を待つ女性の立場から詠まれたと考えられています。男性である素性法師が、恋人を待ち続ける女性の心情を表現した歌です。" },
         { q: "素性法師は、自身の意思で僧侶になった。", answer: false, explain: "素性法師は、同じく百人一首の12番に選ばれている父の僧正遍昭によって半ば無理やり出家させられたことが知られています。" }
       ]

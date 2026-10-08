@@ -71,13 +71,13 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Shigure's Hyakunin Isshu",
-          "item": "https://hyakuninisshu.com/"
+          "item": "https://hyakuninisshu.com/index_en.html"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Poem List",
-          "item": "https://hyakuninisshu.com/list.html"
+          "item": "https://hyakuninisshu.com/list_en.html"
         },
         {
           "@type": "ListItem",
@@ -90,10 +90,10 @@
   ]
   </script>
   <!-- stylesheets -->
-  <link rel="stylesheet" href="../css/style.css?20261006-05">
+  <link rel="stylesheet" href="../css/style.css?20261008-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
-  <link rel="stylesheet" href="../css/poems_en.css?20260803-04">
+  <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -133,6 +133,13 @@
   <main>
     <div class="card">
       <div class="column-wrapper">
+        <nav class="breadcrumb-poem" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index_en.html">Top</a></li>
+            <li><a href="list_en.html">Poem List</a></li>
+            <li aria-current="page">No. 42 Kiyohara no Motosuke</li>
+          </ol>
+        </nav>
         <div class="select-container">
           <label for="themeSelector" id="themeSelector-label">Select a theme:</label>
           <select id="themeSelector" class="selector">
@@ -153,9 +160,9 @@
           <div class="checkbox1">
             <div style="display:flex; align-items:center;">
               <label for="toggle2" id="toggle2-label">Switch between the picture card and the matching card</label>
-              <p>Front</p>
+              <p>Front of the Card</p>
               <input type="checkbox" id="toggle2">
-              <p>Back</p>
+              <p>Back of the Card</p>
             </div>
             <div style="display:flex; align-items:center;">
               <div id="play-pause-btn"></div>
@@ -166,7 +173,7 @@
           </div>
           <div class="audio-credit-row">
             <p id="audio-credit">Audio: NHK Creative Library</p>
-            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox (Public Domain).</p>
+            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox</p>
           </div>
 
         </div><!-- column-wrapper end -->
@@ -228,42 +235,57 @@
         <dl>
           <dt>Commentary</dt>
           <dd>
-            Mount Sue-no-Matsu is a scenic spot near the coast of present-day Tagajō City, Miyagi Prefecture. It was said that even the largest tsunami could never wash over this hill, and it had long been a beloved motif in poetry. This poem invokes Mount Sue-no-Matsu as an image of unshakable, unchanging love.
+            Sue-no-Matsuyama is a scenic spot near the coast in Tagajō, Miyagi Prefecture. It was said that even a great tsunami could never cross it, and it appears in many poems. Here it stands for love that never changes.
           </dd>
         </dl>
         <dl class="last-dl">
           <dt>About the Poet</dt>
           <dd>
-            Kiyohara no Motosuke is also known as one of the compilers of the Gosen Wakashū. He was the grandson of Kiyohara no Fukayabu (Poem 36), and his daughter was Sei Shōnagon, famous as the author of The Pillow Book. Sei Shōnagon reportedly deeply respected her father's talent, once saying she would not write poetry herself for fear of tarnishing his name.
+            Kiyohara no Motosuke helped compile the Gosen Wakashū. He was the grandson of Kiyohara no Fukayabu, and his daughter was Sei Shōnagon, author of The Pillow Book. She respected him so much that she said she would not write poems for fear of shaming his name.
           </dd>
         </dl>
       </div>
     </div>
     <div class="chart-image-row">
-    <div class="chart-section">
-      <dl>
-        <dt class='title'>Kiyohara no Motosuke's Chart of the Heart</dt>
-            <dd>
-              <p>A chart and a modern-language reflection of the poet's inner feelings.</p>
-              <div class="emotion-chart">
-                <div id="radarChartWrapper">
-                  <canvas id="radarChart" width="300" height="300"></canvas>
-                </div>
-                <div>
-                  <p class="chart-quotes-title">The Poet's Feelings (A Personal Interpretation)</p>
-                  <p>Wringing out my tear-soaked sleeves,<br class="br-pc">I remember the promise we made.</p>
-                  <p style="margin-top:1em;">Like the pines of Sue,<br class="br-pc">this love alone will never change.</p>
-                </div>
-              </div>
-            </dd>
-      </dl>
-    </div>
     <div class="image-section">
       <dl>
         <dt class='title'>Poem Illustration</dt>
         <dd>
           <img loading='lazy' src='../img/c_042.webp' alt="Illustration for Kiyohara no Motosuke's poem">
           <p><small>This image is based on an illustration from William N. Porter's <em>A Hundred Verses from Old Japan</em>, his 1909 English translation of the Hyakunin Isshu published in England, colorized and reworked using Adobe Firefly (generative AI).</small></p>
+        </dd>
+      </dl>
+    </div>
+    <div class="nenpyo-section">
+      <dl>
+        <dt class='title'>Kiyohara no Motosuke: A Short Timeline</dt>
+        <dd>
+          <dl class="nenpyo">
+            <dt>908</dt>
+            <dd>Born</dd>
+            <dt>951</dt>
+            <dd>As one of the Five Men of the Pear Pavilion, helps compile the Gosen Wakashū</dd>
+            <dt>961</dt>
+            <dd>Becomes a junior inspector of the Ministry of Central Affairs</dd>
+            <dt>967</dt>
+            <dd>Becomes a senior secretary in the Ministry of Popular Affairs</dd>
+            <dt>969</dt>
+            <dd>Given Junior Fifth Rank, Lower Grade, and becomes Acting Governor of Kawachi Province</dd>
+            <dt>974</dt>
+            <dd>Becomes governor of Suō Province</dd>
+            <dt>980</dt>
+            <dd>Given Junior Fifth Rank, Upper Grade</dd>
+            <dt>986</dt>
+            <dd>Becomes governor of Higo Province</dd>
+            <dt>990</dt>
+            <dd>Dies in Higo</dd>
+            <dt>Notes</dt>
+            <dd>
+              <ul>
+                <li>Counted as one of the Thirty-Six Immortal Poets</li>
+              </ul>
+            </dd>
+          </dl>
         </dd>
       </dl>
     </div>
@@ -299,15 +321,8 @@
   </footer>
   <!-- Footer end -->
 
-  <script src="../js/poems_en.js?20260803-03"></script>
+  <script src="../js/poems_en.js?20261007-04"></script>
 
-  <!-- Chart of the Heart -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="/js/kokoro-chart-data-en.js?20260726"></script>
-  <script>
-    window.radarScores = KOKORO_CHART_DATA[42].scores;
-  </script>
-  <script src="/js/raderChart.js?20260830-01"></script>
 </body>
 
 </html>

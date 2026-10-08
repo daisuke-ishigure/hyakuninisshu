@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-08T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -72,13 +72,13 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Shigure's Hyakunin Isshu",
-          "item": "https://hyakuninisshu.com/"
+          "item": "https://hyakuninisshu.com/index_en.html"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Poem List",
-          "item": "https://hyakuninisshu.com/list.html"
+          "item": "https://hyakuninisshu.com/list_en.html"
         },
         {
           "@type": "ListItem",
@@ -91,10 +91,12 @@
   ]
   </script>
   <!-- stylesheets -->
-  <link rel="stylesheet" href="../css/style.css?20261006-05">
+  <link rel="stylesheet" href="../css/style.css?20261008-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
-  <link rel="stylesheet" href="../css/poems_en.css?20260803-04">
+  <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -104,6 +106,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -134,6 +144,13 @@
   <main>
     <div class="card">
       <div class="column-wrapper">
+        <nav class="breadcrumb-poem" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index_en.html">Top</a></li>
+            <li><a href="list_en.html">Poem List</a></li>
+            <li aria-current="page">No. 14 Minister of the Left of Kawara</li>
+          </ol>
+        </nav>
         <div class="select-container">
           <label for="themeSelector" id="themeSelector-label">Select a theme:</label>
           <select id="themeSelector" class="selector">
@@ -154,9 +171,9 @@
           <div class="checkbox1">
             <div style="display:flex; align-items:center;">
               <label for="toggle2" id="toggle2-label">Switch between the picture card and the matching card</label>
-              <p>Front</p>
+              <p>Front of the Card</p>
               <input type="checkbox" id="toggle2">
-              <p>Back</p>
+              <p>Back of the Card</p>
             </div>
             <div style="display:flex; align-items:center;">
               <div id="play-pause-btn"></div>
@@ -167,7 +184,7 @@
           </div>
           <div class="audio-credit-row">
             <p id="audio-credit">Audio: NHK Creative Library</p>
-            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox (Public Domain).</p>
+            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox</p>
           </div>
 
         </div><!-- column-wrapper end -->
@@ -229,36 +246,18 @@
         <dl>
           <dt>Commentary</dt>
           <dd>
-            This poem compares the poet's turbulent feelings — unable to hold back his longing for the one he loves — to the tangled, mottled pattern of dyed cloth.
+            Unable to hold back his love, the poet compares his troubled heart to the tangled pattern of a dyed cloth.
           </dd>
         </dl>
         <dl class="last-dl">
           <dt>About the Poet</dt>
           <dd>
-            The Minister of the Left of Kawara, Minamoto no Tōru, was a son of Emperor Saga, but because his mother's rank was low, he was removed from the imperial family and made a subject, taking the Minamoto surname. When Retired Emperor Yōzei abdicated, Tōru put himself forward as a candidate for the throne, but was blocked by Fujiwara no Mototsune. Disheartened, he gradually withdrew from politics, built a lavish mansion called Kawara-in in Kyoto's Rokujō district, and, as a hobby, recreated the scenery of Shiogama in Michinoku there, having thirty koku of seawater hauled in every month just to make salt. His extravagant lifestyle is said to have inspired the character of Hikaru Genji, the protagonist of Murasaki Shikibu's The Tale of Genji.
+            Minamoto no Tōru was a son of Emperor Saga, but his mother's low rank made him a commoner. His bid for the throne after Yōzei stepped down was blocked by Fujiwara no Mototsune, and he left politics. At his lavish Kawara-in mansion he copied the scenery of Shiogama, bringing in seawater every month to make salt. He is said to be a model for Hikaru Genji.
           </dd>
         </dl>
       </div>
     </div>
     <div class="chart-image-row">
-    <div class="chart-section">
-      <dl>
-        <dt class='title'>Minister of the Left of Kawara's Chart of the Heart</dt>
-            <dd>
-              <p>A chart and a modern-language reflection of the poet's inner feelings.</p>
-              <div class="emotion-chart">
-                <div id="radarChartWrapper">
-                  <canvas id="radarChart" width="300" height="300"></canvas>
-                </div>
-                <div>
-                  <p class="chart-quotes-title">The Poet's Feelings (A Personal Interpretation)</p>
-                  <p>The feelings I'd held back come undone inside me.<br class="br-pc">This tangled heart can no longer be hidden.</p>
-                  <p style="margin-top:1em;">It isn't my fault —<br class="br-pc">it's the fault of this love I feel for you.</p>
-                </div>
-              </div>
-            </dd>
-      </dl>
-    </div>
     <div class="image-section">
       <dl>
         <dt class='title'>Poem Illustration</dt>
@@ -268,7 +267,543 @@
         </dd>
       </dl>
     </div>
+    <div class="nenpyo-section">
+      <dl>
+        <dt class='title'>Minister of the Left of Kawara: A Short Timeline</dt>
+        <dd>
+          <dl class="nenpyo">
+            <dt>822</dt>
+            <dd>Born as a son of Emperor Saga</dd>
+            <dt>838</dt>
+            <dd>Comes of age and is given the family name Minamoto</dd>
+            <dt>864</dt>
+            <dd>Becomes Middle Counselor</dd>
+            <dt>872</dt>
+            <dd>Becomes Minister of the Left</dd>
+            <dt>887</dt>
+            <dd>Given Junior First Rank</dd>
+            <dt>895</dt>
+            <dd>Dies</dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Minamoto no Tōru's Family Tree</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 14.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__tenno">Brown text</span>Emperor</li>
+              <li><span class="fk-legend__tno" aria-hidden="true"></span>Emperor's number in the line of succession</li>
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+              <li><span class="fk-legend__eq">＝</span>Marriage</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Minamoto no Tōru's family tree">
+            <script type="application/json">
+{
+ "lang": "en",
+ "nodes": [
+  {
+   "id": "kanmu",
+   "n": "桓武",
+   "k": 1,
+   "t": 50,
+   "x": 16,
+   "y": 137
+  },
+  {
+   "id": "heizei",
+   "n": "平城",
+   "k": 1,
+   "t": 51,
+   "x": 110,
+   "y": 62
+  },
+  {
+   "id": "junna",
+   "n": "淳和",
+   "k": 1,
+   "t": 53,
+   "x": 110,
+   "y": 114
+  },
+  {
+   "id": "kachiko",
+   "n": "橘嘉智子",
+   "x": 110,
+   "y": 160
+  },
+  {
+   "id": "saga",
+   "n": "嵯峨",
+   "k": 1,
+   "t": 52,
+   "x": 110,
+   "y": 212
+  },
+  {
+   "id": "zenshi",
+   "n": "大原全子",
+   "x": 110,
+   "y": 256
+  },
+  {
+   "id": "abo",
+   "n": "阿保親王",
+   "x": 300,
+   "y": 62
+  },
+  {
+   "id": "sawako",
+   "n": "沢子",
+   "x": 300,
+   "y": 130
+  },
+  {
+   "id": "ninmyo",
+   "n": "仁明",
+   "k": 1,
+   "t": 54,
+   "x": 300,
+   "y": 182
+  },
+  {
+   "id": "junshi",
+   "n": "順子",
+   "x": 300,
+   "y": 226
+  },
+  {
+   "id": "toru",
+   "n": "源融",
+   "p": 14,
+   "self": 1,
+   "x": 300,
+   "y": 280
+  },
+  {
+   "id": "hiromu",
+   "n": "源弘",
+   "x": 300,
+   "y": 338
+  },
+  {
+   "id": "yukihira",
+   "n": "在原行平",
+   "p": 16,
+   "x": 490,
+   "y": 40
+  },
+  {
+   "id": "narihira",
+   "n": "在原業平",
+   "p": 17,
+   "x": 490,
+   "y": 84
+  },
+  {
+   "id": "hanshi",
+   "n": "班子女王",
+   "x": 490,
+   "y": 121
+  },
+  {
+   "id": "koko",
+   "n": "光孝",
+   "k": 1,
+   "t": 58,
+   "p": 15,
+   "x": 490,
+   "y": 160
+  },
+  {
+   "id": "montoku",
+   "n": "文徳",
+   "k": 1,
+   "t": 55,
+   "x": 490,
+   "y": 204
+  },
+  {
+   "id": "meishi",
+   "n": "明子",
+   "x": 490,
+   "y": 248
+  },
+  {
+   "id": "nozomu",
+   "n": "源希",
+   "x": 490,
+   "y": 338
+  },
+  {
+   "id": "uda",
+   "n": "宇多",
+   "k": 1,
+   "t": 59,
+   "x": 690,
+   "y": 140
+  },
+  {
+   "id": "inshi",
+   "n": "胤子",
+   "x": 690,
+   "y": 184
+  },
+  {
+   "id": "seiwa",
+   "n": "清和",
+   "k": 1,
+   "t": 56,
+   "x": 690,
+   "y": 236
+  },
+  {
+   "id": "takaiko",
+   "n": "高子",
+   "x": 690,
+   "y": 280
+  },
+  {
+   "id": "hitoshi",
+   "n": "参議等",
+   "key": "源等",
+   "p": 39,
+   "x": 690,
+   "y": 338
+  },
+  {
+   "id": "daigo",
+   "n": "醍醐",
+   "k": 1,
+   "t": 60,
+   "x": 780,
+   "y": 162
+  },
+  {
+   "id": "yozei",
+   "n": "陽成",
+   "k": 1,
+   "t": 57,
+   "p": 13,
+   "x": 780,
+   "y": 258
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-kachiko",
+   "top": "kachiko",
+   "bottom": "saga"
+  },
+  {
+   "id": "c-zenshi",
+   "top": "saga",
+   "bottom": "zenshi"
+  },
+  {
+   "id": "c-sawako",
+   "top": "sawako",
+   "bottom": "ninmyo"
+  },
+  {
+   "id": "c-junshi",
+   "top": "ninmyo",
+   "bottom": "junshi"
+  },
+  {
+   "id": "c-hanshi",
+   "top": "hanshi",
+   "bottom": "koko"
+  },
+  {
+   "id": "c-montoku",
+   "top": "montoku",
+   "bottom": "meishi"
+  },
+  {
+   "id": "c-uda",
+   "top": "uda",
+   "bottom": "inshi"
+  },
+  {
+   "id": "c-seiwa",
+   "top": "seiwa",
+   "bottom": "takaiko"
+  }
+ ],
+ "kids": [
+  {
+   "from": "kanmu",
+   "to": [
+    "heizei",
+    "junna",
+    "saga"
+   ]
+  },
+  {
+   "from": "heizei",
+   "to": [
+    "abo"
+   ]
+  },
+  {
+   "from": "c-kachiko",
+   "to": [
+    "ninmyo"
+   ]
+  },
+  {
+   "from": "c-zenshi",
+   "to": [
+    "toru"
+   ]
+  },
+  {
+   "from": "saga",
+   "to": [
+    "hiromu"
+   ],
+   "bar": 274,
+   "over": true
+  },
+  {
+   "from": "abo",
+   "to": [
+    "yukihira",
+    "narihira"
+   ]
+  },
+  {
+   "from": "c-sawako",
+   "to": [
+    "koko"
+   ]
+  },
+  {
+   "from": "c-junshi",
+   "to": [
+    "montoku"
+   ]
+  },
+  {
+   "from": "hiromu",
+   "to": [
+    "nozomu"
+   ]
+  },
+  {
+   "from": "c-hanshi",
+   "to": [
+    "uda"
+   ]
+  },
+  {
+   "from": "c-montoku",
+   "to": [
+    "seiwa"
+   ]
+  },
+  {
+   "from": "nozomu",
+   "to": [
+    "hitoshi"
+   ]
+  },
+  {
+   "from": "c-uda",
+   "to": [
+    "daigo"
+   ]
+  },
+  {
+   "from": "c-seiwa",
+   "to": [
+    "yozei"
+   ]
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 864 364" width="864" height="364" role="img" aria-label="Minamoto no Tōru's family tree" lang="en" class="fk-svg kd-svg" style="max-width:1296px;min-width:min(640px,1296px)" data-src="1n6mtsm">
+<g class="fk-edges"><path d="M126 169V187M130 169V187" class="fk-edge fk-eq"/><path d="M126 221V247M130 221V247" class="fk-edge fk-eq"/><path d="M327 139V173M331 139V173" class="fk-edge fk-eq"/><path d="M327.5 191V217M331.5 191V217" class="fk-edge fk-eq"/><path d="M507.5 130V135M511.5 130V135" class="fk-edge fk-eq"/><path d="M522.5 213V239M526.5 213V239" class="fk-edge fk-eq"/><path d="M703 149V175M707 149V175" class="fk-edge fk-eq"/><path d="M710 245V271M714 245V271" class="fk-edge fk-eq"/><path d="M73 137H96" class="fk-edge"/><path d="M96 62V212" class="fk-edge"/><path d="M96 62H107" class="fk-edge"/><path d="M96 114H107" class="fk-edge"/><path d="M96 212H107" class="fk-edge"/><path d="M159 62H286" class="fk-edge"/><path d="M286 62H297" class="fk-edge"/><path d="M130 177H286" class="fk-edge"/><path d="M286 177V182" class="fk-edge"/><path d="M286 182H297" class="fk-edge"/><path d="M130 234H286" class="fk-edge"/><path d="M286 234V280" class="fk-edge"/><path d="M286 280H297" class="fk-edge"/><path d="M149 212H274" class="kd-halo"/><path d="M149 212H274" class="fk-edge"/><path d="M274 212V338" class="kd-halo"/><path d="M274 212V338" class="fk-edge"/><path d="M274 338H297" class="kd-halo"/><path d="M274 338H297" class="fk-edge"/><path d="M384 62H476" class="fk-edge"/><path d="M476 40V84" class="fk-edge"/><path d="M476 40H487" class="fk-edge"/><path d="M476 84H487" class="fk-edge"/><path d="M331 147H476" class="fk-edge"/><path d="M476 147V160" class="fk-edge"/><path d="M476 160H487" class="fk-edge"/><path d="M331.5 204H476" class="fk-edge"/><path d="M476 204H487" class="fk-edge"/><path d="M464 338H476" class="fk-edge"/><path d="M476 338H487" class="fk-edge"/><path d="M511.5 131.5H676" class="fk-edge"/><path d="M676 131.5V140" class="fk-edge"/><path d="M676 140H687" class="fk-edge"/><path d="M526.5 226H676" class="fk-edge"/><path d="M676 226V236" class="fk-edge"/><path d="M676 236H687" class="fk-edge"/><path d="M636 338H676" class="fk-edge"/><path d="M676 338H687" class="fk-edge"/><path d="M707 162H766" class="fk-edge"/><path d="M766 162H777" class="fk-edge"/><path d="M714 258H766" class="fk-edge"/><path d="M766 258H777" class="fk-edge"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node is-tenno" transform="translate(16,137)" data-tip="&lt;h3&gt;Emperor Kanmu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;50th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;737–806&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;781–806&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Moved the capital to Nagaoka-kyō, then to Heian-kyō (794)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="58" height="26"/><text class="fk-name" x="0" y="0.5">Kanmu</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">50</text></g>
+<g class="fk-node is-tenno" transform="translate(110,62)" data-tip="&lt;h3&gt;Emperor Heizei&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;51st emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;774–824&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;806–809&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;After stepping down, he became a monk following the Retired Emperor Heizei Incident (Kusuko Incident) of 810&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="50" height="26"/><text class="fk-name" x="0" y="0.5">Heizei</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">51</text></g>
+<g class="fk-node is-tenno" transform="translate(110,114)" data-tip="&lt;h3&gt;Emperor Junna&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;53rd emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;786–840&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;823–833&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Kanmu and younger brother of Emperor Saga&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="48" height="26"/><text class="fk-name" x="0" y="0.5">Junna</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">53</text></g>
+<g class="fk-node" transform="translate(110,160)" data-tip="&lt;h3&gt;Tachibana no Kachiko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Empress of Emperor Saga and mother of Emperor Ninmyō; called the Danrin Empress&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="168" height="26"/><text class="fk-name" x="0" y="0.5">Tachibana no Kachiko</text></g></g>
+<g class="fk-node is-tenno" transform="translate(110,212)" data-tip="&lt;h3&gt;Emperor Saga&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;52nd emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;786–842&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;809–823&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Gave his sons and daughters the family name Minamoto (the Saga Genji)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="40" height="26"/><text class="fk-name" x="0" y="0.5">Saga</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">52</text></g>
+<g class="fk-node" transform="translate(110,256)" data-tip="&lt;h3&gt;Ōhara no Zenshi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;A consort of Emperor Saga; Minamoto no Tōru's mother&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="127" height="26"/><text class="fk-name" x="0" y="0.5">Ōhara no Zenshi</text></g></g>
+<g class="fk-node" transform="translate(300,62)" data-tip="&lt;h3&gt;Prince Abo&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;792–842&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Third Rank for princes; First Rank after death&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Heizei; father of Ariwara no Yukihira and Narihira&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="85" height="26"/><text class="fk-name" x="0" y="0.5">Prince Abo</text></g></g>
+<g class="fk-node" transform="translate(300,130)" data-tip="&lt;h3&gt;Fujiwara no Sawako&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Fujiwara no Fusatsugu&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;A consort of Emperor Ninmyō and mother of Emperor Kōkō; named Empress Dowager after death&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="62" height="26"/><text class="fk-name" x="0" y="0.5">Sawako</text></g></g>
+<g class="fk-node is-tenno" transform="translate(300,182)" data-tip="&lt;h3&gt;Emperor Ninmyō&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;54th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;810–850&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;833–850&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="63" height="26"/><text class="fk-name" x="0" y="0.5">Ninmyō</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">54</text></g>
+<g class="fk-node" transform="translate(300,226)" data-tip="&lt;h3&gt;Fujiwara no Nobuko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Fujiwara no Fuyutsugu&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;A consort of Emperor Ninmyō; mother of Emperor Montoku&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="64" height="26"/><text class="fk-name" x="0" y="0.5">Nobuko</text></g></g>
+<g class="fk-node is-poet is-self" transform="translate(300,280)" data-tip="&lt;h3&gt;Minamoto no Tōru&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;822–895&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Minister of the Left&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior First Rank; Senior First Rank after death&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Saga&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 14, &quot;Michinoku no...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called the Minister of the Left of Kawara&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="173" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="167" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Tōru</text><circle class="fk-badge" cx="153" cy="0" r="10"/><text class="fk-badge-num" x="153" y="0.5">14</text></g></g>
+<g class="fk-node" transform="translate(300,338)" data-tip="&lt;h3&gt;Minamoto no Hiromu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;812–863&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Saga; his mother was from the Kamitsukeno family&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Founder of the Hiromu line of the Saga Genji&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="165" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Hiromu</text></g></g>
+<g class="fk-node is-poet" transform="translate(490,40)" data-tip="&lt;h3&gt;Ariwara no Yukihira&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;818–893&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Middle Counselor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Third Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 16, &quot;Tachiwakare...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Middle Counselor Yukihira&lt;/span&gt;&lt;/div&gt;" data-p="16"><a href="/16_en.html" aria-label="Ariwara no Yukihira (Hyakunin Isshu Poem 16)"><rect class="fk-hit" x="-2" y="-13" width="177" height="26"/><text class="fk-name" x="0" y="0.5">Ariwara no Yukihira</text><circle class="fk-badge" cx="163" cy="0" r="10"/><text class="fk-badge-num" x="163" y="0.5">16</text></a></g>
+<g class="fk-node is-poet" transform="translate(490,84)" data-tip="&lt;h3&gt;Ariwara no Narihira&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;825–880&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Fourth Rank, Upper Grade&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 17, &quot;Chihayaburu...&quot;&lt;/span&gt;&lt;/div&gt;" data-p="17"><a href="/17_en.html" aria-label="Ariwara no Narihira (Hyakunin Isshu Poem 17)"><rect class="fk-hit" x="-2" y="-13" width="177" height="26"/><text class="fk-name" x="0" y="0.5">Ariwara no Narihira</text><circle class="fk-badge" cx="163" cy="0" r="10"/><text class="fk-badge-num" x="163" y="0.5">17</text></a></g>
+<g class="fk-node" transform="translate(490,121)" data-tip="&lt;h3&gt;Princess Nakako&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;833–900&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Prince Nakano&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Consort of Emperor Kōkō; mother of Emperor Uda and Prince Koretada&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="129" height="26"/><text class="fk-name" x="0" y="0.5">Princess Nakako</text></g></g>
+<g class="fk-node is-tenno is-poet" transform="translate(490,160)" data-tip="&lt;h3&gt;Emperor Kōkō&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;58th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;830–887&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;884–887&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Ninmyō&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 15, &quot;Kimi ga tame haru no no ni...&quot;&lt;/span&gt;&lt;/div&gt;" data-p="15"><a href="/15_en.html" aria-label="Emperor Kōkō (Hyakunin Isshu Poem 15)"><rect class="fk-hit" x="-2" y="-13" width="67" height="26"/><text class="fk-name" x="0" y="0.5">Kōkō</text><circle class="fk-badge" cx="53" cy="0" r="10"/><text class="fk-badge-num" x="53" y="0.5">15</text></a><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">58</text></g>
+<g class="fk-node is-tenno" transform="translate(490,204)" data-tip="&lt;h3&gt;Emperor Montoku&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;55th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;827–858&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;850–858&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="73" height="26"/><text class="fk-name" x="0" y="0.5">Montoku</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">55</text></g>
+<g class="fk-node" transform="translate(490,248)" data-tip="&lt;h3&gt;Fujiwara no Akirakeiko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;828–900&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Fujiwara no Yoshifusa and Minamoto no Kiyohime&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;A consort of Emperor Montoku and mother of Emperor Seiwa; called the Somedono Empress&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="86" height="26"/><text class="fk-name" x="0" y="0.5">Akirakeiko</text></g></g>
+<g class="fk-node" transform="translate(490,338)" data-tip="&lt;h3&gt;Minamoto no Mare&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;849–902&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Middle Counselor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Third Rank&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="147" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Mare</text></g></g>
+<g class="fk-node is-tenno" transform="translate(690,140)" data-tip="&lt;h3&gt;Emperor Uda&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;59th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;867–931&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;887–897&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Gave Sugawara no Michizane important posts&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="34" height="26"/><text class="fk-name" x="0" y="0.5">Uda</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">59</text></g>
+<g class="fk-node" transform="translate(690,184)" data-tip="&lt;h3&gt;Fujiwara no Taneko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown–896&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Fujiwara no Takafuji and Miyaji no Ressi; elder or younger sister of Sadakuni and Sadakata (same mother)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;A consort of Emperor Uda; mother of Emperor Daigo, Prince Atsuyoshi and Prince Atsumi&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="60" height="26"/><text class="fk-name" x="0" y="0.5">Taneko</text></g></g>
+<g class="fk-node is-tenno" transform="translate(690,236)" data-tip="&lt;h3&gt;Emperor Seiwa&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;56th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;850–881&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;858–876&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Took the throne at 9; his grandfather on his mother's side, Fujiwara no Yoshifusa, ran the government&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="48" height="26"/><text class="fk-name" x="0" y="0.5">Seiwa</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">56</text></g>
+<g class="fk-node" transform="translate(690,280)" data-tip="&lt;h3&gt;Fujiwara no Takaiko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;842–910&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;A consort of Emperor Seiwa; mother of Emperor Yōzei&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Before entering the palace, she was known for her love affair with Ariwara no Narihira, told in The Tales of Ise and elsewhere&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="64" height="26"/><text class="fk-name" x="0" y="0.5">Takaiko</text></g></g>
+<g class="fk-node is-poet" transform="translate(690,338)" data-tip="&lt;h3&gt;Minamoto no Hitoshi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;880–951&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Councillor (Sangi)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Fourth Rank, Lower Grade&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 39, &quot;Asajiu no...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Councillor Hitoshi&lt;/span&gt;&lt;/div&gt;" data-p="39"><a href="/39_en.html" aria-label="Minamoto no Hitoshi (Hyakunin Isshu Poem 39)"><rect class="fk-hit" x="-2" y="-13" width="162" height="26"/><text class="fk-name" x="0" y="0.5">Councillor Hitoshi</text><circle class="fk-badge" cx="148" cy="0" r="10"/><text class="fk-badge-num" x="148" y="0.5">39</text></a></g>
+<g class="fk-node is-tenno" transform="translate(780,162)" data-tip="&lt;h3&gt;Emperor Daigo&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;60th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;885–930&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;897–930&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Ordered the compiling of the Kokin Wakashū&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="48" height="26"/><text class="fk-name" x="0" y="0.5">Daigo</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">60</text></g>
+<g class="fk-node is-tenno is-poet" transform="translate(780,258)" data-tip="&lt;h3&gt;Emperor Yōzei&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;57th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;869–949&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;876–884&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 13, &quot;Tsukubane no...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Retired Emperor Yōzei&lt;/span&gt;&lt;/div&gt;" data-p="13"><a href="/13_en.html" aria-label="Emperor Yōzei (Hyakunin Isshu Poem 13)"><rect class="fk-hit" x="-2" y="-13" width="68" height="26"/><text class="fk-name" x="0" y="0.5">Yōzei</text><circle class="fk-badge" cx="54" cy="0" r="10"/><text class="fk-badge-num" x="54" y="0.5">13</text></a><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">57</text></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+          <div class="kd-text">
+            <p style="width:100%; margin-bottom:0.5em;">
+              Minamoto no Tōru was the 12th son of Emperor Saga, but he left the imperial family to become a subject and was given the family name Minamoto. According to the historical tale <em>Ōkagami</em>, when Emperor Yōzei gave up the throne, a meeting was held at court to decide who the next emperor should be. There, Tōru, then the 62-year-old Minister of the Left, said, "Why not? If you are looking for someone of close imperial blood, there is me, Tōru," claiming that he too could be a candidate. But the regent, Fujiwara no Mototsune, rejected his claim, saying that no one who had left the imperial family to become a Minamoto had ever become emperor, and he put Emperor Kōkō on the throne.
+            </p>
+            <p style="width:100%; margin-bottom:0.5em;">
+              Yet later, when Emperor Kōkō died, all of his children had already left the imperial family to become subjects. Even so, Mototsune made Kōkō's seventh son emperor, as Emperor Uda.
+            </p>
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <dt>The Mojizuri Stone</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/shinobu.webp' data-lightbox='toru' data-title='The Mojizuri Stone'>
+                  <img loading='lazy' src='../img/shinobu.webp' alt='The Mojizuri Stone' width="800" height="533">
+                </a>
+                <figcaption><small>Photo: Fukushima Prefectural Tourism and Products Exchange Association</small></figcaption>
+              </figure>
+              <div>
+                <p>
+                  "Shinobu-mojizuri" is written 信夫文知摺 in kanji. "Shinobu" is the Shinobu area of Fukushima Prefecture, and "mojizuri" is a way of dyeing cloth by rubbing plants against it on a stone so that their color moves onto the cloth. This kind of dyeing was popular in the Shinobu area from the Heian period to the Kamakura period. At Fumon-in, a Sōtō Zen temple in Fukushima City, there is a huge rock about 3 m wide and 2.5 m high called the "Mojizuri Stone." It is said to have been really used for dyeing. The photo shows this stone. <a
+                    class='no-decoration' href='utamakura_en.html?lat=37.77101&lng=140.51424&zoom=20'>See it on the map</a></p>
+              </div>
+            </dd>
+            <dt>Nejibana (Mojizuri)</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/nejibana_large.webp' data-lightbox='toru' data-title='Nejibana (Mojizuri)'>
+                  <img loading='lazy' src='../img/nejibana.webp' alt='Nejibana (Mojizuri), a small orchid' width="640" height="427">
+                </a>
+              </figure>
+              <div>
+                <p>
+                  Nejibana is a plant of the orchid family, also called "Mojizuri." The name is said to come from the way its flowers grow in a spiral, which looks like the tangled pattern of Shinobu-mojizuri cloth. It is found all over Japan and grows wild on sunny flat land. Its stem is about 10–40 cm tall, and it blooms from May to September, depending on the area.
+                </p>
+              </div>
+            </dd>
+
+            <dt>A Poem About Shinobu-zuri Cloth<br class="br-sp"> in <em>The Tales of Ise</em></dt>
+            <dd>In the first episode of <em>The Tales of Ise</em>, "Coming of Age," the hero goes hawking wearing a <em>kariginu</em> (a hunting robe) dyed in the <ruby>信夫摺<rt>しのぶずり</rt></ruby> (<em>shinobu-zuri</em>) style. Struck by the beauty of two sisters he sees there, he cuts off the hem of his robe on the spot, writes the next poem on it, and gives it to them. The tale says this poem was written in the spirit of the Minister of the Left of Kawara's poem.
+              <div class='quote'><q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>春日野<rt>かすがの</rt></ruby>の
+                  <ruby>若紫<rt>わかむらさき</rt></ruby>の
+                  すりごろも
+                  <br>
+                  しのぶの<ruby>乱<rt>みだ</rt></ruby>れ
+                  <ruby>限<rt>かぎ</rt></ruby>り<ruby>知<rt>し</rt></ruby>られず
+                  <span class="shutten"><em>The Tales of Ise</em></span>
+                </q><q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">
+                    Like this <em>shinobu-zuri</em> robe dyed with young purple grass from Kasuga Field,<br class="br-pc"> my heart of love is tangled without end.
+                  </p>
+                </q></div>
+            </dd>
+
+            <dt>A Poem Praising the Garden of Kawara-in<br class="br-sp"> in <em>The Tales of Ise</em></dt>
+            <dd>In episode 81 of <em>The Tales of Ise</em>, "Shiogama," Minamoto no Tōru invited imperial princes to a banquet at Kawara-in. Everyone wrote poems praising the mansion, but one old man wrote a poem praising the garden, which was made to look like Shiogama.
+              <div class='quote'><q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>塩竃<rt>しおがま</rt></ruby>に
+                  いつかは<ruby>来<rt>き</rt></ruby>にけむ
+                  <ruby>朝<rt>あさ</rt></ruby><ruby>凪<rt>なぎ</rt></ruby>に
+                  <br><ruby>釣<rt>つ</rt></ruby>りする<ruby>舟<rt>ふね</rt></ruby>は
+                  ここに<ruby>寄<rt>よ</rt></ruby>らなむ
+                  <span class="shutten"><em>The Tales of Ise</em></span>
+                </q><q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">
+                    When did I come to Shiogama?
+                    I wish the boats fishing in the calm of the morning would come over here.
+                  </p>
+                </q></div>
+            </dd>
+
+            <dt><em>The Tales of Ise</em> Picture Scroll</dt>
+            <dd class='thumb-image2'>
+              <figure class='portrait'>
+                <a href='../img/isemonogatari_large.webp' data-lightbox='toru' data-title='The Tales of Ise Picture Scroll'>
+                  <img loading='lazy' src='../img/isemonogatari.webp' alt='The Tales of Ise Picture Scroll' width="640" height="281">
+                </a>
+                <figcaption>
+                  <a href='https://webarchives.tnm.jp/'>
+                    <small>Courtesy of Tokyo National Museum. Excerpt from <em>The Tales of Ise Picture Scroll</em>, Scroll 5</small>
+                  </a>
+                </figcaption>
+              </figure>
+              <div>
+                <p>An excerpt from Scroll 5 of <em>The Tales of Ise Picture Scroll</em>.<br class="br-pc"> It shows the garden of Kawara-in, made to look like Shiogama.</p>
+              </div>
+            </dd>
+
+            <dt>Utagawa Kuniyoshi's <em>Hyakunin Isshu no Uchi</em></dt>
+            <dd class='thumb-image2'>
+              <figure class='portrait'>
+                <a href='../img/kuniyoshi_14_large.webp' data-lightbox='toru' data-title='Ukiyo-e by Utagawa Kuniyoshi'>
+                  <img loading='lazy' src='../img/kuniyoshi_14.webp?20240426' alt='Ukiyo-e of the Minister of the Left of Kawara by Utagawa Kuniyoshi' width="436" height="640">
+                </a>
+                <figcaption><a
+                    href='https://commons.wikimedia.org/wiki/File:Kawara_no_Sadajin_(no._14)_%E6%B2%B3%E5%8E%9F%E5%B7%A6%E5%A4%A7%E8%87%A3_(Minamoto_no_Toru)_(BM_2008,3037.10613).jpg' target='_blank' rel='noopener'><small>British
+                      Museum, Public domain, via Wikimedia Commons</small></a></figcaption>
+              </figure>
+              <div>
+                <p>This ukiyo-e is by Utagawa Kuniyoshi, an artist of the Edo period.<br class="br-pc"> It shows a scene that matches the poem in the Hyakunin Isshu.</p>
+                <p>A nobleman and his servants spread out a beautiful cloth with a tangled pattern like <ruby>信夫<rt>しのぶ</rt></ruby><ruby>文知摺<rt>もぢずり</rt></ruby> (<em>shinobu-mojizuri</em>), a specialty of Mutsu, and seem to look at it with great interest.</p>
+              </div>
+            </dd>
+            <dt>Kawara-in, a Copy of Shiogama<br class="br-sp"> Still Remembered in Place Names</dt>
+            <dd>
+              Kawara-in, the grand mansion Minamoto no Tōru built, had a garden made to copy the scenery of Shiogama in Mutsu, and it is said he had seawater brought in to enjoy making salt. Kawara-in burned down at the end of the Heian period, but its site remains today, and you can still imagine those days there. Near the site, the town names Shiogama-chō and Moto-Shiogama-chō also remain.
+              <figure class='photo-3column'>
+                <a href='../img/kawarainn_001.webp' data-lightbox='toru' data-title='The site of Kawara-in'>
+                  <img loading='lazy' src='../img/kawarainn_001.webp' alt='The site of Kawara-in' width="480" height="640">
+                </a>
+                <a href='../img/kawarainn_002.webp' data-lightbox='toru' data-title='An enoki (hackberry) tree said to have grown on Magaki Island, an island in the garden of Kawara-in'>
+                  <img loading='lazy' src='../img/kawarainn_002.webp' alt='An enoki (hackberry) tree at the site of Kawara-in' width="480" height="640"></a>
+                <a href='../img/kawarainn_003_big.webp' data-lightbox='toru' data-title='The signboard at the site of Kawara-in'>
+                  <img loading='lazy' src='../img/kawarainn_003.webp' alt='The signboard at the site of Kawara-in' width="480" height="640"></a>
+              </figure>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -278,6 +813,7 @@
           <a class="da-link-btn" href="diagram_archtecture_en.html">Relationship Diagram</a>
           <a class="kt-link-btn" href="karuta-taisen-pro_en.html">Competitive Karuta Game</a>
           <a class="kts-link-btn" href="karuta-taisen_en.html">Online Karuta Battle</a>
+          <a class="kg-link-btn" href="kakekotoba-game-014_en.html"><span class="kg-link-btn-inner"><span class="kg-link-btn-face kg-link-btn-front">Spin &amp; Discover Kakekotoba!</span><span class="kg-link-btn-face kg-link-btn-back">Spin &amp; Discover Kakekotoba!</span></span></a>
         </dd>
       </dl>
     </div>
@@ -299,15 +835,13 @@
   </footer>
   <!-- Footer end -->
 
-  <script src="../js/poems_en.js?20260803-03"></script>
+  <script src="../js/poems_en.js?20261007-04"></script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261008-21"></script>
+  <script src="../js/keizu-diagram.js?20261008-02"></script>
 
-  <!-- Chart of the Heart -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="/js/kokoro-chart-data-en.js?20260726"></script>
-  <script>
-    window.radarScores = KOKORO_CHART_DATA[14].scores;
-  </script>
-  <script src="/js/raderChart.js?20260830-01"></script>
 </body>
 
 </html>

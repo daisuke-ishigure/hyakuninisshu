@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-08T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -71,13 +71,13 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Shigure's Hyakunin Isshu",
-          "item": "https://hyakuninisshu.com/"
+          "item": "https://hyakuninisshu.com/index_en.html"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Poem List",
-          "item": "https://hyakuninisshu.com/list.html"
+          "item": "https://hyakuninisshu.com/list_en.html"
         },
         {
           "@type": "ListItem",
@@ -90,10 +90,12 @@
   ]
   </script>
   <!-- stylesheets -->
-  <link rel="stylesheet" href="../css/style.css?20261006-05">
+  <link rel="stylesheet" href="../css/style.css?20261008-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
-  <link rel="stylesheet" href="../css/poems_en.css?20260803-04">
+  <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -103,6 +105,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -133,6 +143,13 @@
   <main>
     <div class="card">
       <div class="column-wrapper">
+        <nav class="breadcrumb-poem" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index_en.html">Top</a></li>
+            <li><a href="list_en.html">Poem List</a></li>
+            <li aria-current="page">No. 30 Mibu no Tadamine</li>
+          </ol>
+        </nav>
         <div class="select-container">
           <label for="themeSelector" id="themeSelector-label">Select a theme:</label>
           <select id="themeSelector" class="selector">
@@ -153,9 +170,9 @@
           <div class="checkbox1">
             <div style="display:flex; align-items:center;">
               <label for="toggle2" id="toggle2-label">Switch between the picture card and the matching card</label>
-              <p>Front</p>
+              <p>Front of the Card</p>
               <input type="checkbox" id="toggle2">
-              <p>Back</p>
+              <p>Back of the Card</p>
             </div>
             <div style="display:flex; align-items:center;">
               <div id="play-pause-btn"></div>
@@ -166,7 +183,7 @@
           </div>
           <div class="audio-credit-row">
             <p id="audio-credit">Audio: NHK Creative Library</p>
-            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox (Public Domain).</p>
+            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox</p>
           </div>
 
         </div><!-- column-wrapper end -->
@@ -228,36 +245,18 @@
         <dl>
           <dt>Commentary</dt>
           <dd>
-            This poem is collected in the Kokin Wakashū under the heading "Love that ends in parting without meeting." At the time, it was customary for a man to visit a woman's home and leave again before dawn. The poem allows two readings: one, that the man feels reluctant longing because the woman's manner was cold; the other, that despite his own reluctance to part from her, he feels the moon itself is "cold and indifferent" as dawn breaks without mercy.
+            The Kokin Wakashū places this among poems of "returning without meeting." A man visited a woman at night and left before dawn. Two readings exist: he regrets leaving because she was cold to him, or he finds the dawn moon "heartless" for ending the night as he grieves the parting.
           </dd>
         </dl>
         <dl class="last-dl">
           <dt>About the Poet</dt>
           <dd>
-            Mibu no Tadamine was a low-ranking military officer responsible for palace guard duties, but he was gifted at poetry and frequently took part in court poetry gatherings. He was skilled enough to be chosen as one of the compilers of the Kokin Wakashū. He was the father of Mibu no Tadami.
+            Mibu no Tadamine was a low-ranking palace guard, but a gifted poet who often joined court poetry gatherings. He was skilled enough to be chosen as a compiler of the Kokin Wakashū. He was the father of Mibu no Tadami.
           </dd>
         </dl>
       </div>
     </div>
     <div class="chart-image-row">
-    <div class="chart-section">
-      <dl>
-        <dt class='title'>Mibu no Tadamine's Chart of the Heart</dt>
-            <dd>
-              <p>A chart and a modern-language reflection of the poet's inner feelings.</p>
-              <div class="emotion-chart">
-                <div id="radarChartWrapper">
-                  <canvas id="radarChart" width="300" height="300"></canvas>
-                </div>
-                <div>
-                  <p class="chart-quotes-title">The Poet's Feelings (A Personal Interpretation)</p>
-                  <p>The night I spent with you<br class="br-pc">was far too short.</p>
-                  <p style="margin-top:1em;">Every time I see the moon at dawn,<br class="br-pc">the sorrow of our parting comes rushing back.</p>
-                </div>
-              </div>
-            </dd>
-      </dl>
-    </div>
     <div class="image-section">
       <dl>
         <dt class='title'>Poem Illustration</dt>
@@ -267,7 +266,431 @@
         </dd>
       </dl>
     </div>
+    <div class="nenpyo-section">
+      <dl>
+        <dt class='title'>Mibu no Tadamine: A Short Timeline</dt>
+        <dd>
+          <dl class="nenpyo">
+            <dt>c. 860</dt>
+            <dd>Born</dd>
+            <dt>905</dt>
+            <dd>Chosen with Ki no Tsurayuki and others to compile the Kokin Wakashū</dd>
+            <dt>c. 920</dt>
+            <dd>Dies</dd>
+            <dt>Notes</dt>
+            <dd>
+              <ul>
+                <li>Counted as one of the Thirty-Six Immortal Poets</li>
+              </ul>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Mibu no Tadamine's Family Tree</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 30.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__tenno">Brown text</span>Emperor</li>
+              <li><span class="fk-legend__tno" aria-hidden="true"></span>Emperor's number in the line of succession</li>
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+              <li><span class="fk-legend__eq">＝</span>Marriage</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Mibu no Tadamine's family tree">
+            <script type="application/json">
+{
+ "lang": "en",
+ "nodes": [
+  {
+   "id": "koko",
+   "n": "光孝",
+   "k": 1,
+   "t": 58,
+   "p": 15,
+   "x": 16,
+   "y": 62
+  },
+  {
+   "id": "koretada",
+   "n": "是忠親王",
+   "x": 136,
+   "y": 62
+  },
+  {
+   "id": "muneyuki",
+   "n": "源宗于",
+   "p": 28,
+   "x": 286,
+   "y": 40
+  },
+  {
+   "id": "okiga",
+   "n": "興我王",
+   "x": 286,
+   "y": 84
+  },
+  {
+   "id": "atsuyuki",
+   "n": "平篤行",
+   "x": 405,
+   "y": 84
+  },
+  {
+   "id": "kanemori",
+   "n": "平兼盛",
+   "p": 40,
+   "x": 566,
+   "y": 84
+  },
+  {
+   "id": "akazomehaha",
+   "n": "赤染衛門の母",
+   "x": 566,
+   "y": 128
+  },
+  {
+   "id": "tokimochi",
+   "n": "赤染時用",
+   "x": 566,
+   "y": 172
+  },
+  {
+   "id": "akazome",
+   "n": "赤染衛門",
+   "p": 59,
+   "x": 782,
+   "y": 150
+  },
+  {
+   "id": "tomonori",
+   "n": "紀友則",
+   "p": 33,
+   "x": 286,
+   "y": 120
+  },
+  {
+   "id": "tsurayuki",
+   "n": "紀貫之",
+   "p": 35,
+   "x": 286,
+   "y": 160
+  },
+  {
+   "id": "mitsune",
+   "n": "凡河内躬恒",
+   "p": 29,
+   "x": 286,
+   "y": 200
+  },
+  {
+   "id": "tadamine",
+   "n": "壬生忠岑",
+   "p": 30,
+   "self": 1,
+   "sub": "Bodyguard of Fujiwara no Sadakuni",
+   "x": 286,
+   "y": 240
+  },
+  {
+   "id": "daigo",
+   "n": "醍醐",
+   "k": 1,
+   "t": 60,
+   "x": 16,
+   "y": 200
+  },
+  {
+   "id": "tadami",
+   "n": "壬生忠見",
+   "p": 41,
+   "sub": "Lost to Kanemori in the 960 poetry contest",
+   "x": 540,
+   "y": 240
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-kanemori",
+   "top": "kanemori",
+   "bottom": "akazomehaha"
+  },
+  {
+   "id": "c-tokimochi",
+   "top": "akazomehaha",
+   "bottom": "tokimochi"
+  }
+ ],
+ "kids": [
+  {
+   "from": "koko",
+   "to": [
+    "koretada"
+   ]
+  },
+  {
+   "from": "koretada",
+   "to": [
+    "muneyuki",
+    "okiga"
+   ]
+  },
+  {
+   "from": "okiga",
+   "to": [
+    "atsuyuki"
+   ]
+  },
+  {
+   "from": "atsuyuki",
+   "to": [
+    "kanemori"
+   ]
+  },
+  {
+   "from": "c-tokimochi",
+   "to": [
+    "akazome"
+   ]
+  },
+  {
+   "from": "tadamine",
+   "to": [
+    "tadami"
+   ]
+  }
+ ],
+ "arrows": [
+  {
+   "points": [
+    [
+     63,
+     200
+    ],
+    [
+     269,
+     200
+    ]
+   ],
+   "label": {
+    "text": "Ordered the Kokin Wakashū",
+    "x": 73,
+    "y": 188
+   }
+  }
+ ],
+ "groups": [
+  {
+   "points": [
+    [
+     272,
+     102
+    ],
+    [
+     504,
+     102
+    ],
+    [
+     504,
+     294
+    ],
+    [
+     272,
+     294
+    ]
+   ],
+   "label": {
+    "text": "Compilers of the Kokin Wakashū",
+    "x": 280,
+    "y": 280
+   }
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 938 306" width="938" height="306" role="img" aria-label="Mibu no Tadamine's family tree" lang="en" class="fk-svg kd-svg" style="max-width:1407px;min-width:min(640px,1407px)" data-src="owyucr">
+<g class="kd-groups"><path d="M272 102L504 102L504 294L272 294Z" class="kd-group"/><text class="kd-group-label" x="280" y="280">Compilers of the Kokin Wakashū</text></g>
+<g class="fk-edges"><path d="M633 93V119M637 93V119" class="fk-edge fk-eq"/><path d="M639.5 137V163M643.5 137V163" class="fk-edge fk-eq"/><path d="M82 62H122" class="fk-edge"/><path d="M122 62H133" class="fk-edge"/><path d="M259 62H272" class="fk-edge"/><path d="M272 40V84" class="fk-edge"/><path d="M272 40H283" class="fk-edge"/><path d="M272 84H283" class="fk-edge"/><path d="M378 84H391" class="fk-edge"/><path d="M391 84H402" class="fk-edge"/><path d="M540 84H552" class="fk-edge"/><path d="M552 84H563" class="fk-edge"/><path d="M643.5 150H768" class="fk-edge"/><path d="M768 150H779" class="fk-edge"/><path d="M452 240H526" class="fk-edge"/><path d="M526 240H537" class="fk-edge"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"><path d="M63 200L269 200" class="kd-arrow" marker-end="url(#kdArrowHead)"/><text class="kd-arrow-label" x="73" y="188">Ordered the Kokin Wakashū</text></g>
+<g>
+<g class="fk-node is-tenno is-poet" transform="translate(16,62)" data-tip="&lt;h3&gt;Emperor Kōkō&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;58th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;830–887&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;884–887&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Ninmyō&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 15, &quot;Kimi ga tame haru no no ni...&quot;&lt;/span&gt;&lt;/div&gt;" data-p="15"><a href="/15_en.html" aria-label="Emperor Kōkō (Hyakunin Isshu Poem 15)"><rect class="fk-hit" x="-2" y="-13" width="67" height="26"/><text class="fk-name" x="0" y="0.5">Kōkō</text><circle class="fk-badge" cx="53" cy="0" r="10"/><text class="fk-badge-num" x="53" y="0.5">15</text></a><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">58</text></g>
+<g class="fk-node" transform="translate(136,62)" data-tip="&lt;h3&gt;Prince Koretada&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Kōkō; his mother was Princess Nakako&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Minamoto no Muneyuki and Prince Koga&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="124" height="26"/><text class="fk-name" x="0" y="0.5">Prince Koretada</text></g></g>
+<g class="fk-node is-poet" transform="translate(286,40)" data-tip="&lt;h3&gt;Minamoto no Muneyuki&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown–940&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Fourth Rank, Lower Grade&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Prince Koretada&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 28, &quot;Yamazato wa...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Minamoto no Muneyuki Ason&lt;/span&gt;&lt;/div&gt;" data-p="28"><a href="/28_en.html" aria-label="Minamoto no Muneyuki (Hyakunin Isshu Poem 28)"><rect class="fk-hit" x="-2" y="-13" width="207" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Muneyuki</text><circle class="fk-badge" cx="193" cy="0" r="10"/><text class="fk-badge-num" x="193" y="0.5">28</text></a></g>
+<g class="fk-node" transform="translate(286,84)" data-tip="&lt;h3&gt;Prince Koga&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Prince Koretada&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="93" height="26"/><text class="fk-name" x="0" y="0.5">Prince Koga</text></g></g>
+<g class="fk-node" transform="translate(405,84)" data-tip="&lt;h3&gt;Taira no Atsuyuki&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Sonpi Bunmyaku (a book of family trees), he is Prince Koga's son and Taira no Kanemori's father&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="136" height="26"/><text class="fk-name" x="0" y="0.5">Taira no Atsuyuki</text></g></g>
+<g class="fk-node is-poet" transform="translate(566,84)" data-tip="&lt;h3&gt;Taira no Kanemori&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 40, &quot;Shinoburedo...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;The Sonpi Bunmyaku makes him Taira no Atsuyuki's son, Prince Koretada's great-grandson (through Prince Koga and Atsuyuki), and Emperor Kōkō's great-great-grandson. But the dates don't fit, so some think he was the son of Prince Atsumochi, a son of Prince Koretada&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Beat Mibu no Tadami at the Poetry Contest of the Imperial Palace in 960. He was the former husband of Akazome Emon's mother; he is said to have claimed Akazome Emon as his own daughter and taken the matter to the police office (Kebiishi-chō) to get her back&lt;/span&gt;&lt;/div&gt;" data-p="40"><a href="/40_en.html" aria-label="Taira no Kanemori (Hyakunin Isshu Poem 40)"><rect class="fk-hit" x="-2" y="-13" width="166" height="26"/><text class="fk-name" x="0" y="0.5">Taira no Kanemori</text><circle class="fk-badge" cx="152" cy="0" r="10"/><text class="fk-badge-num" x="152" y="0.5">40</text></a></g>
+<g class="fk-node" transform="translate(566,128)" data-tip="&lt;h3&gt;Mother of Akazome Emon&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;At first the wife of Taira no Kanemori, she later remarried, to Akazome Tokimochi&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="191" height="26"/><text class="fk-name" x="0" y="0.5">Akazome Emon's mother</text></g></g>
+<g class="fk-node" transform="translate(566,172)" data-tip="&lt;h3&gt;Akazome Tokimochi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Governor of Ōsumi&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Said to be Akazome Emon's father. He served as an officer of the Right Gate Guards (sakan, then jō), which gave his daughter her name&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="155" height="26"/><text class="fk-name" x="0" y="0.5">Akazome Tokimochi</text></g></g>
+<g class="fk-node is-poet" transform="translate(782,150)" data-tip="&lt;h3&gt;Akazome Emon&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;c. 956–c. 1041&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 59, &quot;Yasurawade...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Said to be the daughter of Akazome Tokimochi, but the Fukuro Zōshi says her mother remarried Tokimochi while carrying a child by her former husband, Taira no Kanemori, and then gave birth to Akazome Emon&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Served Minamoto no Tomoko and her daughter Akiko. She and her husband, Ōe no Masahira, were known as a devoted couple&lt;/span&gt;&lt;/div&gt;" data-p="59"><a href="/59_en.html" aria-label="Akazome Emon (Hyakunin Isshu Poem 59)"><rect class="fk-hit" x="-2" y="-13" width="144" height="26"/><text class="fk-name" x="0" y="0.5">Akazome Emon</text><circle class="fk-badge" cx="130" cy="0" r="10"/><text class="fk-badge-num" x="130" y="0.5">59</text></a></g>
+<g class="fk-node is-poet" transform="translate(286,120)" data-tip="&lt;h3&gt;Ki no Tomonori&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ki no Aritomo; cousin of Ki no Tsurayuki&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 33, &quot;Hisakata no...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;One of the compilers of the Kokin Wakashū with Ki no Tsurayuki and Mibu no Tadamine, but he died before it was finished&lt;/span&gt;&lt;/div&gt;" data-p="33"><a href="/33_en.html" aria-label="Ki no Tomonori (Hyakunin Isshu Poem 33)"><rect class="fk-hit" x="-2" y="-13" width="142" height="26"/><text class="fk-name" x="0" y="0.5">Ki no Tomonori</text><circle class="fk-badge" cx="128" cy="0" r="10"/><text class="fk-badge-num" x="128" y="0.5">33</text></a></g>
+<g class="fk-node is-poet" transform="translate(286,160)" data-tip="&lt;h3&gt;Ki no Tsurayuki&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Fifth Rank, Upper Grade&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ki no Mochiyuki; cousin of Ki no Tomonori&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 35, &quot;Hito wa isa...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;A compiler of the Kokin Wakashū, who wrote its Japanese preface. After serving as Governor of Tosa, he wrote the Tosa Diary&lt;/span&gt;&lt;/div&gt;" data-p="35"><a href="/35_en.html" aria-label="Ki no Tsurayuki (Hyakunin Isshu Poem 35)"><rect class="fk-hit" x="-2" y="-13" width="144" height="26"/><text class="fk-name" x="0" y="0.5">Ki no Tsurayuki</text><circle class="fk-badge" cx="130" cy="0" r="10"/><text class="fk-badge-num" x="130" y="0.5">35</text></a></g>
+<g class="fk-node is-poet" transform="translate(286,200)" data-tip="&lt;h3&gt;Ōshikōchi no Mitsune&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;c. 859–c. 925&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Held a series of provincial posts, such as Acting Junior Clerk of Kai, Acting Senior Clerk of Tanba, Acting Secretary of Izumi, and Acting Secretary of Awaji&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ōshikōchi no 諶利 (his family line is also said to be unknown)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 29, &quot;Kokoroate ni...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;One of the compilers of the Kokin Wakashū. He was a close friend of Ki no Tsurayuki and visited the house of Fujiwara no Kanesuke, who supported him&lt;/span&gt;&lt;/div&gt;" data-p="29"><a href="/29_en.html" aria-label="Ōshikōchi no Mitsune (Hyakunin Isshu Poem 29)"><rect class="fk-hit" x="-2" y="-13" width="191" height="26"/><text class="fk-name" x="0" y="0.5">Ōshikōchi no Mitsune</text><circle class="fk-badge" cx="177" cy="0" r="10"/><text class="fk-badge-num" x="177" y="0.5">29</text></a></g>
+<g class="fk-node is-poet is-self" transform="translate(286,240)" data-tip="&lt;h3&gt;Mibu no Tadamine&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;c. 860–c. 920&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior officer of the Right Gate Guards; he is also said to have served as Acting Senior Clerk of Settsu, among other posts&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Mibu no Tadami&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 30, &quot;Ariake no...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;One of the compilers of the Kokin Wakashū, and the lowest in rank among them. The Tales of Yamato says he was a bodyguard of Fujiwara no Sadakuni&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="173" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="167" height="26"/><text class="fk-name" x="0" y="0.5">Mibu no Tadamine</text><circle class="fk-badge" cx="153" cy="0" r="10"/><text class="fk-badge-num" x="153" y="0.5">30</text></g><rect class="fk-sub-box" x="0" y="11" width="207" height="16" rx="8"/><text class="fk-sub" x="103.5" y="19.5">Bodyguard of Fujiwara no Sadakuni</text></g>
+<g class="fk-node is-tenno" transform="translate(16,200)" data-tip="&lt;h3&gt;Emperor Daigo&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;60th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;885–930&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;897–930&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Ordered the compiling of the Kokin Wakashū&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="48" height="26"/><text class="fk-name" x="0" y="0.5">Daigo</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">60</text></g>
+<g class="fk-node is-poet" transform="translate(540,240)" data-tip="&lt;h3&gt;Mibu no Tadami&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Cook in the Mizushidokoro (the palace kitchen); Senior Clerk of Settsu&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Mibu no Tadamine&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 41, &quot;Koi su chō...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Competed against Taira no Kanemori at the Poetry Contest of the Imperial Palace in 960 and lost&lt;/span&gt;&lt;/div&gt;" data-p="41"><a href="/41_en.html" aria-label="Mibu no Tadami (Hyakunin Isshu Poem 41)"><rect class="fk-hit" x="-2" y="-13" width="148" height="26"/><text class="fk-name" x="0" y="0.5">Mibu no Tadami</text><circle class="fk-badge" cx="134" cy="0" r="10"/><text class="fk-badge-num" x="134" y="0.5">41</text></a><rect class="fk-sub-box" x="0" y="11" width="246" height="16" rx="8"/><text class="fk-sub" x="123" y="19.5">Lost to Kanemori in the 960 poetry contest</text></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+          <div class="kd-text">
+            <p style="width:100%; margin-bottom: 0.75em;">
+              Mibu no Tadamine was one of the compilers of the <em>Kokin Wakashū</em>. He and his son, Mibu no Tadami, were both chosen for the Hyakunin Isshu.
+            </p>
+            <p style="width:100%; margin-bottom: 0.75em;">
+              Tadamine's son, <a href="/41_en.html">Mibu no Tadami</a>, competed against <a href="/40_en.html">Taira no Kanemori</a> at the Poetry Contest of the Imperial Palace in 960 (Tentoku 4) and lost, but both poems were good, and it is said to have been a close contest.
+            </p>
+            <p style="width:100%; margin-bottom: 0.75em;">
+              Tadamine served as a bodyguard of Fujiwara no Sadakuni. <em>The Tales of Yamato</em>, a collection of poem-tales, tells a story about it: one night Sadakuni, drunk, visited the Minister of the Left, Fujiwara no Tokihira, and surprised him, but when his bodyguard Tadamine recited a poem, the mood eased.
+            </p>
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <dt>High Praise from Teika</dt>
+            <dd>In <em>Kenchū Mikkan</em>, a commentary on the <em>Kokin Wakashū</em>, <a href="/97_en.html">Fujiwara no Teika</a>, the compiler of the Hyakunin Isshu, praised the poem "Ariake no tsurenaku mieshi wakare yori..." highly: "If I could write even one poem as fine as this, it would be a memory to treasure all my life."
+            </dd>
+
+            <dt>The Ariake Moon and the Phases of the Moon</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/moon_cycle.gif?02' data-lightbox='tadamine' data-title='The phases of the moon'>
+                  <img loading='lazy' src='../img/moon_cycle.gif?02' alt='The phases of the moon' width="1280" height="1096">
+                </a>
+              </figure>
+              <div>
+                <p>
+                  The <em>ariake no tsuki</em> is the moon that is still in the sky after dawn. From about the 15th to the 29th day of the lunar month, the moon can be seen in the early-morning sky.
+                </p>
+                <p>In the Heian period, only privileged people could have calendars. So for ordinary people, the changing shape of the moon probably served as a kind of natural calendar.
+                </p>
+                <table class="moon_cycle">
+                  <tr>
+                    <td>Phase</td>
+                    <td>Moonrise</td>
+                    <td>Moonset</td>
+                  </tr>
+                  <tr>
+                    <td>New moon</td>
+                    <td>6:00</td>
+                    <td>18:00</td>
+                  </tr>
+                  <tr>
+                    <td>First quarter</td>
+                    <td>12:00</td>
+                    <td>24:00</td>
+                  </tr>
+                  <tr>
+                    <td>Full moon</td>
+                    <td>18:00</td>
+                    <td>6:00</td>
+                  </tr>
+                  <tr>
+                    <td>Last quarter</td>
+                    <td>24:00</td>
+                    <td>12:00</td>
+                  </tr>
+                </table>
+              </div>
+            </dd>
+            <dt>The Compilers of the <em>Kokin Wakashū</em></dt>
+            <dd class='thumb-image1'>
+              <figure>
+                <img loading='lazy' src='../img/kokinwakashu-senja.gif?ver03' alt='The compilers of the Kokin Wakashū' usemap="#ImageMap2" width="1280" height="846" />
+                <map name="ImageMap2">
+                  <area shape="rect" coords="558,518,962,634" href="/33_en.html" alt="Ki no Tomonori" />
+                  <area shape="rect" coords="609,668,1193,805" href="/29_en.html" alt="Ōshikōchi no Mitsune" />
+                  <area shape="rect" coords="85,501,509,645" href="/35_en.html" alt="Ki no Tsurayuki" />
+                  <area shape="rect" coords="88,680,590,808" href="/30_en.html" alt="Mibu no Tadamine" />
+                </map>
+                <figcaption style="margin-top:0.5em;">
+                  <p class="kome" style="width:calc(100% - 1em); font-size:0.9em;">Click a poet marked with a <span
+                      style="color:#C32538; margin-right:0.25em;">■</span>number to go to that poet's page.</p>
+                </figcaption>
+              </figure>
+              <div>
+                <p style="width:100%; margin-bottom: 0.75em;">
+                  The <em>Kokin Wakashū</em> was the first imperial anthology of <em>waka</em>, compiled at the order of Emperor Daigo. Four poets, Ki no Tsurayuki, Ki no Tomonori, Mibu no Tadamine, and Ōshikōchi no Mitsune, served as its compilers and gathered about 1,100 poems, including poems not in the <em>Man'yōshū</em> and poems of their own time. It was completed around 913, but Ki no Tomonori died before it was finished.
+                </p>
+              </div>
+            </dd>
+            <dt id="kasasagi">A Quick-Witted Poem That Borrows<br class="br-sp"> from Ōtomo no Yakamochi</dt>
+            <dd>
+              Mibu no Tadamine served as a bodyguard of Fujiwara no Sadakuni. One night Sadakuni, drunk, went to visit the Minister of the Left, Fujiwara no Tokihira. Surprised, Tokihira asked, "Did you drop by on your way somewhere else?" <em>The Tales of Yamato</em> says that Tadamine, the bodyguard, quickly recited the next poem and eased the mood. The poem is based on <a href="/6_en.html">Ōtomo no Yakamochi's poem</a>.
+              <div class='quote'><q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  かささぎの
+                  <ruby>渡<rt>わた</rt></ruby>せる<ruby>橋<rt>はし</rt></ruby>の
+                  <ruby>霜<rt>しも</rt></ruby>の<ruby>上<rt>うえ</rt></ruby>を
+                  <br><ruby>夜半<rt>よわ</rt></ruby>にふみわけ
+                  ことさらにこそ
+                  <span class="shutten"><em>The Tales of Yamato</em>, Mibu no Tadamine</span>
+                </q><q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.8;">Treading at midnight over the frost on the palace steps,<br
+                      class="br-pc"> like the frost on the magpies' bridge, I have come here to you on purpose.</p>
+                </q></div>
+            </dd>
+
+            <dt>A Poem of Love at First Sight</dt>
+            <dd>
+              Mibu no Tadamine attended the Kasuga Festival in Nara. From the window of his ox carriage, he glimpsed a woman who was watching the festival, fell in love, found her house, and sent her the next poem. Did he follow her ox carriage to find where she lived? Today this would be called stalking and would not be allowed, but in the Heian period it was common to fall in love with a woman seen by chance and send her poems like this.
+              <div class='quote'><q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>春日野<rt>かすがの</rt></ruby>の
+                  <ruby>雪間<rt>ゆきま</rt></ruby>をわけて
+                  <ruby>生<rt>お</rt></ruby>ひ<ruby>出<rt>い</rt></ruby>で<ruby>来<rt>く</rt></ruby>る
+                  <br><ruby>草<rt>くさ</rt></ruby>のはつかに
+                  <ruby>見<rt>み</rt></ruby>えし<ruby>君<rt>きみ</rt></ruby>はも
+                  <span class="shutten"><em>Kokin Wakashū</em>, Mibu no Tadamine</span>
+                </q><q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.8;">
+                    Like the grass peeking out between patches of snow in Kasuga Field, you were someone I saw only for a moment.
+                  </p>
+                </q></div>
+            </dd>
+
+            <dt>Izumi Shikibu's Poem of Love at Dawn</dt>
+            <dd><a href="/56_en.html">Izumi Shikibu</a> wrote this poem after spending the whole night waiting for a lover who never came.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <ruby>夢<rt>ゆめ</rt></ruby>にだに
+                  <ruby>見<rt>み</rt></ruby>で<ruby>明<rt>あ</rt></ruby>かしつる
+                  <ruby>暁<rt>あかつき</rt></ruby>の
+                  <br><ruby>恋<rt>こい</rt></ruby>こそ<ruby>恋<rt>こい</rt></ruby>の
+                  かぎりなりけれ
+                  <span class="shutten"><em>Shin Chokusen Wakashū</em>, Izumi Shikibu</span>
+                </q><q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height:1.7; margin-top: 0.25em;">
+                    The love of a dawn after a night spent thinking of you, without meeting you even in a dream: that was love at its very deepest.</p>
+                </q>
+              </div>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -299,15 +722,18 @@
   </footer>
   <!-- Footer end -->
 
-  <script src="../js/poems_en.js?20260803-03"></script>
-
-  <!-- Chart of the Heart -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="/js/kokoro-chart-data-en.js?20260726"></script>
+  <script src="../js/poems_en.js?20261007-04"></script>
+  <!-- clickable image map (compilers of the Kokin Wakashū) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/image-map-resizer/1.0.10/js/imageMapResizer.min.js"></script>
   <script>
-    window.radarScores = KOKORO_CHART_DATA[30].scores;
+    imageMapResize();
   </script>
-  <script src="/js/raderChart.js?20260830-01"></script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261008-21"></script>
+  <script src="../js/keizu-diagram.js?20261008-02"></script>
+
 </body>
 
 </html>

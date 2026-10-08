@@ -87,12 +87,12 @@
   }
   </script>
   <!-- スタイルシートの追加 -->
-  <link rel="stylesheet" href="../css/style.css?20261006-05">
+  <link rel="stylesheet" href="../css/style.css?20261008-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_16.css?20240507-02">
   <link rel="stylesheet" href="../css/animate.min.css">
   <link rel="stylesheet" href="../css/grammar-panel.css?20261001-01">
-  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261003-03">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261007-02">
   <!-- google fontの追加 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -158,6 +158,13 @@
   <main>
     <div class="card">
       <div class="column-wrapper">
+        <nav class="breadcrumb-poem" aria-label="パンくずリスト">
+          <ol>
+            <li><a href="index.html">トップ</a></li>
+            <li><a href="list.html">百人一首一覧</a></li>
+            <li aria-current="page">第16番 中納言行平</li>
+          </ol>
+        </nav>
         <div class="select-container">
           <label for="themeSelector" id="themeSelector-label">テーマを選択:</label>
           <select id="themeSelector" class="selector">
@@ -356,8 +363,8 @@
   "nodes": [
     { "id": "otomuro", "n": "藤原乙牟漏", "x": 46, "y": 86 },
     { "id": "kanmu", "n": "桓武", "k": 1, "t": 50, "x": 46, "y": 138 },
-    { "id": "nagatsugu", "n": "百済永継", "x": 56, "y": 182 },
-    { "id": "tabiko", "n": "藤原旅子", "x": 32, "y": 250 },
+    { "id": "nagatsugu", "n": "百済永継", "x": 62, "y": 182 },
+    { "id": "tabiko", "n": "藤原旅子", "x": 46, "y": 250 },
     { "id": "heizei", "n": "平城", "k": 1, "t": 51, "x": 166, "y": 62 },
     { "id": "saga", "n": "嵯峨", "k": 1, "t": 52, "x": 166, "y": 162 },
     { "id": "yasuyo", "n": "良岑安世", "x": 166, "y": 232 },
@@ -365,21 +372,23 @@
     { "id": "abo", "n": "阿保親王", "x": 286, "y": 62 },
     { "id": "ninmyo", "n": "仁明", "k": 1, "t": 54, "x": 286, "y": 162 },
     { "id": "henjo", "n": "遍昭", "p": 12, "x": 286, "y": 232 },
-    { "id": "yukihira", "n": "在原行平", "p": 16, "self": 1, "x": 406, "y": 40 },
+    { "id": "yukihira", "n": "在原行平", "p": 16, "x": 406, "y": 40, "self": 1 },
     { "id": "narihira", "n": "在原業平", "p": 17, "x": 406, "y": 84 },
     { "id": "montoku", "n": "文徳", "k": 1, "t": 55, "x": 406, "y": 140 },
     { "id": "koko", "n": "光孝", "k": 1, "t": 58, "p": 15, "x": 406, "y": 192 },
     { "id": "sosei", "n": "素性", "p": 21, "x": 406, "y": 232 }
   ],
   "couples": [
-    { "id": "c-otomuro", "top": "otomuro", "bottom": "kanmu" },
-    { "id": "c-nagatsugu", "top": "kanmu", "bottom": "nagatsugu" },
-    { "id": "c-tabiko", "top": "kanmu", "bottom": "tabiko" }
+    { "id": "c-otomuro", "top": "otomuro", "bottom": "kanmu" }
+  ],
+  "eqs": [
+    { "id": "c-nagatsugu", "points": [[70, 147], [70, 173]], "out": [72, 160] },
+    { "id": "c-tabiko", "points": [[52, 147], [52, 241]], "out": [54, 216] }
   ],
   "kids": [
     { "from": "c-otomuro", "to": ["heizei", "saga"], "bar": 152 },
     { "from": "c-nagatsugu", "to": ["yasuyo"], "bar": 140 },
-    { "from": [49, 228], "to": ["junna"], "bar": 128 },
+    { "from": "c-tabiko", "to": ["junna"], "bar": 128 },
     { "from": "heizei", "to": ["abo"] },
     { "from": "saga", "to": ["ninmyo"] },
     { "from": "yasuyo", "to": ["henjo"] },
@@ -388,20 +397,20 @@
     { "from": "henjo", "to": ["sosei"] }
   ],
   "arrows": [
-    { "points": [[300, 221], [300, 174]], "label": { "text": "仕える", "x": 306, "y": 198 } }
+    { "points": [[300, 213], [300, 174]], "label": {"text": "仕える", "x": 306, "y": 198} }
   ]
 }
                 </script>
                 <!-- #region KEIZU:START -->
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 506 316" width="506" height="316" role="img" aria-label="在原行平の系図" class="fk-svg kd-svg" style="max-width:759px;min-width:min(640px,759px)" data-src="v7bo7y">
-<g class="fk-edges"><path d="M59 95V113M63 95V113" class="fk-edge fk-eq"/><path d="M69 147V173M73 147V173" class="fk-edge fk-eq"/><path d="M45 147V241M49 147V241" class="fk-edge fk-eq"/><path d="M63 103H152" class="fk-edge"/><path d="M152 62V162" class="fk-edge"/><path d="M152 62H163" class="fk-edge"/><path d="M152 162H163" class="fk-edge"/><path d="M73 160H140" class="fk-edge"/><path d="M140 160V232" class="fk-edge"/><path d="M140 232H163" class="fk-edge"/><path d="M49 228H128" class="fk-edge"/><path d="M128 228V290" class="fk-edge"/><path d="M128 290H163" class="fk-edge"/><path d="M199 62H272" class="fk-edge"/><path d="M272 62H283" class="fk-edge"/><path d="M199 162H272" class="fk-edge"/><path d="M272 162H283" class="fk-edge"/><path d="M229 232H272" class="fk-edge"/><path d="M272 232H283" class="fk-edge"/><path d="M349 62H392" class="fk-edge"/><path d="M392 40V84" class="fk-edge"/><path d="M392 40H403" class="fk-edge"/><path d="M392 84H403" class="fk-edge"/><path d="M319 162H392" class="fk-edge"/><path d="M392 140V192" class="fk-edge"/><path d="M392 140H403" class="fk-edge"/><path d="M392 192H403" class="fk-edge"/><path d="M343 232H392" class="fk-edge"/><path d="M392 232H403" class="fk-edge"/></g>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 506 316" width="506" height="316" role="img" aria-label="在原行平の系図" class="fk-svg kd-svg" style="max-width:759px;min-width:min(640px,759px)" data-src="i1ixuk">
+<g class="fk-edges"><path d="M59 95V113M63 95V113" class="fk-edge fk-eq"/><path d="M70 147L70 173" class="kd-eq-out"/><path d="M70 147L70 173" class="kd-eq-in"/><path d="M52 147L52 241" class="kd-eq-out"/><path d="M52 147L52 241" class="kd-eq-in"/><path d="M63 103H152" class="fk-edge"/><path d="M152 62V162" class="fk-edge"/><path d="M152 62H163" class="fk-edge"/><path d="M152 162H163" class="fk-edge"/><path d="M72 160H140" class="fk-edge"/><path d="M140 160V232" class="fk-edge"/><path d="M140 232H163" class="fk-edge"/><path d="M54 216H128" class="fk-edge"/><path d="M128 216V290" class="fk-edge"/><path d="M128 290H163" class="fk-edge"/><path d="M199 62H272" class="fk-edge"/><path d="M272 62H283" class="fk-edge"/><path d="M199 162H272" class="fk-edge"/><path d="M272 162H283" class="fk-edge"/><path d="M229 232H272" class="fk-edge"/><path d="M272 232H283" class="fk-edge"/><path d="M349 62H392" class="fk-edge"/><path d="M392 40V84" class="fk-edge"/><path d="M392 40H403" class="fk-edge"/><path d="M392 84H403" class="fk-edge"/><path d="M319 162H392" class="fk-edge"/><path d="M392 140V192" class="fk-edge"/><path d="M392 140H403" class="fk-edge"/><path d="M392 192H403" class="fk-edge"/><path d="M343 232H392" class="fk-edge"/><path d="M392 232H403" class="fk-edge"/></g>
 <defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
-<g class="kd-arrows"><path d="M300 221L300 174" class="kd-arrow" marker-end="url(#kdArrowHead)"/><text class="kd-arrow-label" x="306" y="198">仕える</text></g>
+<g class="kd-arrows"><path d="M300 213L300 174" class="kd-arrow" marker-end="url(#kdArrowHead)"/><text class="kd-arrow-label" x="306" y="198">仕える</text></g>
 <g>
 <g class="fk-node" transform="translate(46,86)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原乙牟漏&lt;rt&gt;ふじわらのおとむろ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;生没年：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;760年～790年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;系譜：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;藤原良継の娘&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;桓武天皇の皇后。平城天皇・嵯峨天皇の母&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="79" height="26"/><text class="fk-name" x="0" y="0.5">藤原乙牟漏</text></g></g>
 <g class="fk-node is-tenno" transform="translate(46,138)" data-tip="&lt;h3&gt;&lt;ruby&gt;桓武天皇&lt;rt&gt;かんむてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第50代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;生没年：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;737年～806年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;在位：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;781年～806年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;長岡京、ついで平安京（794年）に遷都した&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="34" height="26"/><text class="fk-name" x="0" y="0.5">桓武</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">50</text></g>
-<g class="fk-node" transform="translate(56,182)" data-tip="&lt;h3&gt;&lt;ruby&gt;百済永継&lt;rt&gt;くだらのながつぐ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;系譜：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;飛鳥部奈止麻呂の娘&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;桓武天皇の女嬬。良岑安世の母。藤原内麻呂の妻でもあった&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="64" height="26"/><text class="fk-name" x="0" y="0.5">百済永継</text></g></g>
-<g class="fk-node" transform="translate(32,250)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原旅子&lt;rt&gt;ふじわらのたびこ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;生没年：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;759年～788年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;系譜：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;藤原百川の娘&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;桓武天皇の夫人。淳和天皇の母&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="64" height="26"/><text class="fk-name" x="0" y="0.5">藤原旅子</text></g></g>
+<g class="fk-node" transform="translate(62,182)" data-tip="&lt;h3&gt;&lt;ruby&gt;百済永継&lt;rt&gt;くだらのながつぐ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;系譜：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;飛鳥部奈止麻呂の娘&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;桓武天皇の女嬬。良岑安世の母。藤原内麻呂の妻でもあった&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="64" height="26"/><text class="fk-name" x="0" y="0.5">百済永継</text></g></g>
+<g class="fk-node" transform="translate(46,250)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原旅子&lt;rt&gt;ふじわらのたびこ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;生没年：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;759年～788年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;系譜：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;藤原百川の娘&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;桓武天皇の夫人。淳和天皇の母&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="64" height="26"/><text class="fk-name" x="0" y="0.5">藤原旅子</text></g></g>
 <g class="fk-node is-tenno" transform="translate(166,62)" data-tip="&lt;h3&gt;&lt;ruby&gt;平城天皇&lt;rt&gt;へいぜいてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第51代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;生没年：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;774年～824年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;在位：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;806年～809年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;譲位後、810年の平城太上天皇の変（薬子の変）で出家した&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="34" height="26"/><text class="fk-name" x="0" y="0.5">平城</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">51</text></g>
 <g class="fk-node is-tenno" transform="translate(166,162)" data-tip="&lt;h3&gt;&lt;ruby&gt;嵯峨天皇&lt;rt&gt;さがてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第52代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;生没年：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;786年～842年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;在位：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;809年～823年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;皇子・皇女に源の氏を与えた（嵯峨源氏）&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="34" height="26"/><text class="fk-name" x="0" y="0.5">嵯峨</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">52</text></g>
 <g class="fk-node" transform="translate(166,232)" data-tip="&lt;h3&gt;&lt;ruby&gt;良岑安世&lt;rt&gt;よしみねのやすよ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;生没年：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;785年～830年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;官職：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;大納言&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;位階：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;正三位、贈従二位&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;系譜：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;桓武天皇の皇子&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;良岑朝臣の姓を賜って臣籍に下った&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="64" height="26"/><text class="fk-name" x="0" y="0.5">良岑安世</text></g></g>
@@ -461,7 +470,7 @@
 
             <dt>行平が臣籍降下した理由</dt>
             <dd>
-              天皇を退位した平城上皇が藤原薬子にそそのかされて政権回復を図り、弟である嵯峨天皇と対立した「平城上皇の変」（別名：「薬子の変」）により、平城上皇の第一皇子・阿保親王は連座して<span
+              天皇を退位した平城上皇が藤原薬子にそそのかされて政権回復を図り、弟である嵯峨天皇と対立した「平城太上天皇の変」（別名：「薬子の変」）により、平城上皇の第一皇子・阿保親王は連座して<span
                 class="tippy dazainogonnosochi">大宰権帥</span>に左遷されました。その後、阿保親王は息子たちの<span
                 class="tippy shinsekikouka">臣籍降下</span>を上奏し、行平や業平は「在原」の姓を賜りました。
             </dd>
@@ -472,7 +481,7 @@
                   <img loading='lazy' src='../img/matsukaze_murasame.webp' alt='松風・村雨' width="640" height="472">
                 </a>
                 <figcaption><a
-                    href='https://commons.wikimedia.org/wiki/File:NDL-DC_1312524-Tsukioka_Yoshitoshi-%E4%B8%AD%E7%B4%8D%E8%A8%80%E8%A1%8C%E5%B9%B3%E6%9C%9D%E8%87%A3%E5%B7%A6%E9%81%B7%E9%A0%88%E7%A3%A8%E6%B5%A6%E9%80%A2%E6%9D%91%E9%9B%A8%E6%9D%BE%E9%A2%A8%E3%83%8B%E8%9C%91%E6%88%AF%E5%9B%B3-%E6%98%8E%E6%B2%BB19-cmb.jpg'><small>Yoshitoshi,
+                    href='https://commons.wikimedia.org/wiki/File:NDL-DC_1312524-Tsukioka_Yoshitoshi-%E4%B8%AD%E7%B4%8D%E8%A8%80%E8%A1%8C%E5%B9%B3%E6%9C%9D%E8%87%A3%E5%B7%A6%E9%81%B7%E9%A0%88%E7%A3%A8%E6%B5%A6%E9%80%A2%E6%9D%91%E9%9B%A8%E6%9D%BE%E9%A2%A8%E3%83%8B%E8%9C%91%E6%88%AF%E5%9B%B3-%E6%98%8E%E6%B2%BB19-cmb.jpg' target='_blank' rel='noopener'><small>Yoshitoshi,
                       Public domain, via Wikimedia Commons</small></a></figcaption>
               </figure>
               <div>
@@ -514,7 +523,7 @@
             <dd style='display:flex; gap:10px; align-items:center;'><img loading='lazy' src='../img/yukihiranabe.webp'
                 style='width:100px; height:100px;' alt='雪平鍋' width="300" height="271">
               <div style='display:flex; align-items:center;'>
-                雪平鍋という名前の由来にはいくつかの説がありますが、一説には在原行平が須磨にいた頃、海女に海水から塩を作らせるために使った鍋が、この名前の元になったと言われています</div>
+                雪平鍋という名前の由来にはいくつかの説がありますが、一説には在原行平が須磨にいた頃、海女に海水から塩を作らせるために使った鍋が、この名前の元になったと言われています。</div>
             </dd>
 
             <dt>歌川国芳の『百人一首之内』</dt>
@@ -524,27 +533,19 @@
                   <img loading='lazy' src='../img/kuniyoshi_16.webp' alt='歌川国芳による中納言行平の浮世絵' width="480" height="719">
                 </a>
                 <figcaption><a
-                    href='https://commons.wikimedia.org/wiki/File:No_16_Chunagon_Yukihira_(BM_1906,1220,0.1215).jpg'><small>British
+                    href='https://commons.wikimedia.org/wiki/File:No_16_Chunagon_Yukihira_(BM_1906,1220,0.1215).jpg' target='_blank' rel='noopener'><small>British
                       Museum, Public domain, via Wikimedia Commons</small></a></figcaption>
               </figure>
               <div>
                 <p>江戸時代の浮世絵師・歌川国芳による浮世絵です。<br class="br-pc">百人一首の和歌に合わせた情景が描かれています。</p>
                 <p>この歌の詞書では「因幡の国へまかりける時に、よめる」とあり、京から赴任地へ向かう際に、見送りに来てくれた人たちに対して詠まれたと記されています。</p>
-                <p>この国芳の絵では、赴任先の因幡国に到着したときを描いたように見えます。因幡山の松の木を眺めながら、行平自身がかつての別れの場面を懐かしく回想しているかのようです</p>
+                <p>この国芳の絵では、赴任先の因幡国に到着したときを描いたように見えます。因幡山の松の木を眺めながら、行平自身がかつての別れの場面を懐かしく回想しているかのようです。</p>
               </div>
             </dd>
 
           </dl>
         </dd>
       </dl>
-    </div>
-    <div class="bottom_arrow">
-      <div id="next2" class="bottom">
-        <p id="next2_arrow">次の和歌へ</p>
-      </div>
-      <div id="back2" class="bottom">
-        <p id="back2_arrow">前の和歌へ</p>
-      </div>
     </div>
   </main>
 
@@ -563,7 +564,7 @@
     </div>
   </footer>
   <!-- フッターここまで -->
-  <script src="../js/poems.js?20261006-04"></script>
+  <script src="../js/poems.js?20261008-01"></script>
   <!-- クリッカブルマップここから -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/image-map-resizer/1.0.10/js/imageMapResizer.min.js"></script>
   <script>
@@ -575,9 +576,9 @@
   <script src="../js/tippy.umd.min.js"></script>
   <script src="../js/tooltips.js?20261007-01"></script>
   <script src="../js/tenno-keizu-tooltips.js?20261006-04"></script>
-  <script src="../js/fujiwara-keizu-tooltips.js?20261006-04"></script>
-  <script src="../js/keizu-tips.js?20261006-04"></script>
-  <script src="../js/keizu-diagram.js?20261003-02"></script>
+  <script src="../js/fujiwara-keizu-tooltips.js?20261008-02"></script>
+  <script src="../js/keizu-tips.js?20261008-03"></script>
+  <script src="../js/keizu-diagram.js?20261007-01"></script>
   <!-- ▲▲▲ tippy.js ▲▲▲ -->
   <!-- ▼▼▼ 語句・文法の対話パネル ▼▼▼ -->
   <script>window.POEM_NUM = 16;</script>

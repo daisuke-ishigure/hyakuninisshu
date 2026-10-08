@@ -71,13 +71,13 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Shigure's Hyakunin Isshu",
-          "item": "https://hyakuninisshu.com/"
+          "item": "https://hyakuninisshu.com/index_en.html"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Poem List",
-          "item": "https://hyakuninisshu.com/list.html"
+          "item": "https://hyakuninisshu.com/list_en.html"
         },
         {
           "@type": "ListItem",
@@ -90,10 +90,10 @@
   ]
   </script>
   <!-- stylesheets -->
-  <link rel="stylesheet" href="../css/style.css?20261006-05">
+  <link rel="stylesheet" href="../css/style.css?20261008-02">
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
-  <link rel="stylesheet" href="../css/poems_en.css?20260803-04">
+  <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -133,6 +133,13 @@
   <main>
     <div class="card">
       <div class="column-wrapper">
+        <nav class="breadcrumb-poem" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index_en.html">Top</a></li>
+            <li><a href="list_en.html">Poem List</a></li>
+            <li aria-current="page">No. 85 Priest Shun'e</li>
+          </ol>
+        </nav>
         <div class="select-container">
           <label for="themeSelector" id="themeSelector-label">Select a theme:</label>
           <select id="themeSelector" class="selector">
@@ -153,9 +160,9 @@
           <div class="checkbox1">
             <div style="display:flex; align-items:center;">
               <label for="toggle2" id="toggle2-label">Switch between the picture card and the matching card</label>
-              <p>Front</p>
+              <p>Front of the Card</p>
               <input type="checkbox" id="toggle2">
-              <p>Back</p>
+              <p>Back of the Card</p>
             </div>
             <div style="display:flex; align-items:center;">
               <div id="play-pause-btn"></div>
@@ -166,7 +173,7 @@
           </div>
           <div class="audio-credit-row">
             <p id="audio-credit">Audio: NHK Creative Library</p>
-            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox (Public Domain).</p>
+            <p id="audio-credit-en">Read by LibriVox volunteer Larry Wilson.<br>Audio courtesy of LibriVox</p>
           </div>
 
         </div><!-- column-wrapper end -->
@@ -228,42 +235,41 @@
         <dl>
           <dt>Commentary</dt>
           <dd>
-            The headnote in the Senzai Wakashū reads, "composed as a poem on love" — this was a poem on an assigned topic. Shun'e wrote it from the perspective of a woman, worn out from waiting through an endless darkness, tormented by thoughts of an indifferent lover.
+            Written on the theme "love." Shun'e speaks as a woman waiting, worn out, through an endless dark night, troubled by thoughts of her cold lover.
           </dd>
         </dl>
         <dl class="last-dl">
           <dt>About the Poet</dt>
           <dd>
-            Priest Shun'e lost his father at seventeen and became a monk at Tōdai-ji Temple, famous for its Great Buddha. He later settled in Shirakawa, in Kyoto, where he invited many poets to a monastic retreat he called the Karin-en ("Poetry Grove"), hosting numerous poetry gatherings — many of the Hyakunin Isshu's own poets took part. Among his students was Kamo no Chōmei, author of An Account of My Hut (Hōjōki), who recorded many of Shun'e's teachings in his own critical work, the Mumyōshō.
+            Shun'e lost his father, Minamoto no Toshiyori, at 17 and became a monk at Tōdai-ji. He later moved to Shirakawa in Kyoto, called his lodging Karin'en (Poetry Grove), and held many gatherings there, joined by many Hyakunin Isshu poets. His student Kamo no Chōmei, author of the Hōjōki, wrote down many of his teachings.
           </dd>
         </dl>
       </div>
     </div>
     <div class="chart-image-row">
-    <div class="chart-section">
-      <dl>
-        <dt class='title'>Priest Shun'e's Chart of the Heart</dt>
-            <dd>
-              <p>A chart and a modern-language reflection of the poet's inner feelings.</p>
-              <div class="emotion-chart">
-                <div id="radarChartWrapper">
-                  <canvas id="radarChart" width="300" height="300"></canvas>
-                </div>
-                <div>
-                  <p class="chart-quotes-title">The Poet's Feelings (A Personal Interpretation)</p>
-                  <p>The night refuses to end.<br class="br-pc">Only my heart, waiting for you, quietly keeps counting the hours.</p>
-                  <p style="margin-top:1em;">Not even the light that announces dawn reaches me —<br class="br-pc">my longing alone is left behind in the dark.</p>
-                </div>
-              </div>
-            </dd>
-      </dl>
-    </div>
     <div class="image-section">
       <dl>
         <dt class='title'>Poem Illustration</dt>
         <dd>
           <img loading='lazy' src='../img/c_085.webp' alt="Illustration for Priest Shun'e's poem">
           <p><small>This image is based on an illustration from William N. Porter's <em>A Hundred Verses from Old Japan</em>, his 1909 English translation of the Hyakunin Isshu published in England, colorized and reworked using Adobe Firefly (generative AI).</small></p>
+        </dd>
+      </dl>
+    </div>
+    <div class="nenpyo-section">
+      <dl>
+        <dt class='title'>Priest Shun'e: A Short Timeline</dt>
+        <dd>
+          <dl class="nenpyo">
+            <dt>1113</dt>
+            <dd>Born as a son of Minamoto no Toshiyori</dd>
+            <dt>c. 1130</dt>
+            <dd>His father Toshiyori dies</dd>
+            <dt>c. 1150</dt>
+            <dd>Names his temple lodging in Shirakawa "Karin'en" (Garden of Poetry), where poets gather</dd>
+            <dt>c. 1191</dt>
+            <dd>Dies</dd>
+          </dl>
         </dd>
       </dl>
     </div>
@@ -298,15 +304,8 @@
   </footer>
   <!-- Footer end -->
 
-  <script src="../js/poems_en.js?20260803-03"></script>
+  <script src="../js/poems_en.js?20261007-04"></script>
 
-  <!-- Chart of the Heart -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="/js/kokoro-chart-data-en.js?20260726"></script>
-  <script>
-    window.radarScores = KOKORO_CHART_DATA[85].scores;
-  </script>
-  <script src="/js/raderChart.js?20260830-01"></script>
 </body>
 
 </html>
