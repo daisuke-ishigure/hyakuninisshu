@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-09T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -94,6 +94,8 @@
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
   <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -103,6 +105,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -241,7 +251,7 @@
         <dl class="last-dl">
           <dt>About the Poet</dt>
           <dd>
-            Sanuki served Emperor Nijō and later Gishūmon-in, empress of Go-Toba. She was ranked with Princess Shikishi as a master of waka. Late in life her father and brothers joined Prince Mochihito's revolt against the Taira and died, and she became a nun.
+            Sanuki served Emperor Nijō and later Gishūmon-in, empress of Go-Toba. She was ranked with Princess Shikishi as a master of waka. In 1180 her father and brothers joined Prince Mochihito's revolt against the Taira and died, and she became a nun.
           </dd>
         </dl>
       </div>
@@ -280,6 +290,437 @@
       </dl>
     </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Sanuki's Family Tree</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 92.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__tenno">Brown text</span>Emperor</li>
+              <li><span class="fk-legend__tno" aria-hidden="true"></span>Emperor's number in the line of succession</li>
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+              <li><span class="fk-legend__eq">＝</span>Marriage</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Sanuki's family tree">
+            <script type="application/json">
+{
+ "lang": "en",
+ "nodes": [
+  {
+   "id": "goshirakawa",
+   "n": "後白河",
+   "k": 1,
+   "t": 77,
+   "x": 16,
+   "y": 176
+  },
+  {
+   "id": "yorimasa",
+   "n": "源頼政",
+   "sub": "Rose up with Prince Mochihito",
+   "x": 16,
+   "y": 435
+  },
+  {
+   "id": "nijo",
+   "n": "二条",
+   "k": 1,
+   "t": 78,
+   "x": 224,
+   "y": 52
+  },
+  {
+   "id": "kyushi",
+   "n": "休子内親王",
+   "x": 224,
+   "y": 110
+  },
+  {
+   "id": "mochihito",
+   "n": "以仁王",
+   "sub": "Rose up to overthrow the Taira",
+   "x": 224,
+   "y": 146
+  },
+  {
+   "id": "shokushi",
+   "n": "式子内親王",
+   "p": 89,
+   "x": 224,
+   "y": 192
+  },
+  {
+   "id": "inpumonin",
+   "n": "殷富門院",
+   "x": 224,
+   "y": 228
+  },
+  {
+   "id": "takakura",
+   "n": "高倉",
+   "k": 1,
+   "t": 80,
+   "x": 224,
+   "y": 280
+  },
+  {
+   "id": "nakatsuna",
+   "n": "源仲綱",
+   "x": 224,
+   "y": 380
+  },
+  {
+   "id": "munetsuna",
+   "n": "源宗綱",
+   "x": 224,
+   "y": 416
+  },
+  {
+   "id": "kanetsuna",
+   "n": "源兼綱",
+   "x": 224,
+   "y": 452
+  },
+  {
+   "id": "sanuki",
+   "n": "二条院讃岐",
+   "p": 92,
+   "self": 1,
+   "x": 224,
+   "y": 490
+  },
+  {
+   "id": "shigeyori",
+   "n": "藤原重頼",
+   "x": 224,
+   "y": 554
+  },
+  {
+   "id": "rokujo",
+   "n": "六条",
+   "k": 1,
+   "t": 79,
+   "x": 616,
+   "y": 52
+  },
+  {
+   "id": "gishumonin",
+   "n": "宜秋門院",
+   "x": 616,
+   "y": 236
+  },
+  {
+   "id": "gotoba",
+   "n": "後鳥羽",
+   "k": 1,
+   "t": 82,
+   "p": 99,
+   "x": 616,
+   "y": 288
+  },
+  {
+   "id": "antoku",
+   "n": "安徳",
+   "k": 1,
+   "t": 81,
+   "x": 616,
+   "y": 340
+  },
+  {
+   "id": "shigemitsu",
+   "n": "重光",
+   "x": 616,
+   "y": 520
+  },
+  {
+   "id": "ariyori",
+   "n": "有頼",
+   "x": 616,
+   "y": 556
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-gishu",
+   "top": "gishumonin",
+   "bottom": "gotoba"
+  },
+  {
+   "id": "c-shigeyori",
+   "top": "sanuki",
+   "bottom": "shigeyori"
+  }
+ ],
+ "kids": [
+  {
+   "from": "goshirakawa",
+   "to": [
+    "nijo",
+    "kyushi",
+    "mochihito",
+    "shokushi",
+    "inpumonin",
+    "takakura"
+   ]
+  },
+  {
+   "from": "yorimasa",
+   "to": [
+    "nakatsuna",
+    "munetsuna",
+    "kanetsuna",
+    "sanuki"
+   ]
+  },
+  {
+   "from": "nijo",
+   "to": [
+    "rokujo"
+   ]
+  },
+  {
+   "from": "takakura",
+   "to": [
+    "gotoba",
+    "antoku"
+   ]
+  },
+  {
+   "from": "c-shigeyori",
+   "to": [
+    "shigemitsu",
+    "ariyori"
+   ]
+  }
+ ],
+ "arrows": [
+  {
+   "points": [
+    [
+     568,
+     490
+    ],
+    [
+     576,
+     490
+    ],
+    [
+     576,
+     84
+    ],
+    [
+     239,
+     84
+    ],
+    [
+     239,
+     64
+    ]
+   ],
+   "label": {
+    "text": "Served",
+    "x": 582,
+    "y": 190
+   }
+  },
+  {
+   "points": [
+    [
+     568,
+     490
+    ],
+    [
+     725,
+     490
+    ],
+    [
+     725,
+     236
+    ],
+    [
+     715,
+     236
+    ]
+   ],
+   "label": {
+    "text": "Served",
+    "x": 731,
+    "y": 370
+   }
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 819 582" width="819" height="582" role="img" aria-label="Sanuki's family tree" lang="en" class="fk-svg kd-svg" style="max-width:1229px;min-width:min(640px,1229px)" data-src="k4ok12">
+<g class="fk-edges"><path d="M645 245V279M649 245V279" class="fk-edge fk-eq"/><path d="M303 499V545M307 499V545" class="fk-edge fk-eq"/><path d="M123 176H210" class="fk-edge"/><path d="M210 52V280" class="fk-edge"/><path d="M210 52H221" class="fk-edge"/><path d="M210 110H221" class="fk-edge"/><path d="M210 146H221" class="fk-edge"/><path d="M210 192H221" class="fk-edge"/><path d="M210 228H221" class="fk-edge"/><path d="M210 280H221" class="fk-edge"/><path d="M194 435H210" class="fk-edge"/><path d="M210 380V490" class="fk-edge"/><path d="M210 380H221" class="fk-edge"/><path d="M210 416H221" class="fk-edge"/><path d="M210 452H221" class="fk-edge"/><path d="M210 490H221" class="fk-edge"/><path d="M258 52H602" class="fk-edge"/><path d="M602 52H613" class="fk-edge"/><path d="M298 280H602" class="fk-edge"/><path d="M602 280V340" class="fk-edge"/><path d="M602 288H613" class="fk-edge"/><path d="M602 340H613" class="fk-edge"/><path d="M307 522H602" class="fk-edge"/><path d="M602 520V556" class="fk-edge"/><path d="M602 520H613" class="fk-edge"/><path d="M602 556H613" class="fk-edge"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"><path d="M568 490L576 490L576 84L239 84L239 64" class="kd-arrow" marker-end="url(#kdArrowHead)"/><text class="kd-arrow-label" x="582" y="190">Served</text><path d="M568 490L725 490L725 236L715 236" class="kd-arrow" marker-end="url(#kdArrowHead)"/><text class="kd-arrow-label" x="731" y="370">Served</text></g>
+<g>
+<g class="fk-node is-tenno" transform="translate(16,176)" data-tip="&lt;h3&gt;Emperor Go-Shirakawa&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;77th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1127–1192&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1155–1158&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;After giving up the throne, he ruled as retired emperor for a long time. He compiled the Ryōjin Hishō, a collection of popular songs (imayō)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="108" height="26"/><text class="fk-name" x="0" y="0.5">Go-Shirakawa</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">77</text></g>
+<g class="fk-node" transform="translate(16,435)" data-tip="&lt;h3&gt;Minamoto no Yorimasa&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In 1180 he rose up with Prince Mochihito to overthrow the Taira, but was defeated at Byōdō-in in Uji and killed himself. His sons Nakatsuna and Munetsuna, his adopted son Kanetsuna, and others also died&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="179" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Yorimasa</text></g><rect class="fk-sub-box" x="0" y="11" width="179" height="16" rx="8"/><text class="fk-sub" x="89.5" y="19.5">Rose up with Prince Mochihito</text></g>
+<g class="fk-node is-tenno" transform="translate(224,52)" data-tip="&lt;h3&gt;Emperor Nijō&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;78th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Go-Shirakawa; his mother was Minamoto no Yoshiko&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="35" height="26"/><text class="fk-name" x="0" y="0.5">Nijō</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">78</text></g>
+<g class="fk-node" transform="translate(224,110)" data-tip="&lt;h3&gt;Princess Yasuko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1157–1171&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Emperor Go-Shirakawa and Fujiwara no Shigeko&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="125" height="26"/><text class="fk-name" x="0" y="0.5">Princess Yasuko</text></g></g>
+<g class="fk-node" transform="translate(224,146)" data-tip="&lt;h3&gt;Prince Mochihito&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Go-Shirakawa and Fujiwara no Shigeko; he had the same mother as Princess Shikishi&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In 1180 he rose up with Minamoto no Yorimasa to overthrow the Taira, but was defeated and killed&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="131" height="26"/><text class="fk-name" x="0" y="0.5">Prince Mochihito</text></g><rect class="fk-sub-box" x="0" y="11" width="183" height="16" rx="8"/><text class="fk-sub" x="91.5" y="19.5">Rose up to overthrow the Taira</text></g>
+<g class="fk-node is-poet" transform="translate(224,192)" data-tip="&lt;h3&gt;Princess Shikishi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Third daughter of Emperor Go-Shirakawa; her mother was Fujiwara no Shigeko&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 89, &quot;Tama no o yo...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Chosen as Kamo priestess (saiin) in 1159, she left the post because of illness in 1169. She studied waka under Fujiwara no Toshinari, and 49 of her poems were included in the Shin Kokin Wakashū&lt;/span&gt;&lt;/div&gt;" data-p="89"><a href="/89_en.html" aria-label="Princess Shikishi (Hyakunin Isshu Poem 89)"><rect class="fk-hit" x="-2" y="-13" width="152" height="26"/><text class="fk-name" x="0" y="0.5">Princess Shikishi</text><circle class="fk-badge" cx="138" cy="0" r="10"/><text class="fk-badge-num" x="138" y="0.5">89</text></a></g>
+<g class="fk-node" transform="translate(224,228)" data-tip="&lt;h3&gt;Inpumon-in&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Emperor Go-Shirakawa and Fujiwara no Shigeko (Princess Ryōshi)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="92" height="26"/><text class="fk-name" x="0" y="0.5">Inpumon-in</text></g></g>
+<g class="fk-node is-tenno" transform="translate(224,280)" data-tip="&lt;h3&gt;Emperor Takakura&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;80th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1161–1181&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1168–1180&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;His empress was Taira no Tokuko (Kenreimon-in), Taira no Kiyomori's daughter&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="75" height="26"/><text class="fk-name" x="0" y="0.5">Takakura</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">80</text></g>
+<g class="fk-node" transform="translate(224,380)" data-tip="&lt;h3&gt;Minamoto no Nakatsuna&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Eldest legitimate son of Minamoto no Yorimasa; Sanuki's elder brother by the same mother&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Died in battle with his father in Prince Mochihito's uprising&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="86" height="26"/><text class="fk-name" x="0" y="0.5">Nakatsuna</text></g></g>
+<g class="fk-node" transform="translate(224,416)" data-tip="&lt;h3&gt;Minamoto no Munetsuna&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Minamoto no Yorimasa&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="90" height="26"/><text class="fk-name" x="0" y="0.5">Munetsuna</text></g></g>
+<g class="fk-node" transform="translate(224,452)" data-tip="&lt;h3&gt;Minamoto no Kanetsuna&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Adopted son of Minamoto no Yorimasa (his nephew)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="85" height="26"/><text class="fk-name" x="0" y="0.5">Kanetsuna</text></g></g>
+<g class="fk-node is-poet is-self" transform="translate(224,490)" data-tip="&lt;h3&gt;Sanuki, attendant to retired Emperor Nijō (Nijō-in no Sanuki)&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;c. 1141–c. 1217&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Minamoto no Yorimasa; Nakatsuna was her elder brother by the same mother&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 92, &quot;Waga sode wa...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Served Emperor Nijō as a palace lady. After his death she married Fujiwara no Shigeyori and became the mother of Shigemitsu, Ariyori, and others. Around 1190 she seems to have become a lady-in-waiting to Gishūmon-in&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="347" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="341" height="26"/><text class="fk-name" x="0" y="0.5">Sanuki, attendant to retired Emperor Nijō</text><circle class="fk-badge" cx="327" cy="0" r="10"/><text class="fk-badge-num" x="327" y="0.5">92</text></g></g>
+<g class="fk-node" transform="translate(224,554)" data-tip="&lt;h3&gt;Fujiwara no Shigeyori&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Sanuki's husband and father of Shigemitsu, Ariyori, and others&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="166" height="26"/><text class="fk-name" x="0" y="0.5">Fujiwara no Shigeyori</text></g></g>
+<g class="fk-node is-tenno" transform="translate(616,52)" data-tip="&lt;h3&gt;Emperor Rokujō&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;79th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1164–1176&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1165–1168&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Nijō&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;He became emperor at just over seven months old, the youngest emperor in history&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="57" height="26"/><text class="fk-name" x="0" y="0.5">Rokujō</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">79</text></g>
+<g class="fk-node" transform="translate(616,236)" data-tip="&lt;h3&gt;Gishūmon-in&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Empress of Emperor Go-Toba (Kujō Taeko). Sanuki served her&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="100" height="26"/><text class="fk-name" x="0" y="0.5">Gishūmon-in</text></g></g>
+<g class="fk-node is-tenno is-poet" transform="translate(616,288)" data-tip="&lt;h3&gt;Emperor Go-Toba&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;82nd emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1180–1239&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1183–1198&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 99, &quot;Hito mo oshi...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;His name in the Hyakunin Isshu is &quot;Retired Emperor Go-Toba&quot;. He ordered the compilation of the Shin Kokin Wakashū. After losing the Jōkyū War (1221), he was exiled to Oki&lt;/span&gt;&lt;/div&gt;" data-p="99"><a href="/99_en.html" aria-label="Emperor Go-Toba (Hyakunin Isshu Poem 99)"><rect class="fk-hit" x="-2" y="-13" width="90" height="26"/><text class="fk-name" x="0" y="0.5">Go-Toba</text><circle class="fk-badge" cx="76" cy="0" r="10"/><text class="fk-badge-num" x="76" y="0.5">99</text></a><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">82</text></g>
+<g class="fk-node is-tenno" transform="translate(616,340)" data-tip="&lt;h3&gt;Emperor Antoku&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;81st emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1178–1185&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1180–1185&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Takakura; his mother was Taira no Tokuko (Kenreimon-in), Taira no Kiyomori's daughter&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Left the capital with the Taira and drowned himself at the Battle of Dan-no-ura (1185)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="60" height="26"/><text class="fk-name" x="0" y="0.5">Antoku</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">81</text></g>
+<g class="fk-node" transform="translate(616,520)" data-tip="&lt;h3&gt;Shigemitsu&lt;/h3&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="88" height="26"/><text class="fk-name" x="0" y="0.5">Shigemitsu</text></g></g>
+<g class="fk-node" transform="translate(616,556)" data-tip="&lt;h3&gt;Ariyori&lt;/h3&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="55" height="26"/><text class="fk-name" x="0" y="0.5">Ariyori</text></g></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+          <div class="kd-text">
+            <p style="width:100%; margin-bottom:0.5em;">Sanuki served Emperor Nijō as a lady-in-waiting. After Emperor Nijō died, she is said to have married Fujiwara no Shigeyori (there are several theories) and had Shigemitsu and Ariyori, and later to have served Gishūmon-in (Kujō Taeko), the empress of Emperor Go-Toba.</p>
+            <p style="width:100%; margin-bottom:0.5em;">Her father, Minamoto no Yorimasa, joined Prince Mochihito's uprising together with his sons, but they were defeated by the Taira; some died in battle and others killed themselves.</p>
+            <p style="width:100%; margin-bottom:0.5em;">Because of this, Sanuki is said to have gone to live in Miyagawa Village, Onyū District (now the Miyagawa area of Obama City), which had been her father's land.</p>
+            <p style="width:100%; margin-bottom:0.5em;">That place is Tagarasu in Fukui Prefecture, on the coast of Wakasa Bay. With little flat land there, it is famous for the Tagarasu terraced rice fields, cut into the hills. In one corner of the terraces stands a stone marking "the site of Lady Nijō-in Sanuki's residence."</p>
+            <p style="width:100%; margin-bottom:0.5em;">It is said that Sanuki wrote her Hyakunin Isshu poem, "<em>Waga sode wa shiohi ni mienu oki no ishi no...</em>," while gazing from there at a rocky reef called "Oki no Ishi" (the stone in the offing), 2 km off the shore.</p>
+            <p style="width:100%;">If this story is true, the "stone in the offing" in her poem was not under the sea, but a reef that is always being hit by waves and never has time to dry.</p>
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <dt>The Original Poem (<em>Honka</em>)</dt>
+            <dd>Sanuki borrowed (<em>honkadori</em>) from the next poem to write her poem about the stone in the offing.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    わが<ruby>袖<rt>そで</rt></ruby>は
+                    <ruby>水<rt>みず</rt></ruby>の<ruby>下<rt>した</rt></ruby>なる
+                    <ruby>石<rt>いし</rt></ruby>なれや
+                    <br><ruby>人<rt>ひと</rt></ruby>に<ruby>知<rt>し</rt></ruby>られで
+                    かわく<ruby>間<rt>ま</rt></ruby>もなし
+                    <span class="shutten"><em>Izumi Shikibu-shū</em>, Izumi Shikibu</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">My sleeves are like a stone under the water. Wet with the tears I shed in secret, they never have time to dry.</p>
+                </q>
+              </div>
+            </dd>
+            <dt>The Tagarasu Terraced Rice Fields,<br class="br-sp"> Site of Sanuki's Residence</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/tagarasu_large.webp' data-lightbox='sanuki' data-title='The Tagarasu terraced rice fields'>
+                  <img src='../img/tagarasu.webp' alt='The Tagarasu terraced rice fields' width="640" height="480">
+                </a>
+              </figure>
+              <div>
+                <p>The Tagarasu terraced rice fields in Obama City, Fukui Prefecture. The Sea of Japan can be seen in the distance, and 2 km off the shore is a rocky reef called "Oki no Ishi."
+                  <a class='no-decoration'
+                    href='utamakura_en.html?lat=35.533008266169034&lng=135.82489256731714&zoom=20'>See it on the map</a>
+                </p>
+              </div>
+            </dd>
+            <dt>"Oki no Ishi" as an <em>Utamakura</em></dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/okinoishi_large.webp' data-lightbox='sanuki' data-title='Oki no Ishi, Tagajō City, Miyagi Prefecture'>
+                  <img src='../img/okinoishi.webp' alt='Oki no Ishi' width="640" height="427">
+                </a>
+              </figure>
+              <div>
+                <p>"Oki no Ishi" is an <em>utamakura</em> (a famous place in poetry) in Tagajō City, Miyagi Prefecture.<br class="br-pc"> Matsuo Bashō also visited it. <a class='no-decoration'
+                    href='utamakura_en.html?lat=38.28683&lng=141.00333&zoom=20'>See it on the map</a></p>
+              </div>
+            </dd>
+            <dt>Minamoto no Yorimasa's Poem That Inspired Sanuki</dt>
+            <dd>Sanuki's father, Minamoto no Yorimasa, was also a famous poet.
+              <br class="br-pc">It is said that Sanuki may have been inspired by the next poem when she wrote her poem about the stone in the offing.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    ともすれば
+                    <ruby>涙<rt>なみだ</rt></ruby>にしづむ
+                    <ruby>枕<rt>まくら</rt></ruby>かな
+                    <br><ruby>潮<rt>しお</rt></ruby><ruby>満<rt>み</rt></ruby>つ<ruby>磯<rt>いそ</rt></ruby>の
+                    <ruby>石<rt>いし</rt></ruby>ならなくに
+                    <span class="shutten"><em>Yorimasa-shū</em>, Minamoto no Yorimasa</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">At times my pillow seems to sink, soaked with tears, though it is not a stone on the shore that sinks when the tide comes in.</p>
+                </q>
+              </div>
+            </dd>
+            <dt>Minamoto no Yorimasa's Death Poem</dt>
+            <dd>Sanuki's father, Minamoto no Yorimasa, joined Prince Mochihito's uprising but was defeated by the Taira.
+              <br class="br-pc">The next poem was written by Yorimasa just before he killed himself, cornered by the Taira.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>埋木<rt>うもれぎ</rt></ruby>の
+                    <ruby>花<rt>はな</rt></ruby><ruby>咲<rt>さ</rt></ruby>くことも
+                    なかりしに
+                    <br><ruby>身<rt>み</rt></ruby>のなる<ruby>果<rt>は</rt></ruby>てぞ
+                    <ruby>悲<rt>かな</rt></ruby>しかりける
+                    <span class="shutten"><em>The Tale of the Heike</em>, Minamoto no Yorimasa</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">Like buried wood that never blooms, I, an old man, joined an uprising with no hope of winning, and how sad that it has ended like this, against my wishes.</p>
+                </q>
+              </div>
+            </dd>
+            <dt>The Slaying of the <em>Nue</em></dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/nue_large.webp' data-lightbox='sanuki' data-title="Utagawa Kuniyoshi, Kyoto: The Nue, from Sixty-nine Stations of the Kisokaidō">
+                  <img src='../img/nue.webp' alt="Utagawa Kuniyoshi, Kyoto: The Nue, from Sixty-nine Stations of the Kisokaidō" width="442" height="640">
+                </a>
+                <figcaption><small><a
+                      href="https://commons.wikimedia.org/wiki/File:Kyoto_%E4%BA%AC%E9%83%BD_(BM_2008,3037.14771).jpg" target="_blank" rel="noopener">British
+                      Museum, Public domain, via Wikimedia Commons</a></small></figcaption>
+              </figure>
+              <div>
+                <p style="width:100%; margin-bottom: 0.75em;">
+                  The <em>nue</em> is a monster with the head of a monkey, the body of a raccoon dog, the limbs of a tiger, and a snake for a tail. In the late Heian period, a <em>nue</em> appeared every night at the hour of the ox (around 2 a.m.) over the Seiryōden, the emperor's living quarters, and troubled the emperor with its eerie cries.
+                </p>
+                <p style="width:100%; margin-bottom: 0.75em;">
+                  Sanuki's father, Minamoto no Yorimasa, a master archer, was ordered to get rid of it, and he is said to have shot and killed the <em>nue</em>. It is thought that the <em>nue</em> was really a scaly thrush (<em>toratsugumi</em>), a bird that calls at night in the breeding season.
+                </p>
+                <figure style="width:100%; margin-left:0; margin-right:auto; margin-top:5px;"><audio controls id='audio'
+                    src='../sound/toratsugumi.mp3' controlslist='nodownload' style="width:100%;"></audio>
+                  <figcaption><small style="display:block; width:100%;">Audio: Springin’ Sound Stock</small></figcaption>
+                </figure>
+              </div>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -311,6 +752,11 @@
   <!-- Footer end -->
 
   <script src="../js/poems_en.js?20261008-01"></script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261009-02"></script>
+  <script src="../js/keizu-diagram.js?20261008-03"></script>
 
 </body>
 

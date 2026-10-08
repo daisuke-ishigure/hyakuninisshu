@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-09T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -94,6 +94,8 @@
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
   <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -103,6 +105,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -278,6 +288,646 @@
       </dl>
     </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Retired Emperor Go-Toba's Family Tree and Relationship Chart</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 99.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__tenno">Brown text</span>Emperor</li>
+              <li><span class="fk-legend__tno" aria-hidden="true"></span>Emperor's number in the line of succession</li>
+              <li><span class="fk-legend__kanpaku">Purple text</span>Became Regent or Kampaku</li>
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+              <li><span class="fk-legend__eq">＝</span>Marriage</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Retired Emperor Go-Toba's family tree and relationship chart">
+            <script type="application/json">
+{
+ "lang": "en",
+ "tooltips": "fujiwara",
+ "nodes": [
+  {
+   "id": "tokimasa",
+   "n": "北条時政",
+   "x": 16,
+   "y": 62
+  },
+  {
+   "id": "yoshitomo",
+   "n": "源義朝",
+   "x": 16,
+   "y": 172
+  },
+  {
+   "id": "tadamichi",
+   "n": "忠通",
+   "kan": 1,
+   "p": 76,
+   "x": 16,
+   "y": 392
+  },
+  {
+   "id": "goshirakawa",
+   "n": "後白河",
+   "k": 1,
+   "t": 77,
+   "x": 16,
+   "y": 488
+  },
+  {
+   "id": "shigeko",
+   "n": "平滋子",
+   "x": 16,
+   "y": 532
+  },
+  {
+   "id": "yoshitoki",
+   "n": "北条義時",
+   "x": 231,
+   "y": 40
+  },
+  {
+   "id": "masako",
+   "n": "北条政子",
+   "x": 231,
+   "y": 84
+  },
+  {
+   "id": "yoritomo",
+   "n": "源頼朝",
+   "x": 231,
+   "y": 128
+  },
+  {
+   "id": "yoshitsune",
+   "n": "源義経",
+   "x": 231,
+   "y": 172
+  },
+  {
+   "id": "bomonhime",
+   "n": "坊門姫",
+   "x": 231,
+   "y": 216
+  },
+  {
+   "id": "yoshiyasu",
+   "n": "一条能保",
+   "x": 231,
+   "y": 260
+  },
+  {
+   "id": "kanezane",
+   "n": "九条兼実",
+   "key": "兼実",
+   "kan": 1,
+   "x": 231,
+   "y": 370
+  },
+  {
+   "id": "jien",
+   "n": "慈円",
+   "p": 95,
+   "x": 231,
+   "y": 414
+  },
+  {
+   "id": "shokushi",
+   "n": "坊門殖子",
+   "x": 231,
+   "y": 458
+  },
+  {
+   "id": "takakura",
+   "n": "高倉",
+   "k": 1,
+   "t": 80,
+   "x": 231,
+   "y": 510
+  },
+  {
+   "id": "tokuko",
+   "n": "平徳子",
+   "x": 231,
+   "y": 554
+  },
+  {
+   "id": "yoriie",
+   "n": "源頼家",
+   "x": 435,
+   "y": 84
+  },
+  {
+   "id": "sanetomo",
+   "n": "源実朝",
+   "p": 93,
+   "x": 435,
+   "y": 128
+  },
+  {
+   "id": "zenshi",
+   "n": "能保の娘",
+   "key": "一条全子",
+   "x": 435,
+   "y": 238
+  },
+  {
+   "id": "kintsune",
+   "n": "西園寺公経",
+   "key": "公経",
+   "p": 96,
+   "x": 435,
+   "y": 282
+  },
+  {
+   "id": "yoshiyasujo",
+   "n": "能保の娘",
+   "key": "良経室",
+   "x": 435,
+   "y": 326
+  },
+  {
+   "id": "yoshitsune2",
+   "n": "九条良経",
+   "key": "良経",
+   "kan": 1,
+   "p": 91,
+   "x": 435,
+   "y": 370
+  },
+  {
+   "id": "jushi",
+   "n": "藤原重子",
+   "x": 435,
+   "y": 422
+  },
+  {
+   "id": "gotoba",
+   "n": "後鳥羽",
+   "k": 1,
+   "t": 82,
+   "p": 99,
+   "x": 435,
+   "y": 475,
+   "self": 1
+  },
+  {
+   "id": "zaishi",
+   "n": "源在子",
+   "x": 435,
+   "y": 518
+  },
+  {
+   "id": "antoku",
+   "n": "安徳",
+   "k": 1,
+   "t": 81,
+   "x": 435,
+   "y": 568
+  },
+  {
+   "id": "kugyo",
+   "n": "公暁",
+   "x": 625,
+   "y": 84
+  },
+  {
+   "id": "rinshi",
+   "n": "掄子",
+   "x": 625,
+   "y": 260
+  },
+  {
+   "id": "michiie",
+   "n": "九条道家",
+   "key": "道家",
+   "kan": 1,
+   "x": 625,
+   "y": 304
+  },
+  {
+   "id": "risshi",
+   "n": "九条立子",
+   "x": 625,
+   "y": 392
+  },
+  {
+   "id": "juntoku",
+   "n": "順徳",
+   "k": 1,
+   "t": 84,
+   "p": 100,
+   "x": 625,
+   "y": 444
+  },
+  {
+   "id": "tsuchimikado",
+   "n": "土御門",
+   "k": 1,
+   "t": 83,
+   "x": 625,
+   "y": 500
+  },
+  {
+   "id": "yoritsune",
+   "n": "藤原頼経",
+   "key": "頼経",
+   "sub": "4th Kamakura shogun",
+   "x": 755,
+   "y": 282
+  },
+  {
+   "id": "chukyo",
+   "n": "仲恭",
+   "k": 1,
+   "t": 85,
+   "x": 755,
+   "y": 418
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-masako",
+   "top": "masako",
+   "bottom": "yoritomo"
+  },
+  {
+   "id": "c-bomon",
+   "top": "bomonhime",
+   "bottom": "yoshiyasu"
+  },
+  {
+   "id": "c-shokushi",
+   "top": "shokushi",
+   "bottom": "takakura"
+  },
+  {
+   "id": "c-tokuko",
+   "top": "takakura",
+   "bottom": "tokuko"
+  },
+  {
+   "id": "c-shigeko",
+   "top": "goshirakawa",
+   "bottom": "shigeko"
+  },
+  {
+   "id": "c-kintsune",
+   "top": "zenshi",
+   "bottom": "kintsune"
+  },
+  {
+   "id": "c-yoshitsune2",
+   "top": "yoshiyasujo",
+   "bottom": "yoshitsune2"
+  },
+  {
+   "id": "c-jushi",
+   "top": "jushi",
+   "bottom": "gotoba"
+  },
+  {
+   "id": "c-zaishi",
+   "top": "gotoba",
+   "bottom": "zaishi"
+  },
+  {
+   "id": "c-michiie",
+   "top": "rinshi",
+   "bottom": "michiie"
+  },
+  {
+   "id": "c-juntoku",
+   "top": "risshi",
+   "bottom": "juntoku"
+  }
+ ],
+ "kids": [
+  {
+   "from": "tokimasa",
+   "to": [
+    "yoshitoki",
+    "masako"
+   ]
+  },
+  {
+   "from": "yoshitomo",
+   "to": [
+    "yoritomo",
+    "yoshitsune",
+    "bomonhime"
+   ]
+  },
+  {
+   "from": "tadamichi",
+   "to": [
+    "kanezane",
+    "jien"
+   ]
+  },
+  {
+   "from": "c-shigeko",
+   "to": [
+    "takakura"
+   ]
+  },
+  {
+   "from": "c-masako",
+   "to": [
+    "yoriie",
+    "sanetomo"
+   ]
+  },
+  {
+   "from": "c-bomon",
+   "to": [
+    "zenshi",
+    "yoshiyasujo"
+   ]
+  },
+  {
+   "from": "kanezane",
+   "to": [
+    "yoshitsune2"
+   ]
+  },
+  {
+   "from": "c-shokushi",
+   "to": [
+    "gotoba"
+   ]
+  },
+  {
+   "from": "c-tokuko",
+   "to": [
+    "antoku"
+   ]
+  },
+  {
+   "from": "yoriie",
+   "to": [
+    "kugyo"
+   ]
+  },
+  {
+   "from": "c-kintsune",
+   "to": [
+    "rinshi"
+   ]
+  },
+  {
+   "from": "c-yoshitsune2",
+   "to": [
+    "michiie",
+    "risshi"
+   ]
+  },
+  {
+   "from": "c-jushi",
+   "to": [
+    "juntoku"
+   ]
+  },
+  {
+   "from": "c-zaishi",
+   "to": [
+    "tsuchimikado"
+   ]
+  },
+  {
+   "from": "c-michiie",
+   "to": [
+    "yoritsune"
+   ]
+  },
+  {
+   "from": "c-juntoku",
+   "to": [
+    "chukyo"
+   ]
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 905 594" width="905" height="594" role="img" aria-label="Retired Emperor Go-Toba's family tree and relationship chart" lang="en" class="fk-svg kd-svg" style="max-width:1358px;min-width:min(640px,1358px)" data-src="e4ebla">
+<g class="fk-edges"><path d="M277.5 93V119M281.5 93V119" class="fk-edge fk-eq"/><path d="M277 225V251M281 225V251" class="fk-edge fk-eq"/><path d="M264.5 467V501M268.5 467V501" class="fk-edge fk-eq"/><path d="M264.5 519V545M268.5 519V545" class="fk-edge fk-eq"/><path d="M66 497V523M70 497V523" class="fk-edge fk-eq"/><path d="M466.5 247V273M470.5 247V273" class="fk-edge fk-eq"/><path d="M475 335V361M479 335V361" class="fk-edge fk-eq"/><path d="M464 431V466M468 431V466" class="fk-edge fk-eq"/><path d="M464 484V509M468 484V509" class="fk-edge fk-eq"/><path d="M646 269V295M650 269V295" class="fk-edge fk-eq"/><path d="M651.5 401V435M655.5 401V435" class="fk-edge fk-eq"/><path d="M130 62H217" class="fk-edge"/><path d="M217 40V84" class="fk-edge"/><path d="M217 40H228" class="fk-edge"/><path d="M217 84H228" class="fk-edge"/><path d="M204 172H217" class="fk-edge"/><path d="M217 128V216" class="fk-edge"/><path d="M217 128H228" class="fk-edge"/><path d="M217 172H228" class="fk-edge"/><path d="M217 216H228" class="fk-edge"/><path d="M121 392H217" class="fk-edge"/><path d="M217 370V414" class="fk-edge"/><path d="M217 370H228" class="fk-edge"/><path d="M217 414H228" class="fk-edge"/><path d="M70 510H217" class="fk-edge"/><path d="M217 510H228" class="fk-edge"/><path d="M281.5 106H421" class="fk-edge"/><path d="M421 84V128" class="fk-edge"/><path d="M421 84H432" class="fk-edge"/><path d="M421 128H432" class="fk-edge"/><path d="M281 238H421" class="fk-edge"/><path d="M421 238V326" class="fk-edge"/><path d="M421 238H432" class="fk-edge"/><path d="M421 326H432" class="fk-edge"/><path d="M307 370H421" class="fk-edge"/><path d="M421 370H432" class="fk-edge"/><path d="M268.5 475H421" class="fk-edge"/><path d="M421 475H432" class="fk-edge"/><path d="M268.5 532H421" class="fk-edge"/><path d="M421 532V568" class="fk-edge"/><path d="M421 568H432" class="fk-edge"/><path d="M586 84H611" class="fk-edge"/><path d="M611 84H622" class="fk-edge"/><path d="M470.5 260H611" class="fk-edge"/><path d="M611 260H622" class="fk-edge"/><path d="M479 348H611" class="fk-edge"/><path d="M611 304V392" class="fk-edge"/><path d="M611 304H622" class="fk-edge"/><path d="M611 392H622" class="fk-edge"/><path d="M468 439.5H611" class="fk-edge"/><path d="M611 439.5V444" class="fk-edge"/><path d="M611 444H622" class="fk-edge"/><path d="M468 496.5H611" class="fk-edge"/><path d="M611 496.5V500" class="fk-edge"/><path d="M611 500H622" class="fk-edge"/><path d="M650 282H741" class="fk-edge"/><path d="M741 282H752" class="fk-edge"/><path d="M655.5 409H741" class="fk-edge"/><path d="M741 409V418" class="fk-edge"/><path d="M741 418H752" class="fk-edge"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node" transform="translate(16,62)" data-tip="&lt;h3&gt;Hōjō Tokimasa&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Hōjō Masako and Yoshitoki; Sanetomo's grandfather&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="115" height="26"/><text class="fk-name" x="0" y="0.5">Hōjō Tokimasa</text></g></g>
+<g class="fk-node" transform="translate(16,172)" data-tip="&lt;h3&gt;Minamoto no Yoshitomo&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1123–1160&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Minamoto no Yoritomo, Yoshitsune, and Bōmon-hime&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="189" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Yoshitomo</text></g></g>
+<g class="fk-node is-kanpaku is-poet" transform="translate(16,392)" data-tip="&lt;h3&gt;Fujiwara no Tadamichi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1097–1164&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Regent, Kampaku (chief adviser), and Chancellor of the Realm&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior First Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 76, &quot;Wata no hara kogiidete...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called the Lay Novice of Hosshō-ji Temple, former Kampaku and Chancellor of the Realm&lt;/span&gt;&lt;/div&gt;" data-p="76"><a href="/76_en.html" aria-label="Fujiwara no Tadamichi (Hyakunin Isshu Poem 76)"><rect class="fk-hit" x="-2" y="-13" width="106" height="26"/><text class="fk-name" x="0" y="0.5">Tadamichi</text><circle class="fk-badge" cx="92" cy="0" r="10"/><text class="fk-badge-num" x="92" y="0.5">76</text></a></g>
+<g class="fk-node is-tenno" transform="translate(16,488)" data-tip="&lt;h3&gt;Emperor Go-Shirakawa&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;77th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1127–1192&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1155–1158&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;After giving up the throne, he ruled as retired emperor for a long time. He compiled the Ryōjin Hishō, a collection of popular songs (imayō)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="108" height="26"/><text class="fk-name" x="0" y="0.5">Go-Shirakawa</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">77</text></g>
+<g class="fk-node" transform="translate(16,532)" data-tip="&lt;h3&gt;Taira no Shigeko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Consort of Emperor Go-Shirakawa and mother of Emperor Takakura&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="129" height="26"/><text class="fk-name" x="0" y="0.5">Taira no Shigeko</text></g></g>
+<g class="fk-node" transform="translate(231,40)" data-tip="&lt;h3&gt;Hōjō Yoshitoki&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Hōjō Tokimasa&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;As regent (shikken), he ran the shogunate in Sanetomo's time&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="113" height="26"/><text class="fk-name" x="0" y="0.5">Hōjō Yoshitoki</text></g></g>
+<g class="fk-node" transform="translate(231,84)" data-tip="&lt;h3&gt;Hōjō Masako&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Wife of Minamoto no Yoritomo and mother of Yoriie and Sanetomo&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="101" height="26"/><text class="fk-name" x="0" y="0.5">Hōjō Masako</text></g></g>
+<g class="fk-node" transform="translate(231,128)" data-tip="&lt;h3&gt;Minamoto no Yoritomo&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1147–1199&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Second Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Minamoto no Yoshitomo&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;First shogun of the Kamakura shogunate&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="179" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Yoritomo</text></g></g>
+<g class="fk-node" transform="translate(231,172)" data-tip="&lt;h3&gt;Minamoto no Yoshitsune&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Minamoto no Yoshitomo; Yoritomo's younger brother&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Came into conflict with Yoritomo&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="192" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Yoshitsune</text></g></g>
+<g class="fk-node" transform="translate(231,216)" data-tip="&lt;h3&gt;Bōmon-hime&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Minamoto no Yoshitomo; Minamoto no Yoritomo's elder or younger sister by the same mother&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Wife of Ichijō Yoshiyasu&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="100" height="26"/><text class="fk-name" x="0" y="0.5">Bōmon-hime</text></g></g>
+<g class="fk-node" transform="translate(231,260)" data-tip="&lt;h3&gt;Ichijō Yoshiyasu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;His wife was Bōmon-hime, Minamoto no Yoritomo's elder or younger sister by the same mother. His daughters married Saionji Kintsune and Kujō Yoshitsune&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="125" height="26"/><text class="fk-name" x="0" y="0.5">Ichijō Yoshiyasu</text></g></g>
+<g class="fk-node is-kanpaku" transform="translate(231,370)" data-tip="&lt;h3&gt;Kujō Kanezane&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1149–1207&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Regent, Kampaku (chief adviser), and Chancellor of the Realm&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior First Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Founder of the Kujō family&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="77" height="26"/><text class="fk-name" x="0" y="0.5">Kanezane</text></g></g>
+<g class="fk-node is-poet" transform="translate(231,414)" data-tip="&lt;h3&gt;Jien&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1155–1225&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Fujiwara no Tadamichi; his mother was Kaga no Tsubone. Younger brother of Kujō Kanezane (same mother)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 95, &quot;Ōkenaku...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Became a guardian monk (gojisō) in 1192 and served four times as head priest of the Tendai school. Wrote the Gukanshō&lt;/span&gt;&lt;/div&gt;" data-p="95"><a href="/95_en.html" aria-label="Jien (Hyakunin Isshu Poem 95)"><rect class="fk-hit" x="-2" y="-13" width="57" height="26"/><text class="fk-name" x="0" y="0.5">Jien</text><circle class="fk-badge" cx="43" cy="0" r="10"/><text class="fk-badge-num" x="43" y="0.5">95</text></a></g>
+<g class="fk-node" transform="translate(231,458)" data-tip="&lt;h3&gt;Bōmon Taneko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Consort of Emperor Takakura and mother of Emperor Go-Toba&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="117" height="26"/><text class="fk-name" x="0" y="0.5">Bōmon Taneko</text></g></g>
+<g class="fk-node is-tenno" transform="translate(231,510)" data-tip="&lt;h3&gt;Emperor Takakura&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;80th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1161–1181&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1168–1180&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;His empress was Taira no Tokuko (Kenreimon-in), Taira no Kiyomori's daughter&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="75" height="26"/><text class="fk-name" x="0" y="0.5">Takakura</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">80</text></g>
+<g class="fk-node" transform="translate(231,554)" data-tip="&lt;h3&gt;Taira no Tokuko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Empress of Emperor Takakura and mother of Emperor Antoku&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="125" height="26"/><text class="fk-name" x="0" y="0.5">Taira no Tokuko</text></g></g>
+<g class="fk-node" transform="translate(435,84)" data-tip="&lt;h3&gt;Minamoto no Yoriie&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Minamoto no Yoritomo and Hōjō Masako&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Second shogun of the Kamakura shogunate. In 1203 he lost his post as shogun and was driven out to Izu. Kugyō's father. He was a close friend of Masatsune&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="152" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Yoriie</text></g></g>
+<g class="fk-node is-poet" transform="translate(435,128)" data-tip="&lt;h3&gt;Minamoto no Sanetomo&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Fourth son of Minamoto no Yoritomo; second son of Hōjō Masako&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 93, &quot;Yo no naka wa...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Became shogun at 12. The first samurai to become Minister of the Right. Studied waka with Fujiwara no Sadaie. Murdered by Kugyō in 1219, at 28. In the Hyakunin Isshu he is called the Minister of the Right of Kamakura&lt;/span&gt;&lt;/div&gt;" data-p="93"><a href="/93_en.html" aria-label="Minamoto no Sanetomo (Hyakunin Isshu Poem 93)"><rect class="fk-hit" x="-2" y="-13" width="209" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Sanetomo</text><circle class="fk-badge" cx="195" cy="0" r="10"/><text class="fk-badge-num" x="195" y="0.5">93</text></a></g>
+<g class="fk-node" transform="translate(435,238)" data-tip="&lt;h3&gt;Ichijō Matako&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Ichijō Yoshiyasu&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Wife of Saionji Kintsune and mother of Rinshi and others&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="165" height="26"/><text class="fk-name" x="0" y="0.5">Yoshiyasu's daughter</text></g></g>
+<g class="fk-node is-poet" transform="translate(435,282)" data-tip="&lt;h3&gt;Saionji Kintsune&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Fujiwara no Sanemune&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 96, &quot;Hana sasou...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;His wife was Ichijō Yoshiyasu's daughter. In the Jōkyū War he sent word of the uprising to the shogunate and was confined by Retired Emperor Go-Toba. He became Chancellor of the Realm in 1222. His grandson Yoritsune became the fourth shogun of the Kamakura shogunate&lt;/span&gt;&lt;/div&gt;" data-p="96"><a href="/96_en.html" aria-label="Saionji Kintsune (Hyakunin Isshu Poem 96)"><rect class="fk-hit" x="-2" y="-13" width="95" height="26"/><text class="fk-name" x="0" y="0.5">Kintsune</text><circle class="fk-badge" cx="81" cy="0" r="10"/><text class="fk-badge-num" x="81" y="0.5">96</text></a></g>
+<g class="fk-node" transform="translate(435,326)" data-tip="&lt;h3&gt;Daughter of Ichijō Yoshiyasu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Principal wife of Kujō Yoshitsune and mother of Michiie and Ritsuko&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="165" height="26"/><text class="fk-name" x="0" y="0.5">Yoshiyasu's daughter</text></g></g>
+<g class="fk-node is-kanpaku is-poet" transform="translate(435,370)" data-tip="&lt;h3&gt;Kujō Yoshitsune&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1169–1206&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Regent, Nairan, and Chancellor of the Realm&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior First Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 91, &quot;Kirigirisu...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called the Gokyōgoku Regent and former Chancellor of the Realm&lt;/span&gt;&lt;/div&gt;" data-p="91"><a href="/91_en.html" aria-label="Kujō Yoshitsune (Hyakunin Isshu Poem 91)"><rect class="fk-hit" x="-2" y="-13" width="112" height="26"/><text class="fk-name" x="0" y="0.5">Yoshitsune</text><circle class="fk-badge" cx="98" cy="0" r="10"/><text class="fk-badge-num" x="98" y="0.5">91</text></a></g>
+<g class="fk-node" transform="translate(435,422)" data-tip="&lt;h3&gt;Fujiwara no Shigeko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Consort of Emperor Go-Toba and mother of Emperor Juntoku&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="155" height="26"/><text class="fk-name" x="0" y="0.5">Fujiwara no Shigeko</text></g></g>
+<g class="fk-node is-tenno is-poet is-self" transform="translate(435,475)" data-tip="&lt;h3&gt;Emperor Go-Toba&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;82nd emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1180–1239&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1183–1198&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 99, &quot;Hito mo oshi...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;His name in the Hyakunin Isshu is &quot;Retired Emperor Go-Toba&quot;. He ordered the compilation of the Shin Kokin Wakashū. After losing the Jōkyū War (1221), he was exiled to Oki&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="96" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="90" height="26"/><text class="fk-name" x="0" y="0.5">Go-Toba</text><circle class="fk-badge" cx="76" cy="0" r="10"/><text class="fk-badge-num" x="76" y="0.5">99</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">82</text></g>
+<g class="fk-node" transform="translate(435,518)" data-tip="&lt;h3&gt;Minamoto no Ariko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Consort of Emperor Go-Toba and mother of Emperor Tsuchimikado. Known as Shōmeimon-in&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="149" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Ariko</text></g></g>
+<g class="fk-node is-tenno" transform="translate(435,568)" data-tip="&lt;h3&gt;Emperor Antoku&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;81st emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1178–1185&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1180–1185&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Takakura; his mother was Taira no Tokuko (Kenreimon-in), Taira no Kiyomori's daughter&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Left the capital with the Taira and drowned himself at the Battle of Dan-no-ura (1185)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="60" height="26"/><text class="fk-name" x="0" y="0.5">Antoku</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">81</text></g>
+<g class="fk-node" transform="translate(625,84)" data-tip="&lt;h3&gt;Kugyō&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Minamoto no Yoriie&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In 1219 he assassinated his uncle Sanetomo at Tsurugaoka Hachimangū Shrine&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="52" height="26"/><text class="fk-name" x="0" y="0.5">Kugyō</text></g></g>
+<g class="fk-node" transform="translate(625,260)" data-tip="&lt;h3&gt;Saionji Rinshi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Eldest daughter of Saionji Kintsune&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Principal wife of Kujō Michiie and mother of Fujiwara no Yoritsune and others&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="50" height="26"/><text class="fk-name" x="0" y="0.5">Rinshi</text></g></g>
+<g class="fk-node is-kanpaku" transform="translate(625,304)" data-tip="&lt;h3&gt;Kujō Michiie&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1193–1252&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Regent, Kampaku, and Minister of the Left&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior First Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Maternal relative: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Emperor Shijō's maternal grandfather&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="59" height="26"/><text class="fk-name" x="0" y="0.5">Michiie</text></g></g>
+<g class="fk-node" transform="translate(625,392)" data-tip="&lt;h3&gt;Kujō Ritsuko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Kujō Yoshitsune; her mother was Ichijō Yoshiyasu's daughter&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Empress of Emperor Juntoku and mother of Emperor Chūkyō&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="61" height="26"/><text class="fk-name" x="0" y="0.5">Ritsuko</text></g></g>
+<g class="fk-node is-tenno is-poet" transform="translate(625,444)" data-tip="&lt;h3&gt;Emperor Juntoku&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;84th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1197–1242&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1210–1221&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 100, &quot;Momoshiki ya...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;His name in the Hyakunin Isshu is &quot;Retired Emperor Juntoku&quot;. After losing the Jōkyū War, he was exiled to Sado&lt;/span&gt;&lt;/div&gt;" data-p="100"><a href="/100_en.html" aria-label="Emperor Juntoku (Hyakunin Isshu Poem 100)"><rect class="fk-hit" x="-2" y="-13" width="88" height="26"/><text class="fk-name" x="0" y="0.5">Juntoku</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5" style="font-size:8.5px">100</text></a><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">84</text></g>
+<g class="fk-node is-tenno" transform="translate(625,500)" data-tip="&lt;h3&gt;Emperor Tsuchimikado&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;83rd emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1196–1231&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1198–1210&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Go-Toba; Emperor Juntoku's elder brother&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;He did not take part in the Jōkyū War, but at his own wish moved to Tosa (later Awa)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="109" height="26"/><text class="fk-name" x="0" y="0.5">Tsuchimikado</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">83</text></g>
+<g class="fk-node" transform="translate(755,282)" data-tip="&lt;h3&gt;Fujiwara no Yoritsune&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1218–1256&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Acting Upper Counselor; fourth shogun of the Kamakura shogunate&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Second Rank&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="77" height="26"/><text class="fk-name" x="0" y="0.5">Yoritsune</text></g><rect class="fk-sub-box" x="0" y="11" width="134" height="16" rx="8"/><text class="fk-sub" x="67" y="19.5">4th Kamakura shogun</text></g>
+<g class="fk-node is-tenno" transform="translate(755,418)" data-tip="&lt;h3&gt;Emperor Chūkyō&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;85th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Juntoku and Kujō Ritsuko&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="61" height="26"/><text class="fk-name" x="0" y="0.5">Chūkyō</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">85</text></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+          <div class="kd-text">
+            <p style="width:100%;">
+              Retired Emperor Go-Toba was a grandson of Emperor Go-Shirakawa and a younger half-brother of Emperor Antoku. He had two sons, Emperor Tsuchimikado and <a href="/100_en.html">Retired Emperor Juntoku</a>. Tsuchimikado became emperor at 3, but at 15 Go-Toba made him give up the throne, and Juntoku became the new emperor. Tsuchimikado seems to have been gentle, while Juntoku had a fierce temper. At the time of the Jōkyū War, Tsuchimikado tried to talk his father Go-Toba out of it, while Juntoku is said to have actively supported his father in trying to overthrow the shogunate.
+            </p>
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <dt>The Jōkyū War</dt>
+            <dd>
+              <p style="margin-bottom: 0.75em;">
+                In 1185, the shogunate placed land stewards (<em>jitō</em>) throughout the country, which reduced the income the court received from its estates, and the conflict with the shogunate deepened. Retired Emperor Go-Toba added the Western Guards (<em>saimen no bushi</em>) to the Northern Guards (<em>hokumen no bushi</em>) to strengthen his military power against the shogunate.</p>
+              <p style="margin-bottom: 0.75em;">
+                In 1219, Minamoto no Sanetomo was assassinated by his nephew Kugyō, and Kugyō in turn was killed by the shogunate's men. After this, there was a growing move at court to rethink its policy of getting along with the shogunate. Judging that a succession struggle was going on inside the shogunate, Go-Toba issued an order in 1221 to strike down Hōjō Yoshitoki, starting the Jōkyū War.
+              </p>
+              <p style="margin-bottom: 0.75em;">
+                The shogunate, however, had already learned of Go-Toba's plans to raise an army from household officials of Saionji Kintsune and others. Hōjō Masako appealed to the shogun's vassals, telling them that the court was trying to destroy the shogunate, and the conflict grew into a war between the court's army and the shogunate's army. The shogunate's army marched on Kyoto along three routes, the Tōkaidō, the Tōsandō, and the Hokurikudō, and defeated the court's army only a month after the order was issued. Go-Toba was exiled to Oki and Juntoku to Sado, Tsuchimikado moved to Tosa of his own will, and Emperor Chūkyō was removed from the throne.
+              </p>
+            </dd>
+            <dt>Oki</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/oki_large.webp?20240507-02' data-lightbox='gotoba' data-title='Oki District, Shimane Prefecture'>
+                  <img loading='lazy' src='../img/oki.webp?20240507-02' alt='Oki' width="640" height="480">
+                </a>
+                <figcaption><small>Photo: Adobe Stock</small></figcaption>
+              </figure>
+              <div>
+                <p>Oki District, Shimane Prefecture. After losing the Jōkyū War, Retired Emperor Go-Toba was exiled to Oki, and he died there at 58. <a class='no-decoration'
+                    href='utamakura_en.html?lat=36.25081125748606&lng=133.27462455230224&zoom=12'>See it on the map</a>
+                </p>
+              </div>
+            </dd>
+            <dt>A Poem Showing a Ruler's Spirit</dt>
+            <dd>
+              This poem was written before the Jōkyū War. So it is sometimes read as expressing a wish to correct the politics that the Kamakura shogunate had bent out of shape. It is also sometimes read as expressing a ruler's wish to govern rightly.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>奥山<rt>おくやま</rt></ruby>の
+                    おどろが<ruby>下<rt>した</rt></ruby>も
+                    <ruby>踏<rt>ふ</rt></ruby>み<ruby>分<rt>わ</rt></ruby>けて
+                    <br><ruby>道<rt>みち</rt></ruby>ある<ruby>世<rt>よ</rt></ruby>ぞと
+                    <ruby>人<rt>ひと</rt></ruby>に<ruby>知<rt>し</rt></ruby>らせむ
+                    <span class="shutten"><em>Shin Kokin Wakashū</em>, Retired Emperor Go-Toba</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.2em;">Even through the thorny brush deep in the mountains, where there is no path, I will push my way through, and let people know that this is a world with a right path.</p>
+                </q>
+              </div>
+            </dd>
+            <dt>The Best-Known Poem of the <em>Entō Hyakushu</em></dt>
+            <dd>
+              The next poem is said to have been written on the ship taking Retired Emperor Go-Toba into exile on Oki. The sea was wild and a storm was raging, but the moment Go-Toba wrote this poem, it is said, the storm died down and the sea became calm. Go-Toba's passion for waka did not fade even after his exile to Oki, and he compiled a hundred-poem sequence called the <em>Entō Hyakushu</em> (Hundred Poems from a Distant Island).
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>我<rt>われ</rt></ruby>こそは
+                    <ruby>新島守<rt>にいじまもり</rt></ruby>よ
+                    <ruby>隠岐<rt>おき</rt></ruby>の<ruby>海<rt>うみ</rt></ruby>の
+                    <br><ruby>荒<rt>あら</rt></ruby>き<ruby>波風<rt>なみかぜ</rt></ruby>
+                    <ruby>心<rt>こころ</rt></ruby>して<ruby>吹<rt>ふ</rt></ruby>け
+                    <span class="shutten"><em>Masukagami</em>, Retired Emperor Go-Toba</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">I am the new guardian of this island.<br class="br-pc"> Rough waves and winds of the sea of Oki, from now on blow gently.</p>
+                </q>
+              </div>
+              <p class="kome"><em>Masukagami</em> is a historical tale of the Kamakura period.</p>
+              <p style="margin-top: 1em;">The next poem was placed at the very end of the <em>Entō Hyakushu</em>. It shows Go-Toba's sense of the impermanence of all things (<em>mujōkan</em>).</p>
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    かぎりあれば
+                    <ruby>萱<rt>かや</rt></ruby>が<ruby>軒端<rt>のきば</rt></ruby>の
+                    <ruby>月<rt>つき</rt></ruby>も<ruby>見<rt>み</rt></ruby>つ
+                    <br><ruby>知<rt>し</rt></ruby>らぬは<ruby>人<rt>ひと</rt></ruby>の
+                    <ruby>行<rt>ゆ</rt></ruby>く<ruby>末<rt>すえ</rt></ruby>の<ruby>空<rt>そら</rt></ruby>
+                    <span class="shutten"><em>Entō Hyakushu</em>, Retired Emperor Go-Toba</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">Life has its limits. Gazing at the moon over the eaves of my poor thatched hut, I think that no one knows what lies ahead.</p>
+                </q>
+              </div>
+            </dd>
+            <dt>A Folding-Screen Poem for Fujiwara no Toshinari's 90th Birthday</dt>
+            <dd>
+              Retired Emperor Go-Toba wrote this poem for a folding screen to celebrate Fujiwara no Toshinari's 90th birthday (<em>kujū no ga</em>). It borrows (<em>honkadori</em>) from Kakinomoto no Hitomaro's poem "<em>Ashibiki no yamadori no o no...</em>." In the late Heian period, Fujiwara no Akisue started the <em>Hitomaro eigu</em> ceremony, and Kakinomoto no Hitomaro was treated as a god of poetry. The poem is thought to have been written with respect, wishing a long life to Toshinari, whom Go-Toba looked up to as his teacher of waka.
+              <div class='quote'>
+                <q class="quote-ja" style="position:relative;">
+                  <img src="/img/yamadori.gif" alt="A copper pheasant (yamadori)"
+                    style="position:absolute; width:150px; height:auto; right:0; bottom:1.5em;" width="250" height="125">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>桜<rt>さくら</rt></ruby><ruby>咲<rt>さ</rt></ruby>く
+                    <ruby>遠山鳥<rt>とおやまどり</rt></ruby>の
+                    <br class="br-sp">しだり<ruby>尾<rt>お</rt></ruby>の
+                    <br>ながながし<ruby>日<rt>ひ</rt></ruby>も
+                    <br class="br-sp">あかぬ<ruby>色<rt>いろ</rt></ruby>かな
+                    <span class="shutten"><em>Shin Kokin Wakashū</em>, Retired Emperor Go-Toba</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.2em;">Cherry blossoms on the distant mountains. Even if I gaze at them all through a day as long as the trailing tail of a mountain pheasant,<br class="br-pc"> I never tire of their color.</p>
+                </q>
+              </div>
+            </dd>
+            <dt>Go-Toba's Best-Known Poem</dt>
+            <dd>
+              This is the best-known of Retired Emperor Go-Toba's poems. In waka, autumn was usually linked with autumn leaves, evenings, and wild geese, while haze was a symbol of spring, so this poem is thought to have broken the rules.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>見渡<rt>みわた</rt></ruby>せば
+                    <ruby>山<rt>やま</rt></ruby>もとかすむ
+                    <ruby>水無瀬川<rt>みなせがわ</rt></ruby>
+                    <br><ruby>夕<rt>ゆう</rt></ruby>べは<ruby>秋<rt>あき</rt></ruby>と
+                    なに<ruby>思<rt>おも</rt></ruby>ひけむ
+                    <span class="shutten"><em>Shin Kokin Wakashū</em>, Retired Emperor Go-Toba</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.2em;">Looking out, I see the foot of the mountains hazy and the Minase River flowing. Why did I ever think that evenings are best in autumn? Spring evenings are wonderful too.</p>
+                </q>
+              </div>
+            </dd>
+            <dt>Utagawa Kuniyoshi's <em>Hyakunin Isshu no Uchi</em></dt>
+            <dd class='thumb-image2'>
+              <figure class='portrait'>
+                <a href='../img/kuniyoshi_99_large.webp' data-lightbox='gotoba' data-title='Ukiyo-e by Utagawa Kuniyoshi'>
+                  <img loading='lazy' src='../img/kuniyoshi_99.webp' alt='Ukiyo-e by Utagawa Kuniyoshi' width="438" height="640">
+                </a>
+                <figcaption><a
+                    href='https://commons.wikimedia.org/wiki/File:Gotobain_LCCN2008660205.jpg' target='_blank' rel='noopener'><small>Utagawa,
+                      Kuniyoshi, 1798-1861, artist, Public domain, via Wikimedia Commons</small></a></figcaption>
+              </figure>
+              <div>
+                <p style="margin-bottom: 0.75em;">An ukiyo-e print by Utagawa Kuniyoshi, an ukiyo-e artist of the Edo period.<br
+                    class="br-pc"> Retired Emperor Go-Toba became emperor in the middle of the Genpei War without the Three Sacred Treasures.</p>
+                <p style="margin-bottom: 0.75em;">Perhaps because of this, Go-Toba was so passionate about swords that he even forged them himself.</p>
+              </div>
+            </dd>
+            <dt>The Chrysanthemum Go-Toba Loved</dt>
+            <dd>The chrysanthemum is the crest of the imperial family, and it is said that this began because Go-Toba loved chrysanthemums and put a chrysanthemum crest on his swords and other things.</dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -309,6 +959,11 @@
   <!-- Footer end -->
 
   <script src="../js/poems_en.js?20261008-01"></script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261009-02"></script>
+  <script src="../js/keizu-diagram.js?20261008-03"></script>
 
 </body>
 

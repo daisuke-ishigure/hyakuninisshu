@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-09T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -95,6 +95,8 @@
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
   <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -104,6 +106,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -283,6 +293,570 @@
       </dl>
     </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Fujiwara no Sadaie's Family Tree</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 97.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+              <li><span class="fk-legend__dash"></span>Adoption</li>
+              <li><span class="fk-legend__eq">＝</span>Marriage</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Fujiwara no Sadaie's family tree">
+            <script type="application/json">
+{
+ "lang": "en",
+ "tooltips": "fujiwara",
+ "nodes": [
+  {
+   "id": "nagaie",
+   "n": "藤原長家",
+   "key": "長家",
+   "sub": "Mikohidari line",
+   "x": 16,
+   "y": 70
+  },
+  {
+   "id": "tadaie",
+   "n": "藤原忠家",
+   "key": "忠家",
+   "x": 141,
+   "y": 70
+  },
+  {
+   "id": "toshitada",
+   "n": "藤原俊忠",
+   "key": "俊忠",
+   "x": 261,
+   "y": 70
+  },
+  {
+   "id": "shunkai",
+   "n": "俊海",
+   "x": 381,
+   "y": 40
+  },
+  {
+   "id": "shunzei",
+   "n": "藤原俊成",
+   "key": "俊成",
+   "p": 83,
+   "x": 381,
+   "y": 100
+  },
+  {
+   "id": "kaga",
+   "n": "美福門院加賀",
+   "x": 381,
+   "y": 144
+  },
+  {
+   "id": "sanemune",
+   "n": "藤原実宗",
+   "key": "実宗",
+   "x": 381,
+   "y": 227
+  },
+  {
+   "id": "jakuren",
+   "n": "寂蓮",
+   "p": 87,
+   "x": 577,
+   "y": 40
+  },
+  {
+   "id": "teika",
+   "n": "藤原定家",
+   "key": "定家",
+   "p": 97,
+   "x": 577,
+   "y": 150,
+   "self": 1
+  },
+  {
+   "id": "sanemunejo",
+   "n": "実宗の娘",
+   "x": 577,
+   "y": 194
+  },
+  {
+   "id": "kintsune",
+   "n": "入道前太政大臣",
+   "key": "公経",
+   "p": 96,
+   "x": 577,
+   "y": 260
+  },
+  {
+   "id": "jakurenjo",
+   "n": "寂蓮の娘",
+   "x": 801,
+   "y": 40
+  },
+  {
+   "id": "ietaka",
+   "n": "藤原家隆",
+   "p": 98,
+   "sub": "Learned waka from Toshinari",
+   "x": 801,
+   "y": 84,
+   "key": "家隆"
+  },
+  {
+   "id": "tameie",
+   "n": "藤原為家",
+   "x": 998,
+   "y": 172
+  },
+  {
+   "id": "yoritsuna",
+   "n": "宇都宮頼綱",
+   "x": 801,
+   "y": 216
+  },
+  {
+   "id": "yoritsunajo",
+   "n": "頼綱の娘",
+   "x": 998,
+   "y": 216
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-kaga",
+   "top": "shunzei",
+   "bottom": "kaga"
+  },
+  {
+   "id": "c-teika",
+   "top": "teika",
+   "bottom": "sanemunejo"
+  },
+  {
+   "id": "c-ietaka",
+   "top": "jakurenjo",
+   "bottom": "ietaka"
+  },
+  {
+   "id": "c-tameie",
+   "top": "tameie",
+   "bottom": "yoritsunajo"
+  }
+ ],
+ "kids": [
+  {
+   "from": "nagaie",
+   "to": [
+    "tadaie"
+   ]
+  },
+  {
+   "from": "tadaie",
+   "to": [
+    "toshitada"
+   ]
+  },
+  {
+   "from": "toshitada",
+   "to": [
+    "shunkai",
+    "shunzei"
+   ]
+  },
+  {
+   "from": "shunkai",
+   "to": [
+    "jakuren"
+   ]
+  },
+  {
+   "from": "c-kaga",
+   "to": [
+    "teika"
+   ]
+  },
+  {
+   "from": "sanemune",
+   "to": [
+    "sanemunejo",
+    "kintsune"
+   ]
+  },
+  {
+   "from": "jakuren",
+   "to": [
+    "jakurenjo"
+   ]
+  },
+  {
+   "from": "c-teika",
+   "to": [
+    "tameie"
+   ]
+  },
+  {
+   "from": "yoritsuna",
+   "to": [
+    "yoritsunajo"
+   ]
+  }
+ ],
+ "lines": [
+  {
+   "points": [
+    [
+     478,
+     100
+    ],
+    [
+     553,
+     100
+    ],
+    [
+     553,
+     40
+    ]
+   ],
+   "dash": true,
+   "label": {
+    "text": "Adopted",
+    "x": 529,
+    "y": 74
+   }
+  }
+ ],
+ "arrows": [
+  {
+   "points": [
+    [
+     797,
+     216
+    ],
+    [
+     761,
+     216
+    ],
+    [
+     761,
+     150
+    ],
+    [
+     660,
+     150
+    ]
+   ],
+   "label": {
+    "text": "Asked for poem cards",
+    "x": 767,
+    "y": 158
+   }
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1172 286" width="1172" height="286" role="img" aria-label="Fujiwara no Sadaie's family tree" lang="en" class="fk-svg kd-svg" style="max-width:1758px;min-width:min(640px,1758px)" data-src="sr8oyk">
+<g class="fk-edges"><path d="M414 109V135M418 109V135" class="fk-edge fk-eq"/><path d="M600 159V185M604 159V185" class="fk-edge fk-eq"/><path d="M823.5 49V75M827.5 49V75" class="fk-edge fk-eq"/><path d="M1023.5 181V207M1027.5 181V207" class="fk-edge fk-eq"/><path d="M73 70H127" class="fk-edge"/><path d="M127 70H138" class="fk-edge"/><path d="M194 70H247" class="fk-edge"/><path d="M247 70H258" class="fk-edge"/><path d="M338 70H367" class="fk-edge"/><path d="M367 40V100" class="fk-edge"/><path d="M367 40H378" class="fk-edge"/><path d="M367 100H378" class="fk-edge"/><path d="M445 40H563" class="fk-edge"/><path d="M563 40H574" class="fk-edge"/><path d="M418 122H563" class="fk-edge"/><path d="M563 122V150" class="fk-edge"/><path d="M563 150H574" class="fk-edge"/><path d="M464 227H563" class="fk-edge"/><path d="M563 194V260" class="fk-edge"/><path d="M563 194H574" class="fk-edge"/><path d="M563 260H574" class="fk-edge"/><path d="M663 40H787" class="fk-edge"/><path d="M787 40H798" class="fk-edge"/><path d="M604 172H984" class="fk-edge"/><path d="M984 172H995" class="fk-edge"/><path d="M972 216H984" class="fk-edge"/><path d="M984 216H995" class="fk-edge"/><path d="M478 100L553 100L553 40" class="fk-edge is-dash"/><text class="fk-adopt" x="529" y="74">Adopted</text></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"><path d="M797 216L761 216L761 150L660 150" class="kd-arrow" marker-end="url(#kdArrowHead)"/><text class="kd-arrow-label" x="767" y="158">Asked for poem cards</text></g>
+<g>
+<g class="fk-node" transform="translate(16,70)" data-tip="&lt;h3&gt;Fujiwara no Nagaie&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1005–1064&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Acting Upper Counselor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Second Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Founder of the Mikohidari family&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="58" height="26"/><text class="fk-name" x="0" y="0.5">Nagaie</text></g><rect class="fk-sub-box" x="0" y="11" width="95" height="16" rx="8"/><text class="fk-sub" x="47.5" y="19.5">Mikohidari line</text></g>
+<g class="fk-node" transform="translate(141,70)" data-tip="&lt;h3&gt;Fujiwara no Tadaie&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Fujiwara no Nagaie&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;He held out his arm under the blind to Suō no Naishi, saying &quot;Use this as your pillow.&quot; Great-grandfather of Fujiwara no Sadaie&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="54" height="26"/><text class="fk-name" x="0" y="0.5">Tadaie</text></g></g>
+<g class="fk-node" transform="translate(261,70)" data-tip="&lt;h3&gt;Fujiwara no Toshitada&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Fujiwara no Tadaie&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;At the Horikawa-in love-letter contest of 1102, he sent Kii the poem &quot;Hito shirenu...&quot;. Grandfather of Fujiwara no Sadaie&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="78" height="26"/><text class="fk-name" x="0" y="0.5">Toshitada</text></g></g>
+<g class="fk-node" transform="translate(381,40)" data-tip="&lt;h3&gt;Shunkai&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;An ajari (high-ranking priest) of Daigo-ji. Elder or younger brother of Fujiwara no Toshinari, and Jakuren's father&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="65" height="26"/><text class="fk-name" x="0" y="0.5">Shunkai</text></g></g>
+<g class="fk-node is-poet" transform="translate(381,100)" data-tip="&lt;h3&gt;Fujiwara no Toshinari&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1114–1204&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Master of the Empress Dowager's Household&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Third Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 83, &quot;Yo no naka yo...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Master of the Empress Dowager's Household Toshinari&lt;/span&gt;&lt;/div&gt;" data-p="83"><a href="/83_en.html" aria-label="Fujiwara no Toshinari (Hyakunin Isshu Poem 83)"><rect class="fk-hit" x="-2" y="-13" width="98" height="26"/><text class="fk-name" x="0" y="0.5">Toshinari</text><circle class="fk-badge" cx="84" cy="0" r="10"/><text class="fk-badge-num" x="84" y="0.5">83</text></a></g>
+<g class="fk-node" transform="translate(381,144)" data-tip="&lt;h3&gt;Bifukumon-in no Kaga&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Wife of Fujiwara no Toshinari and mother of Fujiwara no Sadaie&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="171" height="26"/><text class="fk-name" x="0" y="0.5">Bifukumon-in no Kaga</text></g></g>
+<g class="fk-node" transform="translate(381,227)" data-tip="&lt;h3&gt;Saionji Sanemune&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1145–1214&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Palace Minister&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Second Rank&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="84" height="26"/><text class="fk-name" x="0" y="0.5">Sanemune</text></g></g>
+<g class="fk-node is-poet" transform="translate(577,40)" data-tip="&lt;h3&gt;Jakuren&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;c. 1139–1202&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Shunkai. Around 1150 he was adopted by his uncle, Fujiwara no Toshinari&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 87, &quot;Murasame no...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Reached Junior Fifth Rank, Upper Grade, as Junior Assistant Minister of Central Affairs, and became a monk in his thirties. In 1201 he became one of the compilers of the Shin Kokin Wakashū, but died the next year before it was finished&lt;/span&gt;&lt;/div&gt;" data-p="87"><a href="/87_en.html" aria-label="Jakuren (Hyakunin Isshu Poem 87)"><rect class="fk-hit" x="-2" y="-13" width="87" height="26"/><text class="fk-name" x="0" y="0.5">Jakuren</text><circle class="fk-badge" cx="73" cy="0" r="10"/><text class="fk-badge-num" x="73" y="0.5">87</text></a></g>
+<g class="fk-node is-poet is-self" transform="translate(577,150)" data-tip="&lt;h3&gt;Fujiwara no Sadaie&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1162–1241&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Acting Middle Counselor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Second Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 97, &quot;Konu hito wo...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Acting Middle Counselor Sadaie&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="84" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="78" height="26"/><text class="fk-name" x="0" y="0.5">Sadaie</text><circle class="fk-badge" cx="64" cy="0" r="10"/><text class="fk-badge-num" x="64" y="0.5">97</text></g></g>
+<g class="fk-node" transform="translate(577,194)" data-tip="&lt;h3&gt;Daughter of Fujiwara no Sanemune&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Wife of Fujiwara no Sadaie and mother of Fujiwara no Tameie&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="169" height="26"/><text class="fk-name" x="0" y="0.5">Sanemune's daughter</text></g></g>
+<g class="fk-node is-poet" transform="translate(577,260)" data-tip="&lt;h3&gt;Saionji Kintsune&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Fujiwara no Sanemune&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 96, &quot;Hana sasou...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;His wife was Ichijō Yoshiyasu's daughter. In the Jōkyū War he sent word of the uprising to the shogunate and was confined by Retired Emperor Go-Toba. He became Chancellor of the Realm in 1222. His grandson Yoritsune became the fourth shogun of the Kamakura shogunate&lt;/span&gt;&lt;/div&gt;" data-p="96"><a href="/96_en.html" aria-label="Saionji Kintsune (Hyakunin Isshu Poem 96)"><rect class="fk-hit" x="-2" y="-13" width="95" height="26"/><text class="fk-name" x="0" y="0.5">Kintsune</text><circle class="fk-badge" cx="81" cy="0" r="10"/><text class="fk-badge-num" x="81" y="0.5">96</text></a></g>
+<g class="fk-node" transform="translate(801,40)" data-tip="&lt;h3&gt;Daughter of Jakuren&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Wife of Fujiwara no Ietaka (there is a theory that Ietaka was Jakuren's son-in-law)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="148" height="26"/><text class="fk-name" x="0" y="0.5">Jakuren's daughter</text></g></g>
+<g class="fk-node is-poet" transform="translate(801,84)" data-tip="&lt;h3&gt;Fujiwara no Ietaka&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1158–1237&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Minister of the Imperial Household&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Second Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 98, &quot;Kaze soyogu...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Junior Second Rank Ietaka&lt;/span&gt;&lt;/div&gt;" data-p="98"><a href="/98_en.html" aria-label="Fujiwara no Ietaka (Hyakunin Isshu Poem 98)"><rect class="fk-hit" x="-2" y="-13" width="77" height="26"/><text class="fk-name" x="0" y="0.5">Ietaka</text><circle class="fk-badge" cx="63" cy="0" r="10"/><text class="fk-badge-num" x="63" y="0.5">98</text></a><rect class="fk-sub-box" x="0" y="11" width="173" height="16" rx="8"/><text class="fk-sub" x="86.5" y="19.5">Learned waka from Toshinari</text></g>
+<g class="fk-node" transform="translate(998,172)" data-tip="&lt;h3&gt;Fujiwara no Tameie&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Fujiwara no Sadaie&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="59" height="26"/><text class="fk-name" x="0" y="0.5">Tameie</text></g></g>
+<g class="fk-node" transform="translate(801,216)" data-tip="&lt;h3&gt;Utsunomiya Yoritsuna&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;His Buddhist name was Renshō. He is said to have asked Fujiwara no Sadaie to make poem cards (shikishi) to decorate the sliding doors of his Ogura mountain villa (Chūin villa) in Saga. His daughter was Fujiwara no Tameie's wife&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="172" height="26"/><text class="fk-name" x="0" y="0.5">Utsunomiya Yoritsuna</text></g></g>
+<g class="fk-node" transform="translate(998,216)" data-tip="&lt;h3&gt;Daughter of Utsunomiya Yoritsuna&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Wife of Fujiwara no Tameie&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="162" height="26"/><text class="fk-name" x="0" y="0.5">Yoritsuna's daughter</text></g></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+          <div class="kd-text">
+            <p style="width:100%; margin-bottom: 0.75em;">
+              Fujiwara no Sadaie's father was <a href="/83_en.html">Fujiwara no Toshinari</a> (Poem 83 of the Hyakunin Isshu). Toshinari was also a great master of waka and taught poetry to Retired Emperor Go-Toba, Princess Shikishi, Ietaka, and others. Sadaie and his father Toshinari belonged to a famous family of poets known as the Mikohidari family.</p>
+            <p style="width:100%;">
+              When Sadaie was about 74, Utsunomiya Yoritsuna, the father of his son's wife, asked him to choose and copy out one hundred poems to decorate the sliding doors of his country villa, and Sadaie is said to have compiled the <em>Hyakunin Shūka</em>. The <em>Hyakunin Shūka</em> became the original version of the Hyakunin Isshu.
+            </p>
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <dt id="honka">The Original Poem (a Long Poem in the <em>Man'yōshū</em>)</dt>
+            <dd>
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p style="line-height:2;">
+                    <ruby>名寸隅<rt>なきすみ</rt></ruby>の
+                    <ruby>船瀬<rt>ふなせ</rt></ruby><ruby>見<rt>み</rt></ruby>ゆる<br>
+                    <ruby>淡路島<rt>あわじしま</rt></ruby>
+                    <ruby>松帆<rt>まつほ</rt></ruby>の<ruby>浦<rt>うら</rt></ruby>に<br>
+                    <ruby>朝凪<rt>あさなぎ</rt></ruby>に
+                    <ruby>玉藻<rt>たまも</rt></ruby><ruby>刈<rt>か</rt></ruby>りつつ<br>
+                    <ruby>夕凪<rt>ゆうなぎ</rt></ruby>に
+                    <ruby>藻塩<rt>もしお</rt></ruby>焼きつつ<br>
+                    <ruby>海人娘子<rt>あまおとめ</rt></ruby>
+                    ありとは<ruby>聞<rt>き</rt></ruby>けど<br>
+                    <ruby>見<rt>み</rt></ruby>に<ruby>行<rt>ゆ</rt></ruby>かむ
+                    よしのなければ<br>
+                    ますらをの
+                    <ruby>心<rt>こころ</rt></ruby>はなしに<br>
+                    たわやめの
+                    <ruby>思<rt>おも</rt></ruby>ひたわみて<br>
+                    たもとほり
+                    われはそ<ruby>恋<rt>こ</rt></ruby>ふる<br>
+                    <ruby>船梶<rt>ふねかぢ</rt></ruby>をなみ
+                    <span class="shutten"><em>Man'yōshū</em>, Kasa no Kanamura</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 2; margin-top: 0.25em;">
+                    At Matsuho Bay on Awaji Island,<br>
+                    which can be seen from the harbor of Nakisumi,<br>
+                    I hear there is a fisher girl<br>
+                    who cuts seaweed in the morning calm<br>
+                    and burns seaweed for salt in the evening calm.<br>
+                    But I have no way to go and see her,<br>
+                    and with no manly courage,<br>
+                    my heart gives way like a frail woman's;<br>
+                    wandering, I can only long for her,<br>
+                    for I have neither boat nor oar.
+                  </p>
+                </q>
+              </div>
+            </dd>
+            <dt>The Poem That Made Go-Toba Notice His Talent</dt>
+            <dd>
+              Retired Emperor Go-Toba had poets each present a hundred poems in a project called the <em>Shōji Shodo Hyakushu</em> (the First Hundred-Poem Sequences of the Shōji Era), and Sadaie presented a hundred poems as well. The next poem is one of them and is also in the <em>Shin Kokin Wakashū</em>. It is said that Go-Toba discovered Sadaie's talent at this time and thought highly of him.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>駒<rt>こま</rt></ruby>とめて
+                    <ruby>袖<rt>そで</rt></ruby>うちはらふ
+                    かげもなし
+                    <br><ruby>佐野<rt>さの</rt></ruby>のわたりの
+                    <ruby>雪<rt>ゆき</rt></ruby>の<ruby>夕<rt>ゆう</rt></ruby><ruby>暮<rt>ぐ</rt></ruby>れ
+                    <span class="shutten"><em>Shin Kokin Wakashū</em>, Fujiwara no Sadaie</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height:1.7; margin-top: 0.25em;">There is no shelter where I can stop my horse and brush the snow from my sleeves: a snowy evening at the Sano ferry crossing.</p>
+                </q>
+              </div>
+            </dd>
+            <dt>The Poem That Angered Go-Toba</dt>
+            <dd>
+              Retired Emperor Go-Toba recognized Sadaie's talent, but once, because Sadaie wrote the next poem, he angered Go-Toba and was ordered to stay at home in disgrace. The poem was based on a poem by Sugawara no Michizane, and it expresses the frustration of Sadaie, a man eager for promotion, at not being promoted. Here it is together with the poem by Michizane that Sadaie based it on.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>道<rt>みち</rt></ruby>のべの
+                    <ruby>野原<rt>のはら</rt></ruby>の<ruby>柳<rt>やなぎ</rt></ruby>
+                    したもえぬ
+                    <br>あはれ<ruby>歎<rt>なげき</rt></ruby>の
+                    <ruby>煙<rt>けぶり</rt></ruby>くらべに
+                    <span class="shutten"><em>Shūi Gusō</em>, Fujiwara no Sadaie</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height:1.7; margin-top: 0.25em;">By the roadside, under the willows of the field, the grass is sprouting,<br
+                      class="br-pc"> as if competing with the smoke of grief smoldering in my heart.</p>
+                </q>
+              </div>
+              <p class="kome"><em>Shūi Gusō</em> is Sadaie's personal poetry collection.</p>
+              <p>This is the poem by Sugawara no Michizane that Sadaie based his poem on. Michizane wrote it when he arrived in Tsukushi (today's Fukuoka Prefecture), after being sent away because of Fujiwara no Tokihira's false accusations. There are several theories about why Go-Toba ordered Sadaie into disgrace, but if Sadaie wrote his poem based on this poem full of Michizane's bitterness, it is no wonder Go-Toba was angry.
+              </p>
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>夕<rt>ゆう</rt></ruby>されば
+                    <ruby>野<rt>の</rt></ruby>にも<ruby>山<rt>やま</rt></ruby>にも
+                    <ruby>立<rt>た</rt></ruby>つ<ruby>煙<rt>けぶり</rt></ruby>
+                    <br>なげきよりこそ
+                    <ruby>燃<rt>も</rt></ruby>えまさりけれ
+                    <span class="shutten"><em>Ōkagami</em>, Sugawara no Michizane</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height:1.7; margin-top: 0.25em;">When evening comes, smoke rises over the fields and the mountains.
+                    It burns all the more fiercely, fed by the wood of my grief (<em>nageki</em>, which also means "throwing on wood").</p>
+                </q>
+              </div>
+            </dd>
+            <dt>A Famous Poem with the World of <em>The Tale of Genji</em></dt>
+            <dd>
+              The next poem includes "<em>Yume no Ukihashi</em>" (The Floating Bridge of Dreams), the name of the last chapter of <em>The Tale of Genji</em>. It calls to mind the dawn sky seen after lovers part, and leaves a lingering feeling like the ending of a story. It is famous as one of Sadaie's masterpieces and is in the <em>Shin Kokin Wakashū</em>.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>春<rt>はる</rt></ruby>の<ruby>夜<rt>よ</rt></ruby>の
+                    <ruby>夢<rt>ゆめ</rt></ruby>の<ruby>浮橋<rt>うきはし</rt></ruby>
+                    とだえして
+                    <br><ruby>峰<rt>みね</rt></ruby>に<ruby>別<rt>わか</rt></ruby>るる
+                    <ruby>横雲<rt>よこぐも</rt></ruby>の<ruby>空<rt>そら</rt></ruby>
+                    <span class="shutten"><em>Shin Kokin Wakashū</em>, Fujiwara no Sadaie</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height:1.7; margin-top: 0.25em;">When the fleeting spring night's dream, like a floating bridge, broke off, what I saw was the dawn sky, where trailing clouds were pulling away from the mountain peak.</p>
+                </q>
+              </div>
+            </dd>
+            <dt>A Poem About the Autumn Leaves of Mount Ogura</dt>
+            <dd>
+              The next poem was written at the Ogura mountain villa, where Sadaie is said to have compiled the Hyakunin Isshu. Because of this poem, the villa also came to be called "Shigure-tei" (the Pavilion of Autumn Showers).
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>小倉山<rt>おぐらやま</rt></ruby>
+                    しぐるるころの
+                    <ruby>朝<rt>あさ</rt></ruby>な<ruby>朝<rt>あさ</rt></ruby>な
+                    <br><ruby>昨日<rt>きのう</rt></ruby>はうすき
+                    <ruby>四方<rt>しほう</rt></ruby>のもみぢ<ruby>葉<rt>ば</rt></ruby>
+                    <span class="shutten"><em>Shūi Gusō</em>, Fujiwara no Sadaie</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height:1.7; margin-top: 0.25em;">In the season of autumn showers on Mount Ogura, the leaves all around grow deeper in color day by day, and each morning I realize that yesterday's colors were paler than today's.</p>
+                </q>
+              </div>
+            </dd>
+            <dt><em>Ogura Shikishi</em> (Poem Cards)</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/ogurashikishi_large.webp' data-lightbox='sadaie' data-title='Ogura shikishi (a poem card)'>
+                  <img loading='lazy' src='../img/ogurashikishi.webp?20240421' alt='Ogura shikishi (a poem card)' width="540" height="640">
+                </a>
+                <figcaption><small>Source: ColBase (https://colbase.nich.go.jp/)</small></figcaption>
+              </figure>
+              <div>
+                <p>The <em>Ogura shikishi</em> are the poem cards on which Fujiwara no Sadaie, at the request of Utsunomiya Yoritsuna, chose one hundred poems and wrote them out himself.<br class="br-pc"> This card has the poem by <a
+                    href="/10_en.html">Semimaru</a>.</p>
+                <p>Sadaie's distinctive handwriting became popular in the Edo period. It is still popular today, and Adobe offers a font called "Kazuraki SP2N," inspired by his handwriting.</p>
+              </div>
+            </dd>
+            <dt><em>Meigetsuki</em></dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/m1_large.webp' data-lightbox='sadaie' data-title='The Crab Nebula'>
+                  <img loading='lazy' src='../img/m1.webp' alt='The Crab Nebula' width="640" height="718">
+                </a>
+                <figcaption><small>Photo of the Crab Nebula: Adobe Stock</small>
+                </figcaption>
+              </figure>
+              <div>
+                <p style="margin-bottom: 0.75em; width:100%;">
+                  The <em>Meigetsuki</em> is Fujiwara no Sadaie's diary. Sadaie himself called it "<em>Guki</em>" (my foolish record), but later generations named it <em>Meigetsuki</em>. It is kept by the Reizei family, Sadaie's descendants.</p>
+                <p style="margin-bottom: 0.75em; width:100%;">
+                  Sadaie kept the diary almost every day from age 19 until about age 74. He collected a wide range of knowledge, not only about poetry, and he also recorded astronomical events.
+                </p>
+                <p style="margin-bottom: 0.75em; width:100%;">
+                  For example, he recorded in detail a "supernova explosion" (today's Crab Nebula) that happened in 1054, before he was born, noting that at its brightest it could be seen even in the daytime, and that it stayed visible for about two years after it appeared. Such records are valuable for astronomy, and in 2019 the Astronomical Society of Japan named the <em>Meigetsuki</em> one of the first "Japan Astronomical Heritage" items.
+                </p>
+                <p>In addition, in 2000 the <em>Meigetsuki</em> was designated a National Treasure.</p>
+              </div>
+            </dd>
+            <dt><em>Teikakazura</em> (Asian Star Jasmine)</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/teikakazura_large.webp' data-lightbox='sadaie' data-title='Teikakazura (Asian star jasmine)'>
+                  <img loading='lazy' src='../img/teikakazura.webp?20240421' alt='Teikakazura (Asian star jasmine)' width="640" height="480">
+                </a>
+              </figure>
+              <div>
+                <p><em>Teikakazura</em> is an evergreen climbing shrub of the dogbane family. It is named after a legend that Fujiwara no Sadaie (whose name can also be read "Teika") loved Princess Shikishi deeply, and after her death became this plant and wound itself around her grave.</p>
+              </div>
+            </dd>
+            <dt>An Ukiyo-e Print by Katsushika Hokusai</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/hokusai_97_large.webp' data-lightbox='sadaie' data-title='Ukiyo-e by Katsushika Hokusai'>
+                  <img loading='lazy' src='../img/hokusai_97.webp' alt='Ukiyo-e by Katsushika Hokusai' width="640" height="444">
+                </a>
+                <figcaption><small><a
+                      href='https://commons.wikimedia.org/wiki/File:NDL1309000_%E7%99%BE%E4%BA%BA%E4%B8%80%E9%A6%96%E3%81%86%E3%81%AF%E3%81%8B%E7%B8%81%E8%AA%AC_%E6%A8%A9%E4%B8%AD%E7%B4%8D%E8%A8%80%E5%AE%9A%E5%AE%B6.jpg'
+                      target='_blank' rel='noopener'>National Diet Library, Public domain, via Wikimedia Commons</a></small>
+                </figcaption>
+              </figure>
+              <div>
+                <p>
+                  This is from <em>Hyakunin Isshu Uba ga Etoki</em> (The Hyakunin Isshu Explained by the Nurse) by Katsushika Hokusai, an ukiyo-e artist of the Edo period. The series was made so that a nurse could explain the poems of the Hyakunin Isshu simply, with pictures. People boiling down salt water, people carrying seawater in buckets, people piling up bundles of straw: Hokusai shows people making <em>moshio</em> (salt from seaweed). Just looking at the picture, you can feel how hard the real salt makers worked, but the nobles seem to have found it elegant. <a
+                    href="/14_en.html">The Minister of the Left of Kawara</a> even built a salt kiln at his own mansion and had seawater carried all the way from the coast to make salt for fun.</p>
+              </div>
+            </dd>
+            <dt>Utagawa Kuniyoshi's <em>Hyakunin Isshu no Uchi</em></dt>
+            <dd class='thumb-image2'>
+              <figure class='portrait'>
+                <a href='../img/kuniyoshi_97_large.webp' data-lightbox='sadaie' data-title="Utagawa Kuniyoshi's ukiyo-e of Sadaie's poem">
+                  <img loading='lazy' src='../img/kuniyoshi_97.webp' alt="Utagawa Kuniyoshi's ukiyo-e of Sadaie's poem" width="471" height="700">
+                </a>
+                <figcaption><a
+                    href='https://www.city.adachi.tokyo.jp/hakubutsukan/index.html'><small>Collection of the Adachi City Folk Museum</small></a>
+                </figcaption>
+              </figure>
+              <div>
+                <p>An ukiyo-e print by Utagawa Kuniyoshi, an ukiyo-e artist of the Edo period.<br class="br-pc"> In the Edo period, Sadaie's Hyakunin Isshu poem seems to have been known as a charm to bring back a lost cat.
+                </p>
+                <p>Instead of the poem's content, the print shows a family giving dried bonito flakes to a cat that has come home.</p>
+              </div>
+            </dd>
+            <dt>Enri-an (Shigure-tei)</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/enrian_large.webp' data-lightbox='sadaie' data-title='Enri-an (Shigure-tei), Ukyō Ward, Kyoto'>
+                  <img loading='lazy' src='../img/enrian.webp' alt='Enri-an (Shigure-tei)' width="640" height="427">
+                </a>
+                <figcaption><small>Photo: <a href='https://photo53.com/' target='_blank' rel='noopener'>Kyoto Free Photos</a></small>
+                </figcaption>
+              </figure>
+              <div>
+                <p>A temple in Ukyō Ward, Kyoto. Fujiwara no Sadaie's mountain villa is said to have stood here. However, there are several theories about the site of Shigure-tei, and it is also said to have been at Jōjakkō-ji or Nison-in. <a
+                    class='no-decoration'
+                    href='utamakura_en.html?lat=35.02306030659191&lng=135.67085303380034&zoom=15'>See it on the map</a></p>
+              </div>
+            </dd>
+            <dt>How to Read the Name 定家</dt>
+            <dd>The name 定家 is read both "Sadaie" and "Teika." Both readings are correct.<br class="br-pc"> Reading a name in the Chinese-style way, like "Teika," is called <em>yūsoku-yomi</em>.</dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -292,6 +866,7 @@
           <a class="da-link-btn" href="diagram_archtecture_en.html">Relationship Diagram</a>
           <a class="kt-link-btn" href="karuta-taisen-pro_en.html">Competitive Karuta Game</a>
           <a class="kts-link-btn" href="karuta-taisen_en.html">Online Karuta Battle</a>
+          <a class="kg-link-btn" href="kakekotoba-game-097_en.html"><span class="kg-link-btn-inner"><span class="kg-link-btn-face kg-link-btn-front">Spin &amp; Discover Kakekotoba!</span><span class="kg-link-btn-face kg-link-btn-back">Spin &amp; Discover Kakekotoba!</span></span></a>
         </dd>
       </dl>
     </div>
@@ -314,6 +889,11 @@
   <!-- Footer end -->
 
   <script src="../js/poems_en.js?20261008-01"></script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261009-02"></script>
+  <script src="../js/keizu-diagram.js?20261008-03"></script>
 
 </body>
 

@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-09T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -95,6 +95,9 @@
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
   <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/swiper-bundle.min.css">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -104,6 +107,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -281,6 +292,374 @@
       </dl>
     </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Councillor Masatsune's Family Tree and Relationship Chart</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 94.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+              <li><span class="fk-legend__dash"></span>Generations left out (other theories exist)</li>
+              <li><span class="fk-legend__eq">＝</span>Marriage</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Councillor Masatsune's family tree and relationship chart">
+            <script type="application/json">
+{
+ "lang": "en",
+ "tooltips": "fujiwara",
+ "nodes": [
+  {
+   "id": "yoshitomo",
+   "n": "源義朝",
+   "x": 16,
+   "y": 62
+  },
+  {
+   "id": "yoshitsune",
+   "n": "源義経",
+   "x": 231,
+   "y": 40
+  },
+  {
+   "id": "yoritomo",
+   "n": "源頼朝",
+   "x": 231,
+   "y": 84
+  },
+  {
+   "id": "yoriie",
+   "n": "源頼家",
+   "x": 448,
+   "y": 62
+  },
+  {
+   "id": "sanetomo",
+   "n": "源実朝",
+   "p": 93,
+   "x": 448,
+   "y": 106
+  },
+  {
+   "id": "yorisuke",
+   "n": "難波頼輔",
+   "key": "頼輔",
+   "x": 16,
+   "y": 190
+  },
+  {
+   "id": "yoritsune",
+   "n": "難波頼経",
+   "sub": "Exiled for being close to Minamoto no Yoshitsune",
+   "x": 231,
+   "y": 190
+  },
+  {
+   "id": "masatsune",
+   "n": "飛鳥井雅経",
+   "key": "雅経",
+   "p": 94,
+   "self": 1,
+   "x": 566,
+   "y": 190
+  },
+  {
+   "id": "hiromotojo",
+   "n": "広元の娘",
+   "x": 566,
+   "y": 254
+  },
+  {
+   "id": "masafusa",
+   "n": "権中納言匡房",
+   "key": "大江匡房",
+   "p": 73,
+   "x": 16,
+   "y": 300
+  },
+  {
+   "id": "hiromoto",
+   "n": "大江広元",
+   "x": 261,
+   "y": 300
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-masatsune",
+   "top": "masatsune",
+   "bottom": "hiromotojo"
+  }
+ ],
+ "kids": [
+  {
+   "from": "yoshitomo",
+   "to": [
+    "yoshitsune",
+    "yoritomo"
+   ]
+  },
+  {
+   "from": "yoritomo",
+   "to": [
+    "yoriie",
+    "sanetomo"
+   ]
+  },
+  {
+   "from": "yorisuke",
+   "to": [
+    "yoritsune"
+   ]
+  },
+  {
+   "from": "yoritsune",
+   "to": [
+    "masatsune"
+   ]
+  },
+  {
+   "from": "hiromoto",
+   "to": [
+    "hiromotojo"
+   ]
+  }
+ ],
+ "lines": [
+  {
+   "points": [
+    [
+     117,
+     300
+    ],
+    [
+     258,
+     300
+    ]
+   ],
+   "dash": true,
+   "label": {
+    "text": "2 generations left out",
+    "x": 187,
+    "y": 294
+   }
+  }
+ ],
+ "arrows": [
+  {
+   "points": [
+    [
+     572,
+     175
+    ],
+    [
+     572,
+     150
+    ],
+    [
+     253,
+     150
+    ],
+    [
+     253,
+     95
+    ]
+   ],
+   "label": {
+    "text": "Adopted (yūshi)",
+    "x": 271,
+    "y": 139
+   }
+  },
+  {
+   "points": [
+    [
+     594,
+     175
+    ],
+    [
+     594,
+     118
+    ]
+   ],
+   "label": {
+    "text": "Friends",
+    "x": 600,
+    "y": 148
+   }
+  },
+  {
+   "points": [
+    [
+     666,
+     175
+    ],
+    [
+     666,
+     62
+    ],
+    [
+     601,
+     62
+    ]
+   ],
+   "label": {
+    "text": "Friends",
+    "x": 672,
+    "y": 110
+   }
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 772 326" width="772" height="326" role="img" aria-label="Councillor Masatsune's family tree and relationship chart" lang="en" class="fk-svg kd-svg" style="max-width:1158px;min-width:min(640px,1158px)" data-src="rvepfx">
+<g class="fk-edges"><path d="M605.5 199V245M609.5 199V245" class="fk-edge fk-eq"/><path d="M204 62H217" class="fk-edge"/><path d="M217 40V84" class="fk-edge"/><path d="M217 40H228" class="fk-edge"/><path d="M217 84H228" class="fk-edge"/><path d="M409 84H434" class="fk-edge"/><path d="M434 62V106" class="fk-edge"/><path d="M434 62H445" class="fk-edge"/><path d="M434 106H445" class="fk-edge"/><path d="M138 190H217" class="fk-edge"/><path d="M217 190H228" class="fk-edge"/><path d="M360 190H552" class="fk-edge"/><path d="M552 190H563" class="fk-edge"/><path d="M384 300H552" class="fk-edge"/><path d="M552 254V300" class="fk-edge"/><path d="M552 254H563" class="fk-edge"/><path d="M117 300L258 300" class="fk-edge is-dash"/><text class="fk-adopt" x="187" y="294">2 generations left out</text></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"><path d="M572 175L572 150L253 150L253 95" class="kd-arrow" marker-end="url(#kdArrowHead)"/><text class="kd-arrow-label" x="271" y="139">Adopted (yūshi)</text><path d="M594 175L594 118" class="kd-arrow" marker-end="url(#kdArrowHead)"/><text class="kd-arrow-label" x="600" y="148">Friends</text><path d="M666 175L666 62L601 62" class="kd-arrow" marker-end="url(#kdArrowHead)"/><text class="kd-arrow-label" x="672" y="110">Friends</text></g>
+<g>
+<g class="fk-node" transform="translate(16,62)" data-tip="&lt;h3&gt;Minamoto no Yoshitomo&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1123–1160&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Minamoto no Yoritomo, Yoshitsune, and Bōmon-hime&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="189" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Yoshitomo</text></g></g>
+<g class="fk-node" transform="translate(231,40)" data-tip="&lt;h3&gt;Minamoto no Yoshitsune&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Minamoto no Yoshitomo; Yoritomo's younger brother&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Came into conflict with Yoritomo&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="192" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Yoshitsune</text></g></g>
+<g class="fk-node" transform="translate(231,84)" data-tip="&lt;h3&gt;Minamoto no Yoritomo&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1147–1199&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Second Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Minamoto no Yoshitomo&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;First shogun of the Kamakura shogunate&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="179" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Yoritomo</text></g></g>
+<g class="fk-node" transform="translate(448,62)" data-tip="&lt;h3&gt;Minamoto no Yoriie&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Minamoto no Yoritomo and Hōjō Masako&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Second shogun of the Kamakura shogunate. In 1203 he lost his post as shogun and was driven out to Izu. Kugyō's father. He was a close friend of Masatsune&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="152" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Yoriie</text></g></g>
+<g class="fk-node is-poet" transform="translate(448,106)" data-tip="&lt;h3&gt;Minamoto no Sanetomo&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Fourth son of Minamoto no Yoritomo; second son of Hōjō Masako&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 93, &quot;Yo no naka wa...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Became shogun at 12. The first samurai to become Minister of the Right. Studied waka with Fujiwara no Sadaie. Murdered by Kugyō in 1219, at 28. In the Hyakunin Isshu he is called the Minister of the Right of Kamakura&lt;/span&gt;&lt;/div&gt;" data-p="93"><a href="/93_en.html" aria-label="Minamoto no Sanetomo (Hyakunin Isshu Poem 93)"><rect class="fk-hit" x="-2" y="-13" width="209" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Sanetomo</text><circle class="fk-badge" cx="195" cy="0" r="10"/><text class="fk-badge-num" x="195" y="0.5">93</text></a></g>
+<g class="fk-node" transform="translate(16,190)" data-tip="&lt;h3&gt;Nanba Yorisuke&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1112–1186&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Minister of Justice&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Third Rank&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="123" height="26"/><text class="fk-name" x="0" y="0.5">Nanba Yorisuke</text></g></g>
+<g class="fk-node" transform="translate(231,190)" data-tip="&lt;h3&gt;Nanba Yoritsune&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Minister of Justice&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Nanba Yorisuke&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;When Minamoto no Yoritomo and his brother Yoshitsune came into conflict, he was exiled because he was close to Yoshitsune. Masatsune's father&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="130" height="26"/><text class="fk-name" x="0" y="0.5">Nanba Yoritsune</text></g><rect class="fk-sub-box" x="0" y="11" width="283" height="16" rx="8"/><text class="fk-sub" x="141.5" y="19.5">Exiled for being close to Minamoto no Yoshitsune</text></g>
+<g class="fk-node is-poet is-self" transform="translate(566,190)" data-tip="&lt;h3&gt;Asukai Masatsune&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1170–1221&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Councillor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Third Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 94, &quot;Miyoshino no...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Councillor Masatsune. Founder of the Asukai family&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="117" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="111" height="26"/><text class="fk-name" x="0" y="0.5">Masatsune</text><circle class="fk-badge" cx="97" cy="0" r="10"/><text class="fk-badge-num" x="97" y="0.5">94</text></g></g>
+<g class="fk-node" transform="translate(566,254)" data-tip="&lt;h3&gt;Daughter of Ōe no Hiromoto&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Principal wife of Asukai Masatsune&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="161" height="26"/><text class="fk-name" x="0" y="0.5">Hiromoto's daughter</text></g></g>
+<g class="fk-node is-poet" transform="translate(16,300)" data-tip="&lt;h3&gt;Ōe no Masafusa&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1041–1111&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Acting Middle Counselor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Ōe no Narihira; great-grandson of Ōe no Masahira and Akazome Emon&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 73, &quot;Takasago no...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Acting Middle Counselor Masafusa&lt;/span&gt;&lt;/div&gt;" data-p="73"><a href="/73_en.html" aria-label="Ōe no Masafusa (Hyakunin Isshu Poem 73)"><rect class="fk-hit" x="-2" y="-13" width="100" height="26"/><text class="fk-name" x="0" y="0.5">Masafusa</text><circle class="fk-badge" cx="86" cy="0" r="10"/><text class="fk-badge-num" x="86" y="0.5">73</text></a></g>
+<g class="fk-node" transform="translate(261,300)" data-tip="&lt;h3&gt;Ōe no Hiromoto&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Ōe family tree of the Sonpi Bunmyaku, he is the son of Ōe no Koremitsu (Masafusa's grandson) and the adopted son of Nakahara no Hirosue; some family trees make him the son of Fujiwara no Mitsuyoshi&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;A leading official of the Kamakura shogunate&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="124" height="26"/><text class="fk-name" x="0" y="0.5">Ōe no Hiromoto</text></g></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+          <div class="kd-text">
+            <p style="width:100%; margin-bottom: 0.75em;">
+              Fujiwara no Masatsune was a master of <em>kemari</em> (court football) and is regarded as the founder of the Asukai school of <em>kemari</em>. His grandfather, Fujiwara no Yorisuke, is regarded as the founder of the Nanba and Asukai families, both families of <em>kemari</em>.
+            </p>
+            <p style="width:100%; margin-bottom: 0.75em;">
+              When Minamoto no Yoritomo and his brother Yoshitsune came into conflict, Masatsune's father, Nanba Yoritsune, was exiled because he was close to Yoshitsune. Masatsune too was punished along with him and taken to the Kamakura shogunate, but Yoritomo, the first shogun, thought highly of his talent for waka and <em>kemari</em>. This led Masatsune to form close ties with the second shogun, Minamoto no Yoriie, and the third shogun, Minamoto no Sanetomo.
+            </p>
+            <p style="width:100%;">Masatsune also became Minamoto no Yoritomo's adopted son (<em>yūshi</em>), and through this connection he married the daughter of Ōe no Hiromoto, a powerful leading official of the Kamakura shogunate.</p>
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <dt>Beating Cloth</dt>
+            <dd>
+              <div class="img-p">
+                <figure class='portrait'>
+                  <a href='../img/Fulling_Cloth_large.webp' data-lightbox='masatsune'
+                    data-title='Fulling Cloth at the Jewel River in Settsu Province, showing cloth being beaten'>
+                    <img loading='lazy' src='../img/Fulling_Cloth.webp' alt='Women beating cloth'
+                      style="min-width:272px; height:auto;" width="450" height="599">
+                  </a>
+                  <figcaption><a
+                      href='https://commons.wikimedia.org/wiki/File:K%C5%8Drom%C5%8D_Uchi_Tamagawa-Fulling_Cloth_at_the_Jewel_River_(Kinuta_no_Tamagawa)_MET_DP121345.jpg'
+                      target='_blank' rel='noopener'><small>Suzuki Harunobu, CC0, via Wikimedia Commons</small></a></figcaption>
+                </figure>
+                <div>
+                  <p>This ukiyo-e print, <em>Fulling Cloth at the Jewel River in Settsu Province</em> (<em>Tōi no Tamagawa, Settsu no meisho</em>), is by Suzuki Harunobu (1724–1770), an ukiyo-e artist of the Edo period. It shows cloth being beaten with a wooden mallet (<em>kinuta</em>).</p>
+                </div>
+              </div>
+            </dd>
+            <dt id="rihaku">Li Bai's Chinese Poem</dt>
+            <dd>
+              <p>Masatsune is thought to have based his poem on the third of Li Bai's four "Songs of Midnight in the Wu Style" (<em>Ziye Wu Ge</em>).
+              </p>
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Chinese</h3>
+                  <p style="line-height: 2; letter-spacing: 12px;">
+                    <ruby>長安<rt>ちょうあん</rt></ruby><ruby>一片月<rt>いっぺんのつき</rt></ruby>、
+                    <br><ruby>万戸<rt>ばんこ</rt></ruby><ruby>擣衣声<rt>ころもをうつのこえ</rt></ruby>。
+                    <br><ruby>秋風<rt>しゅうふう</rt></ruby><ruby>吹<rt>ふいて</rt></ruby><ruby>不尽<rt>つきず</rt></ruby>、
+                    <br><ruby>総<rt>すべて</rt></ruby><ruby>是<rt>これ</rt></ruby><ruby>玉關情<rt>ぎょっかんのじょう</rt></ruby>。
+                    <br><ruby>何日<rt>いずれのひか</rt></ruby><ruby>平胡虜<rt>こりょをたいらげて</rt></ruby>、
+                    <br><ruby>良人<rt>りょうにん</rt></ruby><ruby>罷遠征<rt>えんせいをやめん</rt></ruby>。
+                    <span class="shutten" style="letter-spacing:normal;"><em>Ziye Wu Ge</em>, Li Bai</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 style="margin-top: 0.5em;" class="was-h4">In English</h3>
+                  <p style="line-height:1.9">Over Chang'an hangs a sliver of moon,
+                    <br class="br-pc">and from every house comes the sound of beating cloth.
+                    <br class="br-pc">The autumn wind blows on without end,
+                    <br class="br-pc">and all of it brings thoughts of husbands serving at the Jade Gate Pass.
+                    <br class="br-pc">When will our husbands defeat the northern tribes,
+                    <br class="br-pc">end their long campaign, and come home?
+                  </p>
+                </q>
+              </div>
+            </dd>
+            <dt>Masatsune's Best-Known Poem</dt>
+            <dd>
+              The next poem was written on the theme "falling leaves" at the Kasuga Shrine poetry contest. It is known as Masatsune's best work.
+              <br class="br-pc">"<em>Katsura</em>" is a <em>kakekotoba</em> (a word with two meanings) for both Mount Katsuragi and <em>masaki no kazura</em> (Asian star jasmine).
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>移<rt>うつ</rt></ruby>りゆく
+                    <ruby>雲<rt>くも</rt></ruby>に<ruby>嵐<rt>あらし</rt></ruby>の
+                    <ruby>声<rt>こえ</rt></ruby>すなり
+                    <br><ruby>散<rt>ち</rt></ruby>るか<ruby>正木<rt>まさき</rt></ruby>の
+                    <ruby>葛城<rt>かつらぎ</rt></ruby>の<ruby>山<rt>やま</rt></ruby>
+                    <span class="shutten"><em>Shin Kokin Wakashū</em>, Fujiwara no Masatsune</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height:1.7; margin-top: 0.25em;">Watching the clouds race by, I seem to hear the sound of a storm. Are the leaves of the star jasmine falling on Mount Katsuragi?</p>
+                </q>
+              </div>
+            </dd>
+            <dt id="shiramine">Shiramine Jingū Shrine</dt>
+            <dd class='thumb-image2'>
+              <div class="swiper" style="min-width: 0;">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img src="/img/shiramine_01_small.webp" alt="Shiramine Jingū Shrine, photo 1" width="800" height="600">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="/img/shiramine_02_small.webp" alt="Shiramine Jingū Shrine, photo 2" width="800" height="600">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="/img/shiramine_03_small.webp" alt="Shiramine Jingū Shrine, photo 3" width="800" height="600">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="/img/shiramine_04_small.webp" alt="Shiramine Jingū Shrine, photo 4" width="800" height="600">
+                  </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+              </div>
+              <div>
+                <p>
+                  Shiramine Jingū stands on the site of the Asukai family's mansion. It is connected with the Asukai family, known for waka and <em>kemari</em>, and so with two Hyakunin Isshu poets: Asukai Masatsune (Poem 94) and <a href="/77_en.html">Retired Emperor Sutoku</a> (Poem 77), the shrine's deity. <a class='no-decoration' href='utamakura_en.html?lat=35.03011084695753&lng=135.75316203458888&zoom=15'>See it on the map</a>
+                </p>
+                <p style="text-align:right; font-size:0.9em">(Photos taken August 8, 2026)</p>
+              </div>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -312,6 +691,32 @@
   <!-- Footer end -->
 
   <script src="../js/poems_en.js?20261008-01"></script>
+  <script src="../js/swiper-bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      new Swiper('.swiper', {
+        loop: true,
+        speed: 1500,
+        autoplay: {
+          delay: 2000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+    });
+  </script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261009-02"></script>
+  <script src="../js/keizu-diagram.js?20261008-03"></script>
 
 </body>
 

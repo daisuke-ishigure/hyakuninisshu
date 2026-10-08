@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-09T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -94,6 +94,8 @@
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
   <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -103,6 +105,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -272,6 +282,334 @@
       </dl>
     </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Attendant to Empress Kōka's Relationship Chart</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 88.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__tenno">Brown text</span>Emperor</li>
+              <li><span class="fk-legend__tno" aria-hidden="true"></span>Emperor's number in the line of succession</li>
+              <li><span class="fk-legend__kanpaku">Purple text</span>Became Regent or Kampaku</li>
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+              <li><span class="fk-legend__eq">＝</span>Marriage</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Attendant to Empress Kōka's relationship chart">
+            <script type="application/json">
+{
+ "lang": "en",
+ "tooltips": "fujiwara",
+ "nodes": [
+  {
+   "id": "morizanejo",
+   "n": "盛実の娘",
+   "x": 16,
+   "y": 40
+  },
+  {
+   "id": "tadazane",
+   "n": "忠実",
+   "kan": 1,
+   "x": 16,
+   "y": 84
+  },
+  {
+   "id": "shishi",
+   "n": "源師子",
+   "x": 16,
+   "y": 128
+  },
+  {
+   "id": "yorinaga",
+   "n": "頼長",
+   "sub": "Clashed with his brother Tadamichi",
+   "x": 201,
+   "y": 62
+  },
+  {
+   "id": "muneko",
+   "n": "藤原宗子",
+   "x": 201,
+   "y": 120
+  },
+  {
+   "id": "tadamichi",
+   "n": "忠通",
+   "kan": 1,
+   "p": 76,
+   "x": 201,
+   "y": 164
+  },
+  {
+   "id": "kaga",
+   "n": "加賀局",
+   "x": 201,
+   "y": 208
+  },
+  {
+   "id": "hyoe",
+   "n": "兵衛佐局",
+   "x": 437,
+   "y": 46
+  },
+  {
+   "id": "sutoku",
+   "n": "崇徳",
+   "k": 1,
+   "t": 75,
+   "p": 77,
+   "x": 437,
+   "y": 98
+  },
+  {
+   "id": "kokamonin",
+   "n": "皇嘉門院",
+   "x": 437,
+   "y": 142
+  },
+  {
+   "id": "jien",
+   "n": "慈円",
+   "p": 95,
+   "x": 437,
+   "y": 186
+  },
+  {
+   "id": "kanezane",
+   "n": "九条兼実",
+   "key": "兼実",
+   "kan": 1,
+   "x": 437,
+   "y": 230
+  },
+  {
+   "id": "kaneko",
+   "n": "藤原兼子",
+   "x": 437,
+   "y": 274
+  },
+  {
+   "id": "shigehito",
+   "n": "重仁親王",
+   "x": 659,
+   "y": 63
+  },
+  {
+   "id": "betto",
+   "n": "皇嘉門院別当",
+   "p": 88,
+   "x": 659,
+   "y": 142,
+   "self": 1,
+   "sub": "Joined Kanezane's poetry contests"
+  },
+  {
+   "id": "yoshitsune",
+   "n": "九条良経",
+   "key": "良経",
+   "p": 91,
+   "x": 659,
+   "y": 252
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-morizane",
+   "top": "morizanejo",
+   "bottom": "tadazane"
+  },
+  {
+   "id": "c-shishi",
+   "top": "tadazane",
+   "bottom": "shishi"
+  },
+  {
+   "id": "c-muneko",
+   "top": "muneko",
+   "bottom": "tadamichi"
+  },
+  {
+   "id": "c-kaga",
+   "top": "tadamichi",
+   "bottom": "kaga"
+  },
+  {
+   "id": "c-hyoe",
+   "top": "hyoe",
+   "bottom": "sutoku"
+  },
+  {
+   "id": "c-kokamonin",
+   "top": "sutoku",
+   "bottom": "kokamonin"
+  },
+  {
+   "id": "c-kaneko",
+   "top": "kanezane",
+   "bottom": "kaneko"
+  }
+ ],
+ "kids": [
+  {
+   "from": "c-morizane",
+   "to": [
+    "yorinaga"
+   ]
+  },
+  {
+   "from": "c-shishi",
+   "to": [
+    "tadamichi"
+   ]
+  },
+  {
+   "from": "c-muneko",
+   "to": [
+    "kokamonin"
+   ]
+  },
+  {
+   "from": "c-kaga",
+   "to": [
+    "jien",
+    "kanezane"
+   ]
+  },
+  {
+   "from": "c-hyoe",
+   "to": [
+    "shigehito"
+   ]
+  },
+  {
+   "from": "c-kaneko",
+   "to": [
+    "yoshitsune"
+   ]
+  }
+ ],
+ "arrows": [
+  {
+   "points": [
+    [
+     652,
+     142
+    ],
+    [
+     530,
+     142
+    ]
+   ],
+   "label": {
+    "text": "Served",
+    "x": 576,
+    "y": 129
+   }
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 905 300" width="905" height="300" role="img" aria-label="Attendant to Empress Kōka's relationship chart" lang="en" class="fk-svg kd-svg" style="max-width:1358px;min-width:min(640px,1358px)" data-src="o8kh36">
+<g class="fk-edges"><path d="M50 49V75M54 49V75" class="fk-edge fk-eq"/><path d="M50 93V119M54 93V119" class="fk-edge fk-eq"/><path d="M230 129V155M234 129V155" class="fk-edge fk-eq"/><path d="M238 173V199M242 173V199" class="fk-edge fk-eq"/><path d="M461.5 55V89M465.5 55V89" class="fk-edge fk-eq"/><path d="M461.5 107V133M465.5 107V133" class="fk-edge fk-eq"/><path d="M463.5 239V265M467.5 239V265" class="fk-edge fk-eq"/><path d="M54 62H187" class="fk-edge"/><path d="M187 62H198" class="fk-edge"/><path d="M54 106H187" class="fk-edge"/><path d="M187 106V164" class="fk-edge"/><path d="M187 164H198" class="fk-edge"/><path d="M234 142H423" class="fk-edge"/><path d="M423 142H434" class="fk-edge"/><path d="M242 186H423" class="fk-edge"/><path d="M423 186V230" class="fk-edge"/><path d="M423 186H434" class="fk-edge"/><path d="M423 230H434" class="fk-edge"/><path d="M465.5 63H645" class="fk-edge"/><path d="M645 63H656" class="fk-edge"/><path d="M467.5 252H645" class="fk-edge"/><path d="M645 252H656" class="fk-edge"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"><path d="M652 142L530 142" class="kd-arrow" marker-end="url(#kdArrowHead)"/><text class="kd-arrow-label" x="576" y="129">Served</text></g>
+<g>
+<g class="fk-node" transform="translate(16,40)" data-tip="&lt;h3&gt;Daughter of Fujiwara no Morizane&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Wife of Fujiwara no Tadazane and mother of Yorinaga&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="159" height="26"/><text class="fk-name" x="0" y="0.5">Morizane's daughter</text></g></g>
+<g class="fk-node is-kanpaku" transform="translate(16,84)" data-tip="&lt;h3&gt;Fujiwara no Tadazane&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1078–1162&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Regent, Kampaku (chief adviser), and Chancellor of the Realm&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior First Rank&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="76" height="26"/><text class="fk-name" x="0" y="0.5">Tadazane</text></g></g>
+<g class="fk-node" transform="translate(16,128)" data-tip="&lt;h3&gt;Minamoto no Shishi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Minamoto no Akifusa&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Wife of Fujiwara no Tadazane and mother of Tadamichi&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="153" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Shishi</text></g></g>
+<g class="fk-node" transform="translate(201,62)" data-tip="&lt;h3&gt;Fujiwara no Yorinaga&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Fujiwara no Tadazane and Fujiwara no Morizane's daughter; Tadamichi's younger half-brother&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;For a time he was Tadamichi's adopted son, but the adoption was cancelled and the two became rivals. He was wounded in the Hōgen Rebellion of 1156 and died&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="72" height="26"/><text class="fk-name" x="0" y="0.5">Yorinaga</text></g><rect class="fk-sub-box" x="0" y="11" width="206" height="16" rx="8"/><text class="fk-sub" x="103" y="19.5">Clashed with his brother Tadamichi</text></g>
+<g class="fk-node" transform="translate(201,120)" data-tip="&lt;h3&gt;Fujiwara no Muneko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Fujiwara no Munemichi&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Principal wife of Fujiwara no Tadamichi and mother of Kōkamon-in (Seishi)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="66" height="26"/><text class="fk-name" x="0" y="0.5">Muneko</text></g></g>
+<g class="fk-node is-kanpaku is-poet" transform="translate(201,164)" data-tip="&lt;h3&gt;Fujiwara no Tadamichi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1097–1164&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Regent, Kampaku (chief adviser), and Chancellor of the Realm&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior First Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 76, &quot;Wata no hara kogiidete...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called the Lay Novice of Hosshō-ji Temple, former Kampaku and Chancellor of the Realm&lt;/span&gt;&lt;/div&gt;" data-p="76"><a href="/76_en.html" aria-label="Fujiwara no Tadamichi (Hyakunin Isshu Poem 76)"><rect class="fk-hit" x="-2" y="-13" width="106" height="26"/><text class="fk-name" x="0" y="0.5">Tadamichi</text><circle class="fk-badge" cx="92" cy="0" r="10"/><text class="fk-badge-num" x="92" y="0.5">76</text></a></g>
+<g class="fk-node" transform="translate(201,208)" data-tip="&lt;h3&gt;Kaga no Tsubone&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Fujiwara no Nakamitsu&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;A lady-in-waiting in Fujiwara no Tadamichi's household. With Tadamichi she had Kujō Kanezane and Jien&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="132" height="26"/><text class="fk-name" x="0" y="0.5">Kaga no Tsubone</text></g></g>
+<g class="fk-node" transform="translate(437,46)" data-tip="&lt;h3&gt;Hyōe no Suke no Tsubone&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Adopted daughter of Minamoto no Yukimune&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;A consort of Emperor Sutoku and mother of Prince Shigehito&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="196" height="26"/><text class="fk-name" x="0" y="0.5">Hyōe no Suke no Tsubone</text></g></g>
+<g class="fk-node is-tenno is-poet" transform="translate(437,98)" data-tip="&lt;h3&gt;Emperor Sutoku&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;75th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1119–1164&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1123–1142&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 77, &quot;Se wo hayami...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Retired Emperor Sutoku. He lost the Hōgen Rebellion (1156) and was exiled to Sanuki&lt;/span&gt;&lt;/div&gt;" data-p="77"><a href="/77_en.html" aria-label="Emperor Sutoku (Hyakunin Isshu Poem 77)"><rect class="fk-hit" x="-2" y="-13" width="81" height="26"/><text class="fk-name" x="0" y="0.5">Sutoku</text><circle class="fk-badge" cx="67" cy="0" r="10"/><text class="fk-badge-num" x="67" y="0.5">77</text></a><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">75</text></g>
+<g class="fk-node" transform="translate(437,142)" data-tip="&lt;h3&gt;Kōkamon-in&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Fujiwara no Tadamichi and Fujiwara no Muneko (Fujiwara no Seishi)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Empress (chūgū) of Emperor Sutoku. The Attendant to Empress Kōka served her&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="95" height="26"/><text class="fk-name" x="0" y="0.5">Kōkamon-in</text></g></g>
+<g class="fk-node is-poet" transform="translate(437,186)" data-tip="&lt;h3&gt;Jien&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1155–1225&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Fujiwara no Tadamichi; his mother was Kaga no Tsubone. Younger brother of Kujō Kanezane (same mother)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 95, &quot;Ōkenaku...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Became a guardian monk (gojisō) in 1192 and served four times as head priest of the Tendai school. Wrote the Gukanshō&lt;/span&gt;&lt;/div&gt;" data-p="95"><a href="/95_en.html" aria-label="Jien (Hyakunin Isshu Poem 95)"><rect class="fk-hit" x="-2" y="-13" width="57" height="26"/><text class="fk-name" x="0" y="0.5">Jien</text><circle class="fk-badge" cx="43" cy="0" r="10"/><text class="fk-badge-num" x="43" y="0.5">95</text></a></g>
+<g class="fk-node is-kanpaku" transform="translate(437,230)" data-tip="&lt;h3&gt;Kujō Kanezane&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1149–1207&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Regent, Kampaku (chief adviser), and Chancellor of the Realm&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior First Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Founder of the Kujō family&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="77" height="26"/><text class="fk-name" x="0" y="0.5">Kanezane</text></g></g>
+<g class="fk-node" transform="translate(437,274)" data-tip="&lt;h3&gt;Fujiwara no Kaneko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Fujiwara no Sueyuki&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Principal wife of Kujō Kanezane and mother of Kujō Yoshitsune&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="61" height="26"/><text class="fk-name" x="0" y="0.5">Kaneko</text></g></g>
+<g class="fk-node" transform="translate(659,63)" data-tip="&lt;h3&gt;Prince Shigehito&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1140–1162&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;First son of Emperor Sutoku; his mother was Hyōe no Suke no Tsubone&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;After Emperor Konoe died, he was seen as the most likely heir, but Emperor Go-Shirakawa took the throne instead&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="126" height="26"/><text class="fk-name" x="0" y="0.5">Prince Shigehito</text></g></g>
+<g class="fk-node is-poet is-self" transform="translate(659,142)" data-tip="&lt;h3&gt;Attendant to Empress Kōka&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Minamoto no Toshitaka&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 88, &quot;Naniwae no...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Served Kōkamon-in (Fujiwara no Seishi), empress of Emperor Sutoku. She left poems at events connected with Kujō Kanezane, such as the Poetry Contest at the Home of Minister of the Right Kanezane in 1175&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="240" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="234" height="26"/><text class="fk-name" x="0" y="0.5">Attendant to Empress Kōka</text><circle class="fk-badge" cx="220" cy="0" r="10"/><text class="fk-badge-num" x="220" y="0.5">88</text></g><rect class="fk-sub-box" x="0" y="11" width="201" height="16" rx="8"/><text class="fk-sub" x="100.5" y="19.5">Joined Kanezane's poetry contests</text></g>
+<g class="fk-node is-poet" transform="translate(659,252)" data-tip="&lt;h3&gt;Kujō Yoshitsune&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1169–1206&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Regent, Nairan, and Chancellor of the Realm&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior First Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 91, &quot;Kirigirisu...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called the Gokyōgoku Regent and former Chancellor of the Realm&lt;/span&gt;&lt;/div&gt;" data-p="91"><a href="/91_en.html" aria-label="Kujō Yoshitsune (Hyakunin Isshu Poem 91)"><rect class="fk-hit" x="-2" y="-13" width="112" height="26"/><text class="fk-name" x="0" y="0.5">Yoshitsune</text><circle class="fk-badge" cx="98" cy="0" r="10"/><text class="fk-badge-num" x="98" y="0.5">91</text></a></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+          <div class="kd-text">
+            <p style="width:100%; margin-bottom:0.5em;">
+              The poet served Kōkamon-in, the daughter of Fujiwara no Tadamichi.
+            </p>
+            <p style="width:100%;">Because Kōkamon-in's younger half-brother was Kujō Kanezane, the poet often took part in Kanezane's poetry gatherings and became well known as a poet.
+            </p>
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <dt>What Is "Ashi no Fushi"?</dt>
+            <dd class='thumb-image30'>
+              <figure class='portrait'>
+                <a href='../img/ashi_large.webp?ver04' data-lightbox='betto' data-title='Ashi (common reed)'>
+                  <img loading='lazy' src='/img/ashi.webp?ver04' alt='Ashi (common reed)' width="380" height="640">
+                </a>
+              </figure>
+              <div>
+                <p style="width:100%; margin-bottom:0.75em;"><em>Ashi</em> (also called <em>yoshi</em>) is the common reed, a plant of the grass family that grows by the water. Its stem is thin and has joints (<em>fushi</em>) like bamboo.<br
+                    class="br-pc"> It sprouts in late April and grows very fast until about June, and its stem can reach 3 m.<br class="br-pc"> Its underground stems spread sideways, so it grows in large clumps.</p>
+                <p style="width:100%; margin-bottom:0.75em;"><em>Fushi no ma</em>, "the space between the joints," is used as an image of something very short.<br
+                    class="br-pc"> Naniwa was famous for its reeds and appears in many poems.</p>
+                <p style="width:100%; margin-bottom:0.75em;">
+                  When you look at a real reed, the space between the joints does not seem short. One theory says that the phrase stands for "a short time" because a reed grows so quickly, adding joint after joint to its stem.</p>
+              </div>
+            </dd>
+            <dt><em>Miotsukushi</em> (Channel Markers)</dt>
+            <dd class='thumb-image2'>
+              <figure class='portrait'>
+                <a href='../img/image_miotsukushi_large.webp' data-lightbox='betto' data-title='An image of miotsukushi'>
+                  <img src='../img/image_miotsukushi.webp' alt='An image of miotsukushi (channel markers)' width="447" height="640">
+                </a>
+              </figure>
+              <div style="display:flex; flex-direction:column; gap:1em;">
+                <p style="width:100%;">
+                  <em>Miotsukushi</em> are posts set in shallow waters where ships might run aground, to show where the water is deep enough for ships to pass.
+                  At Naniwa, the mouth of the Yodo River spread out into many shallows that made sailing difficult, so the <em>miotsukushi</em> of Naniwa were famous.
+                  <br class="br-pc"> The word comes from <em>mio-tsu-kushi</em>, "posts of the <em>mio</em>." <em>Mio</em> means the same as <ruby>水脈<rt>みお</rt></ruby>: the line where water flows in the sea or a river. In <em>waka</em>, <em>miotsukushi</em> is often used as a <em>kakekotoba</em> together with <em>mi o tsukushi</em>, "giving oneself completely."
+                </p>
+                <figure
+                  style="display:flex; width:100%; gap:1em; align-items:center; justify-content: flex-start; margin:0;">
+                  <img src="/img/emblem_osaka.png" alt="The emblem of Osaka City" style="width:70px; height:auto;" width="100" height="100">
+                  <figcaption style="width:100%">
+                    The symbol on the left is the emblem of Osaka City.
+                    <br>It is based on a <em>miotsukushi</em>.
+                  </figcaption>
+                </figure>
+              </div>
+            </dd>
+            <dt>Nobles and Courtesans</dt>
+            <dd>
+              From the mid-Heian period to the early Kamakura period, popular songs of the day called <em>imayō</em> were a favorite among nobles.
+              Some courtesans (<em>yūjo</em>) performed by singing <em>imayō</em> and were invited to nobles' mansions.
+              Emperor Go-Shirakawa learned <em>imayō</em> from a courtesan named Otomae, and was such a keen supporter that he compiled the <em>Ryōjin Hishō</em>, a collection of <em>imayō</em> songs.
+              It may seem surprising that the poet wrote a poem thinking of courtesans, but through <em>imayō</em>, nobles had contact with courtesans and felt close to them.
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -281,6 +619,7 @@
           <a class="da-link-btn" href="diagram_archtecture_en.html">Relationship Diagram</a>
           <a class="kt-link-btn" href="karuta-taisen-pro_en.html">Competitive Karuta Game</a>
           <a class="kts-link-btn" href="karuta-taisen_en.html">Online Karuta Battle</a>
+          <a class="kg-link-btn" href="kakekotoba-game-088_en.html"><span class="kg-link-btn-inner"><span class="kg-link-btn-face kg-link-btn-front">Spin &amp; Discover Kakekotoba!</span><span class="kg-link-btn-face kg-link-btn-back">Spin &amp; Discover Kakekotoba!</span></span></a>
         </dd>
       </dl>
     </div>
@@ -303,6 +642,11 @@
   <!-- Footer end -->
 
   <script src="../js/poems_en.js?20261008-01"></script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261009-02"></script>
+  <script src="../js/keizu-diagram.js?20261008-03"></script>
 
 </body>
 

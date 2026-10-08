@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-09T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -95,6 +95,10 @@
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
   <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/jquery.bxslider.css">
+  <link rel="stylesheet" href="../css/bxslider.css">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -104,6 +108,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -277,6 +289,352 @@
       </dl>
     </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Minamoto no Sanetomo's Family Tree</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 93.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__tenno">Brown text</span>Emperor</li>
+              <li><span class="fk-legend__tno" aria-hidden="true"></span>Emperor's number in the line of succession</li>
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+              <li><span class="fk-legend__dash"></span>Generations left out / adoption</li>
+              <li><span class="fk-legend__eq">＝</span>Marriage</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Minamoto no Sanetomo's family tree">
+            <script type="application/json">
+{
+ "lang": "en",
+ "nodes": [
+  {
+   "id": "seiwa",
+   "n": "清和",
+   "k": 1,
+   "t": 56,
+   "x": 16,
+   "y": 170
+  },
+  {
+   "id": "sadazumi",
+   "n": "貞純親王",
+   "x": 136,
+   "y": 40
+  },
+  {
+   "id": "sadamoto",
+   "n": "貞元親王",
+   "x": 136,
+   "y": 220
+  },
+  {
+   "id": "yozei",
+   "n": "陽成",
+   "k": 1,
+   "t": 57,
+   "p": 13,
+   "x": 136,
+   "y": 300
+  },
+  {
+   "id": "tokimasa",
+   "n": "北条時政",
+   "x": 292,
+   "y": 106
+  },
+  {
+   "id": "kanetada",
+   "n": "源兼忠",
+   "x": 292,
+   "y": 200
+  },
+  {
+   "id": "kanenobu",
+   "n": "源兼信",
+   "x": 292,
+   "y": 240
+  },
+  {
+   "id": "motoyoshi",
+   "n": "元良親王",
+   "p": 20,
+   "x": 292,
+   "y": 300
+  },
+  {
+   "id": "yoritomo",
+   "n": "源頼朝",
+   "x": 534,
+   "y": 40
+  },
+  {
+   "id": "masako",
+   "n": "北条政子",
+   "x": 534,
+   "y": 84
+  },
+  {
+   "id": "yoshitoki",
+   "n": "北条義時",
+   "x": 534,
+   "y": 128
+  },
+  {
+   "id": "shigeyuki",
+   "n": "源重之",
+   "p": 48,
+   "x": 534,
+   "y": 240
+  },
+  {
+   "id": "yoriie",
+   "n": "源頼家",
+   "x": 738,
+   "y": 40
+  },
+  {
+   "id": "sanetomo",
+   "n": "源実朝",
+   "p": 93,
+   "self": 1,
+   "x": 738,
+   "y": 84
+  },
+  {
+   "id": "kugyo",
+   "n": "公暁",
+   "sub": "Killed his uncle Sanetomo",
+   "x": 916,
+   "y": 40
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-masako",
+   "top": "yoritomo",
+   "bottom": "masako"
+  }
+ ],
+ "kids": [
+  {
+   "from": "seiwa",
+   "to": [
+    "sadazumi",
+    "sadamoto",
+    "yozei"
+   ]
+  },
+  {
+   "from": "sadamoto",
+   "to": [
+    "kanetada",
+    "kanenobu"
+   ]
+  },
+  {
+   "from": "kanenobu",
+   "to": [
+    "shigeyuki"
+   ]
+  },
+  {
+   "from": "yozei",
+   "to": [
+    "motoyoshi"
+   ]
+  },
+  {
+   "from": "tokimasa",
+   "to": [
+    "masako",
+    "yoshitoki"
+   ]
+  },
+  {
+   "from": "c-masako",
+   "to": [
+    "yoriie",
+    "sanetomo"
+   ]
+  },
+  {
+   "from": "yoriie",
+   "to": [
+    "kugyo"
+   ]
+  }
+ ],
+ "lines": [
+  {
+   "points": [
+    [
+     262,
+     40
+    ],
+    [
+     531,
+     40
+    ]
+   ],
+   "dash": true,
+   "label": {
+    "text": "8 generations left out",
+    "x": 396,
+    "y": 34
+   }
+  },
+  {
+   "points": [
+    [
+     471,
+     200
+    ],
+    [
+     484,
+     200
+    ],
+    [
+     484,
+     240
+    ]
+   ],
+   "dash": true,
+   "label": {
+    "text": "Adopted",
+    "x": 508,
+    "y": 220
+   }
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1085 326" width="1085" height="326" role="img" aria-label="Minamoto no Sanetomo's family tree" lang="en" class="fk-svg kd-svg" style="max-width:1628px;min-width:min(640px,1628px)" data-src="xlcrgr">
+<g class="fk-edges"><path d="M580.5 49V75M584.5 49V75" class="fk-edge fk-eq"/><path d="M63 170H122" class="fk-edge"/><path d="M122 40V300" class="fk-edge"/><path d="M122 40H133" class="fk-edge"/><path d="M122 220H133" class="fk-edge"/><path d="M122 300H133" class="fk-edge"/><path d="M266 220H278" class="fk-edge"/><path d="M278 200V240" class="fk-edge"/><path d="M278 200H289" class="fk-edge"/><path d="M278 240H289" class="fk-edge"/><path d="M476 240H520" class="fk-edge"/><path d="M520 240H531" class="fk-edge"/><path d="M203 300H278" class="fk-edge"/><path d="M278 300H289" class="fk-edge"/><path d="M406 106H520" class="fk-edge"/><path d="M520 84V128" class="fk-edge"/><path d="M520 84H531" class="fk-edge"/><path d="M520 128H531" class="fk-edge"/><path d="M584.5 62H724" class="fk-edge"/><path d="M724 40V84" class="fk-edge"/><path d="M724 40H735" class="fk-edge"/><path d="M724 84H735" class="fk-edge"/><path d="M889 40H902" class="fk-edge"/><path d="M902 40H913" class="fk-edge"/><path d="M262 40L531 40" class="fk-edge is-dash"/><text class="fk-adopt" x="396" y="34">8 generations left out</text><path d="M471 200L484 200L484 240" class="fk-edge is-dash"/><text class="fk-adopt" x="508" y="220">Adopted</text></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node is-tenno" transform="translate(16,170)" data-tip="&lt;h3&gt;Emperor Seiwa&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;56th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;850–881&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;858–876&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Took the throne at 9; his grandfather on his mother's side, Fujiwara no Yoshifusa, ran the government&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="48" height="26"/><text class="fk-name" x="0" y="0.5">Seiwa</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">56</text></g>
+<g class="fk-node" transform="translate(136,40)" data-tip="&lt;h3&gt;Prince Sadazumi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown–916&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Fourth Rank for princes&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Seiwa; father of Minamoto no Tsunemoto&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="127" height="26"/><text class="fk-name" x="0" y="0.5">Prince Sadazumi</text></g></g>
+<g class="fk-node" transform="translate(136,220)" data-tip="&lt;h3&gt;Prince Sadamoto&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Fourth Rank for princes&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Seiwa&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="131" height="26"/><text class="fk-name" x="0" y="0.5">Prince Sadamoto</text></g></g>
+<g class="fk-node is-tenno is-poet" transform="translate(136,300)" data-tip="&lt;h3&gt;Emperor Yōzei&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;57th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;869–949&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;876–884&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 13, &quot;Tsukubane no...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Retired Emperor Yōzei&lt;/span&gt;&lt;/div&gt;" data-p="13"><a href="/13_en.html" aria-label="Emperor Yōzei (Hyakunin Isshu Poem 13)"><rect class="fk-hit" x="-2" y="-13" width="68" height="26"/><text class="fk-name" x="0" y="0.5">Yōzei</text><circle class="fk-badge" cx="54" cy="0" r="10"/><text class="fk-badge-num" x="54" y="0.5">13</text></a><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">57</text></g>
+<g class="fk-node" transform="translate(292,106)" data-tip="&lt;h3&gt;Hōjō Tokimasa&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Hōjō Masako and Yoshitoki; Sanetomo's grandfather&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="115" height="26"/><text class="fk-name" x="0" y="0.5">Hōjō Tokimasa</text></g></g>
+<g class="fk-node" transform="translate(292,200)" data-tip="&lt;h3&gt;Minamoto no Kanetada&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Councillor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Prince Sadamoto&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Adopted Shigeyuki, the son of his younger brother Minamoto no Kanenobu&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="180" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Kanetada</text></g></g>
+<g class="fk-node" transform="translate(292,240)" data-tip="&lt;h3&gt;Minamoto no Kanenobu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Governor of Mikawa&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Prince Sadamoto&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Minamoto no Shigeyuki&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="185" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Kanenobu</text></g></g>
+<g class="fk-node is-poet" transform="translate(292,300)" data-tip="&lt;h3&gt;Prince Motoyoshi&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;890–943&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Third Rank for princes&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Yōzei&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 20, &quot;Wabinureba...&quot;&lt;/span&gt;&lt;/div&gt;" data-p="20"><a href="/20_en.html" aria-label="Prince Motoyoshi (Hyakunin Isshu Poem 20)"><rect class="fk-hit" x="-2" y="-13" width="158" height="26"/><text class="fk-name" x="0" y="0.5">Prince Motoyoshi</text><circle class="fk-badge" cx="144" cy="0" r="10"/><text class="fk-badge-num" x="144" y="0.5">20</text></a></g>
+<g class="fk-node" transform="translate(534,40)" data-tip="&lt;h3&gt;Minamoto no Yoritomo&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1147–1199&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Second Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Minamoto no Yoshitomo&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;First shogun of the Kamakura shogunate&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="179" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Yoritomo</text></g></g>
+<g class="fk-node" transform="translate(534,84)" data-tip="&lt;h3&gt;Hōjō Masako&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Wife of Minamoto no Yoritomo and mother of Yoriie and Sanetomo&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="101" height="26"/><text class="fk-name" x="0" y="0.5">Hōjō Masako</text></g></g>
+<g class="fk-node" transform="translate(534,128)" data-tip="&lt;h3&gt;Hōjō Yoshitoki&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Hōjō Tokimasa&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;As regent (shikken), he ran the shogunate in Sanetomo's time&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="113" height="26"/><text class="fk-name" x="0" y="0.5">Hōjō Yoshitoki</text></g></g>
+<g class="fk-node is-poet" transform="translate(534,240)" data-tip="&lt;h3&gt;Minamoto no Shigeyuki&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Acting Governor of Chikuzen&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Fifth Rank, Lower Grade&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Minamoto no Kanenobu; adopted by his uncle Minamoto no Kanetada; grandson of Prince Sadamoto&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 48, &quot;Kaze o itami...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Presented the Shigeyuki Hyakushu (a set of 100 poems) to Crown Prince Norihira (later Emperor Reizei). Later he went down to Mutsu Province with its governor, Fujiwara no Sanekata, and died there in 1000&lt;/span&gt;&lt;/div&gt;" data-p="48"><a href="/48_en.html" aria-label="Minamoto no Shigeyuki (Hyakunin Isshu Poem 48)"><rect class="fk-hit" x="-2" y="-13" width="206" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Shigeyuki</text><circle class="fk-badge" cx="192" cy="0" r="10"/><text class="fk-badge-num" x="192" y="0.5">48</text></a></g>
+<g class="fk-node" transform="translate(738,40)" data-tip="&lt;h3&gt;Minamoto no Yoriie&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Minamoto no Yoritomo and Hōjō Masako&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Second shogun of the Kamakura shogunate. In 1203 he lost his post as shogun and was driven out to Izu. Kugyō's father. He was a close friend of Masatsune&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="152" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Yoriie</text></g></g>
+<g class="fk-node is-poet is-self" transform="translate(738,84)" data-tip="&lt;h3&gt;Minamoto no Sanetomo&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Fourth son of Minamoto no Yoritomo; second son of Hōjō Masako&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 93, &quot;Yo no naka wa...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Became shogun at 12. The first samurai to become Minister of the Right. Studied waka with Fujiwara no Sadaie. Murdered by Kugyō in 1219, at 28. In the Hyakunin Isshu he is called the Minister of the Right of Kamakura&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="215" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="209" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Sanetomo</text><circle class="fk-badge" cx="195" cy="0" r="10"/><text class="fk-badge-num" x="195" y="0.5">93</text></g></g>
+<g class="fk-node" transform="translate(916,40)" data-tip="&lt;h3&gt;Kugyō&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Minamoto no Yoriie&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In 1219 he assassinated his uncle Sanetomo at Tsurugaoka Hachimangū Shrine&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="52" height="26"/><text class="fk-name" x="0" y="0.5">Kugyō</text></g><rect class="fk-sub-box" x="0" y="11" width="153" height="16" rx="8"/><text class="fk-sub" x="76.5" y="19.5">Killed his uncle Sanetomo</text></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+          <div class="kd-text">
+            <p style="width:100%; margin-bottom:0.5em;">
+              Minamoto no Sanetomo was the fourth son of Minamoto no Yoritomo, the first shogun of the Kamakura shogunate, and the second son of his mother, Hōjō Masako. Because his elder brother Yoriie was driven out in a power struggle among the shogun's vassals (<em>gokenin</em>), Sanetomo became shogun at only 12. But real power was held by his grandfather Hōjō Tokimasa, his mother Hōjō Masako, and her younger brother Hōjō Yoshitoki.
+            </p>
+            <p style="width:100%; margin-bottom:0.5em;">
+              At the same time, Sanetomo built ties with Retired Emperor Go-Toba and became the first warrior to be appointed Minister of the Right. He was also interested in court culture and loved waka so much that he held poetry gatherings at the shogun's residence, and he studied waka under Fujiwara no Sadaie.
+            </p>
+            <p style="width:100%;">
+              But at 28, while visiting Tsurugaoka Hachimangū Shrine, he was assassinated by his nephew Kugyō. His life, lived amid struggles for power, was full of upheaval, yet his poem "<em>Yo no naka wa tsune ni mo ga mo na...</em>" carries his wish for peace.
+            </p>
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <dt>A Poem Pledging Loyalty to Retired Emperor Go-Toba</dt>
+            <dd>In the next poem, Sanetomo pledged his loyalty to Retired Emperor Go-Toba. Though he was the third shogun of the Kamakura shogunate, Sanetomo had close ties with the imperial court. This poem is at the end of the <em>Kinkai Wakashū</em>.
+              <div class='quote' style="margin-top:0;">
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>山<rt>やま</rt></ruby>は<ruby>裂<rt>さ</rt></ruby>け
+                    <ruby>海<rt>うみ</rt></ruby>は<ruby>褪<rt>あ</rt></ruby>せなむ
+                    <ruby>世<rt>よ</rt></ruby>なりとも
+                    <br><ruby>君<rt>きみ</rt></ruby>にふた<ruby>心<rt>こころ</rt></ruby>
+                    わがあらめやも
+                    <span class="shutten"><em>Kinkai Wakashū</em>, Minamoto no Sanetomo</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.75; margin-top: 0.25em;">Even if the world should come to a time when the mountains split and the seas dry up,<br class="br-pc"> could I ever betray you?<br class="br-pc"> No, never.</p>
+                </q>
+              </div>
+            </dd>
+            <dt>The Poem Monument in Kamakura Seaside Park</dt>
+            <dd class='thumb-image2'>
+              <ul class="slider" style="background: #000;">
+                <li><img src="/img/93_sanetomo_kamakura_01.webp" alt="The poem monument in Kamakura Seaside Park, photo 1" width="640" height="640"></li>
+                <li><img src="/img/93_sanetomo_kamakura_02.webp" alt="The poem monument in Kamakura Seaside Park, photo 2" width="640" height="640"></li>
+                <li><img src="/img/93_sanetomo_kamakura_03.webp" alt="The poem monument in Kamakura Seaside Park, photo 3" width="640" height="640"></li>
+                <li><img src="/img/93_sanetomo_kamakura_04.webp" alt="The poem monument in Kamakura Seaside Park, photo 4" width="640" height="640"></li>
+              </ul>
+              <div>
+                <p>
+                  Below Kamakura Seaside Park stretches Yuigahama Beach. Its beautiful sands are known as a swimming beach that is crowded with people in summer. In the park stands a monument with Sanetomo's poem, shaped like a boat.
+                </p>
+                <p>
+                  According to the <em>Azuma Kagami</em>, Sanetomo planned to sail to Song China himself and tried to have a Chinese-style ship built. On this calm beach, Sanetomo watched fishermen pulling their boats and wished for lasting peace. His feelings still seem to watch gently over this place.
+                </p>
+                <p>
+                  From Hase Station on the Enoshima Electric Railway, walk south for about 10 minutes to reach Yuigahama Beach. From there, walk to the right along the beach for about 5 minutes to reach Kamakura Seaside Park.
+                  <br>(Photos taken February 22, 2025)
+                </p>
+              </div>
+            </dd>
+            <dt>Tsurugaoka Hachimangū Shrine</dt>
+            <dd class='thumb-image2'>
+              <ul class="slider" style="background: #000;">
+                <li><img src="/img/93_tsuruokahachimangu_01.webp" alt="Tsurugaoka Hachimangū Shrine" width="640" height="640"></li>
+                <li><img src="/img/93_tsuruokahachimangu.webp" alt="Tsurugaoka Hachimangū Shrine" width="640" height="640"></li>
+                <li><img src="/img/93_tsuruokahachimangu_02.webp" alt="Tsurugaoka Hachimangū Shrine, photo 2" width="640" height="640"></li>
+              </ul>
+              <div>
+                <p>
+                  Minamoto no Sanetomo, the third shogun of the Kamakura shogunate, was appointed Minister of the Right at 28. He visited Tsurugaoka Hachimangū Shrine to report it, and as he was coming down the great stone steps, he was attacked and killed by Kugyō, his nephew and also his adopted son.
+                </p>
+                <p>
+                  Kugyō was the son of Minamoto no Yoriie, who had been driven from the post of shogun. He killed Sanetomo to avenge his father, but was himself killed soon after, and so the Minamoto line of shoguns ended after three generations.
+                </p>
+                <p>
+                  Near the Kamakura Museum of National Treasures in the shrine grounds stands a monument with Sanetomo's poem:
+                </p>
+                <p>
+                  山はさけ うみはあせなむ 世なりとも<br>君にふた心 わがあらめやも
+                </p>
+                <p>
+                  This poem is widely known as a pledge of loyalty to Retired Emperor Go-Toba.
+                </p>
+                <p>
+                  Tsurugaoka Hachimangū Shrine is about a 10-minute walk from Kamakura Station on the JR and Enoshima Electric Railway lines, but it is often crowded with tourists, so it is best to allow plenty of time.
+                  <br>(Photos taken February 22, 2025)
+                </p>
+              </div>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -308,6 +666,22 @@
   <!-- Footer end -->
 
   <script src="../js/poems_en.js?20261008-01"></script>
+  <!-- bxSlider -->
+  <script src="../js/jquery.bxslider.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('.slider').bxSlider({
+        mode: "horizontal",
+        auto: true,
+        pager: false,
+      });
+    });
+  </script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261009-02"></script>
+  <script src="../js/keizu-diagram.js?20261008-03"></script>
 
 </body>
 

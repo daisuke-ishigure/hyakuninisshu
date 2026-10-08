@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-09T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -95,6 +95,8 @@
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
   <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -104,6 +106,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -281,6 +291,436 @@
       </dl>
     </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Fujiwara no Ietaka's Family Tree</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 98.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__tenno">Brown text</span>Emperor</li>
+              <li><span class="fk-legend__tno" aria-hidden="true"></span>Emperor's number in the line of succession</li>
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+              <li><span class="fk-legend__eq">＝</span>Marriage</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Fujiwara no Ietaka's family tree">
+            <script type="application/json">
+{
+ "lang": "en",
+ "tooltips": "fujiwara",
+ "nodes": [
+  {
+   "id": "toshitada",
+   "n": "藤原俊忠",
+   "key": "俊忠",
+   "x": 16,
+   "y": 70
+  },
+  {
+   "id": "shunkai",
+   "n": "俊海",
+   "x": 136,
+   "y": 40
+  },
+  {
+   "id": "shunzei",
+   "n": "藤原俊成",
+   "key": "俊成",
+   "p": 83,
+   "x": 136,
+   "y": 100
+  },
+  {
+   "id": "mitsutaka",
+   "n": "藤原光隆",
+   "x": 136,
+   "y": 170
+  },
+  {
+   "id": "sanekanejo",
+   "n": "実兼の娘",
+   "x": 136,
+   "y": 214
+  },
+  {
+   "id": "jakuren",
+   "n": "寂蓮",
+   "p": 87,
+   "x": 286,
+   "y": 40
+  },
+  {
+   "id": "teika",
+   "n": "藤原定家",
+   "key": "定家",
+   "p": 97,
+   "sub": "Ranked alongside Ietaka",
+   "x": 286,
+   "y": 100
+  },
+  {
+   "id": "jushi",
+   "n": "藤原重子",
+   "x": 286,
+   "y": 290
+  },
+  {
+   "id": "gotoba",
+   "n": "後鳥羽",
+   "k": 1,
+   "t": 82,
+   "p": 99,
+   "x": 286,
+   "y": 342
+  },
+  {
+   "id": "zaishi",
+   "n": "源在子",
+   "x": 286,
+   "y": 386
+  },
+  {
+   "id": "jakurenjo",
+   "n": "寂蓮の娘",
+   "x": 460,
+   "y": 148
+  },
+  {
+   "id": "ietaka",
+   "n": "藤原家隆",
+   "p": 98,
+   "self": 1,
+   "sub": "Learned waka from Toshinari",
+   "x": 460,
+   "y": 192,
+   "key": "家隆"
+  },
+  {
+   "id": "juntoku",
+   "n": "順徳",
+   "k": 1,
+   "t": 84,
+   "p": 100,
+   "x": 460,
+   "y": 320
+  },
+  {
+   "id": "tsuchimikado",
+   "n": "土御門",
+   "k": 1,
+   "t": 83,
+   "x": 460,
+   "y": 380
+  },
+  {
+   "id": "kosaisho",
+   "n": "土御門院小宰相",
+   "x": 663,
+   "y": 230
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-mitsutaka",
+   "top": "mitsutaka",
+   "bottom": "sanekanejo"
+  },
+  {
+   "id": "c-ietaka",
+   "top": "jakurenjo",
+   "bottom": "ietaka"
+  },
+  {
+   "id": "c-jushi",
+   "top": "jushi",
+   "bottom": "gotoba"
+  },
+  {
+   "id": "c-zaishi",
+   "top": "gotoba",
+   "bottom": "zaishi"
+  }
+ ],
+ "kids": [
+  {
+   "from": "toshitada",
+   "to": [
+    "shunkai",
+    "shunzei"
+   ]
+  },
+  {
+   "from": "shunkai",
+   "to": [
+    "jakuren"
+   ]
+  },
+  {
+   "from": "shunzei",
+   "to": [
+    "teika"
+   ]
+  },
+  {
+   "from": "jakuren",
+   "to": [
+    "jakurenjo"
+   ],
+   "bar": 434
+  },
+  {
+   "from": "c-mitsutaka",
+   "to": [
+    "ietaka"
+   ]
+  },
+  {
+   "from": "ietaka",
+   "to": [
+    "kosaisho"
+   ]
+  },
+  {
+   "from": "c-jushi",
+   "to": [
+    "juntoku"
+   ]
+  },
+  {
+   "from": "c-zaishi",
+   "to": [
+    "tsuchimikado"
+   ]
+  }
+ ],
+ "arrows": [
+  {
+   "points": [
+    [
+     693,
+     240
+    ],
+    [
+     693,
+     380
+    ],
+    [
+     569,
+     380
+    ]
+   ],
+   "label": {
+    "text": "Served",
+    "x": 700,
+    "y": 310
+   }
+  },
+  {
+   "points": [
+    [
+     860,
+     240
+    ],
+    [
+     860,
+     420
+    ],
+    [
+     308,
+     420
+    ],
+    [
+     308,
+     397
+    ]
+   ],
+   "label": {
+    "text": "Served",
+    "x": 814,
+    "y": 405
+   }
+  },
+  {
+   "points": [
+    [
+     621,
+     221
+    ],
+    [
+     621,
+     342
+    ],
+    [
+     376,
+     342
+    ]
+   ],
+   "label": {
+    "text": "Served",
+    "x": 627,
+    "y": 285
+   }
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 902 432" width="902" height="432" role="img" aria-label="Fujiwara no Ietaka's family tree" lang="en" class="fk-svg kd-svg" style="max-width:1353px;min-width:min(640px,1353px)" data-src="9v1zxx">
+<g class="fk-edges"><path d="M172.5 179V205M176.5 179V205" class="fk-edge fk-eq"/><path d="M482.5 157V183M486.5 157V183" class="fk-edge fk-eq"/><path d="M315 299V333M319 299V333" class="fk-edge fk-eq"/><path d="M315 351V377M319 351V377" class="fk-edge fk-eq"/><path d="M93 70H122" class="fk-edge"/><path d="M122 40V100" class="fk-edge"/><path d="M122 40H133" class="fk-edge"/><path d="M122 100H133" class="fk-edge"/><path d="M200 40H272" class="fk-edge"/><path d="M272 40H283" class="fk-edge"/><path d="M233 100H272" class="fk-edge"/><path d="M272 100H283" class="fk-edge"/><path d="M372 40H434" class="fk-edge"/><path d="M434 40V148" class="fk-edge"/><path d="M434 148H457" class="fk-edge"/><path d="M176.5 192H446" class="fk-edge"/><path d="M446 192H457" class="fk-edge"/><path d="M536 192H649" class="fk-edge"/><path d="M649 192V230" class="fk-edge"/><path d="M649 230H660" class="fk-edge"/><path d="M319 307H446" class="fk-edge"/><path d="M446 307V320" class="fk-edge"/><path d="M446 320H457" class="fk-edge"/><path d="M319 364H446" class="fk-edge"/><path d="M446 364V380" class="fk-edge"/><path d="M446 380H457" class="fk-edge"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"><path d="M693 240L693 380L569 380" class="kd-arrow" marker-end="url(#kdArrowHead)"/><text class="kd-arrow-label" x="700" y="310">Served</text><path d="M860 240L860 420L308 420L308 397" class="kd-arrow" marker-end="url(#kdArrowHead)"/><text class="kd-arrow-label" x="814" y="405">Served</text><path d="M621 221L621 342L376 342" class="kd-arrow" marker-end="url(#kdArrowHead)"/><text class="kd-arrow-label" x="627" y="285">Served</text></g>
+<g>
+<g class="fk-node" transform="translate(16,70)" data-tip="&lt;h3&gt;Fujiwara no Toshitada&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Fujiwara no Tadaie&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;At the Horikawa-in love-letter contest of 1102, he sent Kii the poem &quot;Hito shirenu...&quot;. Grandfather of Fujiwara no Sadaie&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="78" height="26"/><text class="fk-name" x="0" y="0.5">Toshitada</text></g></g>
+<g class="fk-node" transform="translate(136,40)" data-tip="&lt;h3&gt;Shunkai&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;An ajari (high-ranking priest) of Daigo-ji. Elder or younger brother of Fujiwara no Toshinari, and Jakuren's father&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="65" height="26"/><text class="fk-name" x="0" y="0.5">Shunkai</text></g></g>
+<g class="fk-node is-poet" transform="translate(136,100)" data-tip="&lt;h3&gt;Fujiwara no Toshinari&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1114–1204&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Master of the Empress Dowager's Household&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Third Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 83, &quot;Yo no naka yo...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Master of the Empress Dowager's Household Toshinari&lt;/span&gt;&lt;/div&gt;" data-p="83"><a href="/83_en.html" aria-label="Fujiwara no Toshinari (Hyakunin Isshu Poem 83)"><rect class="fk-hit" x="-2" y="-13" width="98" height="26"/><text class="fk-name" x="0" y="0.5">Toshinari</text><circle class="fk-badge" cx="84" cy="0" r="10"/><text class="fk-badge-num" x="84" y="0.5">83</text></a></g>
+<g class="fk-node" transform="translate(136,170)" data-tip="&lt;h3&gt;Fujiwara no Mitsutaka&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Fujiwara no Ietaka's father&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="81" height="26"/><text class="fk-name" x="0" y="0.5">Mitsutaka</text></g></g>
+<g class="fk-node" transform="translate(136,214)" data-tip="&lt;h3&gt;Daughter of Fujiwara no Sanekane&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Fujiwara no Ietaka's mother (some say she was a daughter of Fujiwara no Nobumichi)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="162" height="26"/><text class="fk-name" x="0" y="0.5">Sanekane's daughter</text></g></g>
+<g class="fk-node is-poet" transform="translate(286,40)" data-tip="&lt;h3&gt;Jakuren&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;c. 1139–1202&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Shunkai. Around 1150 he was adopted by his uncle, Fujiwara no Toshinari&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 87, &quot;Murasame no...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Reached Junior Fifth Rank, Upper Grade, as Junior Assistant Minister of Central Affairs, and became a monk in his thirties. In 1201 he became one of the compilers of the Shin Kokin Wakashū, but died the next year before it was finished&lt;/span&gt;&lt;/div&gt;" data-p="87"><a href="/87_en.html" aria-label="Jakuren (Hyakunin Isshu Poem 87)"><rect class="fk-hit" x="-2" y="-13" width="87" height="26"/><text class="fk-name" x="0" y="0.5">Jakuren</text><circle class="fk-badge" cx="73" cy="0" r="10"/><text class="fk-badge-num" x="73" y="0.5">87</text></a></g>
+<g class="fk-node is-poet" transform="translate(286,100)" data-tip="&lt;h3&gt;Fujiwara no Sadaie&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1162–1241&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Acting Middle Counselor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Second Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 97, &quot;Konu hito wo...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Acting Middle Counselor Sadaie&lt;/span&gt;&lt;/div&gt;" data-p="97"><a href="/97_en.html" aria-label="Fujiwara no Sadaie (Hyakunin Isshu Poem 97)"><rect class="fk-hit" x="-2" y="-13" width="78" height="26"/><text class="fk-name" x="0" y="0.5">Sadaie</text><circle class="fk-badge" cx="64" cy="0" r="10"/><text class="fk-badge-num" x="64" y="0.5">97</text></a><rect class="fk-sub-box" x="0" y="11" width="148" height="16" rx="8"/><text class="fk-sub" x="74" y="19.5">Ranked alongside Ietaka</text></g>
+<g class="fk-node" transform="translate(286,290)" data-tip="&lt;h3&gt;Fujiwara no Shigeko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Consort of Emperor Go-Toba and mother of Emperor Juntoku&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="155" height="26"/><text class="fk-name" x="0" y="0.5">Fujiwara no Shigeko</text></g></g>
+<g class="fk-node is-tenno is-poet" transform="translate(286,342)" data-tip="&lt;h3&gt;Emperor Go-Toba&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;82nd emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1180–1239&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1183–1198&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 99, &quot;Hito mo oshi...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;His name in the Hyakunin Isshu is &quot;Retired Emperor Go-Toba&quot;. He ordered the compilation of the Shin Kokin Wakashū. After losing the Jōkyū War (1221), he was exiled to Oki&lt;/span&gt;&lt;/div&gt;" data-p="99"><a href="/99_en.html" aria-label="Emperor Go-Toba (Hyakunin Isshu Poem 99)"><rect class="fk-hit" x="-2" y="-13" width="90" height="26"/><text class="fk-name" x="0" y="0.5">Go-Toba</text><circle class="fk-badge" cx="76" cy="0" r="10"/><text class="fk-badge-num" x="76" y="0.5">99</text></a><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">82</text></g>
+<g class="fk-node" transform="translate(286,386)" data-tip="&lt;h3&gt;Minamoto no Ariko&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Consort of Emperor Go-Toba and mother of Emperor Tsuchimikado. Known as Shōmeimon-in&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="149" height="26"/><text class="fk-name" x="0" y="0.5">Minamoto no Ariko</text></g></g>
+<g class="fk-node" transform="translate(460,148)" data-tip="&lt;h3&gt;Daughter of Jakuren&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Wife of Fujiwara no Ietaka (there is a theory that Ietaka was Jakuren's son-in-law)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="148" height="26"/><text class="fk-name" x="0" y="0.5">Jakuren's daughter</text></g></g>
+<g class="fk-node is-poet is-self" transform="translate(460,192)" data-tip="&lt;h3&gt;Fujiwara no Ietaka&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1158–1237&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Minister of the Imperial Household&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Second Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 98, &quot;Kaze soyogu...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Junior Second Rank Ietaka&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="83" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="77" height="26"/><text class="fk-name" x="0" y="0.5">Ietaka</text><circle class="fk-badge" cx="63" cy="0" r="10"/><text class="fk-badge-num" x="63" y="0.5">98</text></g><rect class="fk-sub-box" x="0" y="11" width="173" height="16" rx="8"/><text class="fk-sub" x="86.5" y="19.5">Learned waka from Toshinari</text></g>
+<g class="fk-node is-tenno is-poet" transform="translate(460,320)" data-tip="&lt;h3&gt;Emperor Juntoku&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;84th emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1197–1242&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1210–1221&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 100, &quot;Momoshiki ya...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;His name in the Hyakunin Isshu is &quot;Retired Emperor Juntoku&quot;. After losing the Jōkyū War, he was exiled to Sado&lt;/span&gt;&lt;/div&gt;" data-p="100"><a href="/100_en.html" aria-label="Emperor Juntoku (Hyakunin Isshu Poem 100)"><rect class="fk-hit" x="-2" y="-13" width="88" height="26"/><text class="fk-name" x="0" y="0.5">Juntoku</text><circle class="fk-badge" cx="74" cy="0" r="10"/><text class="fk-badge-num" x="74" y="0.5" style="font-size:8.5px">100</text></a><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">84</text></g>
+<g class="fk-node is-tenno" transform="translate(460,380)" data-tip="&lt;h3&gt;Emperor Tsuchimikado&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;83rd emperor&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1196–1231&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Reign: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1198–1210&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Emperor Go-Toba; Emperor Juntoku's elder brother&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;He did not take part in the Jōkyū War, but at his own wish moved to Tosa (later Awa)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="109" height="26"/><text class="fk-name" x="0" y="0.5">Tsuchimikado</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">83</text></g>
+<g class="fk-node" transform="translate(663,230)" data-tip="&lt;h3&gt;Tsuchimikado-in no Kosaishō&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Fujiwara no Ietaka&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;She first served Retired Emperor Tsuchimikado, then Shōmeimon-in (Minamoto no Ariko), and later Retired Emperor Go-Saga&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="222" height="26"/><text class="fk-name" x="0" y="0.5">Tsuchimikado-in no Kosaishō</text></g></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+          <div class="kd-text">
+            <p style="width:100%; margin-bottom: 0.75em;">
+              According to one theory, Fujiwara no Ietaka was the son-in-law of Jakuren, Fujiwara no Toshinari's adopted son. Ietaka studied waka under Toshinari and polished his skill until he was ranked alongside Fujiwara no Sadaie, the compiler of the Hyakunin Isshu, as a good rival. Both were chosen as compilers of the <em>Shin Kokin Wakashū</em>.
+            </p>
+            <p style="width:100%; margin-bottom: 0.75em;">
+              Ietaka served Retired Emperor Go-Toba. Even after Go-Toba started the Jōkyū War, lost, and was exiled to Oki, Ietaka stayed loyal and kept in touch with him, for example by receiving topics from him and sending him poems.
+            </p>
+            <p style="width:100%;">
+              Ietaka's daughter, Tsuchimikado-in no Kosaishō, first served Retired Emperor Tsuchimikado, and after the Jōkyū War she served Minamoto no Ariko (Shōmeimon-in), Emperor Tsuchimikado's mother.
+            </p>
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <dt>A Poem About Sue no Matsuyama</dt>
+            <dd>Fujiwara no Ietaka wrote about "Sue no Matsuyama," the place in <a href="/42_en.html">Kiyohara no Motosuke</a>'s poem, like this.<br class="br-pc"> He seems to have imagined a dreamlike scene in which trailing clouds at dawn hang over Sue no Matsuyama as if waves were coming over it.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>霞<rt>かすみ</rt></ruby><ruby>立<rt>た</rt></ruby>つ
+                    <ruby>末<rt>すえ</rt></ruby>の<ruby>松山<rt>まつやま</rt></ruby>
+                    ほのぼのと
+                    <br><ruby>波<rt>なみ</rt></ruby>に<ruby>離<rt>はな</rt></ruby>るる
+                    <ruby>横雲<rt>よこぐも</rt></ruby>の<ruby>空<rt>そら</rt></ruby>
+                    <span class="shutten"><em>Shin Kokin Wakashū</em>, Fujiwara no Ietaka</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.2em;">Haze rises over Sue no Matsuyama, which the waves are said never to cross. In the sky as dawn slowly breaks, trailing clouds part faintly from the waves, as if about to pass over Sue no Matsuyama.</p>
+                </q>
+              </div>
+            </dd>
+            <dt>A Poem About Lake Biwa</dt>
+            <dd>On the shore of Lake Biwa, in a winter so harsh that the water freezes and the waves draw back toward the open lake.<br class="br-pc"> The poem describes the dawn moon (<em>ariake no tsuki</em>) in the sky on such a bitterly cold morning.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>志賀<rt>しが</rt></ruby>の<ruby>浦<rt>うら</rt></ruby>や
+                    <ruby>遠<rt>とお</rt></ruby>ざかりゆく
+                    <ruby>波間<rt>なみま</rt></ruby>より
+                    <br><ruby>凍<rt>こお</rt></ruby>りていづる
+                    <ruby>有明<rt>ありあけ</rt></ruby>の<ruby>月<rt>つき</rt></ruby>
+                    <span class="shutten"><em>Shin Kokin Wakashū</em>, Fujiwara no Ietaka</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.2em;">Shiga Bay. From between the waves drawing farther away, the dawn moon appears, frozen in the icy daybreak.</p>
+                </q>
+              </div>
+            </dd>
+            <dt>A Poem About <em>Tachibana</em> Flowers</dt>
+            <dd>In the <em>Kokin Wakashū</em> there is a famous anonymous poem: "<ruby>五月<rt>さつき</rt></ruby><ruby>待<rt>ま</rt></ruby>つ <ruby>花橘<rt>はなたちばな</rt></ruby>の <ruby>香<rt>か</rt></ruby>をかげば <ruby>昔<rt>むかし</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>の <ruby>袖<rt>そで</rt></ruby>の<ruby>香<rt>か</rt></ruby>ぞする" (When I smell the <em>tachibana</em> flowers that wait for the fifth month, I smell the sleeves of someone I once loved). Since then, the scent of <em>tachibana</em> (a kind of citrus) flowers has been thought of as something that brings back the past. Building on this tradition, Ietaka asks a playful question in the next poem.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>今年<rt>ことし</rt></ruby>より
+                    <ruby>花<rt>はな</rt></ruby>さきそむる
+                    <ruby>橘<rt>たちばな</rt></ruby>の
+                    <br>いかで<ruby>昔<rt>むかし</rt></ruby>の
+                    <ruby>香<rt>か</rt></ruby>に<ruby>匂<rt>にお</rt></ruby>ふらむ
+                    <span class="shutten"><em>Shin Kokin Wakashū</em>, Fujiwara no Ietaka</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.8; margin-top: 0.2em;">This <em>tachibana</em> tree only began to bloom this year,
+                    <br class="br-pc">so how can it give off the scent of the past?</p>
+                </q>
+              </div>
+            </dd>
+            <dt>A Poem from Ietaka's Last Years</dt>
+            <dd>In his last years, Fujiwara no Ietaka became a monk after an illness, moved near Shitennō-ji in what is now Osaka City, and built a hermitage he named Sekiyō-an (the Evening Sun Hermitage). From there he prayed to the sun setting into the western sea, wishing to journey to the Pure Land in the west. The next poem was written at that time. Today the sunset can no longer be seen from this spot, but the area keeps the name "Yūhigaoka-chō" (Evening Sun Hill) in memory of Sekiyō-an.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>契<rt>ちぎ</rt></ruby>りあれば
+                    <ruby>難波<rt>なにわ</rt></ruby>の<ruby>里<rt>さと</rt></ruby>に
+                    やどりきて
+                    <br><ruby>波<rt>なみ</rt></ruby>の<ruby>入日<rt>いりび</rt></ruby>を
+                    <ruby>拝<rt>おが</rt></ruby>みけるかな
+                    <span class="shutten"><em>Kokon Chomonjū</em>, Fujiwara no Ietaka</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.8; margin-top: 0.2em;">Because of a bond from a past life,
+                    I came to live in the village of Naniwa, and so I pray to the sun setting among the waves.</p>
+                </q>
+              </div>
+            </dd>
+            <dt>Karyū-zuka (Ietaka's Grave)</dt>
+            <dd class='thumb-image2'>
+              <figure>
+                <a href='../img/98_ietaka_cemetry_large.webp' data-lightbox='ietaka' data-title="Fujiwara no Ietaka's grave">
+                  <img src='../img/98_ietaka_cemetry.webp?ver00' alt="Fujiwara no Ietaka's grave" width="640" height="480" />
+                </a>
+                <figcaption>
+                  <small><a href="https://commons.wikimedia.org/wiki/File:Ietaka_duka.jpg" target="_blank" rel="noopener">I, KENPEI, CC BY-SA 3.0
+                      &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;, via Wikimedia Commons
+                    </a></small>
+                </figcaption>
+              </figure>
+              <div>
+                <p style="width:100%; margin-bottom: 0.75em;">
+                  In Yūhigaoka-chō, Tennōji Ward, Osaka City, is the grave of Fujiwara no Ietaka, known affectionately as Karyū-zuka ("Karyū" is the Chinese-style reading of Ietaka). It is said to have been built on the site of Sekiyō-an, where Ietaka spent his last years.
+                </p>
+              </div>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -290,6 +730,7 @@
           <a class="da-link-btn" href="diagram_archtecture_en.html">Relationship Diagram</a>
           <a class="kt-link-btn" href="karuta-taisen-pro_en.html">Competitive Karuta Game</a>
           <a class="kts-link-btn" href="karuta-taisen_en.html">Online Karuta Battle</a>
+          <a class="kg-link-btn" href="kakekotoba-game-098_en.html"><span class="kg-link-btn-inner"><span class="kg-link-btn-face kg-link-btn-front">Spin &amp; Discover Kakekotoba!</span><span class="kg-link-btn-face kg-link-btn-back">Spin &amp; Discover Kakekotoba!</span></span></a>
         </dd>
       </dl>
     </div>
@@ -312,6 +753,11 @@
   <!-- Footer end -->
 
   <script src="../js/poems_en.js?20261008-01"></script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261009-02"></script>
+  <script src="../js/keizu-diagram.js?20261008-03"></script>
 
 </body>
 
