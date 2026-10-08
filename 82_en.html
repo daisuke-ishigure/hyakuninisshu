@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-08T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -95,6 +95,8 @@
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
   <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -104,6 +106,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -242,7 +252,7 @@
         <dl class="last-dl">
           <dt>About the Poet</dt>
           <dd>
-            Priest Dōin (Fujiwara no Atsuyori) worked in the court stables and reached the fifth rank. Wishing to write good poems, he walked from Kyoto to Sumiyoshi Shrine every month from 70 to 80. After becoming a monk past 80, he still joined poetry gatherings in his 90s, eagerly listening to critiques.
+            Priest Dōin (Fujiwara no Atsuyori) worked in the court stables and reached the fifth rank. Wishing to write good poems, he walked from Kyoto to Sumiyoshi Shrine every month until he was 70 or 80. After becoming a monk past 80, he still joined poetry gatherings in his 90s, eagerly listening to critiques.
           </dd>
         </dl>
       </div>
@@ -275,6 +285,278 @@
       </dl>
     </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Priest Dōin's Family Tree</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 82.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+              <li><span class="fk-legend__dash"></span>Generations left out</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Priest Dōin's family tree">
+            <script type="application/json">
+{
+ "lang": "en",
+ "tooltips": "fujiwara",
+ "nodes": [
+  {
+   "id": "yoshikado",
+   "n": "良門",
+   "x": 16,
+   "y": 137
+  },
+  {
+   "id": "takafuji",
+   "n": "高藤",
+   "sub": "Kajūji line",
+   "x": 124,
+   "y": 95
+  },
+  {
+   "id": "toshimoto",
+   "n": "利基",
+   "x": 124,
+   "y": 180
+  },
+  {
+   "id": "sadakata",
+   "n": "定方",
+   "p": 25,
+   "x": 248,
+   "y": 62
+  },
+  {
+   "id": "nobunari",
+   "n": "信成",
+   "x": 248,
+   "y": 128
+  },
+  {
+   "id": "kanesuke",
+   "n": "兼輔",
+   "p": 27,
+   "x": 248,
+   "y": 180
+  },
+  {
+   "id": "asayori",
+   "n": "朝頼",
+   "x": 523,
+   "y": 40
+  },
+  {
+   "id": "asatada",
+   "n": "朝忠",
+   "p": 44,
+   "x": 523,
+   "y": 84
+  },
+  {
+   "id": "taifu",
+   "n": "殷富門院大輔",
+   "p": 90,
+   "x": 523,
+   "y": 128
+  },
+  {
+   "id": "masatada",
+   "n": "雅正",
+   "x": 523,
+   "y": 180
+  },
+  {
+   "id": "doin",
+   "n": "道因",
+   "p": 82,
+   "self": 1,
+   "x": 627,
+   "y": 40
+  },
+  {
+   "id": "tametoki",
+   "n": "為時",
+   "x": 627,
+   "y": 180
+  },
+  {
+   "id": "murasaki",
+   "n": "紫式部",
+   "p": 57,
+   "x": 728,
+   "y": 180
+  },
+  {
+   "id": "katako",
+   "n": "賢子",
+   "p": 58,
+   "x": 913,
+   "y": 180
+  }
+ ],
+ "kids": [
+  {
+   "from": "yoshikado",
+   "to": [
+    "takafuji",
+    "toshimoto"
+   ]
+  },
+  {
+   "from": "takafuji",
+   "to": [
+    "sadakata"
+   ],
+   "bar": 200
+  },
+  {
+   "from": "sadakata",
+   "to": [
+    "asayori",
+    "asatada"
+   ]
+  },
+  {
+   "from": "nobunari",
+   "to": [
+    "taifu"
+   ]
+  },
+  {
+   "from": "toshimoto",
+   "to": [
+    "kanesuke"
+   ]
+  },
+  {
+   "from": "kanesuke",
+   "to": [
+    "masatada"
+   ]
+  },
+  {
+   "from": "masatada",
+   "to": [
+    "tametoki"
+   ]
+  },
+  {
+   "from": "tametoki",
+   "to": [
+    "murasaki"
+   ]
+  },
+  {
+   "from": "murasaki",
+   "to": [
+    "katako"
+   ]
+  }
+ ],
+ "lines": [
+  {
+   "points": [
+    [
+     200,
+     95
+    ],
+    [
+     200,
+     128
+    ]
+   ]
+  },
+  {
+   "points": [
+    [
+     200,
+     128
+    ],
+    [
+     245,
+     128
+    ]
+   ],
+   "dash": true
+  },
+  {
+   "points": [
+    [
+     582,
+     40
+    ],
+    [
+     624,
+     40
+    ]
+   ],
+   "dash": true
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1065 206" width="1065" height="206" role="img" aria-label="Priest Dōin's family tree" lang="en" class="fk-svg kd-svg" style="max-width:1598px;min-width:min(640px,1598px)" data-src="mumt0v">
+<g class="fk-edges"><path d="M97 137H110" class="fk-edge"/><path d="M110 95V180" class="fk-edge"/><path d="M110 95H121" class="fk-edge"/><path d="M110 180H121" class="fk-edge"/><path d="M188 95H200" class="fk-edge"/><path d="M200 62V95" class="fk-edge"/><path d="M200 62H245" class="fk-edge"/><path d="M494 62H509" class="fk-edge"/><path d="M509 40V84" class="fk-edge"/><path d="M509 40H520" class="fk-edge"/><path d="M509 84H520" class="fk-edge"/><path d="M322 128H509" class="fk-edge"/><path d="M509 128H520" class="fk-edge"/><path d="M207 180H234" class="fk-edge"/><path d="M234 180H245" class="fk-edge"/><path d="M349 180H509" class="fk-edge"/><path d="M509 180H520" class="fk-edge"/><path d="M600 180H613" class="fk-edge"/><path d="M613 180H624" class="fk-edge"/><path d="M701 180H714" class="fk-edge"/><path d="M714 180H725" class="fk-edge"/><path d="M885 180H899" class="fk-edge"/><path d="M899 180H910" class="fk-edge"/><path d="M200 95L200 128" class="fk-edge"/><path d="M200 128L245 128" class="fk-edge is-dash"/><path d="M582 40L624 40" class="fk-edge is-dash"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node" transform="translate(16,137)" data-tip="&lt;h3&gt;Fujiwara no Yoshikado&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Palace guard (Udoneri)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Sixth Rank, Upper Grade&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="82" height="26"/><text class="fk-name" x="0" y="0.5">Yoshikado</text></g></g>
+<g class="fk-node" transform="translate(124,95)" data-tip="&lt;h3&gt;Fujiwara no Takafuji&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;838–900&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Palace Minister&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Third Rank; Senior First Rank after death&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Founder of the Kajūji family&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Imperial in-law: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Grandfather (on the mother's side) of Emperor Daigo&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="65" height="26"/><text class="fk-name" x="0" y="0.5">Takafuji</text></g><rect class="fk-sub-box" x="0" y="11" width="67" height="16" rx="8"/><text class="fk-sub" x="33.5" y="19.5">Kajūji line</text></g>
+<g class="fk-node" transform="translate(124,180)" data-tip="&lt;h3&gt;Fujiwara no Toshimoto&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Middle Captain of the Right Palace Guards&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Fourth Rank, Upper Grade&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="84" height="26"/><text class="fk-name" x="0" y="0.5">Toshimoto</text></g></g>
+<g class="fk-node is-poet" transform="translate(248,62)" data-tip="&lt;h3&gt;Fujiwara no Sadakata&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;873–932&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Minister of the Right&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Second Rank; Junior First Rank after death&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Imperial in-law: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Uncle (on the mother's side) of Emperor Daigo&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 25, &quot;Na ni shi owaba...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called the Minister of the Right of Sanjō&lt;/span&gt;&lt;/div&gt;" data-p="25"><a href="/25_en.html" aria-label="Fujiwara no Sadakata (Hyakunin Isshu Poem 25)"><rect class="fk-hit" x="-2" y="-13" width="247" height="26"/><text class="fk-name" x="0" y="0.5">Minister of the Right of Sanjō</text><circle class="fk-badge" cx="233" cy="0" r="10"/><text class="fk-badge-num" x="233" y="0.5">25</text></a></g>
+<g class="fk-node" transform="translate(248,128)" data-tip="&lt;h3&gt;Fujiwara no Nobunari&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Fifth Rank, Lower Grade&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Father of Attendant to Empress Inpu&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="75" height="26"/><text class="fk-name" x="0" y="0.5">Nobunari</text></g></g>
+<g class="fk-node is-poet" transform="translate(248,180)" data-tip="&lt;h3&gt;Fujiwara no Kanesuke&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;877–933&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Acting Middle Counselor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Third Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 27, &quot;Mika no hara...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Middle Counselor Kanesuke&lt;/span&gt;&lt;/div&gt;" data-p="27"><a href="/27_en.html" aria-label="Fujiwara no Kanesuke (Hyakunin Isshu Poem 27)"><rect class="fk-hit" x="-2" y="-13" width="102" height="26"/><text class="fk-name" x="0" y="0.5">Kanesuke</text><circle class="fk-badge" cx="88" cy="0" r="10"/><text class="fk-badge-num" x="88" y="0.5">27</text></a></g>
+<g class="fk-node" transform="translate(523,40)" data-tip="&lt;h3&gt;Fujiwara no Asayori&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Director of the Kageyushi (office checking officials leaving their posts)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Fourth Rank, Upper Grade&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="61" height="26"/><text class="fk-name" x="0" y="0.5">Asayori</text></g></g>
+<g class="fk-node is-poet" transform="translate(523,84)" data-tip="&lt;h3&gt;Fujiwara no Asatada&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;910–967&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Middle Counselor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Third Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 44, &quot;Au koto no...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Middle Counselor Asatada&lt;/span&gt;&lt;/div&gt;" data-p="44"><a href="/44_en.html" aria-label="Fujiwara no Asatada (Hyakunin Isshu Poem 44)"><rect class="fk-hit" x="-2" y="-13" width="89" height="26"/><text class="fk-name" x="0" y="0.5">Asatada</text><circle class="fk-badge" cx="75" cy="0" r="10"/><text class="fk-badge-num" x="75" y="0.5">44</text></a></g>
+<g class="fk-node is-poet" transform="translate(523,128)" data-tip="&lt;h3&gt;Attendant to Empress Inpu (Inpumon-in no Taifu)&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;c. 1130–c. 1200&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Daughter of Fujiwara no Nobunari; her mother was a daughter of Sugawara no Arinaga&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 90, &quot;Misebaya na...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Served Inpumon-in (Princess Ryōshi) from a young age. A member of Shun'e's Karin'en poetry circle, she knew Fujiwara no Sadaie, Jakuren, Saigyō, Minamoto no Yorimasa, and others. In 1192 she became a nun along with Inpumon-in&lt;/span&gt;&lt;/div&gt;" data-p="90"><a href="/90_en.html" aria-label="Attendant to Empress Inpu (Inpumon-in no Taifu) (Hyakunin Isshu Poem 90)"><rect class="fk-hit" x="-2" y="-13" width="231" height="26"/><text class="fk-name" x="0" y="0.5">Attendant to Empress Inpu</text><circle class="fk-badge" cx="217" cy="0" r="10"/><text class="fk-badge-num" x="217" y="0.5">90</text></a></g>
+<g class="fk-node" transform="translate(523,180)" data-tip="&lt;h3&gt;Fujiwara no Masatada&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Unknown–961&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Governor of Suō&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Fifth Rank, Lower Grade&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="78" height="26"/><text class="fk-name" x="0" y="0.5">Masatada</text></g></g>
+<g class="fk-node is-poet is-self" transform="translate(627,40)" data-tip="&lt;h3&gt;Fujiwara no Atsuyori&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1090–c. 1182&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Assistant Head of the Right Bureau of Horses&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Fifth Rank, Upper Grade&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Buddhist name: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Dōin&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 82, &quot;Omoiwabi...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;His name in the Hyakunin Isshu is &quot;Priest Dōin&quot;&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="69" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="63" height="26"/><text class="fk-name" x="0" y="0.5">Dōin</text><circle class="fk-badge" cx="49" cy="0" r="10"/><text class="fk-badge-num" x="49" y="0.5">82</text></g></g>
+<g class="fk-node" transform="translate(627,180)" data-tip="&lt;h3&gt;Fujiwara no Tametoki&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;c. 949–c. 1029&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Governor of Echigo&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Fifth Rank, Lower Grade&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="75" height="26"/><text class="fk-name" x="0" y="0.5">Tametoki</text></g></g>
+<g class="fk-node is-poet" transform="translate(728,180)" data-tip="&lt;h3&gt;Murasaki Shikibu&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;c. 970–c. 1014&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Served: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Fujiwara no Akiko, empress of Emperor Ichijō&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 57, &quot;Meguriaite...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Her real name is unknown. Author of The Tale of Genji&lt;/span&gt;&lt;/div&gt;" data-p="57"><a href="/57_en.html" aria-label="Murasaki Shikibu (Hyakunin Isshu Poem 57)"><rect class="fk-hit" x="-2" y="-13" width="158" height="26"/><text class="fk-name" x="0" y="0.5">Murasaki Shikibu</text><circle class="fk-badge" cx="144" cy="0" r="10"/><text class="fk-badge-num" x="144" y="0.5">57</text></a></g>
+<g class="fk-node is-poet" transform="translate(913,180)" data-tip="&lt;h3&gt;Fujiwara no Katako&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;c. 999–c. 1082&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Served: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Fujiwara no Akiko, empress of Emperor Ichijō&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 58, &quot;Arimayama...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu she is called Daini no Sanmi. She was the nurse of Emperor Go-Reizei&lt;/span&gt;&lt;/div&gt;" data-p="58"><a href="/58_en.html" aria-label="Fujiwara no Katako (Hyakunin Isshu Poem 58)"><rect class="fk-hit" x="-2" y="-13" width="140" height="26"/><text class="fk-name" x="0" y="0.5">Daini no Sanmi</text><circle class="fk-badge" cx="126" cy="0" r="10"/><text class="fk-badge-num" x="126" y="0.5">58</text></a></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <dt>A Stingy Man Mocked as "Hadaka no Uma no Suke"</dt>
+            <dd>The <em>Kojidan</em> (a collection of tales) tells a story from the time when Priest Dōin was Assistant Head of the Right Bureau of Horses (<em>Uma no suke</em>). He was stingy and kept putting off giving his men, the horse keepers, the clothes he had promised them as a reward. Losing patience, the horse keepers dragged him down from his ox carriage and stripped him of everything, from his court robes to his shoes and even his loincloth. People mocked him as "<em>Hadaka no Uma no Suke</em>" (the Naked Assistant Head of Horses), a pun joining his title with the word for "naked."</dd>
+            <dt>His Passion for Waka in Old Age</dt>
+            <dd>The <em>Mumyōshō</em>, a book on poetry by Kamo no Chōmei, tells stories about how passionate Priest Dōin was about waka.<br class="br-pc"> Until he was 70 or 80, Dōin walked every month to Sumiyoshi Shrine in Osaka, which honors the god of waka, to pray, "Please let me write fine poems." When he grew hard of hearing, he sat right next to the reader at poetry contests and listened closely. Though he was a monk, he cared a great deal about winning, and when he lost a contest, he later went to the judge's house and wept in earnest. The <em>Mumyōshō</em> even tells what happened after his death: when <a href="/83_en.html">Fujiwara no Toshinari</a> chose 18 of Dōin's poems for the <em>Senzai Wakashū</em>, Dōin appeared in his dream and wept for joy, so Toshinari added two more, for a total of 20.</dd>
+            <dt>Utagawa Kuniyoshi's <em>Hyakunin Isshu no Uchi</em></dt>
+            <dd class='thumb-image2'>
+              <figure class='portrait'>
+                <a href='../img/kuniyoshi_82_large.webp' data-lightbox='doin' data-title='Ukiyo-e by Utagawa Kuniyoshi'>
+                  <img loading='lazy' src='../img/kuniyoshi_82.webp' alt='Ukiyo-e by Utagawa Kuniyoshi' width="440" height="640">
+                </a>
+                <figcaption><small>© The Trustees of the British Museum</small></figcaption>
+              </figure>
+              <div>
+                <p>An ukiyo-e print by Utagawa Kuniyoshi, an ukiyo-e artist of the Edo period.<br class="br-pc"> It shows a scene that matches the Hyakunin Isshu poem.</p>
+              </div>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -306,6 +588,11 @@
   <!-- Footer end -->
 
   <script src="../js/poems_en.js?20261008-01"></script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261008-51"></script>
+  <script src="../js/keizu-diagram.js?20261008-03"></script>
 
 </body>
 

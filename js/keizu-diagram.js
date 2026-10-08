@@ -97,7 +97,7 @@ HTML の形：
 
   function measure(d, en) {
     var w = 0;
-    d.preW = d.pre ? d.pre.length * NOTE_FS + 8 : 0;
+    d.preW = d.pre ? (en ? Math.ceil(latinWidth(d.pre, NOTE_FS)) : d.pre.length * NOTE_FS) + 8 : 0;
     if (d.preW) w += d.preW + 4;
     d.nameX = w;
     d.nameW = en ? Math.ceil(latinWidth(d.label, FS)) : d.label.length * FS;

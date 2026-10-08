@@ -184,6 +184,19 @@ window.KD_TIPS_EN = {
   '朝頼': { n: 'Asayori', tip: ['Fujiwara no Asayori', 'Lived: Unknown', 'Office: Director of the Kageyushi (office checking officials leaving their posts)', 'Rank: Junior Fourth Rank, Upper Grade'] },
   '朝成': { n: 'Asahira', tip: ['Fujiwara no Asahira', 'Lived: 917–974', 'Office: Middle Counselor', 'Rank: Junior Third Rank', 'Family: Sixth son of Fujiwara no Sadakata', 'Note: Called the Middle Counselor of Sanjō. Stories of his huge appetite appear in the Konjaku Monogatarishū and elsewhere'] },
   '朝忠': { n: 'Asatada', tip: ['Fujiwara no Asatada', 'Lived: 910–967', 'Office: Middle Counselor', 'Rank: Junior Third Rank', 'Hyakunin Isshu: Poet of Poem 44, "Au koto no..."', 'Note: In the Hyakunin Isshu he is called Middle Counselor Asatada'] },
+  // 82.html（道因法師）
+  '信成': { n: 'Nobunari', tip: ['Fujiwara no Nobunari', 'Rank: Junior Fifth Rank, Lower Grade', 'Family: Father of Attendant to Empress Inpu'] },
+  '殷富門院大輔': { n: 'Attendant to Empress Inpu', tip: ['Attendant to Empress Inpu (Inpumon-in no Taifu)', 'Lived: c. 1130–c. 1200', 'Family: Daughter of Fujiwara no Nobunari; her mother was a daughter of Sugawara no Arinaga', 'Hyakunin Isshu: Poet of Poem 90, "Misebaya na..."', 'Note: Served Inpumon-in (Princess Ryōshi) from a young age. A member of Shun\'e\'s Karin\'en poetry circle, she knew Fujiwara no Sadaie, Jakuren, Saigyō, Minamoto no Yorimasa, and others. In 1192 she became a nun along with Inpumon-in'] },
+  '道因': { n: 'Dōin', tip: ['Fujiwara no Atsuyori', 'Lived: 1090–c. 1182', 'Office: Assistant Head of the Right Bureau of Horses', 'Rank: Junior Fifth Rank, Upper Grade', 'Buddhist name: Dōin', 'Hyakunin Isshu: Poet of Poem 82, "Omoiwabi..."', 'Note: His name in the Hyakunin Isshu is "Priest Dōin"'] },
+  // 81.html（後徳大寺左大臣）
+  '公実': { n: 'Kinzane', tip: ['Fujiwara no Kinzane', 'Lived: 1053–1107', 'Office: Acting Upper Counselor', 'Rank: Senior Second Rank'] },
+  '通季': { n: 'Michisue', tip: ['Saionji Michisue', 'Lived: 1090–1128', 'Office: Acting Middle Counselor', 'Rank: Senior Third Rank', 'Note: Founder of the Saionji family'] },
+  '公通': { n: 'Kinmichi', tip: ['Saionji Kinmichi', 'Lived: 1117–1173', 'Office: Acting Upper Counselor', 'Rank: Senior Second Rank'] },
+  '実宗': { n: 'Sanemune', tip: ['Saionji Sanemune', 'Lived: 1145–1214', 'Office: Palace Minister', 'Rank: Senior Second Rank'] },
+  '公経': { n: 'Kintsune', tip: ['Saionji Kintsune', 'Family: Son of Fujiwara no Sanemune', 'Hyakunin Isshu: Poet of Poem 96, "Hana sasou..."', "Note: His wife was Ichijō Yoshiyasu's daughter. In the Jōkyū War he sent word of the uprising to the shogunate and was confined by Retired Emperor Go-Toba. He became Chancellor of the Realm in 1222. His grandson Yoritsune became the fourth shogun of the Kamakura shogunate"] },
+  '実能': { n: 'Saneyoshi', tip: ['Tokudaiji Saneyoshi', 'Lived: 1096–1157', 'Office: Minister of the Left', 'Rank: Junior First Rank', 'Note: Founder of the Tokudaiji family'] },
+  '公能': { n: 'Kinyoshi', tip: ['Tokudaiji Kinyoshi', 'Lived: 1115–1161', 'Office: Minister of the Right', 'Rank: Senior Second Rank'] },
+  '実定': { n: 'Sanesada', tip: ['Tokudaiji Sanesada', 'Lived: 1139–1192', 'Office: Minister of the Left', 'Rank: Senior Second Rank', 'Hyakunin Isshu: Poet of Poem 81, "Hototogisu..."', 'Note: His name in the Hyakunin Isshu is "Later Tokudaiji Minister of the Left"'] },
   // 79.html（左京大夫顕輔）
   '顕季': { n: 'Akisue', tip: ['Fujiwara no Akisue', 'Lived: 1055–1123', 'Office: Master of the Office of Palace Repairs', 'Rank: Senior Third Rank', 'Note: Founder of the Rokujō family (Rokujō Tōke)'] },
   '顕輔': { n: 'Akisuke', tip: ['Fujiwara no Akisuke', 'Lived: 1090–1155', 'Office: Master of the Left Capital', 'Rank: Senior Third Rank', 'Hyakunin Isshu: Poet of Poem 79, "Akikaze ni..."', 'Note: His name in the Hyakunin Isshu is "Master of the Left Capital Akisuke"'] },
