@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- published/modified (OGP) -->
   <meta property="article:published_time" content="2026-08-02T00:00:00+09:00">
-  <meta property="article:modified_time" content="2026-08-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-10-08T00:00:00+09:00">
   <!-- structured data -->
   <script type="application/ld+json">
   [
@@ -95,6 +95,8 @@
   <link rel="stylesheet" href="../css/loading.css?20240228">
   <link rel="stylesheet" href="../css/huda_01.css?20260423-01">
   <link rel="stylesheet" href="../css/poems_en.css?20261008-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261008-02">
+  <link href="/css/lightbox.css" rel="stylesheet">
   <!-- google fonts: Lora (body) + Playfair Display (headings), matching the site's
        existing html[lang="en"] font system in style.scss -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -104,6 +106,14 @@
     rel="stylesheet">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- lightbox.js -->
+  <script src="/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'albumLabel': 'Image %1 of %2'
+    })
+  </script>
   <!-- Howler.js (audio) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
   <!-- touch icons -->
@@ -283,6 +293,317 @@
       </dl>
     </div>
   </div>
+    <div class="diagram-section">
+      <dl>
+        <dt class='title'>Fujiwara no Toshinari's Family Tree</dt>
+        <dd class='kd-dd'>
+          <!-- Above the chart: legend on the left, zoom on the right (same as 83.html) -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>Hyakunin Isshu poem number (click to go to the poem page)</li>
+              <li><span class="fk-legend__dash"></span>Adoption</li>
+              <li><span class="fk-legend__eq">＝</span>Marriage</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">＋</button>
+              <button type="button" data-zoom="reset">100%</button>
+              <button type="button" data-zoom="fit">Fit to width</button>
+            </div>
+          </div>
+          <!-- Chart data ("lang": "en": names and tooltips come from js/keizu-tips_en.js). The SVG is written between KEIZU:START and END by node _tools/build-keizu.mjs -->
+          <div class="kd-chart" aria-label="Fujiwara no Toshinari's family tree">
+            <script type="application/json">
+{
+ "lang": "en",
+ "tooltips": "fujiwara",
+ "nodes": [
+  {
+   "id": "toshitada",
+   "n": "藤原俊忠",
+   "key": "俊忠",
+   "x": 16,
+   "y": 70
+  },
+  {
+   "id": "shunkai",
+   "n": "俊海",
+   "x": 136,
+   "y": 40
+  },
+  {
+   "id": "shunzei",
+   "n": "藤原俊成",
+   "key": "俊成",
+   "p": 83,
+   "x": 136,
+   "y": 100,
+   "self": 1
+  },
+  {
+   "id": "kaga",
+   "n": "美福門院加賀",
+   "x": 136,
+   "y": 144
+  },
+  {
+   "id": "sanemune",
+   "n": "藤原実宗",
+   "key": "実宗",
+   "x": 136,
+   "y": 227
+  },
+  {
+   "id": "jakuren",
+   "n": "寂蓮",
+   "p": 87,
+   "x": 332,
+   "y": 40
+  },
+  {
+   "id": "teika",
+   "n": "藤原定家",
+   "key": "定家",
+   "p": 97,
+   "x": 332,
+   "y": 150
+  },
+  {
+   "id": "sanemunejo",
+   "n": "実宗の娘",
+   "x": 332,
+   "y": 194
+  },
+  {
+   "id": "kintsune",
+   "n": "入道前太政大臣",
+   "key": "公経",
+   "p": 96,
+   "x": 332,
+   "y": 260
+  },
+  {
+   "id": "jakurenjo",
+   "n": "寂蓮の娘",
+   "x": 613,
+   "y": 40
+  },
+  {
+   "id": "ietaka",
+   "n": "藤原家隆",
+   "p": 98,
+   "sub": "Learned waka from Toshinari",
+   "x": 613,
+   "y": 84,
+   "key": "家隆"
+  },
+  {
+   "id": "tameie",
+   "n": "藤原為家",
+   "x": 613,
+   "y": 172
+  },
+  {
+   "id": "yoritsuna",
+   "n": "宇都宮頼綱",
+   "sub": "Asked Sadaie to make poem cards (shikishi)",
+   "x": 332,
+   "y": 320
+  },
+  {
+   "id": "yoritsunajo",
+   "n": "頼綱の娘",
+   "x": 613,
+   "y": 216
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-kaga",
+   "top": "shunzei",
+   "bottom": "kaga"
+  },
+  {
+   "id": "c-teika",
+   "top": "teika",
+   "bottom": "sanemunejo"
+  },
+  {
+   "id": "c-ietaka",
+   "top": "jakurenjo",
+   "bottom": "ietaka"
+  },
+  {
+   "id": "c-tameie",
+   "top": "tameie",
+   "bottom": "yoritsunajo"
+  }
+ ],
+ "kids": [
+  {
+   "from": "toshitada",
+   "to": [
+    "shunkai",
+    "shunzei"
+   ]
+  },
+  {
+   "from": "shunkai",
+   "to": [
+    "jakuren"
+   ]
+  },
+  {
+   "from": "c-kaga",
+   "to": [
+    "teika"
+   ]
+  },
+  {
+   "from": "sanemune",
+   "to": [
+    "sanemunejo",
+    "kintsune"
+   ]
+  },
+  {
+   "from": "jakuren",
+   "to": [
+    "jakurenjo"
+   ]
+  },
+  {
+   "from": "c-teika",
+   "to": [
+    "tameie"
+   ]
+  },
+  {
+   "from": "yoritsuna",
+   "to": [
+    "yoritsunajo"
+   ]
+  }
+ ],
+ "lines": [
+  {
+   "points": [
+    [
+     233,
+     100
+    ],
+    [
+     308,
+     100
+    ],
+    [
+     308,
+     40
+    ]
+   ],
+   "dash": true,
+   "label": {
+    "text": "Adopted",
+    "x": 284,
+    "y": 74
+   }
+  }
+ ]
+}
+</script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 802 360" width="802" height="360" role="img" aria-label="Fujiwara no Toshinari's family tree" lang="en" class="fk-svg kd-svg" style="max-width:1203px;min-width:min(640px,1203px)" data-src="gl02u7">
+<g class="fk-edges"><path d="M169 109V135M173 109V135" class="fk-edge fk-eq"/><path d="M355 159V185M359 159V185" class="fk-edge fk-eq"/><path d="M635.5 49V75M639.5 49V75" class="fk-edge fk-eq"/><path d="M638.5 181V207M642.5 181V207" class="fk-edge fk-eq"/><path d="M93 70H122" class="fk-edge"/><path d="M122 40V100" class="fk-edge"/><path d="M122 40H133" class="fk-edge"/><path d="M122 100H133" class="fk-edge"/><path d="M200 40H318" class="fk-edge"/><path d="M318 40H329" class="fk-edge"/><path d="M173 122H318" class="fk-edge"/><path d="M318 122V150" class="fk-edge"/><path d="M318 150H329" class="fk-edge"/><path d="M219 227H318" class="fk-edge"/><path d="M318 194V260" class="fk-edge"/><path d="M318 194H329" class="fk-edge"/><path d="M318 260H329" class="fk-edge"/><path d="M418 40H599" class="fk-edge"/><path d="M599 40H610" class="fk-edge"/><path d="M359 172H599" class="fk-edge"/><path d="M599 172H610" class="fk-edge"/><path d="M503 320H599" class="fk-edge"/><path d="M599 216V320" class="fk-edge"/><path d="M599 216H610" class="fk-edge"/><path d="M233 100L308 100L308 40" class="fk-edge is-dash"/><text class="fk-adopt" x="284" y="74">Adopted</text></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node" transform="translate(16,70)" data-tip="&lt;h3&gt;Fujiwara no Toshitada&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Fujiwara no Tadaie&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;At the Horikawa-in love-letter contest of 1102, he sent Kii the poem &quot;Hito shirenu...&quot;. Grandfather of Fujiwara no Sadaie&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="78" height="26"/><text class="fk-name" x="0" y="0.5">Toshitada</text></g></g>
+<g class="fk-node" transform="translate(136,40)" data-tip="&lt;h3&gt;Shunkai&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;An ajari (high-ranking priest) of Daigo-ji. Elder or younger brother of Fujiwara no Toshinari, and Jakuren's father&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="65" height="26"/><text class="fk-name" x="0" y="0.5">Shunkai</text></g></g>
+<g class="fk-node is-poet is-self" transform="translate(136,100)" data-tip="&lt;h3&gt;Fujiwara no Toshinari&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1114–1204&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Master of the Empress Dowager's Household&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Third Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 83, &quot;Yo no naka yo...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Master of the Empress Dowager's Household Toshinari&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="104" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="98" height="26"/><text class="fk-name" x="0" y="0.5">Toshinari</text><circle class="fk-badge" cx="84" cy="0" r="10"/><text class="fk-badge-num" x="84" y="0.5">83</text></g></g>
+<g class="fk-node" transform="translate(136,144)" data-tip="&lt;h3&gt;Bifukumon-in no Kaga&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Wife of Fujiwara no Toshinari and mother of Fujiwara no Sadaie&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="171" height="26"/><text class="fk-name" x="0" y="0.5">Bifukumon-in no Kaga</text></g></g>
+<g class="fk-node" transform="translate(136,227)" data-tip="&lt;h3&gt;Saionji Sanemune&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1145–1214&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Palace Minister&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Second Rank&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="84" height="26"/><text class="fk-name" x="0" y="0.5">Sanemune</text></g></g>
+<g class="fk-node is-poet" transform="translate(332,40)" data-tip="&lt;h3&gt;Jakuren&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;c. 1139–1202&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Shunkai. Around 1150 he was adopted by his uncle, Fujiwara no Toshinari&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 87, &quot;Murasame no...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Reached Junior Fifth Rank, Upper Grade, as Junior Assistant Minister of Central Affairs, and became a monk in his thirties. In 1201 he became one of the compilers of the Shin Kokin Wakashū, but died the next year before it was finished&lt;/span&gt;&lt;/div&gt;" data-p="87"><a href="/87_en.html" aria-label="Jakuren (Hyakunin Isshu Poem 87)"><rect class="fk-hit" x="-2" y="-13" width="87" height="26"/><text class="fk-name" x="0" y="0.5">Jakuren</text><circle class="fk-badge" cx="73" cy="0" r="10"/><text class="fk-badge-num" x="73" y="0.5">87</text></a></g>
+<g class="fk-node is-poet" transform="translate(332,150)" data-tip="&lt;h3&gt;Fujiwara no Sadaie&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1162–1241&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Acting Middle Counselor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Senior Second Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 97, &quot;Konu hito wo...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Acting Middle Counselor Sadaie&lt;/span&gt;&lt;/div&gt;" data-p="97"><a href="/97_en.html" aria-label="Fujiwara no Sadaie (Hyakunin Isshu Poem 97)"><rect class="fk-hit" x="-2" y="-13" width="78" height="26"/><text class="fk-name" x="0" y="0.5">Sadaie</text><circle class="fk-badge" cx="64" cy="0" r="10"/><text class="fk-badge-num" x="64" y="0.5">97</text></a></g>
+<g class="fk-node" transform="translate(332,194)" data-tip="&lt;h3&gt;Daughter of Fujiwara no Sanemune&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Wife of Fujiwara no Sadaie and mother of Fujiwara no Tameie&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="169" height="26"/><text class="fk-name" x="0" y="0.5">Sanemune's daughter</text></g></g>
+<g class="fk-node is-poet" transform="translate(332,260)" data-tip="&lt;h3&gt;Saionji Kintsune&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Fujiwara no Sanemune&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 96, &quot;Hana sasou...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;His wife was Ichijō Yoshiyasu's daughter. In the Jōkyū War he sent word of the uprising to the shogunate and was confined by Retired Emperor Go-Toba. He became Chancellor of the Realm in 1222. His grandson Yoritsune became the fourth shogun of the Kamakura shogunate&lt;/span&gt;&lt;/div&gt;" data-p="96"><a href="/96_en.html" aria-label="Saionji Kintsune (Hyakunin Isshu Poem 96)"><rect class="fk-hit" x="-2" y="-13" width="95" height="26"/><text class="fk-name" x="0" y="0.5">Kintsune</text><circle class="fk-badge" cx="81" cy="0" r="10"/><text class="fk-badge-num" x="81" y="0.5">96</text></a></g>
+<g class="fk-node" transform="translate(613,40)" data-tip="&lt;h3&gt;Daughter of Jakuren&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Wife of Fujiwara no Ietaka (there is a theory that Ietaka was Jakuren's son-in-law)&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="148" height="26"/><text class="fk-name" x="0" y="0.5">Jakuren's daughter</text></g></g>
+<g class="fk-node is-poet" transform="translate(613,84)" data-tip="&lt;h3&gt;Fujiwara no Ietaka&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Lived: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1158–1237&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Office: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Minister of the Imperial Household&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Rank: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Junior Second Rank&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Hyakunin Isshu: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Poet of Poem 98, &quot;Kaze soyogu...&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;In the Hyakunin Isshu he is called Junior Second Rank Ietaka&lt;/span&gt;&lt;/div&gt;" data-p="98"><a href="/98_en.html" aria-label="Fujiwara no Ietaka (Hyakunin Isshu Poem 98)"><rect class="fk-hit" x="-2" y="-13" width="77" height="26"/><text class="fk-name" x="0" y="0.5">Ietaka</text><circle class="fk-badge" cx="63" cy="0" r="10"/><text class="fk-badge-num" x="63" y="0.5">98</text></a><rect class="fk-sub-box" x="0" y="11" width="173" height="16" rx="8"/><text class="fk-sub" x="86.5" y="19.5">Learned waka from Toshinari</text></g>
+<g class="fk-node" transform="translate(613,172)" data-tip="&lt;h3&gt;Fujiwara no Tameie&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Family: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Son of Fujiwara no Sadaie&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="59" height="26"/><text class="fk-name" x="0" y="0.5">Tameie</text></g></g>
+<g class="fk-node" transform="translate(332,320)" data-tip="&lt;h3&gt;Utsunomiya Yoritsuna&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;His Buddhist name was Renshō. He is said to have asked Fujiwara no Sadaie to make poem cards (shikishi) to decorate the sliding doors of his Ogura mountain villa (Chūin villa) in Saga. His daughter was Fujiwara no Tameie's wife&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="172" height="26"/><text class="fk-name" x="0" y="0.5">Utsunomiya Yoritsuna</text></g><rect class="fk-sub-box" x="0" y="11" width="252" height="16" rx="8"/><text class="fk-sub" x="126" y="19.5">Asked Sadaie to make poem cards (shikishi)</text></g>
+<g class="fk-node" transform="translate(613,216)" data-tip="&lt;h3&gt;Daughter of Utsunomiya Yoritsuna&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;Note: &lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;Wife of Fujiwara no Tameie&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="162" height="26"/><text class="fk-name" x="0" y="0.5">Yoritsuna's daughter</text></g></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="words">
+      <dl>
+        <dt class='title'>Appendix</dt>
+        <dd>
+          <dl class='word'>
+            <dt>A Poem About <em>Mono no Aware</em></dt>
+            <dd>This poem was written at a poetry gathering on the theme of "love." Toshinari praised <em>The Tale of Genji</em> as a work that embodies <em>mono no aware</em> (a deep feeling for the sadness and beauty of things), and left the words "A poet who has not read <em>Genji</em> is a regrettable thing." The poem says that through love, not only through its joys but also its sorrows and pain, people's hearts grow rich, and they come to understand <em>mono no aware</em>, the fleeting, painful beauty of life.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>恋<rt>こい</rt></ruby>せずは
+                    <ruby>人<rt>ひと</rt></ruby>も<ruby>心<rt>こころ</rt></ruby>も
+                    なからまし
+                    <br>もののあはれも
+                    これよりぞ<ruby>知<rt>し</rt></ruby>る
+                    <span class="shutten"><em>Chōshū Eisō</em>, Fujiwara no Toshinari</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">Without love, people would never grow a heart.<br class="br-pc"> It is through love that we come to understand <em>mono no aware</em>.</p>
+                </q>
+              </div>
+              <p class="kome"><em>Chōshū Eisō</em> is Toshinari's personal poetry collection.</p>
+            </dd>
+            <dt>A Love Poem</dt>
+            <dd>Toshinari sent this poem to a woman he was really in love with. We know this from its headnote: "Sent to a woman on a rainy day." The "haze" in the poem is thought to stand for his clouded feelings of love, and the "spring rain" for the tears he shed, sad that he could not meet her.
+              <div class='quote'>
+                <q class="quote-ja">
+                  <h3 class="was-h4">In Japanese</h3>
+                  <p>
+                    <ruby>思<rt>おも</rt></ruby>ひあまり
+                    そなたの<ruby>空<rt>そら</rt></ruby>を
+                    ながむれば
+                    <br><ruby>霞<rt>かすみ</rt></ruby>を<ruby>分<rt>わ</rt></ruby>けて
+                    <ruby>春雨<rt>はるさめ</rt></ruby>ぞ<ruby>降<rt>ふ</rt></ruby>る
+                    <span class="shutten"><em>Shin Kokin Wakashū</em>, Fujiwara no Toshinari</span>
+                  </p>
+                </q>
+                <q>
+                  <h3 class="was-h4">In English</h3>
+                  <p style="line-height: 1.7; margin-top: 0.25em;">Longing for you too much, I gaze at the sky where you live,<br class="br-pc"> and spring rain falls, parting the haze.</p>
+                </q>
+              </div>
+            </dd>
+            <dt>How to Read the Name 俊成</dt>
+            <dd>The name 俊成 is read both "Toshinari" and "Shunzei."<br class="br-pc"> Reading a name in the Chinese-style way, like "Shunzei," is called <em>yūsoku-yomi</em>.</dd>
+            <dt>Utagawa Kuniyoshi's <em>Hyakunin Isshu no Uchi</em></dt>
+            <dd class='thumb-image2'>
+              <figure class='portrait'>
+                <a href='../img/kuniyoshi_83_large.webp' data-lightbox='toshinari' data-title='Ukiyo-e by Utagawa Kuniyoshi'>
+                  <img loading='lazy' src='../img/kuniyoshi_83.webp' alt='Ukiyo-e by Utagawa Kuniyoshi' width="480" height="703">
+                </a>
+                <figcaption><a href='https://commons.wikimedia.org/wiki/File:Kotaigogu_no_Daibu_Toshinari_(no._83)_%E7%9A%87%E5%A4%AA%E5%90%8E%E5%AE%AE%E5%A4%A7%E5%A4%AB%E4%BF%8A%E6%88%90_(Fujiwara_no_Toshinari)_(BM_2008,3037.10642).jpg' target='_blank' rel='noopener'><small>British
+                      Museum, Public domain, via Wikimedia Commons</small></a></figcaption>
+              </figure>
+              <div>
+                <p>An ukiyo-e print by Utagawa Kuniyoshi, an ukiyo-e artist of the Edo period. It shows a scene that matches the Hyakunin Isshu poem.</p>
+              </div>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
     <div class="link-section">
       <dl>
         <dt class='title'>Links</dt>
@@ -314,6 +635,11 @@
   <!-- Footer end -->
 
   <script src="../js/poems_en.js?20261008-01"></script>
+  <!-- family tree: tooltips (tippy.js) and the English names/tooltips -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips_en.js?20261008-52"></script>
+  <script src="../js/keizu-diagram.js?20261008-03"></script>
 
 </body>
 

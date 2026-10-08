@@ -184,6 +184,12 @@ window.KD_TIPS_EN = {
   '朝頼': { n: 'Asayori', tip: ['Fujiwara no Asayori', 'Lived: Unknown', 'Office: Director of the Kageyushi (office checking officials leaving their posts)', 'Rank: Junior Fourth Rank, Upper Grade'] },
   '朝成': { n: 'Asahira', tip: ['Fujiwara no Asahira', 'Lived: 917–974', 'Office: Middle Counselor', 'Rank: Junior Third Rank', 'Family: Sixth son of Fujiwara no Sadakata', 'Note: Called the Middle Counselor of Sanjō. Stories of his huge appetite appear in the Konjaku Monogatarishū and elsewhere'] },
   '朝忠': { n: 'Asatada', tip: ['Fujiwara no Asatada', 'Lived: 910–967', 'Office: Middle Counselor', 'Rank: Junior Third Rank', 'Hyakunin Isshu: Poet of Poem 44, "Au koto no..."', 'Note: In the Hyakunin Isshu he is called Middle Counselor Asatada'] },
+  // 83.html（皇太后宮大夫俊成）
+  '美福門院加賀': { n: 'Bifukumon-in no Kaga', tip: ['Bifukumon-in no Kaga', "Note: Wife of Fujiwara no Toshinari and mother of Fujiwara no Sadaie"] },
+  '実宗の娘': { n: "Sanemune's daughter", tip: ['Daughter of Fujiwara no Sanemune', 'Note: Wife of Fujiwara no Sadaie and mother of Fujiwara no Tameie'] },
+  '藤原為家': { n: 'Tameie', tip: ['Fujiwara no Tameie', 'Family: Son of Fujiwara no Sadaie'] },
+  '宇都宮頼綱': { n: 'Utsunomiya Yoritsuna', tip: ['Utsunomiya Yoritsuna', "Note: His Buddhist name was Renshō. He is said to have asked Fujiwara no Sadaie to make poem cards (shikishi) to decorate the sliding doors of his Ogura mountain villa (Chūin villa) in Saga. His daughter was Fujiwara no Tameie's wife"] },
+  '頼綱の娘': { n: "Yoritsuna's daughter", tip: ['Daughter of Utsunomiya Yoritsuna', 'Note: Wife of Fujiwara no Tameie'] },
   // 82.html（道因法師）
   '信成': { n: 'Nobunari', tip: ['Fujiwara no Nobunari', 'Rank: Junior Fifth Rank, Lower Grade', 'Family: Father of Attendant to Empress Inpu'] },
   '殷富門院大輔': { n: 'Attendant to Empress Inpu', tip: ['Attendant to Empress Inpu (Inpumon-in no Taifu)', 'Lived: c. 1130–c. 1200', 'Family: Daughter of Fujiwara no Nobunari; her mother was a daughter of Sugawara no Arinaga', 'Hyakunin Isshu: Poet of Poem 90, "Misebaya na..."', 'Note: Served Inpumon-in (Princess Ryōshi) from a young age. A member of Shun\'e\'s Karin\'en poetry circle, she knew Fujiwara no Sadaie, Jakuren, Saigyō, Minamoto no Yorimasa, and others. In 1192 she became a nun along with Inpumon-in'] },
