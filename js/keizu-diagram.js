@@ -90,9 +90,30 @@ HTML の形：
     return w * size / 1000;
   }
 
+  // 英語版の札の文字の幅（Noto Sans JP Regular の字幅。1000 = 文字の大きさ。ブラウザの canvas で実測）。
+  // 札の文字は日本語版と同じフォント・字間にしている（css/fujiwara-keizu.css の .kd-svg[lang="en"] .fk-sub）
+  var NOTO_SANS_JP = {
+    ' ': 224, a: 563, b: 618, c: 510, d: 620, e: 554, f: 325, g: 564, h: 607, i: 275, j: 275, k: 552, l: 284, m: 926,
+    n: 610, o: 606, p: 620, q: 620, r: 388, s: 468, t: 377, u: 607, v: 521, w: 802, x: 498, y: 521, z: 475, A: 608,
+    B: 657, C: 638, D: 688, E: 589, F: 552, G: 689, H: 728, I: 293, J: 535, K: 646, L: 543, M: 812, N: 723, O: 742,
+    P: 633, Q: 742, R: 635, S: 596, T: 599, U: 721, V: 575, W: 878, X: 573, Y: 531, Z: 603, '0': 555, '1': 555,
+    '2': 555, '3': 555, '4': 555, '5': 555, '6': 555, '7': 555, '8': 555, '9': 555, '!': 323, '"': 475, '&': 680,
+    "'": 279, '(': 338, ')': 338, ',': 278, '-': 347, '.': 278, '/': 392, ':': 278, ';': 278, '?': 474, '–': 536,
+    '‘': 278, '’': 278, '“': 474, '”': 474
+  };
+  var SUB_LS = 0.05; // 札の字間（日本語版の body と同じ 0.05em）
+  function subLatinWidth(s, size) {
+    var w = 0;
+    for (var i = 0; i < s.length; i++) {
+      var c = s.charAt(i).normalize ? s.charAt(i).normalize('NFD').charAt(0) : s.charAt(i);
+      w += NOTO_SANS_JP[c] || 555;
+    }
+    return w * size / 1000 + s.length * SUB_LS * size;
+  }
+
   // 名前の下の札の幅（英語版は文字ごとの幅で見積もる）
   function subWidth(d, en) {
-    return (en ? Math.ceil(latinWidth(d.sub, NOTE_FS)) : d.sub.length * NOTE_FS) + 12;
+    return (en ? Math.ceil(subLatinWidth(d.sub, NOTE_FS)) : d.sub.length * NOTE_FS) + 12;
   }
 
   function measure(d, en) {
