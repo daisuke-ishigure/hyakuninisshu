@@ -1,6 +1,8 @@
 /* --------------------------------------------
-天皇の略系図（tenno-keizu.html）
+天皇の略系図（tenno-keizu.html・英語版 tenno-keizu_en.html）
 系図データから SVG を組み立て、ボタンで系統ごとに絞り込む
+英語版は js/tenno-keizu_en.js（window.TK_EN）を先に読み込む。TK_EN があると、名前・氏の札・線の文字・ツールチップ・
+ボタン・説明文を英語にし、名前の幅を英字の字幅（TK_EN.widths）で見積もる。系図のデータと生没年（期間のスライダー）は日本語のものをそのまま使う
 描き方は藤原氏の略系図（js/fujiwara-keizu.js）と同じ。スタイルも css/fujiwara-keizu.css を共用する
 -------------------------------------------- */
 (function () {
@@ -365,6 +367,34 @@
     poets: { label: '百人一首の歌人', pick: function (d) { return !!d.p || !!(d.wife && d.wife.p); }, desc: 'この系図に登場する百人一首の歌人を表示しています。赤い番号をクリックすると歌のページへ移動します。' }
   };
 
+  /* ---------- 英語版（js/tenno-keizu_en.js）。js/fujiwara-keizu.js と同じ ---------- */
+  var EN = window.TK_EN || null;
+  if (EN) {
+    Object.keys(FILTERS).forEach(function (k) {
+      var t = EN.filters[k];
+      if (t) { FILTERS[k].label = t.label; FILTERS[k].desc = t.desc; }
+    });
+  }
+  // 表示する名前（英語版は TK_EN.names。妻 { n, p } にも使う）
+  function nameOf(d) { return EN ? (EN.names[d.key || d.n] || d.n) : d.n; }
+  // 氏の札・線の文字など（英語版は TK_EN.labels）
+  function lab(s) { return EN ? (EN.labels[s] || s) : s; }
+  // 文字列の幅。日本語は全角1文字＝文字サイズ、英語は英字の字幅（TK_EN.widths、1000＝文字サイズ）で見積もる
+  function textW(s, size) {
+    s = String(s);
+    if (!EN) return s.length * size;
+    var w = 0;
+    for (var i = 0; i < s.length; i++) {
+      // 長音記号つきの文字（ō など）は元の文字の幅
+      var c = s.charAt(i).normalize ? s.charAt(i).normalize('NFD').charAt(0) : s.charAt(i);
+      w += EN.widths[c] || (/\d/.test(c) ? 572 : 632);
+    }
+    return w * size / 1000;
+  }
+  function fmt(t, o) { return t.replace(/\{(\w+)\}/g, function (m, k) { return o[k]; }); }
+  function poemHref(p) { return '/' + p + (EN ? '_en' : '') + '.html'; }
+  function poemTitle(name, p) { return EN ? fmt(EN.ui.poemTitle, { name: name, p: p }) : name + '（百人一首' + p + '番）'; }
+
   /* ---------- 生存期間で絞り込む（スライダー） ----------
     js/fujiwara-keizu.js と同じ仕組み。生没年は、ふだんはツールチップ（js/tenno-keizu-tooltips.js）の「生没年：〇〇年～〇〇年」から読み取る。
     生年がわからない人物は、少なくとも YEAR_SPAN 年は生きていたものとする：
@@ -518,24 +548,24 @@
       return;
     }
     var w = 0;
-    v.preW = d.pre ? d.pre.length * NOTE_FS + 8 : 0;
+    v.preW = d.pre ? textW(lab(d.pre), NOTE_FS) + 8 : 0;
     if (v.preW) w += v.preW + 4;
     v.nameX = w;
-    w += d.n.length * FS;
-    if (d.note) { v.noteX = w + 2; w += (d.note.length + 2) * NOTE_FS + 2; }
+    w += textW(nameOf(d), FS);
+    if (d.note) { v.noteX = w + 2; w += (EN ? textW(' (' + lab(d.note) + ')', NOTE_FS) : (d.note.length + 2) * NOTE_FS) + 2; }
     if (d.p) { v.badgeCx = w + 4 + BADGE_R; w += 4 + BADGE_R * 2; }
     v.mainW = w;
     // 妻：本人の真下に名前（と歌番号バッジ）を並べ、本人の名前の中央から縦の「＝」を下ろす
     if (d.wife) {
-      v.eqX = v.nameX + d.n.length * FS / 2;
-      var ww = v.nameX + d.wife.n.length * FS;
+      v.eqX = v.nameX + textW(nameOf(d), FS) / 2;
+      var ww = v.nameX + textW(nameOf(d.wife), FS);
       if (d.wife.p) { v.wifeBadgeCx = ww + 4 + BADGE_R; ww += 4 + BADGE_R * 2; }
       v.wifeW = ww;
       w = Math.max(w, ww);
     }
     v.textW = w; // 名前・注記・バッジの右端（子への線はここから引く）
     // 名前の下の札（家名など）が名前より幅広いときは、その分だけ子との間隔を空ける
-    if (d.sub) w = Math.max(w, v.nameX + d.sub.length * NOTE_FS + 12 + 4);
+    if (d.sub) w = Math.max(w, v.nameX + textW(lab(d.sub), NOTE_FS) + 12 + 4);
     v.w = w;
   }
 
@@ -546,11 +576,15 @@
   }
 
   function extraGap(cv) {
-    return (cv.dash ? DASH_EXTRA : 0) + (edgeLabel(cv.d) ? ADOPT_EXTRA : 0);
+    var label = edgeLabel(cv.d);
+    // 英語版は文字が長いので、日本語の4文字（40px）より長い分だけ間隔を広げる
+    var extra = !label ? 0 : EN ? ADOPT_EXTRA + Math.max(0, textW(label, 10) - 40) : ADOPT_EXTRA;
+    return (cv.dash ? DASH_EXTRA : 0) + extra;
   }
 
   // 親から子への線に書く文字（養子・「五代略」など）
   function edgeLabel(d) {
+    if (EN) return d.adopt ? EN.ui.adopt : (d.lbl ? lab(d.lbl) : '');
     return d.adopt ? '養子' : (d.lbl || '');
   }
 
@@ -637,7 +671,7 @@
       var wives = v.c.filter(function (cv) { return cv.d.spouse; });
       var w0 = wives[0];
       var w1 = wives[1];
-      v.spineX = v.nameX + Math.max(v.d.n.length * FS / 2, v.d.t ? tnoWidth(v.d) + 4 : 0);
+      v.spineX = v.nameX + Math.max(textW(nameOf(v.d), FS) / 2, v.d.t ? tnoWidth(v.d) + 4 : 0);
       var colW = v.w;
       wives.forEach(function (w) {
         measure(w);
@@ -752,9 +786,14 @@
     文面は js/tenno-keizu-tooltips.js（window.TK_TOOLTIPS）に書いたとおりに出す。
     そこに無い人物は名前（天皇は「〇〇天皇」）に、代数・歌番号の行を自動で付ける */
   function tooltipLines(d) {
-    var tips = window.TK_TOOLTIPS || {};
+    var tips = EN ? EN.tips : (window.TK_TOOLTIPS || {});
     var t = tips[d.key || d.n];
     if (t && t.length) return t;
+    if (EN) {
+      var en = [d.k ? fmt(EN.ui.fallbackEmperor, { name: nameOf(d) }) : fmt(EN.ui.fallbackTitle, { name: nameOf(d) })];
+      if (d.p) en.push(fmt(EN.ui.fallbackPoet, { p: d.p }));
+      return en;
+    }
     var lines = [d.k ? d.n + '天皇' : d.n];
     if (d.t) lines.push('第' + d.t + '代天皇');
     if (d.p) lines.push('百人一首' + d.p + '番の歌人');
@@ -763,7 +802,8 @@
 
   // 「項目：本文」の行は、項目と本文を分けて、本文が折り返しても「：」の後ろにそろうようにする（css/fujiwara-keizu.css の .fk-tip-label）
   function tipLineHtml(line, cls) {
-    var m = line.match(/^([^：<]{1,8}：)([\s\S]*)$/);
+    // 英語版は「Label: 本文」
+    var m = EN ? line.match(/^([^:<]{1,40}: )([\s\S]*)$/) : line.match(/^([^：<]{1,8}：)([\s\S]*)$/);
     var body = m ? '<span class="fk-tip-label">' + m[1] + '</span><span class="fk-tip-body">' + m[2] + '</span>' : line;
     return '<div class="fk-tip-line' + (cls ? ' ' + cls : '') + (m ? ' has-label' : '') + '">' + body + '</div>';
   }
@@ -777,7 +817,7 @@
     });
     // 歌人のツールチップの中に歌のページへのリンクのボタンを置く（PC・スマホとも）
     if (d.p) {
-      body.push('<a class="fk-tip-link" href="/' + d.p + '.html">' + d.p + '番の歌のページへ</a>');
+      body.push('<a class="fk-tip-link" href="' + poemHref(d.p) + '">' + (EN ? fmt(EN.ui.poemLink, { p: d.p }) : d.p + '番の歌のページへ') + '</a>');
     }
     return '<h3>' + lines[0] + '</h3>' + body.join('');
   }
@@ -808,14 +848,14 @@
       role: 'button',
       tabindex: 0,
       'aria-pressed': on ? 'true' : 'false',
-      'aria-label': on ? '全体の表示に戻す' : FILTERS[key].label + 'で絞り込む'
+      'aria-label': EN ? (on ? EN.ui.tagOff : fmt(EN.ui.tagOn, { label: FILTERS[key].label })) : (on ? '全体の表示に戻す' : FILTERS[key].label + 'で絞り込む')
     }, parent);
   }
 
   function drawNode(g, v) {
     var d = v.d;
     if (d.hidden) return;
-    var title = tooltipLines(d)[0] + (d.p ? '（百人一首' + d.p + '番）' : '');
+    var title = d.p ? poemTitle(tooltipLines(d)[0], d.p) : tooltipLines(d)[0];
 
     var cls = 'fk-node' + (v.mode === 'ctx' ? ' is-ctx' : '') + (d.k ? ' is-tenno' : '') + (d.p ? ' is-poet' : '');
     var node = el('g', { class: cls, transform: 'translate(' + v.x + ',' + v.inY + ')' }, g);
@@ -824,18 +864,18 @@
     if (d.pre) {
       var preTag = tagGroup(node, d);
       el('rect', { class: 'fk-pre-box', x: 0, y: -9, width: v.preW, height: 18, rx: 2 }, preTag);
-      el('text', { class: 'fk-pre', x: v.preW / 2, y: 0.5 }, preTag).textContent = d.pre;
+      el('text', { class: 'fk-pre', x: v.preW / 2, y: 0.5 }, preTag).textContent = lab(d.pre);
     }
 
     // 歌人は名前とバッジをまとめて歌のページへのリンクにする
     // ホバーで名前の背景に色を付ける（歌人以外も）。歌人はリンクにする
     var target = d.p
-      ? el('a', { href: '/' + d.p + '.html', 'aria-label': title }, node)
+      ? el('a', { href: poemHref(d.p), 'aria-label': title }, node)
       : el('g', { class: 'fk-main' }, node);
     el('rect', { class: 'fk-hit', x: v.nameX - 2, y: -13, width: v.mainW - v.nameX + 4, height: 26 }, target);
-    el('text', { class: 'fk-name', x: v.nameX, y: 0.5 }, target).textContent = d.n;
+    el('text', { class: 'fk-name', x: v.nameX, y: 0.5 }, target).textContent = nameOf(d);
     if (d.note) {
-      el('text', { class: 'fk-note', x: v.noteX, y: 1 }, target).textContent = '（' + d.note + '）';
+      el('text', { class: 'fk-note', x: v.noteX, y: 1 }, target).textContent = EN ? ' (' + lab(d.note) + ')' : '（' + d.note + '）';
     }
     if (d.p) {
       el('circle', { class: 'fk-badge', cx: v.badgeCx, cy: 0, r: BADGE_R }, target);
@@ -850,10 +890,10 @@
     }
     if (d.sub) {
       // 札の幅は measure() で人物の幅に含めてあるので、子への線（縦線）とは重ならない
-      var sw = d.sub.length * NOTE_FS + 12;
+      var sw = textW(lab(d.sub), NOTE_FS) + 12;
       var subTag = tagGroup(node, d);
       el('rect', { class: 'fk-sub-box', x: v.nameX, y: 11, width: sw, height: 16, rx: 8 }, subTag);
-      el('text', { class: 'fk-sub', x: v.nameX + sw / 2, y: 19.5 }, subTag).textContent = d.sub;
+      el('text', { class: 'fk-sub', x: v.nameX + sw / 2, y: 19.5 }, subTag).textContent = lab(d.sub);
     }
     if (d.wife) drawWife(g, v);
   }
@@ -867,7 +907,7 @@
     var ctx = v.mode === 'ctx' ? ' is-ctx' : '';
     var band = tagGroup(el('g', { class: 'fk-node' + ctx }, g), v.d);
     el('rect', { class: 'fk-sub-box', x: x1, y: v.inY + 11, width: x2 - x1, height: 16, rx: 8 }, band);
-    el('text', { class: 'fk-sub', x: (x1 + x2) / 2, y: v.inY + 19.5 }, band).textContent = v.d.band;
+    el('text', { class: 'fk-sub', x: (x1 + x2) / 2, y: v.inY + 19.5 }, band).textContent = lab(v.d.band);
   }
 
   // 妻は本人の真下に、本人とは別の g で描く（本人のツールチップと重ならないように）
@@ -885,10 +925,10 @@
     }, g);
     node.setAttribute('data-tippy-content', tooltipHtml(w));
     var target = w.p
-      ? el('a', { href: '/' + w.p + '.html', 'aria-label': tooltipLines(w)[0] + '（百人一首' + w.p + '番）' }, node)
+      ? el('a', { href: poemHref(w.p), 'aria-label': poemTitle(tooltipLines(w)[0], w.p) }, node)
       : el('g', { class: 'fk-main' }, node);
     el('rect', { class: 'fk-hit', x: -2, y: -13, width: v.wifeW - v.nameX + 4, height: 26 }, target);
-    el('text', { class: 'fk-name', x: 0, y: 0.5 }, target).textContent = w.n;
+    el('text', { class: 'fk-name', x: 0, y: 0.5 }, target).textContent = nameOf(w);
     if (w.p) {
       var cx = v.wifeBadgeCx - v.nameX;
       el('circle', { class: 'fk-badge', cx: cx, cy: 0, r: BADGE_R }, target);
@@ -899,7 +939,7 @@
   // marry：真上の配偶者と本人の名前の間を縦の「＝」で結ぶ
   function drawMarry(g, v) {
     var m = v.mate;
-    var ex = v.x + v.nameX + Math.min(v.d.n.length, m.d.n.length) * FS / 2;
+    var ex = v.x + v.nameX + Math.min(textW(nameOf(v.d), FS), textW(nameOf(m.d), FS)) / 2;
     var ctx = v.mode === 'ctx' || m.mode === 'ctx' ? ' is-ctx' : '';
     drawEq(g, ex, m.inY + 9, v.inY - (v.d.t ? TNO_TOP : 9) - 2, 'fk-edge fk-eq' + ctx);
   }
@@ -949,9 +989,9 @@
       }
       : function () { return true; });
     return {
-      label: base.label + '・' + from + '年～' + to + '年',
+      label: EN ? base.label + ', ' + fmt(EN.ui.years, { from: from, to: to }) : base.label + '・' + from + '年～' + to + '年',
       pick: function (d) { return inBase(d) && aliveIn(d, from, to); },
-      desc: base.desc + ' そのうち、' + from + '年～' + to + '年に生きていた人物を表示しています。'
+      desc: base.desc + (EN ? fmt(EN.ui.yearsDesc, { from: from, to: to }) : ' そのうち、' + from + '年～' + to + '年に生きていた人物を表示しています。')
     };
   }
 
@@ -971,7 +1011,7 @@
       tips = [];
       var empty = document.createElement('p');
       empty.className = 'fk-empty';
-      empty.textContent = 'この期間に生きていた人物は、系図にいません。';
+      empty.textContent = EN ? EN.ui.empty : 'この期間に生きていた人物は、系図にいません。';
       chart.replaceChildren(empty);
       current = null;
       descEl.textContent = filter.desc;
@@ -983,7 +1023,7 @@
     var svg = el('svg', {
       viewBox: '0 0 ' + lay.width + ' ' + lay.height,
       role: 'img',
-      'aria-label': '天皇の略系図（' + filter.label + '）',
+      'aria-label': EN ? fmt(EN.ui.svgLabel, { label: filter.label }) : '天皇の略系図（' + filter.label + '）',
       class: 'fk-svg'
     });
     drawEdges(el('g', { class: 'fk-edges' }, svg), view);
@@ -1038,7 +1078,7 @@
   function showYears() {
     yearFromEl.value = state.years[0];
     yearToEl.value = state.years[1];
-    yearTextEl.textContent = state.years[0] + '年～' + state.years[1] + '年';
+    yearTextEl.textContent = EN ? fmt(EN.ui.years, { from: state.years[0], to: state.years[1] }) : state.years[0] + '年～' + state.years[1] + '年';
     // つまみの間の帯（css/fujiwara-keizu.css の --from / --to）
     if (yearRangeEl.style.setProperty) {
       yearRangeEl.style.setProperty('--from', (state.years[0] - YEAR_MIN) / (YEAR_MAX - YEAR_MIN) * 100 + '%');

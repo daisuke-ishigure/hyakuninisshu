@@ -381,6 +381,16 @@
   font-family: "Noto Sans", "Noto Serif JP", sans-serif;
   letter-spacing: 0;
 }
+/* 英語版の藤原氏の略系図（fujiwara-keizu_en.html。js/fujiwara-keizu.js の英語モード）：名前などの幅を
+   Noto Sans Bold の字幅（js/fujiwara-keizu_en.js の widths）で見積もっているので、同じく Noto Sans にそろえ、字間も付けない */
+html[lang="en"] .fk-svg .fk-name,
+html[lang="en"] .fk-svg .fk-note,
+html[lang="en"] .fk-svg .fk-sub,
+html[lang="en"] .fk-svg .fk-pre,
+html[lang="en"] .fk-svg .fk-adopt {
+  font-family: "Noto Sans", "Noto Serif JP", sans-serif;
+  letter-spacing: 0;
+}
 .fk-pre-box {
   fill: #fff;
   stroke: #b82343;

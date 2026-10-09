@@ -10,7 +10,7 @@
 // データの直後の <!-- #region KEIZU:START --> と <!-- #endregion KEIZU:END --> の間を書き換える（無ければ足す）。
 // ルートにある .html のうち、class="kd-chart" を含むものをすべて対象にする。
 //
-// あわせて、天皇の略系図（tenno-keizu.html）・藤原氏の略系図（fujiwara-keizu.html）の「全体」の系図も書き込む。
+// あわせて、天皇の略系図（tenno-keizu.html と英語版 tenno-keizu_en.html）・藤原氏の略系図（fujiwara-keizu.html と英語版 fujiwara-keizu_en.html）の「全体」の系図も書き込む。
 // こちらは各ページの js（js/tenno-keizu.js・js/fujiwara-keizu.js）を、ブラウザの代わりの簡易 DOM の上でそのまま動かして作る。
 // 系図のデータ（js の TREE・FILTERS）やツールチップの文面を変えたら、同じく実行すること。
 // #fkChart の中の <!-- #region KEIZU:START -->〜<!-- #endregion KEIZU:END --> と、#fkDesc（系統の説明）の中身を書き換える。
@@ -96,6 +96,9 @@ for (const page of pages) {
 const TREE_PAGES = [
   { page: "tenno-keizu.html", scripts: ["js/tenno-keizu-tooltips.js", "js/tenno-keizu.js"] },
   { page: "fujiwara-keizu.html", scripts: ["js/fujiwara-keizu-tooltips.js", "js/fujiwara-keizu.js"] },
+  // 英語版：js/tenno-keizu_en.js（window.TK_EN）・js/fujiwara-keizu_en.js（window.FK_EN）を先に読むと、英語で描く
+  { page: "tenno-keizu_en.html", scripts: ["js/tenno-keizu-tooltips.js", "js/tenno-keizu_en.js", "js/tenno-keizu.js"] },
+  { page: "fujiwara-keizu_en.html", scripts: ["js/fujiwara-keizu-tooltips.js", "js/fujiwara-keizu_en.js", "js/fujiwara-keizu.js"] },
 ];
 
 const escText = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
