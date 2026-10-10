@@ -76,6 +76,12 @@ p {
   line-height: 1.8;
 }
 
+/* 英語ページの段落は歌のページ（poems_en.css）と同じ行間・字間（:where()で詳細度を p と同じに保つ） */
+:where(html[lang=en]) p {
+  line-height: 1.65;
+  letter-spacing: 0;
+}
+
 html[lang=en]:not([data-font=legacy]) body, html[lang=en]:not([data-font=legacy]) p, html[lang=en]:not([data-font=legacy]) li, html[lang=en]:not([data-font=legacy]) a, html[lang=en]:not([data-font=legacy]) span, html[lang=en]:not([data-font=legacy]) td, html[lang=en]:not([data-font=legacy]) th, html[lang=en]:not([data-font=legacy]) button, html[lang=en]:not([data-font=legacy]) input, html[lang=en]:not([data-font=legacy]) label {
   font-family: "Noto Sans", "Noto Serif JP", sans-serif !important;
 }
@@ -4097,14 +4103,22 @@ footer a:hover {
   margin-bottom: 0.8em;
   text-align: justify;
 }
-/* 英語ページは両端揃えにせず左揃え（:where()で詳細度を元のルールと同じに保つ） */
-:where(html[lang="en"]) .section p {
-  text-align: left;
-}
 @media (max-width: 1000px) {
   .section p {
     font-size: 1.05rem;
     line-height: 1.8;
+  }
+}
+/* 英語ページは歌のページ（poems_en.css）の本文と同じ：左揃え、1rem（PCは15px）、行間1.65
+   （:where()で詳細度を元のルールと同じに保ち、上のメディアクエリより後に置いて上書きする） */
+:where(html[lang="en"]) .section p {
+  text-align: left;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+@media (min-width: 1001px) {
+  :where(html[lang="en"]) .section p {
+    font-size: 0.9375rem;
   }
 }
 .section p.h4-p {

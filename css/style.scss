@@ -78,6 +78,11 @@ body {
 p {
   line-height: 1.8;
 }
+// 英語ページの段落は歌のページ（poems_en.css）と同じ行間・字間（:where()で詳細度を p と同じに保つ）
+:where(html[lang="en"]) p {
+  line-height: 1.65;
+  letter-spacing: 0;
+}
 
 // 英語版ページ（html[lang="en"]）は英語話者に読みやすいフォントに切り替える：本文は Noto Sans（欧文）、見出しは Playfair Display。
 // 英語ページ内の日本語（和歌など）は Noto Serif JP（明朝系）のまま。
@@ -3776,13 +3781,19 @@ footer {
     line-height: 1.8em;
     margin-bottom: 0.8em;
     text-align: justify;
-    // 英語ページは両端揃えにせず左揃え（:where()で詳細度を元のルールと同じに保つ）
-    :where(html[lang="en"]) & {
-      text-align: left;
-    }
     @media (max-width: 1000px) {
       font-size: 1.05rem;
       line-height: 1.8;
+    }
+    // 英語ページは歌のページ（poems_en.css）の本文と同じ：左揃え、1rem（PCは15px）、行間1.65
+    // （:where()で詳細度を元のルールと同じに保ち、上のメディアクエリより後に置いて上書きする）
+    :where(html[lang="en"]) & {
+      text-align: left;
+      font-size: 1rem;
+      line-height: 1.65;
+      @media (min-width: 1001px) {
+        font-size: 0.9375rem;
+      }
     }
   }
   p.h4-p {
