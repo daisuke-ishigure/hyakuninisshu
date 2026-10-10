@@ -943,9 +943,27 @@
       background-color: #fffdf8 !important;
     }
 
-    /* 「▼ 現代語訳」が途中で折り返さないように */
+    /* 「▼ 現代語訳」はセルの右上に置き、途中で折り返さないように（list.html・index_en.html と同じ） */
     .hyakushu .modern-toggle {
+      position: absolute;
+      top: 4px;
+      right: 6px;
+      font-size: 0.75em;
+      color: #b82343;
+      cursor: pointer;
+      user-select: none;
       white-space: nowrap;
+    }
+    .hyakushu .modern-text {
+      font-size: 0.85em;
+      color: #7a6655;
+      margin-top: 5px;
+      line-height: 1.7;
+      border-top: 1px solid #e0d8c8;
+      padding-top: 4px;
+    }
+    .hyakushu #table td[data-has-modern]:hover {
+      background-color: #f0e8d8 !important;
     }
 
     /* 最初は5首だけ見せ、残りは「全100首を表示」で開く（検索・並べ替え・色フィルターを使うと自動で開く） */
@@ -1018,6 +1036,28 @@
 
     @media (prefers-reduced-motion: reduce) {
       .hyakushu__list.is-collapsed .hyakushu__more button {
+        animation: none;
+      }
+    }
+
+    /* 左列の番号：少しだけ拡大・縮小を繰り返す（マウスを乗せている間は止めて、list.css の拡大表示にする） */
+    .hyakushu #table td:nth-child(1) .num-badge {
+      animation: num-badge-pulse 2.4s ease-in-out infinite;
+    }
+    .hyakushu #table td:nth-child(1) .num-badge:hover,
+    .hyakushu #table td:nth-child(1) .num-badge:focus-visible {
+      animation: none;
+    }
+    @keyframes num-badge-pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.08);
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hyakushu #table td:nth-child(1) .num-badge {
         animation: none;
       }
     }
