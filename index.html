@@ -1107,6 +1107,32 @@
       font-size: 1.4rem;
     }
 
+    /* 紋章の中身は漢字ではなく家紋風の線画SVG（24x24、stroke=currentColor なので
+       ナビの塗り円では白、見出しの枠線円では紅になる）。日英共通、index.html と index_en.html で同じ */
+    .quick-nav__mon svg,
+    .hub-panel__mon svg {
+      display: block;
+      fill: none;
+      stroke: currentColor;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .quick-nav__mon svg {
+      width: 65%;
+      height: 65%;
+      stroke-width: 2;
+    }
+    .hub-panel__mon svg {
+      width: 58%;
+      height: 58%;
+      stroke-width: 1.7;
+    }
+    .quick-nav__mon .mon-dot,
+    .hub-panel__mon .mon-dot {
+      fill: currentColor;
+      stroke: none;
+    }
+
     .hub-panel h3 {
       margin: 0;
       font-family: "Kaisei HarunoUmi", serif;
@@ -1321,15 +1347,15 @@
     <p class="home-kicker">Explore</p>
     <h2 class="home-heading">目的から探す</h2>
     <ul>
-      <li><a href="#hyakushu"><span class="quick-nav__mon" aria-hidden="true">百</span>百首から選ぶ</a></li>
-      <li><a href="#kajin"><span class="quick-nav__mon" aria-hidden="true">知</span>歌と歌人を知る</a></li>
-      <li><a href="#oboeru"><span class="quick-nav__mon" aria-hidden="true">覚</span>覚える・暗記する</a></li>
-      <li><a href="#kyogi"><span class="quick-nav__mon" aria-hidden="true">競</span>競技かるたを鍛える</a></li>
-      <li><a href="#asobu"><span class="quick-nav__mon" aria-hidden="true">遊</span>ゲームで遊ぶ</a></li>
-      <li><a href="#gihou"><span class="quick-nav__mon" aria-hidden="true">技</span>和歌の技法</a></li>
-      <li><a href="#yomu"><span class="quick-nav__mon" aria-hidden="true">読</span>歴史と物語を読む</a></li>
-      <li><a href="#kanshoku"><span class="quick-nav__mon" aria-hidden="true">官</span>平安時代の位階・官職</a></li>
-      <li><a href="#miru"><span class="quick-nav__mon" aria-hidden="true">見</span>地図とデータで見る</a></li>
+      <li><a href="#hyakushu"><span class="quick-nav__mon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="6.5" y="3" width="11" height="18" rx="1.6"/><path d="M10.3 7v10M13.7 7v6.5"/></svg></span>百首から選ぶ</a></li>
+      <li><a href="#kajin"><span class="quick-nav__mon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M9 11.2C8.7 7.6 9.8 4.4 12.9 3.2c1.6 2.1 2.6 5 2.4 8"/><circle cx="12.2" cy="13.6" r="3.2"/><path d="M5 21c1.2-2.9 3.9-4.3 7.2-4.3S18.3 18.1 19.5 21"/></svg></span>歌と歌人を知る</a></li>
+      <li><a href="#oboeru"><span class="quick-nav__mon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="4" y="7" width="11" height="14" rx="1.6"/><path d="M8.5 7V5.2c0-.9.7-1.6 1.6-1.6h8.3c.9 0 1.6.7 1.6 1.6v11.6c0 .9-.7 1.6-1.6 1.6H15"/><path d="M6.8 14.2l2 2 3.4-4"/></svg></span>覚える・暗記する</a></li>
+      <li><a href="#kyogi"><span class="quick-nav__mon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="11.2" y="4.6" width="8.6" height="14" rx="1.6" transform="rotate(14 15.5 11.6)"/><path d="M3 8.5h5M2 12h6.3M3 15.5h5"/></svg></span>競技かるたを鍛える</a></li>
+      <li><a href="#asobu"><span class="quick-nav__mon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="4" y="4" width="16" height="16" rx="3.2"/><circle class="mon-dot" cx="8.5" cy="8.5" r="1.4"/><circle class="mon-dot" cx="12" cy="12" r="1.4"/><circle class="mon-dot" cx="15.5" cy="15.5" r="1.4"/></svg></span>ゲームで遊ぶ</a></li>
+      <li><a href="#gihou"><span class="quick-nav__mon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M20 3.8l-8.6 8.6"/><path d="M11.4 12.4c-1.6-.9-4.3-.2-5.3 2.2-.8 1.9-1.6 3-3.1 3.8 3.4.8 7.3-.1 8.6-2.6.7-1.3.6-2.5-.2-3.4z"/><path d="M13.2 10.6l-1.8 1.8"/></svg></span>和歌の技法</a></li>
+      <li><a href="#yomu"><span class="quick-nav__mon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="3" y="4.5" width="3.4" height="15" rx="1.7"/><rect x="17.6" y="4.5" width="3.4" height="15" rx="1.7"/><path d="M6.4 6.5h11.2M6.4 17.5h11.2M10 9.3v5.6M13.8 9.3v3.8"/></svg></span>歴史と物語を読む</a></li>
+      <li><a href="#kanshoku"><span class="quick-nav__mon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M4.5 18c0-4.6 3.2-7.4 7.5-7.4s7.5 2.8 7.5 7.4z"/><path d="M12.6 10.6V5.4c0-1 .9-1.7 1.9-1.4.8.2 1.3.9 1.3 1.7v5.7"/><path d="M15.8 6.4c2.2-.3 3.7-1.5 4.7-3.1"/></svg></span>平安時代の位階・官職</a></li>
+      <li><a href="#miru"><span class="quick-nav__mon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M3.5 6.5l5-2 7 2 5-2v13l-5 2-7-2-5 2z"/><path d="M8.5 4.5v13M15.5 6.5v13"/></svg></span>地図とデータで見る</a></li>
     </ul>
   </nav>
 
@@ -1639,7 +1665,7 @@
     <div class="hub-grid">
       <section class="hub-panel" id="kajin" aria-labelledby="kajin-title">
         <div class="hub-panel__head">
-          <span class="hub-panel__mon" aria-hidden="true">知</span>
+          <span class="hub-panel__mon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M9 11.2C8.7 7.6 9.8 4.4 12.9 3.2c1.6 2.1 2.6 5 2.4 8"/><circle cx="12.2" cy="13.6" r="3.2"/><path d="M5 21c1.2-2.9 3.9-4.3 7.2-4.3S18.3 18.1 19.5 21"/></svg></span>
           <div>
             <h3 id="kajin-title">歌と歌人を知る<span class="hub-panel__count">10</span></h3>
             <p>全100首の意味と、100人の歌人の素顔をたどる</p>
@@ -1661,7 +1687,7 @@
 
       <section class="hub-panel" id="oboeru" aria-labelledby="oboeru-title">
         <div class="hub-panel__head">
-          <span class="hub-panel__mon" aria-hidden="true">覚</span>
+          <span class="hub-panel__mon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="4" y="7" width="11" height="14" rx="1.6"/><path d="M8.5 7V5.2c0-.9.7-1.6 1.6-1.6h8.3c.9 0 1.6.7 1.6 1.6v11.6c0 .9-.7 1.6-1.6 1.6H15"/><path d="M6.8 14.2l2 2 3.4-4"/></svg></span>
           <div>
             <h3 id="oboeru-title">覚える・暗記する<span class="hub-panel__count">8</span></h3>
             <p>上の句・下の句・決まり字を、自分のペースで</p>
@@ -1681,7 +1707,7 @@
 
       <section class="hub-panel" id="kyogi" aria-labelledby="kyogi-title">
         <div class="hub-panel__head">
-          <span class="hub-panel__mon" aria-hidden="true">競</span>
+          <span class="hub-panel__mon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="11.2" y="4.6" width="8.6" height="14" rx="1.6" transform="rotate(14 15.5 11.6)"/><path d="M3 8.5h5M2 12h6.3M3 15.5h5"/></svg></span>
           <div>
             <h3 id="kyogi-title">競技かるたを鍛える<span class="hub-panel__count">8</span></h3>
             <p>対戦から札流しまで、競技者のための練習場</p>
@@ -1701,7 +1727,7 @@
 
       <section class="hub-panel" id="asobu" aria-labelledby="asobu-title">
         <div class="hub-panel__head">
-          <span class="hub-panel__mon" aria-hidden="true">遊</span>
+          <span class="hub-panel__mon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="4" y="4" width="16" height="16" rx="3.2"/><circle class="mon-dot" cx="8.5" cy="8.5" r="1.4"/><circle class="mon-dot" cx="12" cy="12" r="1.4"/><circle class="mon-dot" cx="15.5" cy="15.5" r="1.4"/></svg></span>
           <div>
             <h3 id="asobu-title">ゲームで遊ぶ<span class="hub-panel__count">9</span></h3>
             <p>すごろく・クイズ・パズル。家族や教室でも</p>
@@ -1722,7 +1748,7 @@
 
       <section class="hub-panel" id="gihou" aria-labelledby="gihou-title">
         <div class="hub-panel__head">
-          <span class="hub-panel__mon" aria-hidden="true">技</span>
+          <span class="hub-panel__mon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M20 3.8l-8.6 8.6"/><path d="M11.4 12.4c-1.6-.9-4.3-.2-5.3 2.2-.8 1.9-1.6 3-3.1 3.8 3.4.8 7.3-.1 8.6-2.6.7-1.3.6-2.5-.2-3.4z"/><path d="M13.2 10.6l-1.8 1.8"/></svg></span>
           <div>
             <h3 id="gihou-title">和歌の技法<span class="hub-panel__count">7</span></h3>
             <p>五・七・五・七・七に込められた仕掛けを読み解く</p>
@@ -1741,7 +1767,7 @@
 
       <section class="hub-panel" id="yomu" aria-labelledby="yomu-title">
         <div class="hub-panel__head">
-          <span class="hub-panel__mon" aria-hidden="true">読</span>
+          <span class="hub-panel__mon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="3" y="4.5" width="3.4" height="15" rx="1.7"/><rect x="17.6" y="4.5" width="3.4" height="15" rx="1.7"/><path d="M6.4 6.5h11.2M6.4 17.5h11.2M10 9.3v5.6M13.8 9.3v3.8"/></svg></span>
           <div>
             <h3 id="yomu-title">歴史と物語を読む<span class="hub-panel__count">14</span></h3>
             <p>歌の背後にある、人と時代のドラマ</p>
@@ -1767,7 +1793,7 @@
 
       <section class="hub-panel" id="kanshoku" aria-labelledby="kanshoku-title">
         <div class="hub-panel__head">
-          <span class="hub-panel__mon" aria-hidden="true">官</span>
+          <span class="hub-panel__mon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M4.5 18c0-4.6 3.2-7.4 7.5-7.4s7.5 2.8 7.5 7.4z"/><path d="M12.6 10.6V5.4c0-1 .9-1.7 1.9-1.4.8.2 1.3.9 1.3 1.7v5.7"/><path d="M15.8 6.4c2.2-.3 3.7-1.5 4.7-3.1"/></svg></span>
           <div>
             <h3 id="kanshoku-title">平安時代の位階・官職<span class="hub-panel__count">7</span></h3>
             <p>歌人の肩書きがわかると、歌がもっと面白い</p>
@@ -1786,7 +1812,7 @@
 
       <section class="hub-panel" id="miru" aria-labelledby="miru-title">
         <div class="hub-panel__head">
-          <span class="hub-panel__mon" aria-hidden="true">見</span>
+          <span class="hub-panel__mon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M3.5 6.5l5-2 7 2 5-2v13l-5 2-7-2-5 2z"/><path d="M8.5 4.5v13M15.5 6.5v13"/></svg></span>
           <div>
             <h3 id="miru-title">地図とデータで見る<span class="hub-panel__count">5</span></h3>
             <p>百首を地図・感情・言葉の星空として眺める</p>
