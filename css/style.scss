@@ -2327,6 +2327,10 @@ card-item.active img#moon {
   line-height: 1.65;
   letter-spacing: 0.05em;
   text-align: justify;
+  // 英語ページは両端揃えにせず左揃え（:where()で詳細度を元のルールと同じに保つ）
+  :where(html[lang="en"]) & {
+    text-align: left;
+  }
   rt {
     letter-spacing: 0;
   }
@@ -3772,6 +3776,10 @@ footer {
     line-height: 1.8em;
     margin-bottom: 0.8em;
     text-align: justify;
+    // 英語ページは両端揃えにせず左揃え（:where()で詳細度を元のルールと同じに保つ）
+    :where(html[lang="en"]) & {
+      text-align: left;
+    }
     @media (max-width: 1000px) {
       font-size: 1.05rem;
       line-height: 1.8;
