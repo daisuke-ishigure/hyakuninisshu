@@ -892,6 +892,28 @@
       object-fit: contain;
     }
 
+    /* PC: 画像と和歌の枠を同じ高さにそろえる（高い方に合わせて両方を伸ばす。
+       画像は切らずに object-fit: contain で全体を表示し、余白は背景色で埋める） */
+    @media (min-width: 750px) {
+      #omikuji #waka-row {
+        align-items: stretch;
+      }
+
+      #omikuji #waka-content {
+        display: flex;
+        flex-direction: column;
+      }
+
+      #omikuji #waka-poem {
+        flex: 1 1 auto;
+        margin-bottom: 0;
+      }
+
+      #omikuji .waka-card-image {
+        align-self: stretch;
+      }
+    }
+
     #omikuji #result-area {
       box-sizing: border-box;
       width: 100%;
