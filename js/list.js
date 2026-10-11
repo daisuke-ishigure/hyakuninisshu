@@ -65,7 +65,7 @@ let activeThemeFilter = null;
 
 // 色・テーマ・検索語をすべて満たす行だけを表示する
 function applyFilters(table) {
-  const rows = Array.from(table.getElementsByTagName("tr"));
+  const rows = Array.from(table.querySelectorAll("tbody tr"));
   const searchValue = searchInput.value.toLowerCase();
   rows.forEach((row) => {
     const colorOk = !activeColorFilter || row.dataset.color === activeColorFilter;
@@ -80,7 +80,7 @@ function applyFilters(table) {
 // ページ側のCSSが animation-delay = --wave-i × 間隔 にする。並べ替え・絞り込みのたびに付け直す。
 function updateBadgeWave(table) {
   let i = 0;
-  Array.from(table.getElementsByTagName("tr")).forEach((row) => {
+  Array.from(table.querySelectorAll("tbody tr")).forEach((row) => {
     const badge = row.querySelector(".num-badge");
     if (!badge) return;
     if (row.style.display === "none") return;
@@ -101,9 +101,9 @@ function initSortButtons(table) {
   }
 
   function sortRows(compareFn) {
-    const rows = Array.from(table.getElementsByTagName("tr"));
+    const rows = Array.from(table.querySelectorAll("tbody tr"));
     if (!rows.length) return;
-    // 行は <tbody> の中にあるので、並べ替えた行も同じ親（tbody）に戻す
+    // 行は <tbody> の中にあるので、並べ替えた行も同じ親（tbody）に戻す（<thead> の見出し行は対象外）
     const parent = rows[0].parentNode;
     rows.sort(compareFn);
     rows.forEach((row) => parent.appendChild(row));

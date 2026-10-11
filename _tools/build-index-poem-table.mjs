@@ -1,4 +1,4 @@
-// index.html「百首から選ぶ」・list.html「小倉百人一首一覧」・list_en.html の表（全100首）を HTML に直書きするためのスクリプト。
+// index.html「百首から選ぶ」・list.html「百人一首一覧」・list_en.html の表（全100首）を HTML に直書きするためのスクリプト。
 // 検索エンジンが100首へのリンクを確実に辿れるよう、JavaScript で作らず静的に埋め込んでいる。
 //
 // 使い方（リポジトリのルートで）:
@@ -18,9 +18,24 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const read = (p) => readFileSync(join(root, p), "utf8");
 
 // 行テンプレート（ブラウザ側と同じファイル）と、その表を直書きするページ
+// head は <tbody> の前に入れる <caption>・<thead>（無ければ入れない）。
+// list.html・list_en.html は「百人一首 一覧」の検索で上位を狙うページなので、見出し行を付けている（作者は和歌の列の中・右揃え）。
+const LIST_HEAD =
+  "          <caption>百人一首 一覧（歌番号・和歌・作者）</caption>\n" +
+  "          <thead>\n" +
+  '            <tr><th scope="col">番号</th><th scope="col">和歌・作者</th></tr>\n' +
+  "          </thead>\n";
+const LIST_HEAD_EN =
+  "          <caption>Hyakunin Isshu Poem List (No., Poem, Poet)</caption>\n" +
+  "          <thead>\n" +
+  '            <tr><th scope="col">No.</th><th scope="col">Poem / Poet</th></tr>\n' +
+  "          </thead>\n";
 const TARGETS = [
-  { template: "js/list-rows.js", pages: ["index.html", "list.html"] },
-  { template: "js/list-rows_en.js", pages: ["index_en.html", "list_en.html"] },
+  {
+    template: "js/list-rows.js",
+    pages: [{ page: "index.html" }, { page: "list.html", head: LIST_HEAD }],
+  },
+  { template: "js/list-rows_en.js", pages: [{ page: "index_en.html" }, { page: "list_en.html", head: LIST_HEAD_EN }] },
 ];
 
 const data = JSON.parse(read("js/hyakunin.json"));
@@ -31,19 +46,20 @@ for (const { template, pages } of TARGETS) {
   const context = vm.createContext({});
   vm.runInContext(read(template), context);
 
-  const rows = Object.keys(data).map((key) => "            " + context.buildPoemRowHTML(data[key]));
-  if (rows.length !== 100) throw new Error(`100首ではありません: ${rows.length}`);
+  for (const { page, head = "" } of pages) {
+    const rows = Object.keys(data).map((key) => "            " + context.buildPoemRowHTML(data[key]));
+    if (rows.length !== 100) throw new Error(`100首ではありません: ${rows.length}`);
 
-  const table =
-    START + "\n" +
-    "        <table>\n" +
-    "          <tbody>\n" +
-    rows.join("\n") + "\n" +
-    "          </tbody>\n" +
-    "        </table>\n" +
-    "        " + END;
+    const table =
+      START + "\n" +
+      "        <table>\n" +
+      head +
+      "          <tbody>\n" +
+      rows.join("\n") + "\n" +
+      "          </tbody>\n" +
+      "        </table>\n" +
+      "        " + END;
 
-  for (const page of pages) {
     const path = join(root, page);
     const html = readFileSync(path, "utf8");
     const a = html.indexOf(START);

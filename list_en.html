@@ -13,12 +13,10 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="Keywords" content="Hyakunin Isshu, one hundred poems, classical Japanese poetry, waka, anthology">
-  <meta name="description" content="Complete list of all 100 poems from the Hyakunin Isshu anthology. Search by poem text, poet name, or romaji reading. Click a number to visit the poem's detail page.">
-  <meta name="fragment" content="!">
+  <meta name="description" content="Hyakunin Isshu list: all 100 poems with the Japanese text, romaji readings, English translations and poets. Sort by number, colour or kana order, and search by poem, poet or romaji.">
   <meta name="google-site-verification" content="a3HHNhawWK8QsasKiSFMC_QeIXmO1tdBc60jhNPTA3s">
   <link rel="stylesheet" href="../css/style.css?20261010-02">
-  <link rel="stylesheet" href="../css/list.css?20260927-01">
+  <link rel="stylesheet" href="../css/list.css?20261011-01">
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -108,6 +106,46 @@
       background-color: #f0e8d8 !important;
     }
   /* 操作説明リスト */
+    /* Related pages below the table (same look as list.html) */
+    .list-related {
+      margin: 2.5em 0 1em;
+    }
+    .list-related__links {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 8px 12px;
+      margin: 0.8em 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .list-related__links a {
+      display: block;
+      padding: 10px 14px;
+      border: 1px solid #ddd6be;
+      border-radius: 8px;
+      background: #fffdf8;
+      text-decoration: none;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .list-related__links a:hover {
+      background: #f7f1e0;
+      border-color: #b82343;
+    }
+    .list-related__title {
+      display: block;
+      font-weight: 700;
+      color: #333;
+    }
+    .list-related__links a:hover .list-related__title {
+      color: #b82343;
+    }
+    .list-related__desc {
+      display: block;
+      font-size: 0.8rem;
+      line-height: 1.5;
+      color: #7a6655;
+    }
+
     .em-usage-list {
       margin: .6em 0 0;
       font-family:Arial, Helvetica, sans-serif;
@@ -162,8 +200,8 @@
       <a href="index_en.html"><img src="../img/icon_top_en.svg?ver-01" alt="Top" class="icon" width="59" height="22"></a>
       <a href="introduction_en.html" style="color:#333"><img src="/img/icon_column_en.svg?ver-01" alt="Articles" class="icon" width="72" height="22"></a>
       <a href="introduction-app_en.html" style="color:#333"><img src="/img/icon_app_en.svg?ver-01" alt="App" class="icon" width="59" height="22"></a>
-      <a href="list_en.html"><img src="/img/icon_lang.svg?ver-01" alt="Japanese" class="icon" width="59" height="22"></a>
-      <a href="list_en.html"><img src="/img/icon_list_en.svg?ver-01" alt="Poem list and search" class="icon" width="59" height="22"></a>
+      <a href="list.html"><img src="/img/icon_lang.svg?ver-01" alt="Japanese" class="icon" width="59" height="22"></a>
+      <a href="list_en.html"><img src="/img/icon_list_en.svg?ver-01" alt="Hyakunin Isshu Poem List" class="icon" width="59" height="22"></a>
     </div>
   </header>
 <script src="../js/back-to-top.js?20261004-06"></script>
@@ -174,7 +212,6 @@
       <nav>
         <ol class="breadcrumb">
           <li><a href="index_en.html">Top</a></li>
-          <li><a href="introduction_en.html">Articles</a></li>
           <li>Poem List</li>
         </ol>
       </nav>
@@ -217,6 +254,10 @@
       <div id="table" class="active">
         <!-- POEM-TABLE:START -->
         <table>
+          <caption>Hyakunin Isshu Poem List (No., Poem, Poet)</caption>
+          <thead>
+            <tr><th scope="col">No.</th><th scope="col">Poem / Poet</th></tr>
+          </thead>
           <tbody>
             <tr data-number="1" data-color="ピンク" data-theme="autumn" data-hiragana="あきのたのかりおのいおのとまをあらみわがころもではつゆにぬれつつ"><td style="background-color: #fde8f3;"><a class="num-badge" href="/1_en.html" data-number="1" data-tooltip="Poem details">1</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">秋の田の かりほの庵の 苫をあらみ <br class="waka-br">我が衣手は 露にぬれつつ</span> <span class="romaji-text">akinotano karihonoihono tomaoarami <br class="waka-br">wagakoromodeha tsuyuninuretsutsu</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">By the rice fields, in a makeshift hut with a loosely woven roof, my sleeves are wet with the night dew.</span><div class="waka-game-links"><span class="small">天智天皇（Emperor Tenji）</span></div></td><td style="background-color: #F7F1E0;">あきのたの<br>かりほのいほの<br>とまをあらみ<br>わがころもでは<br>つゆにぬれつつ</td><td style="background-color: #F7F1E0;">akinotano karihonoihono tomaoarami wagakoromodeha tsuyuninuretsutsu</td><td style="background-color: #F7F1E0;"></td></tr>
             <tr data-number="2" data-color="黄" data-theme="summer" data-hiragana="はるすぎてなつきにけらししろたえのころもほすちょうあまのかぐやま"><td style="background-color: #fefbe0;"><a class="num-badge" href="/2_en.html" data-number="2" data-tooltip="Poem details">2</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">春過ぎて 夏来にけらし 白妙の <br class="waka-br">衣ほすてふ 天の香具山</span> <span class="romaji-text">harusugite natsukinikerashi shirotaheno <br class="waka-br">koromohosutefu amanokaguyama</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">Spring has passed and summer seems to have come — white robes are said to be hung out to dry on the heavenly Mount Kagu.</span><div class="waka-game-links"><span class="small">持統天皇（Empress Jitō）</span></div></td><td style="background-color: #F7F1E0;">はるすぎて<br>なつきにけらし<br>しろたへの<br>ころもほすてふ<br>あまのかぐやま</td><td style="background-color: #F7F1E0;">harusugite natsukinikerashi shirotaheno koromohosutefu amanokaguyama</td><td style="background-color: #F7F1E0;"></td></tr>
@@ -322,6 +363,14 @@
         </table>
         <!-- POEM-TABLE:END -->
       </div>
+      <!-- Related pages below the table -->
+      <nav class="list-related" aria-labelledby="list-related-title">
+        <h2 id="list-related-title">See also</h2>
+        <ul class="list-related__links">
+          <li><a href="about_en.html"><span class="list-related__title">What Is the Hyakunin Isshu?</span><span class="list-related__desc">Its origins and Fujiwara no Sadaie's sense of beauty</span></a></li>
+          <li><a href="kajin-zukan_en.html"><span class="list-related__title">Poet Encyclopedia</span><span class="list-related__desc">Find the 100 poets by era, social standing, and theme</span></a></li>
+        </ul>
+      </nav>
     </div>
   </main>
 
@@ -341,7 +390,7 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="../js/list-rows_en.js?20261009-01"></script>
-  <script src="../js/list_en.js?20261011-01"></script>
+  <script src="../js/list_en.js?20261011-02"></script>
   <script src="../js/move_script.js?20260729"></script>
 
 </body>

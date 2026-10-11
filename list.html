@@ -13,12 +13,10 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="Keywords" content="百人一首,百人一首の一覧,百人一首の検索,百人一首の絞り込み">
-  <meta name="description" content="百人一首の一覧です。和歌や歌人名の一部を入力すると絞り込めます。平仮名だけでも検索できます。番号をクリックすると、該当の和歌ページにリンクします。">
-  <meta name="fragment" content="!">
+  <meta name="description" content="百人一首の全100首一覧。上の句・下の句・作者・読み方（ひらがな）・現代語訳をまとめて確認できます。歌番号順・五十音順・五色百人一首の色順に並べ替え、歌や歌人名の一部（ひらがなOK）で検索も可能です。">
   <meta name="google-site-verification" content="a3HHNhawWK8QsasKiSFMC_QeIXmO1tdBc60jhNPTA3s">
   <link rel="stylesheet" href="../css/style.css?20261010-02">
-  <link rel="stylesheet" href="../css/list.css?20260927-01">
+  <link rel="stylesheet" href="../css/list.css?20261011-01">
   <style>
     .modern-text {
       display: block;
@@ -100,6 +98,46 @@
   }
 </script>
   <style>
+    /* 表の下の関連ページ（トップページの「すべてのコンテンツ」のリンクと同じ見た目） */
+    .list-related {
+      margin: 2.5em 0 1em;
+    }
+    .list-related__links {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 8px 12px;
+      margin: 0.8em 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .list-related__links a {
+      display: block;
+      padding: 10px 14px;
+      border: 1px solid #ddd6be;
+      border-radius: 8px;
+      background: #fffdf8;
+      text-decoration: none;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .list-related__links a:hover {
+      background: #f7f1e0;
+      border-color: #b82343;
+    }
+    .list-related__title {
+      display: block;
+      font-weight: 700;
+      color: #333;
+    }
+    .list-related__links a:hover .list-related__title {
+      color: #b82343;
+    }
+    .list-related__desc {
+      display: block;
+      font-size: 0.8rem;
+      line-height: 1.5;
+      color: #7a6655;
+    }
+
     /* 操作説明リスト */
     .em-usage-list {
       margin: .6em 0 0;
@@ -156,7 +194,7 @@
       <a href="introduction.html" style="color:#333"><img src="/img/icon_column.svg?ver-02" alt="コラム" class="icon" width="67" height="22"></a>
       <a href="introduction-app.html" style="color:#333"><img src="/img/icon_app.svg?ver-02" alt="アプリ" class="icon" width="67" height="22"></a>
       <a href="list_en.html"><img src="/img/icon_lang.svg?ver-01" alt="English" class="icon" width="59" height="22"></a>
-      <a href="list.html"><img src="/img/icon_search.svg?ver-04" alt="和歌の一覧・検索" class="icon" width="59" height="22"></a>
+      <a href="list.html"><img src="/img/icon_search.svg?ver-04" alt="百人一首一覧" class="icon" width="59" height="22"></a>
     </div>
   </header>
 <script src="../js/back-to-top.js?20261004-06"></script>
@@ -167,7 +205,6 @@
       <nav>
         <ol class="breadcrumb">
           <li><a href="index.html">トップ</a></li>
-          <li><a href="introduction.html">コラム</a></li>
           <li>百人一首一覧</li>
         </ol>
       </nav>
@@ -196,6 +233,10 @@
       <div id="table" class="active">
         <!-- POEM-TABLE:START -->
         <table>
+          <caption>百人一首 一覧（歌番号・和歌・作者）</caption>
+          <thead>
+            <tr><th scope="col">番号</th><th scope="col">和歌・作者</th></tr>
+          </thead>
           <tbody>
             <tr data-number="1" data-color="ピンク" data-theme="autumn" data-hiragana="あきのたのかりおのいおのとまをあらみわがころもではつゆにぬれつつ"><td style="background-color: #fde8f3;"><a class="num-badge" href="/1.html" data-number="1" data-tooltip="解説ページへ">1</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><ruby>秋<rt>あき</rt></ruby>の<ruby>田<rt>た</rt></ruby>の かりほの<ruby>庵<rt>いお</rt></ruby>の <ruby>苫<rt>とま</rt></ruby>をあらみ <br class="waka-br"><ruby>我<rt>わ</rt></ruby>が<ruby>衣手<rt>ころもで</rt></ruby>は <ruby>露<rt>つゆ</rt></ruby>にぬれつつ<span class="modern-toggle">▼ 現代語訳</span><span class="modern-text" style="display:none;">秋の田のほとりにある仮小屋は、屋根の苫の編み目が粗くて、私の袖は夜露に濡れているよ。</span><div class="waka-game-links"><span class="small"><ruby>天智天皇<rt>てんじてんのう</rt></ruby></span></div></td><td style="background-color: #F7F1E0;">あきのたの<br>かりほのいほの<br>とまをあらみ<br>わがころもでは<br>つゆにぬれつつ</td><td style="background-color: #F7F1E0;">あきのたのかりおのいおのとまをあらみわがころもではつゆにぬれつつ</td><td style="background-color: #F7F1E0;">秋の田のかりほの庵の苫をあらみ我が衣手は露にぬれつつ
 天智天皇</td></tr>
@@ -401,6 +442,14 @@
         </table>
         <!-- POEM-TABLE:END -->
       </div>
+      <!-- 表の下の関連ページ -->
+      <nav class="list-related" aria-labelledby="list-related-title">
+        <h2 id="list-related-title">あわせて読みたい</h2>
+        <ul class="list-related__links">
+          <li><a href="about.html"><span class="list-related__title">百人一首とは</span><span class="list-related__desc">成り立ちと藤原定家の美意識</span></a></li>
+          <li><a href="kajin-zukan.html"><span class="list-related__title">歌人図鑑</span><span class="list-related__desc">100人を時代・身分・テーマから探せる人物図鑑</span></a></li>
+        </ul>
+      </nav>
     </div>
   </main>
 
@@ -420,7 +469,7 @@
   <!-- フッターここまで -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="../js/list-rows.js?20261005-01"></script>
-  <script src="../js/list.js?20261011-01"></script>
+  <script src="../js/list.js?20261011-02"></script>
   <script src="../js/move_script.js?20260729"></script>
 
   <script src="../js/poet-index.js"></script>

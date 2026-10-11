@@ -58,7 +58,7 @@ let activeThemeFilter = null;
 
 // Show only rows that match the colour filter, the theme filter and the search text
 function applyFilters(table) {
-  const rows = Array.from(table.getElementsByTagName("tr"));
+  const rows = Array.from(table.querySelectorAll("tbody tr"));
   const searchValue = searchInput.value.toLowerCase();
   rows.forEach((row) => {
     const colorOk = !activeColorFilter || row.dataset.color === activeColorFilter;
@@ -74,7 +74,7 @@ function applyFilters(table) {
 // Renumber after every sort or filter.
 function updateBadgeWave(table) {
   let i = 0;
-  Array.from(table.getElementsByTagName("tr")).forEach((row) => {
+  Array.from(table.querySelectorAll("tbody tr")).forEach((row) => {
     const badge = row.querySelector(".num-badge");
     if (!badge) return;
     if (row.style.display === "none") return;
@@ -95,9 +95,9 @@ function initSortButtons(table) {
   }
 
   function sortRows(compareFn) {
-    const rows = Array.from(table.getElementsByTagName("tr"));
+    const rows = Array.from(table.querySelectorAll("tbody tr"));
     if (!rows.length) return;
-    // Rows live inside <tbody>, so put the sorted rows back into that same parent
+    // Rows live inside <tbody>, so put the sorted rows back into that same parent (any <thead> row is left alone)
     const parent = rows[0].parentNode;
     rows.sort(compareFn);
     rows.forEach((row) => parent.appendChild(row));
