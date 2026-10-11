@@ -153,20 +153,29 @@
       flex-shrink: 0;
     }
 
+    /* 横スクロール・縦書きの列表示（PC・SPとも101列1段） */
     .compare-scroll {
       border: 1px solid #e0d8cc;
       border-radius: 6px;
-      overflow-y: auto;
-      max-height: 72vh;
+      overflow-x: auto;
+      overflow-y: hidden;
       background: #faf7f2;
+      cursor: grab;
+    }
+
+    /* マウスでドラッグ中 */
+    .compare-scroll.is-dragging {
+      cursor: grabbing;
+      user-select: none;
     }
 
     .compare-rail {
       display: flex;
+      width: max-content;
     }
 
-    .rail-numbers {
-      width: 40px;
+    /* 左端の見出し列（番号／歌人名／歌） */
+    .rail-head {
       flex-shrink: 0;
       border-right: 1px solid #e0d8cc;
       background: #f5f0e8;
@@ -175,8 +184,41 @@
       z-index: 5;
     }
 
+    .head-cell {
+      box-sizing: border-box;
+      width: 100%;
+      writing-mode: vertical-rl;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: #888;
+      font-family: 'Noto Sans JP', sans-serif;
+      letter-spacing: 1px;
+      border-bottom: 1px solid #e8e2d8;
+    }
+
+    .head-cell:last-child {
+      border-bottom: none;
+    }
+
+    .rail-cards {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .col-stripe {
+      position: absolute;
+      pointer-events: none;
+    }
+
+    .col-stripe.even {
+      background: rgba(0, 0, 0, 0.025);
+    }
+
     .num-cell {
-      height: 80px;
+      position: absolute;
+      box-sizing: border-box;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -191,132 +233,85 @@
       background: #ede8df;
     }
 
-    .rail-cards {
-      flex: 1;
-      position: relative;
-    }
-
-    .stripe-row {
-      position: absolute;
-      left: 0;
-      right: 0;
-      height: 80px;
-      border-bottom: 1px solid #e8e2d8;
-      pointer-events: none;
-    }
-
-    .stripe-row.even {
-      background: rgba(0, 0, 0, 0.018);
-    }
-
     /* ── 歌人カード ── */
     .poet-card {
       position: absolute;
-      left: 10px;
-      right: 10px;
-      height: 68px;
-      border-radius: 0 6px 6px 0;
-      display: flex;
-      align-items: stretch;
-      transition: top 0.85s cubic-bezier(0.4, 0, 0.2, 1),
-        opacity 0.4s ease;
-      overflow: hidden;
-    }
-
-    /* 左帯（色ライン） */
-    .card-stripe {
-      width: 4px;
-      flex-shrink: 0;
-    }
-
-    /* カード内容 */
-    .card-body {
-      flex: 1;
-      min-width: 0;
-      padding: 6px 10px;
+      border-radius: 0 0 6px 6px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      gap: 4px;
-      font-family: sans-serif;
+      align-items: center;
+      overflow: hidden;
+      transition: left 0.85s cubic-bezier(0.4, 0, 0.2, 1),
+        top 0.85s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.4s ease;
     }
 
-    .card-row1 {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      justify-content: flex-end;
+    .poet-card.is-hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* 上帯（色ライン） */
+    .card-stripe {
+      align-self: stretch;
+      height: 3px;
+      flex-shrink: 0;
     }
 
     .card-name {
+      box-sizing: border-box;
+      flex-shrink: 0;
+      writing-mode: vertical-rl;
+      padding-top: 6px;
       font-size: 12px;
-      font-weight: 400;
+      line-height: 1.2;
       letter-spacing: 1px;
+      color: #333;
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+
+    /* 歌は上の句・下の句を続けて1行 */
+    .card-poem {
+      flex: 1;
+      min-height: 0;
+      writing-mode: vertical-rl;
+      padding-top: 8px;
+      font-family: 'Noto Serif JP', serif;
+      font-size: 13px;
+      line-height: 1.4;
+      color: #333;
       white-space: nowrap;
       overflow: hidden;
-      text-overflow: ellipsis;
-      flex-shrink: 0;
-      max-width: 160px;
-      color: #333;
     }
 
     .card-badge {
-      font-size: 10px;
-      padding: 1px 7px;
-      border-radius: 10px;
       flex-shrink: 0;
+      writing-mode: vertical-rl;
+      margin-bottom: 6px;
+      padding: 5px 1px;
+      border-radius: 8px;
+      font-size: 9px;
+      line-height: 1.2;
       font-family: 'Noto Sans JP', sans-serif;
       letter-spacing: 0;
     }
 
-    /* PC：上の句＋下の句を1行で表示 */
-    .card-poem {
-      font-size: 18px;
-      letter-spacing: 0.5px;
-      line-height: 1.5;
-      color: #333;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .poem-sep {
-      display: inline;
-    }
-
-    .poem-shimo {
-      display: inline;
-    }
-
-    /* SP（600px以下）：改行あり・行高拡張 */
+    /* SP（600px以下）：やや小さめ */
     @media (max-width: 600px) {
+      .head-cell,
       .num-cell {
-        height: 104px;
-      }
-
-      .stripe-row {
-        height: 104px;
-      }
-
-      .poet-card {
-        height: 92px;
+        font-size: 10px;
+        letter-spacing: 0;
       }
 
       .card-name {
         font-size: 11px;
+        line-height: 1.15;
+        letter-spacing: 0;
       }
 
       .card-poem {
-        font-size: 13.2px;
-        white-space: normal;
-      }
-
-      .poem-sep {
-        display: none;
-      }
-
-      .poem-shimo {
-        display: block;
+        font-size: 12px;
       }
     }
 
@@ -350,7 +345,7 @@
       <a href="list.html"><img src="/img/icon_search.svg?ver-04" alt="百人一首一覧" class="icon" width="59" height="22"></a>
     </div>
   </header>
-<script src="../js/back-to-top.js?20261004-06"></script>
+<script src="../js/back-to-top.js?20261012-01"></script>
 
   <main class="main_about-main">
     <div class="about-main">
@@ -382,8 +377,7 @@
 
         <h2>配列のちがい</h2>
         <p>
-          ボタンを切り替えると、各歌人の番号位置がアニメーションで入れ替わります。<br>
-          1～4番歌は変わりませんが、5番歌以降は配列が大きく異なります。表をスクロールした状態で表示を切り替えることで、歌人の位置がどのように移動するかを視覚的に確認できます。
+          ボタンを切り替えると、各歌人の番号位置がアニメーションで入れ替わります。
         </p>
         <p>
           百人秀歌では、内容が呼応する歌や、季節・主題の近い歌が並ぶ傾向が見られます。一方、百人一首はおおむね時代順に配列されつつ、明るい歌、恋の高まり、切なさ、無常感といった感情の流れが波のように織り込まれた構成になっています。
@@ -418,13 +412,13 @@
 
           <div class="compare-scroll">
             <div class="compare-rail">
-              <div class="rail-numbers" id="rail-numbers"></div>
+              <div class="rail-head" id="rail-head"></div>
               <div class="rail-cards" id="rail-cards"></div>
             </div>
           </div>
 
           <p class="compare-note" style="margin-bottom:0;">
-            百人秀歌は101首構成のため、行数は101行で表示しています。
+            百人秀歌は101首構成のため、列数は101列で表示しています。
           </p>
           <p class="compare-note" style="margin-top:0;">
             家隆の位階が百人秀歌では正三位、百人一首では従二位となっており、この位階の違いにより、百人秀歌の方が百人一首より先に編まれたと考えられる理由になっています。
@@ -886,9 +880,15 @@
       },
     ];
 
-    const ROW_H = window.innerWidth <= 600 ? 104 : 80;
     const ROWS = 101;
-    const OFFSCREEN = ROWS * ROW_H + 400;
+    const SP_QUERY = window.matchMedia('(max-width: 600px)');
+
+    // 寸法（PC・SPとも101列1段、横スクロール）
+    const DIMS = {
+      pc: { HEAD_W: 40, COL_W: 36, NUM_H: 36, NAME_H: 116, POEM_H: 510 },
+      sp: { HEAD_W: 34, COL_W: 34, NUM_H: 34, NAME_H: 108, POEM_H: 475 },
+    };
+    let D = SP_QUERY.matches ? DIMS.sp : DIMS.pc;
 
     let currentMode = 'shuka';
 
@@ -904,25 +904,54 @@
       },
     };
 
+    // 番号 n（1始まり）の列の左端
+    function colLeft(n) { return (n - 1) * D.COL_W; }
+
+    function placeCard(card, pos) {
+      card.style.left = (colLeft(pos) + 3) + 'px';
+    }
+
     function buildWidget() {
-      const numEl = document.getElementById('rail-numbers');
+      const headEl = document.getElementById('rail-head');
       const cardsEl = document.getElementById('rail-cards');
+      headEl.innerHTML = '';
+      cardsEl.innerHTML = '';
 
-      for (let i = 1; i <= ROWS; i++) {
-        const d = document.createElement('div');
-        d.className = 'num-cell' + (i % 2 === 0 ? ' even' : '');
-        d.textContent = i;
-        numEl.appendChild(d);
+      // 見出し列
+      headEl.style.width = D.HEAD_W + 'px';
+      [['番号', D.NUM_H], ['歌人名', D.NAME_H], ['歌', D.POEM_H]].forEach(([label, h]) => {
+        const cell = document.createElement('div');
+        cell.className = 'head-cell';
+        cell.style.height = h + 'px';
+        cell.textContent = label;
+        headEl.appendChild(cell);
+      });
+
+      cardsEl.style.width = (ROWS * D.COL_W) + 'px';
+      cardsEl.style.height = (D.NUM_H + D.NAME_H + D.POEM_H) + 'px';
+
+      // 列の縞と歌番号
+      for (let n = 1; n <= ROWS; n++) {
+        const left = colLeft(n);
+        const even = n % 2 === 0 ? ' even' : '';
+
+        const stripe = document.createElement('div');
+        stripe.className = 'col-stripe' + even;
+        stripe.style.left = left + 'px';
+        stripe.style.top = D.NUM_H + 'px';
+        stripe.style.width = D.COL_W + 'px';
+        stripe.style.height = (D.NAME_H + D.POEM_H) + 'px';
+        cardsEl.appendChild(stripe);
+
+        const num = document.createElement('div');
+        num.className = 'num-cell' + even;
+        num.style.left = left + 'px';
+        num.style.top = '0';
+        num.style.width = D.COL_W + 'px';
+        num.style.height = D.NUM_H + 'px';
+        num.textContent = n;
+        cardsEl.appendChild(num);
       }
-
-      for (let i = 0; i < ROWS; i++) {
-        const s = document.createElement('div');
-        s.className = 'stripe-row' + (i % 2 !== 0 ? ' even' : '');
-        s.style.top = (i * ROW_H) + 'px';
-        cardsEl.appendChild(s);
-      }
-
-      cardsEl.style.height = (ROWS * ROW_H) + 'px';
 
       POETS.forEach(poet => {
         const inShuka = poet.shuka !== null;
@@ -935,50 +964,35 @@
         card.className = 'poet-card';
         card.id = 'card-' + poet.id;
         card.style.background = c.bg;
-        card.style.top = inShuka ? ((poet.shuka - 1) * ROW_H + 6) + 'px'
-          : OFFSCREEN + 'px';
-        card.style.opacity = inShuka ? '1' : '0';
+        card.style.width = (D.COL_W - 6) + 'px';
+        card.style.height = (D.NAME_H + D.POEM_H - 6) + 'px';
+        card.style.top = D.NUM_H + 'px';
+
+        // 現在のモードに無い歌は、もう一方の位置に透明で置いておく
+        const pos = currentMode === 'shuka' ? poet.shuka : poet.isshu;
+        placeCard(card, pos !== null ? pos : (inShuka ? poet.shuka : poet.isshu));
+        if (pos === null) card.classList.add('is-hidden');
 
         const stripe = document.createElement('div');
         stripe.className = 'card-stripe';
         stripe.style.background = c.stripe;
         card.appendChild(stripe);
 
-        const body = document.createElement('div');
-        body.className = 'card-body';
+        // 歌人名
+        const nameEl = document.createElement('div');
+        nameEl.className = 'card-name';
+        nameEl.style.height = (D.NAME_H - 3) + 'px';
+        nameEl.style.color = c.text;
+        nameEl.textContent = poet.name;
+        card.appendChild(nameEl);
 
-        // 1行目：歌
+        // 歌（上の句・下の句を続けて1行）
         if (poet.kami || poet.shimo) {
           const poemEl = document.createElement('div');
           poemEl.className = 'card-poem';
-
-          const kamiSpan = document.createElement('span');
-          kamiSpan.className = 'poem-kami';
-          kamiSpan.textContent = poet.kami || '';
-          poemEl.appendChild(kamiSpan);
-
-          const sepSpan = document.createElement('span');
-          sepSpan.className = 'poem-sep';
-          sepSpan.textContent = '\u0020';
-          poemEl.appendChild(sepSpan);
-
-          const shimoSpan = document.createElement('span');
-          shimoSpan.className = 'poem-shimo';
-          shimoSpan.textContent = poet.shimo || '';
-          poemEl.appendChild(shimoSpan);
-
-          body.appendChild(poemEl);
+          poemEl.textContent = [poet.kami, poet.shimo].filter(Boolean).join(' ');
+          card.appendChild(poemEl);
         }
-
-        // 2行目：歌人名 ＋ バッジ
-        const row1 = document.createElement('div');
-        row1.className = 'card-row1';
-
-        const nameEl = document.createElement('span');
-        nameEl.className = 'card-name';
-        nameEl.style.color = c.text;
-        nameEl.textContent = poet.name;
-        row1.appendChild(nameEl);
 
         if (onlyShuka || onlyIsshu) {
           const badge = document.createElement('span');
@@ -986,11 +1000,9 @@
           badge.textContent = onlyShuka ? '百人秀歌のみ' : '百人一首のみ';
           badge.style.background = c.badgeBg;
           badge.style.color = c.badgeText;
-          row1.appendChild(badge);
+          card.appendChild(badge);
         }
-        body.appendChild(row1);
 
-        card.appendChild(body);
         cardsEl.appendChild(card);
       });
     }
@@ -1009,16 +1021,54 @@
         if (!card) return;
         const pos = mode === 'shuka' ? poet.shuka : poet.isshu;
         if (pos !== null) {
-          card.style.top = ((pos - 1) * ROW_H + 6) + 'px';
-          card.style.opacity = '1';
+          placeCard(card, pos);
+          card.classList.remove('is-hidden');
         } else {
-          card.style.top = OFFSCREEN + 'px';
-          card.style.opacity = '0';
+          card.classList.add('is-hidden');
         }
       });
     }
 
-    document.addEventListener('DOMContentLoaded', buildWidget);
+    // PC⇔SP の切り替わりで組み直す
+    SP_QUERY.addEventListener('change', () => {
+      D = SP_QUERY.matches ? DIMS.sp : DIMS.pc;
+      buildWidget();
+    });
+
+    // マウスのドラッグで表を左右に動かす（タッチは標準の横スクロールに任せる）
+    function enableDragScroll(el) {
+      let startX = 0;
+      let startScroll = 0;
+      let pointerId = null;
+
+      el.addEventListener('pointerdown', e => {
+        if (e.pointerType !== 'mouse' || e.button !== 0) return;
+        pointerId = e.pointerId;
+        startX = e.clientX;
+        startScroll = el.scrollLeft;
+        el.setPointerCapture(pointerId);
+        el.classList.add('is-dragging');
+        e.preventDefault();
+      });
+
+      el.addEventListener('pointermove', e => {
+        if (e.pointerId !== pointerId) return;
+        el.scrollLeft = startScroll - (e.clientX - startX);
+      });
+
+      const end = e => {
+        if (e.pointerId !== pointerId) return;
+        pointerId = null;
+        el.classList.remove('is-dragging');
+      };
+      el.addEventListener('pointerup', end);
+      el.addEventListener('pointercancel', end);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      buildWidget();
+      enableDragScroll(document.querySelector('.compare-scroll'));
+    });
   </script>
 </body>
 

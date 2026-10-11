@@ -42,7 +42,7 @@
 //   HTML を編集する必要はない。見た目は css/style.(scss|css) の .sp-appbar で定義。
 // ・アイコンは img/sp-nav/*.svg（現状はアタリ画像）。本番は同名ファイルで差し替え。
 //   リンク先はヘッダーから取得するので和文／英文とも自動で正しい URL になる
-//   （ヘッダーに無い「図鑑」だけは href を明示）。
+//   （ヘッダーに無い「図鑑」と、右端の「一覧」は href を明示）。
 // ・歌ページ（1〜100.html）も他ページと同じこのバーに統一。旧・歌ページ専用の
 //   #bottomMenu/#bottomNav（load-bottom.js）は廃止済み。
 ////////////////////////////////////////////////////////////
@@ -66,7 +66,9 @@
       file: 'zukan.svg',  label: isEn ? 'Poets' : '図鑑' },
     { keys: ['コラム', 'Column'], file: 'column.svg', label: isEn ? 'Columns' : 'コラム' },
     { keys: ['アプリ', 'App'],    file: 'app.svg',    label: isEn ? 'Apps' : 'アプリ' },
-    { keys: ['検索', 'Search'],   file: 'search.svg', label: isEn ? 'List' : '一覧' }
+    // 一覧: リンク先は明示（list.html / list_en.html）。keys はヘッダー側の一覧アイコンを隠すためだけに使う
+    { keys: ['一覧', 'List'], href: isEn ? '/list_en.html' : '/list.html',
+      file: 'search.svg', label: isEn ? 'List' : '一覧' }
   ];
 
   // フッターアイコンのベースURLは、既存ヘッダーアイコンの src と同じ "img/" 接頭辞に合わせる

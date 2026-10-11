@@ -142,6 +142,27 @@
     display: block;
   }
 
+  /* 見出し：畳の背景の上でも読めるよう、ふわっとした白縁を付ける */
+  main > h1 {
+    color: #333;
+    line-height: 1.4;
+    text-shadow:
+      0 0 2px #fff,
+      0 0 4px #fff,
+      0 0 8px #fff,
+      0 0 12px rgba(255, 255, 255, 0.9),
+      0 0 20px rgba(255, 255, 255, 0.7);
+  }
+
+  /* スマホ：画面幅に合わせて文字を縮め、途中で不自然に折り返さないようにする */
+  @media (max-width: 600px) {
+    main > h1 {
+      font-size: clamp(1.25rem, 6.4vw, 2rem);
+      padding: 0 8px;
+    }
+  }
+
+
   /* フィルターボタン用のスタイル */
   .filter-controls {
     text-align: center;
@@ -399,10 +420,10 @@
 <a href="list.html"><img src="/img/icon_search.svg?ver-04" alt="百人一首一覧" class="icon" width="59" height="22"></a>
     </div>
   </header>
-<script src="../js/back-to-top.js?20261004-06"></script>
+<script src="../js/back-to-top.js?20261012-01"></script>
   <!-- ヘッダーここまで・メインここから -->
   <main>
-    <h1 style="text-align:center; margin: 0.6em 0;">百人一首 下の句の暗記・確認</h1>
+    <h1 style="text-align:center; margin: 0.6em 0 0;">百人一首 下の句の暗記・確認</h1>
     <!-- フィルターボタン -->
     <div class="filter-controls">
       <button type="button" data-filter="all">すべて</button>
