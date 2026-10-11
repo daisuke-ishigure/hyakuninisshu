@@ -104,7 +104,10 @@
       display: flex;
       flex-direction: column;
       flex-shrink: 0;
-      height: 100svh;
+      /* 画面いっぱい（100svh）だと下のコンテンツが見えにくいので少し低くする。
+         画面の低い端末でも見出し＋縦書きの導入文が収まるよう最低の高さを確保 */
+      height: 75svh;
+      min-height: min(600px, 100svh);
       overflow: hidden;
     }
 
@@ -175,7 +178,7 @@
     /* タイトル（横書き）＋導入文（縦書き）を動画の中央に重ねる */
     .text-box {
       position: absolute;
-      top: 44%;
+      top: 40%; /* 下のスクロール案内（.scroll-cue）との間を空けるため、中央よりやや上に置く */
       /* left:50%だと幅が画面の半分に制限されスマホで見出しがはみ出すため、左右いっぱいに取って中央寄せ */
       left: 0;
       right: 0;
@@ -197,7 +200,7 @@
     }
 
     .text-box h1 {
-      font-size: 2.6em;
+      font-size: 2.85em;
       letter-spacing: 0.2em;
       line-height: 1.3;
       /* letter-spacingの右端の余白ぶん中心がずれるのを打ち消す */
@@ -244,7 +247,7 @@
       }
 
       .text-box h1 {
-        font-size: 1.9em;
+        font-size: 2.05em;
         letter-spacing: 0.15em;
         padding-left: 0.15em;
       }
@@ -258,7 +261,7 @@
 
     @media (max-width: 400px) {
       .text-box h1 {
-        font-size: 1.7em;
+        font-size: 1.85em;
       }
     }
 
