@@ -142,6 +142,15 @@
     display: block;
   }
 
+  /* iPhone対策：フォント読み込み後にカードの文字を描き直させる（JS の refreshCardText が一瞬だけ付ける） */
+  .font-refresh .card,
+  .font-refresh .kami,
+  .font-refresh .shimo,
+  .font-refresh .author {
+    will-change: auto;
+    text-indent: 0.01px;
+  }
+
   /* 見出し：畳の背景の上でも読めるよう、ふわっとした白縁を付ける */
   main > h1 {
     color: #333;
@@ -527,6 +536,23 @@
           setTimeout(() => sparkle.remove(), duration * 1000);
         }
       }
+
+      // iPhone（Safari）対策：Webフォントは使う文字のグループごとに後から読み込まれるが、
+      // 縦書き＋レイヤー化（will-change / translateZ）したカード内では、読み込み後に
+      // 描き直されず文字の一部が空白のまま残ることがある。
+      // フォントの読み込みが終わるたびに .font-refresh を一瞬付けて、カードの文字を再レイアウト・再描画させる
+      function refreshCardText() {
+        requestAnimationFrame(() => {
+          document.body.classList.add('font-refresh');
+          void document.body.offsetHeight; // スタイルを確実に反映させる
+          requestAnimationFrame(() => document.body.classList.remove('font-refresh'));
+        });
+      }
+      if (document.fonts) {
+        document.fonts.addEventListener('loadingdone', refreshCardText);
+        document.fonts.ready.then(refreshCardText);
+      }
+      window.addEventListener('load', () => setTimeout(refreshCardText, 300));
 
       loadHyakuninIsshu();
     </script>
