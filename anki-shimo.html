@@ -142,6 +142,14 @@
     display: block;
   }
 
+  /* スマホ：カード内のルビを表示しない（iPhone で縦書きのルビ付き文字が消える不具合の対策） */
+  @media (max-width: 1000px) {
+    .card rt,
+    .card rp {
+      display: none !important;
+    }
+  }
+
   /* iPhone対策：フォント読み込み後にカードの文字を描き直させる（JS の refreshCardText が一瞬だけ付ける） */
   .font-refresh .card,
   .font-refresh .kami,
