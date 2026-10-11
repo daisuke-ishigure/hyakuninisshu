@@ -1340,20 +1340,23 @@
       background-color: #f0e8d8 !important;
     }
 
-    /* Numbers in the left column: gently grow and shrink (stops on hover so the hover zoom in list.css shows) */
+    /* Numbers in the left column: the grow-and-shrink ripples down from the top row (stops on hover so the hover zoom in list.css shows).
+       --wave-i is set by js/list_en.js on the visible rows from the top (0, 1, 2…). Each row starts 0.2s later
+       and the cycle is 3s, so a new wave starts every 15 rows */
     .hyakushu #table td:nth-child(1) .num-badge {
-      animation: num-badge-pulse 2.4s ease-in-out infinite;
+      animation: num-badge-pulse 3s ease-in-out infinite;
+      animation-delay: calc(var(--wave-i, 0) * 0.2s);
     }
     .hyakushu #table td:nth-child(1) .num-badge:hover,
     .hyakushu #table td:nth-child(1) .num-badge:focus-visible {
       animation: none;
     }
     @keyframes num-badge-pulse {
-      0%, 100% {
+      0%, 30%, 100% {
         transform: scale(1);
       }
-      50% {
-        transform: scale(1.08);
+      15% {
+        transform: scale(1.2);
       }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -1783,7 +1786,7 @@
   </footer>
 
   <script src="../js/list-rows_en.js?20261009-01"></script>
-  <script src="../js/list_en.js?20261009-01"></script>
+  <script src="../js/list_en.js?20261011-01"></script>
 
   <!-- Vanta.js (smartphones only) -->
   <script>

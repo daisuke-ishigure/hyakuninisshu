@@ -26,6 +26,7 @@ function initTable(table) {
   });
 
   initSortButtons(table);
+  updateBadgeWave(table);
 }
 
 // If the table is prebuilt in the HTML (so crawlers can follow every link), use it.
@@ -65,6 +66,20 @@ function applyFilters(table) {
     const textOk = !searchValue || row.textContent.toLowerCase().includes(searchValue);
     row.style.display = colorOk && themeOk && textOk ? "" : "none";
   });
+  updateBadgeWave(table);
+}
+
+// Chain the pulsing of the left-column numbers from top to bottom: number the visible rows 0,1,2…
+// from the top as --wave-i, and the page CSS sets animation-delay = --wave-i × step.
+// Renumber after every sort or filter.
+function updateBadgeWave(table) {
+  let i = 0;
+  Array.from(table.getElementsByTagName("tr")).forEach((row) => {
+    const badge = row.querySelector(".num-badge");
+    if (!badge) return;
+    if (row.style.display === "none") return;
+    badge.style.setProperty("--wave-i", i++);
+  });
 }
 
 function initSortButtons(table) {
@@ -86,6 +101,7 @@ function initSortButtons(table) {
     const parent = rows[0].parentNode;
     rows.sort(compareFn);
     rows.forEach((row) => parent.appendChild(row));
+    updateBadgeWave(table);
   }
 
   btnNumber.addEventListener("click", () => {

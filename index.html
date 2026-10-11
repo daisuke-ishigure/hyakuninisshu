@@ -1040,20 +1040,23 @@
       }
     }
 
-    /* 左列の番号：少しだけ拡大・縮小を繰り返す（マウスを乗せている間は止めて、list.css の拡大表示にする） */
+    /* 左列の番号：上の行から順番に拡大・縮小が波のようにつながっていく（マウスを乗せている間は止めて、list.css の拡大表示にする）。
+       --wave-i は js/list.js・list_en.js が表示中の行に上から 0,1,2… と付ける。1行ずつ 0.2s 遅らせ、
+       周期 3s なので 15行ごとに次の波が来る */
     .hyakushu #table td:nth-child(1) .num-badge {
-      animation: num-badge-pulse 2.4s ease-in-out infinite;
+      animation: num-badge-pulse 3s ease-in-out infinite;
+      animation-delay: calc(var(--wave-i, 0) * 0.2s);
     }
     .hyakushu #table td:nth-child(1) .num-badge:hover,
     .hyakushu #table td:nth-child(1) .num-badge:focus-visible {
       animation: none;
     }
     @keyframes num-badge-pulse {
-      0%, 100% {
+      0%, 30%, 100% {
         transform: scale(1);
       }
-      50% {
-        transform: scale(1.08);
+      15% {
+        transform: scale(1.2);
       }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -1844,7 +1847,7 @@
   </footer>
 
   <script src="../js/list-rows.js?20261005-01"></script>
-  <script src="../js/list.js?20261004-02"></script>
+  <script src="../js/list.js?20261011-01"></script>
 
   <!-- Vanta.js 初期化（スマホのみ） -->
   <script>

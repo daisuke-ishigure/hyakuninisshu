@@ -26,6 +26,7 @@ function initTable(table) {
   });
 
   initSortButtons(table);
+  updateBadgeWave(table);
 
   // トップページの検索フォーム（list.html?q=...）から来たときは、その語で絞り込んだ状態で開く
   const initialQuery = new URLSearchParams(location.search).get("q");
@@ -72,6 +73,19 @@ function applyFilters(table) {
     const textOk = !searchValue || row.textContent.toLowerCase().includes(searchValue);
     row.style.display = colorOk && themeOk && textOk ? "" : "none";
   });
+  updateBadgeWave(table);
+}
+
+// 左列の番号の拡大・縮小を上から順番につなげる：表示中の行に上から 0,1,2… の番号を --wave-i として付け、
+// ページ側のCSSが animation-delay = --wave-i × 間隔 にする。並べ替え・絞り込みのたびに付け直す。
+function updateBadgeWave(table) {
+  let i = 0;
+  Array.from(table.getElementsByTagName("tr")).forEach((row) => {
+    const badge = row.querySelector(".num-badge");
+    if (!badge) return;
+    if (row.style.display === "none") return;
+    badge.style.setProperty("--wave-i", i++);
+  });
 }
 
 function initSortButtons(table) {
@@ -93,6 +107,7 @@ function initSortButtons(table) {
     const parent = rows[0].parentNode;
     rows.sort(compareFn);
     rows.forEach((row) => parent.appendChild(row));
+    updateBadgeWave(table);
   }
 
   // 番号順
