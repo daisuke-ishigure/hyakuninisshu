@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head prefix="og: http://ogp.me/ns#">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="A study page for memorizing the upper verse (kami-no-ku) of the Hyakunin Isshu. The lower verse is shown as a hint: recall the hidden upper verse, then tap it to check your answer. Cards can be filtered by the five colors of Goshiki Hyakunin Isshu.">
+  <link rel="canonical" href="https://hyakuninisshu.com/anki-kami_en.html">
+  <link rel="alternate" hreflang="ja" href="https://hyakuninisshu.com/anki-kami.html">
+  <link rel="alternate" hreflang="en" href="https://hyakuninisshu.com/anki-kami_en.html">
+  <link rel="alternate" hreflang="x-default" href="https://hyakuninisshu.com/anki-kami.html">
+  <link rel="stylesheet" href="../css/style.css?20261010-02">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@500&family=Noto+Serif+JP:wght@700&display=swap"
+    rel="stylesheet">
+  <!-- MixItUp CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/mixitup@3/dist/mixitup.min.js"></script>
+  <!-- 構造化データ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://hyakuninisshu.com/anki-kami_en.html"
+    },
+    "headline": "Hyakunin Isshu Upper Verse Recall – Memorize the Kami-no-ku",
+    "description": "Practice recalling the upper verse (kami-no-ku) of each Hyakunin Isshu poem with the lower verse as a hint. Supports filtering by the five colors of Goshiki Hyakunin Isshu.",
+    "publisher": {
+      "@type": "Person",
+      "name": "Shigure no Hyakunin Isshu"
+    }
+  }
+  </script>
+  <!-- パンくずリスト -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://hyakuninisshu.com/"
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Karuta Apps",
+      "item": "https://hyakuninisshu.com/introduction-app_en.html"
+    },{
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Hyakunin Isshu: Upper Verse Recall",
+      "item": "https://hyakuninisshu.com/anki-kami_en.html"
+    }]
+  }
+  </script>
+  <title>Hyakunin Isshu Upper Verse Recall – Memorize the Kami-no-ku</title>
+
+  <style>
+    body {
+      font-family: "Kaisei HarunoUmi", serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    /* ルビの調整を追加 */
+    ruby {
+      ruby-align: center;
+    }
+
+    rt {
+      margin-left: -0.1em;
+      line-height: 1;
+      font-size: 0.4em;
+    }
+
+    @media(max-width:1000px) {
+      rt {
+        margin-left: -0.2em;
+      }
+    }
+
+    main {
+      padding: 5px;
+      display: block;
+    }
+
+    /* スマホ：カード内のルビを表示しない（iPhone で縦書きのルビ付き文字が消える不具合の対策） */
+    @media (max-width: 1000px) {
+      .card rt,
+      .card rp {
+        display: none !important;
+      }
+    }
+
+    /* iPhone対策：フォント読み込み後にカードの文字を描き直させる（JS の refreshCardText が一瞬だけ付ける） */
+    .font-refresh .card,
+    .font-refresh .kami,
+    .font-refresh .shimo,
+    .font-refresh .author {
+      will-change: auto;
+      text-indent: 0.01px;
+    }
+
+    /* 英語版：style.css の英語ページ用フォント（Noto Sans）を、カードの和歌だけ日本語版と同じ書体に戻す */
+    .card {
+      font-family: "Kaisei HarunoUmi", serif;
+    }
+
+    /* 英語版：作者名（英語）は縦書きだと読みにくいので、カード右下に横書きで置く */
+    .card .author {
+      writing-mode: horizontal-tb;
+      bottom: 25px; /* 「Details」ボタンと下端をそろえる */
+      max-width: calc(100% - 140px); /* ボタンに重ならない幅 */
+      font-family: "Noto Sans", sans-serif;
+      font-size: 0.8rem;
+      line-height: 1.25;
+      text-align: right;
+      letter-spacing: 0;
+    }
+
+    /* 長い名前（例：第76首）はボタンと同じ高さの帯に収まるよう文字を小さくする（JS で長さに応じてクラスを付与） */
+    .card .author--long {
+      font-size: 0.68rem;
+    }
+
+    .card .author--xlong {
+      font-size: 0.6rem;
+    }
+
+    /* 見出し：畳の背景の上でも読めるよう、ふわっとした白縁を付ける */
+    main > h1 {
+      color: #333;
+      line-height: 1.4;
+      text-shadow:
+        0 0 2px #fff,
+        0 0 4px #fff,
+        0 0 8px #fff,
+        0 0 12px rgba(255, 255, 255, 0.9),
+        0 0 20px rgba(255, 255, 255, 0.7);
+    }
+
+    /* スマホ：画面幅に合わせて文字を縮め、途中で不自然に折り返さないようにする */
+    @media (max-width: 600px) {
+      main > h1 {
+        font-size: clamp(1.25rem, 6.4vw, 2rem);
+        padding: 0 8px;
+      }
+    }
+
+
+    /* フィルターボタン用のスタイル */
+    .filter-controls {
+      text-align: center;
+      margin: 15px auto;
+      max-width: 1200px;
+    }
+
+    .filter-controls button {
+      font-family: "noto-sans-pro", sans-serif !important;
+      margin: 5px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: 2px solid #8a9a78;
+      background: #fff;
+      color: #333;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .filter-controls button:hover {
+      color: #222;
+    }
+
+    .filter-controls button.mixitup-control-active {
+      color: #222;
+      border-color: #B82343 !important;
+    }
+
+    #container {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row-reverse;
+      justify-content: center;
+      row-gap: 40px;
+      width: 100%;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    /* --- カード（札）の設定 --- */
+    .card {
+      margin: 0 15px;
+      width: 320px;
+      height: 420px;
+      background: #fff url(../img/paper.gif);
+      padding: 30px 15px;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      border: 15px solid #8a9a78;
+      writing-mode: vertical-rl;
+      text-orientation: upright;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      line-height: 1.7;
+      /* 統一された行間を追加 */
+    }
+
+    /* --- 上の句（隠す対象） --- */
+    .kami {
+      height: 80%;
+      cursor: pointer;
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+      padding: 15px 0;
+      line-height: 1.7;
+      /* 1.8 → 2.5 に変更 */
+      letter-spacing: 0.1em;
+      border-radius: 5px;
+      background: #ffe9e9;
+      color: transparent;
+      transition: background 0.6s ease;
+      position: relative;
+      min-height: 6em;
+      z-index: 2;
+      will-change: transform, opacity;
+      justify-content: flex-end;
+    }
+
+    .kami rt {
+      visibility: hidden;
+    }
+
+    .kami.revealed rt {
+      visibility: visible;
+    }
+
+
+    /* めくられた時の文字演出 */
+    .kami.revealed {
+      background: transparent !important;
+      color: #333 !important;
+      animation: text-float-up 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+    }
+
+    @keyframes text-float-up {
+      0% {
+        opacity: 0;
+        transform: translateY(15px);
+        filter: blur(4px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+      }
+    }
+
+    /* --- 下の句（最初から表示） --- */
+    .shimo {
+      font-size: 1.6rem;
+      line-height: 1.7;
+      padding: 15px 0;
+      color: #444;
+    }
+
+    .author {
+      position: absolute;
+      z-index: 100;
+      right: 15px;
+      bottom: 30px;
+      font-size: 1.1rem;
+      color: #444;
+    }
+
+    /* --- 花びら演出 --- */
+    .sparkle {
+      position: absolute;
+      width: 10px;
+      height: 14px;
+      border-radius: 50% 10% 50% 50%;
+      pointer-events: none;
+      z-index: 10;
+      animation: flower-fall 3s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+      will-change: transform, opacity;
+      box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+
+    @keyframes flower-fall {
+      0% {
+        transform: translate3d(0, 0, 0) scale(0) rotate(0deg);
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 1;
+        transform: translate3d(0, 10px, 0) scale(1.2) rotate(45deg);
+      }
+
+      100% {
+        transform: translate3d(var(--random-x), 280px, 0) scale(0.3) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* --- リンクボタン --- */
+    .detail-link {
+      position: absolute;
+      bottom: 25px;
+      left: 25px;
+      writing-mode: horizontal-tb;
+      text-decoration: none;
+      text-align: center;
+      color: #fff;
+      font-size: 0.8rem;
+      background-color: #B82343;
+      width: 90px;
+      padding: 8px 5px;
+      border-radius: 3px;
+      transition: 0.3s;
+      z-index: 5;
+    }
+
+    .detail-link:hover {
+      background-color: #d4af37;
+      transform: translateY(-2px);
+    }
+
+    /* 最後の一行を整列させるスペーサー */
+    .spacer {
+      width: 320px;
+      margin: 0 15px;
+      height: 0;
+    }
+
+    @media (max-width: 750px) {
+      .card {
+        width: 95%;
+        margin: 0 auto;
+        height: auto;
+        min-height: 450px;
+      }
+
+      .kami,
+      .shimo {
+        /* 360px未満の狭い画面では、文字がカードからはみ出して切れないよう画面幅に合わせて縮める */
+        font-size: min(1.8rem, 8vw);
+        line-height: 1.9;
+      }
+    }
+  </style>
+  <!-- Cloudflare Web Analytics -->
+  <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d2f01c23361b402aadede990ea58da0b"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+</head>
+
+<body>
+  <!-- ヘッダーここから -->
+  <header class="header">
+    <p class="site-title">
+    <a href="https://hyakuninisshu.com/index_en.html">Shigure no Hyakunin Isshu</a>
+  </p>
+    <div class="header_list">
+      <a href="index_en.html"><img src="../img/icon_top_en.svg?ver-01" alt="Top" class="icon" width="59" height="22"></a>
+      <a href="introduction_en.html" style="color:#333"><img src="/img/icon_column_en.svg?ver-01" alt="Articles" class="icon" width="72" height="22"></a>
+      <a href="introduction-app_en.html" style="color:#333"><img src="/img/icon_app_en.svg?ver-01" alt="App" class="icon" width="59" height="22"></a>
+      <a href="anki-kami.html"><img src="/img/icon_lang.svg?ver-01" alt="Japanese" class="icon" width="59" height="22"></a>
+      <a href="list_en.html"><img src="/img/icon_list_en.svg?ver-01" alt="Hyakunin Isshu Poem List" class="icon" width="59" height="22"></a>
+    </div>
+  </header>
+<script src="../js/back-to-top.js?20261012-01"></script>
+  <!-- ヘッダーここまで・メインここから -->
+
+  <main>
+    <h1 style="text-align:center; margin: 0.6em 0 0;">Hyakunin Isshu: <br class="br-sp">Upper Verse Recall</h1>
+    <!-- フィルターボタン -->
+    <div class="filter-controls">
+      <button type="button" data-filter="all">All</button>
+      <button type="button" data-filter=".ピンク"
+        style="background-color: #ffd1dc; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Pink</button>
+      <button type="button" data-filter=".青"
+        style="background-color: #d1e9ff; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Blue</button>
+      <button type="button" data-filter=".黄"
+        style="background-color: #fff9c4; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Yellow</button>
+      <button type="button" data-filter=".緑"
+        style="background-color: #dcedc8; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Green</button>
+      <button type="button" data-filter=".橙"
+        style="background-color: #ffe0b2; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Orange</button>
+    </div>
+
+    <div id="container"></div>
+
+    <script>
+      let mixer; // MixItUpインスタンスを格納
+
+      // 英語の作者名の長さに応じて文字サイズのクラスを返す（カード右下の帯に収めるため）
+      function authorSize(name) {
+        if (name.length > 60) return ' author--xlong';
+        if (name.length > 30) return ' author--long';
+        return '';
+      }
+
+      async function loadHyakuninIsshu() {
+        try {
+          const response = await fetch('./js/hyakunin.json?04');
+          const data = await response.json();
+          const container = document.getElementById('container');
+
+          Object.values(data).forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'card mix ' + item.color; // colorの値をクラスに追加
+            card.innerHTML = `
+              <div class="author${authorSize(item.name_en || '')}">${item.name_en || item.name}</div>
+              <div class="kami" onclick="reveal(this)">${item.first}</div>
+              <div class="shimo">${item.second}</div>
+              <a href="${item.number}_en.html" class="detail-link">Poem ${item.number}<br>Details</a>
+            `;
+            container.appendChild(card);
+          });
+
+          for (let i = 0; i < 4; i++) {
+            const spacer = document.createElement('div');
+            spacer.className = 'spacer';
+            container.appendChild(spacer);
+          }
+
+          // MixItUpの初期化
+          mixer = mixitup(container, {
+            selectors: {
+              target: '.card' // フィルタリング対象
+            },
+            animation: {
+              duration: 400,
+              effects: 'fade scale', // フェード＆スケールアニメーション
+              easing: 'cubic-bezier(0.25, 0.1, 0.25, 1)'
+            }
+          });
+
+        } catch (e) { console.error(e); }
+      }
+
+      function reveal(el) {
+        if (el.classList.contains('revealed')) return;
+        el.classList.add('revealed');
+
+        const w = el.offsetWidth;
+        const h = el.offsetHeight;
+
+        for (let i = 0; i < 20; i++) {
+          setTimeout(() => {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = (Math.random() * w) + 'px';
+            sparkle.style.top = (Math.random() * 20) + 'px';
+
+            const randomX = (Math.random() - 0.5) * 200;
+            sparkle.style.setProperty('--random-x', `${randomX}px`);
+
+            const colors = [
+              'rgba(255, 210, 225, 0.9)',
+              'rgba(255, 235, 240, 0.9)',
+              'rgba(255, 255, 255, 0.95)'
+            ];
+            sparkle.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+            const duration = 2 + Math.random() * 1.5;
+            sparkle.style.animationDuration = `${duration}s`;
+
+            el.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), duration * 1000);
+          }, i * 30); // 発生を少しずつずらして滑らかに
+        }
+      }
+
+      // iPhone（Safari）対策：Webフォントは使う文字のグループごとに後から読み込まれるが、
+      // 縦書き＋レイヤー化（will-change / translateZ）したカード内では、読み込み後に
+      // 描き直されず文字の一部が空白のまま残ることがある。
+      // フォントの読み込みが終わるたびに .font-refresh を一瞬付けて、カードの文字を再レイアウト・再描画させる
+      function refreshCardText() {
+        requestAnimationFrame(() => {
+          document.body.classList.add('font-refresh');
+          void document.body.offsetHeight; // スタイルを確実に反映させる
+          requestAnimationFrame(() => document.body.classList.remove('font-refresh'));
+        });
+      }
+      if (document.fonts) {
+        document.fonts.addEventListener('loadingdone', refreshCardText);
+        document.fonts.ready.then(refreshCardText);
+      }
+      window.addEventListener('load', () => setTimeout(refreshCardText, 300));
+
+      loadHyakuninIsshu();
+    </script>
+  </main>
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-copy">&copy;2023 Shigure no Hyakunin Isshu</span>
+      <ul>
+        <li><a href="policy_en.html">Privacy Policy</a></li>
+        <li>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXx7TKlqnTfKrw2Nuh4f37swVwFH-RFDsNkTGQ4JEF50q2wQ/viewform?usp=header"
+            target="_blank" rel="noopener">Contact Form</a>
+        </li>
+        <li><a href="https://x.com/shigurenotaifu" target="_blank" rel="noopener">Official X</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+
+</html>
