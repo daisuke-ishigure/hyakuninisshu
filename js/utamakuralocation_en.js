@@ -7,7 +7,7 @@
         "markname": "Mt. Ogura",
         "kajin": "Teishin-kō (Mt. Ogura)",
         "type": "type1",
-        "name": "<a href='../img/ogurayama_large.webp' data-lightbox='map' data-title='Ukyo Ward, Kyoto: Mt. Ogura'><img src='../img/ogurayama.webp' width='300'></a><br><small>Photo: photoAC</small><h2 class='utamakura-name'>Utamakura: Mt. Ogura</h2><p>Mt. Ogura, a 296m peak in Kyoto's Ukyo Ward, is one of the city's most celebrated spots for autumn foliage — and is also known as the place where the Hyakunin Isshu was compiled.</p><hr><a href='/26_en.html'>Link to Poem 26: Teishin-kō</a>"
+        "name": "<a href='../img/ogurayama_large.webp' data-lightbox='map' data-title='Ukyo Ward, Kyoto: Mt. Ogura'><img src='../img/ogurayama.webp' width='300'></a><h2 class='utamakura-name'>Utamakura: Mt. Ogura</h2><p>Mt. Ogura, a 296m peak in Kyoto's Ukyo Ward, is one of the city's most celebrated spots for autumn foliage — and is also known as the place where the Hyakunin Isshu was compiled.</p><hr><a href='/26_en.html'>Link to Poem 26: Teishin-kō</a>"
       },
       "geometry": { "type": "Point", "coordinates": [135.65913, 35.02348] }
     },
@@ -47,7 +47,7 @@
         "markname": "Oki no Ishi",
         "kajin": "Sanuki, attendant to retired Emperor Nijō (Oki no Ishi)",
         "type": "type1",
-        "name": "<a href='../img//okinoishi_large.webp' data-lightbox='map' data-title='Tagajo, Miyagi: Oki no Ishi'><img src='../img/okinoishi.webp' alt='Oki no Ishi' width='300'></a><br><small>Photo: photoAC</small><h2 class='utamakura-name'>Utamakura: Oki no Ishi</h2><p>Tagajō, Miyagi Prefecture. A pond ringed by unusual rocks, surrounded by a residential area and carefully preserved since ancient times. It lies about 90m south of Suenomatsuyama.</p><hr><a href='/92_en.html'>Link to Poem 92: Sanuki, attendant to retired Emperor Nijō</a>"
+        "name": "<a href='../img//okinoishi_large.webp' data-lightbox='map' data-title='Tagajo, Miyagi: Oki no Ishi'><img src='../img/okinoishi.webp' alt='Oki no Ishi' width='300'></a><h2 class='utamakura-name'>Utamakura: Oki no Ishi</h2><p>Tagajō, Miyagi Prefecture. A pond ringed by unusual rocks, surrounded by a residential area and carefully preserved since ancient times. It lies about 90m south of Suenomatsuyama.</p><hr><a href='/92_en.html'>Link to Poem 92: Sanuki, attendant to retired Emperor Nijō</a>"
       },
       "geometry": { "type": "Point", "coordinates": [141.00333, 38.28683] }
     },
@@ -57,7 +57,7 @@
         "markname": "Tagarasu Rice Terraces",
         "kajin": "Sanuki, attendant to retired Emperor Nijō (Oki no Ishi)",
         "type": "type1",
-        "name": "<a href='../img/tagarasu_large.webp' data-lightbox='map' data-title='Obama, Fukui: Tagarasu Rice Terraces'><img src='../img/tagarasu.webp' alt='Obama, Fukui: Tagarasu Rice Terraces' width='300'></a><br><small>Photo: photoAC</small><h2 class='utamakura-name'>Utamakura: Oki no Ishi</h2><p>Obama, Fukui Prefecture. Rice terraces along the Wakasa Bay coastline. A monument marking the \"Site of Lady Sanuki's Residence\" stands at the edge of the terraces.</p><hr><a href='/92_en.html'>Link to Poem 92: Sanuki, attendant to retired Emperor Nijō</a>"
+        "name": "<a href='../img/tagarasu_large.webp' data-lightbox='map' data-title='Obama, Fukui: Tagarasu Rice Terraces'><img src='../img/tagarasu.webp' alt='Obama, Fukui: Tagarasu Rice Terraces' width='300'></a><h2 class='utamakura-name'>Utamakura: Oki no Ishi</h2><p>Obama, Fukui Prefecture. Rice terraces along the Wakasa Bay coastline. A monument marking the \"Site of Lady Sanuki's Residence\" stands at the edge of the terraces.</p><hr><a href='/92_en.html'>Link to Poem 92: Sanuki, attendant to retired Emperor Nijō</a>"
       },
       "geometry": { "type": "Point", "coordinates": [135.82489256731714, 35.533008266169034] }
     },
@@ -107,7 +107,7 @@
         "markname": "Ojima",
         "kajin": "Attendant to Empress Inpu (Ojima)",
         "type": "type1",
-        "name": "<a href='../img/oshima_large.webp' data-lightbox='map' data-title='Miyagi: Ojima'><img src='../img/oshima.webp?20240426' width='300' alt='Ojima'></a><br><small>Photo: photoAC</small><h2 class='utamakura-name'>Utamakura: Ojima</h2><p>Matsushima, Miyagi District, Miyagi Prefecture. Ojima is one of the islands of Matsushima, one of Japan's Three Scenic Views.</p><hr><a href='/90_en.html'>Link to Poem 90: Attendant to Empress Inpu</a>"
+        "name": "<a href='../img/oshima_large.webp' data-lightbox='map' data-title='Miyagi: Ojima'><img src='../img/oshima.webp?20240426' width='300' alt='Ojima'></a><h2 class='utamakura-name'>Utamakura: Ojima</h2><p>Matsushima, Miyagi District, Miyagi Prefecture. Ojima is one of the islands of Matsushima, one of Japan's Three Scenic Views.</p><hr><a href='/90_en.html'>Link to Poem 90: Attendant to Empress Inpu</a>"
       },
       "geometry": { "type": "Point", "coordinates": [141.06252, 38.36534] }
     },
@@ -117,7 +117,7 @@
         "markname": "Enjō-ji (Mii-dera)",
         "kajin": "Senior High Priest Gyōson",
         "type": "type2",
-        "name": "<a href='../img/miidera_large.webp' data-lightbox='Senior High Priest Gyōson' data-title='Mt. Ibuki, on the border of Shiga and Gifu'><img src='../img/miidera.webp' width='300' alt='Mt. Ibuki'></a><br><small>Photo: photoAC</small><h2 class='utamakura-name'>Enjō-ji (Mii-dera)</h2><p>The head temple of the Tendai Jimon school, in Otsu, Shiga Prefecture, commonly known as Mii-dera. At age 12, Gyōson entered the priesthood here and studied esoteric Buddhism.</p><hr><a href='/66_en.html'>Link to Poem 66: Senior High Priest Gyōson</a>"
+        "name": "<a href='../img/miidera_large.webp' data-lightbox='Senior High Priest Gyōson' data-title='Mt. Ibuki, on the border of Shiga and Gifu'><img src='../img/miidera.webp' width='300' alt='Mt. Ibuki'></a><h2 class='utamakura-name'>Enjō-ji (Mii-dera)</h2><p>The head temple of the Tendai Jimon school, in Otsu, Shiga Prefecture, commonly known as Mii-dera. At age 12, Gyōson entered the priesthood here and studied esoteric Buddhism.</p><hr><a href='/66_en.html'>Link to Poem 66: Senior High Priest Gyōson</a>"
       },
       "geometry": { "type": "Point", "coordinates": [135.85285399503263, 35.01355012029059] }
     },
@@ -127,7 +127,7 @@
         "markname": "Mt. Ibuki (Shiga–Gifu border)",
         "kajin": "Fujiwara no Sanekata Ason (Mt. Ibuki)",
         "type": "type1",
-        "name": "<a href='../img/ibukiyama_large.webp' data-lightbox='Fujiwara no Sanekata' data-title='Mt. Ibuki, on the border of Shiga and Gifu'><img src='../img/ibukiyama.webp' width='300' alt='Mt. Ibuki'></a><br><small>Photo: photoAC</small><h2 class='utamakura-name'>Utamakura: Mt. Ibuki (Shiga–Gifu border)</h2><p>Mt. Ibuki, on the border of Shiga and Gifu Prefectures, has its summit in Maibara, Shiga, at roughly 1,377m. It has long been known as a treasure trove of medicinal herbs.</p><hr><a href='/51_en.html'>Link to Poem 51: Fujiwara no Sanekata Ason</a>"
+        "name": "<a href='../img/ibukiyama_large.webp' data-lightbox='Fujiwara no Sanekata' data-title='Mt. Ibuki, on the border of Shiga and Gifu'><img src='../img/ibukiyama.webp' width='300' alt='Mt. Ibuki'></a><h2 class='utamakura-name'>Utamakura: Mt. Ibuki (Shiga–Gifu border)</h2><p>Mt. Ibuki, on the border of Shiga and Gifu Prefectures, has its summit in Maibara, Shiga, at roughly 1,377m. It has long been known as a treasure trove of medicinal herbs.</p><hr><a href='/51_en.html'>Link to Poem 51: Fujiwara no Sanekata Ason</a>"
       },
       "geometry": { "type": "Point", "coordinates": [136.40651, 35.4179] }
     },
@@ -147,7 +147,7 @@
         "markname": "Takasago",
         "kajin": "Fujiwara no Okikaze (Takasago)",
         "type": "type1",
-        "name": "<a href='../img/takasago-no-matsu_large.webp' data-lightbox='map' data-title='The Pine of Takasago'><img src='../img/takasago-no-matsu.webp' width='300' alt='Takasago'></a><br><small>Photo: photoAC</small><h2 class='utamakura-name'>Utamakura: Takasago</h2><p>Takasago, Hyogo Prefecture. Pictured is the Aioi Pine within the grounds of Takasago Shrine.</p><hr><a href='/34_en.html'>Link to Poem 34: Fujiwara no Okikaze</a>"
+        "name": "<a href='../img/takasago-no-matsu_large.webp' data-lightbox='map' data-title='The Pine of Takasago'><img src='../img/takasago-no-matsu.webp' width='300' alt='Takasago'></a><h2 class='utamakura-name'>Utamakura: Takasago</h2><p>Takasago, Hyogo Prefecture. Pictured is the Aioi Pine within the grounds of Takasago Shrine.</p><hr><a href='/34_en.html'>Link to Poem 34: Fujiwara no Okikaze</a>"
       },
       "geometry": { "type": "Point", "coordinates": [134.80309, 34.74386] }
     },
@@ -167,7 +167,7 @@
         "markname": "Matsuho no Ura",
         "kajin": "Acting Middle Counselor Sadaie (Matsuho no Ura)",
         "type": "type1",
-        "name": "<a href='../img/matsuhonoura_large.webp' data-lightbox='Fujiwara no Sadaie' data-title='Matsuho no Ura, at the northern tip of Awaji Island, Hyogo'><img src='../img/matsuhonoura.webp?20240424' width='300' alt='Matsuho no Ura'></a><br><small>Photo: photoAC</small><h2 class='utamakura-name'>Utamakura: Matsuho no Ura</h2><p>Iwaya, Awaji City, Hyogo Prefecture. A shoreline at the northern tip of Awaji Island. Its name, meaning \"pine-sail shore,\" is said to derive from people waiting there for favorable winds or tides when the strait grew rough.</p><hr><a href='/97_en.html'>Link to Poem 97: Acting Middle Counselor Sadaie</a>"
+        "name": "<a href='../img/matsuhonoura_large.webp' data-lightbox='Fujiwara no Sadaie' data-title='Matsuho no Ura, at the northern tip of Awaji Island, Hyogo'><img src='../img/matsuhonoura.webp?20240424' width='300' alt='Matsuho no Ura'></a><h2 class='utamakura-name'>Utamakura: Matsuho no Ura</h2><p>Iwaya, Awaji City, Hyogo Prefecture. A shoreline at the northern tip of Awaji Island. Its name, meaning \"pine-sail shore,\" is said to derive from people waiting there for favorable winds or tides when the strait grew rough.</p><hr><a href='/97_en.html'>Link to Poem 97: Acting Middle Counselor Sadaie</a>"
       },
       "geometry": { "type": "Point", "coordinates": [135.00183, 34.60925] }
     },
@@ -177,7 +177,7 @@
         "markname": "Suma",
         "kajin": "Minamoto no Kanemasa (Suma)",
         "type": "type1",
-        "name": "<a href='../img/suma_large.webp' data-lightbox='map' data-title='Suma'><img src='../img/suma.webp' width='300' alt='Suma'></a><br><small>Photo: photoAC</small><h2 class='utamakura-name'>Utamakura: Suma</h2><p>Suma Ward, Kobe, Hyogo Prefecture. Once the border between Settsu and Harima provinces, where a checkpoint stood.</p><hr><a href='/78_en.html'>Link to Poem 78: Minamoto no Kanemasa</a>"
+        "name": "<a href='../img/suma_large.webp' data-lightbox='map' data-title='Suma'><img src='../img/suma.webp' width='300' alt='Suma'></a><h2 class='utamakura-name'>Utamakura: Suma</h2><p>Suma Ward, Kobe, Hyogo Prefecture. Once the border between Settsu and Harima provinces, where a checkpoint stood.</p><hr><a href='/78_en.html'>Link to Poem 78: Minamoto no Kanemasa</a>"
       },
       "geometry": { "type": "Point", "coordinates": [135.1219, 34.64254] }
     },
@@ -207,7 +207,7 @@
         "markname": "Uji River",
         "kajin": "Acting Middle Counselor Sadayori (Uji River)",
         "type": "type1",
-        "name": "<a href='../img/ujigawa_large.webp' data-lightbox='map' data-title='Uji River'><img src='../img/ujigawa.webp' width='300' alt='Uji River'></a><br><small>Photo: photoAC</small><h2 class='utamakura-name'>Utamakura: Uji River</h2><p>Uji, Kyoto Prefecture. Also famous as a villa retreat for Heian-period aristocrats.</p><hr><a href='/64_en.html'>Link to Poem 64: Acting Middle Counselor Sadayori</a>"
+        "name": "<a href='../img/ujigawa_large.webp' data-lightbox='map' data-title='Uji River'><img src='../img/ujigawa.webp' width='300' alt='Uji River'></a><h2 class='utamakura-name'>Utamakura: Uji River</h2><p>Uji, Kyoto Prefecture. Also famous as a villa retreat for Heian-period aristocrats.</p><hr><a href='/64_en.html'>Link to Poem 64: Acting Middle Counselor Sadayori</a>"
       },
       "geometry": { "type": "Point", "coordinates": [135.80898, 34.88887] }
     },
@@ -237,7 +237,7 @@
         "markname": "Nara no Ogawa",
         "kajin": "Junior Second Rank Ietaka (Nara no Ogawa)",
         "type": "type1",
-        "name": "<a href='../img/naranoogawa_large.webp' data-lightbox='map' data-title='Kamigamo Shrine: Nara no Ogawa'><img src='../img/naranoogawa.webp' width='300' alt='Nara no Ogawa'></a><br><small>Photo: photoAC</small><h2 class='utamakura-name'>Utamakura: Nara no Ogawa</h2><p>\"Nara no Ogawa\" is another name for the Mitarashi River, which flows through the grounds of Kamigamo Shrine in Kita Ward, Kyoto.</p><hr><a href='/98_en.html'>Link to Poem 98: Junior Second Rank Ietaka</a>"
+        "name": "<a href='../img/naranoogawa_large.webp' data-lightbox='map' data-title='Kamigamo Shrine: Nara no Ogawa'><img src='../img/naranoogawa.webp' width='300' alt='Nara no Ogawa'></a><h2 class='utamakura-name'>Utamakura: Nara no Ogawa</h2><p>\"Nara no Ogawa\" is another name for the Mitarashi River, which flows through the grounds of Kamigamo Shrine in Kita Ward, Kyoto.</p><hr><a href='/98_en.html'>Link to Poem 98: Junior Second Rank Ietaka</a>"
       },
       "geometry": { "type": "Point", "coordinates": [135.75297, 35.05966] }
     },
@@ -247,7 +247,7 @@
         "markname": "Mt. Arima",
         "kajin": "Daini no Sanmi (Mt. Arima)",
         "type": "type1",
-        "name": "<a href='../img/arimayama_large.webp' data-lightbox='map' data-title='The Rokko-Arima Ropeway, linking the summit of Mt. Rokko and Arima Onsen'><img src='../img/arimayama.webp' width='300' alt='Mt. Arima'></a><br><small>Photo: Adobe Stock</small><h2 class='utamakura-name'>Utamakura: Mt. Arima</h2><p>Arima-cho, Kita Ward, Kobe. Long famous as a hot-spring resort.</p><hr><a href='/58_en.html'>Link to Poem 58: Daini no Sanmi</a>"
+        "name": "<a href='../img/arimayama_large.webp' data-lightbox='map' data-title='The Rokko-Arima Ropeway, linking the summit of Mt. Rokko and Arima Onsen'><img src='../img/arimayama.webp' width='300' alt='Mt. Arima'></a><h2 class='utamakura-name'>Utamakura: Mt. Arima</h2><p>Arima-cho, Kita Ward, Kobe. Long famous as a hot-spring resort.</p><hr><a href='/58_en.html'>Link to Poem 58: Daini no Sanmi</a>"
       },
       "geometry": { "type": "Point", "coordinates": [135.25716, 34.78891] }
     },
@@ -257,7 +257,7 @@
         "markname": "Ina no Sasahara",
         "kajin": "Daini no Sanmi (Ina no Sasahara)",
         "type": "type1",
-        "name": "<a href='../img/inanosasahara_kyuseki_large.webp' data-lightbox='map' data-title='Site of Ina no Sasahara'><img src='../img/inanosasahara_kyuseki.webp' width='300' alt='Site of Ina no Sasahara'></a><br><small>Photo: photoAC</small><h2 class='utamakura-name'>Utamakura: Ina no Sasahara</h2><p>Amagasaki, Hyogo Prefecture. The site of Ina no Sasahara. Nezasa (a low-growing bamboo grass), the same species that once grew here, has been planted at the site, letting visitors picture the Ina no Sasahara of the Heian period.</p><hr><a href='/58_en.html'>Link to Poem 58: Daini no Sanmi</a>"
+        "name": "<a href='../img/inanosasahara_kyuseki_large.webp' data-lightbox='map' data-title='Site of Ina no Sasahara'><img src='../img/inanosasahara_kyuseki.webp' width='300' alt='Site of Ina no Sasahara'></a><br><small>Photographed May 15, 2024</small><h2 class='utamakura-name'>Utamakura: Ina no Sasahara</h2><p>Amagasaki, Hyogo Prefecture. The site of Ina no Sasahara. Nezasa (a low-growing bamboo grass), the same species that once grew here, has been planted at the site, letting visitors picture the Ina no Sasahara of the Heian period.</p><hr><a href='/58_en.html'>Link to Poem 58: Daini no Sanmi</a>"
       },
       "geometry": { "type": "Point", "coordinates": [135.42317186757757, 34.770931634691514] }
     },
@@ -307,7 +307,7 @@
         "markname": "Takashi no Hama",
         "kajin": "Kii of Princess Yūshi's Household (Takashi no Hama)",
         "type": "type1",
-        "name": "<a href='../img/hamaderakoen_large.webp' data-lightbox='map' data-title='Hamadera Park (Takashi no Hama)'><img src='../img/hamaderakoen.webp' width='300' alt='Hamadera Park'></a><br><small>Photo: photoAC</small><h2 class='utamakura-name'>Utamakura: Takashi no Hama</h2><p>The area spanning Hamadera in Sakai, Osaka, to Takashi in Takaishi, Osaka. Once a scenic stretch of sandy beach lined with pine groves. Though the beach is now a concrete embankment, Hamadera Park was built on the site, and part of the original pine grove survives within it, offering a glimpse of the past.</p><hr><a href='/72_en.html'>Link to Poem 72: Kii of Princess Yūshi's Household</a>"
+        "name": "<a href='../img/hamaderakoen_large.webp' data-lightbox='map' data-title='Hamadera Park (Takashi no Hama)'><img src='../img/hamaderakoen.webp' width='300' alt='Hamadera Park'></a><h2 class='utamakura-name'>Utamakura: Takashi no Hama</h2><p>The area spanning Hamadera in Sakai, Osaka, to Takashi in Takaishi, Osaka. Once a scenic stretch of sandy beach lined with pine groves. Though the beach is now a concrete embankment, Hamadera Park was built on the site, and part of the original pine grove survives within it, offering a glimpse of the past.</p><hr><a href='/72_en.html'>Link to Poem 72: Kii of Princess Yūshi's Household</a>"
       },
       "geometry": { "type": "Point", "coordinates": [135.43255, 34.52765] }
     },
@@ -317,7 +317,7 @@
         "markname": "Hatsuse",
         "kajin": "Minamoto no Toshiyori Ason (Hatsuse)",
         "type": "type1",
-        "name": "<a href='../img/Hasedera_large.webp' data-lightbox='map' data-title='Hase-dera'><img src='../img/hatsuse.webp' width='300' alt='Hatsuse'></a><br><small>Photo: photoAC</small><h2 class='utamakura-name'>Utamakura: Hatsuse</h2><p>Hase-cho, Sakurai, Nara Prefecture. From the Heian period onward, \"Hatsuse\" often referred specifically to Hase-dera temple.</p><hr><a href='/74_en.html'>Link to Poem 74: Minamoto no Toshiyori Ason</a>"
+        "name": "<a href='../img/Hasedera_large.webp' data-lightbox='map' data-title='Hase-dera'><img src='../img/hatsuse.webp' width='300' alt='Hatsuse'></a><h2 class='utamakura-name'>Utamakura: Hatsuse</h2><p>Hase-cho, Sakurai, Nara Prefecture. From the Heian period onward, \"Hatsuse\" often referred specifically to Hase-dera temple.</p><hr><a href='/74_en.html'>Link to Poem 74: Minamoto no Toshiyori Ason</a>"
       },
       "geometry": { "type": "Point", "coordinates": [135.90872, 34.52658] }
     },
@@ -337,7 +337,7 @@
         "markname": "Kasuga",
         "kajin": "Abe no Nakamaro (Kasuga)",
         "type": "type1",
-        "name": "<a href='../img/kasugataisha_large.webp' data-lightbox='map' data-title='Kasugano-cho, Nara: Kasuga Taisha'><img src='../img/kasugataisha.webp' width='300' alt='Kasuga'></a><br><small>Photo: photoAC</small><h2 class='utamakura-name'>Utamakura: Kasuga (Kasuga Taisha)</h2><p>Kasugano-cho, Nara City, Nara Prefecture. Kasuga Taisha shrine stands at the foot of the mountain.</p><hr><a href='/7_en.html'>Link to Poem 7: Abe no Nakamaro</a>"
+        "name": "<a href='../img/kasugataisha_large.webp' data-lightbox='map' data-title='Kasugano-cho, Nara: Kasuga Taisha'><img src='../img/kasugataisha.webp' width='300' alt='Kasuga'></a><h2 class='utamakura-name'>Utamakura: Kasuga (Kasuga Taisha)</h2><p>Kasugano-cho, Nara City, Nara Prefecture. Kasuga Taisha shrine stands at the foot of the mountain.</p><hr><a href='/7_en.html'>Link to Poem 7: Abe no Nakamaro</a>"
       },
       "geometry": { "type": "Point", "coordinates": [135.84848262599226, 34.68176593790116] }
     },
@@ -347,7 +347,7 @@
         "markname": "Tatsuta River",
         "kajin": "Ariwara no Narihira Ason (Tatsuta River)",
         "type": "type1",
-        "name": "<a href='../img/tatsutagawa_large.webp' data-lightbox='map' data-title='Tatsuta River'><img src='../img/tatsutagawa.webp' width='300' alt='Tatsuta River'></a><br><small>Photo: photoAC</small><h2 class='utamakura-name'>Utamakura: Tatsuta River</h2><p>Ikoma District, Nara Prefecture — Ikaruga and Sango. Frequently featured in Heian-period poems about autumn foliage.</p><hr><a href='/17_en.html'>Link to Poem 17: Ariwara no Narihira Ason</a><hr><a href='/69_en.html'>Link to Poem 69: Priest Nōin</a>"
+        "name": "<a href='../img/tatsutagawa_large.webp' data-lightbox='map' data-title='Tatsuta River'><img src='../img/tatsutagawa.webp' width='300' alt='Tatsuta River'></a><h2 class='utamakura-name'>Utamakura: Tatsuta River</h2><p>Ikoma District, Nara Prefecture — Ikaruga and Sango. Frequently featured in Heian-period poems about autumn foliage.</p><hr><a href='/17_en.html'>Link to Poem 17: Ariwara no Narihira Ason</a><hr><a href='/69_en.html'>Link to Poem 69: Priest Nōin</a>"
       },
       "geometry": { "type": "Point", "coordinates": [135.71797796638276, 34.60569500944204] }
     },
@@ -357,7 +357,7 @@
         "markname": "Yura River",
         "kajin": "Sone no Yoshitada (Yura River)",
         "type": "type1",
-        "name": "<a href='../img/yuragawa_large.webp' data-lightbox='map' data-title='Yura River'><img src='../img/yuragawa.webp' width='300' alt='Yura River'></a><br><small>Photo: photoAC</small><h2 class='utamakura-name'>Utamakura: Yura River</h2><p>Yura, Miyazu, Kyoto Prefecture. The ancient name for the mouth of the Yura River. As Sone no Yoshitada served as governor of Tango Province (the Tango Peninsula area of Kyoto Prefecture), this place is thought to have been familiar to him.</p><hr><a href='/46_en.html'>Link to Poem 46: Sone no Yoshitada</a>"
+        "name": "<a href='../img/yuragawa_large.webp' data-lightbox='map' data-title='Yura River'><img src='../img/yuragawa.webp' width='300' alt='Yura River'></a><h2 class='utamakura-name'>Utamakura: Yura River</h2><p>Yura, Miyazu, Kyoto Prefecture. The ancient name for the mouth of the Yura River. As Sone no Yoshitada served as governor of Tango Province (the Tango Peninsula area of Kyoto Prefecture), this place is thought to have been familiar to him.</p><hr><a href='/46_en.html'>Link to Poem 46: Sone no Yoshitada</a>"
       },
       "geometry": { "type": "Point", "coordinates": [135.27212, 35.52408] }
     },
@@ -367,7 +367,7 @@
         "markname": "Mt. Ōe",
         "kajin": "Koshikibu no Naishi (Mt. Ōe)",
         "type": "type1",
-        "name": "<a href='../img/ooeyama_large.webp' data-lightbox='map' data-title='Mt. Ōe'><img src='../img/ooeyama.webp?20240430' width='300' alt='Mt. Ōe'></a><br><small>Photo: photoAC</small><h2 class='utamakura-name'>Utamakura: Mt. Ōe</h2><p>A mountain range at the base of the Tango Peninsula in Kyoto Prefecture, straddling Yosano, Fukuchiyama, and Miyazu, rising to 832m.</p><hr><a href='/60_en.html'>Link to Poem 60: Koshikibu no Naishi</a>"
+        "name": "<a href='../img/ooeyama_large.webp' data-lightbox='map' data-title='Mt. Ōe'><img src='../img/ooeyama.webp?20240430' width='300' alt='Mt. Ōe'></a><h2 class='utamakura-name'>Utamakura: Mt. Ōe</h2><p>A mountain range at the base of the Tango Peninsula in Kyoto Prefecture, straddling Yosano, Fukuchiyama, and Miyazu, rising to 832m.</p><hr><a href='/60_en.html'>Link to Poem 60: Koshikibu no Naishi</a>"
       },
       "geometry": { "type": "Point", "coordinates": [135.10692, 35.45348] }
     },
@@ -387,7 +387,7 @@
         "markname": "Amanohashidate",
         "kajin": "Koshikibu no Naishi (Amanohashidate)",
         "type": "type1",
-        "name": "<a href='../img/amanohashidate_large.webp' data-lightbox='map' data-title='Mt. Fuji'><img src='../img/amanohashidate.webp' width='300' alt='Amanohashidate'></a><br><small>Photo: photoAC</small><h2 class='utamakura-name'>Utamakura: Amanohashidate</h2><p>Amanohashidate, in Miyazu Bay on the Sea of Japan coast in northern Kyoto Prefecture, is counted among Japan's Three Scenic Views. The 3.6km sandbar is lined with beautiful pines, with white sandy beaches along its eastern side — a picture-perfect scene of white sand and green pines.<hr><a href='/60_en.html'>Link to Poem 60: Koshikibu no Naishi</a>"
+        "name": "<a href='../img/amanohashidate_large.webp' data-lightbox='map' data-title='Mt. Fuji'><img src='../img/amanohashidate.webp' width='300' alt='Amanohashidate'></a><h2 class='utamakura-name'>Utamakura: Amanohashidate</h2><p>Amanohashidate, in Miyazu Bay on the Sea of Japan coast in northern Kyoto Prefecture, is counted among Japan's Three Scenic Views. The 3.6km sandbar is lined with beautiful pines, with white sandy beaches along its eastern side — a picture-perfect scene of white sand and green pines.<hr><a href='/60_en.html'>Link to Poem 60: Koshikibu no Naishi</a>"
       },
       "geometry": { "type": "Point", "coordinates": [135.19182, 35.5698] }
     },
@@ -417,7 +417,7 @@
         "markname": "Yoshino",
         "kajin": "Sakanoue no Korenori (Yoshino)",
         "type": "type1",
-        "name": "<a href='../img/yoshinoyama_large.webp' data-lightbox='map' data-title='Mt. Yoshino'><img src='../img/yoshinoyama.webp' width='300' alt='Yoshino'>,<br><small>Photo: Adobe Stock</small><h2 class='utamakura-name'>Utamakura: Yoshino</h2><p>Yoshino is famous today as a cherry-blossom destination, but before the mid-Heian period it was known instead as a place celebrated for its snow.</p><hr><a href='/31_en.html'>Link to Poem 31: Sakanoue no Korenori</a><hr><a href='/94_en.html'>Link to Poem 94: Councillor Masatsune</a>"
+        "name": "<a href='../img/yoshinoyama_large.webp' data-lightbox='map' data-title='Mt. Yoshino'><img src='../img/yoshinoyama.webp' width='300' alt='Yoshino'>,<h2 class='utamakura-name'>Utamakura: Yoshino</h2><p>Yoshino is famous today as a cherry-blossom destination, but before the mid-Heian period it was known instead as a place celebrated for its snow.</p><hr><a href='/31_en.html'>Link to Poem 31: Sakanoue no Korenori</a><hr><a href='/94_en.html'>Link to Poem 94: Councillor Masatsune</a>"
       },
       "geometry": { "type": "Point", "coordinates": [135.86833, 34.36283] }
     },
@@ -427,7 +427,7 @@
         "markname": "Mt. Mimuro",
         "kajin": "Priest Nōin (Mt. Mimuro)",
         "type": "type1",
-        "name": "<img src='../img/mimuroyama.webp' width='300' alt='Mt. Mimuro'><br><small>Photo: photoAC</small><h2 class='utamakura-name'>Utamakura: Mt. Mimuro</h2><p>Misato, Ikoma District, Nara Prefecture. Known as a spot celebrated for autumn foliage and passing showers (shigure).</p><hr><a href='/69_en.html'>Link to Poem 69: Priest Nōin</a>"
+        "name": "<img src='../img/mimuroyama.webp' width='300' alt='Mt. Mimuro'><h2 class='utamakura-name'>Utamakura: Mt. Mimuro</h2><p>Misato, Ikoma District, Nara Prefecture. Known as a spot celebrated for autumn foliage and passing showers (shigure).</p><hr><a href='/69_en.html'>Link to Poem 69: Priest Nōin</a>"
       },
       "geometry": { "type": "Point", "coordinates": [135.7151239556404, 34.60038373185413] }
     },
@@ -437,7 +437,7 @@
         "markname": "Naniwagata / Naniwae",
         "kajin": "Ise (Naniwagata / Naniwae)",
         "type": "type1",
-        "name": "<a href='../img/naniwagata_large.webp' data-lightbox='map' data-title='Naniwae'><img src='../img/naniwagata.webp' width='300' alt='Naniwagata / Naniwae (Johoku Wando)'></a><br><small>Photo: photoAC</small><h2 class='utamakura-name'>Utamakura: Naniwagata / Naniwae</h2><p>\"Naniwa\" refers to Osaka City, along the lower Yodo River. The area was known for its extensive marshland thick with reeds.</p><hr><a href='/19_en.html'>Link to Poem 19: Ise</a><hr><a href='/88_en.html'>Link to Poem 88: Attendant to Empress Kōka</a>"
+        "name": "<a href='../img/naniwagata_large.webp' data-lightbox='map' data-title='Naniwae'><img src='../img/naniwagata.webp' width='300' alt='Naniwagata / Naniwae (Johoku Wando)'></a><h2 class='utamakura-name'>Utamakura: Naniwagata / Naniwae</h2><p>\"Naniwa\" refers to Osaka City, along the lower Yodo River. The area was known for its extensive marshland thick with reeds.</p><hr><a href='/19_en.html'>Link to Poem 19: Ise</a><hr><a href='/88_en.html'>Link to Poem 88: Attendant to Empress Kōka</a>"
       },
       "geometry": { "type": "Point", "coordinates": [135.5289405219532, 34.73260027715697] }
     },
@@ -457,7 +457,7 @@
         "markname": "Tsurugaoka Hachimangū",
         "kajin": "Minister of the Right of Kamakura (Tsurugaoka Hachimangū)",
         "type": "type2",
-        "name": "<a href='../img/tsuruokahachimangu_large.webp' data-lightbox='map' data-title='Kamakura, Kanagawa: Tsurugaoka Hachimangū'><img src='../img/tsuruokahachimangu.webp' width='300' alt='Tsurugaoka Hachimangū'></a><br><small>Photo: Adobe Stock</small><h2 class='utamakura-name'>Tsurugaoka Hachimangū</h2><p>A shrine in Kamakura, Kanagawa Prefecture. Minamoto no Sanetomo, the \"Minister of the Right of Kamakura,\" was assassinated here at Tsurugaoka Hachimangū by Kugyō, the second son of Minamoto no Yoriie.</p><hr><a href='/93_en.html'>Link to Poem 93: Minister of the Right of Kamakura</a>"
+        "name": "<a href='../img/tsuruokahachimangu_large.webp' data-lightbox='map' data-title='Kamakura, Kanagawa: Tsurugaoka Hachimangū'><img src='../img/tsuruokahachimangu.webp' width='300' alt='Tsurugaoka Hachimangū'></a><h2 class='utamakura-name'>Tsurugaoka Hachimangū</h2><p>A shrine in Kamakura, Kanagawa Prefecture. Minamoto no Sanetomo, the \"Minister of the Right of Kamakura,\" was assassinated here at Tsurugaoka Hachimangū by Kugyō, the second son of Minamoto no Yoriie.</p><hr><a href='/93_en.html'>Link to Poem 93: Minister of the Right of Kamakura</a>"
       },
       "geometry": { "type": "Point", "coordinates": [139.55631640318094, 35.3259553165399] }
     },
@@ -467,7 +467,7 @@
         "markname": "Mt. Hiei",
         "kajin": "Former Senior High Priest Jien (Mt. Hiei)",
         "type": "type2",
-        "name": "<a href='../img/hieizan_large.webp' data-lightbox='map' data-title='View from Mt. Hiei'><img src='../img/hieizan.webp' width='300' alt='View from Mt. Hiei'></a><br><small>Photo: photoAC</small><h2 class='utamakura-name'>Mt. Hiei</h2><p>The head temple complex of the Tendai school, in Otsu, Shiga Prefecture. Jien entered Enryaku-ji at age 11 and rose to become Tendai Zasu, the school's highest office. Pictured is the view from Mt. Hiei.</p><hr><a href='/95_en.html'>Link to Poem 95: Former Senior High Priest Jien</a>"
+        "name": "<a href='../img/hieizan_large.webp' data-lightbox='map' data-title='View from Mt. Hiei'><img src='../img/hieizan.webp' width='300' alt='View from Mt. Hiei'></a><h2 class='utamakura-name'>Mt. Hiei</h2><p>The head temple complex of the Tendai school, in Otsu, Shiga Prefecture. Jien entered Enryaku-ji at age 11 and rose to become Tendai Zasu, the school's highest office. Pictured is the view from Mt. Hiei.</p><hr><a href='/95_en.html'>Link to Poem 95: Former Senior High Priest Jien</a>"
       },
       "geometry": { "type": "Point", "coordinates": [135.83156204869454, 35.06303569672666] }
     },
@@ -477,7 +477,7 @@
         "markname": "Ōmine Mountains",
         "kajin": "Senior High Priest Gyōson (Ōmine Mountains)",
         "type": "type2",
-        "name": "<a href='../img/oominesanmyaku_large.webp' data-lightbox='map' data-title='Ōmine Mountains'><img src='../img/oominesanmyaku.webp?20240428' width='300' alt='Ōmine Mountains'></a><br><small>Photo: photoAC</small><h2 class='utamakura-name'>Ōmine Mountains</h2><p>Known as the \"roof of the Kinki region,\" the Ōmine Mountains. Gyōson composed his poem while training in mountain asceticism (shugendō) in these mountains, after encountering a wild mountain cherry.</p><hr><a href='/66_en.html'>Link to Poem 66: Senior High Priest Gyōson</a>"
+        "name": "<a href='../img/oominesanmyaku_large.webp' data-lightbox='map' data-title='Ōmine Mountains'><img src='../img/oominesanmyaku.webp?20240428' width='300' alt='Ōmine Mountains'></a><h2 class='utamakura-name'>Ōmine Mountains</h2><p>Known as the \"roof of the Kinki region,\" the Ōmine Mountains. Gyōson composed his poem while training in mountain asceticism (shugendō) in these mountains, after encountering a wild mountain cherry.</p><hr><a href='/66_en.html'>Link to Poem 66: Senior High Priest Gyōson</a>"
       },
       "geometry": { "type": "Point", "coordinates": [135.94064952513952, 34.25336249899365] }
     },
@@ -547,7 +547,7 @@
         "markname": "Oki",
         "kajin": "Retired Emperor Go-Toba (Oki)",
         "type": "type2",
-        "name": "<a href='../img/oki_large.webp' data-lightbox='map' data-title='Oki'><img src='../img/okinoshima.webp' width='300' alt='Oki'></a><br><small>Photo: photoAC</small><h2 class='utamakura-name'>Oki</h2><p>Oki District, Shimane Prefecture. Defeated in the Jōkyū War, Retired Emperor Go-Toba was exiled to Oki, where he died at age 58.</p><hr><a href='/99_en.html'>Link to Poem 99: Retired Emperor Go-Toba</a>"
+        "name": "<a href='../img/oki_large.webp' data-lightbox='map' data-title='Oki'><img src='../img/okinoshima.webp' width='300' alt='Oki'></a><h2 class='utamakura-name'>Oki</h2><p>Oki District, Shimane Prefecture. Defeated in the Jōkyū War, Retired Emperor Go-Toba was exiled to Oki, where he died at age 58.</p><hr><a href='/99_en.html'>Link to Poem 99: Retired Emperor Go-Toba</a>"
       },
       "geometry": { "type": "Point", "coordinates": [133.27462455230224, 36.25081125748606] }
     },
@@ -557,7 +557,7 @@
         "markname": "Shiramine-ji (Sanuki)",
         "kajin": "Retired Emperor Sutoku (Sanuki / Shiramine-ji)",
         "type": "type2",
-        "name": "<a href='../img/shiramine_large.webp' data-lightbox='map' data-title='Shiramine-ji'><img src='../img/shiramineji.webp' width='300' alt='Shiramine-ji'></a><br><small>Photo: photoAC</small><h2 class='utamakura-name'>Shiramine-ji</h2><p>A Shingon Omuro-school temple in Sakaide, Kagawa Prefecture. Defeated in the Hōgen Rebellion, Retired Emperor Sutoku was exiled to Sanuki Province. Along the approach to Shiramine-ji stands the \"Shiramine-ji Thirteen-Story Stone Pagoda,\" said to have been erected by Minamoto no Yoritomo for the repose of Emperor Sutoku's soul.</p><hr><a href='/77_en.html'>Link to Poem 77: Retired Emperor Sutoku</a>"
+        "name": "<a href='../img/shiramine_large.webp' data-lightbox='map' data-title='Shiramine-ji'><img src='../img/shiramineji.webp' width='300' alt='Shiramine-ji'></a><h2 class='utamakura-name'>Shiramine-ji</h2><p>A Shingon Omuro-school temple in Sakaide, Kagawa Prefecture. Defeated in the Hōgen Rebellion, Retired Emperor Sutoku was exiled to Sanuki Province. Along the approach to Shiramine-ji stands the \"Shiramine-ji Thirteen-Story Stone Pagoda,\" said to have been erected by Minamoto no Yoritomo for the repose of Emperor Sutoku's soul.</p><hr><a href='/77_en.html'>Link to Poem 77: Retired Emperor Sutoku</a>"
       },
       "geometry": { "type": "Point", "coordinates": [133.92674829927043, 34.33371424743123] }
     },
@@ -577,7 +577,7 @@
         "markname": "Ishiyama-dera",
         "kajin": "Murasaki Shikibu (Ishiyama-dera)",
         "type": "type2",
-        "name": "<a href='../img/ishiyamadera_large.webp' data-lightbox='map' data-title='Ishiyama-dera'><img src='../img/ishiyamadera.webp' width='300' alt='Ishiyama-dera'></a><br><small>Photo: Adobe Stock</small><h2 class='utamakura-name'>Ishiyama-dera</h2><p>A temple in Otsu, Shiga Prefecture. Murasaki Shikibu is said to have conceived the \"Suma\" and \"Akashi\" chapters of the Tale of Genji while in retreat at Ishiyama-dera, and the temple's main hall contains a room known as \"Murasaki Shikibu's Chamber.\"</p><hr><a href='/57_en.html'>Link to Poem 57: Murasaki Shikibu</a>"
+        "name": "<a href='../img/ishiyamadera_large.webp' data-lightbox='map' data-title='Ishiyama-dera'><img src='../img/ishiyamadera.webp' width='300' alt='Ishiyama-dera'></a><h2 class='utamakura-name'>Ishiyama-dera</h2><p>A temple in Otsu, Shiga Prefecture. Murasaki Shikibu is said to have conceived the \"Suma\" and \"Akashi\" chapters of the Tale of Genji while in retreat at Ishiyama-dera, and the temple's main hall contains a room known as \"Murasaki Shikibu's Chamber.\"</p><hr><a href='/57_en.html'>Link to Poem 57: Murasaki Shikibu</a>"
       },
       "geometry": { "type": "Point", "coordinates": [135.90158982932604, 34.958986141406854] }
     },
@@ -939,7 +939,7 @@
         "_comment": "The imperial palace precinct of Heian-kyō (inside Heian-kyō; the Ōten-mon gate stood here)",
         "markname": "Daidairi (Greater Imperial Palace)",
         "kajin": "",
-        "name": "<img src='../img/outenmon.webp' width='300' alt='Daidairi'><br><small>Photo: photoAC</small><h2 class='utamakura-name'>Daidairi (Greater Imperial Palace)</h2><p>The Ōten-mon gate once towered over the Daidairi, the imperial palace precinct of Heian-kyō. Pictured is the Ōten-mon gate at Heian Jingū shrine in Sakyo Ward, Kyoto — a five-eighths-scale reconstruction of the original Ōten-mon that conveys something of its former grandeur.</p>",
+        "name": "<img src='../img/outenmon.webp' width='300' alt='Daidairi'><h2 class='utamakura-name'>Daidairi (Greater Imperial Palace)</h2><p>The Ōten-mon gate once towered over the Daidairi, the imperial palace precinct of Heian-kyō. Pictured is the Ōten-mon gate at Heian Jingū shrine in Sakyo Ward, Kyoto — a five-eighths-scale reconstruction of the original Ōten-mon that conveys something of its former grandeur.</p>",
         "color": "#42AED3",
         "fillColor": "#FFFFFF",
         "fillOpacity": 0.5,

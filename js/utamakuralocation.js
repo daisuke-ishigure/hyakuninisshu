@@ -7,7 +7,7 @@
           "markname": "小倉山",
           "kajin": "貞信公（小倉山）",
           "type": "type1",
-          "name": "<a href='../img/ogurayama_large.webp' data-lightbox='map' data-title='京都市右京区:小倉山'><img src='../img/ogurayama.webp' width='300'></a><br><small>写真:photoAC</small><h2 class='utamakura-name'>歌枕：小倉山</h2><p>京都市右京区にある標高296mの小倉山。一帯は京都随一の紅葉の名所で、百人一首が編纂された地としても知られています。</p><hr><a href='/26.html'>26番歌 貞信公へのリンク</a>"
+          "name": "<a href='../img/ogurayama_large.webp' data-lightbox='map' data-title='京都市右京区:小倉山'><img src='../img/ogurayama.webp' width='300'></a><h2 class='utamakura-name'>歌枕：小倉山</h2><p>京都市右京区にある標高296mの小倉山。一帯は京都随一の紅葉の名所で、百人一首が編纂された地としても知られています。</p><hr><a href='/26.html'>26番歌 貞信公へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -71,7 +71,7 @@
           "markname": "沖の石",
           "kajin": "二条院讃岐（沖の石）",
           "type": "type1",
-          "name": "<a href='../img//okinoishi_large.webp' data-lightbox='map' data-title='宮城県多賀城市:沖の石'><img src='../img/okinoishi.webp' alt='沖の石' width='300'></a><br><small>写真:photoAC</small><h2 class='utamakura-name'>歌枕：沖の石</h2><p>宮城県多賀城市。住宅地に囲まれた奇岩が連なる池で、古来から大切に保管されてきました。「末の松山」から南に90mの場所にあります。</p><hr><a href='/92.html'>92番歌 二条院讃岐へのリンク</a>"
+          "name": "<a href='../img//okinoishi_large.webp' data-lightbox='map' data-title='宮城県多賀城市:沖の石'><img src='../img/okinoishi.webp' alt='沖の石' width='300'></a><h2 class='utamakura-name'>歌枕：沖の石</h2><p>宮城県多賀城市。住宅地に囲まれた奇岩が連なる池で、古来から大切に保管されてきました。「末の松山」から南に90mの場所にあります。</p><hr><a href='/92.html'>92番歌 二条院讃岐へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -87,7 +87,7 @@
           "markname": "田烏の棚田",
           "kajin": "二条院讃岐（沖の石）",
           "type": "type1",
-          "name": "<a href='../img/tagarasu_large.webp' data-lightbox='map' data-title='福井県小浜市:田烏の棚田'><img src='../img/tagarasu.webp' alt='福井県小浜市:田烏の棚田' width='300'></a><br><small>写真:photoAC</small><h2 class='utamakura-name'>歌枕：沖の石</h2><p>福井県小浜市。若狭湾沿岸部にある棚田。棚田の一角には「二条院讃岐姫居館址」という碑が立っています。</p><hr><a href='/92.html'>92番歌 二条院讃岐へのリンク</a>"
+          "name": "<a href='../img/tagarasu_large.webp' data-lightbox='map' data-title='福井県小浜市:田烏の棚田'><img src='../img/tagarasu.webp' alt='福井県小浜市:田烏の棚田' width='300'></a><h2 class='utamakura-name'>歌枕：沖の石</h2><p>福井県小浜市。若狭湾沿岸部にある棚田。棚田の一角には「二条院讃岐姫居館址」という碑が立っています。</p><hr><a href='/92.html'>92番歌 二条院讃岐へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -167,7 +167,7 @@
           "markname": "雄島",
           "kajin": "殷富門院大輔（雄島）",
           "type": "type1",
-          "name": "<a href='../img/oshima_large.webp' data-lightbox='map' data-title='宮城県 雄島'><img src='../img/oshima.webp?20240426' width='300' alt='雄島'></a><br><small>写真:photoAC</small><h2 class='utamakura-name'>歌枕：雄島</h2><p>宮城県宮城郡松島町。雄島は日本三景の一つ、松島（宮城県）の群島の一つです。</p><hr><a href='/90.html'>90番歌 殷富門院大輔へのリンク</a>"
+          "name": "<a href='../img/oshima_large.webp' data-lightbox='map' data-title='宮城県 雄島'><img src='../img/oshima.webp?20240426' width='300' alt='雄島'></a><h2 class='utamakura-name'>歌枕：雄島</h2><p>宮城県宮城郡松島町。雄島は日本三景の一つ、松島（宮城県）の群島の一つです。</p><hr><a href='/90.html'>90番歌 殷富門院大輔へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -183,7 +183,7 @@
           "markname": "円城寺（三井寺）",
           "kajin": "前大僧正行尊",
           "type": "type2",
-          "name": "<a href='../img/miidera_large.webp' data-lightbox='前大僧正行尊' data-title='滋賀県と岐阜県の境にある伊吹山'><img src='../img/miidera.webp' width='300' alt='伊吹山'></a><br><small>写真:photoAC</small><h2 class='utamakura-name'>円城寺（三井寺）</h2><p>滋賀県大津市にある天台寺門宗の総本山。一般には三井寺として知られています。行尊は12歳のときに、このお寺で出家し、密教を学びました。</p><hr><a href='/66.html'>66番歌 前大僧正行尊へのリンク</a>"
+          "name": "<a href='../img/miidera_large.webp' data-lightbox='前大僧正行尊' data-title='滋賀県と岐阜県の境にある伊吹山'><img src='../img/miidera.webp' width='300' alt='伊吹山'></a><h2 class='utamakura-name'>円城寺（三井寺）</h2><p>滋賀県大津市にある天台寺門宗の総本山。一般には三井寺として知られています。行尊は12歳のときに、このお寺で出家し、密教を学びました。</p><hr><a href='/66.html'>66番歌 前大僧正行尊へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -199,7 +199,7 @@
           "markname": "伊吹山（滋賀県と岐阜県の境）",
           "kajin": "藤原実方朝臣（伊吹山）",
           "type": "type1",
-          "name": "<a href='../img/ibukiyama_large.webp' data-lightbox='藤原実方' data-title='滋賀県と岐阜県の境にある伊吹山'><img src='../img/ibukiyama.webp' width='300' alt='伊吹山'></a><br><small>写真:photoAC</small><h2 class='utamakura-name'>歌枕：伊吹山（滋賀県と岐阜県の境）</h2><p>滋賀県と岐阜県の境にある伊吹山は、山頂が滋賀県米原市にあり、標高約1,377メートル。古来から薬草の宝庫として知られています。</p><hr><a href='/51.html'>51番歌 藤原実方朝臣へのリンク</a>"
+          "name": "<a href='../img/ibukiyama_large.webp' data-lightbox='藤原実方' data-title='滋賀県と岐阜県の境にある伊吹山'><img src='../img/ibukiyama.webp' width='300' alt='伊吹山'></a><h2 class='utamakura-name'>歌枕：伊吹山（滋賀県と岐阜県の境）</h2><p>滋賀県と岐阜県の境にある伊吹山は、山頂が滋賀県米原市にあり、標高約1,377メートル。古来から薬草の宝庫として知られています。</p><hr><a href='/51.html'>51番歌 藤原実方朝臣へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -231,7 +231,7 @@
           "markname": "高砂",
           "kajin": "藤原興風（高砂）",
           "type": "type1",
-          "name": "<a href='../img/takasago-no-matsu_large.webp' data-lightbox='map' data-title='高砂の松'><img src='../img/takasago-no-matsu.webp' width='300' alt='高砂'></a><br><small>写真:photoAC</small><h2 class='utamakura-name'>歌枕：高砂</h2><p>兵庫県高砂市。写真は、高砂神社内にある相生の松です。</p><hr><a href='/34.html'>34番歌 藤原興風へのリンク</a>"
+          "name": "<a href='../img/takasago-no-matsu_large.webp' data-lightbox='map' data-title='高砂の松'><img src='../img/takasago-no-matsu.webp' width='300' alt='高砂'></a><h2 class='utamakura-name'>歌枕：高砂</h2><p>兵庫県高砂市。写真は、高砂神社内にある相生の松です。</p><hr><a href='/34.html'>34番歌 藤原興風へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -263,7 +263,7 @@
           "markname": "松帆の浦",
           "kajin": "権中納言定家（松帆の浦）",
           "type": "type1",
-          "name": "<a href='../img/matsuhonoura_large.webp' data-lightbox='藤原定家' data-title='兵庫県 淡路島の北端「松帆の浦」'><img src='../img/matsuhonoura.webp?20240424' width='300' alt='松帆の浦'></a><br><small>写真:photoAC</small><h2 class='utamakura-name'>歌枕：松帆の浦</h2><p>兵庫県淡路市岩屋。淡路島の北端にある海辺。海峡が荒れたときに人々が風待ちや潮待ちをしたことにちなんで、松帆(待つ帆)という地名になったそうです。</p><hr><a href='/97.html'>97番歌 権中納言定家へのリンク</a>"
+          "name": "<a href='../img/matsuhonoura_large.webp' data-lightbox='藤原定家' data-title='兵庫県 淡路島の北端「松帆の浦」'><img src='../img/matsuhonoura.webp?20240424' width='300' alt='松帆の浦'></a><h2 class='utamakura-name'>歌枕：松帆の浦</h2><p>兵庫県淡路市岩屋。淡路島の北端にある海辺。海峡が荒れたときに人々が風待ちや潮待ちをしたことにちなんで、松帆(待つ帆)という地名になったそうです。</p><hr><a href='/97.html'>97番歌 権中納言定家へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -279,7 +279,7 @@
           "markname": "須磨",
           "kajin": "源兼昌（須磨）",
           "type": "type1",
-          "name": "<a href='../img/suma_large.webp' data-lightbox='map' data-title='須磨'><img src='../img/suma.webp' width='300' alt='須磨'></a><br><small>写真:photoAC</small><h2 class='utamakura-name'>歌枕：須磨</h2><p>兵庫県神戸市須磨区。かつては摂津国と播磨国の国境の地で、関所が設けられていました。</p><hr><a href='/78.html'>78番歌 源兼昌へのリンク</a>"
+          "name": "<a href='../img/suma_large.webp' data-lightbox='map' data-title='須磨'><img src='../img/suma.webp' width='300' alt='須磨'></a><h2 class='utamakura-name'>歌枕：須磨</h2><p>兵庫県神戸市須磨区。かつては摂津国と播磨国の国境の地で、関所が設けられていました。</p><hr><a href='/78.html'>78番歌 源兼昌へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -327,7 +327,7 @@
           "markname": "宇治川",
           "kajin": "権中納言定頼（宇治川）",
           "type": "type1",
-          "name": "<a href='../img/ujigawa_large.webp' data-lightbox='map' data-title='宇治川'><img src='../img/ujigawa.webp' width='300' alt='宇治川'></a><br><small>写真:photoAC</small><h2 class='utamakura-name'>歌枕：宇治川</h2><p>京都府宇治市。平安貴族の別荘地としても有名です。</p><hr><a href='/64.html'>64番歌 権中納言定頼へのリンク</a>"
+          "name": "<a href='../img/ujigawa_large.webp' data-lightbox='map' data-title='宇治川'><img src='../img/ujigawa.webp' width='300' alt='宇治川'></a><h2 class='utamakura-name'>歌枕：宇治川</h2><p>京都府宇治市。平安貴族の別荘地としても有名です。</p><hr><a href='/64.html'>64番歌 権中納言定頼へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -375,7 +375,7 @@
           "markname": "ならの小川",
           "kajin": "従二位家隆（ならの小川）",
           "type": "type1",
-          "name": "<a href='../img/naranoogawa_large.webp' data-lightbox='map' data-title='上賀茂神社 ならの小川'><img src='../img/naranoogawa.webp' width='300' alt='ならの小川'></a><br><small>写真:photoAC</small><h2 class='utamakura-name'>歌枕：ならの小川</h2><p>「ならの小川」とは、京都市北区にある上賀茂神社境内を流れる御手洗川の別名です。</p><hr><a href='/98.html'>98番歌 従二位家隆へのリンク</a>"
+          "name": "<a href='../img/naranoogawa_large.webp' data-lightbox='map' data-title='上賀茂神社 ならの小川'><img src='../img/naranoogawa.webp' width='300' alt='ならの小川'></a><h2 class='utamakura-name'>歌枕：ならの小川</h2><p>「ならの小川」とは、京都市北区にある上賀茂神社境内を流れる御手洗川の別名です。</p><hr><a href='/98.html'>98番歌 従二位家隆へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -391,7 +391,7 @@
           "markname": "有馬山",
           "kajin": "大弐三位（有馬山）",
           "type": "type1",
-          "name": "<a href='../img/arimayama_large.webp' data-lightbox='map' data-title='六甲山頂と有馬温泉を結ぶ六甲有馬ロープウェー'><img src='../img/arimayama.webp' width='300' alt='有馬山'></a><br><small>写真:Adobe Stock</small><h2 class='utamakura-name'>歌枕：有馬山</h2><p>神戸市北区有馬町。古来温泉地として有名です。</p><hr><a href='/58.html'>58番歌 大弐三位へのリンク</a>"
+          "name": "<a href='../img/arimayama_large.webp' data-lightbox='map' data-title='六甲山頂と有馬温泉を結ぶ六甲有馬ロープウェー'><img src='../img/arimayama.webp' width='300' alt='有馬山'></a><h2 class='utamakura-name'>歌枕：有馬山</h2><p>神戸市北区有馬町。古来温泉地として有名です。</p><hr><a href='/58.html'>58番歌 大弐三位へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -407,7 +407,7 @@
           "markname": "猪名の笹原",
           "kajin": "大弐三位（猪名の笹原）",
           "type": "type1",
-          "name": "<a href='../img/inanosasahara_kyuseki_large.webp' data-lightbox='map' data-title='猪名の笹原旧跡'><img src='../img/inanosasahara_kyuseki.webp' width='300' alt='猪名の笹原旧跡'></a><br><small>写真:photoAC</small><h2 class='utamakura-name'>歌枕：猪名野</h2><p>兵庫県尼崎市。猪名の笹原旧跡。当時生えていた笹の種類と同じネザサ（根笹）が植えられており、平安時代の猪名の笹原を偲ぶことができます。</p><hr><a href='/58.html'>58番歌 大弐三位へのリンク</a>"
+          "name": "<a href='../img/inanosasahara_kyuseki_large.webp' data-lightbox='map' data-title='猪名の笹原旧跡'><img src='../img/inanosasahara_kyuseki.webp' width='300' alt='猪名の笹原旧跡'></a><br><small>2024年5月15日撮影</small><h2 class='utamakura-name'>歌枕：猪名野</h2><p>兵庫県尼崎市。猪名の笹原旧跡。当時生えていた笹の種類と同じネザサ（根笹）が植えられており、平安時代の猪名の笹原を偲ぶことができます。</p><hr><a href='/58.html'>58番歌 大弐三位へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -487,7 +487,7 @@
           "markname": "高師の浜",
           "kajin": "祐子内親王家紀伊（高師の浜）",
           "type": "type1",
-          "name": "<a href='../img/hamaderakoen_large.webp' data-lightbox='map' data-title='浜寺公園（高師の浜）'><img src='../img/hamaderakoen.webp' width='300' alt='浜寺公園'></a><br><small>写真:photoAC</small><h2 class='utamakura-name'>歌枕：高師の浜</h2><p>大阪府堺市浜寺から高石市高石市高師の一帯。かつては砂浜に松林が広がる景勝地でした。現在、砂浜はコンクリートの護岸に変わってしまいましたが、同地には浜寺公園が造られ、園内には当時の松林が一部残されており、当時を偲ぶことができます。</p><hr><a href='/72.html'>72番歌 祐子内親王家紀伊へのリンク</a>"
+          "name": "<a href='../img/hamaderakoen_large.webp' data-lightbox='map' data-title='浜寺公園（高師の浜）'><img src='../img/hamaderakoen.webp' width='300' alt='浜寺公園'></a><h2 class='utamakura-name'>歌枕：高師の浜</h2><p>大阪府堺市浜寺から高石市高石市高師の一帯。かつては砂浜に松林が広がる景勝地でした。現在、砂浜はコンクリートの護岸に変わってしまいましたが、同地には浜寺公園が造られ、園内には当時の松林が一部残されており、当時を偲ぶことができます。</p><hr><a href='/72.html'>72番歌 祐子内親王家紀伊へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -503,7 +503,7 @@
           "markname": "初瀬",
           "kajin": "源俊頼朝臣（初瀬）",
           "type": "type1",
-          "name": "<a href='../img/Hasedera_large.webp' data-lightbox='map' data-title='長谷寺'><img src='../img/hatsuse.webp' width='300' alt='初瀬'></a><br><small>写真:photoAC</small><h2 class='utamakura-name'>歌枕：初瀬</h2><p>奈良県桜井市初瀬町。「初瀬」は平安期以降「長谷寺」を指すことが多かったようです。</p><hr><a href='/74.html'>74番歌 源俊頼朝臣へのリンク</a>"
+          "name": "<a href='../img/Hasedera_large.webp' data-lightbox='map' data-title='長谷寺'><img src='../img/hatsuse.webp' width='300' alt='初瀬'></a><h2 class='utamakura-name'>歌枕：初瀬</h2><p>奈良県桜井市初瀬町。「初瀬」は平安期以降「長谷寺」を指すことが多かったようです。</p><hr><a href='/74.html'>74番歌 源俊頼朝臣へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -534,7 +534,7 @@
           "markname": "春日",
           "kajin": "阿倍仲麻呂（春日）",
           "type": "type1",
-          "name": "<a href='../img/kasugataisha_large.webp' data-lightbox='map' data-title='奈良県奈良市春日野町:春日大社'><img src='../img/kasugataisha.webp' width='300' alt='春日'></a><br><small>写真:photoAC</small><h2 class='utamakura-name'>歌枕：春日（春日大社）</h2><p>奈良県奈良市春日野町。山の麓に春日大社がある。</p><hr><a href='/7.html'>7番歌 阿倍仲麻呂へのリンク</a>"
+          "name": "<a href='../img/kasugataisha_large.webp' data-lightbox='map' data-title='奈良県奈良市春日野町:春日大社'><img src='../img/kasugataisha.webp' width='300' alt='春日'></a><h2 class='utamakura-name'>歌枕：春日（春日大社）</h2><p>奈良県奈良市春日野町。山の麓に春日大社がある。</p><hr><a href='/7.html'>7番歌 阿倍仲麻呂へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -550,7 +550,7 @@
           "markname": "竜田川",
           "kajin": "在原業平朝臣（龍田川）",
           "type": "type1",
-          "name": "<a href='../img/tatsutagawa_large.webp' data-lightbox='map' data-title='竜田川'><img src='../img/tatsutagawa.webp' width='300' alt='竜田川'></a><br><small>写真:photoAC</small><h2 class='utamakura-name'>歌枕：竜田川</h2><p>奈良県生駒郡斑鳩町、三郷町。平安期に紅葉の歌に多く詠まれました。</p><hr><a href='/17.html'>17番歌 在原業平朝臣へのリンク</a><hr><a href='/69.html'>69番歌 能因法師へのリンク</a>"
+          "name": "<a href='../img/tatsutagawa_large.webp' data-lightbox='map' data-title='竜田川'><img src='../img/tatsutagawa.webp' width='300' alt='竜田川'></a><h2 class='utamakura-name'>歌枕：竜田川</h2><p>奈良県生駒郡斑鳩町、三郷町。平安期に紅葉の歌に多く詠まれました。</p><hr><a href='/17.html'>17番歌 在原業平朝臣へのリンク</a><hr><a href='/69.html'>69番歌 能因法師へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -566,7 +566,7 @@
           "markname": "由良川",
           "kajin": "曽禰好忠（由良川）",
           "type": "type1",
-          "name": "<a href='../img/yuragawa_large.webp' data-lightbox='map' data-title='由良川'><img src='../img/yuragawa.webp' width='300' alt='由良川'></a><br><small>写真:photoAC</small><h2 class='utamakura-name'>歌枕：由良川</h2><p>京都府宮津市字由良。古代の由良川河口の呼び名です。丹後国（京都府の丹後半島）の国司だった曽禰好忠にとって馴染みある場所だったと考えられます。</p><hr><a href='/46.html'>46番歌 曽禰好忠へのリンク</a>"
+          "name": "<a href='../img/yuragawa_large.webp' data-lightbox='map' data-title='由良川'><img src='../img/yuragawa.webp' width='300' alt='由良川'></a><h2 class='utamakura-name'>歌枕：由良川</h2><p>京都府宮津市字由良。古代の由良川河口の呼び名です。丹後国（京都府の丹後半島）の国司だった曽禰好忠にとって馴染みある場所だったと考えられます。</p><hr><a href='/46.html'>46番歌 曽禰好忠へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -582,7 +582,7 @@
           "markname": "大江山",
           "kajin": "小式部内侍（大江山）",
           "type": "type1",
-          "name": "<a href='../img/ooeyama_large.webp' data-lightbox='map' data-title='大江山'><img src='../img/ooeyama.webp?20240430' width='300' alt='大江山'></a><br><small>写真:photoAC</small><h2 class='utamakura-name'>歌枕：大江山</h2><p>京都府丹後半島の付け根に位置し与謝野町、福知山市、宮津市にまたがる連山で、標高832m。</p><hr><a href='/60.html'>60番歌 小式部内侍へのリンク</a>"
+          "name": "<a href='../img/ooeyama_large.webp' data-lightbox='map' data-title='大江山'><img src='../img/ooeyama.webp?20240430' width='300' alt='大江山'></a><h2 class='utamakura-name'>歌枕：大江山</h2><p>京都府丹後半島の付け根に位置し与謝野町、福知山市、宮津市にまたがる連山で、標高832m。</p><hr><a href='/60.html'>60番歌 小式部内侍へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -614,7 +614,7 @@
           "markname": "天橋立",
           "kajin": "小式部内侍（天橋立）",
           "type": "type1",
-          "name": "<a href='../img/amanohashidate_large.webp' data-lightbox='map' data-title='富士山'><img src='../img/amanohashidate.webp' width='300' alt='天橋立'></a><br><small>写真:photoAC</small><h2 class='utamakura-name'>歌枕：天橋立</h2><p>京都府北部、日本海の宮津湾にある「天橋立」は、日本三景の一つに数えられます。全長3.6kmに及ぶ砂州には美しい松が生い茂り、東側には白い砂浜が広がっています。まさに白砂青松の美しい風景が楽しめます。<hr><a href='/60.html'>60番歌 小式部内侍へのリンク</a>"
+          "name": "<a href='../img/amanohashidate_large.webp' data-lightbox='map' data-title='富士山'><img src='../img/amanohashidate.webp' width='300' alt='天橋立'></a><h2 class='utamakura-name'>歌枕：天橋立</h2><p>京都府北部、日本海の宮津湾にある「天橋立」は、日本三景の一つに数えられます。全長3.6kmに及ぶ砂州には美しい松が生い茂り、東側には白い砂浜が広がっています。まさに白砂青松の美しい風景が楽しめます。<hr><a href='/60.html'>60番歌 小式部内侍へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -662,7 +662,7 @@
           "markname": "吉野",
           "kajin": "参議雅経（吉野）",
           "type": "type1",
-          "name": "<a href='../img/yoshinoyama_large.webp' data-lightbox='map' data-title='吉野山'><img src='../img/yoshinoyama.webp' width='300' alt='吉野'>,<br><small>写真:Adobe Stock</small><h2 class='utamakura-name'>歌枕：吉野</h2><p>吉野は現在では桜の名所として知られていますが、平安中期以前は雪の名所として知られていました。</p><hr><a href='/31.html'>31番歌 坂上是則へのリンク</a><hr><a href='/94.html'>94番歌 参議雅経へのリンク</a>"
+          "name": "<a href='../img/yoshinoyama_large.webp' data-lightbox='map' data-title='吉野山'><img src='../img/yoshinoyama.webp' width='300' alt='吉野'>,<h2 class='utamakura-name'>歌枕：吉野</h2><p>吉野は現在では桜の名所として知られていますが、平安中期以前は雪の名所として知られていました。</p><hr><a href='/31.html'>31番歌 坂上是則へのリンク</a><hr><a href='/94.html'>94番歌 参議雅経へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -678,7 +678,7 @@
           "markname": "三室山",
           "kajin": "能因法師（三室山）",
           "type": "type1",
-          "name": "<img src='../img/mimuroyama.webp' width='300' alt='三室山'><br><small>写真:photoAC</small><h2 class='utamakura-name'>歌枕：三室山</h2><p>奈良県生駒郡三郷町三室。紅葉・時雨の名所として知られていました。</p><hr><a href='/69.html'>69番歌 能因法師へのリンク</a>"
+          "name": "<img src='../img/mimuroyama.webp' width='300' alt='三室山'><h2 class='utamakura-name'>歌枕：三室山</h2><p>奈良県生駒郡三郷町三室。紅葉・時雨の名所として知られていました。</p><hr><a href='/69.html'>69番歌 能因法師へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -694,7 +694,7 @@
           "markname": "難波潟・難波江",
           "kajin": "伊勢・皇嘉門院別当（難波潟・難波江）",
           "type": "type1",
-          "name": "<a href='../img/naniwagata_large.webp' data-lightbox='map' data-title='難波江'><img src='../img/naniwagata.webp' width='300' alt='難波潟・難波江（城北ワンド）'></a><br><small>写真:photoAC</small><h2 class='utamakura-name'>歌枕：難波潟・難波江</h2><p>難波は大阪市のことで、淀川の流域。低湿地が多く、葦が一面に生い茂ることで知られていました。</p><hr><a href='/19.html'>19番歌 伊勢へのリンク</a><hr><a href='/88.html'>88番歌 皇嘉門院別当へのリンク</a>"
+          "name": "<a href='../img/naniwagata_large.webp' data-lightbox='map' data-title='難波江'><img src='../img/naniwagata.webp' width='300' alt='難波潟・難波江（城北ワンド）'></a><h2 class='utamakura-name'>歌枕：難波潟・難波江</h2><p>難波は大阪市のことで、淀川の流域。低湿地が多く、葦が一面に生い茂ることで知られていました。</p><hr><a href='/19.html'>19番歌 伊勢へのリンク</a><hr><a href='/88.html'>88番歌 皇嘉門院別当へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -726,7 +726,7 @@
           "markname": "鶴岡八幡宮",
           "kajin": "鎌倉右大臣（鶴岡八幡宮）",
           "type": "type2",
-          "name": "<a href='../img/tsuruokahachimangu_large.webp' data-lightbox='map' data-title='神奈川県鎌倉市:鶴岡八幡宮'><img src='../img/tsuruokahachimangu.webp' width='300' alt='鶴岡八幡宮'></a><br><small>写真:Adobe Stock</small><h2 class='utamakura-name'>鶴岡八幡宮</h2><p>神奈川県鎌倉市にある神社。鎌倉右大臣こと源実朝は、鶴岡八幡宮で源頼家の次男・公暁に暗殺されました。</p><hr><a href='/93.html'>93番歌 鎌倉右大臣へのリンク</a>"
+          "name": "<a href='../img/tsuruokahachimangu_large.webp' data-lightbox='map' data-title='神奈川県鎌倉市:鶴岡八幡宮'><img src='../img/tsuruokahachimangu.webp' width='300' alt='鶴岡八幡宮'></a><h2 class='utamakura-name'>鶴岡八幡宮</h2><p>神奈川県鎌倉市にある神社。鎌倉右大臣こと源実朝は、鶴岡八幡宮で源頼家の次男・公暁に暗殺されました。</p><hr><a href='/93.html'>93番歌 鎌倉右大臣へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -742,7 +742,7 @@
           "markname": "比叡山",
           "kajin": "前大僧正慈円（比叡山）",
           "type": "type2",
-          "name": "<a href='../img/hieizan_large.webp' data-lightbox='map' data-title='比叡山からの眺め'><img src='../img/hieizan.webp' width='300' alt='比叡山からの眺め'></a><br><small>写真:photoAC</small><h2 class='utamakura-name'>比叡山</h2><p>滋賀県大津市にある天台宗の総本山の寺院。前大僧正慈円は、11歳で延暦寺に入り、最高位である天台座主に昇り詰めました。写真は比叡山からの眺めです。</p><hr><a href='/95.html'>95番歌 前大僧正慈円へのリンク</a>"
+          "name": "<a href='../img/hieizan_large.webp' data-lightbox='map' data-title='比叡山からの眺め'><img src='../img/hieizan.webp' width='300' alt='比叡山からの眺め'></a><h2 class='utamakura-name'>比叡山</h2><p>滋賀県大津市にある天台宗の総本山の寺院。前大僧正慈円は、11歳で延暦寺に入り、最高位である天台座主に昇り詰めました。写真は比叡山からの眺めです。</p><hr><a href='/95.html'>95番歌 前大僧正慈円へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -758,7 +758,7 @@
           "markname": "大峰山脈",
           "kajin": "前大僧正行尊（大峰山脈）",
           "type": "type2",
-          "name": "<a href='../img/oominesanmyaku_large.webp' data-lightbox='map' data-title='大峰山脈'><img src='../img/oominesanmyaku.webp?20240428' width='300' alt='大峰山脈'></a><br><small>写真:photoAC</small><h2 class='utamakura-name'>大峰山脈</h2><p>近畿の屋根といわれる大峰山脈。行尊は大峰山脈の修験道で修行していたときに、山桜に出会い歌を詠みました。</p><hr><a href='/66.html'>66番歌 前大僧正行尊へのリンク</a>"
+          "name": "<a href='../img/oominesanmyaku_large.webp' data-lightbox='map' data-title='大峰山脈'><img src='../img/oominesanmyaku.webp?20240428' width='300' alt='大峰山脈'></a><h2 class='utamakura-name'>大峰山脈</h2><p>近畿の屋根といわれる大峰山脈。行尊は大峰山脈の修験道で修行していたときに、山桜に出会い歌を詠みました。</p><hr><a href='/66.html'>66番歌 前大僧正行尊へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -870,7 +870,7 @@
           "markname": "隠岐",
           "kajin": "後鳥羽院（隠岐）",
           "type": "type2",
-          "name": "<a href='../img/oki_large.webp' data-lightbox='map' data-title='隠岐'><img src='../img/okinoshima.webp' width='300' alt='隠岐'></a><br><small>写真:photoAC</small><h2 class='utamakura-name'>隠岐</h2><p>島根県隠岐郡。「承久の乱」で破れた後鳥羽院は、隠岐に配流され、同地で58歳で崩御しました。</p><hr><a href='/99.html'>99番歌 後鳥羽院へのリンク</a>"
+          "name": "<a href='../img/oki_large.webp' data-lightbox='map' data-title='隠岐'><img src='../img/okinoshima.webp' width='300' alt='隠岐'></a><h2 class='utamakura-name'>隠岐</h2><p>島根県隠岐郡。「承久の乱」で破れた後鳥羽院は、隠岐に配流され、同地で58歳で崩御しました。</p><hr><a href='/99.html'>99番歌 後鳥羽院へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -886,7 +886,7 @@
           "markname": "白峯寺（讃岐）",
           "kajin": "崇徳院（讃岐・白峯寺）",
           "type": "type2",
-          "name": "<a href='../img/shiramine_large.webp' data-lightbox='map' data-title='白峯寺'><img src='../img/shiramineji.webp' width='300' alt='白峯寺'></a><br><small>写真:photoAC</small><h2 class='utamakura-name'>白峯寺</h2><p>香川県坂出市にある真言宗御室派の寺。「保元の乱」で敗れた崇徳上皇は讃岐の国に配流されました。白峯寺の参道には、源頼朝が崇徳天皇の菩提のために建立したと伝えられている「白峯寺十三重石塔」があります。</p><hr><a href='/77.html'>77番歌 崇徳院へのリンク</a>"
+          "name": "<a href='../img/shiramine_large.webp' data-lightbox='map' data-title='白峯寺'><img src='../img/shiramineji.webp' width='300' alt='白峯寺'></a><h2 class='utamakura-name'>白峯寺</h2><p>香川県坂出市にある真言宗御室派の寺。「保元の乱」で敗れた崇徳上皇は讃岐の国に配流されました。白峯寺の参道には、源頼朝が崇徳天皇の菩提のために建立したと伝えられている「白峯寺十三重石塔」があります。</p><hr><a href='/77.html'>77番歌 崇徳院へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -918,7 +918,7 @@
           "markname": "石山寺",
           "kajin": "紫式部（石山寺）",
           "type": "type2",
-          "name": "<a href='../img/ishiyamadera_large.webp' data-lightbox='map' data-title='石山寺'><img src='../img/ishiyamadera.webp' width='300' alt='石山寺'></a><br><small>写真:Adobe Stock</small><h2 class='utamakura-name'>石山寺</h2><p>滋賀県大津市にある寺院。紫式部が石山寺に参篭した際、「須磨」と「明石」の巻の発想を得たとされ、石山寺本堂には「紫式部の間」が造られています。</p><hr><a href='/57.html'>57番歌 紫式部へのリンク</a>"
+          "name": "<a href='../img/ishiyamadera_large.webp' data-lightbox='map' data-title='石山寺'><img src='../img/ishiyamadera.webp' width='300' alt='石山寺'></a><h2 class='utamakura-name'>石山寺</h2><p>滋賀県大津市にある寺院。紫式部が石山寺に参篭した際、「須磨」と「明石」の巻の発想を得たとされ、石山寺本堂には「紫式部の間」が造られています。</p><hr><a href='/57.html'>57番歌 紫式部へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -1352,7 +1352,7 @@
           "_comment": "平安京の皇居区域（平安京の内側、応天門はここにあった）",
           "markname": "大内裏",
           "kajin": "",
-          "name": "<img src='../img/outenmon.webp' width='300' alt='大内裏'><br><small>写真:photoAC</small><h2 class='utamakura-name'>大内裏</h2><p>平安京の皇居区域である大内裏には応天門がそびえ立っていました。写真は、京都市左京区にある平安神宮の応天門です。平安京の応天門を5/8のスケールで再現されており、当時の壮麗な姿を今に伝えています。</p>",
+          "name": "<img src='../img/outenmon.webp' width='300' alt='大内裏'><h2 class='utamakura-name'>大内裏</h2><p>平安京の皇居区域である大内裏には応天門がそびえ立っていました。写真は、京都市左京区にある平安神宮の応天門です。平安京の応天門を5/8のスケールで再現されており、当時の壮麗な姿を今に伝えています。</p>",
           "color": "#42AED3",
           "fillColor": "#FFFFFF",
           "fillOpacity": 0.5,
