@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/run-builds.mjs\"",
+            "timeout": 120,
+            "statusMessage": "HTML への直書き（_tools/build-*.mjs）が必要な変更を確認中…"
+          }
+        ]
+      }
+    ]
+  }
+}
