@@ -326,8 +326,13 @@ html { font-size: 16px; scroll-behavior: smooth; }
 
 // 紹介文（kajin-zukan.html では数行の文章になるので行間を広げて読みやすく）
 .card-outline {
-  font-size: .8rem;
+  font-size: .86rem;
   line-height: 1.7;
+  color: #333;
+  // 上の生没年などとの区切り線（和歌パネル .kokoro-panel の上の線と同じ色）
+  margin-top: .4rem;
+  padding-top: .6rem;
+  border-top: 1px solid $border-lt;
 }
 
 .card-extra-img {
@@ -603,7 +608,7 @@ body.kokoro-modal-open {
 
 // ─── 和歌・現代語訳パネル（歌人図鑑：全カードに常時表示する） ─────
 .kokoro-panel {
-  margin-top: .75rem;
+  margin-top: .5rem;
   padding-top: .75rem;
   border-top: 1px solid $border-lt;
   text-align: center;
@@ -703,7 +708,7 @@ body.kokoro-modal-open {
   .card-number { font-size: .78rem; }
   .card-name { font-size: 1.05rem; }
   .card-date, .card-source { font-size: .82rem; }
-  .card-outline { font-size: .9rem; }
+  .card-outline { font-size: .95rem; }
   .card-poem { font-size: .85rem; }
   .card-theme { font-size: .75rem; }
   .card-job { font-size: .75rem; }
@@ -711,9 +716,8 @@ body.kokoro-modal-open {
   .kokoro-panel-text .kokoro-panel-quotes-title { font-size: .85rem; }
 }
 
-// ─── 和歌の縦書き表示（日本語版のみ） ─────────────────────────
-// 英語版（kajin-zukan_en.html）は英訳文が入るため対象外。同じzukan.cssを共有しているので
-// html[lang]属性（<html lang="ja">/<html lang="en">）で判定して日本語版だけに適用する。
+// ─── 和歌の縦書き表示（日本語版・英語版とも） ─────────────────────────
+// 英語版（kajin-zukan_en.html）も日本語の和歌を日本語版と同じ縦書きで表示する（js/zukan_en.js）。
 // first/secondは元々<br>で句ごとに区切られているため、縦書きにするだけで
 // 自動的に5・7・5・7・7の句ごとの列に分かれ、伝統的な短冊のような表示になる。
 // 幅・高さは width:fit-content / height:auto などブラウザ側の自動計算に
@@ -726,7 +730,8 @@ body.kokoro-modal-open {
 // WebKitでは再現しないため、ブラウザ側の計算を信用しない方針にした）。
 // ※ line-height（句と句の間隔）はpoemInlineStyle()の幅計算式
 //   （句数 × 2.2）と対になっているため、変更する場合は両方揃えること。
-html[lang="ja"] .kokoro-panel-poem {
+.kokoro-panel-poem {
+  // 英語版は style.css が a・span 等に Noto Sans を指定しているが、ここで要素自体に指定するので和歌は Kaisei のまま
   writing-mode: vertical-rl;
   text-orientation: mixed;
   font-family: 'Kaisei HarunoUmi', serif;

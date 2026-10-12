@@ -785,6 +785,47 @@ const state = {
 
 // ─── Render Helpers ──────────────────────────────────────────
 
+// (Same as js/zukan.js: the English page also shows the poem in Japanese, vertically.)
+// 縦書きの和歌（.kokoro-panel-poem）の幅・高さを、ブラウザ側の自動計算
+// （width:fit-content / height:auto）に頼らず、句の数・文字数から直接
+// 計算したem値で明示的に指定するためのヘルパー。
+// 一部の実機ブラウザ（iOS Chrome＝WebKit）で、writing-mode:vertical-rlの
+// 要素に対するfit-content/autoのサイズ計算が正しく機能せず、和歌が右に
+// ずれたり、句の途中で意図しない折り返しが起きる不具合が実際に確認された
+// ための対策（Chromium・Playwright上のWebKitでは再現しないため、
+// ブラウザ側の計算を信用せず数値を明示するアプローチに切り替えている）。
+function poemInlineStyle(poemData) {
+    if (!poemData) return '';
+    const segments = `${poemData.first}<br>${poemData.second}`.split('<br>');
+    const numColumns = segments.length;
+    // 各句の長さ（em）：通常の文字は1文字1.04em（1em＋letter-spacing .04em）、
+    // ルビ付きの語は「親文字の長さ」と「ルビの長さ（rtは.55em＋字間で約.59em/字）」の
+    // 長い方。ルビが親文字より長いとその分だけ句が伸びるため（例：衣手＝ころもで）。
+    // 全100首でChromiumの実測値（height:max-content）以上・誤差0.73em以内を確認済み。
+    const segmentLength = seg => {
+        let len = 0;
+        const re = /<ruby>(.*?)<rt>(.*?)<\/rt><\/ruby>|([^<])/g;
+        let m;
+        while ((m = re.exec(seg))) {
+            if (m[3] !== undefined) {
+                len += 1.04;
+            } else {
+                // サロゲートペア対応のためArray.fromで数える
+                len += Math.max(Array.from(m[1]).length * 1.04, Array.from(m[2]).length * 0.59);
+            }
+        }
+        return len;
+    };
+    const maxLength = Math.max(...segments.map(segmentLength));
+    // 幅：句の数 × 行間（縦書きでは句と句の間隔＝1列分の幅）
+    const widthEm = (numColumns * 2.2).toFixed(2);
+    // 高さ：最長の句の長さ＋フォント差を吸収するわずかな余白。
+    // 横並びのカード同士はsubgridで行の高さが揃うため、結果として
+    // 各行で一番長い歌の高さに合わせて揃う
+    const heightEm = (maxLength + 0.2).toFixed(2);
+    return ` style="width:${widthEm}em;height:${heightEm}em;"`;
+}
+
 function buildCard(poet) {
     const a = document.createElement('a');
     a.className = 'poet-card';
@@ -816,7 +857,7 @@ function buildCard(poet) {
       <div class="kokoro-panel">
         <div class="kokoro-panel-text">
           <h3 class="kokoro-panel-poem-title"><span class="card-poem"><span class="card-theme" data-theme="${poet.theme}">${theme.icon} ${theme.label}</span> (${sourceText})</span></h3>
-          <div class="kokoro-panel-poem">${poemData.eng}</div>
+          <div class="kokoro-panel-poem"${poemInlineStyle(poemData)}>${poemData.first}<br>${poemData.second}</div>
         </div>
       </div>` : ''}
       <span class="card-more-btn">Read more</span>
