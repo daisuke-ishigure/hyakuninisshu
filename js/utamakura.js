@@ -109,6 +109,42 @@ document.addEventListener('DOMContentLoaded', function () {
   // スケールコントロールを追加
   L.control.scale().addTo(mymap);
 
+  // 凡例（ズームボタンの右隣）：マーカーと同じ画像・同じ大きさで、扇＝歌枕（type1）、〇＝ゆかりの地（type2）
+  var legendControl = L.control({ position: 'topleft' });
+  legendControl.onAdd = function () {
+    var div = L.DomUtil.create('div', 'map-legend');
+    div.setAttribute('aria-label', '凡例');
+    div.innerHTML =
+      '<span class="map-legend__item"><img src="../img/map_icon.svg" alt="" width="40" height="25">歌枕</span>' +
+      '<span class="map-legend__item"><img src="../img/map_icon2.svg" alt="" width="40" height="25">ゆかりの地</span>';
+    L.DomEvent.disableClickPropagation(div); // 凡例のクリックで地図が反応しないように
+    return div;
+  };
+  legendControl.addTo(mymap);
+
+  // 吹き出し（ポップアップ）が凡例に重なるときは凡例を隠し、吹き出しを見せる。
+  // Leaflet ではコントロール（凡例・ズーム等）が常に地図（吹き出しを含む）より手前に描かれ、
+  // z-index では吹き出しを上に出せないため、重なっている間だけ凡例を消す
+  var legendEl = legendControl.getContainer();
+  function updateLegendCover() {
+    var popup = mymap.getContainer().querySelector('.leaflet-popup');
+    var covered = false;
+    if (popup) {
+      var a = popup.getBoundingClientRect();
+      var b = legendEl.getBoundingClientRect();
+      covered = a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top;
+    }
+    legendEl.classList.toggle('is-covered', covered);
+  }
+  mymap.on('popupopen move moveend zoomend', updateLegendCover);
+  mymap.on('popupclose', function () { legendEl.classList.remove('is-covered'); });
+  // 吹き出し内の画像の読み込みで吹き出しの大きさが変わるので、読み込み後にも判定し直す
+  mymap.on('popupopen', function (e) {
+    var imgs = e.popup.getElement().querySelectorAll('img');
+    for (var i = 0; i < imgs.length; i++) imgs[i].addEventListener('load', updateLegendCover);
+    setTimeout(updateLegendCover, 300); // 吹き出しの表示アニメーション後にも判定
+  });
+
   // リンクアイコンのコントロールを作成
   // let linkControl = L.control({ position: 'topright' });
   // linkControl.onAdd = function (map) {

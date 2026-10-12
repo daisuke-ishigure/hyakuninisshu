@@ -49,8 +49,9 @@
   if (document.getElementById('bottomNav')) return;            // 万一 #bottomNav を出すページがあれば重複させない（保険）
   if (document.body.classList.contains('no-sp-appbar')) return; // ページ側で無効化したいとき用
 
+  // ヘッダーは「スマホ幅で隠すリンク」と「アイコンの URL 接頭辞」を調べるためだけに使う。
+  // ヘッダーの無いページ（全画面地図の utamakura.html など）でもバーは出す。
   var headerList = document.querySelector('.header_list');
-  if (!headerList) return;
 
   var isEn = document.documentElement.lang === 'en';
 
@@ -75,7 +76,7 @@
   // フッターアイコンのベースURLは、既存ヘッダーアイコンの src と同じ "img/" 接頭辞に合わせる
   // （ヘッダーのアイコンが読めている環境なら、同じ規則でフッターのアイコンも読める）
   var iconBase = '/img/sp-nav/';
-  var refImg = headerList.querySelector('img[src*="img/"]');
+  var refImg = headerList && headerList.querySelector('img[src*="img/"]');
   if (refImg) {
     var m = (refImg.getAttribute('src') || '').match(/^(.*?img\/)/);
     if (m) iconBase = m[1] + 'sp-nav/';
@@ -90,7 +91,7 @@
   bar.className = 'sp-appbar';
   bar.setAttribute('aria-label', isEn ? 'Site menu' : 'サイト内メニュー');
 
-  var anchors = headerList.querySelectorAll('a');
+  var anchors = headerList ? headerList.querySelectorAll('a') : [];
 
   ITEMS.forEach(function (item) {
     var href = item.href;

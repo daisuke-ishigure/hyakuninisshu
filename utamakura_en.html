@@ -48,6 +48,7 @@
    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
    <!-- lightbox.jsの追加 -->
    <script src="/js/lightbox.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <style>
     html,
     body {
@@ -96,39 +97,343 @@
       width: 250px;
     }
 
-    /* 右上のアイコン群：視認性を高めるため、横並びではなく2行に積んでそれぞれを大きくする */
-    .header-icon-stack {
+    /* 凡例（js/utamakura*.js が生成）：ズームボタンの右隣に横並びで置く */
+    .leaflet-top.leaflet-left .map-legend {
       position: absolute;
-      top: 20px;
-      right: 20px;
+      top: 0;
+      left: 46px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 4px 10px 4px 4px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 2px solid rgba(0, 0, 0, 0.2);
+      border-radius: 4px;
+      background-clip: padding-box;
+      font-size: 0.85rem;
+      line-height: 1;
+      color: #333;
+      white-space: nowrap;
+    }
+
+    /* 吹き出しが重なっている間は隠す（JS が .is-covered を付ける） */
+    .leaflet-top.leaflet-left .map-legend {
+      transition: opacity 0.15s;
+    }
+
+    .leaflet-top.leaflet-left .map-legend.is-covered {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .map-legend__item {
+      display: flex;
+      align-items: center;
+    }
+
+    .map-legend__item img {
+      display: block;
+      flex: 0 0 auto;
+    }
+
+    /* 狭い画面では右端からはみ出さないよう少し詰める */
+    @media (max-width: 400px) {
+      .leaflet-top.leaflet-left .map-legend {
+        gap: 4px;
+        padding-right: 8px;
+        font-size: 0.78rem;
+      }
+    }
+
+    /* ===== スマホ用フッターナビ（js/back-to-top.js が生成） =====
+       このページは css/style.css を読み込まない（全画面地図のため）ので、
+       style.css の .sp-appbar 関連の規則をここに複製している。style.css 側を変えたらこちらも合わせること */
+    .sp-appbar {
+      display: none;
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
       z-index: 1000;
+      opacity: 0;
+    }
+
+    .sp-appbar.is-ready {
+      opacity: 1;
+      transition: opacity 0.15s;
+    }
+
+    /* 「上に戻る」ボタンはスクロールしない地図ページでは不要 */
+    .back-to-top {
+      display: none !important;
+    }
+
+    @media screen and (max-width: 1000px) {
+      .sp-appbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        box-sizing: content-box;
+        height: 56px;
+        padding-bottom: 10px;
+        background-color: #8a9a78;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23CFC8B8' stroke-opacity='0.45' stroke-width='2'%3E%3Ccircle cx='40' cy='0' r='40'/%3E%3Ccircle cx='40' cy='80' r='40'/%3E%3Ccircle cx='0' cy='40' r='40'/%3E%3Ccircle cx='80' cy='40' r='40'/%3E%3C/g%3E%3C/svg%3E");
+        background-repeat: repeat;
+        background-size: 30px 30px;
+        box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.18);
+      }
+
+      .sp-appbar__item {
+        display: flex;
+        flex: 1 1 0;
+        min-width: 0;
+        height: 56px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        padding: 0 2px;
+        color: #333;
+        text-decoration: none;
+        font-family: "Noto Sans JP", sans-serif;
+        font-size: 0.68rem;
+        line-height: 1;
+        -webkit-tap-highlight-color: transparent;
+        transition: background 0.2s, opacity 0.2s;
+      }
+
+      .sp-appbar__item:active {
+        opacity: 0.6;
+        background: rgba(255, 255, 255, 0.14);
+      }
+
+      .sp-appbar__icon {
+        width: 26px;
+        height: 26px;
+        object-fit: contain;
+        display: block;
+        flex-shrink: 0;
+      }
+
+      .sp-appbar__label {
+        height: 12px;
+        line-height: 12px;
+        font-size: 11px;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      /* 地図がナビの下に隠れないよう、ナビの高さ（56 + 10px）ぶん下を空ける */
+      body {
+        padding-bottom: 66px;
+      }
+    }
+    /* ===== ヘッダー =====
+       このページは css/style.css を読み込まない（全画面地図のレイアウトが崩れるため）ので、
+       style.css の .header 関連の規則をここに複製している。style.css 側を変えたらこちらも合わせること */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex: 0 0 auto;
+      min-height: 60px;
+      padding: 0 5%;
+      background-color: #8a9a78;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23CFC8B8' stroke-opacity='0.55' stroke-width='2'%3E%3Ccircle cx='40' cy='0' r='40'/%3E%3Ccircle cx='40' cy='80' r='40'/%3E%3Ccircle cx='0' cy='40' r='40'/%3E%3Ccircle cx='80' cy='40' r='40'/%3E%3C/g%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 30px 30px;
+    }
+
+    .header .site-title {
+      margin: 0;
+      font-size: 1.3rem;
+      font-family: "Noto Serif JP", serif;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: #333;
+      text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 3px #fff, 0 0 4px #fff, 0 0 5px #fff, 0 0 6px #fff;
+    }
+
+    html[lang="en"] .header .site-title {
+      font-family: "Playfair Display", "Noto Serif JP", serif;
+      letter-spacing: 0;
+    }
+
+    /* サイト名の左にファビコンと同じアイコン */
+    .header .site-title a {
+      display: flex;
+      align-items: center;
+      gap: 0.35em;
+      line-height: 1;
+      color: #333;
+      text-decoration: none;
+    }
+
+    .header .site-title a::before {
+      content: "";
+      flex: 0 0 auto;
+      width: 1.2em;
+      height: 1.2em;
+      background: url(/apple-touch-icon.png) no-repeat center center;
+      background-size: contain;
+    }
+
+    .header_list {
+      display: flex;
+      gap: 0.7em;
+      font-size: 0.9rem;
+    }
+
+    .header_list a {
+      flex-shrink: 0;
+    }
+
+    .header .icon {
+      height: 2em;
+      width: auto;
+      filter: drop-shadow(0 0 2px #333);
+    }
+
+    .header .icon:hover {
+      filter: drop-shadow(0px 0px 4px #fff);
+    }
+
+    /* 画面には出さず、検索エンジン・読み上げ向けにページの見出しを残す */
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* ===== PC表示のフッター（style.css の footer 関連の規則を複製。スマホ幅では隠す） ===== */
+    footer {
+      display: flex;
+      flex: 0 0 auto;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 5%;
+      width: 100%;
+      min-height: 60px;
+      font-family: "noto-sans-pro", sans-serif;
+      background-color: #8a9a78;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23CFC8B8' stroke-opacity='0.55' stroke-width='2'%3E%3Ccircle cx='40' cy='0' r='40'/%3E%3Ccircle cx='40' cy='80' r='40'/%3E%3Ccircle cx='0' cy='40' r='40'/%3E%3Ccircle cx='80' cy='40' r='40'/%3E%3C/g%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 30px 30px;
+      box-sizing: border-box;
+    }
+
+    footer .footer-inner {
       display: flex;
       flex-direction: column;
-      align-items: flex-end;
-      gap: 10px;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      text-align: center;
     }
 
-    .toppage-icon {
+    footer .footer-copy,
+    footer ul {
+      color: #333;
+      font-size: 0.8rem;
+      text-shadow: 0px 0px 3px #f7f1e0, 0px 0px 3px #f7f1e0, 0px 0px 3px #f7f1e0, 0px 0px 3px #f7f1e0, 0px 0px 3px #f7f1e0, 0px 0px 3px #f7f1e0;
+    }
+
+    footer ul {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 4px 24px;
+      list-style: none;
       margin: 0;
       padding: 0;
-      height: 28px;
-      width: auto;
-      display: block;
     }
 
-    .lang-toggle-link {
-      display: block;
-      width: 64px;
+    footer a {
+      color: #333;
+      text-decoration: none;
     }
 
-    @media (max-width:600px) {
-      .header-icon-stack {
-        top: 14px;
-        right: 12px;
-        gap: 7px;
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media screen and (max-width: 1000px) {
+      footer {
+        display: none;
       }
-      .lang-toggle-link {
-        width: 48px;
+    }
+
+    /* ヘッダー（とPC幅ではフッター）の間を地図にする */
+    body {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+    }
+
+    #map {
+      flex: 1 1 auto;
+      height: auto;
+      min-height: 0;
+    }
+
+    /* スマホ幅のヘッダー：style.css と同じく「サイト名（左）＋ JA/EN（右）」だけにする
+       （トップ・コラム・アプリ・一覧はボトムナビへ。back-to-top.js が .sp-moved を付ける） */
+    @media screen and (max-width: 1000px) {
+      .header {
+        min-height: 50px;
+        padding: 0.2em 6%;
+        gap: 0.5em;
+        background-size: 30px;
+      }
+
+      .header_list a.sp-moved,
+      .header_list a:has(> img):not(:has(img[src*="icon_lang"])) {
+        display: none;
+      }
+
+      .header_list {
+        gap: 3px;
+      }
+
+      .header_list img.icon {
+        height: 25px;
+        width: auto;
+      }
+
+      /* 英語版はサイト名が長いので、アイコン＋1行に収まるサイズにする */
+      html[lang="en"] .header .site-title {
+        font-size: 0.9rem;
+        white-space: nowrap;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      html[lang="en"] .header .site-title a::before {
+        width: 1.56rem;
+        height: 1.56rem;
+      }
+    }
+
+    @media screen and (max-width: 400px) {
+      .header_list img.icon {
+        height: 22px;
+      }
+    }
+
+    @media screen and (max-width: 380px) {
+      html[lang="en"] .header .site-title {
+        font-size: 0.8rem;
       }
     }
   </style>
@@ -164,13 +469,36 @@
 </head>
 
 <body>
-  <div class="header-icon-stack">
-    <h1 style="margin:0;"><a href="index_en.html"><img src="/img/icon_toppage_en.png" alt="Hyakunin Isshu Utamakura" class="toppage-icon"></a></h1>
-    <a href="utamakura.html" class="lang-toggle-link"><img src="/img/icon_lang.svg?ver-01" alt="Japanese" style="width:100%; display:block;"></a>
-  </div>
+  <header class="header">
+    <p class="site-title">
+      <a href="https://hyakuninisshu.com/index_en.html">Shigure no Hyakunin Isshu</a>
+    </p>
+    <div class="header_list">
+      <a href="index_en.html"><img src="../img/icon_top_en.svg?ver-01" alt="Top" class="icon" width="59" height="22"></a>
+      <a href="introduction_en.html" style="color:#333"><img src="/img/icon_column_en.svg?ver-01" alt="Columns" class="icon" width="72" height="22"></a>
+      <a href="introduction-app_en.html" style="color:#333"><img src="/img/icon_app_en.svg?ver-01" alt="Apps" class="icon" width="59" height="22"></a>
+      <a href="utamakura.html"><img src="/img/icon_lang.svg?ver-01" alt="Japanese" class="icon" width="59" height="22"></a>
+      <a href="list_en.html"><img src="/img/icon_list_en.svg?ver-01" alt="Hyakunin Isshu Poem List" class="icon" width="59" height="22"></a>
+    </div>
+  </header>
+  <h1 class="visually-hidden">Hyakunin Isshu Utamakura</h1>
   <div id="map">
   </div>
-  <script src="../js/utamakura_en.js?20261008-02"></script>
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-copy">&copy;2023 Shigure no Hyakunin Isshu</span>
+      <ul>
+        <li><a href="policy_en.html">Privacy Policy</a></li>
+        <li>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXx7TKlqnTfKrw2Nuh4f37swVwFH-RFDsNkTGQ4JEF50q2wQ/viewform?usp=header"
+            target="_blank" rel="noopener">Contact Form</a>
+        </li>
+        <li><a href="https://x.com/shigurenotaifu" target="_blank" rel="noopener">Official X</a></li>
+      </ul>
+    </div>
+  </footer>
+  <script src="../js/utamakura_en.js?20261012-03"></script>
+  <script src="../js/back-to-top.js?20261012-03"></script>
 </body>
 
 </html>
