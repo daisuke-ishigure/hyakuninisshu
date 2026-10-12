@@ -202,11 +202,7 @@ html { font-size: 16px; scroll-behavior: smooth; }
     pointer-events: none;
   }
 
-  &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px $shadow;
-    border-color: $gold;
-  }
+  // カード全体はリンクではない（「詳しく見る」ボタンだけがリンク）ので、マウスを乗せても浮き上がらせない
 }
 
 .card-number {
@@ -342,8 +338,8 @@ html { font-size: 16px; scroll-behavior: smooth; }
   display: block;
 }
 
-// 「詳しく見る」ボタン（kajin-zukan.html：js/zukan.js）。カード全体が歌のページへのリンク（<a>）なので、
-// これはリンクであることを示す見た目だけの要素（<span>）。カードにマウスを乗せると塗りつぶしにする
+// 「詳しく見る」「Read more」ボタン（js/zukan.js・js/zukan_en.js）。歌のページへのリンク（<a>）で、
+// カード全体ではなくこのボタンを押したときだけ移動する
 .card-more-btn {
   display: block;
   align-self: end;
@@ -356,10 +352,11 @@ html { font-size: 16px; scroll-behavior: smooth; }
   font-family: "noto-sans-pro", sans-serif;
   font-size: .8rem;
   text-align: center;
+  text-decoration: none;
   transition: background .2s, color .2s;
 }
-.poet-card:hover .card-more-btn,
-.poet-card:focus-visible .card-more-btn {
+.card-more-btn:hover,
+.card-more-btn:focus-visible {
   background: $accent;
   color: #fff;
 }
@@ -450,10 +447,6 @@ html { font-size: 16px; scroll-behavior: smooth; }
 }
 
 // ─── 心のチャート モーダル ─────────────────────────────────
-.poet-card {
-  cursor: pointer;
-}
-
 body.kokoro-modal-open {
   overflow: hidden;
 }

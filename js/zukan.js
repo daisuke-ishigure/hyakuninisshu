@@ -704,11 +704,9 @@ function poemInlineStyle(poemData) {
 }
 
 function buildCard(poet) {
-    // カード自体は<a>で歌のページ（歌人の紹介も兼ねる）へのリンク。
-    // 「詳しく見る」はリンクであることを示す見た目だけのボタン（<a>の中なので<span>にしている）
-    const a = document.createElement('a');
+    // カード自体はリンクにせず、「詳しく見る」ボタンを押したときだけ歌のページ（歌人の紹介も兼ねる）へ移動する
+    const a = document.createElement('div');
     a.className = 'poet-card';
-    a.href = `/${poet.number}.html`;
     a.dataset.number = poet.number;
     a.dataset.yomi = poet.yomi;
     a.dataset.theme = poet.theme;
@@ -739,7 +737,7 @@ function buildCard(poet) {
           <div class="kokoro-panel-poem"${poemInlineStyle(poemData)}>${poemData.first}<br>${poemData.second}</div>
         </div>
       </div>` : ''}
-      <span class="card-more-btn">詳しく見る</span>
+      <a class="card-more-btn" href="/${poet.number}.html">詳しく見る</a>
     </div>`;
 
     return a;

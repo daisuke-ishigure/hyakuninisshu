@@ -827,9 +827,9 @@ function poemInlineStyle(poemData) {
 }
 
 function buildCard(poet) {
-    const a = document.createElement('a');
+    // The card itself is not a link; only the "Read more" button goes to the poem page (which also introduces the poet)
+    const a = document.createElement('div');
     a.className = 'poet-card';
-    a.href = `/${poet.number}_en.html`;
     a.dataset.number = poet.number;
     a.dataset.yomi = poet.yomi;
     a.dataset.theme = poet.theme;
@@ -860,7 +860,7 @@ function buildCard(poet) {
           <div class="kokoro-panel-poem"${poemInlineStyle(poemData)}>${poemData.first}<br>${poemData.second}</div>
         </div>
       </div>` : ''}
-      <span class="card-more-btn">Read more</span>
+      <a class="card-more-btn" href="/${poet.number}_en.html">Read more</a>
     </div>`;
 
     return a;

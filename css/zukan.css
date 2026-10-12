@@ -174,11 +174,6 @@ html {
   background: linear-gradient(135deg, rgba(200, 168, 112, 0.07) 0%, transparent 60%);
   pointer-events: none;
 }
-.poet-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(80, 50, 20, 0.12);
-  border-color: #c8a870;
-}
 
 .card-number {
   position: absolute;
@@ -310,11 +305,12 @@ html {
   font-family: "noto-sans-pro", sans-serif;
   font-size: 0.8rem;
   text-align: center;
+  text-decoration: none;
   transition: background 0.2s, color 0.2s;
 }
 
-.poet-card:hover .card-more-btn,
-.poet-card:focus-visible .card-more-btn {
+.card-more-btn:hover,
+.card-more-btn:focus-visible {
   background: #B82343;
   color: #fff;
 }
@@ -431,10 +427,6 @@ html {
     padding: 1.25rem 0 1rem;
   }
 }
-.poet-card {
-  cursor: pointer;
-}
-
 body.kokoro-modal-open {
   overflow: hidden;
 }
