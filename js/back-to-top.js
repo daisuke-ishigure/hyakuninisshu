@@ -41,8 +41,7 @@
 // ・タブバーの HTML はこのスクリプトが生成するので、各ページの
 //   HTML を編集する必要はない。見た目は css/style.(scss|css) の .sp-appbar で定義。
 // ・アイコンは img/sp-nav/*.svg（現状はアタリ画像）。本番は同名ファイルで差し替え。
-//   リンク先はヘッダーから取得するので和文／英文とも自動で正しい URL になる
-//   （ヘッダーに無い「図鑑」と、右端の「一覧」は href を明示）。
+//   リンク先は和文／英文ともスクリプト内で明示（ヘッダーの表記揺れで項目が欠けないように）。
 // ・歌ページ（1〜100.html）も他ページと同じこのバーに統一。旧・歌ページ専用の
 //   #bottomMenu/#bottomNav（load-bottom.js）は廃止済み。
 ////////////////////////////////////////////////////////////
@@ -55,18 +54,20 @@
 
   var isEn = document.documentElement.lang === 'en';
 
-  // keys: ヘッダー内アイコンの alt に含まれる語（小文字比較・和英どちらのヘッダーにも対応）。
-  //   一致したリンクの href を流用し、ヘッダー側は .sp-moved で隠す。
-  // href: ヘッダーに無い項目はここでリンク先を明示（keys は空にする）。
+  // href: リンク先（和文／英文）。ページごとのヘッダーの表記揺れ（alt が Column / Columns / Articles など）に
+  //   左右されず、どのページでも必ず5項目そろうよう、すべてここで明示する。
+  // keys: ヘッダー内アイコンの alt に含まれる語（小文字比較）。一致したヘッダー側のリンクを .sp-moved で隠すためだけに使う。
   // file: フッター専用アイコンのファイル名（現状はアタリ画像。本番は img/sp-nav/ の同名ファイルで差し替え）。
   var ICON_VER = '?v2'; // 画像差し替え時はここを更新するとキャッシュが更新される
   var ITEMS = [
-    { keys: ['トップ', 'Top'],    file: 'top.svg',    label: isEn ? 'Top' : 'トップ' },
+    { keys: ['トップ', 'Top'], href: isEn ? '/index_en.html' : '/',
+      file: 'top.svg',    label: isEn ? 'Top' : 'トップ' },
     { keys: [], href: isEn ? '/kajin-zukan_en.html' : '/kajin-zukan.html',
       file: 'zukan.svg',  label: isEn ? 'Poets' : '図鑑' },
-    { keys: ['コラム', 'Column'], file: 'column.svg', label: isEn ? 'Columns' : 'コラム' },
-    { keys: ['アプリ', 'App'],    file: 'app.svg',    label: isEn ? 'Apps' : 'アプリ' },
-    // 一覧: リンク先は明示（list.html / list_en.html）。keys はヘッダー側の一覧アイコンを隠すためだけに使う
+    { keys: ['コラム', 'Column', 'Articles'], href: isEn ? '/introduction_en.html' : '/introduction.html',
+      file: 'column.svg', label: isEn ? 'Columns' : 'コラム' },
+    { keys: ['アプリ', 'App'], href: isEn ? '/introduction-app_en.html' : '/introduction-app.html',
+      file: 'app.svg',    label: isEn ? 'Apps' : 'アプリ' },
     { keys: ['一覧', 'List'], href: isEn ? '/list_en.html' : '/list.html',
       file: 'search.svg', label: isEn ? 'List' : '一覧' }
   ];
@@ -92,7 +93,7 @@
   var anchors = headerList.querySelectorAll('a');
 
   ITEMS.forEach(function (item) {
-    var href = item.href || null; // 明示 href（ヘッダーに無い項目）があればそれを使う
+    var href = item.href;
 
     if (item.keys && item.keys.length) {
       for (var i = 0; i < anchors.length; i++) {
@@ -101,13 +102,11 @@
         var alt = (img.getAttribute('alt') || '').toLowerCase(); // ページによって大小表記が揺れるため小文字で比較
         var hit = item.keys.some(function (k) { return alt.indexOf(k.toLowerCase()) !== -1; });
         if (hit) {
-          if (!href) href = anchors[i].getAttribute('href'); // リンク先はヘッダーから取得（言語別 URL に自動対応）
-          anchors[i].classList.add('sp-moved');              // ヘッダー側は（スマホ幅で）隠す
+          anchors[i].classList.add('sp-moved'); // ヘッダー側は（スマホ幅で）隠す
           break;
         }
       }
     }
-    if (!href) return;
 
     var a = document.createElement('a');
     a.className = 'sp-appbar__item';
