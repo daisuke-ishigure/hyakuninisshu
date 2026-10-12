@@ -322,11 +322,39 @@ html { font-size: 16px; scroll-behavior: smooth; }
   font-family: "noto-sans-pro", sans-serif;
 }
 
+// 紹介文（kajin-zukan.html では数行の文章になるので行間を広げて読みやすく）
+.card-outline {
+  font-size: .8rem;
+  line-height: 1.7;
+}
+
 .card-extra-img {
   width: 100%;
   border-radius: 3px;
   margin-top: auto; // 前の文章の長さに関わらず、行内で一番下まで伸びたカードの底に画像の下端を揃える
   display: block;
+}
+
+// 「詳しく見る」ボタン（kajin-zukan.html：js/zukan.js）。カード全体が歌のページへのリンク（<a>）なので、
+// これはリンクであることを示す見た目だけの要素（<span>）。カードにマウスを乗せると塗りつぶしにする
+.card-more-btn {
+  display: block;
+  align-self: end;
+  margin-top: .5rem;
+  padding: .45rem .8rem;
+  border: 1px solid $accent;
+  border-radius: 4px;
+  background: #fff;
+  color: $accent;
+  font-family: "noto-sans-pro", sans-serif;
+  font-size: .8rem;
+  text-align: center;
+  transition: background .2s, color .2s;
+}
+.poet-card:hover .card-more-btn,
+.poet-card:focus-visible .card-more-btn {
+  background: $accent;
+  color: #fff;
 }
 
 .card-meta {
@@ -598,6 +626,29 @@ body.kokoro-modal-open {
   padding: 0;
 }
 
+// 日本語版：和歌の見出しにテーマ・出典（card-poem）を表示する（js/zukan.js）
+.kokoro-panel-poem-title .card-poem {
+  margin: 0;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+// 日本語版はカードの構成が英語版と違う（テーマ・出典はパネルの見出しへ、現代語訳・挿絵はなし、
+// 末尾に「詳しく見る」）ので、行数を合わせる。英語版は従来どおり（同じ zukan.css を共有しているため lang で分ける）
+@supports (grid-template-rows: subgrid) {
+  html[lang="ja"] .poet-card:has(.kokoro-panel) {
+    grid-row: span 9; // 1: card-img／2〜9: card-bodyへ委譲
+
+    .card-body {
+      // card-name, card-meta, card-date(era), card-date(date), card-outline, kokoro-panel(2), card-more-btn
+      grid-row: 2 / span 8;
+    }
+
+    .kokoro-panel { grid-row: span 2; } // 和歌タイトル（テーマ・出典）／和歌本文
+    .kokoro-panel-text { grid-row: 1 / span 2; }
+  }
+}
+
 .kokoro-panel-poem {
   font-size: 1.1rem;
   line-height: 1.8;
@@ -649,7 +700,8 @@ body.kokoro-modal-open {
 @media (max-width: 768px) {
   .card-number { font-size: .78rem; }
   .card-name { font-size: 1.05rem; }
-  .card-date, .card-source, .card-outline { font-size: .82rem; }
+  .card-date, .card-source { font-size: .82rem; }
+  .card-outline { font-size: .9rem; }
   .card-poem { font-size: .85rem; }
   .card-theme { font-size: .75rem; }
   .card-job { font-size: .75rem; }

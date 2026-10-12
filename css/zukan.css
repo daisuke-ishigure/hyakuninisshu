@@ -281,11 +281,37 @@ html {
   font-family: "noto-sans-pro", sans-serif;
 }
 
+.card-outline {
+  font-size: 0.8rem;
+  line-height: 1.7;
+}
+
 .card-extra-img {
   width: 100%;
   border-radius: 3px;
   margin-top: auto;
   display: block;
+}
+
+.card-more-btn {
+  display: block;
+  align-self: end;
+  margin-top: 0.5rem;
+  padding: 0.45rem 0.8rem;
+  border: 1px solid #B82343;
+  border-radius: 4px;
+  background: #fff;
+  color: #B82343;
+  font-family: "noto-sans-pro", sans-serif;
+  font-size: 0.8rem;
+  text-align: center;
+  transition: background 0.2s, color 0.2s;
+}
+
+.poet-card:hover .card-more-btn,
+.poet-card:focus-visible .card-more-btn {
+  background: #B82343;
+  color: #fff;
 }
 
 .card-meta {
@@ -577,6 +603,27 @@ body.kokoro-modal-open {
   padding: 0;
 }
 
+.kokoro-panel-poem-title .card-poem {
+  margin: 0;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+@supports (grid-template-rows: subgrid) {
+  html[lang=ja] .poet-card:has(.kokoro-panel) {
+    grid-row: span 9;
+  }
+  html[lang=ja] .poet-card:has(.kokoro-panel) .card-body {
+    grid-row: 2/span 8;
+  }
+  html[lang=ja] .poet-card:has(.kokoro-panel) .kokoro-panel {
+    grid-row: span 2;
+  }
+  html[lang=ja] .poet-card:has(.kokoro-panel) .kokoro-panel-text {
+    grid-row: 1/span 2;
+  }
+}
+
 .kokoro-panel-poem {
   font-size: 1.1rem;
   line-height: 1.8;
@@ -621,8 +668,11 @@ body.kokoro-modal-open {
   .card-name {
     font-size: 1.05rem;
   }
-  .card-date, .card-source, .card-outline {
+  .card-date, .card-source {
     font-size: 0.82rem;
+  }
+  .card-outline {
+    font-size: 0.9rem;
   }
   .card-poem {
     font-size: 0.85rem;
