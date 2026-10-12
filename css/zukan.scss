@@ -280,6 +280,8 @@ html { font-size: 16px; scroll-behavior: smooth; }
   font-weight: 700;
   color: #333;
   line-height: 1.5;
+  // 歌人名はカード最上部にあるので、右上のアバター画像（80px）と重ならない最大幅にする（英語名は長い）
+  max-width: calc(100% - 90px);
 
   ruby { ruby-align: center; }
   rt {
@@ -626,17 +628,17 @@ body.kokoro-modal-open {
   padding: 0;
 }
 
-// 日本語版：和歌の見出しにテーマ・出典（card-poem）を表示する（js/zukan.js）
+// 和歌の見出しにテーマ・出典（card-poem）を表示する（js/zukan.js・js/zukan_en.js）
 .kokoro-panel-poem-title .card-poem {
   margin: 0;
   font-weight: 400;
   letter-spacing: 0;
 }
 
-// 日本語版はカードの構成が英語版と違う（テーマ・出典はパネルの見出しへ、現代語訳・挿絵はなし、
-// 末尾に「詳しく見る」）ので、行数を合わせる。英語版は従来どおり（同じ zukan.css を共有しているため lang で分ける）
+// 日本語版・英語版とも、テーマ・出典はパネルの見出しへ、現代語訳・挿絵はなし、末尾に「詳しく見る」
+// （js/zukan.js・js/zukan_en.js）なので、上の共通の行数をこの構成に合わせて上書きする
 @supports (grid-template-rows: subgrid) {
-  html[lang="ja"] .poet-card:has(.kokoro-panel) {
+  .poet-card:has(.kokoro-panel) {
     grid-row: span 9; // 1: card-img／2〜9: card-bodyへ委譲
 
     .card-body {

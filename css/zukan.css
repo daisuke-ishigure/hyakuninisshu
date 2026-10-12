@@ -239,6 +239,7 @@ html {
   font-weight: 700;
   color: #333;
   line-height: 1.5;
+  max-width: calc(100% - 90px);
 }
 .card-name ruby {
   ruby-align: center;
@@ -610,16 +611,16 @@ body.kokoro-modal-open {
 }
 
 @supports (grid-template-rows: subgrid) {
-  html[lang=ja] .poet-card:has(.kokoro-panel) {
+  .poet-card:has(.kokoro-panel) {
     grid-row: span 9;
   }
-  html[lang=ja] .poet-card:has(.kokoro-panel) .card-body {
+  .poet-card:has(.kokoro-panel) .card-body {
     grid-row: 2/span 8;
   }
-  html[lang=ja] .poet-card:has(.kokoro-panel) .kokoro-panel {
+  .poet-card:has(.kokoro-panel) .kokoro-panel {
     grid-row: span 2;
   }
-  html[lang=ja] .poet-card:has(.kokoro-panel) .kokoro-panel-text {
+  .poet-card:has(.kokoro-panel) .kokoro-panel-text {
     grid-row: 1/span 2;
   }
 }
