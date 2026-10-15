@@ -11,9 +11,54 @@
  * ・全3問、正解時に何文字目だったかを記録し、その平均の少なさを競う（ポイント制なし）
  * ・スタート前は文字を一切表示しない。五・七・五・七・七＝31個の白いコマを静止した状態で並べるだけで、
  *   アニメーションは行わない。スタートボタンを押すと、選択中の出題モードに沿ってめくり始める
+ * ・英語版（intro-quiz_en.html、<html lang="en">）も同じスクリプトを使う。画面の文言は下の TEXT_EN、
+ *   選択肢は hyakunin.json の name_en、各コマにはめくれたときにローマ字（ROMAJI）を小さく添える
  */
 (function () {
   'use strict';
+
+  const IS_EN = document.documentElement.lang === 'en';
+
+  // 英語版の文言（日本語版はこれまでどおり各所に直接書いた日本語を使う）
+  const TEXT_EN = {
+    loadError: 'Could not load the data. Please reload the page.',
+    modeDescPrefix: 'About this mode: ',
+    modeRequired: 'Please choose a mode.',
+    start: 'Start',
+    timer: sec => `⏱ ${sec}s`,
+    status: (n, total) => `Shown: ${n} / ${total} kana`,
+    statusDone: 'All kana shown',
+    correct: n => `Correct at kana ${n}!`,
+    wrong: sec => `😢 Wrong… (${sec}s)`,
+    next: 'Next Question',
+    results: 'See Results',
+    progress: (i, n) => `Question ${i} / ${n}`,
+    rowLabel: (i, n, ok) => `Q${i}: ${ok ? 'correct' : 'wrong'} at kana ${n}`,
+    correctCount: (c, n) => `Correct: ${c} / ${n}`,
+    avgAllCorrect: avg => `This time: correct at kana ${avg} on average`,
+    avgWithWrong: (avg, max) => `This time: ${avg} kana on average (a wrong answer counts as ${max})`,
+  };
+  // ランク名（内部では日本語名をキーにし、英語版では表示だけ置き換える）
+  const RANK_NAMES_EN = { '神速': 'Godspeed', '超高速': 'Lightning', '高速': 'Swift', '修行中': 'In Training' };
+
+  // 英語版でコマに添えるローマ字（歌ページのローマ字と同じく、かなの表記どおり。ゐ・ゑ・を は i・e・o）
+  const ROMAJI = {
+    'あ':'a','い':'i','う':'u','え':'e','お':'o',
+    'か':'ka','き':'ki','く':'ku','け':'ke','こ':'ko',
+    'さ':'sa','し':'shi','す':'su','せ':'se','そ':'so',
+    'た':'ta','ち':'chi','つ':'tsu','て':'te','と':'to',
+    'な':'na','に':'ni','ぬ':'nu','ね':'ne','の':'no',
+    'は':'ha','ひ':'hi','ふ':'fu','へ':'he','ほ':'ho',
+    'ま':'ma','み':'mi','む':'mu','め':'me','も':'mo',
+    'や':'ya','ゆ':'yu','よ':'yo',
+    'ら':'ra','り':'ri','る':'ru','れ':'re','ろ':'ro',
+    'わ':'wa','ゐ':'i','ゑ':'e','を':'o','ん':'n',
+    'が':'ga','ぎ':'gi','ぐ':'gu','げ':'ge','ご':'go',
+    'ざ':'za','じ':'ji','ず':'zu','ぜ':'ze','ぞ':'zo',
+    'だ':'da','ぢ':'ji','づ':'zu','で':'de','ど':'do',
+    'ば':'ba','び':'bi','ぶ':'bu','べ':'be','ぼ':'bo',
+    'ぱ':'pa','ぴ':'pi','ぷ':'pu','ぺ':'pe','ぽ':'po',
+  };
 
   // 歌を五句・5行ぶんの文字列配列にする（すべて平仮名の読み札表記）
   function poemLines(poem) {
@@ -70,7 +115,7 @@
     .catch(err => {
       console.error('hyakunin.json の読み込みに失敗しました', err);
       const wrap = document.getElementById('dq-poem-wrap');
-      if (wrap) wrap.insertAdjacentHTML('beforebegin', '<p style="color:#B82343;font-weight:700;text-align:center;">データの読み込みに失敗しました。ページを再読み込みしてください。</p>');
+      if (wrap) wrap.insertAdjacentHTML('beforebegin', '<p style="color:#B82343;font-weight:700;text-align:center;">' + (IS_EN ? TEXT_EN.loadError : 'データの読み込みに失敗しました。ページを再読み込みしてください。') + '</p>');
     });
 
   /* ── 初期化 ── */
@@ -102,10 +147,15 @@
   /* ── 出題モード切替（上の句／下の句／決まり字／ランダム）
      スタート前の盤面は静止しているだけなので見た目への影響はなく、次にめくり始める問題（スタート直後の1問目、
      または次の問題）から反映される ── */
-  const MODE_DESCRIPTIONS = {
+  const MODE_DESCRIPTIONS = IS_EN ? {
+    kami: 'The upper verse (5-7-5) is shown first.',
+    shimo: 'The lower verse (7-7) is shown first.',
+    kimariji: 'The kimariji (the opening kana that identify the poem) are shown in order from the first kana, then the lower verse, then the rest of the upper verse.',
+    random: 'Kana appear in random order from anywhere in the poem.',
+  } : {
     kami: '上の句（五・七・五）から先に表示されます。',
     shimo: '下の句（七・七）から先に表示されます。',
-    kimariji: '決まり字（その歌だと特定できる最初の文字列）を1文字目から順に表示され、その後下の句→上の句の残りの順に表示されます。',
+    kimariji: '決まり字（その歌だと特定できる最初の文字列）が1文字目から順に表示され、その後、下の句→上の句の残りの順に表示されます。',
     random: '歌全体からばらばらの順に表示されます。',
   };
   function updateModeDesc() {
@@ -113,12 +163,12 @@
     descEl.classList.remove('dq-mode-desc-error');
     const desc = MODE_DESCRIPTIONS[state.revealMode];
     // モード未選択（初期状態）のときは空のままにし、「モードの説明：」だけが浮かないようにする
-    descEl.textContent = desc ? ('モードの説明：' + desc) : '';
+    descEl.textContent = desc ? ((IS_EN ? TEXT_EN.modeDescPrefix : 'モードの説明：') + desc) : '';
   }
   function showModeRequiredWarning() {
     const descEl = document.getElementById('dq-mode-desc');
     descEl.classList.add('dq-mode-desc-error');
-    descEl.textContent = 'いずれかのモードを選択してください。';
+    descEl.textContent = IS_EN ? TEXT_EN.modeRequired : 'いずれかのモードを選択してください。';
   }
   function bindModeSelect() {
     document.querySelectorAll('.dq-mode-btn').forEach(btn => {
@@ -160,7 +210,7 @@
     btn.type = 'button';
     btn.id = 'dq-start-btn';
     btn.className = 'dq-primary-btn';
-    btn.textContent = 'スタート';
+    btn.textContent = IS_EN ? TEXT_EN.start : 'スタート';
     btn.addEventListener('click', startGame);
     wrap.appendChild(btn);
 
@@ -259,7 +309,7 @@
     state.timerRAF = null;
   }
   function updateTimerDisplay(sec) {
-    document.getElementById('dq-timer').textContent = `⏱ ${sec.toFixed(1)}秒`;
+    document.getElementById('dq-timer').textContent = IS_EN ? TEXT_EN.timer(sec.toFixed(1)) : `⏱ ${sec.toFixed(1)}秒`;
   }
 
   /* ── 歌の縦書き・フリップ式コマ表示を組み立てる ── */
@@ -313,6 +363,13 @@
 
     die.appendChild(bottomHalf);
     die.appendChild(topHalf);
+    // 英語版：めくれたらコマの横にローマ字を出す（めくられるまでは CSS で隠しておく）
+    if (IS_EN && ROMAJI[targetChar]) {
+      const romaji = document.createElement('span');
+      romaji.className = 'dq-romaji';
+      romaji.textContent = ROMAJI[targetChar];
+      die.appendChild(romaji);
+    }
     return die;
   }
 
@@ -384,8 +441,9 @@
 
   function updateStatus() {
     const remaining = state.total - state.revealedCount;
-    document.getElementById('dq-reveal-status').textContent =
-      remaining > 0 ? `表示：${state.revealedCount} / ${state.total} 文字` : '表示終了';
+    document.getElementById('dq-reveal-status').textContent = IS_EN
+      ? (remaining > 0 ? TEXT_EN.status(state.revealedCount, state.total) : TEXT_EN.statusDone)
+      : (remaining > 0 ? `表示：${state.revealedCount} / ${state.total} 文字` : '表示終了');
     const pct = state.total ? Math.round(state.revealedCount / state.total * 100) : 0;
     document.getElementById('dq-reveal-bar-fill').style.width = pct + '%';
   }
@@ -401,7 +459,8 @@
       btn.type = 'button';
       btn.className = 'dq-choice-btn';
       btn.dataset.num = p.number;
-      btn.innerHTML = p.name;
+      if (IS_EN) btn.textContent = p.name_en;
+      else btn.innerHTML = p.name;
       btn.addEventListener('click', () => selectChoice(btn, poem.number));
       container.appendChild(btn);
     });
@@ -450,24 +509,27 @@
     feedback.classList.remove('dq-hidden');
     if (isCorrect) {
       feedback.className = 'dq-feedback dq-feedback-correct';
-      feedback.textContent = `${revealedAtAnswer}文字目で正解！`;
+      feedback.textContent = IS_EN ? TEXT_EN.correct(revealedAtAnswer) : `${revealedAtAnswer}文字目で正解！`;
     } else {
       feedback.className = 'dq-feedback dq-feedback-wrong';
-      feedback.textContent = `😢 不正解…（${elapsedSec.toFixed(1)}秒）`;
+      feedback.textContent = IS_EN ? TEXT_EN.wrong(elapsedSec.toFixed(1)) : `😢 不正解…（${elapsedSec.toFixed(1)}秒）`;
     }
 
     // 残りのコマがすべてめくり終わるまでは押せないようにする（早押しで次の問題に進んでしまうと、
     // めくり途中のコマがまだ残っていて演出が中断されたように見えるうえ、前の問題ぶんの
     // revealAllRemaining()がずれ込んで次の問題のコマに影響する不具合の元にもなるため）。
     const nextBtn = document.getElementById('dq-next-btn');
-    nextBtn.textContent = (state.index + 1 >= state.questions.length) ? '結果を見る' : '次の問題へ';
+    const isLast = state.index + 1 >= state.questions.length;
+    nextBtn.textContent = IS_EN ? (isLast ? TEXT_EN.results : TEXT_EN.next) : (isLast ? '結果を見る' : '次の問題へ');
     nextBtn.classList.remove('dq-hidden');
     nextBtn.disabled = true;
     revealAllRemaining(() => { nextBtn.disabled = false; });
   }
 
   function updateHUD() {
-    document.getElementById('dq-progress').textContent = `問題 ${state.index + 1} / ${state.questions.length}`;
+    document.getElementById('dq-progress').textContent = IS_EN
+      ? TEXT_EN.progress(state.index + 1, state.questions.length)
+      : `問題 ${state.index + 1} / ${state.questions.length}`;
   }
 
   function advance() {
@@ -491,7 +553,9 @@
 
       const label = document.createElement('div');
       label.className = 'dq-result-row-label';
-      label.textContent = `${i + 1}問目：${r.revealedAtAnswer}文字目で${r.isCorrect ? '正解' : '不正解'}`;
+      label.textContent = IS_EN
+        ? TEXT_EN.rowLabel(i + 1, r.revealedAtAnswer, r.isCorrect)
+        : `${i + 1}問目：${r.revealedAtAnswer}文字目で${r.isCorrect ? '正解' : '不正解'}`;
       row.appendChild(label);
 
       const barWrap = document.createElement('div');
@@ -559,8 +623,9 @@
 
     renderResultBreakdown();
 
-    document.getElementById('dq-result-correct').textContent =
-      `正解数: ${state.correctCount} / ${state.questions.length}`;
+    document.getElementById('dq-result-correct').textContent = IS_EN
+      ? TEXT_EN.correctCount(state.correctCount, state.questions.length)
+      : `正解数: ${state.correctCount} / ${state.questions.length}`;
 
     // 不正解の問題は「INDICATOR_MAX_CHARS（31）文字」扱いにして、平均・ランクの計算にペナルティとして含める
     const hasAnswers = state.questionResults.length > 0;
@@ -569,12 +634,14 @@
       : null;
     const allCorrect = hasAnswers && state.questionResults.every(r => r.isCorrect);
 
-    document.getElementById('dq-result-current').textContent = allCorrect
-      ? `今回の記録→平均${avgChars.toFixed(1)}文字目で正解`
-      : `今回の記録→平均${avgChars.toFixed(1)}文字（不正解は${INDICATOR_MAX_CHARS}文字として計算）`;
+    document.getElementById('dq-result-current').textContent = IS_EN
+      ? (allCorrect ? TEXT_EN.avgAllCorrect(avgChars.toFixed(1)) : TEXT_EN.avgWithWrong(avgChars.toFixed(1), INDICATOR_MAX_CHARS))
+      : allCorrect
+        ? `今回の記録→平均${avgChars.toFixed(1)}文字目で正解`
+        : `今回の記録→平均${avgChars.toFixed(1)}文字（不正解は${INDICATOR_MAX_CHARS}文字として計算）`;
 
     const rank = getRank(avgChars);
-    document.getElementById('dq-result-rank-name').textContent = rank;
+    document.getElementById('dq-result-rank-name').textContent = IS_EN ? RANK_NAMES_EN[rank] : rank;
     fireConfetti(rank);
   }
 })();
