@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Hyakunin Shūka and the Hyakunin Isshu: Comparing Their Order | Shigure's Hyakunin Isshu</title>
+  <meta name="Keywords" content="Hyakunin Shūka, Hyakunin Isshu, Fujiwara no Sadaie, order of poems, comparison">
+  <meta name="description" content="The Hyakunin Shūka and the Hyakunin Isshu, both compiled by Fujiwara no Sadaie, contain almost the same poems in a very different order. Compare the two orders with an animation, with the poems in Japanese and romaji.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The Hyakunin Shūka and the Hyakunin Isshu: Comparing Their Order | Shigure's Hyakunin Isshu">
+  <meta property="og:description" content="The Hyakunin Shūka and the Hyakunin Isshu, both compiled by Fujiwara no Sadaie, contain almost the same poems in a very different order. Compare the two orders with an animation, with the poems in Japanese and romaji.">
+  <meta property="og:image" content="https://hyakuninisshu.com/img/ogp_hyaku.webp">
+  <meta property="og:url" content="https://hyakuninisshu.com/hyaku_en.html">
+  <meta property="og:site_name" content="Shigure's Hyakunin Isshu">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- stylesheets -->
+  <link rel="stylesheet" href="../css/style.css?20261010-02">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@500&family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap"
+    rel="stylesheet">
+  <!-- touch icons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="canonical" href="https://hyakuninisshu.com/hyaku_en.html">
+  <link rel="alternate" hreflang="ja" href="https://hyakuninisshu.com/hyaku.html">
+  <link rel="alternate" hreflang="en" href="https://hyakuninisshu.com/hyaku_en.html">
+  <link rel="alternate" hreflang="x-default" href="https://hyakuninisshu.com/hyaku.html">
+  <style>
+    /* The poems: same look as the "In Japanese" / "In English" quotes in the appendix of the poem pages
+       (1_en.html: .words .quote and q.quote-ja in css/style.css and css/poems_en.css) */
+    .section .poem-quote {
+      display: flex;
+      gap: 1em;
+      margin: 0.5em 0 0.75em;
+      font-family: "Noto Sans", "Noto Serif JP", sans-serif;
+      font-size: 15px;
+      line-height: 1.65;
+      color: #333;
+      letter-spacing: normal;
+    }
+    @media (max-width: 1000px) {
+      .section .poem-quote {
+        flex-direction: column;
+        gap: 0.5em;
+        font-size: 16px;
+      }
+    }
+    .section .poem-quote q {
+      display: block;
+      flex: 1;
+      width: auto;
+      margin: 0;
+      padding: 0.5em;
+      font-size: inherit;
+      line-height: inherit;
+      background: #fff;
+      box-shadow: 0px 0px 3px 0px rgba(136, 136, 136, 0.777);
+    }
+    .section .poem-quote q::before,
+    .section .poem-quote q::after {
+      content: "";
+    }
+    .section .poem-quote .was-h4 {
+      font-family: "Playfair Display", "Kaisei HarunoUmi", serif;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.65;
+      width: auto;
+      margin: 0 0 0.6em;
+      padding: 0;
+      border: none;
+    }
+    /* style.css decorates h4 with » «; the poem headings stay plain like on 1_en.html */
+    .section .poem-quote .was-h4::before,
+    .section .poem-quote .was-h4::after {
+      content: none;
+    }
+    .section .poem-quote q.quote-ja {
+      font-weight: 700;
+    }
+    .section .poem-quote q.quote-ja rt {
+      font-size: 0.55em;
+    }
+    .section .poem-quote q.quote-ja .romaji-line {
+      display: block;
+      font-size: 0.82em;
+      font-style: italic;
+      font-weight: 400;
+      color: #7a6655;
+      line-height: 1.6;
+      margin-top: 0.4em;
+    }
+    .section .poem-quote q.quote-ja .shutten {
+      font-weight: 400;
+    }
+    .section .poem-quote q.quote-ja .shutten,
+    .section .poem-quote q.quote-ja .shutten a {
+      color: #333;
+    }
+    .section .poem-quote q p {
+      line-height: 1.8;
+      margin: 0;
+    }
+    .compare-widget {
+      margin: 2rem 0;
+    }
+    .compare-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .compare-controls .label {
+      font-size: 13px;
+      color: #666;
+      letter-spacing: 1px;
+    }
+    .btn-mode {
+      padding: 8px 22px;
+      border-radius: 20px;
+      border: 1.5px solid #ccc;
+      cursor: pointer;
+      font-size: 13px;
+      letter-spacing: 1px;
+      background: #fff;
+      color: #555;
+      transition: background 0.3s, color 0.3s, border-color 0.3s;
+    }
+    .btn-mode.active-shuka,
+    .btn-mode.active-isshu {
+      background: #B82343;
+      border-color: #B82343;
+      color: #FFF;
+      font-weight: 700;
+    }
+    /* The list of 101 rows scrolls inside this box (the Japanese page uses 101 vertical columns) */
+    .compare-scroll {
+      border: 1px solid #e0d8cc;
+      border-radius: 6px;
+      max-height: 70vh;
+      overflow-y: auto;
+      background: #faf7f2;
+    }
+    .compare-headrow {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      display: flex;
+      background: #f5f0e8;
+      border-bottom: 1px solid #e0d8cc;
+      font-size: 12px;
+      color: #888;
+      font-family: "Noto Sans", sans-serif;
+      letter-spacing: normal;
+    }
+    .compare-headrow span {
+      padding: 6px 8px;
+    }
+    .compare-headrow .head-num {
+      width: 44px;
+      box-sizing: border-box;
+      text-align: center;
+      border-right: 1px solid #e0d8cc;
+    }
+    .compare-list {
+      position: relative;
+    }
+    .row-num {
+      position: absolute;
+      left: 0;
+      width: 44px;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: #999;
+      font-family: "Noto Sans", sans-serif;
+      background: #f5f0e8;
+      border-bottom: 1px solid #e8e2d8;
+      border-right: 1px solid #e0d8cc;
+    }
+    .row-num.even {
+      background: #ede8df;
+    }
+    /* poet card: moves up and down when the mode changes */
+    .poet-card {
+      position: absolute;
+      left: 47px;
+      right: 3px;
+      box-sizing: border-box;
+      border-radius: 0 6px 6px 0;
+      padding: 5px 10px 5px 12px;
+      overflow: hidden;
+      font-family: "Noto Sans", "Noto Sans JP", sans-serif;
+      letter-spacing: normal;
+      transition: top 0.85s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+    }
+    .poet-card.is-hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .card-stripe {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+    }
+    .card-name {
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.35;
+      color: #333;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .card-badge {
+      display: inline-block;
+      margin-left: 6px;
+      padding: 0 7px;
+      border-radius: 8px;
+      font-size: 10px;
+      font-weight: 400;
+      line-height: 1.6;
+      vertical-align: 1px;
+    }
+    .card-ja {
+      font-family: "Noto Serif JP", serif;
+      font-size: 13px;
+      line-height: 1.45;
+      color: #333;
+    }
+    .card-romaji {
+      font-size: 12px;
+      font-style: italic;
+      line-height: 1.45;
+      color: #7a6655;
+    }
+    @media (min-width: 601px) {
+      .card-ja,
+      .card-romaji {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+    @media (max-width: 600px) {
+      .card-name {
+        font-size: 12px;
+      }
+      .card-ja {
+        font-size: 12px;
+      }
+      .card-romaji {
+        font-size: 11px;
+      }
+    }
+    .compare-note {
+      margin-top: 1em;
+      margin-left: 1.5em;
+      text-indent: -1.5em;
+      font-size: 12px;
+      color: #333;
+      line-height: 1.7;
+    }
+    .compare-note::before {
+      content: "※ ";
+    }
+  </style>
+  <!-- structured data -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://hyakuninisshu.com/hyaku_en.html"
+    },
+    "headline": "Comparing the Hyakunin Shūka and the Hyakunin Isshu",
+    "description": "The Hyakunin Shūka and the Hyakunin Isshu, both compiled by Fujiwara no Sadaie, contain almost the same poems in a very different order. Compare the two orders with an animation, with the poems in Japanese and romaji.",
+    "inLanguage": "en",
+    "image": "https://hyakuninisshu.com/img/ogp_hyaku.webp",
+    "dateModified": "2026-10-15",
+    "author": {
+      "@type": "Person",
+      "name": "Daisuke Ishigure",
+      "url": "https://hyakuninisshu.com/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Shigure's Hyakunin Isshu",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://hyakuninisshu.com/apple-touch-icon.png"
+      }
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Shigure's Hyakunin Isshu",
+        "item": "https://hyakuninisshu.com/index_en.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Columns",
+        "item": "https://hyakuninisshu.com/introduction_en.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Comparing the Hyakunin Shūka and the Hyakunin Isshu"
+      }
+    ]
+  }
+]
+  </script>
+  <!-- Cloudflare Web Analytics -->
+  <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d2f01c23361b402aadede990ea58da0b"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <p class="site-title">
+      <a href="https://hyakuninisshu.com/index_en.html">Shigure no Hyakunin Isshu</a>
+    </p>
+    <div class="header_list">
+      <a href="index_en.html"><img src="../img/icon_top_en.svg?ver-01" alt="Top" class="icon" width="59" height="22"></a>
+      <a href="introduction_en.html" style="color:#333"><img src="/img/icon_column_en.svg?ver-01" alt="Columns" class="icon" width="72" height="22"></a>
+      <a href="introduction-app_en.html" style="color:#333"><img src="/img/icon_app_en.svg?ver-01" alt="Apps" class="icon" width="59" height="22"></a>
+      <a href="hyaku.html"><img src="/img/icon_lang.svg?ver-01" alt="Japanese" class="icon" width="59" height="22"></a>
+      <a href="list_en.html"><img src="/img/icon_list_en.svg?ver-01" alt="Hyakunin Isshu Poem List" class="icon" width="59" height="22"></a>
+    </div>
+  </header>
+<script src="../js/back-to-top.js?20261012-03"></script>
+  <!-- Main -->
+  <main class="main_about-main">
+    <div class="about-main">
+      <div class="section">
+        <nav>
+          <ol class="breadcrumb">
+            <li><a href="index_en.html">Top</a></li>
+            <li><a href="introduction_en.html">Columns</a></li>
+            <li>Comparing the <em>Hyakunin Shūka</em> and the Hyakunin Isshu</li>
+          </ol>
+        </nav>
+        <hr>
+        <h1>The <em>Hyakunin Shūka</em> and<br class="br-sp"> the Hyakunin Isshu: Comparing Their Order</h1>
+        <p>
+          The <em>Hyakunin Shūka</em> and the Hyakunin Isshu are based on the same poems, but their order is very different.<br>
+          On this page you can compare the difference visually, with animation.
+        </p>
+
+        <h2 style="margin-top:1em;">About the Two Anthologies</h2>
+        <p>
+          Fujiwara no Sadaie compiled the <strong>Hyakunin Isshu</strong> at the request of Utsunomiya Yoritsuna, and the generally accepted view is that before that he compiled the <strong><em>Hyakunin Shūka</em></strong>, which is thought to be its prototype.
+        </p>
+        <p>
+          The biggest difference between the two is seen in the last two poems. In the Hyakunin Isshu, Emperor Go-Toba (Poem 99) and Emperor Juntoku (Poem 100) were newly added. On the other hand, three poets found only in the <em>Hyakunin Shūka</em>, the Empress of Retired Emperor Ichijō (Teishi), Acting Middle Counselor Kuninobu, and Acting Middle Counselor Nagakata, were not included in the Hyakunin Isshu.
+        </p>
+        <p>This difference in order is thought to be not a simple rearrangement but a re-editing that took into account the flow and structure of the poems.</p>
+
+        <h2>The Difference in Order</h2>
+        <p>
+          When you switch the buttons, each poet moves to their position in the other anthology with an animation.
+        </p>
+        <p>
+          In the <em>Hyakunin Shūka</em>, poems that answer each other in content, or that are close in season or theme, tend to be placed side by side. The Hyakunin Isshu, on the other hand, is arranged roughly in order of time, while a flow of feelings, bright poems, rising love, heartache, and a sense of impermanence, is woven through it like waves.
+        </p>
+
+        <div class="compare-widget">
+
+          <div class="compare-controls">
+            <span class="label">Show</span>
+            <button class="btn-mode active-shuka" id="btn-shuka" onclick="setMode('shuka')">
+              <em>Hyakunin Shūka</em>
+            </button>
+            <button class="btn-mode" id="btn-isshu" onclick="setMode('isshu')">
+              Hyakunin Isshu
+            </button>
+          </div>
+
+          <div class="compare-scroll">
+            <div class="compare-headrow">
+              <span class="head-num">No.</span>
+              <span class="head-poet">Poet and poem</span>
+            </div>
+            <div class="compare-list" id="compare-list"></div>
+          </div>
+
+          <p class="compare-note" style="margin-bottom:0;">
+            The <em>Hyakunin Shūka</em> has 101 poems, so the list has 101 rows.
+          </p>
+          <p class="compare-note" style="margin-top:0;">
+            Fujiwara no Ietaka's rank is given as Senior Third Rank in the <em>Hyakunin Shūka</em> and as Junior Second Rank in the Hyakunin Isshu. Because he was promoted to Junior Second Rank in 1235, this difference is the reason the <em>Hyakunin Shūka</em> is thought to have been compiled before the Hyakunin Isshu.
+          </p>
+        </div>
+
+        <h2>Summary</h2>
+        <p>
+          In compiling the Hyakunin Isshu, Sadaie is thought to have made the following changes.
+        </p>
+        <ul>
+          <li>He added at the end the poems of <a href="/99_en.html">Retired Emperor Go-Toba</a> (Poem 99) and <a href="/100_en.html">Retired Emperor Juntoku</a> (Poem 100), who had been exiled by the Kamakura shogunate.</li>
+          <li>He did not include the Empress of Retired Emperor Ichijō (<a href="/teishi_en.html">Teishi</a>), Acting Middle Counselor Kuninobu, or Acting Middle Counselor Nagakata, who were in the <em>Hyakunin Shūka</em>.</li>
+          <li>He changed the poem chosen for <a href="/74_en.html">Minamoto no Toshiyori</a> (Poem 74) and changed its place in the order.</li>
+        </ul>
+        <p>
+          These changes may have been not mere editing but a restructuring based on the flow of the poems, a view of history, and even the political background. The Hyakunin Isshu is thought to have been raised from a simple selection of fine poems into a work that tells a single story through the very order of its poems.
+        </p>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-copy">&copy;2023 Shigure no Hyakunin Isshu</span>
+      <ul>
+        <li><a href="policy_en.html">Privacy Policy</a></li>
+        <li>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXx7TKlqnTfKrw2Nuh4f37swVwFH-RFDsNkTGQ4JEF50q2wQ/viewform?usp=header"
+            target="_blank" rel="noopener">Contact Form</a>
+        </li>
+        <li><a href="https://x.com/shigurenotaifu" target="_blank" rel="noopener">Official X</a></li>
+      </ul>
+    </div>
+  </footer>
+  <!-- Footer end -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="../js/move_script.js?20260729"></script>
+  <script>
+    // Same data as hyaku.html (positions in the Hyakunin Shūka / Hyakunin Isshu), with English names and romaji
+    const POETS = [
+     {
+      "id": "01",
+      "name": "Emperor Tenji",
+      "shuka": 1,
+      "isshu": 1,
+      "ja": "秋の田の かりほの庵の 苫をあらみ　わが衣手は 露にぬれつつ",
+      "romaji": "akinotano karihonoihono tomaoarami / wagakoromodeha tsuyuninuretsutsu"
+     },
+     {
+      "id": "02",
+      "name": "Empress Jitō",
+      "shuka": 2,
+      "isshu": 2,
+      "ja": "春すぎて 夏来にけらし 白妙の　衣ほすてふ 天の香具山",
+      "romaji": "harusugite natsukinikerashi shirotaheno / koromohosutefu amanokaguyama"
+     },
+     {
+      "id": "03",
+      "name": "Kakinomoto no Hitomaro",
+      "shuka": 3,
+      "isshu": 3,
+      "ja": "あしびきの 山鳥の尾の しだり尾の　ながながし夜を ひとりかも寝む",
+      "romaji": "ashibikino yamadorinoono shidariono / naganagashiyoo hitorikamonemu"
+     },
+     {
+      "id": "04",
+      "name": "Yamabe no Akahito",
+      "shuka": 4,
+      "isshu": 4,
+      "ja": "田子の浦に うちいでてみれば 白妙の　富士の高嶺に 雪は降りつつ",
+      "romaji": "tagonourani uchiidetemireba shirotaheno / fujinotakaneni yukihafuritsutsu"
+     },
+     {
+      "id": "05",
+      "name": "Sarumaru Dayū",
+      "shuka": 8,
+      "isshu": 5,
+      "ja": "おくやまに もみぢふみわけ 鳴く鹿の　声きく時ぞ 秋はかなしき",
+      "romaji": "okuyamani momijifumiwake nakushikano / koekikutokizo akihakanashiki"
+     },
+     {
+      "id": "06",
+      "name": "Middle Counselor Yakamochi",
+      "shuka": 5,
+      "isshu": 6,
+      "ja": "かささぎの 渡せる橋に おく霜の　白きを見れば 夜ぞふけにける",
+      "romaji": "kasasagino wataseruhashini okushimono / shirokiomireba yozofukenikeru"
+     },
+     {
+      "id": "07",
+      "name": "Abe no Nakamaro",
+      "shuka": 6,
+      "isshu": 7,
+      "ja": "天の原 ふりさけみれば 春日なる　三笠の山に 出でし月かも",
+      "romaji": "amanohara furisakemireba kasuganaru / mikasanoyamani ideshitsukikamo"
+     },
+     {
+      "id": "08",
+      "name": "Priest Kisen",
+      "shuka": 14,
+      "isshu": 8,
+      "ja": "わが庵は 都のたつみ しかぞすむ　世をうぢ山と 人はいふなり",
+      "romaji": "wagaihoha miyakonotatsumi shikazosumu / yooujiyamato hitohaifunari"
+     },
+     {
+      "id": "09",
+      "name": "Ono no Komachi",
+      "shuka": 13,
+      "isshu": 9,
+      "ja": "花の色は うつりにけりな いたづらに　わが身世にふる ながめせしまに",
+      "romaji": "hananoiroha utsurinikerina itazurani / wagamiyonifuru nagameseshimani"
+     },
+     {
+      "id": "10",
+      "name": "Semimaru",
+      "shuka": 16,
+      "isshu": 10,
+      "ja": "これやこの 行くも帰るも 別れては　知るも知らぬも 逢坂の関",
+      "romaji": "koreyakono yukumokaherumo wakareteha / shirumoshiranumo afusakanoseki"
+     },
+     {
+      "id": "11",
+      "name": "Councillor Takamura",
+      "shuka": 7,
+      "isshu": 11,
+      "ja": "わたの原 八十島かけて 漕ぎいでぬと　人には告げよ 海人の釣り舟",
+      "romaji": "watanohara yasoshimakakete kogiidenuto / hitonihatsugeyo amanotsuribune"
+     },
+     {
+      "id": "12",
+      "name": "High Priest Henjō",
+      "shuka": 15,
+      "isshu": 12,
+      "ja": "天つ風 雲の通ひ路 吹きとぢよ　をとめの姿 しばしとどめむ",
+      "romaji": "amatsukaze kumonokayohiji fukitojiyo / otomenosugata shibashitodomemu"
+     },
+     {
+      "id": "13",
+      "name": "Retired Emperor Yōzei",
+      "shuka": 12,
+      "isshu": 13,
+      "ja": "筑波嶺の 峰より落つる みなの川　恋ぞつもりて 淵となりぬる",
+      "romaji": "tsukubaneno mineyoriotsuru minanogaha / kohizotsumorite fuchitonarinuru"
+     },
+     {
+      "id": "14",
+      "name": "Minister of the Left of Kawara",
+      "shuka": 17,
+      "isshu": 14,
+      "ja": "陸奥の しのぶもぢずり 誰ゆゑに　乱れそめにし われならなくに",
+      "romaji": "michinokuno shinobumojizuri tareyueni / midaresomenishi warenaranakuni"
+     },
+     {
+      "id": "15",
+      "name": "Emperor Kōkō",
+      "shuka": 18,
+      "isshu": 15,
+      "ja": "君がため 春の野にいでて 若菜つむ　わが衣手に 雪は降りつつ",
+      "romaji": "kimigatame harunononiidete wakanatsumu / wagakoromodeni yukihafuritsutsu"
+     },
+     {
+      "id": "16",
+      "name": "Middle Counselor Yukihira",
+      "shuka": 9,
+      "isshu": 16,
+      "ja": "立ち別れ いなばの山の 峰に生ふる　まつとし聞かば 今帰り来む",
+      "romaji": "tachiwakare inabanoyamano mineniofuru / matsutoshikikaba imakaherikomu"
+     },
+     {
+      "id": "17",
+      "name": "Ariwara no Narihira Ason",
+      "shuka": 10,
+      "isshu": 17,
+      "ja": "ちはやぶる 神代もきかず 竜田川　からくれなゐに 水くくるとは",
+      "romaji": "chihayaburu kamiyomokikazu tatsutagaha / karakurenaini mizukukurutoha"
+     },
+     {
+      "id": "18",
+      "name": "Fujiwara no Toshiyuki Ason",
+      "shuka": 11,
+      "isshu": 18,
+      "ja": "住の江の 岸による波 よるさへや　夢の通ひ路 人目よくらむ",
+      "romaji": "suminoeno kishiniyorunami yorusaheya / yumenokayohiji hitomeyokuramu"
+     },
+     {
+      "id": "19",
+      "name": "Ise",
+      "shuka": 19,
+      "isshu": 19,
+      "ja": "難波潟 みじかき芦の 節の間も　逢はでこの世を 過ぐしてよとや",
+      "romaji": "nanihagata mijikakiashino fushinomamo / ahadekonoyoo sugushiteyotoya"
+     },
+     {
+      "id": "20",
+      "name": "Prince Motoyoshi",
+      "shuka": 20,
+      "isshu": 20,
+      "ja": "わびぬれば 今はたおなじ 難波なる　みをつくしても 逢はむとぞ思ふ",
+      "romaji": "wabinureba imahataonaji nanihanaru / miotsukushitemo ahamutozoomofu"
+     },
+     {
+      "id": "21",
+      "name": "Priest Sosei",
+      "shuka": 22,
+      "isshu": 21,
+      "ja": "今来むと いひしばかりに 長月の　有明の月を 待ちいでつるかな",
+      "romaji": "imakomuto ihishibakarini nagatsukino / ariakenotsukio machiidetsurukana"
+     },
+     {
+      "id": "22",
+      "name": "Fun'ya no Yasuhide",
+      "shuka": 27,
+      "isshu": 22,
+      "ja": "吹くからに 秋の草木の しをるれば　むべ山風を あらしといふらむ",
+      "romaji": "fukukarani akinokusakino shiorureba / mubeyamakazeo arashitoifuramu"
+     },
+     {
+      "id": "23",
+      "name": "Ōe no Chisato",
+      "shuka": 30,
+      "isshu": 23,
+      "ja": "月見れば ちぢにものこそ かなしけれ　わが身ひとつの 秋にはあらねど",
+      "romaji": "tsukimireba chijinimonokoso kanashikere / wagamihitotsuno akinihaaranedo"
+     },
+     {
+      "id": "24",
+      "name": "Kanke",
+      "shuka": 23,
+      "isshu": 24,
+      "ja": "このたびは ぬさもとりあへず 手向山　紅葉の錦 神のまにまに",
+      "romaji": "konotabiha nusamotoriahezu tamukeyama / momijinonishiki kaminomanimani"
+     },
+     {
+      "id": "25",
+      "name": "Minister of the Right of Sanjō",
+      "shuka": 35,
+      "isshu": 25,
+      "ja": "名にし負はば 逢坂山の さねかづら　人に知られで 来るよしもがな",
+      "romaji": "nanishiohaba afusakayamano sanekazura / hitonishirarede kuruyoshimogana"
+     },
+     {
+      "id": "26",
+      "name": "Teishin-kō",
+      "shuka": 34,
+      "isshu": 26,
+      "ja": "小倉山 峰のもみぢ葉 心あらば　今ひとたびの みゆき待たなむ",
+      "romaji": "ogurayama minenomomijiba kokoroaraba / imahitotabino miyukimatanamu"
+     },
+     {
+      "id": "27",
+      "name": "Middle Counselor Kanesuke",
+      "shuka": 36,
+      "isshu": 27,
+      "ja": "みかの原 わきて流るる いづみ川　いつ見きとてか 恋しかるらむ",
+      "romaji": "mikanohara wakitenagaruru izumigaha / itsumikitoteka kohishikaruramu"
+     },
+     {
+      "id": "28",
+      "name": "Minamoto no Muneyuki Ason",
+      "shuka": 21,
+      "isshu": 28,
+      "ja": "山里は 冬ぞさびしさ まさりける　人目も草も 枯れぬと思へば",
+      "romaji": "yamazatoha fuyuzosabishisa masarikeru / hitomemokusamo karenutoomoheba"
+     },
+     {
+      "id": "29",
+      "name": "Ōshikōchi no Mitsune",
+      "shuka": 25,
+      "isshu": 29,
+      "ja": "心あてに 折らばや折らむ 初霜の　おきまどはせる 白菊の花",
+      "romaji": "kokoroateni orabayaoramu hatsushimono / okimadohaseru shiragikunohana"
+     },
+     {
+      "id": "30",
+      "name": "Mibu no Tadamine",
+      "shuka": 24,
+      "isshu": 30,
+      "ja": "有明の つれなく見えし 別れより　暁ばかり うきものはなし",
+      "romaji": "ariakeno tsurenakumieshi wakareyori / akatsukibakari ukimonohanashi"
+     },
+     {
+      "id": "31",
+      "name": "Sakanoue no Korenori",
+      "shuka": 29,
+      "isshu": 31,
+      "ja": "朝ぼらけ 有明の月と 見るまでに　吉野の里に ふれる白雪",
+      "romaji": "asaborake ariakenotsukito mirumadeni / yoshinonosatoni furerushirayuki"
+     },
+     {
+      "id": "32",
+      "name": "Harumichi no Tsuraki",
+      "shuka": 32,
+      "isshu": 32,
+      "ja": "山川に 風のかけたる しがらみは　流れもあへぬ 紅葉なりけり",
+      "romaji": "yamagahani kazenokaketaru shigaramiha / nagaremoahenu momijinarikeri"
+     },
+     {
+      "id": "33",
+      "name": "Ki no Tomonori",
+      "shuka": 26,
+      "isshu": 33,
+      "ja": "ひさかたの 光のどけき 春の日に　しづ心なく 花の散るらむ",
+      "romaji": "hisakatano hikarinodokeki harunohini / shizukokoronaku hananochiruramu"
+     },
+     {
+      "id": "34",
+      "name": "Fujiwara no Okikaze",
+      "shuka": 31,
+      "isshu": 34,
+      "ja": "誰をかも 知る人にせむ 高砂の　松も昔の 友ならなくに",
+      "romaji": "tareokamo shiruhitonisemu takasagono / matsumomukashino tomonaranakuni"
+     },
+     {
+      "id": "35",
+      "name": "Ki no Tsurayuki",
+      "shuka": 28,
+      "isshu": 35,
+      "ja": "人はいさ 心も知らず ふるさとは　花ぞ昔の 香に匂ひける",
+      "romaji": "hitohaisa kokoromoshirazu furusatoha / hanazomukashino kaninihohikeru"
+     },
+     {
+      "id": "36",
+      "name": "Kiyohara no Fukayabu",
+      "shuka": 33,
+      "isshu": 36,
+      "ja": "夏の夜は まだ宵ながら 明けぬるを　雲のいづこに 月宿るらむ",
+      "romaji": "natsunoyoha madayohinagara akenuruo / kumonoizukoni tsukiyadoruramu"
+     },
+     {
+      "id": "37",
+      "name": "Fun'ya no Asayasu",
+      "shuka": 38,
+      "isshu": 37,
+      "ja": "白露に 風の吹きしく 秋の野は　つらぬきとめぬ 玉ぞ散りける",
+      "romaji": "shiratsuyuni kazenofukishiku akinonoha / tsuranukitomenu tamazochirikeru"
+     },
+     {
+      "id": "38",
+      "name": "Ukon",
+      "shuka": 39,
+      "isshu": 38,
+      "ja": "忘らるる 身をば思はず 誓ひてし　人の命の をしくもあるかな",
+      "romaji": "wasuraruru miobaomohazu chikahiteshi / hitonoinochino oshikumoarukana"
+     },
+     {
+      "id": "39",
+      "name": "Councillor Hitoshi",
+      "shuka": 37,
+      "isshu": 39,
+      "ja": "浅茅生の 小野の篠原 しのぶれど　あまりてなどか 人の恋しき",
+      "romaji": "asajifuno ononoshinohara shinoburedo / amaritenadoka hitonokohishiki"
+     },
+     {
+      "id": "40",
+      "name": "Taira no Kanemori",
+      "shuka": 41,
+      "isshu": 40,
+      "ja": "しのぶれど 色に出でにけり わが恋は　ものや思ふと 人の問ふまで",
+      "romaji": "shinoburedo ironiidenikeri wagakohiha / monoyaomofuto hitonotofumade"
+     },
+     {
+      "id": "41",
+      "name": "Mibu no Tadami",
+      "shuka": 42,
+      "isshu": 41,
+      "ja": "恋すてふ わが名はまだき 立ちにけり　人知れずこそ 思ひそめしか",
+      "romaji": "kohisutefu waganahamadaki tachinikeri / hitoshirezukoso omohisomeshika"
+     },
+     {
+      "id": "42",
+      "name": "Kiyohara no Motosuke",
+      "shuka": 45,
+      "isshu": 42,
+      "ja": "契りきな かたみに袖を しぼりつつ　末の松山 波越さじとは",
+      "romaji": "chigirikina kataminisodeo shiboritsutsu / suenomatsuyama namikosajitoha"
+     },
+     {
+      "id": "43",
+      "name": "Acting Middle Counselor Atsutada",
+      "shuka": 40,
+      "isshu": 43,
+      "ja": "逢ひ見ての のちの心に くらぶれば　昔はものを 思はざりけり",
+      "romaji": "ahimiteno nochinokokoroni kurabureba / mukashihamonoo omohazarikeri"
+     },
+     {
+      "id": "44",
+      "name": "Middle Counselor Asatada",
+      "shuka": 44,
+      "isshu": 44,
+      "ja": "逢ふことの たえてしなくは なかなかに　人をも身をも 恨みざらまし",
+      "romaji": "afukotono taeteshinakuha nakanakani / hitoomomiomo uramizaramashi"
+     },
+     {
+      "id": "45",
+      "name": "Kentoku-kō",
+      "shuka": 43,
+      "isshu": 45,
+      "ja": "あはれとも いふべき人は 思ほえで　身のいたづらに なりぬべきかな",
+      "romaji": "aharetomo ifubekihitoha omohoede / minoitazurani narinubekikana"
+     },
+     {
+      "id": "46",
+      "name": "Sone no Yoshitada",
+      "shuka": 47,
+      "isshu": 46,
+      "ja": "由良の門を 渡る舟人 かぢを絶え　ゆくへも知らぬ 恋の道かな",
+      "romaji": "yuranotoo watarufunabito kajiotae / yukuhemoshiranu kohinomichikana"
+     },
+     {
+      "id": "47",
+      "name": "Priest Egyō",
+      "shuka": 52,
+      "isshu": 47,
+      "ja": "八重葎 しげれる宿の さびしきに　人こそ見えね 秋は来にけり",
+      "romaji": "yahemugura shigereruyadono sabishikini / hitokosomiene akihakinikeri"
+     },
+     {
+      "id": "48",
+      "name": "Minamoto no Shigeyuki",
+      "shuka": 46,
+      "isshu": 48,
+      "ja": "風をいたみ 岩うつ波の おのれのみ　くだけてものを 思ふころかな",
+      "romaji": "kazeoitami ihautsunamino onorenomi / kudaketemonoo omofukorokana"
+     },
+     {
+      "id": "49",
+      "name": "Ōnakatomi no Yoshinobu Ason",
+      "shuka": 48,
+      "isshu": 49,
+      "ja": "御垣守 衛士のたく火の 夜は燃え　昼は消えつつ ものをこそ思へ",
+      "romaji": "mikakimori ejinotakuhino yoruhamoe / hiruhakietsutsu monookosoomohe"
+     },
+     {
+      "id": "50",
+      "name": "Fujiwara no Yoshitaka",
+      "shuka": 49,
+      "isshu": 50,
+      "ja": "君がため 惜しからざりし 命さへ　長くもがなと 思ひけるかな",
+      "romaji": "kimigatame oshikarazarishi inochisahe / nagakumoganato omohikerukana"
+     },
+     {
+      "id": "51",
+      "name": "Fujiwara no Sanekata Ason",
+      "shuka": 50,
+      "isshu": 51,
+      "ja": "かくとだに えやはいぶきの さしも草　さしも知らじな 燃ゆる思ひを",
+      "romaji": "kakutodani eyahaibukino sashimogusa / sashimoshirajina moyuruomohio"
+     },
+     {
+      "id": "52",
+      "name": "Fujiwara no Michinobu Ason",
+      "shuka": 51,
+      "isshu": 52,
+      "ja": "明けぬれば 暮るるものとは 知りながら　なほうらめしき 朝ぼらけかな",
+      "romaji": "akenureba kururumonotoha shirinagara / nahourameshiki asaborakekana"
+     },
+     {
+      "id": "53",
+      "name": "Mother of the Right Captain Michitsuna",
+      "shuka": 56,
+      "isshu": 53,
+      "ja": "嘆きつつ ひとりぬる夜の 明くる間は　いかに久しき ものとかは知る",
+      "romaji": "nagekitsutsu hitorinuruyono akurumaha / ikanihisashiki monotokahashiru"
+     },
+     {
+      "id": "54",
+      "name": "Mother of the Honorary Grand Minister",
+      "shuka": 55,
+      "isshu": 54,
+      "ja": "忘れじの ゆく末までは かたければ　今日を限りの 命ともがな",
+      "romaji": "wasurejino yukusuemadeha katakereba / kefuokagirino inochitomogana"
+     },
+     {
+      "id": "55",
+      "name": "Upper Counselor Kintō",
+      "shuka": 59,
+      "isshu": 55,
+      "ja": "滝の音は 絶えて久しく なりぬれど　名こそ流れて なほきこえけれ",
+      "romaji": "takinootoha taetehisashiku narinuredo / nakosonagarete nahokikoekere"
+     },
+     {
+      "id": "56",
+      "name": "Izumi Shikibu",
+      "shuka": 61,
+      "isshu": 56,
+      "ja": "あらざらむ この世のほかの 思ひ出に　今ひとたびの 逢ふこともがな",
+      "romaji": "arazaramu konoyonohokano omohideni / imahitotabino afukotomogana"
+     },
+     {
+      "id": "57",
+      "name": "Murasaki Shikibu",
+      "shuka": 64,
+      "isshu": 57,
+      "ja": "めぐりあひて 見しやそれとも わかぬまに　雲がくれにし 夜半の月かな",
+      "romaji": "meguriahite mishiyasoretomo wakanumani / kumogakurenishi yohanotsukikana"
+     },
+     {
+      "id": "58",
+      "name": "Daini no Sanmi",
+      "shuka": 62,
+      "isshu": 58,
+      "ja": "有馬山 猪名の篠原 風吹けば　いでそよ人を 忘れやはする",
+      "romaji": "arimayama inanosasahara kazefukeba / idesoyohitoo wasureyahasuru"
+     },
+     {
+      "id": "59",
+      "name": "Akazome Emon",
+      "shuka": 63,
+      "isshu": 59,
+      "ja": "やすらはで 寝なましものを 小夜更けて　かたぶくまでの 月を見しかな",
+      "romaji": "yasurahade nenamashimonoo sayofukete / katabukumadeno tsukiomishikana"
+     },
+     {
+      "id": "60",
+      "name": "Koshikibu no Naishi",
+      "shuka": 66,
+      "isshu": 60,
+      "ja": "大江山 いく野の道の 遠ければ　まだふみも見ず 天の橋立",
+      "romaji": "ohoeyama ikunonomichino tohokereba / madafumimomizu amanohashidate"
+     },
+     {
+      "id": "61",
+      "name": "Ise no Taifu",
+      "shuka": 65,
+      "isshu": 61,
+      "ja": "いにしへの 奈良の都の 八重桜　けふ九重に にほひぬるかな",
+      "romaji": "inishiheno naranomiyakono yahezakura / kefukokonoheni nihohinurukana"
+     },
+     {
+      "id": "62",
+      "name": "Sei Shōnagon",
+      "shuka": 60,
+      "isshu": 62,
+      "ja": "夜をこめて 鳥のそらねは はかるとも　よに逢坂の 関は許さじ",
+      "romaji": "yookomete torinosoraneha hakarutomo / yoniafusakano sekihayurusaji"
+     },
+     {
+      "id": "63",
+      "name": "Master of the Left Capital Michimasa",
+      "shuka": 68,
+      "isshu": 63,
+      "ja": "今はただ 思ひたえなむ とばかりを　人づてならで いふよしもがな",
+      "romaji": "imahatada omohitaenamu tobakario / hitozutenarade ifuyoshimogana"
+     },
+     {
+      "id": "64",
+      "name": "Acting Middle Counselor Sadayori",
+      "shuka": 67,
+      "isshu": 64,
+      "ja": "朝ぼらけ 宇治の川霧 たえだえに　あらはれわたる 瀬々の網代木",
+      "romaji": "asaborake ujinokahagiri taedaeni / araharewataru sezenoajirogi"
+     },
+     {
+      "id": "65",
+      "name": "Sagami",
+      "shuka": 75,
+      "isshu": 65,
+      "ja": "恨みわび ほさぬ袖だに あるものを　恋に朽ちなむ 名こそをしけれ",
+      "romaji": "uramiwabi hosanusodedani arumonoo / kohinikuchinamu nakosooshikere"
+     },
+     {
+      "id": "66",
+      "name": "Senior High Priest Gyōson",
+      "shuka": 71,
+      "isshu": 66,
+      "ja": "もろともに あはれと思へ 山桜　花よりほかに 知る人もなし",
+      "romaji": "morotomoni aharetoomohe yamazakura / hanayorihokani shiruhitomonashi"
+     },
+     {
+      "id": "67",
+      "name": "Suō no Naishi",
+      "shuka": 69,
+      "isshu": 67,
+      "ja": "春の夜の 夢ばかりなる 手枕に　かひなく立たむ 名こそをしけれ",
+      "romaji": "harunoyono yumebakarinaru tamakurani / kahinakutatamu nakosooshikere"
+     },
+     {
+      "id": "68",
+      "name": "Retired Emperor Sanjō",
+      "shuka": 54,
+      "isshu": 68,
+      "ja": "心にも あらでうき世に ながらへば　恋しかるべき 夜半の月かな",
+      "romaji": "kokoronimo aradeukiyoni nagaraheba / kohishikarubeki yohanotsukikana"
+     },
+     {
+      "id": "69",
+      "name": "Priest Nōin",
+      "shuka": 57,
+      "isshu": 69,
+      "ja": "あらし吹く 三室の山の もみぢ葉は　竜田の川の 錦なりけり",
+      "romaji": "arashifuku mimuronoyamano momijibaha / tatsutanokahano nishikinarikeri"
+     },
+     {
+      "id": "70",
+      "name": "Priest Ryōzen",
+      "shuka": 58,
+      "isshu": 70,
+      "ja": "さびしさに 宿を立ち出でて ながむれば　いづくも同じ 秋の夕暮れ",
+      "romaji": "sabishisani yadootachiidete nagamureba / izukumoonaji akinoyufugure"
+     },
+     {
+      "id": "71",
+      "name": "Upper Counselor Tsunenobu",
+      "shuka": 70,
+      "isshu": 71,
+      "ja": "夕されば 門田の稲葉 おとづれて　葦のまろやに 秋風ぞ吹く",
+      "romaji": "yufusareba kadotanoinaba otozurete / ashinomaroyani akikazezofuku"
+     },
+     {
+      "id": "72",
+      "name": "Kii of Princess Yūshi's Household",
+      "shuka": 74,
+      "isshu": 72,
+      "ja": "音に聞く 高師の浜の あだ波は　かけじや袖の ぬれもこそすれ",
+      "romaji": "otonikiku takashinohamano adanamiha / kakejiyasodeno nuremokososure"
+     },
+     {
+      "id": "73",
+      "name": "Acting Middle Counselor Masafusa",
+      "shuka": 72,
+      "isshu": 73,
+      "ja": "高砂の 尾上の桜 咲きにけり　外山の霞 立たずもあらなむ",
+      "romaji": "takasagono onohenosakura sakinikeri / toyamanokasumi tatazumoaranamu"
+     },
+     {
+      "id": "74",
+      "name": "Minamoto no Toshiyori Ason",
+      "shuka": null,
+      "isshu": 74,
+      "ja": "うかりける 人を初瀬の 山おろしよ　はげしかれとは 祈らぬものを",
+      "romaji": "ukarikeru hitoohatsuseno yamaoroshiyo / hageshikaretoha inoranumonoo"
+     },
+     {
+      "id": "75",
+      "name": "Fujiwara no Mototoshi",
+      "shuka": 82,
+      "isshu": 75,
+      "ja": "契りおきし させもが露を 命にて　あはれ今年の 秋もいぬめり",
+      "romaji": "chigiriokishi sasemogatsuyuo inochinite / aharekotoshino akimoinumeri"
+     },
+     {
+      "id": "76",
+      "name": "Lay Novice of Hosshō-ji Temple, former Kampaku and Chancellor of the Realm",
+      "shuka": 79,
+      "isshu": 76,
+      "ja": "わたの原 漕ぎいでて見れば ひさかたの　雲ゐにまがふ 沖つ白波",
+      "romaji": "watanohara kogiidetemireba hisakatano / kumoinimagafu okitsushiranami"
+     },
+     {
+      "id": "77",
+      "name": "Retired Emperor Sutoku",
+      "shuka": 77,
+      "isshu": 77,
+      "ja": "瀬をはやみ 岩にせかるる 滝川の　われても末に 逢はむとぞ思ふ",
+      "romaji": "seohayami ihanisekaruru takigahano / waretemosueni ahamutozoomofu"
+     },
+     {
+      "id": "78",
+      "name": "Minamoto no Kanemasa",
+      "shuka": 81,
+      "isshu": 78,
+      "ja": "淡路島 かよふ千鳥の 鳴く声に　幾夜寝覚めぬ 須磨の関守",
+      "romaji": "ahajishima kayofuchidorino nakukoeni / ikuyonezamenu sumanosekimori"
+     },
+     {
+      "id": "79",
+      "name": "Master of the Left Capital Akisuke",
+      "shuka": 80,
+      "isshu": 79,
+      "ja": "秋風に たなびく雲の 絶え間より　もれいづる月の 影のさやけさ",
+      "romaji": "akikazeni tanabikukumono taemayori / moreizurutsukino kagenosayakesa"
+     },
+     {
+      "id": "80",
+      "name": "Horikawa, attendant to Empress Taiken",
+      "shuka": 78,
+      "isshu": 80,
+      "ja": "長からむ 心も知らず 黒髪の　乱れて今朝は ものをこそ思へ",
+      "romaji": "nagakaramu kokoromoshirazu kurokamino / midaretekesaha monookosoomohe"
+     },
+     {
+      "id": "81",
+      "name": "Later Tokudaiji Minister of the Left",
+      "shuka": 86,
+      "isshu": 81,
+      "ja": "ほととぎす 鳴きつる方を ながむれば　ただありあけの 月ぞ残れる",
+      "romaji": "hototogisu nakitsurukatao nagamureba / tadaariakeno tsukizonokoreru"
+     },
+     {
+      "id": "82",
+      "name": "Priest Dōin",
+      "shuka": 83,
+      "isshu": 82,
+      "ja": "思ひわび さても命は あるものを　憂きに堪へぬは 涙なりけり",
+      "romaji": "omohiwabi satemoinochiha arumonoo / ukinitahenuha namidanarikeri"
+     },
+     {
+      "id": "83",
+      "name": "Master of the Empress Dowager's Household Toshinari",
+      "shuka": 87,
+      "isshu": 83,
+      "ja": "世の中よ 道こそなけれ 思ひ入る　山の奥にも 鹿ぞ鳴くなる",
+      "romaji": "yononakayo michikosonakere omohiiru / yamanookunimo shikazonakunaru"
+     },
+     {
+      "id": "84",
+      "name": "Fujiwara no Kiyosuke Ason",
+      "shuka": 84,
+      "isshu": 84,
+      "ja": "ながらへば またこのごろや しのばれむ　憂しと見し世ぞ 今は恋しき",
+      "romaji": "nagaraheba matakonogoroya shinobaremu / ushitomishiyozo imahakohishiki"
+     },
+     {
+      "id": "85",
+      "name": "Priest Shun'e",
+      "shuka": 85,
+      "isshu": 85,
+      "ja": "夜もすがら もの思ふころは 明けやらで　閨のひまさへ つれなかりけり",
+      "romaji": "yomosugara monoomofukoroha akeyarade / neyanohimasahe tsurenakarikeri"
+     },
+     {
+      "id": "86",
+      "name": "Priest Saigyō",
+      "shuka": 88,
+      "isshu": 86,
+      "ja": "嘆けとて 月やはものを 思はする　かこち顔なる わが涙かな",
+      "romaji": "nageketote tsukiyahamonoo omohasuru / kakochigahonaru waganamidakana"
+     },
+     {
+      "id": "87",
+      "name": "Priest Jakuren",
+      "shuka": 93,
+      "isshu": 87,
+      "ja": "村雨の 露もまだひぬ 槇の葉に　霧立のぼる 秋の夕暮れ",
+      "romaji": "murasameno tsuyumomadahinu makinohani / kiritachinoboru akinoyufugure"
+     },
+     {
+      "id": "88",
+      "name": "Attendant to Empress Kōka",
+      "shuka": 89,
+      "isshu": 88,
+      "ja": "難波江の 葦のかりねの ひとよゆゑ　みをつくしてや 恋ひわたるべき",
+      "romaji": "nanihaeno ashinokarineno hitoyoyue / miotsukushiteya kohiwatarubeki"
+     },
+     {
+      "id": "89",
+      "name": "Princess Shikishi",
+      "shuka": 92,
+      "isshu": 89,
+      "ja": "玉の緒よ 絶えなば絶えね ながらへば　忍ぶることの 弱りもぞする",
+      "romaji": "tamanooyo taenabataene nagaraheba / shinoburukotono yowarimozosuru"
+     },
+     {
+      "id": "90",
+      "name": "Attendant to Empress Inpu",
+      "shuka": 91,
+      "isshu": 90,
+      "ja": "見せばやな 雄島のあまの 袖だにも　ぬれにぞぬれし 色はかはらず",
+      "romaji": "misebayana ojimanoamano sodedanimo / nurenizonureshi irohakaharazu"
+     },
+     {
+      "id": "91",
+      "name": "Gokyōgoku Regent and former Chancellor of the Realm",
+      "shuka": 95,
+      "isshu": 91,
+      "ja": "きりぎりす 鳴くや霜夜の さむしろに　衣かたしき ひとりかも寝む",
+      "romaji": "kirigirisu nakuyashimoyono samushironi / koromokatashiki hitorikamonemu"
+     },
+     {
+      "id": "92",
+      "name": "Sanuki, attendant to retired Emperor Nijō",
+      "shuka": 94,
+      "isshu": 92,
+      "ja": "わが袖は 潮干に見えぬ 沖の石の　人こそ知らね かわくまもなし",
+      "romaji": "wagasodeha shihohinimienu okinoishino / hitokososhirane kawakumamonashi"
+     },
+     {
+      "id": "93",
+      "name": "Minister of the Right of Kamakura",
+      "shuka": 98,
+      "isshu": 93,
+      "ja": "世の中は 常にもがもな 渚こぐ　あまの小舟の 綱手かなしも",
+      "romaji": "yononakaha tsunenimogamona nagisakogu / amanoobuneno tsunadekanashimo"
+     },
+     {
+      "id": "94",
+      "name": "Councillor Masatsune",
+      "shuka": 97,
+      "isshu": 94,
+      "ja": "み吉野の 山の秋風 さ夜ふけて　ふるさと寒く 衣うつなり",
+      "romaji": "miyoshinono yamanoakikaze sayofukete / furusatosamuku koromoutsunari"
+     },
+     {
+      "id": "95",
+      "name": "Former Senior High Priest Jien",
+      "shuka": 96,
+      "isshu": 95,
+      "ja": "おほけなく うき世の民に おほふかな　わが立つ杣に 墨染の袖",
+      "romaji": "ohokenaku ukiyonotamini ohofukana / wagatatsusomani sumizomenosode"
+     },
+     {
+      "id": "96",
+      "name": "Lay Novice and former Chancellor of the Realm",
+      "shuka": 101,
+      "isshu": 96,
+      "ja": "花さそふ 嵐の庭の 雪ならで　ふりゆくものは わが身なりけり",
+      "romaji": "hanasasofu arashinonihano yukinarade / furiyukumonoha wagaminarikeri"
+     },
+     {
+      "id": "97",
+      "name": "Acting Middle Counselor Sadaie",
+      "shuka": 100,
+      "isshu": 97,
+      "ja": "来ぬ人を まつほの浦の 夕なぎに　焼くや藻塩の 身もこがれつつ",
+      "romaji": "konuhitoo matsuhonourano yuunagini / yakuyamoshihono mimokogaretsutsu"
+     },
+     {
+      "id": "98",
+      "name": "Junior Second Rank Ietaka",
+      "shuka": null,
+      "isshu": 98,
+      "ja": "風そよぐ ならの小川の 夕暮れは　みそぎぞ夏の しるしなりける",
+      "romaji": "kazesoyogu naranoogahano yufugureha / misogizonatsuno shirushinarikeru"
+     },
+     {
+      "id": "99",
+      "name": "Retired Emperor Go-Toba",
+      "shuka": null,
+      "isshu": 99,
+      "ja": "人も惜し 人も恨めし あぢきなく　世を思ふゆゑに もの思ふ身は",
+      "romaji": "hitomooshi hitomourameshi ajikinaku / yooomofuyueeni monoomofumiha"
+     },
+     {
+      "id": "100",
+      "name": "Retired Emperor Juntoku",
+      "shuka": null,
+      "isshu": 100,
+      "ja": "ももしきや 古き軒端の しのぶにも　なほあまりある むかしなりけり",
+      "romaji": "momoshikiya furukinokibano shinobunimo / nahoamariaru mukashinarikeri"
+     },
+     {
+      "id": "sx1",
+      "name": "Empress of Retired Emperor Ichijō (Teishi)",
+      "shuka": 53,
+      "isshu": null,
+      "ja": "夜もすがら 契りしことを 忘れずは　こひむ涙の 色ぞゆかしき",
+      "romaji": "yomosugara chigirishikotoo wasurezuha / kohimunamidano irozoyukashiki"
+     },
+     {
+      "id": "sx2",
+      "name": "Acting Middle Counselor Kuninobu",
+      "shuka": 73,
+      "isshu": null,
+      "ja": "春日野の 下萌えわたる 草の上に　つれなく見ゆる 春の淡雪",
+      "romaji": "kasuganono shitamoewataru kusanouheni / tsurenakumiyuru harunoahayuki"
+     },
+     {
+      "id": "sx3",
+      "name": "Acting Middle Counselor Nagakata",
+      "shuka": 90,
+      "isshu": null,
+      "ja": "紀の国の 由良の岬に 拾ふてふ　たまさかにだに 逢ひ見てしがな",
+      "romaji": "kinokunino yuranomisakini hirofutefu / tamasakanidani ahimiteshigana"
+     },
+     {
+      "id": "sx4",
+      "name": "Minamoto no Toshiyori Ason",
+      "shuka": 76,
+      "isshu": null,
+      "ja": "山桜 さきそめしより 久方の　くもゐにみゆる 瀧の白糸",
+      "romaji": "yamazakura sakisomeshiyori hisakatano / kumoinimiyuru takinoshiraito"
+     },
+     {
+      "id": "sx5",
+      "name": "Senior Third Rank Ietaka",
+      "shuka": 99,
+      "isshu": null,
+      "ja": "風そよぐ ならの小川の 夕暮れは　みそぎぞ夏の しるしなりける",
+      "romaji": "kazesoyogu naranoogahano yufugureha / misogizonatsuno shirushinarikeru"
+     }
+    ];
+
+    const ROWS = 101;
+    const SP_QUERY = window.matchMedia('(max-width: 600px)');
+    // row height: PC = name + one line each of Japanese and romaji; SP = the poem lines may wrap
+    const DIMS = { pc: { ROW_H: 74 }, sp: { ROW_H: 118 } };
+    let D = SP_QUERY.matches ? DIMS.sp : DIMS.pc;
+    let currentMode = 'shuka';
+
+    const C = {
+      common: { bg: '#F5EBE0', stripe: '#c8b89a' },
+      onlyShuka: { bg: '#FAECE7', stripe: '#D85A30', badgeBg: '#F0997B', badgeText: '#4A1B0C' },
+      onlyIsshu: { bg: '#E6F1FB', stripe: '#378ADD', badgeBg: '#85B7EB', badgeText: '#042C53' },
+    };
+
+    function rowTop(n) { return (n - 1) * D.ROW_H; }
+    function placeCard(card, pos) { card.style.top = (rowTop(pos) + 3) + 'px'; }
+
+    function buildWidget() {
+      const list = document.getElementById('compare-list');
+      list.innerHTML = '';
+      list.style.height = (ROWS * D.ROW_H) + 'px';
+
+      for (let n = 1; n <= ROWS; n++) {
+        const num = document.createElement('div');
+        num.className = 'row-num' + (n % 2 === 0 ? ' even' : '');
+        num.style.top = rowTop(n) + 'px';
+        num.style.height = D.ROW_H + 'px';
+        num.textContent = n;
+        list.appendChild(num);
+      }
+
+      POETS.forEach(poet => {
+        const inShuka = poet.shuka !== null;
+        const inIsshu = poet.isshu !== null;
+        const onlyShuka = inShuka && !inIsshu;
+        const onlyIsshu = !inShuka && inIsshu;
+        const c = onlyShuka ? C.onlyShuka : onlyIsshu ? C.onlyIsshu : C.common;
+
+        const card = document.createElement('div');
+        card.className = 'poet-card';
+        card.id = 'card-' + poet.id;
+        card.style.background = c.bg;
+        card.style.height = (D.ROW_H - 6) + 'px';
+
+        // poems not in the current anthology stay (transparent) at their place in the other one
+        const pos = currentMode === 'shuka' ? poet.shuka : poet.isshu;
+        placeCard(card, pos !== null ? pos : (inShuka ? poet.shuka : poet.isshu));
+        if (pos === null) card.classList.add('is-hidden');
+
+        const stripe = document.createElement('div');
+        stripe.className = 'card-stripe';
+        stripe.style.background = c.stripe;
+        card.appendChild(stripe);
+
+        const nameEl = document.createElement('div');
+        nameEl.className = 'card-name';
+        nameEl.textContent = poet.name;
+        if (onlyShuka || onlyIsshu) {
+          const badge = document.createElement('span');
+          badge.className = 'card-badge';
+          badge.textContent = onlyShuka ? 'Shūka only' : 'Isshu only';
+          badge.style.background = c.badgeBg;
+          badge.style.color = c.badgeText;
+          nameEl.appendChild(badge);
+        }
+        card.appendChild(nameEl);
+
+        const ja = document.createElement('div');
+        ja.className = 'card-ja';
+        ja.lang = 'ja';
+        ja.textContent = poet.ja;
+        card.appendChild(ja);
+
+        const ro = document.createElement('div');
+        ro.className = 'card-romaji';
+        ro.textContent = poet.romaji;
+        card.appendChild(ro);
+
+        list.appendChild(card);
+      });
+    }
+
+    function setMode(mode) {
+      if (mode === currentMode) return;
+      currentMode = mode;
+      document.getElementById('btn-shuka').className = 'btn-mode' + (mode === 'shuka' ? ' active-shuka' : '');
+      document.getElementById('btn-isshu').className = 'btn-mode' + (mode === 'isshu' ? ' active-isshu' : '');
+      POETS.forEach(poet => {
+        const card = document.getElementById('card-' + poet.id);
+        if (!card) return;
+        const pos = mode === 'shuka' ? poet.shuka : poet.isshu;
+        if (pos !== null) {
+          placeCard(card, pos);
+          card.classList.remove('is-hidden');
+        } else {
+          card.classList.add('is-hidden');
+        }
+      });
+    }
+
+    // rebuild when switching between PC and SP widths
+    SP_QUERY.addEventListener('change', () => {
+      D = SP_QUERY.matches ? DIMS.sp : DIMS.pc;
+      buildWidget();
+    });
+
+    document.addEventListener('DOMContentLoaded', buildWidget);
+  </script>
+</body>
+
+</html>

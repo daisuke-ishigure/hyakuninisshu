@@ -26,7 +26,8 @@ HTML の形：
   bands:   [{ text, from, to }]  … from から to まで（同じ行に並ぶ子孫）の名前の下にまたがる札
   arrows:  [{ points: [[x, y], …], label: { text, x, y }, curve: [x, y], head: false }]  … 赤い矢印（最後の点が矢の先）
            curve を付けると、最初と最後の点を curve の点に引き寄せた曲線にする（「対立」など）。head: false で矢じりを付けない
-  groups:  [{ points: [[x, y], …], label: { text, x, y } }]  … 一族などをまとめて囲む枠（点線の多角形。「中関白家」など）。label は枠に添える文字
+  groups:  [{ points: [[x, y], …], label: { text, x, y }, color: 'blue' }]  … 一族などをまとめて囲む枠（点線の多角形。「中関白家」など）。label は枠に添える文字
+           color: 'blue' で枠の線・背景・文字を青系にする（赤系の枠と並べて区別するとき。天智系・天武系など）
   tooltips: 'fujiwara' … ツールチップの文面を js/fujiwara-keizu-tooltips.js から優先して探す（省略時は js/tenno-keizu-tooltips.js を優先。無い人物はもう一方から探す）
   tips:    { 名前: [見出し, 説明の行, …] }  … このページだけ文面を変えたいときのツールチップ（ふだんは js/keizu-tips.js に書いて共有する）
   lang:    'en' … 英語版のページ（N_en.html）用。名前・ツールチップは js/keizu-tips_en.js（KD_TIPS_EN）から n（または key）で引き、
@@ -310,10 +311,10 @@ HTML の形：
     // 一族などの囲み枠：線や名前より奥に描く
     var groups = '';
     (data.groups || []).forEach(function (gr) {
-      groups += tag('path', { d: pathD(gr.points) + 'Z', class: 'kd-group' });
+      groups += tag('path', { d: pathD(gr.points) + 'Z', class: 'kd-group' + (gr.color === 'blue' ? ' is-blue' : '') });
       gr.points.forEach(function (p) { maxX = Math.max(maxX, p[0]); maxY = Math.max(maxY, p[1]); });
       if (gr.label) {
-        groups += tag('text', { class: 'kd-group-label', x: gr.label.x, y: gr.label.y }, esc(gr.label.text));
+        groups += tag('text', { class: 'kd-group-label' + (gr.color === 'blue' ? ' is-blue' : ''), x: gr.label.x, y: gr.label.y }, esc(gr.label.text));
         maxX = Math.max(maxX, gr.label.x + gr.label.text.length * 12);
       }
     });

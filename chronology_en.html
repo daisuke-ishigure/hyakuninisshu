@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="Keywords" content="Hyakunin Isshu, poets, lifespans, timeline, chronology">
+  <meta name="description" content="A timeline of the lifespans of the poets of the Hyakunin Isshu, with periods of Japanese history. The poems of the Hyakunin Isshu are arranged roughly in order of time.">
+  <!-- OGP -->
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Timeline of the Hyakunin Isshu Poets | Shigure's Hyakunin Isshu">
+  <meta property="og:description" content="A timeline of the lifespans of the poets of the Hyakunin Isshu, arranged roughly in order of time. Men and women poets are shown in different colors; women make up about a fifth of the poets, but there were many of them in the age of Murasaki Shikibu.">
+  <meta property="og:image" content="https://hyakuninisshu.com/img/thumb_chronology.webp">
+  <meta property="og:url" content="https://hyakuninisshu.com/chronology_en.html">
+  <meta property="og:site_name" content="Shigure's Hyakunin Isshu">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="stylesheet" href="../css/style.css?20261010-02">
+  <link rel="stylesheet" href="../css/loading.css?20240228">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261016-01">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@500&family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap"
+    rel="stylesheet">
+
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+
+  <!-- touch icons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <title>Timeline of the Hyakunin Isshu Poets | Shigure's Hyakunin Isshu</title>
+  <link rel="canonical" href="https://hyakuninisshu.com/chronology_en.html">
+  <link rel="alternate" hreflang="ja" href="https://hyakuninisshu.com/chronology.html">
+  <link rel="alternate" hreflang="en" href="https://hyakuninisshu.com/chronology_en.html">
+  <link rel="alternate" hreflang="x-default" href="https://hyakuninisshu.com/chronology.html">
+
+
+  <!-- Tooltip shown when a poet is clicked (same text and look as the family trees; English text from the *_en.js files) -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/keizu-tips.js?20261016-01"></script>
+  <script src="../js/tenno-keizu-tooltips.js?20261016-01"></script>
+  <script src="../js/fujiwara-keizu-tooltips.js?20261010-01"></script>
+  <script src="../js/keizu-tips_en.js?20261016-01"></script>
+  <script src="../js/tenno-keizu_en.js?20261016-01"></script>
+  <script src="../js/fujiwara-keizu_en.js?20261009-01"></script>
+  <script src="../js/chronology-tips_en.js?20261016-01"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', { 'packages': ['controls', 'timeline'] });
+    google.charts.setOnLoadCallback(onDraw);
+
+    function onDraw() {
+      var dataTable = new google.visualization.DataTable();
+      // 列の追加
+      dataTable.addColumn({ type: 'string', id: 'Name' });
+      dataTable.addColumn({ type: 'string', id: 'Label' });
+      dataTable.addColumn({ type: 'string', role: 'tooltip' });
+      dataTable.addColumn({ type: 'date', id: 'Start' });
+      dataTable.addColumn({ type: 'date', id: 'End' });
+
+      // データの追加
+      dataTable.addRows([
+        ['天智天皇', '(1) Emperor Tenji', 'Emperor Tenji<br>(626–672)', new Date(626, 0), new Date(672, 11)],
+        ['持統天皇', '(2) Empress Jitō', 'Empress Jitō<br>(645–703)', new Date(645, 0), new Date(703, 11)],
+        ['柿本人麻呂', '(3) Kakinomoto no Hitomaro', 'Kakinomoto no Hitomaro<br>(Unknown–c. 708)<br>Thought to have been in court service by 680', new Date(680, 0), new Date(708, 11)],
+        ['山部赤人', '(4) Yamabe no Akahito', 'Yamabe no Akahito<br>(Unknown–736?)<br>Poems from the Jinki and Tenpyō eras survive. His birth year is unknown, so the bar starts 20 years before his death', new Date(716, 0), new Date(736, 11)],
+        ['猿丸大夫', '(5) Sarumaru Dayū (theory: reign of Empress Genmei)', 'Sarumaru Dayū<br>(Unknown)<br>Also said to have lived in the reign of Empress Genmei (707–715)', new Date(707, 0), new Date(715, 11)],
+        ['阿倍仲麻呂', '(7) Abe no Nakamaro', 'Abe no Nakamaro<br>(698–770)', new Date(698, 0), new Date(770, 11)],
+        ['阿倍仲麻呂', 'Abe no Nakamaro goes to Tang China', 'In 717 he went to study in Chang\'an, the capital of Tang China', new Date(717, 0), new Date(717, 11)],
+        ['大伴家持', '(6) Middle Counselor Yakamochi', 'Middle Counselor Yakamochi<br>(c. 718–785)', new Date(718, 0), new Date(785, 11)],
+        ['喜撰法師', '(8) Priest Kisen (Rokkasen era)', 'Priest Kisen<br>(Unknown)<br>An early Heian poet and one of the Six Poetic Sages (Rokkasen); the late 9th century is called the "Rokkasen era"', new Date(851, 0), new Date(900, 11)],
+        ['小野小町', '(9) Ono no Komachi', 'Ono no Komachi<br>(Unknown)<br>Said to have been active around 850–884, or around 834–868. The bar shows the years when she was active under either view (as that is under 20 years, it starts 20 years before 868)', new Date(848, 0), new Date(868, 11)],
+        ['蝉丸', '(10) Semimaru', 'Semimaru<br>(Unknown; one theory says he died in 946)<br>The earliest record of him is in the Gosen Wakashū (951). The bar starts 20 years before 946, following the theory that he died that year', new Date(926, 0), new Date(946, 11)],
+        ['小野篁', '(11) Councillor Takamura', 'Councillor Takamura<br>(802–853)', new Date(802, 0), new Date(853, 11)],
+        ['小野篁', 'Refuses to board the envoy ship', 'Councillor Takamura: refused to board the ship of the mission to Tang China', new Date(838, 0), new Date(838, 11)],
+        ['遍昭', '(12) High Priest Henjō', 'High Priest Henjō<br>(816–890)', new Date(816, 0), new Date(890, 11)],
+        ['陽成院', '(13) Retired Emperor Yōzei', 'Retired Emperor Yōzei<br>(869–949)', new Date(869, 0), new Date(949, 11)],
+        ['源融', '(14) Minister of the Left of Kawara', 'Minister of the Left of Kawara<br>(822–895)', new Date(822, 0), new Date(895, 11)],
+        ['光孝天皇', '(15) Emperor Kōkō', 'Emperor Kōkō<br>(830–887)', new Date(830, 0), new Date(887, 11)],
+        ['在原行平', '(16) Middle Counselor Yukihira', 'Middle Counselor Yukihira<br>(818–893)', new Date(818, 0), new Date(893, 11)],
+        ['在原業平', '(17) Ariwara no Narihira Ason', 'Ariwara no Narihira Ason<br>(825–880)', new Date(825, 0), new Date(880, 11)],
+        ['藤原敏行', '(18) Fujiwara no Toshiyuki Ason', 'Fujiwara no Toshiyuki Ason<br>(Unknown–901)<br>Junior Secretary (shōnaiki) in 866. The bar starts in 866, the year of the record', new Date(866, 0), new Date(901, 11)],
+        ['伊勢', '(19) Ise', 'Ise<br>(c. 872–c. 938)', new Date(872, 0), new Date(938, 11)],
+        ['素性', '(21) Priest Sosei', 'Priest Sosei<br>(Unknown)<br>Recorded as composing a poem before Emperor Daigo in 909. The bar starts 20 years before that', new Date(889, 0), new Date(909, 11)],
+        ['文屋康秀', '(22) Fun\'ya no Yasuhide', 'Fun\'ya no Yasuhide<br>(Unknown–c. 885)<br>Assistant Judge (chūhanji) in 860. The bar starts in 860, the year of the record', new Date(860, 0), new Date(885, 11)],
+        ['大江千里', '(23) Ōe no Chisato', 'Ōe no Chisato<br>(c. 850–c. 905)', new Date(850, 0), new Date(905, 11)],
+        ['菅原道真', '(24) Kanke', 'Kanke<br>(845–903)', new Date(845, 0), new Date(903, 11)],
+        ['元良親王', '(20) Prince Motoyoshi', 'Prince Motoyoshi<br>(890–943)', new Date(890, 0), new Date(943, 11)],
+        ['朱雀天皇', '61st Emperor Suzaku (reign)', 'Reign of Emperor Suzaku:<br>October 16, 930 – May 23, 946', new Date(930, 0), new Date(946, 11)],
+        ['藤原忠平', '(26) Teishin-kō', 'Teishin-kō<br>(藤原忠平)', new Date(880, 0), new Date(949, 11)],
+        ['藤原兼輔', '(27) Middle Counselor Kanesuke', 'Middle Counselor Kanesuke<br>(877–933)', new Date(877, 0), new Date(933, 11)],
+        ['源宗于', '(28) Minamoto no Muneyuki Ason', 'Minamoto no Muneyuki Ason<br>(Unknown–940)<br>Given the family name Minamoto in 894. The bar starts in 894, the year of the record', new Date(894, 0), new Date(940, 11)],
+        ['凡河内躬恒', '(29) Ōshikōchi no Mitsune', 'Ōshikōchi no Mitsune<br>(c. 859–c. 925)', new Date(859, 0), new Date(925, 11)],
+        ['壬生忠岑', '(30) Mibu no Tadamine', 'Mibu no Tadamine<br>(c. 860–c. 920)<br>Some think he died after 930', new Date(860, 0), new Date(920, 11)],
+        ['坂上是則', '(31) Sakanoue no Korenori', 'Sakanoue no Korenori<br>(Unknown–930)<br>Acting Junior Secretary of Yamato in 908. The bar starts in 908, the year of the record', new Date(908, 0), new Date(930, 11)],
+        ['春道列樹', '(32) Harumichi no Tsuraki', 'Harumichi no Tsuraki<br>(Unknown–920)<br>A literature student (monjōshō) in 910. The bar starts 20 years before his death', new Date(900, 0), new Date(920, 11)],
+        ['紀友則', '(33) Ki no Tomonori', 'Ki no Tomonori<br>(c. 845–907)', new Date(845, 0), new Date(907, 11)],
+        ['藤原興風', '(34) Fujiwara no Okikaze', 'Fujiwara no Okikaze<br>(Unknown)<br>His official posts are recorded from 900 to 914. The bar starts 20 years before the last record', new Date(894, 0), new Date(914, 11)],
+        ['紀貫之', '(35) Ki no Tsurayuki', 'Ki no Tsurayuki<br>(c. 868–945)', new Date(868, 0), new Date(945, 11)],
+        ['紀貫之', 'Tosa Nikki', 'Ki no Tsurayuki:<br>The Tosa Nikki was written around 935', new Date(935, 0), new Date(935, 11)],
+        ['藤原定方', '(25) Minister of the Right of Sanjō', 'Minister of the Right of Sanjō<br>(873–932)', new Date(873, 0), new Date(932, 11)],
+        ['清原深養父', '(36) Kiyohara no Fukayabu', 'Kiyohara no Fukayabu<br>(Unknown)<br>Shows 908–930, the years for which his official posts are recorded', new Date(908, 0), new Date(930, 11)],
+        ['文屋朝康', '(37) Fun\'ya no Asayasu', 'Fun\'ya no Asayasu<br>(Unknown)<br>His official posts are recorded from 892 to 902. The bar starts 20 years before the last record', new Date(882, 0), new Date(902, 11)],
+        ['右近', '(38) Ukon', 'Ukon<br>(Unknown)<br>Took part in poetry contests from 960 to 966. The bar starts 20 years before the last record', new Date(946, 0), new Date(966, 11)],
+        ['源等', '(39) Councillor Hitoshi', 'Councillor Hitoshi<br>(880–951)', new Date(880, 0), new Date(951, 11)],
+        ['平兼盛', '(40) Taira no Kanemori', 'Taira no Kanemori<br>(Unknown–991)<br>Given Junior Fifth Rank, Lower Grade in 946. The bar starts in 946, the year of the record', new Date(946, 0), new Date(991, 11)],
+        ['壬生忠見', '(41) Mibu no Tadami', 'Mibu no Tadami<br>(Unknown)<br>Recorded at poetry contests and elsewhere from 953 to 960. The bar starts 20 years before the last record', new Date(940, 0), new Date(960, 11)],
+        ['清原元輔', '(42) Kiyohara no Motosuke', 'Kiyohara no Motosuke<br>(908–990)', new Date(908, 0), new Date(990, 11)],
+        ['藤原敦忠', '(43) Acting Middle Counselor Atsutada', 'Acting Middle Counselor Atsutada<br>(906–943)', new Date(906, 0), new Date(943, 11)],
+        ['藤原朝忠', '(44) Middle Counselor Asatada', 'Middle Counselor Asatada<br>(910–967)', new Date(910, 0), new Date(967, 11)],
+        ['藤原伊尹', '(45) Kentoku-kō', 'Kentoku-kō<br>(924–972)', new Date(924, 0), new Date(972, 11)],
+        ['曽禰好忠', '(46) Sone no Yoshitada', 'Sone no Yoshitada<br>(Unknown)<br>Recorded as taking part in Retired Emperor En\'yū\'s outing on the Day of the Rat in 985. His dates are unknown, so the bar starts 20 years before that', new Date(965, 0), new Date(985, 11)],
+        ['恵慶', '(47) Priest Egyō', 'Priest Egyō<br>(Unknown)<br>Active at poetry contests and elsewhere from around 962. Accompanied Retired Emperor Kazan on his pilgrimage to Kumano in 986', new Date(962, 0), new Date(986, 11)],
+        ['源重之', '(48) Minamoto no Shigeyuki', 'Minamoto no Shigeyuki<br>(Unknown–1000)<br>Said to have died in his sixties', new Date(940, 0), new Date(1000, 11)],
+        ['大中臣能宣', '(49) Ōnakatomi no Yoshinobu Ason', 'Ōnakatomi no Yoshinobu Ason<br>(921–991)', new Date(921, 0), new Date(991, 11)],
+        ['村上天皇', 'Gosen Wakashū compilation begins', 'In 951, by order of Emperor Murakami, an office for compiling waka was set up and work on the Gosen Wakashū began (it was completed in the 950s)', new Date(951, 0), new Date(951, 11)],
+        ['藤原義孝', '(50) Fujiwara no Yoshitaka', 'Fujiwara no Yoshitaka<br>(954–974)', new Date(954, 0), new Date(974, 11)],
+        ['藤原実方', '(51) Fujiwara no Sanekata Ason', 'Fujiwara no Sanekata Ason<br>(Unknown–999)<br>Thought to have been born in the 960s and to have died at about 40', new Date(960, 0), new Date(999, 11)],
+        ['藤原道信', '(52) Fujiwara no Michinobu Ason', 'Fujiwara no Michinobu Ason<br>(972–994)', new Date(972, 0), new Date(994, 11)],
+        ['花山天皇', 'Shūi Wakashū completed', 'In 1007, the Shūi Wakashū, ordered by Emperor Kazan, was completed', new Date(1007, 0), new Date(1007, 11)],
+        ['藤原道綱母', '(53) Mother of the Right Captain Michitsuna', 'Mother of the Right Captain Michitsuna<br>(c. 936–995)', new Date(936, 0), new Date(995, 11)],
+        ['藤原道綱', 'Fujiwara no Michitsuna', 'Fujiwara no Michitsuna<br>(955–1020)', new Date(955, 0), new Date(1020, 11)],
+        ['儀同三司母', '(54) Mother of the Honorary Grand Minister', 'Mother of the Honorary Grand Minister<br>(Unknown–996)<br>Thought to have died in her forties', new Date(956, 0), new Date(996, 11)],
+        ['藤原公任', '(55) Upper Counselor Kintō', 'Upper Counselor Kintō<br>(966–1041)', new Date(966, 0), new Date(1041, 11)],
+        ['和泉式部', '(56) Izumi Shikibu', 'Izumi Shikibu<br>(c. 976–unknown)<br>Her last poem that can be dated is from 1027', new Date(976, 0), new Date(1027, 11)],
+        ['紫式部', '(57) Murasaki Shikibu', 'Murasaki Shikibu<br>(c. 970–c. 1014)', new Date(970, 0), new Date(1014, 11)],
+        ['紫式部', 'The Tale of Genji is copied and bound', 'In 1008, The Diary of Murasaki Shikibu records the making of a bound copy of what seems to be The Tale of Genji (when it was completed is unknown)', new Date(1008, 0), new Date(1008, 11)],
+        ['小式部内侍', '(60) Koshikibu no Naishi', 'Koshikibu no Naishi<br>(Unknown–1025)<br>Said to have died at about 28', new Date(997, 0), new Date(1025, 11)],
+        ['伊勢大輔', '(61) Ise no Taifu', 'Ise no Taifu<br>(c. 989–unknown)<br>Known to have been alive in 1060', new Date(989, 0), new Date(1060, 11)],
+        ['清少納言', '(62) Sei Shōnagon', 'Sei Shōnagon<br>(c. 966–c. 1025)', new Date(966, 0), new Date(1025, 11)],
+        ['清少納言', 'The Pillow Book nearly completed', 'The Pillow Book was nearly completed in 1001', new Date(1001, 0), new Date(1001, 11)],
+        ['藤原賢子', '(58) Daini no Sanmi', 'Daini no Sanmi<br>(c. 999–c. 1082)', new Date(999, 0), new Date(1082, 11)],
+        ['赤染衛門', '(59) Akazome Emon', 'Akazome Emon<br>(c. 956–c. 1041)', new Date(956, 0), new Date(1041, 11)],
+        ['藤原道雅', '(63) Master of the Left Capital Michimasa', 'Master of the Left Capital Michimasa<br>(992–1054)', new Date(992, 0), new Date(1054, 11)],
+        ['藤原定頼', '(64) Acting Middle Counselor Sadayori', 'Acting Middle Counselor Sadayori<br>(995–1045)', new Date(995, 0), new Date(1045, 11)],
+        ['相模', '(65) Sagami', 'Sagami<br>(c. 998–after 1061)', new Date(998, 0), new Date(1061, 11)],
+        ['周防内侍', '(67) Suō no Naishi', 'Suō no Naishi<br>(c. 1037–c. 1111)<br>She seems to have died after 1109, by 1111', new Date(1037, 0), new Date(1111, 11)],
+        ['三条天皇', '(68) Retired Emperor Sanjō', 'Retired Emperor Sanjō<br>(976–1017)', new Date(976, 0), new Date(1017, 11)],
+        ['行尊', '(66) Senior High Priest Gyōson', 'Senior High Priest Gyōson<br>(1055–1135)', new Date(1055, 0), new Date(1135, 11)],
+        ['能因', '(69) Priest Nōin', 'Priest Nōin<br>(988–1050 or 1058)', new Date(988, 0), new Date(1050, 11)],
+        ['良暹', '(70) Priest Ryōzen', 'Priest Ryōzen<br>(Unknown)<br>Took part in a poetry contest in 1038. One theory says he died at about 68 in the Kōhei era (1058–1065)', new Date(997, 0), new Date(1058, 11)],
+        ['源経信', '(71) Upper Counselor Tsunenobu', 'Upper Counselor Tsunenobu<br>(1016–1097)', new Date(1016, 0), new Date(1097, 11)],
+        ['祐子内親王家紀伊', '(72) Kii of Princess Yūshi\'s Household', 'Kii of Princess Yūshi\'s Household<br>(Unknown)<br>Recorded at poetry contests and elsewhere from 1061 to 1113', new Date(1061, 0), new Date(1113, 11)],
+        ['大江匡房', '(73) Acting Middle Counselor Masafusa', 'Acting Middle Counselor Masafusa<br>(1041–1111)', new Date(1041, 0), new Date(1111, 11)],
+        ['源俊頼', '(74) Minamoto no Toshiyori Ason', 'Minamoto no Toshiyori Ason<br>(1055–1129)', new Date(1055, 0), new Date(1129, 11)],
+        ['藤原基俊', '(75) Fujiwara no Mototoshi', 'Fujiwara no Mototoshi<br>(1060–1142)', new Date(1060, 0), new Date(1142, 11)],
+        ['藤原忠通', '(76) Lay Novice of Hosshō-ji Temple, former Kampaku and Chancellor of the Realm', 'Lay Novice of Hosshō-ji Temple, former Kampaku and Chancellor of the Realm<br>(1097–1164)', new Date(1097, 0), new Date(1164, 11)],
+        ['崇徳天皇', '(77) Retired Emperor Sutoku', 'Retired Emperor Sutoku<br>(1119–1164)', new Date(1119, 0), new Date(1164, 11)],
+        ['源兼昌', '(78) Minamoto no Kanemasa', 'Minamoto no Kanemasa<br>(Unknown)<br>Took part in a poetry contest in 1100 and seems to have been alive around 1128', new Date(1100, 0), new Date(1128, 11)],
+        ['藤原顕輔', '(79) Master of the Left Capital Akisuke', 'Master of the Left Capital Akisuke<br>(1090–1155)', new Date(1090, 0), new Date(1155, 11)],
+        ['待賢門院堀河', '(80) Horikawa, attendant to Empress Taiken', 'Horikawa, attendant to Empress Taiken<br>(Unknown)<br>Recorded at poetry contests and in hundred-poem sequences from 1126 to 1150', new Date(1126, 0), new Date(1150, 11)],
+        ['藤原実定', '(81) Later Tokudaiji Minister of the Left', 'Later Tokudaiji Minister of the Left<br>(1139–1192)', new Date(1139, 0), new Date(1192, 11)],
+        ['道因', '(82) Priest Dōin', 'Priest Dōin<br>(1090–c. 1182)<br>His lay name was Fujiwara no Atsuyori', new Date(1090, 0), new Date(1182, 11)],
+        ['藤原俊成', '(83) Master of the Empress Dowager\'s Household Toshinari', 'Master of the Empress Dowager\'s Household Toshinari<br>(1114–1204)', new Date(1114, 0), new Date(1204, 11)],
+        ['藤原清輔', '(84) Fujiwara no Kiyosuke Ason', 'Fujiwara no Kiyosuke Ason<br>(1104–1177)', new Date(1104, 0), new Date(1177, 11)],
+        ['俊恵', '(85) Priest Shun\'e', 'Priest Shun\'e<br>(1113–c. 1191)', new Date(1113, 0), new Date(1191, 11)],
+        ['西行', '(86) Priest Saigyō', 'Priest Saigyō<br>(1118–1190)', new Date(1118, 0), new Date(1190, 11)],
+        ['寂蓮', '(87) Priest Jakuren', 'Priest Jakuren<br>(1139–1202)', new Date(1139, 0), new Date(1202, 11)],
+        ['皇嘉門院別当', '(88) Attendant to Empress Kōka', 'Attendant to Empress Kōka<br>(Unknown)<br>Took part in a poetry contest in 1175 and had become a nun by 1182. The bar starts 20 years before the last record', new Date(1162, 0), new Date(1182, 11)],
+        ['式子内親王', '(89) Princess Shikishi', 'Princess Shikishi<br>(1149–1201)', new Date(1149, 0), new Date(1201, 11)],
+        ['殷富門院大輔', '(90) Attendant to Empress Inpu', 'Attendant to Empress Inpu<br>(c. 1130–c. 1200)', new Date(1130, 0), new Date(1200, 11)],
+        ['九条良経', '(91) Gokyōgoku Regent and former Chancellor of the Realm', 'Gokyōgoku Regent and former Chancellor of the Realm<br>(1169–1206)', new Date(1169, 0), new Date(1206, 11)],
+        ['二条院讃岐', '(92) Sanuki, attendant to retired Emperor Nijō', 'Sanuki, attendant to retired Emperor Nijō<br>(c. 1141–c. 1217)<br>Active until the palace poetry contest of 1216', new Date(1141, 0), new Date(1217, 11)],
+        ['源実朝', '(93) Minister of the Right of Kamakura', 'Minister of the Right of Kamakura<br>(1192–1219)', new Date(1192, 0), new Date(1219, 11)],
+        ['藤原雅経', '(94) Councillor Masatsune', 'Councillor Masatsune<br>(1170–1221)', new Date(1170, 0), new Date(1221, 11)],
+        ['慈円', '(95) Former Senior High Priest Jien', 'Former Senior High Priest Jien<br>(1155–1225)', new Date(1155, 0), new Date(1225, 11)],
+        ['西園寺公経', '(96) Lay Novice and former Chancellor of the Realm', 'Lay Novice and former Chancellor of the Realm<br>(1171–1244)', new Date(1171, 0), new Date(1244, 11)],
+        ['藤原定家', '(97) Acting Middle Counselor Sadaie', 'Acting Middle Counselor Sadaie<br>(1162–1241)', new Date(1162, 0), new Date(1241, 11)],
+        ['藤原家隆', '(98) Junior Second Rank Ietaka', 'Junior Second Rank Ietaka<br>(1158–1237)', new Date(1158, 0), new Date(1237, 11)],
+        ['後鳥羽天皇', '(99) Retired Emperor Go-Toba', 'Retired Emperor Go-Toba<br>(1180–1239)', new Date(1180, 0), new Date(1239, 11)],
+        ['順徳院', '(100) Retired Emperor Juntoku', 'Retired Emperor Juntoku<br>(1197–1242)', new Date(1197, 0), new Date(1242, 11)],
+      ]);
+
+
+
+      // 表示フィルタ条件を決めるコントロール作成
+      // 一番上の行：時代区分。誕生年のスライダーで絞り込んでも消さない
+      // 平安時代の前期・中期・後期は、おおよその区切り（900年頃・1050年頃）で分ける
+      // 飛鳥時代の始まりと鎌倉時代の終わりは、年表の左右に空白が広がらないよう、歌人のいる範囲（620～1250年）で切る（表記は本来の年）
+      var ERAS = [
+        ['Asuka', '592–710', 620, 710],
+        ['Nara', '710–794', 710, 794],
+        ['Early Heian', '794–c. 900', 794, 900],
+        ['Mid-Heian', 'c. 900–c. 1050', 900, 1050],
+        ['Late Heian', 'c. 1050–c. 1185', 1050, 1185],
+        ['Kamakura', '1185/1192–1333', 1185, 1250]
+      ];
+      dataTable.insertRows(0, ERAS.map(function (e) {
+        return ['Periods', e[0], e[0] + ':<br>' + e[1], new Date(e[2], 0), new Date(e[3], 0)];
+      }));
+      var eraRows = ERAS.length;
+
+      // 誕生年（整数）の列を足し、スライダーはこの列で絞り込む（時代区分の行は空のまま）。
+      // 日付の列（Start）で絞り込むと、古い日付の時差の扱いで下限がわずかにずれて、最初の歌人（天智天皇・626年）が表示されなくなるため
+      var yearCol = dataTable.addColumn({ type: 'number', id: 'BirthYear' });
+      for (var i = eraRows; i < dataTable.getNumberOfRows(); i++) {
+        dataTable.setValue(i, yearCol, dataTable.getValue(i, 3).getFullYear());
+      }
+
+      // バーの色：男性の歌人は青（#427aa1）、女性の歌人は赤（#b82343）、時代区分の行は濃いグレー（#333333）
+      // 女性歌人は歌番号で判定（js/my-chart-women.js の10首ごとの人数と同じ21人）。歌番号の無い行（出来事など）は、同じ名前の歌人の色にする
+      var FEMALE = [2, 9, 19, 38, 53, 54, 56, 57, 58, 59, 60, 61, 62, 65, 67, 72, 80, 88, 89, 90, 92];
+      var numByName = {};
+      for (var i = eraRows; i < dataTable.getNumberOfRows(); i++) {
+        var m = String(dataTable.getValue(i, 1)).match(/^\((\d+)\)/);
+        if (m && !numByName[dataTable.getValue(i, 0)]) numByName[dataTable.getValue(i, 0)] = +m[1];
+      }
+      var styleCol = dataTable.addColumn({ type: 'string', role: 'style' });
+      for (var i = 0; i < dataTable.getNumberOfRows(); i++) {
+        if (i < eraRows) {
+          dataTable.setValue(i, styleCol, '#333333');
+          continue;
+        }
+        var female = FEMALE.indexOf(numByName[dataTable.getValue(i, 0)]) >= 0;
+        dataTable.setValue(i, styleCol, female ? '#b82343' : '#427aa1');
+      }
+
+      var projectRange = new google.visualization.ControlWrapper({
+        controlType: 'NumberRangeFilter',
+        containerId: 'project_range',
+        dataTable: dataTable,
+        options: {
+          filterColumnIndex: yearCol,         // 誕生年でフィルタ
+          ui: {
+            showRangeValues: true,          // 選択範囲のラベル表示
+            format: { pattern: '0' },       // 表示フォーマット（年）
+            unitIncrement: 1,
+            blockIncrement: 10
+          }
+        }
+      });
+
+      // タイムラインチャート作成
+      var projectTimechart = new google.visualization.ChartWrapper({
+        'chartType': 'Timeline',
+        'containerId': 'project_timechart',
+        dataTable: dataTable,
+        options: {
+        timeline: { showRowLabels: false }, // 一番左の列を非表示
+        hAxis: { format: 'y' },
+        tooltip: { isHtml: true },
+      }
+      });
+
+      // スライダーの範囲に誕生年が入る歌人と、時代区分の行だけを年表に渡して描く
+      // （Dashboard で結びつけると、時代区分の行まで絞り込まれてしまうため、自分で絞り込む）
+      function drawChart() {
+        var st = projectRange.getState() || {};
+        var rows = [];
+        for (var r = 0; r < dataTable.getNumberOfRows(); r++) {
+          var y = dataTable.getValue(r, yearCol);
+          if (r < eraRows || ((st.lowValue == null || y >= st.lowValue) && (st.highValue == null || y <= st.highValue))) rows.push(r);
+        }
+        projectTimechart.setView({ columns: [0, 1, 2, styleCol, 3, 4], rows: rows }); // 色の列は Start の前に置く。誕生年の列は年表には渡さない
+        projectTimechart.draw();
+      }
+      // 縦の区切り線：年表の目盛り（100年ごと）の線を消し、時代区分の境目（ERAS の各時代の始まり）に線を引く。
+      // Timeline には線の位置を指定するオプションが無いので、描き終わった SVG を直接書き換える
+      function drawEraLines() {
+        var svgs = document.getElementById('project_timechart').querySelectorAll('svg');
+        if (svgs.length < 2) return;
+        // 目盛りの文字（700・800…）の位置から、年 → x 座標の対応を求める
+        var ticks = Array.prototype.filter.call(svgs[0].querySelectorAll('text'), function (t) { return /^\d+$/.test(t.textContent); })
+          .map(function (t) { return { year: +t.textContent, x: +t.getAttribute('x') }; });
+        if (ticks.length < 2) return;
+        var a = ticks[0];
+        var b = ticks[ticks.length - 1];
+        var perYear = (b.x - a.x) / (b.year - a.year);
+        var xOf = function (year) { return a.x + (year - a.year) * perYear; };
+
+        // 下の目盛りの年（700・800…）を、時代区分の境目の年（710・794…）に置き換える。文字の高さ・書式はもとの目盛りに合わせる
+        var tickEls = Array.prototype.filter.call(svgs[0].querySelectorAll('text'), function (t) { return /^\d+$/.test(t.textContent); });
+        var sample = tickEls[0];
+        tickEls.forEach(function (t) { t.style.display = 'none'; });
+        ERAS.slice(1).forEach(function (e) {
+          var label = sample.cloneNode(false);
+          label.style.display = '';
+          label.setAttribute('x', xOf(e[2]));
+          label.textContent = e[2];
+          sample.parentNode.appendChild(label);
+        });
+        var rowsSvg = svgs[1];
+        var grid = rowsSvg.children[1]; // 行の背景・罫線のグループ（バーより下に描かれる）
+        if (!grid) return;
+        // もとの縦の目盛り線（始点と終点の x が同じ線）を消す
+        Array.prototype.forEach.call(grid.querySelectorAll('path'), function (p) {
+          var m = (p.getAttribute('d') || '').match(/^M([\d.]+),[\d.]+L([\d.]+),[\d.]+$/);
+          if (m && m[1] === m[2]) p.style.display = 'none';
+        });
+        var height = rowsSvg.getAttribute('height');
+        ERAS.slice(1).forEach(function (e) {
+          var x = xOf(e[2]);
+          var line = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+          line.setAttribute('d', 'M' + x + ',0L' + x + ',' + height);
+          line.setAttribute('stroke', '#cccccc'); // 薄いグレー（行の背景の白・グレーのどちらの上でも見える濃さ）
+          line.setAttribute('stroke-width', '1');
+          line.setAttribute('fill', 'none');
+          grid.appendChild(line);
+        });
+
+        // 時代区分の帯どうしの境目に白い線を引く（帯が同じ色なので、隣の時代とつながって見えないように）。バーより上に描く
+        var bars = rowsSvg.children[3];
+        var eraBar = bars && Array.prototype.filter.call(bars.querySelectorAll('rect'), function (r) { return r.getAttribute('fill') === '#333333'; })[0];
+        if (eraBar) {
+          var y1 = +eraBar.getAttribute('y');
+          var y2 = y1 + +eraBar.getAttribute('height');
+          ERAS.slice(1).forEach(function (e) {
+            var x = xOf(e[2]);
+            var sep = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            sep.setAttribute('d', 'M' + x + ',' + y1 + 'L' + x + ',' + y2);
+            sep.setAttribute('stroke', '#ffffff');
+            sep.setAttribute('stroke-width', '1');
+            sep.setAttribute('fill', 'none');
+            bars.appendChild(sep);
+          });
+
+          // 時代区分の行を、スクロールしても年表の一番上に残す。
+          // 行の部分だけがスクロールするので、そのスクロールする箱の外側（親の箱）の上端に、この行の複製を重ねる。
+          // スクロールしていないときは、元の行にぴったり重なる
+          var scroller = rowsSvg.parentNode;
+          var holder = scroller && scroller.parentNode;
+          var rowH = y1 + +eraBar.getAttribute('height') + y1; // 行の高さ（帯の上下に同じ余白）
+          var line = grid.querySelector('path[stroke="#b7b7b7"]'); // 行の境目の横線
+          var m2 = line && (line.getAttribute('d') || '').match(/^M[\d.]+,([\d.]+)L/);
+          if (m2) rowH = +m2[1];
+          if (holder) {
+            var NS = 'http://www.w3.org/2000/svg';
+            var sticky = document.createElement('div');
+            sticky.className = 'era-sticky';
+            sticky.style.cssText = 'position:absolute;top:' + scroller.offsetTop + 'px;left:' + scroller.offsetLeft + 'px;' +
+              'width:' + scroller.clientWidth + 'px;height:' + rowH + 'px;overflow:hidden;z-index:1;';
+            var svg = document.createElementNS(NS, 'svg');
+            svg.setAttribute('width', rowsSvg.getAttribute('width'));
+            svg.setAttribute('height', rowH);
+            svg.style.display = 'block';
+            var bg = document.createElementNS(NS, 'rect');
+            bg.setAttribute('x', 0); bg.setAttribute('y', 0);
+            bg.setAttribute('width', rowsSvg.getAttribute('width')); bg.setAttribute('height', rowH);
+            bg.setAttribute('fill', '#ffffff');
+            svg.appendChild(bg);
+            // 時代区分の行（年表の最初の行）にある帯・名前・白の区切り線を複製する
+            Array.prototype.forEach.call(bars.children, function (el) {
+              var top = el.tagName === 'path'
+                ? +((el.getAttribute('d') || '').match(/^M[\d.]+,([\d.]+)/) || [0, Infinity])[1]
+                : +el.getAttribute('y');
+              if (top < rowH) svg.appendChild(el.cloneNode(true));
+            });
+            // 年表は帯に収まらない名前を「平…」のように省略するので、固定表示の帯では省略せずに書き直す。
+            // 帯に収まらないときは文字を小さくする（最小 8px）
+            var eraRects = Array.prototype.filter.call(svg.querySelectorAll('rect'), function (r) { return r.getAttribute('fill') === '#333333'; })
+              .sort(function (p, q) { return +p.getAttribute('x') - +q.getAttribute('x'); });
+            var eraTexts = Array.prototype.slice.call(svg.querySelectorAll('text'))
+              .sort(function (p, q) { return +p.getAttribute('x') - +q.getAttribute('x'); });
+            eraRects.forEach(function (r, i) {
+              var t = eraTexts[i];
+              if (!t || !ERAS[i]) return;
+              var name = ERAS[i][0];
+              var size = +t.getAttribute('font-size') || 12;
+              var room = +r.getAttribute('width') - 8;
+              if (name.length * size * 0.6 > room) size = Math.max(8, Math.floor(room / (name.length * 0.6)));
+              t.textContent = name;
+              t.setAttribute('font-size', size);
+              t.setAttribute('x', +r.getAttribute('x') + 4);
+            });
+            var under = document.createElementNS(NS, 'path');
+            under.setAttribute('d', 'M0,' + (rowH - 0.5) + 'L' + rowsSvg.getAttribute('width') + ',' + (rowH - 0.5));
+            under.setAttribute('stroke', '#b7b7b7');
+            svg.appendChild(under);
+            sticky.appendChild(svg);
+            holder.appendChild(sticky);
+          }
+        }
+      }
+      google.visualization.events.addListener(projectTimechart, 'ready', drawEraLines);
+
+      google.visualization.events.addListener(projectRange, 'ready', drawChart);
+      // 画面の大きさ・向きが変わったら描き直す（年表は描いたときの大きさのままになるため）
+      var resizeTimer = 0;
+      var lastSize = window.innerWidth + 'x' + window.innerHeight;
+      window.addEventListener('resize', function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function () {
+          var size = window.innerWidth + 'x' + window.innerHeight;
+          if (size === lastSize) return;
+          lastSize = size;
+          drawChart();
+        }, 200);
+      });
+      google.visualization.events.addListener(projectRange, 'statechange', drawChart);
+      projectRange.draw();
+
+      // 歌人をクリックすると、系図のページと同じツールチップを出す（js/chronology-tips.js）
+      if (window.chronologyTipsEn) window.chronologyTipsEn(projectTimechart, dataTable);
+    }
+
+
+
+
+
+  </script>
+  <style>
+    body {
+      font-family: "noto-sans-pro", sans-serif !important;
+      background-color: #F7F1E0;
+
+    }
+
+    text {
+      font: 12px sans-serif;
+      font-weight: bold;
+      pointer-events: none;
+    }
+
+
+    .main {
+      background-color: #F7F1E0;
+      width: 100%;
+      height: 100%;
+    }
+
+
+    #project_dashboard {
+      width: 100%;
+      height: 100%;
+
+    }
+
+
+    /* 年表は画面の高さいっぱいにする（高さを決めないと、Google Charts が幅に応じて低く描き、狭い画面では極端に低くなる） */
+    #project_timechart {
+      box-sizing: border-box;
+      padding: 10px 0;
+      margin: 0 auto;
+      width: 90%;
+      height: 100vh;
+      height: 100dvh;
+    }
+
+    .midashi {
+      font-family: "noto-sans-pro", sans-serif;
+      font-size: 1.3rem;
+      margin: 0.7em auto 0;
+      width: 90%;
+      border-left: 5px solid #b82343;
+      color: #333;
+      padding: 3px 0 0 6px;
+      font-weight: bold;
+    }
+
+    .lead {
+      font-family: "noto-sans-pro", sans-serif;
+      font-size: 1.0rem;
+      width: 90%;
+      margin: 13px auto 0;
+    }
+    /* #project_timechart > div > div:nth-child(1) > div > div:nth-child(2){
+      overflow: hidden!important;
+    } */
+
+    #project_range{
+      width:90%;
+      margin:0 auto;
+    }
+    #project_range > div{
+      @media (max-width:750px){
+        margin:0;
+        text-align:center;
+      }
+    }
+    #project_range > div > div > span:nth-child(1),
+    #project_range > div > div > span:nth-child(3)
+    {
+      color:black;
+    }
+    #project_range > div > div > div > div:nth-child(2),
+    #project_range > div > div > div > div:nth-child(3)
+    {
+      background-color: #b82343;
+    }
+
+    #project_range > div > div > div > div.google-visualization-controls-slider-handle{
+      background-color: #fff;
+    }
+    
+
+    div.google-visualization-tooltip {
+      padding: 1em;
+      width: 40%;
+      display:none;
+
+      @media (max-width:750px) {
+        width: 100%;
+      }
+    }
+
+    .google-visualization-tooltip {
+      z-index: 2;
+    }
+
+    #chart-wrapper {
+      position: relative;
+    }
+  </style>
+  <!-- Cloudflare Web Analytics -->
+  <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d2f01c23361b402aadede990ea58da0b"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <p class="site-title">
+      <a href="https://hyakuninisshu.com/index_en.html">Shigure no Hyakunin Isshu</a>
+    </p>
+    <div class="header_list">
+      <a href="index_en.html"><img src="../img/icon_top_en.svg?ver-01" alt="Top" class="icon" width="59" height="22"></a>
+      <a href="introduction_en.html" style="color:#333"><img src="/img/icon_column_en.svg?ver-01" alt="Columns" class="icon" width="72" height="22"></a>
+      <a href="introduction-app_en.html" style="color:#333"><img src="/img/icon_app_en.svg?ver-01" alt="Apps" class="icon" width="59" height="22"></a>
+      <a href="chronology.html"><img src="/img/icon_lang.svg?ver-01" alt="Japanese" class="icon" width="59" height="22"></a>
+      <a href="list_en.html"><img src="/img/icon_list_en.svg?ver-01" alt="Hyakunin Isshu Poem List" class="icon" width="59" height="22"></a>
+    </div>
+  </header>
+<script src="../js/back-to-top.js?20261012-03"></script>
+  <!-- Main -->
+  <h1 class="midashi">Timeline of the Poets' Lifespans</h1>
+  <p class="lead">Use the slider to narrow down the poets by year of birth. Click a poet's bar to see details. Men are shown in blue and women in red.</p>
+  <p class="lead">For poets whose dates are unknown, the bars are based on estimated years (including those marked "c." or "?") or on the years they appear in records of official posts, poetry contests and the like. When the recorded period is shorter than 20 years, the bar covers the 20 years before the year of death (or, if that is unknown, the year of the last record). For Sarumaru Dayū, Priest Kisen and Ono no Komachi, whose dates are not known at all, the bars show the period of activity given in dictionaries and similar works (for Sarumaru Dayū, the theory that he lived in the reign of Empress Genmei).</p>
+  <div class="main">
+
+    <div id="project_dashboard">
+      <div id="project_range"></div>
+      <div id="project_timechart"></div>
+    </div>
+
+  </div>
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-copy">&copy;2023 Shigure no Hyakunin Isshu</span>
+      <ul>
+        <li><a href="policy_en.html">Privacy Policy</a></li>
+        <li>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXx7TKlqnTfKrw2Nuh4f37swVwFH-RFDsNkTGQ4JEF50q2wQ/viewform?usp=header"
+            target="_blank" rel="noopener">Contact Form</a>
+        </li>
+        <li><a href="https://x.com/shigurenotaifu" target="_blank" rel="noopener">Official X</a></li>
+      </ul>
+    </div>
+  </footer>
+  <!-- Footer end -->
+</body>
+
+</html>

@@ -476,9 +476,10 @@ html[lang="en"] .fk-svg .fk-adopt {
   display: flex;
   align-items: baseline;
 }
+/* 英語版は「Lived: 」のように半角コロンの後ろに空白があるため、pre で末尾の空白を残す（nowrap だと flex の中で消える） */
 .tippy-box[data-theme~="fk"] .fk-tip-label {
   flex: none;
-  white-space: nowrap;
+  white-space: pre;
 }
 .tippy-box[data-theme~="fk"] .fk-tip-body {
   flex: 1 1 auto;
@@ -597,6 +598,14 @@ html[lang="en"] .fk-svg .fk-adopt {
   stroke-width: 1.2;
   stroke-dasharray: 5 3;
   stroke-linejoin: round;
+}
+/* 青系の囲み枠（groups の color: 'blue'。tenji-tennou.html の天武系など） */
+.kd-group.is-blue {
+  fill: rgba(47, 95, 179, 0.06);
+  stroke: #2f5fb3;
+}
+.kd-group-label.is-blue {
+  fill: #2f5fb3;
 }
 .kd-group-label {
   font-size: 12px;

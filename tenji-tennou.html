@@ -26,6 +26,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- スタイルシート -->
   <link rel="stylesheet" href="../css/style.css?20261010-02">
+  <link rel="stylesheet" href="../css/fujiwara-keizu.css?20261016-01">
   <!-- <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" /> -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,6 +41,9 @@
   <script src="../js/my-chart.js"></script>
   <script src="../js/move_script.js?20260729"></script>
   <link rel="canonical" href="https://hyakuninisshu.com/tenji-tennou.html">
+  <link rel="alternate" hreflang="ja" href="https://hyakuninisshu.com/tenji-tennou.html">
+  <link rel="alternate" hreflang="en" href="https://hyakuninisshu.com/tenji-tennou_en.html">
+  <link rel="alternate" hreflang="x-default" href="https://hyakuninisshu.com/tenji-tennou.html">
   <!-- アップルタッチアイコン -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <!-- favicon用 -->
@@ -108,6 +112,7 @@
       <a href="index.html"><img src="../img/icon_top.svg?ver-02" alt="トップ" class="icon" width="67" height="22"></a>
       <a href="introduction.html" style="color:#333"><img src="/img/icon_column.svg?ver-02" alt="コラム" class="icon" width="67" height="22"></a>
       <a href="introduction-app.html" style="color:#333"><img src="/img/icon_app.svg?ver-02" alt="アプリ" class="icon" width="67" height="22"></a>
+      <a href="tenji-tennou_en.html"><img src="/img/icon_lang.svg?ver-01" alt="English" class="icon" width="59" height="22"></a>
       <a href="list.html"><img src="/img/icon_search.svg?ver-04" alt="百人一首一覧" class="icon" width="59" height="22"></a>
     </div>
   </header>
@@ -140,7 +145,7 @@
         </figure>
 
         <h2><ruby>壬申<rt>じんしん</rt></ruby>の<ruby>乱<rt>らん</rt></ruby></h2>
-        <p>671年に天智天皇が崩御すると、皇位継承をめぐって大きな争いが起こります。天智天皇の弟である大海人皇子と天智天皇の息子である<ruby>大友<rt>おおともの</rt></ruby>皇子の間で起こった「<ruby>壬申<rt>じんしん</rt></ruby>の<ruby>乱<rt>らん</rt></ruby>」です。この戦いは、2か月以上に及び、673年に<ruby>大海人<rt>おおあまの</rt></ruby>皇子が勝利しました。そして大海人皇子は天武天皇として即位します。</p>
+        <p>671年に天智天皇が崩御すると、皇位継承をめぐって大きな争いが起こります。天智天皇の弟である大海人皇子と天智天皇の息子である<ruby>大友<rt>おおともの</rt></ruby>皇子の間で起こった「<ruby>壬申<rt>じんしん</rt></ruby>の<ruby>乱<rt>らん</rt></ruby>」です。この戦いは672年に起こり、約1か月で<ruby>大海人<rt>おおあまの</rt></ruby>皇子が勝利しました。そして翌673年、大海人皇子は天武天皇として即位します。</p>
 
         <h2><ruby>壬申<rt>じんしん</rt></ruby>の<ruby>乱<rt>らん</rt></ruby>が起きた理由</h2>
         <p>天智天皇（<ruby>中大兄<rt>なかのおおえの</rt></ruby>皇子）は、最初は弟の<ruby>大海人<rt>おおあまの</rt></ruby>皇子（後の天武天皇）を後継者に指名していました。しかし、晩年になると息子の<ruby>大友<rt>おおともの</rt></ruby>皇子（<ruby>弘文<rt>こうぶん</rt></ruby>天皇）を後継者に指名します。当時の皇統は、天皇の長男が継承する制度ではなく、皇族の中から有力な人物が即位するという慣例でした。そのため、この後継指名が「壬申の乱」のきっかけになったと考えられています。
@@ -155,10 +160,356 @@
 
         <h2>天智天皇の系図</h2>
 
-        <figure style="text-align:center; margin-bottom:0.75em;"><img src="../img/tenji_diagram.gif?ver2" alt="天智天皇の系図"
-            class="pc70-sp100-img">
-
-        </figure>
+        <div class="tenji-keizu">
+          <!-- 系図のすぐ上：左に凡例、右に拡大・縮小（歌のページの相関図と同じ） -->
+          <div class="fk-chart-bar">
+            <ul class="fk-legend kd-legend">
+              <li><span class="fk-legend__tenno">茶字</span>天皇</li>
+              <li><span class="fk-legend__tno" aria-hidden="true"></span>天皇の代数</li>
+              <li><span class="fk-legend__badge" aria-hidden="true"></span>百人一首の歌番号（クリックで歌のページへ）</li>
+              <li><span class="fk-legend__eq">＝</span>婚姻</li>
+            </ul>
+            <div class="fk-zoom" role="group" aria-label="拡大・縮小">
+              <button type="button" data-zoom="out" aria-label="縮小">－</button>
+              <span class="fk-zoom__label" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="拡大">＋</button>
+              <button type="button" data-zoom="reset">等倍</button>
+              <button type="button" data-zoom="fit">幅に合わせる</button>
+            </div>
+          </div>
+          <!-- 系図のデータ（js/keizu-diagram.js の形式）。SVG は node _tools/build-keizu.mjs で下の KEIZU:START〜END に書き込む -->
+          <div class="kd-chart" aria-label="天智天皇の系図">
+            <script type="application/json">
+{
+ "nodes": [
+  {
+   "id": "chinu",
+   "n": "茅渟王",
+   "x": 16,
+   "y": 170
+  },
+  {
+   "id": "jomei",
+   "n": "舒明",
+   "k": 1,
+   "t": 34,
+   "x": 96,
+   "y": 92
+  },
+  {
+   "id": "kogyoku",
+   "n": "皇極・斉明",
+   "k": 1,
+   "t": "35·37",
+   "x": 96,
+   "y": 144
+  },
+  {
+   "id": "kotoku",
+   "n": "孝徳",
+   "k": 1,
+   "t": 36,
+   "x": 96,
+   "y": 196
+  },
+  {
+   "id": "tenji",
+   "n": "天智",
+   "k": 1,
+   "t": 38,
+   "p": 1,
+   "self": 1,
+   "x": 200,
+   "y": 336
+  },
+  {
+   "id": "tenmu",
+   "n": "天武",
+   "k": 1,
+   "t": 40,
+   "note": "大海人皇子",
+   "x": 290,
+   "y": 92
+  },
+  {
+   "id": "jito",
+   "n": "持統",
+   "k": 1,
+   "t": 41,
+   "p": 2,
+   "x": 290,
+   "y": 144
+  },
+  {
+   "id": "kobun",
+   "n": "弘文",
+   "k": 1,
+   "t": 39,
+   "note": "大友皇子",
+   "x": 290,
+   "y": 310
+  },
+  {
+   "id": "shiki",
+   "n": "志貴皇子",
+   "x": 290,
+   "y": 362
+  },
+  {
+   "id": "toneri",
+   "n": "舎人皇子",
+   "key": "舎人親王",
+   "x": 430,
+   "y": 40
+  },
+  {
+   "id": "kusakabe",
+   "n": "草壁皇子",
+   "x": 430,
+   "y": 144
+  },
+  {
+   "id": "genmei",
+   "n": "元明",
+   "k": 1,
+   "t": 43,
+   "x": 430,
+   "y": 196
+  },
+  {
+   "id": "konin",
+   "n": "光仁",
+   "k": 1,
+   "t": 49,
+   "x": 430,
+   "y": 362
+  },
+  {
+   "id": "junnin",
+   "n": "淳仁",
+   "k": 1,
+   "t": 47,
+   "x": 520,
+   "y": 40
+  },
+  {
+   "id": "monmu",
+   "n": "文武",
+   "k": 1,
+   "t": 42,
+   "x": 520,
+   "y": 196
+  },
+  {
+   "id": "gensho",
+   "n": "元正",
+   "k": 1,
+   "t": 44,
+   "x": 520,
+   "y": 248
+  },
+  {
+   "id": "kanmu",
+   "n": "桓武",
+   "k": 1,
+   "t": 50,
+   "x": 520,
+   "y": 362
+  },
+  {
+   "id": "shomu",
+   "n": "聖武",
+   "k": 1,
+   "t": 45,
+   "x": 590,
+   "y": 196
+  },
+  {
+   "id": "koken",
+   "n": "孝謙・称徳",
+   "k": 1,
+   "t": "46·48",
+   "x": 660,
+   "y": 196
+  }
+ ],
+ "couples": [
+  {
+   "id": "c-jomei",
+   "top": "jomei",
+   "bottom": "kogyoku"
+  },
+  {
+   "id": "c-tenmu",
+   "top": "tenmu",
+   "bottom": "jito"
+  },
+  {
+   "id": "c-kusakabe",
+   "top": "kusakabe",
+   "bottom": "genmei"
+  }
+ ],
+ "kids": [
+  {
+   "from": "chinu",
+   "to": [
+    "kogyoku",
+    "kotoku"
+   ]
+  },
+  {
+   "from": "c-jomei",
+   "to": [
+    "tenmu",
+    "tenji"
+   ]
+  },
+  {
+   "from": "tenji",
+   "to": [
+    "jito",
+    "genmei",
+    "kobun",
+    "shiki"
+   ]
+  },
+  {
+   "from": "tenmu",
+   "to": [
+    "toneri"
+   ]
+  },
+  {
+   "from": "c-tenmu",
+   "to": [
+    "kusakabe"
+   ]
+  },
+  {
+   "from": "c-kusakabe",
+   "to": [
+    "monmu",
+    "gensho"
+   ]
+  },
+  {
+   "from": "monmu",
+   "to": [
+    "shomu"
+   ]
+  },
+  {
+   "from": "shomu",
+   "to": [
+    "koken"
+   ]
+  },
+  {
+   "from": "toneri",
+   "to": [
+    "junnin"
+   ]
+  },
+  {
+   "from": "shiki",
+   "to": [
+    "konin"
+   ]
+  },
+  {
+   "from": "konin",
+   "to": [
+    "kanmu"
+   ]
+  }
+ ],
+ "groups": [
+  {
+   "points": [
+    [
+     280,
+     8
+    ],
+    [
+     752,
+     8
+    ],
+    [
+     752,
+     268
+    ],
+    [
+     280,
+     268
+    ]
+   ],
+   "label": {
+    "text": "天武系",
+    "x": 694,
+    "y": 252
+   },
+   "color": "blue"
+  },
+  {
+   "points": [
+    [
+     192,
+     278
+    ],
+    [
+     582,
+     278
+    ],
+    [
+     582,
+     384
+    ],
+    [
+     192,
+     384
+    ]
+   ],
+   "label": {
+    "text": "天智系",
+    "x": 524,
+    "y": 296
+   }
+  }
+ ]
+}
+            </script>
+            <!-- #region KEIZU:START -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 768 396" width="768" height="396" role="img" aria-label="天智天皇の系図" class="fk-svg kd-svg" style="max-width:1152px;min-width:min(640px,1152px)" data-src="nljqb6">
+<g class="kd-groups"><path d="M280 8L752 8L752 268L280 268Z" class="kd-group is-blue"/><text class="kd-group-label is-blue" x="694" y="252">天武系</text><path d="M192 278L582 278L582 384L192 384Z" class="kd-group"/><text class="kd-group-label" x="524" y="296">天智系</text></g>
+<g class="fk-edges"><path d="M109 101V119M113 101V119" class="fk-edge fk-eq"/><path d="M303 101V119M307 101V119" class="fk-edge fk-eq"/><path d="M443 153V171M447 153V171" class="fk-edge fk-eq"/><path d="M64 170H82" class="fk-edge"/><path d="M82 144V196" class="fk-edge"/><path d="M82 144H93" class="fk-edge"/><path d="M82 196H93" class="fk-edge"/><path d="M113 109H186" class="fk-edge"/><path d="M186 92V336" class="fk-edge"/><path d="M186 92H287" class="fk-edge"/><path d="M186 336H197" class="fk-edge"/><path d="M257 336H276" class="fk-edge"/><path d="M276 144V362" class="fk-edge"/><path d="M276 144H287" class="fk-edge"/><path d="M276 196H427" class="fk-edge"/><path d="M276 310H287" class="fk-edge"/><path d="M276 362H287" class="fk-edge"/><path d="M402 92H416" class="fk-edge"/><path d="M416 40V92" class="fk-edge"/><path d="M416 40H427" class="fk-edge"/><path d="M307 109H416" class="fk-edge"/><path d="M416 109V144" class="fk-edge"/><path d="M416 144H427" class="fk-edge"/><path d="M447 161H506" class="fk-edge"/><path d="M506 161V248" class="fk-edge"/><path d="M506 196H517" class="fk-edge"/><path d="M506 248H517" class="fk-edge"/><path d="M553 196H576" class="fk-edge"/><path d="M576 196H587" class="fk-edge"/><path d="M623 196H646" class="fk-edge"/><path d="M646 196H657" class="fk-edge"/><path d="M493 40H506" class="fk-edge"/><path d="M506 40H517" class="fk-edge"/><path d="M353 362H416" class="fk-edge"/><path d="M416 362H427" class="fk-edge"/><path d="M463 362H506" class="fk-edge"/><path d="M506 362H517" class="fk-edge"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"></g>
+<g>
+<g class="fk-node" transform="translate(16,170)" data-tip="&lt;h3&gt;&lt;ruby&gt;茅渟王&lt;rt&gt;ちぬのおおきみ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;生没年：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;不詳&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;系譜：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;押坂彦人大兄皇子の子&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;皇極（斉明）天皇・孝徳天皇の父&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="49" height="26"/><text class="fk-name" x="0" y="0.5">茅渟王</text></g></g>
+<g class="fk-node is-tenno" transform="translate(96,92)" data-tip="&lt;h3&gt;&lt;ruby&gt;舒明天皇&lt;rt&gt;じょめいてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第34代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;生没年：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;593年？～641年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;在位：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;629年～641年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;系譜：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;押坂彦人大兄皇子の子&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;630年に遣唐使を派遣した。天智天皇・天武天皇の父&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="34" height="26"/><text class="fk-name" x="0" y="0.5">舒明</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">34</text></g>
+<g class="fk-node is-tenno" transform="translate(96,144)" data-tip="&lt;h3&gt;&lt;ruby&gt;皇極天皇&lt;rt&gt;こうぎょくてんのう&lt;/rt&gt;&lt;/ruby&gt;・&lt;ruby&gt;斉明天皇&lt;rt&gt;さいめいてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第35代・第37代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;生没年：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;594年～661年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;在位：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;642年～645年（皇極）、655年～661年（斉明）&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;系譜：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;茅渟王と吉備姫王の皇女。舒明天皇の皇后&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;乙巳の変の後、弟の孝徳天皇に譲位。孝徳天皇の死後、再び即位（重祚）した。天智天皇・天武天皇の母&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="79" height="26"/><text class="fk-name" x="0" y="0.5">皇極・斉明</text></g><rect class="fk-tno-box" x="0" y="-25" width="37.5" height="13" rx="1.5"/><text class="fk-tno" x="18.75" y="-18">35·37</text></g>
+<g class="fk-node is-tenno" transform="translate(96,196)" data-tip="&lt;h3&gt;&lt;ruby&gt;孝徳天皇&lt;rt&gt;こうとくてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第36代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;生没年：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;596年～654年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;在位：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;645年～654年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;系譜：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;茅渟王と吉備姫王の子。皇極天皇の同母弟&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;皇子時代は軽皇子。初めての元号「大化」を立て、難波に都を置いた&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="34" height="26"/><text class="fk-name" x="0" y="0.5">孝徳</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">36</text></g>
+<g class="fk-node is-tenno is-poet is-self" transform="translate(200,336)" data-tip="&lt;h3&gt;&lt;ruby&gt;天智天皇&lt;rt&gt;てんじてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第38代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;生没年：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;626年～672年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;在位：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;668年～672年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;百人一首：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;1番「秋の田の…」の歌人&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;皇子時代は中大兄皇子。中臣鎌足とともに大化の改新を進めた&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="64" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="58" height="26"/><text class="fk-name" x="0" y="0.5">天智</text><circle class="fk-badge" cx="44" cy="0" r="10"/><text class="fk-badge-num" x="44" y="0.5">1</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">38</text></g>
+<g class="fk-node is-tenno" transform="translate(290,92)" data-tip="&lt;h3&gt;&lt;ruby&gt;天武天皇&lt;rt&gt;てんむてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第40代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;生没年：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;不明～686年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;在位：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;673年～686年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;系譜：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;天智天皇の弟&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;壬申の乱（672年）に勝って即位した&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="113" height="26"/><text class="fk-name" x="0" y="0.5">天武</text><text class="fk-note" x="32" y="1">（大海人皇子）</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">40</text></g>
+<g class="fk-node is-tenno is-poet" transform="translate(290,144)" data-tip="&lt;h3&gt;&lt;ruby&gt;持統天皇&lt;rt&gt;じとうてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第41代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;生没年：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;645年～703年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;在位：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;690年～697年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;系譜：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;天智天皇の皇女で、天武天皇の皇后&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;百人一首：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;2番「春過ぎて…」の歌人&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;藤原京に遷都した&lt;/span&gt;&lt;/div&gt;" data-p="2"><a href="/2.html" aria-label="持統天皇（百人一首2番）"><rect class="fk-hit" x="-2" y="-13" width="58" height="26"/><text class="fk-name" x="0" y="0.5">持統</text><circle class="fk-badge" cx="44" cy="0" r="10"/><text class="fk-badge-num" x="44" y="0.5">2</text></a><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">41</text></g>
+<g class="fk-node is-tenno" transform="translate(290,310)" data-tip="&lt;h3&gt;&lt;ruby&gt;弘文天皇&lt;rt&gt;こうぶんてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第39代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;生没年：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;648年～672年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;在位：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;671年～672年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;系譜：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;天智天皇の皇子。皇子時代は大友皇子&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;壬申の乱で大海人皇子（天武天皇）に敗れた&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="102" height="26"/><text class="fk-name" x="0" y="0.5">弘文</text><text class="fk-note" x="32" y="1">（大友皇子）</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">39</text></g>
+<g class="fk-node" transform="translate(290,362)" data-tip="&lt;h3&gt;&lt;ruby&gt;志貴皇子&lt;rt&gt;しきのみこ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;生没年：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;不明～716年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;位階：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;二品&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;系譜：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;天智天皇の皇子、光仁天皇の父&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;『万葉集』の歌人&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="64" height="26"/><text class="fk-name" x="0" y="0.5">志貴皇子</text></g></g>
+<g class="fk-node" transform="translate(430,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;舎人親王&lt;rt&gt;とねりしんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;生没年：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;676年～735年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;位階：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;一品&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;系譜：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;天武天皇の皇子&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;『日本書紀』の編纂を主宰した。清原氏の祖&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="64" height="26"/><text class="fk-name" x="0" y="0.5">舎人皇子</text></g></g>
+<g class="fk-node" transform="translate(430,144)" data-tip="&lt;h3&gt;&lt;ruby&gt;草壁皇子&lt;rt&gt;くさかべのみこ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;生没年：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;662年～689年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;位階：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;浄広壱&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;系譜：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;天武天皇と持統天皇の子。妃は元明天皇&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;皇太子となったが即位しないまま亡くなった&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="64" height="26"/><text class="fk-name" x="0" y="0.5">草壁皇子</text></g></g>
+<g class="fk-node is-tenno" transform="translate(430,196)" data-tip="&lt;h3&gt;&lt;ruby&gt;元明天皇&lt;rt&gt;げんめいてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第43代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;生没年：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;661年～721年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;在位：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;707年～715年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;系譜：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;天智天皇の皇女。草壁皇子の妃で、文武天皇・元正天皇の母&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;平城京に遷都した（710年）&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="34" height="26"/><text class="fk-name" x="0" y="0.5">元明</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">43</text></g>
+<g class="fk-node is-tenno" transform="translate(430,362)" data-tip="&lt;h3&gt;&lt;ruby&gt;光仁天皇&lt;rt&gt;こうにんてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第49代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;生没年：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;709年～782年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;在位：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;770年～781年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;系譜：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;天智天皇の孫、志貴皇子の子&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;称徳天皇のあとに即位し、皇統が天武系から天智系に移った&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="34" height="26"/><text class="fk-name" x="0" y="0.5">光仁</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">49</text></g>
+<g class="fk-node is-tenno" transform="translate(520,40)" data-tip="&lt;h3&gt;&lt;ruby&gt;淳仁天皇&lt;rt&gt;じゅんにんてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第47代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;生没年：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;733年～765年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;在位：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;758年～764年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;系譜：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;舎人親王の子。天武天皇の孫&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;藤原仲麻呂の乱（764年）ののち廃されて淡路に流され、淡路廃帝と呼ばれた&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="34" height="26"/><text class="fk-name" x="0" y="0.5">淳仁</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">47</text></g>
+<g class="fk-node is-tenno" transform="translate(520,196)" data-tip="&lt;h3&gt;&lt;ruby&gt;文武天皇&lt;rt&gt;もんむてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第42代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;生没年：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;683年～707年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;在位：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;697年～707年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;系譜：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;草壁皇子と元明天皇の子。天武・持統天皇の孫&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;在位中に大宝律令が完成した（701年）&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="34" height="26"/><text class="fk-name" x="0" y="0.5">文武</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">42</text></g>
+<g class="fk-node is-tenno" transform="translate(520,248)" data-tip="&lt;h3&gt;&lt;ruby&gt;元正天皇&lt;rt&gt;げんしょうてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第44代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;生没年：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;680年～748年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;在位：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;715年～724年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;系譜：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;草壁皇子と元明天皇の皇女。文武天皇の姉&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;母の元明天皇から譲位を受けて即位した&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="34" height="26"/><text class="fk-name" x="0" y="0.5">元正</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">44</text></g>
+<g class="fk-node is-tenno" transform="translate(520,362)" data-tip="&lt;h3&gt;&lt;ruby&gt;桓武天皇&lt;rt&gt;かんむてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第50代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;生没年：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;737年～806年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;在位：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;781年～806年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;長岡京、ついで平安京（794年）に遷都した&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="34" height="26"/><text class="fk-name" x="0" y="0.5">桓武</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">50</text></g>
+<g class="fk-node is-tenno" transform="translate(590,196)" data-tip="&lt;h3&gt;&lt;ruby&gt;聖武天皇&lt;rt&gt;しょうむてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第45代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;生没年：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;701年～756年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;在位：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;724年～749年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;系譜：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;皇后は藤原不比等の娘・光明皇后&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;国分寺の建立や東大寺の大仏造立を命じた&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="34" height="26"/><text class="fk-name" x="0" y="0.5">聖武</text></g><rect class="fk-tno-box" x="0" y="-25" width="18.6" height="13" rx="1.5"/><text class="fk-tno" x="9.3" y="-18">45</text></g>
+<g class="fk-node is-tenno" transform="translate(660,196)" data-tip="&lt;h3&gt;&lt;ruby&gt;孝謙天皇&lt;rt&gt;こうけんてんのう&lt;/rt&gt;&lt;/ruby&gt;・&lt;ruby&gt;称徳天皇&lt;rt&gt;しょうとくてんのう&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line&quot;&gt;第46代・第48代天皇&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;生没年：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;718年～770年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;在位：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;749年～758年（孝謙）、764年～770年（称徳）&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;系譜：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;聖武天皇と光明皇后の皇女&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;淳仁天皇に譲位したのち、再び即位（重祚）して称徳天皇となった。僧の道鏡を重用した&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="79" height="26"/><text class="fk-name" x="0" y="0.5">孝謙・称徳</text></g><rect class="fk-tno-box" x="0" y="-25" width="37.5" height="13" rx="1.5"/><text class="fk-tno" x="18.75" y="-18">46·48</text></g>
+</g>
+</svg>
+            <!-- #endregion KEIZU:END -->
+          </div>
+        </div>
 
         <h2>豆知識：藤原氏について</h2>
         <h3 class="mt-1">中臣鎌足は藤原氏の祖</h3>
@@ -169,14 +520,112 @@
         <p class="h3-p">中臣鎌足の次男・藤原不比等は、11歳の時に父・鎌足を亡くしており、<ruby>壬申<rt>じんしん</rt></ruby>の<ruby>乱<rt>らん</rt></ruby>の際に鎌足の同族有力者が朝廷の中枢から一掃されてしまったため、後ろ盾がなく、下級官人からキャリアをスタートさせました。しかし、すぐに頭角を現して持統天皇に重用され、文武天皇の勅を受けて大宝律令を整備しました。また、長女・藤原宮子を文武天皇の后にして、天皇家との結びつきを強め、権力を握りました。
         </p>
         <h3>藤原家の繁栄</h3>
-        <div class="image-p-box">
-          <figure>
-            <img src="/img/fujiwara_yonke_diagram.gif?01" alt="藤原四家">
-          </figure>
-          <div>
-            <p class="h3-p" style="width:100%;">藤原不比等には4人の子供がいました。長男・<ruby>武智麻呂<rt>むちまろ</rt></ruby>は南家、次男・<ruby>房前<rt>ふささき</rt></ruby>は<ruby>北家<rt>ほっけ</rt></ruby>、三男・<ruby>宇合<rt>うまかい</rt></ruby>は<ruby>式家<rt>しきけ</rt></ruby>、<ruby>麻呂<rt>まろ</rt></ruby>は<ruby>京家<rt>きょうけ</rt></ruby>となり、それぞれ藤原氏の分家を形成しました。このうち、藤原<ruby>房前<rt>ふささき</rt></ruby>が皇族以外で初めて摂政に就任し、その後、北家の一族が摂政・関白の地位を独占するようになりました。平安時代に活躍する藤原氏はほとんど<ruby>北家<rt>ほっけ</rt></ruby>の出身で、平安中期に絶大な権力を振るった藤原道長も『源氏物語』の作者である紫式部も藤原<ruby>北家<rt>ほっけ</rt></ruby>の一人です。</p>
-          </div>
+        <!-- 藤原四家の系図（js/keizu-diagram.js の形式）。SVG は node _tools/build-keizu.mjs で下の KEIZU:START〜END に書き込む -->
+        <div class="kd-chart" aria-label="藤原四家の系図">
+          <script type="application/json">
+{
+ "tooltips": "fujiwara",
+ "nodes": [
+  {
+   "id": "kamatari",
+   "n": "中臣鎌足",
+   "key": "鎌足",
+   "sub": "藤原氏の祖",
+   "x": 16,
+   "y": 108
+  },
+  {
+   "id": "fuhito",
+   "n": "藤原不比等",
+   "key": "不比等",
+   "x": 110,
+   "y": 108
+  },
+  {
+   "id": "muchimaro",
+   "n": "武智麻呂",
+   "sub": "南家",
+   "x": 230,
+   "y": 30
+  },
+  {
+   "id": "fusasaki",
+   "n": "房前",
+   "sub": "北家",
+   "self": 1,
+   "x": 230,
+   "y": 82
+  },
+  {
+   "id": "umakai",
+   "n": "宇合",
+   "sub": "式家",
+   "x": 230,
+   "y": 134
+  },
+  {
+   "id": "maro",
+   "n": "麻呂",
+   "sub": "京家",
+   "x": 230,
+   "y": 186
+  }
+ ],
+ "kids": [
+  {
+   "from": "kamatari",
+   "to": [
+    "fuhito"
+   ]
+  },
+  {
+   "from": "fuhito",
+   "to": [
+    "muchimaro",
+    "fusasaki",
+    "umakai",
+    "maro"
+   ]
+  }
+ ],
+ "arrows": [
+  {
+   "points": [
+    [
+     270,
+     82
+    ],
+    [
+     330,
+     82
+    ]
+   ],
+   "label": {
+    "text": "摂関家として繁栄",
+    "x": 338,
+    "y": 82
+   }
+  }
+ ]
+}
+          </script>
+          <!-- #region KEIZU:START -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 226" width="450" height="226" role="img" aria-label="藤原四家の系図" class="fk-svg kd-svg" style="max-width:675px;min-width:min(640px,675px)" data-src="1gdlm4y">
+<g class="fk-edges"><path d="M79 108H96" class="fk-edge"/><path d="M96 108H107" class="fk-edge"/><path d="M188 108H216" class="fk-edge"/><path d="M216 30V186" class="fk-edge"/><path d="M216 30H227" class="fk-edge"/><path d="M216 82H227" class="fk-edge"/><path d="M216 134H227" class="fk-edge"/><path d="M216 186H227" class="fk-edge"/></g>
+<defs><marker id="kdArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="kd-arrow-head"/></marker></defs>
+<g class="kd-arrows"><path d="M270 82L330 82" class="kd-arrow" marker-end="url(#kdArrowHead)"/><text class="kd-arrow-label" x="338" y="82">摂関家として繁栄</text></g>
+<g>
+<g class="fk-node" transform="translate(16,108)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原鎌足&lt;rt&gt;ふじわらのかまたり&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;生没年：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;614年～669年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;官職：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;内大臣&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;位階：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;贈正一位&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;天智天皇から「藤原」の姓を賜る&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="64" height="26"/><text class="fk-name" x="0" y="0.5">中臣鎌足</text></g><rect class="fk-sub-box" x="0" y="11" width="67" height="16" rx="8"/><text class="fk-sub" x="33.5" y="19.5">藤原氏の祖</text></g>
+<g class="fk-node" transform="translate(110,108)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原不比等&lt;rt&gt;ふじわらのふひと&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;生没年：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;659年～720年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;官職：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;右大臣&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;位階：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;正二位、贈正一位&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;外戚：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;聖武天皇、孝謙天皇の外祖父&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="79" height="26"/><text class="fk-name" x="0" y="0.5">藤原不比等</text></g></g>
+<g class="fk-node" transform="translate(230,30)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原武智麻呂&lt;rt&gt;ふじわらのむちまろ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;生没年：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;680年～737年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;官職：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;左大臣&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;位階：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;正一位&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;藤原南家の祖&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="64" height="26"/><text class="fk-name" x="0" y="0.5">武智麻呂</text></g><rect class="fk-sub-box" x="0" y="11" width="34" height="16" rx="8"/><text class="fk-sub" x="17" y="19.5">南家</text></g>
+<g class="fk-node is-self" transform="translate(230,82)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原房前&lt;rt&gt;ふじわらのふささき&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;生没年：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;681年～737年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;官職：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;参議&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;位階：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;正三位、贈正一位&lt;/span&gt;&lt;/div&gt;"><rect class="kd-self-box" x="-5" y="-14" width="40" height="28" rx="3"/><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="34" height="26"/><text class="fk-name" x="0" y="0.5">房前</text></g><rect class="fk-sub-box" x="0" y="11" width="34" height="16" rx="8"/><text class="fk-sub" x="17" y="19.5">北家</text></g>
+<g class="fk-node" transform="translate(230,134)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原宇合&lt;rt&gt;ふじわらのうまかい&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;生没年：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;694年～737年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;官職：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;参議&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;位階：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;正三位&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;藤原式家の祖&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="34" height="26"/><text class="fk-name" x="0" y="0.5">宇合</text></g><rect class="fk-sub-box" x="0" y="11" width="34" height="16" rx="8"/><text class="fk-sub" x="17" y="19.5">式家</text></g>
+<g class="fk-node" transform="translate(230,186)" data-tip="&lt;h3&gt;&lt;ruby&gt;藤原麻呂&lt;rt&gt;ふじわらのまろ&lt;/rt&gt;&lt;/ruby&gt;&lt;/h3&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;生没年：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;695年～737年&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;官職：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;参議&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;位階：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;従三位&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fk-tip-line has-label&quot;&gt;&lt;span class=&quot;fk-tip-label&quot;&gt;特記：&lt;/span&gt;&lt;span class=&quot;fk-tip-body&quot;&gt;藤原京家の祖&lt;/span&gt;&lt;/div&gt;"><g class="fk-main"><rect class="fk-hit" x="-2" y="-13" width="34" height="26"/><text class="fk-name" x="0" y="0.5">麻呂</text></g><rect class="fk-sub-box" x="0" y="11" width="34" height="16" rx="8"/><text class="fk-sub" x="17" y="19.5">京家</text></g>
+</g>
+</svg>
+          <!-- #endregion KEIZU:END -->
         </div>
+        <p class="h3-p" style="margin-top:0.75em;">藤原不比等には4人の子供がいました。長男・<ruby>武智麻呂<rt>むちまろ</rt></ruby>は南家、次男・<ruby>房前<rt>ふささき</rt></ruby>は<ruby>北家<rt>ほっけ</rt></ruby>、三男・<ruby>宇合<rt>うまかい</rt></ruby>は<ruby>式家<rt>しきけ</rt></ruby>、<ruby>麻呂<rt>まろ</rt></ruby>は<ruby>京家<rt>きょうけ</rt></ruby>となり、それぞれ藤原氏の分家を形成しました。このうち、<ruby>房前<rt>ふささき</rt></ruby>を祖とする北家の藤原<ruby>良房<rt>よしふさ</rt></ruby>が皇族以外で初めて摂政に就任し、その後、北家の一族が摂政・関白の地位を独占するようになりました。平安時代に活躍する藤原氏はほとんど<ruby>北家<rt>ほっけ</rt></ruby>の出身で、平安中期に絶大な権力を振るった藤原道長も『源氏物語』の作者である紫式部も藤原<ruby>北家<rt>ほっけ</rt></ruby>の一人です。</p>
       </div>
     </div>
   </main>
@@ -196,6 +645,14 @@
   </footer>
   <!-- フッターここまで -->
 
+  <!-- ▼▼▼ 系図のツールチップ（tippy.js） ▼▼▼ -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/tenno-keizu-tooltips.js?20261016-01"></script>
+  <script src="../js/fujiwara-keizu-tooltips.js?20261010-01"></script>
+  <script src="../js/keizu-tips.js?20261016-01"></script>
+  <script src="../js/keizu-diagram.js?20261015-02"></script>
+  <!-- ▲▲▲ 系図のツールチップ ▲▲▲ -->
 </body>
 
 </html>
