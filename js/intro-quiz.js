@@ -459,27 +459,41 @@
       btn.type = 'button';
       btn.className = 'dq-choice-btn';
       btn.dataset.num = p.number;
-      if (IS_EN) btn.textContent = p.name_en;
-      else btn.innerHTML = p.name;
+      if (IS_EN) {
+        // 英語版：日本語の歌人名（漢字。振り仮名は外す）を上に、英語名を下に並べる
+        const ja = document.createElement('span');
+        ja.className = 'dq-choice-ja';
+        ja.lang = 'ja';
+        ja.textContent = p.name.replace(/<rt>.*?<\/rt>/g, '').replace(/<[^>]+>/g, '');
+        const en = document.createElement('span');
+        en.className = 'dq-choice-en';
+        en.textContent = p.name_en;
+        btn.append(ja, en);
+      } else {
+        btn.innerHTML = p.name;
+      }
       btn.addEventListener('click', () => selectChoice(btn, poem.number));
       container.appendChild(btn);
     });
     adjustWideChoices();
   }
 
-  /* ── 歌人名が長くて今の列幅に収まりきらない選択肢だけ、行全体に広げて1行表示にする ──
+  /* ── 歌人名が長くて今の列幅に収まりきらない選択肢が1つでもあれば、3つとも行全体に広げて1行表示にする
+     （収まらないものだけ広げると、ボタンの幅がばらばらになるため。3つとも同じ幅にそろえる） ──
      文字数だけで判定すると振り仮名（ruby）の有無やフォントの文字ごとの幅の違いで
      ズレるため、実際に1行に収まるかを幅の実測で判定する（nowrapにしたときの
      scrollWidthが、今のボタン幅（clientWidth）を超えていれば「収まらない」）。 */
   function adjustWideChoices() {
-    document.querySelectorAll('.dq-choice-btn').forEach(btn => {
-      btn.classList.remove('dq-choice-wide');
+    const btns = Array.from(document.querySelectorAll('.dq-choice-btn'));
+    btns.forEach(btn => btn.classList.remove('dq-choice-wide'));
+    const anyOverflows = btns.some(btn => {
       const prevWhiteSpace = btn.style.whiteSpace;
       btn.style.whiteSpace = 'nowrap';
       const overflows = btn.scrollWidth > btn.clientWidth + 1;
       btn.style.whiteSpace = prevWhiteSpace;
-      if (overflows) btn.classList.add('dq-choice-wide');
+      return overflows;
     });
+    if (anyOverflows) btns.forEach(btn => btn.classList.add('dq-choice-wide'));
   }
 
   function selectChoice(btn, correctNumber) {

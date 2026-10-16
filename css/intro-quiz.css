@@ -342,6 +342,11 @@ html[lang="en"] .dq-line { margin: 0 2px 0 24px; }
 .dq-choice-btn.dq-choice-wide { grid-column: 1 / -1; }
 .dq-choice-btn ruby { ruby-align: center; }
 .dq-choice-btn rt { font-size: .55em; color: #999; }
+/* 英語版の選択肢：日本語の歌人名（上）と英語名（下） */
+.dq-choice-ja { display: block; font-weight: 700; font-size: .8em; color: #333; line-height: 1.4; }
+/* style.css の英語ページ用の指定（"Noto Sans", "Noto Serif JP" … !important）だと日本語が明朝になるため、ここだけゴシックにする */
+html[lang="en"] .dq-choice-btn .dq-choice-ja { font-family: "Noto Sans JP", sans-serif !important; }
+.dq-choice-en { display: block; }
 .dq-choice-btn:hover:not(:disabled) { border-color: #B82343; background: #fdeef1; }
 .dq-choice-btn:disabled { cursor: not-allowed; opacity: .55; }
 .dq-choice-btn.dq-correct {
