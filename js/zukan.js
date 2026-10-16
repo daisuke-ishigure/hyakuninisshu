@@ -236,7 +236,7 @@ const POETS_RAW = [
         poem: '<ruby>田子<rt>たご</rt></ruby>の<ruby>浦<rt>うら</rt></ruby>に…', job: '官人', source: '新古今集', outline: '自然を詠んだ叙景歌の名手', img: 'img/z04.webp',
     },
     {
-        n: 5, name: '<ruby>猿丸太夫<rt>さるまるだゆう</rt></ruby>', date: '生没年不詳', theme: 'autumn',
+        n: 5, name: '<ruby>猿丸大夫<rt>さるまるだゆう</rt></ruby>', date: '生没年不詳', theme: 'autumn',
         poem: '<ruby>奥山<rt>おくやま</rt></ruby>に…', job: '伝説', source: '古今集', outline: '伝説に包まれた歌人', img: 'img/z05.webp',
     },
     {

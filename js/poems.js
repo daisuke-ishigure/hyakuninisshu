@@ -109,7 +109,7 @@ let poems = {
     },
     "5": {
         "number": "5",
-        "name": "<ruby>猿丸太夫<rt>さるまるだゆう</rt></ruby>",
+        "name": "<ruby>猿丸大夫<rt>さるまるだゆう</rt></ruby>",
         "date": "生没年不詳",
         "source": "古今集 秋",
         "theme": "autumn",
@@ -120,7 +120,7 @@ let poems = {
         "eng_name": "Saru Maru, A Shinto Official",
         "translation": "人里離れた奥山に紅葉を踏み分け入っていくと、鹿の鳴き声が響く。その声を聞くとき、秋はひとしお悲しく感じられる。",
         "background": "『古今集』の詞書には、「是貞の皇子の家の歌合の歌」と記されています。この歌は、光孝天皇の皇子である是貞親王の家で行われた歌合で詠まれたものです。秋は鹿の発情期で、雄鹿は雌鹿を探して「フィーヨー」と独特の高い声で鳴きます。この悲しげな鳴き声は、秋の深まりと物寂しさを感じさせる季節の風物詩だったようです。YouTubeに<ruby>雄鹿<rt>おじか</rt></ruby>の鳴き声を聞ける貴重な動画があります。興味のある方は<a href='https://youtu.be/0siOKfa8yec' target='_blank' style='color:#0047ab; text-decoration:underline; display:inline-block;' ><span style='font-weight:bold'>こちら</span></a>からぜひご覧ください。",
-        "personality": "猿丸太夫は、生没年や生涯が一切記録されておらず、伝説上の歌人であるといわれています。",
+        "personality": "猿丸大夫は、生没年や生涯が一切記録されておらず、伝説上の歌人であるといわれています。",
         "kakekotobaMark": "<img src='../img/mark_kakekotoba_none.svg' alt='掛詞'>",
         "kakekotobaLink": "<p>この歌には掛詞はありません。</p>",
         "engoMark": "<img src='../img/mark_engo_none.svg' alt='縁語なし'>",

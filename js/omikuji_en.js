@@ -45,7 +45,7 @@ const hyakuninIsshu = [
         love: "This is a time to wait quietly rather than rush. Polish yourself, and the good news you are hoping for will come.",
         work: "Now is a good time to pause and reexamine the path you truly need to take. Following your inner voice will promise a great harvest in the future.",
         poet: "Sarumaru Dayū",
-        poetJa: "猿丸太夫",
+        poetJa: "猿丸大夫",
         luck: "末吉"
     },
     {

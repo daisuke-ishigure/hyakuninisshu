@@ -20,7 +20,7 @@
     [2, '持統天皇', 'Empress Jitō'],
     [3, '柿本人麻呂', 'Kakinomoto no Hitomaro'],
     [4, '山部赤人', 'Yamabe no Akahito'],
-    [5, '猿丸太夫', 'Sarumaru Dayū'],
+    [5, '猿丸大夫', 'Sarumaru Dayū'],
     [6, '中納言家持', 'Middle Counselor Yakamochi'],
     [7, '阿倍仲麻呂', 'Abe no Nakamaro'],
     [8, '喜撰法師', 'Priest Kisen'],

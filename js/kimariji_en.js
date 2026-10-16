@@ -168,7 +168,7 @@ const correctMessages = ['Excellent!', 'Well done!', 'Perfect!', 'Brilliant!'];
 // Breadcrumb & h1 now live in the static HTML (top of <main>) for SEO.
 
 // Load JSON
-fetch('../js/hyakunin.json?04')
+fetch('../js/hyakunin.json?20261016-01')
     .then(r => r.json())
     .then(data => {
         allSongs = Object.values(data);

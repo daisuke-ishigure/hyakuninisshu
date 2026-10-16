@@ -32,7 +32,7 @@ function toDisplayRomaji(str) {
 const COLOR_LABELS_EN = { "すべて": "All", "黄": "Yellow", "ピンク": "Pink", "青": "Blue", "橙": "Orange", "緑": "Green" };
 
 // データ読み込み
-fetch('../js/kimariji.json?2026630')
+fetch('../js/kimariji.json?20261016-01')
   .then(res => {
     if (!res.ok) throw new Error('Network response was not ok');
     return res.json();

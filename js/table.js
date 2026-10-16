@@ -1,6 +1,6 @@
 "use strict";
 $();
-const jsonAddress = "../js/hyakunin.json?04";
+const jsonAddress = "../js/hyakunin.json?20261016-01";
 
 ////////////////////////////////////////////////////////////
 // sp-menu

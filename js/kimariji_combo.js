@@ -184,7 +184,7 @@ function getCommonHeaderHTML(showTitle = true) {
 }
 
 // JSON読み込み
-fetch('../js/hyakunin.json?04')
+fetch('../js/hyakunin.json?20261016-01')
     .then(r => r.json())
     .then(data => {
         allSongs = Object.values(data);

@@ -1,21 +1,26 @@
 ////////////////////////////////////////////////////////////
 // 検索機能（三十六歌仙 歌仙絵と和歌）
 // 歌人名・和歌・現代語訳・人物紹介を対象に、入力した文字で歌人カードを絞り込む
+// 英語版（sanjurokkasen_en.html）も同じスクリプト。英語版はローマ字・英訳も対象になり、
+// 長音記号などの付いた文字（ō など）は付いていない文字（o）でも当たるようにする
 ////////////////////////////////////////////////////////////
 (function () {
   const searchInput = document.getElementById("searchInput");
   const searchResult = document.getElementById("searchResult");
   if (!searchInput) return;
 
+  const IS_EN = document.documentElement.lang === "en";
   const pairs = document.querySelectorAll(".kasen-pair");
   const cards = document.querySelectorAll(".kasen-card");
 
   // カタカナ→ひらがな、空白除去、小文字化
   function normalize(text) {
-    return text
+    const s = text
       .replace(/[\u30a1-\u30f6]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0x60))
       .replace(/\s+/g, "")
       .toLowerCase();
+    // 英語版は ō→o のように記号も外す
+    return IS_EN ? s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").normalize("NFC") : s;
   }
 
   // ルビの読みを除いた本文と、ルビの読みで置き換えた本文の両方を検索対象にする
@@ -45,9 +50,11 @@
     pairs.forEach((pair) => {
       pair.hidden = !pair.querySelector(".kasen-card:not([hidden])");
     });
-    searchResult.textContent = value
-      ? count ? `${count}人が該当しました。` : "該当する歌人が見つかりませんでした。"
-      : "";
+    searchResult.textContent = !value
+      ? ""
+      : IS_EN
+        ? count ? `${count} poet${count === 1 ? "" : "s"} found.` : "No poets found."
+        : count ? `${count}人が該当しました。` : "該当する歌人が見つかりませんでした。";
   }
 
   searchInput.addEventListener("input", filter);

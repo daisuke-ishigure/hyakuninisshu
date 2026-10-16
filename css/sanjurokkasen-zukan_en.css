@@ -1,0 +1,235 @@
+/* --------------------------------------------
+三十六歌仙 英語版（sanjurokkasen_en.html）
+日本語版（css/sanjurokkasen-zukan.css）は和歌を縦書きにしているが、英語版は横書きのカードにする：
+上段＝歌仙絵（左）と歌人名・人物紹介（右）、下段＝和歌（In Japanese：ルビ付き＋ローマ字）と英訳（In English）
+PC：番（左・右）を横並び／SP：1名ずつ縦に並べる
+-------------------------------------------- */
+.kasen-lead {
+  line-height: 1.7;
+  margin-bottom: 0.8em;
+}
+
+/* 画像の出典表記 */
+.section .image-credit {
+  font-size: 0.8rem;
+  line-height: 1.6;
+  text-align: right;
+  color: #555;
+}
+
+.kasen-list {
+  margin-top: 1.5em;
+}
+
+/* 番 */
+.kasen-pair {
+  margin-bottom: 2.5em;
+}
+.section .kasen-pair__title {
+  display: flex;
+  align-items: center;
+  gap: 0.8em;
+  font-size: 1.2rem;
+  letter-spacing: 0.05em;
+  color: #b82343;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0 0 0.8em;
+}
+.section .kasen-pair__title::before,
+.section .kasen-pair__title::after {
+  content: "";
+  flex: 1;
+  border-top: 1px solid #b82343;
+}
+.kasen-pair__cards {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 20px;
+}
+
+/* 歌人カード */
+.kasen-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+  background: #fffdf7;
+  border: 1px solid #8a7a5c;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  scroll-margin-top: 1em;
+}
+
+/* 上段：歌仙絵と人物紹介 */
+.kasen-card__head {
+  display: grid;
+  grid-template-columns: 36% minmax(0, 1fr);
+  gap: 12px;
+}
+.kasen-card__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid #c9bb9a;
+}
+.kasen-card__profile {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+.section .kasen-card__name {
+  font-size: 1.05rem;
+  line-height: 1.4;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+}
+.kasen-card__side {
+  display: inline-block;
+  margin-right: 0.5em;
+  padding: 0.1em 0.5em;
+  font-size: 0.7rem;
+  line-height: 1.5;
+  vertical-align: 0.15em;
+  color: #fff;
+  background: #b82343;
+  border-radius: 3px;
+}
+/* 日本語の歌人名（style.css の英語ページ用フォント指定では明朝になるため、ここだけゴシックに） */
+html[lang="en"] .section .kasen-card__name-ja,
+html[lang="en"] .section .kasen-card__name-ja rt {
+  font-family: "Noto Sans JP", sans-serif !important;
+}
+.section .kasen-card__name-ja {
+  font-size: 0.85rem;
+  color: #555;
+  margin: 0.2em 0 0;
+}
+.section .kasen-card__name-ja rt {
+  font-size: 0.55em;
+}
+.section .kasen-card__life {
+  font-size: 0.8em;
+  color: #555;
+  margin: 0.2em 0 0.3em;
+}
+.section .kasen-card__text {
+  font-size: inherit;
+  line-height: inherit;
+  margin-bottom: 0.5em;
+}
+.kasen-card__link {
+  align-self: flex-start;
+  margin-top: auto; /* 人物紹介欄の下端にそろえる */
+}
+
+/* 下段：和歌（In Japanese）と英訳（In English）。英語の歌ページ（1_en.html）の引用と同じ見た目 */
+.section .poem-quote {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  margin-top: auto; /* 番の2枚で和歌欄の下端をそろえる */
+  font-family: "Noto Sans", "Noto Serif JP", sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  color: #333;
+  letter-spacing: normal;
+}
+.section .poem-quote q {
+  display: block;
+  width: auto; /* style.css の q の幅指定を打ち消し、カード幅いっぱいに広げる */
+  max-width: none;
+  margin: 0;
+  padding: 0.5em;
+  font-size: inherit;
+  line-height: inherit;
+  background: #fff;
+  box-shadow: 0px 0px 3px 0px rgba(136, 136, 136, 0.777);
+}
+.section .poem-quote q::before,
+.section .poem-quote q::after {
+  content: "";
+}
+.section .poem-quote .was-h4 {
+  display: block;
+  font-family: "Playfair Display", "Kaisei HarunoUmi", serif !important;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.65;
+  margin: 0 0 0.4em;
+}
+.section .poem-quote q.quote-ja {
+  font-weight: 700;
+}
+.section .poem-quote q.quote-ja rt {
+  font-size: 0.55em;
+}
+.section .poem-quote q.quote-ja .romaji-line {
+  display: block;
+  font-size: 0.82em;
+  font-style: italic;
+  font-weight: 400;
+  color: #7a6655;
+  line-height: 1.6;
+  margin-top: 0.4em;
+}
+.section .poem-quote .kasen-card__yaku {
+  display: block;
+  line-height: 1.8;
+}
+
+/* 中間幅：番は横並びのまま、カード内の歌仙絵を少し小さく */
+@media (min-width: 641px) and (max-width: 960px) {
+  .kasen-card__head {
+    grid-template-columns: 32% minmax(0, 1fr);
+  }
+}
+
+/* SP：1名ずつ */
+@media (max-width: 640px) {
+  .kasen-pair__cards {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+  .kasen-card {
+    padding: 10px;
+  }
+  .kasen-card__head {
+    grid-template-columns: 38% minmax(0, 1fr);
+    gap: 10px;
+  }
+  .section .poem-quote {
+    font-size: 16px;
+  }
+}
+
+/* 検索（絞り込み） */
+.kasen-search {
+  margin-top: 1.2em;
+}
+#searchInput {
+  box-sizing: border-box;
+  width: 100%;
+  height: 45px;
+  padding: 10px 10px 8px;
+  font-size: 16px;
+}
+.section .kasen-search__result {
+  min-height: 1.5em;
+  margin: 0.4em 0 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+.kasen-pair[hidden],
+.kasen-card[hidden] {
+  display: none;
+}
+
+/* 歌仙絵の拡大（lightbox） */
+.kasen-card__zoom {
+  display: block;
+  cursor: zoom-in;
+}

@@ -263,7 +263,7 @@ const POETS_RAW = [
         outline: 'Master of landscape poetry who sang of nature\'s beauty', img: 'img/z04.webp',
     },
     {
-        n: 5, name: '<ruby>猿丸太夫<rt>さるまるだゆう</rt></ruby>', date: 'dates unknown', theme: 'autumn',
+        n: 5, name: '<ruby>猿丸大夫<rt>さるまるだゆう</rt></ruby>', date: 'dates unknown', theme: 'autumn',
         poem: '<ruby>奥山<rt>おくやま</rt></ruby>に…', job: '伝説', source: '古今集',
         outline: 'A legendary poet shrouded in mystery', img: 'img/z05.webp',
     },
