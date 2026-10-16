@@ -37,5 +37,6 @@ function scrollToKeyword() {
       }
     }
   }
-  alert('検索ワードの該当するものがありません。');
+  // 英語版（utamakura-list_en.html）も同じスクリプトを使う
+  alert(document.documentElement.lang === 'en' ? 'No matches found.' : '検索ワードの該当するものがありません。');
 }

@@ -58,7 +58,7 @@
 }
 .utamakura-list tbody th a {
   text-decoration: none;
-  color: #0047ab !important;
+  color: #b82343 !important;
   font-size: 1.05em;
 }
 @media (max-width: 640px) {
@@ -76,8 +76,8 @@
 }
 .utamakura-list tbody td a {
   font-weight: bold;
-  -webkit-text-decoration: underline wavy #B82343;
-          text-decoration: underline wavy #B82343;
+  color: #b82343;
+  text-decoration: none;
 }
 .utamakura-list tbody td div > a {
   text-decoration: none;
@@ -146,4 +146,27 @@
   #inputWrapper #button {
     width: 15%;
   }
-}/*# sourceMappingURL=utamakura-list.css.map */
+}/* 英語版（utamakura-list_en.html）：歌枕の日本語名、和歌のローマ字 */
+.utamakura-list .utamakura-ja {
+  display: block;
+  font-size: 0.8em;
+  font-weight: normal;
+  color: #555;
+}
+.utamakura-list .poem-romaji {
+  display: block;
+  margin-top: 0.2em;
+  font-size: 0.85em;
+  font-style: italic;
+  line-height: 1.5;
+  color: #7a6655;
+}
+/* style.css の英語ページ用フォント指定（"Noto Sans", "Noto Serif JP" … !important）だと日本語が明朝になるため、ゴシックにする */
+html[lang="en"] .utamakura-list .utamakura-ja,
+html[lang="en"] .utamakura-list .poem-ja,
+html[lang="en"] .utamakura-list .poem-ja a,
+html[lang="en"] .utamakura-list .poem-ja span {
+  font-family: "Noto Sans JP", sans-serif !important;
+}
+
+/*# sourceMappingURL=utamakura-list.css.map */
