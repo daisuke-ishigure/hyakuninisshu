@@ -102,6 +102,20 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@500&family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
+  <style>
+    /* 縦長の木簡写真用：画像1：テキスト9 の横並び（スマホでも縦積みにしない） */
+    .rokuyon.rokuyon--1-9 {
+      flex-direction: row;
+    }
+    .rokuyon.rokuyon--1-9 > a {
+      flex: 1 1 0;
+      max-width: none;
+      min-width: 40px;
+    }
+    .rokuyon.rokuyon--1-9 > div {
+      flex: 9 1 0;
+    }
+  </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/protonet-jquery.inview/1.1.2/jquery.inview.min.js"></script>
   <script src="../js/move_script.js?20260729"></script>
@@ -181,7 +195,7 @@
 
         <div class="rokuyon" style="gap:1em; margin-bottom:1em;">
           <a href="../img/den-wani-haka.webp" data-lightbox="難波津の歌" data-title="伝王仁墓">
-            <img src="../img/den-wani-haka.webp" alt="伝王仁墓">
+            <img src="../img/den-wani-haka.webp" alt="伝王仁墓" width="1280" height="960">
           </a>
           <div>
             <p>大阪府枚方市にある伝王仁墓。奥に見える色鮮やかな門は「百済門」。材料や機材を韓国から持ち込み、本場の宮大工が建立したそうです。
@@ -191,7 +205,7 @@
         </div>
         <div class="rokuyon" style="gap:1em; margin-bottom:1em;">
           <a href="../img/den-wani-haka_monument_large.webp" data-lightbox="難波津の歌" data-title="モニュメント">
-            <img src="../img/den-wani-haka_monument_small.webp" alt="千字文">
+            <img src="../img/den-wani-haka_monument_small.webp" alt="千字文と論語の記念碑" width="800" height="600">
           </a>
           <div>
             <p>王仁が持ってきたとされる『千字文』と『論語』の記念碑。それぞれの碑には両書の一節が刻まれています。日本語の他、韓国語、英語での説明があります。<br><small>（2025年8月14日撮影）</small>
@@ -200,20 +214,37 @@
         </div>
         <div class="rokuyon" style="gap:1em; margin-bottom:1em;">
           <a href="../img/den-wani-haka_senjibun_large.webp" data-lightbox="難波津の歌" data-title="千字文">
-            <img src="../img/den-wani-haka_senjibun_small.webp" alt="千字文">
+            <img src="../img/den-wani-haka_senjibun_small.webp" alt="千字文記念碑" width="800" height="600">
           </a>
           <div>
-            <p>王仁が持ってきたとされる『千字文』の一説が刻まれた千字文記念碑。</p>
+            <p>王仁が持ってきたとされる『千字文』の一節が刻まれた千字文記念碑。</p>
             <p>左下には難波津の花の歌も万葉仮名で刻まれています。<br><small>（2025年8月14日撮影）</small>
             </p>
           </div>
         </div>
         <h2 class="was-h3">文字学習の基礎になった<br class="br-sp">咲くやこの花（難波津の歌）</h2>
         <p>
-          『難波津の歌』は、文字学習において重要な役割を果たしていたことが知られています。全国各地の発掘調査において、奈良時代や7世紀頃の木簡が各地で出土しており、その中には歌が書かれたものがあるのですが、『難波津の歌』が書かれたものが一番多く見つかっています。これらの木簡は、まだ紙が貴重だった時代に、文字の練習用として使われていたと考えられます。
+          『難波津の歌』は、文字を学ぶうえで大切な役割を果たしていました。全国の発掘調査では、7世紀から奈良時代にかけての木簡が数多く出土していますが、歌が書かれた木簡の中でも、この歌を記したものがたくさん見つかっています。紙がまだ貴重だった時代、木の札は文字の練習に使われていたと考えられています。
         </p>
         <p>
-          913～914年に成立した『古今和歌集』の仮名序には、『難波津の歌』と『安積山の歌』が「歌の父母のやうにてぞ手習ふ人のはじめにもしける（歌の父母のようで、文字を習う人が最初に学ぶ歌）」と記されています。また、1008年頃に執筆が完了した『源氏物語』には、光源氏が幼い紫の上に結婚を申し込んだ際、祖母が「まだ難波津をだに、はかばかしう続けはべらざめれば、かひなくなむ（まだ『難波津の歌』でさえもきちんと書けない子供ですから）」と答える場面があり、この歌が当時の文字学習の基本として定着していたことが伺えます。
+          次の写真は、そうした木簡の一つです。
+        </p>
+        <div class="rokuyon rokuyon--1-9" style="gap:1em; margin-bottom:1em;">
+          <a href="../img/naniwazunouta-mokkan_large.webp" data-lightbox="難波津の歌" data-title="難波津の歌が書かれた木簡（藤原京跡出土）">
+            <img src="../img/naniwazunouta-mokkan_small.webp" alt="難波津の歌が書かれた木簡（藤原京跡出土）" width="79" height="800">
+          </a>
+          <div>
+            <p>藤原京跡（奈良県橿原市）から出土した、難波津の歌が書かれた木簡です。藤原京が都だった694〜710年頃のもので、長さ約39cmのヒノキの板に墨で書かれています。</p>
+            <p>表には万葉仮名で「<ruby>奈<rt>な</rt></ruby><ruby>尓<rt>に</rt></ruby><ruby>皮<rt>は</rt></ruby><ruby>ツ<rt>つ</rt></ruby><ruby>尓<rt>に</rt></ruby><ruby>佐<rt>さ</rt></ruby><ruby>久<rt>く</rt></ruby><ruby>矢<rt>や</rt></ruby><ruby>己<rt>こ</rt></ruby><ruby>乃<rt>の</rt></ruby><ruby>皮<rt>は</rt></ruby><ruby>奈<rt>な</rt></ruby><ruby>布<rt>ふ</rt></ruby><ruby>由<rt>ゆ</rt></ruby><ruby>己<rt>ご</rt></ruby><ruby>母<rt>も</rt></ruby><ruby>利<rt>り</rt></ruby><ruby>伊<rt>い</rt></ruby><ruby>真<rt>ま</rt></ruby><ruby>皮<rt>は</rt></ruby><ruby>々<rt>は</rt></ruby><ruby>留<rt>る</rt></ruby><ruby>部<rt>べ</rt></ruby><ruby>止<rt>と</rt></ruby>」と記されています。</p>
+            <p><small>出典：<a href="https://mokkanko.nabunken.go.jp/ja/5AWHHI16000107" target="_blank" rel="noopener">木簡庫（奈良文化財研究所）</a> を加工して作成</small></p>
+          </div>
+        </div>
+
+        <p>
+          平安時代になっても、この歌は手習いの最初の一首でした。先にふれた『古今和歌集』（905年奏上）の<a href="kanajo.html">仮名序</a>には、『難波津の歌』と『安積山の歌』が「歌の父母のやうにてぞ手習ふ人のはじめにもしける（歌の父母のようなもので、文字を習う人が最初に学ぶ歌）」と記されています。
+        </p>
+        <p>
+          また『源氏物語』の「若紫」には、光源氏が幼い紫の上の世話を申し出たとき、祖母の尼君が「まだ難波津をだに、はかばかしう続けはべらざめれば、かひなくなむ（まだ『難波津の歌』さえきちんと続けて書けない子ですから、お話になりません）」と断る場面があります。この歌が、当時の文字学習の基本として定着していたことがうかがえます。
         </p>
 
         <h2 class="was-h3">時代を超えて響く、希望の旋律</h2>
