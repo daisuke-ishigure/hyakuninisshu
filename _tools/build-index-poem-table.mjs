@@ -1,5 +1,7 @@
-// index.html「百首から選ぶ」・list.html「百人一首一覧」・list_en.html の表（全100首）を HTML に直書きするためのスクリプト。
-// 検索エンジンが100首へのリンクを確実に辿れるよう、JavaScript で作らず静的に埋め込んでいる。
+// list.html「百人一首一覧」・list_en.html の表（全100首）と、index.html・index_en.html「百首から選ぶ」の表（最初の5首）を
+// HTML に直書きするためのスクリプト。検索エンジンがリンクを確実に辿れるよう、JavaScript で作らず静的に埋め込んでいる。
+// トップページは5首だけにして、全100首の一覧は list.html・list_en.html に一本化している（「百人一首 一覧」の検索で
+// 同じ表のページが2つ並ばないように）。
 //
 // 使い方（リポジトリのルートで）:
 //   node _tools/build-index-poem-table.mjs
@@ -18,7 +20,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const read = (p) => readFileSync(join(root, p), "utf8");
 
 // 行テンプレート（ブラウザ側と同じファイル）と、その表を直書きするページ
-// head は <tbody> の前に入れる <caption>・<thead>（無ければ入れない）。
+// head は <tbody> の前に入れる <caption>・<thead>（無ければ入れない）。limit は載せる首数（無ければ全100首）。
 // list.html・list_en.html は「百人一首 一覧」の検索で上位を狙うページなので、見出し行を付けている（作者は和歌の列の中・右揃え）。
 const LIST_HEAD =
   "          <caption>百人一首 一覧（歌番号・和歌・作者）</caption>\n" +
@@ -33,9 +35,9 @@ const LIST_HEAD_EN =
 const TARGETS = [
   {
     template: "js/list-rows.js",
-    pages: [{ page: "index.html" }, { page: "list.html", head: LIST_HEAD }],
+    pages: [{ page: "index.html", limit: 5 }, { page: "list.html", head: LIST_HEAD }],
   },
-  { template: "js/list-rows_en.js", pages: [{ page: "index_en.html" }, { page: "list_en.html", head: LIST_HEAD_EN }] },
+  { template: "js/list-rows_en.js", pages: [{ page: "index_en.html", limit: 5 }, { page: "list_en.html", head: LIST_HEAD_EN }] },
 ];
 
 const data = JSON.parse(read("js/hyakunin.json"));
@@ -46,9 +48,10 @@ for (const { template, pages } of TARGETS) {
   const context = vm.createContext({});
   vm.runInContext(read(template), context);
 
-  for (const { page, head = "" } of pages) {
-    const rows = Object.keys(data).map((key) => "            " + context.buildPoemRowHTML(data[key]));
-    if (rows.length !== 100) throw new Error(`100首ではありません: ${rows.length}`);
+  for (const { page, head = "", limit } of pages) {
+    const all = Object.keys(data).map((key) => "            " + context.buildPoemRowHTML(data[key]));
+    if (all.length !== 100) throw new Error(`100首ではありません: ${all.length}`);
+    const rows = limit ? all.slice(0, limit) : all;
 
     const table =
       START + "\n" +

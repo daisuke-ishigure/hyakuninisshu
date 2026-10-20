@@ -20,7 +20,7 @@ const STAMPS = join(root, ".claude", "build-stamps.json");
 // htmlWith: ルートの .html のうち、この文字列を含むものも入力に含める（相関図のデータが各ページに書かれているため）
 const BUILDS = [
   {
-    script: "build-index-poem-table.mjs", // index.html・list.html・list_en.html の100首の表
+    script: "build-index-poem-table.mjs", // list.html・list_en.html の100首の表、index.html・index_en.html の5首の表
     inputs: ["js/hyakunin.json", "js/list-rows.js", "js/list-rows_en.js"],
   },
   {

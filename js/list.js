@@ -30,7 +30,7 @@ function initTable(table) {
 
   // トップページの検索フォーム（list.html?q=...）から来たときは、その語で絞り込んだ状態で開く
   const initialQuery = new URLSearchParams(location.search).get("q");
-  if (initialQuery) {
+  if (initialQuery && searchInput) {
     searchInput.value = initialQuery;
     searchInput.dispatchEvent(new Event("keyup"));
   }
@@ -59,14 +59,14 @@ if (prebuiltTable) {
 ////////////////////////////////////////////////////////////
 
 // 現在のフィルター色・テーマ（null = フィルターなし）
-// テーマの絞り込みボタン（.theme-filter-btn）は、置いてあるページ（現在はトップページ）でだけ使われる
+// テーマの絞り込みボタン（.theme-filter-btn）は、置いてあるページでだけ使われる（現在はどのページにもない）
 let activeColorFilter = null;
 let activeThemeFilter = null;
 
 // 色・テーマ・検索語をすべて満たす行だけを表示する
 function applyFilters(table) {
   const rows = Array.from(table.querySelectorAll("tbody tr"));
-  const searchValue = searchInput.value.toLowerCase();
+  const searchValue = searchInput ? searchInput.value.toLowerCase() : "";
   rows.forEach((row) => {
     const colorOk = !activeColorFilter || row.dataset.color === activeColorFilter;
     const themeOk = !activeThemeFilter || row.dataset.theme === activeThemeFilter;
@@ -94,6 +94,8 @@ function initSortButtons(table) {
   const btnKana   = document.getElementById("sortByKana");
   const colorFilterBtns = document.querySelectorAll(".color-filter-btn");
   const themeFilterBtns = document.querySelectorAll(".theme-filter-btn");
+  // トップページ（index.html）には並べ替えボタンがない（5首だけ載せ、検索・並べ替えは list.html で行う）
+  if (!btnNumber || !btnColor || !btnKana) return;
 
   function setActiveSort(activeBtn) {
     [btnNumber, btnColor, btnKana].forEach((b) => b.classList.remove("active"));
@@ -186,12 +188,15 @@ function initSortButtons(table) {
 ////////////////////////////////////////////////////////////
 // 検索機能
 ////////////////////////////////////////////////////////////
+// トップページ（index.html）の検索欄は別の id（homeSearchInput）で、入力した語を持って list.html に移るだけなので、ここでは扱わない
 let searchInput = document.getElementById("searchInput");
 
-searchInput.addEventListener("keyup", () => {
-  // 色・テーマのフィルター中は、その条件も満たす行だけを表示
-  applyFilters(document.getElementById("table"));
-});
+if (searchInput) {
+  searchInput.addEventListener("keyup", () => {
+    // 色・テーマのフィルター中は、その条件も満たす行だけを表示
+    applyFilters(document.getElementById("table"));
+  });
+}
 
 function clearSearch() {
   searchInput.value = "";

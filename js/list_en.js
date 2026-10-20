@@ -27,6 +27,13 @@ function initTable(table) {
 
   initSortButtons(table);
   updateBadgeWave(table);
+
+  // Coming from the top page's search form (list_en.html?q=...), open with the list filtered by that term
+  const initialQuery = new URLSearchParams(location.search).get("q");
+  if (initialQuery && searchInput) {
+    searchInput.value = initialQuery;
+    searchInput.dispatchEvent(new Event("keyup"));
+  }
 }
 
 // If the table is prebuilt in the HTML (so crawlers can follow every link), use it.
@@ -52,14 +59,14 @@ if (prebuiltTable) {
 ////////////////////////////////////////////////////////////
 
 // Current colour / theme filter (null = no filter)
-// The theme filter buttons (.theme-filter-btn) are only used on pages that have them (currently the top page)
+// The theme filter buttons (.theme-filter-btn) are only used on pages that have them (currently no page does)
 let activeColorFilter = null;
 let activeThemeFilter = null;
 
 // Show only rows that match the colour filter, the theme filter and the search text
 function applyFilters(table) {
   const rows = Array.from(table.querySelectorAll("tbody tr"));
-  const searchValue = searchInput.value.toLowerCase();
+  const searchValue = searchInput ? searchInput.value.toLowerCase() : "";
   rows.forEach((row) => {
     const colorOk = !activeColorFilter || row.dataset.color === activeColorFilter;
     const themeOk = !activeThemeFilter || row.dataset.theme === activeThemeFilter;
@@ -88,6 +95,8 @@ function initSortButtons(table) {
   const btnKana   = document.getElementById("sortByKana");
   const colorFilterBtns = document.querySelectorAll(".color-filter-btn");
   const themeFilterBtns = document.querySelectorAll(".theme-filter-btn");
+  // The top page (index_en.html) has no sort buttons (it shows only 5 poems; search and sorting happen on list_en.html)
+  if (!btnNumber || !btnColor || !btnKana) return;
 
   function setActiveSort(activeBtn) {
     [btnNumber, btnColor, btnKana].forEach((b) => b.classList.remove("active"));
@@ -168,12 +177,15 @@ function initSortButtons(table) {
 ////////////////////////////////////////////////////////////
 // Search
 ////////////////////////////////////////////////////////////
+// The top page's (index_en.html) search box has another id (homeSearchInput) and just goes to list_en.html with the term, so it is not handled here
 let searchInput = document.getElementById("searchInput");
 
-searchInput.addEventListener("keyup", () => {
-  // While a colour filter is active, only show rows that also match it
-  applyFilters(document.getElementById("table"));
-});
+if (searchInput) {
+  searchInput.addEventListener("keyup", () => {
+    // While a colour filter is active, only show rows that also match it
+    applyFilters(document.getElementById("table"));
+  });
+}
 
 function clearSearch() {
   searchInput.value = "";
