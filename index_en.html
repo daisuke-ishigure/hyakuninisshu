@@ -728,6 +728,14 @@
     }
 
     /* 解釈のセクション */
+    /* 運勢の英語の下に添える日本語（大吉・中吉など） */
+    #omikuji #waka-luck .luck-ja {
+      display: block;
+      margin-top: 0.2em;
+      font-family: 'Kaisei HarunoUmi', serif;
+      letter-spacing: 0.1em;
+    }
+
     #omikuji .interpretation-section {
       margin: 0.5em 0 2em;
       padding: 10px;
@@ -1776,7 +1784,7 @@
 /* ===== Today's poem (Hyakunin Isshu fortune) =====
    Uses js/omikuji_en.js as is, including the box flip, the stick, and the paper animation. */
 (function () {
-  const OMIKUJI_SRC = "/js/omikuji_en.js?20261022-01";
+  const OMIKUJI_SRC = "/js/omikuji_en.js?20261022-02";
   const section = document.getElementById("omikuji");
   const drawBtn = document.getElementById("draw-button");
   if (!section || !drawBtn) return;

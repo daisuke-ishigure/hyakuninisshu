@@ -1200,6 +1200,12 @@ function initOmikuji() {
             wakaStory.closest('.interpretation-section').style.display = result.story ? '' : 'none';
         }
         wakaLuck.textContent = `Today's Fortune: ${luckMap[result.luck] || result.luck}`;
+        // 英語の下に、日本語の運勢（大吉・中吉など）を1行で添える
+        const luckJa = document.createElement('span');
+        luckJa.className = 'luck-ja';
+        luckJa.lang = 'ja';
+        luckJa.textContent = result.luck;
+        wakaLuck.appendChild(luckJa);
         interpLove.textContent = result.love;
         interpWork.textContent = result.work;
         if (poemLinkBtn) poemLinkBtn.href = `${index + 1}_en.html`;
