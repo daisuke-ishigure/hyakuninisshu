@@ -100,6 +100,60 @@
   <title>平安時代の位階・官職 | 百人一首に登場する歌人も絡めて紹介しています | 時雨の百人一首</title>
 
   <style>
+    /* ---- 全体像（官職とは・主な官職一覧） ---- */
+    .kanshoku-overview p {
+      line-height: 1.9;
+    }
+
+    .kanshoku-overview-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 1em 0 0.6em;
+    }
+
+    .kanshoku-overview-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      font-size: 0.95em;
+      line-height: 1.7;
+    }
+
+    .kanshoku-overview-table caption {
+      text-align: left;
+      font-weight: bold;
+      padding-bottom: 0.4em;
+    }
+
+    .kanshoku-overview-table th,
+    .kanshoku-overview-table td {
+      border: 1px solid #c8b89a;
+      padding: 0.6em 0.7em;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    /* 左列：官職（3行分を1セル） */
+    .kanshoku-overview-table tbody th {
+      width: 7.5em;
+      background: #fdf8f2;
+      white-space: nowrap;
+      vertical-align: middle;
+      text-align: center;
+    }
+
+    .kanshoku-overview-label {
+      display: block;
+      font-size: 0.8em;
+      font-weight: bold;
+      color: #b82343;
+    }
+
+    .kanshoku-overview-note {
+      font-size: 0.9em;
+      color: #555;
+    }
+
     /* ---- 目次カード共通スタイル ---- */
     .kanshoku-intro {
       margin-bottom: 2em;
@@ -262,6 +316,172 @@
         <p class="kanshoku-intro">
           平安時代には、複雑に入り組んだ位階と官職の体系がありました。このシリーズでは、律令制にもとづく中央・地方の官制、後宮の女官組織、治安を担った武士や検非違使、仏教を統制した僧官など、平安宮廷の仕組みを幅広く解説しています。百人一首の歌人たちが生きた時代の「役職」を知ることで、和歌の背景がぐっと深まります。
         </p>
+        <section class="kanshoku-overview" aria-labelledby="kanshoku-about">
+          <h2 id="kanshoku-about">平安時代の官職とは</h2>
+          <p>
+            平安時代の役人の地位は、「<ruby>位階<rt>いかい</rt></ruby>」と「<ruby>官職<rt>かんしょく</rt></ruby>」の二つで表されました。位階は正一位から少初位下まで30段階ある役人の序列、官職は大臣や国司といった実際の役職です。どの官職に就けるかは位階によっておおよそ決まっており、この仕組みを「<ruby>官位相当制<rt>かんいそうとうせい</rt></ruby>」といいます。
+          </p>
+          <p>
+            政治の中心は、天皇のもとに置かれた<ruby>神祇官<rt>じんぎかん</rt></ruby>と<ruby>太政官<rt>だじょうかん</rt></ruby>、そして太政官の下の八つの省からなる「<a href="kanshoku_nikanhasshou.html">二官八省</a>」でした。平安時代になると、摂政・関白、中納言、参議、蔵人頭のように、律令に定めのない「<ruby>令外官<rt>りょうげのかん</rt></ruby>」も重要な役割を担うようになります。
+          </p>
+          <p>
+            位階が五位以上の人が貴族とされ、なかでも三位以上の人と参議は「<ruby>公卿<rt>くぎょう</rt></ruby>（<ruby>上達部<rt>かんだちめ</rt></ruby>）」と呼ばれて国の政治を動かしました（<a href="kanshoku_hierarchy.html">平安貴族の身分制度</a>）。
+          </p>
+
+          <h2 id="kanshoku-list">主な官職一覧</h2>
+          <p>百人一首の歌人の名前には、「河原左大臣」「中納言家持」「参議篁」のように官職名が入っているものが多くあります。主な官職と、その官職名で呼ばれる歌人をまとめました。</p>
+          <div class="kanshoku-overview-scroll">
+            <table class="kanshoku-overview-table">
+              <caption>平安時代の主な官職と相当位階</caption>
+              <tbody>
+                <tr>
+                  <th scope="rowgroup" rowspan="3"><ruby>摂政<rt>せっしょう</rt></ruby>・<ruby>関白<rt>かんぱく</rt></ruby></th>
+                  <td><span class="kanshoku-overview-label">相当位階</span>なし（令外官）</td>
+                </tr>
+                <tr>
+                  <td><span class="kanshoku-overview-label">役割</span>摂政は幼い天皇に代わって、関白は成人した天皇を補佐して政治を行う、最高の地位。</td>
+                </tr>
+                <tr>
+                  <td><span class="kanshoku-overview-label">この官職名で呼ばれる百人一首の歌人</span><a href="91.html">後京極摂政前太政大臣</a>、<a href="76.html">法性寺入道前関白太政大臣</a></td>
+                </tr>
+              </tbody>
+              <tbody>
+                <tr>
+                  <th scope="rowgroup" rowspan="3"><ruby>太政大臣<rt>だじょうだいじん</rt></ruby></th>
+                  <td><span class="kanshoku-overview-label">相当位階</span>正一位・従一位</td>
+                </tr>
+                <tr>
+                  <td><span class="kanshoku-overview-label">役割</span>太政官の最高位。適任者がいなければ置かれないため「<ruby>則闕<rt>そっけつ</rt></ruby>の官」とも呼ばれた。</td>
+                </tr>
+                <tr>
+                  <td><span class="kanshoku-overview-label">この官職名で呼ばれる百人一首の歌人</span><a href="96.html">入道前太政大臣</a></td>
+                </tr>
+              </tbody>
+              <tbody>
+                <tr>
+                  <th scope="rowgroup" rowspan="3"><ruby>左大臣<rt>さだいじん</rt></ruby></th>
+                  <td><span class="kanshoku-overview-label">相当位階</span>正二位・従二位</td>
+                </tr>
+                <tr>
+                  <td><span class="kanshoku-overview-label">役割</span>太政官の事実上の最高責任者として政務を率いる。</td>
+                </tr>
+                <tr>
+                  <td><span class="kanshoku-overview-label">この官職名で呼ばれる百人一首の歌人</span><a href="14.html">河原左大臣</a>、<a href="81.html">後徳大寺左大臣</a></td>
+                </tr>
+              </tbody>
+              <tbody>
+                <tr>
+                  <th scope="rowgroup" rowspan="3"><ruby>右大臣<rt>うだいじん</rt></ruby></th>
+                  <td><span class="kanshoku-overview-label">相当位階</span>正二位・従二位</td>
+                </tr>
+                <tr>
+                  <td><span class="kanshoku-overview-label">役割</span>左大臣を補佐し、ともに政務を率いる。</td>
+                </tr>
+                <tr>
+                  <td><span class="kanshoku-overview-label">この官職名で呼ばれる百人一首の歌人</span><a href="25.html">三条右大臣</a></td>
+                </tr>
+              </tbody>
+              <tbody>
+                <tr>
+                  <th scope="rowgroup" rowspan="3"><ruby>内大臣<rt>ないだいじん</rt></ruby></th>
+                  <td><span class="kanshoku-overview-label">相当位階</span>正二位・従二位（令外官）</td>
+                </tr>
+                <tr>
+                  <td><span class="kanshoku-overview-label">役割</span>左右の大臣に次ぐ大臣。左右の大臣が欠けたときなどに代わって政務を行う。</td>
+                </tr>
+                <tr>
+                  <td><span class="kanshoku-overview-label">この官職名で呼ばれる百人一首の歌人</span>―</td>
+                </tr>
+              </tbody>
+              <tbody>
+                <tr>
+                  <th scope="rowgroup" rowspan="3"><ruby>大納言<rt>だいなごん</rt></ruby></th>
+                  <td><span class="kanshoku-overview-label">相当位階</span>正三位</td>
+                </tr>
+                <tr>
+                  <td><span class="kanshoku-overview-label">役割</span>大臣とともに政務を審議し、天皇への奏上と命令の伝達（宣下）を担う。</td>
+                </tr>
+                <tr>
+                  <td><span class="kanshoku-overview-label">この官職名で呼ばれる百人一首の歌人</span><a href="55.html">大納言公任</a>、<a href="71.html">大納言経信</a></td>
+                </tr>
+              </tbody>
+              <tbody>
+                <tr>
+                  <th scope="rowgroup" rowspan="3"><ruby>中納言<rt>ちゅうなごん</rt></ruby></th>
+                  <td><span class="kanshoku-overview-label">相当位階</span>従三位（令外官）</td>
+                </tr>
+                <tr>
+                  <td><span class="kanshoku-overview-label">役割</span>大納言と同じく奏上・宣下に当たり、大臣とともに政務を審議する。定員外の「権中納言」も置かれた。</td>
+                </tr>
+                <tr>
+                  <td><span class="kanshoku-overview-label">この官職名で呼ばれる百人一首の歌人</span><a href="6.html">中納言家持</a>、<a href="16.html">中納言行平</a>、<a href="27.html">中納言兼輔</a>、<a href="44.html">中納言朝忠</a>、<a href="97.html">権中納言定家</a> など</td>
+                </tr>
+              </tbody>
+              <tbody>
+                <tr>
+                  <th scope="rowgroup" rowspan="3"><ruby>参議<rt>さんぎ</rt></ruby></th>
+                  <td><span class="kanshoku-overview-label">相当位階</span>なし（四位以上から選ばれる令外官）</td>
+                </tr>
+                <tr>
+                  <td><span class="kanshoku-overview-label">役割</span>大臣・納言とともに政務を審議する。「<ruby>宰相<rt>さいしょう</rt></ruby>」とも呼ばれた。</td>
+                </tr>
+                <tr>
+                  <td><span class="kanshoku-overview-label">この官職名で呼ばれる百人一首の歌人</span><a href="11.html">参議篁</a>、<a href="39.html">参議等</a>、<a href="94.html">参議雅経</a></td>
+                </tr>
+              </tbody>
+              <tbody>
+                <tr>
+                  <th scope="rowgroup" rowspan="3"><ruby>蔵人頭<rt>くろうどのとう</rt></ruby></th>
+                  <td><span class="kanshoku-overview-label">相当位階</span>なし（主に四位の人が就く令外官）</td>
+                </tr>
+                <tr>
+                  <td><span class="kanshoku-overview-label">役割</span>天皇の秘書役である蔵人所の実務の責任者。蔵人や殿上人を指揮し、勅旨や上奏の伝達、天皇の身辺の世話などを取り仕切った。</td>
+                </tr>
+                <tr>
+                  <td><span class="kanshoku-overview-label">この官職名で呼ばれる百人一首の歌人</span>―</td>
+                </tr>
+              </tbody>
+              <tbody>
+                <tr>
+                  <th scope="rowgroup" rowspan="3"><ruby>近衛大将<rt>このえのたいしょう</rt></ruby></th>
+                  <td><span class="kanshoku-overview-label">相当位階</span>従三位</td>
+                </tr>
+                <tr>
+                  <td><span class="kanshoku-overview-label">役割</span>宮中の警備や行幸の警護を担う近衛府の長官。その下に中将（従四位下）・少将（正五位下）が置かれた。</td>
+                </tr>
+                <tr>
+                  <td><span class="kanshoku-overview-label">この官職名で呼ばれる百人一首の歌人</span><a href="53.html">右大将道綱母</a>（息子・藤原道綱の官職による呼び名）</td>
+                </tr>
+              </tbody>
+              <tbody>
+                <tr>
+                  <th scope="rowgroup" rowspan="3"><ruby>左京大夫<rt>さきょうのだいぶ</rt></ruby></th>
+                  <td><span class="kanshoku-overview-label">相当位階</span>正五位上（のち従四位下）</td>
+                </tr>
+                <tr>
+                  <td><span class="kanshoku-overview-label">役割</span>平安京の左半分（左京）の行政・司法・警察を担う左京職の長官。</td>
+                </tr>
+                <tr>
+                  <td><span class="kanshoku-overview-label">この官職名で呼ばれる百人一首の歌人</span><a href="63.html">左京大夫道雅</a>、<a href="79.html">左京大夫顕輔</a></td>
+                </tr>
+              </tbody>
+              <tbody>
+                <tr>
+                  <th scope="rowgroup" rowspan="3"><ruby>国司<rt>こくし</rt></ruby>（<ruby>守<rt>かみ</rt></ruby>）</th>
+                  <td><span class="kanshoku-overview-label">相当位階</span>従五位上〜従六位下（国の等級による）</td>
+                </tr>
+                <tr>
+                  <td><span class="kanshoku-overview-label">役割</span>諸国に派遣され、その国の行政・司法・軍事を担う長官。現地に赴いた最高責任者は「<ruby>受領<rt>ずりょう</rt></ruby>」と呼ばれた。</td>
+                </tr>
+                <tr>
+                  <td><span class="kanshoku-overview-label">この官職名で呼ばれる百人一首の歌人</span>―</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="kanshoku-overview-note">※ 相当位階は律令の規定にもとづく目安で、時代によって変わったものもあります。くわしくは<a href="kanshoku_nikanhasshou.html">中央官制（二官八省）</a>の官位相当表、<a href="kanshoku_local.html">地方官制</a>をご覧ください。百人一首の歌人それぞれの位階・官職は<a href="kajin-kanshoku.html">歌人別 位階・官職一覧</a>にまとめています。</p>
+        </section>
+
         <p>下記のカードをクリックすると、それぞれの官職の<strong style="color:#B82343;">役割・地位・時代背景</strong>をわかりやすく解説したページを見ることができます。</p>
         
 
