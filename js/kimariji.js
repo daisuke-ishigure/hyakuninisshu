@@ -163,7 +163,7 @@ const correctMessages = ['天晴れ！', 'お見事！', 'めでたし！', 'い
 // パンくず・h1は静的HTML側（<main>先頭）に移動済み（SEO対応）。
 
 // JSON読み込み
-fetch('../js/hyakunin.json?20261016-01')
+fetch('../js/hyakunin.json?20261021-01')
     .then(r => r.json())
     .then(data => {
         allSongs = Object.values(data);

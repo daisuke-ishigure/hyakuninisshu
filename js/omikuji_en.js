@@ -13,7 +13,7 @@ const hyakuninIsshu = [
         luck: "中吉"
     },
     {
-        poem: "<ruby>春<rt>はる</rt></ruby><ruby>過<rt>す</rt></ruby>ぎて <ruby>夏<rt>なつ</rt></ruby><ruby>来<rt>きた</rt></ruby>るらし <ruby>白妙<rt>しろたえ</rt></ruby>の <ruby>衣<rt>ころも</rt></ruby><ruby>干<rt>ほ</rt></ruby>したり <ruby>天<rt>あま</rt></ruby>の<ruby>香具山<rt>かぐやま</rt></ruby>",
+        poem: "<ruby>春<rt>はる</rt></ruby><ruby>過<rt>す</rt></ruby>ぎて <ruby>夏<rt>なつ</rt></ruby><ruby>来<rt>き</rt></ruby>にけらし <ruby>白妙<rt>しろたえ</rt></ruby>の <ruby>衣<rt>ころも</rt></ruby>ほす<ruby>てふ<rt>ちょう</rt></ruby> <ruby>天<rt>あま</rt></ruby>の<ruby>香具山<rt>かぐやま</rt></ruby>",
         meaning: "Spring has passed and summer seems to have come — white robes are said to be hung out to dry on the heavenly Mount Kagu.",
         love: "Signs of dramatic change are here. A stalled relationship may surge forward, or a new connection may emerge. Embrace the shift rather than fear it.",
         work: "Ideas and plans are moving quickly toward realization. Swift action is the key to success. Now is the time to put that long-cherished project into motion.",
@@ -24,7 +24,7 @@ const hyakuninIsshu = [
     {
         poem: "あしびきの <ruby>山鳥<rt>やまどり</rt></ruby>の<ruby>尾<rt>お</rt></ruby>の しだり<ruby>尾<rt>お</rt></ruby>の ながながし<ruby>夜<rt>よ</rt></ruby>を ひとりかも<ruby>寝<rt>ね</rt></ruby><ruby>む<rt>ん</rt></ruby>",
         meaning: "As long as the trailing tail feathers of the mountain bird — through these long, long nights, must I sleep alone?",
-        love: "Even when apart, hearts can still reach each other. The ache of distance only deepens the bond.",
+        love: "The long, lonely nights may seem endless right now. Yet that loneliness shows how much you care for someone. Turn your time alone into time to grow, and a connection will come your way.",
         work: "The path to your goal is long, but do not give up. That effort will connect to a major success.",
         poet: "Kakinomoto no Hitomaro",
         poetJa: "柿本人麻呂",
@@ -159,8 +159,8 @@ const hyakuninIsshu = [
     {
         poem: "<ruby>住<rt>すみ</rt></ruby>の<ruby>江<rt>え</rt></ruby>の <ruby>岸<rt>きし</rt></ruby>による<ruby>波<rt>なみ</rt></ruby> よるさ<ruby>へ<rt>え</rt></ruby>や <ruby>夢<rt>ゆめ</rt></ruby>のかよひ<ruby>路<rt>じ</rt></ruby> <ruby>人目<rt>ひとめ</rt></ruby>よくら<ruby>む<rt>ん</rt></ruby>",
         meaning: "Even in my dreams, I find myself longing to go to you along the path of dreams — but do I hide from others' eyes even in the night?",
-        love: "Your ideals have climbed too high. Rather than drifting on dreams, stay grounded and keep a healthy balance with reality.",
-        work: "Intuition is the key to success. Trust your flashes of inspiration and act on them.",
+        love: "You want to meet, yet cannot — even in dreams you seem to miss each other. Are you keeping your distance out of shyness or concern for what others think? Take a small step toward them, and the relationship will begin to move.",
+        work: "Worrying too much about how others see you may be holding back your true ability. Set aside your reserve and say what you think frankly, and the way will open.",
         poet: "Fujiwara no Toshiyuki Ason",
         poetJa: "藤原敏行朝臣",
         luck: "小吉"
@@ -186,11 +186,11 @@ const hyakuninIsshu = [
     {
         poem: "<ruby>今<rt>いま</rt></ruby>こ<ruby>む<rt>ん</rt></ruby>と い<ruby>ひ<rt>い</rt></ruby>しばかりに <ruby>長月<rt>ながつき</rt></ruby>の <ruby>有明<rt>ありあけ</rt></ruby>の<ruby>月<rt>つき</rt></ruby>を <ruby>待<rt>ま</rt></ruby>ち<ruby>出<rt>い</rt></ruby>でつるかな",
         meaning: "Just because you said \"I will come right away\" — I waited all night for you, watching the moon of the long autumn month until it set at dawn.",
-        love: "The pain of parting is only temporary. You are destined to reunite with someone precious soon. Believe in the future and there is no need to fear farewells.",
-        work: "No matter how difficult the situation, a hopeful light of resolution is visible. An optimistic attitude and positive action will turn things around.",
+        love: "Faithfully trusting a promise and waiting is a beautiful thing — but waiting alone only lets time slip by. Look at what the other person does rather than what they say, and share your own feelings honestly too.",
+        work: "Counting too much on other people's promises or replies will make you miss your chance. Set a deadline, follow up, and take the first step yourself to move things forward.",
         poet: "Priest Sosei",
         poetJa: "素性法師",
-        luck: "吉"
+        luck: "末吉"
     },
     {
         poem: "<ruby>吹<rt>ふ</rt></ruby>くからに <ruby>秋<rt>あき</rt></ruby>の<ruby>草木<rt>くさき</rt></ruby>の しをるれば むべ<ruby>山風<rt>やまかぜ</rt></ruby>を <ruby>嵐<rt>あらし</rt></ruby>とい<ruby>ふ<rt>う</rt></ruby>ら<ruby>む<rt>ん</rt></ruby>",
@@ -212,9 +212,9 @@ const hyakuninIsshu = [
     },
     {
         poem: "このたびは <ruby>幣<rt>ぬさ</rt></ruby>もとりあ<ruby>へ<rt>え</rt></ruby>ず <ruby>手向山<rt>たむけやま</rt></ruby> もみぢのにしき <ruby>神<rt>かみ</rt></ruby>のまにまに",
-        meaning: "This time I have no offerings ready, O Tamukeyama. Please, grant me safe passage — I leave it in the hands of the gods.",
-        love: "This is a time to sense the impermanence of love and life. Accepting that all things pass can paradoxically help you treasure each present moment.",
-        work: "This is a time to brace yourself with the awareness that life is a journey with an eventual end. That awareness is what clarifies what must be done now and promises a fulfilling life.",
+        meaning: "This time, setting out in haste, I could not bring any offerings. O god of Mount Tamuke, please accept instead this brocade of autumn leaves, as you will.",
+        love: "You don't need a special gift or perfect preparation. Express your feelings wholeheartedly with whatever you have now, and your sincerity will reach them.",
+        work: "Even when you are not fully prepared, making the most of what is at hand will open the way. Flexibility and sincerity will win the trust of those around you.",
         poet: "Kanke",
         poetJa: "菅家",
         luck: "中吉"
@@ -252,7 +252,7 @@ const hyakuninIsshu = [
         love: "Not glamorous, but this is a time to nurture a true love where hearts genuinely meet. Look inward rather than at appearances.",
         work: "Now is the time to pursue the substance of things and genuine inner growth rather than being misled by surface gains or appearances. Real ability — not pretense — will bring success.",
         poet: "Minamoto no Muneyuki Ason",
-        poetJa: "源宗于",
+        poetJa: "源宗于朝臣",
         luck: "中吉"
     },
     {
@@ -285,8 +285,8 @@ const hyakuninIsshu = [
     {
         poem: "<ruby>山川<rt>やまがわ</rt></ruby>に <ruby>風<rt>かぜ</rt></ruby>のかけたる しがらみは <ruby>流<rt>なが</rt></ruby>れもあ<ruby>へ<rt>え</rt></ruby>ぬ <ruby>紅葉<rt>もみじ</rt></ruby>なりけり",
         meaning: "The weir of fallen maple leaves, caught by the mountain wind across the stream — the water cannot flow through.",
-        love: "Let the swift current of change carry you. Stay flexible and do not cling to what has passed.",
-        work: "Let go of old habits and catch the new current, and success will follow.",
+        love: "Your feelings may have piled up inside, keeping you from moving forward. But just as maple leaves held back by a weir make a beautiful scene, there is meaning in pausing now. Put those pent-up feelings into words, little by little.",
+        work: "Even when things seem stuck, valuable things gather where the flow stops. Rather than forcing them along, sort out the piled-up tasks one by one, and a new current will begin.",
         poet: "Harumichi no Tsuraki",
         poetJa: "春道列樹",
         luck: "末吉"
@@ -373,13 +373,13 @@ const hyakuninIsshu = [
         luck: "小吉"
     },
     {
-        poem: "今はただ <ruby>思<rt>おも</rt></ruby>ひ<ruby>絶<rt>た</rt></ruby>えな<ruby>む<rt>ん</rt></ruby> とばかりを <ruby>人<rt>ひと</rt></ruby>づてならで <ruby>言<rt>い</rt></ruby>ふよしもがな",
-        meaning: "If only I could say it directly: all I want is to end this love. But there is no way to tell you in person.",
-        love: "Rather than leaning on the past, face love with your own resolve.",
-        work: "The responsibility is yours. Cut ties with the past and walk the path of your convictions — success and trust will follow.",
-        poet: "Master of the Left Capital Michimasa",
-        poetJa: "左京大夫道雅",
-        luck: "吉"
+        poem: "<ruby>契<rt>ちぎ</rt></ruby>りきな かたみに<ruby>袖<rt>そで</rt></ruby>を しぼりつつ <ruby>末<rt>すえ</rt></ruby>の<ruby>松山<rt>まつやま</rt></ruby> <ruby>波<rt>なみ</rt></ruby>こさじとは",
+        meaning: "We promised each other, wringing out our tear-soaked sleeves, that our love would last forever, never to be swept away like the waves beyond Suenomatsu.",
+        love: "Even a solemn vow can be undone when hearts change. Rather than blaming the other person, hold on to your own sincerity. Build trust not just with words, but with what you do each day.",
+        work: "Relying on verbal promises alone can lead to unexpected misunderstandings. Confirm important agreements and put them in writing, and your relationships of trust will last.",
+        poet: "Kiyohara no Motosuke",
+        poetJa: "清原元輔",
+        luck: "小吉"
     },
     {
         poem: "<ruby>逢<rt>あ</rt></ruby><ruby>ひ<rt>い</rt></ruby><ruby>見<rt>み</rt></ruby>ての のちの<ruby>心<rt>こころ</rt></ruby>に くらぶれば <ruby>昔<rt>むかし</rt></ruby>は<ruby>物<rt>もの</rt></ruby>を <ruby>思<rt>おも</rt></ruby>はざりけり",
@@ -438,10 +438,10 @@ const hyakuninIsshu = [
     {
         poem: "<ruby>御垣守<rt>みかきもり</rt></ruby> <ruby>衛士<rt>えじ</rt></ruby>のたく<ruby>火<rt>ひ</rt></ruby>の <ruby>夜<rt>よる</rt></ruby>はもえ <ruby>昼<rt>ひる</rt></ruby>は<ruby>消<rt>き</rt></ruby>えつつ <ruby>物<rt>もの</rt></ruby>をこそ<ruby>思<rt>おも</rt></ruby><ruby>へ<rt>え</rt></ruby>",
         meaning: "Like the fire tended by the palace guards, I burn at night and fade in the day — lost in endless longing.",
-        love: "The signs suggest that something joyful or bright is coming to an end. Accept that gracefully and turn your attention to the next chapter.",
-        work: "The situation is shifting dramatically and a new era is beginning. Rather than rushing, wait for the storm to pass completely — then you will see the right moment.",
+        love: "Burning by night and sinking by day — your feelings rise and fall sharply now. Those waves are proof that you are serious. Don't decide on a passing impulse; share your feelings when you are calm.",
+        work: "Your motivation tends to come in big waves. Push ahead when you are in the mood, and rest and regroup when you are not. Once you find your rhythm, your results will steady.",
         poet: "Ōnakatomi no Yoshinobu Ason",
-        poetJa: "大中臣能宣",
+        poetJa: "大中臣能宣朝臣",
         luck: "吉"
     },
     {
@@ -495,14 +495,14 @@ const hyakuninIsshu = [
         love: "The trust built over time is the foundation of the relationship. Nurture love quietly without rushing.",
         work: "Past effort never disappears. Keep polishing yourself without rushing.",
         poet: "Upper Counselor Kintō",
-        poetJa: "藤原公任",
+        poetJa: "大納言公任",
         luck: "吉"
     },
     {
         poem: "あらざら<ruby>む<rt>ん</rt></ruby> この<ruby>世<rt>よ</rt></ruby>のほかの <ruby>思<rt>おも</rt></ruby><ruby>ひ<rt>い</rt></ruby><ruby>出<rt>で</rt></ruby>に いまひとたびの <ruby>逢<rt>お</rt></ruby><ruby>ふ<rt>う</rt></ruby>こともがな",
         meaning: "I may not be long for this world. As a memory to take beyond — let me meet you just one more time.",
-        love: "Even if you feel alone, reach out actively and broaden your connections.",
-        work: "Seek help from colleagues and look for a new environment to improve the situation.",
+        love: "If there is someone you long to see once more, don't put it off. The feelings you would regret leaving unsaid are exactly the ones to share honestly now.",
+        work: "Now is the time to tackle what you have been saving for 'someday.' Keep in mind that time is limited, and start with what truly matters.",
         poet: "Izumi Shikibu",
         poetJa: "和泉式部",
         luck: "吉"
@@ -594,7 +594,7 @@ const hyakuninIsshu = [
         love: "Even in solitude, treasure the bond with the one person whose heart speaks to yours.",
         work: "Rather than being swayed by those around you, concentrate on what is genuinely valuable to you.",
         poet: "Senior High Priest Gyōson",
-        poetJa: "大僧正行尊",
+        poetJa: "前大僧正行尊",
         luck: "吉"
     },
     {
@@ -648,7 +648,7 @@ const hyakuninIsshu = [
         love: "Do not be swayed by appearances or gossip, and avoid rash actions.",
         work: "Do not reach for flashy temptations or talk without substance — stay on the steady path.",
         poet: "Kii of Princess Yūshi's Household",
-        poetJa: "祐子内親王",
+        poetJa: "祐子内親王家紀伊",
         luck: "吉"
     },
     {
@@ -666,7 +666,7 @@ const hyakuninIsshu = [
         love: "Rather than trying to change the other person, this is a time to reflect on your own way of loving. Treat the trial as an opportunity for self-growth.",
         work: "Unexpected obstacles are a chance to review your plan and reinforce your strategy. Turn adversity into growth.",
         poet: "Minamoto no Toshiyori Ason",
-        poetJa: "源俊頼",
+        poetJa: "源俊頼朝臣",
         luck: "末吉"
     },
     {
@@ -684,7 +684,7 @@ const hyakuninIsshu = [
         love: "New encounters hold great possibilities. Broaden your perspective and take one step forward.",
         work: "New challenges are the key to success. Think broadly and act with boldness.",
         poet: "Lay Novice of Hosshō-ji Temple, former Kampaku and Chancellor of the Realm",
-        poetJa: "法性寺入道前太政大臣",
+        poetJa: "法性寺入道前関白太政大臣",
         luck: "大吉"
     },
     {

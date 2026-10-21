@@ -111,38 +111,17 @@
       margin: 2.5em 0 1em;
     }
     .list-related__links {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 8px 12px;
-      margin: 0.8em 0 0;
-      padding: 0;
-      list-style: none;
+      margin: 0.6em 0 0;
+      padding-left: 1.4em;
+      list-style: disc;
+      line-height: 1.8;
     }
     .list-related__links a {
-      display: block;
-      padding: 10px 14px;
-      border: 1px solid #ddd6be;
-      border-radius: 8px;
-      background: #fffdf8;
-      text-decoration: none;
-      transition: background 0.15s, border-color 0.15s;
-    }
-    .list-related__links a:hover {
-      background: #f7f1e0;
-      border-color: #b82343;
-    }
-    .list-related__title {
-      display: block;
-      font-weight: 700;
-      color: #333;
-    }
-    .list-related__links a:hover .list-related__title {
       color: #b82343;
     }
     .list-related__desc {
-      display: block;
-      font-size: 0.8rem;
-      line-height: 1.5;
+      margin-left: 0.5em;
+      font-size: 0.85rem;
       color: #7a6655;
     }
 
@@ -182,6 +161,30 @@
     @media (prefers-reduced-motion: reduce) {
       #table td:nth-child(1) .num-badge {
         animation: none;
+      }
+    }
+    /* On PCs, move the theme buttons to row 2 (sorting and colours stay on row 1): the divider becomes a full-width, zero-height break */
+    #sort-buttons .sort-divider.sort-break {
+      flex-basis: 100%;
+      height: 0;
+      margin: 0;
+      background: none;
+    }
+    /* On phones, put sorting (row 1), colours (row 2) and themes (row 3) on their own rows:
+       the dividers become full-width, zero-height breaks */
+    @media (max-width: 760px) {
+      #sort-buttons {
+        gap: 0.5em 0.4em;
+      }
+      #sort-buttons .sort-divider {
+        flex-basis: 100%;
+        height: 0;
+        margin: 0;
+        background: none;
+      }
+      .color-filter-btn,
+      .theme-filter-btn {
+        padding: 5px 10px;
       }
     }
 </style>
@@ -235,6 +238,15 @@
           <button class="sort-btn color-filter-btn" data-color="黄">Yellow</button>
           <button class="sort-btn color-filter-btn" data-color="緑">Green</button>
           <button class="sort-btn color-filter-btn" data-color="橙">Orange</button>
+          <span class="sort-divider sort-break"></span>
+          <button class="sort-btn theme-filter-btn" data-theme="spring">Spring</button>
+          <button class="sort-btn theme-filter-btn" data-theme="summer">Summer</button>
+          <button class="sort-btn theme-filter-btn" data-theme="autumn">Autumn</button>
+          <button class="sort-btn theme-filter-btn" data-theme="winter">Winter</button>
+          <button class="sort-btn theme-filter-btn" data-theme="love">Love</button>
+          <button class="sort-btn theme-filter-btn" data-theme="travel">Travel</button>
+          <button class="sort-btn theme-filter-btn" data-theme="farewell">Parting</button>
+          <button class="sort-btn theme-filter-btn" data-theme="misc">Misc.</button>
         </div>
       </div>
 
@@ -279,7 +291,7 @@
             <tr data-number="21" data-color="橙" data-theme="love" data-hiragana="いまこんといひしばかりにながつきのありあけのつきをまちいでつるかな"><td style="background-color: #fef0e0;"><a class="num-badge" href="/21_en.html" data-number="21" data-tooltip="Poem details">21</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">今こむと いひしばかりに 長月の <br class="waka-br">有明の月を 待ち出でつるかな</span> <span class="romaji-text">imakomuto ihishibakarini nagatsukino <br class="waka-br">ariakenotsukio machiidetsurukana</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">Just because you said "I will come right away" — I waited all night for you, watching the moon of the long autumn month until it set at dawn.</span><div class="waka-game-links"><span class="small">素性法師（Priest Sosei）</span></div></td><td style="background-color: #F7F1E0;">いまこむと<br>いひしばかりに<br>ながつきの<br>ありあけのつきを<br>まちいでつるかな</td><td style="background-color: #F7F1E0;">imakomuto ihishibakarini nagatsukino ariakenotsukio machiidetsurukana</td><td style="background-color: #F7F1E0;"></td></tr>
             <tr data-number="22" data-color="ピンク" data-theme="autumn" data-hiragana="ふくからにあきのくさきのしおるればむべやまかぜをあらしというらん"><td style="background-color: #fde8f3;"><a class="num-badge" href="/22_en.html" data-number="22" data-tooltip="Poem details">22</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">吹くからに 秋の草木の しをるれば <br class="waka-br">むべ山風を 嵐といふらむ</span> <span class="romaji-text">fukukarani akinokusakino shiorureba <br class="waka-br">mubeyamakazeo arashitoifuramu</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">The moment the autumn wind blows, the grasses and trees wither. Now I understand why the mountain wind is called "arashi" — storm.</span><div class="waka-game-links"><span class="small">文屋康秀（Fun'ya no Yasuhide ）</span></div></td><td style="background-color: #F7F1E0;">ふくからに<br>あきのくさきの<br>しをるれば<br>むべやまかぜを<br>あらしといふらむ</td><td style="background-color: #F7F1E0;">fukukarani akinokusakino shiorureba mubeyamakazeo arashitoifuramu</td><td style="background-color: #F7F1E0;"></td></tr>
             <tr data-number="23" data-color="緑" data-theme="autumn" data-hiragana="つきみればちぢにものこそかなしけれわがみひとつのあきにはあらねど"><td style="background-color: #e8f5e8;"><a class="num-badge" href="/23_en.html" data-number="23" data-tooltip="Poem details">23</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">月みれば ちぢにものこそ 悲しけれ <br class="waka-br">わが身一つの 秋にはあらねど</span> <span class="romaji-text">tsukimireba chijinimonokoso kanashikere <br class="waka-br">wagamihitotsuno akinihaaranedo</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">When I look at the moon, a thousand thoughts rise up and fill me with sadness. Yet this autumn is not mine alone.</span><div class="waka-game-links"><span class="small">大江千里（Ōe no Chisato）</span></div></td><td style="background-color: #F7F1E0;">つきみれば<br>ちぢにものこそ<br>かなしけれ<br>わがみひとつの<br>あきにはあらねど</td><td style="background-color: #F7F1E0;">tsukimireba chijinimonokoso kanashikere wagamihitotsuno akinihaaranedo</td><td style="background-color: #F7F1E0;"></td></tr>
-            <tr data-number="24" data-color="青" data-theme="travel" data-hiragana="このたびはぬさもとりあえずたむけやまもみじのにしきかみのまにまに"><td style="background-color: #e8f0fe;"><a class="num-badge" href="/24_en.html" data-number="24" data-tooltip="Poem details">24</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">このたびは 幣もとりあへず 手向山 <br class="waka-br">もみぢのにしき 神のまにまに</span> <span class="romaji-text">konotabiha nusamotoriahezu tamukeyama <br class="waka-br">momijinonishiki kaminomanimani</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">This time I have no offerings ready, O Tamukeyama. Please, grant me safe passage — I leave it in the hands of the gods.</span><div class="waka-game-links"><span class="small">菅家（Kanke）</span></div></td><td style="background-color: #F7F1E0;">このたびは<br>ぬさもとりあへず<br>たむけやま<br>もみぢのにしき<br>かみのまにまに</td><td style="background-color: #F7F1E0;">konotabiha nusamotoriahezu tamukeyama momijinonishiki kaminomanimani</td><td style="background-color: #F7F1E0;"></td></tr>
+            <tr data-number="24" data-color="青" data-theme="travel" data-hiragana="このたびはぬさもとりあえずたむけやまもみじのにしきかみのまにまに"><td style="background-color: #e8f0fe;"><a class="num-badge" href="/24_en.html" data-number="24" data-tooltip="Poem details">24</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">このたびは 幣もとりあへず 手向山 <br class="waka-br">もみぢのにしき 神のまにまに</span> <span class="romaji-text">konotabiha nusamotoriahezu tamukeyama <br class="waka-br">momijinonishiki kaminomanimani</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">This time, setting out in haste, I could not bring any offerings. O god of Mount Tamuke, please accept instead this brocade of autumn leaves, as you will.</span><div class="waka-game-links"><span class="small">菅家（Kanke）</span></div></td><td style="background-color: #F7F1E0;">このたびは<br>ぬさもとりあへず<br>たむけやま<br>もみぢのにしき<br>かみのまにまに</td><td style="background-color: #F7F1E0;">konotabiha nusamotoriahezu tamukeyama momijinonishiki kaminomanimani</td><td style="background-color: #F7F1E0;"></td></tr>
             <tr data-number="25" data-color="橙" data-theme="love" data-hiragana="なにしおわばおうさかやまのさねかずらひとにしられでくるよしもがな"><td style="background-color: #fef0e0;"><a class="num-badge" href="/25_en.html" data-number="25" data-tooltip="Poem details">25</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">名にし負はば 逢坂山の さねかづら <br class="waka-br">人にしられで くるよしもがな</span> <span class="romaji-text">nanishiohaba afusakayamano sanekazura <br class="waka-br">hitonishirarede kuruyoshimogana</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">If the name of Ōsaka carries its meaning — then let me secretly follow the vine I draw toward me, and come to you unseen.</span><div class="waka-game-links"><span class="small">三条右大臣（Minister of the Right of Sanjō）</span></div></td><td style="background-color: #F7F1E0;">なにしおはば<br>あふさかやまの<br>さねかづら<br>ひとにしられで<br>くるよしもがな</td><td style="background-color: #F7F1E0;">nanishiohaba afusakayamano sanekazura hitonishirarede kuruyoshimogana</td><td style="background-color: #F7F1E0;"></td></tr>
             <tr data-number="26" data-color="緑" data-theme="autumn" data-hiragana="おぐらやまみねのもみじばこころあらばいまひとたびのみゆきまたなむ"><td style="background-color: #e8f5e8;"><a class="num-badge" href="/26_en.html" data-number="26" data-tooltip="Poem details">26</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">小倉山 峰のもみぢ葉 心あらば <br class="waka-br">今ひとたびの みゆき待たなむ</span> <span class="romaji-text">ogurayama minenomomijiba kokoroaraba <br class="waka-br">imahitotabino miyukimatanamu</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">O maple leaves of Ogura Mountain, if you have a heart — hold on a little longer, until the emperor's visit.</span><div class="waka-game-links"><span class="small">貞信公（Teishin-kō）</span></div></td><td style="background-color: #F7F1E0;">をぐらやま<br>みねのもみぢば<br>こころあらば<br>いまひとたびの<br>みゆきまたなむ</td><td style="background-color: #F7F1E0;">ogurayama minenomomijiba kokoroaraba imahitotabino miyukimatanamu</td><td style="background-color: #F7F1E0;"></td></tr>
             <tr data-number="27" data-color="橙" data-theme="love" data-hiragana="みかのはらわきてながるるいずみがわいつみきとてかこいしかるらん"><td style="background-color: #fef0e0;"><a class="num-badge" href="/27_en.html" data-number="27" data-tooltip="Poem details">27</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><span class="kanji-text">みかの原 わきて流るる いづみ川 <br class="waka-br">いつ見きとてか 恋しかるらむ</span> <span class="romaji-text">mikanohara wakitenagaruru izumigaha <br class="waka-br">itsumikitoteka kohishikaruramu</span><span class="modern-toggle">▼ translation</span><span class="modern-text" style="display:none;">Like the Izumi River that wells up and flows through Mika Plain — when did I first see you, that I should long for you so?</span><div class="waka-game-links"><span class="small">中納言兼輔（Middle Counselor Kanesuke）</span></div></td><td style="background-color: #F7F1E0;">みかのはら<br>わきてながるる<br>いづみがは<br>いつみきとてか<br>こひしかるらむ</td><td style="background-color: #F7F1E0;">mikanohara wakitenagaruru izumigaha itsumikitoteka kohishikaruramu</td><td style="background-color: #F7F1E0;"></td></tr>
@@ -362,10 +374,10 @@
       </div>
       <!-- Related pages below the table -->
       <nav class="list-related" aria-labelledby="list-related-title">
-        <h2 id="list-related-title">See also</h2>
+        <h2 id="list-related-title">Recommended Pages</h2>
         <ul class="list-related__links">
-          <li><a href="about_en.html"><span class="list-related__title">What Is the Hyakunin Isshu?</span><span class="list-related__desc">Its origins and Fujiwara no Sadaie's sense of beauty</span></a></li>
-          <li><a href="kajin-zukan_en.html"><span class="list-related__title">Poet Encyclopedia</span><span class="list-related__desc">Find the 100 poets by era, social standing, and theme</span></a></li>
+          <li><a href="about_en.html">What Is the Hyakunin Isshu?</a><span class="list-related__desc">Its origins and Fujiwara no Sadaie's sense of beauty</span></li>
+          <li><a href="kajin-zukan_en.html">Poet Encyclopedia</a><span class="list-related__desc">Find the 100 poets by era, social standing, and theme</span></li>
         </ul>
       </nav>
     </div>
@@ -387,7 +399,7 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="../js/list-rows_en.js?20261009-01"></script>
-  <script src="../js/list_en.js?20261020-01"></script>
+  <script src="../js/list_en.js?20261021-01"></script>
   <script src="../js/move_script.js?20260729"></script>
 
 </body>

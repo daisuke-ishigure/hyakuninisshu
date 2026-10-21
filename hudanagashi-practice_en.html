@@ -539,7 +539,7 @@
       // ── データ読み込み ──
       let poems = [];
       try {
-        const res = await fetch('../js/hyakunin.json?20261016-01');
+        const res = await fetch('../js/hyakunin.json?20261021-01');
         const data = await res.json();
         poems = Object.values(data);
       } catch {

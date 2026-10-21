@@ -1,6 +1,6 @@
 "use strict";
 $();
-const jsonAddress = "../js/hyakunin.json?20261016-01";
+const jsonAddress = "../js/hyakunin.json?20261021-01";
 
 // The HTML for one table row (colorMap, badge number lists, buildPoemRowHTML) lives in
 // js/list-rows_en.js. Load it before this file.
@@ -59,7 +59,7 @@ if (prebuiltTable) {
 ////////////////////////////////////////////////////////////
 
 // Current colour / theme filter (null = no filter)
-// The theme filter buttons (.theme-filter-btn) are only used on pages that have them (currently no page does)
+// The theme filter buttons (.theme-filter-btn) are only used on pages that have them (currently list_en.html)
 let activeColorFilter = null;
 let activeThemeFilter = null;
 

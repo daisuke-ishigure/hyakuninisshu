@@ -1,4 +1,4 @@
-const jsonAddress = "../js/hyakunin.json?20261016-01";
+const jsonAddress = "../js/hyakunin.json?20261021-01";
 fetch(jsonAddress)
   .then((response) => response.json())
   .then((data) => {

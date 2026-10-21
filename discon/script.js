@@ -1,5 +1,5 @@
 "use strict";
-const jsonAddress = "../js/hyakunin.json?20261016-01";
+const jsonAddress = "../js/hyakunin.json?20261021-01";
 
 // JSONデータを格納する変数を初期化する
 let poems = [];

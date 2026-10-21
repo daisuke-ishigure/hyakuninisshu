@@ -103,38 +103,17 @@
       margin: 2.5em 0 1em;
     }
     .list-related__links {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 8px 12px;
-      margin: 0.8em 0 0;
-      padding: 0;
-      list-style: none;
+      margin: 0.6em 0 0;
+      padding-left: 1.4em;
+      list-style: disc;
+      line-height: 1.8;
     }
     .list-related__links a {
-      display: block;
-      padding: 10px 14px;
-      border: 1px solid #ddd6be;
-      border-radius: 8px;
-      background: #fffdf8;
-      text-decoration: none;
-      transition: background 0.15s, border-color 0.15s;
-    }
-    .list-related__links a:hover {
-      background: #f7f1e0;
-      border-color: #b82343;
-    }
-    .list-related__title {
-      display: block;
-      font-weight: 700;
-      color: #333;
-    }
-    .list-related__links a:hover .list-related__title {
       color: #b82343;
     }
     .list-related__desc {
-      display: block;
-      font-size: 0.8rem;
-      line-height: 1.5;
+      margin-left: 0.5em;
+      font-size: 0.85rem;
       color: #7a6655;
     }
 
@@ -175,6 +154,36 @@
     @media (prefers-reduced-motion: reduce) {
       #table td:nth-child(1) .num-badge {
         animation: none;
+      }
+    }
+    /* PC ではテーマのボタンを2行目に送る（並べ替え・色は1行目）。区切り線を幅100%・高さ0にして改行の代わりにする */
+    #sort-buttons .sort-divider.sort-break {
+      flex-basis: 100%;
+      height: 0;
+      margin: 0;
+      background: none;
+    }
+    /* スマホでは並べ替え（1行目）・色（2行目）・テーマ（3行目）を行ごとに分ける。
+       区切り線を幅100%・高さ0にして改行の代わりにする */
+    @media (max-width: 760px) {
+      #sort-buttons {
+        gap: 0.5em 0.4em;
+      }
+      #sort-buttons .sort-divider {
+        flex-basis: 100%;
+        height: 0;
+        margin: 0;
+        background: none;
+      }
+      .color-filter-btn,
+      .theme-filter-btn {
+        padding: 5px 10px;
+      }
+    }
+    /* 幅の狭いスマホ（〜359px）でもテーマ8つがなるべく1行に収まるように */
+    @media (max-width: 359px) {
+      .theme-filter-btn {
+        padding: 5px 7px;
       }
     }
   </style>
@@ -228,6 +237,15 @@
           <button class="sort-btn color-filter-btn" data-color="黄">黄</button>
           <button class="sort-btn color-filter-btn" data-color="緑">緑</button>
           <button class="sort-btn color-filter-btn" data-color="橙">橙</button>
+          <span class="sort-divider sort-break"></span>
+          <button class="sort-btn theme-filter-btn" data-theme="spring">春</button>
+          <button class="sort-btn theme-filter-btn" data-theme="summer">夏</button>
+          <button class="sort-btn theme-filter-btn" data-theme="autumn">秋</button>
+          <button class="sort-btn theme-filter-btn" data-theme="winter">冬</button>
+          <button class="sort-btn theme-filter-btn" data-theme="love">恋</button>
+          <button class="sort-btn theme-filter-btn" data-theme="travel">旅</button>
+          <button class="sort-btn theme-filter-btn" data-theme="farewell">別離</button>
+          <button class="sort-btn theme-filter-btn" data-theme="misc">雑</button>
         </div>
       </div>
       <div id="table" class="active">
@@ -294,7 +312,7 @@
 中納言兼輔</td></tr>
             <tr data-number="28" data-color="ピンク" data-theme="winter" data-hiragana="やまざとはふゆぞさびしさまさりけるひとめもくさもかれぬとおもえば"><td style="background-color: #fde8f3;"><a class="num-badge" href="/28.html" data-number="28" data-tooltip="解説ページへ">28</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><ruby>山里<rt>やまざと</rt></ruby>は <ruby>冬<rt>ふゆ</rt></ruby>ぞさびしさ まさりける <br class="waka-br"><ruby>人目<rt>ひとめ</rt></ruby>も<ruby>草<rt>くさ</rt></ruby>も かれぬと<ruby>思<rt>おも</rt></ruby><ruby>へ<rt>え</rt></ruby>ば<span class="modern-toggle">▼ 現代語訳</span><span class="modern-text" style="display:none;">山里は寂しいものですが、冬は一段と寂しい。訪れてくれる人もいないし、草木も枯れてしまうと思うと。</span><div class="waka-game-links"><span class="small"><ruby>源宗于朝臣<rt>みなもとのむねゆきあそん</rt></ruby></span></div></td><td style="background-color: #F7F1E0;">やまざとは<br>ふゆぞさびしさ<br>まさりける<br>ひとめもくさも<br>かれぬとおもへば</td><td style="background-color: #F7F1E0;">やまざとはふゆぞさびしさまさりけるひとめもくさもかれぬとおもえば</td><td style="background-color: #F7F1E0;">山里は冬ぞさびしさまさりける人目も草もかれぬと思へば
 源宗于朝臣</td></tr>
-            <tr data-number="29" data-color="緑" data-theme="autumn" data-hiragana="こころあてにおらばやおらんはつしものおきまどわせるしらぎくのはな"><td style="background-color: #e8f5e8;"><a class="num-badge" href="/29.html" data-number="29" data-tooltip="解説ページへ">29</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><ruby>心当<rt>こころあ</rt></ruby>てに <ruby>折<rt>お</rt></ruby>らばや<ruby>折<rt>お</rt></ruby>ら<ruby>む<rt>ん</rt></ruby> <ruby>初霜<rt>はつしも</rt></ruby>の <br class="waka-br">おきまど<ruby>は<rt>わ</rt></ruby>せる <ruby>白菊<rt>しらぎく</rt></ruby>の<ruby>花<rt>はな</rt></ruby><span class="modern-toggle">▼ 現代語訳</span><span class="modern-text" style="display:none;">心して手折たおろうして折れるものだろうか。初霜が降りて、見分けにくくなっているほど真っ白で美しい幻想的な白菊の花を。</span><div class="waka-game-links"><span class="small"><ruby>凡河内躬恒<rt>おおしこうちのみつね</rt></ruby></span></div></td><td style="background-color: #F7F1E0;">こころあてに<br>をらばやをらむ<br>はつしもの<br>おきまどはせる<br>しらぎくのはな</td><td style="background-color: #F7F1E0;">こころあてにおらばやおらんはつしものおきまどわせるしらぎくのはな</td><td style="background-color: #F7F1E0;">心当てに折らばや折らむ初霜のおきまどはせる白菊の花
+            <tr data-number="29" data-color="緑" data-theme="autumn" data-hiragana="こころあてにおらばやおらんはつしものおきまどわせるしらぎくのはな"><td style="background-color: #e8f5e8;"><a class="num-badge" href="/29.html" data-number="29" data-tooltip="解説ページへ">29</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><ruby>心当<rt>こころあ</rt></ruby>てに <ruby>折<rt>お</rt></ruby>らばや<ruby>折<rt>お</rt></ruby>ら<ruby>む<rt>ん</rt></ruby> <ruby>初霜<rt>はつしも</rt></ruby>の <br class="waka-br">おきまど<ruby>は<rt>わ</rt></ruby>せる <ruby>白菊<rt>しらぎく</rt></ruby>の<ruby>花<rt>はな</rt></ruby><span class="modern-toggle">▼ 現代語訳</span><span class="modern-text" style="display:none;">心して手折ろうとして折れるものだろうか。初霜が降りて、見分けにくくなっているほど真っ白で美しい幻想的な白菊の花を。</span><div class="waka-game-links"><span class="small"><ruby>凡河内躬恒<rt>おおしこうちのみつね</rt></ruby></span></div></td><td style="background-color: #F7F1E0;">こころあてに<br>をらばやをらむ<br>はつしもの<br>おきまどはせる<br>しらぎくのはな</td><td style="background-color: #F7F1E0;">こころあてにおらばやおらんはつしものおきまどわせるしらぎくのはな</td><td style="background-color: #F7F1E0;">心当てに折らばや折らむ初霜のおきまどはせる白菊の花
 凡河内躬恒</td></tr>
             <tr data-number="30" data-color="青" data-theme="love" data-hiragana="ありあけのつれなくみえしわかれよりあかつきばかりうきものはなし"><td style="background-color: #e8f0fe;"><a class="num-badge" href="/30.html" data-number="30" data-tooltip="解説ページへ">30</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><ruby>有明<rt>ありあけ</rt></ruby>の つれなく<ruby>見<rt>み</rt></ruby>えし <ruby>別<rt>わか</rt></ruby>れより <br class="waka-br">あかつきばかり <ruby>憂<rt>う</rt></ruby>きものはなし<span class="modern-toggle">▼ 現代語訳</span><span class="modern-text" style="display:none;">あなたとの別れを惜しんで帰る道、有明の月はそしらぬ顔をしていました。それときからというもの暁の時間になるとつらく感じてしまいます。</span><div class="waka-game-links"><span class="small"><ruby>壬生忠岑<rt>みぶのただみね</rt></ruby></span></div></td><td style="background-color: #F7F1E0;">ありあけの<br>つれなくみえし<br>わかれより<br>あかつきばかり<br>うきものはなし</td><td style="background-color: #F7F1E0;">ありあけのつれなくみえしわかれよりあかつきばかりうきものはなし</td><td style="background-color: #F7F1E0;">有明のつれなく見えし別れよりあかつきばかり憂きものはなし
 壬生忠岑</td></tr>
@@ -314,7 +332,7 @@
 文屋朝康</td></tr>
             <tr data-number="38" data-color="緑" data-theme="love" data-hiragana="わすらるるみをばおもわずちかいてしひとのいのちのおしくもあるかな"><td style="background-color: #e8f5e8;"><a class="num-badge" href="/38.html" data-number="38" data-tooltip="解説ページへ">38</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><ruby>忘<rt>わす</rt></ruby>らるる <ruby>身<rt>み</rt></ruby>をば<ruby>思<rt>おも</rt></ruby>はず <ruby>誓<rt>ちか</rt></ruby>ひてし <br class="waka-br"><ruby>人<rt>ひと</rt></ruby>の<ruby>命<rt>いのち</rt></ruby>の <ruby>惜<rt>お</rt></ruby>しくもあるかな<span class="modern-toggle">▼ 現代語訳</span><span class="modern-text" style="display:none;">忘れ去られる私は構わないのですが、私を愛すると神に誓ったあなたが神罰によって命を落とさないか惜しく思われることです。</span><div class="waka-game-links"><span class="small"><ruby>右近<rt>うこん</rt></ruby></span></div></td><td style="background-color: #F7F1E0;">わすらるる<br>みをばおもはず<br>ちかひてし<br>ひとのいのちの<br>をしくもあるかな</td><td style="background-color: #F7F1E0;">わすらるるみをばおもわずちかいてしひとのいのちのおしくもあるかな</td><td style="background-color: #F7F1E0;">忘らるる身をば思はず誓ひてし人の命の惜しくもあるかな
 右近</td></tr>
-            <tr data-number="39" data-color="黄" data-theme="love" data-hiragana="あさじうのおののしのはらしのぶれどあまりてなどかひとのこいしき"><td style="background-color: #fefbe0;"><a class="num-badge" href="/39.html" data-number="39" data-tooltip="解説ページへ">39</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><ruby>浅茅生<rt>あさじう</rt></ruby>の <ruby>小野<rt>おの</rt></ruby>の<ruby>篠原<rt>しのはら</rt></ruby> しのぶれど <br class="waka-br">あまりてなどか <ruby>人<rt>ひと</rt></ruby>の<ruby>恋<rt>こい</rt></ruby>しき<span class="modern-toggle">▼ 現代語訳</span><span class="modern-text" style="display:none;">浅茅生の野の篠原ではありませんが、心に忍ぼうとしてもこれえきれない。どうしてこれほどまでにあの人のことが恋しいのでしょうか。</span><div class="waka-game-links"><span class="small"><ruby>参議等<rt>さんぎひとし</rt></ruby></span></div></td><td style="background-color: #F7F1E0;">あさぢふの<br>をののしのはら<br>しのぶれど<br>あまりてなどか<br>ひとのこひしき</td><td style="background-color: #F7F1E0;">あさじうのおののしのはらしのぶれどあまりてなどかひとのこいしき</td><td style="background-color: #F7F1E0;">浅茅生の小野の篠原しのぶれどあまりてなどか人の恋しき
+            <tr data-number="39" data-color="黄" data-theme="love" data-hiragana="あさじうのおののしのはらしのぶれどあまりてなどかひとのこいしき"><td style="background-color: #fefbe0;"><a class="num-badge" href="/39.html" data-number="39" data-tooltip="解説ページへ">39</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><ruby>浅茅生<rt>あさじう</rt></ruby>の <ruby>小野<rt>おの</rt></ruby>の<ruby>篠原<rt>しのはら</rt></ruby> しのぶれど <br class="waka-br">あまりてなどか <ruby>人<rt>ひと</rt></ruby>の<ruby>恋<rt>こい</rt></ruby>しき<span class="modern-toggle">▼ 現代語訳</span><span class="modern-text" style="display:none;">浅茅生の野の篠原ではありませんが、心に忍ぼうとしてもこらえきれない。どうしてこれほどまでにあの人のことが恋しいのでしょうか。</span><div class="waka-game-links"><span class="small"><ruby>参議等<rt>さんぎひとし</rt></ruby></span></div></td><td style="background-color: #F7F1E0;">あさぢふの<br>をののしのはら<br>しのぶれど<br>あまりてなどか<br>ひとのこひしき</td><td style="background-color: #F7F1E0;">あさじうのおののしのはらしのぶれどあまりてなどかひとのこいしき</td><td style="background-color: #F7F1E0;">浅茅生の小野の篠原しのぶれどあまりてなどか人の恋しき
 参議等</td></tr>
             <tr data-number="40" data-color="ピンク" data-theme="love" data-hiragana="しのぶれどいろにいでにけりわがこいはものやおもうとひとのとうまて"><td style="background-color: #fde8f3;"><a class="num-badge" href="/40.html" data-number="40" data-tooltip="解説ページへ">40</a></td><td style="background-color: #F7F1E0; cursor: pointer; position: relative;" data-has-modern="1"><ruby>忍<rt>しの</rt></ruby>ぶれど <ruby>色<rt>いろ</rt></ruby>に<ruby>出<rt>い</rt></ruby>でにけり <ruby>我<rt>わ</rt></ruby>が<ruby>恋<rt>こい</rt></ruby>は <br class="waka-br"><ruby>物<rt>もの</rt></ruby>や<ruby>思<rt>おも</rt></ruby>ふと <ruby>人<rt>ひと</rt></ruby>の<ruby>問<rt>と</rt></ruby><ruby>ふ<rt>う</rt></ruby>まで<span class="modern-toggle">▼ 現代語訳</span><span class="modern-text" style="display:none;">気づかれないように恋心を秘めてきましたが、顔色に出てしまった。人から物思いをしているのではないかと聞かれるまでに。</span><div class="waka-game-links"><span class="small"><ruby>平兼盛<rt>たいらのかねもり</rt></ruby></span></div></td><td style="background-color: #F7F1E0;">しのぶれど<br>いろにいでにけり<br>わがこひは<br>ものやおもふと<br>ひとのとふまで</td><td style="background-color: #F7F1E0;">しのぶれどいろにいでにけりわがこいはものやおもうとひとのとうまて</td><td style="background-color: #F7F1E0;">忍ぶれど色に出でにけり我が恋は物や思ふと人の問ふまで
 平兼盛</td></tr>
@@ -444,10 +462,10 @@
       </div>
       <!-- 表の下の関連ページ -->
       <nav class="list-related" aria-labelledby="list-related-title">
-        <h2 id="list-related-title">あわせて読みたい</h2>
+        <h2 id="list-related-title">おすすめページ</h2>
         <ul class="list-related__links">
-          <li><a href="about.html"><span class="list-related__title">百人一首とは</span><span class="list-related__desc">成り立ちと藤原定家の美意識</span></a></li>
-          <li><a href="kajin-zukan.html"><span class="list-related__title">歌人図鑑</span><span class="list-related__desc">100人を時代・身分・テーマから探せる人物図鑑</span></a></li>
+          <li><a href="about.html">百人一首とは</a><span class="list-related__desc">成り立ちと藤原定家の美意識</span></li>
+          <li><a href="kajin-zukan.html">歌人図鑑</a><span class="list-related__desc">100人を時代・身分・テーマから探せる人物図鑑</span></li>
         </ul>
       </nav>
     </div>
@@ -469,7 +487,7 @@
   <!-- フッターここまで -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="../js/list-rows.js?20261005-01"></script>
-  <script src="../js/list.js?20261020-01"></script>
+  <script src="../js/list.js?20261021-01"></script>
   <script src="../js/move_script.js?20260729"></script>
 </body>
 

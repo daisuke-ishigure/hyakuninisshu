@@ -61,7 +61,7 @@
     { num: 28, poet: '源宗于朝臣',      phrases: ['山里は',     '冬ぞさびしさ', 'まさりける',   '人目も草も',   'かれぬと思へば'],
       meaning: '山里は寂しいものですが、冬は一段と寂しい。訪れてくれる人もいないし、草木も枯れてしまうと思うと。' },
     { num: 29, poet: '凡河内躬恒',      phrases: ['心当てに',   '折らばや折らむ', '初霜の',     'おきまどはせる', '白菊の花'],
-      meaning: '心して手折たおろうとして折れるものだろうか。初霜が降りて、見分けにくくなっているほど真っ白で美しい幻想的な白菊の花を。' },
+      meaning: '心して手折ろうとして折れるものだろうか。初霜が降りて、見分けにくくなっているほど真っ白で美しい幻想的な白菊の花を。' },
     { num: 30, poet: '壬生忠岑',        phrases: ['有明の',     'つれなく見えし', '別れより',   'あかつきばかり',     '憂きものはなし'],
       meaning: 'あなたとの別れを惜しんで帰る道、有明の月はそしらぬ顔をしていました。そのときからというもの暁の時間になるとつらく感じてしまいます。' },
     { num: 31, poet: '坂上是則',        phrases: ['朝ぼらけ',   '有明の月と',   '見るまでに',   '吉野の里に', '降れる白雪'],
@@ -472,7 +472,7 @@
   "21": "Just because you said \"I will come right away\" — I waited all night for you, watching the moon of the long autumn month until it set at dawn.",
   "22": "The moment the autumn wind blows, the grasses and trees wither. Now I understand why the mountain wind is called \"arashi\" — storm.",
   "23": "When I look at the moon, a thousand thoughts rise up and fill me with sadness. Yet this autumn is not mine alone.",
-  "24": "This time I have no offerings ready, O Tamukeyama. Please, grant me safe passage — I leave it in the hands of the gods.",
+  "24": "This time, setting out in haste, I could not bring any offerings. O god of Mount Tamuke, please accept instead this brocade of autumn leaves, as you will.",
   "25": "If the name of Ōsaka carries its meaning — then let me secretly follow the vine I draw toward me, and come to you unseen.",
   "26": "O maple leaves of Ogura Mountain, if you have a heart — hold on a little longer, until the emperor's visit.",
   "27": "Like the Izumi River that wells up and flows through Mika Plain — when did I first see you, that I should long for you so?",
@@ -552,7 +552,7 @@
 };
 
   /* ===== hyakunin.json が利用可能なら POET_EN / MEANING_EN を上書き ===== */
-  fetch('js/hyakunin.json?20261016-01')
+  fetch('js/hyakunin.json?20261021-01')
     .then(r => r.json())
     .then(json => {
       Object.entries(json).forEach(([k, v]) => {

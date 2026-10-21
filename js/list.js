@@ -1,6 +1,6 @@
 "use strict";
 $();
-const jsonAddress = "../js/hyakunin.json?20261016-01";
+const jsonAddress = "../js/hyakunin.json?20261021-01";
 
 // 表の1行分のHTML（colorMap・バッジ用の番号リスト・buildPoemRowHTML）は js/list-rows.js にある。
 // このファイルより先に読み込むこと。
@@ -59,7 +59,7 @@ if (prebuiltTable) {
 ////////////////////////////////////////////////////////////
 
 // 現在のフィルター色・テーマ（null = フィルターなし）
-// テーマの絞り込みボタン（.theme-filter-btn）は、置いてあるページでだけ使われる（現在はどのページにもない）
+// テーマ（部立て）の絞り込みボタン（.theme-filter-btn）は、置いてあるページ（現在は list.html）でだけ使われる
 let activeColorFilter = null;
 let activeThemeFilter = null;
 
