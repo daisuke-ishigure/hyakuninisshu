@@ -597,6 +597,12 @@
       return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
     }
 
+    // データベースから読んだ勝利数は、必ず0以上の整数にしてから使う（数値以外の値が HTML に入らないように）
+    function toCount(v) {
+      const n = Math.floor(Number(v));
+      return Number.isFinite(n) && n > 0 ? n : 0;
+    }
+
     let currentUser = null;
     let rankingUnsubscribe = null;
     let currentTab = 'online'; // Currently displayed tab
@@ -661,8 +667,8 @@
         }
 
         const entries = Object.entries(data)
-          .map(([uid, v]) => ({ uid, ...v }))
-          .sort((a, b) => (b.wins || 0) - (a.wins || 0));
+          .map(([uid, v]) => ({ uid, ...v, wins: toCount(v.wins) }))
+          .sort((a, b) => b.wins - a.wins);
 
         if (entries.length === 0) {
           document.getElementById('empty_state').style.display = 'block';
@@ -731,7 +737,7 @@
         const entries = Object.entries(data)
           .map(([uid, v]) => ({
             uid,
-            wins: v[winsKey] || 0,
+            wins: toCount(v[winsKey]),
             nickname: v.nickname || nameMap[uid] || null,
           }))
           .filter(e => e.wins > 0)
@@ -794,11 +800,11 @@
         const stats = userStatsCache[entry.uid] || {};
         let titleHtml = '';
         if (currentTab === 'online') {
-          const ot = getTitle(stats.online_total_wins);
-          if (ot) titleHtml += `<span class="title-badge title-badge--online">🌐 ${ot} (${stats.online_total_wins || 0} total wins)</span>`;
+          const ot = getTitle(toCount(stats.online_total_wins));
+          if (ot) titleHtml += `<span class="title-badge title-badge--online">🌐 ${ot} (${toCount(stats.online_total_wins)} total wins)</span>`;
         } else {
-          const ct = getTitle(stats.cpu_total_wins);
-          if (ct) titleHtml += `<span class="title-badge title-badge--cpu">👾 ${ct} (${stats.cpu_total_wins || 0} total wins)</span>`;
+          const ct = getTitle(toCount(stats.cpu_total_wins));
+          if (ct) titleHtml += `<span class="title-badge title-badge--cpu">👾 ${ct} (${toCount(stats.cpu_total_wins)} total wins)</span>`;
         }
 
         card.innerHTML = `
@@ -809,7 +815,7 @@
             <div class="rank-name">${name} ${titleHtml}</div>
             <div class="rank-sub">${subLabel}</div>
           </div>
-          <div class="rank-wins">${entry.wins || 0}<span> wins</span></div>
+          <div class="rank-wins">${toCount(entry.wins)}<span> wins</span></div>
         `;
         list.appendChild(card);
       });

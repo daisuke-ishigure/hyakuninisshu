@@ -36,6 +36,12 @@
       return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
 
+    // データベースから読んだ勝利数は、必ず0以上の整数にしてから使う（数値以外の値が HTML に入らないように）
+    function toCount(v) {
+      const n = Math.floor(Number(v));
+      return Number.isFinite(n) && n > 0 ? n : 0;
+    }
+
     function fallbackIcon(uid) {
       const icons = ['🐻', '🐼', '🐰', '🐨', '🐱', '🦁', '🐶', '🦊', '🐵'];
       let h = 0;
@@ -48,7 +54,7 @@
         const snap = await get(ref(db, `pro_user_stats/${user.uid}`));
         const stats = snap.val() || {};
         const el = document.getElementById('my_title_badge');
-        const ct = getTitle(stats.cpu_total_wins);
+        const ct = getTitle(toCount(stats.cpu_total_wins));
         if (el) el.innerHTML = ct ? `<span style="font-size:12px;background:#B82343;color:#fff;border-radius:10px;padding:2px 8px;">👾 ${ct}</span>` : '';
       } catch (e) { console.error('バッジ取得エラー:', e); }
     }
@@ -151,7 +157,7 @@
         const statsSnap = await get(ref(db, 'pro_user_stats'));
         const data = statsSnap.val() || {};
         const entries = Object.entries(data)
-          .map(([uid, v]) => ({ uid, wins: v.cpu_total_wins || 0, nickname: v.nickname }))
+          .map(([uid, v]) => ({ uid, wins: toCount(v.cpu_total_wins), nickname: v.nickname }))
           .filter(e => e.wins > 0)
           .sort((a, b) => b.wins - a.wins)
           .slice(0, 100);
