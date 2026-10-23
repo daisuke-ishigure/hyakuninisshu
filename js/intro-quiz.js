@@ -106,7 +106,7 @@
     timerRAF: null,
   };
   /* ── データ読み込み ── */
-  fetch('js/hyakunin.json?20261024-01')
+  fetch('js/hyakunin.json?20261024-03')
     .then(r => r.json())
     .then(data => {
       allPoems = Object.values(data).filter(p => p.yomihuda && p.name);

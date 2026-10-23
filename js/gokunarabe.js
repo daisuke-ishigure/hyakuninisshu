@@ -8,7 +8,7 @@
      JP側は意味欄にtippyツールチップ（<span class="tippy ...">）が
      埋め込まれているため対象外。EN側はプレーンテキストのみなので安全に上書きできる。 */
   if (document.documentElement.lang === 'en' && CFG.pageNum) {
-    fetch('js/hyakunin.json?20261024-01')
+    fetch('js/hyakunin.json?20261024-03')
       .then(r => r.json())
       .then(json => {
         const v = json[CFG.pageNum];

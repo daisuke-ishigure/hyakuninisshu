@@ -66,7 +66,7 @@ const INTRO_BY_NUMBER = {
     45: "藤原伊尹の諡号。貞信公の孫で、右大臣・師輔の子。父の遺訓に反して贅沢三昧に暮らした。951年に和歌所別当となって梨壺の五人を率い、970年に摂政、971年に太政大臣となり、翌年49歳で没した。藤原義孝の父。",
     46: "万葉集の古語を取り入れ、百首歌を始めた先駆者。斬新な作風は貴族に理解されず異端視された。985年には招かれずに円融上皇の子の日の御遊に参加して追い出された。のちに高く評価され、『詞花和歌集』に最多入集。",
     47: "播磨国の国分寺の講師だったといわれる僧。河原院に住んでいた安法法師の友人で、河原院に出入りしていた。962年頃から歌合などで活躍しはじめ、986年には花山院の熊野行幸に従った。",
-    48: "清和天皇の曽孫。地方官を歴任しながら和歌を作り、冷泉天皇に百首歌『重之百首』を献上した。曽禰好忠とも親交があり、995年頃には陸奥守に任じられた藤原実方に従って陸奥国へ下り、1000年に同地で没した。",
+    48: "清和天皇の曽孫。地方官を歴任しながら和歌を作り、冷泉天皇に百首歌『重之百首』を献上した。曾禰好忠とも親交があり、995年頃には陸奥守に任じられた藤原実方に従って陸奥国へ下り、1000年に同地で没した。",
     49: "大中臣能宣。中臣鎌足と同じ祖先を持つ中臣氏の出身で、伊勢神宮の祭主を務めた。村上天皇の命で『後撰和歌集』の編纂に関わった梨壺の五人の一人。伊勢大輔の祖父で、991年に没した。三十六歌仙の一人。",
     50: "謙徳公(藤原伊尹)の息子で、美しい容姿と才能に恵まれた。仏教への信仰が深く、肉や魚を口にしなかったと伝わる。「長生きしたい」と願う歌を詠みながら、974年に天然痘で21歳で没した。長男は三蹟の一人、藤原行成。",
     51: "藤原実方。貞信公の曽孫で、名門に生まれ将来を期待された。宮中で藤原行成と口論して烏帽子を投げ捨て、一条天皇の怒りを買い、「歌枕を見てまいれ」と陸奥へ左遷されたと『古事談』に伝わる。999年に陸奥国で没した。",
@@ -236,7 +236,7 @@ const POETS_RAW = [
         poem: '<ruby>田子<rt>たご</rt></ruby>の<ruby>浦<rt>うら</rt></ruby>に…', job: '官人', source: '新古今集', outline: '自然を詠んだ叙景歌の名手', img: 'img/z04.webp',
     },
     {
-        n: 5, name: '<ruby>猿丸大夫<rt>さるまるだゆう</rt></ruby>', date: '生没年不詳', theme: 'autumn',
+        n: 5, name: '<ruby>猿丸太夫<rt>さるまるだゆう</rt></ruby>', date: '生没年不詳', theme: 'autumn',
         poem: '<ruby>奥山<rt>おくやま</rt></ruby>に…', job: '伝説', source: '古今集', outline: '伝説に包まれた歌人', img: 'img/z05.webp',
     },
     {
@@ -244,7 +244,7 @@ const POETS_RAW = [
         poem: 'かささぎの…', job: '公卿', source: '新古今集', outline: '万葉集編纂の中心人物', img: 'img/z06.webp',
     },
     {
-        n: 7, name: '<ruby>阿倍仲麻呂<rt>あべのなかまろ</rt></ruby>', date: '698年～770年', theme: 'travel',
+        n: 7, name: '<ruby>安倍仲麻呂<rt>あべのなかまろ</rt></ruby>', date: '698年～770年', theme: 'travel',
         poem: '<ruby>天<rt>あま</rt></ruby>の<ruby>原<rt>はら</rt></ruby>…', job: 'その他', source: '古今集', outline: '唐に渡り帰らぬ人となった天才官僚', img: 'img/z07.webp',
     },
     {
@@ -388,7 +388,7 @@ const POETS_RAW = [
         poem: '<ruby>契<rt>ちぎ</rt></ruby>りきな…', job: '貴族', source: '後拾遺集', outline: '清少納言の父にあたる歌人', img: 'img/z42.webp',
     },
     {
-        n: 43, name: '<ruby>権中納言敦忠<rt>ごんちゅうなごんあつただ</rt></ruby>', date: '906年～943年', theme: 'love',
+        n: 43, name: '<ruby>中納言敦忠<rt>ちゅうなごんあつただ</rt></ruby>', date: '906年～943年', theme: 'love',
         poem: '<ruby>逢<rt>あ</rt></ruby><ruby>ひ<rt>い</rt></ruby><ruby>見<rt>み</rt></ruby>ての…', job: '公卿', source: '拾遺集', outline: '恋多き貴公子', img: 'img/z43.webp',
     },
     {
@@ -400,7 +400,7 @@ const POETS_RAW = [
         poem: 'あ<ruby>は<rt>わ</rt></ruby>れとも…', job: '公卿', source: '拾遺集', outline: '権力を得ても恋は実らなかった公卿', img: 'img/z45.webp',
     },
     {
-        n: 46, name: '<ruby>曽禰好忠<rt>そねのよしただ</rt></ruby>', date: '生没年不詳', theme: 'love',
+        n: 46, name: '<ruby>曾禰好忠<rt>そねのよしただ</rt></ruby>', date: '生没年不詳', theme: 'love',
         poem: '<ruby>由良<rt>ゆら</rt></ruby>のとを…', job: '官人', source: '新古今集', outline: '新進気鋭の異色歌人', img: 'img/z46.webp',
     },
     {
@@ -472,7 +472,7 @@ const POETS_RAW = [
         poem: 'いまはただ…', job: '貴族', source: '後拾遺集', outline: '悪三位と呼ばれた斜陽貴族', img: 'img/z63.webp',
     },
     {
-        n: 64, name: '<ruby>権中納言定頼<rt>ごんちゅうなごんさだより</rt></ruby>', date: '995年～1045年', theme: 'winter',
+        n: 64, name: '<ruby>中納言定頼<rt>ちゅうなごんさだより</rt></ruby>', date: '995年～1045年', theme: 'winter',
         poem: '<ruby>朝<rt>あさ</rt></ruby>ぼらけ<br><ruby>宇治<rt>うじ</rt></ruby>の<ruby>川霧<rt>かわぎり</rt></ruby>…', job: '公卿', source: '千載集', outline: '小式部内侍に機知を試みた貴族', img: 'img/z64.webp',
     },
     {
@@ -480,7 +480,7 @@ const POETS_RAW = [
         poem: '<ruby>恨<rt>うら</rt></ruby>みわび…', job: '女房', source: '後拾遺集', outline: '宮廷歌壇をリードした女性歌人', img: 'img/z65.webp',
     },
     {
-        n: 66, name: '<ruby>前大僧正行尊<rt>さきのだいそうじょうぎょうそん</rt></ruby>', date: '1055年～1135年', theme: 'misc',
+        n: 66, name: '<ruby>大僧正行尊<rt>だいそうじょうぎょうそん</rt></ruby>', date: '1055年～1135年', theme: 'misc',
         poem: 'もろともに…', job: '僧侶', source: '金葉集', outline: '修験道で鍛えた孤高の歌人', img: 'img/z66.webp',
     },
     {
@@ -536,7 +536,7 @@ const POETS_RAW = [
         poem: '<ruby>秋風<rt>あきかぜ</rt></ruby>に…', job: '貴族', source: '新古今集', outline: '父との確執に悩んだ歌人', img: 'img/z79.webp',
     },
     {
-        n: 80, name: '<ruby>待賢門院堀河<rt>たいけんもんいんのほりかわ</rt></ruby>', date: '生没年不詳', theme: 'love',
+        n: 80, name: '<ruby>待賢門院堀川<rt>たいけんもんいんのほりかわ</rt></ruby>', date: '生没年不詳', theme: 'love',
         poem: '<ruby>長<rt>なが</rt></ruby>から<ruby>む<rt>ん</rt></ruby>…', job: '女房', source: '千載集', outline: '艶やかな恋歌を詠んだ女房歌人', img: 'img/z80.webp',
     },
     {

@@ -1268,7 +1268,7 @@ tippy('.fukurozoushi', { content: '<h3><ruby>袋草紙<rt>ふくろぞうし</rt
 tippy('.kokinrokujou', { content: '<h3><ruby>古今和歌六帖<rt>こきんわかろくじょう</rt></ruby></h3>平安時代に編纂された私撰和歌集。『万葉集』から『古今和歌集』、『後撰和歌集』の頃までの約4500首の和歌を収録し、全部で六帖あります。編纂者は不明です。', allowHTML: true });
 tippy('.kintoushu', { content: '<h3><ruby>大納言公任集<rt>だいなごんきんとうしゅう</rt></ruby></h3>藤原公任の歌集。『公任集』と呼ばれることもあります。', allowHTML: true });
 tippy('.eikyuhyakushu', { content: '<h3><ruby>永久百首<rt>えいきゅうひゃくしゅ</rt></ruby></h3>鳥羽天皇の勅命により、堀河天皇と中宮篤子内親王を偲び、藤原仲実らが中心となって催した百首歌。', allowHTML: true });
-tippy('.kyuanhyakushu', { content: '<h3><ruby>久安百首<rt>きゅうあんひゃくしゅ</rt></ruby></h3>平安後期、崇徳院の命により藤原顕輔、藤原清輔 、待賢門院堀河ら14名の歌人が久安6年（1150年）までに詠進した百首歌', allowHTML: true });
+tippy('.kyuanhyakushu', { content: '<h3><ruby>久安百首<rt>きゅうあんひゃくしゅ</rt></ruby></h3>平安後期、崇徳院の命により藤原顕輔、藤原清輔 、待賢門院堀川ら14名の歌人が久安6年（1150年）までに詠進した百首歌', allowHTML: true });
 tippy('.houjouki', { content: '<h3><ruby>方丈記<rt>ほうじょうき</rt></ruby></h3>鴨長明による鎌倉時代の随筆。「行く川のながれは絶えずして、しかも本の水にあらず。よどみに浮ぶうたかたは、かつ消えかつ結びて久しくとどまることなし。世の中にある人とすみかと、またかくの如し。」という書き出しで始まります。', allowHTML: true });
 tippy('.mumyoushou', { content: '<h3><ruby>無名抄<rt>むみょうしょう</rt></ruby></h3>鴨長明による鎌倉時代の歌論書', allowHTML: true });
 tippy('.sankashu', { content: '<h3><ruby>山家集<rt>さんかしゅう</rt></ruby></h3>西行法師の家集。3巻あり、約1560首が収められています。', allowHTML: true });

@@ -176,7 +176,7 @@ function setDifficulty(diff) {
 async function init() {
   initCardSize();
 
-  const res = await fetch('js/jokotoba.json?v3');
+  const res = await fetch('js/jokotoba.json?20261024-03');
   allPoems = await res.json();
 
   buildSegmentPool();

@@ -263,7 +263,7 @@ const POETS_RAW = [
         outline: 'Master of landscape poetry who sang of nature\'s beauty', img: 'img/z04.webp',
     },
     {
-        n: 5, name: '<ruby>猿丸大夫<rt>さるまるだゆう</rt></ruby>', date: 'dates unknown', theme: 'autumn',
+        n: 5, name: '<ruby>猿丸太夫<rt>さるまるだゆう</rt></ruby>', date: 'dates unknown', theme: 'autumn',
         poem: '<ruby>奥山<rt>おくやま</rt></ruby>に…', job: '伝説', source: '古今集',
         outline: 'A legendary poet shrouded in mystery', img: 'img/z05.webp',
     },
@@ -273,7 +273,7 @@ const POETS_RAW = [
         outline: 'Central figure in compiling the Man\'yōshū', img: 'img/z06.webp',
     },
     {
-        n: 7, name: '<ruby>阿倍仲麻呂<rt>あべのなかまろ</rt></ruby>', date: '698年～770年', theme: 'travel',
+        n: 7, name: '<ruby>安倍仲麻呂<rt>あべのなかまろ</rt></ruby>', date: '698年～770年', theme: 'travel',
         poem: '<ruby>天<rt>あま</rt></ruby>の<ruby>原<rt>はら</rt></ruby>…', job: 'その他', source: '古今集',
         outline: 'Brilliant official who went to Tang China and never returned', img: 'img/z07.webp',
     },
@@ -453,7 +453,7 @@ const POETS_RAW = [
         outline: 'A poet who was the father of Sei Shōnagon', img: 'img/z42.webp',
     },
     {
-        n: 43, name: '<ruby>権中納言敦忠<rt>ごんちゅうなごんあつただ</rt></ruby>', date: '906年～943年', theme: 'love',
+        n: 43, name: '<ruby>中納言敦忠<rt>ちゅうなごんあつただ</rt></ruby>', date: '906年～943年', theme: 'love',
         poem: '<ruby>逢<rt>あ</rt></ruby><ruby>ひ<rt>い</rt></ruby><ruby>見<rt>み</rt></ruby>ての…', job: '公卿', source: '拾遺集',
         outline: 'A romantic young nobleman with many loves', img: 'img/z43.webp',
     },
@@ -468,7 +468,7 @@ const POETS_RAW = [
         outline: 'A powerful court noble whose love was never requited', img: 'img/z45.webp',
     },
     {
-        n: 46, name: '<ruby>曽禰好忠<rt>そねのよしただ</rt></ruby>', date: '生没年不詳', theme: 'love',
+        n: 46, name: '<ruby>曾禰好忠<rt>そねのよしただ</rt></ruby>', date: '生没年不詳', theme: 'love',
         poem: '<ruby>由良<rt>ゆら</rt></ruby>のとを…', job: '官人', source: '新古今集',
         outline: 'A bold and unconventional up-and-coming poet', img: 'img/z46.webp',
     },
@@ -558,7 +558,7 @@ const POETS_RAW = [
         outline: 'A declining noble known as "the wicked third-rank official"', img: 'img/z63.webp',
     },
     {
-        n: 64, name: '<ruby>権中納言定頼<rt>ごんちゅうなごんさだより</rt></ruby>', date: '995年～1045年', theme: 'winter',
+        n: 64, name: '<ruby>中納言定頼<rt>ちゅうなごんさだより</rt></ruby>', date: '995年～1045年', theme: 'winter',
         poem: '<ruby>朝<rt>あさ</rt></ruby>ぼらけ<br><ruby>宇治<rt>うじ</rt></ruby>の<ruby>川霧<rt>かわぎり</rt></ruby>…', job: '公卿', source: '千載集',
         outline: 'An aristocrat who tried to test Koshikibu no Naishi\'s quick wit', img: 'img/z64.webp',
     },
@@ -568,7 +568,7 @@ const POETS_RAW = [
         outline: 'A female poet who stood at the forefront of the court poetry world', img: 'img/z65.webp',
     },
     {
-        n: 66, name: '<ruby>前大僧正行尊<rt>さきのだいそうじょうぎょうそん</rt></ruby>', date: '1055年～1135年', theme: 'misc',
+        n: 66, name: '<ruby>大僧正行尊<rt>だいそうじょうぎょうそん</rt></ruby>', date: '1055年～1135年', theme: 'misc',
         poem: 'もろともに…', job: '僧侶', source: '金葉集',
         outline: 'A lofty hermit poet tempered by mountain ascetic practice', img: 'img/z66.webp',
     },
@@ -638,7 +638,7 @@ const POETS_RAW = [
         outline: 'A poet whose career was troubled by conflict with his father', img: 'img/z79.webp',
     },
     {
-        n: 80, name: '<ruby>待賢門院堀河<rt>たいけんもんいんのほりかわ</rt></ruby>', date: 'dates unknown', theme: 'love',
+        n: 80, name: '<ruby>待賢門院堀川<rt>たいけんもんいんのほりかわ</rt></ruby>', date: 'dates unknown', theme: 'love',
         poem: '<ruby>長<rt>なが</rt></ruby>から<ruby>む<rt>ん</rt></ruby>…', job: '女房', source: '千載集',
         outline: 'A court-lady poet who composed graceful and elegant love poems', img: 'img/z80.webp',
     },

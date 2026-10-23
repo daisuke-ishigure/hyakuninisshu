@@ -6,7 +6,7 @@
       // データを外部JSONから読み込む
       let networkConfig;
       try {
-        const res = await fetch('js/network-data.json?20261022-01');
+        const res = await fetch('js/network-data.json?20261024-03');
         if (!res.ok) throw new Error('HTTP ' + res.status);
         networkConfig = await res.json();
       } catch (err) {
@@ -931,7 +931,7 @@
           try {
             if (!savedFileHandle) {
               savedFileHandle = await window.showSaveFilePicker({
-                suggestedName: 'network-data.json',
+                suggestedName: 'network-data.json?20261024-03',
                 types: [{ description: 'JSON', accept: { 'application/json': ['.json'] } }]
               });
             }
@@ -951,7 +951,7 @@
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'network-data.json';
+        a.download = 'network-data.json?20261024-03';
         a.click();
         URL.revokeObjectURL(url);
         return true;

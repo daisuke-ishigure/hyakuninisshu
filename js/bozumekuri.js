@@ -63,7 +63,7 @@ function stripRuby(text) {
 }
 
 // JSONファイルを読み込み
-fetch('../js/kimariji.json?20261016-01')
+fetch('../js/kimariji.json?20261024-03')
     .then(response => {
         if (!response.ok) throw new Error('JSON読み込み失敗');
         return response.json();

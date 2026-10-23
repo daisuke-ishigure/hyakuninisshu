@@ -93,7 +93,7 @@ function generateVoicedVariants(answer) {
 }
 
 // ── データ読み込み ──────────────────────────────────────────────
-fetch('../js/kimariji.json?20261016-01')
+fetch('../js/kimariji.json?20261024-03')
   .then(res => {
     if (!res.ok) throw new Error('ネットワーク応答が正常ではありません');
     return res.json();

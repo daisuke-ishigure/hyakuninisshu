@@ -181,9 +181,9 @@
         "type": "Feature",
         "properties": {
           "markname": "円城寺（三井寺）",
-          "kajin": "前大僧正行尊",
+          "kajin": "大僧正行尊",
           "type": "type2",
-          "name": "<a href='../img/miidera_large.webp' data-lightbox='前大僧正行尊' data-title='滋賀県と岐阜県の境にある伊吹山'><img src='../img/miidera.webp' width='300' alt='伊吹山'></a><h2 class='utamakura-name'>円城寺（三井寺）</h2><p>滋賀県大津市にある天台寺門宗の総本山。一般には三井寺として知られています。行尊は12歳のときに、このお寺で出家し、密教を学びました。</p><hr><a href='/66.html'>66番歌 前大僧正行尊へのリンク</a>"
+          "name": "<a href='../img/miidera_large.webp' data-lightbox='大僧正行尊' data-title='滋賀県と岐阜県の境にある伊吹山'><img src='../img/miidera.webp' width='300' alt='伊吹山'></a><h2 class='utamakura-name'>円城寺（三井寺）</h2><p>滋賀県大津市にある天台寺門宗の総本山。一般には三井寺として知られています。行尊は12歳のときに、このお寺で出家し、密教を学びました。</p><hr><a href='/66.html'>66番歌 大僧正行尊へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -325,9 +325,9 @@
         "type": "Feature",
         "properties": {
           "markname": "宇治川",
-          "kajin": "権中納言定頼（宇治川）",
+          "kajin": "中納言定頼（宇治川）",
           "type": "type1",
-          "name": "<a href='../img/ujigawa_large.webp' data-lightbox='map' data-title='宇治川'><img src='../img/ujigawa.webp' width='300' alt='宇治川'></a><h2 class='utamakura-name'>歌枕：宇治川</h2><p>京都府宇治市。平安貴族の別荘地としても有名です。</p><hr><a href='/64.html'>64番歌 権中納言定頼へのリンク</a>"
+          "name": "<a href='../img/ujigawa_large.webp' data-lightbox='map' data-title='宇治川'><img src='../img/ujigawa.webp' width='300' alt='宇治川'></a><h2 class='utamakura-name'>歌枕：宇治川</h2><p>京都府宇治市。平安貴族の別荘地としても有名です。</p><hr><a href='/64.html'>64番歌 中納言定頼へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -532,9 +532,9 @@
         "type": "Feature",
         "properties": {
           "markname": "春日",
-          "kajin": "阿倍仲麻呂（春日）",
+          "kajin": "安倍仲麻呂（春日）",
           "type": "type1",
-          "name": "<a href='../img/kasugataisha_large.webp' data-lightbox='map' data-title='奈良県奈良市春日野町:春日大社'><img src='../img/kasugataisha.webp' width='300' alt='春日'></a><h2 class='utamakura-name'>歌枕：春日（春日大社）</h2><p>奈良県奈良市春日野町。山の麓に春日大社がある。</p><hr><a href='/7.html'>7番歌 阿倍仲麻呂へのリンク</a>"
+          "name": "<a href='../img/kasugataisha_large.webp' data-lightbox='map' data-title='奈良県奈良市春日野町:春日大社'><img src='../img/kasugataisha.webp' width='300' alt='春日'></a><h2 class='utamakura-name'>歌枕：春日（春日大社）</h2><p>奈良県奈良市春日野町。山の麓に春日大社がある。</p><hr><a href='/7.html'>7番歌 安倍仲麻呂へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -564,9 +564,9 @@
         "type": "Feature",
         "properties": {
           "markname": "由良川",
-          "kajin": "曽禰好忠（由良川）",
+          "kajin": "曾禰好忠（由良川）",
           "type": "type1",
-          "name": "<a href='../img/yuragawa_large.webp' data-lightbox='map' data-title='由良川'><img src='../img/yuragawa.webp' width='300' alt='由良川'></a><h2 class='utamakura-name'>歌枕：由良川</h2><p>京都府宮津市字由良。古代の由良川河口の呼び名です。丹後国（京都府の丹後半島）の国司だった曽禰好忠にとって馴染みある場所だったと考えられます。</p><hr><a href='/46.html'>46番歌 曽禰好忠へのリンク</a>"
+          "name": "<a href='../img/yuragawa_large.webp' data-lightbox='map' data-title='由良川'><img src='../img/yuragawa.webp' width='300' alt='由良川'></a><h2 class='utamakura-name'>歌枕：由良川</h2><p>京都府宮津市字由良。古代の由良川河口の呼び名です。丹後国（京都府の丹後半島）の国司だった曾禰好忠にとって馴染みある場所だったと考えられます。</p><hr><a href='/46.html'>46番歌 曾禰好忠へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -644,9 +644,9 @@
         "type": "Feature",
         "properties": {
           "markname": "御蓋山",
-          "kajin": "阿倍仲麻呂（御蓋山）",
+          "kajin": "安倍仲麻呂（御蓋山）",
           "type": "type1",
-          "name": "<a href='../img/mikasayama_large.webp' data-lightbox='map' data-title='御蓋山'><img src='../img/mikasayama.webp' width='300' alt='御蓋山'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:Mikasayama_201611a.jpg' target='_blank' rel='noopener'>Degueulasse, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons</a></small><h2 class='utamakura-name'>歌枕：三笠山</h2><p>奈良県奈良市東部。標高283mの山で、笠を伏せたような円錐状の形が名前の由来になっています。麓には春日大社があります。</p><hr><a href='/7.html'>7番歌 阿倍仲麻呂へのリンク</a>"
+          "name": "<a href='../img/mikasayama_large.webp' data-lightbox='map' data-title='御蓋山'><img src='../img/mikasayama.webp' width='300' alt='御蓋山'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:Mikasayama_201611a.jpg' target='_blank' rel='noopener'>Degueulasse, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons</a></small><h2 class='utamakura-name'>歌枕：三笠山</h2><p>奈良県奈良市東部。標高283mの山で、笠を伏せたような円錐状の形が名前の由来になっています。麓には春日大社があります。</p><hr><a href='/7.html'>7番歌 安倍仲麻呂へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -756,9 +756,9 @@
         "type": "Feature",
         "properties": {
           "markname": "大峰山脈",
-          "kajin": "前大僧正行尊（大峰山脈）",
+          "kajin": "大僧正行尊（大峰山脈）",
           "type": "type2",
-          "name": "<a href='../img/oominesanmyaku_large.webp' data-lightbox='map' data-title='大峰山脈'><img src='../img/oominesanmyaku.webp?20240428' width='300' alt='大峰山脈'></a><h2 class='utamakura-name'>大峰山脈</h2><p>近畿の屋根といわれる大峰山脈。行尊は大峰山脈の修験道で修行していたときに、山桜に出会い歌を詠みました。</p><hr><a href='/66.html'>66番歌 前大僧正行尊へのリンク</a>"
+          "name": "<a href='../img/oominesanmyaku_large.webp' data-lightbox='map' data-title='大峰山脈'><img src='../img/oominesanmyaku.webp?20240428' width='300' alt='大峰山脈'></a><h2 class='utamakura-name'>大峰山脈</h2><p>近畿の屋根といわれる大峰山脈。行尊は大峰山脈の修験道で修行していたときに、山桜に出会い歌を詠みました。</p><hr><a href='/66.html'>66番歌 大僧正行尊へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -771,10 +771,10 @@
       {
         "type": "Feature",
         "properties": {
-          "markname": "阿倍仲麻呂の記念碑（興慶宮公園）",
-          "kajin": "阿倍仲麻呂（興慶宮公園）",
+          "markname": "安倍仲麻呂の記念碑（興慶宮公園）",
+          "kajin": "安倍仲麻呂（興慶宮公園）",
           "type": "type2",
-          "name": "<a href='../img/abenonakamaro_kinenhi_large.webp' data-lightbox='map' data-title='興慶宮公園にある阿倍仲麻呂の記念碑'><img src='../img/abenonakamaro_kinenhi.webp' width='300' alt='阿倍仲麻呂の記念碑'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:%E9%98%BF%E5%80%8D%E4%BB%B2%E9%BA%BB%E5%91%82%E7%A2%91.JPG' target='_blank' rel='noopener'>写真:Indiana jo, CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>, via Wikimedia Commons</a></small><h2 class='utamakura-name'>興慶宮公園</h2><p>興慶宮公園は、かつて玄宗皇帝が執務を行っていた興慶宮の遺跡の上に築かれた公園で、この場所には阿倍仲麻呂の記念碑が建てられています。</p><hr><a href='/7.html'>7番歌 阿倍仲麻呂へのリンク</a>"
+          "name": "<a href='../img/abenonakamaro_kinenhi_large.webp' data-lightbox='map' data-title='興慶宮公園にある安倍仲麻呂の記念碑'><img src='../img/abenonakamaro_kinenhi.webp' width='300' alt='安倍仲麻呂の記念碑'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:%E9%98%BF%E5%80%8D%E4%BB%B2%E9%BA%BB%E5%91%82%E7%A2%91.JPG' target='_blank' rel='noopener'>写真:Indiana jo, CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>, via Wikimedia Commons</a></small><h2 class='utamakura-name'>興慶宮公園</h2><p>興慶宮公園は、かつて玄宗皇帝が執務を行っていた興慶宮の遺跡の上に築かれた公園で、この場所には安倍仲麻呂の記念碑が建てられています。</p><hr><a href='/7.html'>7番歌 安倍仲麻呂へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -822,7 +822,7 @@
           "markname": "いらかみち",
           "kajin": "菅家（学問のみち）",
           "type": "type2",
-          "name": "<img src='../img/iraka-no-michi_66_small.webp' width='300' alt='学問のみち'><br><small></small><h2 class='utamakura-name'>いらかみち</h2><p>東京都世田谷区にある道。東急田園都市線の用賀駅北口から砧公園や世田谷美術館へ向かう道には、「いらかみち」と呼ばれる瓦敷きの通りがあります。この道には百人一首の和歌がランダムに刻まれています。ほとんどの和歌は、路面に刻まれていますが、行尊の和歌は石垣に彫られており、存在感があります。</p><hr><a href='/66.html'>66番歌 前大僧正行尊へのリンク</a>"
+          "name": "<img src='../img/iraka-no-michi_66_small.webp' width='300' alt='学問のみち'><br><small></small><h2 class='utamakura-name'>いらかみち</h2><p>東京都世田谷区にある道。東急田園都市線の用賀駅北口から砧公園や世田谷美術館へ向かう道には、「いらかみち」と呼ばれる瓦敷きの通りがあります。この道には百人一首の和歌がランダムに刻まれています。ほとんどの和歌は、路面に刻まれていますが、行尊の和歌は石垣に彫られており、存在感があります。</p><hr><a href='/66.html'>66番歌 大僧正行尊へのリンク</a>"
         },
         "geometry": {
           "type": "Point",

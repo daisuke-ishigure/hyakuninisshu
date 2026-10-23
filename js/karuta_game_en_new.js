@@ -147,7 +147,7 @@
 // --- DOM references ---
 const gameHeader        = document.getElementById('game_header');
 const jsonAddress       = "../js/karuta.json?20240620";
-const hyakuninAddress   = "../js/hyakunin.json?20261024-01";
+const hyakuninAddress   = "../js/hyakunin.json?20261024-03";
 const container         = document.getElementById('karuta_container');
 const startButton       = document.getElementById('start_button_en');
 const resultText        = document.getElementById('result_text');

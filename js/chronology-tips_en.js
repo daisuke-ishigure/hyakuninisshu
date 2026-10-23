@@ -23,12 +23,12 @@ Usage: in onDraw() of chronology_en.html, pass the chart (ChartWrapper) and the 
   var EXTRA = {
     '柿本人麻呂': ['Kakinomoto no Hitomaro', 'Ashibiki no'],
     '山部赤人': ['Yamabe no Akahito', 'Tago no ura ni'],
-    '猿丸大夫': ['Sarumaru Dayū', 'Okuyama ni'],
-    '阿倍仲麻呂': ['Abe no Nakamaro', 'Ama no hara'],
+    '猿丸太夫': ['Sarumaru Dayū', 'Okuyama ni'],
+    '安倍仲麻呂': ['Abe no Nakamaro', 'Ama no hara'],
     '喜撰法師': ['Priest Kisen', 'Waga io wa'],
     '蝉丸': ['Semimaru', 'Kore ya kono'],
     '春道列樹': ['Harumichi no Tsuraki', 'Yamagawa ni'],
-    '曽禰好忠': ['Sone no Yoshitada', 'Yura no to o'],
+    '曾禰好忠': ['Sone no Yoshitada', 'Yura no to o'],
     '良暹': ['Priest Ryōzen', 'Sabishisa ni']
   };
 

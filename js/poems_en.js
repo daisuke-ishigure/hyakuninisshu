@@ -8,8 +8,8 @@
 // ============================================================
 
 // Poet name (English) and theme by poem number.
-// name is sourced from js/kokoro-chart-data-en.js's "poet" field;
-// theme is sourced from js/zukan_en.js's POETS_RAW "theme" field.
+// name is sourced from js/kokoro-chart-data-en.js?20261024-03's "poet" field;
+// theme is sourced from js/zukan_en.js?20261024-03's POETS_RAW "theme" field.
 const POET_DATA_EN = {
   1: { name: "Emperor Tenji", theme: "autumn" },
   2: { name: "Empress Jitō", theme: "summer" },
@@ -53,7 +53,7 @@ const POET_DATA_EN = {
   40: { name: "Taira no Kanemori", theme: "love" },
   41: { name: "Mibu no Tadami", theme: "love" },
   42: { name: "Kiyohara no Motosuke", theme: "love" },
-  43: { name: "Acting Middle Counselor Atsutada", theme: "love" },
+  43: { name: "Middle Counselor Atsutada", theme: "love" },
   44: { name: "Middle Counselor Asatada", theme: "love" },
   45: { name: "Kentoku-kō", theme: "love" },
   46: { name: "Sone no Yoshitada", theme: "love" },
@@ -74,7 +74,7 @@ const POET_DATA_EN = {
   61: { name: "Ise no Taifu", theme: "spring" },
   62: { name: "Sei Shōnagon", theme: "misc" },
   63: { name: "Master of the Left Capital Michimasa", theme: "love" },
-  64: { name: "Acting Middle Counselor Sadayori", theme: "winter" },
+  64: { name: "Middle Counselor Sadayori", theme: "winter" },
   65: { name: "Sagami", theme: "love" },
   66: { name: "Senior High Priest Gyōson", theme: "misc" },
   67: { name: "Suō no Naishi", theme: "misc" },
@@ -509,7 +509,7 @@ function yomihudaToRomajiPartsForPoem(yomihuda) {
   };
 }
 
-fetch("../js/hyakunin.json?20261024-01")
+fetch("../js/hyakunin.json?20261024-03")
   .then((r) => r.json())
   .then((data) => {
     const num = getPoemNumberFromUrl();

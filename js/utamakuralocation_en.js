@@ -205,9 +205,9 @@
       "type": "Feature",
       "properties": {
         "markname": "Uji River",
-        "kajin": "Acting Middle Counselor Sadayori (Uji River)",
+        "kajin": "Middle Counselor Sadayori (Uji River)",
         "type": "type1",
-        "name": "<a href='../img/ujigawa_large.webp' data-lightbox='map' data-title='Uji River'><img src='../img/ujigawa.webp' width='300' alt='Uji River'></a><h2 class='utamakura-name'>Utamakura: Uji River</h2><p>Uji, Kyoto Prefecture. Also famous as a villa retreat for Heian-period aristocrats.</p><hr><a href='/64_en.html'>Link to Poem 64: Acting Middle Counselor Sadayori</a>"
+        "name": "<a href='../img/ujigawa_large.webp' data-lightbox='map' data-title='Uji River'><img src='../img/ujigawa.webp' width='300' alt='Uji River'></a><h2 class='utamakura-name'>Utamakura: Uji River</h2><p>Uji, Kyoto Prefecture. Also famous as a villa retreat for Heian-period aristocrats.</p><hr><a href='/64_en.html'>Link to Poem 64: Middle Counselor Sadayori</a>"
       },
       "geometry": { "type": "Point", "coordinates": [135.80898, 34.88887] }
     },

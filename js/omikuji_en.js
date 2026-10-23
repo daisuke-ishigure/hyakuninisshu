@@ -50,7 +50,7 @@ const hyakuninIsshu = [
         love: "It is hard to read the other person's heart right now, and that can be frustrating. Rather than rushing for an answer, wait quietly and work on yourself; good news will come in time.",
         work: "It is the work you leave behind, more than your name or title, that people remember. This is a good moment to pause and reconsider which path you truly want to follow.",
         poet: "Sarumaru Dayū",
-        poetJa: "猿丸大夫",
+        poetJa: "猿丸太夫",
         luck: "末吉"
     },
     {
@@ -70,7 +70,7 @@ const hyakuninIsshu = [
         love: "Even far apart, your hearts are connected, as if you were both looking up at the same moon. Don't let the distance defeat you; making the effort to share your feelings will strengthen your bond.",
         work: "Even in new surroundings, your ability and your connections with people will support you. When you are unsure, return to your starting point, as Nakamaro remembered the moon of home.",
         poet: "Abe no Nakamaro",
-        poetJa: "阿倍仲麻呂",
+        poetJa: "安倍仲麻呂",
         luck: "中吉"
     },
     {
@@ -429,8 +429,8 @@ const hyakuninIsshu = [
         story: "A son of Minister of the Left Fujiwara no Tokihira, Fujiwara no Atsutada was blessed with good looks and excelled at poetry and music. He rose to Acting Middle Counselor but died young, at thirty-eight. This poem says that, compared with the depth of his feelings after he and his love became one, the longing he felt before they met was nothing at all.",
         love: "When feelings are returned, love grows deeper and more intense. Accept that passion straightforwardly, and you will find happiness.",
         work: "Taking one step further makes earlier worries look small. Put your strong feelings into your work and raise your focus and creativity.",
-        poet: "Acting Middle Counselor Atsutada",
-        poetJa: "権中納言敦忠",
+        poet: "Middle Counselor Atsutada",
+        poetJa: "中納言敦忠",
         luck: "中吉"
     },
     {
@@ -460,7 +460,7 @@ const hyakuninIsshu = [
         love: "A time when you can't see where love is heading and tend to drift. Don't rush into action; take a careful look at the situation.",
         work: "Even without a clear outlook, if you stick to your own way, you will be recognized someday. When others don't understand you, that is exactly the time to refine your own ideas.",
         poet: "Sone no Yoshitada",
-        poetJa: "曽禰好忠",
+        poetJa: "曾禰好忠",
         luck: "末吉"
     },
     {
@@ -639,8 +639,8 @@ const hyakuninIsshu = [
         story: "The son of Fujiwara no Kintō, Fujiwara no Sadayori was a handsome man who excelled at music and calligraphy. He is the very man who teased Koshikibu no Naishi and was neatly put in his place by her \"Ōeyama\" poem. This poem describes dawn on the Uji River, where the morning mist clears in patches, revealing the stakes of the fishing weirs one after another.",
         love: "Your relationship is still in the mist. Don't rush; trust the sure signs you glimpse from time to time and wait. Choose your words carefully so that a light joke doesn't hurt anyone.",
         work: "Even if you can't see the whole picture yet, the path is gradually coming into view. With the openness to learn from mistakes, you can move forward one sure step at a time.",
-        poet: "Acting Middle Counselor Sadayori",
-        poetJa: "権中納言定頼",
+        poet: "Middle Counselor Sadayori",
+        poetJa: "中納言定頼",
         luck: "吉"
     },
     {
@@ -660,7 +660,7 @@ const hyakuninIsshu = [
         love: "Even if you walk a lonely path, there is surely someone whose heart can connect with yours. They may be few, but cherish the bond with that one person.",
         work: "Like Gyōson after his harsh training, this is a time to work on your own, quietly and steadily. Don't be distracted by others; focus on what is truly valuable to you.",
         poet: "Senior High Priest Gyōson",
-        poetJa: "前大僧正行尊",
+        poetJa: "大僧正行尊",
         luck: "吉"
     },
     {
@@ -800,7 +800,7 @@ const hyakuninIsshu = [
         love: "A time when you can't read the other person's feelings and your heart is in turmoil. That is proof of deep love. First, settle your own heart.",
         work: "Even if you feel anxious and confused, sorting things out one by one without rushing will lead to solid results. Connections with people you trust will support you.",
         poet: "Horikawa, attendant to Empress Taiken",
-        poetJa: "待賢門院堀河",
+        poetJa: "待賢門院堀川",
         luck: "末吉"
     },
     {

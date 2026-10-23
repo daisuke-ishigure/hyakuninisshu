@@ -225,8 +225,8 @@
       ]
     },
     {
-      poemNum: 43, poet: "Acting Middle Counselor Atsutada", quizzes: [
-        { q: "Acting Middle Counselor Atsutada's poem says his longing grew stronger after he had been with his lover.", answer: true, explain: "“Aimite no nochi no kokoro ni kurabureba mukashi wa mono o omowazarikeri” means: compared with my heart after we were together, before then I had known no real longing at all." },
+      poemNum: 43, poet: "Middle Counselor Atsutada", quizzes: [
+        { q: "Middle Counselor Atsutada's poem says his longing grew stronger after he had been with his lover.", answer: true, explain: "“Aimite no nochi no kokoro ni kurabureba mukashi wa mono o omowazarikeri” means: compared with my heart after we were together, before then I had known no real longing at all." },
       ]
     },
     {
@@ -330,8 +330,8 @@
       ]
     },
     {
-      poemNum: 64, poet: "Acting Middle Counselor Sadayori", quizzes: [
-        { q: "Acting Middle Counselor Sadayori (Fujiwara no Sadayori) once teased Koshikibu no Naishi and was put to shame by her poem.", answer: true, explain: "When Sadayori teased her by asking whether she had asked her mother, Izumi Shikibu, to write her poem for her, Koshikibu no Naishi instantly replied with “Ōeyama ikuno no michi no…,” and Sadayori is said to have fled without being able to answer." },
+      poemNum: 64, poet: "Middle Counselor Sadayori", quizzes: [
+        { q: "Middle Counselor Sadayori (Fujiwara no Sadayori) once teased Koshikibu no Naishi and was put to shame by her poem.", answer: true, explain: "When Sadayori teased her by asking whether she had asked her mother, Izumi Shikibu, to write her poem for her, Koshikibu no Naishi instantly replied with “Ōeyama ikuno no michi no…,” and Sadayori is said to have fled without being able to answer." },
       ]
     },
     {

@@ -179,7 +179,7 @@ function setDifficulty(diff) {
 async function init() {
   initCardSize();
 
-  const res = await fetch('js/kaminoku.json?20261016-01');
+  const res = await fetch('js/kaminoku.json?20261024-03');
   const raw = await res.json();
   // 五句並べの5句データから、上の句（1〜3句目＝刺していく札）と
   // 下の句（4〜5句目＝お題として表示）を組み立てる

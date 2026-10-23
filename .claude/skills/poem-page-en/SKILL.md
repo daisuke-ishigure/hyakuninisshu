@@ -12,6 +12,7 @@ Each `N_en.html` is the English version of `N.html`. Content is **translated fro
 - **Plain English** for a general reader who knows nothing about Japanese history. Short sentences, common words; explain Japanese terms in a few words the first time (e.g. "*honkadori*, borrowing from an older poem").
 - Romanize with macrons (Ōtsu, Jitō, Man'yōshū). Emperors: "Emperor Tenji", women rulers "Empress Jitō". Princes: "Prince Ōama".
 - Siblings: write "younger brother" / "elder sister" etc. when the JA text says so; don't guess.
+- Poet names: the Japanese poet name must match the canonical list in the `poet-names` skill (source: https://oumijingu.org/pages/130/, e.g. 中納言敦忠, 大僧正行尊, 待賢門院堀川); the English name/title follows `list_en.html`.
 
 ## The explanation box (`.explanation`): no scrollbar on PC
 
