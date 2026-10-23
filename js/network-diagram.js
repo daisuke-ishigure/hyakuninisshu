@@ -6,7 +6,7 @@
       // データを外部JSONから読み込む
       let networkConfig;
       try {
-        const res = await fetch('js/network-data.json?20261016-01');
+        const res = await fetch('js/network-data.json?20261022-01');
         if (!res.ok) throw new Error('HTTP ' + res.status);
         networkConfig = await res.json();
       } catch (err) {

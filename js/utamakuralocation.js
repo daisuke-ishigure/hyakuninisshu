@@ -471,7 +471,7 @@
           "markname": "弘川寺",
           "kajin": "西行法師（弘川寺）",
           "type": "type2",
-          "name": "<a href='/img/Hirokawadera.webp' data-lightbox='map' data-title='弘川寺'><img src='../img/Hirokawadera.webp' width='300' alt='住吉高燈籠'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:Hirokawadera-200001.jpg' target='_blank' rel='noopener'>Otraff, CC BY-SA 3.0 <http://creativecommons.org/licenses/by-sa/3.0/>, via Wikimedia Commons</a></small><h2 class='utamakura-name'>弘川寺</h2><p>弘川寺（大阪府南河内郡河南町）は、大和葛城山の麓にある古刹です。西行はここで生涯を閉じました。境内には西行の西行墳や歌碑、西行記念館があります。お寺やその周辺は桜の名所としても知られています。</p><hr><a href='/86.html'>86番歌西行法師へのリンク</a>"
+          "name": "<a href='/img/Hirokawadera.webp' data-lightbox='map' data-title='弘川寺'><img src='../img/Hirokawadera.webp' width='300' alt='住吉高燈籠'></a><br><small><a href='https://commons.wikimedia.org/wiki/File:Hirokawadera-200001.jpg' target='_blank' rel='noopener'>Otraff, CC BY-SA 3.0 <http://creativecommons.org/licenses/by-sa/3.0/>, via Wikimedia Commons</a></small><h2 class='utamakura-name'>弘川寺</h2><p>弘川寺（大阪府南河内郡河南町）は、大和葛城山の麓にある古刹です。西行はここで生涯を閉じました。境内には西行の墓（西行墳）や歌碑、西行記念館があります。お寺やその周辺は桜の名所としても知られています。</p><hr><a href='/86.html'>86番歌西行法師へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
