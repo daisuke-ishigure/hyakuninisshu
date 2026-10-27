@@ -16,7 +16,7 @@
   <meta name="description" content="百人一首の全100首一覧。上の句・下の句・作者・読み方（ひらがな）・現代語訳をまとめて確認できます。歌番号順・五十音順・五色百人一首の色順に並べ替え、歌や歌人名の一部（ひらがなOK）で検索も可能です。">
   <meta name="google-site-verification" content="a3HHNhawWK8QsasKiSFMC_QeIXmO1tdBc60jhNPTA3s">
   <link rel="stylesheet" href="../css/style.css?20261018-01">
-  <link rel="stylesheet" href="../css/list.css?20261011-01">
+  <link rel="stylesheet" href="../css/list.css?20261028-01">
   <style>
     .modern-text {
       display: block;
@@ -63,7 +63,7 @@
   <link rel="alternate" hreflang="x-default" href="https://hyakuninisshu.com/list.html">
   <!-- ogp -->
   <meta property="og:locale" content="ja_JP">
-  <meta property="og:type" content="article">
+  <meta property="og:type" content="website">
   <meta property="og:title" content="百人一首 一覧（全100首・検索機能付き） | 時雨の百人一首">
   <meta property="og:description" content="百人一首の全100首一覧です。歌や歌人名、平仮名での絞り込み検索が可能。各和歌の詳細ページへリンクしています。">
   <meta property="og:url" content="https://hyakuninisshu.com/list.html">
@@ -97,24 +97,110 @@
     ]
   }
 </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "百人一首一覧｜全100首・現代語訳付き",
+    "url": "https://hyakuninisshu.com/list.html",
+    "inLanguage": "ja",
+    "description": "百人一首の全100首一覧。上の句・下の句・作者・読み方（ひらがな）・現代語訳をまとめて確認できます。",
+    "about": {
+      "@type": "Book",
+      "name": "小倉百人一首",
+      "alternateName": "百人一首",
+      "author": { "@type": "Person", "name": "藤原定家" }
+    },
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "時雨の百人一首",
+      "url": "https://hyakuninisshu.com/"
+    }
+  }
+</script>
   <style>
-    /* 表の下の関連ページ（トップページの「すべてのコンテンツ」のリンクと同じ見た目） */
+    /* 表の下の関連ページ（カード型） */
     .list-related {
       margin: 2.5em 0 1em;
     }
-    .list-related__links {
-      margin: 0.6em 0 0;
-      padding-left: 1.4em;
-      list-style: disc;
-      line-height: 1.8;
+    /* カード型のリンク（PC は2列、スマホは1列）。style.css の .section ul / li（桜の行頭アイコン）を打ち消す */
+    .list-related .list-related__links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 0.9em;
+      margin: 1em 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .list-related .list-related__links li {
+      margin: 0;
+      padding: 0;
+      background: none;
+      font-size: 1rem;
+      line-height: 1.6;
     }
     .list-related__links a {
+      position: relative;
+      display: block;
+      height: 100%;
+      box-sizing: border-box;
+      padding: 0.9em 2.6em 0.9em 1.1em;
+      border: 1px solid #e0d8c8;
+      border-left: 4px solid #b82343;
+      border-radius: 6px;
+      background: #fff;
+      color: #333;
+      text-decoration: none;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+      transition: box-shadow 0.15s, transform 0.15s;
+    }
+    .list-related__links a:hover,
+    .list-related__links a:focus-visible {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+      transform: translateY(-2px);
+    }
+    /* 右端の矢印 */
+    .list-related__links a::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 1.1em;
+      width: 0.5em;
+      height: 0.5em;
+      border-top: 2px solid #b82343;
+      border-right: 2px solid #b82343;
+      transform: translateY(-50%) rotate(45deg);
+    }
+    .list-related__title {
+      display: block;
+      padding-left: 1.5em;
+      background: url(../img/sakura.svg) no-repeat 0 50% / 1.1em;
       color: #b82343;
+      font-weight: 700;
+      font-size: 1.1rem;
     }
     .list-related__desc {
-      margin-left: 0.5em;
+      display: block;
+      margin-top: 0.3em;
       font-size: 0.85rem;
       color: #7a6655;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .list-related__links a {
+        transition: none;
+      }
+      .list-related__links a:hover,
+      .list-related__links a:focus-visible {
+        transform: none;
+      }
+    }
+    /* 表の下の「百人一首について」 */
+    .list-about {
+      margin: 2.5em 0 0;
+      line-height: 1.9;
+    }
+    .list-about h3 {
+      margin: 1.2em 0 0.3em;
     }
 
     /* 操作説明リスト */
@@ -460,12 +546,21 @@
         </table>
         <!-- POEM-TABLE:END -->
       </div>
+      <!-- 表の下の解説（「百人一首 一覧」で検索した人向けの基本情報） -->
+      <section class="list-about" aria-labelledby="list-about-title">
+        <h2 id="list-about-title">百人一首について</h2>
+        <p>百人一首（小倉百人一首）は、鎌倉時代初期（1235年頃）に藤原定家が、百人の歌人から一首ずつ選んだ百首の和歌集です。この百人一首一覧では、第1番の天智天皇から第100番の順徳院まで、全100首を歌番号順に掲載しています。</p>
+        <h3>部立て（歌のテーマ）別の首数</h3>
+        <p>恋43首・雑19首・秋17首・春6首・冬6首・夏4首・旅4首・別離1首。恋の歌が最も多く、全体の4割以上を占めます。一覧の上の「春」「恋」などのボタンで、テーマごとに絞り込めます。</p>
+        <h3>五色百人一首</h3>
+        <p>五色百人一首は、百首を青・ピンク・黄・緑・橙の5色に20首ずつ分けたものです。「色順」ボタンや各色のボタンで、色ごとに並べ替え・絞り込みができます。</p>
+      </section>
       <!-- 表の下の関連ページ -->
       <nav class="list-related" aria-labelledby="list-related-title">
         <h2 id="list-related-title">おすすめページ</h2>
         <ul class="list-related__links">
-          <li><a href="about.html">百人一首とは</a><span class="list-related__desc">成り立ちと藤原定家の美意識</span></li>
-          <li><a href="kajin-zukan.html">歌人図鑑</a><span class="list-related__desc">100人を時代・身分・テーマから探せる人物図鑑</span></li>
+          <li><a href="about.html"><span class="list-related__title">百人一首とは</span><span class="list-related__desc">成り立ちと藤原定家の美意識</span></a></li>
+          <li><a href="kajin-zukan.html"><span class="list-related__title">歌人図鑑</span><span class="list-related__desc">100人を時代・身分・テーマから探せる人物図鑑</span></a></li>
         </ul>
       </nav>
     </div>

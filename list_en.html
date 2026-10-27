@@ -16,7 +16,7 @@
   <meta name="description" content="Hyakunin Isshu list: all 100 poems with the Japanese text, romaji readings, English translations and poets. Sort by number, colour or kana order, and search by poem, poet or romaji.">
   <meta name="google-site-verification" content="a3HHNhawWK8QsasKiSFMC_QeIXmO1tdBc60jhNPTA3s">
   <link rel="stylesheet" href="../css/style.css?20261018-01">
-  <link rel="stylesheet" href="../css/list.css?20261011-01">
+  <link rel="stylesheet" href="../css/list.css?20261028-01">
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -110,19 +110,76 @@
     .list-related {
       margin: 2.5em 0 1em;
     }
-    .list-related__links {
-      margin: 0.6em 0 0;
-      padding-left: 1.4em;
-      list-style: disc;
-      line-height: 1.8;
+    /* カード型のリンク（PC は2列、スマホは1列）。style.css の .section ul / li（桜の行頭アイコン）を打ち消す */
+    .list-related .list-related__links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 0.9em;
+      margin: 1em 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .list-related .list-related__links li {
+      margin: 0;
+      padding: 0;
+      background: none;
+      font-size: 1rem;
+      line-height: 1.6;
     }
     .list-related__links a {
+      position: relative;
+      display: block;
+      height: 100%;
+      box-sizing: border-box;
+      padding: 0.9em 2.6em 0.9em 1.1em;
+      border: 1px solid #e0d8c8;
+      border-left: 4px solid #b82343;
+      border-radius: 6px;
+      background: #fff;
+      color: #333;
+      text-decoration: none;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+      transition: box-shadow 0.15s, transform 0.15s;
+    }
+    .list-related__links a:hover,
+    .list-related__links a:focus-visible {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+      transform: translateY(-2px);
+    }
+    /* 右端の矢印 */
+    .list-related__links a::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 1.1em;
+      width: 0.5em;
+      height: 0.5em;
+      border-top: 2px solid #b82343;
+      border-right: 2px solid #b82343;
+      transform: translateY(-50%) rotate(45deg);
+    }
+    .list-related__title {
+      display: block;
+      padding-left: 1.5em;
+      background: url(../img/sakura.svg) no-repeat 0 50% / 1.1em;
       color: #b82343;
+      font-weight: 700;
+      font-size: 1.1rem;
     }
     .list-related__desc {
-      margin-left: 0.5em;
+      display: block;
+      margin-top: 0.3em;
       font-size: 0.85rem;
       color: #7a6655;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .list-related__links a {
+        transition: none;
+      }
+      .list-related__links a:hover,
+      .list-related__links a:focus-visible {
+        transform: none;
+      }
     }
 
     .em-usage-list {
@@ -376,8 +433,8 @@
       <nav class="list-related" aria-labelledby="list-related-title">
         <h2 id="list-related-title">Recommended Pages</h2>
         <ul class="list-related__links">
-          <li><a href="about_en.html">What Is the Hyakunin Isshu?</a><span class="list-related__desc">Its origins and Fujiwara no Sadaie's sense of beauty</span></li>
-          <li><a href="kajin-zukan_en.html">Poet Encyclopedia</a><span class="list-related__desc">Find the 100 poets by era, social standing, and theme</span></li>
+          <li><a href="about_en.html"><span class="list-related__title">What Is the Hyakunin Isshu?</span><span class="list-related__desc">Its origins and Fujiwara no Sadaie's sense of beauty</span></a></li>
+          <li><a href="kajin-zukan_en.html"><span class="list-related__title">Poet Encyclopedia</span><span class="list-related__desc">Find the 100 poets by era, social standing, and theme</span></a></li>
         </ul>
       </nav>
     </div>
