@@ -53,7 +53,7 @@ function stripRuby(text) {
     return div.innerHTML;
 }
 
-fetch('../js/kimariji.json?20261024-03')
+fetch('../js/kimariji.json?20261028-01')
     .then(res => res.json())
     .then(data => {
         allSongs = data;

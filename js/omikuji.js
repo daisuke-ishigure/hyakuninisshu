@@ -877,7 +877,7 @@ const hyakuninIsshu = [
         luck: "末吉"
     },
     {
-        poem: "<ruby>風<rt>かぜ</rt></ruby>そよぐ ならの<ruby>小川<rt>おがわ</rt></ruby>の <ruby>夕<rt></rt></ruby><ruby>暮<rt>ぐれ</rt></ruby>は みそぎぞ<ruby>夏<rt>なつ</rt></ruby>の しるしなりける",
+        poem: "<ruby>風<rt>かぜ</rt></ruby>そよぐ ならの<ruby>小川<rt>おがわ</rt></ruby>の <ruby>夕<rt>ゆう</rt></ruby><ruby>暮<rt>ぐれ</rt></ruby>は みそぎぞ<ruby>夏<rt>なつ</rt></ruby>の しるしなりける",
         meaning: "風がそよそよと楢の葉を吹く。ならの小川の夕暮れは秋の気配がするけれど、水無月祓の行事こそがまだ夏であることの証なのだなあ。",
         story: "藤原俊成に学び、藤原定家と並び称された藤原家隆。生涯に約6万首を詠んだといわれ、『新古今和歌集』の撰者の一人になりました。承久の乱で後鳥羽院が隠岐に流された後も、遠く離れた院に歌を贈り続けました。この歌は、風がそよぐならの小川の夕暮れは秋のようだけれど、みそぎの行事が、まだ夏であることの証だと詠んだ歌です。",
         love: "関係に変化を感じても、根底の絆は変わりません。相手が遠く離れても、変わらぬ思いを届け続けましょう。",
@@ -886,7 +886,7 @@ const hyakuninIsshu = [
         luck: "吉"
     },
     {
-        poem: "<ruby>人<rt>ひと</rt></ruby>もをし <ruby>人<rt>ひと</rt></ruby>もうらめし あ<ruby>ぢ<rt>じ</rt></ruby>きなく <ruby>世<rt>よ</rt></ruby>を<ruby>思<rt>おも</rt></ruby><ruby>ふ<rt>う</rt></ruby>ゆ<ruby>ゑ<rt>え</rt></ruby>に <ruby>物<rt>も</rt></ruby><ruby>思<rt>おも</rt></ruby><ruby>ふ<rt>う</rt></ruby><ruby>身<rt>み</rt></ruby>は",
+        poem: "<ruby>人<rt>ひと</rt></ruby>もをし <ruby>人<rt>ひと</rt></ruby>もうらめし あ<ruby>ぢ<rt>じ</rt></ruby>きなく <ruby>世<rt>よ</rt></ruby>を<ruby>思<rt>おも</rt></ruby><ruby>ふ<rt>う</rt></ruby>ゆ<ruby>ゑ<rt>え</rt></ruby>に <ruby>物<rt>もの</rt></ruby><ruby>思<rt>おも</rt></ruby><ruby>ふ<rt>う</rt></ruby><ruby>身<rt>み</rt></ruby>は",
         meaning: "時には人が愛しく、時には人が恨めしく思われる。つまらなく世の中を思うがゆえに物思いに沈む私には。",
         story: "三種の神器がないまま即位し、のちに院政を敷いて朝廷を率いた後鳥羽院。自ら『新古今和歌集』づくりを主導し、刀づくりにも通じた多才な人でした。しかし承久の乱で鎌倉幕府に敗れて隠岐へ流され、その地で亡くなりました。この歌は、人がいとしくも、また恨めしくも思われる、思うようにならない世の中を嘆いて物思いにふける私には、と詠んだ歌です。",
         love: "愛しさと恨めしさの両方を感じるのは、相手に真剣な証。その葛藤を受け止めることで、深く安定した愛を築けます。",

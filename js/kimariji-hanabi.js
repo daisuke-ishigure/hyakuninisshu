@@ -118,7 +118,7 @@ function setChoiceMode(mode) {
 async function init() {
   initCardSize();
 
-  const res = await fetch('js/kimariji.json?20261024-03');
+  const res = await fetch('js/kimariji.json?20261028-01');
   const all = await res.json();
   allValidPoems = all.filter(p => /^[ぁ-ん]+$/.test(p.kimariji_head));
   state.poemPool = shuffle([...allValidPoems]);

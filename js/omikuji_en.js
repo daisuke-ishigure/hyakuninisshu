@@ -984,7 +984,7 @@ const hyakuninIsshu = [
         luck: "吉"
     },
     {
-        poem: "<ruby>人<rt>ひと</rt></ruby>もをし <ruby>人<rt>ひと</rt></ruby>もうらめし あ<ruby>ぢ<rt>じ</rt></ruby>きなく <ruby>世<rt>よ</rt></ruby>を<ruby>思<rt>おも</rt></ruby><ruby>ふ<rt>う</rt></ruby>ゆ<ruby>ゑ<rt>え</rt></ruby>に <ruby>物<rt>も</rt></ruby><ruby>思<rt>おも</rt></ruby><ruby>ふ<rt>う</rt></ruby><ruby>身<rt>み</rt></ruby>は",
+        poem: "<ruby>人<rt>ひと</rt></ruby>もをし <ruby>人<rt>ひと</rt></ruby>もうらめし あ<ruby>ぢ<rt>じ</rt></ruby>きなく <ruby>世<rt>よ</rt></ruby>を<ruby>思<rt>おも</rt></ruby><ruby>ふ<rt>う</rt></ruby>ゆ<ruby>ゑ<rt>え</rt></ruby>に <ruby>物<rt>もの</rt></ruby><ruby>思<rt>おも</rt></ruby><ruby>ふ<rt>う</rt></ruby><ruby>身<rt>み</rt></ruby>は",
         meaning: "I find people both dear and hateful. It is because I care so deeply about this troubled world that I am always lost in thought.",
         story: "Retired Emperor Go-Toba came to the throne without the Three Sacred Treasures and later led the court through cloistered rule. He personally led the creation of the Shin Kokin Wakashū and was so versatile that he was also known for his involvement in sword-making. But he was defeated by the Kamakura shogunate in the Jōkyū War, exiled to Oki, and died there. This poem says that people seem dear, and also hateful, to one like him, who broods in sorrow over a world that does not go as he wishes.",
         love: "Feeling both love and resentment is proof that you are serious about the other person. Accepting that conflict will let you build a deep and stable love.",

@@ -344,13 +344,13 @@
   <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
   <script>
     let poemData = {};
-    fetch('../js/hyakunin.json?20261024-03').then(r => r.json()).then(d => { poemData = d; });
+    fetch('../js/hyakunin.json?20261028-02').then(r => r.json()).then(d => { poemData = d; });
 
     // 決まり字・上の句・下の句のローマ字（js/kimariji.json の type_*_gendai を流用。手打ち変換はしない）
     let numToRomaji = {};
     let numToFirstRomaji = {};
     let numToSecondRomaji = {};
-    fetch('../js/kimariji.json?20261024-03').then(r => r.json()).then(list => {
+    fetch('../js/kimariji.json?20261028-01').then(r => r.json()).then(list => {
       list.forEach(s => {
         if (!s.id) return;
         if (s.type_kimariji_gendai) numToRomaji[s.id] = s.type_kimariji_gendai;

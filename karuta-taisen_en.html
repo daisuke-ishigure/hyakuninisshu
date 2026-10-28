@@ -1377,7 +1377,7 @@
       try {
         const [res1, res2] = await Promise.all([
           fetch("../js/karuta.json?v02=" + Date.now()),
-          fetch("../js/kimariji.json?20261024-03" + Date.now())
+          fetch("../js/kimariji.json?20261028-01" + Date.now())
         ]);
         jsonData = await res1.json();
         kimarijiData = await res2.json();

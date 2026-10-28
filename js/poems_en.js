@@ -509,7 +509,7 @@ function yomihudaToRomajiPartsForPoem(yomihuda) {
   };
 }
 
-fetch("../js/hyakunin.json?20261024-03")
+fetch("../js/hyakunin.json?20261028-02")
   .then((r) => r.json())
   .then((data) => {
     const num = getPoemNumberFromUrl();

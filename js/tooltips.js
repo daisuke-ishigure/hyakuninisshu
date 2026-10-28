@@ -1129,7 +1129,7 @@ tippy('.rigoushi', { content: '<h3><ruby>離合詩<rt>りごうし</rt></ruby></
 
 /* 法律用語 */
 tippy('.hairu', { content: '<h3><ruby>配流<rt>はいる</rt></ruby></h3>配流は島流しにされるという意味です。', allowHTML: true });
-tippy('.onsha', { content: '<h3><ruby>恩赦<rt></rt></ruby></h3>天皇の<ruby>詔<rt>みことのり</rt></ruby>によって減刑を受けること。', allowHTML: true });
+tippy('.onsha', { content: '<h3><ruby>恩赦<rt>おんしゃ</rt></ruby></h3>天皇の<ruby>詔<rt>みことのり</rt></ruby>によって減刑を受けること。', allowHTML: true });
 tippy('.ritsuryouseido', { content: '<h3><ruby>律令制度<rt>りつりょうせいど</rt></ruby></h3>律令格式を基本法とする政治体制。<br>「<ruby>律<rt>りつ</rt></ruby>」は刑法。<br>「<ruby>令<rt>りょう</rt></ruby>」は行政法と民法に相当する法律。<br>「<ruby>格<rt>きゃく</rt></ruby>」は、 律令を補足修正するための単行法。<br>「<ruby>式<rt>しき</rt></ruby>」は、律令格の施行細則。', allowHTML: true });
 
 

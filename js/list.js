@@ -1,6 +1,6 @@
 "use strict";
 $();
-const jsonAddress = "../js/hyakunin.json?20261024-03";
+const jsonAddress = "../js/hyakunin.json?20261028-02";
 
 // 表の1行分のHTML（colorMap・バッジ用の番号リスト・buildPoemRowHTML）は js/list-rows.js にある。
 // このファイルより先に読み込むこと。
