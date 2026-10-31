@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Waka Techniques: Honkadori (Allusive Variation) | Shigure no Hyakunin Isshu</title>
+  <meta name="Keywords" content="honkadori, allusive variation, waka techniques, Hyakunin Isshu, Ogura Hyakunin Isshu, classical Japanese poetry">
+  <meta name="description" content="Honkadori (allusive variation) in the Hyakunin Isshu: borrowing a phrase or two from a famous older poem and building a new poem around it. Illustrated with 14 pairs of poems.">
+  <link rel="canonical" href="https://hyakuninisshu.com/gihou-honkadori_en.html">
+  <link rel="alternate" hreflang="ja" href="https://hyakuninisshu.com/gihou-honkadori.html">
+  <link rel="alternate" hreflang="en" href="https://hyakuninisshu.com/gihou-honkadori_en.html">
+  <link rel="alternate" hreflang="x-default" href="https://hyakuninisshu.com/gihou-honkadori.html">
+  <!-- ogp -->
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Waka Techniques: Honkadori (Allusive Variation) | Shigure no Hyakunin Isshu">
+  <meta property="og:description" content="Honkadori (allusive variation) in the Hyakunin Isshu: borrowing a phrase or two from a famous older poem and building a new poem around it. Illustrated with 14 pairs of poems.">
+  <meta property="og:url" content="https://hyakuninisshu.com/gihou-honkadori_en.html">
+  <meta property="og:site_name" content="Shigure no Hyakunin Isshu">
+  <meta property="og:image" content="https://hyakuninisshu.com/img/ogp_index.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- structured data -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://hyakuninisshu.com/gihou-honkadori_en.html"
+      },
+      "headline": "Waka Techniques: Honkadori (Allusive Variation)",
+      "description": "Honkadori (allusive variation) in the Hyakunin Isshu: borrowing a phrase or two from a famous older poem and building a new poem around it. Illustrated with 14 pairs of poems.",
+      "inLanguage": "en",
+      "image": "https://hyakuninisshu.com/img/ogp_index.webp",
+      "dateModified": "2026-11-01",
+      "author": {
+        "@type": "Person",
+        "name": "Daisuke Ishigure",
+        "url": "https://hyakuninisshu.com/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Shigure no Hyakunin Isshu",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://hyakuninisshu.com/apple-touch-icon.png"
+        }
+      },
+      "genre": "Waka techniques / Hyakunin Isshu / Classical Japanese literature",
+      "about": [
+        { "@type": "Thing", "name": "Honkadori (allusive variation)" },
+        { "@type": "CreativeWork", "name": "Hyakunin Isshu" }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Shigure no Hyakunin Isshu",
+          "item": "https://hyakuninisshu.com/index_en.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Columns",
+          "item": "https://hyakuninisshu.com/introduction_en.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Waka Techniques: Honkadori",
+          "item": "https://hyakuninisshu.com/gihou-honkadori_en.html"
+        }
+      ]
+    }
+  ]
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+  <link rel="stylesheet" href="../css/style.css?20261031-01">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@500&family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap"
+    rel="stylesheet">
+  <!-- Honkadori diagrams: text is HTML, the connecting lines are drawn by js/honkadori-diagram.js -->
+  <style>
+    .hk-fig {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, max-content) minmax(0, max-content);
+      justify-content: center;
+      column-gap: clamp(1.8rem, 10vw, 7rem);
+      margin: 0.5em auto 1em;
+      padding: 0;
+    }
+    .hk-lines {
+      position: absolute;
+      top: 0;
+      left: 0;
+      overflow: visible;
+      pointer-events: none;
+    }
+    .hk-col {
+      position: relative; /* 線の SVG より前面に出す */
+      display: flex;
+      flex-direction: column;
+      gap: 0.35em;
+    }
+    .hk-head {
+      margin: 0 0 0.2em;
+      font-family: "Noto Sans", sans-serif;
+      font-size: 0.8rem;
+      font-weight: bold;
+      color: #8a6400;
+    }
+    .hk-ku {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      white-space: nowrap;
+    }
+    .hk-ja {
+      font-family: "Noto Serif JP", serif;
+      font-weight: 700;
+      font-size: 1.3rem;
+      line-height: 1.4;
+    }
+    .hk-ro {
+      font-family: "Noto Sans", sans-serif;
+      font-size: 0.75rem;
+      line-height: 1.3;
+      color: #555;
+    }
+    .hk-kept {
+      background: linear-gradient(transparent 50%, #ffe08a 50%);
+    }
+    .hk-trans {
+      margin: 0 0 0.5em;
+    }
+    .hk-trans dt {
+      font-size: 0.85rem;
+      font-weight: bold;
+      color: #8a6400;
+    }
+    .hk-trans dd {
+      margin: 0 0 0.4em;
+      font-style: italic;
+    }
+    .hk-src {
+      font-style: normal;
+      font-size: 0.85em;
+      color: #555;
+    }
+    .hk-change {
+      padding: 0.5em 0.9em;
+      background: #f7f1e0;
+      border-radius: 4px;
+    }
+    .hk-part {
+      margin-top: 2em;
+    }
+    @media (max-width: 600px) {
+      .hk-head {
+        font-size: 0.72rem;
+      }
+      .hk-ja {
+        font-size: 1.05rem;
+      }
+      .hk-ro {
+        font-size: 0.68rem;
+      }
+    }
+  </style>
+  <!-- touch icons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" href="/favicon.ico">
+  <!-- Cloudflare Web Analytics -->
+  <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d2f01c23361b402aadede990ea58da0b"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <p class="site-title">
+      <a href="https://hyakuninisshu.com/index_en.html">Shigure no Hyakunin Isshu</a>
+    </p>
+    <div class="header_list">
+      <a href="index_en.html"><img src="../img/icon_top_en.svg?ver-01" alt="Top" class="icon" width="59" height="22"></a>
+      <a href="introduction_en.html" style="color:#333"><img src="/img/icon_column_en.svg?ver-01" alt="Columns" class="icon" width="72" height="22"></a>
+      <a href="introduction-app_en.html" style="color:#333"><img src="/img/icon_app_en.svg?ver-01" alt="Apps" class="icon" width="59" height="22"></a>
+      <a href="gihou-honkadori.html"><img src="/img/icon_lang.svg?ver-01" alt="Japanese" class="icon" width="59" height="22"></a>
+      <a href="list_en.html"><img src="/img/icon_list_en.svg?ver-01" alt="Hyakunin Isshu Poem List" class="icon" width="59" height="22"></a>
+    </div>
+  </header>
+<script src="../js/back-to-top.js?20261012-03"></script>
+  <!-- Main -->
+  <main class="main_about-main">
+    <div class="about-main">
+      <div class="section">
+        <nav>
+          <ol class="breadcrumb">
+            <li><a href="index_en.html">Top</a></li>
+            <li><a href="introduction_en.html">Columns</a></li>
+            <li>Waka Techniques: Honkadori</li>
+          </ol>
+        </nav>
+        <hr>
+        <h1>Waka Techniques:<br class="br-sp"> <em>Honkadori</em> (Allusive Variation)</h1>
+        <p><em>Honkadori</em>, literally “taking from a base poem,” is a technique in which a poet borrows a phrase or two from a famous older poem (the <em>honka</em>, or “base poem”) and builds a new poem around them. The older poem stays in the background, so the new poem carries two layers of meaning at once.</p>
+        <p>To modern readers this may look like copying, but it was the opposite. Educated readers knew the famous poems by heart, so the moment they heard the borrowed words, the old poem came to mind, and the pleasure lay in spotting what had been kept and what had been changed. Think of a jazz musician who quotes a well-known melody and then improvises on it, or of T. S. Eliot weaving lines from Shakespeare and Dante into <em>The Waste Land</em>: the reader is meant to recognize the source, and the new work gains depth from it.</p>
+        <p>The technique flourished most in the age of the <em>Shin Kokin Wakashū</em> (early 13th century). <a href="97_en.html">Fujiwara no Sadaie</a> (Teika), who compiled the Hyakunin Isshu, set out guidelines for it in his books on poetry, <em>Kindai Shūka</em> and <em>Eiga no Taigai</em>:</p>
+        <ul class="normal">
+          <li><strong>Borrow only a little</strong>: no more than two of the five lines (<em>ku</em>), or two lines plus a few syllables if you move them to a different place in the poem.</li>
+          <li><strong>Change the theme</strong>: if the base poem is about one of the seasons, write about love or another subject instead.</li>
+          <li><strong>Borrow from the classics</strong>: not from poems by poets of your own day.</li>
+        </ul>
+        <p>Some of the poems below were written long before Sadaie’s time, and even later poets did not always follow his guidelines to the letter.</p>
+        <p>In each diagram, the base poem is on the left and the new poem on the right, one line (<em>ku</em>) per row. Words taken from the base poem are <span style="background: linear-gradient(transparent 50%, #ffe08a 50%);">highlighted</span>, and lines connect the rows where they appear: a level line means the words stayed in the same place, and a slanting line means they were moved. Tap or click a heading to open the poem’s page. The romaji under each line follows the old kana spelling of classical poetry, so it is not always read as written: for example, <em>shirotahe</em> is read <em>shirotae</em>, and <em>omofu</em> is read <em>omou</em>.</p>
+
+        <h2 class="was-h3 hk-part">Hyakunin Isshu Poems That Later Poets Borrowed From</h2>
+
+        <section class="sample" id="01">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/1_en.html">Poem 1: Emperor Tenji → Izumi Shikibu</a></h2>
+          <figure class="hk-fig" data-links="0-0,1-1,2-2,4-3" aria-label="Poem 1: Emperor Tenji → Izumi Shikibu: words taken from the base poem are highlighted">
+              <div class="hk-col hk-col--honka" lang="ja">
+                <p class="hk-head" lang="en">Base poem: Emperor Tenji</p>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">秋の田の</span></span><span class="hk-ro" lang="ja-Latn">akinotano</span></span>
+                <span class="hk-ku"><span class="hk-ja">かりほの<span class="hk-kept">庵</span>の</span><span class="hk-ro" lang="ja-Latn">karihonoihono</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">苫をあらみ</span></span><span class="hk-ro" lang="ja-Latn">tomaoarami</span></span>
+                <span class="hk-ku"><span class="hk-ja">我が衣手は</span><span class="hk-ro" lang="ja-Latn">wagakoromodeha</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">露</span>にぬれつつ</span><span class="hk-ro" lang="ja-Latn">tsuyuninuretsutsu</span></span>
+              </div>
+              <div class="hk-col hk-col--new" lang="ja">
+                <p class="hk-head" lang="en">New poem: Izumi Shikibu</p>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">秋の田の</span></span><span class="hk-ro" lang="ja-Latn">akinotano</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">庵</span>に葺ける</span><span class="hk-ro" lang="ja-Latn">ihorinifukeru</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">苫をあらみ</span></span><span class="hk-ro" lang="ja-Latn">tomaoarami</span></span>
+                <span class="hk-ku"><span class="hk-ja">もりくる<span class="hk-kept">露</span>の</span><span class="hk-ro" lang="ja-Latn">morikurutsuyuno</span></span>
+                <span class="hk-ku"><span class="hk-ja">いやは寝らるる</span><span class="hk-ro" lang="ja-Latn">iyahaneraruru</span></span>
+              </div>
+          </figure>
+          <dl class="hk-trans">
+            <dt>Base poem</dt><dd>By the rice fields, in a makeshift hut with a loosely woven roof, my sleeves are wet with the night dew.</dd>
+            <dt>New poem</dt><dd>The roof of my hut by the autumn rice field is loosely woven, so how could I sleep with the dew dripping through? <span class="hk-src">(<em>Shoku Gosen Wakashū</em>)</span></dd>
+          </dl>
+          <p class="hk-change"><strong>What changed:</strong> In Emperor Tenji’s poem, the dew quietly soaks the speaker’s sleeves as the night goes on. Izumi Shikibu keeps the same hut and the same rough roof, but turns the ending into a frank complaint: with the dew dripping in, how could anyone sleep?</p>
+        </section>
+        <section class="sample" id="01b">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/1_en.html">Poem 1: Emperor Tenji → Master of the Left Capital Akisuke</a></h2>
+          <figure class="hk-fig" data-links="0-0,1-1,2-2" aria-label="Poem 1: Emperor Tenji → Master of the Left Capital Akisuke: words taken from the base poem are highlighted">
+              <div class="hk-col hk-col--honka" lang="ja">
+                <p class="hk-head" lang="en">Base poem: Emperor Tenji</p>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">秋の田</span>の</span><span class="hk-ro" lang="ja-Latn">akinotano</span></span>
+                <span class="hk-ku"><span class="hk-ja">かりほの<span class="hk-kept">庵</span>の</span><span class="hk-ro" lang="ja-Latn">karihonoihono</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">苫をあらみ</span></span><span class="hk-ro" lang="ja-Latn">tomaoarami</span></span>
+                <span class="hk-ku"><span class="hk-ja">我が衣手は</span><span class="hk-ro" lang="ja-Latn">wagakoromodeha</span></span>
+                <span class="hk-ku"><span class="hk-ja">露にぬれつつ</span><span class="hk-ro" lang="ja-Latn">tsuyuninuretsutsu</span></span>
+              </div>
+              <div class="hk-col hk-col--new" lang="ja">
+                <p class="hk-head" lang="en">New poem: Akisuke</p>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">秋の田</span>に</span><span class="hk-ro" lang="ja-Latn">akinotani</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">庵</span>さす賤の</span><span class="hk-ro" lang="ja-Latn">ihosasushizuno</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">苫をあらみ</span></span><span class="hk-ro" lang="ja-Latn">tomaoarami</span></span>
+                <span class="hk-ku"><span class="hk-ja">月とともにや</span><span class="hk-ro" lang="ja-Latn">tsukitotomoniya</span></span>
+                <span class="hk-ku"><span class="hk-ja">もり明かすらん</span><span class="hk-ro" lang="ja-Latn">moriakasuran</span></span>
+              </div>
+          </figure>
+          <dl class="hk-trans">
+            <dt>Base poem</dt><dd>By the rice fields, in a makeshift hut with a loosely woven roof, my sleeves are wet with the night dew.</dd>
+            <dt>New poem</dt><dd>The farmer who builds a hut by the autumn rice field has a rough, loosely woven roof, so he will keep watch all night long, together with the moonlight shining in. <span class="hk-src">(<em>Shin Kokin Wakashū</em>)</span></dd>
+          </dl>
+          <p class="hk-change"><strong>What changed:</strong> Akisuke (<a href="79_en.html">Poem 79</a>) replaces the dew with moonlight, which leaks in through the gaps in the roof. The word <em>mori</em> can be heard two ways: <em>moru</em>, “to leak in” (the moonlight), and <em>moru</em>, “to keep watch” (the farmer). And while Emperor Tenji speaks as “I,” Akisuke pictures the farmer from outside: “he will keep watch.”</p>
+        </section>
+        <section class="sample" id="02">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/2_en.html">Poem 2: Empress Jitō → Fujiwara no Yoshitsune</a></h2>
+          <figure class="hk-fig" data-links="2-2,3-3,4-4" aria-label="Poem 2: Empress Jitō → Fujiwara no Yoshitsune: words taken from the base poem are highlighted">
+              <div class="hk-col hk-col--honka" lang="ja">
+                <p class="hk-head" lang="en">Base poem: Empress Jitō</p>
+                <span class="hk-ku"><span class="hk-ja">春過ぎて</span><span class="hk-ro" lang="ja-Latn">harusugite</span></span>
+                <span class="hk-ku"><span class="hk-ja">夏来にけらし</span><span class="hk-ro" lang="ja-Latn">natsukinikerashi</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">白妙の</span></span><span class="hk-ro" lang="ja-Latn">shirotaheno</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">衣ほすてふ</span></span><span class="hk-ro" lang="ja-Latn">koromohosutefu</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">天の香具山</span></span><span class="hk-ro" lang="ja-Latn">amanokaguyama</span></span>
+              </div>
+              <div class="hk-col hk-col--new" lang="ja">
+                <p class="hk-head" lang="en">New poem: Yoshitsune</p>
+                <span class="hk-ku"><span class="hk-ja">雲晴るる</span><span class="hk-ro" lang="ja-Latn">kumoharuru</span></span>
+                <span class="hk-ku"><span class="hk-ja">雪の光や</span><span class="hk-ro" lang="ja-Latn">yukinohikariya</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">白妙の</span></span><span class="hk-ro" lang="ja-Latn">shirotaheno</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">衣ほすてふ</span></span><span class="hk-ro" lang="ja-Latn">koromohosutefu</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">天の香久山</span></span><span class="hk-ro" lang="ja-Latn">amanokaguyama</span></span>
+              </div>
+          </figure>
+          <dl class="hk-trans">
+            <dt>Base poem</dt><dd>Spring has passed and summer seems to have come — white robes are said to be hung out to dry on the heavenly Mount Kagu.</dd>
+            <dt>New poem</dt><dd>On heavenly Mount Kagu, where white robes are said to be hung out to dry in summer, the clouds have now cleared, and the light of the snow shines like those white robes. <span class="hk-src">(<em>Akishino Gesseishū</em>)</span></dd>
+          </dl>
+          <p class="hk-change"><strong>What changed:</strong> Yoshitsune (<a href="91_en.html">Poem 91</a>) keeps the whole second half of the empress’s poem but moves it from summer to winter: the “white robes” are now the snow shining on Mount Kagu after the clouds clear. By borrowing a summer poem for a winter scene, he may have wanted to give his poem a feeling that goes beyond time and season.</p>
+        </section>
+        <section class="sample" id="03">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/3_en.html">Poem 3: Kakinomoto no Hitomaro → Retired Emperor Go-Toba</a></h2>
+          <figure class="hk-fig" data-links="1-1,2-2,3-3" aria-label="Poem 3: Kakinomoto no Hitomaro → Retired Emperor Go-Toba: words taken from the base poem are highlighted">
+              <div class="hk-col hk-col--honka" lang="ja">
+                <p class="hk-head" lang="en">Base poem: Hitomaro</p>
+                <span class="hk-ku"><span class="hk-ja">あしびきの</span><span class="hk-ro" lang="ja-Latn">ashibikino</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">山鳥の</span>尾の</span><span class="hk-ro" lang="ja-Latn">yamadorinoono</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">しだり尾の</span></span><span class="hk-ro" lang="ja-Latn">shidariono</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">ながながし</span>夜を</span><span class="hk-ro" lang="ja-Latn">naganagashiyoo</span></span>
+                <span class="hk-ku"><span class="hk-ja">ひとりかも寝む</span><span class="hk-ro" lang="ja-Latn">hitorikamonemu</span></span>
+              </div>
+              <div class="hk-col hk-col--new" lang="ja">
+                <p class="hk-head" lang="en">New poem: Go-Toba</p>
+                <span class="hk-ku"><span class="hk-ja">桜咲く</span><span class="hk-ro" lang="ja-Latn">sakurasaku</span></span>
+                <span class="hk-ku"><span class="hk-ja">遠<span class="hk-kept">山鳥の</span></span><span class="hk-ro" lang="ja-Latn">tohoyamadorino</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">しだり尾の</span></span><span class="hk-ro" lang="ja-Latn">shidariono</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">ながながし</span>日も</span><span class="hk-ro" lang="ja-Latn">naganagashihimo</span></span>
+                <span class="hk-ku"><span class="hk-ja">あかぬ色かな</span><span class="hk-ro" lang="ja-Latn">akanuirokana</span></span>
+              </div>
+          </figure>
+          <dl class="hk-trans">
+            <dt>Base poem</dt><dd>As long as the trailing tail feathers of the mountain bird — through these long, long nights, must I sleep alone?</dd>
+            <dt>New poem</dt><dd>Cherry blossoms bloom on the distant mountains. Even if I gaze at them all day long, a day as long as the drooping tail of the copper pheasant, I never tire of their color. <span class="hk-src">(<em>Shin Kokin Wakashū</em>)</span></dd>
+          </dl>
+          <p class="hk-change"><strong>What changed:</strong> In Hitomaro’s poem, the long tail measures a long, lonely night. Go-Toba (<a href="99_en.html">Poem 99</a>) uses the same image for a long spring day spent gazing at cherry blossoms without ever tiring of them. He wrote it for a folding screen celebrating Fujiwara no Toshinari’s 90th birthday, and it is thought to carry a wish for his teacher’s long life.</p>
+        </section>
+        <section class="sample" id="06">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/6_en.html">Poem 6: Middle Counselor Yakamochi → Mibu no Tadamine</a></h2>
+          <figure class="hk-fig" data-links="0-0,1-1,2-2,4-3" aria-label="Poem 6: Middle Counselor Yakamochi → Mibu no Tadamine: words taken from the base poem are highlighted">
+              <div class="hk-col hk-col--honka" lang="ja">
+                <p class="hk-head" lang="en">Base poem: Yakamochi</p>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">かささぎの</span></span><span class="hk-ro" lang="ja-Latn">kasasagino</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">渡せる橋</span>に</span><span class="hk-ro" lang="ja-Latn">wataseruhashini</span></span>
+                <span class="hk-ku"><span class="hk-ja">おく<span class="hk-kept">霜</span>の</span><span class="hk-ro" lang="ja-Latn">okushimono</span></span>
+                <span class="hk-ku"><span class="hk-ja">白きをみれば</span><span class="hk-ro" lang="ja-Latn">shirokiomireba</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">夜</span>ぞふけにける</span><span class="hk-ro" lang="ja-Latn">yozofukenikeru</span></span>
+              </div>
+              <div class="hk-col hk-col--new" lang="ja">
+                <p class="hk-head" lang="en">New poem: Tadamine</p>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">かささぎの</span></span><span class="hk-ro" lang="ja-Latn">kasasagino</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">渡せる橋</span>の</span><span class="hk-ro" lang="ja-Latn">wataseruhashino</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">霜</span>の上を</span><span class="hk-ro" lang="ja-Latn">shimonoueo</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">夜</span>半にふみわけ</span><span class="hk-ro" lang="ja-Latn">yohanifumiwake</span></span>
+                <span class="hk-ku"><span class="hk-ja">ことさらにこそ</span><span class="hk-ro" lang="ja-Latn">kotosaranikoso</span></span>
+              </div>
+          </figure>
+          <dl class="hk-trans">
+            <dt>Base poem</dt><dd>Looking up at the Milky Way that magpies wing across — its white shimmer seems to be scattered frost. The night deepens.</dd>
+            <dt>New poem</dt><dd>Treading at midnight through the frost on the steps of your hall, like the bridge the magpies make, I have come here to you on purpose. <span class="hk-src">(<em>Yamato Monogatari</em>)</span></dd>
+          </dl>
+          <p class="hk-change"><strong>What changed:</strong> Yakamochi’s poem is a quiet look at the winter night sky. Tadamine borrowed it on the spot: when Minister of the Left Fujiwara no Tokihira suspiciously asked whether Tadamine’s drunk master had just stopped by on his way somewhere, Tadamine turned the magpie bridge into the steps of Tokihira’s hall and answered, “We came on purpose.” The <em>Yamato Monogatari</em> says his quick wit eased the mood.</p>
+        </section>
+        <section class="sample" id="23">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/23_en.html">Poem 23: Ōe no Chisato → Kamo no Chōmei</a></h2>
+          <figure class="hk-fig" data-links="0-2,1-1,3-3" aria-label="Poem 23: Ōe no Chisato → Kamo no Chōmei: words taken from the base poem are highlighted">
+              <div class="hk-col hk-col--honka" lang="ja">
+                <p class="hk-head" lang="en">Base poem: Chisato</p>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">月</span>みれば</span><span class="hk-ro" lang="ja-Latn">tsukimireba</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">ちぢにもの</span>こそ</span><span class="hk-ro" lang="ja-Latn">chijinimonokoso</span></span>
+                <span class="hk-ku"><span class="hk-ja">悲しけれ</span><span class="hk-ro" lang="ja-Latn">kanashikere</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">わが身一つの</span></span><span class="hk-ro" lang="ja-Latn">wagamihitotsuno</span></span>
+                <span class="hk-ku"><span class="hk-ja">秋にはあらねど</span><span class="hk-ro" lang="ja-Latn">akinihaaranedo</span></span>
+              </div>
+              <div class="hk-col hk-col--new" lang="ja">
+                <p class="hk-head" lang="en">New poem: Chōmei</p>
+                <span class="hk-ku"><span class="hk-ja">ながむれば</span><span class="hk-ro" lang="ja-Latn">nagamureba</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">千々にもの</span>思ふ</span><span class="hk-ro" lang="ja-Latn">chijinimonoomofu</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">月</span>にまた</span><span class="hk-ro" lang="ja-Latn">tsukinimata</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">わが身ひとつの</span></span><span class="hk-ro" lang="ja-Latn">wagamihitotsuno</span></span>
+                <span class="hk-ku"><span class="hk-ja">峰の松風</span><span class="hk-ro" lang="ja-Latn">minenomatsukaze</span></span>
+              </div>
+          </figure>
+          <dl class="hk-trans">
+            <dt>Base poem</dt><dd>When I look at the moon, a thousand thoughts rise up and fill me with sadness. Yet this autumn is not mine alone.</dd>
+            <dt>New poem</dt><dd>As I gaze at the moon that fills me with a thousand thoughts, the lonely wind in the pines on the peak blows, as if for me alone. <span class="hk-src">(<em>Shin Kokin Wakashū</em>)</span></dd>
+          </dl>
+          <p class="hk-change"><strong>What changed:</strong> Chōmei, the author of <em>An Account of My Hut</em> (<em>Hōjōki</em>), wrote on the theme “Wind in the Pines Before the Moon.” He keeps Chisato’s “a thousand thoughts” and “I alone,” moves the moon to the third line, and adds something new at the end: the wind in the pines on the peak, which seems to blow for him alone.</p>
+        </section>
+        <section class="sample" id="32">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/32_en.html">Poem 32: Harumichi no Tsuraki → Fujiwara no Sadaie</a></h2>
+          <figure class="hk-fig" data-links="1-1,2-2" aria-label="Poem 32: Harumichi no Tsuraki → Fujiwara no Sadaie: words taken from the base poem are highlighted">
+              <div class="hk-col hk-col--honka" lang="ja">
+                <p class="hk-head" lang="en">Base poem: Tsuraki</p>
+                <span class="hk-ku"><span class="hk-ja">山川に</span><span class="hk-ro" lang="ja-Latn">yamagahani</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">風のかけたる</span></span><span class="hk-ro" lang="ja-Latn">kazenokaketaru</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">しがらみ</span>は</span><span class="hk-ro" lang="ja-Latn">shigaramiha</span></span>
+                <span class="hk-ku"><span class="hk-ja">流れもあへぬ</span><span class="hk-ro" lang="ja-Latn">nagaremoahenu</span></span>
+                <span class="hk-ku"><span class="hk-ja">紅葉なりけり</span><span class="hk-ro" lang="ja-Latn">momijinarikeri</span></span>
+              </div>
+              <div class="hk-col hk-col--new" lang="ja">
+                <p class="hk-head" lang="en">New poem: Sadaie</p>
+                <span class="hk-ku"><span class="hk-ja">木の葉もて</span><span class="hk-ro" lang="ja-Latn">konohamote</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">風のかけたる</span></span><span class="hk-ro" lang="ja-Latn">kazenokaketaru</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">しがらみ</span>に</span><span class="hk-ro" lang="ja-Latn">shigaramini</span></span>
+                <span class="hk-ku"><span class="hk-ja">さてもよどまぬ</span><span class="hk-ro" lang="ja-Latn">satemoyodomanu</span></span>
+                <span class="hk-ku"><span class="hk-ja">秋の暮れかな</span><span class="hk-ro" lang="ja-Latn">akinokurekana</span></span>
+              </div>
+          </figure>
+          <dl class="hk-trans">
+            <dt>Base poem</dt><dd>The weir of fallen maple leaves, caught by the mountain wind across the stream — the water cannot flow through.</dd>
+            <dt>New poem</dt><dd>The wind has blown the leaves together into something like a weir, yet even so, the end of autumn flows on without stopping. <span class="hk-src">(<em>Shūi Gusō</em>)</span></dd>
+          </dl>
+          <p class="hk-change"><strong>What changed:</strong> “A weir the wind has built” was Tsuraki’s own fresh image, which is why Sadaie (<a href="97_en.html">Poem 97</a>), the compiler of the Hyakunin Isshu, was drawn to it. In Tsuraki’s poem the weir of leaves holds back the stream; in Sadaie’s, even such a weir cannot hold back the end of autumn.</p>
+        </section>
+        <section class="sample" id="51">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/51_en.html">Poem 51: Fujiwara no Sanekata Ason → Izumi Shikibu</a></h2>
+          <figure class="hk-fig" data-links="0-1,1-1,2-2,4-4" aria-label="Poem 51: Fujiwara no Sanekata Ason → Izumi Shikibu: words taken from the base poem are highlighted">
+              <div class="hk-col hk-col--honka" lang="ja">
+                <p class="hk-head" lang="en">Base poem: Sanekata</p>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">かく</span>とだに</span><span class="hk-ro" lang="ja-Latn">kakutodani</span></span>
+                <span class="hk-ku"><span class="hk-ja">えやは<span class="hk-kept">いぶきの</span></span><span class="hk-ro" lang="ja-Latn">eyahaibukino</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">さしも草</span></span><span class="hk-ro" lang="ja-Latn">sashimogusa</span></span>
+                <span class="hk-ku"><span class="hk-ja">さしも知らじな</span><span class="hk-ro" lang="ja-Latn">sashimoshirajina</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">もゆる</span>思ひを</span><span class="hk-ro" lang="ja-Latn">moyuruomohio</span></span>
+              </div>
+              <div class="hk-col hk-col--new" lang="ja">
+                <p class="hk-head" lang="en">New poem: Izumi Shikibu</p>
+                <span class="hk-ku"><span class="hk-ja">けふもまた</span><span class="hk-ro" lang="ja-Latn">kefumomata</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">かく</span>や<span class="hk-kept">伊吹の</span></span><span class="hk-ro" lang="ja-Latn">kakuyaibukino</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">さしも草</span></span><span class="hk-ro" lang="ja-Latn">sashimogusa</span></span>
+                <span class="hk-ku"><span class="hk-ja">さらば我のみ</span><span class="hk-ro" lang="ja-Latn">sarabawarenomi</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">燃え</span>や渡らむ</span><span class="hk-ro" lang="ja-Latn">moeyawataramu</span></span>
+              </div>
+          </figure>
+          <dl class="hk-trans">
+            <dt>Base poem</dt><dd>I cannot even tell you how I feel — like the smoldering fire of ibuki wormwood, my hidden love quietly burns.</dd>
+            <dt>New poem</dt><dd>Will you say such cold things again today? Then I alone will keep burning, like the mugwort of Ibuki. <span class="hk-src">(<em>Shin Kokin Wakashū</em>)</span></dd>
+          </dl>
+          <p class="hk-change"><strong>What changed:</strong> Sanekata’s poem pours out his overflowing love directly. Izumi Shikibu keeps the burning mugwort of Ibuki but writes with a generous heart, ready to keep the fire burning alone until the one she loves turns to her.</p>
+        </section>
+        <section class="sample" id="56">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/56_en.html">Poem 56: Izumi Shikibu → Attendant to Empress Inpu</a></h2>
+          <figure class="hk-fig" data-links="3-1,4-2,4-4" aria-label="Poem 56: Izumi Shikibu → Attendant to Empress Inpu: words taken from the base poem are highlighted">
+              <div class="hk-col hk-col--honka" lang="ja">
+                <p class="hk-head" lang="en">Base poem: Izumi Shikibu</p>
+                <span class="hk-ku"><span class="hk-ja">あらざらむ</span><span class="hk-ro" lang="ja-Latn">arazaramu</span></span>
+                <span class="hk-ku"><span class="hk-ja">この世のほかの</span><span class="hk-ro" lang="ja-Latn">konoyonohokano</span></span>
+                <span class="hk-ku"><span class="hk-ja">思ひ出に</span><span class="hk-ro" lang="ja-Latn">omohideni</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">いまひとたびの</span></span><span class="hk-ro" lang="ja-Latn">imahitotabino</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">逢ふこと</span>も<span class="hk-kept">がな</span></span><span class="hk-ro" lang="ja-Latn">afukotomogana</span></span>
+              </div>
+              <div class="hk-col hk-col--new" lang="ja">
+                <p class="hk-head" lang="en">New poem: Inpu’s Attendant</p>
+                <span class="hk-ku"><span class="hk-ja">いかにせむ</span><span class="hk-ro" lang="ja-Latn">ikanisemu</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">今ひとたびの</span></span><span class="hk-ro" lang="ja-Latn">imahitotabino</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">逢ふこと</span>を</span><span class="hk-ro" lang="ja-Latn">afukotoo</span></span>
+                <span class="hk-ku"><span class="hk-ja">夢にだに見て</span><span class="hk-ro" lang="ja-Latn">yumenidanimite</span></span>
+                <span class="hk-ku"><span class="hk-ja">寝覚めずも<span class="hk-kept">がな</span></span><span class="hk-ro" lang="ja-Latn">nezamezumogana</span></span>
+              </div>
+          </figure>
+          <dl class="hk-trans">
+            <dt>Base poem</dt><dd>I may not be long for this world. As a memory to take beyond — let me meet you just one more time.</dd>
+            <dt>New poem</dt><dd>What shall I do? I want to meet you once more, even if only in a dream, and never wake from that sleep. <span class="hk-src">(<em>Shin Chokusen Wakashū</em>)</span></dd>
+          </dl>
+          <p class="hk-change"><strong>What changed:</strong> Izumi Shikibu asks to meet her lover once more as a memory to take beyond this world. The Attendant to Empress Inpu (<a href="90_en.html">Poem 90</a>) moves “once more” and “meeting” up to the second and third lines, keeps the wishful ending <em>-mogana</em> (“if only”), and adds a new twist: she would meet him in a dream and never wake.</p>
+        </section>
+
+        <h2 class="was-h3 hk-part">Hyakunin Isshu Poems Built on an Older Poem</h2>
+
+        <section class="sample" id="90">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/90_en.html">Poem 90: Minamoto no Shigeyuki → Attendant to Empress Inpu</a></h2>
+          <figure class="hk-fig" data-links="1-1,3-1,3-2,4-3" aria-label="Poem 90: Minamoto no Shigeyuki → Attendant to Empress Inpu: words taken from the base poem are highlighted">
+              <div class="hk-col hk-col--honka" lang="ja">
+                <p class="hk-head" lang="en">Base poem: Shigeyuki</p>
+                <span class="hk-ku"><span class="hk-ja">松島や</span><span class="hk-ro" lang="ja-Latn">matsushimaya</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">雄島</span>の磯に</span><span class="hk-ro" lang="ja-Latn">ojimanoisoni</span></span>
+                <span class="hk-ku"><span class="hk-ja">あさりせし</span><span class="hk-ro" lang="ja-Latn">asariseshi</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">海人</span>の<span class="hk-kept">袖</span>こそ</span><span class="hk-ro" lang="ja-Latn">amanosodekoso</span></span>
+                <span class="hk-ku"><span class="hk-ja">かくは<span class="hk-kept">濡れ</span>しか</span><span class="hk-ro" lang="ja-Latn">kakuhanureshika</span></span>
+              </div>
+              <div class="hk-col hk-col--new" lang="ja">
+                <p class="hk-head" lang="en">Hyakunin Isshu poem: Inpu’s Attendant</p>
+                <span class="hk-ku"><span class="hk-ja">見せばやな</span><span class="hk-ro" lang="ja-Latn">misebayana</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">雄島</span>の<span class="hk-kept">あま</span>の</span><span class="hk-ro" lang="ja-Latn">ojimanoamano</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">袖</span>だにも</span><span class="hk-ro" lang="ja-Latn">sodedanimo</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">ぬれ</span>にぞ<span class="hk-kept">ぬれ</span>し</span><span class="hk-ro" lang="ja-Latn">nurenizonureshi</span></span>
+                <span class="hk-ku"><span class="hk-ja">色はかはらず</span><span class="hk-ro" lang="ja-Latn">irohakaharazu</span></span>
+              </div>
+          </figure>
+          <dl class="hk-trans">
+            <dt>Base poem</dt><dd>Would even the sleeves of the fisherfolk who fish on the rocky shore of Ojima at Matsushima be as wet as my sleeves, soaked with tears? <span class="hk-src">(<em>Goshūi Wakashū</em>)</span></dd>
+            <dt>New poem</dt><dd>I wish I could show you — these sleeves of mine, soaked through and through with tears that never change color, never dry.</dd>
+          </dl>
+          <p class="hk-change"><strong>What changed:</strong> Her poem is said to have been written as a reply to Shigeyuki’s. He said only the fisherfolk’s sleeves could be as wet as his; she answers that even those sleeves, soaked through, never changed color. The poem does not say it, but readers understood that her own sleeves had changed color, stained by “tears of blood,” which in poems of the time meant the deepest grief.</p>
+        </section>
+        <section class="sample" id="91">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/91_en.html">Poem 91: Kokin Wakashū → Gokyōgoku Regent and former Chancellor of the Realm</a></h2>
+          <figure class="hk-fig" data-links="0-2,1-3" aria-label="Poem 91: Kokin Wakashū → Gokyōgoku Regent and former Chancellor of the Realm: words taken from the base poem are highlighted">
+              <div class="hk-col hk-col--honka" lang="ja">
+                <p class="hk-head" lang="en">Base poem: anonymous</p>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">さむしろに</span></span><span class="hk-ro" lang="ja-Latn">samushironi</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">衣かたしき</span></span><span class="hk-ro" lang="ja-Latn">koromokatashiki</span></span>
+                <span class="hk-ku"><span class="hk-ja">今宵もや</span><span class="hk-ro" lang="ja-Latn">koyohimoya</span></span>
+                <span class="hk-ku"><span class="hk-ja">我を待つらむ</span><span class="hk-ro" lang="ja-Latn">wareomatsuramu</span></span>
+                <span class="hk-ku"><span class="hk-ja">宇治の橋姫</span><span class="hk-ro" lang="ja-Latn">ujinohashihime</span></span>
+              </div>
+              <div class="hk-col hk-col--new" lang="ja">
+                <p class="hk-head" lang="en">Hyakunin Isshu poem: Yoshitsune</p>
+                <span class="hk-ku"><span class="hk-ja">きりぎりす</span><span class="hk-ro" lang="ja-Latn">kirigirisu</span></span>
+                <span class="hk-ku"><span class="hk-ja">鳴くや霜夜の</span><span class="hk-ro" lang="ja-Latn">nakuyashimoyono</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">さむしろに</span></span><span class="hk-ro" lang="ja-Latn">samushironi</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">衣かたしき</span></span><span class="hk-ro" lang="ja-Latn">koromokatashiki</span></span>
+                <span class="hk-ku"><span class="hk-ja">ひとりかも寝む</span><span class="hk-ro" lang="ja-Latn">hitorikamonemu</span></span>
+              </div>
+          </figure>
+          <dl class="hk-trans">
+            <dt>Base poem</dt><dd>Spreading only her own robe on a straw mat, is she waiting for me tonight too, lonely and alone, the Lady of Uji Bridge? <span class="hk-src">(<em>Kokin Wakashū</em>)</span></dd>
+            <dt>New poem</dt><dd>On a cold, frosty night, the cricket cries. Lying alone with one sleeve folded beneath me — how lonely it is.</dd>
+          </dl>
+          <p class="hk-change"><strong>What changed:</strong> Yoshitsune borrowed in order to layer images on top of each other. In the <em>Kokin Wakashū</em>, the Lady of Uji Bridge was a symbol of “a beloved woman”; later, under the influence of <em>The Tale of Genji</em>, she took on the darker image of “a fragile figure wasting away alone.” His poem blends the classic elegance of the base poem with that loneliness.</p>
+        </section>
+        <section class="sample" id="92">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/92_en.html">Poem 92: Izumi Shikibu → Sanuki, attendant to retired Emperor Nijō</a></h2>
+          <figure class="hk-fig" data-links="0-0,2-2,3-3,4-4" aria-label="Poem 92: Izumi Shikibu → Sanuki, attendant to retired Emperor Nijō: words taken from the base poem are highlighted">
+              <div class="hk-col hk-col--honka" lang="ja">
+                <p class="hk-head" lang="en">Base poem: Izumi Shikibu</p>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">わが袖は</span></span><span class="hk-ro" lang="ja-Latn">wagasodeha</span></span>
+                <span class="hk-ku"><span class="hk-ja">水の下なる</span><span class="hk-ro" lang="ja-Latn">mizunoshitanaru</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">石</span>なれや</span><span class="hk-ro" lang="ja-Latn">ishinareya</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">人</span>に<span class="hk-kept">知ら</span>れで</span><span class="hk-ro" lang="ja-Latn">hitonishirarede</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">かわく間もなし</span></span><span class="hk-ro" lang="ja-Latn">kawakumamonashi</span></span>
+              </div>
+              <div class="hk-col hk-col--new" lang="ja">
+                <p class="hk-head" lang="en">Hyakunin Isshu poem: Sanuki</p>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">わが袖は</span></span><span class="hk-ro" lang="ja-Latn">wagasodeha</span></span>
+                <span class="hk-ku"><span class="hk-ja">潮干に見えぬ</span><span class="hk-ro" lang="ja-Latn">shihohinimienu</span></span>
+                <span class="hk-ku"><span class="hk-ja">沖の<span class="hk-kept">石</span>の</span><span class="hk-ro" lang="ja-Latn">okinoishino</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">人</span>こそ<span class="hk-kept">知ら</span>ね</span><span class="hk-ro" lang="ja-Latn">hitokososhirane</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">かわくまもなし</span></span><span class="hk-ro" lang="ja-Latn">kawakumamonashi</span></span>
+              </div>
+          </figure>
+          <dl class="hk-trans">
+            <dt>Base poem</dt><dd>My sleeves are like a stone under the water. Wet with the tears I shed in secret, they never have time to dry. <span class="hk-src">(<em>Izumi Shikibu-shū</em>)</span></dd>
+            <dt>New poem</dt><dd>My sleeves are like a rock hidden beneath the tides — unseen by others, they are never dry.</dd>
+          </dl>
+          <p class="hk-change"><strong>What changed:</strong> Izumi Shikibu likens her tear-soaked sleeves to a stone under the water. Sanuki keeps the beginning and the end, and places the stone far out at sea, where it stays hidden even at low tide. Written on the theme “love compared to a stone,” her poem became so famous that she was called “Sanuki of the stone in the offing.”</p>
+        </section>
+        <section class="sample" id="95">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/95_en.html">Poem 95: Saichō → Former Senior High Priest Jien</a></h2>
+          <figure class="hk-fig" data-links="3-3" aria-label="Poem 95: Saichō → Former Senior High Priest Jien: words taken from the base poem are highlighted">
+              <div class="hk-col hk-col--honka" lang="ja">
+                <p class="hk-head" lang="en">Base poem: Saichō</p>
+                <span class="hk-ku"><span class="hk-ja">阿耨多羅</span><span class="hk-ro" lang="ja-Latn">anokutara</span></span>
+                <span class="hk-ku"><span class="hk-ja">三藐三菩提の</span><span class="hk-ro" lang="ja-Latn">sanmiyakusanbodaino</span></span>
+                <span class="hk-ku"><span class="hk-ja">仏たち</span><span class="hk-ro" lang="ja-Latn">hotoketachi</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">わが立つ杣に</span></span><span class="hk-ro" lang="ja-Latn">wagatatsusomani</span></span>
+                <span class="hk-ku"><span class="hk-ja">冥加あらせたまへ</span><span class="hk-ro" lang="ja-Latn">myougaarasetamahe</span></span>
+              </div>
+              <div class="hk-col hk-col--new" lang="ja">
+                <p class="hk-head" lang="en">Hyakunin Isshu poem: Jien</p>
+                <span class="hk-ku"><span class="hk-ja">おほけなく</span><span class="hk-ro" lang="ja-Latn">ohokenaku</span></span>
+                <span class="hk-ku"><span class="hk-ja">憂き世の民に</span><span class="hk-ro" lang="ja-Latn">ukiyonotamini</span></span>
+                <span class="hk-ku"><span class="hk-ja">おほふかな</span><span class="hk-ro" lang="ja-Latn">ohofukana</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">わがたつ杣に</span></span><span class="hk-ro" lang="ja-Latn">wagatatsusomani</span></span>
+                <span class="hk-ku"><span class="hk-ja">墨染の袖</span><span class="hk-ro" lang="ja-Latn">sumizomenosode</span></span>
+              </div>
+          </figure>
+          <dl class="hk-trans">
+            <dt>Base poem</dt><dd>O Buddhas of supreme wisdom (<em>anokutara sanmyaku sanbodai</em>), grant your unseen blessing (<em>myōga</em>) to this mountain where I stand. <span class="hk-src">(<em>Shin Kokin Wakashū</em>)</span></dd>
+            <dt>New poem</dt><dd>How bold it is of me — yet I spread my ink-black sleeves to shelter the people of this troubled world.</dd>
+          </dl>
+          <p class="hk-change"><strong>What changed:</strong> Saichō, the founder of the Tendai school, is said to have written his poem when he built the main hall of Enryaku-ji on Mount Hiei, praying for the Buddhas’ blessing on “this mountain where I stand.” Jien, who headed the Tendai school at Enryaku-ji four times, takes up the founder’s words and turns them into a vow: to shelter the people of a troubled world with his black monk’s sleeves.</p>
+        </section>
+        <section class="sample" id="89">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/89_en.html">Princess Shikishi (Poem 89): a poem based on <em>The Tales of Ise</em></a></h2>
+          <figure class="hk-fig" data-links="3-0,4-1,1-3,0-4" aria-label="Princess Shikishi (Poem 89): a poem based on The Tales of Ise: words taken from the base poem are highlighted">
+              <div class="hk-col hk-col--honka" lang="ja">
+                <p class="hk-head" lang="en">Base poem: <em>The Tales of Ise</em></p>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">ゆく蛍</span></span><span class="hk-ro" lang="ja-Latn">yukuhotaru</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">雲</span>のうへまで</span><span class="hk-ro" lang="ja-Latn">kumonouhemade</span></span>
+                <span class="hk-ku"><span class="hk-ja">往ぬべくは</span><span class="hk-ro" lang="ja-Latn">inubekuha</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">秋風</span>吹くと</span><span class="hk-ro" lang="ja-Latn">akikazefukuto</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">雁</span>に<span class="hk-kept">告げ</span>こせ</span><span class="hk-ro" lang="ja-Latn">karinitsugekose</span></span>
+              </div>
+              <div class="hk-col hk-col--new" lang="ja">
+                <p class="hk-head" lang="en">New poem: Princess Shikishi</p>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">秋風</span>と</span><span class="hk-ro" lang="ja-Latn">akikazeto</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">雁</span>にや<span class="hk-kept">つぐる</span></span><span class="hk-ro" lang="ja-Latn">kariniyatsuguru</span></span>
+                <span class="hk-ku"><span class="hk-ja">夕暮の</span><span class="hk-ro" lang="ja-Latn">yufugureno</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">雲</span>近きまで</span><span class="hk-ro" lang="ja-Latn">kumochikakimade</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">ゆく蛍</span>かな</span><span class="hk-ro" lang="ja-Latn">yukuhotarukana</span></span>
+              </div>
+          </figure>
+          <dl class="hk-trans">
+            <dt>Base poem</dt><dd>Fireflies flying off, if you can go as high as the clouds, tell the wild geese that the autumn wind is blowing.</dd>
+            <dt>New poem</dt><dd>Are you going to tell the wild geese that the autumn wind is blowing? Fireflies, flying up so high in the evening that you almost reach the clouds. <span class="hk-src">(<em>Fūga Wakashū</em>)</span></dd>
+          </dl>
+          <p class="hk-change"><strong>What changed:</strong> This is not Princess Shikishi’s Hyakunin Isshu poem but another of hers. She uses almost every key word of the base poem — fireflies, clouds, autumn wind, wild geese, telling — but turns their order upside down, so the lines in the diagram cross. The base poem asks the fireflies to carry a message to the geese; she watches the fireflies rise toward the clouds at dusk and wonders whether they are on their way to deliver it.</p>
+        </section>
+        <hr>
+        <h2 class="was-h3">Other Waka Techniques</h2>
+        <ul class="normal">
+          <li><a href="gihou-makurakotoba_en.html"><em>Makurakotoba</em> (Pillow Words)</a>: Fixed five-syllable phrases such as “ashibiki no” and “hisakata no”</li>
+          <li><a href="gihou-kakekotoba_en.html"><em>Kakekotoba</em> (Pivot Words) and <em>Engo</em> (Associated Words)</a>: One sound carrying two meanings, and words that echo one another</li>
+          <li><a href="gihou-jokotoba_en.html"><em>Jokotoba</em> (Preface Words)</a>: Scenes from nature that lead into the poet’s feelings</li>
+        </ul>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-copy">&copy;2023 Shigure no Hyakunin Isshu</span>
+      <ul>
+        <li><a href="policy_en.html">Privacy Policy</a></li>
+        <li>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXx7TKlqnTfKrw2Nuh4f37swVwFH-RFDsNkTGQ4JEF50q2wQ/viewform?usp=header"
+            target="_blank" rel="noopener">Contact Form</a>
+        </li>
+        <li><a href="https://x.com/shigurenotaifu" target="_blank" rel="noopener">Official X</a></li>
+      </ul>
+    </div>
+  </footer>
+  <!-- Footer end -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="../js/move_script.js?20260729"></script>
+  <script src="../js/honkadori-diagram.js?20261101-01"></script>
+</body>
+
+</html>

@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="Keywords" content="百人一首,小倉百人一首,平安王朝,和歌の技法,本歌取り">
+  <title>時雨の百人一首 和歌の技法：本歌取り</title>
+  <!-- 構造化データ -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://hyakuninisshu.com/gihou-honkadori.html"
+      },
+      "headline": "和歌の技法：本歌取り",
+      "description": "本歌取りとは、よく知られた古い歌（本歌）の言葉を取り入れて、新しい歌を詠む技法です。百人一首にまつわる14組の歌を図で比べます。",
+      "author": {
+        "@type": "Person",
+        "name": "石槫大輔",
+        "url": "https://hyakuninisshu.com/"
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "時雨の百人一首",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://hyakuninisshu.com/apple-touch-icon.png"
+        }
+      },
+      "genre": "和歌の技法 / 百人一首 / 古典文学",
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "本歌取り"
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "百人一首"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "時雨の百人一首 TOP",
+          "item": "https://hyakuninisshu.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "百人一首のコラム",
+          "item": "https://hyakuninisshu.com/introduction.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "和歌の技法:本歌取り"
+        }
+      ]
+    }
+  ]
+  </script>
+  <link rel="canonical" href="https://hyakuninisshu.com/gihou-honkadori.html">
+  <link rel="alternate" hreflang="ja" href="https://hyakuninisshu.com/gihou-honkadori.html">
+  <link rel="alternate" hreflang="en" href="https://hyakuninisshu.com/gihou-honkadori_en.html">
+  <link rel="alternate" hreflang="x-default" href="https://hyakuninisshu.com/gihou-honkadori.html">
+  <!-- ogp -->
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="時雨の百人一首 和歌の技法：本歌取り">
+  <meta property="og:description" content="本歌取りとは、よく知られた古い歌（本歌）の言葉を取り入れて、新しい歌を詠む技法です。百人一首にまつわる14組の歌を図で比べます。">
+  <meta property="og:url" content="https://hyakuninisshu.com/gihou-honkadori.html">
+  <meta property="og:site_name" content="時雨の百人一首">
+  <meta property="og:image" content="https://hyakuninisshu.com/img/ogp_index.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="description" content="本歌取りとは、よく知られた古い歌（本歌）の言葉を取り入れて、新しい歌を詠む技法です。百人一首にまつわる14組の歌を図で比べます。">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+  <link rel="stylesheet" href="../css/style.css?20261031-01">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@500&family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap"
+    rel="stylesheet">
+  <!-- アップルタッチアイコン -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <!-- favicon用 -->
+  <link rel="icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <!-- Cloudflare Web Analytics -->
+  <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d2f01c23361b402aadede990ea58da0b"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+  <!-- 本歌取りの図：文字は HTML、句を結ぶ線は js/honkadori-diagram.js が描く -->
+  <style>
+    .hk-fig {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, max-content) minmax(0, max-content);
+      justify-content: center;
+      column-gap: clamp(1.8rem, 10vw, 7rem);
+      margin: 0.5em auto 1em;
+      padding: 0;
+    }
+    .hk-lines {
+      position: absolute;
+      top: 0;
+      left: 0;
+      overflow: visible;
+      pointer-events: none;
+    }
+    .hk-col {
+      position: relative; /* 線の SVG より前面に出す */
+      display: flex;
+      flex-direction: column;
+      gap: 0.3em;
+    }
+    .hk-head {
+      margin: 0 0 0.2em;
+      font-size: 0.85rem;
+      font-weight: bold;
+      color: #8a6400;
+    }
+    .hk-ku {
+      display: flex;
+      white-space: nowrap;
+    }
+    .hk-ja {
+      font-family: "Noto Serif JP", serif;
+      font-weight: 700;
+      font-size: 1.3rem;
+      line-height: 1.9;
+    }
+    .hk-ja rt {
+      font-size: 0.45em;
+      font-weight: 400;
+    }
+    .hk-kept {
+      background: linear-gradient(transparent 55%, #ffe08a 55%);
+    }
+    .hk-trans {
+      margin: 0 0 0.5em;
+    }
+    .hk-trans dt {
+      font-size: 0.85rem;
+      font-weight: bold;
+      color: #8a6400;
+    }
+    .hk-trans dd {
+      margin: 0 0 0.4em;
+    }
+    .hk-src {
+      margin-left: 0.5em;
+      font-size: 0.85em;
+      color: #555;
+    }
+    .hk-change {
+      padding: 0.5em 0.9em;
+      background: #f7f1e0;
+      border-radius: 4px;
+    }
+    .hk-part {
+      margin-top: 2em;
+    }
+    @media (max-width: 600px) {
+      .hk-head {
+        font-size: 0.75rem;
+      }
+      .hk-ja {
+        font-size: 1.05rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ヘッダーここから -->
+  <header class="header">
+    <p class="site-title">
+    <a href="https://hyakuninisshu.com/">時雨の百人一首</a>
+  </p>
+    <div class="header_list">
+      <a href="index.html"><img src="../img/icon_top.svg?ver-02" alt="トップ" class="icon" width="67" height="22"></a>
+<a href="introduction.html" style="color:#333"><img src="/img/icon_column.svg?ver-02" alt="コラム" class="icon" width="67" height="22"></a>
+<a href="introduction-app.html" style="color:#333"><img src="/img/icon_app.svg?ver-02" alt="アプリ" class="icon" width="67" height="22"></a>
+<a href="gihou-honkadori_en.html"><img src="/img/icon_lang.svg?ver-01" alt="English" class="icon" width="59" height="22"></a>
+<a href="list.html"><img src="/img/icon_search.svg?ver-04" alt="百人一首一覧" class="icon" width="59" height="22"></a>
+    </div>
+  </header>
+<script src="../js/back-to-top.js?20261012-03"></script>
+  <!-- ヘッダーここまで・メインここから -->
+  <main class="main_about-main">
+    <div class="about-main">
+      <div class="section">
+        <nav>
+          <ol class="breadcrumb">
+            <li><a href="index.html">トップ</a></li>
+            <li><a href="introduction.html">コラム</a></li>
+            <li>和歌の技法:本歌取り</li>
+          </ol>
+        </nav>
+        <hr>
+        <h1>和歌の技法:<span style="display:inline-block;">本歌取り</span></h1>
+        <p>本歌取りとは、よく知られた古い歌（本歌）の言葉を一句か二句ほど取り入れて、新しい歌を詠む技法です。読み手が本歌を思い浮かべることで、新しい歌に本歌の世界が重なり、表現に奥行きが生まれます。</p>
+        <p>当時の歌人や読み手は名歌をよく覚えていたので、取り入れた言葉を聞けば、すぐに本歌が思い浮かびました。どの言葉を残し、どこを変えたのかを味わうのが本歌取りの楽しみです。ただし、評価は一様ではなく、六条藤家の藤原清輔は「古歌を盗む」ものと批判し、御子左家の藤原俊成は表現技法として評価しました。</p>
+        <p>本歌取りが最も盛んになったのは『新古今和歌集』の時代です。百人一首の撰者・<a href="97.html">藤原定家</a>は、歌論書『近代秀歌』『詠歌大概』で、本歌取りの心得を次のように示しました。</p>
+        <ul class="normal">
+          <li><strong>取るのは少しだけ</strong>：本歌から取るのは二句まで。句の置き所を変える場合は、二句に加えて3、4字まで。</li>
+          <li><strong>主題を変える</strong>：本歌が四季の歌なら、恋や雑の歌にするなど、主題を変える。</li>
+          <li><strong>本歌は古典から</strong>：同時代の人の歌は本歌にしない。</li>
+        </ul>
+        <p>下に挙げた歌には定家より前の時代の歌も含まれ、すべてがこの心得どおりというわけではありません。</p>
+        <p>下の図では、左に本歌、右に本歌取りした歌を一句ずつ並べています。本歌から取った言葉を<span style="background: linear-gradient(transparent 55%, #ffe08a 55%);">色付き</span>で示し、同じ言葉を含む句どうしを線で結んでいます。線が水平なら同じ位置のまま、斜めなら位置を移して取っています。見出しをタップすると、その歌のページを開きます。</p>
+
+        <h2 class="was-h3 hk-part">後の歌人に本歌取りされた百人一首の歌</h2>
+
+        <section class="sample" id="01">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/1.html">1番歌 天智天皇 → 和泉式部</a></h2>
+          <figure class="hk-fig" data-links="0-0,1-1,2-2,4-3" aria-label="1番歌 天智天皇 → 和泉式部：本歌から取った言葉を色付きで示し、同じ言葉を含む句を線で結んだ図">
+              <div class="hk-col hk-col--honka">
+                <p class="hk-head">本歌：天智天皇</p>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>秋<rt>あき</rt></ruby>の<ruby>田<rt>た</rt></ruby>の</span></span></span>
+                <span class="hk-ku"><span class="hk-ja">かりほの<span class="hk-kept"><ruby>庵<rt>いお</rt></ruby></span>の</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>苫<rt>とま</rt></ruby>をあらみ</span></span></span>
+                <span class="hk-ku"><span class="hk-ja"><ruby>我<rt>わ</rt></ruby>が<ruby>衣手<rt>ころもで</rt></ruby>は</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>露<rt>つゆ</rt></ruby></span>にぬれつつ</span></span>
+              </div>
+              <div class="hk-col hk-col--new">
+                <p class="hk-head">本歌取り：和泉式部</p>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>秋<rt>あき</rt></ruby>の<ruby>田<rt>た</rt></ruby>の</span></span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>庵<rt>いおり</rt></ruby></span>に<ruby>葺<rt>ふ</rt></ruby>ける</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>苫<rt>とま</rt></ruby>をあらみ</span></span></span>
+                <span class="hk-ku"><span class="hk-ja">もりくる<span class="hk-kept"><ruby>露<rt>つゆ</rt></ruby></span>の</span></span>
+                <span class="hk-ku"><span class="hk-ja">いやは<ruby>寝<rt>ね</rt></ruby>らるる</span></span>
+              </div>
+          </figure>
+          <dl class="hk-trans">
+            <dt>本歌の現代語訳</dt><dd>秋の田のほとりにある仮小屋は、屋根の苫の編み目が粗くて、私の袖は夜露に濡れているよ。</dd>
+            <dt>本歌取りした歌の現代語訳</dt><dd>秋の田のほとりにある仮小屋は、屋根の苫の目が粗くて、滴り落ちてくる露でどうして眠れようか。<span class="hk-src">『続後撰和歌集』</span></dd>
+          </dl>
+          <p class="hk-change"><strong>変えたところ：</strong>天智天皇の歌では、夜露が静かに袖を濡らしていきます。和泉式部は同じ仮小屋と粗い苫を詠みながら、結びを「漏れてくる露でどうして眠れようか」という率直な嘆きに変えました。見張りをするはずの小屋で、眠れなくて困ると詠んでいます。</p>
+        </section>
+        <section class="sample" id="01b">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/1.html">1番歌 天智天皇 → 左京大夫顕輔</a></h2>
+          <figure class="hk-fig" data-links="0-0,1-1,2-2" aria-label="1番歌 天智天皇 → 左京大夫顕輔：本歌から取った言葉を色付きで示し、同じ言葉を含む句を線で結んだ図">
+              <div class="hk-col hk-col--honka">
+                <p class="hk-head">本歌：天智天皇</p>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>秋<rt>あき</rt></ruby>の<ruby>田<rt>た</rt></ruby></span>の</span></span>
+                <span class="hk-ku"><span class="hk-ja">かりほの<span class="hk-kept"><ruby>庵<rt>いお</rt></ruby></span>の</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>苫<rt>とま</rt></ruby>をあらみ</span></span></span>
+                <span class="hk-ku"><span class="hk-ja"><ruby>我<rt>わ</rt></ruby>が<ruby>衣手<rt>ころもで</rt></ruby>は</span></span>
+                <span class="hk-ku"><span class="hk-ja"><ruby>露<rt>つゆ</rt></ruby>にぬれつつ</span></span>
+              </div>
+              <div class="hk-col hk-col--new">
+                <p class="hk-head">本歌取り：左京大夫顕輔</p>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>秋<rt>あき</rt></ruby>の<ruby>田<rt>た</rt></ruby></span>に</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>庵<rt>いお</rt></ruby></span>さす<ruby>賤<rt>しず</rt></ruby>の</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>苫<rt>とま</rt></ruby>をあらみ</span></span></span>
+                <span class="hk-ku"><span class="hk-ja"><ruby>月<rt>つき</rt></ruby>とともにや</span></span>
+                <span class="hk-ku"><span class="hk-ja">もり<ruby>明<rt>あか</rt></ruby>すらん</span></span>
+              </div>
+          </figure>
+          <dl class="hk-trans">
+            <dt>本歌の現代語訳</dt><dd>秋の田のほとりにある仮小屋は、屋根の苫の編み目が粗くて、私の袖は夜露に濡れているよ。</dd>
+            <dt>本歌取りした歌の現代語訳</dt><dd>秋の田のほとりに庵を作る農民は、粗末な屋根で苫の編み目が粗いので、射しこむ月の光と共に夜を明かすだろう。<span class="hk-src">『新古今和歌集』</span></dd>
+          </dl>
+          <p class="hk-change"><strong>変えたところ：</strong>顕輔（<a href="79.html">79番</a>）は、露を月の光に置き換え、苫の目から月の光が漏れ入る情景にしました。「もり」には「漏り（月の光が漏れる）」と「守り（番をする）」の二つの意味が重なると読むこともできます。また、天智天皇が「わが衣手は」と自分のこととして詠んでいるのに対し、顕輔は農民（賤）の姿を外から思いやり、「夜を明かすだろう」と推し量っています。</p>
+        </section>
+        <section class="sample" id="02">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/2.html">2番歌 持統天皇 → 藤原良経</a></h2>
+          <figure class="hk-fig" data-links="2-2,3-3,4-4" aria-label="2番歌 持統天皇 → 藤原良経：本歌から取った言葉を色付きで示し、同じ言葉を含む句を線で結んだ図">
+              <div class="hk-col hk-col--honka">
+                <p class="hk-head">本歌：持統天皇</p>
+                <span class="hk-ku"><span class="hk-ja"><ruby>春<rt>はる</rt></ruby><ruby>過<rt>す</rt></ruby>ぎて</span></span>
+                <span class="hk-ku"><span class="hk-ja"><ruby>夏<rt>なつ</rt></ruby><ruby>来<rt>き</rt></ruby>にけらし</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>白妙<rt>しろたえ</rt></ruby>の</span></span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>衣<rt>ころも</rt></ruby>ほすてふ</span></span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>天<rt>あま</rt></ruby>の<ruby>香具山<rt>かぐやま</rt></ruby></span></span></span>
+              </div>
+              <div class="hk-col hk-col--new">
+                <p class="hk-head">本歌取り：藤原良経</p>
+                <span class="hk-ku"><span class="hk-ja"><ruby>雲<rt>くも</rt></ruby><ruby>晴<rt>は</rt></ruby>るる</span></span>
+                <span class="hk-ku"><span class="hk-ja"><ruby>雪<rt>ゆき</rt></ruby>の<ruby>光<rt>ひかり</rt></ruby>や</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>白妙<rt>しろたえ</rt></ruby>の</span></span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>衣<rt>ころも</rt></ruby>ほすてふ</span></span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>天<rt>あま</rt></ruby>の<ruby>香久山<rt>かぐやま</rt></ruby></span></span></span>
+              </div>
+          </figure>
+          <dl class="hk-trans">
+            <dt>本歌の現代語訳</dt><dd>春は過ぎ去り、夏が来たようだ。夏になると衣が干されるという天の香具山に白い衣が干されているよ。</dd>
+            <dt>本歌取りした歌の現代語訳</dt><dd>天の香具山は夏になると衣が干されるというけれども、今は雲が晴れて雪の光がその衣のように輝いているよ。<span class="hk-src">『秋篠月清集』</span></dd>
+          </dl>
+          <p class="hk-change"><strong>変えたところ：</strong>藤原良経（百人一首では<a href="91.html">91番</a>・後京極摂政前太政大臣）は、持統天皇の歌の三句目から結句までをそのまま取りながら、夏の歌を冬の景色に移しました。「白い衣」は、雲が晴れて天の香久山に輝く雪の光になっています。あえて夏の歌を本歌にして冬の景色を詠むことで、時空を超えた趣を取り入れようとしたのかもしれません。</p>
+        </section>
+        <section class="sample" id="03">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/3.html">3番歌 柿本人麻呂 → 後鳥羽院</a></h2>
+          <figure class="hk-fig" data-links="1-1,2-2,3-3" aria-label="3番歌 柿本人麻呂 → 後鳥羽院：本歌から取った言葉を色付きで示し、同じ言葉を含む句を線で結んだ図">
+              <div class="hk-col hk-col--honka">
+                <p class="hk-head">本歌：柿本人麻呂</p>
+                <span class="hk-ku"><span class="hk-ja">あしびきの</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>山鳥<rt>やまどり</rt></ruby>の</span><ruby>尾<rt>お</rt></ruby>の</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">しだり<ruby>尾<rt>お</rt></ruby>の</span></span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">ながながし</span><ruby>夜<rt>よ</rt></ruby>を</span></span>
+                <span class="hk-ku"><span class="hk-ja">ひとりかも<ruby>寝<rt>ね</rt></ruby>む</span></span>
+              </div>
+              <div class="hk-col hk-col--new">
+                <p class="hk-head">本歌取り：後鳥羽院</p>
+                <span class="hk-ku"><span class="hk-ja"><ruby>桜<rt>さくら</rt></ruby><ruby>咲<rt>さ</rt></ruby>く</span></span>
+                <span class="hk-ku"><span class="hk-ja"><ruby>遠<rt>とお</rt></ruby><span class="hk-kept"><ruby>山鳥<rt>やまどり</rt></ruby>の</span></span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">しだり<ruby>尾<rt>お</rt></ruby>の</span></span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">ながながし</span><ruby>日<rt>ひ</rt></ruby>も</span></span>
+                <span class="hk-ku"><span class="hk-ja">あかぬ<ruby>色<rt>いろ</rt></ruby>かな</span></span>
+              </div>
+          </figure>
+          <dl class="hk-trans">
+            <dt>本歌の現代語訳</dt><dd>山鳥の垂れ下がる尾のような長い長い夜を独りさびしく寝るのだろうか。</dd>
+            <dt>本歌取りした歌の現代語訳</dt><dd>遠くの山に咲く桜。遠山鳥のしだり尾のように長い一日をかけて見てもあきない色だな。<span class="hk-src">『新古今和歌集』</span></dd>
+          </dl>
+          <p class="hk-change"><strong>変えたところ：</strong>人麻呂の歌では、山鳥の長い尾が独り寝の長い夜を表していました。後鳥羽院（<a href="99.html">99番</a>）は同じ言葉で、いくら眺めても見飽きない桜の、春の長い一日を詠んでいます。藤原俊成の九十賀を祝う屏風歌として詠まれ、和歌の師と仰ぐ俊成の長寿を願う気持ちが込められていると考えられます。「遠山鳥」は山鳥の別名です。</p>
+        </section>
+        <section class="sample" id="06">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/6.html">6番歌 中納言家持 → 壬生忠岑</a></h2>
+          <figure class="hk-fig" data-links="0-0,1-1,2-2,4-3" aria-label="6番歌 中納言家持 → 壬生忠岑：本歌から取った言葉を色付きで示し、同じ言葉を含む句を線で結んだ図">
+              <div class="hk-col hk-col--honka">
+                <p class="hk-head">本歌：中納言家持</p>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">かささぎの</span></span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>渡<rt>わた</rt></ruby>せる<ruby>橋<rt>はし</rt></ruby></span>に</span></span>
+                <span class="hk-ku"><span class="hk-ja">おく<span class="hk-kept"><ruby>霜<rt>しも</rt></ruby></span>の</span></span>
+                <span class="hk-ku"><span class="hk-ja"><ruby>白<rt>しろ</rt></ruby>きをみれば</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>夜<rt>よ</rt></ruby></span>ぞふけにける</span></span>
+              </div>
+              <div class="hk-col hk-col--new">
+                <p class="hk-head">本歌取り：壬生忠岑</p>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">かささぎの</span></span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>渡<rt>わた</rt></ruby>せる<ruby>橋<rt>はし</rt></ruby></span>の</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>霜<rt>しも</rt></ruby></span>の<ruby>上<rt>うえ</rt></ruby>を</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>夜<rt>よ</rt></ruby></span><ruby>半<rt>わ</rt></ruby>にふみわけ</span></span>
+                <span class="hk-ku"><span class="hk-ja">ことさらにこそ</span></span>
+              </div>
+          </figure>
+          <dl class="hk-trans">
+            <dt>本歌の現代語訳</dt><dd>かささぎの群れが翼を連ねて渡すという天の川は、霜が降りたように白く冴えわたっている。その様子を見ていると、夜が深まっていくようだ。</dd>
+            <dt>本歌取りした歌の現代語訳</dt><dd>宮中の階のように御殿に置いた霜の上を、夜半に踏み分け、ことさらあなたの所に参った次第です。<span class="hk-src">『大和物語』</span></dd>
+          </dl>
+          <p class="hk-change"><strong>変えたところ：</strong>家持の歌は、冬の夜空を静かに見上げた歌です。藤原定国が夜中に酒に酔って左大臣・藤原時平を訪ね、「どこかのついでに来たのか？」と訝しまれたとき、定国の随身だった壬生忠岑は、とっさにこの歌を本歌取りしました。かささぎの橋を時平の御殿の階に見立て、「わざわざ参ったのです」と答えたのです。この機転が場を和ませたと『大和物語』に書かれています。</p>
+        </section>
+        <section class="sample" id="23">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/23.html">23番歌 大江千里 → 鴨長明</a></h2>
+          <figure class="hk-fig" data-links="0-2,1-1,3-3" aria-label="23番歌 大江千里 → 鴨長明：本歌から取った言葉を色付きで示し、同じ言葉を含む句を線で結んだ図">
+              <div class="hk-col hk-col--honka">
+                <p class="hk-head">本歌：大江千里</p>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>月<rt>つき</rt></ruby></span>みれば</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">ちぢにもの</span>こそ</span></span>
+                <span class="hk-ku"><span class="hk-ja"><ruby>悲<rt>かな</rt></ruby>しけれ</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">わが<ruby>身<rt>み</rt></ruby><ruby>一<rt>ひと</rt></ruby>つの</span></span></span>
+                <span class="hk-ku"><span class="hk-ja"><ruby>秋<rt>あき</rt></ruby>にはあらねど</span></span>
+              </div>
+              <div class="hk-col hk-col--new">
+                <p class="hk-head">本歌取り：鴨長明</p>
+                <span class="hk-ku"><span class="hk-ja">ながむれば</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>千々<rt>ちぢ</rt></ruby>にもの</span><ruby>思<rt>おも</rt></ruby>ふ</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>月<rt>つき</rt></ruby></span>にまた</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">わが<ruby>身<rt>み</rt></ruby>ひとつの</span></span></span>
+                <span class="hk-ku"><span class="hk-ja"><ruby>峰<rt>みね</rt></ruby>の<ruby>松風<rt>まつかぜ</rt></ruby></span></span>
+              </div>
+          </figure>
+          <dl class="hk-trans">
+            <dt>本歌の現代語訳</dt><dd>月を見るとあれこれと悲しくなります。私ひとりだけに訪れた秋ではないのですが。</dd>
+            <dt>本歌取りした歌の現代語訳</dt><dd>物思いをさせる月を眺めていると、さらに私一人にだけ寂しい峰の松風が吹く。<span class="hk-src">『新古今和歌集』</span></dd>
+          </dl>
+          <p class="hk-change"><strong>変えたところ：</strong>『方丈記』の作者・鴨長明が「月前松風」という題で詠んだ歌です。千里の「ちぢにもの」「わが身ひとつの」を取り、「月」を三句目に移したうえで、結句に「峰の松風」を加えました。千里が「私ひとりの秋ではないけれど」と詠んだのに対し、長明は、松風が私ひとりにだけ寂しく吹くと詠んでいます。</p>
+        </section>
+        <section class="sample" id="32">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/32.html">32番歌 春道列樹 → 藤原定家</a></h2>
+          <figure class="hk-fig" data-links="1-1,2-2" aria-label="32番歌 春道列樹 → 藤原定家：本歌から取った言葉を色付きで示し、同じ言葉を含む句を線で結んだ図">
+              <div class="hk-col hk-col--honka">
+                <p class="hk-head">本歌：春道列樹</p>
+                <span class="hk-ku"><span class="hk-ja"><ruby>山川<rt>やまがわ</rt></ruby>に</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>風<rt>かぜ</rt></ruby>のかけたる</span></span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">しがらみ</span>は</span></span>
+                <span class="hk-ku"><span class="hk-ja"><ruby>流<rt>なが</rt></ruby>れもあへぬ</span></span>
+                <span class="hk-ku"><span class="hk-ja"><ruby>紅葉<rt>もみじ</rt></ruby>なりけり</span></span>
+              </div>
+              <div class="hk-col hk-col--new">
+                <p class="hk-head">本歌取り：藤原定家</p>
+                <span class="hk-ku"><span class="hk-ja"><ruby>木<rt>こ</rt></ruby>の<ruby>葉<rt>は</rt></ruby>もて</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>風<rt>かぜ</rt></ruby>のかけたる</span></span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">しがらみ</span>に</span></span>
+                <span class="hk-ku"><span class="hk-ja">さてもよどまぬ</span></span>
+                <span class="hk-ku"><span class="hk-ja"><ruby>秋<rt>あき</rt></ruby>の<ruby>暮<rt>く</rt></ruby>れかな</span></span>
+              </div>
+          </figure>
+          <dl class="hk-trans">
+            <dt>本歌の現代語訳</dt><dd>山間の川に風がかけたしがらみとは、流れきらずにたまっている紅葉だったよ。</dd>
+            <dt>本歌取りした歌の現代語訳</dt><dd>木の葉が風に吹き寄せられてしがらみのようになっているが、そうであっても淀むことなく流れていく秋の暮れであることよ。<span class="hk-src">『拾遺愚草』</span></dd>
+          </dl>
+          <p class="hk-change"><strong>変えたところ：</strong>「風のかけたるしがらみ」は、春道列樹が最初に用いた独創的な表現だったと考えられています。この表現こそが、百人一首の撰者・藤原定家（<a href="97.html">97番</a>）が本歌取りするほど気に入った理由だったのでしょう。列樹の歌では紅葉のしがらみが川の流れをせき止めていますが、定家の歌では、そのしがらみがあっても秋の暮れは淀むことなく流れていきます。</p>
+        </section>
+        <section class="sample" id="51">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/51.html">51番歌 藤原実方朝臣 → 和泉式部</a></h2>
+          <figure class="hk-fig" data-links="0-1,1-1,2-2,4-4" aria-label="51番歌 藤原実方朝臣 → 和泉式部：本歌から取った言葉を色付きで示し、同じ言葉を含む句を線で結んだ図">
+              <div class="hk-col hk-col--honka">
+                <p class="hk-head">本歌：藤原実方朝臣</p>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">かく</span>とだに</span></span>
+                <span class="hk-ku"><span class="hk-ja">えやは<span class="hk-kept">いぶきの</span></span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">さしも<ruby>草<rt>ぐさ</rt></ruby></span></span></span>
+                <span class="hk-ku"><span class="hk-ja">さしも<ruby>知<rt>し</rt></ruby>らじな</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">もゆる</span><ruby>思<rt>おも</rt></ruby>ひを</span></span>
+              </div>
+              <div class="hk-col hk-col--new">
+                <p class="hk-head">本歌取り：和泉式部</p>
+                <span class="hk-ku"><span class="hk-ja">けふもまた</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">かく</span>や<span class="hk-kept"><ruby>伊吹<rt>いぶき</rt></ruby>の</span></span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">さしも<ruby>草<rt>ぐさ</rt></ruby></span></span></span>
+                <span class="hk-ku"><span class="hk-ja">さらば<ruby>我<rt>われ</rt></ruby>のみ</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>燃<rt>も</rt></ruby>え</span>や<ruby>渡<rt>わた</rt></ruby>らむ</span></span>
+              </div>
+          </figure>
+          <dl class="hk-trans">
+            <dt>本歌の現代語訳</dt><dd>これほどまでに恋焦がれているとあなたに言えるでしょうか。伊吹山のさしも草ではありませんが、それほどまでとはあなたはご存知ないでしょう。私の（お灸のように熱い）燃える想いを。</dd>
+            <dt>本歌取りした歌の現代語訳</dt><dd>今日もまたあなたはそんな冷たいことを言うのでしょうか。それならば私だけがさしも草のように燃え続けていましょう。<span class="hk-src">『新古今和歌集』</span></dd>
+          </dl>
+          <p class="hk-change"><strong>変えたところ：</strong>実方の歌が溢れんばかりの恋心をストレートに訴えているのに対し、和泉式部は、相手が自分を振り向いてくれるまで心に灯をともし続けようとする、包容力に満ちた心を詠んでいます。</p>
+        </section>
+        <section class="sample" id="56">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/56.html">56番歌 和泉式部 → 殷富門院大輔</a></h2>
+          <figure class="hk-fig" data-links="3-1,4-2,4-4" aria-label="56番歌 和泉式部 → 殷富門院大輔：本歌から取った言葉を色付きで示し、同じ言葉を含む句を線で結んだ図">
+              <div class="hk-col hk-col--honka">
+                <p class="hk-head">本歌：和泉式部</p>
+                <span class="hk-ku"><span class="hk-ja">あらざらむ</span></span>
+                <span class="hk-ku"><span class="hk-ja">この<ruby>世<rt>よ</rt></ruby>のほかの</span></span>
+                <span class="hk-ku"><span class="hk-ja"><ruby>思<rt>おも</rt></ruby>ひ<ruby>出<rt>で</rt></ruby>に</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">いまひとたびの</span></span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>逢<rt>あ</rt></ruby>ふこと</span>も<span class="hk-kept">がな</span></span></span>
+              </div>
+              <div class="hk-col hk-col--new">
+                <p class="hk-head">本歌取り：殷富門院大輔</p>
+                <span class="hk-ku"><span class="hk-ja">いかにせむ</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>今<rt>いま</rt></ruby>ひとたびの</span></span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>逢<rt>あ</rt></ruby>ふこと</span>を</span></span>
+                <span class="hk-ku"><span class="hk-ja"><ruby>夢<rt>ゆめ</rt></ruby>にだに<ruby>見<rt>み</rt></ruby>て</span></span>
+                <span class="hk-ku"><span class="hk-ja"><ruby>寝覚<rt>ねざ</rt></ruby>めずも<span class="hk-kept">がな</span></span></span>
+              </div>
+          </figure>
+          <dl class="hk-trans">
+            <dt>本歌の現代語訳</dt><dd>この世を去ってしまうのでしょう。あの世へ持っていく思い出に、もう一度あなたにお会いしたいものです。</dd>
+            <dt>本歌取りした歌の現代語訳</dt><dd>どうしたらよいでしょう。夢の中でもいいからあなたにもう一度会いたい。その眠りからずっと覚めずにいたい。<span class="hk-src">『新勅撰和歌集』</span></dd>
+          </dl>
+          <p class="hk-change"><strong>変えたところ：</strong>和泉式部は、あの世へ持っていく思い出に、もう一度会いたいと詠みました。殷富門院大輔（<a href="90.html">90番</a>）は「今ひとたびの」「逢ふこと」を二句目・三句目に移し、願いを表す「もがな」で結ぶ形も受け継ぎながら、夢の中でもいいから会って、その眠りから覚めずにいたいと詠んでいます。</p>
+        </section>
+
+        <h2 class="was-h3 hk-part">古い歌を本歌取りした百人一首の歌</h2>
+
+        <section class="sample" id="90">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/90.html">90番歌 源重之 → 殷富門院大輔</a></h2>
+          <figure class="hk-fig" data-links="1-1,3-1,3-2,4-3" aria-label="90番歌 源重之 → 殷富門院大輔：本歌から取った言葉を色付きで示し、同じ言葉を含む句を線で結んだ図">
+              <div class="hk-col hk-col--honka">
+                <p class="hk-head">本歌：源重之</p>
+                <span class="hk-ku"><span class="hk-ja"><ruby>松島<rt>まつしま</rt></ruby>や</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>雄島<rt>おじま</rt></ruby></span>の<ruby>磯<rt>いそ</rt></ruby>に</span></span>
+                <span class="hk-ku"><span class="hk-ja"><ruby>漁<rt>あさ</rt></ruby>りせし</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>海人<rt>あま</rt></ruby></span>の<span class="hk-kept"><ruby>袖<rt>そで</rt></ruby></span>こそ</span></span>
+                <span class="hk-ku"><span class="hk-ja">かくは<span class="hk-kept"><ruby>濡<rt>ぬ</rt></ruby>れ</span>しか</span></span>
+              </div>
+              <div class="hk-col hk-col--new">
+                <p class="hk-head">百人一首：殷富門院大輔</p>
+                <span class="hk-ku"><span class="hk-ja"><ruby>見<rt>み</rt></ruby>せばやな</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>雄島<rt>おじま</rt></ruby></span>の<span class="hk-kept">あま</span>の</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>袖<rt>そで</rt></ruby></span>だにも</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">ぬれ</span>にぞ<span class="hk-kept">ぬれ</span>し</span></span>
+                <span class="hk-ku"><span class="hk-ja"><ruby>色<rt>いろ</rt></ruby>はかはらず</span></span>
+              </div>
+          </figure>
+          <dl class="hk-trans">
+            <dt>本歌の現代語訳</dt><dd>松島の雄島の磯で漁をしている海女の袖だったら、涙で濡れた私の袖ほどに濡れているでしょうか。<span class="hk-src">『後拾遺和歌集』</span></dd>
+            <dt>本歌取りした歌の現代語訳</dt><dd>あなたに見せたい。私の血の涙に濡れて色が変わってしまったこの袖を。あの雄島の漁師の袖でさえ、ひどく濡れても色は変わらないのに。</dd>
+          </dl>
+          <p class="hk-change"><strong>変えたところ：</strong>殷富門院大輔の歌は、源重之の歌への返歌として詠まれたと言われています。重之が「雄島の海人の袖ほど私の袖は濡れている」と詠んだのに対し、殷富門院大輔は「その海人の袖でさえ、ひどく濡れても色は変わらないのに」と返しました。自分の袖は血の涙（紅涙）で色が変わってしまった、という思いが込められています。</p>
+        </section>
+        <section class="sample" id="91">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/91.html">91番歌 『古今和歌集』詠み人知らず → 後京極摂政前太政大臣</a></h2>
+          <figure class="hk-fig" data-links="0-2,1-3" aria-label="91番歌 『古今和歌集』詠み人知らず → 後京極摂政前太政大臣：本歌から取った言葉を色付きで示し、同じ言葉を含む句を線で結んだ図">
+              <div class="hk-col hk-col--honka">
+                <p class="hk-head">本歌：詠み人知らず</p>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">さむしろに</span></span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>衣<rt>ころも</rt></ruby>かたしき</span></span></span>
+                <span class="hk-ku"><span class="hk-ja"><ruby>今宵<rt>こよい</rt></ruby>もや</span></span>
+                <span class="hk-ku"><span class="hk-ja"><ruby>我<rt>われ</rt></ruby>を<ruby>待<rt>ま</rt></ruby>つらむ</span></span>
+                <span class="hk-ku"><span class="hk-ja"><ruby>宇治<rt>うじ</rt></ruby>の<ruby>橋姫<rt>はしひめ</rt></ruby></span></span>
+              </div>
+              <div class="hk-col hk-col--new">
+                <p class="hk-head">百人一首：藤原良経</p>
+                <span class="hk-ku"><span class="hk-ja">きりぎりす</span></span>
+                <span class="hk-ku"><span class="hk-ja"><ruby>鳴<rt>な</rt></ruby>くや<ruby>霜夜<rt>しもよ</rt></ruby>の</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">さむしろに</span></span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>衣<rt>ころも</rt></ruby>かたしき</span></span></span>
+                <span class="hk-ku"><span class="hk-ja">ひとりかも<ruby>寝<rt>ね</rt></ruby>む</span></span>
+              </div>
+          </figure>
+          <dl class="hk-trans">
+            <dt>本歌の現代語訳</dt><dd>自分の衣だけを敷いて今夜もひとり寂しく私を待っているのだろうか。宇治の橋姫は。<span class="hk-src">『古今和歌集』</span></dd>
+            <dt>本歌取りした歌の現代語訳</dt><dd>こおろぎが鳴いている霜のおりる夜、寒い筵の上に自分の衣だけを敷いて、私はひとり寂しく寝るのだろうか。</dd>
+          </dl>
+          <p class="hk-change"><strong>変えたところ：</strong>良経が本歌取りした狙いは、イメージの重層性にあります。本歌の『古今和歌集』の時代、宇治の橋姫は「愛しい人」の象徴でしたが、のちに『源氏物語』の影響で「孤独に朽ちてゆく儚い存在」という陰影を帯びるようになりました。良経は、本歌由来の古典的な華やかさと、源氏物語がもたらした寂寥感という、相反する2つのイメージを融合させています。</p>
+        </section>
+        <section class="sample" id="92">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/92.html">92番歌 和泉式部 → 二条院讃岐</a></h2>
+          <figure class="hk-fig" data-links="0-0,2-2,3-3,4-4" aria-label="92番歌 和泉式部 → 二条院讃岐：本歌から取った言葉を色付きで示し、同じ言葉を含む句を線で結んだ図">
+              <div class="hk-col hk-col--honka">
+                <p class="hk-head">本歌：和泉式部</p>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">わが<ruby>袖<rt>そで</rt></ruby>は</span></span></span>
+                <span class="hk-ku"><span class="hk-ja"><ruby>水<rt>みず</rt></ruby>の<ruby>下<rt>した</rt></ruby>なる</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>石<rt>いし</rt></ruby></span>なれや</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>人<rt>ひと</rt></ruby></span>に<span class="hk-kept"><ruby>知<rt>し</rt></ruby>ら</span>れで</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">かわく<ruby>間<rt>ま</rt></ruby>もなし</span></span></span>
+              </div>
+              <div class="hk-col hk-col--new">
+                <p class="hk-head">百人一首：二条院讃岐</p>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">わが<ruby>袖<rt>そで</rt></ruby>は</span></span></span>
+                <span class="hk-ku"><span class="hk-ja"><ruby>潮干<rt>しおひ</rt></ruby>に<ruby>見<rt>み</rt></ruby>えぬ</span></span>
+                <span class="hk-ku"><span class="hk-ja"><ruby>沖<rt>おき</rt></ruby>の<span class="hk-kept"><ruby>石<rt>いし</rt></ruby></span>の</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>人<rt>ひと</rt></ruby></span>こそ<span class="hk-kept"><ruby>知<rt>し</rt></ruby>ら</span>ね</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">かわくまもなし</span></span></span>
+              </div>
+          </figure>
+          <dl class="hk-trans">
+            <dt>本歌の現代語訳</dt><dd>私の袖は水の下の石のようです。人知れず流す涙で私の袖は乾く暇もありません。<span class="hk-src">『和泉式部集』</span></dd>
+            <dt>本歌取りした歌の現代語訳</dt><dd>私の袖は潮干のときも見えない沖の石のように、人に知られることはないけれども、涙で濡れて乾く暇もない。</dd>
+          </dl>
+          <p class="hk-change"><strong>変えたところ：</strong>和泉式部は、涙に濡れる袖を「水の下の石」にたとえました。二条院讃岐は初句と結句をそのまま取り、石を、潮が引いても見えない「沖の石」に置き換えています。この歌は評判になり、二条院讃岐は「沖の石の讃岐」と呼ばれました。</p>
+        </section>
+        <section class="sample" id="95">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/95.html">95番歌 最澄 → 前大僧正慈円</a></h2>
+          <figure class="hk-fig" data-links="3-3" aria-label="95番歌 最澄 → 前大僧正慈円：本歌から取った言葉を色付きで示し、同じ言葉を含む句を線で結んだ図">
+              <div class="hk-col hk-col--honka">
+                <p class="hk-head">本歌：最澄</p>
+                <span class="hk-ku"><span class="hk-ja"><ruby>阿耨多羅<rt>あのくたら</rt></ruby></span></span>
+                <span class="hk-ku"><span class="hk-ja"><ruby>三藐三菩提<rt>さんみやくさんぼだい</rt></ruby>の</span></span>
+                <span class="hk-ku"><span class="hk-ja"><ruby>仏<rt>ほとけ</rt></ruby>たち</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">わが<ruby>立<rt>た</rt></ruby>つ<ruby>杣<rt>そま</rt></ruby>に</span></span></span>
+                <span class="hk-ku"><span class="hk-ja"><ruby>冥加<rt>みょうが</rt></ruby>あらせたまえ</span></span>
+              </div>
+              <div class="hk-col hk-col--new">
+                <p class="hk-head">百人一首：前大僧正慈円</p>
+                <span class="hk-ku"><span class="hk-ja">おほけなく</span></span>
+                <span class="hk-ku"><span class="hk-ja"><ruby>憂<rt>う</rt></ruby>き<ruby>世<rt>よ</rt></ruby>の<ruby>民<rt>たみ</rt></ruby>に</span></span>
+                <span class="hk-ku"><span class="hk-ja">おほふかな</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">わがたつ<ruby>杣<rt>そま</rt></ruby>に</span></span></span>
+                <span class="hk-ku"><span class="hk-ja"><ruby>墨染<rt>すみぞめ</rt></ruby>の<ruby>袖<rt>そで</rt></ruby></span></span>
+              </div>
+          </figure>
+          <dl class="hk-trans">
+            <dt>本歌の現代語訳</dt><dd>最上の知恵を持たれる仏たちよ。私が立つこの杣に、冥加をお与えください。<span class="hk-src">『新古今和歌集』</span></dd>
+            <dt>本歌取りした歌の現代語訳</dt><dd>おこがましいけれども、このつらい悲しみに満ちた現世を生きる人々を私の袖で包んであげたい。比叡山に住みはじめた私の墨染の袖で。</dd>
+          </dl>
+          <p class="hk-change"><strong>変えたところ：</strong>本歌は、天台宗の開祖・最澄が延暦寺の総本堂・根本中堂を建立した際に、「わが立つ杣（比叡山）」に仏の加護を願って詠んだと伝えられています。慈円は、開祖の言葉を取って、墨染の袖で憂き世の民を包みたいという誓いの歌にしています。</p>
+        </section>
+        <section class="sample" id="89">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/89.html">式子内親王（89番）が『伊勢物語』の歌を本歌取りした歌</a></h2>
+          <figure class="hk-fig" data-links="3-0,4-1,1-3,0-4" aria-label="式子内親王（89番）が『伊勢物語』の歌を本歌取りした歌：本歌から取った言葉を色付きで示し、同じ言葉を含む句を線で結んだ図">
+              <div class="hk-col hk-col--honka">
+                <p class="hk-head">本歌：『伊勢物語』</p>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">ゆく<ruby>蛍<rt>ほたる</rt></ruby></span></span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>雲<rt>くも</rt></ruby></span>のうへまで</span></span>
+                <span class="hk-ku"><span class="hk-ja"><ruby>往<rt>い</rt></ruby>ぬべくは</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>秋風<rt>あきかぜ</rt></ruby></span><ruby>吹<rt>ふ</rt></ruby>くと</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>雁<rt>かり</rt></ruby></span>に<span class="hk-kept"><ruby>告<rt>つ</rt></ruby>げ</span>こせ</span></span>
+              </div>
+              <div class="hk-col hk-col--new">
+                <p class="hk-head">本歌取り：式子内親王</p>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>秋風<rt>あきかぜ</rt></ruby></span>と</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>雁<rt>かり</rt></ruby></span>にや<span class="hk-kept">つぐる</span></span></span>
+                <span class="hk-ku"><span class="hk-ja"><ruby>夕暮<rt>ゆうぐれ</rt></ruby>の</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept"><ruby>雲<rt>くも</rt></ruby></span><ruby>近<rt>ちか</rt></ruby>きまで</span></span>
+                <span class="hk-ku"><span class="hk-ja"><span class="hk-kept">ゆく<ruby>蛍<rt>ほたる</rt></ruby></span>かな</span></span>
+              </div>
+          </figure>
+          <dl class="hk-trans">
+            <dt>本歌の現代語訳</dt><dd>飛んでゆく蛍よ、雲の上まで行けるのなら、秋風が吹いていると雁に告げておくれ。</dd>
+            <dt>本歌取りした歌の現代語訳</dt><dd>秋風が吹いていると、雁に告げにいくのだろうか。雲に届きそうなほど高く飛んでゆく蛍よ。<span class="hk-src">『風雅和歌集』</span></dd>
+          </dl>
+          <p class="hk-change"><strong>変えたところ：</strong>百人一首の歌ではありませんが、本歌取りのわかりやすい例として紹介します。式子内親王は、本歌の「ゆく蛍」「雲」「秋風」「雁」「告ぐ」をほとんどすべて使いながら、語順を逆にしているため、図の線が交差しています。本歌では蛍に「雁に告げておくれ」と頼んでいますが、式子内親王は、夕暮れに雲に届きそうなほど高く飛んでゆく蛍を見て、「雁に告げにいくのだろうか」と思いやっています。</p>
+        </section>
+        <hr>
+        <h2 class="was-h3">ほかの和歌の技法</h2>
+        <ul class="normal">
+          <li><a href="gihou-makurakotoba.html">枕詞</a>：「あしびきの」「ひさかたの」など、決まった5音の言葉</li>
+          <li><a href="gihou-kakekotoba.html">掛詞と縁語</a>：一つの言葉に二つの意味を重ねる技と、響き合う言葉</li>
+          <li><a href="gihou-jokotoba.html">序詞</a>：景色から心へとつなぐ長い前置き</li>
+        </ul>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-copy">&copy;2023 時雨の百人一首</span>
+      <ul>
+        <li><a href="policy.html">プライバシーポリシー</a></li>
+        <li>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXx7TKlqnTfKrw2Nuh4f37swVwFH-RFDsNkTGQ4JEF50q2wQ/viewform?usp=header"
+            target="_blank" rel="noopener">お問い合わせフォーム</a>
+        </li>
+        <li><a href="https://x.com/shigurenotaifu" target="_blank" rel="noopener">公式X</a></li>
+      </ul>
+    </div>
+  </footer>
+  <!-- フッターここまで -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="../js/move_script.js?20260729"></script>
+  <script src="../js/honkadori-diagram.js?20261101-01"></script>
+</body>
+
+</html>

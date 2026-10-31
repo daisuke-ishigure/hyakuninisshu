@@ -539,3 +539,33 @@ html[lang="en"] .card-back .torihuda > p,
 html[lang="en"] .card-back .torihuda > p span {
   font-family: "Kaisei HarunoUmi", serif !important;
 }
+
+/* Appendix, honkadori (borrowing from an older poem): words taken from the base poem are
+   highlighted (.honka-kept); the base poem is shown once (.honka-base), and a short
+   "What changed" note follows each borrowing poem (.honka-change). First used in 1_en.html. */
+.words .honka-kept {
+  background: linear-gradient(transparent 55%, #ffe08a 55%);
+}
+.words .honka-base {
+  margin: 0.6em 0 0.2em;
+  padding: 0.6em 1em;
+  border-left: 4px solid #e6c35c;
+  background: #fffaf0;
+  font-weight: 700;
+  line-height: 2;
+}
+.words .honka-base .romaji-line {
+  display: block;
+  font-size: 0.82em;
+  font-style: italic;
+  font-weight: 400;
+  color: #7a6655;
+  line-height: 1.6;
+  margin-top: 0.2em;
+}
+.words .honka-change {
+  margin-top: 0.6em;
+  padding: 0.5em 0.9em;
+  background: #f7f1e0;
+  border-radius: 4px;
+}
