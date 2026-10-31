@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Waka Techniques: Makurakotoba (Pillow Words) | Shigure no Hyakunin Isshu</title>
+  <meta name="Keywords" content="makurakotoba, pillow words, waka techniques, Hyakunin Isshu, Ogura Hyakunin Isshu, classical Japanese poetry">
+  <meta name="description" content="Pillow words (makurakotoba) in the Hyakunin Isshu: fixed five-syllable phrases placed directly before a particular word to lead into it, setting the rhythm and adding a certain mood. Illustrated with six poems.">
+  <link rel="canonical" href="https://hyakuninisshu.com/gihou-makurakotoba_en.html">
+  <link rel="alternate" hreflang="ja" href="https://hyakuninisshu.com/gihou-makurakotoba.html">
+  <link rel="alternate" hreflang="en" href="https://hyakuninisshu.com/gihou-makurakotoba_en.html">
+  <link rel="alternate" hreflang="x-default" href="https://hyakuninisshu.com/gihou-makurakotoba.html">
+  <!-- ogp -->
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Waka Techniques: Makurakotoba (Pillow Words) | Shigure no Hyakunin Isshu">
+  <meta property="og:description" content="Pillow words (makurakotoba) in the Hyakunin Isshu: fixed five-syllable phrases placed directly before a particular word to lead into it, setting the rhythm and adding a certain mood. Illustrated with six poems.">
+  <meta property="og:url" content="https://hyakuninisshu.com/gihou-makurakotoba_en.html">
+  <meta property="og:site_name" content="Shigure no Hyakunin Isshu">
+  <meta property="og:image" content="https://hyakuninisshu.com/img/ogp_index.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- structured data -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://hyakuninisshu.com/gihou-makurakotoba_en.html"
+      },
+      "headline": "Waka Techniques: Makurakotoba (Pillow Words)",
+      "description": "Pillow words (makurakotoba) in the Hyakunin Isshu: fixed five-syllable phrases placed directly before a particular word to lead into it, setting the rhythm and adding a certain mood. Illustrated with six poems.",
+      "inLanguage": "en",
+      "image": "https://hyakuninisshu.com/img/ogp_index.webp",
+      "dateModified": "2026-10-31",
+      "author": {
+        "@type": "Person",
+        "name": "Daisuke Ishigure",
+        "url": "https://hyakuninisshu.com/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Shigure no Hyakunin Isshu",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://hyakuninisshu.com/apple-touch-icon.png"
+        }
+      },
+      "genre": "Waka techniques / Hyakunin Isshu / Classical Japanese literature",
+      "about": [
+        { "@type": "Thing", "name": "Makurakotoba (pillow words)" },
+        { "@type": "CreativeWork", "name": "Hyakunin Isshu" }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Shigure no Hyakunin Isshu",
+          "item": "https://hyakuninisshu.com/index_en.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Columns",
+          "item": "https://hyakuninisshu.com/introduction_en.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Waka Techniques: Makurakotoba",
+          "item": "https://hyakuninisshu.com/gihou-makurakotoba_en.html"
+        }
+      ]
+    }
+  ]
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+  <link rel="stylesheet" href="../css/style.css?20261018-01">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@500&family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap"
+    rel="stylesheet">
+  <!-- Pillow-word diagrams: text is HTML, the arrow is drawn by js/makurakotoba-diagram.js -->
+  <style>
+    .mk-link {
+      display: block;
+      color: inherit;
+      text-decoration: none;
+    }
+    .mk-fig {
+      position: relative;
+      width: 80%;
+      margin: 0 auto 1em;
+      padding: 1.6rem 0 4px;
+    }
+    /* ラベルは枕詞の真上に置く */
+    .mk-label {
+      position: absolute;
+      bottom: 100%;
+      left: 0;
+      padding: 0.15em 0.5em;
+      background: #b82343;
+      color: #fff;
+      font-family: "Noto Sans", sans-serif;
+      font-size: 0.8rem;
+      font-weight: bold;
+      line-height: 1.3;
+      white-space: nowrap;
+      letter-spacing: 0.04em;
+    }
+    .mk-poem {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      column-gap: 0.8em;
+      row-gap: 2em; /* 折り返した行の上にもラベルが収まる高さ */
+      margin: 0;
+      font-family: "Noto Serif JP", serif;
+      font-weight: 700;
+    }
+    .mk-break {
+      flex-basis: 100%;
+      height: 0;
+    }
+    .mk-ku {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      white-space: nowrap;
+    }
+    .mk-ja {
+      font-size: 1.6rem;
+      line-height: 1.4;
+    }
+    .mk-ro {
+      font-family: "Noto Sans", sans-serif;
+      font-size: 0.8rem;
+      font-weight: 400;
+      line-height: 1.3;
+      color: #555;
+    }
+    .mk-mk {
+      position: relative;
+      padding: 0 0.15em 0.1em;
+      background: rgba(184, 35, 67, 0.2);
+    }
+    .mk-t {
+      text-decoration: underline double #b82343;
+      text-underline-offset: 0.15em;
+    }
+    .mk-arrow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      overflow: visible;
+      pointer-events: none;
+    }
+    .mk-trans {
+      margin-top: 0;
+      font-style: italic;
+    }
+    @media (max-width: 1000px) {
+      .mk-fig {
+        width: 100%;
+      }
+      .mk-ja {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+  <!-- touch icons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" href="/favicon.ico">
+  <!-- Cloudflare Web Analytics -->
+  <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d2f01c23361b402aadede990ea58da0b"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <p class="site-title">
+      <a href="https://hyakuninisshu.com/index_en.html">Shigure no Hyakunin Isshu</a>
+    </p>
+    <div class="header_list">
+      <a href="index_en.html"><img src="../img/icon_top_en.svg?ver-01" alt="Top" class="icon" width="59" height="22"></a>
+      <a href="introduction_en.html" style="color:#333"><img src="/img/icon_column_en.svg?ver-01" alt="Columns" class="icon" width="72" height="22"></a>
+      <a href="introduction-app_en.html" style="color:#333"><img src="/img/icon_app_en.svg?ver-01" alt="Apps" class="icon" width="59" height="22"></a>
+      <a href="gihou-makurakotoba.html"><img src="/img/icon_lang.svg?ver-01" alt="Japanese" class="icon" width="59" height="22"></a>
+      <a href="list_en.html"><img src="/img/icon_list_en.svg?ver-01" alt="Hyakunin Isshu Poem List" class="icon" width="59" height="22"></a>
+    </div>
+  </header>
+<script src="../js/back-to-top.js?20261012-03"></script>
+  <!-- Main -->
+  <main class="main_about-main">
+    <div class="about-main">
+      <div class="section">
+        <nav>
+          <ol class="breadcrumb">
+            <li><a href="index_en.html">Top</a></li>
+            <li><a href="introduction_en.html">Columns</a></li>
+            <li>Waka Techniques: Makurakotoba</li>
+          </ol>
+        </nav>
+        <hr>
+        <h1>Waka Techniques:<br class="br-sp"> <em>Makurakotoba</em> (Pillow Words)</h1>
+        <p><em>Makurakotoba</em>, literally “pillow words,” are traditional fixed expressions in Japanese poetry, similar to poetic epithets. Much like Homer’s “rosy-fingered Dawn” or “wine-dark sea,” they are conventionally paired with particular words.</p>
+        <p>A pillow word usually consists of five syllables (more precisely, morae, the sound units of Japanese verse) and appears directly before the word it leads into, adding rhythm, beauty, and dignity to the poem rather than conveying a specific meaning.</p>
+        <p>This creates a challenge for translators: translating a pillow word literally can sound strange in English, but omitting it may mean losing some of the poem’s rhythm, atmosphere, and poetic texture.</p>
+        <p>In each diagram below, the pillow word is <span style="background: rgba(184, 35, 67, 0.2); padding: 0 0.2em;">highlighted</span>, and the word it leads into is marked with a <span style="text-decoration: underline double #b82343; text-underline-offset: 0.15em;">double underline</span>. Tap or click a diagram to open the poem’s page. The romaji under each line follows the old kana spelling of classical poetry, so it is not always read as written: for example, <em>shirotahe</em> is read <em>shirotae</em>, and <em>afusaka</em> is read <em>Ōsaka</em>.</p>
+
+        <section class="sample" id="02">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/2_en.html">Poem 2: Empress Jitō</a></h2>
+          <a href="https://hyakuninisshu.com/2_en.html" class="mk-link">
+            <figure class="mk-fig" aria-label="Poem 2: the pillow word 白妙の leads into 衣">
+              <p class="mk-poem" lang="ja">
+              <span class="mk-ku"><span class="mk-ja">春過ぎて</span><span class="mk-ro" lang="ja-Latn">harusugite</span></span>
+              <span class="mk-ku"><span class="mk-ja">夏来にけらし</span><span class="mk-ro" lang="ja-Latn">natsukinikerashi</span></span>
+              <span class="mk-ku mk-mk"><span class="mk-label">Makurakotoba</span><span class="mk-ja">白妙の</span><span class="mk-ro" lang="ja-Latn">shirotaheno</span></span>
+              <span class="mk-break"></span>
+              <span class="mk-ku"><span class="mk-ja"><span class="mk-t">衣</span>ほすてふ</span><span class="mk-ro" lang="ja-Latn">koromohosutefu</span></span>
+              <span class="mk-ku"><span class="mk-ja">天の香具山</span><span class="mk-ro" lang="ja-Latn">amanokaguyama</span></span>
+              </p>
+            </figure>
+          </a>
+          <p class="mk-trans">Spring has passed and summer seems to have come — white robes are said to be hung out to dry on the heavenly Mount Kagu.</p>
+          <p class="kome"><em>Shirotae no</em> refers to pure-white cloth woven from the fibers of tree bark. Here it leads into <em>koromo</em> (robes).</p>
+        </section>
+
+        <section class="sample" id="03">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/3_en.html">Poem 3: Kakinomoto no Hitomaro</a></h2>
+          <a href="https://hyakuninisshu.com/3_en.html" class="mk-link">
+            <figure class="mk-fig" aria-label="Poem 3: the pillow word あしびきの leads into 山鳥">
+              <p class="mk-poem" lang="ja">
+              <span class="mk-ku mk-mk"><span class="mk-label">Makurakotoba</span><span class="mk-ja">あしびきの</span><span class="mk-ro" lang="ja-Latn">ashibikino</span></span>
+              <span class="mk-ku"><span class="mk-ja"><span class="mk-t">山鳥</span>の尾の</span><span class="mk-ro" lang="ja-Latn">yamadorinoono</span></span>
+              <span class="mk-ku"><span class="mk-ja">しだり尾の</span><span class="mk-ro" lang="ja-Latn">shidariono</span></span>
+              <span class="mk-break"></span>
+              <span class="mk-ku"><span class="mk-ja">ながながし夜を</span><span class="mk-ro" lang="ja-Latn">naganagashiyoo</span></span>
+              <span class="mk-ku"><span class="mk-ja">ひとりかも寝む</span><span class="mk-ro" lang="ja-Latn">hitorikamonemu</span></span>
+              </p>
+            </figure>
+          </a>
+          <p class="mk-trans">As long as the trailing tail feathers of the mountain bird — through these long, long nights, must I sleep alone?</p>
+          <p class="kome">There are several theories about the origin of <em>ashibiki no</em>: one says it comes from the long, trailing ridgelines at the foot of a mountain, another that it describes dragging one's feet while climbing. It is a pillow word that leads into <em>yama</em> (mountain).</p>
+        </section>
+
+        <section class="sample" id="04">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/4_en.html">Poem 4: Yamabe no Akahito</a></h2>
+          <a href="https://hyakuninisshu.com/4_en.html" class="mk-link">
+            <figure class="mk-fig" aria-label="Poem 4: the pillow word 白妙の leads into 富士">
+              <p class="mk-poem" lang="ja">
+              <span class="mk-ku"><span class="mk-ja">田子の浦に</span><span class="mk-ro" lang="ja-Latn">tagonourani</span></span>
+              <span class="mk-ku"><span class="mk-ja">うちいでてみれば</span><span class="mk-ro" lang="ja-Latn">uchiidetemireba</span></span>
+              <span class="mk-ku mk-mk"><span class="mk-label">Makurakotoba</span><span class="mk-ja">白妙の</span><span class="mk-ro" lang="ja-Latn">shirotaheno</span></span>
+              <span class="mk-break"></span>
+              <span class="mk-ku"><span class="mk-ja"><span class="mk-t">富士</span>の高嶺に</span><span class="mk-ro" lang="ja-Latn">fujinotakaneni</span></span>
+              <span class="mk-ku"><span class="mk-ja">雪は降りつつ</span><span class="mk-ro" lang="ja-Latn">yukihafuritsutsu</span></span>
+              </p>
+            </figure>
+          </a>
+          <p class="mk-trans">Going out to Tago Bay and looking around, I see snow falling ceaselessly on the high peak of Fuji, white as freshly woven cloth.</p>
+          <p class="kome"><em>Shirotae no</em> refers to pure-white cloth woven from the fibers of tree bark. It is a pillow word that leads into words related to cloth, or to white things such as clouds, snow and waves. Here it leads into <em>Fuji</em>, whose high peak is white with snow.</p>
+        </section>
+
+        <section class="sample" id="17">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/17_en.html">Poem 17: Ariwara no Narihira Ason</a></h2>
+          <a href="https://hyakuninisshu.com/17_en.html" class="mk-link">
+            <figure class="mk-fig" aria-label="Poem 17: the pillow word ちはやぶる leads into 神">
+              <p class="mk-poem" lang="ja">
+              <span class="mk-ku mk-mk"><span class="mk-label">Makurakotoba</span><span class="mk-ja">ちはやぶる</span><span class="mk-ro" lang="ja-Latn">chihayaburu</span></span>
+              <span class="mk-ku"><span class="mk-ja"><span class="mk-t">神</span>代もきかず</span><span class="mk-ro" lang="ja-Latn">kamiyomokikazu</span></span>
+              <span class="mk-ku"><span class="mk-ja">竜田川</span><span class="mk-ro" lang="ja-Latn">tatsutagaha</span></span>
+              <span class="mk-break"></span>
+              <span class="mk-ku"><span class="mk-ja">から紅に</span><span class="mk-ro" lang="ja-Latn">karakurenaini</span></span>
+              <span class="mk-ku"><span class="mk-ja">水くくるとは</span><span class="mk-ro" lang="ja-Latn">mizukukurutoha</span></span>
+              </p>
+            </figure>
+          </a>
+          <p class="mk-trans">Even the ancient gods never heard of this — the Tatsuta River, dyeing its waters a deep crimson with fallen maple leaves.</p>
+          <p class="kome"><em>Chihayaburu</em> means fierce or mighty. It is a pillow word that leads into words such as <em>kami</em> (gods) and the place name Uji.</p>
+        </section>
+
+        <section class="sample" id="33">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/33_en.html">Poem 33: Ki no Tomonori</a></h2>
+          <a href="https://hyakuninisshu.com/33_en.html" class="mk-link">
+            <figure class="mk-fig" aria-label="Poem 33: the pillow word 久方の leads into 光">
+              <p class="mk-poem" lang="ja">
+              <span class="mk-ku mk-mk"><span class="mk-label">Makurakotoba</span><span class="mk-ja">久方の</span><span class="mk-ro" lang="ja-Latn">hisakatano</span></span>
+              <span class="mk-ku"><span class="mk-ja"><span class="mk-t">光</span>のどけき</span><span class="mk-ro" lang="ja-Latn">hikarinodokeki</span></span>
+              <span class="mk-ku"><span class="mk-ja">春の日に</span><span class="mk-ro" lang="ja-Latn">harunohini</span></span>
+              <span class="mk-break"></span>
+              <span class="mk-ku"><span class="mk-ja">しづ心なく</span><span class="mk-ro" lang="ja-Latn">shizukokoronaku</span></span>
+              <span class="mk-ku"><span class="mk-ja">花の散るらむ</span><span class="mk-ro" lang="ja-Latn">hananochiruramu</span></span>
+              </p>
+            </figure>
+          </a>
+          <p class="mk-trans">In the peaceful light of a spring day, why do the cherry blossoms scatter so restlessly?</p>
+          <p class="kome"><em>Hisakata no</em> is said to mean “the direction from which the sun shines.” It is a pillow word that leads into words related to the sky and the heavenly bodies. Here it leads into <em>hikari</em> (light).</p>
+        </section>
+
+        <section class="sample" id="76">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/76_en.html">Poem 76: Lay Novice of Hosshō-ji Temple, former Kampaku and Chancellor of the Realm</a></h2>
+          <a href="https://hyakuninisshu.com/76_en.html" class="mk-link">
+            <figure class="mk-fig" aria-label="Poem 76: the pillow word 久方の leads into 雲居">
+              <p class="mk-poem" lang="ja">
+              <span class="mk-ku"><span class="mk-ja">わたの原</span><span class="mk-ro" lang="ja-Latn">watanohara</span></span>
+              <span class="mk-ku"><span class="mk-ja">こぎいでてみれば</span><span class="mk-ro" lang="ja-Latn">kogiidetemireba</span></span>
+              <span class="mk-ku mk-mk"><span class="mk-label">Makurakotoba</span><span class="mk-ja">久方の</span><span class="mk-ro" lang="ja-Latn">hisakatano</span></span>
+              <span class="mk-break"></span>
+              <span class="mk-ku"><span class="mk-ja"><span class="mk-t">雲居</span>にまがふ</span><span class="mk-ro" lang="ja-Latn">kumoinimagafu</span></span>
+              <span class="mk-ku"><span class="mk-ja">沖つ白波</span><span class="mk-ro" lang="ja-Latn">okitsushiranami</span></span>
+              </p>
+            </figure>
+          </a>
+          <p class="mk-trans">Rowing out onto the open sea and looking around — the white waves far off on the water seem to blur into the clouds.</p>
+          <p class="kome"><em>Hisakata no</em> is said to mean “the direction from which the sun shines.” It is a pillow word that leads into words related to the sky and the heavenly bodies. Here it leads into <em>kumoi</em> (the clouds; literally “where the clouds are”).</p>
+        </section>
+        <hr>
+        <h2 class="was-h3">Other Waka Techniques</h2>
+        <ul class="normal">
+          <li><a href="gihou-kakekotoba_en.html"><em>Kakekotoba</em> (Pivot Words) and <em>Engo</em> (Associated Words)</a>: One sound carrying two meanings, and words that echo one another</li>
+          <li><a href="gihou-jokotoba_en.html"><em>Jokotoba</em> (Preface Words)</a>: Scenes from nature that lead into the poet’s feelings</li>
+        </ul>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-copy">&copy;2023 Shigure no Hyakunin Isshu</span>
+      <ul>
+        <li><a href="policy_en.html">Privacy Policy</a></li>
+        <li>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXx7TKlqnTfKrw2Nuh4f37swVwFH-RFDsNkTGQ4JEF50q2wQ/viewform?usp=header"
+            target="_blank" rel="noopener">Contact Form</a>
+        </li>
+        <li><a href="https://x.com/shigurenotaifu" target="_blank" rel="noopener">Official X</a></li>
+      </ul>
+    </div>
+  </footer>
+  <!-- Footer end -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="../js/move_script.js?20260729"></script>
+  <script src="../js/makurakotoba-diagram.js?20261031-01"></script>
+</body>
+
+</html>

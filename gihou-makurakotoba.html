@@ -17,7 +17,7 @@
         "@id": "https://hyakuninisshu.com/gihou-makurakotoba.html"
       },
       "headline": "和歌の技法：枕詞",
-      "description": "百人一首に登場する枕詞についてまとめています。枕詞とは、特定の語句を導き出すために、5文字の言葉です。導き出す語句の直前に置かれ、語調を整えたり、ある種の情緒を添えたりします。",
+      "description": "百人一首に登場する枕詞についてまとめています。枕詞とは、特定の語句を導き出すための5文字の言葉です。導き出す語句の直前に置かれ、語調を整えたり、ある種の情緒を添えたりします。",
       "author": {
         "@type": "Person",
         "name": "石槫大輔",
@@ -69,17 +69,20 @@
   ]
   </script>
   <link rel="canonical" href="https://hyakuninisshu.com/gihou-makurakotoba.html">
+  <link rel="alternate" hreflang="ja" href="https://hyakuninisshu.com/gihou-makurakotoba.html">
+  <link rel="alternate" hreflang="en" href="https://hyakuninisshu.com/gihou-makurakotoba_en.html">
+  <link rel="alternate" hreflang="x-default" href="https://hyakuninisshu.com/gihou-makurakotoba.html">
   <!-- ogp -->
   <meta property="og:locale" content="ja_JP">
   <meta property="og:type" content="article">
   <meta property="og:title" content="時雨の百人一首 和歌の技法：枕詞">
-  <meta property="og:description" content="百人一首に登場する枕詞についてまとめています。枕詞とは、特定の語句を導き出すために、5文字の言葉です。導き出す語句の直前に置かれ、語調を整えたり、ある種の情緒を添えたりします。">
+  <meta property="og:description" content="百人一首に登場する枕詞についてまとめています。枕詞とは、特定の語句を導き出すための5文字の言葉です。導き出す語句の直前に置かれ、語調を整えたり、ある種の情緒を添えたりします。">
   <meta property="og:url" content="https://hyakuninisshu.com/gihou-makurakotoba.html">
   <meta property="og:site_name" content="時雨の百人一首">
   <meta property="og:image" content="https://hyakuninisshu.com/img/ogp_index.webp">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="description"
-    content="百人一首に登場する枕詞についてまとめています。枕詞とは、特定の語句を導き出すために、5文字の言葉です。導き出す語句の直前に置かれ、語調を整えたり、ある種の情緒を添えたりします。">
+    content="百人一首に登場する枕詞についてまとめています。枕詞とは、特定の語句を導き出すための5文字の言葉です。導き出す語句の直前に置かれ、語調を整えたり、ある種の情緒を添えたりします。">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
   <script>
@@ -105,6 +108,139 @@
   <!-- Cloudflare Web Analytics -->
   <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d2f01c23361b402aadede990ea58da0b"}'></script>
   <!-- End Cloudflare Web Analytics -->
+  <!-- Pillow-word diagrams: text is HTML, the arrow is drawn by js/makurakotoba-diagram.js -->
+  <style>
+    .mk-link {
+      display: block;
+      color: inherit;
+      text-decoration: none;
+    }
+    .mk-fig {
+      position: relative;
+      width: 80%;
+      margin: 0 auto 1em;
+      padding: 1.6rem 0 4px;
+    }
+    /* ラベルは枕詞の真上に置く */
+    .mk-label {
+      position: absolute;
+      bottom: 100%;
+      left: 0;
+      padding: 0.15em 0.5em;
+      background: #b82343;
+      color: #fff;
+      font-family: "Noto Sans", sans-serif;
+      font-size: 0.8rem;
+      font-weight: bold;
+      line-height: 1.3;
+      white-space: nowrap;
+      letter-spacing: 0.04em;
+    }
+    .mk-poem {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      column-gap: 0.8em;
+      row-gap: 2em; /* 折り返した行の上にもラベルが収まる高さ */
+      margin: 0;
+      font-family: "Noto Serif JP", serif;
+      font-weight: 700;
+    }
+    .mk-break {
+      flex-basis: 100%;
+      height: 0;
+    }
+    .mk-ku {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      white-space: nowrap;
+    }
+    .mk-ja {
+      font-size: 1.6rem;
+      line-height: 1.4;
+    }
+    .mk-ro {
+      font-family: "Noto Sans", sans-serif;
+      font-size: 0.8rem;
+      font-weight: 400;
+      line-height: 1.3;
+      color: #555;
+    }
+    .mk-mk {
+      position: relative;
+      padding: 0 0.15em 0.1em;
+      background: rgba(184, 35, 67, 0.2);
+    }
+    .mk-t {
+      text-decoration: underline double #b82343;
+      text-underline-offset: 0.15em;
+    }
+    .mk-arrow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      overflow: visible;
+      pointer-events: none;
+    }
+    .mk-trans {
+      margin-top: 0;
+      font-style: italic;
+    }
+    @media (max-width: 1000px) {
+      .mk-fig {
+        width: 100%;
+      }
+      .mk-ja {
+        font-size: 1.3rem;
+      }
+    }
+      .mk-ja rt,
+    .kk-ja rt,
+    .jk-ja rt {
+      font-size: 0.45em;
+      font-weight: 400;
+    }
+    /* 日本語は斜体にしない */
+    .mk-trans,
+    .kk-trans,
+    .jk-trans {
+      font-style: normal;
+    }
+    .gihou-table-wrap {
+      overflow-x: auto;
+      margin-bottom: 1.5em;
+    }
+    .gihou-table {
+      border-collapse: collapse;
+      width: 100%;
+      background: #fff;
+    }
+    .gihou-table th,
+    .gihou-table td {
+      padding: 0.4em 0.7em;
+      border: 1px solid #d8cfb8;
+      text-align: left;
+      vertical-align: top;
+    }
+    /* 左の列は文字の長さに合わせ、残りの3列は均等に分ける */
+    .gihou-table tr > :first-child {
+      width: 1%;
+      white-space: nowrap;
+    }
+    .gihou-table tr > :not(:first-child) {
+      width: 33%;
+      min-width: 7.5em;
+    }
+    .gihou-table thead th {
+      background: #b82343;
+      color: #fff;
+    }
+    .gihou-table tbody th {
+      background: #efe6cc;
+      white-space: nowrap;
+    }
+  </style>
 </head>
 
 <body>
@@ -117,6 +253,7 @@
       <a href="index.html"><img src="../img/icon_top.svg?ver-02" alt="トップ" class="icon" width="67" height="22"></a>
       <a href="introduction.html" style="color:#333"><img src="/img/icon_column.svg?ver-02" alt="コラム" class="icon" width="67" height="22"></a>
       <a href="introduction-app.html" style="color:#333"><img src="/img/icon_app.svg?ver-02" alt="アプリ" class="icon" width="67" height="22"></a>
+      <a href="gihou-makurakotoba_en.html"><img src="/img/icon_lang.svg?ver-01" alt="English" class="icon" width="59" height="22"></a>
       <a href="list.html"><img src="/img/icon_search.svg?ver-04" alt="百人一首一覧" class="icon" width="59" height="22"></a>
     </div>
   </header>
@@ -135,70 +272,134 @@
         <hr>
         <h1>和歌の技法:<span style="display:inline-block;">枕詞</span></h1>
         <p>枕詞とは、特定の語句を導き出すための5文字の言葉です。導き出す語句の直前に置かれ、語調を整えたり、ある種の情緒を添えたりします。</p>
-        <!-- <ul class="normal">
-            <li>比喩によるもの</li>
-            <li>掛詞によるもの</li>
-            <li>同音の繰り返しによるもの</li>
-          </ul> -->
+        <p>下の図では、枕詞を<span style="background: rgba(184, 35, 67, 0.2); padding: 0 0.2em;">色付き</span>で、枕詞が導く語句を<span style="text-decoration: underline double #b82343; text-underline-offset: 0.15em;">二重下線</span>で示しています。図をタップすると、その歌のページを開きます。</p>
+
         <section class="sample" id="02">
           <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/2.html">2番歌 持統天皇</a></h2>
-          <a href="https://hyakuninisshu.com/2.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/makurakotoba_02.svg" alt="持統天皇の和歌の序詞">
+          <a href="https://hyakuninisshu.com/2.html" class="mk-link">
+            <figure class="mk-fig" aria-label="2番歌 持統天皇：枕詞「白妙の」が「衣」を導く">
+              <p class="mk-poem">
+              <span class="mk-ku"><span class="mk-ja"><ruby>春<rt>はる</rt></ruby><ruby>過<rt>す</rt></ruby>ぎて</span></span>
+              <span class="mk-ku"><span class="mk-ja"><ruby>夏<rt>なつ</rt></ruby><ruby>来<rt>き</rt></ruby>にけらし</span></span>
+              <span class="mk-ku mk-mk"><span class="mk-label">枕詞</span><span class="mk-ja"><ruby>白妙<rt>しろたえ</rt></ruby>の</span></span>
+              <span class="mk-break"></span>
+              <span class="mk-ku"><span class="mk-ja"><span class="mk-t"><ruby>衣<rt>ころも</rt></ruby></span>ほす<ruby>てふ<rt>ちょう</rt></ruby></span></span>
+              <span class="mk-ku"><span class="mk-ja"><ruby>天<rt>あま</rt></ruby>の<ruby>香具山<rt>かぐやま</rt></ruby></span></span>
+              </p>
             </figure>
           </a>
+          <p class="mk-trans">【現代語訳】春は過ぎ去り、夏が来たようだ。夏になると衣が干されるという天の香具山に白い衣が干されているよ。</p>
           <p class="kome">「白妙の」とは、樹皮の繊維で織った真っ白な布のことです。</p>
         </section>
 
         <section class="sample" id="03">
           <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/3.html">3番歌 柿本人麻呂</a></h2>
-          <a href="https://hyakuninisshu.com/3.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/makurakotoba_03.svg" alt="柿本人麻呂の和歌の序詞">
+          <a href="https://hyakuninisshu.com/3.html" class="mk-link">
+            <figure class="mk-fig" aria-label="3番歌 柿本人麻呂：枕詞「あしびきの」が「山鳥」を導く">
+              <p class="mk-poem">
+              <span class="mk-ku mk-mk"><span class="mk-label">枕詞</span><span class="mk-ja">あしびきの</span></span>
+              <span class="mk-ku"><span class="mk-ja"><span class="mk-t"><ruby>山鳥<rt>やまどり</rt></ruby></span>の<ruby>尾<rt>お</rt></ruby>の</span></span>
+              <span class="mk-ku"><span class="mk-ja">しだり<ruby>尾<rt>お</rt></ruby>の</span></span>
+              <span class="mk-break"></span>
+              <span class="mk-ku"><span class="mk-ja">ながながし<ruby>夜<rt>よ</rt></ruby>を</span></span>
+              <span class="mk-ku"><span class="mk-ja">ひとりかも<ruby>寝<rt>ね</rt></ruby><ruby>む<rt>ん</rt></ruby></span></span>
+              </p>
             </figure>
           </a>
-          <p class="kome">「あしひきの」の語源にはいくつか説がありますが、山の裾野の稜線が長く引くからという説や登山するときに足をひきずるように歩くからという説があります。山を導く枕詞です。</p>
+          <p class="mk-trans">【現代語訳】山鳥の垂れ下がる尾のような長い長い夜を独りさびしく寝るのだろうか。</p>
+          <p class="kome">「あしびきの」（「あしひきの」とも）の語源にはいくつか説がありますが、山の裾野の稜線が長く引くからという説や登山するときに足をひきずるように歩くからという説があります。山を導く枕詞です。</p>
         </section>
 
         <section class="sample" id="04">
           <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/4.html">4番歌 山部赤人</a></h2>
-          <a href="https://hyakuninisshu.com/4.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/makurakotoba_04.svg" alt="山部赤人の和歌の序詞">
+          <a href="https://hyakuninisshu.com/4.html" class="mk-link">
+            <figure class="mk-fig" aria-label="4番歌 山部赤人：枕詞「白妙の」が「富士」を導く">
+              <p class="mk-poem">
+              <span class="mk-ku"><span class="mk-ja"><ruby>田子<rt>たご</rt></ruby>の<ruby>浦<rt>うら</rt></ruby>に</span></span>
+              <span class="mk-ku"><span class="mk-ja">うちいでてみれば</span></span>
+              <span class="mk-ku mk-mk"><span class="mk-label">枕詞</span><span class="mk-ja"><ruby>白妙<rt>しろたえ</rt></ruby>の</span></span>
+              <span class="mk-break"></span>
+              <span class="mk-ku"><span class="mk-ja"><span class="mk-t"><ruby>富士<rt>ふじ</rt></ruby></span>の<ruby>高嶺<rt>たかね</rt></ruby>に</span></span>
+              <span class="mk-ku"><span class="mk-ja"><ruby>雪<rt>ゆき</rt></ruby>は<ruby>降<rt>ふ</rt></ruby>りつつ</span></span>
+              </p>
             </figure>
           </a>
-          <p class="kome">「白妙の」とは、樹皮の繊維で織った真っ白な布のことです。布に関する語句や白色である雲や雪、波などの語句を導く枕詞です。</p>
+          <p class="mk-trans">【現代語訳】田子の浦に出てみたら、富士の高嶺に真っ白な布を被せたように雪がしきりに降っているよ。</p>
+          <p class="kome">「白妙の」とは、樹皮の繊維で織った真っ白な布のことです。布に関する語句や白色である雲や雪、波などの語句を導く枕詞です。この歌では、雪をいただいて白く輝く「富士」を導いています。</p>
         </section>
 
         <section class="sample" id="17">
           <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/17.html">17番歌 在原業平</a></h2>
-          <a href="https://hyakuninisshu.com/17.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/makurakotoba_17.svg" alt="在原業平の和歌の序詞">
+          <a href="https://hyakuninisshu.com/17.html" class="mk-link">
+            <figure class="mk-fig" aria-label="17番歌 在原業平：枕詞「ちはやぶる」が「神」を導く">
+              <p class="mk-poem">
+              <span class="mk-ku mk-mk"><span class="mk-label">枕詞</span><span class="mk-ja">ちはやぶる</span></span>
+              <span class="mk-ku"><span class="mk-ja"><span class="mk-t"><ruby>神<rt>かみ</rt></ruby></span><ruby>代<rt>よ</rt></ruby>もきかず</span></span>
+              <span class="mk-ku"><span class="mk-ja"><ruby>竜田川<rt>たつたがわ</rt></ruby></span></span>
+              <span class="mk-break"></span>
+              <span class="mk-ku"><span class="mk-ja">から<ruby>紅<rt>くれない</rt></ruby>に</span></span>
+              <span class="mk-ku"><span class="mk-ja"><ruby>水<rt>みず</rt></ruby>くくるとは</span></span>
+              </p>
             </figure>
           </a>
-          <p class="kome">「ちはやふる」は、勢いが激しいという意味を持っています。「神」や「宇治」といった語句を導く枕詞です。</p>
+          <p class="mk-trans">【現代語訳】神話の世界でもこんなに美しい景色があっただろうか。紅葉が竜田川を唐紅色に絞り染め上げているよ。</p>
+          <p class="kome">「ちはやふる」は、勢いが激しいという意味を持っています。「神」や地名の「宇治」といった語句を導く枕詞です。</p>
         </section>
 
         <section class="sample" id="33">
           <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/33.html">33番歌 紀友則</a></h2>
-          <a href="https://hyakuninisshu.com/33.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/makurakotoba_33.svg" alt="紀友則の和歌の序詞">
+          <a href="https://hyakuninisshu.com/33.html" class="mk-link">
+            <figure class="mk-fig" aria-label="33番歌 紀友則：枕詞「久方の」が「光」を導く">
+              <p class="mk-poem">
+              <span class="mk-ku mk-mk"><span class="mk-label">枕詞</span><span class="mk-ja"><ruby>久方<rt>ひさかた</rt></ruby>の</span></span>
+              <span class="mk-ku"><span class="mk-ja"><span class="mk-t"><ruby>光<rt>ひかり</rt></ruby></span>のどけき</span></span>
+              <span class="mk-ku"><span class="mk-ja"><ruby>春<rt>はる</rt></ruby>の<ruby>日<rt>ひ</rt></ruby>に</span></span>
+              <span class="mk-break"></span>
+              <span class="mk-ku"><span class="mk-ja">しづ<ruby>心<rt>こころ</rt></ruby>なく</span></span>
+              <span class="mk-ku"><span class="mk-ja"><ruby>花<rt>はな</rt></ruby>の<ruby>散<rt>ち</rt></ruby>るら<ruby>む<rt>ん</rt></ruby></span></span>
+              </p>
             </figure>
           </a>
-          <p class="kome">「久方の」は、日射す方という意味を持っています。天体に関係のある語句を導く枕詞です。</p>
+          <p class="mk-trans">【現代語訳】うららかな春の日に桜の花はどうしてせわしなく散ってしまうのでしょう。</p>
+          <p class="kome">「久方の」は、日射す方という意味を持っています。天体に関係のある語句を導く枕詞です。この歌では「光」を導いています。</p>
         </section>
 
         <section class="sample" id="76">
           <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/76.html">76番歌 法性寺入道前関白太政大臣</a></h2>
-          <a href="https://hyakuninisshu.com/76.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/makurakotoba_76.svg" alt="法性寺入道前関白太政大臣の和歌の序詞">
+          <a href="https://hyakuninisshu.com/76.html" class="mk-link">
+            <figure class="mk-fig" aria-label="76番歌 法性寺入道前関白太政大臣：枕詞「久方の」が「雲居」を導く">
+              <p class="mk-poem">
+              <span class="mk-ku"><span class="mk-ja">わたの<ruby>原<rt>はら</rt></ruby></span></span>
+              <span class="mk-ku"><span class="mk-ja">こぎいでてみれば</span></span>
+              <span class="mk-ku mk-mk"><span class="mk-label">枕詞</span><span class="mk-ja"><ruby>久方<rt>ひさかた</rt></ruby>の</span></span>
+              <span class="mk-break"></span>
+              <span class="mk-ku"><span class="mk-ja"><span class="mk-t"><ruby>雲<rt>くも</rt></ruby><ruby>居<rt>い</rt></ruby></span>にま<ruby>が<rt>ご</rt></ruby><ruby>ふ<rt>う</rt></ruby></span></span>
+              <span class="mk-ku"><span class="mk-ja"><ruby>沖<rt>おき</rt></ruby>つ<ruby>白波<rt>しらなみ</rt></ruby></span></span>
+              </p>
             </figure>
           </a>
-          <p class="kome">「久方の」は、日射す方という意味を持っています。天体に関係のある語句を導く枕詞です。</p>
+          <p class="mk-trans">【現代語訳】大海原に漕ぎ出してみれば、はるか沖に白雲に見間違えるほどの白波が立っていたよ。</p>
+          <p class="kome">「久方の」は、日射す方という意味を持っています。天体に関係のある語句を導く枕詞です。この歌では「雲居」（雲のあるところ、空）を導いています。</p>
         </section>
+        <hr>
+        <h2 class="was-h3">枕詞・序詞・掛詞の違い</h2>
+        <div class="gihou-table-wrap">
+          <table class="gihou-table">
+            <thead>
+              <tr><th></th><th>枕詞</th><th>序詞</th><th>掛詞</th></tr>
+            </thead>
+            <tbody>
+              <tr><th>長さ</th><td>5音</td><td>7音以上</td><td>1語</td></tr>
+              <tr><th>作り手</th><td>決まった言い方を使う</td><td>歌人がその歌のために作る</td><td>歌人がその歌のために作る</td></tr>
+              <tr><th>例</th><td>ひさかたの → 光</td><td>あしびきの山鳥の尾のしだり尾の → ながながし夜</td><td>ながめ → 眺め・長雨</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 class="was-h3">ほかの和歌の技法</h2>
+        <ul class="normal">
+          <li><a href="gihou-kakekotoba.html">掛詞と縁語</a>：一つの言葉に二つの意味を重ねる技と、響き合う言葉</li>
+          <li><a href="gihou-jokotoba.html">序詞</a>：景色から心へとつなぐ長い前置き</li>
+        </ul>
       </div>
     </div>
   </main>
@@ -219,6 +420,7 @@
   <!-- フッターここまで -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="../js/move_script.js?20260729"></script>
+  <script src="../js/makurakotoba-diagram.js?20261031-01"></script>
 </body>
 
 </html>

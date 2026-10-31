@@ -69,6 +69,9 @@
   ]
   </script>
   <link rel="canonical" href="https://hyakuninisshu.com/gihou-jokotoba.html">
+  <link rel="alternate" hreflang="ja" href="https://hyakuninisshu.com/gihou-jokotoba.html">
+  <link rel="alternate" hreflang="en" href="https://hyakuninisshu.com/gihou-jokotoba_en.html">
+  <link rel="alternate" hreflang="x-default" href="https://hyakuninisshu.com/gihou-jokotoba.html">
   <!-- ogp -->
   <meta property="og:locale" content="ja_JP">
   <meta property="og:type" content="article">
@@ -104,6 +107,152 @@
   <!-- Cloudflare Web Analytics -->
   <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d2f01c23361b402aadede990ea58da0b"}'></script>
   <!-- End Cloudflare Web Analytics -->
+  <!-- Jokotoba diagrams: text is HTML, the arrow is drawn by js/jokotoba-diagram.js -->
+  <style>
+    .jk-link {
+      display: block;
+      color: inherit;
+      text-decoration: none;
+    }
+    .jk-fig {
+      position: relative;
+      width: 85%;
+      margin: 0 auto 1em;
+      padding: 1.6rem 0 4px;
+    }
+    .jk-poem {
+      position: relative; /* 矢印の SVG より前面に出す */
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      column-gap: 0.8em;
+      row-gap: 2em; /* 折り返した行の上にもラベルが収まる高さ */
+      margin: 0;
+      font-family: "Noto Serif JP", serif;
+      font-weight: 700;
+    }
+    .jk-break {
+      flex-basis: 100%;
+      height: 0;
+    }
+    .jk-ku {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      white-space: nowrap;
+      background: #f7f1e0; /* 折り返した句をまたぐ線を隠す */
+    }
+    .jk-ja {
+      font-size: 1.5rem;
+      line-height: 1.5;
+    }
+    .jk-ro {
+      font-family: "Noto Sans", sans-serif;
+      font-size: 0.8rem;
+      font-weight: 400;
+      line-height: 1.3;
+      color: #555;
+    }
+    /* 序詞：句まるごとならローマ字まで、句の一部なら文字だけをハイライト */
+    .jk-jo {
+      position: relative;
+      background: rgba(184, 35, 67, 0.2);
+    }
+    .jk-ku.jk-jo {
+      padding: 0 0.15em 0.1em;
+    }
+    .jk-t {
+      text-decoration: underline double #b82343;
+      text-underline-offset: 0.15em;
+    }
+    /* ラベルは序詞の先頭の真上に置く */
+    .jk-label {
+      position: absolute;
+      bottom: 100%;
+      left: 0;
+      padding: 0.15em 0.5em;
+      background: #b82343;
+      color: #fff;
+      font-family: "Noto Sans", sans-serif;
+      font-size: 0.8rem;
+      font-weight: bold;
+      line-height: 1.3;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+    .jk-arrow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      overflow: visible;
+      pointer-events: none;
+    }
+    .jk-type {
+      margin: 0 0 0.2em;
+      font-size: 0.9rem;
+      color: #555;
+    }
+    .jk-type strong {
+      color: #b82343;
+    }
+    .jk-trans {
+      margin-top: 0;
+      font-style: italic;
+    }
+    @media (max-width: 1000px) {
+      .jk-fig {
+        width: 100%;
+      }
+      .jk-ja {
+        font-size: 1.25rem;
+      }
+    }
+      .mk-ja rt,
+    .kk-ja rt,
+    .jk-ja rt {
+      font-size: 0.45em;
+      font-weight: 400;
+    }
+    /* 日本語は斜体にしない */
+    .mk-trans,
+    .kk-trans,
+    .jk-trans {
+      font-style: normal;
+    }
+    .gihou-table-wrap {
+      overflow-x: auto;
+      margin-bottom: 1.5em;
+    }
+    .gihou-table {
+      border-collapse: collapse;
+      width: 100%;
+      background: #fff;
+    }
+    .gihou-table th,
+    .gihou-table td {
+      padding: 0.4em 0.7em;
+      border: 1px solid #d8cfb8;
+      text-align: left;
+      vertical-align: top;
+    }
+    /* 左の列は文字の長さに合わせ、残りの3列は均等に分ける */
+    .gihou-table tr > :first-child {
+      width: 1%;
+      white-space: nowrap;
+    }
+    .gihou-table tr > :not(:first-child) {
+      width: 33%;
+      min-width: 7.5em;
+    }
+    .gihou-table thead th {
+      background: #b82343;
+      color: #fff;
+    }
+    .gihou-table tbody th {
+      background: #efe6cc;
+      white-space: nowrap;
+    }
+  </style>
 </head>
 
 <body>
@@ -116,6 +265,7 @@
       <a href="index.html"><img src="../img/icon_top.svg?ver-02" alt="トップ" class="icon" width="67" height="22"></a>
 <a href="introduction.html" style="color:#333"><img src="/img/icon_column.svg?ver-02" alt="コラム" class="icon" width="67" height="22"></a>
 <a href="introduction-app.html" style="color:#333"><img src="/img/icon_app.svg?ver-02" alt="アプリ" class="icon" width="67" height="22"></a>
+<a href="gihou-jokotoba_en.html"><img src="/img/icon_lang.svg?ver-01" alt="English" class="icon" width="59" height="22"></a>
 <a href="list.html"><img src="/img/icon_search.svg?ver-04" alt="百人一首一覧" class="icon" width="59" height="22"></a>
     </div>
   </header>
@@ -134,175 +284,337 @@
         <hr>
         <h1>和歌の技法:<span style="display:inline-block;">序詞</span></h1>
         <p>
-          序詞とは、言いたい言葉を導き出すために前置きとして用いられる言葉のことです。導き出す言葉を修飾し、歌のイメージを具体的にします。決まった言葉を使う枕詞とは違い、序詞は歌人が独自に作成します。また、枕詞は5文字ですが、序詞は7文字以上で構成されます。序詞は次の3種類に分類されます。
+          序詞とは、言いたい言葉を導き出すために前置きとして用いられる言葉のことです。導き出す言葉を修飾し、歌のイメージを具体的にします。決まった言葉を使う<a href="gihou-makurakotoba.html">枕詞</a>とは違い、序詞は歌人が独自に作成します。また、枕詞は5文字ですが、序詞は7文字以上で構成されます。序詞は次の3種類に分類されます。
         </p>
         <ul class="normal">
           <li>比喩によるもの</li>
-          <li>掛詞によるもの</li>
+          <li><a href="gihou-kakekotoba.html">掛詞</a>によるもの</li>
           <li>同音の繰り返しによるもの</li>
         </ul>
+        <p>下の図では、序詞を<span style="background: rgba(184, 35, 67, 0.2); padding: 0 0.2em;">色付き</span>で、序詞が導く言葉を<span style="text-decoration: underline double #b82343; text-underline-offset: 0.15em;">二重下線</span>で示しています。各歌の見出しの下には、序詞の種類を記しています。図をタップすると、その歌のページを開きます。</p>
+
         <section class="sample" id="03">
           <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/3.html">3番歌 柿本人麻呂</a></h2>
-          <a href="https://hyakuninisshu.com/3.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/joshi_03.svg" alt="柿本人麻呂の和歌の序詞">
+          <p class="jk-type">種類：<strong>比喩</strong></p>
+          <a href="https://hyakuninisshu.com/3.html" class="jk-link">
+            <figure class="jk-fig" aria-label="3番歌 柿本人麻呂：序詞「あしびきの山鳥の尾のしだり尾の」が「ながながし夜」を導く">
+            <p class="jk-poem">
+              <span class="jk-ku jk-jo"><span class="jk-label">序詞</span><span class="jk-ja">あしびきの</span></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja"><ruby>山鳥<rt>やまどり</rt></ruby>の<ruby>尾<rt>お</rt></ruby>の</span></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja">しだり<ruby>尾<rt>お</rt></ruby>の</span></span>
+              <span class="jk-break"></span>
+              <span class="jk-ku"><span class="jk-ja"><span class="jk-t">ながながし<ruby>夜<rt>よ</rt></ruby></span>を</span></span>
+              <span class="jk-ku"><span class="jk-ja">ひとりかも<ruby>寝<rt>ね</rt></ruby><ruby>む<rt>ん</rt></ruby></span></span>
+            </p>
             </figure>
           </a>
+          <p class="jk-trans">【現代語訳】山鳥の垂れ下がる尾のような長い長い夜を独りさびしく寝るのだろうか。</p>
           <p class="kome">「ながながし夜」を山鳥の垂れ下がった尾羽のようにと比喩で表現しています。</p>
         </section>
 
         <section class="sample" id="13">
           <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/13.html">13番歌 陽成院</a></h2>
-          <a href="https://hyakuninisshu.com/13.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/joshi_13.svg" alt="陽成院の和歌の掛詞">
+          <p class="jk-type">種類：<strong>掛詞</strong></p>
+          <a href="https://hyakuninisshu.com/13.html" class="jk-link">
+            <figure class="jk-fig" aria-label="13番歌 陽成院：序詞「筑波嶺の峰より落つるみなの川」が「こひ」を導く">
+            <p class="jk-poem">
+              <span class="jk-ku jk-jo"><span class="jk-label">序詞</span><span class="jk-ja"><ruby>筑波嶺<rt>つくばね</rt></ruby>の</span></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja"><ruby>峰<rt>みね</rt></ruby>より<ruby>落<rt>お</rt></ruby>つる</span></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja">みなの<ruby>川<rt>がわ</rt></ruby></span></span>
+              <span class="jk-break"></span>
+              <span class="jk-ku"><span class="jk-ja"><span class="jk-t">こひ</span>ぞつもりて</span></span>
+              <span class="jk-ku"><span class="jk-ja"><ruby>淵<rt>ふち</rt></ruby>となりぬる</span></span>
+            </p>
             </figure>
           </a>
+          <p class="jk-trans">【現代語訳】筑波山から流れ落ちるみなの川。一滴の雫が集まって川となり淵に溜まるようにあなたへの愛がどんどん大きくなり、淵のように深くなりました。</p>
           <p class="kome">「恋」と「水」の掛詞である「こひ」を導いています。</p>
         </section>
 
         <section class="sample" id="14">
           <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/14.html">14番歌 河原左大臣</a></h2>
-          <a href="https://hyakuninisshu.com/14.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/joshi_14.svg" alt="河原左大臣の和歌の序詞">
+          <p class="jk-type">種類：<strong>比喩</strong></p>
+          <a href="https://hyakuninisshu.com/14.html" class="jk-link">
+            <figure class="jk-fig" aria-label="14番歌 河原左大臣：序詞「陸奥のしのぶもぢずり」が「乱れ」を導く">
+            <p class="jk-poem">
+              <span class="jk-ku jk-jo"><span class="jk-label">序詞</span><span class="jk-ja"><ruby>陸奥<rt>みちのく</rt></ruby>の</span></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja">しのぶも<ruby>ぢ<rt>じ</rt></ruby>ずり</span></span>
+              <span class="jk-ku"><span class="jk-ja"><ruby>誰<rt>たれ</rt></ruby>ゆ<ruby>ゑ<rt>え</rt></ruby>に</span></span>
+              <span class="jk-break"></span>
+              <span class="jk-ku"><span class="jk-ja"><span class="jk-t"><ruby>乱<rt>みだ</rt></ruby>れ</span>そめにし</span></span>
+              <span class="jk-ku"><span class="jk-ja"><ruby>我<rt>われ</rt></ruby>ならなくに</span></span>
+            </p>
             </figure>
           </a>
+          <p class="jk-trans">【現代語訳】私の心は、陸奥産のしのぶもぢずりの乱れ模様のように乱れてしまった。私のせいではありませんよ。</p>
           <p class="kome">「乱れ」を陸奥のしのぶもぢずりの染め模様のようにと比喩で表現しています。</p>
         </section>
 
         <section class="sample" id="18">
           <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/18.html">18番歌 藤原敏行朝臣</a></h2>
-          <a href="https://hyakuninisshu.com/18.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/joshi_18.svg" alt="藤原敏行朝臣の和歌の序詞">
+          <p class="jk-type">種類：<strong>同音の繰り返し</strong></p>
+          <a href="https://hyakuninisshu.com/18.html" class="jk-link">
+            <figure class="jk-fig" aria-label="18番歌 藤原敏行朝臣：序詞「住の江の岸による波」が「よる」を導く">
+            <p class="jk-poem">
+              <span class="jk-ku jk-jo"><span class="jk-label">序詞</span><span class="jk-ja"><ruby>住<rt>すみ</rt></ruby>の<ruby>江<rt>え</rt></ruby>の</span></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja"><ruby>岸<rt>きし</rt></ruby>による<ruby>波<rt>なみ</rt></ruby></span></span>
+              <span class="jk-ku"><span class="jk-ja"><span class="jk-t">よる</span>さ<ruby>へ<rt>え</rt></ruby>や</span></span>
+              <span class="jk-break"></span>
+              <span class="jk-ku"><span class="jk-ja"><ruby>夢<rt>ゆめ</rt></ruby>のかよひ<ruby>路<rt>じ</rt></ruby></span></span>
+              <span class="jk-ku"><span class="jk-ja"><ruby>人目<rt>ひとめ</rt></ruby>よくら<ruby>む<rt>ん</rt></ruby></span></span>
+            </p>
             </figure>
           </a>
+          <p class="jk-trans">【現代語訳】波は住之江の岸に打ち寄せるけれども、あなたは昼間だけでなく、そのうえ夜の夢の通い道さえ人目を避けて、現れてくれないのでしょうか。</p>
           <p class="kome">「寄る」と「夜」の音を重ねています。</p>
         </section>
 
         <section class="sample" id="19">
           <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/19.html">19番歌 伊勢</a></h2>
-          <a href="https://hyakuninisshu.com/19.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/joshi_19.svg" alt="伊勢の和歌の序詞">
+          <p class="jk-type">種類：<strong>掛詞</strong></p>
+          <a href="https://hyakuninisshu.com/19.html" class="jk-link">
+            <figure class="jk-fig" aria-label="19番歌 伊勢：序詞「難波潟みじかき葦の」が「ふしのま」を導く">
+            <p class="jk-poem">
+              <span class="jk-ku jk-jo"><span class="jk-label">序詞</span><span class="jk-ja"><ruby>難波潟<rt>なにわがた</rt></ruby></span></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja">みじかき<ruby>葦<rt>あし</rt></ruby>の</span></span>
+              <span class="jk-ku"><span class="jk-ja"><span class="jk-t">ふしのま</span>も</span></span>
+              <span class="jk-break"></span>
+              <span class="jk-ku"><span class="jk-ja"><ruby>逢<rt>あ</rt></ruby><ruby>は<rt>わ</rt></ruby>でこの<ruby>世<rt>よ</rt></ruby>を</span></span>
+              <span class="jk-ku"><span class="jk-ja"><ruby>過<rt>す</rt></ruby>ぐしてよとや</span></span>
+            </p>
             </figure>
           </a>
+          <p class="jk-trans">【現代語訳】難波潟に生えている葦の節と節の間のような短い時間さえ会えないままこの世を終えてしまえとあなたは言うのでしょうか。</p>
           <p class="kome">「節と節の間」のような「わずかな時間」という掛詞を導いています。</p>
         </section>
 
         <section class="sample" id="27">
           <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/27.html">27番歌 中納言兼輔</a></h2>
-          <a href="https://hyakuninisshu.com/27.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/joshi_27.svg" alt="中納言兼輔の和歌の序詞">
+          <p class="jk-type">種類：<strong>同音の繰り返し</strong></p>
+          <a href="https://hyakuninisshu.com/27.html" class="jk-link">
+            <figure class="jk-fig" aria-label="27番歌 中納言兼輔：序詞「みかの原わきて流るるいづみ川」が「いつ見」を導く">
+            <p class="jk-poem">
+              <span class="jk-ku jk-jo"><span class="jk-label">序詞</span><span class="jk-ja">みかの<ruby>原<rt>はら</rt></ruby></span></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja">わきて<ruby>流<rt>なが</rt></ruby>るる</span></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja">い<ruby>づ<rt>ず</rt></ruby>み<ruby>川<rt>がわ</rt></ruby></span></span>
+              <span class="jk-break"></span>
+              <span class="jk-ku"><span class="jk-ja"><span class="jk-t">いつ<ruby>見<rt>み</rt></ruby></span>きとてか</span></span>
+              <span class="jk-ku"><span class="jk-ja"><ruby>恋<rt>こい</rt></ruby>しかるら<ruby>む<rt>ん</rt></ruby></span></span>
+            </p>
             </figure>
           </a>
-          <p class="kome">「いずみ」と「いつみ」の音を重ねています。</p>
+          <p class="jk-trans">【現代語訳】みかの原を分けるように湧き出て流れるいづみ川ではないけれど、あなたにいつお会いしたからといってこれほどまでに恋しいのでしょう。</p>
+          <p class="kome">「いづみ」と「いつ見」の音を重ねています。</p>
         </section>
 
         <section class="sample" id="39">
           <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/39.html">39番歌 参議等</a></h2>
-          <a href="https://hyakuninisshu.com/39.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/joshi_39.svg" alt="参議等の和歌の序詞">
+          <p class="jk-type">種類：<strong>同音の繰り返し</strong></p>
+          <a href="https://hyakuninisshu.com/39.html" class="jk-link">
+            <figure class="jk-fig" aria-label="39番歌 参議等：序詞「浅茅生の小野の篠原」が「しの」を導く">
+            <p class="jk-poem">
+              <span class="jk-ku jk-jo"><span class="jk-label">序詞</span><span class="jk-ja"><ruby>浅茅生<rt>あさじう</rt></ruby>の</span></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja"><ruby>小野<rt>おの</rt></ruby>の<ruby>篠原<rt>しのはら</rt></ruby></span></span>
+              <span class="jk-ku"><span class="jk-ja"><span class="jk-t">しの</span>ぶれど</span></span>
+              <span class="jk-break"></span>
+              <span class="jk-ku"><span class="jk-ja">あまりてなどか</span></span>
+              <span class="jk-ku"><span class="jk-ja"><ruby>人<rt>ひと</rt></ruby>の<ruby>恋<rt>こい</rt></ruby>しき</span></span>
+            </p>
             </figure>
           </a>
+          <p class="jk-trans">【現代語訳】浅茅生の野の篠原ではありませんが、心に忍ぼうとしてもこらえきれない。どうしてこれほどまでにあの人のことが恋しいのでしょうか。</p>
           <p class="kome">「篠」と「忍」の音を重ねています。</p>
         </section>
 
         <section class="sample" id="46">
           <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/46.html">46番歌 曾禰好忠</a></h2>
-          <a href="https://hyakuninisshu.com/46.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/joshi_46.svg" alt="曾禰好忠の和歌の序詞">
+          <p class="jk-type">種類：<strong>比喩</strong></p>
+          <a href="https://hyakuninisshu.com/46.html" class="jk-link">
+            <figure class="jk-fig" aria-label="46番歌 曾禰好忠：序詞「由良のとを渡る舟人」が「ゆくへも知らぬ」を導く">
+            <p class="jk-poem">
+              <span class="jk-ku jk-jo"><span class="jk-label">序詞</span><span class="jk-ja"><ruby>由良<rt>ゆら</rt></ruby>のとを</span></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja"><ruby>渡<rt>わた</rt></ruby>る<ruby>舟人<rt>ふなびと</rt></ruby></span></span>
+              <span class="jk-ku"><span class="jk-ja">か<ruby>ぢ<rt>じ</rt></ruby>を<ruby>絶<rt>た</rt></ruby>え</span></span>
+              <span class="jk-break"></span>
+              <span class="jk-ku"><span class="jk-ja"><span class="jk-t">ゆくへも<ruby>知<rt>し</rt></ruby>らぬ</span></span></span>
+              <span class="jk-ku"><span class="jk-ja"><ruby>恋<rt>こい</rt></ruby>の<ruby>道<rt>みち</rt></ruby>かな</span></span>
+            </p>
             </figure>
           </a>
+          <p class="jk-trans">【現代語訳】由良の河口を渡る船人が、櫂をなくして漂うように行方の知れない恋路であることよ。</p>
           <p class="kome">「行方を知れない」を由良の河口を渡る船人が櫂をなくして漂うようにと比喩で表現しています。</p>
         </section>
 
         <section class="sample" id="48">
           <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/48.html">48番歌 源重之</a></h2>
-          <a href="https://hyakuninisshu.com/48.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/joshi_48.svg" alt="源重之の和歌の序詞">
+          <p class="jk-type">種類：<strong>比喩</strong></p>
+          <a href="https://hyakuninisshu.com/48.html" class="jk-link">
+            <figure class="jk-fig" aria-label="48番歌 源重之：序詞「風をいたみ岩うつ波の」が「おのれのみ」を導く">
+            <p class="jk-poem">
+              <span class="jk-ku jk-jo"><span class="jk-label">序詞</span><span class="jk-ja"><ruby>風<rt>かぜ</rt></ruby>をいたみ</span></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja"><ruby>岩<rt>いわ</rt></ruby>うつ<ruby>波<rt>なみ</rt></ruby>の</span></span>
+              <span class="jk-ku"><span class="jk-ja"><span class="jk-t">おのれのみ</span></span></span>
+              <span class="jk-break"></span>
+              <span class="jk-ku"><span class="jk-ja">くだけて<ruby>物<rt>もの</rt></ruby>を</span></span>
+              <span class="jk-ku"><span class="jk-ja"><ruby>思<rt>おも</rt></ruby><ruby>ふ<rt>う</rt></ruby>ころかな</span></span>
+            </p>
             </figure>
           </a>
-          <p class="kome">「おのれのみ」を風が激しく、岩に打ちつける波のようにと比喩で表現しています。
-          </p>
+          <p class="jk-trans">【現代語訳】風が激しく吹くので、岩に打ち寄せる波がひとりでに砕け散るように、私だけ心を砕かれて、物思いをするこの頃ですよ。</p>
+          <p class="kome">「おのれのみ」を風が激しく、岩に打ちつける波のようにと比喩で表現しています。</p>
         </section>
 
         <section class="sample" id="49">
           <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/49.html">49番歌 大中臣能宣朝臣</a></h2>
-          <a href="https://hyakuninisshu.com/49.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/joshi_49.svg" alt="大中臣能宣朝臣の和歌の序詞">
+          <p class="jk-type">種類：<strong>比喩</strong></p>
+          <a href="https://hyakuninisshu.com/49.html" class="jk-link">
+            <figure class="jk-fig" aria-label="49番歌 大中臣能宣朝臣：序詞「御垣守衛士のたく火の」が「夜はもえ」を導く">
+            <p class="jk-poem">
+              <span class="jk-ku jk-jo"><span class="jk-label">序詞</span><span class="jk-ja"><ruby>御垣守<rt>みかきもり</rt></ruby></span></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja"><ruby>衛士<rt>えじ</rt></ruby>のたく<ruby>火<rt>ひ</rt></ruby>の</span></span>
+              <span class="jk-ku"><span class="jk-ja"><span class="jk-t"><ruby>夜<rt>よる</rt></ruby>はもえ</span></span></span>
+              <span class="jk-break"></span>
+              <span class="jk-ku"><span class="jk-ja"><ruby>昼<rt>ひる</rt></ruby>は<ruby>消<rt>き</rt></ruby>えつつ</span></span>
+              <span class="jk-ku"><span class="jk-ja"><ruby>物<rt>もの</rt></ruby>をこそ<ruby>思<rt>おも</rt></ruby><ruby>へ<rt>え</rt></ruby></span></span>
+            </p>
             </figure>
           </a>
-          <p class="kome">「夜はもえ」を御垣守である衛士が焚く火のようにと比喩で表現しています。
-          </p>
+          <p class="jk-trans">【現代語訳】警護の兵士が燃やす篝火が、夜は燃えて昼は消えているように、私の恋心は夜に燃え、昼は消え入るように沈んでは物思いにふけっています。</p>
+          <p class="kome">「夜はもえ」を御垣守である衛士が焚く火のようにと比喩で表現しています。</p>
         </section>
 
         <section class="sample" id="51">
           <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/51.html">51番歌 藤原実方朝臣</a></h2>
-          <a href="https://hyakuninisshu.com/51.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/joshi_51.svg" alt="藤原実方朝臣の和歌の序詞">
+          <p class="jk-type">種類：<strong>同音の繰り返し</strong></p>
+          <a href="https://hyakuninisshu.com/51.html" class="jk-link">
+            <figure class="jk-fig" aria-label="51番歌 藤原実方朝臣：序詞「いぶきのさしも草」が「さしも」を導く">
+            <p class="jk-poem">
+              <span class="jk-ku"><span class="jk-ja">かくとだに</span></span>
+              <span class="jk-ku"><span class="jk-ja">えやは<span class="jk-jo"><span class="jk-label">序詞</span>いぶきの</span></span></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja">さしも<ruby>草<rt>ぐさ</rt></ruby></span></span>
+              <span class="jk-break"></span>
+              <span class="jk-ku"><span class="jk-ja"><span class="jk-t">さしも</span><ruby>知<rt>し</rt></ruby>らじな</span></span>
+              <span class="jk-ku"><span class="jk-ja">もゆる<ruby>思<rt>おも</rt></ruby><ruby>ひ<rt>い</rt></ruby>を</span></span>
+            </p>
             </figure>
           </a>
+          <p class="jk-trans">【現代語訳】これほどまでに恋焦がれているとあなたに言えるでしょうか。伊吹山のさしも草ではありませんが、それほどまでとはあなたはご存知ないでしょう。私の（お灸のように熱い）燃える想いを。</p>
           <p class="kome">「さしも草」と「さしも」で言葉の響きを強調しています。</p>
         </section>
 
         <section class="sample" id="58">
           <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/58.html">58番歌 大弐三位</a></h2>
-          <a href="https://hyakuninisshu.com/58.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/joshi_58.svg" alt="大弐三位の和歌の序詞">
+          <p class="jk-type">種類：<strong>同音の繰り返し</strong></p>
+          <a href="https://hyakuninisshu.com/58.html" class="jk-link">
+            <figure class="jk-fig" aria-label="58番歌 大弐三位：序詞「ありま山猪名の笹原風吹けば」が「そよ」を導く">
+            <p class="jk-poem">
+              <span class="jk-ku jk-jo"><span class="jk-label">序詞</span><span class="jk-ja">ありま<ruby>山<rt>やま</rt></ruby></span></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja"><ruby>猪名<rt>いな</rt></ruby>の<ruby>笹原<rt>ささはら</rt></ruby></span></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja"><ruby>風<rt>かぜ</rt></ruby><ruby>吹<rt>ふ</rt></ruby>けば</span></span>
+              <span class="jk-break"></span>
+              <span class="jk-ku"><span class="jk-ja">いで<span class="jk-t">そよ</span><ruby>人<rt>ひと</rt></ruby>を</span></span>
+              <span class="jk-ku"><span class="jk-ja"><ruby>忘<rt>わす</rt></ruby>れやはする</span></span>
+            </p>
             </figure>
           </a>
+          <p class="jk-trans">【現代語訳】有馬山に近い猪名の笹原に風が吹きそよそよと音が響きわたります。さぁそうですよ。私があなたのことを忘れられるでしょうか。いいえ忘れられません。</p>
           <p class="kome">風に笹がそよぐことから、「そよ」という言葉を導いています。</p>
         </section>
 
         <section class="sample" id="77">
           <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/77.html">77番歌 崇徳院</a></h2>
-          <a href="https://hyakuninisshu.com/77.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/joshi_77.svg" alt="崇徳院の和歌の序詞">
+          <p class="jk-type">種類：<strong>比喩</strong></p>
+          <a href="https://hyakuninisshu.com/77.html" class="jk-link">
+            <figure class="jk-fig" aria-label="77番歌 崇徳院：序詞「瀬をはやみ岩にせかるる滝川の」が「われても末に・あはむ」を導く">
+            <p class="jk-poem">
+              <span class="jk-ku jk-jo"><span class="jk-label">序詞</span><span class="jk-ja"><ruby>瀬<rt>せ</rt></ruby>をはやみ</span></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja"><ruby>岩<rt>いわ</rt></ruby>にせかるる</span></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja"><ruby>滝川<rt>たきがわ</rt></ruby>の</span></span>
+              <span class="jk-break"></span>
+              <span class="jk-ku"><span class="jk-ja"><span class="jk-t">われても<ruby>末<rt>すえ</rt></ruby>に</span></span></span>
+              <span class="jk-ku"><span class="jk-ja"><span class="jk-t">あ<ruby>は<rt>わ</rt></ruby><ruby>む<rt>ん</rt></ruby></span>とぞ<ruby>思<rt>おも</rt></ruby><ruby>ふ<rt>う</rt></ruby></span></span>
+            </p>
             </figure>
           </a>
-          <p class="kome">「あなたと別れてもいつかはまた会いたい」という気持ちを川瀬の流れが速いので、岩にせきとめられた滝川が割れてもまた合わさるようにと比喩で表現しています。
-          </p>
+          <p class="jk-trans">【現代語訳】川瀬の流れが速く、岩にせきとめられた滝川のようにあなたと別れてもいつかはまた会いたいと思う。</p>
+          <p class="kome">「あなたと別れてもいつかはまた会いたい」という気持ちを川瀬の流れが速いので、岩にせきとめられた滝川が割れてもまた合わさるようにと比喩で表現しています。</p>
         </section>
 
         <section class="sample" id="88">
           <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/88.html">88番歌 皇嘉門院別当</a></h2>
-          <a href="https://hyakuninisshu.com/88.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/joshi_88.svg" alt="皇嘉門院別当の和歌の序詞">
+          <p class="jk-type">種類：<strong>掛詞</strong></p>
+          <a href="https://hyakuninisshu.com/88.html" class="jk-link">
+            <figure class="jk-fig" aria-label="88番歌 皇嘉門院別当：序詞「難波江の葦の」が「かりね」を導く">
+            <p class="jk-poem">
+              <span class="jk-ku jk-jo"><span class="jk-label">序詞</span><span class="jk-ja"><ruby>難波江<rt>なにわえ</rt></ruby>の</span></span>
+              <span class="jk-ku"><span class="jk-ja"><span class="jk-jo"><ruby>葦<rt>あし</rt></ruby>の</span><span class="jk-t">かりね</span>の</span></span>
+              <span class="jk-ku"><span class="jk-ja">ひとよゆ<ruby>ゑ<rt>え</rt></ruby></span></span>
+              <span class="jk-break"></span>
+              <span class="jk-ku"><span class="jk-ja">みをつくしてや</span></span>
+              <span class="jk-ku"><span class="jk-ja"><ruby>恋<rt>こ</rt></ruby><ruby>ひ<rt>い</rt></ruby>わたるべき</span></span>
+            </p>
             </figure>
           </a>
+          <p class="jk-trans">【現代語訳】難波の入り江に生えている葦を刈った根の短い一節ではありませんが、一夜の共寝をしたために、私は難波の澪標のように身を尽くし、あの人を恋い慕い続けなくてはいけないのでしょうか。</p>
           <p class="kome">「刈り根」と「仮り寝」の掛詞である「かりね」を導いています。</p>
         </section>
 
         <section class="sample" id="92">
           <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/92.html">92番歌 二条院讃岐</a></h2>
-          <a href="https://hyakuninisshu.com/92.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/joshi_92.svg" alt="二条院讃岐の和歌の序詞">
+          <p class="jk-type">種類：<strong>比喩</strong></p>
+          <a href="https://hyakuninisshu.com/92.html" class="jk-link">
+            <figure class="jk-fig" aria-label="92番歌 二条院讃岐：序詞「潮干に見えぬ沖の石の」が「人こそ知らね・かわくまもなし」を導く">
+            <p class="jk-poem">
+              <span class="jk-ku"><span class="jk-ja">わが<ruby>袖<rt>そで</rt></ruby>は</span></span>
+              <span class="jk-ku jk-jo"><span class="jk-label">序詞</span><span class="jk-ja"><ruby>潮干<rt>しおひ</rt></ruby>に<ruby>見<rt>み</rt></ruby>えぬ</span></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja"><ruby>沖<rt>おき</rt></ruby>の<ruby>石<rt>いし</rt></ruby>の</span></span>
+              <span class="jk-break"></span>
+              <span class="jk-ku"><span class="jk-ja"><span class="jk-t"><ruby>人<rt>ひと</rt></ruby>こそ<ruby>知<rt>し</rt></ruby>らね</span></span></span>
+              <span class="jk-ku"><span class="jk-ja"><span class="jk-t">かわくまもなし</span></span></span>
+            </p>
             </figure>
           </a>
+          <p class="jk-trans">【現代語訳】私の袖は潮干のときも見えない沖の石のように、人に知られることはないけれども、涙で濡れて乾く暇もない。</p>
           <p class="kome">「人知れずわたしの袖は乾く暇もない」という表現を「引き潮の時でさえ姿を見せない沖の石のように」と比喩で表現しています。</p>
         </section>
 
         <section class="sample" id="97">
           <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/97.html">97番歌 権中納言定家</a></h2>
-          <a href="https://hyakuninisshu.com/97.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/joshi_97.svg" alt="権中納言定家の和歌の序詞">
+          <p class="jk-type">種類：<strong>比喩</strong></p>
+          <a href="https://hyakuninisshu.com/97.html" class="jk-link">
+            <figure class="jk-fig" aria-label="97番歌 権中納言定家：序詞「松帆の浦の夕なぎに焼くやもしほの」が「こがれ」を導く">
+            <p class="jk-poem">
+              <span class="jk-ku"><span class="jk-ja"><ruby>来<rt>こ</rt></ruby>ぬ<ruby>人<rt>ひと</rt></ruby>を</span></span>
+              <span class="jk-ku jk-jo"><span class="jk-label">序詞</span><span class="jk-ja"><ruby>松帆<rt>まつほ</rt></ruby>の<ruby>浦<rt>うら</rt></ruby>の</span></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja"><ruby>夕<rt>ゆう</rt></ruby>なぎに</span></span>
+              <span class="jk-break"></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja"><ruby>焼<rt>や</rt></ruby>くやもしほの</span></span>
+              <span class="jk-ku"><span class="jk-ja"><ruby>身<rt>み</rt></ruby>も<span class="jk-t">こがれ</span>つつ</span></span>
+            </p>
             </figure>
           </a>
+          <p class="jk-trans">【現代語訳】来てくれない恋人を待ち続け、夕凪どきに松帆の浦で焼かれる藻塩のように我が身も恋に焦がれています。</p>
           <p class="kome">焦がれる気持ちを夕凪どきに松帆の浦で焼かれる海藻のようにと比喩で表現しています。</p>
         </section>
+        <hr>
+        <h2 class="was-h3">枕詞・序詞・掛詞の違い</h2>
+        <div class="gihou-table-wrap">
+          <table class="gihou-table">
+            <thead>
+              <tr><th></th><th>枕詞</th><th>序詞</th><th>掛詞</th></tr>
+            </thead>
+            <tbody>
+              <tr><th>長さ</th><td>5音</td><td>7音以上</td><td>1語</td></tr>
+              <tr><th>作り手</th><td>決まった言い方を使う</td><td>歌人がその歌のために作る</td><td>歌人がその歌のために作る</td></tr>
+              <tr><th>例</th><td>ひさかたの → 光</td><td>あしびきの山鳥の尾のしだり尾の → ながながし夜</td><td>ながめ → 眺め・長雨</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 class="was-h3">ほかの和歌の技法</h2>
+        <ul class="normal">
+          <li><a href="gihou-makurakotoba.html">枕詞</a>：「あしびきの」「ひさかたの」など、決まった5音の言葉</li>
+          <li><a href="gihou-kakekotoba.html">掛詞と縁語</a>：一つの言葉に二つの意味を重ねる技と、響き合う言葉</li>
+        </ul>
 
 
 
@@ -329,6 +641,7 @@
   <!-- フッターここまで -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="../js/move_script.js?20260729"></script>
+  <script src="../js/jokotoba-diagram.js?20261031-01"></script>
 </body>
 
 </html>

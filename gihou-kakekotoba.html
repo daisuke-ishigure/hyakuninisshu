@@ -69,6 +69,9 @@
   ]
   </script>
   <link rel="canonical" href="https://hyakuninisshu.com/gihou-kakekotoba.html">
+  <link rel="alternate" hreflang="ja" href="https://hyakuninisshu.com/gihou-kakekotoba.html">
+  <link rel="alternate" hreflang="en" href="https://hyakuninisshu.com/gihou-kakekotoba_en.html">
+  <link rel="alternate" hreflang="x-default" href="https://hyakuninisshu.com/gihou-kakekotoba.html">
   <!-- ogp -->
   <meta property="og:locale" content="ja_JP">
   <meta property="og:type" content="article">
@@ -104,6 +107,275 @@
   <!-- Cloudflare Web Analytics -->
   <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d2f01c23361b402aadede990ea58da0b"}'></script>
   <!-- End Cloudflare Web Analytics -->
+  <!-- Kakekotoba diagrams: text is HTML; js/kakekotoba-diagram.js aligns the callouts and draws the lines -->
+  <style>
+    .kk-link {
+      display: block;
+      color: inherit;
+      text-decoration: none;
+    }
+    .kk-fig {
+      position: relative;
+      width: 85%;
+      margin: 0 auto 0.6em;
+    }
+    .kk-lines {
+      position: absolute;
+      top: 0;
+      left: 0;
+      overflow: visible;
+      pointer-events: none;
+    }
+    .kk-line {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      column-gap: 0.8em;
+      row-gap: 1em;
+      margin: 0 0 1em;
+      font-family: "Noto Serif JP", serif;
+      font-weight: 700;
+    }
+    /* 線は句の後ろを通す（折り返した行をまたぐとき、句の背景で隠れる） */
+    .kk-ku {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      white-space: nowrap;
+      background: #f7f1e0;
+    }
+    /* 掛詞を含む句は背景を付けない（掛詞の枠から出る線を、ローマ字の後ろでも見せる） */
+    .kk-ku--k {
+      background: none;
+    }
+    /* 線と重なるローマ字に白フチを付けて読みやすくする */
+    .kk-ku--k .kk-ro {
+      text-shadow:
+        1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff,
+        1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+    }
+    .kk-ja {
+      font-size: 1.5rem;
+      line-height: 1.5;
+    }
+    .kk-ro {
+      font-family: "Noto Sans", sans-serif;
+      font-size: 0.8rem;
+      font-weight: 400;
+      line-height: 1.3;
+      color: #555;
+    }
+    .kk-k,
+    .kk-e {
+      padding: 0 0.05em;
+    }
+    .kk-k {
+      outline: 1.5px solid #b82343;
+      outline-offset: -1px;
+    }
+    .kk-e {
+      outline: 1.5px solid #12884a;
+      outline-offset: -1px;
+    }
+    .kk-callouts {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 0.6em 1.2em;
+      margin: 0.4em 0 1.2em;
+      padding-left: 12px; /* 吹き出しが縦に積まれたとき、線を通す余白 */
+    }
+    /* 吹き出しを横に並べず、縦に積む（9番） */
+    .kk-callouts--stack {
+      flex-direction: column;
+    }
+    /* 吹き出し：ラベルを2つの意味の真ん中に置き、右へ「┤」形の線でつなぐ
+       （吹き出し自体には背景を付けない。ラベルの上から入る線が隠れないように） */
+    .kk-callout {
+      display: flex;
+      align-items: center;
+      max-width: 100%;
+      padding-bottom: 0.5em;
+    }
+    .kk-head {
+      position: relative;
+      flex-shrink: 0;
+    }
+    .kk-label {
+      display: block;
+      padding: 0.15em 0.5em;
+      background: #b82343;
+      color: #fff;
+      font-family: "Noto Sans", sans-serif;
+      font-size: 0.8rem;
+      font-weight: bold;
+      line-height: 1.3;
+      letter-spacing: 0.04em;
+    }
+    .kk-word {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: "Noto Sans", sans-serif;
+      font-size: 0.8rem;
+      font-style: italic;
+      line-height: 1.4;
+      color: #555;
+    }
+    /* .section ul li の桜アイコンを打ち消すため .kk-fig から指定 */
+    .kk-fig .kk-means {
+      position: relative;
+      margin: 0;
+      padding: 0 0 0 1.3em;
+      list-style: none;
+    }
+    .kk-fig .kk-means::before { /* ラベルから縦線までの横線 */
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 0.7em;
+      border-top: 1.2px solid #b82343;
+    }
+    .kk-fig .kk-means li {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      column-gap: 0.5em;
+      margin: 0;
+      padding: 0.1em 0;
+      background: none;
+      font-size: 1em;
+      line-height: 1.4;
+    }
+    .kk-fig .kk-means li::before { /* 縦線から各意味への横線 */
+      content: "";
+      position: absolute;
+      left: -0.6em;
+      top: 0.85em;
+      width: 0.4em;
+      border-top: 1.2px solid #b82343;
+    }
+    .kk-fig .kk-means li::after { /* 縦線（最初の意味の中ほどから最後の意味の中ほどまで） */
+      content: "";
+      position: absolute;
+      left: -0.6em;
+      top: 0;
+      bottom: 0;
+      border-left: 1.2px solid #b82343;
+    }
+    .kk-fig .kk-means li:first-child::after {
+      top: 0.85em;
+    }
+    .kk-fig .kk-means li:last-child::after {
+      bottom: auto;
+      height: 0.85em;
+    }
+    .kk-mja {
+      font-family: "Noto Serif JP", serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+    .kk-mro {
+      font-family: "Noto Sans", sans-serif;
+      font-size: 0.8rem;
+      font-style: italic;
+      color: #555;
+    }
+    .kk-gl {
+      font-size: 0.85rem;
+      color: #444;
+    }
+    .kk-engo {
+      margin: 0 0 0.6em;
+      line-height: 2;
+    }
+    .kk-engo-why {
+      display: block;
+      line-height: 1.6;
+    }
+    .kk-engo-item {
+      white-space: nowrap;
+    }
+    .kk-engo .kk-e {
+      font-family: "Noto Serif JP", serif;
+      font-weight: 700;
+    }
+    .kk-engo-label {
+      display: inline-block;
+      margin-right: 0.6em;
+      padding: 0.15em 0.5em;
+      background: #12884a;
+      color: #fff;
+      font-family: "Noto Sans", sans-serif;
+      font-size: 0.8rem;
+      font-weight: bold;
+      line-height: 1.3;
+      letter-spacing: 0.04em;
+    }
+    .kk-trans {
+      margin-top: 0;
+      font-style: italic;
+    }
+    @media (max-width: 1000px) {
+      .kk-fig {
+        width: 100%;
+      }
+      .kk-ja {
+        font-size: 1.25rem;
+      }
+    }
+      .mk-ja rt,
+    .kk-ja rt,
+    .jk-ja rt {
+      font-size: 0.45em;
+      font-weight: 400;
+    }
+    /* 日本語は斜体にしない */
+    .mk-trans,
+    .kk-trans,
+    .jk-trans {
+      font-style: normal;
+    }
+    .gihou-table-wrap {
+      overflow-x: auto;
+      margin-bottom: 1.5em;
+    }
+    .gihou-table {
+      border-collapse: collapse;
+      width: 100%;
+      background: #fff;
+    }
+    .gihou-table th,
+    .gihou-table td {
+      padding: 0.4em 0.7em;
+      border: 1px solid #d8cfb8;
+      text-align: left;
+      vertical-align: top;
+    }
+    /* 左の列は文字の長さに合わせ、残りの3列は均等に分ける */
+    .gihou-table tr > :first-child {
+      width: 1%;
+      white-space: nowrap;
+    }
+    .gihou-table tr > :not(:first-child) {
+      width: 33%;
+      min-width: 7.5em;
+    }
+    .gihou-table thead th {
+      background: #b82343;
+      color: #fff;
+    }
+    .gihou-table tbody th {
+      background: #efe6cc;
+      white-space: nowrap;
+    }
+  </style>
 </head>
 
 <body>
@@ -116,6 +388,7 @@
       <a href="index.html"><img src="../img/icon_top.svg?ver-02" alt="トップ" class="icon" width="67" height="22"></a>
       <a href="introduction.html" style="color:#333"><img src="/img/icon_column.svg?ver-02" alt="コラム" class="icon" width="67" height="22"></a>
       <a href="introduction-app.html" style="color:#333"><img src="/img/icon_app.svg?ver-02" alt="アプリ" class="icon" width="67" height="22"></a>
+      <a href="gihou-kakekotoba_en.html"><img src="/img/icon_lang.svg?ver-01" alt="English" class="icon" width="59" height="22"></a>
       <a href="list.html"><img src="/img/icon_search.svg?ver-04" alt="百人一首一覧" class="icon" width="59" height="22"></a>
     </div>
   </header>
@@ -134,51 +407,116 @@
         <hr>
         <h1>和歌の技法:<span style="display:inline-block;">掛詞と縁語</span></h1>
         <p>掛詞とは、同音異義の2つの語句を重ねて用いることで、言葉の連想により世界を広げる技法です。また、縁語とは意味的に関連の深い語句を用いることで、言葉の連想により、味わい深いものにする技法です。</p>
+        <p>たとえば「糸」という言葉に対して、「張る」「乱る」「絶ゆ」のように糸と関わりの深い言葉を一首の中に散りばめるのが縁語です。</p>
+        <p>下の図では、掛詞を<span style="outline: 1.5px solid #b82343; outline-offset: -1px; padding: 0 0.2em;">赤い枠</span>で囲み、その下に2つの意味を示しています。縁語は<span style="outline: 1.5px solid #12884a; outline-offset: -1px; padding: 0 0.2em;">緑の枠</span>で囲み、図の下にまとめています。図をタップすると、その歌の「掛詞クルッと発見！」または歌のページを開きます。</p>
+
         <section class="sample" id="01">
           <h2 class="was-h3 waka"><a href="kakekotoba-game-001.html">1番歌 天智天皇</a></h2>
-          <a href="kakekotoba-game-001.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/kakekotoba_tennjitennou.svg" alt="天智天皇の和歌の掛詞">
+          <a href="kakekotoba-game-001.html" class="kk-link">
+            <figure class="kk-fig" aria-label="1番歌 天智天皇の掛詞">
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja"><ruby>秋<rt>あき</rt></ruby>の<ruby>田<rt>た</rt></ruby>の</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk01-1">かりほ</span>の<ruby>庵<rt>いお</rt></ruby>の</span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>苫<rt>とま</rt></ruby>をあらみ</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk01-1"><span class="kk-head"><span class="kk-label">掛詞</span></span><ul class="kk-means"><li><span class="kk-mja">仮庵</span></li><li><span class="kk-mja">刈り穂</span></li></ul></div>
+              </div>
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja"><ruby>我<rt>わ</rt></ruby>が<ruby>衣手<rt>ころもで</rt></ruby>は</span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>露<rt>つゆ</rt></ruby>にぬれつつ</span></span>
+              </p>
             </figure>
           </a>
+          <p class="kk-trans">【現代語訳】秋の田のほとりにある仮小屋は、屋根の苫の編み目が粗くて、私の袖は夜露に濡れているよ。</p>
           <p class="kome"><ruby>仮庵<rt>かりいほ</rt></ruby>が縮まって「かりほ」と読みます。</p>
         </section>
 
         <section class="sample" id="08">
           <h2 class="was-h3 waka"><a href="kakekotoba-game-008.html">8番歌 喜撰法師</a></h2>
-          <a href="kakekotoba-game-008.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/kakekotoba_kisenhoushi.svg" alt="小野小町の和歌の掛詞">
+          <a href="kakekotoba-game-008.html" class="kk-link">
+            <figure class="kk-fig" aria-label="8番歌 喜撰法師の掛詞">
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja">わが<ruby>庵<rt>いお</rt></ruby>は</span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>都<rt>みやこ</rt></ruby>の<ruby>辰巳<rt>たつみ</rt></ruby></span></span>
+                <span class="kk-ku"><span class="kk-ja">しかぞすむ</span></span>
+              </p>
+              <p class="kk-line">
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><ruby>世<rt>よ</rt></ruby>を<span class="kk-k" id="kk08-1">う<ruby>ぢ<rt>じ</rt></ruby><ruby>山<rt>やま</rt></ruby></span>と</span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>人<rt>ひと</rt></ruby>はい<ruby>ふ<rt>う</rt></ruby>なり</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk08-1"><span class="kk-head"><span class="kk-label">掛詞</span></span><ul class="kk-means"><li><span class="kk-mja">宇治山</span></li><li><span class="kk-mja">憂し山</span></li></ul></div>
+              </div>
             </figure>
           </a>
+          <p class="kk-trans">【現代語訳】私の住まいは都の東南にあり、このように心静かに暮らしている。世を憂いているから憂し山に移り住んだと噂する人がいるようだけれども。</p>
           <p class="kome">「しかぞすむ」はこのように住むという意味ですが、「鹿」と掛詞になっているという説があります。</p>
         </section>
 
         <section class="sample" id="09">
           <h2 class="was-h3 waka"><a href="kakekotoba-game-009.html">9番歌 小野小町</a></h2>
-          <a href="kakekotoba-game-009.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/kakekotoba_ononokomachi.svg" alt="小野小町の和歌の掛詞と縁語">
+          <a href="kakekotoba-game-009.html" class="kk-link">
+            <figure class="kk-fig" aria-label="9番歌 小野小町の掛詞・縁語">
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja"><ruby>花<rt>はな</rt></ruby>の<ruby>色<rt>いろ</rt></ruby>は</span></span>
+                <span class="kk-ku"><span class="kk-ja">うつりにけりな</span></span>
+                <span class="kk-ku"><span class="kk-ja">いた<ruby>づ<rt>ず</rt></ruby>らに</span></span>
+              </p>
+              <p class="kk-line">
+                <span class="kk-ku kk-ku--k"><span class="kk-ja">わが<ruby>身<rt>み</rt></ruby>よに<span class="kk-k" id="kk09-1">ふる</span></span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk09-2">ながめ</span>せしまに</span></span>
+              </p>
+              <div class="kk-callouts kk-callouts--stack">
+                <div class="kk-callout" data-for="kk09-1"><span class="kk-head"><span class="kk-label">掛詞</span></span><ul class="kk-means"><li><span class="kk-mja">経る</span></li><li><span class="kk-mja kk-e">降る</span></li></ul></div>
+                <div class="kk-callout" data-for="kk09-2"><span class="kk-head"><span class="kk-label">掛詞</span></span><ul class="kk-means"><li><span class="kk-mja">眺め</span></li><li><span class="kk-mja kk-e">長雨</span></li></ul></div>
+              </div>
             </figure>
           </a>
+          <p class="kk-engo"><span class="kk-engo-label">縁語</span><span class="kk-engo-item"><span class="kk-e">降る</span></span>・<span class="kk-engo-item"><span class="kk-e">長雨</span></span><span class="kk-engo-why">「降る」「長雨」はどちらも雨に関する言葉です。</span></p>
+          <p class="kk-trans">【現代語訳】美しかった桜が長雨に打たれて空しく色あせてしまった。私の容色も物思いに沈んで、この世を過ごしているうちに衰えてしまった。</p>
         </section>
 
         <section class="sample" id="10">
           <h2 class="was-h3 waka"><a href="kakekotoba-game-010.html">10番歌 蝉丸</a></h2>
-          <a href="kakekotoba-game-010.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/kakekotoba_semimaru.svg" alt="蝉丸の和歌の掛詞">
+          <a href="kakekotoba-game-010.html" class="kk-link">
+            <figure class="kk-fig" aria-label="10番歌 蝉丸の掛詞">
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja">これやこの</span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>行<rt>ゆ</rt></ruby>くも<ruby>帰<rt>かえ</rt></ruby>るも</span></span>
+                <span class="kk-ku"><span class="kk-ja">わかれては</span></span>
+              </p>
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja">しるもしらぬも</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk10-1"><ruby>逢坂<rt>おうさか</rt></ruby></span>の<ruby>関<rt>せき</rt></ruby></span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk10-1"><span class="kk-head"><span class="kk-label">掛詞</span></span><ul class="kk-means"><li><span class="kk-mja">逢坂</span></li><li><span class="kk-mja">逢ふ</span></li></ul></div>
+              </div>
             </figure>
           </a>
+          <p class="kk-trans">【現代語訳】これがあの、旅立つ人も帰る人も、知っている人も知らない人も、別れたり、行き会ったりする逢坂の関なのだなぁ。</p>
         </section>
 
         <section class="sample" id="13">
           <h2 class="was-h3 waka"><a href="kakekotoba-game-013.html">13番歌 陽成院</a></h2>
-          <a href="kakekotoba-game-013.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/kakekotoba_youzeiin.svg" alt="陽成院の和歌の掛詞">
+          <a href="kakekotoba-game-013.html" class="kk-link">
+            <figure class="kk-fig" aria-label="13番歌 陽成院の掛詞">
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja"><ruby>筑波嶺<rt>つくばね</rt></ruby>の</span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>峰<rt>みね</rt></ruby>より<ruby>落<rt>お</rt></ruby>つる</span></span>
+                <span class="kk-ku"><span class="kk-ja">みなの<ruby>川<rt>がわ</rt></ruby></span></span>
+              </p>
+              <p class="kk-line">
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk13-1">こひ</span>ぞつもりて</span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>淵<rt>ふち</rt></ruby>となりぬる</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk13-1"><span class="kk-head"><span class="kk-label">掛詞</span></span><ul class="kk-means"><li><span class="kk-mja">恋</span></li><li><span class="kk-mja">水</span></li></ul></div>
+              </div>
             </figure>
           </a>
+          <p class="kk-trans">【現代語訳】筑波山から流れ落ちるみなの川。一滴の雫が集まって川となり淵に溜まるようにあなたへの愛がどんどん大きくなり、淵のように深くなりました。</p>
           <p class="kome">『小倉百首評釈 : 英独対訳』という書籍において<span
               style="font-weight:bold;">「こひ」は水の古語又「戀」の義に亘れり。</span>と説明されています。つまり「こひ」は「水」と「恋」の掛詞になっていると考えられます。<br><small><a
                 href="https://dl.ndl.go.jp/pid/872971/1/36">（参考図書：佐藤重治 (芝峰) 著『小倉百首評釈 : 英独対訳』,本郷書院,明37.12.
@@ -187,257 +525,616 @@
 
         <section class="sample" id="16">
           <h2 class="was-h3 waka"><a href="kakekotoba-game-016.html">16番歌 中納言行平</a></h2>
-          <a href="kakekotoba-game-016.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/kakekotoba_yukihira.svg?ver01" alt="中納言行平の和歌の掛詞">
+          <a href="kakekotoba-game-016.html" class="kk-link">
+            <figure class="kk-fig" aria-label="16番歌 中納言行平の掛詞">
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja"><ruby>立<rt>た</rt></ruby>ち<ruby>別<rt>わか</rt></ruby>れ</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk16-1">いなば</span>の<ruby>山<rt>やま</rt></ruby>の</span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>峰<rt>みね</rt></ruby>に<ruby>生<rt>お</rt></ruby><ruby>ふ<rt>う</rt></ruby>る</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk16-1"><span class="kk-head"><span class="kk-label">掛詞</span></span><ul class="kk-means"><li><span class="kk-mja">因幡</span></li><li><span class="kk-mja">往なば</span></li></ul></div>
+              </div>
+              <p class="kk-line">
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk16-2">まつ</span>とし<ruby>聞<rt>き</rt></ruby>かば</span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>今<rt>いま</rt></ruby><ruby>帰<rt>かえ</rt></ruby>りこ<ruby>む<rt>ん</rt></ruby></span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk16-2"><span class="kk-head"><span class="kk-label">掛詞</span></span><ul class="kk-means"><li><span class="kk-mja">松</span></li><li><span class="kk-mja">待つ</span></li></ul></div>
+              </div>
             </figure>
           </a>
+          <p class="kk-trans">【現代語訳】別れても因幡山に生えている松ではないが、あなたが待っていると聞いたらすぐに戻ってこよう。</p>
         </section>
 
         <section class="sample" id="19">
           <h2 class="was-h3 waka"><a href="19.html">19番歌 伊勢</a></h2>
-          <a href="19.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/kakekotoba_ise.svg" alt="伊勢の和歌の掛詞">
+          <a href="19.html" class="kk-link">
+            <figure class="kk-fig" aria-label="19番歌 伊勢の掛詞">
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja"><ruby>難波潟<rt>なにわがた</rt></ruby></span></span>
+                <span class="kk-ku"><span class="kk-ja">みじかき<ruby>葦<rt>あし</rt></ruby>の</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk19-1">ふしのま</span>も</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk19-1"><span class="kk-head"><span class="kk-label">掛詞</span></span><ul class="kk-means"><li><span class="kk-mja">節の間</span></li><li><span class="kk-mja">わずかな時間</span></li></ul></div>
+              </div>
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja"><ruby>逢<rt>あ</rt></ruby><ruby>は<rt>わ</rt></ruby>でこの<ruby>世<rt>よ</rt></ruby>を</span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>過<rt>す</rt></ruby>ぐしてよとや</span></span>
+              </p>
             </figure>
           </a>
+          <p class="kk-trans">【現代語訳】難波潟に生えている葦の節と節の間のような短い時間さえ会えないままこの世を終えてしまえとあなたは言うのでしょうか。</p>
         </section>
 
         <section class="sample" id="20">
           <h2 class="was-h3 waka"><a href="kakekotoba-game-020.html">20番歌 元良親王</a></h2>
-          <a href="kakekotoba-game-020.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/kakekotoba_motoyoshi.svg" alt="元良親王の和歌の掛詞">
+          <a href="kakekotoba-game-020.html" class="kk-link">
+            <figure class="kk-fig" aria-label="20番歌 元良親王の掛詞">
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja">わびぬれば</span></span>
+                <span class="kk-ku"><span class="kk-ja">いまはたおなじ</span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>難波<rt>なにわ</rt></ruby>なる</span></span>
+              </p>
+              <p class="kk-line">
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk20-1">みをつくし</span>ても</span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>逢<rt>あ</rt></ruby><ruby>は<rt>わ</rt></ruby><ruby>む<rt>ん</rt></ruby>とぞ<ruby>思<rt>おも</rt></ruby><ruby>ふ<rt>う</rt></ruby></span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk20-1"><span class="kk-head"><span class="kk-label">掛詞</span></span><ul class="kk-means"><li><span class="kk-mja">身を尽くし</span></li><li><span class="kk-mja">澪標</span></li></ul></div>
+              </div>
             </figure>
           </a>
+          <p class="kk-trans">【現代語訳】お会いできず、寂しくつらい思いをする私はもはや身を捨てたのも同じことです。今となっては難波の海の澪標のように、身を滅ぼしてでもあなたに会いたいのです。</p>
           <p class="kome">澪標とは、座礁の危険性がある浅瀬において、比較的水深があって船の往来が可能であることを示す杭のことです。</p>
         </section>
 
         <section class="sample" id="22">
-          <h2 class="was-h3 waka"><a href="kakekotoba-game-022.html">22番歌 文屋朝康</a></h2>
-          <a href="kakekotoba-game-022.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/kakekotoba_funyanoyasuhide.svg" alt="文屋康秀の和歌の掛詞">
+          <h2 class="was-h3 waka"><a href="kakekotoba-game-022.html">22番歌 文屋康秀</a></h2>
+          <a href="kakekotoba-game-022.html" class="kk-link">
+            <figure class="kk-fig" aria-label="22番歌 文屋康秀の掛詞">
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja"><ruby>吹<rt>ふ</rt></ruby>くからに</span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>秋<rt>あき</rt></ruby>の<ruby>草木<rt>くさき</rt></ruby>の</span></span>
+                <span class="kk-ku"><span class="kk-ja">しをるれば</span></span>
+              </p>
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja">むべ<ruby>山風<rt>やまかぜ</rt></ruby>を</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk22-1"><ruby>嵐<rt>あらし</rt></ruby></span>とい<ruby>ふ<rt>う</rt></ruby>ら<ruby>む<rt>ん</rt></ruby></span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk22-1"><span class="kk-head"><span class="kk-label">掛詞</span></span><ul class="kk-means"><li><span class="kk-mja">嵐</span></li><li><span class="kk-mja">荒し</span></li></ul></div>
+              </div>
             </figure>
           </a>
+          <p class="kk-trans">【現代語訳】山から風が吹くと秋の草木はしおれるので、なるほど、だから「山」に「風」と書いて嵐と読むのでしょう。</p>
           <p class="kome">嵐は山から吹き下ろす風を指しています。</p>
         </section>
 
         <section class="sample" id="24">
           <h2 class="was-h3 waka"><a href="kakekotoba-game-024.html">24番歌 菅家</a></h2>
-          <a href="kakekotoba-game-024.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/kakekotoba_kanke.svg" alt="菅原道真の和歌の掛詞">
+          <a href="kakekotoba-game-024.html" class="kk-link">
+            <figure class="kk-fig" aria-label="24番歌 菅家の掛詞">
+              <p class="kk-line">
+                <span class="kk-ku kk-ku--k"><span class="kk-ja">この<span class="kk-k" id="kk24-1">たび</span>は</span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>幣<rt>ぬさ</rt></ruby>もとりあ<ruby>へ<rt>え</rt></ruby>ず</span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>手向山<rt>たむけやま</rt></ruby></span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk24-1"><span class="kk-head"><span class="kk-label">掛詞</span></span><ul class="kk-means"><li><span class="kk-mja">度</span></li><li><span class="kk-mja">旅</span></li></ul></div>
+              </div>
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja">もみぢのにしき</span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>神<rt>かみ</rt></ruby>のまにまに</span></span>
+              </p>
             </figure>
           </a>
+          <p class="kk-trans">【現代語訳】今回の旅は急のことで、幣を携えてくることができませんでした。手向山の神様よ。この美しい紅葉を捧げるので、御心のままにお受け取りください。</p>
         </section>
 
         <section class="sample" id="25">
           <h2 class="was-h3 waka"><a href="kakekotoba-game-025.html">25番歌 三条右大臣</a></h2>
-          <a href="kakekotoba-game-025.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/kakekotoba_sanjounoudaijin.svg" alt="三条右大臣の和歌の掛詞">
+          <a href="kakekotoba-game-025.html" class="kk-link">
+            <figure class="kk-fig" aria-label="25番歌 三条右大臣の掛詞・縁語">
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja"><ruby>名<rt>な</rt></ruby>にし<ruby>負<rt>お</rt></ruby>はば</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk25-1"><ruby>逢坂<rt>おうさか</rt></ruby></span><ruby>山<rt>やま</rt></ruby>の</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk25-2">さね</span>か<ruby>づ<rt>ず</rt></ruby>ら</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk25-1"><span class="kk-head"><span class="kk-label">掛詞</span></span><ul class="kk-means"><li><span class="kk-mja">逢坂</span></li><li><span class="kk-mja">逢ふ</span></li></ul></div>
+                <div class="kk-callout" data-for="kk25-2"><span class="kk-head"><span class="kk-label">掛詞</span></span><ul class="kk-means"><li><span class="kk-mja">さ寝</span></li><li><span class="kk-mja kk-e">さねかずら</span></li></ul></div>
+              </div>
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja"><ruby>人<rt>ひと</rt></ruby>にしられで</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk25-3">くる</span>よしもがな</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk25-3"><span class="kk-head"><span class="kk-label">掛詞</span></span><ul class="kk-means"><li><span class="kk-mja kk-e">繰る</span></li><li><span class="kk-mja">来る</span></li></ul></div>
+              </div>
             </figure>
           </a>
+          <p class="kk-engo"><span class="kk-engo-label">縁語</span><span class="kk-engo-item"><span class="kk-e">さねかずら</span></span>・<span class="kk-engo-item"><span class="kk-e">繰る</span></span></p>
+          <p class="kk-trans">【現代語訳】逢坂山の「さねかずら」。その名前どおりであるならば、さねかずらのつるにあなたを絡ませて手繰り寄せ、人に知られないで逢瀬できたらいいのにと思う。</p>
           <p class="kome">「さねかずら」はツル性植物なので「繰る」と縁語になっています。</p>
         </section>
 
         <section class="sample" id="27">
           <h2 class="was-h3 waka"><a href="kakekotoba-game-027.html">27番歌 中納言兼輔</a></h2>
-          <a href="kakekotoba-game-027.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/kakekotoba_kanesuke.svg" alt="中納言兼輔の和歌の掛詞">
+          <a href="kakekotoba-game-027.html" class="kk-link">
+            <figure class="kk-fig" aria-label="27番歌 中納言兼輔の掛詞・縁語">
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja">みかの<ruby>原<rt>はら</rt></ruby></span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk27-1">わき</span>て<ruby>流<rt>なが</rt></ruby>るる</span></span>
+                <span class="kk-ku"><span class="kk-ja"><span class="kk-e">い<ruby>づ<rt>ず</rt></ruby>み</span><ruby>川<rt>がわ</rt></ruby></span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk27-1"><span class="kk-head"><span class="kk-label">掛詞</span></span><ul class="kk-means"><li><span class="kk-mja kk-e">湧き</span></li><li><span class="kk-mja">分き</span></li></ul></div>
+              </div>
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja">いつ<ruby>見<rt>み</rt></ruby>きとてか</span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>恋<rt>こい</rt></ruby>しかるら<ruby>む<rt>ん</rt></ruby></span></span>
+              </p>
             </figure>
           </a>
+          <p class="kk-engo"><span class="kk-engo-label">縁語</span><span class="kk-engo-item"><span class="kk-e">湧き</span></span>・<span class="kk-engo-item"><span class="kk-e">いづみ</span></span><span class="kk-engo-why">「湧き」「いづみ」はどちらも水に関する言葉です。</span></p>
+          <p class="kk-trans">【現代語訳】みかの原を分けるように湧き出て流れるいづみ川ではないけれど、あなたにいつお会いしたからといってこれほどまでに恋しいのでしょう。</p>
         </section>
 
         <section class="sample" id="28">
           <h2 class="was-h3 waka"><a href="kakekotoba-game-028.html">28番歌 源宗于朝臣</a></h2>
-          <a href="kakekotoba-game-028.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/kakekotoba_muneyuki.svg" alt="源宗于朝臣の和歌の掛詞">
+          <a href="kakekotoba-game-028.html" class="kk-link">
+            <figure class="kk-fig" aria-label="28番歌 源宗于朝臣の掛詞">
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja"><ruby>山里<rt>やまざと</rt></ruby>は</span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>冬<rt>ふゆ</rt></ruby>ぞさびしさ</span></span>
+                <span class="kk-ku"><span class="kk-ja">まさりける</span></span>
+              </p>
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja"><ruby>人目<rt>ひとめ</rt></ruby>も<ruby>草<rt>くさ</rt></ruby>も</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk28-1">かれ</span>ぬと<ruby>思<rt>おも</rt></ruby><ruby>へ<rt>え</rt></ruby>ば</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk28-1"><span class="kk-head"><span class="kk-label">掛詞</span></span><ul class="kk-means"><li><span class="kk-mja">枯れ</span></li><li><span class="kk-mja">離れ</span></li></ul></div>
+              </div>
             </figure>
           </a>
+          <p class="kk-trans">【現代語訳】山里は寂しいものですが、冬は一段と寂しい。訪れてくれる人もいないし、草木も枯れてしまうと思うと。</p>
           <p class="kome">古典では「離る」を「かる」と読みます。</p>
         </section>
 
         <section class="sample" id="51">
           <h2 class="was-h3 waka"><a href="kakekotoba-game-051.html">51番歌 藤原実方朝臣</a></h2>
-          <a href="kakekotoba-game-051.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/kakekotoba_sanekata.svg" alt="藤原実方朝臣の和歌の掛詞">
+          <a href="kakekotoba-game-051.html" class="kk-link">
+            <figure class="kk-fig" aria-label="51番歌 藤原実方朝臣の掛詞・縁語">
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja">かくとだに</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja">えやは<span class="kk-k" id="kk51-1">いぶき</span>の</span></span>
+                <span class="kk-ku"><span class="kk-ja"><span class="kk-e">さしも<ruby>草<rt>ぐさ</rt></ruby></span></span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk51-1"><span class="kk-head"><span class="kk-label">掛詞</span></span><ul class="kk-means"><li><span class="kk-mja">伊吹</span></li><li><span class="kk-mja">言ふ</span></li></ul></div>
+              </div>
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja">さしも<ruby>知<rt>し</rt></ruby>らじな</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-e">もゆる</span><span class="kk-k" id="kk51-2"><ruby>思<rt>おも</rt></ruby><ruby>ひ<rt>い</rt></ruby></span>を</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk51-2"><span class="kk-head"><span class="kk-label">掛詞</span></span><ul class="kk-means"><li><span class="kk-mja">思ひ</span></li><li><span class="kk-mja kk-e">火</span></li></ul></div>
+              </div>
             </figure>
           </a>
+          <p class="kk-engo"><span class="kk-engo-label">縁語</span><span class="kk-engo-item"><span class="kk-e">さしも草</span></span>・<span class="kk-engo-item"><span class="kk-e">もゆる</span></span>・<span class="kk-engo-item"><span class="kk-e">火</span></span></p>
+          <p class="kk-trans">【現代語訳】これほどまでに恋焦がれているとあなたに言えるでしょうか。伊吹山のさしも草ではありませんが、それほどまでとはあなたはご存知ないでしょう。私の（お灸のように熱い）燃える想いを。</p>
           <p class="kome">「さしも草」とは、よもぎのことです。よもぎはお灸に使われるので、「もゆる」と「火」の縁語になっています。</p>
         </section>
 
         <section class="sample" id="55">
           <h2 class="was-h3 waka"><a href="55.html">55番歌 大納言公任</a></h2>
-          <a href="55.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/kakekotoba_kintou.svg" alt="大納言公任の和歌の縁語">
+          <a href="55.html" class="kk-link">
+            <figure class="kk-fig" aria-label="55番歌 大納言公任の縁語">
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja"><span class="kk-e"><ruby>滝<rt>たき</rt></ruby></span>の<span class="kk-e"><ruby>音<rt>おと</rt></ruby></span>は</span></span>
+                <span class="kk-ku"><span class="kk-ja">たえて<ruby>久<rt>ひさ</rt></ruby>しく</span></span>
+                <span class="kk-ku"><span class="kk-ja">なりぬれど</span></span>
+              </p>
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja"><ruby>名<rt>な</rt></ruby>こそ<span class="kk-e"><ruby>流<rt>なが</rt></ruby></span>れて</span></span>
+                <span class="kk-ku"><span class="kk-ja">な<ruby>ほ<rt>お</rt></ruby><span class="kk-e"><ruby>聞<rt>き</rt></ruby></span>こえけれ</span></span>
+              </p>
             </figure>
           </a>
+          <p class="kk-engo"><span class="kk-engo-label">縁語</span><span class="kk-engo-item"><span class="kk-e">滝</span></span>・<span class="kk-engo-item"><span class="kk-e">音</span></span>・<span class="kk-engo-item"><span class="kk-e">流れ</span></span>・<span class="kk-engo-item"><span class="kk-e">聞こえ</span></span><span class="kk-engo-why">「滝」と「流れ」は水に関する言葉として、「音」と「聞こえ」は音に関する言葉としてつながっています。</span></p>
+          <p class="kk-trans">【現代語訳】滝の音が聞こえなくなってから久しくなりますが、その名声は今も流れ伝わっています。</p>
         </section>
 
         <section class="sample" id="57">
           <h2 class="was-h3 waka"><a href="57.html">57番歌 紫式部</a></h2>
-          <a href="57.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/kakekotoba_murasakishikibu.svg" alt="紫式部の和歌の縁語">
+          <a href="57.html" class="kk-link">
+            <figure class="kk-fig" aria-label="57番歌 紫式部の縁語">
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja"><span class="kk-e">めぐり</span><ruby>逢<rt>あ</rt></ruby><ruby>ひ<rt>い</rt></ruby>て</span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>見<rt>み</rt></ruby>しやそれとも</span></span>
+                <span class="kk-ku"><span class="kk-ja">わかぬ<ruby>間<rt>ま</rt></ruby>に</span></span>
+              </p>
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja"><ruby>雲隠<rt>くもがく</rt></ruby>れにし</span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>夜半<rt>よわ</rt></ruby>の<span class="kk-e"><ruby>月<rt>つき</rt></ruby></span>かな</span></span>
+              </p>
             </figure>
           </a>
+          <p class="kk-engo"><span class="kk-engo-label">縁語</span><span class="kk-engo-item"><span class="kk-e">めぐり</span></span>・<span class="kk-engo-item"><span class="kk-e">月</span></span></p>
+          <p class="kk-trans">【現代語訳】久しぶりにめぐり会って、それが誰かわからないうちにあなたは雲に隠れる夜半の月のように帰ってしまった。</p>
           <p class="kome">「月」は満ち欠けすることから「めぐる」と縁語になっています。</p>
         </section>
 
         <section class="sample" id="58">
           <h2 class="was-h3 waka"><a href="kakekotoba-game-058.html">58番歌 大弐三位</a></h2>
-          <a href="kakekotoba-game-058.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/kakekotoba_daininosanmi.svg" alt="大弐三位の和歌の掛詞">
+          <a href="kakekotoba-game-058.html" class="kk-link">
+            <figure class="kk-fig" aria-label="58番歌 大弐三位の掛詞">
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja">ありま<ruby>山<rt>やま</rt></ruby></span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>猪名<rt>いな</rt></ruby>の<ruby>笹原<rt>ささはら</rt></ruby></span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>風<rt>かぜ</rt></ruby><ruby>吹<rt>ふ</rt></ruby>けば</span></span>
+              </p>
+              <p class="kk-line">
+                <span class="kk-ku kk-ku--k"><span class="kk-ja">いで<span class="kk-k" id="kk58-1">そよ</span><ruby>人<rt>ひと</rt></ruby>を</span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>忘<rt>わす</rt></ruby>れやはする</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk58-1"><span class="kk-head"><span class="kk-label">掛詞</span></span><ul class="kk-means"><li><span class="kk-mja">そよそよ</span></li><li><span class="kk-mja">そうですよ</span></li></ul></div>
+              </div>
             </figure>
           </a>
+          <p class="kk-trans">【現代語訳】有馬山に近い猪名の笹原に風が吹きそよそよと音が響きわたります。さぁそうですよ。私があなたのことを忘れられるでしょうか。いいえ忘れられません。</p>
         </section>
 
         <section class="sample" id="60">
           <h2 class="was-h3 waka"><a href="kakekotoba-game-060.html">60番歌 小式部内侍</a></h2>
-          <a href="kakekotoba-game-060.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/kakekotoba_koshibu.svg" alt="小式部内侍の和歌の掛詞">
+          <a href="kakekotoba-game-060.html" class="kk-link">
+            <figure class="kk-fig" aria-label="60番歌 小式部内侍の掛詞・縁語">
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja"><ruby>大江山<rt>おおえやま</rt></ruby></span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk60-1">いく<ruby>野<rt>の</rt></ruby></span>の<ruby>道<rt>みち</rt></ruby>の</span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>遠<rt>とお</rt></ruby>ければ</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk60-1"><span class="kk-head"><span class="kk-label">掛詞</span></span><ul class="kk-means"><li><span class="kk-mja">行く</span></li><li><span class="kk-mja">生野</span></li></ul></div>
+              </div>
+              <p class="kk-line">
+                <span class="kk-ku kk-ku--k"><span class="kk-ja">まだ<span class="kk-k" id="kk60-2">ふみ</span>もみず</span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>天<rt>あま</rt></ruby>の<span class="kk-e"><ruby>橋<rt>はし</rt></ruby></span><ruby>立<rt>だて</rt></ruby></span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk60-2"><span class="kk-head"><span class="kk-label">掛詞</span></span><ul class="kk-means"><li><span class="kk-mja">文</span></li><li><span class="kk-mja kk-e">踏み</span></li></ul></div>
+              </div>
             </figure>
           </a>
+          <p class="kk-engo"><span class="kk-engo-label">縁語</span><span class="kk-engo-item"><span class="kk-e">踏み</span></span>・<span class="kk-engo-item"><span class="kk-e">橋</span></span></p>
+          <p class="kk-trans">【現代語訳】大江山も（母の住む丹後に行く）生野の道も遠いので、まだ天橋立の地に足を踏み入れたこともありませんし、母からの手紙も見ておりません。</p>
           <p class="kome">橋板を踏みしめることから「踏み」と「橋」が縁語になっています。</p>
         </section>
 
         <section class="sample" id="62">
           <h2 class="was-h3 waka"><a href="kakekotoba-game-062.html">62番歌 清少納言</a></h2>
-          <a href="kakekotoba-game-062.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/kakekotoba_seishonagon.svg" alt="清少納言の和歌の掛詞">
+          <a href="kakekotoba-game-062.html" class="kk-link">
+            <figure class="kk-fig" aria-label="62番歌 清少納言の掛詞">
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja"><ruby>夜<rt>よ</rt></ruby>をこめて</span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>鳥<rt>とり</rt></ruby>のそらねは</span></span>
+                <span class="kk-ku"><span class="kk-ja">はかるとも</span></span>
+              </p>
+              <p class="kk-line">
+                <span class="kk-ku kk-ku--k"><span class="kk-ja">よに<span class="kk-k" id="kk62-1"><ruby>逢坂<rt>おうさか</rt></ruby></span>の</span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>関<rt>せき</rt></ruby>は<ruby>許<rt>ゆる</rt></ruby>さじ</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk62-1"><span class="kk-head"><span class="kk-label">掛詞</span></span><ul class="kk-means"><li><span class="kk-mja">逢坂</span></li><li><span class="kk-mja">逢ふ</span></li></ul></div>
+              </div>
             </figure>
           </a>
+          <p class="kk-trans">【現代語訳】夜が明けないうちに、鶏の鳴き真似をして人をだまそうとしても、この逢坂の関は決して開きませんよ。</p>
         </section>
 
         <section class="sample" id="67">
           <h2 class="was-h3 waka"><a href="kakekotoba-game-067.html">67番歌 周防内侍</a></h2>
-          <a href="kakekotoba-game-067.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/kakekotoba_suononaishi.svg" alt="周防内侍の和歌の掛詞">
+          <a href="kakekotoba-game-067.html" class="kk-link">
+            <figure class="kk-fig" aria-label="67番歌 周防内侍の掛詞">
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja"><ruby>春<rt>はる</rt></ruby>の<ruby>夜<rt>よ</rt></ruby>の</span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>夢<rt>ゆめ</rt></ruby>ばかりなる</span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>手枕<rt>たまくら</rt></ruby>に</span></span>
+              </p>
+              <p class="kk-line">
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk67-1">か<ruby>ひ<rt>い</rt></ruby>なく</span><ruby>立<rt>た</rt></ruby>た<ruby>む<rt>ん</rt></ruby></span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>名<rt>な</rt></ruby>こそをしけれ</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk67-1"><span class="kk-head"><span class="kk-label">掛詞</span></span><ul class="kk-means"><li><span class="kk-mja">甲斐なく</span></li><li><span class="kk-mja">腕（かひな）</span></li></ul></div>
+              </div>
             </figure>
           </a>
+          <p class="kk-trans">【現代語訳】春の夜のような夢ぐらい儚いあなたの戯れの手枕のために何の甲斐もない浮名が立つことが惜しいのです。</p>
           <p class="kome">腕を「かいな」と読むことは、現代ではほとんどありませんが、伝統的な相撲の世界では「<ruby>腕<rt>かいな</rt></ruby>を返す」という言葉が残っていて、現代でも相撲中継などで聞くことがあると思います。</p>
         </section>
 
         <section class="sample" id="72">
           <h2 class="was-h3 waka"><a href="kakekotoba-game-072.html">72番歌 祐子内親王家紀伊</a></h2>
-          <a href="kakekotoba-game-072.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/kakekotoba_yushinaishinnou.svg" alt="祐子内親王家紀伊の和歌の掛詞">
+          <a href="kakekotoba-game-072.html" class="kk-link">
+            <figure class="kk-fig" aria-label="72番歌 祐子内親王家紀伊の掛詞・縁語">
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja"><ruby>音<rt>おと</rt></ruby>に<ruby>聞<rt>き</rt></ruby>く</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk72-1"><ruby>高師<rt>たかし</rt></ruby></span>の<span class="kk-e"><ruby>浜<rt>はま</rt></ruby></span>の</span></span>
+                <span class="kk-ku"><span class="kk-ja">あだ<span class="kk-e"><ruby>波<rt>なみ</rt></ruby></span>は</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk72-1"><span class="kk-head"><span class="kk-label">掛詞</span></span><ul class="kk-means"><li><span class="kk-mja">高し</span></li><li><span class="kk-mja">高師</span></li></ul></div>
+              </div>
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja">かけじや<ruby>袖<rt>そで</rt></ruby>の</span></span>
+                <span class="kk-ku"><span class="kk-ja"><span class="kk-e">ぬれ</span>もこそすれ</span></span>
+              </p>
             </figure>
           </a>
+          <p class="kk-engo"><span class="kk-engo-label">縁語</span><span class="kk-engo-item"><span class="kk-e">浜</span></span>・<span class="kk-engo-item"><span class="kk-e">波</span></span>・<span class="kk-engo-item"><span class="kk-e">ぬれ</span></span><span class="kk-engo-why">「浜」「波」「ぬれ」はどれも海辺に関する言葉です。</span></p>
+          <p class="kk-trans">【現代語訳】噂に聞くいたずらに立ち騒ぐ高師の浜の波にはかかりますまい。袖を濡らすことになるでしょうから。</p>
         </section>
 
         <section class="sample" id="75">
           <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/75.html">75番歌 藤原基俊</a></h2>
-          <a href="https://hyakuninisshu.com/75.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/kakekotoba_mototoshi.svg" alt="藤原基俊の和歌の縁語">
+          <a href="https://hyakuninisshu.com/75.html" class="kk-link">
+            <figure class="kk-fig" aria-label="75番歌 藤原基俊の縁語">
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja"><ruby>契<rt>ちぎ</rt></ruby>り<span class="kk-e">おき</span>し</span></span>
+                <span class="kk-ku"><span class="kk-ja">させもが<span class="kk-e"><ruby>露<rt>つゆ</rt></ruby></span>を</span></span>
+                <span class="kk-ku"><span class="kk-ja">いのちにて</span></span>
+              </p>
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja">あ<ruby>は<rt>わ</rt></ruby>れ<ruby>今年<rt>ことし</rt></ruby>の</span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>秋<rt>あき</rt></ruby>もいぬめり</span></span>
+              </p>
             </figure>
           </a>
-          <p class="kome">「おき」は露が<ruby>降りる<rt>●●●</rt></ruby>という関係で縁語となっています。</p>
+          <p class="kk-engo"><span class="kk-engo-label">縁語</span><span class="kk-engo-item"><span class="kk-e">おき</span></span>・<span class="kk-engo-item"><span class="kk-e">露</span></span></p>
+          <p class="kk-trans">【現代語訳】約束してくださった「さしも草の」の歌の露のようなありがたい言葉を命のように大切にしていたのに。ああ…今年の秋もむなしく過ぎていくようだ。</p>
+          <p class="kome">露は「置く（降りる）」ものなので、「おき」と「露」が縁語となっています。</p>
         </section>
 
         <section class="sample" id="77">
           <h2 class="was-h3 waka"><a href="kakekotoba-game-077.html">77番歌 崇徳院</a></h2>
-          <a href="kakekotoba-game-077.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/kakekotoba_sutokuin.svg" alt="崇徳院の和歌の掛詞">
+          <a href="kakekotoba-game-077.html" class="kk-link">
+            <figure class="kk-fig" aria-label="77番歌 崇徳院の掛詞">
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja"><ruby>瀬<rt>せ</rt></ruby>をはやみ</span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>岩<rt>いわ</rt></ruby>にせかるる</span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>滝川<rt>たきがわ</rt></ruby>の</span></span>
+              </p>
+              <p class="kk-line">
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk77-1">われ</span>ても<ruby>末<rt>すえ</rt></ruby>に</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk77-2">あ<ruby>は<rt>わ</rt></ruby></span><ruby>む<rt>ん</rt></ruby>とぞ<ruby>思<rt>おも</rt></ruby><ruby>ふ<rt>う</rt></ruby></span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk77-1"><span class="kk-head"><span class="kk-label">掛詞</span></span><ul class="kk-means"><li><span class="kk-mja">分かれる</span></li><li><span class="kk-mja">別れる</span></li></ul></div>
+                <div class="kk-callout" data-for="kk77-2"><span class="kk-head"><span class="kk-label">掛詞</span></span><ul class="kk-means"><li><span class="kk-mja">逢う</span></li><li><span class="kk-mja">合う</span></li></ul></div>
+              </div>
             </figure>
           </a>
+          <p class="kk-trans">【現代語訳】川瀬の流れが速く、岩にせきとめられた滝川のようにあなたと別れてもいつかはまた会いたいと思う。</p>
         </section>
 
         <section class="sample" id="80">
           <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/80.html">80番歌 待賢門院堀川</a></h2>
-          <a href="https://hyakuninisshu.com/80.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/kakekotoba_horikawa.svg" alt="待賢門院堀川の和歌の掛詞">
+          <a href="https://hyakuninisshu.com/80.html" class="kk-link">
+            <figure class="kk-fig" aria-label="80番歌 待賢門院堀川の縁語">
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja"><span class="kk-e"><ruby>長<rt>なが</rt></ruby></span>から<ruby>む<rt>ん</rt></ruby></span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>心<rt>こころ</rt></ruby>もしらず</span></span>
+                <span class="kk-ku"><span class="kk-ja"><span class="kk-e"><ruby>黒髪<rt>くろがみ</rt></ruby></span>の</span></span>
+              </p>
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja"><span class="kk-e">みだれて</span>けさは</span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>物<rt>もの</rt></ruby>をこそ<ruby>思<rt>おも</rt></ruby><ruby>へ<rt>え</rt></ruby></span></span>
+              </p>
             </figure>
           </a>
+          <p class="kk-engo"><span class="kk-engo-label">縁語</span><span class="kk-engo-item"><span class="kk-e">長</span></span>・<span class="kk-engo-item"><span class="kk-e">黒髪</span></span>・<span class="kk-engo-item"><span class="kk-e">みだれ</span></span><span class="kk-engo-why">「長」「黒髪」「みだれ」はどれも髪に関する言葉です。</span></p>
+          <p class="kk-trans">【現代語訳】末永く愛してくれると言うあなたの心ははかりがたく、お別れした今朝の私はこの黒髪が乱れるように心も乱れ、物思いに沈んでいます。</p>
         </section>
 
         <section class="sample" id="88">
           <h2 class="was-h3 waka"><a href="kakekotoba-game-088.html">88番歌 皇嘉門院別当</a></h2>
-          <a href="kakekotoba-game-088.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/kakekotoba_koukamonin.svg" alt="皇嘉門院別当の和歌の掛詞">
+          <a href="kakekotoba-game-088.html" class="kk-link">
+            <figure class="kk-fig" aria-label="88番歌 皇嘉門院別当の掛詞・縁語">
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja"><ruby>難波江<rt>なにわえ</rt></ruby>の</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-e"><ruby>葦<rt>あし</rt></ruby></span>の<span class="kk-k" id="kk88-1">かりね</span>の</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk88-2">ひとよ</span>ゆ<ruby>ゑ<rt>え</rt></ruby></span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk88-1"><span class="kk-head"><span class="kk-label">掛詞</span></span><ul class="kk-means"><li><span class="kk-mja kk-e">刈り根</span></li><li><span class="kk-mja">仮寝</span></li></ul></div>
+                <div class="kk-callout" data-for="kk88-2"><span class="kk-head"><span class="kk-label">掛詞</span></span><ul class="kk-means"><li><span class="kk-mja kk-e">一節</span></li><li><span class="kk-mja">一夜</span></li></ul></div>
+              </div>
+              <p class="kk-line">
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk88-3">みをつくし</span>てや</span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>恋<rt>こ</rt></ruby><ruby>ひ<rt>い</rt></ruby>わたるべき</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk88-3"><span class="kk-head"><span class="kk-label">掛詞</span></span><ul class="kk-means"><li><span class="kk-mja">身を尽くし</span></li><li><span class="kk-mja kk-e">澪標（みおつくし）</span></li></ul></div>
+              </div>
             </figure>
           </a>
+          <p class="kk-engo"><span class="kk-engo-label">縁語</span><span class="kk-engo-item"><span class="kk-e">葦</span></span>・<span class="kk-engo-item"><span class="kk-e">刈り根</span></span>・<span class="kk-engo-item"><span class="kk-e">一節</span></span>・<span class="kk-engo-item"><span class="kk-e">澪標</span></span><span class="kk-engo-why">「葦」「刈り根」「一節」「澪標」はどれも難波江の葦や水辺に関する言葉です。</span></p>
+          <p class="kk-trans">【現代語訳】難波の入り江に生えている葦を刈った根の短い一節ではありませんが、一夜の共寝をしたために、私は難波の澪標のように身を尽くし、あの人を恋い慕い続けなくてはいけないのでしょうか。</p>
         </section>
 
         <section class="sample" id="89">
           <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/89.html">89番歌 式子内親王</a></h2>
-          <a href="https://hyakuninisshu.com/89.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/kakekotoba_shokushinaishinnou.svg" alt="皇嘉門院別当の和歌の掛詞">
+          <a href="https://hyakuninisshu.com/89.html" class="kk-link">
+            <figure class="kk-fig" aria-label="89番歌 式子内親王の縁語">
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja"><ruby>玉<rt>たま</rt></ruby>の<span class="kk-e"><ruby>緒<rt>お</rt></ruby></span>よ</span></span>
+                <span class="kk-ku"><span class="kk-ja"><span class="kk-e"><ruby>絶<rt>た</rt></ruby>え</span>なば<span class="kk-e"><ruby>絶<rt>た</rt></ruby>え</span>ね</span></span>
+                <span class="kk-ku"><span class="kk-ja"><span class="kk-e">ながら<ruby>へ<rt>え</rt></ruby></span>ば</span></span>
+              </p>
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja"><ruby>忍<rt>しの</rt></ruby>ぶることの</span></span>
+                <span class="kk-ku"><span class="kk-ja"><span class="kk-e"><ruby>弱<rt>よわ</rt></ruby>り</span>もぞする</span></span>
+              </p>
             </figure>
           </a>
+          <p class="kk-engo"><span class="kk-engo-label">縁語</span><span class="kk-engo-item"><span class="kk-e">緒</span></span>・<span class="kk-engo-item"><span class="kk-e">絶え</span></span>・<span class="kk-engo-item"><span class="kk-e">ながらへ</span></span>・<span class="kk-engo-item"><span class="kk-e">弱り</span></span><span class="kk-engo-why">「玉の緒」はもともと玉を貫き通すひものことで、「命」を表します。「絶え」「ながらへ」「弱り」はどれも「緒（ひも）」に関する言葉です。</span></p>
+          <p class="kk-trans">【現代語訳】私の命よ、絶えてしまうのなら絶えてしまえ。生き長らえてしまうと恋を忍ぶ気持ちが弱って困るから。</p>
         </section>
 
         <section class="sample" id="91">
           <h2 class="was-h3 waka"><a href="kakekotoba-game-091.html">91番歌 後京極摂政前太政大臣</a></h2>
-          <a href="kakekotoba-game-091.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/kakekotoba_gogyogokusesshou.svg" alt="後京極摂政前太政大臣の和歌の掛詞">
+          <a href="kakekotoba-game-091.html" class="kk-link">
+            <figure class="kk-fig" aria-label="91番歌 後京極摂政前太政大臣の掛詞">
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja">きりぎりす</span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>鳴<rt>な</rt></ruby>くや<ruby>霜夜<rt>しもよ</rt></ruby>の</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk91-1">さむしろ</span>に</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk91-1"><span class="kk-head"><span class="kk-label">掛詞</span></span><ul class="kk-means"><li><span class="kk-mja">寒し</span></li><li><span class="kk-mja">さむしろ</span></li></ul></div>
+              </div>
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja"><ruby>衣<rt>ころも</rt></ruby>かたしき</span></span>
+                <span class="kk-ku"><span class="kk-ja">ひとりかも<ruby>寝<rt>ね</rt></ruby><ruby>む<rt>ん</rt></ruby></span></span>
+              </p>
             </figure>
           </a>
+          <p class="kk-trans">【現代語訳】こおろぎが鳴いている霜のおりる夜、寒いむしろの上に自分の衣だけを敷いて、私はひとり寂しく寝るのだろうか。</p>
           <p class="kome">「さむしろ」とはむしろのことで、藁などで作られた粗末な敷物のことです。「さ」は語調を整える接頭語です。</p>
         </section>
 
         <section class="sample" id="95">
           <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/95.html">95番歌 前大僧正慈円</a></h2>
-          <a href="https://hyakuninisshu.com/95.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/kakekotoba_jien.svg" alt=" 前大僧正慈円の和歌の掛詞と縁語">
+          <a href="https://hyakuninisshu.com/95.html" class="kk-link">
+            <figure class="kk-fig" aria-label="95番歌 前大僧正慈円の掛詞・縁語">
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja">お<ruby>ほ<rt>お</rt></ruby>けなく</span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>憂<rt>う</rt></ruby>き<ruby>世<rt>よ</rt></ruby>の<ruby>民<rt>たみ</rt></ruby>に</span></span>
+                <span class="kk-ku"><span class="kk-ja"><span class="kk-e">お<ruby>ほ<rt>お</rt></ruby><ruby>ふ<rt>う</rt></ruby></span>かな</span></span>
+              </p>
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja">わがたつ<ruby>杣<rt>そま</rt></ruby>に</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk95-1"><ruby>墨染<rt>すみぞめ</rt></ruby></span>の<span class="kk-e"><ruby>袖<rt>そで</rt></ruby></span></span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk95-1"><span class="kk-head"><span class="kk-label">掛詞</span></span><ul class="kk-means"><li><span class="kk-mja">墨染</span></li><li><span class="kk-mja">住み初め</span></li></ul></div>
+              </div>
             </figure>
           </a>
+          <p class="kk-engo"><span class="kk-engo-label">縁語</span><span class="kk-engo-item"><span class="kk-e">おほふ</span></span>・<span class="kk-engo-item"><span class="kk-e">袖</span></span><span class="kk-engo-why">袖でおおうことから、「おほふ」と「袖」が縁語になっています。</span></p>
+          <p class="kk-trans">【現代語訳】おこがましいけれども、このつらい悲しみに満ちた現世を生きる人々を私の袖で包んであげたい。比叡山に住みはじめた私の墨染の袖で。</p>
         </section>
 
         <section class="sample" id="96">
           <h2 class="was-h3 waka"><a href="kakekotoba-game-096.html">96番歌 入道前太政大臣</a></h2>
-          <a href="kakekotoba-game-096.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/kakekotoba_kintsune.svg" alt="入道前太政大臣の和歌の掛詞">
+          <a href="kakekotoba-game-096.html" class="kk-link">
+            <figure class="kk-fig" aria-label="96番歌 入道前太政大臣の掛詞">
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja"><ruby>花<rt>はな</rt></ruby>さそ<ruby>ふ<rt>う</rt></ruby></span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>嵐<rt>あらし</rt></ruby>の<ruby>庭<rt>にわ</rt></ruby>の</span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>雪<rt>ゆき</rt></ruby>ならで</span></span>
+              </p>
+              <p class="kk-line">
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk96-1">ふりゆく</span>ものは</span></span>
+                <span class="kk-ku"><span class="kk-ja">わが<ruby>身<rt>み</rt></ruby>なりけり</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk96-1"><span class="kk-head"><span class="kk-label">掛詞</span></span><ul class="kk-means"><li><span class="kk-mja">古りゆく</span></li><li><span class="kk-mja">降りゆく</span></li></ul></div>
+              </div>
             </figure>
           </a>
+          <p class="kk-trans">【現代語訳】桜の花を誘って、散らすように嵐が吹く庭で、花は雪のように降るけれど、古くなるのは我が身であることだ。</p>
         </section>
 
         <section class="sample" id="97">
           <h2 class="was-h3 waka"><a href="kakekotoba-game-097.html">97番歌 権中納言定家</a></h2>
-          <a href="kakekotoba-game-097.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/kakekotoba_teika.svg" alt="権中納言定家の和歌の掛詞と縁語">
+          <a href="kakekotoba-game-097.html" class="kk-link">
+            <figure class="kk-fig" aria-label="97番歌 権中納言定家の掛詞・縁語">
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja"><ruby>来<rt>こ</rt></ruby>ぬ<ruby>人<rt>ひと</rt></ruby>を</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk97-1"><ruby>松帆<rt>まつほ</rt></ruby>の<ruby>浦<rt>うら</rt></ruby></span>の</span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>夕<rt>ゆう</rt></ruby>なぎに</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk97-1"><span class="kk-head"><span class="kk-label">掛詞</span></span><ul class="kk-means"><li><span class="kk-mja">まつほの浦</span></li><li><span class="kk-mja">待つ</span></li></ul></div>
+              </div>
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja"><span class="kk-e"><ruby>焼<rt>や</rt></ruby>く</span>や<span class="kk-e">もしほ</span>の</span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>身<rt>み</rt></ruby>も<span class="kk-e">こがれ</span>つつ</span></span>
+              </p>
             </figure>
           </a>
+          <p class="kk-engo"><span class="kk-engo-label">縁語</span><span class="kk-engo-item"><span class="kk-e">焼く</span></span>・<span class="kk-engo-item"><span class="kk-e">もしほ</span></span>・<span class="kk-engo-item"><span class="kk-e">こがれ</span></span><span class="kk-engo-why">「焼く」「もしほ」「こがれ」はどれも火に関する言葉です。</span></p>
+          <p class="kk-trans">【現代語訳】来てくれない恋人を待ち続け、夕凪どきに松帆の浦で焼かれる藻塩のように我が身も恋に焦がれています。</p>
         </section>
 
         <section class="sample" id="98">
           <h2 class="was-h3 waka"><a href="kakekotoba-game-098.html">98番歌 従二位家隆</a></h2>
-          <a href="kakekotoba-game-098.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/kakekotoba_junii.svg" alt="従二位家隆の和歌の掛詞">
+          <a href="kakekotoba-game-098.html" class="kk-link">
+            <figure class="kk-fig" aria-label="98番歌 従二位家隆の掛詞">
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja"><ruby>風<rt>かぜ</rt></ruby>そよぐ</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk98-1">ならの<ruby>小川<rt>おがわ</rt></ruby></span>の</span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>夕<rt>ゆう</rt></ruby><ruby>暮<rt>ぐれ</rt></ruby>は</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk98-1"><span class="kk-head"><span class="kk-label">掛詞</span></span><ul class="kk-means"><li><span class="kk-mja">ならの小川</span></li><li><span class="kk-mja">楢</span></li></ul></div>
+              </div>
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja">みそぎぞ<ruby>夏<rt>なつ</rt></ruby>の</span></span>
+                <span class="kk-ku"><span class="kk-ja">しるしなりける</span></span>
+              </p>
             </figure>
           </a>
-          <p class="kome">「ならの小川」とは、上賀茂神社の境内を流れる御手洗みたらし川の別名です。「楢」は「楢の木」のことで、</p>
+          <p class="kk-trans">【現代語訳】風がそよそよと楢の葉を吹く。ならの小川の夕暮れは秋の気配がするけれど、水無月祓の行事こそがまだ夏であることの証なのだなあ。</p>
+          <p class="kome">「ならの小川」とは、上賀茂神社の境内を流れる<ruby>御手洗川<rt>みたらしがわ</rt></ruby>の別名です。「楢」は「楢の木」のことで、「なら」が川の名前と木の名前の掛詞になっています。</p>
         </section>
 
         <section class="sample" id="100">
           <h2 class="was-h3 waka"><a href="kakekotoba-game-100.html">100番歌 順徳院</a></h2>
-          <a href="kakekotoba-game-100.html">
-            <figure style="display:flex; justify-content: center; margin-bottom:1em;">
-              <img class="pc80-sp100-img" src="/img/kakekotoba_juntokuin.svg" alt="順徳院の和歌の掛詞">
+          <a href="kakekotoba-game-100.html" class="kk-link">
+            <figure class="kk-fig" aria-label="100番歌 順徳院の掛詞">
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja">ももしきや</span></span>
+                <span class="kk-ku"><span class="kk-ja">ふるき<ruby>軒<rt>のき</rt></ruby>ばの</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk100-1">しのぶ</span>にも</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk100-1"><span class="kk-head"><span class="kk-label">掛詞</span></span><ul class="kk-means"><li><span class="kk-mja">偲ぶ</span></li><li><span class="kk-mja">忍ぶ草（ノキシノブ）</span></li></ul></div>
+              </div>
+              <p class="kk-line">
+                <span class="kk-ku"><span class="kk-ja">な<ruby>ほ<rt>お</rt></ruby>あまりある</span></span>
+                <span class="kk-ku"><span class="kk-ja"><ruby>昔<rt>むかし</rt></ruby>なりけり</span></span>
+              </p>
             </figure>
           </a>
+          <p class="kk-trans">【現代語訳】宮中の古びた軒先に生えている忍ぶ草を見るにつけても偲んでも偲びきれないのは、昔のよかった時代であることよ。</p>
         </section>
+        <hr>
+        <h2 class="was-h3">枕詞・序詞・掛詞の違い</h2>
+        <div class="gihou-table-wrap">
+          <table class="gihou-table">
+            <thead>
+              <tr><th></th><th>枕詞</th><th>序詞</th><th>掛詞</th></tr>
+            </thead>
+            <tbody>
+              <tr><th>長さ</th><td>5音</td><td>7音以上</td><td>1語</td></tr>
+              <tr><th>作り手</th><td>決まった言い方を使う</td><td>歌人がその歌のために作る</td><td>歌人がその歌のために作る</td></tr>
+              <tr><th>例</th><td>ひさかたの → 光</td><td>あしびきの山鳥の尾のしだり尾の → ながながし夜</td><td>ながめ → 眺め・長雨</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 class="was-h3">ほかの和歌の技法</h2>
+        <ul class="normal">
+          <li><a href="gihou-makurakotoba.html">枕詞</a>：「あしびきの」「ひさかたの」など、決まった5音の言葉</li>
+          <li><a href="gihou-jokotoba.html">序詞</a>：景色から心へとつなぐ長い前置き</li>
+        </ul>
 
 
       </div>
@@ -460,6 +1157,7 @@
   <!-- フッターここまで -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="../js/move_script.js?20260729"></script>
+  <script src="../js/kakekotoba-diagram.js?20261031-01"></script>
 </body>
 
 </html>

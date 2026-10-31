@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Waka Techniques: Kakekotoba (Pivot Words) and Engo (Associated Words) | Shigure no Hyakunin Isshu</title>
+  <meta name="Keywords" content="kakekotoba, pivot words, engo, associated words, waka techniques, Hyakunin Isshu, Ogura Hyakunin Isshu, classical Japanese poetry">
+  <meta name="description" content="Kakekotoba (pivot words) and engo (associated words) in the Hyakunin Isshu: a kakekotoba lets one sound carry two meanings at once, and engo are related words that echo one another through a poem. Illustrated with 32 poems.">
+  <link rel="canonical" href="https://hyakuninisshu.com/gihou-kakekotoba_en.html">
+  <link rel="alternate" hreflang="ja" href="https://hyakuninisshu.com/gihou-kakekotoba.html">
+  <link rel="alternate" hreflang="en" href="https://hyakuninisshu.com/gihou-kakekotoba_en.html">
+  <link rel="alternate" hreflang="x-default" href="https://hyakuninisshu.com/gihou-kakekotoba.html">
+  <!-- ogp -->
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Waka Techniques: Kakekotoba (Pivot Words) and Engo (Associated Words) | Shigure no Hyakunin Isshu">
+  <meta property="og:description" content="Kakekotoba (pivot words) and engo (associated words) in the Hyakunin Isshu: a kakekotoba lets one sound carry two meanings at once, and engo are related words that echo one another through a poem. Illustrated with 32 poems.">
+  <meta property="og:url" content="https://hyakuninisshu.com/gihou-kakekotoba_en.html">
+  <meta property="og:site_name" content="Shigure no Hyakunin Isshu">
+  <meta property="og:image" content="https://hyakuninisshu.com/img/ogp_index.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- structured data -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://hyakuninisshu.com/gihou-kakekotoba_en.html"
+      },
+      "headline": "Waka Techniques: Kakekotoba (Pivot Words) and Engo (Associated Words)",
+      "description": "Kakekotoba (pivot words) and engo (associated words) in the Hyakunin Isshu: a kakekotoba lets one sound carry two meanings at once, and engo are related words that echo one another through a poem. Illustrated with 32 poems.",
+      "inLanguage": "en",
+      "image": "https://hyakuninisshu.com/img/ogp_index.webp",
+      "dateModified": "2026-10-31",
+      "author": {
+        "@type": "Person",
+        "name": "Daisuke Ishigure",
+        "url": "https://hyakuninisshu.com/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Shigure no Hyakunin Isshu",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://hyakuninisshu.com/apple-touch-icon.png"
+        }
+      },
+      "genre": "Waka techniques / Hyakunin Isshu / Classical Japanese literature",
+      "about": [
+        { "@type": "Thing", "name": "Kakekotoba (pivot words)" },
+        { "@type": "Thing", "name": "Engo (associated words)" },
+        { "@type": "CreativeWork", "name": "Hyakunin Isshu" }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Shigure no Hyakunin Isshu",
+          "item": "https://hyakuninisshu.com/index_en.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Columns",
+          "item": "https://hyakuninisshu.com/introduction_en.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Waka Techniques: Kakekotoba and Engo",
+          "item": "https://hyakuninisshu.com/gihou-kakekotoba_en.html"
+        }
+      ]
+    }
+  ]
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+  <link rel="stylesheet" href="../css/style.css?20261018-01">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@500&family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap"
+    rel="stylesheet">
+  <!-- Kakekotoba diagrams: text is HTML; js/kakekotoba-diagram.js aligns the callouts and draws the lines -->
+  <style>
+    .kk-link {
+      display: block;
+      color: inherit;
+      text-decoration: none;
+    }
+    .kk-fig {
+      position: relative;
+      width: 85%;
+      margin: 0 auto 0.6em;
+    }
+    .kk-lines {
+      position: absolute;
+      top: 0;
+      left: 0;
+      overflow: visible;
+      pointer-events: none;
+    }
+    .kk-line {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      column-gap: 0.8em;
+      row-gap: 1em;
+      margin: 0 0 1em;
+      font-family: "Noto Serif JP", serif;
+      font-weight: 700;
+    }
+    /* 線は句の後ろを通す（折り返した行をまたぐとき、句の背景で隠れる） */
+    .kk-ku {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      white-space: nowrap;
+      background: #f7f1e0;
+    }
+    /* 掛詞を含む句は背景を付けない（掛詞の枠から出る線を、ローマ字の後ろでも見せる） */
+    .kk-ku--k {
+      background: none;
+    }
+    /* 線と重なるローマ字に白フチを付けて読みやすくする */
+    .kk-ku--k .kk-ro {
+      text-shadow:
+        1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff,
+        1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+    }
+    .kk-ja {
+      font-size: 1.5rem;
+      line-height: 1.5;
+    }
+    .kk-ro {
+      font-family: "Noto Sans", sans-serif;
+      font-size: 0.8rem;
+      font-weight: 400;
+      line-height: 1.3;
+      color: #555;
+    }
+    .kk-k,
+    .kk-e {
+      padding: 0 0.05em;
+    }
+    .kk-k {
+      outline: 1.5px solid #b82343;
+      outline-offset: -1px;
+    }
+    .kk-e {
+      outline: 1.5px solid #12884a;
+      outline-offset: -1px;
+    }
+    .kk-callouts {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 0.6em 1.2em;
+      margin: 0.4em 0 1.2em;
+      padding-left: 12px; /* 吹き出しが縦に積まれたとき、線を通す余白 */
+    }
+    /* 吹き出しを横に並べず、縦に積む（9番） */
+    .kk-callouts--stack {
+      flex-direction: column;
+    }
+    /* 吹き出し：ラベルを2つの意味の真ん中に置き、右へ「┤」形の線でつなぐ
+       （吹き出し自体には背景を付けない。ラベルの上から入る線が隠れないように） */
+    .kk-callout {
+      display: flex;
+      align-items: center;
+      max-width: 100%;
+      padding-bottom: 0.5em;
+    }
+    .kk-head {
+      position: relative;
+      flex-shrink: 0;
+    }
+    .kk-label {
+      display: block;
+      padding: 0.15em 0.5em;
+      background: #b82343;
+      color: #fff;
+      font-family: "Noto Sans", sans-serif;
+      font-size: 0.8rem;
+      font-weight: bold;
+      line-height: 1.3;
+      letter-spacing: 0.04em;
+    }
+    .kk-word {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: "Noto Sans", sans-serif;
+      font-size: 0.8rem;
+      font-style: italic;
+      line-height: 1.4;
+      color: #555;
+    }
+    /* .section ul li の桜アイコンを打ち消すため .kk-fig から指定 */
+    .kk-fig .kk-means {
+      position: relative;
+      margin: 0;
+      padding: 0 0 0 1.3em;
+      list-style: none;
+    }
+    .kk-fig .kk-means::before { /* ラベルから縦線までの横線 */
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 0.7em;
+      border-top: 1.2px solid #b82343;
+    }
+    .kk-fig .kk-means li {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      column-gap: 0.5em;
+      margin: 0;
+      padding: 0.1em 0;
+      background: none;
+      font-size: 1em;
+      line-height: 1.4;
+    }
+    .kk-fig .kk-means li::before { /* 縦線から各意味への横線 */
+      content: "";
+      position: absolute;
+      left: -0.6em;
+      top: 0.85em;
+      width: 0.4em;
+      border-top: 1.2px solid #b82343;
+    }
+    .kk-fig .kk-means li::after { /* 縦線（最初の意味の中ほどから最後の意味の中ほどまで） */
+      content: "";
+      position: absolute;
+      left: -0.6em;
+      top: 0;
+      bottom: 0;
+      border-left: 1.2px solid #b82343;
+    }
+    .kk-fig .kk-means li:first-child::after {
+      top: 0.85em;
+    }
+    .kk-fig .kk-means li:last-child::after {
+      bottom: auto;
+      height: 0.85em;
+    }
+    .kk-mja {
+      font-family: "Noto Serif JP", serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+    .kk-mro {
+      font-family: "Noto Sans", sans-serif;
+      font-size: 0.8rem;
+      font-style: italic;
+      color: #555;
+    }
+    .kk-gl {
+      font-size: 0.85rem;
+      color: #444;
+    }
+    .kk-engo {
+      margin: 0 0 0.6em;
+      line-height: 2;
+    }
+    .kk-engo-why {
+      display: block;
+      line-height: 1.6;
+    }
+    .kk-engo-item {
+      white-space: nowrap;
+    }
+    .kk-engo .kk-e {
+      font-family: "Noto Serif JP", serif;
+      font-weight: 700;
+    }
+    .kk-engo-label {
+      display: inline-block;
+      margin-right: 0.6em;
+      padding: 0.15em 0.5em;
+      background: #12884a;
+      color: #fff;
+      font-family: "Noto Sans", sans-serif;
+      font-size: 0.8rem;
+      font-weight: bold;
+      line-height: 1.3;
+      letter-spacing: 0.04em;
+    }
+    .kk-trans {
+      margin-top: 0;
+      font-style: italic;
+    }
+    @media (max-width: 1000px) {
+      .kk-fig {
+        width: 100%;
+      }
+      .kk-ja {
+        font-size: 1.25rem;
+      }
+    }
+  </style>
+  <!-- touch icons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" href="/favicon.ico">
+  <!-- Cloudflare Web Analytics -->
+  <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d2f01c23361b402aadede990ea58da0b"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <p class="site-title">
+      <a href="https://hyakuninisshu.com/index_en.html">Shigure no Hyakunin Isshu</a>
+    </p>
+    <div class="header_list">
+      <a href="index_en.html"><img src="../img/icon_top_en.svg?ver-01" alt="Top" class="icon" width="59" height="22"></a>
+      <a href="introduction_en.html" style="color:#333"><img src="/img/icon_column_en.svg?ver-01" alt="Columns" class="icon" width="72" height="22"></a>
+      <a href="introduction-app_en.html" style="color:#333"><img src="/img/icon_app_en.svg?ver-01" alt="Apps" class="icon" width="59" height="22"></a>
+      <a href="gihou-kakekotoba.html"><img src="/img/icon_lang.svg?ver-01" alt="Japanese" class="icon" width="59" height="22"></a>
+      <a href="list_en.html"><img src="/img/icon_list_en.svg?ver-01" alt="Hyakunin Isshu Poem List" class="icon" width="59" height="22"></a>
+    </div>
+  </header>
+<script src="../js/back-to-top.js?20261012-03"></script>
+  <!-- Main -->
+  <main class="main_about-main">
+    <div class="about-main">
+      <div class="section">
+        <nav>
+          <ol class="breadcrumb">
+            <li><a href="index_en.html">Top</a></li>
+            <li><a href="introduction_en.html">Columns</a></li>
+            <li>Waka Techniques: Kakekotoba and Engo</li>
+          </ol>
+        </nav>
+        <hr>
+        <h1>Waka Techniques:<br class="br-sp"> <em>Kakekotoba</em> and <em>Engo</em></h1>
+        <p>A <em>kakekotoba</em> (pivot word) uses words that sound alike to make a single word carry two meanings at once. Sometimes a single word is simply read in two ways at once, literally and figuratively. It lets a short poem hold two scenes at the same time — often an image from nature and a human feeling — widening the poem’s world through the association of words.</p>
+        <p><em>Engo</em> (associated words) are words closely related in meaning, placed in the same poem so that they echo one another and give it a deeper, richer flavor.</p>
+        <p>In each diagram below, the kakekotoba is <span style="outline: 1.5px solid #b82343; outline-offset: -1px; padding: 0 0.2em;">framed in red</span>, with its two meanings shown beneath it. Engo are <span style="outline: 1.5px solid #12884a; outline-offset: -1px; padding: 0 0.2em;">framed in green</span> and listed under the diagram. Tap or click a diagram to open the poem’s kakekotoba game or poem page. The romaji under each line follows the old kana spelling of classical poetry, so it is not always read as written: for example, <em>shirotahe</em> is read <em>shirotae</em>, and <em>afusaka</em> is read <em>Ōsaka</em>.</p>
+
+        <section class="sample" id="01">
+          <h2 class="was-h3 waka"><a href="kakekotoba-game-001_en.html">Poem 1: Emperor Tenji</a></h2>
+          <a href="kakekotoba-game-001_en.html" class="kk-link">
+            <figure class="kk-fig" aria-label="Poem 1: kakekotoba">
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">秋の田の</span><span class="kk-ro" lang="ja-Latn">akinotano</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk01-1">かりほ</span>の庵の</span><span class="kk-ro" lang="ja-Latn">karihonoihono</span></span>
+                <span class="kk-ku"><span class="kk-ja">苫をあらみ</span><span class="kk-ro" lang="ja-Latn">tomaoarami</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk01-1"><span class="kk-head"><span class="kk-label">Kakekotoba</span><span class="kk-word" lang="ja-Latn">kariho</span></span><ul class="kk-means"><li><span class="kk-mja" lang="ja">仮庵</span><span class="kk-mro" lang="ja-Latn">kariho</span><span class="kk-gl">a makeshift hut</span></li><li><span class="kk-mja" lang="ja">刈り穂</span><span class="kk-mro" lang="ja-Latn">kariho</span><span class="kk-gl">harvested ears of rice</span></li></ul></div>
+              </div>
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">我が衣手は</span><span class="kk-ro" lang="ja-Latn">wagakoromodeha</span></span>
+                <span class="kk-ku"><span class="kk-ja">露にぬれつつ</span><span class="kk-ro" lang="ja-Latn">tsuyuninuretsutsu</span></span>
+              </p>
+            </figure>
+          </a>
+          <p class="kk-trans">By the rice fields, in a makeshift hut with a loosely woven roof, my sleeves are wet with the night dew.</p>
+          <p class="kome"><em>Kariho</em> is a contracted reading of 仮庵 (<em>kari-iho</em>).</p>
+        </section>
+
+        <section class="sample" id="08">
+          <h2 class="was-h3 waka"><a href="kakekotoba-game-008_en.html">Poem 8: Priest Kisen</a></h2>
+          <a href="kakekotoba-game-008_en.html" class="kk-link">
+            <figure class="kk-fig" aria-label="Poem 8: kakekotoba">
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">わが庵は</span><span class="kk-ro" lang="ja-Latn">wagaihoha</span></span>
+                <span class="kk-ku"><span class="kk-ja">都の辰巳</span><span class="kk-ro" lang="ja-Latn">miyakonotatsumi</span></span>
+                <span class="kk-ku"><span class="kk-ja">しかぞすむ</span><span class="kk-ro" lang="ja-Latn">shikazosumu</span></span>
+              </p>
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku kk-ku--k"><span class="kk-ja">世を<span class="kk-k" id="kk08-1">うぢ山</span>と</span><span class="kk-ro" lang="ja-Latn">yooujiyamato</span></span>
+                <span class="kk-ku"><span class="kk-ja">人はいふなり</span><span class="kk-ro" lang="ja-Latn">hitohaifunari</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk08-1"><span class="kk-head"><span class="kk-label">Kakekotoba</span><span class="kk-word" lang="ja-Latn">ujiyama</span></span><ul class="kk-means"><li><span class="kk-mja" lang="ja">宇治山</span><span class="kk-mro" lang="ja-Latn">ujiyama</span><span class="kk-gl">Mount Uji</span></li><li><span class="kk-mja" lang="ja">憂し山</span><span class="kk-mro" lang="ja-Latn">ushiyama</span><span class="kk-gl">a mountain of sorrow (<em>ushi</em>: weary of the world)</span></li></ul></div>
+              </div>
+            </figure>
+          </a>
+          <p class="kk-trans">My home is in the southeast of the capital, and I live here at peace. People say I moved to Mount Uji because I found the world hard to bear — but that is only what others say.</p>
+          <p class="kome"><em>Shika zo sumu</em> means “I live like this,” but some say it is also a kakekotoba on 鹿 (<em>shika</em>, deer).</p>
+        </section>
+
+        <section class="sample" id="09">
+          <h2 class="was-h3 waka"><a href="kakekotoba-game-009_en.html">Poem 9: Ono no Komachi</a></h2>
+          <a href="kakekotoba-game-009_en.html" class="kk-link">
+            <figure class="kk-fig" aria-label="Poem 9: kakekotoba and engo">
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">花の色は</span><span class="kk-ro" lang="ja-Latn">hananoiroha</span></span>
+                <span class="kk-ku"><span class="kk-ja">うつりにけりな</span><span class="kk-ro" lang="ja-Latn">utsurinikerina</span></span>
+                <span class="kk-ku"><span class="kk-ja">いたづらに</span><span class="kk-ro" lang="ja-Latn">itazurani</span></span>
+              </p>
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku kk-ku--k"><span class="kk-ja">わが身よに<span class="kk-k" id="kk09-1">ふる</span></span><span class="kk-ro" lang="ja-Latn">wagamiyonifuru</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk09-2">ながめ</span>せしまに</span><span class="kk-ro" lang="ja-Latn">nagameseshimani</span></span>
+              </p>
+              <div class="kk-callouts kk-callouts--stack">
+                <div class="kk-callout" data-for="kk09-1"><span class="kk-head"><span class="kk-label">Kakekotoba</span><span class="kk-word" lang="ja-Latn">furu</span></span><ul class="kk-means"><li><span class="kk-mja" lang="ja">経る</span><span class="kk-mro" lang="ja-Latn">furu</span><span class="kk-gl">to pass time, to grow old</span></li><li><span class="kk-mja kk-e" lang="ja">降る</span><span class="kk-mro" lang="ja-Latn">furu</span><span class="kk-gl">to fall (of rain)</span></li></ul></div>
+                <div class="kk-callout" data-for="kk09-2"><span class="kk-head"><span class="kk-label">Kakekotoba</span><span class="kk-word" lang="ja-Latn">nagame</span></span><ul class="kk-means"><li><span class="kk-mja" lang="ja">眺め</span><span class="kk-mro" lang="ja-Latn">nagame</span><span class="kk-gl">gazing absently, lost in thought</span></li><li><span class="kk-mja kk-e" lang="ja">長雨</span><span class="kk-mro" lang="ja-Latn">nagame</span><span class="kk-gl">long spring rains</span></li></ul></div>
+              </div>
+            </figure>
+          </a>
+          <p class="kk-engo"><span class="kk-engo-label">Engo</span><span class="kk-engo-item"><span class="kk-e" lang="ja">降る</span> (to fall)</span> · <span class="kk-engo-item"><span class="kk-e" lang="ja">長雨</span> (long rains)</span><span class="kk-engo-why">Both are words about rain.</span></p>
+          <p class="kk-trans">How the beauty of the cherry blossoms faded away, soaked by the long spring rains. And just like them, my own looks have faded too, lost in a haze of endless longing.</p>
+        </section>
+
+        <section class="sample" id="10">
+          <h2 class="was-h3 waka"><a href="kakekotoba-game-010_en.html">Poem 10: Semimaru</a></h2>
+          <a href="kakekotoba-game-010_en.html" class="kk-link">
+            <figure class="kk-fig" aria-label="Poem 10: kakekotoba">
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">これやこの</span><span class="kk-ro" lang="ja-Latn">koreyakono</span></span>
+                <span class="kk-ku"><span class="kk-ja">行くも帰るも</span><span class="kk-ro" lang="ja-Latn">yukumokaherumo</span></span>
+                <span class="kk-ku"><span class="kk-ja">わかれては</span><span class="kk-ro" lang="ja-Latn">wakareteha</span></span>
+              </p>
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">しるもしらぬも</span><span class="kk-ro" lang="ja-Latn">shirumoshiranumo</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk10-1">逢坂</span>の関</span><span class="kk-ro" lang="ja-Latn">afusakanoseki</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk10-1"><span class="kk-head"><span class="kk-label">Kakekotoba</span><span class="kk-word" lang="ja-Latn">afusaka</span></span><ul class="kk-means"><li><span class="kk-mja" lang="ja">逢坂</span><span class="kk-mro" lang="ja-Latn">afusaka</span><span class="kk-gl">Ōsaka, the barrier station</span></li><li><span class="kk-mja" lang="ja">逢ふ</span><span class="kk-mro" lang="ja-Latn">afu</span><span class="kk-gl">to meet</span></li></ul></div>
+              </div>
+            </figure>
+          </a>
+          <p class="kk-trans">So this is it — the Barrier of Ōsaka, where those who leave and those who return, those who know each other and those who do not, all meet and part.</p>
+          <p class="kome">Ōsaka (逢坂) here is the Ōsaka Barrier, a checkpoint on the border between Yamashiro Province (around the capital, Kyoto) and Ōmi Province, at the eastern gateway of the Heian capital. It lay in what is now Ōtsu, Shiga Prefecture — not the city of Osaka (大阪).</p>
+        </section>
+
+        <section class="sample" id="13">
+          <h2 class="was-h3 waka"><a href="kakekotoba-game-013_en.html">Poem 13: Retired Emperor Yōzei</a></h2>
+          <a href="kakekotoba-game-013_en.html" class="kk-link">
+            <figure class="kk-fig" aria-label="Poem 13: kakekotoba">
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">筑波嶺の</span><span class="kk-ro" lang="ja-Latn">tsukubaneno</span></span>
+                <span class="kk-ku"><span class="kk-ja">峰より落つる</span><span class="kk-ro" lang="ja-Latn">mineyoriotsuru</span></span>
+                <span class="kk-ku"><span class="kk-ja">みなの川</span><span class="kk-ro" lang="ja-Latn">minanogaha</span></span>
+              </p>
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk13-1">こひ</span>ぞつもりて</span><span class="kk-ro" lang="ja-Latn">kohizotsumorite</span></span>
+                <span class="kk-ku"><span class="kk-ja">淵となりぬる</span><span class="kk-ro" lang="ja-Latn">fuchitonarinuru</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk13-1"><span class="kk-head"><span class="kk-label">Kakekotoba</span><span class="kk-word" lang="ja-Latn">kohi</span></span><ul class="kk-means"><li><span class="kk-mja" lang="ja">恋</span><span class="kk-mro" lang="ja-Latn">kohi</span><span class="kk-gl">love</span></li><li><span class="kk-mja" lang="ja">水</span><span class="kk-mro" lang="ja-Latn">kohi</span><span class="kk-gl">water (an old word read <em>kohi</em>)</span></li></ul></div>
+              </div>
+            </figure>
+          </a>
+          <p class="kk-trans">Just as the streams from the peak of Tsukuba flow down to fill the deep pools of the Mina River, so my love for you has gathered deep within me.</p>
+          <p class="kome">The book <em>Ogura Hyakushu Hyōshaku: Eidoku Taiyaku</em> explains that <span style="font-weight:bold;">“<em>kohi</em> is an old word for water, and it also carries the sense of 戀 (love).”</span> In other words, <em>kohi</em> can be read as a kakekotoba on “water” and “love.”<br><small><a href="https://dl.ndl.go.jp/pid/872971/1/36">(Reference: Satō Shigeharu (Shihō), <em>Ogura Hyakushu Hyōshaku: Eidoku Taiyaku</em>, Hongō Shoin, December 1904. National Diet Library Digital Collections https://dl.ndl.go.jp/pid/872971)</a></small></p>
+        </section>
+
+        <section class="sample" id="16">
+          <h2 class="was-h3 waka"><a href="kakekotoba-game-016_en.html">Poem 16: Middle Counselor Yukihira</a></h2>
+          <a href="kakekotoba-game-016_en.html" class="kk-link">
+            <figure class="kk-fig" aria-label="Poem 16: kakekotoba">
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">立ち別れ</span><span class="kk-ro" lang="ja-Latn">tachiwakare</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk16-1">いなば</span>の山の</span><span class="kk-ro" lang="ja-Latn">inabanoyamano</span></span>
+                <span class="kk-ku"><span class="kk-ja">峰に生ふる</span><span class="kk-ro" lang="ja-Latn">mineniofuru</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk16-1"><span class="kk-head"><span class="kk-label">Kakekotoba</span><span class="kk-word" lang="ja-Latn">inaba</span></span><ul class="kk-means"><li><span class="kk-mja" lang="ja">因幡</span><span class="kk-mro" lang="ja-Latn">inaba</span><span class="kk-gl">Inaba (a province)</span></li><li><span class="kk-mja" lang="ja">往なば</span><span class="kk-mro" lang="ja-Latn">inaba</span><span class="kk-gl">if I go</span></li></ul></div>
+              </div>
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk16-2">まつ</span>とし聞かば</span><span class="kk-ro" lang="ja-Latn">matsutoshikikaba</span></span>
+                <span class="kk-ku"><span class="kk-ja">今帰りこむ</span><span class="kk-ro" lang="ja-Latn">imakaherikomu</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk16-2"><span class="kk-head"><span class="kk-label">Kakekotoba</span><span class="kk-word" lang="ja-Latn">matsu</span></span><ul class="kk-means"><li><span class="kk-mja" lang="ja">松</span><span class="kk-mro" lang="ja-Latn">matsu</span><span class="kk-gl">pine tree</span></li><li><span class="kk-mja" lang="ja">待つ</span><span class="kk-mro" lang="ja-Latn">matsu</span><span class="kk-gl">to wait</span></li></ul></div>
+              </div>
+            </figure>
+          </a>
+          <p class="kk-trans">I am leaving for the province of Inaba, where the pines grow on the mountain peak. If I hear that you are waiting for me, I will come back right away.</p>
+        </section>
+
+        <section class="sample" id="19">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/19_en.html">Poem 19: Ise</a></h2>
+          <a href="https://hyakuninisshu.com/19_en.html" class="kk-link">
+            <figure class="kk-fig" aria-label="Poem 19: kakekotoba">
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">難波潟</span><span class="kk-ro" lang="ja-Latn">nanihagata</span></span>
+                <span class="kk-ku"><span class="kk-ja">みじかき葦の</span><span class="kk-ro" lang="ja-Latn">mijikakiashino</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk19-1">ふしのま</span>も</span><span class="kk-ro" lang="ja-Latn">fushinomamo</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk19-1"><span class="kk-head"><span class="kk-label">Kakekotoba</span><span class="kk-word" lang="ja-Latn">fushinoma</span></span><ul class="kk-means"><li><span class="kk-mja" lang="ja">節の間</span><span class="kk-mro" lang="ja-Latn">fushinoma</span><span class="kk-gl">the short space between two joints of a reed</span></li><li><span class="kk-mja" lang="ja">わずかな時間</span><span class="kk-gl">the briefest moment</span></li></ul></div>
+              </div>
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">逢はでこの世を</span><span class="kk-ro" lang="ja-Latn">ahadekonoyoo</span></span>
+                <span class="kk-ku"><span class="kk-ja">過ぐしてよとや</span><span class="kk-ro" lang="ja-Latn">sugushiteyotoya</span></span>
+              </p>
+            </figure>
+          </a>
+          <p class="kk-trans">In this short life, even as brief as a joint of reed at Naniwa Bay, must I pass through this world without ever meeting you?</p>
+        </section>
+
+        <section class="sample" id="20">
+          <h2 class="was-h3 waka"><a href="kakekotoba-game-020_en.html">Poem 20: Prince Motoyoshi</a></h2>
+          <a href="kakekotoba-game-020_en.html" class="kk-link">
+            <figure class="kk-fig" aria-label="Poem 20: kakekotoba">
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">わびぬれば</span><span class="kk-ro" lang="ja-Latn">wabinureba</span></span>
+                <span class="kk-ku"><span class="kk-ja">いまはたおなじ</span><span class="kk-ro" lang="ja-Latn">imahataonaji</span></span>
+                <span class="kk-ku"><span class="kk-ja">難波なる</span><span class="kk-ro" lang="ja-Latn">nanihanaru</span></span>
+              </p>
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk20-1">みをつくし</span>ても</span><span class="kk-ro" lang="ja-Latn">miotsukushitemo</span></span>
+                <span class="kk-ku"><span class="kk-ja">逢はむとぞ思ふ</span><span class="kk-ro" lang="ja-Latn">ahamutozoomofu</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk20-1"><span class="kk-head"><span class="kk-label">Kakekotoba</span><span class="kk-word" lang="ja-Latn">miotsukushi</span></span><ul class="kk-means"><li><span class="kk-mja" lang="ja">身を尽くし</span><span class="kk-mro" lang="ja-Latn">miotsukushi</span><span class="kk-gl">giving everything of myself</span></li><li><span class="kk-mja" lang="ja">澪標</span><span class="kk-mro" lang="ja-Latn">miotsukushi</span><span class="kk-gl">channel markers</span></li></ul></div>
+              </div>
+            </figure>
+          </a>
+          <p class="kk-trans">Since things have come to this, it no longer matters. Even if I must sacrifice everything, I still want to meet you.</p>
+          <p class="kome"><em>Miotsukushi</em> (澪標) were stakes set in shallow waters, where boats risked running aground, to mark channels deep enough for them to pass.</p>
+        </section>
+
+        <section class="sample" id="22">
+          <h2 class="was-h3 waka"><a href="kakekotoba-game-022_en.html">Poem 22: Fun'ya no Yasuhide</a></h2>
+          <a href="kakekotoba-game-022_en.html" class="kk-link">
+            <figure class="kk-fig" aria-label="Poem 22: kakekotoba">
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">吹くからに</span><span class="kk-ro" lang="ja-Latn">fukukarani</span></span>
+                <span class="kk-ku"><span class="kk-ja">秋の草木の</span><span class="kk-ro" lang="ja-Latn">akinokusakino</span></span>
+                <span class="kk-ku"><span class="kk-ja">しをるれば</span><span class="kk-ro" lang="ja-Latn">shiorureba</span></span>
+              </p>
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">むべ山風を</span><span class="kk-ro" lang="ja-Latn">mubeyamakazeo</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk22-1">嵐</span>といふらむ</span><span class="kk-ro" lang="ja-Latn">arashitoifuramu</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk22-1"><span class="kk-head"><span class="kk-label">Kakekotoba</span><span class="kk-word" lang="ja-Latn">arashi</span></span><ul class="kk-means"><li><span class="kk-mja" lang="ja">嵐</span><span class="kk-mro" lang="ja-Latn">arashi</span><span class="kk-gl">storm</span></li><li><span class="kk-mja" lang="ja">荒し</span><span class="kk-mro" lang="ja-Latn">arashi</span><span class="kk-gl">lays waste</span></li></ul></div>
+              </div>
+            </figure>
+          </a>
+          <p class="kk-trans">The moment the autumn wind blows, the grasses and trees wither. Now I understand why the mountain wind is called "arashi" — storm.</p>
+          <p class="kome"><em>Arashi</em> here refers to the wind blowing down from the mountains.</p>
+        </section>
+
+        <section class="sample" id="24">
+          <h2 class="was-h3 waka"><a href="kakekotoba-game-024_en.html">Poem 24: Kanke</a></h2>
+          <a href="kakekotoba-game-024_en.html" class="kk-link">
+            <figure class="kk-fig" aria-label="Poem 24: kakekotoba">
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku kk-ku--k"><span class="kk-ja">この<span class="kk-k" id="kk24-1">たび</span>は</span><span class="kk-ro" lang="ja-Latn">konotabiha</span></span>
+                <span class="kk-ku"><span class="kk-ja">幣もとりあへず</span><span class="kk-ro" lang="ja-Latn">nusamotoriahezu</span></span>
+                <span class="kk-ku"><span class="kk-ja">手向山</span><span class="kk-ro" lang="ja-Latn">tamukeyama</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk24-1"><span class="kk-head"><span class="kk-label">Kakekotoba</span><span class="kk-word" lang="ja-Latn">tabi</span></span><ul class="kk-means"><li><span class="kk-mja" lang="ja">度</span><span class="kk-mro" lang="ja-Latn">tabi</span><span class="kk-gl">this time</span></li><li><span class="kk-mja" lang="ja">旅</span><span class="kk-mro" lang="ja-Latn">tabi</span><span class="kk-gl">journey</span></li></ul></div>
+              </div>
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">もみぢのにしき</span><span class="kk-ro" lang="ja-Latn">momijinonishiki</span></span>
+                <span class="kk-ku"><span class="kk-ja">神のまにまに</span><span class="kk-ro" lang="ja-Latn">kaminomanimani</span></span>
+              </p>
+            </figure>
+          </a>
+          <p class="kk-trans">This time, setting out in haste, I could not bring any offerings. O god of Mount Tamuke, please accept instead this brocade of autumn leaves, as you will.</p>
+        </section>
+
+        <section class="sample" id="25">
+          <h2 class="was-h3 waka"><a href="kakekotoba-game-025_en.html">Poem 25: Minister of the Right of Sanjō</a></h2>
+          <a href="kakekotoba-game-025_en.html" class="kk-link">
+            <figure class="kk-fig" aria-label="Poem 25: kakekotoba and engo">
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">名にし負はば</span><span class="kk-ro" lang="ja-Latn">nanishiohaba</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk25-1">逢坂</span>山の</span><span class="kk-ro" lang="ja-Latn">afusakayamano</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk25-2">さね</span>かづら</span><span class="kk-ro" lang="ja-Latn">sanekazura</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk25-1"><span class="kk-head"><span class="kk-label">Kakekotoba</span><span class="kk-word" lang="ja-Latn">afusaka</span></span><ul class="kk-means"><li><span class="kk-mja" lang="ja">逢坂</span><span class="kk-mro" lang="ja-Latn">afusaka</span><span class="kk-gl">Ōsaka</span></li><li><span class="kk-mja" lang="ja">逢ふ</span><span class="kk-mro" lang="ja-Latn">afu</span><span class="kk-gl">to meet</span></li></ul></div>
+                <div class="kk-callout" data-for="kk25-2"><span class="kk-head"><span class="kk-label">Kakekotoba</span><span class="kk-word" lang="ja-Latn">sane</span></span><ul class="kk-means"><li><span class="kk-mja" lang="ja">さ寝</span><span class="kk-mro" lang="ja-Latn">sane</span><span class="kk-gl">to sleep together</span></li><li><span class="kk-mja kk-e" lang="ja">さねかずら</span><span class="kk-mro" lang="ja-Latn">sanekazura</span><span class="kk-gl"><em>sanekazura</em>, a vine</span></li></ul></div>
+              </div>
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">人にしられで</span><span class="kk-ro" lang="ja-Latn">hitonishirarede</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk25-3">くる</span>よしもがな</span><span class="kk-ro" lang="ja-Latn">kuruyoshimogana</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk25-3"><span class="kk-head"><span class="kk-label">Kakekotoba</span><span class="kk-word" lang="ja-Latn">kuru</span></span><ul class="kk-means"><li><span class="kk-mja kk-e" lang="ja">繰る</span><span class="kk-mro" lang="ja-Latn">kuru</span><span class="kk-gl">to reel in</span></li><li><span class="kk-mja" lang="ja">来る</span><span class="kk-mro" lang="ja-Latn">kuru</span><span class="kk-gl">to come</span></li></ul></div>
+              </div>
+            </figure>
+          </a>
+          <p class="kk-engo"><span class="kk-engo-label">Engo</span><span class="kk-engo-item"><span class="kk-e" lang="ja">さねかずら</span> (a vine)</span> · <span class="kk-engo-item"><span class="kk-e" lang="ja">繰る</span> (to reel in)</span></p>
+          <p class="kk-trans">If the name of Ōsaka carries its meaning — then let me secretly follow the vine I draw toward me, and come to you unseen.</p>
+          <p class="kome">Ōsaka (逢坂) is the Ōsaka Barrier east of Kyoto, in today’s Ōtsu — not the city of Osaka (大阪). Because <em>sanekazura</em> is a climbing vine, it is an engo of <em>kuru</em> (to reel in).</p>
+        </section>
+
+        <section class="sample" id="27">
+          <h2 class="was-h3 waka"><a href="kakekotoba-game-027_en.html">Poem 27: Middle Counselor Kanesuke</a></h2>
+          <a href="kakekotoba-game-027_en.html" class="kk-link">
+            <figure class="kk-fig" aria-label="Poem 27: kakekotoba and engo">
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">みかの原</span><span class="kk-ro" lang="ja-Latn">mikanohara</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk27-1">わき</span>て流るる</span><span class="kk-ro" lang="ja-Latn">wakitenagaruru</span></span>
+                <span class="kk-ku"><span class="kk-ja"><span class="kk-e">いづみ</span>川</span><span class="kk-ro" lang="ja-Latn">izumigaha</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk27-1"><span class="kk-head"><span class="kk-label">Kakekotoba</span><span class="kk-word" lang="ja-Latn">waki</span></span><ul class="kk-means"><li><span class="kk-mja kk-e" lang="ja">湧き</span><span class="kk-mro" lang="ja-Latn">waki</span><span class="kk-gl">to gush forth</span></li><li><span class="kk-mja" lang="ja">分き</span><span class="kk-mro" lang="ja-Latn">waki</span><span class="kk-gl">to divide</span></li></ul></div>
+              </div>
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">いつ見きとてか</span><span class="kk-ro" lang="ja-Latn">itsumikitoteka</span></span>
+                <span class="kk-ku"><span class="kk-ja">恋しかるらむ</span><span class="kk-ro" lang="ja-Latn">kohishikaruramu</span></span>
+              </p>
+            </figure>
+          </a>
+          <p class="kk-engo"><span class="kk-engo-label">Engo</span><span class="kk-engo-item"><span class="kk-e" lang="ja">湧き</span> (to gush forth)</span> · <span class="kk-engo-item"><span class="kk-e" lang="ja">いづみ</span> (a spring)</span><span class="kk-engo-why">Both are words about water.</span></p>
+          <p class="kk-trans">Like the Izumi River that wells up and flows through Mika Plain — when did I first see you, that I should long for you so?</p>
+        </section>
+
+        <section class="sample" id="28">
+          <h2 class="was-h3 waka"><a href="kakekotoba-game-028_en.html">Poem 28: Minamoto no Muneyuki Ason</a></h2>
+          <a href="kakekotoba-game-028_en.html" class="kk-link">
+            <figure class="kk-fig" aria-label="Poem 28: kakekotoba">
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">山里は</span><span class="kk-ro" lang="ja-Latn">yamazatoha</span></span>
+                <span class="kk-ku"><span class="kk-ja">冬ぞさびしさ</span><span class="kk-ro" lang="ja-Latn">fuyuzosabishisa</span></span>
+                <span class="kk-ku"><span class="kk-ja">まさりける</span><span class="kk-ro" lang="ja-Latn">masarikeru</span></span>
+              </p>
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">人目も草も</span><span class="kk-ro" lang="ja-Latn">hitomemokusamo</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk28-1">かれ</span>ぬと思へば</span><span class="kk-ro" lang="ja-Latn">karenutoomoheba</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk28-1"><span class="kk-head"><span class="kk-label">Kakekotoba</span><span class="kk-word" lang="ja-Latn">kare</span></span><ul class="kk-means"><li><span class="kk-mja" lang="ja">枯れ</span><span class="kk-mro" lang="ja-Latn">kare</span><span class="kk-gl">to wither</span></li><li><span class="kk-mja" lang="ja">離れ</span><span class="kk-mro" lang="ja-Latn">kare</span><span class="kk-gl">to drift apart, to stop visiting</span></li></ul></div>
+              </div>
+            </figure>
+          </a>
+          <p class="kk-trans">In a mountain village, loneliness deepens in winter. Not only people disappear — the grass too withers away.</p>
+          <p class="kome">In classical Japanese, 離る is read <em>karu</em>.</p>
+        </section>
+
+        <section class="sample" id="51">
+          <h2 class="was-h3 waka"><a href="kakekotoba-game-051_en.html">Poem 51: Fujiwara no Sanekata Ason</a></h2>
+          <a href="kakekotoba-game-051_en.html" class="kk-link">
+            <figure class="kk-fig" aria-label="Poem 51: kakekotoba and engo">
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">かくとだに</span><span class="kk-ro" lang="ja-Latn">kakutodani</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja">えやは<span class="kk-k" id="kk51-1">いぶき</span>の</span><span class="kk-ro" lang="ja-Latn">eyahaibukino</span></span>
+                <span class="kk-ku"><span class="kk-ja"><span class="kk-e">さしも草</span></span><span class="kk-ro" lang="ja-Latn">sashimogusa</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk51-1"><span class="kk-head"><span class="kk-label">Kakekotoba</span><span class="kk-word" lang="ja-Latn">ibuki</span></span><ul class="kk-means"><li><span class="kk-mja" lang="ja">伊吹</span><span class="kk-mro" lang="ja-Latn">ibuki</span><span class="kk-gl">Mount Ibuki</span></li><li><span class="kk-mja" lang="ja">言ふ</span><span class="kk-mro" lang="ja-Latn">ifu</span><span class="kk-gl">to say</span></li></ul></div>
+              </div>
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">さしも知らじな</span><span class="kk-ro" lang="ja-Latn">sashimoshirajina</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-e">もゆる</span><span class="kk-k" id="kk51-2">思ひ</span>を</span><span class="kk-ro" lang="ja-Latn">moyuruomohio</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk51-2"><span class="kk-head"><span class="kk-label">Kakekotoba</span><span class="kk-word" lang="ja-Latn">omohi</span></span><ul class="kk-means"><li><span class="kk-mja" lang="ja">思ひ</span><span class="kk-mro" lang="ja-Latn">omohi</span><span class="kk-gl">longing</span></li><li><span class="kk-mja kk-e" lang="ja">火</span><span class="kk-mro" lang="ja-Latn">hi</span><span class="kk-gl">fire</span></li></ul></div>
+              </div>
+            </figure>
+          </a>
+          <p class="kk-engo"><span class="kk-engo-label">Engo</span><span class="kk-engo-item"><span class="kk-e" lang="ja">さしも草</span> (mugwort)</span> · <span class="kk-engo-item"><span class="kk-e" lang="ja">もゆる</span> (to burn)</span> · <span class="kk-engo-item"><span class="kk-e" lang="ja">火</span> (fire)</span></p>
+          <p class="kk-trans">I cannot even tell you how I feel — like the smoldering fire of ibuki wormwood, my hidden love quietly burns.</p>
+          <p class="kome"><em>Sashimogusa</em> is mugwort. Because it is used in moxibustion, it is an engo of <em>moyuru</em> (to burn) and 火 (<em>hi</em>, fire).</p>
+        </section>
+
+        <section class="sample" id="55">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/55_en.html">Poem 55: Upper Counselor Kintō</a></h2>
+          <a href="https://hyakuninisshu.com/55_en.html" class="kk-link">
+            <figure class="kk-fig" aria-label="Poem 55: engo">
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja"><span class="kk-e">滝</span>の<span class="kk-e">音</span>は</span><span class="kk-ro" lang="ja-Latn">takinootoha</span></span>
+                <span class="kk-ku"><span class="kk-ja">たえて久しく</span><span class="kk-ro" lang="ja-Latn">taetehisashiku</span></span>
+                <span class="kk-ku"><span class="kk-ja">なりぬれど</span><span class="kk-ro" lang="ja-Latn">narinuredo</span></span>
+              </p>
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">名こそ<span class="kk-e">流</span>れて</span><span class="kk-ro" lang="ja-Latn">nakosonagarete</span></span>
+                <span class="kk-ku"><span class="kk-ja">なほ<span class="kk-e">聞</span>こえけれ</span><span class="kk-ro" lang="ja-Latn">nahokikoekere</span></span>
+              </p>
+            </figure>
+          </a>
+          <p class="kk-engo"><span class="kk-engo-label">Engo</span><span class="kk-engo-item"><span class="kk-e" lang="ja">滝</span> (waterfall)</span> · <span class="kk-engo-item"><span class="kk-e" lang="ja">音</span> (sound)</span> · <span class="kk-engo-item"><span class="kk-e" lang="ja">流れ</span> (to flow)</span> · <span class="kk-engo-item"><span class="kk-e" lang="ja">聞こえ</span> (to be heard)</span><span class="kk-engo-why">滝 (waterfall) and 流れ (to flow) are linked as words about water, and 音 (sound) and 聞こえ (to be heard) as words about sound.</span></p>
+          <p class="kk-trans">The sound of the waterfall has long since faded, but its name flows on and is still heard by the world.</p>
+        </section>
+
+        <section class="sample" id="57">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/57_en.html">Poem 57: Murasaki Shikibu</a></h2>
+          <a href="https://hyakuninisshu.com/57_en.html" class="kk-link">
+            <figure class="kk-fig" aria-label="Poem 57: engo">
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja"><span class="kk-e">めぐり</span>逢ひて</span><span class="kk-ro" lang="ja-Latn">meguriahite</span></span>
+                <span class="kk-ku"><span class="kk-ja">見しやそれとも</span><span class="kk-ro" lang="ja-Latn">mishiyasoretomo</span></span>
+                <span class="kk-ku"><span class="kk-ja">わかぬ間に</span><span class="kk-ro" lang="ja-Latn">wakanumani</span></span>
+              </p>
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">雲隠れにし</span><span class="kk-ro" lang="ja-Latn">kumogakurenishi</span></span>
+                <span class="kk-ku"><span class="kk-ja">夜半の<span class="kk-e">月</span>かな</span><span class="kk-ro" lang="ja-Latn">yohanotsukikana</span></span>
+              </p>
+            </figure>
+          </a>
+          <p class="kk-engo"><span class="kk-engo-label">Engo</span><span class="kk-engo-item"><span class="kk-e" lang="ja">めぐり</span> (to go around)</span> · <span class="kk-engo-item"><span class="kk-e" lang="ja">月</span> (moon)</span></p>
+          <p class="kk-trans">We met for just a moment, yet I could not be sure it was really you — and then you vanished behind the clouds, like the midnight moon.</p>
+          <p class="kome">Because the moon waxes and wanes in a cycle, it is an engo of <em>meguru</em> (to go around).</p>
+        </section>
+
+        <section class="sample" id="58">
+          <h2 class="was-h3 waka"><a href="kakekotoba-game-058_en.html">Poem 58: Daini no Sanmi</a></h2>
+          <a href="kakekotoba-game-058_en.html" class="kk-link">
+            <figure class="kk-fig" aria-label="Poem 58: kakekotoba">
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">ありま山</span><span class="kk-ro" lang="ja-Latn">arimayama</span></span>
+                <span class="kk-ku"><span class="kk-ja">猪名の笹原</span><span class="kk-ro" lang="ja-Latn">inanosasahara</span></span>
+                <span class="kk-ku"><span class="kk-ja">風吹けば</span><span class="kk-ro" lang="ja-Latn">kazefukeba</span></span>
+              </p>
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku kk-ku--k"><span class="kk-ja">いで<span class="kk-k" id="kk58-1">そよ</span>人を</span><span class="kk-ro" lang="ja-Latn">idesoyohitoo</span></span>
+                <span class="kk-ku"><span class="kk-ja">忘れやはする</span><span class="kk-ro" lang="ja-Latn">wasureyahasuru</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk58-1"><span class="kk-head"><span class="kk-label">Kakekotoba</span><span class="kk-word" lang="ja-Latn">soyo</span></span><ul class="kk-means"><li><span class="kk-mja" lang="ja">そよそよ</span><span class="kk-mro" lang="ja-Latn">soyosoyo</span><span class="kk-gl">the rustling of leaves in the wind</span></li><li><span class="kk-mja" lang="ja">そうですよ</span><span class="kk-gl">“Yes, that’s right”</span></li></ul></div>
+              </div>
+            </figure>
+          </a>
+          <p class="kk-trans">When the wind blows through the bamboo groves of Arima and Ina — of course I have not forgotten you.</p>
+        </section>
+
+        <section class="sample" id="60">
+          <h2 class="was-h3 waka"><a href="kakekotoba-game-060_en.html">Poem 60: Koshikibu no Naishi</a></h2>
+          <a href="kakekotoba-game-060_en.html" class="kk-link">
+            <figure class="kk-fig" aria-label="Poem 60: kakekotoba and engo">
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">大江山</span><span class="kk-ro" lang="ja-Latn">ohoeyama</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk60-1">いく野</span>の道の</span><span class="kk-ro" lang="ja-Latn">ikunonomichino</span></span>
+                <span class="kk-ku"><span class="kk-ja">遠ければ</span><span class="kk-ro" lang="ja-Latn">tohokereba</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk60-1"><span class="kk-head"><span class="kk-label">Kakekotoba</span><span class="kk-word" lang="ja-Latn">ikuno</span></span><ul class="kk-means"><li><span class="kk-mja" lang="ja">行く</span><span class="kk-mro" lang="ja-Latn">iku</span><span class="kk-gl">to go</span></li><li><span class="kk-mja" lang="ja">生野</span><span class="kk-mro" lang="ja-Latn">ikuno</span><span class="kk-gl">Ikuno (a place name)</span></li></ul></div>
+              </div>
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku kk-ku--k"><span class="kk-ja">まだ<span class="kk-k" id="kk60-2">ふみ</span>もみず</span><span class="kk-ro" lang="ja-Latn">madafumimomizu</span></span>
+                <span class="kk-ku"><span class="kk-ja">天の<span class="kk-e">橋</span>立</span><span class="kk-ro" lang="ja-Latn">amanohashidate</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk60-2"><span class="kk-head"><span class="kk-label">Kakekotoba</span><span class="kk-word" lang="ja-Latn">fumi</span></span><ul class="kk-means"><li><span class="kk-mja" lang="ja">文</span><span class="kk-mro" lang="ja-Latn">fumi</span><span class="kk-gl">a letter</span></li><li><span class="kk-mja kk-e" lang="ja">踏み</span><span class="kk-mro" lang="ja-Latn">fumi</span><span class="kk-gl">setting foot</span></li></ul></div>
+              </div>
+            </figure>
+          </a>
+          <p class="kk-engo"><span class="kk-engo-label">Engo</span><span class="kk-engo-item"><span class="kk-e" lang="ja">踏み</span> (stepping)</span> · <span class="kk-engo-item"><span class="kk-e" lang="ja">橋</span> (bridge)</span></p>
+          <p class="kk-trans">The road to Oe Mountain and Ikuno is so long and far — I have not yet set foot on it, nor received a letter from my mother.</p>
+          <p class="kome">Because one treads on the boards of a bridge, <em>fumi</em> (stepping) and <em>hashi</em> (bridge) are engo.</p>
+        </section>
+
+        <section class="sample" id="62">
+          <h2 class="was-h3 waka"><a href="kakekotoba-game-062_en.html">Poem 62: Sei Shōnagon</a></h2>
+          <a href="kakekotoba-game-062_en.html" class="kk-link">
+            <figure class="kk-fig" aria-label="Poem 62: kakekotoba">
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">夜をこめて</span><span class="kk-ro" lang="ja-Latn">yookomete</span></span>
+                <span class="kk-ku"><span class="kk-ja">鳥のそらねは</span><span class="kk-ro" lang="ja-Latn">torinosoraneha</span></span>
+                <span class="kk-ku"><span class="kk-ja">はかるとも</span><span class="kk-ro" lang="ja-Latn">hakarutomo</span></span>
+              </p>
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku kk-ku--k"><span class="kk-ja">よに<span class="kk-k" id="kk62-1">逢坂</span>の</span><span class="kk-ro" lang="ja-Latn">yoniafusakano</span></span>
+                <span class="kk-ku"><span class="kk-ja">関は許さじ</span><span class="kk-ro" lang="ja-Latn">sekihayurusaji</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk62-1"><span class="kk-head"><span class="kk-label">Kakekotoba</span><span class="kk-word" lang="ja-Latn">afusaka</span></span><ul class="kk-means"><li><span class="kk-mja" lang="ja">逢坂</span><span class="kk-mro" lang="ja-Latn">afusaka</span><span class="kk-gl">Ōsaka</span></li><li><span class="kk-mja" lang="ja">逢ふ</span><span class="kk-mro" lang="ja-Latn">afu</span><span class="kk-gl">to meet</span></li></ul></div>
+              </div>
+            </figure>
+          </a>
+          <p class="kk-trans">Even if you try to fool me with a crowing rooster in the night — I will not open the Barrier of Ōsaka for you.</p>
+          <p class="kome">Ōsaka (逢坂) is the Ōsaka Barrier east of Kyoto, in today’s Ōtsu — not the city of Osaka (大阪).</p>
+        </section>
+
+        <section class="sample" id="67">
+          <h2 class="was-h3 waka"><a href="kakekotoba-game-067_en.html">Poem 67: Suō no Naishi</a></h2>
+          <a href="kakekotoba-game-067_en.html" class="kk-link">
+            <figure class="kk-fig" aria-label="Poem 67: kakekotoba">
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">春の夜の</span><span class="kk-ro" lang="ja-Latn">harunoyono</span></span>
+                <span class="kk-ku"><span class="kk-ja">夢ばかりなる</span><span class="kk-ro" lang="ja-Latn">yumebakarinaru</span></span>
+                <span class="kk-ku"><span class="kk-ja">手枕に</span><span class="kk-ro" lang="ja-Latn">tamakurani</span></span>
+              </p>
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk67-1">かひなく</span>立たむ</span><span class="kk-ro" lang="ja-Latn">kahinakutatamu</span></span>
+                <span class="kk-ku"><span class="kk-ja">名こそをしけれ</span><span class="kk-ro" lang="ja-Latn">nakosooshikere</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk67-1"><span class="kk-head"><span class="kk-label">Kakekotoba</span><span class="kk-word" lang="ja-Latn">kahinaku</span></span><ul class="kk-means"><li><span class="kk-mja" lang="ja">甲斐なく</span><span class="kk-mro" lang="ja-Latn">kahinaku</span><span class="kk-gl">in vain</span></li><li><span class="kk-mja" lang="ja">腕（かひな）</span><span class="kk-mro" lang="ja-Latn">kahina</span><span class="kk-gl">arm</span></li></ul></div>
+              </div>
+            </figure>
+          </a>
+          <p class="kk-trans">In the spring night, resting my head on an arm for just a brief dream — how I grieve that my name might spread for such a fleeting thing.</p>
+          <p class="kome">Reading 腕 (arm) as <em>kaina</em> is rare today, but the traditional world of sumo still keeps the expression <em><ruby>腕<rt>かいな</rt></ruby> o kaesu</em> (turning the arm), which you may still hear on sumo broadcasts.</p>
+        </section>
+
+        <section class="sample" id="72">
+          <h2 class="was-h3 waka"><a href="kakekotoba-game-072_en.html">Poem 72: Kii of Princess Yūshi's Household</a></h2>
+          <a href="kakekotoba-game-072_en.html" class="kk-link">
+            <figure class="kk-fig" aria-label="Poem 72: kakekotoba and engo">
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">音に聞く</span><span class="kk-ro" lang="ja-Latn">otonikiku</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk72-1">高師</span>の<span class="kk-e">浜</span>の</span><span class="kk-ro" lang="ja-Latn">takashinohamano</span></span>
+                <span class="kk-ku"><span class="kk-ja">あだ<span class="kk-e">波</span>は</span><span class="kk-ro" lang="ja-Latn">adanamiha</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk72-1"><span class="kk-head"><span class="kk-label">Kakekotoba</span><span class="kk-word" lang="ja-Latn">takashi</span></span><ul class="kk-means"><li><span class="kk-mja" lang="ja">高し</span><span class="kk-mro" lang="ja-Latn">takashi</span><span class="kk-gl">well-known, famous</span></li><li><span class="kk-mja" lang="ja">高師</span><span class="kk-mro" lang="ja-Latn">takashi</span><span class="kk-gl">Takashi Beach</span></li></ul></div>
+              </div>
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">かけじや袖の</span><span class="kk-ro" lang="ja-Latn">kakejiyasodeno</span></span>
+                <span class="kk-ku"><span class="kk-ja"><span class="kk-e">ぬれ</span>もこそすれ</span><span class="kk-ro" lang="ja-Latn">nuremokososure</span></span>
+              </p>
+            </figure>
+          </a>
+          <p class="kk-engo"><span class="kk-engo-label">Engo</span><span class="kk-engo-item"><span class="kk-e" lang="ja">浜</span> (beach)</span> · <span class="kk-engo-item"><span class="kk-e" lang="ja">波</span> (waves)</span> · <span class="kk-engo-item"><span class="kk-e" lang="ja">ぬれ</span> (getting wet)</span><span class="kk-engo-why">All are words associated with the seashore.</span></p>
+          <p class="kk-trans">I have heard how fickle the waves at Takashi Beach are. I will not let them wet my sleeves — I will keep my heart guarded.</p>
+        </section>
+
+        <section class="sample" id="75">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/75_en.html">Poem 75: Fujiwara no Mototoshi</a></h2>
+          <a href="https://hyakuninisshu.com/75_en.html" class="kk-link">
+            <figure class="kk-fig" aria-label="Poem 75: engo">
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">契り<span class="kk-e">おき</span>し</span><span class="kk-ro" lang="ja-Latn">chigiriokishi</span></span>
+                <span class="kk-ku"><span class="kk-ja">させもが<span class="kk-e">露</span>を</span><span class="kk-ro" lang="ja-Latn">sasemogatsuyuo</span></span>
+                <span class="kk-ku"><span class="kk-ja">いのちにて</span><span class="kk-ro" lang="ja-Latn">inochinite</span></span>
+              </p>
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">あはれ今年の</span><span class="kk-ro" lang="ja-Latn">aharekotoshino</span></span>
+                <span class="kk-ku"><span class="kk-ja">秋もいぬめり</span><span class="kk-ro" lang="ja-Latn">akimoinumeri</span></span>
+              </p>
+            </figure>
+          </a>
+          <p class="kk-engo"><span class="kk-engo-label">Engo</span><span class="kk-engo-item"><span class="kk-e" lang="ja">おき</span> (to settle)</span> · <span class="kk-engo-item"><span class="kk-e" lang="ja">露</span> (dew)</span></p>
+          <p class="kk-trans">You promised me, and I staked my life on it like the morning dew on the wormwood. But another autumn is passing, alas.</p>
+          <p class="kome"><em>Oki</em> (to settle) is an engo of <em>tsuyu</em> (dew), since dew settles on things.</p>
+        </section>
+
+        <section class="sample" id="77">
+          <h2 class="was-h3 waka"><a href="kakekotoba-game-077_en.html">Poem 77: Retired Emperor Sutoku</a></h2>
+          <a href="kakekotoba-game-077_en.html" class="kk-link">
+            <figure class="kk-fig" aria-label="Poem 77: kakekotoba">
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">瀬をはやみ</span><span class="kk-ro" lang="ja-Latn">seohayami</span></span>
+                <span class="kk-ku"><span class="kk-ja">岩にせかるる</span><span class="kk-ro" lang="ja-Latn">ihanisekaruru</span></span>
+                <span class="kk-ku"><span class="kk-ja">滝川の</span><span class="kk-ro" lang="ja-Latn">takigahano</span></span>
+              </p>
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk77-1">われ</span>ても末に</span><span class="kk-ro" lang="ja-Latn">waretemosueni</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk77-2">あは</span>むとぞ思ふ</span><span class="kk-ro" lang="ja-Latn">ahamutozoomofu</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk77-1"><span class="kk-head"><span class="kk-label">Kakekotoba</span><span class="kk-word" lang="ja-Latn">ware</span></span><ul class="kk-means"><li><span class="kk-mja" lang="ja">分かれる</span><span class="kk-gl">(the stream) splits</span></li><li><span class="kk-mja" lang="ja">別れる</span><span class="kk-gl">(we) part</span></li></ul></div>
+                <div class="kk-callout" data-for="kk77-2"><span class="kk-head"><span class="kk-label">Kakekotoba</span><span class="kk-word" lang="ja-Latn">aha</span></span><ul class="kk-means"><li><span class="kk-mja" lang="ja">逢う</span><span class="kk-mro" lang="ja-Latn">au</span><span class="kk-gl">to meet</span></li><li><span class="kk-mja" lang="ja">合う</span><span class="kk-mro" lang="ja-Latn">au</span><span class="kk-gl">to come together</span></li></ul></div>
+              </div>
+            </figure>
+          </a>
+          <p class="kk-trans">Like the river that is split by rocks and flows apart — though we are separated now, I believe we will meet again in the end.</p>
+        </section>
+
+        <section class="sample" id="80">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/80_en.html">Poem 80: Horikawa, attendant to Empress Taiken</a></h2>
+          <a href="https://hyakuninisshu.com/80_en.html" class="kk-link">
+            <figure class="kk-fig" aria-label="Poem 80: engo">
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja"><span class="kk-e">長</span>からむ</span><span class="kk-ro" lang="ja-Latn">nagakaramu</span></span>
+                <span class="kk-ku"><span class="kk-ja">心もしらず</span><span class="kk-ro" lang="ja-Latn">kokoromoshirazu</span></span>
+                <span class="kk-ku"><span class="kk-ja"><span class="kk-e">黒髪</span>の</span><span class="kk-ro" lang="ja-Latn">kurokamino</span></span>
+              </p>
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja"><span class="kk-e">みだれて</span>けさは</span><span class="kk-ro" lang="ja-Latn">midaretekesaha</span></span>
+                <span class="kk-ku"><span class="kk-ja">物をこそ思へ</span><span class="kk-ro" lang="ja-Latn">monookosoomohe</span></span>
+              </p>
+            </figure>
+          </a>
+          <p class="kk-engo"><span class="kk-engo-label">Engo</span><span class="kk-engo-item"><span class="kk-e" lang="ja">長</span> (long)</span> · <span class="kk-engo-item"><span class="kk-e" lang="ja">黒髪</span> (black hair)</span> · <span class="kk-engo-item"><span class="kk-e" lang="ja">みだれ</span> (tangled)</span><span class="kk-engo-why">All are words associated with hair.</span></p>
+          <p class="kk-trans">Not knowing whether your heart will last — I woke this morning with my long black hair in tangles, lost in thought.</p>
+        </section>
+
+        <section class="sample" id="88">
+          <h2 class="was-h3 waka"><a href="kakekotoba-game-088_en.html">Poem 88: Attendant to Empress Kōka</a></h2>
+          <a href="kakekotoba-game-088_en.html" class="kk-link">
+            <figure class="kk-fig" aria-label="Poem 88: kakekotoba and engo">
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">難波江の</span><span class="kk-ro" lang="ja-Latn">nanihaeno</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-e">葦</span>の<span class="kk-k" id="kk88-1">かりね</span>の</span><span class="kk-ro" lang="ja-Latn">ashinokarineno</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk88-2">ひとよ</span>ゆゑ</span><span class="kk-ro" lang="ja-Latn">hitoyoyue</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk88-1"><span class="kk-head"><span class="kk-label">Kakekotoba</span><span class="kk-word" lang="ja-Latn">karine</span></span><ul class="kk-means"><li><span class="kk-mja kk-e" lang="ja">刈り根</span><span class="kk-mro" lang="ja-Latn">karine</span><span class="kk-gl">the stubble of cut reeds</span></li><li><span class="kk-mja" lang="ja">仮寝</span><span class="kk-mro" lang="ja-Latn">karine</span><span class="kk-gl">a brief sleep</span></li></ul></div>
+                <div class="kk-callout" data-for="kk88-2"><span class="kk-head"><span class="kk-label">Kakekotoba</span><span class="kk-word" lang="ja-Latn">hitoyo</span></span><ul class="kk-means"><li><span class="kk-mja kk-e" lang="ja">一節</span><span class="kk-mro" lang="ja-Latn">hitoyo</span><span class="kk-gl">the space between two joints of a reed</span></li><li><span class="kk-mja" lang="ja">一夜</span><span class="kk-mro" lang="ja-Latn">hitoyo</span><span class="kk-gl">a single night</span></li></ul></div>
+              </div>
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk88-3">みをつくし</span>てや</span><span class="kk-ro" lang="ja-Latn">miotsukushiteya</span></span>
+                <span class="kk-ku"><span class="kk-ja">恋ひわたるべき</span><span class="kk-ro" lang="ja-Latn">kohiwatarubeki</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk88-3"><span class="kk-head"><span class="kk-label">Kakekotoba</span><span class="kk-word" lang="ja-Latn">miotsukushi</span></span><ul class="kk-means"><li><span class="kk-mja" lang="ja">身を尽くし</span><span class="kk-mro" lang="ja-Latn">miotsukushi</span><span class="kk-gl">giving everything of myself</span></li><li><span class="kk-mja kk-e" lang="ja">澪標（みおつくし）</span><span class="kk-mro" lang="ja-Latn">miotsukushi</span><span class="kk-gl">channel markers</span></li></ul></div>
+              </div>
+            </figure>
+          </a>
+          <p class="kk-engo"><span class="kk-engo-label">Engo</span><span class="kk-engo-item"><span class="kk-e" lang="ja">葦</span> (reeds)</span> · <span class="kk-engo-item"><span class="kk-e" lang="ja">刈り根</span> (stubble)</span> · <span class="kk-engo-item"><span class="kk-e" lang="ja">一節</span> (a joint of a reed)</span> · <span class="kk-engo-item"><span class="kk-e" lang="ja">澪標</span> (channel markers)</span><span class="kk-engo-why">All are words associated with the reeds and waters of Naniwa Inlet.</span></p>
+          <p class="kk-trans">For just one brief night together, like the cut end of a reed at Naniwa — must I go on longing for you forever?</p>
+        </section>
+
+        <section class="sample" id="89">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/89_en.html">Poem 89: Princess Shikishi</a></h2>
+          <a href="https://hyakuninisshu.com/89_en.html" class="kk-link">
+            <figure class="kk-fig" aria-label="Poem 89: engo">
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">玉の<span class="kk-e">緒</span>よ</span><span class="kk-ro" lang="ja-Latn">tamanooyo</span></span>
+                <span class="kk-ku"><span class="kk-ja"><span class="kk-e">絶え</span>なば<span class="kk-e">絶え</span>ね</span><span class="kk-ro" lang="ja-Latn">taenabataene</span></span>
+                <span class="kk-ku"><span class="kk-ja"><span class="kk-e">ながらへ</span>ば</span><span class="kk-ro" lang="ja-Latn">nagaraheba</span></span>
+              </p>
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">忍ぶることの</span><span class="kk-ro" lang="ja-Latn">shinoburukotono</span></span>
+                <span class="kk-ku"><span class="kk-ja"><span class="kk-e">弱り</span>もぞする</span><span class="kk-ro" lang="ja-Latn">yowarimozosuru</span></span>
+              </p>
+            </figure>
+          </a>
+          <p class="kk-engo"><span class="kk-engo-label">Engo</span><span class="kk-engo-item"><span class="kk-e" lang="ja">緒</span> (a cord)</span> · <span class="kk-engo-item"><span class="kk-e" lang="ja">絶え</span> (to snap)</span> · <span class="kk-engo-item"><span class="kk-e" lang="ja">ながらへ</span> (to last long)</span> · <span class="kk-engo-item"><span class="kk-e" lang="ja">弱り</span> (to weaken)</span><span class="kk-engo-why"><em>Tama no o</em> (玉の緒), literally “the cord that strings jewels,” means “life.” 絶え (to snap), ながらへ (to last long) and 弱り (to weaken) are all words associated with a cord.</span></p>
+          <p class="kk-trans">Let my life end now, if it must. For if I go on living, my power to endure this secret love may weaken.</p>
+        </section>
+
+        <section class="sample" id="91">
+          <h2 class="was-h3 waka"><a href="kakekotoba-game-091_en.html">Poem 91: Gokyōgoku Regent and former Chancellor of the Realm</a></h2>
+          <a href="kakekotoba-game-091_en.html" class="kk-link">
+            <figure class="kk-fig" aria-label="Poem 91: kakekotoba">
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">きりぎりす</span><span class="kk-ro" lang="ja-Latn">kirigirisu</span></span>
+                <span class="kk-ku"><span class="kk-ja">鳴くや霜夜の</span><span class="kk-ro" lang="ja-Latn">nakuyashimoyono</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk91-1">さむしろ</span>に</span><span class="kk-ro" lang="ja-Latn">samushironi</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk91-1"><span class="kk-head"><span class="kk-label">Kakekotoba</span><span class="kk-word" lang="ja-Latn">samushiro</span></span><ul class="kk-means"><li><span class="kk-mja" lang="ja">寒し</span><span class="kk-mro" lang="ja-Latn">samushi</span><span class="kk-gl">cold</span></li><li><span class="kk-mja" lang="ja">さむしろ</span><span class="kk-mro" lang="ja-Latn">samushiro</span><span class="kk-gl">a straw mat</span></li></ul></div>
+              </div>
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">衣かたしき</span><span class="kk-ro" lang="ja-Latn">koromokatashiki</span></span>
+                <span class="kk-ku"><span class="kk-ja">ひとりかも寝む</span><span class="kk-ro" lang="ja-Latn">hitorikamonemu</span></span>
+              </p>
+            </figure>
+          </a>
+          <p class="kk-trans">On a cold, frosty night, the cricket cries. Lying alone with one sleeve folded beneath me — how lonely it is.</p>
+          <p class="kome"><em>Samushiro</em> is a <em>mushiro</em>, a coarse mat woven from straw. The <em>sa-</em> is a prefix that adjusts the rhythm.</p>
+        </section>
+
+        <section class="sample" id="95">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/95_en.html">Poem 95: Former Senior High Priest Jien</a></h2>
+          <a href="https://hyakuninisshu.com/95_en.html" class="kk-link">
+            <figure class="kk-fig" aria-label="Poem 95: kakekotoba and engo">
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">おほけなく</span><span class="kk-ro" lang="ja-Latn">ohokenaku</span></span>
+                <span class="kk-ku"><span class="kk-ja">憂き世の民に</span><span class="kk-ro" lang="ja-Latn">ukiyonotamini</span></span>
+                <span class="kk-ku"><span class="kk-ja"><span class="kk-e">おほふ</span>かな</span><span class="kk-ro" lang="ja-Latn">ohofukana</span></span>
+              </p>
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">わがたつ杣に</span><span class="kk-ro" lang="ja-Latn">wagatatsusomani</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk95-1">墨染</span>の<span class="kk-e">袖</span></span><span class="kk-ro" lang="ja-Latn">sumizomenosode</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk95-1"><span class="kk-head"><span class="kk-label">Kakekotoba</span><span class="kk-word" lang="ja-Latn">sumizome</span></span><ul class="kk-means"><li><span class="kk-mja" lang="ja">墨染</span><span class="kk-mro" lang="ja-Latn">sumizome</span><span class="kk-gl">ink-dyed (a monk’s robes)</span></li><li><span class="kk-mja" lang="ja">住み初め</span><span class="kk-mro" lang="ja-Latn">sumizome</span><span class="kk-gl">having just begun to live (on the mountain)</span></li></ul></div>
+              </div>
+            </figure>
+          </a>
+          <p class="kk-engo"><span class="kk-engo-label">Engo</span><span class="kk-engo-item"><span class="kk-e" lang="ja">おほふ</span> (to cover)</span> · <span class="kk-engo-item"><span class="kk-e" lang="ja">袖</span> (sleeve)</span><span class="kk-engo-why">Sleeves are what cover and shelter, so the two words echo each other.</span></p>
+          <p class="kk-trans">How bold it is of me — yet I spread my ink-black sleeves to shelter the people of this troubled world.</p>
+        </section>
+
+        <section class="sample" id="96">
+          <h2 class="was-h3 waka"><a href="kakekotoba-game-096_en.html">Poem 96: Lay Novice and former Chancellor of the Realm</a></h2>
+          <a href="kakekotoba-game-096_en.html" class="kk-link">
+            <figure class="kk-fig" aria-label="Poem 96: kakekotoba">
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">花さそふ</span><span class="kk-ro" lang="ja-Latn">hanasasofu</span></span>
+                <span class="kk-ku"><span class="kk-ja">嵐の庭の</span><span class="kk-ro" lang="ja-Latn">arashinonihano</span></span>
+                <span class="kk-ku"><span class="kk-ja">雪ならで</span><span class="kk-ro" lang="ja-Latn">yukinarade</span></span>
+              </p>
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk96-1">ふりゆく</span>ものは</span><span class="kk-ro" lang="ja-Latn">furiyukumonoha</span></span>
+                <span class="kk-ku"><span class="kk-ja">わが身なりけり</span><span class="kk-ro" lang="ja-Latn">wagaminarikeri</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk96-1"><span class="kk-head"><span class="kk-label">Kakekotoba</span><span class="kk-word" lang="ja-Latn">furiyuku</span></span><ul class="kk-means"><li><span class="kk-mja" lang="ja">古りゆく</span><span class="kk-mro" lang="ja-Latn">furiyuku</span><span class="kk-gl">growing old</span></li><li><span class="kk-mja" lang="ja">降りゆく</span><span class="kk-mro" lang="ja-Latn">furiyuku</span><span class="kk-gl">falling</span></li></ul></div>
+              </div>
+            </figure>
+          </a>
+          <p class="kk-trans">It is not the snow of blossoms scattered by the storm in the garden — it is I myself who am fading with the years.</p>
+        </section>
+
+        <section class="sample" id="97">
+          <h2 class="was-h3 waka"><a href="kakekotoba-game-097_en.html">Poem 97: Acting Middle Counselor Sadaie</a></h2>
+          <a href="kakekotoba-game-097_en.html" class="kk-link">
+            <figure class="kk-fig" aria-label="Poem 97: kakekotoba and engo">
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">来ぬ人を</span><span class="kk-ro" lang="ja-Latn">konuhitoo</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk97-1">まつほの浦</span>の</span><span class="kk-ro" lang="ja-Latn">matsuhonourano</span></span>
+                <span class="kk-ku"><span class="kk-ja">夕なぎに</span><span class="kk-ro" lang="ja-Latn">yufunagini</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk97-1"><span class="kk-head"><span class="kk-label">Kakekotoba</span><span class="kk-word" lang="ja-Latn">matsuho</span></span><ul class="kk-means"><li><span class="kk-mja" lang="ja">まつほの浦</span><span class="kk-mro" lang="ja-Latn">matsuhonoura</span><span class="kk-gl">Matsuho Bay</span></li><li><span class="kk-mja" lang="ja">待つ</span><span class="kk-mro" lang="ja-Latn">matsu</span><span class="kk-gl">to wait</span></li></ul></div>
+              </div>
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja"><span class="kk-e">焼く</span>や<span class="kk-e">もしほ</span>の</span><span class="kk-ro" lang="ja-Latn">yakuyamoshihono</span></span>
+                <span class="kk-ku"><span class="kk-ja">身も<span class="kk-e">こがれ</span>つつ</span><span class="kk-ro" lang="ja-Latn">mimokogaretsutsu</span></span>
+              </p>
+            </figure>
+          </a>
+          <p class="kk-engo"><span class="kk-engo-label">Engo</span><span class="kk-engo-item"><span class="kk-e" lang="ja">焼く</span> (to burn)</span> · <span class="kk-engo-item"><span class="kk-e" lang="ja">もしほ</span> (seaweed burned for salt)</span> · <span class="kk-engo-item"><span class="kk-e" lang="ja">こがれ</span> (to scorch, to yearn)</span><span class="kk-engo-why">All are words associated with fire.</span></p>
+          <p class="kk-trans">Waiting for someone who will not come, at the quiet evening shore — like salt burned from the seaweed, I too am consumed by longing.</p>
+        </section>
+
+        <section class="sample" id="98">
+          <h2 class="was-h3 waka"><a href="kakekotoba-game-098_en.html">Poem 98: Junior Second Rank Ietaka</a></h2>
+          <a href="kakekotoba-game-098_en.html" class="kk-link">
+            <figure class="kk-fig" aria-label="Poem 98: kakekotoba">
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">風そよぐ</span><span class="kk-ro" lang="ja-Latn">kazesoyogu</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk98-1">ならの小川</span>の</span><span class="kk-ro" lang="ja-Latn">naranoogahano</span></span>
+                <span class="kk-ku"><span class="kk-ja">夕暮は</span><span class="kk-ro" lang="ja-Latn">yufugureha</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk98-1"><span class="kk-head"><span class="kk-label">Kakekotoba</span><span class="kk-word" lang="ja-Latn">nara</span></span><ul class="kk-means"><li><span class="kk-mja" lang="ja">ならの小川</span><span class="kk-mro" lang="ja-Latn">naranoogaha</span><span class="kk-gl">Nara-no-Ogawa (a stream)</span></li><li><span class="kk-mja" lang="ja">楢</span><span class="kk-mro" lang="ja-Latn">nara</span><span class="kk-gl"><em>nara</em>, an oak tree</span></li></ul></div>
+              </div>
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">みそぎぞ夏の</span><span class="kk-ro" lang="ja-Latn">misogizonatsuno</span></span>
+                <span class="kk-ku"><span class="kk-ja">しるしなりける</span><span class="kk-ro" lang="ja-Latn">shirushinarikeru</span></span>
+              </p>
+            </figure>
+          </a>
+          <p class="kk-trans">The breeze rustles through the leaves of the sacred oak trees by the river at dusk. The purification rite is the only sign that summer is here.</p>
+          <p class="kome">Nara-no-Ogawa is another name for the Mitarashi River, which flows through the grounds of Kamigamo Shrine. 楢 (<em>nara</em>) is the <em>nara</em> oak, so <em>nara</em> works as a kakekotoba on the name of the stream and the name of the tree.</p>
+        </section>
+
+        <section class="sample" id="100">
+          <h2 class="was-h3 waka"><a href="kakekotoba-game-100_en.html">Poem 100: Retired Emperor Juntoku</a></h2>
+          <a href="kakekotoba-game-100_en.html" class="kk-link">
+            <figure class="kk-fig" aria-label="Poem 100: kakekotoba">
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">ももしきや</span><span class="kk-ro" lang="ja-Latn">momoshikiya</span></span>
+                <span class="kk-ku"><span class="kk-ja">ふるき軒ばの</span><span class="kk-ro" lang="ja-Latn">furukinokibano</span></span>
+                <span class="kk-ku kk-ku--k"><span class="kk-ja"><span class="kk-k" id="kk100-1">しのぶ</span>にも</span><span class="kk-ro" lang="ja-Latn">shinobunimo</span></span>
+              </p>
+              <div class="kk-callouts">
+                <div class="kk-callout" data-for="kk100-1"><span class="kk-head"><span class="kk-label">Kakekotoba</span><span class="kk-word" lang="ja-Latn">shinobu</span></span><ul class="kk-means"><li><span class="kk-mja" lang="ja">偲ぶ</span><span class="kk-mro" lang="ja-Latn">shinobu</span><span class="kk-gl">to long for (the past)</span></li><li><span class="kk-mja" lang="ja">忍ぶ草（ノキシノブ）</span><span class="kk-mro" lang="ja-Latn">shinobugusa</span><span class="kk-gl"><em>shinobu-gusa</em>, a fern that grows on old eaves</span></li></ul></div>
+              </div>
+              <p class="kk-line" lang="ja">
+                <span class="kk-ku"><span class="kk-ja">なほあまりある</span><span class="kk-ro" lang="ja-Latn">nahoamariaru</span></span>
+                <span class="kk-ku"><span class="kk-ja">昔なりけり</span><span class="kk-ro" lang="ja-Latn">mukashinarikeri</span></span>
+              </p>
+            </figure>
+          </a>
+          <p class="kk-trans">Even the ancient ferns on the old eaves of the palace — there is more than enough of the past that they call to mind.</p>
+        </section>
+        <hr>
+        <h2 class="was-h3">Other Waka Techniques</h2>
+        <ul class="normal">
+          <li><a href="gihou-makurakotoba_en.html"><em>Makurakotoba</em> (Pillow Words)</a>: Fixed five-syllable phrases such as “ashibiki no” and “hisakata no”</li>
+          <li><a href="gihou-jokotoba_en.html"><em>Jokotoba</em> (Preface Words)</a>: Scenes from nature that lead into the poet’s feelings</li>
+        </ul>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-copy">&copy;2023 Shigure no Hyakunin Isshu</span>
+      <ul>
+        <li><a href="policy_en.html">Privacy Policy</a></li>
+        <li>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXx7TKlqnTfKrw2Nuh4f37swVwFH-RFDsNkTGQ4JEF50q2wQ/viewform?usp=header"
+            target="_blank" rel="noopener">Contact Form</a>
+        </li>
+        <li><a href="https://x.com/shigurenotaifu" target="_blank" rel="noopener">Official X</a></li>
+      </ul>
+    </div>
+  </footer>
+  <!-- Footer end -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="../js/move_script.js?20260729"></script>
+  <script src="../js/kakekotoba-diagram.js?20261031-01"></script>
+</body>
+
+</html>

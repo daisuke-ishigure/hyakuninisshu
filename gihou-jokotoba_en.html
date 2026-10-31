@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Waka Techniques: Jokotoba (Preface Words) | Shigure no Hyakunin Isshu</title>
+  <meta name="Keywords" content="jokotoba, preface words, waka techniques, Hyakunin Isshu, Ogura Hyakunin Isshu, classical Japanese poetry">
+  <meta name="description" content="Jokotoba (preface words) in the Hyakunin Isshu: phrases of seven or more syllables, created by the poet, that lead into the words the poet really wants to say. Illustrated with 16 poems.">
+  <link rel="canonical" href="https://hyakuninisshu.com/gihou-jokotoba_en.html">
+  <link rel="alternate" hreflang="ja" href="https://hyakuninisshu.com/gihou-jokotoba.html">
+  <link rel="alternate" hreflang="en" href="https://hyakuninisshu.com/gihou-jokotoba_en.html">
+  <link rel="alternate" hreflang="x-default" href="https://hyakuninisshu.com/gihou-jokotoba.html">
+  <!-- ogp -->
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Waka Techniques: Jokotoba (Preface Words) | Shigure no Hyakunin Isshu">
+  <meta property="og:description" content="Jokotoba (preface words) in the Hyakunin Isshu: phrases of seven or more syllables, created by the poet, that lead into the words the poet really wants to say. Illustrated with 16 poems.">
+  <meta property="og:url" content="https://hyakuninisshu.com/gihou-jokotoba_en.html">
+  <meta property="og:site_name" content="Shigure no Hyakunin Isshu">
+  <meta property="og:image" content="https://hyakuninisshu.com/img/ogp_index.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- structured data -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://hyakuninisshu.com/gihou-jokotoba_en.html"
+      },
+      "headline": "Waka Techniques: Jokotoba (Preface Words)",
+      "description": "Jokotoba (preface words) in the Hyakunin Isshu: phrases of seven or more syllables, created by the poet, that lead into the words the poet really wants to say. Illustrated with 16 poems.",
+      "inLanguage": "en",
+      "image": "https://hyakuninisshu.com/img/ogp_index.webp",
+      "dateModified": "2026-10-31",
+      "author": {
+        "@type": "Person",
+        "name": "Daisuke Ishigure",
+        "url": "https://hyakuninisshu.com/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Shigure no Hyakunin Isshu",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://hyakuninisshu.com/apple-touch-icon.png"
+        }
+      },
+      "genre": "Waka techniques / Hyakunin Isshu / Classical Japanese literature",
+      "about": [
+        { "@type": "Thing", "name": "Jokotoba (preface words)" },
+        { "@type": "CreativeWork", "name": "Hyakunin Isshu" }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Shigure no Hyakunin Isshu",
+          "item": "https://hyakuninisshu.com/index_en.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Columns",
+          "item": "https://hyakuninisshu.com/introduction_en.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Waka Techniques: Jokotoba",
+          "item": "https://hyakuninisshu.com/gihou-jokotoba_en.html"
+        }
+      ]
+    }
+  ]
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X7WDTSLFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8X7WDTSLFD');
+  </script>
+  <link rel="stylesheet" href="../css/style.css?20261018-01">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@500&family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap"
+    rel="stylesheet">
+  <!-- Jokotoba diagrams: text is HTML, the arrow is drawn by js/jokotoba-diagram.js -->
+  <style>
+    .jk-link {
+      display: block;
+      color: inherit;
+      text-decoration: none;
+    }
+    .jk-fig {
+      position: relative;
+      width: 85%;
+      margin: 0 auto 1em;
+      padding: 1.6rem 0 4px;
+    }
+    .jk-poem {
+      position: relative; /* 矢印の SVG より前面に出す */
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      column-gap: 0.8em;
+      row-gap: 2em; /* 折り返した行の上にもラベルが収まる高さ */
+      margin: 0;
+      font-family: "Noto Serif JP", serif;
+      font-weight: 700;
+    }
+    .jk-break {
+      flex-basis: 100%;
+      height: 0;
+    }
+    .jk-ku {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      white-space: nowrap;
+      background: #f7f1e0; /* 折り返した句をまたぐ線を隠す */
+    }
+    .jk-ja {
+      font-size: 1.5rem;
+      line-height: 1.5;
+    }
+    .jk-ro {
+      font-family: "Noto Sans", sans-serif;
+      font-size: 0.8rem;
+      font-weight: 400;
+      line-height: 1.3;
+      color: #555;
+    }
+    /* 序詞：句まるごとならローマ字まで、句の一部なら文字だけをハイライト */
+    .jk-jo {
+      position: relative;
+      background: rgba(184, 35, 67, 0.2);
+    }
+    .jk-ku.jk-jo {
+      padding: 0 0.15em 0.1em;
+    }
+    .jk-t {
+      text-decoration: underline double #b82343;
+      text-underline-offset: 0.15em;
+    }
+    /* ラベルは序詞の先頭の真上に置く */
+    .jk-label {
+      position: absolute;
+      bottom: 100%;
+      left: 0;
+      padding: 0.15em 0.5em;
+      background: #b82343;
+      color: #fff;
+      font-family: "Noto Sans", sans-serif;
+      font-size: 0.8rem;
+      font-weight: bold;
+      line-height: 1.3;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+    .jk-arrow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      overflow: visible;
+      pointer-events: none;
+    }
+    .jk-type {
+      margin: 0 0 0.2em;
+      font-size: 0.9rem;
+      color: #555;
+    }
+    .jk-type strong {
+      color: #b82343;
+    }
+    .jk-trans {
+      margin-top: 0;
+      font-style: italic;
+    }
+    @media (max-width: 1000px) {
+      .jk-fig {
+        width: 100%;
+      }
+      .jk-ja {
+        font-size: 1.25rem;
+      }
+    }
+  </style>
+  <!-- touch icons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" href="/favicon.ico">
+  <!-- Cloudflare Web Analytics -->
+  <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d2f01c23361b402aadede990ea58da0b"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <p class="site-title">
+      <a href="https://hyakuninisshu.com/index_en.html">Shigure no Hyakunin Isshu</a>
+    </p>
+    <div class="header_list">
+      <a href="index_en.html"><img src="../img/icon_top_en.svg?ver-01" alt="Top" class="icon" width="59" height="22"></a>
+      <a href="introduction_en.html" style="color:#333"><img src="/img/icon_column_en.svg?ver-01" alt="Columns" class="icon" width="72" height="22"></a>
+      <a href="introduction-app_en.html" style="color:#333"><img src="/img/icon_app_en.svg?ver-01" alt="Apps" class="icon" width="59" height="22"></a>
+      <a href="gihou-jokotoba.html"><img src="/img/icon_lang.svg?ver-01" alt="Japanese" class="icon" width="59" height="22"></a>
+      <a href="list_en.html"><img src="/img/icon_list_en.svg?ver-01" alt="Hyakunin Isshu Poem List" class="icon" width="59" height="22"></a>
+    </div>
+  </header>
+<script src="../js/back-to-top.js?20261012-03"></script>
+  <!-- Main -->
+  <main class="main_about-main">
+    <div class="about-main">
+      <div class="section">
+        <nav>
+          <ol class="breadcrumb">
+            <li><a href="index_en.html">Top</a></li>
+            <li><a href="introduction_en.html">Columns</a></li>
+            <li>Waka Techniques: Jokotoba</li>
+          </ol>
+        </nav>
+        <hr>
+        <h1>Waka Techniques:<br class="br-sp"> <em>Jokotoba</em> (Preface Words)</h1>
+        <p><em>Jokotoba</em>, literally “preface words,” are phrases placed at the start of a poem to lead into the words the poet really wants to say. They paint a vivid scene — usually from nature — and then pivot to the poet’s feelings at a single linking word.</p>
+        <p>Readers of Homer may recognize the idea from the extended simile, in which a long image from nature, such as falling leaves or a lion in the hills, is laid out before the story resumes. A jokotoba works in much the same way, but in miniature: within just thirty-one syllables (more precisely, morae, the sound units of Japanese verse), the scene often fills the first half of the poem or more.</p>
+        <p>Unlike <a href="gihou-makurakotoba_en.html"><em>makurakotoba</em> (pillow words)</a>, which are fixed five-syllable phrases handed down by tradition, a jokotoba is created by the poet for that particular poem, and is seven syllables or longer.</p>
+        <p>A jokotoba connects to the words it leads into in one of three ways:</p>
+        <ul class="normal">
+          <li><strong>Simile</strong>: the scene is a comparison: as long as the trailing tail of the mountain bird, so long is this night (<a href="#03">Poem 3</a>).</li>
+          <li><strong><a href="gihou-kakekotoba_en.html">Kakekotoba</a> (pivot word)</strong>: the scene leads into a word with a double meaning (<a href="#13">Poem 13</a>).</li>
+          <li><strong>Sound</strong>: the scene ends with a word that sounds just like the next one, much like a pun or a rhyme: <em>yoru</em> (the waves draw near) → <em>yoru</em> (night) (<a href="#18">Poem 18</a>).</li>
+        </ul>
+        <p>In each diagram below, the jokotoba is <span style="background: rgba(184, 35, 67, 0.2); padding: 0 0.2em;">highlighted</span>, and the words it leads into are marked with a <span style="text-decoration: underline double #b82343; text-underline-offset: 0.15em;">double underline</span>. Tap or click a diagram to open the poem’s page. The romaji under each line follows the old kana spelling of classical poetry, so it is not always read as written: for example, <em>shirotahe</em> is read <em>shirotae</em>, and <em>afusaka</em> is read <em>Ōsaka</em>.</p>
+
+        <section class="sample" id="03">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/3_en.html">Poem 3: Kakinomoto no Hitomaro</a></h2>
+          <p class="jk-type">Type: <strong>Simile</strong></p>
+          <a href="https://hyakuninisshu.com/3_en.html" class="jk-link">
+            <figure class="jk-fig" aria-label="Poem 3: the jokotoba あしびきの山鳥の尾のしだり尾の leads into ながながし夜">
+            <p class="jk-poem" lang="ja">
+              <span class="jk-ku jk-jo"><span class="jk-label">Jokotoba</span><span class="jk-ja">あしびきの</span><span class="jk-ro" lang="ja-Latn">ashibikino</span></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja">山鳥の尾の</span><span class="jk-ro" lang="ja-Latn">yamadorinoono</span></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja">しだり尾の</span><span class="jk-ro" lang="ja-Latn">shidariono</span></span>
+              <span class="jk-break"></span>
+              <span class="jk-ku"><span class="jk-ja"><span class="jk-t">ながながし夜</span>を</span><span class="jk-ro" lang="ja-Latn">naganagashiyoo</span></span>
+              <span class="jk-ku"><span class="jk-ja">ひとりかも寝む</span><span class="jk-ro" lang="ja-Latn">hitorikamonemu</span></span>
+            </p>
+            </figure>
+          </a>
+          <p class="jk-trans">As long as the trailing tail feathers of the mountain bird — through these long, long nights, must I sleep alone?</p>
+          <p class="kome">The “long, long night” is likened to the long, drooping tail feathers of the mountain bird.</p>
+        </section>
+
+        <section class="sample" id="13">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/13_en.html">Poem 13: Retired Emperor Yōzei</a></h2>
+          <p class="jk-type">Type: <strong>Kakekotoba</strong></p>
+          <a href="https://hyakuninisshu.com/13_en.html" class="jk-link">
+            <figure class="jk-fig" aria-label="Poem 13: the jokotoba 筑波嶺の峰より落つるみなの川 leads into こひ">
+            <p class="jk-poem" lang="ja">
+              <span class="jk-ku jk-jo"><span class="jk-label">Jokotoba</span><span class="jk-ja">筑波嶺の</span><span class="jk-ro" lang="ja-Latn">tsukubaneno</span></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja">峰より落つる</span><span class="jk-ro" lang="ja-Latn">mineyoriotsuru</span></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja">みなの川</span><span class="jk-ro" lang="ja-Latn">minanogaha</span></span>
+              <span class="jk-break"></span>
+              <span class="jk-ku"><span class="jk-ja"><span class="jk-t">こひ</span>ぞつもりて</span><span class="jk-ro" lang="ja-Latn">kohizotsumorite</span></span>
+              <span class="jk-ku"><span class="jk-ja">淵となりぬる</span><span class="jk-ro" lang="ja-Latn">fuchitonarinuru</span></span>
+            </p>
+            </figure>
+          </a>
+          <p class="jk-trans">Just as the streams from the peak of Tsukuba flow down to fill the deep pools of the Mina River, so my love for you has gathered deep within me.</p>
+          <p class="kome">It leads into <em>kohi</em>, a kakekotoba on 恋 (love) and 水 (water).</p>
+        </section>
+
+        <section class="sample" id="14">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/14_en.html">Poem 14: Minister of the Left of Kawara</a></h2>
+          <p class="jk-type">Type: <strong>Simile</strong></p>
+          <a href="https://hyakuninisshu.com/14_en.html" class="jk-link">
+            <figure class="jk-fig" aria-label="Poem 14: the jokotoba 陸奥のしのぶもぢずり leads into 乱れ">
+            <p class="jk-poem" lang="ja">
+              <span class="jk-ku jk-jo"><span class="jk-label">Jokotoba</span><span class="jk-ja">陸奥の</span><span class="jk-ro" lang="ja-Latn">michinokuno</span></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja">しのぶもぢずり</span><span class="jk-ro" lang="ja-Latn">shinobumojizuri</span></span>
+              <span class="jk-ku"><span class="jk-ja">誰ゆゑに</span><span class="jk-ro" lang="ja-Latn">tareyueni</span></span>
+              <span class="jk-break"></span>
+              <span class="jk-ku"><span class="jk-ja"><span class="jk-t">乱れ</span>そめにし</span><span class="jk-ro" lang="ja-Latn">midaresomenishi</span></span>
+              <span class="jk-ku"><span class="jk-ja">我ならなくに</span><span class="jk-ro" lang="ja-Latn">warenaranakuni</span></span>
+            </p>
+            </figure>
+          </a>
+          <p class="jk-trans">For whose sake has my heart become as disordered as the tangled patterns of Shinobu-mojizuri cloth of Mutsu? It is certainly not my own doing.</p>
+          <p class="kome">The poet’s tangled heart (<em>midare</em>) is likened to the tangled dye pattern of <em>shinobu-mojizuri</em> cloth from Michinoku.</p>
+        </section>
+
+        <section class="sample" id="18">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/18_en.html">Poem 18: Fujiwara no Toshiyuki Ason</a></h2>
+          <p class="jk-type">Type: <strong>Sound</strong></p>
+          <a href="https://hyakuninisshu.com/18_en.html" class="jk-link">
+            <figure class="jk-fig" aria-label="Poem 18: the jokotoba 住の江の岸による波 leads into よる">
+            <p class="jk-poem" lang="ja">
+              <span class="jk-ku jk-jo"><span class="jk-label">Jokotoba</span><span class="jk-ja">住の江の</span><span class="jk-ro" lang="ja-Latn">suminoeno</span></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja">岸による波</span><span class="jk-ro" lang="ja-Latn">kishiniyorunami</span></span>
+              <span class="jk-ku"><span class="jk-ja"><span class="jk-t">よる</span>さへや</span><span class="jk-ro" lang="ja-Latn">yorusaheya</span></span>
+              <span class="jk-break"></span>
+              <span class="jk-ku"><span class="jk-ja">夢のかよひ路</span><span class="jk-ro" lang="ja-Latn">yumenokayohiji</span></span>
+              <span class="jk-ku"><span class="jk-ja">人目よくらむ</span><span class="jk-ro" lang="ja-Latn">hitomeyokuramu</span></span>
+            </p>
+            </figure>
+          </a>
+          <p class="jk-trans">Even in my dreams, I find myself longing to go to you along the path of dreams — but do I hide from others' eyes even in the night?</p>
+          <p class="kome">The sound of <em>yoru</em> (寄る, the waves draw near) is repeated in <em>yoru</em> (夜, night).</p>
+        </section>
+
+        <section class="sample" id="19">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/19_en.html">Poem 19: Ise</a></h2>
+          <p class="jk-type">Type: <strong>Kakekotoba</strong></p>
+          <a href="https://hyakuninisshu.com/19_en.html" class="jk-link">
+            <figure class="jk-fig" aria-label="Poem 19: the jokotoba 難波潟みじかき葦の leads into ふしのま">
+            <p class="jk-poem" lang="ja">
+              <span class="jk-ku jk-jo"><span class="jk-label">Jokotoba</span><span class="jk-ja">難波潟</span><span class="jk-ro" lang="ja-Latn">nanihagata</span></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja">みじかき葦の</span><span class="jk-ro" lang="ja-Latn">mijikakiashino</span></span>
+              <span class="jk-ku"><span class="jk-ja"><span class="jk-t">ふしのま</span>も</span><span class="jk-ro" lang="ja-Latn">fushinomamo</span></span>
+              <span class="jk-break"></span>
+              <span class="jk-ku"><span class="jk-ja">逢はでこの世を</span><span class="jk-ro" lang="ja-Latn">ahadekonoyoo</span></span>
+              <span class="jk-ku"><span class="jk-ja">過ぐしてよとや</span><span class="jk-ro" lang="ja-Latn">sugushiteyotoya</span></span>
+            </p>
+            </figure>
+          </a>
+          <p class="jk-trans">In this short life, even as brief as a joint of reed at Naniwa Bay, must I pass through this world without ever meeting you?</p>
+          <p class="kome">It leads into <em>fushi no ma</em>, a kakekotoba on “the short space between two joints of a reed” and “the briefest moment.”</p>
+        </section>
+
+        <section class="sample" id="27">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/27_en.html">Poem 27: Middle Counselor Kanesuke</a></h2>
+          <p class="jk-type">Type: <strong>Sound</strong></p>
+          <a href="https://hyakuninisshu.com/27_en.html" class="jk-link">
+            <figure class="jk-fig" aria-label="Poem 27: the jokotoba みかの原わきて流るるいづみ川 leads into いつ見">
+            <p class="jk-poem" lang="ja">
+              <span class="jk-ku jk-jo"><span class="jk-label">Jokotoba</span><span class="jk-ja">みかの原</span><span class="jk-ro" lang="ja-Latn">mikanohara</span></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja">わきて流るる</span><span class="jk-ro" lang="ja-Latn">wakitenagaruru</span></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja">いづみ川</span><span class="jk-ro" lang="ja-Latn">izumigaha</span></span>
+              <span class="jk-break"></span>
+              <span class="jk-ku"><span class="jk-ja"><span class="jk-t">いつ見</span>きとてか</span><span class="jk-ro" lang="ja-Latn">itsumikitoteka</span></span>
+              <span class="jk-ku"><span class="jk-ja">恋しかるらむ</span><span class="jk-ro" lang="ja-Latn">kohishikaruramu</span></span>
+            </p>
+            </figure>
+          </a>
+          <p class="jk-trans">Like the Izumi River that wells up and flows through Mika Plain — when did I first see you, that I should long for you so?</p>
+          <p class="kome">The sound of <em>izumi</em> (泉, spring) is repeated in <em>itsu mi</em> (いつ見, “when did I see”).</p>
+        </section>
+
+        <section class="sample" id="39">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/39_en.html">Poem 39: Councillor Hitoshi</a></h2>
+          <p class="jk-type">Type: <strong>Sound</strong></p>
+          <a href="https://hyakuninisshu.com/39_en.html" class="jk-link">
+            <figure class="jk-fig" aria-label="Poem 39: the jokotoba 浅茅生の小野の篠原 leads into しの">
+            <p class="jk-poem" lang="ja">
+              <span class="jk-ku jk-jo"><span class="jk-label">Jokotoba</span><span class="jk-ja">浅茅生の</span><span class="jk-ro" lang="ja-Latn">asajifuno</span></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja">小野の篠原</span><span class="jk-ro" lang="ja-Latn">ononoshinohara</span></span>
+              <span class="jk-ku"><span class="jk-ja"><span class="jk-t">しの</span>ぶれど</span><span class="jk-ro" lang="ja-Latn">shinoburedo</span></span>
+              <span class="jk-break"></span>
+              <span class="jk-ku"><span class="jk-ja">あまりてなどか</span><span class="jk-ro" lang="ja-Latn">amaritenadoka</span></span>
+              <span class="jk-ku"><span class="jk-ja">人の恋しき</span><span class="jk-ro" lang="ja-Latn">hitonokohishiki</span></span>
+            </p>
+            </figure>
+          </a>
+          <p class="jk-trans">Though I try to hide it, my longing spills over. Why is it that I cannot stop thinking of that person?</p>
+          <p class="kome">The sound of <em>shino</em> (篠, bamboo grass) is repeated in <em>shino(bu)</em> (忍ぶ, to endure in secret).</p>
+        </section>
+
+        <section class="sample" id="46">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/46_en.html">Poem 46: Sone no Yoshitada</a></h2>
+          <p class="jk-type">Type: <strong>Simile</strong></p>
+          <a href="https://hyakuninisshu.com/46_en.html" class="jk-link">
+            <figure class="jk-fig" aria-label="Poem 46: the jokotoba 由良のとを渡る舟人 leads into ゆくへも知らぬ">
+            <p class="jk-poem" lang="ja">
+              <span class="jk-ku jk-jo"><span class="jk-label">Jokotoba</span><span class="jk-ja">由良のとを</span><span class="jk-ro" lang="ja-Latn">yuranotoo</span></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja">渡る舟人</span><span class="jk-ro" lang="ja-Latn">watarufunabito</span></span>
+              <span class="jk-ku"><span class="jk-ja">かぢを絶え</span><span class="jk-ro" lang="ja-Latn">kajiotae</span></span>
+              <span class="jk-break"></span>
+              <span class="jk-ku"><span class="jk-ja"><span class="jk-t">ゆくへも知らぬ</span></span><span class="jk-ro" lang="ja-Latn">yukuhemoshiranu</span></span>
+              <span class="jk-ku"><span class="jk-ja">恋の道かな</span><span class="jk-ro" lang="ja-Latn">kohinomichikana</span></span>
+            </p>
+            </figure>
+          </a>
+          <p class="jk-trans">Like a boatman who has lost his oar on the swift straits of Yura — I drift, not knowing where my love is taking me.</p>
+          <p class="kome">Not knowing where one is headed (<em>yukue mo shiranu</em>) is likened to a boatman crossing the Yura strait who has lost his oar and drifts.</p>
+        </section>
+
+        <section class="sample" id="48">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/48_en.html">Poem 48: Minamoto no Shigeyuki</a></h2>
+          <p class="jk-type">Type: <strong>Simile</strong></p>
+          <a href="https://hyakuninisshu.com/48_en.html" class="jk-link">
+            <figure class="jk-fig" aria-label="Poem 48: the jokotoba 風をいたみ岩うつ波の leads into おのれのみ">
+            <p class="jk-poem" lang="ja">
+              <span class="jk-ku jk-jo"><span class="jk-label">Jokotoba</span><span class="jk-ja">風をいたみ</span><span class="jk-ro" lang="ja-Latn">kazeoitami</span></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja">岩うつ波の</span><span class="jk-ro" lang="ja-Latn">ihautsunamino</span></span>
+              <span class="jk-ku"><span class="jk-ja"><span class="jk-t">おのれのみ</span></span><span class="jk-ro" lang="ja-Latn">onorenomi</span></span>
+              <span class="jk-break"></span>
+              <span class="jk-ku"><span class="jk-ja">くだけて物を</span><span class="jk-ro" lang="ja-Latn">kudaketemonoo</span></span>
+              <span class="jk-ku"><span class="jk-ja">思ふころかな</span><span class="jk-ro" lang="ja-Latn">omofukorokana</span></span>
+            </p>
+            </figure>
+          </a>
+          <p class="jk-trans">Like the waves crashing against the rocks in the fierce wind, I alone am broken to pieces by this sorrow.</p>
+          <p class="kome">Being the only one heartbroken (<em>onore nomi</em>) is likened to waves dashed against a rock by a fierce wind.</p>
+        </section>
+
+        <section class="sample" id="49">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/49_en.html">Poem 49: Ōnakatomi no Yoshinobu Ason</a></h2>
+          <p class="jk-type">Type: <strong>Simile</strong></p>
+          <a href="https://hyakuninisshu.com/49_en.html" class="jk-link">
+            <figure class="jk-fig" aria-label="Poem 49: the jokotoba 御垣守衛士のたく火の leads into 夜はもえ">
+            <p class="jk-poem" lang="ja">
+              <span class="jk-ku jk-jo"><span class="jk-label">Jokotoba</span><span class="jk-ja">御垣守</span><span class="jk-ro" lang="ja-Latn">mikakimori</span></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja">衛士のたく火の</span><span class="jk-ro" lang="ja-Latn">ejinotakuhino</span></span>
+              <span class="jk-ku"><span class="jk-ja"><span class="jk-t">夜はもえ</span></span><span class="jk-ro" lang="ja-Latn">yoruhamoe</span></span>
+              <span class="jk-break"></span>
+              <span class="jk-ku"><span class="jk-ja">昼は消えつつ</span><span class="jk-ro" lang="ja-Latn">hiruhakietsutsu</span></span>
+              <span class="jk-ku"><span class="jk-ja">物をこそ思へ</span><span class="jk-ro" lang="ja-Latn">monookosoomohe</span></span>
+            </p>
+            </figure>
+          </a>
+          <p class="jk-trans">Like the fire tended by the palace guards, I burn at night and fade in the day — lost in endless longing.</p>
+          <p class="kome">Burning by night (<em>yoru wa moe</em>) is likened to the fires kindled by the guards (<em>eji</em>) who watch the palace gates.</p>
+        </section>
+
+        <section class="sample" id="51">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/51_en.html">Poem 51: Fujiwara no Sanekata Ason</a></h2>
+          <p class="jk-type">Type: <strong>Sound</strong></p>
+          <a href="https://hyakuninisshu.com/51_en.html" class="jk-link">
+            <figure class="jk-fig" aria-label="Poem 51: the jokotoba いぶきのさしも草 leads into さしも">
+            <p class="jk-poem" lang="ja">
+              <span class="jk-ku"><span class="jk-ja">かくとだに</span><span class="jk-ro" lang="ja-Latn">kakutodani</span></span>
+              <span class="jk-ku"><span class="jk-ja">えやは<span class="jk-jo"><span class="jk-label">Jokotoba</span>いぶきの</span></span><span class="jk-ro" lang="ja-Latn">eyahaibukino</span></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja">さしも草</span><span class="jk-ro" lang="ja-Latn">sashimogusa</span></span>
+              <span class="jk-break"></span>
+              <span class="jk-ku"><span class="jk-ja"><span class="jk-t">さしも</span>知らじな</span><span class="jk-ro" lang="ja-Latn">sashimoshirajina</span></span>
+              <span class="jk-ku"><span class="jk-ja">もゆる思ひを</span><span class="jk-ro" lang="ja-Latn">moyuruomohio</span></span>
+            </p>
+            </figure>
+          </a>
+          <p class="jk-trans">I cannot even tell you how I feel — like the smoldering fire of ibuki wormwood, my hidden love quietly burns.</p>
+          <p class="kome">Repeating <em>sashimogusa</em> and <em>sashimo</em> emphasizes the sound of the words.</p>
+        </section>
+
+        <section class="sample" id="58">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/58_en.html">Poem 58: Daini no Sanmi</a></h2>
+          <p class="jk-type">Type: <strong>Sound</strong></p>
+          <a href="https://hyakuninisshu.com/58_en.html" class="jk-link">
+            <figure class="jk-fig" aria-label="Poem 58: the jokotoba ありま山猪名の笹原風吹けば leads into そよ">
+            <p class="jk-poem" lang="ja">
+              <span class="jk-ku jk-jo"><span class="jk-label">Jokotoba</span><span class="jk-ja">ありま山</span><span class="jk-ro" lang="ja-Latn">arimayama</span></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja">猪名の笹原</span><span class="jk-ro" lang="ja-Latn">inanosasahara</span></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja">風吹けば</span><span class="jk-ro" lang="ja-Latn">kazefukeba</span></span>
+              <span class="jk-break"></span>
+              <span class="jk-ku"><span class="jk-ja">いで<span class="jk-t">そよ</span>人を</span><span class="jk-ro" lang="ja-Latn">idesoyohitoo</span></span>
+              <span class="jk-ku"><span class="jk-ja">忘れやはする</span><span class="jk-ro" lang="ja-Latn">wasureyahasuru</span></span>
+            </p>
+            </figure>
+          </a>
+          <p class="jk-trans">When the wind blows through the bamboo groves of Arima and Ina — of course I have not forgotten you.</p>
+          <p class="kome">From the bamboo grass rustling (<em>soyo</em>) in the wind, it leads into the word <em>soyo</em>.</p>
+        </section>
+
+        <section class="sample" id="77">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/77_en.html">Poem 77: Retired Emperor Sutoku</a></h2>
+          <p class="jk-type">Type: <strong>Simile</strong></p>
+          <a href="https://hyakuninisshu.com/77_en.html" class="jk-link">
+            <figure class="jk-fig" aria-label="Poem 77: the jokotoba 瀬をはやみ岩にせかるる滝川の leads into われても末にあはむ">
+            <p class="jk-poem" lang="ja">
+              <span class="jk-ku jk-jo"><span class="jk-label">Jokotoba</span><span class="jk-ja">瀬をはやみ</span><span class="jk-ro" lang="ja-Latn">seohayami</span></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja">岩にせかるる</span><span class="jk-ro" lang="ja-Latn">ihanisekaruru</span></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja">滝川の</span><span class="jk-ro" lang="ja-Latn">takigahano</span></span>
+              <span class="jk-break"></span>
+              <span class="jk-ku"><span class="jk-ja"><span class="jk-t">われても末に</span></span><span class="jk-ro" lang="ja-Latn">waretemosueni</span></span>
+              <span class="jk-ku"><span class="jk-ja"><span class="jk-t">あはむ</span>とぞ思ふ</span><span class="jk-ro" lang="ja-Latn">ahamutozoomofu</span></span>
+            </p>
+            </figure>
+          </a>
+          <p class="jk-trans">Like the river that is split by rocks and flows apart — though we are separated now, I believe we will meet again in the end.</p>
+          <p class="kome">The wish to meet again someday, even after parting, is likened to a swift stream that is split by a rock but flows back together again.</p>
+        </section>
+
+        <section class="sample" id="88">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/88_en.html">Poem 88: Attendant to Empress Kōka</a></h2>
+          <p class="jk-type">Type: <strong>Kakekotoba</strong></p>
+          <a href="https://hyakuninisshu.com/88_en.html" class="jk-link">
+            <figure class="jk-fig" aria-label="Poem 88: the jokotoba 難波江の葦の leads into かりね">
+            <p class="jk-poem" lang="ja">
+              <span class="jk-ku jk-jo"><span class="jk-label">Jokotoba</span><span class="jk-ja">難波江の</span><span class="jk-ro" lang="ja-Latn">nanihaeno</span></span>
+              <span class="jk-ku"><span class="jk-ja"><span class="jk-jo">葦の</span><span class="jk-t">かりね</span>の</span><span class="jk-ro" lang="ja-Latn">ashinokarineno</span></span>
+              <span class="jk-ku"><span class="jk-ja">ひとよゆゑ</span><span class="jk-ro" lang="ja-Latn">hitoyoyue</span></span>
+              <span class="jk-break"></span>
+              <span class="jk-ku"><span class="jk-ja">みをつくしてや</span><span class="jk-ro" lang="ja-Latn">miotsukushiteya</span></span>
+              <span class="jk-ku"><span class="jk-ja">恋ひわたるべき</span><span class="jk-ro" lang="ja-Latn">kohiwatarubeki</span></span>
+            </p>
+            </figure>
+          </a>
+          <p class="jk-trans">For just one brief night together, like the cut end of a reed at Naniwa — must I go on longing for you forever?</p>
+          <p class="kome">It leads into <em>karine</em>, a kakekotoba on 刈り根 (the stubble of cut reeds) and 仮寝 (a brief sleep).</p>
+        </section>
+
+        <section class="sample" id="92">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/92_en.html">Poem 92: Sanuki, attendant to retired Emperor Nijō</a></h2>
+          <p class="jk-type">Type: <strong>Simile</strong></p>
+          <a href="https://hyakuninisshu.com/92_en.html" class="jk-link">
+            <figure class="jk-fig" aria-label="Poem 92: the jokotoba 潮干に見えぬ沖の石の leads into 人こそ知らねかわくまもなし">
+            <p class="jk-poem" lang="ja">
+              <span class="jk-ku"><span class="jk-ja">わが袖は</span><span class="jk-ro" lang="ja-Latn">wagasodeha</span></span>
+              <span class="jk-ku jk-jo"><span class="jk-label">Jokotoba</span><span class="jk-ja">潮干に見えぬ</span><span class="jk-ro" lang="ja-Latn">shihohinimienu</span></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja">沖の石の</span><span class="jk-ro" lang="ja-Latn">okinoishino</span></span>
+              <span class="jk-break"></span>
+              <span class="jk-ku"><span class="jk-ja"><span class="jk-t">人こそ知らね</span></span><span class="jk-ro" lang="ja-Latn">hitokososhirane</span></span>
+              <span class="jk-ku"><span class="jk-ja"><span class="jk-t">かわくまもなし</span></span><span class="jk-ro" lang="ja-Latn">kawakumamonashi</span></span>
+            </p>
+            </figure>
+          </a>
+          <p class="jk-trans">My sleeves are like a rock hidden beneath the tides — unseen by others, they are never dry.</p>
+          <p class="kome">“No one knows it, but my sleeves are never dry” is likened to a rock far out at sea that stays hidden even at low tide.</p>
+        </section>
+
+        <section class="sample" id="97">
+          <h2 class="was-h3 waka"><a href="https://hyakuninisshu.com/97_en.html">Poem 97: Acting Middle Counselor Sadaie</a></h2>
+          <p class="jk-type">Type: <strong>Simile</strong></p>
+          <a href="https://hyakuninisshu.com/97_en.html" class="jk-link">
+            <figure class="jk-fig" aria-label="Poem 97: the jokotoba 松帆の浦の夕なぎに焼くやもしほの leads into こがれ">
+            <p class="jk-poem" lang="ja">
+              <span class="jk-ku"><span class="jk-ja">来ぬ人を</span><span class="jk-ro" lang="ja-Latn">konuhitoo</span></span>
+              <span class="jk-ku jk-jo"><span class="jk-label">Jokotoba</span><span class="jk-ja">松帆の浦の</span><span class="jk-ro" lang="ja-Latn">matsuhonourano</span></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja">夕なぎに</span><span class="jk-ro" lang="ja-Latn">yufunagini</span></span>
+              <span class="jk-break"></span>
+              <span class="jk-ku jk-jo"><span class="jk-ja">焼くやもしほの</span><span class="jk-ro" lang="ja-Latn">yakuyamoshihono</span></span>
+              <span class="jk-ku"><span class="jk-ja">身も<span class="jk-t">こがれ</span>つつ</span><span class="jk-ro" lang="ja-Latn">mimokogaretsutsu</span></span>
+            </p>
+            </figure>
+          </a>
+          <p class="jk-trans">Waiting for someone who will not come, at the quiet evening shore — like salt burned from the seaweed, I too am consumed by longing.</p>
+          <p class="kome">The poet’s burning longing is likened to seaweed burned for salt at Matsuho Bay in the evening calm.</p>
+        </section>
+        <hr>
+        <h2 class="was-h3">Other Waka Techniques</h2>
+        <ul class="normal">
+          <li><a href="gihou-makurakotoba_en.html"><em>Makurakotoba</em> (Pillow Words)</a>: Fixed five-syllable phrases such as “ashibiki no” and “hisakata no”</li>
+          <li><a href="gihou-kakekotoba_en.html"><em>Kakekotoba</em> (Pivot Words) and <em>Engo</em> (Associated Words)</a>: One sound carrying two meanings, and words that echo one another</li>
+        </ul>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-copy">&copy;2023 Shigure no Hyakunin Isshu</span>
+      <ul>
+        <li><a href="policy_en.html">Privacy Policy</a></li>
+        <li>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXx7TKlqnTfKrw2Nuh4f37swVwFH-RFDsNkTGQ4JEF50q2wQ/viewform?usp=header"
+            target="_blank" rel="noopener">Contact Form</a>
+        </li>
+        <li><a href="https://x.com/shigurenotaifu" target="_blank" rel="noopener">Official X</a></li>
+      </ul>
+    </div>
+  </footer>
+  <!-- Footer end -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="../js/move_script.js?20260729"></script>
+  <script src="../js/jokotoba-diagram.js?20261031-01"></script>
+</body>
+
+</html>
