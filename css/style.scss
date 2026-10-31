@@ -3710,7 +3710,8 @@ footer {
     &.waka {
       padding-left: 25px;
       background: url(../img/sakura.svg);
-      background-position: 0;
+      // 上下の余白（3px / 0.4rem）が違うので、中央ではなく1行目の文字の中央に合わせる
+      background-position: 0 calc(3px + 0.4em);
       color: #333;
       background-size: 1em;
       background-repeat: no-repeat;
