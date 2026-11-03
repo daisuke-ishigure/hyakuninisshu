@@ -1548,7 +1548,7 @@
 
       let xLine;
       if (!factors.length || (outward < 0.07 && inward < 0.07)) {
-        xLine = 'Neither outward nor inward elements are prominent — near the centre';
+        xLine = 'Neither outward nor inward elements are prominent — near the center';
       } else if (net > 0.12) {
         const top = factors.find(c => c.dir === 1) || factors[0];
         xLine = `${top.name.charAt(0).toUpperCase() + top.name.slice(1)} plays ${str(top.val)} — positioned toward Outward`;
@@ -1558,8 +1558,8 @@
       } else {
         const out = factors.find(c => c.dir === 1);
         const inn = factors.find(c => c.dir === -1);
-        xLine = out && inn ? `${out.name} and ${inn.name} are balanced — near the centre`
-          : `${factors[0].name} is weak — near the centre`;
+        xLine = out && inn ? `${out.name} and ${inn.name} are balanced — near the center`
+          : `${factors[0].name} is weak — near the center`;
       }
 
       const s = p.score;

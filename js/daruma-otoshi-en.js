@@ -572,10 +572,10 @@
   "3": [
     "This poem captures the loneliness of a night spent apart from one's beloved, using the drooping tail of the copper pheasant as a symbol of the long hours ahead.",
     "It was believed at the time that a pair of copper pheasants would spend their days together but sleep on separate mountains, divided by a valley, each night — an image the poet uses to reflect his own solitary situation.",
-    "Kakinomoto no Hitomaro is widely known as a representative poet of the Manyoshu, but in this poem we can glimpse not the court poet, but the feelings of an ordinary man troubled by love."
+    "Kakinomoto no Hitomaro is widely known as a representative poet of the Man'yōshū, but in this poem we can glimpse not the court poet, but the feelings of an ordinary man troubled by love."
   ],
   "4": [
-    "In the poet's day, Tago Bay lay further west than it does now. Mountains pressed close to the coastline there, so travellers coming from the west caught their first full view of Mount Fuji only when they emerged onto the shore at Tago Bay.",
+    "In the poet's day, Tago Bay lay further west than it does now. Mountains pressed close to the coastline there, so travelers coming from the west caught their first full view of Mount Fuji only when they emerged onto the shore at Tago Bay.",
     "The poet must have been moved by the majestic sight of Fuji, and poured that wonder into this poem."
   ],
   "5": [
@@ -588,7 +588,7 @@
   ],
   "7": [
     "Abe no Nakamaro sailed to Tang China as a student envoy while still in his teens, and in his twenties passed the demanding imperial examinations. He went on to serve in high office under Emperor Xuanzong.",
-    "After a long and distinguished career in a foreign land, Nakamaro finally received permission to return home in his fifties. This poem is said to have been composed at a farewell banquet held in his honour before his departure."
+    "After a long and distinguished career in a foreign land, Nakamaro finally received permission to return home in his fifties. This poem is said to have been composed at a farewell banquet held in his honor before his departure."
   ],
   "8": [
     "Kisen Hōshi retreated to Mount Uji, to the southeast of the Heian capital, to lead a life of quiet contemplation.",
@@ -602,7 +602,7 @@
   ],
   "10": [
     "Semimaru is said to have been a blind lute-priest who lived near the Barrier of Ōsaka.",
-    "The Barrier of Ōsaka was a busy crossroads where many travellers passed. It is thought that Semimaru, witnessing the endless cycle of meetings and partings there, felt the impermanence of life and poured that feeling into this poem."
+    "The Barrier of Ōsaka was a busy crossroads where many travelers passed. It is thought that Semimaru, witnessing the endless cycle of meetings and partings there, felt the impermanence of life and poured that feeling into this poem."
   ],
   "11": [
     "Ono no Takamura was deputy envoy to Tang China. He defied his superior's orders, refused to board the mission's ship, and composed a Chinese poem critical of the embassy — earning the wrath of retired Emperor Saga, who had him exiled to the island of Oki.",
@@ -617,7 +617,7 @@
     "He compares the way his love has grown little by little — like the waters of the River Mina cascading down from Mount Tsukuba and deepening into a pool — to express how his feelings have deepened over time."
   ],
   "14": [
-    "\"Shinobu-Mojizuri\" (信夫文知摺) refers to a cloth-dyeing technique from the Shinobu district of Fukushima, in which plants were rubbed onto stone to transfer their colours onto fabric, creating a random, tangled pattern.",
+    "\"Shinobu-Mojizuri\" (信夫文知摺) refers to a cloth-dyeing technique from the Shinobu district of Fukushima, in which plants were rubbed onto stone to transfer their colors onto fabric, creating a random, tangled pattern.",
     "The poet likens the confusion of his helpless longing to the disordered pattern of this cloth, suggesting that his heart is not his own to control."
   ],
   "15": [
@@ -647,7 +647,7 @@
   ],
   "21": [
     "This poem was composed as a \"topic poem\" — written in response to a given theme rather than from personal experience. Though Sōsei Hōshi was a man, he wrote from a woman's perspective.",
-    "The \"moon that lingers until dawn\" (ariake no tsuki) is the moon that remains in the sky through the night until morning breaks. The poem captures a woman who waits and waits for her lover, and finds that without realising it, the night has turned to day."
+    "The \"moon that lingers until dawn\" (ariake no tsuki) is the moon that remains in the sky through the night until morning breaks. The poem captures a woman who waits and waits for her lover, and finds that without realizing it, the night has turned to day."
   ],
   "22": [
     "In the poet's day, \"arashi\" referred not to a violent rainstorm, as we use the word now, but to a strong wind sweeping down from the mountains.",
@@ -659,7 +659,7 @@
   ],
   "24": [
     "This poem was composed by <ruby>菅原道真<rt>Sugawara no Michizane</rt></ruby>, who accompanied the Retired Emperor on a journey. Known today as the god of learning, he is listed in the Hyakunin Isshu under the name <ruby>菅家<rt>Kanke</rt></ruby>.",
-    "In the Heian period, travellers would offer strips of paper or hemp — called <span class=\"tippy nusa\"><ruby>幣<rt>ぬさ</rt></ruby></span> — to the roadside deities when passing through mountain passes. Michizane had none, but with a quick wit he offered the beautiful autumn leaves in their place."
+    "In the Heian period, travelers would offer strips of paper or hemp — called <span class=\"tippy nusa\"><ruby>幣<rt>ぬさ</rt></ruby></span> — to the roadside deities when passing through mountain passes. Michizane had none, but with a quick wit he offered the beautiful autumn leaves in their place."
   ],
   "25": [
     "Because the poet held the high office of Minister of the Right, it is thought that he could not freely visit his beloved. This poem is filled with a heartfelt, earnest longing to meet in secret. In those days, it was customary to enclose a flower or plant with a love poem as a token of one's feelings. The sanekazura mentioned in this poem may well have been tucked in alongside it as just such an offering of the heart."
@@ -679,15 +679,15 @@
   ],
   "29": [
     "This is a poem of delightful visual confusion. On a morning when frost has settled across the garden, the white chrysanthemums and the white frost look so similar that the poet cannot tell them apart at a glance. Rather than being frustrated, the speaker turns this into a playful game — reaching for a chrysanthemum by guesswork alone.",
-    "Ōshikōchi no Mitsune was one of the four great poets commissioned to compile the Kokinshū. He was especially celebrated for the refined elegance of his nature poetry, and this poem demonstrates his gift for transforming a small, precise moment of seasonal observation into something both charming and memorable."
+    "Ōshikōchi no Mitsune was one of the four great poets commissioned to compile the Kokin Wakashū. He was especially celebrated for the refined elegance of his nature poetry, and this poem demonstrates his gift for transforming a small, precise moment of seasonal observation into something both charming and memorable."
   ],
   "30": [
     "In the world of Heian love poetry, the dawn parting was a defining moment. Aristocratic men visited their beloved under cover of darkness and were obliged to leave before dawn, when the waning moon was often still visible. The cold, indifferent face of that moon became a symbol of the cruelty of timing — it witnesses the parting but offers no comfort.",
-    "Mibu no Tadamine was one of the four compilers of the Kokinshū. This poem focuses not on the beauty of the moon itself but on the painful association it has acquired: every time the pre-dawn hour approaches, the memory of that parting returns with it."
+    "Mibu no Tadamine was one of the four compilers of the Kokin Wakashū. This poem focuses not on the beauty of the moon itself but on the painful association it has acquired: every time the pre-dawn hour approaches, the memory of that parting returns with it."
   ],
   "31": [
     "This poem plays on a moment of genuine visual ambiguity. In the dim light before full sunrise, the white snow blanketing Yoshino looks almost exactly like the pale glow of the waning moon low in the sky. The poet holds both images open at once — moon and snow, sky and earth — and that double vision is the poem's quiet pleasure.",
-    "Yoshino, in present-day Nara Prefecture, was a celebrated poetic landscape — famous for its cherry blossoms in spring and its deep snowfall in winter. Sakanoue no Korenori served as an official in the mid-Heian court and was known for the clear, precise imagery of his verse. This poem appears in the Kokinshū's winter section."
+    "Yoshino, in present-day Nara Prefecture, was a celebrated poetic landscape — famous for its cherry blossoms in spring and its deep snowfall in winter. Sakanoue no Korenori served as an official in the mid-Heian court and was known for the clear, precise imagery of his verse. This poem appears in the Kokin Wakashū's winter section."
   ],
   "32": [
     "The scene is entirely visual: wind has blown so many fallen leaves across a mountain stream that they have accumulated like a woven weir, blocking the current. The word \"shigarami\" traditionally referred to artificial structures — wicker barriers placed to catch fish — but here nature has built its own. There is no human metaphor, no emotional overlay: only the precise image of what the poet observed.",
@@ -695,19 +695,19 @@
   ],
   "33": [
     "The question at the heart of this poem is a gentle paradox: the day is perfectly peaceful, the light is soft, there is no wind to speak of — and yet the petals keep falling. Why such urgency, when everything around them is still? The blossoms scatter not because of anything external, but seemingly of their own accord, driven by their own brief nature.",
-    "Ki no Tomonori was one of the four compilers of the Kokinshū, though he died before the anthology was complete. This poem became one of the most beloved spring poems in the Japanese tradition, capturing something true about cherry blossoms: they are most beautiful precisely in the act of falling, and most unforgettable because they do not stay."
+    "Ki no Tomonori was one of the four compilers of the Kokin Wakashū, though he died before the anthology was complete. This poem became one of the most beloved spring poems in the Japanese tradition, capturing something true about cherry blossoms: they are most beautiful precisely in the act of falling, and most unforgettable because they do not stay."
   ],
   "34": [
     "The pine tree of Takasago was proverbially ancient — a symbol of endurance across countless generations. Yet even this venerable tree was not alive in the days when the poet knew his closest companions. All those friends are gone. The speaker turns to the most enduring thing in the landscape and finds that even it cannot reach back to the time when those friends were alive.",
-    "Fujiwara no Okikaze was a mid-Heian court poet counted among the celebrated \"Thirty-six Poetry Immortals.\" This poem meditates on a loneliness that is not romantic but temporal — the loneliness of outliving one's own era. It is one of the few poems in the Hyakunin Isshu that speaks not of love, but of the slow erosion of companionship by time."
+    "Fujiwara no Okikaze was a mid-Heian court poet counted among the celebrated \"Thirty-Six Immortal Poets.\" This poem meditates on a loneliness that is not romantic but temporal — the loneliness of outliving one's own era. It is one of the few poems in the Hyakunin Isshu that speaks not of love, but of the slow erosion of companionship by time."
   ],
   "35": [
-    "According to the headnote in the Kokin Wakashū, Tsurayuki once revisited, after a long absence, an inn where he used to stay whenever he made pilgrimages to Hase. The innkeeper reproached him for staying away so long, saying, \"The inn is still here, unchanged, just as it always was.\" In response, Tsurayuki is said to have broken off a spray of plum blossoms growing nearby and composed this poem. The Tsurayuki-shū, his personal poetry collection, also preserves the innkeeper's reply — though the innkeeper's gender is not recorded and remains unknown.",
+    "According to the headnote in the Kokin Wakashū, Tsurayuki once revisited, after a long absence, an inn where he used to stay whenever he made pilgrimages to Hatsuse. The innkeeper reproached him for staying away so long, saying, \"The inn is still here, unchanged, just as it always was.\" In response, Tsurayuki is said to have broken off a spray of plum blossoms growing nearby and composed this poem. The Tsurayuki-shū, his personal poetry collection, also preserves the innkeeper's reply — though the innkeeper's gender is not recorded and remains unknown.",
     "Ki no Tsurayuki left behind a large body of waka poetry and criticism, including the kana preface to the Kokin Wakashū. In the Tosa Diary, he deliberately wrote — in kana script and from a woman's point of view — an account of his journey back to the capital after completing his term as a provincial governor, opening up new forms of expression for both waka and diary literature. His refusal to be bound by convention, and his careful, attentive portrayal of the movements of the heart, reveal a sensitive and deeply human personality."
   ],
   "36": [
     "Summer nights in Japan are famously brief. The poet had barely settled into the evening when the sky was already brightening. And now the moon, which should still be visible, has somehow hidden itself among the clouds before the night could properly begin. The poem turns this swift transition into a moment of gentle, playful wonder.",
-    "Kiyohara no Fukayabu was a skilled poet of the Kokinshū era and is particularly notable as the grandfather of Sei Shōnagon (poem 62). His verse tends toward clear, precise imagery rather than complex emotional statement. This poem, with its playful question about where the moon has gone, captures the dreamy quality of a summer dawn that arrives too soon."
+    "Kiyohara no Fukayabu was a skilled poet of the Kokin Wakashū era and is particularly notable as the grandfather of Sei Shōnagon (poem 62). His verse tends toward clear, precise imagery rather than complex emotional statement. This poem, with its playful question about where the moon has gone, captures the dreamy quality of a summer dawn that arrives too soon."
   ],
   "37": [
     "The image is exact and exquisite: the wind repeatedly sweeps across the dew-covered autumn fields, and the dewdrops roll off the blades of grass and scatter — like jewels falling loose when the thread that held them snaps. The dew becomes jewelry; the wind becomes the force that destroys the strand. Nothing could be more ephemeral, or more beautiful in its vanishing.",
@@ -715,7 +715,7 @@
   ],
   "38": [
     "This poem can be read either as a lament against a lover who has changed their heart, or as an expression of enduring love despite betrayal. As a result, interpretations of the poem differ.",
-    "Ukon was a court lady who served in the imperial household. Her single poem in the Hyakunin Isshu is remarkable for its emotional complexity: it reads simultaneously as an expression of love, a prayer, and a veiled warning. Few poems in the collection say so much within such a small space."
+    "Ukon was a lady-in-waiting who served in the imperial household. Her single poem in the Hyakunin Isshu is remarkable for its emotional complexity: it reads simultaneously as an expression of love, a prayer, and a veiled warning. Few poems in the collection say so much within such a small space."
   ],
   "39": [
     "The place name \"Ono no Shinohara\" contains \"shinobu,\" which means both \"to endure in secret\" and \"to remember with longing.\" The speaker tries to keep his feelings buried and hidden, like slender bamboo shoots concealed under rough, thin reeds — but the feeling grows too vast to contain. It overflows despite every effort to suppress it.",
@@ -726,7 +726,7 @@
     "The poem focuses on a specific social exposure: the speaker's face has betrayed what his words had kept silent. People around him notice his troubled expression before he has said a word. In the refined world of Heian court society, this kind of involuntary disclosure would have carried real social weight, which gives the poem both emotional intimacy and a quiet, almost rueful humour."
   ],
   "41": [
-    "This is the companion poem to poem 40 in the famous Tentoku Poetry Contest. While Kanemori's poem focuses on the face giving the heart away, Tadami's focuses on rumour — the way a secret becomes public knowledge before the speaker has breathed a word. Both poems explore the impossibility of truly hiding one's feelings, but from different angles.",
+    "This is the companion poem to poem 40 in the famous Tentoku Poetry Contest. While Kanemori's poem focuses on the face giving the heart away, Tadami's focuses on rumor — the way a secret becomes public knowledge before the speaker has breathed a word. Both poems explore the impossibility of truly hiding one's feelings, but from different angles.",
     "According to later accounts, Tadami was so devastated by losing the contest to Kanemori that he fell into a deep melancholy and refused to eat, eventually dying of grief — though this story may be legendary. Whether true or not, it adds a haunting resonance to a poem about a love that was never able to stay secret."
   ],
   "42": [
@@ -759,7 +759,7 @@
   ],
   "49": [
     "The \"mikakimori\" were the guards assigned to keep the sacred fires burning at the imperial palace gates. These fires burned brightly through the night, then were allowed to die back down in the day. The poet maps his own love onto this rhythm: intense and undeniable at night, suppressed and smoldering by day, but never truly extinguished.",
-    "Ōnakatomi no Yoshinobu Ason was one of the celebrated \"Thirty-six Poetry Immortals\" of the mid-Heian period. He served as the head of the Ōnakatomi clan, which held hereditary responsibility for Shinto rites at the imperial court. His granddaughter was the gifted poet <a href=\"gokunarabe_62_en.html\">Ise no Taifu (poem 61)</a>. This poem appears in the Gosen Wakashū."
+    "Ōnakatomi no Yoshinobu Ason was one of the celebrated \"Thirty-Six Immortal Poets\" of the mid-Heian period. He served as the head of the Ōnakatomi clan, which held hereditary responsibility for Shinto rites at the imperial court. His granddaughter was the gifted poet <a href=\"gokunarabe_62_en.html\">Ise no Taifu (poem 61)</a>. This poem appears in the Gosen Wakashū."
   ],
   "50": [
     "Before this encounter, the speaker held his own life lightly — perhaps as a lover's convention, caring only for the beloved. But now that he has actually met this person, something has changed: he wants to live. Because now there is someone to live for, and the thought of this brief life ending feels unbearable.",
@@ -799,7 +799,7 @@
   ],
   "59": [
     "The speaker waited all night for a lover who never came. The \"tilting moon\" (katabuku made no tsuki) marks the long passage of time through the dark. The opening wish — \"if only I had just slept\" — mixes hurt and self-reproach in equal measure, making it one of the most humanly direct poems in the anthology.",
-    "Akazome Emon was a refined court lady who served Empress Shōshi. She is credited with contributions to the historical tale Eiga Monogatari (Tale of Flowering Fortunes). Her poetry was praised for its classical elegance and emotional clarity — qualities evident in this restrained but poignant poem."
+    "Akazome Emon was a refined lady-in-waiting who served Empress Shōshi. She is credited with contributions to the historical tale Eiga Monogatari (Tale of Flowering Fortunes). Her poetry was praised for its classical elegance and emotional clarity — qualities evident in this restrained but poignant poem."
   ],
   "60": [
     "This is a brilliant impromptu poem. When Middle Counselor Sadayori teased Koshikibu by asking whether she had received poetic help from her famous mother (then in distant Tango Province), she deflected with this poem — packing in the place names Ōeyama, Ikuno, and Amanohashidate to prove her independent mastery.",
@@ -807,7 +807,7 @@
   ],
   "61": [
     "\"Eight-layered\" (yae) refers to the double-blossomed variety of cherry; \"nine-fold\" (kokonoe) is a poetic name for the many-layered imperial palace, symbolizing the present court in Kyoto. The poem celebrates the blossoms' journey from the ancient capital to the present one, linking past glory to living splendor.",
-    "Ise no Taifu was a court lady and accomplished poet. This poem is said to have been composed on the spot when she received a branch of double cherry blossoms from Nara as a gift to present to Empress Shōshi. Her quick improvisational skill won wide admiration throughout the court."
+    "Ise no Taifu was a lady-in-waiting and accomplished poet. This poem is said to have been composed on the spot when she received a branch of double cherry blossoms from Nara as a gift to present to Empress Shōshi. Her quick improvisational skill won wide admiration throughout the court."
   ],
   "62": [
     "The allusion is to Meng Changjun of China, who escaped a trap by having men imitate cock-crows to open a gate at midnight. Sei Shōnagon uses this story to rebuff a man's teasing, declaring that the \"Barrier of Ōsaka\" — a pun on the word for \"meeting\" (au) and the place name Ōsaka — will not be opened by false pretenses.",
@@ -823,7 +823,7 @@
   ],
   "65": [
     "Wet sleeves from crying are a conventional image; here the speaker heightens it — constant weeping hasn't destroyed her sleeves, but the scandal of her love is destroying her reputation (na = name/fame). The contrast between the physical and the social makes this poem elegantly pointed.",
-    "Sagami was a court lady and one of the most active poets in mid-Heian literary circles. She participated in many poetry competitions and left a substantial body of verse. She was known for her passionate and sometimes unconventional love poetry, which placed her at the forefront of the female poetic tradition of her era."
+    "Sagami was a lady-in-waiting and one of the most active poets in mid-Heian literary circles. She participated in many poetry competitions and left a substantial body of verse. She was known for her passionate and sometimes unconventional love poetry, which placed her at the forefront of the female poetic tradition of her era."
   ],
   "66": [
     "The poet is deep in the mountains on ascetic retreat. He addresses the mountain cherry blossoms as his only companion, asking them to share in the feeling of mono no aware (the pathos of things). The solitude is absolute — the flowers are his sole audience, and the poem makes that feel both desolate and oddly beautiful.",
@@ -831,7 +831,7 @@
   ],
   "67": [
     "The word \"kaina\" means \"arm\" but also \"useless/in vain\" (かひなく), a pun central to the poem's wit. The situation: a man offered his arm as a pillow to Suō no Naishi during a gathering. She deflected the flirtation with this poem, using the very word \"arm\" to signal that the encounter would bring her no reward, only damage.",
-    "Suō no Naishi was a court lady celebrated for her sharp wit and quick poetic reflexes. Her poem became famous as a brilliant act of poetic self-defense — elegant, witty, and perfectly metered. The man who offered his arm was most likely Middle Counselor Sadayori, who also appears in poem 64."
+    "Suō no Naishi was a lady-in-waiting celebrated for her sharp wit and quick poetic reflexes. Her poem became famous as a brilliant act of poetic self-defense — elegant, witty, and perfectly metered. The man who offered his arm was most likely Middle Counselor Sadayori, who also appears in poem 64."
   ],
   "68": [
     "The poem is suffused with resignation and a bittersweet appreciation of the present. The midnight moon becomes an emblem of beauty that can only be fully felt now, in this moment of world-weariness. The emperor fears he will one day look back on even this painful present and miss it.",
@@ -851,7 +851,7 @@
   ],
   "72": [
     "\"Takashi no hama\" (Takashi Beach in Izumi Province) was poetically famous for its rough, capricious waves. \"Ada-nami\" (fickle waves) is a metaphor for a man whose love cannot be trusted. The speaker refuses to engage, fearing her sleeves — a conventional image for tears — will be wetted by grief.",
-    "Kii was a court lady in service to Princess Yūshi. This poem is said to have been her response to a forward young man who pressed his attentions on her during a poetry gathering. The deft use of a famous coastal place to deflect an advance is characteristic of the refined, allusive wit of Heian court ladies."
+    "Kii was a lady-in-waiting in service to Princess Yūshi. This poem is said to have been her response to a forward young man who pressed his attentions on her during a poetry gathering. The deft use of a famous coastal place to deflect an advance is characteristic of the refined, allusive wit of Heian ladies-in-waiting."
   ],
   "73": [
     "The poem sets up a visual longing: blossoms are blooming on the far mountain, but haze obscures the view of the closer hills that lie between. The wish that the haze \"not rise\" (tatazu mo ara namu) is graceful and understated — a spring yearning rather than an assertion. Takasago was in Harima Province (modern Hyōgo).",
@@ -859,7 +859,7 @@
   ],
   "74": [
     "The speaker prayed at Hatsuse Temple (Hase-dera, famous as a place for love petitions) that his love would be returned. The beloved grew even colder. He addresses the \"mountain wind of Hatsuse\" — both the literal wind and a metaphor for divine response — with indignant irony: he asked for warmth, not frost.",
-    "Minamoto no Toshiyori was one of the most innovative poets of the late Heian era, dominant in the poetry world despite holding only modest official rank. He championed a bold, unconventional style against the conservative school. His son Shun'e (poem 85) was also a notable poet."
+    "Minamoto no Toshiyori was one of the most innovative poets of the late Heian period, dominant in the poetry world despite holding only modest official rank. He championed a bold, unconventional style against the conservative school. His son Shun'e (poem 85) was also a notable poet."
   ],
   "75": [
     "\"Sasemo-ga tsuyu\" (dew of the sasemogusa/mugwort) alludes to a poem by Kiyohara no Motosuke: \"Trust in me as the dew on mugwort.\" Here the dew represents a powerful person's promise of patronage. The speaker had hoped that promise would secure his son a temple appointment — but it was not kept.",
@@ -883,7 +883,7 @@
   ],
   "80": [
     "The poem captures the vulnerability of the morning after a first meeting. Tangled black hair (kurokami no midarete) was both a literal image of a woman freshly woken and a metaphor for the disorder of her heart. The uncertainty about the man's fidelity — \"not knowing if your heart will be long\" — deepens the sense of exposure and fragile hope.",
-    "Horikawa was a court lady who served Empress Taiken (consort of Retired Emperor Toba). She was active in late Heian poetry circles and contributed to the Senzai Wakashū. This poem is prized for its intimate, almost physical detail — the tangled hair making an invisible emotional state suddenly, honestly visible."
+    "Horikawa was a lady-in-waiting who served Empress Taiken (consort of Retired Emperor Toba). She was active in late Heian poetry circles and contributed to the Senzai Wakashū. This poem is prized for its intimate, almost physical detail — the tangled hair making an invisible emotional state suddenly, honestly visible."
   ],
   "81": [
     "The hototogisu (lesser cuckoo) was the most eagerly anticipated bird of early summer — its first cry was a poetic event. The speaker turns at the sound and finds only the fading moon. The bird has gone; its call was fleeting; only the moon remains. The poem is about the experience of missing the moment itself.",
@@ -911,23 +911,23 @@
   ],
   "87": [
     "The poem depicts a precise, transient moment suspended between two weathers: the shower has just passed, the cedar leaves are still wet with rain-dew, but mist is already forming and rising. The poem is composed entirely of natural phenomena — no human presence at all — yet it conveys an atmosphere of deep, melancholy beauty.",
-    "Jakuren was a monk-poet who died before the completion of the Shin Kokinshū, to which he had been a key contributor. He was the adopted son of Fujiwara no Toshinari (poem 83). His poetry exemplifies the yūgen aesthetic — depth suggested through restraint, natural imagery, and the refusal to explain what it evokes."
+    "Jakuren was a monk-poet who died before the completion of the Shin Kokin Wakashū, to which he had been a key contributor. He was the adopted son of Fujiwara no Toshinari (poem 83). His poetry exemplifies the yūgen aesthetic — depth suggested through restraint, natural imagery, and the refusal to explain what it evokes."
   ],
   "88": [
     "The poem is exceptionally dense with wordplay: \"karine\" means both \"temporary sleep\" and \"cut reed roots\"; \"hito-yo\" means both \"one night\" and \"one joint of a reed stalk\"; \"midareru\" means \"disordered\" and \"tangled (like reeds).\" A single night's meeting has scattered her heart as completely as reeds cut loose in water.",
-    "The Attendant to Empress Kōka was a court lady of the late Heian period; very little biographical information survives about her. Her poem is remarkable for the density and technical elegance of its wordplay, which earns it a place among the most accomplished poems in the entire anthology — a single night distilled into layers of interlocking meaning."
+    "The Attendant to Empress Kōka was a lady-in-waiting of the late Heian period; very little biographical information survives about her. Her poem is remarkable for the density and technical elegance of its wordplay, which earns it a place among the most accomplished poems in the entire anthology — a single night distilled into layers of interlocking meaning."
   ],
   "89": [
     "\"Tama no o\" (thread of gems) is a metaphor for the fragile thread of life. The speaker commands her life to end rather than continue — because the longer she lives, the harder it becomes to conceal a forbidden love. The logic is extreme but poetically coherent: endurance weakens over time, so death is preferable to eventual exposure.",
-    "Princess Shikishi was an imperial princess who served as High Priestess of the Kamo Shrine and was therefore forbidden to marry. Her poems suggest a deep, secret, and possibly forbidden love — some scholars believe for Fujiwara no Sadaie. The combination of noble restraint and barely contained passion makes her one of the most admired poets in the Shin Kokinshū."
+    "Princess Shikishi was an imperial princess who served as High Priestess of the Kamo Shrine and was therefore forbidden to marry. Her poems suggest a deep, secret, and possibly forbidden love — some scholars believe for Fujiwara no Sadaie. The combination of noble restraint and barely contained passion makes her one of the most admired poets in the Shin Kokin Wakashū."
   ],
   "90": [
     "The comparison is precise and unexpected: seawater wets the fisherwomen's sleeves constantly but doesn't alter their color. The speaker's tears, by contrast, have literally or figuratively faded the dye from her sleeves — implying that her sorrow is of a different, deeper quality than even the most relentless physical labor of the sea.",
-    "The Attendant to Empress Inpu was a court lady active in late Heian poetry circles who left a relatively substantial body of work for a female poet of her era. This poem is praised for its originality — taking the conventional \"wet sleeves\" image and pushing it to an unexpected, quietly devastating conclusion."
+    "The Attendant to Empress Inpu was a lady-in-waiting active in late Heian poetry circles who left a relatively substantial body of work for a female poet of her era. This poem is praised for its originality — taking the conventional \"wet sleeves\" image and pushing it to an unexpected, quietly devastating conclusion."
   ],
   "91": [
     "\"Samushiro\" (cold mat) layers two meanings: the compound word (samu + shiro, cold + white) and the word for a thin reed mat. \"Kinu kataski\" (spreading half a garment) alludes to the Heian custom of a couple sleeping under a shared robe — here only half is used, because there is no one beside him. The cricket's cry cuts through the silence.",
-    "Fujiwara no Yoshitsune (Gokyōgoku Regent) was one of the most powerful men of the early Kamakura period, serving as regent and chancellor. He vanished suddenly from public life at the height of his power, possibly through illness. He was a central figure in compiling the Shin Kokinshū — the last great imperial waka anthology."
+    "Fujiwara no Yoshitsune (Gokyōgoku Regent) was one of the most powerful men of the early Kamakura period, serving as regent and chancellor. He vanished suddenly from public life at the height of his power, possibly through illness. He was a central figure in compiling the Shin Kokin Wakashū — the last great imperial waka anthology."
   ],
   "92": [
     "The \"oki no ishi\" (rock in the offing) lies just below the surface, never exposed even at low tide — a perfect metaphor for a love that is both constant and concealed. The speaker's weeping sleeves, like that rock, are always present but never visible to others. The two qualities — secrecy and constancy — reinforce each other with quiet elegance.",
@@ -939,7 +939,7 @@
   ],
   "94": [
     "\"Koromo-utsu\" (beating cloth) was the process of softening newly woven fabric by beating it on a fulling block. The sound carried far through the night air. At Yoshino, that sound mingles with the autumn wind to create an atmosphere of deep seasonal melancholy. The \"old village\" (furusato) adds a layer of nostalgic desolation.",
-    "Fujiwara no Masatsune was a court noble whose family was associated with the aristocratic sport of kemari (court football). He was a significant poet of the Shin Kokinshū era. Yoshino was a famous poetic site usually associated with cherry blossoms — here it appears in its autumnal face, spare and mournful."
+    "Fujiwara no Masatsune was a court noble whose family was associated with the aristocratic sport of kemari (court football). He was a significant poet of the Shin Kokin Wakashū era. Yoshino was a famous poetic site usually associated with cherry blossoms — here it appears in its autumnal face, spare and mournful."
   ],
   "95": [
     "\"Ōke-naku\" (overstepping/presumptuous) is the speaker's own self-deprecating qualification: he knows it is bold to claim the role of spiritual protector, yet he asserts it nonetheless. \"Soma\" (sacred timber forest) refers to Mt. Hiei, home of the great Tendai complex Enryaku-ji. The black-robed sleeves spread like wings over the people below.",
@@ -955,11 +955,11 @@
   ],
   "98": [
     "The scene is the eve of the Kamo purification ceremony (misogi) at a stream near the Kamo Shrine. The air is already cool enough to feel like autumn; only the ritual marks it as summer. \"Soyo-gu\" (to rustle gently) gives the breeze through the Nara oaks a light, delicate sound. The poem balances on the exact threshold between seasons.",
-    "Fujiwara no Ietaka was a close colleague of Sadaie (poem 97) and co-led the waka world of the Shin Kokinshū era. He was known for his lyrical grace and emotional subtlety. This poem, suspended between summer and autumn, is considered one of the most elegant seasonal poems in the entire anthology."
+    "Fujiwara no Ietaka was a close colleague of Sadaie (poem 97) and co-led the waka world of the Shin Kokin Wakashū era. He was known for his lyrical grace and emotional subtlety. This poem, suspended between summer and autumn, is considered one of the most elegant seasonal poems in the entire anthology."
   ],
   "99": [
     "The poem opens with a paradox: the same people provoke both tenderness and resentment. \"Ajiki-naku\" (bitter/futile) qualifies the act of world-brooding itself. Unusually direct in expressing ambivalence — toward people, toward the world, and toward the self — it reads less like court verse than a private confession.",
-    "Retired Emperor Go-Toba launched the Jōkyū Disturbance in 1221 in an attempt to reclaim power from the Kamakura shogunate. He failed and was exiled to the Oki Islands, where he died. He commissioned the Shin Kokinshū and was himself a masterful poet. This poem may reflect the complex emotions of a man who loved and resented his world in equal measure."
+    "Retired Emperor Go-Toba launched the Jōkyū Disturbance in 1221 in an attempt to reclaim power from the Kamakura shogunate. He failed and was exiled to the Oki Islands, where he died. He commissioned the Shin Kokin Wakashū and was himself a masterful poet. This poem may reflect the complex emotions of a man who loved and resented his world in equal measure."
   ],
   "100": [
     "\"Momoshiki\" is a pillow word for the imperial palace; \"shinobugusa\" (fern, but also \"shinoburu\" = to recall/endure) grows on the ruined eaves. The plant's very name evokes memory. \"Naho amari aru\" (still more, still overflowing) conveys a nostalgia so immense it cannot be exhausted — the old imperial world exceeds any poem's power to contain it.",

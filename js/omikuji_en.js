@@ -16,7 +16,7 @@ const hyakuninIsshu = [
     {
         poem: "<ruby>春<rt>はる</rt></ruby><ruby>過<rt>す</rt></ruby>ぎて <ruby>夏<rt>なつ</rt></ruby><ruby>来<rt>き</rt></ruby>にけらし <ruby>白妙<rt>しろたえ</rt></ruby>の <ruby>衣<rt>ころも</rt></ruby>ほす<ruby>てふ<rt>ちょう</rt></ruby> <ruby>天<rt>あま</rt></ruby>の<ruby>香具山<rt>かぐやま</rt></ruby>",
         meaning: "Spring has passed and summer seems to have come — white robes are said to be hung out to dry on the heavenly Mount Kagu.",
-        story: "Daughter of Emperor Tenji, Empress Jitō fought through the Jinshin War beside her husband, Emperor Tenmu. After losing both her husband and her son, she took the throne herself, built the Fujiwara capital, and carried on the work of nation-building. This poem vividly captures the change from spring to summer in the pure white robes hung out to dry on Mount Kagu.",
+        story: "Daughter of Emperor Tenji, Empress Jitō fought through the Jinshin War beside her husband, Emperor Tenmu. After losing both her husband and her son, she took the throne herself, built Fujiwara-kyō, and carried on the work of nation-building. This poem vividly captures the change from spring to summer in the pure white robes hung out to dry on Mount Kagu.",
         love: "A change in your surroundings is a sign that your relationship is moving to a new stage. Don't cling to the past; take the next step as naturally as the seasons change.",
         work: "This is a time to inherit the hopes of someone dear and shape them with your own hands. Act without hesitation, and the plans you have been nurturing will move forward all at once.",
         poet: "Empress Jitō",
@@ -76,7 +76,7 @@ const hyakuninIsshu = [
     {
         poem: "わが<ruby>庵<rt>いお</rt></ruby>は <ruby>都<rt>みやこ</rt></ruby>の<ruby>辰巳<rt>たつみ</rt></ruby> しかぞすむ <ruby>世<rt>よ</rt></ruby>をう<ruby>ぢ<rt>じ</rt></ruby><ruby>山<rt>やま</rt></ruby>と <ruby>人<rt>ひと</rt></ruby>はい<ruby>ふ<rt>う</rt></ruby>なり",
         meaning: "My home is in the southeast of the capital, and I live here at peace. People say I moved to Mount Uji because I found the world hard to bear — but that is only what others say.",
-        story: "One of the Six Poetic Immortals, Priest Kisen left the capital and built a hermitage on Mount Uji. Only this one poem can be surely attributed to him, yet with that single poem his name has lived on for more than a thousand years. In it, he says that although people gossip that he has fled from a gloomy world, he is living calmly southeast of the capital.",
+        story: "One of the Six Poetic Sages, Priest Kisen left the capital and built a hermitage on Mount Uji. Only this one poem can be surely attributed to him, yet with that single poem his name has lived on for more than a thousand years. In it, he says that although people gossip that he has fled from a gloomy world, he is living calmly southeast of the capital.",
         love: "Don't be swayed by gossip; value your own pace. Only when your heart is at peace will your bonds with the people you love grow deeper.",
         work: "Choose a way of working you are satisfied with, rather than one that pleases others. Rest is also a way forward. Once you have restored your mind and body, even a single piece of work can make your name.",
         poet: "Priest Kisen",
@@ -86,7 +86,7 @@ const hyakuninIsshu = [
     {
         poem: "<ruby>花<rt>はな</rt></ruby>の<ruby>色<rt>いろ</rt></ruby>は うつりにけりな いた<ruby>づ<rt>ず</rt></ruby>らに わが<ruby>身<rt>み</rt></ruby>よにふる ながめせしまに",
         meaning: "How the beauty of the cherry blossoms faded away, soaked by the long spring rains. And just like them, my own looks have faded too, lost in a haze of endless longing.",
-        story: "The only woman among the Six Poetic Immortals, Ono no Komachi was celebrated as a woman of matchless beauty. Many stories have been handed down about her, from the legend of Captain Fukakusa, who courted her for a hundred nights, to tales of her falling into poverty in old age. In this poem, she likens the cherry blossoms faded by the long rains to the time of her own life that slipped away while she was lost in thought.",
+        story: "The only woman among the Six Poetic Sages, Ono no Komachi was celebrated as a woman of matchless beauty. Many stories have been handed down about her, from the legend of Captain Fukakusa, who courted her for a hundred nights, to tales of her falling into poverty in old age. In this poem, she likens the cherry blossoms faded by the long rains to the time of her own life that slipped away while she was lost in thought.",
         love: "Youth and beauty may fade, but the depth of heart you have grown through reflection never does. Cultivating your inner charm leads to a love that lasts.",
         work: "Even if you feel you have wasted time, the days you spent worrying have sharpened your sensitivity. Make that experience a strength that only you possess.",
         poet: "Ono no Komachi",
@@ -216,7 +216,7 @@ const hyakuninIsshu = [
     {
         poem: "<ruby>吹<rt>ふ</rt></ruby>くからに <ruby>秋<rt>あき</rt></ruby>の<ruby>草木<rt>くさき</rt></ruby>の しをるれば むべ<ruby>山風<rt>やまかぜ</rt></ruby>を <ruby>嵐<rt>あらし</rt></ruby>とい<ruby>ふ<rt>う</rt></ruby>ら<ruby>む<rt>ん</rt></ruby>",
         meaning: "The moment the autumn wind blows, the grasses and trees wither. Now I understand why the mountain wind is called \"arashi\" — storm.",
-        story: "Though one of the Six Poetic Immortals, Fun'ya no Yasuhide spent his whole life in low-ranking posts. He was close to Ono no Komachi, and a story tells how, when leaving for a provincial post, he invited her to come along. This poem is a play on characters: put \"mountain\" (山) and \"wind\" (風) together and you get \"storm\" (嵐).",
+        story: "Though one of the Six Poetic Sages, Fun'ya no Yasuhide spent his whole life in low-ranking posts. He was close to Ono no Komachi, and a story tells how, when leaving for a provincial post, he invited her to come along. This poem is a play on characters: put \"mountain\" (山) and \"wind\" (風) together and you get \"storm\" (嵐).",
         love: "A casual invitation or a joke may bring an unexpected connection. Brightness and smiles will bring the two of you closer.",
         work: "A time of big changes. Don't fuss over titles; with humor and quick wit as your weapons, you can get through any situation.",
         poet: "Fun'ya no Yasuhide",
@@ -626,7 +626,7 @@ const hyakuninIsshu = [
     {
         poem: "いまはただ <ruby>思<rt>おも</rt></ruby>ひ<ruby>絶<rt>た</rt></ruby>えな<ruby>む<rt>ん</rt></ruby> とばかりを <ruby>人<rt>ひと</rt></ruby>づてならで <ruby>言<rt>い</rt></ruby><ruby>ふ<rt>う</rt></ruby>よしもがな",
         meaning: "If only I could say it directly: all I want is to end this love. But there is no way to tell you in person.",
-        story: "Born into the distinguished Naka-no-Kanpaku family, Fujiwara no Michimasa saw his family fall from power after the death of his grandfather Michitaka and the downfall of his father Korechika. He fell in love with Princess Masako, a former Ise Priestess and daughter of Retired Emperor Sanjō, but the retired emperor's anger tore them apart. He wrote this poem after they were forbidden to meet, wishing he could at least tell her goodbye in person. Afterward his violent behavior earned him the nickname \"the Rough Third Rank.\"",
+        story: "Born into the distinguished Naka-no-Kampaku family, Fujiwara no Michimasa saw his family fall from power after the death of his grandfather Michitaka and the downfall of his father Korechika. He fell in love with Princess Masako, a former Ise Priestess and daughter of Retired Emperor Sanjō, but the retired emperor's anger tore them apart. He wrote this poem after they were forbidden to meet, wishing he could at least tell her goodbye in person. Afterward his violent behavior earned him the nickname \"the Rough Third Rank.\"",
         love: "Opposition or circumstances may keep you from meeting or speaking as you wish. Don't go through others; face things sincerely in your own words — that is the way to leave no regrets.",
         work: "If you give up because things aren't going well, you will only damage your reputation further. Draw a line under your feelings and focus on putting your conduct back in order.",
         poet: "Master of the Left Capital Michimasa",

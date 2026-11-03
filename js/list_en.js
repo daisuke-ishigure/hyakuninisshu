@@ -157,7 +157,7 @@ function initSortButtons(table) {
     });
   });
 
-  // Theme filter buttons (toggle, same behaviour as the colour filter)
+  // Theme filter buttons (toggle, same behavior as the colour filter)
   themeFilterBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
       const theme = btn.dataset.theme;

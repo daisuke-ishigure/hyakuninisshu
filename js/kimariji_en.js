@@ -190,7 +190,7 @@ function createSelectionScreen() {
     contentEl.innerHTML = `
         <ul id="karuta_ul" style="margin-bottom:1em">
             <li>Read the upper verse shown and choose the matching lower verse from three options.</li>
-            <li>You can filter by colour group — each colour covers 20 poems from the Five-Colour Hyakunin Isshu set.</li>
+            <li>You can filter by color group — each color covers 20 poems from the Five-Color Hyakunin Isshu set.</li>
             <li>In <strong>Kimariji mode</strong>, the cards display hiragana and the <em>kimariji</em> (deciding syllables) are highlighted in red.</li>
         </ul>
         <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:1.2em;">
@@ -275,7 +275,7 @@ function createSelectionScreen() {
                         <tr><td>400,000+</td><td>Exiled Governor<br><span style="font-size:0.82em;color:#777;">大宰権帥</span></td><td>Demoted to the provinces.</td></tr>
                         <tr><td>500,000+</td><td>Vengeful Spirit<br><span style="font-size:0.82em;color:#777;">怨霊</span></td><td>Lightning strikes the palace.</td></tr>
                         <tr><td>700,000+</td><td>Minister of the Left<br><span style="font-size:0.82em;color:#777;">左大臣</span></td><td>Bestowed posthumously.</td></tr>
-                        <tr><td>1,000,000+</td><td>Grand Minister<br><span style="font-size:0.82em;color:#777;">太政大臣</span></td><td>Bestowed posthumously.</td></tr>
+                        <tr><td>1,000,000+</td><td>Chancellor of the Realm<br><span style="font-size:0.82em;color:#777;">太政大臣</span></td><td>Bestowed posthumously.</td></tr>
                         <tr><td>1,500,000+</td><td>God of Learning<br><span style="font-size:0.82em;color:#777;">天神様</span></td><td>God of learning.</td></tr>
                     </tbody>
                 </table>

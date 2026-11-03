@@ -117,7 +117,7 @@
         "markname": "Enjō-ji (Mii-dera)",
         "kajin": "Senior High Priest Gyōson",
         "type": "type2",
-        "name": "<a href='../img/miidera_large.webp' data-lightbox='Senior High Priest Gyōson' data-title='Mt. Ibuki, on the border of Shiga and Gifu'><img src='../img/miidera.webp' width='300' alt='Mt. Ibuki'></a><h2 class='utamakura-name'>Enjō-ji (Mii-dera)</h2><p>The head temple of the Tendai Jimon school, in Otsu, Shiga Prefecture, commonly known as Mii-dera. At age 12, Gyōson entered the priesthood here and studied esoteric Buddhism.</p><hr><a href='/66_en.html'>Link to Poem 66: Senior High Priest Gyōson</a>"
+        "name": "<a href='../img/miidera_large.webp' data-lightbox='Senior High Priest Gyōson' data-title='Mt. Ibuki, on the border of Shiga and Gifu'><img src='../img/miidera.webp' width='300' alt='Mt. Ibuki'></a><h2 class='utamakura-name'>Enjō-ji (Mii-dera)</h2><p>The head temple of the Tendai Jimon school, in Ōtsu, Shiga Prefecture, commonly known as Mii-dera. At age 12, Gyōson entered the priesthood here and studied esoteric Buddhism.</p><hr><a href='/66_en.html'>Link to Poem 66: Senior High Priest Gyōson</a>"
       },
       "geometry": { "type": "Point", "coordinates": [135.85285399503263, 35.01355012029059] }
     },
@@ -224,10 +224,10 @@
     {
       "type": "Feature",
       "properties": {
-        "markname": "Osaka Barrier",
-        "kajin": "Semimaru (Osaka Barrier)",
+        "markname": "Ōsaka Barrier",
+        "kajin": "Semimaru (Ōsaka Barrier)",
         "type": "type1",
-        "name": "<a href='../img/ousakanoseki-ato.webp' data-lightbox='map' data-title='Mt. Osaka'><img src='../img/ousakanoseki-ato.webp' width='300' alt='Osaka Barrier'></a><br><small>Photographed August 12, 2025</small><h2 class='utamakura-name'>Utamakura: Osaka Barrier</h2><p>Ōsaka, Otsu, Shiga Prefecture. A checkpoint established from the Nara period onward, marking the key crossing point between the capital region and the eastern provinces. Because its name contains the character for \"meeting\" (逢), it is often cited in love poems as well.</p><hr><a href='/10_en.html'>Link to Poem 10: Semimaru</a><hr><a href='/62_en.html'>Link to Poem 62: Sei Shōnagon</a>"
+        "name": "<a href='../img/ousakanoseki-ato.webp' data-lightbox='map' data-title='Mt. Osaka'><img src='../img/ousakanoseki-ato.webp' width='300' alt='Ōsaka Barrier'></a><br><small>Photographed August 12, 2025</small><h2 class='utamakura-name'>Utamakura: Ōsaka Barrier</h2><p>Ōsaka, Ōtsu, Shiga Prefecture. A checkpoint established from the Nara period onward, marking the key crossing point between the capital region and the eastern provinces. Because its name contains the character for \"meeting\" (逢), it is often cited in love poems as well.</p><hr><a href='/10_en.html'>Link to Poem 10: Semimaru</a><hr><a href='/62_en.html'>Link to Poem 62: Sei Shōnagon</a>"
       },
       "geometry": { "type": "Point", "coordinates": [135.85559, 34.99422] }
     },
@@ -467,7 +467,7 @@
         "markname": "Mt. Hiei",
         "kajin": "Former Senior High Priest Jien (Mt. Hiei)",
         "type": "type2",
-        "name": "<a href='../img/hieizan_large.webp' data-lightbox='map' data-title='View from Mt. Hiei'><img src='../img/hieizan.webp' width='300' alt='View from Mt. Hiei'></a><h2 class='utamakura-name'>Mt. Hiei</h2><p>The head temple complex of the Tendai school, in Otsu, Shiga Prefecture. Jien entered Enryaku-ji at age 11 and rose to become Tendai Zasu, the school's highest office. Pictured is the view from Mt. Hiei.</p><hr><a href='/95_en.html'>Link to Poem 95: Former Senior High Priest Jien</a>"
+        "name": "<a href='../img/hieizan_large.webp' data-lightbox='map' data-title='View from Mt. Hiei'><img src='../img/hieizan.webp' width='300' alt='View from Mt. Hiei'></a><h2 class='utamakura-name'>Mt. Hiei</h2><p>The head temple complex of the Tendai school, in Ōtsu, Shiga Prefecture. Jien entered Enryaku-ji at age 11 and rose to become Tendai Zasu, the school's highest office. Pictured is the view from Mt. Hiei.</p><hr><a href='/95_en.html'>Link to Poem 95: Former Senior High Priest Jien</a>"
       },
       "geometry": { "type": "Point", "coordinates": [135.83156204869454, 35.06303569672666] }
     },
@@ -577,7 +577,7 @@
         "markname": "Ishiyama-dera",
         "kajin": "Murasaki Shikibu (Ishiyama-dera)",
         "type": "type2",
-        "name": "<a href='../img/ishiyamadera_large.webp' data-lightbox='map' data-title='Ishiyama-dera'><img src='../img/ishiyamadera.webp' width='300' alt='Ishiyama-dera'></a><h2 class='utamakura-name'>Ishiyama-dera</h2><p>A temple in Otsu, Shiga Prefecture. Murasaki Shikibu is said to have conceived the \"Suma\" and \"Akashi\" chapters of the Tale of Genji while in retreat at Ishiyama-dera, and the temple's main hall contains a room known as \"Murasaki Shikibu's Chamber.\"</p><hr><a href='/57_en.html'>Link to Poem 57: Murasaki Shikibu</a>"
+        "name": "<a href='../img/ishiyamadera_large.webp' data-lightbox='map' data-title='Ishiyama-dera'><img src='../img/ishiyamadera.webp' width='300' alt='Ishiyama-dera'></a><h2 class='utamakura-name'>Ishiyama-dera</h2><p>A temple in Ōtsu, Shiga Prefecture. Murasaki Shikibu is said to have conceived the \"Suma\" and \"Akashi\" chapters of the Tale of Genji while in retreat at Ishiyama-dera, and the temple's main hall contains a room known as \"Murasaki Shikibu's Chamber.\"</p><hr><a href='/57_en.html'>Link to Poem 57: Murasaki Shikibu</a>"
       },
       "geometry": { "type": "Point", "coordinates": [135.90158982932604, 34.958986141406854] }
     },
@@ -627,7 +627,7 @@
         "markname": "Ōmi Jingū",
         "kajin": "Emperor Tenji (Ōmi Jingū)",
         "type": "type2",
-        "name": "<a href='../img/omijingu_large.webp?20250812' data-lightbox='map' data-title='Otsu, Shiga: Ōmi Jingū'><img src='../img/omijingu_large.webp?20250812' width='300' alt='Ōmi Jingū'></a><br><small>Photographed August 12, 2025</small><h2 class='utamakura-name'>Ōmi Jingū</h2><p>Otsu, Shiga Prefecture. Ōmi Jingū is a shrine honoring the achievements of Emperor Tenji. Each January, it hosts the \"Meijin-i and Queen's Title Match,\" the championship that decides Japan's top competitive karuta players.</p><hr><a href='/1_en.html'>Link to Poem 1: Emperor Tenji</a>"
+        "name": "<a href='../img/omijingu_large.webp?20250812' data-lightbox='map' data-title='Ōtsu, Shiga: Ōmi Jingū'><img src='../img/omijingu_large.webp?20250812' width='300' alt='Ōmi Jingū'></a><br><small>Photographed August 12, 2025</small><h2 class='utamakura-name'>Ōmi Jingū</h2><p>Ōtsu, Shiga Prefecture. Ōmi Jingū is a shrine honoring the achievements of Emperor Tenji. Each January, it hosts the \"Meijin-i and Queen's Title Match,\" the championship that decides Japan's top competitive karuta players.</p><hr><a href='/1_en.html'>Link to Poem 1: Emperor Tenji</a>"
       },
       "geometry": { "type": "Point", "coordinates": [135.85196628953835, 35.03243264441822] }
     },

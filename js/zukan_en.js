@@ -24,21 +24,21 @@ const JOB_LABELS_EN = {
     '貴族': 'Aristocrat',
     '官人': 'Official',
     '僧侶': 'Monk',
-    '女房': 'Court lady',
+    '女房': 'Lady-in-waiting',
     '伝説': 'Legendary',
     'その他': 'Other',
 };
 
 // Display names for anthology sources (filter values remain Japanese for matching)
 const SOURCE_DISPLAY = {
-    '古今集': 'Kokinshū',
+    '古今集': 'Kokin Wakashū',
     '後撰集': 'Gosen Wakashū',
     '拾遺集': 'Shūi Wakashū',
     '後拾遺集': 'Goshūi Wakashū',
     '金葉集': "Kin'yō Wakashū",
     '詞花集': 'Shika Wakashū',
     '千載集': 'Senzai Wakashū',
-    '新古今集': 'Shin Kokinshū',
+    '新古今集': 'Shin Kokin Wakashū',
     '新勅撰集': 'Shin Chokusen Wakashū',
     '続後撰集': 'Shoku Gosen Wakashū',
 };
@@ -325,7 +325,7 @@ const POETS_RAW = [
     {
         n: 17, name: '<ruby>在原業平朝臣<rt>ありわらのなりひらあそん</rt></ruby>', date: '825年～880年', theme: 'autumn',
         poem: 'ちはやぶる…', job: '貴族', source: '古今集',
-        outline: 'The greatest romantic poet of the Heian era', img: 'img/z17.webp',
+        outline: 'The greatest romantic poet of the Heian period', img: 'img/z17.webp',
     },
     {
         n: 18, name: '<ruby>藤原敏行朝臣<rt>ふじわらのとしゆきあそん</rt></ruby>', date: '生年不詳～901年', theme: 'love',
@@ -350,7 +350,7 @@ const POETS_RAW = [
     {
         n: 22, name: '<ruby>文屋康秀<rt>ふんやのやすひで</rt></ruby>', date: '生年不詳～885年頃', theme: 'autumn',
         poem: '<ruby>吹<rt>ふ</rt></ruby>くからに…', job: '貴族', source: '古今集',
-        outline: 'A witty member of the Six Poetry Immortals', img: 'img/z22.webp',
+        outline: 'A witty member of the Six Poetic Sages', img: 'img/z22.webp',
     },
     {
         n: 23, name: '<ruby>大江千里<rt>おおえのちさと</rt></ruby>', date: '850年頃～905年頃', theme: 'autumn',
@@ -365,7 +365,7 @@ const POETS_RAW = [
     {
         n: 25, name: '<ruby>三条右大臣<rt>さんじょうのうだいじん</rt></ruby>', date: '873年～932年', theme: 'love',
         poem: '<ruby>名<rt>な</rt></ruby>にし<ruby>負<rt>お</rt></ruby>はば', job: '公卿', source: '後撰集',
-        outline: 'A court noble who supported the compilation of the Kokinshū', img: 'img/z25.webp',
+        outline: 'A court noble who supported the compilation of the Kokin Wakashū', img: 'img/z25.webp',
     },
     {
         n: 26, name: '<ruby>貞信公<rt>ていしんこう</rt></ruby>', date: '880年～949年', theme: 'autumn',
@@ -385,7 +385,7 @@ const POETS_RAW = [
     {
         n: 29, name: '<ruby>凡河内躬恒<rt>おおしこうちのみつね</rt></ruby>', date: '859年頃～925年頃', theme: 'autumn',
         poem: '<ruby>心当<rt>こころあ</rt></ruby>てに…', job: '官人', source: '古今集',
-        outline: 'One of the Thirty-six Poetry Immortals and a Kokinshū compiler', img: 'img/z29.webp',
+        outline: 'One of the Thirty-Six Immortal Poets and a Kokin Wakashū compiler', img: 'img/z29.webp',
     },
     {
         n: 30, name: '<ruby>壬生忠岑<rt>みぶのただみね</rt></ruby>', date: '860年頃～920年頃', theme: 'love',
@@ -405,7 +405,7 @@ const POETS_RAW = [
     {
         n: 33, name: '<ruby>紀友則<rt>きのとものり</rt></ruby>', date: '845年頃～907年', theme: 'spring',
         poem: '<ruby>久方<rt>ひさかた</rt></ruby>の…', job: '官人', source: '古今集',
-        outline: 'A Kokinshū compiler who died before its completion', img: 'img/z33.webp',
+        outline: 'A Kokin Wakashū compiler who died before its completion', img: 'img/z33.webp',
     },
     {
         n: 34, name: '<ruby>藤原興風<rt>ふじわらのおきかぜ</rt></ruby>', date: 'dates unknown', theme: 'misc',
@@ -545,7 +545,7 @@ const POETS_RAW = [
     {
         n: 61, name: '<ruby>伊勢大輔<rt>いせのたいふ</rt></ruby>', date: '989年頃～没年不詳', theme: 'spring',
         poem: 'いにし<ruby>へ<rt>え</rt></ruby>の…', job: '女房', source: '詞花集',
-        outline: 'A court lady who astonished the palace with her off-the-cuff verse', img: 'img/z61.webp',
+        outline: 'A lady-in-waiting who astonished the palace with her off-the-cuff verse', img: 'img/z61.webp',
     },
     {
         n: 62, name: '<ruby>清少納言<rt>せいしょうなごん</rt></ruby>', date: '966年頃～1025年頃', theme: 'misc',
@@ -575,7 +575,7 @@ const POETS_RAW = [
     {
         n: 67, name: '<ruby>周防内侍<rt>すおうのないし</rt></ruby>', date: '1037年頃～1111年頃', theme: 'misc',
         poem: '<ruby>春<rt>はる</rt></ruby>の<ruby>夜<rt>よ</rt></ruby>の…', job: '女房', source: '千載集',
-        outline: 'A court lady who deflected amorous nobles with sharp-tongued wit', img: 'img/z67.webp',
+        outline: 'A lady-in-waiting who deflected amorous nobles with sharp-tongued wit', img: 'img/z67.webp',
     },
     {
         n: 68, name: '<ruby>三条院<rt>さんじょういん</rt></ruby>', date: '976年～1017年', theme: 'misc',
@@ -675,7 +675,7 @@ const POETS_RAW = [
     {
         n: 87, name: '<ruby>寂蓮法師<rt>じゃくれんほうし</rt></ruby>', date: '1139年頃～1202年', theme: 'autumn',
         poem: '<ruby>村雨<rt>むらさめ</rt></ruby>の…', job: '僧侶', source: '新古今集',
-        outline: 'A monk poet who died before the Shin Kokinshū was completed', img: 'img/z87.webp',
+        outline: 'A monk poet who died before the Shin Kokin Wakashū was completed', img: 'img/z87.webp',
     },
     {
         n: 88, name: '<ruby>皇嘉門院別当<rt>こうかもんいんのべっとう</rt></ruby>', date: 'dates unknown', theme: 'love',

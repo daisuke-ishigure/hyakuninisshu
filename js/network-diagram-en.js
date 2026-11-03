@@ -230,7 +230,7 @@
         'worship':         { color: '#b8860b', legend: 'Revered as',                        dash: '3,2' },
         'uncle-nephew':    { color: '#d17b3a', legend: 'Uncle–nephew',                     dash: '6,3' },
         'depicted':        { color: '#546e7a', legend: 'Legend',                            dash: '5,2,1,2' },
-        'rokkasen':        { color: '#00acc1', legend: 'Rokkasen (Six Poetry Immortals)',    dash: '3,3'  },
+        'rokkasen':        { color: '#00acc1', legend: 'Rokkasen (Six Poetic Sages)',    dash: '3,3'  },
         'compiler':        { color: '#7e57c2', legend: 'Fellow compilers',                  dash: '2,6'  },
         'honkadori':       { color: '#00838f', legend: 'Honkadori (poetic allusion)',        dash: '4,1'  },
         'in-law-brother':  { color: '#7cb342', legend: 'Brothers-in-law',                    dash: '6,2,2,2' },

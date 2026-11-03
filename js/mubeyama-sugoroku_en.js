@@ -21,7 +21,7 @@
     },
     {
       poemNum: 2, poet: "Empress Jitō", quizzes: [
-        { q: "Empress Jitō completed the Fujiwara capital (Fujiwara-kyō).", answer: true, explain: "The “Asuka-Fujiwara” palace and capital sites, which include the Fujiwara capital completed by Empress Jitō, were inscribed as a World Heritage Site in 2026." },
+        { q: "Empress Jitō completed Fujiwara-kyō.", answer: true, explain: "The “Asuka-Fujiwara” palace and capital sites, which include Fujiwara-kyō completed by Empress Jitō, were inscribed as a World Heritage Site in 2026." },
       ]
     },
     {
@@ -56,7 +56,7 @@
     },
     {
       poemNum: 9, poet: "Ono no Komachi", quizzes: [
-        { q: "Ono no Komachi is the woman poet with the most poems in the Kokinshū (Kokin Wakashū).", answer: false, explain: "The woman poet with the most poems in the Kokinshū is Ise, with 22. Ono no Komachi has 18, the second most." },
+        { q: "Ono no Komachi is the woman poet with the most poems in the Kokin Wakashū (Kokin Wakashū).", answer: false, explain: "The woman poet with the most poems in the Kokin Wakashū is Ise, with 22. Ono no Komachi has 18, the second most." },
       ]
     },
     {
@@ -106,7 +106,7 @@
     },
     {
       poemNum: 19, poet: "Ise", quizzes: [
-        { q: "Ise has the most poems of any woman poet in the Kokinshū.", answer: true, explain: "Ise has 22 poems in the Kokinshū, the largest number of any woman poet." },
+        { q: "Ise has the most poems of any woman poet in the Kokin Wakashū.", answer: true, explain: "Ise has 22 poems in the Kokin Wakashū, the largest number of any woman poet." },
       ]
     },
     {
@@ -121,7 +121,7 @@
     },
     {
       poemNum: 22, poet: "Fun'ya no Yasuhide", quizzes: [
-        { q: "Fun'ya no Yasuhide once sent Ono no Komachi a poem inviting her to come with him when he left for Mikawa Province.", answer: true, explain: "The Kokinshū records that when Fun'ya no Yasuhide was leaving for Mikawa Province, he sent Ono no Komachi a poem inviting her to come along. Komachi replied with a poem of her own, but whether she actually went with him is not recorded." },
+        { q: "Fun'ya no Yasuhide once sent Ono no Komachi a poem inviting her to come with him when he left for Mikawa Province.", answer: true, explain: "The Kokin Wakashū records that when Fun'ya no Yasuhide was leaving for Mikawa Province, he sent Ono no Komachi a poem inviting her to come along. Komachi replied with a poem of her own, but whether she actually went with him is not recorded." },
       ]
     },
     {
@@ -156,12 +156,12 @@
     },
     {
       poemNum: 29, poet: "Ōshikōchi no Mitsune", quizzes: [
-        { q: "Ōshikōchi no Mitsune wrote the Tosa Diary (Tosa Nikki).", answer: false, explain: "The Tosa Diary was written by Ki no Tsurayuki (No. 35). Ōshikōchi no Mitsune was one of the compilers of the Kokinshū, together with Ki no Tsurayuki and others." },
+        { q: "Ōshikōchi no Mitsune wrote the Tosa Diary (Tosa Nikki).", answer: false, explain: "The Tosa Diary was written by Ki no Tsurayuki (No. 35). Ōshikōchi no Mitsune was one of the compilers of the Kokin Wakashū, together with Ki no Tsurayuki and others." },
       ]
     },
     {
       poemNum: 30, poet: "Mibu no Tadamine", quizzes: [
-        { q: "Mibu no Tadamine was one of the compilers of the Shin Kokinshū.", answer: false, explain: "Mibu no Tadamine was a compiler of the Kokinshū, together with Ki no Tsurayuki, Ki no Tomonori and Ōshikōchi no Mitsune. He was the father of Mibu no Tadami." },
+        { q: "Mibu no Tadamine was one of the compilers of the Shin Kokin Wakashū.", answer: false, explain: "Mibu no Tadamine was a compiler of the Kokin Wakashū, together with Ki no Tsurayuki, Ki no Tomonori and Ōshikōchi no Mitsune. He was the father of Mibu no Tadami." },
       ]
     },
     {
@@ -176,7 +176,7 @@
     },
     {
       poemNum: 33, poet: "Ki no Tomonori", quizzes: [
-        { q: "Ki no Tomonori was chosen as a compiler of the Kokinshū but died before it was finished.", answer: true, explain: "Ki no Tomonori died partway through the work and did not live to see the Kokinshū completed." },
+        { q: "Ki no Tomonori was chosen as a compiler of the Kokin Wakashū but died before it was finished.", answer: true, explain: "Ki no Tomonori died partway through the work and did not live to see the Kokin Wakashū completed." },
       ]
     },
     {
@@ -186,7 +186,7 @@
     },
     {
       poemNum: 35, poet: "Ki no Tsurayuki", quizzes: [
-        { q: "Ki no Tsurayuki wrote the Tosa Diary.", answer: true, explain: "Tsurayuki was a compiler of the Kokinshū and also the author of the Tosa Diary, a masterpiece of kana literature." },
+        { q: "Ki no Tsurayuki wrote the Tosa Diary.", answer: true, explain: "Tsurayuki was a compiler of the Kokin Wakashū and also the author of the Tosa Diary, a masterpiece of kana literature." },
       ]
     },
     {
@@ -196,7 +196,7 @@
     },
     {
       poemNum: 37, poet: "Fun'ya no Asayasu", quizzes: [
-        { q: "Fun'ya no Asayasu was the son of Fun'ya no Yasuhide, and both father and son are in the Hyakunin Isshu.", answer: true, explain: "Asayasu is said to be the son of Fun'ya no Yasuhide, one of the Six Poetic Immortals (Rokkasen), and father and son were both chosen for the Hyakunin Isshu." },
+        { q: "Fun'ya no Asayasu was the son of Fun'ya no Yasuhide, and both father and son are in the Hyakunin Isshu.", answer: true, explain: "Asayasu is said to be the son of Fun'ya no Yasuhide, one of the Six Poetic Sages (Rokkasen), and father and son were both chosen for the Hyakunin Isshu." },
       ]
     },
     {
@@ -426,7 +426,7 @@
     },
     {
       poemNum: 83, poet: "Master of the Empress Dowager's Household Toshinari", quizzes: [
-        { q: "Master of the Empress Dowager's Household Toshinari (Fujiwara no Toshinari) was the father of Fujiwara no Teika.", answer: true, explain: "Fujiwara no Toshinari was Teika's father, and father and son were both chosen for the Hyakunin Isshu." },
+        { q: "Master of the Empress Dowager's Household Toshinari (Fujiwara no Toshinari) was the father of Fujiwara no Sadaie.", answer: true, explain: "Fujiwara no Toshinari was Teika's father, and father and son were both chosen for the Hyakunin Isshu." },
       ]
     },
     {
@@ -496,12 +496,12 @@
     },
     {
       poemNum: 97, poet: "Acting Middle Counselor Sadaie", quizzes: [
-        { q: "Acting Middle Counselor Sadaie (Fujiwara no Teika) is said to have compiled the Ogura Hyakunin Isshu.", answer: true, explain: "The Ogura Hyakunin Isshu is said to have been selected by Fujiwara no Teika at his mountain villa on Mount Ogura, one poem each from a hundred poets." },
+        { q: "Acting Middle Counselor Sadaie (Fujiwara no Sadaie) is said to have compiled the Ogura Hyakunin Isshu.", answer: true, explain: "The Ogura Hyakunin Isshu is said to have been selected by Fujiwara no Sadaie at his mountain villa on Mount Ogura, one poem each from a hundred poets." },
       ]
     },
     {
       poemNum: 98, poet: "Junior Second Rank Ietaka", quizzes: [
-        { q: "Junior Second Rank Ietaka (Fujiwara no Ietaka) was a poet ranked alongside Fujiwara no Teika.", answer: true, explain: "Fujiwara no Ietaka studied under Fujiwara no Toshinari and, together with Teika, was regarded as a leading poet of the Shin Kokinshū era. He was also one of the compilers of the Shin Kokinshū." },
+        { q: "Junior Second Rank Ietaka (Fujiwara no Ietaka) was a poet ranked alongside Fujiwara no Sadaie.", answer: true, explain: "Fujiwara no Ietaka studied under Fujiwara no Toshinari and, together with Teika, was regarded as a leading poet of the Shin Kokin Wakashū era. He was also one of the compilers of the Shin Kokin Wakashū." },
       ]
     },
     {
@@ -1040,7 +1040,7 @@
       el.poemTranslationLabel.classList.remove('sgr-hidden');
     } else if (sq.type === 'goal') {
       el.poemSource.textContent = '⛰️ Agari (Goal)';
-      el.poemText.innerHTML = 'The goal picture shows Fujiwara no Teika at his mountain villa on Mount Ogura.';
+      el.poemText.innerHTML = 'The goal picture shows Fujiwara no Sadaie at his mountain villa on Mount Ogura.';
       el.poemRomaji.textContent = '';
       el.poemTranslation.textContent = '';
       el.poemTranslationLabel.classList.add('sgr-hidden');

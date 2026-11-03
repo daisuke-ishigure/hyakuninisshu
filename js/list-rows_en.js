@@ -23,8 +23,8 @@ const colorMap = {
 
 // Anthology name translation
 const sourceNameEN = {
-  "古今集": "Kokinshū",
-  "新古今集": "Shin Kokinshū",
+  "古今集": "Kokin Wakashū",
+  "新古今集": "Shin Kokin Wakashū",
   "後撰集": "Gosen Wakashū",
   "拾遺集": "Shūi Wakashū",
   "後拾遺集": "Goshūi Wakashū",

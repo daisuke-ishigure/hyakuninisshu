@@ -121,9 +121,9 @@ window.KD_TIPS_EN = {
 
   // ---------- Around Ise (19.html) ----------
   '均子内親王': { n: 'Princess Kinshi', tip: ['Princess Kinshi', 'Lived: 890–910', 'Family: Daughter of Emperor Uda and Fujiwara no Onshi', 'Note: Became the wife of her half-brother, Prince Atsuyoshi'] },
-  '敦慶親王': { n: 'Prince Atsuyoshi', tip: ['Prince Atsuyoshi', 'Lived: 888–930', 'Rank: Second Rank for princes', 'Family: Son of Emperor Uda; his mother was Fujiwara no Taneko', 'Note: Served as Minister of the Center (Nakatsukasa-kyō) and Minister of Ceremonies. He married Ise, and their daughter Nakatsukasa was born'] },
+  '敦慶親王': { n: 'Prince Atsuyoshi', tip: ['Prince Atsuyoshi', 'Lived: 888–930', 'Rank: Second Rank for princes', 'Family: Son of Emperor Uda; his mother was Fujiwara no Taneko', 'Note: Served as Minister of Central Affairs (Nakatsukasa-kyō) and Minister of Ceremonies. He married Ise, and their daughter Nakatsukasa was born'] },
   '伊勢': { n: 'Ise', tip: ['Ise', 'Lived: c. 872–c. 938', 'Family: Daughter of Fujiwara no Tsugukage, Governor of Ise', 'Hyakunin Isshu: Poet of Poem 19, "Naniwagata..."', "Note: Served Emperor Uda's empress Onshi as a lady-in-waiting. After relationships with the brothers Fujiwara no Nakahira and Tokihira and with Taira no Sadafun, she was loved by Emperor Uda and bore him a son, who died young. Later she and Prince Atsuyoshi had a daughter, Nakatsukasa"] },
-  '中務': { n: 'Nakatsukasa', tip: ['Nakatsukasa', 'Lived: c. 912–c. 991', 'Family: Daughter of Prince Atsuyoshi and Ise', 'Note: Called Nakatsukasa because her father, Prince Atsuyoshi, was Minister of the Center (Nakatsukasa-kyō). One of the Thirty-Six Immortal Poets. She had a close relationship with Minamoto no Saneakira (a great-grandson of Emperor Kōkō)'] },
+  '中務': { n: 'Nakatsukasa', tip: ['Nakatsukasa', 'Lived: c. 912–c. 991', 'Family: Daughter of Prince Atsuyoshi and Ise', 'Note: Called Nakatsukasa because her father, Prince Atsuyoshi, was Minister of Central Affairs (Nakatsukasa-kyō). One of the Thirty-Six Immortal Poets. She had a close relationship with Minamoto no Saneakira (a great-grandson of Emperor Kōkō)'] },
 
   // ---------- Around Fun'ya no Yasuhide (22.html) ----------
   '文室大市': { n: "Fun'ya no Ōchi", tip: ["Fun'ya no Ōchi", 'Lived: 704–780', 'Office: Upper Counselor', 'Rank: Senior Second Rank', 'Family: Son of Prince Naga', 'Note: Was given the family name Fun\'ya no Mahito and left the imperial family to become a subject'] },
@@ -165,7 +165,7 @@ window.KD_TIPS_EN = {
 
   // ---------- Around Sugawara no Michizane (24.html) ----------
   '是善': { n: 'Koreyoshi', tip: ['Sugawara no Koreyoshi', 'Family: Son of Sugawara no Kiyotomo', 'Note: Father of Sugawara no Michizane and Ruishi'] },
-  '類子': { n: 'Ruishi', tip: ['Sugawara no Ruishi', 'Family: Daughter of Sugawara no Koreyoshi; elder or younger sister of Michizane', 'Note: A court lady of Emperor Kōkō. Some think she was the mother of Minamoto no Nobuko'] },
+  '類子': { n: 'Ruishi', tip: ['Sugawara no Ruishi', 'Family: Daughter of Sugawara no Koreyoshi; elder or younger sister of Michizane', 'Note: A lady-in-waiting of Emperor Kōkō. Some think she was the mother of Minamoto no Nobuko'] },
   '菅原道真': { n: 'Michizane', tip: ['Sugawara no Michizane', 'Lived: 845–903', 'Office: Minister of the Right', 'Rank: Junior Second Rank', 'Hyakunin Isshu: Poet of Poem 24, "Kono tabi wa..."', 'Note: In the Hyakunin Isshu he is called Kanke. In the Shōtai Incident (901) he was sent away to Dazaifu'] },
   '島田宣来子': { n: 'Shimada no Nobukiko', tip: ['Shimada no Nobukiko', 'Family: Daughter of Shimada no Tadaomi', "Note: Sugawara no Michizane's principal wife; mother of Takami and Enshi"] },
   '橘義子': { n: 'Tachibana no Yoshiko', tip: ['Tachibana no Yoshiko', 'Family: Daughter of Tachibana no Hiromi', 'Note: She and Emperor Uda had a son, Prince Tokiyo'] },
@@ -176,7 +176,7 @@ window.KD_TIPS_EN = {
   '孝標': { n: 'Takasue', tip: ['Sugawara no Takasue', "Family: Son of Sugawara no Suketada; Michizane's great-great-grandson", "Note: Father of Sugawara no Takasue's Daughter"] },
   '倫寧娘': { n: "Tomoyasu's daughter", tip: ['Daughter of Fujiwara no Tomoyasu', "Note: Sugawara no Takasue's wife and mother of Sugawara no Takasue's Daughter. Her elder half-sister was the Mother of the Right Captain Michitsuna"] },
   '源英明': { n: 'Minamoto no Hideakira', tip: ['Minamoto no Hideakira', 'Lived: Unknown–939', 'Office: Middle Captain of the Left Palace Guards', 'Rank: Junior Fourth Rank, Upper Grade', 'Family: Eldest son of Prince Tokiyo; his mother was Sugawara no Yasuko', 'Note: Because his father had become a monk, his childhood was unfortunate'] },
-  '源順子': { n: 'Minamoto no Nobuko', tip: ['Minamoto no Nobuko', 'Family: Said to be a daughter of Emperor Uda. Her mother is thought to be Sugawara no Enshi, but another view says her mother was Sugawara no Ruishi, a court lady of Emperor Kōkō, and that she was later adopted by Emperor Uda', "Note: Fujiwara no Tadahira's wife; mother of Fujiwara no Saneyori"] },
+  '源順子': { n: 'Minamoto no Nobuko', tip: ['Minamoto no Nobuko', 'Family: Said to be a daughter of Emperor Uda. Her mother is thought to be Sugawara no Enshi, but another view says her mother was Sugawara no Ruishi, a lady-in-waiting of Emperor Kōkō, and that she was later adopted by Emperor Uda', "Note: Fujiwara no Tadahira's wife; mother of Fujiwara no Saneyori"] },
   '孝標女': { n: "Takasue's Daughter", tip: ["Sugawara no Takasue's Daughter", 'Lived: 1008–Unknown', "Family: Child of Sugawara no Takasue and Fujiwara no Tomoyasu's daughter; niece of the Mother of the Right Captain Michitsuna", 'Note: Author of the Sarashina Diary'] },
 
   // ---------- Around the Minister of the Right of Sanjō (25.html) ----------
@@ -435,7 +435,7 @@ window.KD_TIPS_EN = {
   '円融': { n: "En'yū", tip: ["Emperor En'yū", '64th emperor', 'Lived: 959–991', 'Reign: 969–984'] },
   '冷泉': { n: 'Reizei', tip: ['Emperor Reizei', '63rd emperor', 'Lived: 950–1011', 'Reign: 967–969'] },
   '懐子': { n: 'Kaishi', tip: ['Fujiwara no Kaishi', 'Note: Consort (nyōgo) of Emperor Reizei and mother of Emperor Kazan'] },
-  '伊周': { n: 'Korechika', tip: ['Fujiwara no Korechika', 'Lived: 974–1010', 'Office: Nairan (reviewer of state papers) and Minister of the Center', 'Rank: Senior Second Rank', 'Note: Fell from power in the Chōtoku Incident (an arrow was shot at Retired Emperor Kazan)'] },
+  '伊周': { n: 'Korechika', tip: ['Fujiwara no Korechika', 'Lived: 974–1010', 'Office: Nairan (reviewer of state papers) and Palace Minister', 'Rank: Senior Second Rank', 'Note: Fell from power in the Chōtoku Incident (an arrow was shot at Retired Emperor Kazan)'] },
   '隆家': { n: 'Takaie', tip: ['Fujiwara no Takaie', 'Lived: 979–1044', 'Office: Middle Counselor', 'Rank: Senior Second Rank'] },
   '頼通': { n: 'Yorimichi', tip: ['Fujiwara no Yorimichi', 'Lived: 992–1074', 'Office: Regent, Kampaku (chief adviser), and Chancellor of the Realm', 'Rank: Junior First Rank', 'Note: Built the Phoenix Hall of the Byōdō-in'] },
   '教通': { n: 'Norimichi', tip: ['Fujiwara no Norimichi', 'Lived: 996–1075', 'Office: Kampaku (chief adviser) and Chancellor of the Realm', 'Rank: Junior First Rank; Senior First Rank after death'] },
@@ -491,7 +491,7 @@ window.KD_TIPS_EN = {
   '定頼': { n: 'Sadayori', tip: ['Fujiwara no Sadayori', 'Lived: 995–1045', 'Office: Acting Middle Counselor', 'Rank: Senior Second Rank', 'Hyakunin Isshu: Poet of Poem 64, "Asaborake Uji no kawagiri..."', 'Note: In the Hyakunin Isshu he is called Middle Counselor Sadayori'] },
   '行成': { n: 'Yukinari', tip: ['Fujiwara no Yukinari', 'Lived: 972–1028', 'Office: Acting Upper Counselor', 'Rank: Senior Second Rank', 'Note: A master calligrapher, counted as one of the Three Great Calligraphers (Sanseki)'] },
   // 42.html（清原元輔）
-  '道隆': { n: 'Michitaka', tip: ['Fujiwara no Michitaka', 'Lived: 953–995', 'Office: Regent, Chancellor (Kanpaku), and Minister of the Center', 'Rank: Senior Second Rank'] },
+  '道隆': { n: 'Michitaka', tip: ['Fujiwara no Michitaka', 'Lived: 953–995', 'Office: Regent, Kampaku, and Palace Minister', 'Rank: Senior Second Rank'] },
   '一条': { n: 'Ichijō', tip: ['Emperor Ichijō', '66th emperor', 'Lived: 980–1011', 'Reign: 986–1011'] },
   // 38.html（右近）
   '季縄': { n: 'Suenawa', tip: ['Fujiwara no Suenawa', 'Lived: Unknown–919', 'Office: Minor Captain of the Right Palace Guards', 'Rank: Senior Fifth Rank, Lower Grade'] },
@@ -586,7 +586,7 @@ window.KD_TIPS_EN = {
   // ---------- Princes ----------
   '茅渟王': { n: 'Prince Chinu', tip: ['Prince Chinu', 'Lived: Unknown', 'Family: Son of Prince Oshisaka no Hikohito no Ōe', 'Note: Father of Empress Kōgyoku (Saimei) and Emperor Kōtoku'] },
   '志貴皇子': { n: 'Prince Shiki', tip: ['Prince Shiki', 'Lived: Unknown–716', 'Rank: Second Rank for princes', 'Family: Son of Emperor Tenji and father of Emperor Kōnin', "Note: A poet of the Man'yōshū"] },
-  '高市皇子': { n: 'Prince Takechi', tip: ['Prince Takechi', 'Lived: 654–696', 'Rank: Jōkōichi (a court rank of the time)', 'Family: Eldest son of Emperor Tenmu', 'Note: Played a major role in the Jinshin War and became Grand Minister (Daijō-daijin). His son was Prince Nagaya'] },
+  '高市皇子': { n: 'Prince Takechi', tip: ['Prince Takechi', 'Lived: 654–696', 'Rank: Jōkōichi (a court rank of the time)', 'Family: Eldest son of Emperor Tenmu', 'Note: Played a major role in the Jinshin War and became Chancellor of the Realm (Daijō-daijin). His son was Prince Nagaya'] },
   '舎人親王': { n: 'Prince Toneri', tip: ['Prince Toneri', 'Lived: 676–735', 'Rank: First Rank for princes', 'Family: Son of Emperor Tenmu', 'Note: Led the compiling of the Nihon Shoki. Ancestor of the Kiyohara clan'] },
   '長皇子': { n: 'Prince Naga', tip: ['Prince Naga', 'Lived: Unknown–715', 'Rank: First Rank for princes', 'Family: Son of Emperor Tenmu'] },
   '大津皇子': { n: 'Prince Ōtsu', tip: ['Prince Ōtsu', 'Lived: 663–686', 'Rank: Jōdaini (a court rank of the time)', "Family: Son of Emperor Tenmu. His mother was Princess Ōta, a daughter of Emperor Tenji (Empress Jitō's elder sister)", "Note: Soon after Emperor Tenmu died, he was suspected of plotting a rebellion and took his own life. His Chinese poems remain in the Kaifūsō, and his waka in the Man'yōshū"] },
