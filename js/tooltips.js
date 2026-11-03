@@ -6,7 +6,7 @@ tippy('.tsukawashikeru', { content: '<h3><ruby>遣<rt>つか</rt></ruby>はし�
 /* 諱*/
 tippy('.imina', { content: '<h3><ruby>諱<rt>いみな</rt></ruby></h3>生前の本名のこと。本来は口に出すことがはばかられることから「忌み名」が名前の由来とされています。', allowHTML: true });
 /* 34 舒明天皇*/
-tippy('.jomei', { content: '<h3><ruby>舒明天皇<rt>じょめいてんのう</rt></ruby></h3>第34代天皇。天智天皇の第一皇子。天智天皇や天武天皇と父にあたります。<ruby>諱<rt>いみな</rt></ruby>（本名）は<ruby>田村<rt>たむら</rt></ruby>。', allowHTML: true });
+tippy('.jomei', { content: '<h3><ruby>舒明天皇<rt>じょめいてんのう</rt></ruby></h3>第34代天皇。天智天皇と天武天皇の父にあたります。<ruby>諱<rt>いみな</rt></ruby>（本名）は<ruby>田村<rt>たむら</rt></ruby>。', allowHTML: true });
 /* 39 弘文天皇*/
 tippy('.koubun', { content: '<h3><ruby>弘文天皇<rt>こうぶんてんのう</rt></ruby></h3>第39代天皇。天智天皇の第一皇子。壬申の乱で大海人皇子（後の天武天皇）に敗れ、自害して崩御しました。<ruby>諱<rt>いみな</rt></ruby>（本名）は<ruby>大友<rt>おおとも</rt></ruby>。', allowHTML: true });
 /* 40 天武天皇*/
@@ -58,7 +58,7 @@ tippy('.gotoba', { content: '<h3><ruby>後鳥羽天皇<rt>ごとばてんのう<
 
 /* 天皇以外の皇族 */
 /* 大津皇子 */
-tippy('.otsunomiko', { content: '<h3><ruby>大津皇子<rt>てんむてんのう</rt></ruby></h3>天武天皇の皇子。母は持統天皇の姉である大田皇女。天武天皇が崩御した686年に謀反の罪で24歳の若さで処刑されました。', allowHTML: true });
+tippy('.otsunomiko', { content: '<h3><ruby>大津皇子<rt>おおつのみこ</rt></ruby></h3>天武天皇の皇子。母は持統天皇の姉である大田皇女。天武天皇が崩御した686年に謀反の罪で24歳の若さで処刑されました。', allowHTML: true });
 /* 惟喬親王 */
 tippy('.koretakashinnou', { content: '<h3><ruby>惟喬親王<rt>これたかしんのう</rt></ruby></h3>第55代天皇である文徳天皇の第一皇子', allowHTML: true });
 /* 是貞親王 */
@@ -150,7 +150,7 @@ tippy('.mikohidarike', { content: '<h3><ruby>御子左家<rt>みこひだりけ<
 tippy('.sekkanseiji', { content: '<h3><ruby>摂関家<rt>せっかんけ</rt></ruby></h3>平安時代に藤原<ruby>北家<rt>ほっけ</rt></ruby>（藤原<ruby>房前<rt>ふささき</rt></ruby>を祖とする家系）の一族が天皇の親族となり、摂政や関白または内覧などの重要な地位に就き、政治の実権を代々独占し続けた政治体制のことです。', allowHTML: true });
 tippy('.sekkanke', { content: '<h3><ruby>摂関家<rt>せっかんけ</rt></ruby></h3>天皇の外祖父になることで、摂政や関白の地位に就くとができ、政治を主導できるようになります。代々、摂政や関白を輩出した家系を摂関家といいます。', allowHTML: true });
 tippy('.gaiseki', { content: '<h3><ruby>外戚<rt>がいせき</rt></ruby></h3>天皇の母方の親族', allowHTML: true });
-tippy('.hokke', { content: '<h3><ruby>藤原北家<rt>ふじわらほっけ</rt></ruby></h3><img src="/img/fujiwara_yonke_diagram.gif?01" alt="藤原北家"><br><ruby>藤原<rt>ふじわらの</rt></ruby><ruby>房前<rt>ふささき</rt></ruby>を祖とする家系で、摂関家として反映しました。平安時代に活躍する貴族のほとんどは藤原北家の出身です。', allowHTML: true });
+tippy('.hokke', { content: '<h3><ruby>藤原北家<rt>ふじわらほっけ</rt></ruby></h3><img src="/img/fujiwara_yonke_diagram.gif?01" alt="藤原北家"><br><ruby>藤原<rt>ふじわらの</rt></ruby><ruby>房前<rt>ふささき</rt></ruby>を祖とする家系で、摂関家として繁栄しました。平安時代に活躍する貴族のほとんどは藤原北家の出身です。', allowHTML: true });
 tippy('.sesshou', { content: '<h3><ruby>摂政<rt>せっしょう</rt></ruby></h3>幼少の天皇に代わって政務を代行する職で、位は太政大臣よりも上。', allowHTML: true });
 tippy('.kanpaku', { content: '<h3><ruby>関白<rt>かんぱく</rt></ruby></h3>成人の天皇を補佐する職で、位は太政大臣よりも上。', allowHTML: true });
 tippy('.nairan', { content: '<h3><ruby>内覧<rt>ないらん</rt></ruby></h3>関白に準じる地位。', allowHTML: true });
@@ -170,7 +170,7 @@ tippy('.nuidononosuke', { content: '<h3><ruby>縫殿助<rt>ぬいどののすけ
 tippy('.sakonenochujou', { content: '<h3><ruby>左近衛中将<rt>さかんえのちゅうじょう</rt></ruby></h3>【名詞】右近衛府の次官。少将よりも上の地位。近衛府は左右に分けられていました。近衛府は内裏内の警備し、行幸（天皇のお出かけ）の際は供奉しました。', allowHTML: true });
 tippy('.ukonenoshoushou', { content: '<h3><ruby>右近衛少将<rt>うこんえのしょうしょう</rt></ruby></h3>【名詞】右近衛府の次官。中将に次ぐ地位。近衛府は左右に分けられていました。近衛府は内裏内の警備し、行幸（天皇のお出かけ）の際は供奉しました。', allowHTML: true });
 tippy('.hyobudaijou', { content: '<h3><ruby>兵部大丞<rt>ひょうぶたいじょう</rt></ruby></h3>【名詞】軍事防衛関連事項を管轄する兵部省の判官（3等官）', allowHTML: true });
-tippy('.sangi', { content: '<h3><ruby>参議<rt>さんぎ</rt></ruby></h3>【名詞】中央の最高機関である太政官の二等官。大臣、中納言に次ぐ地位。朝政に参議するというのが官名の由来になっています。定員は8名。', allowHTML: true });
+tippy('.sangi', { content: '<h3><ruby>参議<rt>さんぎ</rt></ruby></h3>【名詞】朝廷の最高機関である太政官の官職の一つで、四等官の次官（すけ）に相当する令外官。納言に次ぐ地位です。朝政に参議するというのが官名の由来になっています。', allowHTML: true });
 tippy('.kugyou', { content: '<h3><ruby>公卿<rt>くぎょう</rt></ruby></h3>【名詞】太政官の高官で、三位以上と参議のこと。「公」とは、太政大臣、左大臣、右大臣のこと。「卿」とは、三位以上の貴人や参議の官にある者のこと。', allowHTML: true });
 tippy('.ason', { content: '<h3><ruby>朝臣<rt>あそん</rt></ruby></h3>【名詞】平安時代以降、五位以上の人に付けた敬称としての姓。三位以上は氏の下に付け、四位と五位は名前の下に付けました。', allowHTML: true });
 tippy('.mizushidokoro', { content: '<h3><ruby>御厨子所<rt>みずしどころ</rt></ruby></h3>【名詞】宮中で天皇の食事や、節会の際の酒肴を担当する役所', allowHTML: true });
@@ -222,7 +222,7 @@ tippy('.gunji', { content: '<h3><ruby>郡司<rt>ぐんじ</rt></ruby></h3>【名
 
 tippy('.inabanokami', { content: '<h3><ruby>因幡守<rt>いなばのかみ</rt></ruby></h3>【名詞】因幡国は、現在の鳥取県東部を占める令制国です。「守」は国司の一等官で、県知事に相当する官職です。', allowHTML: true });
 
-tippy('.ecchuunokami', { content: '<h3><ruby>越中守<rt>えっちゅうのかみ</rt></ruby></h3>【名詞】因幡国は、現在の富山県を占める令制国です。「守」は国司の一等官で、県知事に相当する官職です。', allowHTML: true });
+tippy('.ecchuunokami', { content: '<h3><ruby>越中守<rt>えっちゅうのかみ</rt></ruby></h3>【名詞】越中国は、現在の富山県を占める令制国です。「守」は国司の一等官で、県知事に相当する官職です。', allowHTML: true });
 
 tippy('.harimanokami', { content: '<h3><ruby>播磨守<rt>はりまのかみ</rt></ruby></h3>【名詞】播磨国は、現在の兵庫県南西部を占める令制国です。「守」は国司の一等官で、県知事に相当する官職です。', allowHTML: true });
 
@@ -414,7 +414,7 @@ tippy('.hisakatano', { content: '<h3>【枕詞】<ruby>久方<rt>ひさかた</r
 tippy('.momodutafu', { content: '<h3>ももづたふ</h3>【枕詞】「磐余」を導きます。', allowHTML: true });
 tippy('.ashibikino', { content: '<h3>あしびきの</h3>【枕詞】「山」を導きます。「あしびきの」の語源には諸説あり、山を登るときに足をひきずるようになるからという説や山裾が長く引くようであるからという説などがあります。', allowHTML: true });
 tippy('.nubatama', { content: '<h3>ぬばたま</h3>【枕詞】「黒」や「夜」などの言葉をを導きます。', allowHTML: true });
-tippy('.chihayaburu', { content: '<h3>ちはやぶる</h3>【枕詞】「神」を導きます。勢いのある、荒々しい、すざましい威力のという意味です', allowHTML: true });
+tippy('.chihayaburu', { content: '<h3>ちはやぶる</h3>【枕詞】「神」を導きます。勢いのある、荒々しい、すさまじい威力のという意味です', allowHTML: true });
 tippy('.mononofuno', { content: '<h3>もののふの</h3>【枕詞】「もののふの」は、「八十」（数が多いという意味）を導く枕詞です。「もののふ」は朝廷に仕えた朝廷に仕える文官と武官の様々な役人を意味します。', allowHTML: true });
 
 /* 格助詞 */
@@ -1222,9 +1222,9 @@ tippy('.gosechinomai', {
 /* 勅撰和歌集 */
 tippy('.manyoushu', { content: '<h3><ruby>万葉集<rt>まんようしゅう</rt></ruby></h3>奈良時代末期に成立した現存する最古の和歌集。<br>大伴家持が編纂を主導したと考えられています。約4500首を収録。', allowHTML: true });
 tippy('.chokusennwakashu', { content: '<h3><ruby>勅撰和歌集<rt>ちょくせんわかしゅう</rt></ruby></h3>天皇や上皇の命により編纂された和歌集。', allowHTML: true });
-tippy('.kokinshu', { content: '<h3><ruby>古今和歌集<rt>こきんわかしゅう</rt></ruby></h3>905年頃に成立した最初の勅撰和歌集。<br>醍醐天皇の命により、紀貫之、紀友則、凡河内躬恒、壬生忠岑らにより編纂されました。1100首を収録。', allowHTML: true });
+tippy('.kokinshu', { content: '<h3><ruby>古今和歌集<rt>こきんわかしゅう</rt></ruby></h3>905年に奏上された最初の勅撰和歌集（その後も手が加えられました）。<br>醍醐天皇の命により、紀貫之、紀友則、凡河内躬恒、壬生忠岑らにより編纂されました。1100首を収録。', allowHTML: true });
 tippy('.gosenshu', { content: '<h3><ruby>後撰和歌集<rt>ごせんわかしゅう</rt></ruby></h3>953年頃に成立した2番目の勅撰和歌集。<br>村上天皇の命により、清原元輔、大中臣能宣、源順、紀時文、坂上望城らにより編纂されました。1426首を収録。', allowHTML: true });
-tippy('.shuuishu', { content: '<h3><ruby>拾遺和歌集<rt>しゅういわかしゅう</rt></ruby></h3>1005年頃に成立した3番目の勅撰和歌集。<br>花山院の命により、藤原公任撰の『拾遺抄jを補い、花山院と側近により編纂されたと考えられています。1351首を収録。', allowHTML: true });
+tippy('.shuuishu', { content: '<h3><ruby>拾遺和歌集<rt>しゅういわかしゅう</rt></ruby></h3>1005年頃に成立した3番目の勅撰和歌集。<br>花山院の命により、藤原公任撰の『拾遺抄』を補い、花山院と側近により編纂されたと考えられています。1351首を収録。', allowHTML: true });
 tippy('.goshuuishu', { content: '<h3><ruby>後拾遺和歌集<rt>ごしゅういわかしゅう</rt></ruby></h3>1086年に成立した4番目の勅撰和歌集。<br>白河天皇の命により、藤原通俊により編纂されました。1220首を収録。', allowHTML: true });
 tippy('.kinyoushu', { content: '<h3><ruby>金葉和歌集<rt>きんようわかしゅう</rt></ruby></h3>1124年に初奏、1125年に再奏、1126年に三奏された5番目の勅撰和歌集。<br>白河院の命により、源俊頼により編纂されました。初奏本：475首、再奏本：665首、三奏本：650首', allowHTML: true });
 tippy('.shikashu', { content: '<h3><ruby>詞花和歌集<rt>しかわかしゅう</rt></ruby></h3>1151年に成立した6番目の勅撰和歌集。<br>崇徳院の命により、藤原顕輔により編纂されました。415首を収録。', allowHTML: true });
@@ -1250,7 +1250,7 @@ tippy('.shuigusou', { content: '<h3><ruby>拾遺愚草<rt>しゅういぐそう<
 tippy('.wakanroueishu', { content: '<h3><ruby>和漢朗詠集<rt>わかんろうえいしゅう</rt></ruby></h3>藤原公任によって編纂された詩歌集。朗詠に相応しい和歌216首と漢詩588詩が収められています。', allowHTML: true });
 tippy('.ujishuuimonogatari', { content: '<h3><ruby>宇治拾遺物語<rt>うじしゅういものがたり</rt></ruby></h3>鎌倉時代前期に成立したと考えられる仏教的要素が多い説話集。貴族から庶民まで、幅広い登場人物が描かれています。', allowHTML: true });
 tippy('.yamatomonogatari', { content: '<h3><ruby>大和物語<rt>やまとものがたり</rt></ruby></h3>平安時代中期の歌物語。僧侶や貴族、貧しい人々など様々な人の和歌と逸話が集約されています。', allowHTML: true });
-tippy('.nihonshoki', { content: '<h3><ruby>日本書紀<rt>にほんしょき</rt></ruby></h3>奈良時代に成立した最初の勅撰歴史書（国家プロジェクトとして編纂された国の歴史書）。<ruby>日本記<rt>にほんぎ</rt></ruby>と呼ばれることもあります。藤原不比等によって編纂され、神話時代から持統天皇の時代までが書かれています。', allowHTML: true });
+tippy('.nihonshoki', { content: '<h3><ruby>日本書紀<rt>にほんしょき</rt></ruby></h3>奈良時代に成立した最初の勅撰歴史書（国家プロジェクトとして編纂された国の歴史書）。<ruby>日本記<rt>にほんぎ</rt></ruby>と呼ばれることもあります。720年に完成したと伝わり、舎人親王が編纂の中心になったとされています。神話時代から持統天皇の時代までが書かれています。', allowHTML: true });
 tippy('.shokunihongi', { content: '<h3><ruby>続日本紀<rt>しょくにほんぎ</rt></ruby></h3>平安時代初期に編纂された勅撰正史（国家プロジェクトとして編纂された国の歴史書）。仁明天皇の時代のことが書かれています。', allowHTML: true });
 tippy('.isemonogatari', { content: '<h3><ruby>伊勢物語<rt>いせものがたり</rt></ruby></h3>平安時代に成立した日本の歌物語。在原業平を思わせる男が主人公になっています。', allowHTML: true });
 tippy('.sandaijitesuroku', { content: '<h3><ruby>日本三代実録<rt>にほんさんだいじつろく</rt></ruby></h3>日本の平安時代に編纂された歴史書。清和天皇（在位858～876）、陽成天皇（在位876～884）、光孝天皇（在位884～887）の三天皇の時代30年を編年体（起こった出来事を年代順に記す方法）で記述されています。', allowHTML: true });
@@ -1258,7 +1258,7 @@ tippy('.tosanikki', { content: '<h3><ruby>土佐日記<rt>とさにっき</rt></
 tippy('.kanajo', { content: '<h3><ruby>仮名序<rt>かなじょ</rt></ruby></h3>仮名で書かれた序文。『古今和歌集』の「仮名序」は紀貫之が著しました。', allowHTML: true });
 tippy('.makuranosoushi', { content: '<h3><ruby>枕草子<rt>まくらのそうし</rt></ruby></h3>『枕草紙』は、清少納言が執筆した日本最古の随筆です。趣があるという意味の「をかし」という言葉を多用しており「をかし」の文学といわれています。', allowHTML: true });
 tippy('.rokkasen', { content: '<h3><ruby>六歌仙<rt>ろっかせん</rt></ruby></h3>『古今和歌集』の序文で、紀貫之は六人の優れた歌人に焦点を当て、それぞれの和歌を批評しています。取り上げられたのは、僧正遍昭、在原業平、文屋康秀、喜撰法師、小野小町、大伴黒主です。紀貫之の批評は厳しいものでしたが、これらの歌人たちは後に「六歌仙」として広く称賛される存在となりました。', allowHTML: true });
-tippy('.shasekishu', { content: '<h3><ruby>沙石集<rt>しゃせきしゅう</rt></ruby></h3>『鎌倉時代中期の仏教説話集。沙石集という名前は「沙から金を、石から玉を引き出す」ということ名付けられており、世俗的な事柄を引き合いに出して、仏教の要諦を説くという意味が込められています。', allowHTML: true });
+tippy('.shasekishu', { content: '<h3><ruby>沙石集<rt>しゃせきしゅう</rt></ruby></h3>鎌倉時代後期の1283年に成立した仏教説話集。無住道暁の編纂。沙石集という名前は「沙から金を、石から玉を引き出す」ということから名付けられており、世俗的な事柄を引き合いに出して、仏教の要諦を説くという意味が込められています。', allowHTML: true });
 tippy('.shuuishou', { content: '<h3><ruby>拾遺抄<rt>しゅういしょう</rt></ruby></h3>藤原公任が編纂した私撰和歌集。', allowHTML: true });
 tippy('.kojidan', { content: '<h3><ruby>古事談<rt>こじだん</rt></ruby></h3>源顕兼によって編纂された鎌倉初期の説話集。貴族社会や政治にまつわる秘話や裏話が綴られています。', allowHTML: true });
 tippy('.ookagami', { content: '<h3><ruby>大鏡<rt>おおかがみ</rt></ruby></h3>平安時代の歴史物語。作者不詳。850年から1025年まで176年間の歴史を藤原道長の栄華を中心に描いています。', allowHTML: true });
@@ -1275,7 +1275,6 @@ tippy('.sankashu', { content: '<h3><ruby>山家集<rt>さんかしゅう</rt></r
 tippy('.kinkaishu', { content: '<h3><ruby>金槐和歌集<rt>きんかいわかしゅう</rt></ruby></h3>源実朝の家集。「金」は鎌の偏、「槐」は大臣の唐名である「槐門」から取って名付けられており、別名『鎌倉右大臣家集』といいいます。全一巻、663首が掲載されています。', allowHTML: true });
 tippy('.gukanshou', { content: '<h3><ruby>愚管抄<rt>ぐかんしょう</rt></ruby></h3>鎌倉時代初期の史論書。承久の乱の直前（朝廷と幕府の緊張が高まった頃）に慈円によって書かれました。神武天皇から順徳天皇までの歴史を、末法思想という時代の終焉を示す概念で解釈し、日本の政治の変遷を道理の展開として説明しています。後鳥羽院の挙兵を諫めることが目的で書かれたとされています。「愚管」とは私見の謙譲語です。', allowHTML: true });
 tippy('.genjimonogatari', { content: '<h3><ruby>源氏物語<rt>げんじものがたり</rt></ruby></h3>紫式部が書いた世界最古の長編小説。', allowHTML: true });
-tippy('.tosanikki', { content: '<h3><ruby>土佐日記<rt>とさにっき</rt></ruby></h3>紀貫之が書いた平仮名で書かれた日記文学。', allowHTML: true });
 tippy('.tsureduregusa', { content: '<h3><ruby>徒然草<rt>つれづれぐさ</rt></ruby></h3>兼好法師が書いた随筆。清少納言『枕草子』、鴨長明『方丈記』とならび日本三大随筆と称せられています。', allowHTML: true });
 tippy('.sarashinanikki', { content: '<h3><ruby>更級日記<rt>さらしなにっき</rt></ruby></h3>菅原孝標女が書いた回想録。作者が少女だった頃、父の菅原孝標が<ruby>上総<rt>かずさ</rt></ruby>（=現在の千葉県の一部）の任期を終えて帰京する旅から回想が始まり、晩年に夫の橘俊通と死別する頃までが描かれています。', allowHTML: true });
 tippy('.kinpishou', { content: '<h3><ruby>禁秘抄<rt>きんぴしょう</rt></ruby></h3>順徳天皇による有職故実の解説書', allowHTML: true });
@@ -1325,3 +1324,84 @@ tippy('.kotowokosoomohe', { content: '<h3>御堂関白記バージョンの歌�
 
 
 
+tippy('.shirotae_koromo', { content: '<h3><ruby>白妙<rt>しろたえ</rt></ruby>の<ruby>衣<rt>ころも</rt></ruby></h3>「白妙」は、<ruby>楮<rt>こうぞ</rt></ruby>やカジノキなど木の皮の繊維で織った白い布のことで、転じて「白」の意味でも使われます。歌の「白妙の」は「衣」を導く枕詞です。', allowHTML: true });
+tippy('.jotei', { content: '<h3><ruby>女性天皇<rt>じょせいてんのう</rt></ruby></h3>日本には、自ら皇位についた女性の天皇が何人もいます。持統天皇は第41代天皇で、天武天皇の皇后として政治を支えたのち、690年に自ら即位しました。', allowHTML: true });
+tippy('.kamakurajidai', { content: '<h3><ruby>鎌倉時代<rt>かまくらじだい</rt></ruby></h3>鎌倉に最初の武家政権（鎌倉幕府）が置かれた時代（1185年頃〜1333年）。', allowHTML: true });
+tippy('.heiankyo', { content: '<h3><ruby>平安京<rt>へいあんきょう</rt></ruby></h3>794年に桓武天皇が遷都した都。現在の京都市にあたります。平安京に都が置かれてから鎌倉幕府が成立するまでの約390年間を平安時代と呼びます。', allowHTML: true });
+tippy('.kusakabe', { content: '<h3><ruby>草壁皇子<rt>くさかべのみこ</rt></ruby></h3>天武天皇と持統天皇の皇子。681年に皇太子となりましたが、689年に病に倒れ、27歳の若さで亡くなりました。', allowHTML: true });
+tippy('.setsugekka', { content: '<h3><ruby>雪月花<rt>せつげつか</rt></ruby></h3>雪・月・花という自然の美しい景物や、それらを愛でる雅な趣を表す言葉。白居易の詩の一句「雪月花時最憶君」に由来します。', allowHTML: true });
+tippy('.narajidai', { content: '<h3><ruby>奈良時代<rt>ならじだい</rt></ruby></h3>平城京に都が置かれた710年から、平安京に遷都する794年までの時代。', allowHTML: true });
+tippy('.manajo', { content: '<h3><ruby>真名序<rt>まなじょ</rt></ruby></h3>漢文で書かれた序文。『古今和歌集』の「真名序」は紀淑望の作とされています。', allowHTML: true });
+tippy('.hanafuda', { content: '<h3><ruby>花札<rt>はなふだ</rt></ruby></h3>1月から12月までの草花を描いた札が、各月4枚ずつあるかるた。', allowHTML: true });
+tippy('.basho', { content: '<h3><ruby>松尾芭蕉<rt>まつおばしょう</rt></ruby>（1644〜1694年）</h3>江戸時代前期の俳諧師。滑稽や諧謔が中心だった俳諧を、芸術性の高い句風（蕉風）として確立しました。紀行文『おくのほそ道』が有名です。', allowHTML: true });
+tippy('.onryou', { content: '<h3><ruby>怨霊<rt>おんりょう</rt></ruby></h3>自分が受けた仕打ちに恨みを持ち、たたりなどをする霊。桓武天皇は、早良親王らの霊を御霊神社などに祀りました。', allowHTML: true });
+tippy('.kentoushi', { content: '<h3><ruby>遣唐使<rt>けんとうし</rt></ruby></h3>日本が唐に派遣した使節。630年に始まりました。894年に計画された派遣は、菅原道真の建議を受けて中止されました。', allowHTML: true });
+tippy('.rihaku', { content: '<h3><ruby>李白<rt>りはく</rt></ruby>（701〜762年）</h3>盛唐の詩人。杜甫とともに中国詩歌史上最高の存在とされ、奔放で変幻自在な詩風から「詩仙」と称されます。', allowHTML: true });
+tippy('.kyouka', { content: '<h3><ruby>狂歌<rt>きょうか</rt></ruby></h3>社会風刺や皮肉、滑稽を盛り込み、五・七・五・七・七の音で詠んだ短歌。', allowHTML: true });
+tippy('.bakufu', { content: '<h3><ruby>幕府<rt>ばくふ</rt></ruby></h3>将軍が率いた武家の政府。1853年当時は、江戸の徳川幕府でした。', allowHTML: true });
+tippy('.youkihi', { content: '<h3><ruby>楊貴妃<rt>ようきひ</rt></ruby>（719〜756年）</h3>唐の玄宗皇帝の寵姫。玄宗の寵愛が「安史の乱」の一因になったと伝えられることから、「傾国の美女」と呼ばれています。', allowHTML: true });
+tippy('.kokugaku', { content: '<h3><ruby>国学<rt>こくがく</rt></ruby></h3>江戸時代中期に起こった、日本の古典を研究する学問。契沖・賀茂真淵・本居宣長は「国学の三哲」とされます。', allowHTML: true });
+tippy('.zeami', { content: '<h3><ruby>世阿弥<rt>ぜあみ</rt></ruby>（1363年？〜1443年？）</h3>室町時代初期の猿楽師。父の観阿弥とともに能（猿楽）を大成し、多くの書を残しました。', allowHTML: true });
+tippy('.biwahoushi', { content: '<h3><ruby>琵琶法師<rt>びわほうし</rt></ruby></h3>琵琶を弾くことを職業とした盲目の僧。平安時代中期から見られるようになりました。', allowHTML: true });
+tippy('.toukaidou', { content: '<h3><ruby>東海道<rt>とうかいどう</rt></ruby></h3>本州太平洋側の中部を通る幹線道路。江戸時代には江戸の日本橋から京都の三条大橋まで、53の宿場（東海道五十三次）が置かれました。', allowHTML: true });
+tippy('.nenohi', { content: '<h3><ruby>初子<rt>はつね</rt></ruby>の<ruby>日<rt>ひ</rt></ruby></h3>その月の最初の子の日。特に、正月の最初の子の日のこと。古くは、宮中では宴や行幸が行われ、人々は野外で小松を引いたり若菜を摘んだりして遊びました（子の日の遊び）。', allowHTML: true });
+tippy('.daigakuryou', { content: '<h3><ruby>大学寮<rt>だいがくりょう</rt></ruby></h3>律令制のもとで作られた、式部省直轄の官僚育成機関。', allowHTML: true });
+tippy('.ryounogige', { content: '<h3><ruby>令義解<rt>りょうのぎげ</rt></ruby></h3>養老令の官撰注釈書。833年、淳和天皇の命により、清原夏野を総裁として編纂され、法的な効力を持ちました。小野篁も編者の一人です。', allowHTML: true });
+tippy('.hakkyoi', { content: '<h3><ruby>白居易<rt>はくきょい</rt></ruby>（772〜846年）</h3>唐の詩人。字は楽天。『白氏文集』が平安時代に日本に伝わり、紫式部や清少納言など多くの文学者に愛読されました。', allowHTML: true });
+tippy('.goudanshou', { content: '<h3><ruby>江談抄<rt>ごうだんしょう</rt></ruby></h3>大江匡房の談話を藤原実兼が筆記した説話集。1104〜1108年頃に成立しました。', allowHTML: true });
+tippy('.konjaku', { content: '<h3><ruby>今昔物語集<rt>こんじゃくものがたりしゅう</rt></ruby></h3>平安時代末期に成立したとみられる説話集。天竺（インド）・震旦（中国）・本朝（日本）の三部からなり、各話が「今ハ昔」で始まります。', allowHTML: true });
+tippy('.enma', { content: '<h3><ruby>閻魔王<rt>えんまおう</rt></ruby></h3>仏教で、死者の生前の罪を裁くとされる冥界の王。', allowHTML: true });
+tippy('.zokumyou', { content: '<h3><ruby>俗名<rt>ぞくみょう</rt></ruby></h3>出家する前の名前。', allowHTML: true });
+tippy('.tendaishu', { content: '<h3><ruby>天台宗<rt>てんだいしゅう</rt></ruby></h3>最澄が開いた仏教の宗派。比叡山延暦寺を総本山とします。', allowHTML: true });
+tippy('.issa', { content: '<h3><ruby>小林一茶<rt>こばやしいっさ</rt></ruby>（1763〜1828年）</h3>信濃国柏原（現在の長野県）出身の江戸時代後期の俳人。本名は小林弥太郎。', allowHTML: true });
+tippy('.joukou', { content: '<h3><ruby>上皇<rt>じょうこう</rt></ruby></h3>位を退いた天皇のこと。', allowHTML: true });
+tippy('.genpuku', { content: '<h3><ruby>元服<rt>げんぷく</rt></ruby></h3>男子が成人したことを示す儀式。', allowHTML: true });
+tippy('.jokotoba13', { content: '<h3>序詞</h3>「筑波嶺の峰より落つるみなの川」は、「恋ぞつもりて淵となりぬる」を導く序詞です。川の水が積もって深い淵になるように、恋心が積もって深くなったと詠んでいます。', allowHTML: true });
+tippy('.kakekotoba16', { content: '<h3>掛詞</h3>「いなば」は国名の「因幡」と「往なば（行ってしまったら）」、「まつ」は「松」と「待つ」の掛詞です。山の松が、帰りを待つ人々に重ねられています。', allowHTML: true });
+tippy('.kusukonohen', { content: '<h3><ruby>薬子<rt>くすこ</rt></ruby>の<ruby>変<rt>へん</rt></ruby>（810年）</h3>平城上皇と嵯峨天皇が対立した事件。嵯峨天皇側が迅速に兵を動かし、平城上皇が出家して決着しました。上皇に仕えた藤原薬子と兄の藤原仲成も処罰されました。', allowHTML: true });
+tippy('.oriku', { content: '<h3><ruby>折句<rt>おりく</rt></ruby></h3>ある言葉の音を、一音ずつ和歌の各句の頭に置いて詠む技法。', allowHTML: true });
+tippy('.hokekyou', { content: '<h3><ruby>法華経<rt>ほけきょう</rt></ruby></h3>大乗仏教を代表する経典。正式名は「妙法蓮華経」。聖徳太子の時代には日本に伝わっており、護国の経典として重んじられました。', allowHTML: true });
+tippy('.nanke', { content: '<h3><ruby>藤原南家<rt>ふじわらなんけ</rt></ruby></h3><img src="/img/fujiwara_yonke_diagram.gif?01" alt="藤原四家"><br>藤原四家の一つで、藤原武智麻呂を祖とする家系。', allowHTML: true });
+tippy('.sumiyoshitaisha', { content: '<h3><ruby>住吉大社<rt>すみよしたいしゃ</rt></ruby></h3>大阪市住吉区にある、全国の住吉神社の総本社。古代には航海の神・港の神として、平安時代からは和歌の神としても信仰を集めました。', allowHTML: true });
+tippy('.kashuu', { content: '<h3><ruby>家集<rt>かしゅう</rt></ruby></h3>個人の和歌を集めた歌集。『伊勢集』は伊勢の家集です。', allowHTML: true });
+tippy('.houou', { content: '<h3><ruby>法皇<rt>ほうおう</rt></ruby></h3>出家した上皇（太上法皇）のこと。太上法皇の称号は、宇多上皇が出家した際に初めて使われました。', allowHTML: true });
+tippy('.fushinoma', { content: '<h3>ふしのま</h3>「節の間」は、葦の節と節の間のことで、ごく短いもののたとえ。「ほんのわずかな時間」という意味が掛けられています。', allowHTML: true });
+tippy('.miotsukushi20', { content: '<h3>みをつくし（掛詞）</h3>「身を尽くし（身を捨てても）」と、難波の海の「澪標（みおつくし）」の掛詞。「難波なる」の直後に置かれ、難波の名物の澪標を思わせています。', allowHTML: true });
+tippy('.shinobumojizuri', { content: '<h3>しのぶもぢずり</h3>陸奥国の信夫地方で、草木を石の上で布にすりつけて染めた乱れ模様の布。', allowHTML: true });
+tippy('.jokotoba18', { content: '<h3>序詞</h3>「住の江の岸による波」は、「寄る」と同じ音の「夜」を導く序詞です。', allowHTML: true });
+tippy('.urinin', { content: '<h3><ruby>雲林院<rt>うんりんいん</rt></ruby></h3>京都市北区紫野にある寺院。もとは淳和天皇の離宮・紫野院で、のちに仁明天皇の皇子・常康親王に伝わり、869年に親王が亡くなると僧正遍昭に託されて寺院となりました。', allowHTML: true });
+tippy('.yoshifusa', { content: '<h3><ruby>藤原良房<rt>ふじわらのよしふさ</rt></ruby>（804〜872年）</h3>平安時代前期の公卿。皇族以外の人臣として初めて摂政となりました。', allowHTML: true });
+tippy('.yakusanokabane', { content: '<h3><ruby>八色の姓<rt>やくさのかばね</rt></ruby></h3>684年に天武天皇が定めた8つの姓。上から順に、真人・朝臣・宿禰・忌寸・道師・臣・連・稲置。', allowHTML: true });
+tippy('.kourui', { content: '<h3><ruby>紅涙<rt>こうるい</rt></ruby></h3>和歌で、深い悲しみに流す涙を、血のように赤い涙にたとえた言葉。', allowHTML: true });
+tippy('.taiku23', { content: '<h3>「千」と「一」の対比</h3>漢詩でよく使われる、対になる言葉を並べる技法。「ちぢに（千々に）」と「わが身ひとつ」を対比させています。', allowHTML: true });
+tippy('.kudaiwaka', { content: '<h3><ruby>句題和歌<rt>くだいわか</rt></ruby></h3>漢詩の句を題にして詠んだ和歌。千里は897年、宇多天皇の命により『句題和歌』を献上しました。', allowHTML: true });
+tippy('.hakushimonju', { content: '<h3><ruby>白氏文集<rt>はくしもんじゅう</rt></ruby></h3>唐の詩人・白居易の詩文集。9世紀に日本に伝わり、紫式部や清少納言をはじめ平安時代の人々に愛読されました。', allowHTML: true });
+tippy('.kakekotoba24', { content: '<h3>掛詞</h3>「たび」は「度（このたび）」と「旅」の掛詞。「手向山」の「たむけ」も、道の神に捧げる「手向け」と山の名を掛けています。', allowHTML: true });
+tippy('.jouheitengyou', { content: '<h3><ruby>天慶<rt>てんぎょう</rt></ruby>の<ruby>乱<rt>らん</rt></ruby></h3>935〜941年に、関東での平将門の乱と瀬戸内海での藤原純友の乱がほぼ同時期に起こったことの総称。承平・天慶の乱とも呼ばれました。', allowHTML: true });
+tippy('.jokotoba27', { content: '<h3>序詞</h3>「みかの原わきて流るるいづみ川」は序詞。「いづみ」の音を繰り返して「いつ見」を導いています。', allowHTML: true });
+tippy('.kuninomiya', { content: '<h3><ruby>恭仁京<rt>くにきょう</rt></ruby></h3>740年、聖武天皇の命により平城京から遷都された都。完成しないまま743年末に造営が中止され、748年には恭仁宮の大極殿が山背国分寺に施入されました。', allowHTML: true });
+tippy('.kakekotoba28', { content: '<h3>掛詞</h3>「かれぬ」は、人が訪れなくなる「離れぬ」と、草が「枯れぬ」の掛詞です。', allowHTML: true });
+tippy('.ishiyamadera', { content: '<h3><ruby>石山寺<rt>いしやまでら</rt></ruby></h3>滋賀県大津市にある東寺真言宗の寺院。紫式部が参籠した際に『源氏物語』の着想を得たという伝承があります（ただし紫式部日記・紫式部集には参籠の記事はありません）。', allowHTML: true });
+tippy('.masaokashiki', { content: '<h3><ruby>正岡子規<rt>まさおかしき</rt></ruby>（1867〜1902年）</h3>明治時代の俳人・歌人。短い生涯で俳句・短歌の革新を成し遂げ、写生・写実による歌を唱えました。『歌よみに与ふる書』では『古今集』を否定し『万葉集』を称揚しました。', allowHTML: true });
+tippy('.mitate', { content: '<h3><ruby>見立<rt>みた</rt></ruby>て</h3>ある物を別の物になぞらえて表現する技法。この歌では、白菊と初霜を見分けがたいものとして重ねています。', allowHTML: true });
+tippy('.shouzen', { content: '<h3><ruby>牀前<rt>しょうぜん</rt></ruby></h3>寝床の前。', allowHTML: true });
+tippy('.kokushi', { content: '<h3><ruby>国司<rt>こくし</rt></ruby></h3>朝廷から任命され、地方の国を治めるために派遣された官吏。守（かみ）・介（すけ）・掾（じょう）・目（さかん）の四等官からなります。', allowHTML: true });
+tippy('.kyouke', { content: '<h3><ruby>藤原京家<rt>ふじわらきょうけ</rt></ruby></h3><img src="/img/fujiwara_yonke_diagram.gif?01" alt="藤原四家"><br>藤原四家の一つで、藤原麻呂を祖とする家系。', allowHTML: true });
+tippy('.kanpyouutaawase', { content: '<h3><ruby>寛平御時后宮歌合<rt>かんぴょうのおおんときさいのみやのうたあわせ</rt></ruby></h3>889年頃、宇多天皇の母・班子女王の邸で催された歌合。四季と恋の各20番、計100番からなります。', allowHTML: true });
+tippy('.onshi', { content: '<h3><ruby>藤原穏子<rt>ふじわらのおんし</rt></ruby>（885〜954年）</h3>醍醐天皇の中宮。関白・藤原基経の娘で、朱雀天皇・村上天皇の母。', allowHTML: true });
+tippy('.kouetsu', { content: '<h3><ruby>本阿弥光悦<rt>ほんあみこうえつ</rt></ruby>（1558〜1637年）</h3>江戸時代初期の数寄者。書では「寛永の三筆」の一人に数えられます。', allowHTML: true });
+tippy('.makie', { content: '<h3><ruby>蒔絵<rt>まきえ</rt></ruby></h3>漆器の表面に漆で絵や文様を描き、乾かないうちに金や銀などの粉を蒔いて定着させる技法。', allowHTML: true });
+tippy('.sonpibunmyaku', { content: '<h3><ruby>尊卑分脈<rt>そんぴぶんみゃく</rt></ruby></h3>南北朝時代後期に成立した系図集。洞院公定が原撰し、源氏・平氏・橘氏・藤原氏などの諸系図を収めています。', allowHTML: true });
+tippy('.jokotoba39', { content: '<h3>序詞</h3>「浅茅生の小野の篠原」は序詞。「しの（篠）」の音を繰り返して「しのぶれど」を導いています。', allowHTML: true });
+tippy('.seiryouden', { content: '<h3><ruby>清涼殿<rt>せいりょうでん</rt></ruby></h3>平安京の内裏にある殿舎の一つで、天皇が日常の生活を送った場所。', allowHTML: true });
+tippy('.ohaguro', { content: '<h3>お<ruby>歯黒<rt>はぐろ</rt></ruby></h3>歯を黒く染める化粧法。平安時代の貴族も行っていました。', allowHTML: true });
+tippy('.wakadokoro', { content: '<h3><ruby>和歌所<rt>わかどころ</rt></ruby></h3>勅撰和歌集の撰述などのために臨時に置かれた宮中の役所。951年、村上天皇が梨壺に置いたのが始まりです。', allowHTML: true });
+tippy('.hyakushuuta', { content: '<h3><ruby>百首歌<rt>ひゃくしゅうた</rt></ruby></h3>100首を単位として詠む定数歌。曾禰好忠の家集『曾丹集』の「百ちの歌」に始まるとされています。', allowHTML: true });
+tippy('.jokotoba46', { content: '<h3>序詞</h3>「由良のとを渡る舟人かぢを絶え」は序詞。かじを失って漂う舟人の姿で、「ゆくへも知らぬ」恋のゆくえをたとえています。', allowHTML: true });
+tippy('.kawarain', { content: '<h3><ruby>河原院<rt>かわらのいん</rt></ruby></h3>京都の六条にあった源融の邸宅。陸奥国塩竈の風景を模した庭を造り、尼崎から海水を運ばせて製塩を楽しんだと伝えられています。融の死後は寺となり、のちに火災で荒廃しました。', allowHTML: true });
+tippy('.kumanomoude', { content: '<h3><ruby>熊野詣<rt>くまのもうで</rt></ruby></h3>熊野本宮大社・熊野速玉大社・熊野那智大社（熊野三山）への参詣。平安時代には宇多院や花山院も参詣し、1116年の白河院の熊野詣を機に盛んになりました。', allowHTML: true });
+tippy('.jokotoba48', { content: '<h3>序詞</h3>「風をいたみ岩うつ波の」は序詞。激しい風で岩に打ちつけられて砕ける波の姿で、「おのれのみ」くだける恋心をたとえています。', allowHTML: true });
+tippy('.isejingu', { content: '<h3><ruby>伊勢神宮<rt>いせじんぐう</rt></ruby></h3>三重県伊勢市にある神社。内宮に皇室の氏神である天照大御神、外宮に豊受大御神を祀り、古くから皇室・朝廷と強く結びついてきました。', allowHTML: true });
+tippy('.shinagon', { content: '<h3><ruby>四納言<rt>しなごん</rt></ruby></h3>一条天皇の時代に活躍した4人の公卿（源俊賢・藤原公任・藤原斉信・藤原行成）の称。', allowHTML: true });
+tippy('.renga', { content: '<h3><ruby>連歌<rt>れんが</rt></ruby></h3>5・7・5の句と7・7の句を、複数人で交互に連ねて詠む詩歌。和歌の上の句と下の句を別々の人が詠む遊びから始まったとされています。', allowHTML: true });
+tippy('.jokotoba49', { content: '<h3>序詞</h3>「御垣守衛士のたく火の」は序詞。夜は燃え、昼は消える衛士のかがり火で、恋心のさまをたとえています。', allowHTML: true });

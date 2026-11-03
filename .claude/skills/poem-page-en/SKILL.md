@@ -5,7 +5,7 @@ description: Conventions for the English poem pages (N_en.html, 1–100) — tra
 
 # English poem pages (N_en.html)
 
-Each `N_en.html` is the English version of `N.html`. Content is **translated from the Japanese page**, never invented: do not add facts that are not on the JA page. If a fact on the JA page needs checking, use only ja.wikipedia.org and kotobank.jp. If the JA page looks wrong (typo, contradicting another page), translate it as written and tell the user instead of silently "fixing" it.
+Each `N_en.html` is the English version of `N.html`. Content is **translated from the Japanese page**, never invented: do not add facts that are not on the JA page, except short background that English readers need to follow the page (who someone is, what a term means) — and verify any such addition on ja.wikipedia.org / kotobank.jp first. If a fact on the JA page needs checking, use only ja.wikipedia.org and kotobank.jp. If the JA page looks wrong (typo, contradicting another page), translate it as written and tell the user instead of silently "fixing" it.
 
 ## Writing style
 
@@ -18,9 +18,16 @@ Each `N_en.html` is the English version of `N.html`. Content is **translated fro
 
 On PC (≥1001px) `.explanation` is exactly as tall as the card column (≈880px) and scrolls if its content is longer. **The page should not need that scrollbar.**
 
-- Write **Commentary** and **About the Poet** as short as possible: translate the JA 解説 / どんな人？ concisely, keeping the key points and dropping padding, repetition, and side details. Aim for roughly 40–70 words each; the poem, verse translation and modern translation above them take most of the box.
+- Write **Commentary** and **About the Poet** concisely: translate the JA 解説 / どんな人？ keeping the key points and dropping padding, repetition, and side details. Aim for roughly 40–70 words each as a starting point; the poem, verse translation and modern translation above them take most of the box.
+- **Adding words for English readers is welcome as long as the box still fits.** If a sentence or a short clause makes the poem or the background clearer for a reader with no Japanese background (who a person is, why a place matters, what a term means), add it — the only limit is that `.explanation` must not get a scrollbar. When space runs out, explain the term with a tooltip instead (see "Tooltips" below), since a tooltip adds no height.
 - Headnotes (詞書): quote briefly, or summarize in one clause, rather than quoting the whole headnote and then paraphrasing it.
 - After editing, **check that nothing overflows**: open the page at 1280px wide and compare `.explanation`'s `scrollHeight` with its `clientHeight` (they must be equal). Shorten further if it still overflows.
+
+## Tooltips (`js/tooltips_en.js`)
+
+Terms that English readers won't know (people, places, books, institutions, eras, pillow words, Porter's liberal renderings) can get a tooltip: `<span class="tippy CLASS">term</span>` plus a `tippy('.CLASS', { content: '<h3>Title</h3><p>…</p>', allowHTML: true });` entry in `js/tooltips_en.js` (see the "Poem 2" block there). Reuse the class name of the JA tooltip in `js/tooltips.js` when there is one, and translate its content (check it — the JA tooltips have had errors). The tooltip's `<h3>` title must match the English words it is attached to, with the Japanese term in parentheses — e.g. "Exile (hairu)", "Leaving the imperial family (shinseki kōka)" — never a bare Japanese term the reader hasn't seen in the text; and the text should answer what the phrase raises (why he was not made a prince, not just what the title means). The page must load `tooltips_en.js` right after `tippy.umd.min.js` (pages without a family tree don't load tippy yet: add `popper.min.js`, `tippy.umd.min.js` and `tooltips_en.js` before `</body>`). On English pages `.tippy` is `display: inline` (`poems_en.css`) so tooltip phrases wrap like normal text; still re-check `.explanation` at 1280px and 1001–1010px after adding them. Keep the facts within ja.wikipedia.org / kotobank.jp.
+
+When an English page gets a tooltip that the Japanese page `N.html` doesn't have, add the same tooltip to `N.html` too (Japanese text in `js/tooltips.js`), unless it only makes sense in English (e.g. a note on Porter's translation). Bump the cache buster on every HTML that loads the edited tooltip file, and re-check both pages' `.explanation` for overflow.
 
 ## Labels and formats
 
@@ -30,7 +37,7 @@ On PC (≥1001px) `.explanation` is exactly as tall as the card column (≈880px
 - Appendix accordion timeline: `date-is='645 (age 19)'`.
 - Links to Wikimedia Commons (image credits) always open in a new tab: `target="_blank" rel="noopener"`.
 - Photo dates: "(Photo taken August 15, 2025)". Image `alt`/`data-title` in English; lightbox `data-lightbox` group in romaji (e.g. `jito`).
-- JA tooltip spans (`<span class="tippy …">`) have no English tooltips: drop the span and explain the term inline if needed.
+- Tooltips: see "Tooltips" below.
 - Don't add: the grammar panel (品詞分解と文法), links to pages that have no English version (check the file exists, e.g. `kakekotoba-game-00N_en.html`, `mubeyama-sugoroku` has none), or the bottom prev/next arrows (removed site-wide).
 
 ## Family tree (相関図)

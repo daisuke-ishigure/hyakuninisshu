@@ -569,3 +569,10 @@ html[lang="en"] .card-back .torihuda > p span {
   background: #f7f1e0;
   border-radius: 4px;
 }
+
+/* Tooltip terms (<span class="tippy …">, js/tooltips_en.js): style.css makes .tippy inline-block,
+   which keeps a multi-word English phrase on one line and pushes it to the next line whole.
+   Let English phrases wrap like normal text so tooltips don't make .explanation taller. */
+html[lang="en"] .tippy {
+  display: inline;
+}
