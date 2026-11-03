@@ -8,12 +8,15 @@
      JP側は意味欄にtippyツールチップ（<span class="tippy ...">）が
      埋め込まれているため対象外。EN側はプレーンテキストのみなので安全に上書きできる。 */
   if (document.documentElement.lang === 'en' && CFG.pageNum) {
-    fetch('js/hyakunin.json?20261028-02')
+    fetch('js/hyakunin.json?20261103-01')
       .then(r => r.json())
       .then(json => {
         const v = json[CFG.pageNum];
         const el = document.getElementById('kake-meaning');
-        if (v && v.modern_en && el) el.textContent = v.modern_en;
+        // 文面が同じなら上書きしない（意味欄に埋め込んだツールチップを残すため）
+        if (v && v.modern_en && el && el.textContent.replace(/\s+/g, ' ').trim() !== v.modern_en.trim()) {
+          el.textContent = v.modern_en;
+        }
       })
       .catch(() => {}); // ファイルがなくても動作継続
   }

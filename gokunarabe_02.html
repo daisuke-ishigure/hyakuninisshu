@@ -34,7 +34,7 @@
     href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="css/style.css?20261031-01">
- <link rel="stylesheet" href="css/gokunarabe.css?ver025">
+ <link rel="stylesheet" href="css/gokunarabe.css?20261103-01">
   <link rel="stylesheet" href="css/wordcloud.css?ver006">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" href="/favicon.ico">
@@ -122,13 +122,13 @@
           <!-- ── 解説スペース（HTML側に記述） ── -->
           <div id="kake-desc">
             <h2 class="imi">意味</h2>
-            <p class="kaisetsu">春は過ぎ去り、夏が来たようだ。夏になると衣が干されるという天の香具山に白い衣が干されているよ。</p>
+            <p class="kaisetsu">春は過ぎ去り、夏が来たようだ。夏になると衣が干されるという<span class="tippy amanokaguyama">天の香具山</span>に白い衣が干されているよ。</p>
             <h2 class="kaisetsu">歌の解説</h2>
             <p class="kaisetsu">
-              この歌は、日本で初めて本格的な都づくりを進めた女性天皇である持統天皇によって詠まれました。香具山は彼女が政治を行っていた藤原京からは東側にその姿が見えました。当時は初夏になると、この山で白い衣を干していたといわれています。その白い衣が見える景色は、夏が近づいたことを知らせる風物詩でした。
+              この歌は、日本で初めて本格的な都づくりを進めた女性天皇である持統天皇によって詠まれました。香具山は彼女が政治を行っていた<span class="tippy hujiwarakyo">藤原京</span>からは東側にその姿が見えました。当時は初夏になると、この山で白い衣を干していたといわれています。その白い衣が見える景色は、夏が近づいたことを知らせる風物詩でした。
             </p>
             <p class="kaisetsu">
-              持統天皇は天智天皇の娘として生まれ、壬申の乱では夫の天武天皇とともに戦い、勝利を収めました。天武天皇の死後は自ら天皇となり、藤原京の造営や律令制度の整備を進めています。この歌からは、激動の時代を生きながらも、季節の移ろいや人々の営みに目を向ける持統天皇の繊細な感性がうかがえます。
+              持統天皇は天智天皇の娘として生まれ、<span class="tippy jinshinnoran">壬申の乱</span>では夫の<span class="tippy tenmu">天武天皇</span>とともに戦い、勝利を収めました。天武天皇の死後は自ら天皇となり、藤原京の造営や<span class="tippy ritsuryouseido">律令制度</span>の整備を進めています。この歌からは、激動の時代を生きながらも、季節の移ろいや人々の営みに目を向ける持統天皇の繊細な感性がうかがえます。
             </p>
             <a href="2.html" class="detail-btn">詳しくはこちら</a>
           </div>
@@ -218,7 +218,7 @@
 
   <!-- ▲▲▲ 設定ここまで ▲▲▲ -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="js/gokunarabe.js?20261024-03"></script>
+  <script src="js/gokunarabe.js?20261103-01"></script>
 
   <script src="js/poet-index.js?20261024-03"></script>
   <!-- ▼▼▼ Word Cloud ▼▼▼ -->
@@ -228,6 +228,11 @@
   <script src="https://cdn.jsdelivr.net/npm/d3-cloud@1.2.9/build/d3.layout.cloud.js"></script>
   <script src="js/wordcloud.js?ver011"></script>
   <!-- ▲▲▲ Word Cloud ▲▲▲ -->
+  <!-- ▼▼▼ Tooltips ▼▼▼ -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/tooltips.js?20261103-17"></script>
+  <!-- ▲▲▲ Tooltips ▲▲▲ -->
 </body>
 
 </html>

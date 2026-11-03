@@ -34,7 +34,7 @@
     href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="css/style.css?20261031-01">
-  <link rel="stylesheet" href="css/gokunarabe.css?ver025">
+  <link rel="stylesheet" href="css/gokunarabe.css?20261103-01">
   <link rel="stylesheet" href="css/wordcloud.css?ver006">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" href="/favicon.ico">
@@ -124,17 +124,17 @@
           <!-- ── 解説スペース（HTML側に記述） ── -->
           <div id="kake-desc">
             <h2 class="imi">Meaning</h2>
-            <p class="kaisetsu" id="kake-meaning">Even the ancient gods never heard of this — the Tatsuta River, dyeing its waters a deep crimson with fallen maple leaves.</p>
+            <p class="kaisetsu" id="kake-meaning">Even <span class="tippy chihayaburu">the ancient gods</span> never heard of this — the <span class="tippy tatsutagawa">Tatsuta River</span>, dyeing its waters a <span class="tippy karakurenai">deep crimson</span> with fallen maple leaves.</p>
             <h2 class="kaisetsu">Commentary</h2>
             <p class="kaisetsu">
-              This poem is said to have been composed in longing for Fujiwara no Takako, who became a consort of Emperor
-              Seiwa. The two had been lovers, but when Takako entered the imperial household, their love became
+              This poem is said to have been composed in longing for <span class="tippy takaiko">Fujiwara no Takaiko</span>, who became a consort of <span class="tippy seiwa">Emperor
+              Seiwa</span>. The two had been lovers, but when Takaiko entered the imperial household, their love became
               impossible.
             </p>
             <p class="kaisetsu">
               Ariwara no Narihira attached this poem to a folding screen depicting the autumn leaves of the Tatsuta
               River. Although it appears to celebrate the beauty of the autumn scene, it is said to carry hidden
-              feelings for Takako.
+              feelings for Takaiko.
             </p>
             <a href="17_en.html" class="detail-btn">Learn more</a>
           </div>
@@ -241,7 +241,7 @@
 
   <!-- ▲▲▲ 設定ここまで ▲▲▲ -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="js/gokunarabe.js?20261024-03"></script>
+  <script src="js/gokunarabe.js?20261103-01"></script>
 
   <script src="js/poet-index.js?20261024-03"></script>
   <!-- ▼▼▼ Word Cloud ▼▼▼ -->
@@ -251,6 +251,11 @@
   <script src="https://cdn.jsdelivr.net/npm/d3-cloud@1.2.9/build/d3.layout.cloud.js"></script>
   <script src="js/wordcloud.js?ver011"></script>
   <!-- ▲▲▲ Word Cloud ▲▲▲ -->
+  <!-- ▼▼▼ Tooltips ▼▼▼ -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/tooltips_en.js?20261103-17"></script>
+  <!-- ▲▲▲ Tooltips ▲▲▲ -->
 </body>
 
 </html>

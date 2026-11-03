@@ -104,7 +104,7 @@ tippy('.jijo', { content: '<h3><ruby>侍女<rt>じじょ</rt></ruby></h3>貴人�
 
 /* 神祇 */
 tippy('.saigu', { content: '<h3><ruby>斎宮<rt>さいぐう</rt></ruby></h3>伊勢神宮に仕える未婚の皇女', allowHTML: true });
-tippy('.saiin', { content: '<h3><ruby>斎院<rt>さいぐう</rt></ruby></h3>上賀茂神社や下賀茂神社に仕える未婚の皇女', allowHTML: true });
+tippy('.saiin', { content: '<h3><ruby>斎院<rt>さいぐう</rt></ruby></h3>上賀茂神社や下鴨神社に仕える未婚の皇女', allowHTML: true });
 
 /* 別名 */
 tippy('.ninna', { content: '<h3><ruby>仁和<rt>にんな</rt></ruby>の<ruby>帝<rt>みかど</rt></ruby></h3>光孝天皇は、在位の年号にちなんで「仁和の帝」とも呼ばれました。また、光孝天皇の山陵（お墓）小松山陵にちなんで「小松の帝」と呼ばれることもあります。', allowHTML: true });
@@ -121,7 +121,7 @@ tippy('.minamotonoshitagou', { content: '<h3><ruby>源順<rt>みなもとのし�
 tippy('.tamuramaro', { content: '<h3><ruby>坂上田村麻呂<rt>さかのうえのたむらまろ</rt></ruby></h3>平安時代初期の武将で、征夷大将軍として蝦夷（東北地方に居住し、朝廷の律令国家の支配に抵抗した人々の総称）を討伐した武将です。', allowHTML: true });
 
 tippy('.kaneie', { content: '<h3><ruby>藤原兼家<rt>ふじわらのかねいえ</rt></ruby></h3>【人物名】平安中期の公卿。摂関家の出身で一条天皇の外祖父として自らも摂政、関白となりました。右大将道綱母は兼家の妾（本妻ではない妻）でした。儀同三司母（54番）の夫である藤原道隆は兼家と本妻・時姫の間に生まれた長男です。', allowHTML: true });
-tippy('.akiko', { content: '<h3><ruby>藤原詮子<rt>ふじわらあきこ</rt></ruby></h3>【人物名】円融天応の女御。藤原公任の姉・遵子に后の座を奪われるも円融天皇との間に懐仁親王（後の一条天皇）をもうけ、女院になり、東三条院と称しました。', allowHTML: true });
+tippy('.akiko', { content: '<h3><ruby>藤原詮子<rt>ふじわらあきこ</rt></ruby></h3>【人物名】円融天皇の女御。藤原公任の姉・遵子に后の座を奪われるも円融天皇との間に懐仁親王（後の一条天皇）をもうけ、女院になり、東三条院と称しました。', allowHTML: true });
 tippy('.nobuo', { content: '<h3><ruby>藤原遵子<rt>ふじわらのぶこ</rt></ruby></h3>【人物名】円融天皇の中宮。藤原頼忠の娘で、藤原公任の姉。中宮になったものの、懐妊することはありませんでした。', allowHTML: true });
 tippy('.shoushi', { content: '<h3><ruby>藤原彰子<rt>ふじわらあきこ</rt></ruby></h3>【人物名】一条天皇の中宮。藤原道長の娘。後一条天皇（諱：<ruby>敦成<rt>あつひら</rt></ruby>）、後朱雀天皇（諱：<ruby>敦良<rt>あつなが</rt></ruby>）の生母。', allowHTML: true });
 tippy('.anpou', { content: '<h3><ruby>安法法師<rt>あんぽうほうし</rt></ruby></h3>【人物名】平安時代の歌人。源融の曽孫。安法法師の父の代から家運が衰え、安法法師は早くから出家し、源融が建てた河原院に住みつきました。', allowHTML: true });
@@ -136,19 +136,19 @@ tippy('.nijounokisaki', { content: '<h3><ruby>二条后<rt>にじょうのきさ
 tippy('.taikenmonin', { content: '<h3><ruby>待賢門院<rt>たいけんもんいん</rt></ruby></h3>【人物名】第74代天皇・鳥羽天皇の皇后になった藤原璋子の女院号。', allowHTML: true });
 tippy('.fujiwaranokinnori', { content: '<h3><ruby>藤原公教<rt>ふじわらのきんのり</rt></ruby></h3>【人物名】平安末期の公卿。三条公教とも呼ばれます。藤原清輔の従兄弟にあたります。', allowHTML: true });
 tippy('.kujoukanezane', { content: '<h3><ruby>九条兼実<rt>くじょうかねざね</rt></ruby></h3>【人物名】平安末期から鎌倉初期の公卿。藤原忠通の三男です。父の忠通から九条の地を譲られ、そこに邸を構えて、九条を家名としました。', allowHTML: true });
-tippy('.yoritomo', { content: '<h3><ruby>源頼朝<rt>みなもとのよりとも</rt></ruby></h3>鎌【人物名】倉幕府初代征夷大将軍。鎌倉右大臣こと源実朝の父にあたります。', allowHTML: true });
+tippy('.yoritomo', { content: '<h3><ruby>源頼朝<rt>みなもとのよりとも</rt></ruby></h3>【人物名】鎌倉幕府初代征夷大将軍。鎌倉右大臣こと源実朝の父にあたります。', allowHTML: true });
 tippy('.mononobeshi', { content: '<h3><ruby>物部氏<rt>もののべし</rt></ruby></h3>【氏族名】古代ヤマト政権を支えた有力豪族の一つ。、特に軍事・武器管理を担った氏族として知られています。', allowHTML: true });
 tippy('.takeuchinosukune', { content: '<h3><ruby>武内<rt>たくうちの</rt></ruby><ruby>宿禰<rt>すくね</rt></ruby></h3>【人物名】大和朝廷初期の伝説上の人物で、蘇我氏・平群氏・紀氏・葛城氏など中央豪族の祖とされる。景行・成務・仲哀・応神・仁徳の5天皇に仕え、300年以上生きたとされる。', allowHTML: true });
 
 /* 総称 */
 tippy('.emishi', { content: '<h3><ruby>蝦夷<rt>えみし</rt></ruby></h3>【名詞】朝廷の律令国家の支配に抵抗した人々の総称', allowHTML: true });
 tippy('.sanseki', { content: '<h3><ruby>三蹟<rt>さんせき</rt></ruby></h3>【名詞】平安時代中期に活躍した能書家、小野道風・藤原佐理・藤原行成の3名のこと。', allowHTML: true });
-tippy('.mikohidarike', { content: '<h3><ruby>御子左家<rt>みこひだりけ</rt></ruby></h3>【名詞】藤原俊成とその子、藤原定家の家系のこと。平安時代末期から鎌倉時代前期にかけて、著名な歌人としてが登場し、以後この家は歌道の家として確立されました。この家系は、藤原道長の六男・長家を祖とします。長家が、醍醐天皇の<ruby>皇子<rt>みこ</rt></ruby>で左大臣となった源兼明の邸宅を受け継いだことから、この家系は御子左家と呼ばれるようになりました。', allowHTML: true });
+tippy('.mikohidarike', { content: '<h3><ruby>御子左家<rt>みこひだりけ</rt></ruby></h3>【名詞】藤原俊成とその子、藤原定家の家系のこと。平安時代末期から鎌倉時代前期にかけて、著名な歌人が登場し、以後この家は歌道の家として確立されました。この家系は、藤原道長の六男・長家を祖とします。長家が、醍醐天皇の<ruby>皇子<rt>みこ</rt></ruby>で左大臣となった源兼明の邸宅を受け継いだことから、この家系は御子左家と呼ばれるようになりました。', allowHTML: true });
 
 
 /* 摂関政治 */
-tippy('.sekkanseiji', { content: '<h3><ruby>摂関家<rt>せっかんけ</rt></ruby></h3>平安時代に藤原<ruby>北家<rt>ほっけ</rt></ruby>（藤原<ruby>房前<rt>ふささき</rt></ruby>を祖とする家系）の一族が天皇の親族となり、摂政や関白または内覧などの重要な地位に就き、政治の実権を代々独占し続けた政治体制のことです。', allowHTML: true });
-tippy('.sekkanke', { content: '<h3><ruby>摂関家<rt>せっかんけ</rt></ruby></h3>天皇の外祖父になることで、摂政や関白の地位に就くとができ、政治を主導できるようになります。代々、摂政や関白を輩出した家系を摂関家といいます。', allowHTML: true });
+tippy('.sekkanseiji', { content: '<h3><ruby>摂関政治<rt>せっかんせいじ</rt></ruby></h3>平安時代に藤原<ruby>北家<rt>ほっけ</rt></ruby>（藤原<ruby>房前<rt>ふささき</rt></ruby>を祖とする家系）の一族が天皇の親族となり、摂政や関白または内覧などの重要な地位に就き、政治の実権を代々独占し続けた政治体制のことです。', allowHTML: true });
+tippy('.sekkanke', { content: '<h3><ruby>摂関家<rt>せっかんけ</rt></ruby></h3>天皇の外祖父になることで、摂政や関白の地位に就くことができ、政治を主導できるようになります。代々、摂政や関白を輩出した家系を摂関家といいます。', allowHTML: true });
 tippy('.gaiseki', { content: '<h3><ruby>外戚<rt>がいせき</rt></ruby></h3>天皇の母方の親族', allowHTML: true });
 tippy('.hokke', { content: '<h3><ruby>藤原北家<rt>ふじわらほっけ</rt></ruby></h3><img src="/img/fujiwara_yonke_diagram.gif?01" alt="藤原北家"><br><ruby>藤原<rt>ふじわらの</rt></ruby><ruby>房前<rt>ふささき</rt></ruby>を祖とする家系で、摂関家として繁栄しました。平安時代に活躍する貴族のほとんどは藤原北家の出身です。', allowHTML: true });
 tippy('.sesshou', { content: '<h3><ruby>摂政<rt>せっしょう</rt></ruby></h3>幼少の天皇に代わって政務を代行する職で、位は太政大臣よりも上。', allowHTML: true });
@@ -167,7 +167,7 @@ tippy('.gonchuunagon', { content: '<h3><ruby>権中納言<rt>ごんちゅうな�
 tippy('.kentoufukushi', { content: '<h3><ruby>遣唐副使<rt>けんとうふくし</rt></ruby></h3>【名詞】遣唐副使は遣唐使の次官（二等官）で、遣唐大使に次ぐ地位。', allowHTML: true });
 tippy('.kuroudonotou', { content: '<h3><ruby>蔵人<rt>くろうど</rt></ruby>の<ruby>頭<rt>とう</rt></ruby></h3>【名詞】天皇の秘書官である蔵人のトップ', allowHTML: true });
 tippy('.nuidononosuke', { content: '<h3><ruby>縫殿助<rt>ぬいどののすけ</rt></ruby></h3>【名詞】中務省管下の女官人事・裁縫監督機関の二等官', allowHTML: true });
-tippy('.sakonenochujou', { content: '<h3><ruby>左近衛中将<rt>さかんえのちゅうじょう</rt></ruby></h3>【名詞】右近衛府の次官。少将よりも上の地位。近衛府は左右に分けられていました。近衛府は内裏内の警備し、行幸（天皇のお出かけ）の際は供奉しました。', allowHTML: true });
+tippy('.sakonenochujou', { content: '<h3><ruby>左近衛中将<rt>さこんえのちゅうじょう</rt></ruby></h3>【名詞】左近衛府の次官。少将よりも上の地位。近衛府は左右に分けられていました。近衛府は内裏内の警備し、行幸（天皇のお出かけ）の際は供奉しました。', allowHTML: true });
 tippy('.ukonenoshoushou', { content: '<h3><ruby>右近衛少将<rt>うこんえのしょうしょう</rt></ruby></h3>【名詞】右近衛府の次官。中将に次ぐ地位。近衛府は左右に分けられていました。近衛府は内裏内の警備し、行幸（天皇のお出かけ）の際は供奉しました。', allowHTML: true });
 tippy('.hyobudaijou', { content: '<h3><ruby>兵部大丞<rt>ひょうぶたいじょう</rt></ruby></h3>【名詞】軍事防衛関連事項を管轄する兵部省の判官（3等官）', allowHTML: true });
 tippy('.sangi', { content: '<h3><ruby>参議<rt>さんぎ</rt></ruby></h3>【名詞】朝廷の最高機関である太政官の官職の一つで、四等官の次官（すけ）に相当する令外官。納言に次ぐ地位です。朝政に参議するというのが官名の由来になっています。', allowHTML: true });
@@ -185,7 +185,7 @@ tippy('.samanosuke', { content: '<h3><ruby>左馬助<rt>さまのすけ</rt></ru
 tippy('.umanosuke', { content: '<h3><ruby>右馬助<rt>うまのすけ</rt></ruby></h3>【名詞】律令制における<ruby>官司<rt>かんし</rt></ruby>（官人の組織）の一つに「<ruby>馬寮<rt>めりょう</rt></ruby>」がありました。<ruby>馬寮<rt>めりょう</rt></ruby>は、左右に分かれており、<ruby>右馬助<rt>うまのすけ</rt></ruby>は、<ruby>右馬寮<rt>うめりょう</rt></ruby>の二等官のことです。', allowHTML: true });
 tippy('.naidaijin', { content: '<h3><ruby>内大臣<rt>ないだいじん</rt></ruby></h3>【名詞】左大臣、右大臣を補佐する大臣。', allowHTML: true });
 tippy('.chuujou', { content: '<h3><ruby>中将<rt>ちゅうじょう</rt></ruby></h3>【名詞】律令制で、内裏内を警備したり、行幸（天皇のお出かけ）の際に供奉したりする<ruby>近衛府<rt>このえふ</rt></ruby>の次官。', allowHTML: true });
-tippy('.hokumennobushi', { content: '<h3><ruby>北面武士<rt>ほくめんのぶし</rt></ruby></h3>【名詞】11世紀末に白河法皇が創設した。院の直属軍。院御所の北面に常駐し、警固にあたりました。主に寺社の強訴を防ぐために動員されました。', allowHTML: true });
+tippy('.hokumennobushi', { content: '<h3><ruby>北面武士<rt>ほくめんのぶし</rt></ruby></h3>【名詞】11世紀末に白河法皇が創設した院の直属軍。院御所の北面に常駐し、警固にあたりました。主に寺社の強訴を防ぐために動員されました。', allowHTML: true });
 tippy('.sahyouenojou', { content: '<h3><ruby>左兵衛尉<rt>さひょうえのじょう</rt></ruby></h3>【名詞】律令制における<ruby>官司<rt>かんし</rt></ruby>（官人の組織）の一つに<ruby>兵衛府<rt>ひょうえふ</rt></ruby>がありました。<ruby>兵衛府<rt>ひょうえふ</rt></ruby>は、左右に分かれており、<ruby>左兵衛尉<rt>さひょうえのじょう</rt></ruby>は、<ruby>左兵衛府<rt>さひょうえふ</rt></ruby>の三等官です。', allowHTML: true });
 tippy('.eji', { content: '<h3><ruby>衛士<rt>えじ</rt></ruby></h3>【名詞】衛士府（後の衛門府）所属の宮中を警護する兵士', allowHTML: true });
 tippy('.mikakimori', { content: '<h3><ruby>御垣守<rt>みかきもり</rt></ruby></h3>【名詞】皇居の門を警護する兵士', allowHTML: true });
@@ -207,7 +207,7 @@ tippy('.ecchukoku', { content: '<h3><ruby>越中国<rt>えっちゅうのくに<
 tippy('.yamatonokuni', { content: '<h3><ruby>大和国<rt>やまとのくに</rt></ruby></h3>【名詞】現在の奈良県を占める令制国。', allowHTML: true });
 tippy('.dewa', { content: '<h3><ruby>出羽国<rt>でわのくに</rt></ruby></h3>【名詞】現在の山形県と秋田県を占める令制国。', allowHTML: true });
 tippy('.oki', { content: '<h3><ruby>隠岐<rt>おきの</rt></ruby><ruby>国<rt>くに</rt></ruby></h3>【名詞】現在の島根県北方の島々を占める令制国。平安時代において「隠岐」は流刑地として知られていました。', allowHTML: true });
-tippy('.sado', { content: '<h3><ruby><ruby>佐渡国<rt>さどのくに</rt></ruby></h3>【名詞】現在の佐渡島を占める令制国。平安時代において「佐渡」は流刑地として知られていました。', allowHTML: true });
+tippy('.sado', { content: '<h3><ruby>佐渡国<rt>さどのくに</rt></ruby></h3>【名詞】現在の佐渡島を占める令制国。平安時代において「佐渡」は流刑地として知られていました。', allowHTML: true });
 tippy('.harima', { content: '<h3><ruby>播磨国<rt>はりまのくに</rt></ruby></h3>【名詞】現在の兵庫県南西部を占める令制国。', allowHTML: true });
 tippy('.tajima', { content: '<h3><ruby>但馬国<rt>むつのくに</rt></ruby></h3>【名詞】現在の兵庫県北部を占める令制国。', allowHTML: true });
 tippy('.mutsu', { content: '<h3><ruby>陸奥国<rt>むつのくに</rt></ruby></h3>【名詞】現在の福島県、宮城県、岩手県、青森県と秋田県の一部を占める令制国。', allowHTML: true });
@@ -375,7 +375,7 @@ tippy('#jojoshi', { content: '<h3><ruby>抒情詩<rt>じょじょうし</rt></ru
 tippy('.sanka', { content: '<h3><ruby>賛歌<rt>さんか</rt></ruby></h3>ほめたたえる気持ちを表す歌', allowHTML: true });
 tippy('#banka', { content: '<h3><ruby>挽歌<rt>ばんか</rt></ruby></h3>死者を悼む歌', allowHTML: true });
 tippy('#kasei', { content: '<h3><ruby>歌聖<rt>かせい</rt></ruby></h3>きわめて優れた歌人', allowHTML: true });
-tippy('.jokeika', { content: '<h3><ruby>叙景歌<rt>じょけいか</rt></ruby></h3>風景や自然現象などを表現し、作者の主観的な感情を表現した歌', allowHTML: true });
+tippy('.jokeika', { content: '<h3><ruby>叙景歌<rt>じょけいか</rt></ruby></h3>自然の風景や風物を、主観を交えず客観的に詠んだ歌。ただし、景色そのものに作者の感情が込められていることも多くあります。', allowHTML: true });
 tippy('.kakekotoba_waka', { content: '<h3><ruby>掛詞<rt>かけことば</rt></ruby></h3>掛詞とは、同音異義の2つの語句を重ねて用いることで、言葉の連想により世界を広げる技法です。', allowHTML: true });
 tippy('.honkadori_waka', { content: '<h3><ruby>本歌<rt>ほんか</rt></ruby><ruby>取<rt>ど</rt></ruby>り</h3>本歌取りとは、古歌の一部を借用することで、古歌の心情や趣向を取り込む技法のことです。', allowHTML: true });
 tippy('.keibutsu', { content: '<h3><ruby>景物<rt>けいぶつ</rt></ruby></h3>花鳥風月など、四季のその折々の風物', allowHTML: true });
@@ -391,7 +391,7 @@ tippy('.nashitsubonogonin', { content: '<h3><ruby>梨壺の五人<rt>なしつ�
 tippy('.aishouka', { content: '<h3><ruby>哀傷歌<rt>あいしょうか</rt></ruby></h3>人の死を悲しむ歌', allowHTML: true });
 tippy('.tsugomori', { content: '<h3>つごもり</h3>月の終わりごろ。 下旬。 月末。', allowHTML: true });
 tippy('.daiei', { content: '<h3><ruby>題詠<rt>だいえい</rt></ruby></h3>あらかじめ決められた題によって和歌を作ること。また、その作品のこと。', allowHTML: true });
-tippy('.yuugen', { content: '<h3>「<ruby>幽玄<rt>ゆうげん</rt></ruby></h3><ruby>幽玄<rt>ゆうげん</rt></ruby>」とは、藤原俊成が確立した中世の美的理念のひとつです。元々は中国の仏教用語で、奥深く微妙で、簡単には理解しがたいという意味の言葉でした。言葉に表れない、深くほのかな余情の美を指します。', allowHTML: true });
+tippy('.yuugen', { content: '<h3><ruby>幽玄<rt>ゆうげん</rt></ruby></h3>「<ruby>幽玄<rt>ゆうげん</rt></ruby>」とは、藤原俊成が確立した中世の美的理念のひとつです。元々は中国の仏教用語で、奥深く微妙で、簡単には理解しがたいという意味の言葉でした。言葉に表れない、深くほのかな余情の美を指します。', allowHTML: true });
 tippy('.en', { content: '<h3><ruby>艶<rt>えん</rt></ruby></h3>「<ruby>艶<rt>えん</rt></ruby>」とは、藤原俊成が確立した中世の美的理念のひとつです。元々の言葉の意味は、容色の美しいのを意味する言葉ですが、源氏物語の「もののあはれ」を受け継ぎ、内面的に深化させた艶に美の理想を求めたものです。', allowHTML: true });
 tippy('.hitomaroeigu', { content: '<h3><ruby>人麻呂影供<rt>ひとまろえいぐ</rt></ruby></h3>「<ruby>人麻呂影供<rt>ひとまろえいぐ</rt></ruby>」とは、六条藤家の祖・藤原顕季が始めた、歌聖・柿本人麻呂を祀る儀式のことです。この儀式は、柿本人麻呂の肖像を掲げ、和歌を捧げることで、人麻呂の和歌を手本に和歌に精進しようとするものです。六条藤家では、人麻呂の肖像を受け継ぐことが、嫡流の証とされました。', allowHTML: true });
 tippy('.hyouhakunokajin', { content: '<h3><ruby>漂泊<rt>ひょうはく</rt></ruby>の<ruby>歌人<rt>かじん</rt></ruby></h3>居所をきめず、さすらいながら歌を詠む人。', allowHTML: true });
@@ -413,9 +413,9 @@ tippy('.shirotaeno', { content: '<h3>【枕詞】<ruby>白妙<rt>しろたえ</r
 tippy('.hisakatano', { content: '<h3>【枕詞】<ruby>久方<rt>ひさかた</rt></ruby>の</h3>【枕詞】空・月・雲・雨などにかかる枕詞です。', allowHTML: true });
 tippy('.momodutafu', { content: '<h3>ももづたふ</h3>【枕詞】「磐余」を導きます。', allowHTML: true });
 tippy('.ashibikino', { content: '<h3>あしびきの</h3>【枕詞】「山」を導きます。「あしびきの」の語源には諸説あり、山を登るときに足をひきずるようになるからという説や山裾が長く引くようであるからという説などがあります。', allowHTML: true });
-tippy('.nubatama', { content: '<h3>ぬばたま</h3>【枕詞】「黒」や「夜」などの言葉をを導きます。', allowHTML: true });
+tippy('.nubatama', { content: '<h3>ぬばたま</h3>【枕詞】「黒」や「夜」などの言葉を導きます。', allowHTML: true });
 tippy('.chihayaburu', { content: '<h3>ちはやぶる</h3>【枕詞】「神」を導きます。勢いのある、荒々しい、すさまじい威力のという意味です', allowHTML: true });
-tippy('.mononofuno', { content: '<h3>もののふの</h3>【枕詞】「もののふの」は、「八十」（数が多いという意味）を導く枕詞です。「もののふ」は朝廷に仕えた朝廷に仕える文官と武官の様々な役人を意味します。', allowHTML: true });
+tippy('.mononofuno', { content: '<h3>もののふの</h3>【枕詞】「もののふの」は、「八十」（数が多いという意味）を導く枕詞です。「もののふ」は朝廷に仕える文官と武官の様々な役人を意味します。', allowHTML: true });
 
 /* 格助詞 */
 /* 格助詞「が」 */
@@ -1193,7 +1193,7 @@ tippy('.ousakanoseki', { content: '<div style="display:flex; flex-direction:colu
 tippy('.kasugano', { content: '<h3><ruby>春日野<rt>かすがの</rt></ruby></h3>【地名】春日山の西側の麓一帯の原野。平安貴族の行楽の地。現在の奈良公園あたり。', allowHTML: true });
 tippy('.kasuga', { content: '<h3><ruby>春日<rt>かすが</rt></ruby></h3>【地名】奈良市およびその付近の称。特に、春日大社のあたり。', allowHTML: true });
 tippy('.hatsuse', { content: '<h3><ruby>初瀬<rt>はつせ</rt></ruby></h3>【地名】奈良県桜井市の地名。長谷寺があることで知られ、長谷寺に詣でることを「初瀬詣で」と呼ばれていました。', allowHTML: true });
-tippy('.mimuroyama', { content: '<h3><ruby>三室<rt>みむろ</rt></ruby>の<ruby>山<rt>やま</rt></ruby></h3>【地名】「三室山」は、奈良県明日香村にある山。<br>別名、<ruby>神奈備山<rt>かむなびやま</rt></ruby>。', allowHTML: true });
+tippy('.mimuroyama', { content: '<h3><ruby>三室<rt>みむろ</rt></ruby>の<ruby>山<rt>やま</rt></ruby></h3>【地名】奈良県生駒郡斑鳩町にある標高82mの小さな山。すぐ近くを竜田川が流れ、モミジの名所として古歌に詠まれてきました。', allowHTML: true });
 tippy('.naranoogawa', { content: '<div style="display:flex; flex-direction:column; gap:10px;"><div style="display:flex; flex-direction:column; "><h3 style="margin-bottom:5px;">ならの<ruby>小川<rt>おがわ</rt></ruby></h3>【名詞】<p>上賀茂神社境内の南東にある摂社・奈良神社の近くを流れる川。東から流れる<ruby>御物忌<rt>おものい</rt></ruby>川と西から流れる<ruby>御手洗<rt>みたらし</rt></ruby>川が合流し、「ならの小川」になります。「なら」には「<ruby>楢<rt>なら</rt></ruby>」の木も掛かっています。</p></div><img loading="lazy" src="/img/naranoogawa.webp" alt="ならの小川" style="display:block; width:100%; height:auto; margin:0 auto 10px;"></div>', allowHTML: true });
 tippy('.tagonoura', { content: '<div style="display:flex; flex-direction:column; gap:10px;"><div style="display:flex; flex-direction:column; "><h3 style="margin-bottom:5px;"><ruby>田子<rt>たご</rt></ruby>の<ruby>浦<rt>うら</rt></ruby></h3><p>【地名】駿河国（現在の静岡県）の海岸。かつての田子の浦は、現在の田子の浦よりも西側に位置し、富士川河口よりも西側の蒲原、由比、興津あたりだと考えられています。都から来た人は蒲原地区を過ぎたあたりで初めて富士の全貌を見ることができました。この画像は葛飾北斎が描いた田子の浦の浮世絵です。</p></div><figure style="margin:0 auto 5px;"><img loading="lazy" src="/img/hokusai_tagonoura.webp" alt="田子の浦" style="display:block; width:100%; height:auto; margin-bottom:0;"><figcaption><small style="font-size:9px">Katsushika Hokusai, Public domain, via Wikimedia Commons</small></figcaption></figure></div>', allowHTML: true });
 tippy('.nikitatsu', { content: '<h3><ruby>熟田津<rt>にきたつ</rt></ruby></h3>現在の愛媛県松山市付近にあったとされる港。', allowHTML: true });
@@ -1210,7 +1210,7 @@ tippy('.eishou', { content: '<h3><ruby>永承<rt>えいしょう</rt></ruby></h3
 /* 儀式 */
 tippy('.chouyounosekku', { content: '<h3><ruby>重陽<rt>ちょうよう</rt></ruby>の<ruby>節句<rt>せっく</rt></ruby></h3>五節句の1つ。中国では奇数のことを陽数と言い、最も大きな陽数が重なる9月9日を重陽の節句としています。日本には、平安初期に伝わり、邪気払いや長寿の願いを込めて菊の花を飾る風習がありました。', allowHTML: true });
 
-tippy('.sanshunojingi', { content: '<h3 style="margin-bottom:5px;"><ruby>三種<rt>さんしゅ</rt></ruby>の<ruby>神器<rt>じんぎ</rt></ruby></h3><div style="display:flex; gap:10px; margin-bottom:10px;"><p style="width:60%;">三種の神器とは、日本の歴代天皇が皇位継承の証として受け継がれてきたものです。<ruby>八咫鏡<rt>やたのかがみ</rt></ruby>・<ruby>草薙剣<rt>くさなぎのつるぎ</rt></ruby>・<ruby>八尺瓊勾玉<rt>やさかにのまがたま</rt></ruby>という三種類の宝物です。実物は非公開のため、イラストは想像図です。</p><div style="width:40%;"><img src="/img/sacred_treasures.webp" alt="三種の神器" style="width:100%; height:auto;"></div>', allowHTML: true });
+tippy('.sanshunojingi', { content: '<h3 style="margin-bottom:5px;"><ruby>三種<rt>さんしゅ</rt></ruby>の<ruby>神器<rt>じんぎ</rt></ruby></h3><div style="display:flex; gap:10px; margin-bottom:10px;"><p style="width:60%;">三種の神器とは、日本の歴代天皇が皇位継承の証として受け継がれてきたものです。<ruby>八咫鏡<rt>やたのかがみ</rt></ruby>・<ruby>草薙剣<rt>くさなぎのつるぎ</rt></ruby>・<ruby>八尺瓊勾玉<rt>やさかにのまがたま</rt></ruby>という三種類の宝物です。実物は非公開のため、イラストは想像図です。</p><div style="width:40%;"><img src="/img/sacred_treasures.webp" alt="三種の神器" style="width:100%; height:auto;"></div></div>', allowHTML: true });
 
 tippy('.inzen', { content: '<h3><ruby>院宣<rt>いんぜん</rt></ruby></h3>上皇または法皇が出す<ruby>宣旨<rt>せんじ</rt></ruby>（命令）', allowHTML: true });
 tippy('.gosechinomai', {
@@ -1268,11 +1268,11 @@ tippy('.fukurozoushi', { content: '<h3><ruby>袋草紙<rt>ふくろぞうし</rt
 tippy('.kokinrokujou', { content: '<h3><ruby>古今和歌六帖<rt>こきんわかろくじょう</rt></ruby></h3>平安時代に編纂された私撰和歌集。『万葉集』から『古今和歌集』、『後撰和歌集』の頃までの約4500首の和歌を収録し、全部で六帖あります。編纂者は不明です。', allowHTML: true });
 tippy('.kintoushu', { content: '<h3><ruby>大納言公任集<rt>だいなごんきんとうしゅう</rt></ruby></h3>藤原公任の歌集。『公任集』と呼ばれることもあります。', allowHTML: true });
 tippy('.eikyuhyakushu', { content: '<h3><ruby>永久百首<rt>えいきゅうひゃくしゅ</rt></ruby></h3>鳥羽天皇の勅命により、堀河天皇と中宮篤子内親王を偲び、藤原仲実らが中心となって催した百首歌。', allowHTML: true });
-tippy('.kyuanhyakushu', { content: '<h3><ruby>久安百首<rt>きゅうあんひゃくしゅ</rt></ruby></h3>平安後期、崇徳院の命により藤原顕輔、藤原清輔 、待賢門院堀川ら14名の歌人が久安6年（1150年）までに詠進した百首歌', allowHTML: true });
+tippy('.kyuanhyakushu', { content: '<h3><ruby>久安百首<rt>きゅうあんひゃくしゅ</rt></ruby></h3>平安後期、崇徳院の命により藤原顕輔、藤原清輔、待賢門院堀川ら14名の歌人が久安6年（1150年）までに詠進した百首歌', allowHTML: true });
 tippy('.houjouki', { content: '<h3><ruby>方丈記<rt>ほうじょうき</rt></ruby></h3>鴨長明による鎌倉時代の随筆。「行く川のながれは絶えずして、しかも本の水にあらず。よどみに浮ぶうたかたは、かつ消えかつ結びて久しくとどまることなし。世の中にある人とすみかと、またかくの如し。」という書き出しで始まります。', allowHTML: true });
 tippy('.mumyoushou', { content: '<h3><ruby>無名抄<rt>むみょうしょう</rt></ruby></h3>鴨長明による鎌倉時代の歌論書', allowHTML: true });
 tippy('.sankashu', { content: '<h3><ruby>山家集<rt>さんかしゅう</rt></ruby></h3>西行法師の家集。3巻あり、約1560首が収められています。', allowHTML: true });
-tippy('.kinkaishu', { content: '<h3><ruby>金槐和歌集<rt>きんかいわかしゅう</rt></ruby></h3>源実朝の家集。「金」は鎌の偏、「槐」は大臣の唐名である「槐門」から取って名付けられており、別名『鎌倉右大臣家集』といいいます。全一巻、663首が掲載されています。', allowHTML: true });
+tippy('.kinkaishu', { content: '<h3><ruby>金槐和歌集<rt>きんかいわかしゅう</rt></ruby></h3>源実朝の家集。「金」は鎌の偏、「槐」は大臣の唐名である「槐門」から取って名付けられており、別名『鎌倉右大臣家集』といいます。全一巻、663首が掲載されています。', allowHTML: true });
 tippy('.gukanshou', { content: '<h3><ruby>愚管抄<rt>ぐかんしょう</rt></ruby></h3>鎌倉時代初期の史論書。承久の乱の直前（朝廷と幕府の緊張が高まった頃）に慈円によって書かれました。神武天皇から順徳天皇までの歴史を、末法思想という時代の終焉を示す概念で解釈し、日本の政治の変遷を道理の展開として説明しています。後鳥羽院の挙兵を諫めることが目的で書かれたとされています。「愚管」とは私見の謙譲語です。', allowHTML: true });
 tippy('.genjimonogatari', { content: '<h3><ruby>源氏物語<rt>げんじものがたり</rt></ruby></h3>紫式部が書いた世界最古の長編小説。', allowHTML: true });
 tippy('.tsureduregusa', { content: '<h3><ruby>徒然草<rt>つれづれぐさ</rt></ruby></h3>兼好法師が書いた随筆。清少納言『枕草子』、鴨長明『方丈記』とならび日本三大随筆と称せられています。', allowHTML: true });
@@ -1306,7 +1306,7 @@ tippy('.nishigori', { content: '<h3><ruby>錦織<rt>にしごり</rt></ruby></h3
 tippy('.nusa', { content: '<h3><ruby>幣<rt>ぬさ</rt></ruby></h3><div style="display:flex; align-items:center;"><img src="/img/nusa.webp" alt="幣（ぬさ）" style="width:100px; height:auto;"><p>【名詞】旅の安全を祈る際に神様に捧げるもので、紙・麻などを切って垂らした神具</p></div>', allowHTML: true });
 tippy('.shigou', { content: '<h3><ruby>諡号<rt>しごう</rt></ruby></h3>【名詞】貴人に死後に贈られる名前', allowHTML: true });
 tippy('.kemari', { content: '<h3><ruby>蹴鞠<rt>けまり</rt></ruby></h3>【名詞】鞠を一定の高さで蹴り続ける球技で、勝敗を競うものではなく、相手が蹴りやすいように鞠を渡すことが重視された貴族の遊びです。', allowHTML: true });
-tippy('.honcho', { content: '<h3><ruby>本朝三美人<rt>ほんちょうさんびじん</rt></ruby></h3>【名詞】南北朝時代に編纂された源・平・藤・橘などの代表的諸氏の系譜集『尊卑分脈』において、藤原道綱母が「本朝第一美人三人内也」と書かれています。本朝とは我が国とう意味ですので、言わば日本の三大美人の1人に藤原道綱母が上げられています。ちなみに他の2人は衣通姫、光明皇后です。道綱母は才媛であるだけでなく、絶世の美女だったようです。', allowHTML: true });
+tippy('.honcho', { content: '<h3><ruby>本朝三美人<rt>ほんちょうさんびじん</rt></ruby></h3>【名詞】南北朝時代に編纂された源・平・藤・橘などの代表的諸氏の系譜集『尊卑分脈』において、藤原道綱母が「本朝第一美人三人内也」と書かれています。本朝とは我が国という意味ですので、言わば日本の三大美人の1人に藤原道綱母が上げられています。ちなみに他の2人は衣通姫、光明皇后です。道綱母は才媛であるだけでなく、絶世の美女だったようです。', allowHTML: true });
 tippy('.rakushoku', { content: '<h3><ruby>落飾<rt>らくしょく</rt></ruby></h3>【名詞】女性が髪を切り落として、仏門に入ること。', allowHTML: true });
 tippy('.sanshunosai', { content: '<h3><ruby>三舟<rt>さんしゅう</rt></ruby>の<ruby>才<rt>さい</rt></ruby></h3>【名詞】詩・歌・管弦のすべてに優れていること。「<ruby>三船<rt>さんせん</rt></ruby>の<ruby>才<rt>さい</rt></ruby>」と呼ばれることもあります。', allowHTML: true });
 tippy('.nyouboumei', { content: '<h3><ruby>女房名<rt>にょうぼうめい</rt></ruby></h3>【名詞】女房（自分の部屋を持ち、貴人に仕える女性）が仕事で使う通称。女性の本名を公表することはなかったため、通称が必要でした。', allowHTML: true });
@@ -1405,3 +1405,44 @@ tippy('.isejingu', { content: '<h3><ruby>伊勢神宮<rt>いせじんぐう</rt>
 tippy('.shinagon', { content: '<h3><ruby>四納言<rt>しなごん</rt></ruby></h3>一条天皇の時代に活躍した4人の公卿（源俊賢・藤原公任・藤原斉信・藤原行成）の称。', allowHTML: true });
 tippy('.renga', { content: '<h3><ruby>連歌<rt>れんが</rt></ruby></h3>5・7・5の句と7・7の句を、複数人で交互に連ねて詠む詩歌。和歌の上の句と下の句を別々の人が詠む遊びから始まったとされています。', allowHTML: true });
 tippy('.jokotoba49', { content: '<h3>序詞</h3>「御垣守衛士のたく火の」は序詞。夜は燃え、昼は消える衛士のかがり火で、恋心のさまをたとえています。', allowHTML: true });
+tippy('.annanohen', { content: '<h3><ruby>安和<rt>あんな</rt></ruby>の<ruby>変<rt>へん</rt></ruby>（969年）</h3>藤原氏による他氏排斥事件。謀反の密告により左大臣・源高明が失脚させられました。以後、摂政・関白が常に置かれるようになりました。', allowHTML: true });
+tippy('.kakekotoba51', { content: '<h3>掛詞</h3>「いぶき」は地名の「伊吹」と「言ふ」、「思ひ」の「ひ」は「火」の掛詞です。「さしも草」「燃ゆる」は「火」の縁語です。', allowHTML: true });
+tippy('.michitaka', { content: '<h3><ruby>藤原道隆<rt>ふじわらのみちたか</rt></ruby>（953〜995年）</h3>摂政関白太政大臣・藤原兼家の長男。「中関白」と呼ばれました。一条天皇の皇后・定子の父。', allowHTML: true });
+tippy('.daikakuji', { content: '<h3><ruby>大覚寺<rt>だいかくじ</rt></ruby></h3>京都市右京区嵯峨大沢町にある真言宗大覚寺派の大本山。嵯峨天皇の離宮を寺に改めた寺院で、大沢池は唐の洞庭湖を模して嵯峨天皇が築いたといわれています。', allowHTML: true });
+tippy('.kannanohen', { content: '<h3><ruby>寛和<rt>かんな</rt></ruby>の<ruby>変<rt>へん</rt></ruby>（986年）</h3>右大臣・藤原兼家が謀略によって花山天皇を退位・出家させた事件。外孫の一条天皇が即位し、兼家は摂政となって権力を握りました。', allowHTML: true });
+tippy('.jokotoba58', { content: '<h3>序詞</h3>「有馬山猪名の笹原風吹けば」は序詞。笹が風にそよぐ「そよ」の音を繰り返して、「いでそよ（そうですよ）」を導いています。', allowHTML: true });
+tippy('.ooeyama', { content: '<h3><ruby>大江山<rt>おおえやま</rt></ruby></h3>丹後半島の付け根にある標高832mの連山。酒呑童子の伝説で知られます。百人一首の「大江山」は、京都市西京区の大枝山を掛けているという説もあります。', allowHTML: true });
+tippy('.kakekotoba60', { content: '<h3>掛詞</h3>「いく野」は地名の「生野」と「行く」、「ふみ」は「踏み」と「文（手紙）」の掛詞です。', allowHTML: true });
+tippy('.kankokukan', { content: '<h3><ruby>函谷関<rt>かんこくかん</rt></ruby></h3>中国河南省にあった関所。夜は閉じられ、朝まで開かない決まりでした。秦から逃れる孟嘗君の一行は、鶏の鳴きまねが上手な食客のおかげで関を開けさせ、危地を脱したといわれます（鶏鳴狗盗）。', allowHTML: true });
+tippy('.ousakanoseki62', { content: '<h3>逢坂の関（掛詞）</h3>山城国と近江国の境の関所。「逢坂」の「逢ふ」に「（あなたと）会う」を掛けて、「逢坂の関は許さない（あなたとは会わない）」と詠んでいます。', allowHTML: true });
+tippy('.oomine', { content: '<h3><ruby>大峰山<rt>おおみねさん</rt></ruby></h3>奈良県南部にある山（大峰山脈）。役小角を開祖とする修験道の根本道場とされています。', allowHTML: true });
+tippy('.miidera', { content: '<h3><ruby>三井寺<rt>みいでら</rt></ruby>（<ruby>園城寺<rt>おんじょうじ</rt></ruby>）</h3>滋賀県大津市にある天台寺門宗の総本山。', allowHTML: true });
+tippy('.shugendou', { content: '<h3><ruby>修験道<rt>しゅげんどう</rt></ruby></h3>山岳信仰に仏教（密教）などの要素が混ざって成立した日本独自の宗教。山にこもって厳しい修行を行い、悟りを得ることを目指します。', allowHTML: true });
+tippy('.gojisou', { content: '<h3><ruby>護持僧<rt>ごじそう</rt></ruby></h3>天皇など貴人の身体を守るために祈祷を行った僧。', allowHTML: true });
+tippy('.ohara', { content: '<h3><ruby>大原<rt>おおはら</rt></ruby></h3>京都市左京区北東部、比叡山の北西麓にある山里。四方を山に囲まれ、古くから出家・隠遁の地として知られていました。', allowHTML: true });
+tippy('.utamakura', { content: '<h3><ruby>歌枕<rt>うたまくら</rt></ruby></h3>和歌に繰り返し詠まれてきた名所。竜田川なら紅葉、吉野なら雪や桜のように、決まったイメージと結びついています。', allowHTML: true });
+tippy('.kakekotoba72', { content: '<h3>掛詞・縁語</h3>「高師」は地名の「高師の浜」と、浮気で名「高し」の掛詞。「かけじや」は波を「掛けじ」と心を「掛けじ」の掛詞で、「濡れ」は涙で袖が濡れることを表しています。', allowHTML: true });
+tippy('.okubotoshimichi', { content: '<h3><ruby>大久保利通<rt>おおくぼとしみち</rt></ruby>（1830〜1878年）</h3>旧薩摩藩士の政治家。西郷隆盛・木戸孝允と並ぶ「維新の三傑」の一人です。', allowHTML: true });
+tippy('.toshinari', { content: '<h3><ruby>藤原俊成<rt>ふじわらのとしなり</rt></ruby>（1114〜1204年）</h3>平安時代後期から鎌倉時代初期の公家・歌人。『千載和歌集』の撰者で、藤原定家の父。歌合の判詞で用いた「幽玄」は、中世を代表する美的理念となりました。', allowHTML: true });
+tippy('.goshirakawa', { content: '<h3><ruby>後白河天皇<rt>ごしらかわてんのう</rt></ruby></h3>第77代天皇。鳥羽天皇の第四皇子。譲位後34年間にわたり院政を敷きました。今様を愛好し『梁塵秘抄』を撰しました。', allowHTML: true });
+tippy('.jokotoba77', { content: '<h3><ruby>序詞<rt>じょことば</rt></ruby></h3>「<ruby>瀬<rt>せ</rt></ruby>をはやみ<ruby>岩<rt>いわ</rt></ruby>にせかるる<ruby>滝川<rt>たきがわ</rt></ruby>の」が「われても<ruby>末<rt>すえ</rt></ruby>に<ruby>逢<rt>あ</rt></ruby>はむ」を導く序詞です。岩で二つに分かれた流れが下流でまた一つになるように、今は離れていてもいつか再会しようという思いを表しています。「われて」は「（流れが）分かれて」と「（二人が）別れて」の両方の意味をもちます。', allowHTML: true });
+tippy('.toba', { content: '<h3><ruby>鳥羽天皇<rt>とばてんのう</rt></ruby></h3>【人物名】第74代天皇。堀河天皇の皇子。譲位後は崇徳・近衛・後白河の3代28年にわたって院政を行いました。', allowHTML: true });
+tippy('.konoe', { content: '<h3><ruby>近衛天皇<rt>このえてんのう</rt></ruby></h3>【人物名】第76代天皇。鳥羽天皇と美福門院藤原得子の皇子。3歳で即位し、17歳で皇子のないまま亡くなりました。', allowHTML: true });
+tippy('.kiyomori', { content: '<h3><ruby>平清盛<rt>たいらのきよもり</rt></ruby></h3>【人物名】平安時代末期の武将・公卿。桓武平氏の棟梁で、武士として初めて太政大臣になりました。', allowHTML: true });
+tippy('.rokujoutouke', { content: '<h3><ruby>六条藤家<rt>ろくじょうとうけ</rt></ruby></h3>【名詞】藤原<ruby>顕季<rt>あきすえ</rt></ruby>を祖とする歌道の家。顕季の邸宅が京都の六条烏丸にあったことからこう呼ばれます。伝統的な歌風を重んじ、顕輔・清輔の代に最も栄えましたが、のちに御子左家に押されて衰えました。', allowHTML: true });
+tippy('.ninnaji', { content: '<h3><ruby>仁和寺<rt>にんなじ</rt></ruby></h3>【寺院名】京都市右京区御室にある真言宗御室派の総本山。光孝天皇が建立を発願し、子の宇多天皇が888年に完成させました。宇多天皇は出家後ここに住みました。', allowHTML: true });
+tippy('.teika', { content: '<h3><ruby>藤原定家<rt>ふじわらのさだいえ</rt></ruby></h3>【人物名】鎌倉時代初期の歌人。藤原俊成の子。『小倉百人一首』の撰者で、『新古今和歌集』の撰者の一人、『新勅撰和歌集』の撰者でもあります。百人一首97番の作者。', allowHTML: true });
+tippy('.nijou', { content: '<h3><ruby>二条天皇<rt>にじょうてんのう</rt></ruby></h3>【人物名】第78代天皇。後白河天皇の第一皇子。', allowHTML: true });
+tippy('.kamonochoumei', { content: '<h3><ruby>鴨長明<rt>かものちょうめい</rt></ruby></h3>【人物名】平安時代末期から鎌倉時代初期の歌人・随筆家。下鴨神社の禰宜の家に生まれ、俊恵に和歌を学びました。『方丈記』『無名抄』の作者。', allowHTML: true });
+tippy('.koyasan', { content: '<h3><ruby>高野山<rt>こうやさん</rt></ruby></h3>【地名】和歌山県北部にある山。816年に空海が金剛峯寺を開き、真言宗の中心地となりました。', allowHTML: true });
+tippy('.inpumonin', { content: '<h3><ruby>殷富門院<rt>いんぷもんいん</rt></ruby></h3>【人物名】後白河天皇の第一皇女・<ruby>亮子<rt>りょうし</rt></ruby>内親王の女院号。式子内親王の同母姉です。', allowHTML: true });
+tippy('.tsuchimikado', { content: '<h3><ruby>土御門天皇<rt>つちみかどてんのう</rt></ruby></h3>【人物名】第83代天皇。後鳥羽天皇の第一皇子。3歳で即位し、父の後鳥羽上皇が院政を行いました。', allowHTML: true });
+tippy('.yorimasa', { content: '<h3><ruby>源頼政<rt>みなもとのよりまさ</rt></ruby></h3>【人物名】平安時代末期の武将・歌人。1180年、以仁王とともに平氏打倒の兵を挙げましたが、宇治で敗れて自害しました。', allowHTML: true });
+tippy('.gishuumonin', { content: '<h3><ruby>宜秋門院<rt>ぎしゅうもんいん</rt></ruby></h3>【人物名】後鳥羽天皇の中宮・藤原<ruby>任子<rt>にんし</rt></ruby>の女院号。九条兼実の娘です。', allowHTML: true });
+tippy('.mochihitoou', { content: '<h3><ruby>以仁王<rt>もちひとおう</rt></ruby></h3>【人物名】後白河天皇の皇子。1180年、平氏追討の令旨を出し、源頼政とともに挙兵しましたが、敗れて討たれました。この令旨が源平の争乱のきっかけになりました。', allowHTML: true });
+tippy('.houjoumasako', { content: '<h3><ruby>北条政子<rt>ほうじょうまさこ</rt></ruby></h3>【人物名】源頼朝の妻で、北条時政の娘。頼朝の死後は出家して幕府の実権を握り、「尼将軍」と呼ばれました。', allowHTML: true });
+tippy('.kugyo', { content: '<h3><ruby>公暁<rt>くぎょう</rt></ruby></h3>【人物名】鎌倉幕府2代将軍・源頼家の子で、実朝の甥。鶴岡八幡宮の別当でしたが、同宮で実朝を暗殺し、その日のうちに討たれました。', allowHTML: true });
+tippy('.saionjiji', { content: '<h3><ruby>西園寺<rt>さいおんじ</rt></ruby></h3>【寺院名】1224年に西園寺公経が京都の北山に建てた寺。公経の家はこの寺の名から「西園寺」を家名としました。のちに足利義満がこの地に北山殿を造営し、現在の鹿苑寺（金閣寺）になりました。', allowHTML: true });
+tippy('.minazukibarae', { content: '<h3><ruby>六月祓<rt>みなづきばらえ</rt></ruby></h3>旧暦6月の末日に行われる<ruby>祓<rt>はらえ</rt></ruby>の行事。半年間の罪や<ruby>穢<rt>けが</rt></ruby>れを祓い清めます。「夏越の祓」とも呼ばれ、現在も各地の神社で行われています。', allowHTML: true });
+tippy('.gohorikawa', { content: '<h3><ruby>後堀河天皇<rt>ごほりかわてんのう</rt></ruby></h3>【人物名】第86代天皇。藤原定家に『新勅撰和歌集』の編纂を命じました。', allowHTML: true });
+tippy('.houjouyoshitoki', { content: '<h3><ruby>北条義時<rt>ほうじょうよしとき</rt></ruby></h3>【人物名】鎌倉幕府2代執権。北条時政の子で、北条政子の弟。承久の乱で後鳥羽上皇の軍を破りました。', allowHTML: true });

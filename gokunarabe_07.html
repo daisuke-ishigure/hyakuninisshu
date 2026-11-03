@@ -32,7 +32,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css?20261031-01">
- <link rel="stylesheet" href="css/gokunarabe.css?ver025">
+ <link rel="stylesheet" href="css/gokunarabe.css?20261103-01">
   <link rel="stylesheet" href="css/wordcloud.css?ver006">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" href="/favicon.ico">
@@ -120,9 +120,9 @@
           <!-- ── 解説スペース（HTML側に記述） ── -->
           <div id="kake-desc">
             <h2 class="imi">意味</h2>
-            <p class="kaisetsu">遥かな大空を仰ぎ見ると月が出ていた。あの月は春日の三笠山に出ていた月と同じなのだろうか。</p>
+            <p class="kaisetsu">遥かな大空を仰ぎ見ると月が出ていた。あの月は<span class="tippy kasuga">春日</span>の<span class="tippy mikasayama">三笠山</span>に出ていた月と同じなのだろうか。</p>
             <h2 class="kaisetsu">解説</h2>
-            <p class="kaisetsu">安倍仲麻呂は10代後半で留学生として遣唐使とともに唐へ渡り、20代で難関の科挙に合格しました。その後は要職に就き、玄宗皇帝に仕えました。</p>
+            <p class="kaisetsu">安倍仲麻呂は10代後半で留学生として<span class="tippy kentoushi">遣唐使</span>とともに唐へ渡り、20代で難関の<span class="tippy kakyo">科挙</span>に合格しました。その後は要職に就き、玄宗皇帝に仕えました。</p>
             <p class="kaisetsu">長く異国の地で活躍した仲麻呂は、50歳を過ぎてようやく帰国の機会を得ます。この歌は、その帰国を前に開かれた送別の宴で詠まれたと伝えられています。</p>
             <p class="kaisetsu">若くして日本を離れてから三十年以上。仲麻呂はこのとき、ようやく故郷の月を再び見ることができると信じていたのでしょう。</p>
             
@@ -215,7 +215,7 @@
  
 <!-- ▲▲▲ 設定ここまで ▲▲▲ -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="js/gokunarabe.js?20261024-03"></script>
+  <script src="js/gokunarabe.js?20261103-01"></script>
 
   <script src="js/poet-index.js?20261024-03"></script>
   <!-- ▼▼▼ Word Cloud ▼▼▼ -->
@@ -225,5 +225,10 @@
   <script src="https://cdn.jsdelivr.net/npm/d3-cloud@1.2.9/build/d3.layout.cloud.js"></script>
   <script src="js/wordcloud.js?ver011"></script>
   <!-- ▲▲▲ Word Cloud ▲▲▲ -->
+  <!-- ▼▼▼ Tooltips ▼▼▼ -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/tooltips.js?20261103-17"></script>
+  <!-- ▲▲▲ Tooltips ▲▲▲ -->
 </body>
 </html>

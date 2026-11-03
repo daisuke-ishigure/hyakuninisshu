@@ -107,10 +107,10 @@ gokunarabe_NN_en.html   （NN は2桁ゼロ埋め: 01, 02 … 100）
   <!-- スクリプト（順番を守る） -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="js/gokunarabe.js?ver=1.0.12"></script>
-  <!-- tippy.js（解説にツールチップを使う場合） -->
+  <!-- tippy.js（英語版は必ず tooltips_en.js。日本語の tooltips.js を読み込まない） -->
   <script src="../js/popper.min.js"></script>
   <script src="../js/tippy.umd.min.js"></script>
-  <script src="../js/tooltips.js?2026906"></script>
+  <script src="../js/tooltips_en.js?YYYYMMDD-NN"></script>
   <!-- Word Cloud -->
   <script src="js/poet-index.js?ver002"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
@@ -262,3 +262,10 @@ window.KAKE_CONFIG = {
 | 26 | 作成済み | 現行フォーマット準拠 |
 | 27 | 作成済み | 現行フォーマット準拠 |
 | 28〜100 | **未作成** | |
+
+## 8. ツールチップ（英語版）
+
+- 解説（Meaning / Commentary）の固有名詞・用語には、同じ番号の `N_en.html` と同じクラスの `<span class="tippy CLASS">` を付ける（内容は `js/tooltips_en.js`）。
+- `#kake-meaning` は `js/gokunarabe.js` が `js/hyakunin.json` の `modern_en` で上書きする。文面が同じときは上書きしないので、Meaning は `modern_en` と一字一句同じにする（違うとツールチップごと消える）。
+- 英語版の `.tippy` は `css/gokunarabe.css` で `display: inline`（長い英語の語句も普通に折り返す）。
+- 解説の事実は `N_en.html` / 日本語版 `gokunarabe_NN.html` と食い違わないようにする。

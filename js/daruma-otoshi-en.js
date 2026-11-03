@@ -552,7 +552,7 @@
 };
 
   /* ===== hyakunin.json が利用可能なら POET_EN / MEANING_EN を上書き ===== */
-  fetch('js/hyakunin.json?20261028-02')
+  fetch('js/hyakunin.json?20261103-01')
     .then(r => r.json())
     .then(json => {
       Object.entries(json).forEach(([k, v]) => {

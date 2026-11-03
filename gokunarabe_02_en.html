@@ -34,7 +34,7 @@
     href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="css/style.css?20261031-01">
-  <link rel="stylesheet" href="css/gokunarabe.css?ver025">
+  <link rel="stylesheet" href="css/gokunarabe.css?20261103-01">
   <link rel="stylesheet" href="css/wordcloud.css?ver006">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" href="/favicon.ico">
@@ -123,9 +123,9 @@
           <!-- ── 解説スペース（HTML側に記述） ── -->
           <div id="kake-desc">
             <h2 class="imi">Meaning</h2>
-            <p class="kaisetsu" id="kake-meaning">Spring has passed and summer seems to have come — white robes are said to be hung out to dry on the heavenly Mount Kagu.</p>
+            <p class="kaisetsu" id="kake-meaning">Spring has passed and summer seems to have come — <span class="tippy shirotae">white robes</span> are said to be hung out to dry on the <span class="tippy kaguyama">heavenly Mount Kagu</span>.</p>
             <h2 class="kaisetsu">Commentary</h2>
-            <p class="kaisetsu">Mount Kagu could be seen to the east from Fujiwara-kyō, the capital where Empress Jitō
+            <p class="kaisetsu">Mount Kagu could be seen to the east from <span class="tippy hujiwarakyo">Fujiwara-kyō</span>, the capital where Empress Jitō
               ruled. In early summer it was said that white robes were dried on this sacred mountain. That sight of
               white cloth against the green hillside was a cherished sign that summer had arrived.</p>
             <a href="2_en.html" class="detail-btn">Learn more</a>
@@ -232,7 +232,7 @@
 
   <!-- ▲▲▲ 設定ここまで ▲▲▲ -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="js/gokunarabe.js?20261024-03"></script>
+  <script src="js/gokunarabe.js?20261103-01"></script>
 
   <script src="js/poet-index.js?20261024-03"></script>
   <!-- ▼▼▼ Word Cloud ▼▼▼ -->
@@ -242,6 +242,11 @@
   <script src="https://cdn.jsdelivr.net/npm/d3-cloud@1.2.9/build/d3.layout.cloud.js"></script>
   <script src="js/wordcloud.js?ver011"></script>
   <!-- ▲▲▲ Word Cloud ▲▲▲ -->
+  <!-- ▼▼▼ Tooltips ▼▼▼ -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/tooltips_en.js?20261103-17"></script>
+  <!-- ▲▲▲ Tooltips ▲▲▲ -->
 </body>
 
 </html>

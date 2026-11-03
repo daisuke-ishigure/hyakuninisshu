@@ -1,6 +1,6 @@
 "use strict";
 $();
-const jsonAddress = "../js/hyakunin.json?20261028-02";
+const jsonAddress = "../js/hyakunin.json?20261103-01";
 
 // The HTML for one table row (colorMap, badge number lists, buildPoemRowHTML) lives in
 // js/list-rows_en.js. Load it before this file.

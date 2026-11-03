@@ -35,7 +35,7 @@
     href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="css/style.css?20261031-01">
-  <link rel="stylesheet" href="css/gokunarabe.css?ver025">
+  <link rel="stylesheet" href="css/gokunarabe.css?20261103-01">
   <link rel="stylesheet" href="css/wordcloud.css?ver006">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" href="/favicon.ico">
@@ -125,7 +125,7 @@
           <!-- ── 解説スペース（HTML側に記述） ── -->
           <div id="kake-desc">
             <h2 class="imi">Meaning</h2>
-            <p class="kaisetsu" id="kake-meaning">In this short life, even as brief as a joint of reed at Naniwa Bay, must I pass through this world without ever meeting you?</p>
+            <p class="kaisetsu" id="kake-meaning">In this short life, even as brief as <span class="tippy fushinoma">a joint of reed</span> at <span class="tippy naniwagata">Naniwa Bay</span>, must I pass through this world without ever meeting you?</p>
             <h2 class="kaisetsu">Commentary</h2>
             <p class="kaisetsu">
               This poem is said to express the poet's complex feelings after the end of a former love.
@@ -240,7 +240,7 @@
 
   <!-- ▲▲▲ 設定ここまで ▲▲▲ -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="js/gokunarabe.js?20261024-03"></script>
+  <script src="js/gokunarabe.js?20261103-01"></script>
 
   <script src="js/poet-index.js?20261024-03"></script>
   <!-- ▼▼▼ Word Cloud ▼▼▼ -->
@@ -250,6 +250,11 @@
   <script src="https://cdn.jsdelivr.net/npm/d3-cloud@1.2.9/build/d3.layout.cloud.js"></script>
   <script src="js/wordcloud.js?ver011"></script>
   <!-- ▲▲▲ Word Cloud ▲▲▲ -->
+  <!-- ▼▼▼ Tooltips ▼▼▼ -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/tooltips_en.js?20261103-17"></script>
+  <!-- ▲▲▲ Tooltips ▲▲▲ -->
 </body>
 
 </html>

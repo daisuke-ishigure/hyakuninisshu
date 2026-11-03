@@ -34,7 +34,7 @@
     href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="css/style.css?20261031-01">
- <link rel="stylesheet" href="css/gokunarabe.css?ver025">
+ <link rel="stylesheet" href="css/gokunarabe.css?20261103-01">
   <link rel="stylesheet" href="css/wordcloud.css?ver006">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" href="/favicon.ico">
@@ -122,9 +122,9 @@
           <!-- ── 解説スペース（HTML側に記述） ── -->
           <div id="kake-desc">
             <h2 class="imi">意味</h2>
-            <p class="kaisetsu">これがあの、旅立つ人も帰る人も、知っている人も知らない人も、別れたり、行き会ったりする逢坂の関なのだなぁ。</p>
+            <p class="kaisetsu">これがあの、旅立つ人も帰る人も、知っている人も知らない人も、別れたり、行き会ったりする<span class="tippy ousakanoseki">逢坂の関</span>なのだなぁ。</p>
             <h2 class="kaisetsu">解説</h2>
-            <p class="kaisetsu">蝉丸は、盲目の琵琶法師で、逢坂の関の近くで暮らしていたと伝えられています。</p>
+            <p class="kaisetsu">蝉丸は、盲目の<span class="tippy biwahoushi">琵琶法師</span>で、逢坂の関の近くで暮らしていたと伝えられています。</p>
             <p class="kaisetsu">逢坂の関は、多くの人々が行き交う交通の要所でした。毎日のように誰かが去り、誰かがやって来る…。蝉丸はそんな光景を見つめながら、人の世もまた出会いと別れの繰り返しであることを実感していたのかもしれません。</p>
             <a href="10.html" class="detail-btn">詳しくはこちら</a>
           </div>
@@ -215,7 +215,7 @@
 
   <!-- ▲▲▲ 設定ここまで ▲▲▲ -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="js/gokunarabe.js?20261024-03"></script>
+  <script src="js/gokunarabe.js?20261103-01"></script>
 
   <script src="js/poet-index.js?20261024-03"></script>
   <!-- ▼▼▼ Word Cloud ▼▼▼ -->
@@ -225,6 +225,11 @@
   <script src="https://cdn.jsdelivr.net/npm/d3-cloud@1.2.9/build/d3.layout.cloud.js"></script>
   <script src="js/wordcloud.js?ver011"></script>
   <!-- ▲▲▲ Word Cloud ▲▲▲ -->
+  <!-- ▼▼▼ Tooltips ▼▼▼ -->
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/tippy.umd.min.js"></script>
+  <script src="../js/tooltips.js?20261103-17"></script>
+  <!-- ▲▲▲ Tooltips ▲▲▲ -->
 </body>
 
 </html>
