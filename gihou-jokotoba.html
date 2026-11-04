@@ -124,7 +124,7 @@
       position: relative; /* 矢印の SVG より前面に出す */
       display: flex;
       flex-wrap: wrap;
-      align-items: flex-start;
+      align-items: baseline; /* ルビの有無によらず句のベースラインをそろえる */
       column-gap: 0.8em;
       row-gap: 2em; /* 折り返した行の上にもラベルが収まる高さ */
       margin: 0;
@@ -145,12 +145,6 @@
     .jk-ja {
       font-size: 1.5rem;
       line-height: 1.5;
-    }
-    /* ルビの有無で行の高さが変わらないよう、全句の先頭に幅0の支柱を立ててベースラインをそろえる */
-    .jk-ja::before {
-      content: "";
-      display: inline-block;
-      height: 1.5em;
     }
     .jk-ro {
       font-family: "Noto Sans", sans-serif;

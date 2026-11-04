@@ -130,7 +130,7 @@
       position: relative;
       display: flex;
       flex-wrap: wrap;
-      align-items: flex-start;
+      align-items: baseline; /* ルビの有無によらず句のベースラインをそろえる */
       column-gap: 0.8em;
       row-gap: 1em;
       margin: 0 0 1em;
@@ -158,12 +158,6 @@
     .kk-ja {
       font-size: 1.5rem;
       line-height: 1.5;
-    }
-    /* ルビの有無で行の高さが変わらないよう、全句の先頭に幅0の支柱を立ててベースラインをそろえる */
-    .kk-ja::before {
-      content: "";
-      display: inline-block;
-      height: 1.5em;
     }
     .kk-ro {
       font-family: "Noto Sans", sans-serif;

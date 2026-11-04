@@ -138,6 +138,7 @@
       color: #b82343;
     }
     .hk-ku {
+      align-self: baseline; /* 左右の列で句のベースラインをそろえる */
       display: flex;
       white-space: nowrap;
     }
@@ -146,12 +147,6 @@
       font-weight: 700;
       font-size: 1.3rem;
       line-height: 1.9;
-    }
-    /* ルビの有無で行の高さが変わらないよう、全句の先頭に幅0の支柱を立ててベースラインをそろえる */
-    .hk-ja::before {
-      content: "";
-      display: inline-block;
-      height: 1.6em;
     }
     .hk-ja rt {
       font-size: 0.45em;
