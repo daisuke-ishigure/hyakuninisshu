@@ -160,6 +160,12 @@
       font-size: 1.6rem;
       line-height: 1.4;
     }
+    /* ルビの有無で行の高さが変わらないよう、全句の先頭に幅0の支柱を立ててベースラインをそろえる */
+    .mk-ja::before {
+      content: "";
+      display: inline-block;
+      height: 1.5em;
+    }
     .mk-ro {
       font-family: "Noto Sans", sans-serif;
       font-size: 0.8rem;

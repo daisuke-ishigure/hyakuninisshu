@@ -111,6 +111,7 @@
       position: relative;
       display: grid;
       grid-template-columns: minmax(0, max-content) minmax(0, max-content);
+      grid-template-rows: repeat(6, auto); /* 見出し＋5句。左右の列で行の高さをそろえる */
       justify-content: center;
       column-gap: clamp(1.8rem, 10vw, 7rem);
       margin: 0.5em auto 1em;
@@ -125,9 +126,10 @@
     }
     .hk-col {
       position: relative; /* 線の SVG より前面に出す */
-      display: flex;
-      flex-direction: column;
-      gap: 0.3em;
+      display: grid;
+      grid-row: span 6;
+      grid-template-rows: subgrid;
+      row-gap: 0.3em;
     }
     .hk-head {
       margin: 0;
@@ -144,6 +146,12 @@
       font-weight: 700;
       font-size: 1.3rem;
       line-height: 1.9;
+    }
+    /* ルビの有無で行の高さが変わらないよう、全句の先頭に幅0の支柱を立ててベースラインをそろえる */
+    .hk-ja::before {
+      content: "";
+      display: inline-block;
+      height: 1.6em;
     }
     .hk-ja rt {
       font-size: 0.45em;
