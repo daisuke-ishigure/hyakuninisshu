@@ -758,7 +758,7 @@ let poems = {
         "utamakuraMark": "",
         "utamakuraLink": "",
         "honkadoriMark": "<img src='../img/mark_honkadori.svg' alt='本歌取り' class='shadow trigger'>",
-        "honkadoriLink": "<p>秋くれば 虫とともにぞ なかれぬる<br>人も草葉も 秋くれば</p><div style='display: flex; justify-content: flex-end;'><small>藤原興風</small></div>",
+        "honkadoriLink": "<p>秋くれば 虫とともにぞ なかれぬる<br>人も草葉も かれぬと思へば</p><div style='display: flex; justify-content: flex-end;'><small>藤原興風</small></div>",
     },
     "29": {
         "number": "29",

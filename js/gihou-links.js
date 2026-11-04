@@ -12,7 +12,7 @@
     engo: { page: 'gihou-kakekotoba', nums: KAKE, ja: '縁語', en: 'engo' },
     jokotoba: { page: 'gihou-jokotoba', nums: [3, 13, 14, 18, 19, 27, 39, 46, 48, 49, 51, 58, 77, 88, 92, 97], ja: '序詞', en: 'jokotoba' },
     makurakotoba: { page: 'gihou-makurakotoba', nums: [2, 3, 4, 17, 33, 76], ja: '枕詞', en: 'makurakotoba' },
-    honkadori: { page: 'gihou-honkadori', nums: [1, 2, 3, 6, 23, 32, 51, 56, 89, 90, 91, 92, 95], ja: '本歌取り', en: 'honkadori' },
+    honkadori: { page: 'gihou-honkadori', nums: [1, 2, 3, 6, 23, 28, 32, 51, 56, 89, 90, 91, 92, 95], ja: '本歌取り', en: 'honkadori' },
   };
 
   const match = location.pathname.match(/(?:^|[\/_-])(\d+)(?:_[a-z]+)?\.html$/);

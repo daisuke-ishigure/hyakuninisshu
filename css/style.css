@@ -6022,7 +6022,6 @@ html[lang="ja"] .explanation[data-fit="6"] dd {
   text-decoration: none !important;
   writing-mode: horizontal-tb;
   white-space: nowrap;
-  pointer-events: auto;
 }
 .gihou-btn::after {
   content: " →";
@@ -6035,6 +6034,10 @@ html[lang="ja"] .explanation[data-fit="6"] dd {
   width: fit-content;
   margin-left: auto;
   margin-right: auto;
+}
+/* パネルは pointer-events: none で重なっているので、開いているパネルのボタンだけ押せるようにする */
+.explanation > div.active > .gihou-btn {
+  pointer-events: auto;
 }
 .explanation > div > .gihou-btn {
   flex: none;
