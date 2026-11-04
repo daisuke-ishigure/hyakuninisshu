@@ -96,7 +96,7 @@ const hyakuninIsshu = [
     {
         poem: "これやこの <ruby>行<rt>ゆ</rt></ruby>くも<ruby>帰<rt>かえ</rt></ruby>るも わかれては しるもしらぬも <ruby>逢坂<rt>おうさか</rt></ruby>の<ruby>関<rt>せき</rt></ruby>",
         meaning: "So this is it — the Barrier of Ōsaka, where those who leave and those who return, those who know each other and those who do not, all meet and part.",
-        story: "Semimaru is said to have been a blind master of the biwa lute who lived in a hut at the Ōsaka Barrier. Some say he was the son of an emperor, and a story tells how the courtier Minamoto no Hiromasa visited him for three years to learn his secret melodies. This poem describes the Ōsaka Barrier, where people come and go, meeting and parting.",
+        story: "Semimaru is said to have been a blind master of the biwa lute who lived in a hut at the Barrier of Ōsaka. Some say he was the son of an emperor, and a story tells how the courtier Minamoto no Hiromasa visited him for three years to learn his secret melodies. This poem describes the Barrier of Ōsaka, where people come and go, meeting and parting.",
         love: "Meetings and partings are part of life. A gentle heart that does not hold back those who leave, and treasures those newly met, will bring good connections.",
         work: "With genuine skill, people will seek you out from far away. Even as things change around you, keep honing your craft and the way will open.",
         poet: "Semimaru",
@@ -365,7 +365,7 @@ const hyakuninIsshu = [
     },
     {
         poem: "<ruby>白露<rt>しらつゆ</rt></ruby>に <ruby>風<rt>かぜ</rt></ruby>の<ruby>吹<rt>ふ</rt></ruby>きしく <ruby>秋<rt>あき</rt></ruby>の<ruby>野<rt>の</rt></ruby>は つらぬきとめぬ <ruby>玉<rt>たま</rt></ruby>ぞ<ruby>散<rt>ち</rt></ruby>りける",
-        meaning: "In the autumn fields lashed by the wind and dew, the scattered drops look like beads of jade that cannot be strung together.",
+        meaning: "In the autumn fields, where the wind keeps blowing on the white dew, the drops look like pearls with no string to hold them, scattering everywhere.",
         story: "The son of Fun'ya no Yasuhide, Fun'ya no Asayasu left only a handful of poems, yet this one earned him a place in the Hyakunin Isshu. He was active in poetry contests just before the Kokin Wakashū was compiled. This poem likens white dew blown by the wind across autumn fields to jewels scattering from a string that holds them no longer.",
         love: "A time when love and hearts change easily. Rather than trying to hold on, accept the change, and new connections will come into view.",
         work: "Things are in flux. Even if you produce few results, leave one that truly shines, and it will become your signature work.",
@@ -455,7 +455,7 @@ const hyakuninIsshu = [
     },
     {
         poem: "<ruby>由良<rt>ゆら</rt></ruby>のとを <ruby>渡<rt>わた</rt></ruby>る<ruby>舟人<rt>ふなびと</rt></ruby> か<ruby>ぢ<rt>じ</rt></ruby>を<ruby>絶<rt>た</rt></ruby>え ゆくへも<ruby>知<rt>し</rt></ruby>らぬ <ruby>恋<rt>こい</rt></ruby>の<ruby>道<rt>みち</rt></ruby>かな",
-        meaning: "Like a boatman who has lost his oar on the swift straits of Yura — I drift, not knowing where my love is taking me.",
+        meaning: "Like a boatman who has lost his rudder on the swift straits of Yura — I drift, not knowing where my love is taking me.",
         story: "Sone no Yoshitada served for years as a provincial official in Tango and was nicknamed \"Sotan.\" Stubborn and proud, he was isolated in the poetry world, and a story tells how he pushed his way into a banquet of Retired Emperor En'yū without an invitation and was thrown out. Even so, his innovative style — such as the Maitsuki-shū, which covered a whole year in 360 poems — was highly praised by later poets. This poem compares a love whose course he cannot see to a boat that has lost its oar and drifts.",
         love: "A time when you can't see where love is heading and tend to drift. Don't rush into action; take a careful look at the situation.",
         work: "Even without a clear outlook, if you stick to your own way, you will be recognized someday. When others don't understand you, that is exactly the time to refine your own ideas.",
@@ -616,7 +616,7 @@ const hyakuninIsshu = [
     {
         poem: "<ruby>夜<rt>よ</rt></ruby>をこめて <ruby>鳥<rt>とり</rt></ruby>のそらねは はかるとも よに<ruby>逢坂<rt>おうさか</rt></ruby>の <ruby>関<rt>せき</rt></ruby>は<ruby>許<rt>ゆる</rt></ruby>さじ",
         meaning: "Even if you try to fool me with a crowing rooster in the night — I will not open the Barrier of Ōsaka for you.",
-        story: "The daughter of Kiyohara no Motosuke, Sei Shōnagon served Empress Teishi and wrote The Pillow Book. With her quick, witty conversation, she was a favorite at court. In this poem, written in an exchange with Fujiwara no Yukinari, she draws on an old Chinese story to answer him back: \"You may trick a barrier-keeper by imitating a rooster before dawn, but my Ōsaka Barrier will never open.\"",
+        story: "The daughter of Kiyohara no Motosuke, Sei Shōnagon served Empress Teishi and wrote The Pillow Book. With her quick, witty conversation, she was a favorite at court. In this poem, written in an exchange with Fujiwara no Yukinari, she draws on an old Chinese story to answer him back: \"You may trick a barrier-keeper by imitating a rooster before dawn, but my Barrier of Ōsaka will never open.\"",
         love: "A time to state your intentions clearly, without being carried away by sweet words or games. Say it with wit and humor, and your relationship may grow even deeper.",
         work: "Knowledge and quick thinking are your greatest weapons. Put your learning to use in conversation, and people will respect you and trust you more.",
         poet: "Sei Shōnagon",

@@ -19,7 +19,7 @@
   <meta property="og:site_name" content="Shigure no Hyakunin Isshu">
   <meta property="og:image" content="https://hyakuninisshu.com/img/ogp_mindmap_kimariji.webp">
   <meta name="description" content="A study tool that organizes all 100 Hyakunin Isshu poems by kimariji (the deciding syllables of the karuta game). Poems are visually sorted from 1-character to 6-character kimariji, each linking to its full poem page.">
-  <link rel="stylesheet" href="../css/style.css?20261031-01">
+  <link rel="stylesheet" href="../css/style.css?20261105-04">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
     href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Kaisei+HarunoUmi:wght@500&display=swap"
@@ -365,7 +365,7 @@
   <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
   <script>
     let poemData = {};
-    fetch('../js/hyakunin.json?20261103-01').then(r => r.json()).then(d => { poemData = d; });
+    fetch('../js/hyakunin.json?20261104-03').then(r => r.json()).then(d => { poemData = d; });
 
     // 決まり字・上の句・下の句のローマ字（js/kimariji.json の type_*_gendai を流用。手打ち変換はしない）
     let numToRomaji = {};

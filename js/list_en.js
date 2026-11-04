@@ -1,11 +1,11 @@
 "use strict";
 $();
-const jsonAddress = "../js/hyakunin.json?20261103-01";
+const jsonAddress = "../js/hyakunin.json?20261104-03";
 
 // The HTML for one table row (colorMap, badge number lists, buildPoemRowHTML) lives in
 // js/list-rows_en.js. Load it before this file.
 
-// Color order used by "By colour"
+// Color order used by "By color"
 const colorOrder = ["赤", "橙", "黄", "緑", "青", "紫", "ピンク", "白", "灰"];
 
 ////////////////////////////////////////////////////////////
@@ -40,7 +40,7 @@ function initTable(table) {
 // Otherwise build it from hyakunin.json.
 const prebuiltTable = document.querySelector("#table table");
 if (prebuiltTable) {
-  // Run after searchInput etc. further down this file have been initialised
+  // Run after searchInput etc. further down this file have been initialized
   queueMicrotask(() => initTable(prebuiltTable));
 } else {
   fetch(jsonAddress)
@@ -58,12 +58,12 @@ if (prebuiltTable) {
 // Sort & filter
 ////////////////////////////////////////////////////////////
 
-// Current colour / theme filter (null = no filter)
+// Current color / theme filter (null = no filter)
 // The theme filter buttons (.theme-filter-btn) are only used on pages that have them (currently list_en.html)
 let activeColorFilter = null;
 let activeThemeFilter = null;
 
-// Show only rows that match the colour filter, the theme filter and the search text
+// Show only rows that match the color filter, the theme filter and the search text
 function applyFilters(table) {
   const rows = Array.from(table.querySelectorAll("tbody tr"));
   const searchValue = searchInput ? searchInput.value.toLowerCase() : "";
@@ -157,7 +157,7 @@ function initSortButtons(table) {
     });
   });
 
-  // Theme filter buttons (toggle, same behavior as the colour filter)
+  // Theme filter buttons (toggle, same behavior as the color filter)
   themeFilterBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
       const theme = btn.dataset.theme;
@@ -182,7 +182,7 @@ let searchInput = document.getElementById("searchInput");
 
 if (searchInput) {
   searchInput.addEventListener("keyup", () => {
-    // While a colour filter is active, only show rows that also match it
+    // While a color filter is active, only show rows that also match it
     applyFilters(document.getElementById("table"));
   });
 }

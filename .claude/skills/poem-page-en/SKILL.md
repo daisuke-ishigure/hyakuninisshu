@@ -18,7 +18,11 @@ Each `N_en.html` is the English version of `N.html`. Content is **translated fro
 
 On PC (≥1001px) `.explanation` is exactly as tall as the card column (≈880px) and scrolls if its content is longer. **The page should not need that scrollbar.**
 
-- Write **Commentary** and **About the Poet** concisely: translate the JA 解説 / どんな人？ keeping the key points and dropping padding, repetition, and side details. Aim for roughly 40–70 words each as a starting point; the poem, verse translation and modern translation above them take most of the box.
+**Fill the box flexibly.** Aim to leave as little empty space as you can without a scrollbar, adding to Commentary what genuinely helps the reader (wordplay, hard words, the story behind the poem). But this is a goal, not a quota: if adding more would make the text padded, repetitive or hard to follow, stop and leave the space. Don't end a Commentary on a light filler sentence just to use up a line. The meaning always comes first.
+
+A page that only just fits can still get stuck with a scrollbar: if a scrollbar appears during loading, the text narrows from 520px to 505px, wraps more and keeps overflowing. So the fit test is at the narrow width: set `overflow-y: scroll` on `.explanation` and check that the content still fits.
+
+- Write **Commentary** and **About the Poet** concisely: translate the JA 解説 / どんな人？ keeping the key points and dropping padding, repetition, and side details. There is no fixed word count: About the Poet stays short, and Commentary can grow as far as the box and the content allow (see above).
 - **Adding words for English readers is welcome as long as the box still fits.** If a sentence or a short clause makes the poem or the background clearer for a reader with no Japanese background (who a person is, why a place matters, what a term means), add it — the only limit is that `.explanation` must not get a scrollbar. When space runs out, explain the term with a tooltip instead (see "Tooltips" below), since a tooltip adds no height.
 - Headnotes (詞書): quote briefly, or summarize in one clause, rather than quoting the whole headnote and then paraphrasing it.
 - After editing, **check that nothing overflows**: open the page at 1280px wide and compare `.explanation`'s `scrollHeight` with its `clientHeight` (they must be equal). Shorten further if it still overflows.

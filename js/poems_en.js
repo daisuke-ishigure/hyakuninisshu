@@ -8,7 +8,7 @@
 // ============================================================
 
 // Poet name (English) and theme by poem number.
-// name is sourced from js/kokoro-chart-data-en.js?20261024-03's "poet" field;
+// name is sourced from js/kokoro-chart-data-en.js?20261104-03's "poet" field;
 // theme is sourced from js/zukan_en.js?20261104-01's POETS_RAW "theme" field.
 const POET_DATA_EN = {
   1: { name: "Emperor Tenji", theme: "autumn" },
@@ -509,7 +509,7 @@ function yomihudaToRomajiPartsForPoem(yomihuda) {
   };
 }
 
-fetch("../js/hyakunin.json?20261103-01")
+fetch("../js/hyakunin.json?20261104-03")
   .then((r) => r.json())
   .then((data) => {
     const num = getPoemNumberFromUrl();

@@ -224,10 +224,10 @@
     {
       "type": "Feature",
       "properties": {
-        "markname": "Ōsaka Barrier",
-        "kajin": "Semimaru (Ōsaka Barrier)",
+        "markname": "Barrier of Ōsaka",
+        "kajin": "Semimaru (Barrier of Ōsaka)",
         "type": "type1",
-        "name": "<a href='../img/ousakanoseki-ato.webp' data-lightbox='map' data-title='Mt. Osaka'><img src='../img/ousakanoseki-ato.webp' width='300' alt='Ōsaka Barrier'></a><br><small>Photographed August 12, 2025</small><h2 class='utamakura-name'>Utamakura: Ōsaka Barrier</h2><p>Ōsaka, Ōtsu, Shiga Prefecture. A checkpoint established from the Nara period onward, marking the key crossing point between the capital region and the eastern provinces. Because its name contains the character for \"meeting\" (逢), it is often cited in love poems as well.</p><hr><a href='/10_en.html'>Link to Poem 10: Semimaru</a><hr><a href='/62_en.html'>Link to Poem 62: Sei Shōnagon</a>"
+        "name": "<a href='../img/ousakanoseki-ato.webp' data-lightbox='map' data-title='Mt. Osaka'><img src='../img/ousakanoseki-ato.webp' width='300' alt='Barrier of Ōsaka'></a><br><small>Photographed August 12, 2025</small><h2 class='utamakura-name'>Utamakura: Barrier of Ōsaka</h2><p>Ōsaka, Ōtsu, Shiga Prefecture. A checkpoint established from the Nara period onward, marking the key crossing point between the capital region and the eastern provinces. Because its name contains the character for \"meeting\" (逢), it is often cited in love poems as well.</p><hr><a href='/10_en.html'>Link to Poem 10: Semimaru</a><hr><a href='/62_en.html'>Link to Poem 62: Sei Shōnagon</a>"
       },
       "geometry": { "type": "Point", "coordinates": [135.85559, 34.99422] }
     },

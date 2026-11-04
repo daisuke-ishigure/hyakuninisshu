@@ -28,7 +28,7 @@
   <meta property="og:image" content="https://hyakuninisshu.com/img/ogp_index.webp">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="description" content="出題される下の句を見て、正解の決まり字を3択ボタンの中から選びます。回答時間に応じたランクを表示。無料・ログイン不要です。">
-  <link rel="stylesheet" href="../css/style.css?20261031-01">
+  <link rel="stylesheet" href="../css/style.css?20261105-04">
   <link rel="stylesheet" href="../css/karuta.css?20260506">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1100,7 +1100,7 @@
       // ── データ読み込み ──
       let poems = [];
       try {
-        const res = await fetch('../js/hyakunin.json?20261103-01');
+        const res = await fetch('../js/hyakunin.json?20261104-03');
         const data = await res.json();
         poems = Object.values(data);
       } catch {

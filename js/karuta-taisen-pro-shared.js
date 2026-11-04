@@ -179,7 +179,7 @@
         const [resKaruta, resKimariji, resHyakunin] = await Promise.all([
           fetch("../js/karuta.json?v=" + Date.now()),
           fetch("../js/kimariji.json?20261028-01" + Date.now()),
-          fetch("../js/hyakunin.json?20261103-01" + Date.now())
+          fetch("../js/hyakunin.json?20261104-03" + Date.now())
         ]);
         jsonData = await resKaruta.json();
         kimarijiData = await resKimariji.json();
