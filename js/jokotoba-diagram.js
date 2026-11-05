@@ -2,7 +2,8 @@
  * 序詞の図（gihou-jokotoba_en.html）
  *
  * 歌の本文・ローマ字・ラベル・序詞のハイライト・導かれる語の二重下線は HTML に書いておき、
- * このスクリプトは序詞（.jk-jo）から導かれる語（.jk-t）への矢印だけを SVG で描く。
+ * このスクリプトは序詞（.jk-jo）の背景の帯と、導かれる語（.jk-t）への矢印を SVG で描く。
+ * 帯は行ごとに 1 本で、句の間もつなげ、ルビの有無によらず高さをそろえる。
  * 序詞は句をまたぐので .jk-jo は複数あってよい（句まるごとなら .jk-ku に、句の一部なら .jk-ja 内の span に付ける）。
  * 導かれる語も複数あってよく、矢印は最初の .jk-t を指す。
  *
@@ -23,6 +24,7 @@
 
   var NS = 'http://www.w3.org/2000/svg';
   var COLOR = '#b82343';
+  var BAND = 'rgba(184, 35, 67, 0.2)'; // 序詞の背景
   var HEAD_W = 5; // 矢じりの幅の半分
   var HEAD_H = 8; // 矢じりの高さ
   var DROP = 12;  // 同じ行のとき、かっこの下へ回り込む深さ
@@ -73,19 +75,25 @@
     var groups = [];
     jos.forEach(function (el) {
       var r = rel(el, box), ku = rel(kuOf(el), box);
-      var g = groups.filter(function (x) { return Math.abs(x.top - ku.top) < 2; })[0];
+      var whole = el.classList.contains('jk-ku');
+      kuOf(el).style.background = 'none'; // 帯は句の後ろに描くので、句の背景で隠さない
+      // 句はベースラインでそろえるので、ルビの有無で上端が変わる。上下に重なる句を同じ行とみなす
+      var g = groups.filter(function (x) { return ku.top < x.bottom - 1 && x.top < ku.bottom - 1; })[0];
       if (!g) {
-        g = { top: ku.top, left: r.left, right: r.right, bottom: ku.bottom, last: r };
+        g = { top: ku.top, left: r.left, right: r.right, bottom: ku.bottom, bandBottom: 0, last: r };
         groups.push(g);
       }
+      g.top = Math.min(g.top, ku.top);
       g.left = Math.min(g.left, r.left);
       g.right = Math.max(g.right, r.right);
       g.bottom = Math.max(g.bottom, ku.bottom);
+      g.bandBottom = Math.max(g.bandBottom, whole ? ku.bottom : r.bottom); // 句の一部ならローマ字は塗らない
       g.last = r;
     });
     // 序詞が行をまたぐときは、かっこが行末で切れて次の行頭へ続くように描く
     // （続く側の端は立ち上げず、句から少しはみ出したところまで線を伸ばす）
     groups.forEach(function (g, i) {
+      svg.appendChild(svgEl('rect', { x: g.left, y: g.top, width: g.right - g.left, height: g.bandBottom - g.top, fill: BAND }));
       g.y = g.bottom + GAP;
       var open = i > 0, cont = i < groups.length - 1;
       var x0 = open ? Math.max(0, g.left - EXT) : g.left;
@@ -94,6 +102,13 @@
         'H' + x9 + (cont ? '' : 'V' + (g.y - TICK));
       svg.appendChild(svgEl('path', { d: d, fill: 'none', stroke: COLOR, 'stroke-width': 1.2 }));
     });
+
+    // ラベルは最初の帯の上端に載せる（序詞の先頭の句にルビがなくても帯に重ならない）
+    var label = fig.querySelector('.jk-label');
+    if (label) {
+      label.style.transform = '';
+      label.style.transform = 'translateY(' + (groups[0].top - rel(label, box).bottom) + 'px)';
+    }
 
     // 導かれる語の真上の行にある序詞のかっこ（なければ null）
     function groupAbove(t) {
@@ -119,11 +134,11 @@
     var x1, x2 = b.cx, y, tip, dir, d;
     // 序詞の終わりが導かれる語と同じ行まで来ているなら（18・88・97番）、その行のかっこから回り込む
     var lastG = groups[groups.length - 1];
-    var sameRow = lastG.top >= bKu.top - 1;
+    var sameRow = lastG.bottom > bKu.top + 1;
 
     if (g && !sameRow) {
       // 導かれる語が次の行：かっこの真下にあればまっすぐ、なければかっこの端から折れて降ろす
-      tip = b.top - 1;
+      tip = bKu.top - 1; // 句の背景に隠れず、ルビにも重ならないよう句の上端を指す
       dir = 1;
       x1 = Math.min(Math.max(x2, g.left), g.right);
       if (x1 === x2) {
