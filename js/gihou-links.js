@@ -6,13 +6,13 @@
   const EN = document.documentElement.lang === 'en';
 
   // 各 gihou ページで、歌ごとの見出し（id="NN"）がある歌番号
-  const KAKE = [1, 8, 9, 10, 13, 16, 19, 20, 22, 24, 25, 27, 28, 51, 55, 57, 58, 60, 62, 67, 72, 75, 77, 80, 88, 89, 91, 95, 96, 97, 98, 100];
+  const KAKE = [1, 8, 9, 10, 13, 14, 16, 19, 20, 22, 24, 25, 27, 28, 51, 55, 57, 58, 60, 62, 67, 72, 75, 77, 80, 88, 89, 91, 95, 96, 97, 98, 100];
   const TECH = {
     kakekotoba: { page: 'gihou-kakekotoba', nums: KAKE, ja: '掛詞', en: 'kakekotoba' },
     engo: { page: 'gihou-kakekotoba', nums: KAKE, ja: '縁語', en: 'engo' },
     jokotoba: { page: 'gihou-jokotoba', nums: [3, 13, 14, 18, 19, 27, 39, 46, 48, 49, 51, 58, 77, 88, 92, 97], ja: '序詞', en: 'jokotoba' },
     makurakotoba: { page: 'gihou-makurakotoba', nums: [2, 3, 4, 17, 33, 76], ja: '枕詞', en: 'makurakotoba' },
-    honkadori: { page: 'gihou-honkadori', nums: [1, 2, 3, 6, 23, 28, 32, 51, 56, 89, 90, 91, 92, 95], ja: '本歌取り', en: 'honkadori' },
+    honkadori: { page: 'gihou-honkadori', nums: [1, 2, 3, 6, 12, 23, 26, 28, 32, 35, 39, 42, 51, 56, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98], ja: '本歌取り', en: 'honkadori' },
   };
 
   const match = location.pathname.match(/(?:^|[\/_-])(\d+)(?:_[a-z]+)?\.html$/);
