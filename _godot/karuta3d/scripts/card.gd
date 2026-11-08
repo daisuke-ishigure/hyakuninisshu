@@ -59,6 +59,14 @@ func _on_input_event(_camera: Node, event: InputEvent, _pos: Vector3, _normal: V
 		tapped.emit(self)
 
 
+## 札が画面の fill 割合を占めるカメラからの距離。
+## 横画面は縦の視野角（fov）に札の縦を、縦画面は横の視野角に札の横を合わせる。
+func _show_distance(camera: Camera3D, fill: float) -> float:
+	var half := tan(deg_to_rad(camera.fov) * 0.5)
+	var size := W if camera.keep_aspect == Camera3D.KEEP_WIDTH else H
+	return size / (fill * 2.0 * half)
+
+
 ## 浮き上がってカメラの方を向きながら裏返り、絵札をしばらく見せてから畳に戻る。
 func reveal(camera: Camera3D, hold := 1.2) -> void:
 	if busy:
@@ -67,8 +75,8 @@ func reveal(camera: Camera3D, hold := 1.2) -> void:
 	var to_e := not showing_e
 	var flip := PI if to_e else 0.0
 
-	# 見せる位置：カメラの正面、少し手前（画面の中央に大きく見える）
-	var show_pos := camera.global_position - camera.global_basis.z * 0.17
+	# 見せる位置：カメラの正面。札が画面の高さ（縦画面では横幅）の約 75% を占める距離に置く
+	var show_pos := camera.global_position - camera.global_basis.z * _show_distance(camera, 0.75)
 	# カメラの方へ傾ける角度（札の面がカメラに正対する）
 	var dir := (camera.global_position - show_pos).normalized()
 	var tilt := atan2(dir.z, dir.y)

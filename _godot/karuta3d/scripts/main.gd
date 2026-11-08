@@ -5,6 +5,7 @@ extends Node3D
 const CardScript := preload("res://scripts/card.gd")
 const CARD_SHADER := preload("res://shaders/card.gdshader")
 const TATAMI_SHADER := preload("res://shaders/tatami.gdshader")
+const TATAMI_TEX := preload("res://textures/tatami.webp")
 
 var camera: Camera3D
 
@@ -25,15 +26,16 @@ func _build_room() -> void:
 	env.background_color = Color(0.08, 0.07, 0.06)
 	env.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
 	env.ambient_light_color = Color(0.95, 0.9, 0.82)
-	env.ambient_light_energy = 0.3
-	env.tonemap_mode = Environment.TONE_MAPPER_ACES
+	env.ambient_light_energy = 0.35
+	# 画像の色をそのまま出す（ACES などは明るい色を黄色く白飛びさせる）
+	env.tonemap_mode = Environment.TONE_MAPPER_LINEAR
 	var we := WorldEnvironment.new()
 	we.environment = env
 	add_child(we)
 
 	var sun := DirectionalLight3D.new()
 	sun.rotation_degrees = Vector3(-58, 25, 0)
-	sun.light_energy = 0.85
+	sun.light_energy = 0.7
 	sun.light_color = Color(1.0, 0.95, 0.86)
 	sun.shadow_enabled = true
 	sun.directional_shadow_max_distance = 2.0
@@ -41,18 +43,20 @@ func _build_room() -> void:
 
 	var tatami := MeshInstance3D.new()
 	var plane := PlaneMesh.new()
-	plane.size = Vector2(0.9, 1.8)
+	plane.size = Vector2(5.4, 5.4)   # 畳を何枚も敷き詰めた床（画面の端まで畳が続く）
 	tatami.mesh = plane
 	var tm := ShaderMaterial.new()
 	tm.shader = TATAMI_SHADER
+	tm.set_shader_parameter("tatami_tex", TATAMI_TEX)
 	tatami.material_override = tm
 	add_child(tatami)
 
 	camera = Camera3D.new()
 	camera.fov = 40
+	camera.near = 0.01   # 札をカメラのすぐ前まで寄せても欠けないように
 	add_child(camera)
-	camera.position = Vector3(0, 0.26, 0.25)
-	camera.look_at(Vector3(0, 0, 0.02))
+	camera.position = Vector3(0, 0.21, 0.17)
+	camera.look_at(Vector3(0, 0, 0.01))
 	get_viewport().size_changed.connect(_fit_camera)
 	_fit_camera()
 
@@ -62,10 +66,10 @@ func _fit_camera() -> void:
 	var size := get_viewport().get_visible_rect().size
 	if size.y > size.x:
 		camera.keep_aspect = Camera3D.KEEP_WIDTH
-		camera.fov = 52
+		camera.fov = 58   # 横幅に札 3 枚がちょうど収まる
 	else:
 		camera.keep_aspect = Camera3D.KEEP_HEIGHT
-		camera.fov = 40
+		camera.fov = 36
 
 
 func _place_cards() -> void:

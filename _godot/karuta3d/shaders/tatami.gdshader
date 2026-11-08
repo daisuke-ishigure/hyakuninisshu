@@ -1,23 +1,30 @@
-// 畳。画像を使わず、い草の細い筋と色むらを計算で描く（後で写真の質感に差し替えてもよい）。
+// 畳の床。い草の質感は textures/tatami.webp を繰り返し貼り、畳縁と継ぎ目は計算で描く。
+// 位置はワールド座標（1 単位 = 1m）で決めるので、床の大きさを変えても縮尺は変わらない。
 shader_type spatial;
 
-uniform vec3 base_color : source_color = vec3(0.62, 0.60, 0.40);
-uniform float rows = 1400.0;      // い草の筋の本数（UV の縦方向）
-uniform float border = 0.035;     // 畳縁の幅（UV 単位）
-uniform vec3 border_color : source_color = vec3(0.10, 0.16, 0.12);
+uniform sampler2D tatami_tex : source_color, filter_linear_mipmap_anisotropic, repeat_enable;
+uniform vec2 tile_size = vec2(0.30, 0.1875);   // 画像 1 枚が覆う大きさ（m）。800×500px の画像なので 0.30m×0.1875m
+uniform vec2 mat_size = vec2(0.9, 1.8);        // 畳 1 枚の大きさ（m）。長辺が奥行き方向
+uniform float border_width = 0.03;             // 畳縁の幅（長辺だけに付く）
+uniform vec3 border_color : source_color = vec3(0.12, 0.17, 0.13);
+uniform float seam_width = 0.002;              // 短辺どうしの継ぎ目
+uniform float brightness = 0.95;
 
-float hash(vec2 p) {
-	return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453);
+varying vec3 world_pos;
+
+void vertex() {
+	world_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
 }
 
 void fragment() {
-	float line = sin(UV.y * rows * 3.14159) * 0.5 + 0.5;
-	float cell = hash(floor(UV * vec2(90.0, rows)));
-	float patch = hash(floor(UV * vec2(6.0, 9.0)));
-	vec3 col = base_color * (0.90 + 0.10 * line) * (0.94 + 0.06 * cell) * (0.96 + 0.04 * patch);
-	float b = step(UV.x, border) + step(1.0 - border, UV.x);
-	col = mix(col, border_color, clamp(b, 0.0, 1.0));
+	vec3 col = texture(tatami_tex, world_pos.xz / tile_size).rgb * brightness;
+	// 畳 1 枚の中での位置（0〜mat_size）。原点が畳の中央に来るようにずらす
+	vec2 m = mod(world_pos.xz + mat_size * 0.5, mat_size);
+	float border = step(m.x, border_width) + step(mat_size.x - border_width, m.x);
+	float seam = step(m.y, seam_width) + step(mat_size.y - seam_width, m.y);
+	col = mix(col, col * 0.55, clamp(seam, 0.0, 1.0));
+	col = mix(col, border_color, clamp(border, 0.0, 1.0));
 	ALBEDO = col;
-	ROUGHNESS = 0.9;
-	SPECULAR = 0.2;
+	ROUGHNESS = 0.85;
+	SPECULAR = 0.25;
 }
