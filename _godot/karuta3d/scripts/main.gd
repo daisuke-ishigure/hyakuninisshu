@@ -1,7 +1,8 @@
 extends Node3D
 ## 試作：読み上げを聞いて、正しい札を払う。
 ## 札を押して指（マウス）を動かして離すと、その方向へ速さに応じた勢いで札が飛ぶ（裏返らない）。
-## 正解なら飛んでいった札が画面の中央に現れて裏返り、絵札を見せて消える。間違いなら雷が落ちる。
+## 正解なら飛んでいった札が画面の中央に現れて裏返り、絵札を見せて消える。間違いなら雷が落ちる（正しい札は教えない）。
+## 払う指が触れた札や、飛んだ札が当たった札は巻き込まれて滑り、少しして元の位置へすっと戻る。
 ## 札の画像は res://cards/tori_NNN.png と res://cards/e_NNN.png、読み上げは res://audio/N.mp3。
 
 const CardScript := preload("res://scripts/card.gd")
@@ -28,6 +29,12 @@ var flash: ColorRect
 var _drag_card: Node3D
 var _drag_from := Vector2.ZERO
 var _trail: Array = []          # 指の最近の位置 [ミリ秒, 画面座標]。離す直前の速さを測る
+var _flying: Node3D             # 払われて飛んでいる札
+var _touched := {}              # この払いで指が触れた札（同じ札を何度も弾かない）
+var _hit_at := {}               # 札の組ごとに最後にぶつかった時刻（同じ組が続けてぶつからない）
+
+const HIT_HEIGHT := 0.012       # これより低く飛んでいる札だけがほかの札に当たる
+const MAX_KNOCK := 0.7          # 巻き込まれた札の最大の速さ（m/秒）
 
 
 func _ready() -> void:
@@ -176,6 +183,7 @@ func _input(event: InputEvent) -> void:
 			_drag_card = _card_at(event.position)
 			_drag_from = event.position
 			_trail = [[Time.get_ticks_msec(), event.position]]
+			_touched = {}
 		elif _drag_card:
 			var card := _drag_card
 			_drag_card = null
@@ -191,9 +199,86 @@ func _input(event: InputEvent) -> void:
 			var speed: float = (event.position - first[1]).length() / dt   # 画面の点／秒
 			_swipe(card, _drag_from, event.position, speed)
 	elif event is InputEventMouseMotion and _drag_card:
+		_finger_touch(_trail[-1], [Time.get_ticks_msec(), event.position])
 		_trail.append([Time.get_ticks_msec(), event.position])
 		if _trail.size() > 20:
 			_trail.pop_front()
+
+
+## 払う指がほかの札の上を通ったら、指の動く向きに軽く弾く
+func _finger_touch(prev: Array, now: Array) -> void:
+	var p := _floor_point(now[1])
+	var dt := maxf((now[0] - prev[0]) / 1000.0, 0.008)
+	var v := (p - _floor_point(prev[1])) / dt
+	v.y = 0.0
+	for c in cards:
+		if c == _drag_card or c.busy or not c.visible or _touched.has(c):
+			continue
+		var local: Vector3 = c.global_transform.affine_inverse() * p
+		if absf(local.x) <= CardScript.W * 0.5 and absf(local.z) <= CardScript.H * 0.5:
+			_touched[c] = true
+			var kv := v * 0.35
+			if kv.length() > MAX_KNOCK * 0.6:
+				kv = kv.normalized() * MAX_KNOCK * 0.6
+			if kv.length() > 0.05:
+				c.knock(kv, randf_range(-0.6, 0.6))
+
+
+## 飛んでいる札・滑っている札がほかの札に重なったら、ぶつかった向きに弾き飛ばす
+func _physics_process(_delta: float) -> void:
+	var movers: Array[Node3D] = []
+	if _flying and _flying.position.y < HIT_HEIGHT:
+		movers.append(_flying)
+	for c in cards:
+		if c.sliding:
+			movers.append(c)
+	var now := Time.get_ticks_msec()
+	for m in movers:
+		for c in cards:
+			if c == m or c == _flying or not c.visible or c.position.y > HIT_HEIGHT:
+				continue
+			var key := "%d-%d" % [mini(m.get_instance_id(), c.get_instance_id()), maxi(m.get_instance_id(), c.get_instance_id())]
+			if now - int(_hit_at.get(key, 0)) < 400:
+				continue
+			if _overlap(m, c):
+				_hit_at[key] = now
+				_hit(m, c)
+
+
+func _hit(mover: Node3D, other: Node3D) -> void:
+	var mv: Vector3 = mover.vel
+	mv.y = 0.0
+	var d := other.position - mover.position
+	d.y = 0.0
+	var n := d.normalized() if d.length() > 0.001 else mv.normalized()
+	# 正面からの勢いを多めに、かすめた分も少し伝える
+	var v := n * maxf(mv.dot(n), 0.0) * 0.8 + mv * 0.25
+	if v.length() > MAX_KNOCK:
+		v = v.normalized() * MAX_KNOCK
+	if v.length() < 0.12:
+		v = n * 0.12
+	# 中心を外れて当たるほど強く回る
+	var spin := clampf(mv.cross(n).y * 3.0, -1.6, 1.6) + randf_range(-0.25, 0.25)
+	other.knock(v, spin)
+
+
+## 2 枚の札（畳の上の長方形）が重なっているか（分離軸で判定）
+func _overlap(a: Node3D, b: Node3D) -> bool:
+	var axes: Array[Vector2] = []
+	for n in [a, b]:
+		var bs: Basis = n.global_transform.basis
+		axes.append(Vector2(bs.x.x, bs.x.z).normalized())
+		axes.append(Vector2(bs.z.x, bs.z.z).normalized())
+	var d := Vector2(b.position.x - a.position.x, b.position.z - a.position.z)
+	for ax in axes:
+		var r := 0.0
+		for n in [a, b]:
+			var bs: Basis = n.global_transform.basis
+			r += absf(ax.dot(Vector2(bs.x.x, bs.x.z).normalized())) * CardScript.W * 0.5
+			r += absf(ax.dot(Vector2(bs.z.x, bs.z.z).normalized())) * CardScript.H * 0.5
+		if absf(ax.dot(d)) >= r:
+			return false
+	return true
 
 
 ## 画面上の点の下にある札（重なっていたら上にあるもの）
@@ -231,21 +316,21 @@ func _swipe(card: Node3D, from: Vector2, to: Vector2, speed: float) -> void:
 	if not correct:
 		land = _clamp_to_view(land)
 	land.y = CardScript.REST_Y
-	await card.fly_to(land, lerpf(0.3, 0.5, power), lerpf(0.01, 0.04, power), randf_range(-1.2, 1.2) * power)
+	# 札は低く畳をすべるように飛ぶ（周りの札に当たって巻き込む）
+	_flying = card
+	await card.fly_to(land, lerpf(0.3, 0.5, power), lerpf(0.002, 0.016, power), randf_range(-1.2, 1.2) * power)
+	_flying = null
 
 	if correct:
 		await effects.reveal_win(card)
 	else:
-		effects.thunder(card)
-		# 正しい札を光らせて教える
-		await get_tree().create_timer(0.6).timeout
-		var tw := create_tween()
-		tw.tween_method(target.set_glow, 0.0, 0.9, 0.25)
-		tw.tween_method(target.set_glow, 0.9, 0.0, 0.6)
+		effects.thunder(card)   # 正しい札の場所は教えない
 	await get_tree().create_timer(0.6 if correct else 2.4).timeout
 
 	reader.stop()
+	CardScript.reset_layers()
 	for c in cards:
+		c.layer_y = CardScript.REST_Y
 		c.go_home()
 	await get_tree().create_timer(0.8).timeout
 	_next_round()
@@ -285,6 +370,12 @@ func _auto_test(mode: String) -> void:
 	_start()
 	reader.stop()
 	await get_tree().create_timer(0.3).timeout
+	if mode == "hit":
+		# 左端の札を右へ払い、隣の札を巻き込む
+		var c0: Node3D = cards[0]
+		var f0 := camera.unproject_position(c0.position)
+		_swipe(c0, f0, f0 + Vector2(300, -30), 1400.0)
+		return
 	var card: Node3D = target if mode == "correct" else cards.filter(func(c): return c != target)[0]
 	var from := camera.unproject_position(card.position)
 	_swipe(card, from, from + Vector2(140, -260), 2500.0)

@@ -68,6 +68,7 @@ func reveal_win(card: Node3D) -> void:
 	card.rotation = Vector3(tilt, 0, 0)
 	card.scale = Vector3.ONE * 0.05
 	card.visible = true
+	card.reset_motion()
 
 	var tw := create_tween()
 	# 1. ぱっと現れる（少し大きくなりすぎてから戻る）
