@@ -1,6 +1,6 @@
 extends Node3D
 ## 1 枚の札。表（上向き）が取り札、裏が絵札。
-## fly_to() で払われた方向へ飛び、空中で裏返って絵札を上にして着地する。
+## fly_to() で払われた方向へ（裏返らずに）飛ぶ。正解の札は effects.gd が画面の中央で裏返して見せる。
 ## どの札が押されたかは main.gd が画面の位置から判定する。
 
 const W := 0.053        # 横 53mm（1 単位 = 1m）
@@ -42,6 +42,13 @@ func _add_face(tex: Texture2D, shader: Shader, is_back: bool) -> ShaderMaterial:
 	return m
 
 
+## 影を落とすか（画面の中央に浮かせて見せる間は消す）
+func set_shadow(on: bool) -> void:
+	for c in get_children():
+		if c is MeshInstance3D:
+			c.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON if on else GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+
+
 ## 光らせる量（正解の演出）
 func set_glow(v: float) -> void:
 	for m in _mats:
@@ -54,42 +61,39 @@ func set_dim(v: float) -> void:
 		m.set_shader_parameter("dim", v)
 
 
-## target まで duration 秒で飛ぶ。最高点 height、flips 回（奇数）裏返り、絵札を上にして着地する。
-## 着地したときの絵札は、読みやすい向き（取り札と同じ上下）になるように空中で向きを合わせる。
-func fly_to(target: Vector3, duration: float, height: float, flips: int, spin: float) -> void:
+## 払われた札が、裏返らずに target まで duration 秒で飛ぶ。最高点 height、飛びながら spin だけ水平に回る。
+## target が画面の外なら、そのまま画面の外へ飛んでいく。
+func fly_to(target: Vector3, duration: float, height: float, spin: float) -> void:
 	busy = true
 	var start := position
-	var dir := target - start
-	dir.y = 0.0
-	if dir.length() < 0.001:
-		dir = Vector3(0, 0, -1)
-	# 進む方向に向かって前転するように、進行方向と直角な水平軸のまわりで回す
-	var axis := Vector3.UP.cross(dir.normalized()).normalized()
-	var total := flips * PI
-	# 前転だけだと絵札の上下が進む方向によって変わるので、水平の回転（yaw）で補う
-	var wanted := Basis(Vector3(0, 0, 1), PI)
-	var correction := (wanted * Basis(axis, total).inverse()).get_euler().y
-	var yaw := correction + spin
-
+	var yaw0 := rotation.y
 	var tw := create_tween()
 	tw.tween_method(func(t: float) -> void:
-		var e := 1.0 - pow(1.0 - t, 2.2)   # 横方向は最初が速く、着地に向けて減速する
+		var e := 1.0 - pow(1.0 - t, 2.2)   # 最初が速く、だんだん減速する
 		var p := start.lerp(target, e)
 		p.y = REST_Y + height * 4.0 * t * (1.0 - t)
 		position = p
-		basis = Basis(Vector3.UP, yaw * t) * Basis(axis, total * t)
+		rotation = Vector3(0, yaw0 + spin * e, 0)
 	, 0.0, 1.0, duration)
-	# 着地して小さく弾む
-	tw.tween_property(self, "position:y", REST_Y + height * 0.12, 0.07).set_ease(Tween.EASE_OUT)
-	tw.tween_property(self, "position:y", REST_Y, 0.07).set_ease(Tween.EASE_IN)
 	await tw.finished
-	showing_e = flips % 2 == 1
 	busy = false
 
 
-## 元の位置へ取り札を上にして戻す
+## 元の位置へ取り札を上にして戻す。消えていた札（正解の演出のあと）は、元の位置にふわっと現れる。
 func go_home(duration := 0.45) -> void:
 	busy = true
+	if not visible:
+		position = home
+		basis = Basis.IDENTITY
+		scale = Vector3.ONE * 0.01
+		visible = true
+		set_glow(0.0)
+		var ta := create_tween()
+		ta.tween_property(self, "scale", Vector3.ONE, 0.25).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+		await ta.finished
+		showing_e = false
+		busy = false
+		return
 	var q0 := basis.get_rotation_quaternion()
 	var p0 := position
 	var tw := create_tween()

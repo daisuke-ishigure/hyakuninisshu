@@ -1,5 +1,5 @@
 extends Node3D
-## 正解・お手つきの演出。main.gd から celebrate() / thunder() を呼ぶ。
+## 正解・お手つきの演出。main.gd から reveal_win() / thunder() を呼ぶ（celebrate() は畳の上で光らせる版）。
 
 const HALO_SHADER := preload("res://shaders/halo.gdshader")
 const PETAL_TEX := preload("res://textures/petal.png")
@@ -50,6 +50,56 @@ func celebrate(card: Node3D) -> void:
 	# 金の粒（勢いよく広がる）と花びら（ふわりと落ちる）
 	_burst(at, 70, Color(1.0, 0.92, 0.6), SPARK_TEX, 0.008, 0.2, 0.5, Vector3(0, -0.3, 0), 1.2, false)
 	_burst(at, 36, Color(1, 1, 1), PETAL_TEX, 0.01, 0.1, 0.28, Vector3(0, -0.06, 0), 2.4, true)
+
+
+# ---------- 正解：飛んでいった札が画面の中央に現れ、裏返って絵札を見せてから消える ----------
+
+const SHOW_FILL := 0.6     # 現れた札が画面の高さ（縦画面では横幅）に占める割合
+const SHOW_HOLD := 0.5     # 絵札を見せる時間（秒）
+
+func reveal_win(card: Node3D) -> void:
+	card.busy = true
+	card.set_shadow(false)
+	# カメラの正面に、札の面をカメラに向けて置く（取り札の面が見える）
+	var show_pos := camera.global_position - camera.global_basis.z * _show_distance(SHOW_FILL)
+	var to_cam := (camera.global_position - show_pos).normalized()
+	var tilt := atan2(to_cam.z, to_cam.y)
+	card.position = show_pos
+	card.rotation = Vector3(tilt, 0, 0)
+	card.scale = Vector3.ONE * 0.05
+	card.visible = true
+
+	var tw := create_tween()
+	# 1. ぱっと現れる（少し大きくなりすぎてから戻る）
+	tw.tween_property(card, "scale", Vector3.ONE, 0.22).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	tw.parallel().tween_method(card.set_glow, 0.0, 0.6, 0.22)
+	# 2. その場で裏返る
+	tw.tween_property(card, "rotation:z", PI, 0.4).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+	tw.parallel().tween_method(card.set_glow, 0.6, 1.1, 0.4)
+	tw.tween_callback(func() -> void:
+		var at := card.global_position + to_cam * 0.01
+		_burst(at, 60, Color(1.0, 0.92, 0.6), SPARK_TEX, 0.004, 0.08, 0.2, Vector3.ZERO, 0.9, false)
+		_burst(at, 24, Color(1, 1, 1), PETAL_TEX, 0.005, 0.04, 0.1, Vector3(0, 0, 0.02), 1.4, true))
+	# 3. 絵札を見せる
+	tw.tween_method(card.set_glow, 1.1, 0.35, SHOW_HOLD)
+	# 4. 光りながら小さくなって消える
+	tw.tween_property(card, "scale", Vector3.ONE * 0.02, 0.2).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
+	tw.parallel().tween_method(card.set_glow, 0.35, 1.5, 0.2)
+	tw.tween_callback(func() -> void:
+		_burst(card.global_position, 40, Color(1.0, 0.95, 0.75), SPARK_TEX, 0.003, 0.06, 0.16, Vector3.ZERO, 0.7, false)
+		card.visible = false
+		card.scale = Vector3.ONE
+		card.set_shadow(true))
+	await tw.finished
+	card.busy = false
+
+
+## 札（縦 H、横 W）が画面の fill 割合を占めるカメラからの距離。
+## 横画面は縦の視野角に札の縦を、縦画面は横の視野角に札の横を合わせる。
+func _show_distance(fill: float) -> float:
+	var half := tan(deg_to_rad(camera.fov) * 0.5)
+	var size := 0.053 if camera.keep_aspect == Camera3D.KEEP_WIDTH else 0.074
+	return size / (fill * 2.0 * half)
 
 
 # ---------- お手つき：雷が札に落ちる ----------

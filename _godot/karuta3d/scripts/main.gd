@@ -1,7 +1,7 @@
 extends Node3D
 ## 試作：読み上げを聞いて、正しい札を払う。
-## 札を押して指（マウス）を動かして離すと、その方向へ速さに応じた勢いで札が飛び、裏返って絵札が見える。
-## 正解なら札が光って粒が舞い、間違いなら雷が落ちる。
+## 札を押して指（マウス）を動かして離すと、その方向へ速さに応じた勢いで札が飛ぶ（裏返らない）。
+## 正解なら飛んでいった札が画面の中央に現れて裏返り、絵札を見せて消える。間違いなら雷が落ちる。
 ## 札の画像は res://cards/tori_NNN.png と res://cards/e_NNN.png、読み上げは res://audio/N.mp3。
 
 const CardScript := preload("res://scripts/card.gd")
@@ -212,6 +212,7 @@ func _card_at(screen: Vector2) -> Node3D:
 
 ## 払った向き（押した位置→離した位置）と速さ（離す直前の動き、画面の点／秒）から、
 ## 札の飛ぶ先・高さ・回転を決めて飛ばし、正誤の演出を出す。
+## 正解の札は強く払えば画面の外まで飛ぶ。間違いの札は雷が見えるよう画面の中に着地させる。
 func _swipe(card: Node3D, from: Vector2, to: Vector2, speed: float) -> void:
 	state = State.RESULT
 	var move := to - from
@@ -224,13 +225,16 @@ func _swipe(card: Node3D, from: Vector2, to: Vector2, speed: float) -> void:
 		var b := _floor_point(to)
 		dir = Vector3(b.x - a.x, 0, b.z - a.z).normalized()
 
-	var dist := lerpf(0.03, 0.2, power)
-	var land := _clamp_to_view(card.position + dir * dist)
-	var flips := 1 if power < 0.6 else 3
-	await card.fly_to(land, lerpf(0.35, 0.6, power), lerpf(0.02, 0.075, power), flips, randf_range(-0.5, 0.5) * power)
+	var correct := card == target
+	var dist := lerpf(0.04, 0.45, power) if correct else lerpf(0.03, 0.2, power)
+	var land := card.position + dir * dist
+	if not correct:
+		land = _clamp_to_view(land)
+	land.y = CardScript.REST_Y
+	await card.fly_to(land, lerpf(0.3, 0.5, power), lerpf(0.01, 0.04, power), randf_range(-1.2, 1.2) * power)
 
-	if card == target:
-		effects.celebrate(card)
+	if correct:
+		await effects.reveal_win(card)
 	else:
 		effects.thunder(card)
 		# 正しい札を光らせて教える
@@ -238,7 +242,7 @@ func _swipe(card: Node3D, from: Vector2, to: Vector2, speed: float) -> void:
 		var tw := create_tween()
 		tw.tween_method(target.set_glow, 0.0, 0.9, 0.25)
 		tw.tween_method(target.set_glow, 0.9, 0.0, 0.6)
-	await get_tree().create_timer(2.4).timeout
+	await get_tree().create_timer(0.6 if correct else 2.4).timeout
 
 	reader.stop()
 	for c in cards:
