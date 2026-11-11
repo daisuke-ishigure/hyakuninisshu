@@ -6,11 +6,12 @@ extends Node3D
 ## ・読まれた札に触れたら取り。読まれた札と違う陣の札に触れたら、または空札で札に触れたら、お手つき。
 ##   同じ陣の別の札ならセーフ。払った札が巻き込んだ札も「触れた札」に数える。
 ## ・敵陣の札を取ったら自陣から 1 枚送る（自分で選ぶ）。お手つきをしたら相手から 1 枚送られる。
-##   相手陣の最初の枚数を超えては送れない。
+##   相手陣の最初の枚数を超えては送れない。送られてきた札は、自陣の好きな場所に置ける。
 ## ・自陣の札を先になくしたほうが勝ち。
 ##
 ## 札の動きは board_physics.gd が計算する（すべる・回る・ぶつかる・飛び散る）。
-## 札の画像は res://cards/tori_NNN.png・e_NNN.png、読み上げはサイトの /sound/N.mp3。
+## 札の画像は res://cards/tori_NNN.png・e_NNN.png、読み上げと効果音はサイトの /sound/（karuta-taisen-pro と同じもの）。
+## 勝ったときの finish.m4a は Godot が再生できない形式なので、WAV に変換した res://sfx/finish.wav を使う。
 
 const CardScript := preload("res://scripts/card.gd")
 const EffectsScript := preload("res://scripts/effects.gd")
@@ -19,6 +20,8 @@ const CARD_SHADER := preload("res://shaders/card.gdshader")
 const TATAMI_SHADER := preload("res://shaders/tatami.gdshader")
 const TATAMI_TEX := preload("res://textures/tatami.webp")
 const FONT_PATH := "res://fonts/ui.ttf"
+const FINISH_SFX := preload("res://sfx/finish.wav")
+const PLACE_SEC := 8.0          # 送られてきた札を置くまでの時間（過ぎたら今の場所に置く）
 
 const W := 0.053
 const H := 0.074
@@ -36,7 +39,7 @@ var CPU := {
 	"hard": { "min": 0.7, "max": 0.9, "accuracy": 0.90 },
 }
 
-enum S { MENU, INTRO, PLAY, SEND, OVER }
+enum S { MENU, INTRO, PLAY, SEND, PLACE, OVER }
 
 var state := S.MENU
 var mode_total := 12
@@ -51,7 +54,6 @@ var reader := AudioStreamPlayer.new()
 var poems := {}                 # 番号 → { kimariji, tori }
 var board: Array = []           # 盤上の札（取られた札は除く）
 var slots := { "mine": [], "enemy": [] }   # 置き場所（Vector3）
-var slot_used := { "mine": [], "enemy": [] }
 var initial := { "mine": 0, "enemy": 0 }
 var layout := Vector2i(6, 1)    # 片陣の列・段
 
@@ -67,6 +69,11 @@ var _swipe_cards: Array = []    # この払いで触れた札
 var _last_move_ms := 0
 var _send_done: Callable        # 送る札を選んだあとの続き
 var _return_hold_until := 0
+var _placing: Node3D = null     # 置き場所を選んでいる送り札
+var _place_drag := false
+var _place_grab := Vector2.ZERO
+var _place_done := false
+var sfx: Array[AudioStreamPlayer] = []
 
 # 画面
 var ui_font: Font
@@ -89,11 +96,17 @@ func _ready() -> void:
 	phys.touched.connect(_on_touched)
 	phys.settled.connect(_on_settled)
 	add_child(reader)
+	for i in 3:
+		var a := AudioStreamPlayer.new()
+		add_child(a)
+		sfx.append(a)
 	_build_ui()
 	effects = EffectsScript.new()
 	add_child(effects)
 	effects.setup(camera, flash)
 	get_viewport().size_changed.connect(_fit_camera)
+	get_viewport().size_changed.connect(_layout_ui)
+	_layout_ui.call_deferred()
 
 	for a in OS.get_cmdline_user_args():
 		if a.begins_with("--auto="):
@@ -223,6 +236,7 @@ func _build_ui() -> void:
 		diff_buttons[d[0]] = b
 	var go := _button("対戦する")
 	go.custom_minimum_size = Vector2(220, 56)
+	go.set_meta("min", go.custom_minimum_size)
 	go.pressed.connect(_start_game)
 	mv.add_child(go)
 	_select_mode(12)
@@ -248,9 +262,6 @@ func _build_ui() -> void:
 
 func _panel(root: Control) -> Control:
 	var p := PanelContainer.new()
-	p.set_anchors_preset(Control.PRESET_CENTER)
-	p.grow_horizontal = Control.GROW_DIRECTION_BOTH
-	p.grow_vertical = Control.GROW_DIRECTION_BOTH
 	var sb := StyleBoxFlat.new()
 	sb.bg_color = Color(0.08, 0.06, 0.05, 0.86)
 	sb.border_color = Color(0.79, 0.64, 0.29)
@@ -260,8 +271,11 @@ func _panel(root: Control) -> Control:
 	p.add_theme_stylebox_override("panel", sb)
 	var v := VBoxContainer.new()
 	v.add_theme_constant_override("separation", 14)
+	v.set_meta("sep", 14)
 	p.add_child(v)
+	p.set_meta("sb", sb)
 	root.add_child(p)
+	p.visibility_changed.connect(_layout_ui)
 	return p
 
 
@@ -270,6 +284,7 @@ func _label(text: String, size: int, color: Color) -> Label:
 	l.text = text
 	l.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	l.add_theme_font_size_override("font_size", size)
+	l.set_meta("fs", size)
 	l.add_theme_color_override("font_color", color)
 	l.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.8))
 	l.add_theme_constant_override("outline_size", 6)
@@ -281,7 +296,52 @@ func _button(text: String) -> Button:
 	var b := Button.new()
 	b.text = text
 	b.custom_minimum_size = Vector2(110, 48)
+	b.set_meta("fs", 22)
+	b.set_meta("min", b.custom_minimum_size)
 	return b
+
+
+## 画面の大きさに合わせて文字とボタンを大きくする。
+## メニューと結果の枠は、画面の横幅の 9 割・高さの 8 割まで広げる（拡大ではなく文字の大きさを変えるので、ぼやけない）。
+## 上の状況表示は、縦画面（スマホ）ほど大きくする。
+func _layout_ui() -> void:
+	if menu == null or end_panel == null:
+		return
+	var vs := get_viewport().get_visible_rect().size
+	for p in [menu, end_panel]:
+		if not p.visible:
+			continue
+		_scale_ui(p, 1.0)
+		p.reset_size()
+		var sz: Vector2 = p.get_combined_minimum_size()
+		var k := minf(vs.x * 0.9 / sz.x, vs.y * 0.8 / sz.y)
+		k = clampf(k, 0.5, 6.0)
+		_scale_ui(p, k)
+		p.reset_size()
+		sz = p.get_combined_minimum_size()
+		p.size = sz
+		p.position = (vs - sz) * 0.5
+	var t := clampf(sqrt(vs.x * vs.y) / sqrt(1280.0 * 720.0), 1.0, 3.0)
+	for l in [count_label, status_label]:
+		_scale_ui(l, t * 1.15)
+
+
+func _scale_ui(n: Node, k: float) -> void:
+	if n.has_meta("fs"):
+		n.add_theme_font_size_override("font_size", int(round(n.get_meta("fs") * k)))
+	if n.has_meta("min"):
+		n.custom_minimum_size = n.get_meta("min") * k
+	if n.has_meta("sep"):
+		n.add_theme_constant_override("separation", int(round(n.get_meta("sep") * k)))
+	if n.has_meta("sb"):
+		var sb: StyleBoxFlat = n.get_meta("sb")
+		sb.set_content_margin_all(26.0 * k)
+		sb.set_corner_radius_all(int(round(18.0 * k)))
+		sb.set_border_width_all(maxi(2, int(round(3.0 * k))))
+	if n is Label:
+		n.add_theme_constant_override("outline_size", int(round(6.0 * k)))
+	for c in n.get_children():
+		_scale_ui(c, k)
 
 
 func _select_mode(t: int) -> void:
@@ -352,6 +412,8 @@ func _start_game() -> void:
 		_put(c, "mine" if i < per else "enemy", -1)
 	_fit_camera()
 	_update_counts()
+	for k in ["tap", "miss", "robot", "rain"]:
+		_get_audio(k)
 	idx = -1
 	state = S.INTRO
 	_set_status("まもなく読み上げが始まります")
@@ -365,7 +427,6 @@ func _start_game() -> void:
 func _make_slots() -> void:
 	for f in ["mine", "enemy"]:
 		slots[f] = []
-		slot_used[f] = []
 		var sgn := 1.0 if f == "mine" else -1.0
 		var list := []
 		for r in layout.y:
@@ -377,7 +438,6 @@ func _make_slots() -> void:
 		list.sort_custom(func(a, b): return a[0] < b[0] or (a[0] == b[0] and a[1] < b[1]))
 		for e in list:
 			slots[f].append(e[2])
-			slot_used[f].append(false)
 
 
 func _make_card(n: int) -> Node3D:
@@ -392,18 +452,28 @@ func _make_card(n: int) -> Node3D:
 ## 札を陣の空いている置き場所に置く（s = -1 なら空いている最初の場所）
 func _put(c: Node3D, f: String, s: int) -> void:
 	if s < 0:
-		s = _free_slot(f)
-	slot_used[f][s] = true
+		s = _free_slot(f, c)
 	c.field = f
 	c.slot = s
 	c.place(slots[f][s], 0.0 if f == "mine" else PI)
 
 
-func _free_slot(f: String) -> int:
-	for i in slot_used[f].size():
-		if not slot_used[f][i]:
+## 札が置かれていない置き場所（自由な場所に置かれた札とも重ならないもの）
+func _free_slot(f: String, except: Node3D = null) -> int:
+	for i in slots[f].size():
+		if not _home_taken(slots[f][i], except):
 			return i
 	return 0
+
+
+## その場所に、ほかの札の置き場所が重なっているか
+func _home_taken(p: Vector3, except: Node3D) -> bool:
+	for c in board:
+		if c == except or c.field == "":
+			continue
+		if absf(c.home.x - p.x) < W + 0.002 and absf(c.home.z - p.z) < H + 0.002:
+			return true
+	return false
 
 
 func _count(f: String) -> int:
@@ -423,8 +493,6 @@ func _card_of(n: int) -> Node3D:
 
 ## 札を盤から外す（取られた）
 func _remove(c: Node3D) -> void:
-	if c.field != "":
-		slot_used[c.field][c.slot] = false
 	c.field = ""
 	board.erase(c)
 	if phys.held == c:
@@ -472,7 +540,7 @@ func _kimariji_delay(n: int) -> float:
 func _wait_then_next(delay: float) -> void:
 	var rid := round_id
 	await get_tree().create_timer(delay).timeout
-	while (phys.is_moving() or state == S.SEND or _any_busy()) and state != S.OVER:
+	while (phys.is_moving() or state == S.SEND or state == S.PLACE or _any_busy()) and state != S.OVER:
 		await get_tree().create_timer(0.2).timeout
 	if rid == round_id and state != S.OVER:
 		reader.stop()
@@ -508,7 +576,10 @@ func _finish(win: bool) -> void:
 	_set_status("")
 	end_panel.visible = true
 	if win:
+		_play_sfx("finish")
 		effects.celebrate_screen()
+	else:
+		_play_sfx("rain")
 
 
 # ---------- ロボット ----------
@@ -523,7 +594,7 @@ func _schedule_cpu(rid: int, base: float) -> void:
 func _cpu_act(rid: int) -> void:
 	if rid != round_id or not round_open or state == S.OVER:
 		return
-	if state == S.SEND or _swiping or Time.get_ticks_msec() < _return_hold_until:
+	if state == S.SEND or state == S.PLACE or _swiping or Time.get_ticks_msec() < _return_hold_until:
 		await get_tree().create_timer(0.6).timeout
 		_cpu_act(rid)
 		return
@@ -544,6 +615,7 @@ func _cpu_act(rid: int) -> void:
 		_schedule_cpu(rid, 0.5)   # 同じ陣の札：お手つきではない
 		return
 	_set_status("ロボットのお手つき！", Color(1, 0.75, 0.3))
+	_play_sfx("miss")
 	if _count("mine") > 0 and _count("enemy") < initial["enemy"]:
 		await get_tree().create_timer(0.7).timeout
 		if state == S.OVER:
@@ -568,6 +640,7 @@ func _cpu_take(c: Node3D) -> void:
 	round_open = false
 	var from_mine: bool = c.field == "mine"
 	_cpu_swipe(c, 1.0)
+	_play_sfx("robot")
 	_set_status("ロボットが取りました", Color(0.8, 0.9, 1.0))
 	await get_tree().create_timer(0.45).timeout
 	_remove(c)
@@ -593,13 +666,12 @@ func _cpu_send() -> void:
 	var c: Node3D = list.pick_random()
 	_set_status("ロボットから札が送られてきました", Color(0.8, 0.9, 1.0))
 	await _move_to(c, "mine")
-	_check_end()
+	if not _check_end():
+		await _let_place(c)
 
 
 func _move_to(c: Node3D, f: String) -> void:
-	slot_used[c.field][c.slot] = false
-	var s := _free_slot(f)
-	slot_used[f][s] = true
+	var s := _free_slot(f, c)
 	c.field = f
 	c.slot = s
 	_update_counts()
@@ -609,6 +681,9 @@ func _move_to(c: Node3D, f: String) -> void:
 # ---------- プレイヤー ----------
 
 func _input(event: InputEvent) -> void:
+	if state == S.PLACE:
+		_place_input(event)
+		return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if menu.visible or end_panel.visible:
 			return
@@ -661,6 +736,7 @@ func _on_touched(c: Node3D, agent: String) -> void:
 
 func _player_take(c: Node3D) -> void:
 	var from_enemy: bool = c.field == "enemy"
+	_play_sfx("tap")
 	_set_status("取りました！", Color(1, 0.9, 0.4))
 	# 札が払われて飛んでいくのを少し見せてから、画面の中央で絵札を見せる
 	while _swiping:
@@ -701,6 +777,7 @@ func _judge(rid: int) -> void:
 	lock_until = Time.get_ticks_msec() + 1500
 	_return_hold_until = Time.get_ticks_msec() + 900
 	_set_status("お手つき！", Color(1, 0.45, 0.4))
+	_play_sfx("miss")
 	effects.thunder(bad, strike_at)
 	var shown_until := Time.get_ticks_msec() + 1500
 	var tw := create_tween()
@@ -749,7 +826,7 @@ func _process(delta: float) -> void:
 	if _tidy_t < 0.6:
 		return
 	_tidy_t = 0.0
-	if _swiping or phys.is_moving() or Time.get_ticks_msec() < _return_hold_until:
+	if _swiping or state == S.PLACE or phys.is_moving() or Time.get_ticks_msec() < _return_hold_until:
 		return
 	for c in board:
 		if c.displaced() and not c.busy:
@@ -763,8 +840,115 @@ func _on_settled() -> void:
 	if phys.is_moving():
 		return
 	for c in board:
-		if c.displaced() and not c.busy:
+		if c.displaced() and not c.busy and c != _placing:
 			c.glide_home()
+
+
+# ---------- 送られてきた札を置く ----------
+
+## 送られてきた札を、自陣の好きな場所に置かせる（ドラッグして離した場所に置く）。
+## 時間内に動かさなければ、今の場所（空いている置き場所）に置く。
+func _let_place(c: Node3D) -> void:
+	if state == S.OVER or c.field != "mine":
+		return
+	var prev := state
+	state = S.PLACE
+	_placing = c
+	_place_drag = false
+	_place_done = false
+	c.set_glow(0.6)
+	var left := PLACE_SEC
+	while not _place_done and state == S.PLACE:
+		if not _place_drag:
+			left -= get_process_delta_time()
+		_set_status("送られてきた札を好きな場所に置いてください（%d）" % ceili(maxf(left, 0.0)), Color(1, 0.85, 0.5))
+		if left <= 0.0 and not _place_drag:
+			break
+		await get_tree().process_frame
+	c.set_glow(0.0)
+	_placing = null
+	_place_drag = false
+	if state == S.PLACE:
+		state = prev if prev != S.PLACE else S.PLAY
+		_set_status(("%d首目" % (idx + 1)) if round_open else "")
+
+
+func _place_input(event: InputEvent) -> void:
+	var c := _placing
+	if c == null:
+		return
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.pressed:
+			if _card_at(event.position) == c:
+				c.stop_tween()
+				_place_drag = true
+				var p := _floor2(event.position)
+				_place_grab = Vector2(c.position.x, c.position.z) - p
+				c.raise()
+		elif _place_drag:
+			_place_drag = false
+			var spot := _free_spot(Vector2(c.position.x, c.position.z))
+			c.home = Vector3(spot.x, CardScript.REST_Y, spot.y)
+			c.home_yaw = 0.0
+			c.slot = -1
+			c.glide_home(0.18)
+			_place_done = true
+	elif event is InputEventMouseMotion and _place_drag:
+		var p := _floor2(event.position) + _place_grab
+		var b := _mine_bounds()
+		p.x = clampf(p.x, b.position.x, b.end.x)
+		p.y = clampf(p.y, b.position.y, b.end.y)
+		c.position = Vector3(p.x, c.layer_y + 0.006, p.y)   # 少し持ち上げて動かす
+		c.yaw = 0.0
+		c.rotation = Vector3.ZERO
+
+
+## 自陣の、札の中心を置ける範囲（中央の線より手前で、画面に収まるところ）
+func _mine_bounds() -> Rect2:
+	# 手前ほどカメラに近く、画面に映る畳の幅が狭いので、画面の下の両端で範囲を決める
+	var vs := get_viewport().get_visible_rect().size
+	var bl := _floor_point(Vector2(0, vs.y))
+	var br := _floor_point(vs)
+	var x0 := minf(bl.x, br.x) + W * 0.6
+	var x1 := maxf(bl.x, br.x) - W * 0.6
+	var z0 := CENTER_GAP * 0.5 + H * 0.5
+	var z1 := maxf(bl.z, br.z) - H * 0.6
+	return Rect2(x0, z0, maxf(x1 - x0, 0.0), maxf(z1 - z0, 0.0))
+
+
+## 離した場所に置く。ほかの札と重なるなら、いちばん近い空いた場所へずらす
+func _free_spot(p: Vector2) -> Vector2:
+	var b := _mine_bounds()
+	for r in range(0, 60):
+		var rad := r * 0.005
+		var steps := maxi(1, r * 6)
+		for k in steps:
+			var a := TAU * k / steps
+			var q := p + Vector2(cos(a), sin(a)) * rad
+			if r > 0 and not b.has_point(q):
+				continue
+			if not _home_taken(Vector3(q.x, 0, q.y), _placing):
+				return q
+	return p
+
+
+# ---------- 効果音 ----------
+
+func _play_sfx(sname: String) -> void:
+	var s: AudioStream
+	if sname == "finish":
+		s = FINISH_SFX
+	else:
+		s = await _get_audio(sname)
+	if s == null:
+		return
+	for a in sfx:
+		if not a.playing:
+			a.stream = s
+			a.play()
+			return
+	sfx[0].stream = s
+	sfx[0].play()
 
 
 # ---------- 部品 ----------
@@ -800,16 +984,17 @@ var _audio_cache := {}
 
 func _play_reading(n: int) -> void:
 	reader.stop()
-	var s: AudioStream = await _get_audio(n)
+	var s: AudioStream = await _get_audio(str(n))
 	if s and n == target_n and state != S.OVER:
 		reader.stream = s
 		reader.play()
 	# 次の歌を先に読み込んでおく
 	if idx + 1 < order.size():
-		_get_audio(order[idx + 1])
+		_get_audio(str(order[idx + 1]))
 
 
-func _get_audio(n: int) -> AudioStream:
+## サイトの /sound/<n>.mp3 を読み込む（読み上げは番号、効果音は tap・miss・robot・rain）
+func _get_audio(n: String) -> AudioStream:
 	if _audio_cache.has(n):
 		return _audio_cache[n]
 	var bytes := PackedByteArray()
@@ -817,13 +1002,13 @@ func _get_audio(n: int) -> AudioStream:
 		var origin: String = JavaScriptBridge.eval("location.origin")
 		var req := HTTPRequest.new()
 		add_child(req)
-		req.request("%s/sound/%d.mp3" % [origin, n])
+		req.request("%s/sound/%s.mp3" % [origin, n])
 		var res: Array = await req.request_completed
 		req.queue_free()
 		if res[1] == 200:
 			bytes = res[3]
 	else:
-		var path := ProjectSettings.globalize_path("res://").path_join("../../sound/%d.mp3" % n)
+		var path := ProjectSettings.globalize_path("res://").path_join("../../sound/%s.mp3" % n)
 		if FileAccess.file_exists(path):
 			bytes = FileAccess.get_file_as_bytes(path)
 	if bytes.is_empty():
@@ -837,7 +1022,11 @@ func _get_audio(n: int) -> AudioStream:
 # ---------- 動作確認用 ----------
 
 ## --auto=take：読まれた札を、隣の札の方へ払う　--auto=wrong：違う陣の札を払う　--auto=cpu：ロボットに取らせる
+## --auto=place：送られてきた札を、自陣の左手前へドラッグして置く
 func _auto_test(mode: String) -> void:
+	if mode == "place":
+		_auto_place()
+		return
 	for d in CPU:
 		CPU[d]["min"] = 0.2 if mode == "cpu" else 99.0
 		CPU[d]["max"] = 0.3 if mode == "cpu" else 99.0
@@ -866,3 +1055,42 @@ func _auto_test(mode: String) -> void:
 		e.position = from.lerp(to, i / 8.0)
 		_input(e)
 	_release()
+
+
+func _auto_place() -> void:
+	for d in CPU:
+		CPU[d]["min"] = 99.0
+		CPU[d]["max"] = 99.0
+	await get_tree().process_frame
+	_start_game()
+	while state != S.PLAY:
+		await get_tree().process_frame
+	reader.stop()
+	# 自陣を 1 枚空けて、ロボットから札を送ってもらう
+	var gone: Node3D = board.filter(func(c): return c.field == "mine")[0]
+	_remove(gone)
+	gone.queue_free()
+	_cpu_send()
+	while state != S.PLACE:
+		await get_tree().process_frame
+	await get_tree().create_timer(0.6).timeout
+	var c := _placing
+	var from := camera.unproject_position(c.position)
+	var vs := get_viewport().get_visible_rect().size
+	var to := Vector2(vs.x * 0.12, vs.y * 0.86)
+	var e := InputEventMouseButton.new()
+	e.button_index = MOUSE_BUTTON_LEFT
+	e.pressed = true
+	e.position = from
+	_input(e)
+	for i in range(1, 21):
+		await get_tree().process_frame
+		var m := InputEventMouseMotion.new()
+		m.position = from.lerp(to, i / 20.0)
+		_input(m)
+	await get_tree().create_timer(0.3).timeout
+	var u := InputEventMouseButton.new()
+	u.button_index = MOUSE_BUTTON_LEFT
+	u.pressed = false
+	u.position = to
+	_input(u)
