@@ -59,6 +59,7 @@ const SHOW_HOLD := 0.5     # 絵札を見せる時間（秒）
 
 func reveal_win(card: Node3D) -> void:
 	card.busy = true
+	card.load_e()
 	card.set_shadow(false)
 	# カメラの正面に、札の面をカメラに向けて置く（取り札の面が見える）
 	var show_pos := camera.global_position - camera.global_basis.z * _show_distance(SHOW_FILL)
@@ -68,7 +69,6 @@ func reveal_win(card: Node3D) -> void:
 	card.rotation = Vector3(tilt, 0, 0)
 	card.scale = Vector3.ONE * 0.05
 	card.visible = true
-	card.reset_motion()
 
 	var tw := create_tween()
 	# 1. ぱっと現れる（少し大きくなりすぎてから戻る）
@@ -95,18 +95,37 @@ func reveal_win(card: Node3D) -> void:
 	card.busy = false
 
 
-## 札（縦 H、横 W）が画面の fill 割合を占めるカメラからの距離。
-## 横画面は縦の視野角に札の縦を、縦画面は横の視野角に札の横を合わせる。
+## 札（縦 0.074、横 0.053）が画面の高さの fill 割合を占め、横幅の 9 割を超えないカメラからの距離。
 func _show_distance(fill: float) -> float:
-	var half := tan(deg_to_rad(camera.fov) * 0.5)
-	var size := 0.053 if camera.keep_aspect == Camera3D.KEEP_WIDTH else 0.074
-	return size / (fill * 2.0 * half)
+	var vs := get_viewport().get_visible_rect().size
+	var aspect := vs.x / maxf(vs.y, 1.0)
+	var half_v := tan(deg_to_rad(camera.fov) * 0.5)
+	if camera.keep_aspect == Camera3D.KEEP_WIDTH:
+		half_v /= aspect
+	var half_h := half_v * aspect
+	return maxf(0.074 / (fill * 2.0 * half_v), 0.053 / (0.9 * 2.0 * half_h))
+
+
+## カメラを動かしたあとに呼ぶ（揺れたあと戻る位置）
+func set_camera_base() -> void:
+	_cam_base = camera.position
+
+
+## 勝ったとき：画面いっぱいに桜の花びらと金のきらめきを降らせる
+func celebrate_screen() -> void:
+	var center := camera.global_position - camera.global_basis.z * 0.25
+	for i in 4:
+		var off := Vector3(randf_range(-0.08, 0.08), 0, randf_range(-0.05, 0.05))
+		_burst(center + off, 40, Color(1, 1, 1), PETAL_TEX, 0.008, 0.06, 0.18, Vector3(0, -0.05, 0), 3.0, true)
+		_burst(center + off, 30, Color(1.0, 0.92, 0.6), SPARK_TEX, 0.006, 0.08, 0.22, Vector3(0, -0.1, 0), 1.6, false)
+		await get_tree().create_timer(0.35).timeout
 
 
 # ---------- お手つき：雷が札に落ちる ----------
 
-func thunder(card: Node3D) -> void:
-	var at := card.global_position
+## at を渡すと、札ではなくその場所に落ちる（札が画面の外へ飛んだとき）
+func thunder(card: Node3D, at_override: Variant = null) -> void:
+	var at: Vector3 = card.global_position if at_override == null else at_override
 	# 稲妻：画面の中央寄りの上空から、斜めにジグザグに札へ落ちる
 	# （真上から見下ろしているので、真上から落とすと点にしか見えない）
 	var side := -signf(at.x) if absf(at.x) > 0.02 else (1.0 if randf() < 0.5 else -1.0)
@@ -143,6 +162,9 @@ func thunder(card: Node3D) -> void:
 	_light_flash(at + Vector3(0, 0.03, 0), Color(0.7, 0.8, 1.0), 0.35, 0.3, 0.08)
 
 	# 札は焦げたように暗くなり、小刻みに震える
+	if at_override != null:
+		_burst(at, 50, Color(0.7, 0.82, 1.0), SPARK_TEX, 0.006, 0.2, 0.5, Vector3(0, -0.6, 0), 0.6, false)
+		return
 	var td := create_tween()
 	td.tween_method(card.set_dim, 0.0, 0.75, 0.1)
 	var base := card.position
