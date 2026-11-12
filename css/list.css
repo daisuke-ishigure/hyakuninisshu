@@ -168,6 +168,17 @@ table th {
   overflow-wrap: break-word;
 }
 
+/* 決まり字（現代語訳を開いたときだけ、作者名の行の左端＝セルの左下に出す。js/list.js が td に .is-open を付ける） */
+.kimariji-label {
+  display: none;
+  font-size: 0.85em;
+  color: #b82343;
+  white-space: nowrap;
+}
+td.is-open .kimariji-label {
+  display: inline;
+}
+
 .game-badge {
   display: inline-block;
   padding: 3px 10px;

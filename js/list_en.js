@@ -1,6 +1,6 @@
 "use strict";
 $();
-const jsonAddress = "../js/hyakunin.json?20261104-03";
+const jsonAddress = "../js/hyakunin.json?20261112-01";
 
 // The HTML for one table row (colorMap, badge number lists, buildPoemRowHTML) lives in
 // js/list-rows_en.js. Load it before this file.
@@ -23,6 +23,8 @@ function initTable(table) {
     const isOpen = el.style.display !== "none";
     el.style.display = isOpen ? "none" : "block";
     toggle.textContent = isOpen ? "▼ translation" : "▲ close";
+    // Show the kimariji (.kimariji-label) only while open
+    td.classList.toggle("is-open", !isOpen);
   });
 
   initSortButtons(table);
@@ -70,7 +72,9 @@ function applyFilters(table) {
   rows.forEach((row) => {
     const colorOk = !activeColorFilter || row.dataset.color === activeColorFilter;
     const themeOk = !activeThemeFilter || row.dataset.theme === activeThemeFilter;
-    const textOk = !searchValue || row.textContent.toLowerCase().includes(searchValue);
+    // Visible text plus data-search (kana, romaji, source) and data-hiragana (modern-kana reading)
+    const haystack = (row.textContent + " " + (row.dataset.search || "") + " " + (row.dataset.hiragana || "")).toLowerCase();
+    const textOk = !searchValue || haystack.includes(searchValue);
     row.style.display = colorOk && themeOk && textOk ? "" : "none";
   });
   updateBadgeWave(table);

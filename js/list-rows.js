@@ -32,17 +32,26 @@ function buildPoemRowHTML(poem) {
   const modernText = poem.modern || "";
   const bg = poem.color && colorMap[poem.color];
 
+  // 検索用の文字（読み札の仮名・漢字かな交じりの歌＋歌人名）。以前は非表示の <td> 3列に入れていたが、
+  // 同じ歌の文字が画面に出ない形でページ内に何度も並ぶのを避けるため、属性 data-search にまとめた（js/list.js の検索が読む）
+  const searchText = [
+    (poem.yomihuda || "").replace(/<rt>.*?<\/rt>/g, "").replace(/<[^>]*>/g, ""),
+    (poem.forConsole || "").replace(/ /g, "").replace(/\s+/g, " "),
+  ].join(" ");
+
   // 上の句と下の句の間の改行は、画面幅960px未満だけCSS（list.css の .waka-br）で出す
   const wakaHTML = flat(poem.first) + ' <br class="waka-br">' + flat(poem.second);
 
-  // 歌人名・生没年（以前はここに解説ページ・各ゲームへのボタンも並べていたが、削除した）
+  // 決まり字と歌人名・生没年（以前はここに解説ページ・各ゲームへのボタンも並べていたが、削除した）
   const gameLinksHTML =
     '<div class="waka-game-links">' +
+    // 決まり字：現代語訳を開いたときだけ、作者名の行の左端（セルの左下）に出す（list.css の .kimariji-label）
+    (poem.kimariji ? '<span class="kimariji-label">決まり字：' + escapeHTMLText(poem.kimariji) + "</span>" : "") +
     '<span class="small">' + poem.name + (poem.date ? "（" + poem.date + "）" : "") + "</span>" +
     "</div>";
 
   return (
-    `<tr data-number="${num}" data-color="${escapeHTMLText(poem.color || "")}" data-theme="${escapeHTMLText(poem.theme || "")}" data-hiragana="${escapeHTMLText(hiragana)}">` +
+    `<tr data-number="${num}" data-color="${escapeHTMLText(poem.color || "")}" data-theme="${escapeHTMLText(poem.theme || "")}" data-hiragana="${escapeHTMLText(hiragana)}" data-search="${escapeHTMLText(searchText)}">` +
     `<td${bg ? ` style="background-color: ${bg};"` : ""}>` +
     `<a class="num-badge" href="/${num}.html" data-number="${num}" data-tooltip="解説ページへ">${num}</a></td>` +
     `<td style="background-color: #F7F1E0; cursor: pointer; position: relative;"${modernText ? ' data-has-modern="1"' : ""}>` +
@@ -51,10 +60,6 @@ function buildPoemRowHTML(poem) {
     (modernText ? '<span class="modern-text" style="display:none;">' + modernText + "</span>" : "") +
     gameLinksHTML +
     "</td>" +
-    // 以下3列は検索用（list.css で非表示）
-    `<td style="background-color: #F7F1E0;">${poem.yomihuda.replace(/<rt>.*?<\/rt>/g, "")}</td>` +
-    `<td style="background-color: #F7F1E0;">${escapeHTMLText(poem.hiragana || "")}</td>` +
-    `<td style="background-color: #F7F1E0;">${poem.forConsole.replace(/ /g, "")}</td>` +
     "</tr>"
   );
 }

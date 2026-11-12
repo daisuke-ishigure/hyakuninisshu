@@ -154,15 +154,27 @@ function buildPoemRowHTML(poem) {
   const dates = poem.date ? translateDate(poem.date) : "";
   const modernText = poem.modern_en || "";
 
-  // Poet name (the commentary/game buttons that used to sit here were removed, same as js/list-rows.js)
+  // Search text (kana of the reading card, romaji, source anthology). It used to sit in 3 hidden <td>s;
+  // now it is one data-search attribute so the same text isn't repeated invisibly in the page (js/list_en.js reads it)
+  const searchText = [
+    poem.yomihuda.replace(/<rt>.*?<\/rt>/g, "").replace(/<[^>]*>/g, ""),
+    romajiFirst + " " + romajiSecond,
+    translateSource(poem.source),
+  ].join(" ");
+
+  // Kimariji and poet name (the commentary/game buttons that used to sit here were removed, same as js/list-rows.js)
   const gameLinksHTML =
     '<div class="waka-game-links">' +
+    // Kimariji: shown only while the translation is open, at the left end of the poet line (= bottom-left of the cell; .kimariji-label in list.css)
+    (poem.kimariji
+      ? `<span class="kimariji-label">Kimariji: ${escapeHTMLText(poem.kimariji)} (${escapeHTMLText(hiraganaToRomaji(poem.kimariji))})</span>`
+      : "") +
     `<span class="small">${poetName}（${poetNameEN || dates}）</span>` +
     "</div>";
 
   // The line break between upper and lower verse only shows below 960px (.waka-br in list.css)
   return (
-    `<tr data-number="${num}" data-color="${escapeHTMLText(poem.color || "")}" data-theme="${escapeHTMLText(poem.theme || "")}" data-hiragana="${escapeHTMLText(hiragana)}">` +
+    `<tr data-number="${num}" data-color="${escapeHTMLText(poem.color || "")}" data-theme="${escapeHTMLText(poem.theme || "")}" data-hiragana="${escapeHTMLText(hiragana)}" data-search="${escapeHTMLText(searchText)}">` +
     `<td${bg ? ` style="background-color: ${bg};"` : ""}>` +
     `<a class="num-badge" href="/${num}_en.html" data-number="${num}" data-tooltip="Poem details">${num}</a></td>` +
     `<td style="background-color: #F7F1E0; cursor: pointer; position: relative;"${modernText ? ' data-has-modern="1"' : ""}>` +
@@ -172,10 +184,6 @@ function buildPoemRowHTML(poem) {
     (modernText ? `<span class="modern-text" style="display:none;">${modernText}</span>` : "") +
     gameLinksHTML +
     "</td>" +
-    // The next 3 columns are for search (hidden by list.css)
-    `<td style="background-color: #F7F1E0;">${poem.yomihuda.replace(/<rt>.*?<\/rt>/g, "").replace(/<\/?ruby>/g, "")}</td>` +
-    `<td style="background-color: #F7F1E0;">${escapeHTMLText(romajiFirst + " " + romajiSecond)}</td>` +
-    `<td style="background-color: #F7F1E0;">${escapeHTMLText(translateSource(poem.source))}</td>` +
     "</tr>"
   );
 }

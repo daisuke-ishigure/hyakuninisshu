@@ -1,6 +1,6 @@
 "use strict";
 $();
-const jsonAddress = "../js/hyakunin.json?20261104-03";
+const jsonAddress = "../js/hyakunin.json?20261112-01";
 
 // 表の1行分のHTML（colorMap・バッジ用の番号リスト・buildPoemRowHTML）は js/list-rows.js にある。
 // このファイルより先に読み込むこと。
@@ -23,6 +23,8 @@ function initTable(table) {
     const isOpen = el.style.display !== "none";
     el.style.display = isOpen ? "none" : "block";
     toggle.textContent = isOpen ? "▼ 現代語訳" : "▲ 閉じる";
+    // 開いている間だけ決まり字（.kimariji-label）を見せる
+    td.classList.toggle("is-open", !isOpen);
   });
 
   initSortButtons(table);
@@ -70,7 +72,9 @@ function applyFilters(table) {
   rows.forEach((row) => {
     const colorOk = !activeColorFilter || row.dataset.color === activeColorFilter;
     const themeOk = !activeThemeFilter || row.dataset.theme === activeThemeFilter;
-    const textOk = !searchValue || row.textContent.toLowerCase().includes(searchValue);
+    // 画面の文字（ルビ込み）に加え、data-search（仮名・漢字の歌と歌人名）・data-hiragana（現代仮名の読み）も対象にする
+    const haystack = (row.textContent + " " + (row.dataset.search || "") + " " + (row.dataset.hiragana || "")).toLowerCase();
+    const textOk = !searchValue || haystack.includes(searchValue);
     row.style.display = colorOk && themeOk && textOk ? "" : "none";
   });
   updateBadgeWave(table);
