@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+  <meta name="robots" content="noindex, nofollow">
+  <title>競技かるた 3D（試作）｜時雨の百人一首</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@600&family=Yuji+Syuku&display=swap&text=あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわゐゑをんがぎぐげござじずぜぞだぢづでどばびぶべぼ">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700&display=swap&text=めでたし！惜い">
+  <style>
+    html, body { margin: 0; height: 100%; background: #17120d; overflow: hidden; overscroll-behavior: none; }
+    body { font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif; color: #f4ecd8;
+      -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+    button { font: inherit; cursor: pointer; }
+    .hide { display: none !important; }
+    .embed #start { display: none !important; }   /* karuta-taisen.html に埋め込まれたときは開始画面を出さない */
+    #stage, #trail, #vignette { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
+    #stage { touch-action: none; transition: filter .25s; }
+    body.penalty #stage { filter: brightness(.5) saturate(.6); }
+    #trail, #vignette { pointer-events: none; }
+    #vignette { background: radial-gradient(ellipse at 50% 55%, transparent 60%, rgba(0, 0, 0, .38) 100%); }
+
+    #hud { position: fixed; top: 0; left: 0; right: 0; padding: calc(6px + env(safe-area-inset-top)) 10px 0;
+      text-align: center; pointer-events: none; color: #2a2118; }
+    #bar { display: flex; align-items: center; gap: 8px; font-size: 13px; pointer-events: auto; text-shadow: 0 0 3px rgba(255, 255, 255, .9), 0 0 6px rgba(255, 255, 255, .7); }
+    #status { flex: 1; font-size: 13px; min-height: 1.5em; line-height: 1.5; }
+    #status.warn { color: #b3261e; font-weight: bold; }
+    /* ●● あなた 2 － 3 ロボット ●●● */
+    #scoreline { margin-top: 6px; font-size: 16px; font-weight: bold; min-height: 1.5em; white-space: nowrap;
+      text-shadow: 0 0 3px rgba(255, 255, 255, .9), 0 0 6px rgba(255, 255, 255, .7); }
+    #scoreline .dots { letter-spacing: .1em; }
+    #score_text { margin: 0 .5em; }
+    #scoreline.even { color: #d0121b; }
+    /* 4－4 になった瞬間、「勝敗の分かれ目」をすばやく5回点滅させる */
+    #scoreline.even #score_text { animation: even-blink .16s steps(1, end) 5; }
+    @keyframes even-blink { 0% { opacity: 0; } 50% { opacity: 1; } }
+    /* 上の句：白い帯に1文字ずつ（karuta-taisen.html と同じ見た目） */
+    #kami { position: relative; left: 50%; transform: translateX(-50%); width: min(100vw, 900px); box-sizing: border-box;
+      margin-top: 10px; padding: 0 10px; height: calc(1.6em + 10px); overflow: hidden; display: flex; align-items: center; justify-content: center; background: #fff; color: #333;
+      font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif; font-weight: 600;
+      font-size: 17px; line-height: 1.6; letter-spacing: .08em; }
+    /* 暗記中の下のボタン：設定に戻る／札を振り直す／覚えたら始める（札と重ならないよう小さめ） */
+    #actions, #result { position: fixed; left: 0; right: 0; bottom: calc(8px + env(safe-area-inset-bottom)); display: flex;
+      justify-content: center; gap: 8px; padding: 0 6px; pointer-events: none; }
+    #actions button, #result button, #result a { pointer-events: auto; font-size: 14px; line-height: 1.3; padding: 8px 16px; border-radius: 999px;
+      border: 1px solid rgba(244, 236, 216, .7); background: rgba(42, 33, 24, .88); color: #f4ecd8;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .4); white-space: nowrap; text-decoration: none; }
+    #actions #go, #result #again { background: #B82343; color: #fff; border-color: #B82343; font-weight: bold; }
+    @media (max-width: 420px) { #actions { gap: 6px; } #actions button { font-size: 12.5px; padding: 7px 10px; } }
+    /* 終了後の「もう一度」「戻る」は、演出（z-index 9999）の上に出して、すぐ押せるようにする */
+    #result { z-index: 10000; }
+    @media (max-width: 340px) { #actions { gap: 4px; } #actions button { font-size: 11.5px; padding: 6px 7px; } }
+
+    .overlay { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 16px; background: rgba(15, 11, 8, .72); text-align: center; padding: 20px; }
+    .overlay h1, .overlay h2 { font-size: 22px; margin: 0; letter-spacing: .12em; }
+    .overlay p { margin: 0; font-size: 14px; line-height: 1.8; opacity: .85; }
+    .overlay .row { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+    .overlay button, .overlay a.btn { font-size: 16px; padding: 12px 26px; border-radius: 999px; border: 0;
+      background: #f4ecd8; color: #2a2118; text-decoration: none; }
+    .overlay button:disabled { opacity: .45; }
+    .overlay .option { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center; font-size: 14px; }
+    .overlay .seg { display: inline-flex; border: 1px solid rgba(244, 236, 216, .6); border-radius: 999px; overflow: hidden; }
+    .overlay .seg button { font-size: 14px; padding: 6px 16px; border-radius: 0; background: transparent; color: #f4ecd8; }
+    .overlay .seg button.on { background: #f4ecd8; color: #2a2118; }
+    /* 勝ち・負けの演出（karuta-taisen.html と同じ） */
+    #medetashi-overlay, #oshii-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      pointer-events: none;
+      z-index: 9999;
+      animation: medetashi-fade 4s ease forwards;
+    }
+    #medetashi-overlay img, #oshii-overlay img {
+      width: clamp(120px, 40vw, 200px);
+      display: block;
+    }
+    #medetashi-overlay span {
+      font-family: "Noto Serif JP", serif;
+      font-weight: 700;
+      font-size: clamp(60px, 15vw, 80px);
+      color: #c0392b;
+      text-shadow:
+        0 0 2px #fff, 0 0 4px #fff,
+        3px 3px 0 #fff, -3px 3px 0 #fff, 3px -3px 0 #fff, -3px -3px 0 #fff,
+        3px 0 0 #fff, -3px 0 0 #fff, 0 3px 0 #fff, 0 -3px 0 #fff,
+        4px 0 0 #fff, -4px 0 0 #fff, 0 4px 0 #fff, 0 -4px 0 #fff;
+      letter-spacing: 0.15em;
+    }
+    #oshii-overlay span {
+      font-family: "Noto Serif JP", serif;
+      font-weight: 700;
+      font-size: clamp(60px, 15vw, 80px);
+      color: #2c5f8a;
+      text-shadow:
+        0 0 2px #fff, 0 0 4px #fff,
+        3px 3px 0 #fff, -3px 3px 0 #fff, 3px -3px 0 #fff, -3px -3px 0 #fff,
+        3px 0 0 #fff, -3px 0 0 #fff, 0 3px 0 #fff, 0 -3px 0 #fff,
+        4px 0 0 #fff, -4px 0 0 #fff, 0 4px 0 #fff, 0 -4px 0 #fff;
+      letter-spacing: 0.15em;
+    }
+    @keyframes medetashi-fade {
+      0%   { opacity: 0; }
+      15%  { opacity: 1; }
+      70%  { opacity: 1; }
+      100% { opacity: 0; }
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="stage"></canvas>
+  <canvas id="trail"></canvas>
+  <div id="vignette"></div>
+
+  <div id="hud">
+    <div id="bar">
+      <span id="status"></span>
+    </div>
+    <div id="scoreline"><span id="dots_me" class="dots"></span><span id="score_text">あなた 0 － 0 ロボット</span><span id="dots_cpu" class="dots"></span></div>
+    <div id="kami"></div>
+  </div>
+  <div id="actions" class="hide">
+    <button type="button" id="back">設定に戻る</button>
+    <button type="button" id="reroll">札を振り直す</button>
+    <button type="button" id="go">覚えたら始める</button>
+  </div>
+
+  <div id="result" class="hide">
+    <button type="button" id="again">もう一度</button>
+    <a href="karuta-taisen.html" id="exit">戻る</a>
+  </div>
+
+  <div id="start" class="overlay">
+    <h1>競技かるた 3D（試作）</h1>
+    <p>9枚の札をロボットと取り合います。先に5枚取ったほうの勝ち。<br>読まれた歌の下の句の札を、スワイプで払ってください。</p>
+    <p id="loading">読み込み中…</p>
+    <div class="row">
+      <button type="button" data-difficulty="easy" disabled>よわい</button>
+      <button type="button" data-difficulty="normal" disabled>ふつう</button>
+      <button type="button" data-difficulty="hard" disabled>つよい</button>
+    </div>
+    <div class="option">
+      <span>札を払ったときの画面のゆれ</span>
+      <span class="seg"><button type="button" data-shake="on" class="on">あり</button><button type="button" data-shake="off">なし</button></span>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/pixi.js@7.3.2/dist/pixi.min.js"></script>
+  <script type="module" src="/js/karuta-taisen-3d.js?20261117-05"></script>
+</body>
+
+</html>

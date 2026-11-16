@@ -322,7 +322,7 @@
       margin: 10px 0 6px 0;
     }
 
-    .memory-time-btn {
+    .memory-time-btn, .shake-btn {
       padding: 5px 10px;
       margin: 3px;
       background: #ecf0f1;
@@ -333,7 +333,7 @@
       transition: all 0.2s;
     }
 
-    .memory-time-btn.selected {
+    .memory-time-btn.selected, .shake-btn.selected {
       background: #2980b9;
       color: white;
       border-color: #2980b9;
@@ -945,6 +945,7 @@
           <h2 class="section-subheading" style="margin-top:1.5em; margin-bottom:6px;">ロボットと対戦する</h2>
           <ul class="em-usage-list">
             <li style="text-align: left;">ロボットを相手にいつでも対戦できます。</li>
+            <li style="text-align: left;">札を先に5枚取ったら勝ちです。</li>
           </ul>
           <div class="cpu-difficulty-selector">
             <button class="difficulty-btn" data-level="easy">やさしい</button>
@@ -954,8 +955,17 @@
           <!-- やさしいモード選択時の注意書き -->
           <p id="easy_mode_notice">※ やさしいモードはランキング対象外です</p>
 
-          <!-- 暗記時間セレクター（ロボット対戦用） -->
+          <!-- 画面のゆれ（ロボット対戦用。3D版 karuta-taisen-3d.html と同じ設定を使う） -->
           <div class="memory-time-selector">
+            <label style="font-size:13px; color:#555; display:block; margin-bottom:4px;">札を払ったときの画面のゆれ：</label>
+            <div id="shake_buttons">
+              <button class="shake-btn selected" data-shake="on">あり</button>
+              <button class="shake-btn" data-shake="off">なし</button>
+            </div>
+          </div>
+
+          <!-- 暗記時間セレクター（3D版では使わないので隠す。3D表示が使えない端末の旧ロボット対戦は既定の3分） -->
+          <div class="memory-time-selector" style="display:none;">
             <label style="font-size:13px; color:#555; display:block; margin-bottom:4px;">⏱ 札の暗記時間（ロボット対戦）：</label>
             <div id="memory_time_buttons">
               <button class="memory-time-btn" data-sec="60">1:00</button>
@@ -1590,10 +1600,69 @@
     document.getElementById('cpu_battle_button').onclick = () => {
       if (!jsonData) return;
       unlockAudio();
+      if (canUse3d()) { openCpu3d(); return; }
+      startCpuGame2d();
+    };
+    // 3D表示（WebGL）が使えない端末では、これまでの平面版のロボット対戦で遊ぶ
+    function startCpuGame2d() {
       isCpuMode = true;
       cpuPlayers = ['ロボット'];
       startCpuGame();
-    };
+    }
+
+    // ===== ロボット対戦（3D版 karuta-taisen-3d.html を全画面の iframe で開く） =====
+    let cpu3dFrame = null;
+    function canUse3d() {
+      try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); }
+      catch (e) { return false; }
+    }
+    function openCpu3d() {
+      if (cpu3dFrame) return;
+      const f = document.createElement('iframe');
+      f.id = 'cpu3d_frame';
+      f.title = 'ロボットと対戦';
+      f.allow = 'autoplay';
+      f.src = `karuta-taisen-3d.html?embed=1&difficulty=${cpuDifficulty}`;
+      Object.assign(f.style, { position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', border: '0', zIndex: '10000', background: '#17120d' });
+      document.body.appendChild(f);
+      document.documentElement.style.overflow = 'hidden';
+      cpu3dFrame = f;
+    }
+    function closeCpu3d() {
+      if (!cpu3dFrame) return;
+      cpu3dFrame.remove();
+      cpu3dFrame = null;
+      document.documentElement.style.overflow = '';
+    }
+    window.addEventListener('message', async (e) => {
+      if (!cpu3dFrame || e.origin !== location.origin || e.source !== cpu3dFrame.contentWindow) return;
+      const msg = e.data;
+      if (!msg || msg.source !== 'k3d') return;
+      const frame = cpu3dFrame;
+      const note = (text) => { if (cpu3dFrame === frame) frame.contentWindow.postMessage({ source: 'k3d-host', type: 'note', text }, location.origin); };
+      if (msg.type === 'close') closeCpu3d();
+      else if (msg.type === 'unsupported') { closeCpu3d(); startCpuGame2d(); }
+      else if (msg.type === 'result' && msg.win) {
+        // 勝利の記録はこれまでと同じ条件（ログイン中・ふつう／つよい）
+        if (msg.difficulty === 'easy') note('※ やさしいモードはランキング対象外です');
+        else if (currentUser) {
+          const notice = document.getElementById('win_recorded_notice_result');
+          if (notice) notice.style.display = 'none';
+          await recordWin('cpu');
+          if (notice && notice.style.display === 'block') note('🏆 ランキングに勝利を記録しました！');
+        }
+      }
+    });
+    // 画面のゆれ あり／なし（3D版と同じ場所に覚えておく）
+    (() => {
+      const KEY = 'karuta3d_shake';
+      const set = (on, store) => {
+        document.querySelectorAll('.shake-btn').forEach(b => b.classList.toggle('selected', (b.dataset.shake === 'on') === on));
+        if (store) { try { localStorage.setItem(KEY, on ? 'on' : 'off'); } catch (e) { } }
+      };
+      document.querySelectorAll('.shake-btn').forEach(b => b.addEventListener('click', () => set(b.dataset.shake === 'on', true)));
+      try { set(localStorage.getItem(KEY) !== 'off', false); } catch (e) { set(true, false); }
+    })();
 
     // ===== 誰かと対戦ボタン =====
     document.getElementById('auto_join_button').onclick = async () => {
