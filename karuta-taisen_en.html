@@ -1533,6 +1533,15 @@
     }
     function openCpu3d() {
       if (cpu3dFrame) return;
+      // Create and unlock the sound-effect AudioContext inside this tap (the 3D game uses it via window.parent).
+      // Nothing has been tapped inside the iframe yet, so one created there stays silent on phones while the cards are dealt.
+      try {
+        const AC = window.AudioContext || window.webkitAudioContext;
+        if (AC) {
+          if (!window._k3dAudioCtx || window._k3dAudioCtx.state === 'closed') window._k3dAudioCtx = new AC();
+          if (window._k3dAudioCtx.state !== 'running') window._k3dAudioCtx.resume().catch(() => { });
+        }
+      } catch (e) { }
       const f = document.createElement('iframe');
       f.id = 'cpu3d_frame';
       f.title = 'Battle a Robot';

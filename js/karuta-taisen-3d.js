@@ -72,10 +72,16 @@ const later = (fn, ms) => { const t = setTimeout(fn, ms); game.timers.push(t); r
 // ===== 音（効果音は素材なしで合成） =====
 let actx = null, noiseBuf = null;
 function initAudio() {
-  if (actx) { actx.resume(); return; }
-  const AC = window.AudioContext || window.webkitAudioContext;
-  if (!AC) return;
-  actx = new AC();
+  if (actx) { if (actx.state !== 'running') actx.resume().catch(() => { }); return; }
+  // 埋め込み時：親ページが「ロボットと対戦」ボタンのタップ中に作って解錠した AudioContext を使う。
+  // （このページ内ではまだ操作が無いので、ここで作るとスマホでは止まったままになり、札を配る音が鳴らない）
+  try { if (EMBED && window.parent._k3dAudioCtx) actx = window.parent._k3dAudioCtx; } catch (e) { }
+  if (!actx) {
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return;
+    actx = new AC();
+  }
+  if (actx.state !== 'running') actx.resume().catch(() => { });
   noiseBuf = actx.createBuffer(1, actx.sampleRate * 0.4, actx.sampleRate);
   const d = noiseBuf.getChannelData(0);
   for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
@@ -597,7 +603,7 @@ function showResult() {
   toParent({ type: 'result', win, me: game.score.me, cpu: game.score.cpu, difficulty: game.difficulty });
   // 勝ち：終わりの音＋「めでたし！」＋桜吹雪／負け：雨の音＋「惜しい！」＋雨
   if (win) { audio.src = FINISH_AUDIO; audio.play().catch(() => { }); _sakuraEndGame(); }
-  else { rainAudio.currentTime = 0; rainAudio.play().catch(() => { }); _defeatInkEffect(); }
+  else { rainAudio.muted = false; rainAudio.currentTime = 0; rainAudio.play().catch(() => { }); _defeatInkEffect(); }
 }
 
 // ===== 勝ったとき・負けたときの演出（karuta-taisen.html と同じもの。PIXI は html で読み込む） =====
@@ -886,7 +892,7 @@ canvas.addEventListener('pointercancel', endPointer);
 function begin(difficulty) {
   initAudio();
   audio.play().catch(() => { }); audio.pause();
-  rainAudio.play().then(() => { if (game.phase !== 'over') rainAudio.pause(); }).catch(() => { });                            // iOS：最初の操作で読み上げ用の音声を解錠
+  unlockRain();                                                            // iOS：最初の操作で音声を解錠
   game.difficulty = difficulty;
   $('start').classList.add('hide');
   newGame();
@@ -916,7 +922,17 @@ window.addEventListener('resize', () => { if (renderer) fitCamera(); });
 function unlockMedia() {
   initAudio();
   if (audio.paused) { audio.play().then(() => { if (game.phase !== 'reading' && game.phase !== 'over') audio.pause(); }).catch(() => { }); }
-  if (rainAudio.paused) { rainAudio.play().then(() => { if (game.phase !== 'over') rainAudio.pause(); }).catch(() => { }); }
+  unlockRain();
+}
+// 雨の音（負けたとき用）の解錠。音を消したまま一瞬だけ再生して止める。
+// 消さずに再生すると、スマホでは読み込みが終わった時点（札を配っている最中）に雨の音が一瞬聞こえてしまう。
+function unlockRain() {
+  if (!rainAudio.paused) return;
+  rainAudio.muted = true;
+  rainAudio.play().then(() => {
+    if (game.phase !== 'over') { rainAudio.pause(); rainAudio.currentTime = 0; }
+    rainAudio.muted = false;
+  }).catch(() => { rainAudio.muted = false; });
 }
 if (EMBED) {
   window.addEventListener('pointerdown', unlockMedia, { capture: true, once: true });

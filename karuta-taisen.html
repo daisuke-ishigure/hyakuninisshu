@@ -1618,6 +1618,15 @@
     }
     function openCpu3d() {
       if (cpu3dFrame) return;
+      // 効果音用の AudioContext を、このタップの中で作って解錠しておく（3D版が window.parent から使う）。
+      // iframe の中ではまだ操作が無いため、スマホでは中で作ると札を配る音が鳴らない。
+      try {
+        const AC = window.AudioContext || window.webkitAudioContext;
+        if (AC) {
+          if (!window._k3dAudioCtx || window._k3dAudioCtx.state === 'closed') window._k3dAudioCtx = new AC();
+          if (window._k3dAudioCtx.state !== 'running') window._k3dAudioCtx.resume().catch(() => { });
+        }
+      } catch (e) { }
       const f = document.createElement('iframe');
       f.id = 'cpu3d_frame';
       f.title = 'ロボットと対戦';
