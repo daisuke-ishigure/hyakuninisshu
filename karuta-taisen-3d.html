@@ -48,9 +48,9 @@
     #dots_me { text-align: right; }
     #dots_cpu { text-align: left; }
     #score_text { margin: 0 .5em; }
-    #scoreline.even { color: #d0121b; }
-    /* 4－4 になった瞬間、「勝敗の分かれ目」をすばやく5回点滅させる */
-    #scoreline.even #score_text { animation: even-blink .16s steps(1, end) 5; }
+    #scoreline.alert { color: #d0121b; }
+    /* あと1枚で決まる場面（「あと一枚で勝利」「あと一枚取られたら敗北」「勝敗の分かれ目」）：表示した瞬間にすばやく5回点滅させる */
+    #scoreline.alert #score_text { animation: even-blink .16s steps(1, end) 5; }
     @keyframes even-blink { 0% { opacity: 0; } 50% { opacity: 1; } }
     /* 上の句：白い帯に1文字ずつ（karuta-taisen.html と同じ見た目） */
     #kami { position: relative; left: 50%; transform: translateX(-50%); width: min(100vw, 900px); box-sizing: border-box;
@@ -187,7 +187,7 @@
     }
   </script>
   <script src="https://cdn.jsdelivr.net/npm/pixi.js@7.3.2/dist/pixi.min.js"></script>
-  <script type="module" src="/js/karuta-taisen-3d.js?20261117-10"></script>
+  <script type="module" src="/js/karuta-taisen-3d.js?20261117-11"></script>
 </body>
 
 </html>

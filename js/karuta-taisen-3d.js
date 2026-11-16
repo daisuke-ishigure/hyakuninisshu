@@ -35,12 +35,14 @@ if (EMBED) document.documentElement.classList.add('embed');
 const EN = PARAMS.get('lang') === 'en';
 const TXT = EN ? {
   score: (me, cpu) => `You ${me} – ${cpu} Robot`, even: 'Deciding card',
+  reachMe: 'One more card to win', reachCpu: 'One more and you lose',
   dealing: 'Dealing the cards…', startIn: sec => `Starting in… ${sec}`, card: n => `Card ${n}`,
   cpuMiss: 'Robot false-started. Your chance!', over: 'Game over', took: 'You got it!', cpuTook: 'The robot took it',
   miss: 'False start! Wait 3 seconds', win: 'Win!', lose: 'So close!', winAlt: 'Happy cat character', loseAlt: 'Sad cat character',
   noWebgl: '3D display (WebGL) is not available on this device or browser.',
 } : {
   score: (me, cpu) => `あなた ${me} － ${cpu} ロボット`, even: '勝敗の分かれ目',
+  reachMe: 'あと一枚で勝利', reachCpu: 'あと一枚取られたら敗北',
   dealing: '札を並べています…', startIn: sec => `開始まで… ${sec}`, card: n => `第 ${n} 首`,
   cpuMiss: 'ロボットがお手つき。チャンスです！', over: '勝負あり', took: '取りました！', cpuTook: 'ロボットが取りました',
   miss: 'お手つき！ 3秒間待機', win: 'めでたし！', lose: '惜しい！', winAlt: '喜ぶ猫キャラ', loseAlt: '悲しむ猫キャラ',
@@ -494,10 +496,17 @@ function step(dt) {
 // ===== ゲーム進行（karuta-taisen.html のロボット対戦と同じ流れ） =====
 function setStatus(text, warn) { $('status').textContent = text; $('status').classList.toggle('warn', !!warn); }
 function updateScore() {
-  const { me, cpu } = game.score, even = me === WIN - 1 && cpu === WIN - 1;
+  const { me, cpu } = game.score, R = WIN - 1;
+  // あと1枚で決まる場面は、点数のかわりに赤い文字で知らせる（4－4／自分が先に4枚／ロボットが先に4枚）
+  const alert = me === R && cpu === R ? 'even' : me === R && cpu < R ? 'reachMe' : cpu === R && me < R ? 'reachCpu' : '';
   $('dots_me').textContent = '●'.repeat(me); $('dots_cpu').textContent = '●'.repeat(cpu);
-  $('score_text').textContent = even ? TXT.even : TXT.score(me, cpu);
-  $('scoreline').classList.toggle('even', even);
+  $('score_text').textContent = alert ? TXT[alert] : TXT.score(me, cpu);
+  const line = $('scoreline');
+  if (line.dataset.alert !== alert) {                                       // 表示が切り替わった瞬間だけ点滅しなおす
+    line.dataset.alert = alert;
+    line.classList.remove('alert');
+    if (alert) { void line.offsetWidth; line.classList.add('alert'); }
+  }
 }
 function clearTimers() { game.timers.forEach(clearTimeout); game.timers = []; }
 
