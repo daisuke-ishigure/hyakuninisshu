@@ -515,7 +515,14 @@ function startReading(i) {
   const entry = kimariji.find(e => String(e.id) === game.current);
   // 上の句を1文字ずつ表示
   const text = entry.kami_no_ku_kana.replace(/<br\s*\/?>/gi, '　').replace(/<[^>]+>/g, '');
-  $('kami').textContent = '';
+  // 白い帯に1行で入りきらない歌は、最初に全文の幅を測って、入る大きさまで文字を小さくする（必ず1行）
+  const kami = $('kami');
+  kami.style.fontSize = '';
+  kami.textContent = text;
+  const range = document.createRange(); range.selectNodeContents(kami);
+  const full = range.getBoundingClientRect().width, avail = kami.clientWidth - 20;
+  if (full > avail) kami.style.fontSize = Math.floor(parseFloat(getComputedStyle(kami).fontSize) * avail / full * 10) / 10 + 'px';
+  kami.textContent = '';
   for (let n = 1; n <= text.length; n++) later(() => { if (game.phase === 'reading' && game.index === i) $('kami').textContent = text.slice(0, n); }, n * 120);
   audio.src = audioUrl(game.current);
   audio.play().catch(() => { });
@@ -926,4 +933,4 @@ async function boot() {
 boot();
 
 // 動作確認用（コンソールやテストから状態を見る・動かす）
-window.__k3d = { get cards() { return cards; }, get camera() { return camera; }, THREE, game, step, strike, startCountdown, showResult };
+window.__k3d = { get cards() { return cards; }, get camera() { return camera; }, THREE, game, step, strike, startCountdown, showResult, updateScore };
