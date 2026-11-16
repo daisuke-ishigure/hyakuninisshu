@@ -11,15 +11,21 @@
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@600&family=Yuji+Syuku&display=swap&text=あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわゐゑをんがぎぐげござじずぜぞだぢづでどばびぶべぼ">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700&display=swap&text=めでたし！惜い">
+  <script>
+    // karuta-taisen.html に埋め込まれたとき（?embed=1）は、開始画面を最初から出さない。
+    // 3D のスクリプト（module）は読み込みが遅いので、ここで先に印を付けておく
+    if (/[?&]embed=1(&|$)/.test(location.search) && window.parent !== window) document.documentElement.classList.add('embed');
+  </script>
   <style>
-    html, body { margin: 0; height: 100%; background: #17120d; overflow: hidden; overscroll-behavior: none; }
+    html, body { margin: 0; height: 100%; background: #bab37a url(/img/tatami.webp); overflow: hidden; overscroll-behavior: none; }
     body { font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif; color: #f4ecd8;
       -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
     button { font: inherit; cursor: pointer; }
     .hide { display: none !important; }
     .embed #start { display: none !important; }   /* karuta-taisen.html に埋め込まれたときは開始画面を出さない */
     #stage, #trail, #vignette { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
-    #stage { touch-action: none; transition: filter .25s; }
+    #stage { touch-action: none; transition: filter .25s; opacity: 0; }
+    .ready #stage { opacity: 1; }
     body.penalty #stage { filter: brightness(.5) saturate(.6); }
     #trail, #vignette { pointer-events: none; }
     #vignette { background: radial-gradient(ellipse at 50% 55%, transparent 60%, rgba(0, 0, 0, .38) 100%); }
@@ -160,7 +166,7 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/pixi.js@7.3.2/dist/pixi.min.js"></script>
-  <script type="module" src="/js/karuta-taisen-3d.js?20261117-07"></script>
+  <script type="module" src="/js/karuta-taisen-3d.js?20261117-08"></script>
 </body>
 
 </html>

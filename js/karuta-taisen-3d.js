@@ -159,7 +159,9 @@ function initScene() {
   scene.add(sun);
 
   // 畳：karuta-taisen.html の背景と同じ画像を、光で色を変えずにそのまま映す（大きさは fitCamera で合わせる）
-  tatamiTex = new THREE.TextureLoader().load('/img/tatami.webp');
+  // 畳の画像が読めてから 3D の画面を見せる（それまでは黒く映るので、ページ背景の畳を見せておく）
+  const showStage = () => requestAnimationFrame(() => requestAnimationFrame(() => document.documentElement.classList.add('ready')));
+  tatamiTex = new THREE.TextureLoader().load('/img/tatami.webp', showStage, undefined, showStage);
   tatamiTex.colorSpace = THREE.SRGBColorSpace;
   tatamiTex.wrapS = tatamiTex.wrapT = THREE.RepeatWrapping;
   tatamiTex.anisotropy = renderer.capabilities.getMaxAnisotropy();
