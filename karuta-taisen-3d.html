@@ -15,6 +15,7 @@
     // karuta-taisen.html に埋め込まれたとき（?embed=1）は、開始画面を最初から出さない。
     // 3D のスクリプト（module）は読み込みが遅いので、ここで先に印を付けておく
     if (/[?&]embed=1(&|$)/.test(location.search) && window.parent !== window) document.documentElement.classList.add('embed');
+    if (/[?&]lang=en(&|$)/.test(location.search)) document.documentElement.lang = 'en';
   </script>
   <style>
     html, body { margin: 0; height: 100%; background: #bab37a url(/img/tatami.webp); overflow: hidden; overscroll-behavior: none; }
@@ -22,7 +23,10 @@
       -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
     button { font: inherit; cursor: pointer; }
     .hide { display: none !important; }
-    .embed #start { display: none !important; }   /* karuta-taisen.html に埋め込まれたときは開始画面を出さない */
+    .embed #start { display: none !important; }
+    /* 英語表示（?lang=en）：「So close!」は長いので少し小さく（karuta-taisen_en.html と同じ） */
+    html[lang="en"] #medetashi-overlay span, html[lang="en"] #oshii-overlay span { letter-spacing: .05em; }
+    html[lang="en"] #oshii-overlay span { font-size: clamp(48px, 12vw, 72px); }   /* karuta-taisen.html に埋め込まれたときは開始画面を出さない */
     #stage, #trail, #vignette { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
     #stage { touch-action: none; transition: filter .25s; opacity: 0; }
     .ready #stage { opacity: 1; }
@@ -165,8 +169,25 @@
     </div>
   </div>
 
+  <script>
+    // 英語表示（?lang=en）：ボタンなどの文言を差し替える（ゲーム中の文言は js/karuta-taisen-3d.js の TXT）
+    if (document.documentElement.lang === 'en') {
+      const t = { score_text: 'You 0 – 0 Robot', back: 'Settings', reroll: 'Redeal', go: 'Start', again: 'Play again', exit: 'Back', loading: 'Loading…' };
+      for (const id in t) document.getElementById(id).textContent = t[id];
+      document.getElementById('exit').href = 'karuta-taisen_en.html';
+      document.title = 'Competitive Karuta 3D (prototype) | Shigure\'s Hyakunin Isshu';
+      const start = document.getElementById('start');
+      start.querySelector('h1').textContent = 'Competitive Karuta 3D (prototype)';
+      start.querySelector('p').innerHTML = 'Compete with a robot for 9 cards. The first to take 5 cards wins.<br>Swipe away the card with the second half of the poem being read.';
+      const d = { easy: 'Easy', normal: 'Normal', hard: 'Hard' };
+      start.querySelectorAll('[data-difficulty]').forEach(b => { b.textContent = d[b.dataset.difficulty]; });
+      start.querySelector('.option span').textContent = 'Screen shake when swiping a card';
+      start.querySelector('[data-shake="on"]').textContent = 'On';
+      start.querySelector('[data-shake="off"]').textContent = 'Off';
+    }
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/pixi.js@7.3.2/dist/pixi.min.js"></script>
-  <script type="module" src="/js/karuta-taisen-3d.js?20261117-08"></script>
+  <script type="module" src="/js/karuta-taisen-3d.js?20261117-09"></script>
 </body>
 
 </html>

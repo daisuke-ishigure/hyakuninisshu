@@ -300,7 +300,7 @@
       margin: 10px 0 6px 0;
     }
 
-    .memory-time-btn {
+    .memory-time-btn, .shake-btn {
       padding: 5px 10px;
       margin: 3px;
       background: #ecf0f1;
@@ -311,7 +311,7 @@
       transition: all 0.2s;
     }
 
-    .memory-time-btn.selected {
+    .memory-time-btn.selected, .shake-btn.selected {
       background: #2980b9;
       color: white;
       border-color: #2980b9;
@@ -897,6 +897,8 @@
           <h2 class="was-h4" style="margin-top:1.5em; margin-bottom:6px;">Battling a Robot</h2>
           <ul class="em-usage-list">
             <li style="text-align: left;">You can battle a robot at any time.</li>
+            <li style="text-align: left;">The first to take 5 cards wins.</li>
+            <li style="text-align: left;">To heighten immersion, the screen shakes when you swipe a card away. If the shaking makes you feel unwell, select "Off" under "Screen shake when swiping a card".</li>
           </ul>
           <div class="cpu-difficulty-selector">
             <button class="difficulty-btn" data-level="easy">Easy</button>
@@ -906,8 +908,17 @@
           <!-- Notice shown when Easy mode is selected -->
           <p id="easy_mode_notice">※ Easy mode does not count toward the ranking</p>
 
-          <!-- Memorization time selector (Robot mode) -->
+          <!-- Screen shake (Robot mode; shares the setting with the 3D game karuta-taisen-3d.html) -->
           <div class="memory-time-selector">
+            <label style="font-size:13px; color:#555; display:block; margin-bottom:4px;">Screen shake when swiping a card:</label>
+            <div id="shake_buttons">
+              <button class="shake-btn selected" data-shake="on">On</button>
+              <button class="shake-btn" data-shake="off">Off</button>
+            </div>
+          </div>
+
+          <!-- Memorization time selector (hidden: not used by the 3D game; the old 2D robot battle, used only where WebGL is unavailable, defaults to 3:00) -->
+          <div class="memory-time-selector" style="display:none;">
             <label style="font-size:13px; color:#555; display:block; margin-bottom:4px;">⏱ Card memorization time (Robot mode):</label>
             <div id="memory_time_buttons">
               <button class="memory-time-btn" data-sec="60">1:00</button>
@@ -1504,10 +1515,69 @@
     document.getElementById('cpu_battle_button').onclick = () => {
       if (!jsonData) return;
       unlockAudio();
+      if (canUse3d()) { openCpu3d(); return; }
+      startCpuGame2d();
+    };
+    // Where 3D (WebGL) is unavailable, fall back to the old 2D robot battle
+    function startCpuGame2d() {
       isCpuMode = true;
       cpuPlayers = ['ロボット'];
       startCpuGame();
-    };
+    }
+
+    // ===== Robot Battle (opens the 3D game karuta-taisen-3d.html in a full-screen iframe) =====
+    let cpu3dFrame = null;
+    function canUse3d() {
+      try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); }
+      catch (e) { return false; }
+    }
+    function openCpu3d() {
+      if (cpu3dFrame) return;
+      const f = document.createElement('iframe');
+      f.id = 'cpu3d_frame';
+      f.title = 'Battle a Robot';
+      f.allow = 'autoplay';
+      f.src = `karuta-taisen-3d.html?embed=1&lang=en&difficulty=${cpuDifficulty}`;
+      Object.assign(f.style, { position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', border: '0', zIndex: '10000', background: '#bab37a url(img/tatami.webp)' });
+      document.body.appendChild(f);
+      document.documentElement.style.overflow = 'hidden';
+      cpu3dFrame = f;
+    }
+    function closeCpu3d() {
+      if (!cpu3dFrame) return;
+      cpu3dFrame.remove();
+      cpu3dFrame = null;
+      document.documentElement.style.overflow = '';
+    }
+    window.addEventListener('message', async (e) => {
+      if (!cpu3dFrame || e.origin !== location.origin || e.source !== cpu3dFrame.contentWindow) return;
+      const msg = e.data;
+      if (!msg || msg.source !== 'k3d') return;
+      const frame = cpu3dFrame;
+      const note = (text) => { if (cpu3dFrame === frame) frame.contentWindow.postMessage({ source: 'k3d-host', type: 'note', text }, location.origin); };
+      if (msg.type === 'close') closeCpu3d();
+      else if (msg.type === 'unsupported') { closeCpu3d(); startCpuGame2d(); }
+      else if (msg.type === 'result' && msg.win) {
+        // Wins are recorded under the same conditions as before (logged in, Normal/Hard)
+        if (msg.difficulty === 'easy') note('※ Easy mode does not count toward the ranking');
+        else if (currentUser) {
+          const notice = document.getElementById('win_recorded_notice_result');
+          if (notice) notice.style.display = 'none';
+          await recordWin('cpu');
+          if (notice && notice.style.display === 'block') note('🏆 Your win has been recorded in the ranking!');
+        }
+      }
+    });
+    // Screen shake On/Off (stored in the same place the 3D game reads it from)
+    (() => {
+      const KEY = 'karuta3d_shake';
+      const set = (on, store) => {
+        document.querySelectorAll('.shake-btn').forEach(b => b.classList.toggle('selected', (b.dataset.shake === 'on') === on));
+        if (store) { try { localStorage.setItem(KEY, on ? 'on' : 'off'); } catch (e) { } }
+      };
+      document.querySelectorAll('.shake-btn').forEach(b => b.addEventListener('click', () => set(b.dataset.shake === 'on', true)));
+      try { set(localStorage.getItem(KEY) !== 'off', false); } catch (e) { set(true, false); }
+    })();
 
     // ===== Battle Someone button =====
     document.getElementById('auto_join_button').onclick = async () => {

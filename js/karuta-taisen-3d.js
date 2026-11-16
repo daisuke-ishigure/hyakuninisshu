@@ -31,6 +31,21 @@ const DEBUG_SPEED = Number(PARAMS.get('speed')) || 1;
 // 開始画面を出さずにすぐ始める。終了・勝敗は親ページへ知らせる（ランキングの記録は親ページが行う）
 const EMBED = PARAMS.get('embed') === '1' && window.parent !== window;
 if (EMBED) document.documentElement.classList.add('embed');
+// 表示の言語（karuta-taisen_en.html から開かれたときは ?lang=en）。ボタンなど HTML 側の文言は html の末尾で差し替える
+const EN = PARAMS.get('lang') === 'en';
+const TXT = EN ? {
+  score: (me, cpu) => `You ${me} – ${cpu} Robot`, even: 'Deciding card',
+  dealing: 'Dealing the cards…', startIn: sec => `Starting in… ${sec}`, card: n => `Card ${n}`,
+  cpuMiss: 'Robot false-started. Your chance!', over: 'Game over', took: 'You got it!', cpuTook: 'The robot took it',
+  miss: 'False start! Wait 3 seconds', win: 'Win!', lose: 'So close!', winAlt: 'Happy cat character', loseAlt: 'Sad cat character',
+  noWebgl: '3D display (WebGL) is not available on this device or browser.',
+} : {
+  score: (me, cpu) => `あなた ${me} － ${cpu} ロボット`, even: '勝敗の分かれ目',
+  dealing: '札を並べています…', startIn: sec => `開始まで… ${sec}`, card: n => `第 ${n} 首`,
+  cpuMiss: 'ロボットがお手つき。チャンスです！', over: '勝負あり', took: '取りました！', cpuTook: 'ロボットが取りました',
+  miss: 'お手つき！ 3秒間待機', win: 'めでたし！', lose: '惜しい！', winAlt: '喜ぶ猫キャラ', loseAlt: '悲しむ猫キャラ',
+  noWebgl: 'この端末・ブラウザでは 3D 表示（WebGL）が使えません。',
+};
 const toParent = msg => { if (EMBED) window.parent.postMessage({ source: 'k3d', ...msg }, location.origin); };
 
 // ===== 状態 =====
@@ -475,7 +490,7 @@ function setStatus(text, warn) { $('status').textContent = text; $('status').cla
 function updateScore() {
   const { me, cpu } = game.score, even = me === WIN - 1 && cpu === WIN - 1;
   $('dots_me').textContent = '●'.repeat(me); $('dots_cpu').textContent = '●'.repeat(cpu);
-  $('score_text').textContent = even ? '勝敗の分かれ目' : `あなた ${me} － ${cpu} ロボット`;
+  $('score_text').textContent = even ? TXT.even : TXT.score(me, cpu);
   $('scoreline').classList.toggle('even', even);
 }
 function clearTimers() { game.timers.forEach(clearTimeout); game.timers = []; }
@@ -489,7 +504,7 @@ function newGame() {
   game.order = keys.map(k => String(poems[k].number)).sort(() => Math.random() - 0.5);
   game.order.forEach(n => { const a = new Audio(); a.preload = 'auto'; a.src = audioUrl(n); });   // 先読み
   game.phase = 'deal';
-  updateScore(); setStatus('札を並べています…');
+  updateScore(); setStatus(TXT.dealing);
   deal(keys);
 }
 const audioUrl = n => `/sound/d_${String(n).padStart(3, '0')}.mp3?v=20260527`;
@@ -505,7 +520,7 @@ function startCountdown() {
   game.phase = 'countdown';
   let sec = 3;
   const tick = () => {
-    if (sec > 0) { setStatus(`開始まで… ${sec--}`); later(tick, 1000); }
+    if (sec > 0) { setStatus(TXT.startIn(sec--)); later(tick, 1000); }
     else startReading(0);
   };
   tick();
@@ -513,7 +528,7 @@ function startCountdown() {
 
 function startReading(i) {
   game.index = i; game.current = game.order[i]; game.phase = 'reading';
-  setStatus(`第 ${i + 1} 首`);
+  setStatus(TXT.card(i + 1));
   const entry = kimariji.find(e => String(e.id) === game.current);
   // 上の句を1文字ずつ表示
   const text = entry.kami_no_ku_kana.replace(/<br\s*\/?>/gi, '　').replace(/<[^>]+>/g, '');
@@ -540,7 +555,7 @@ function scheduleCpu() {
     const target = correct ? cards.find(c => c.number === game.current) : free.filter(c => c.number !== game.current)[Math.floor(Math.random() * Math.max(1, free.length - 1))];
     if (!target) return;
     if (target.state !== 'rest') { later(act, 150); return; }              // 宙にある間は待つ
-    if (!correct) { setStatus('ロボットがお手つき。チャンスです！', true); sfxMiss(); later(() => { if (game.phase === 'reading' && game.index === i && performance.now() > game.penaltyUntil) setStatus(`第 ${i + 1} 首`); }, 1200); }
+    if (!correct) { setStatus(TXT.cpuMiss, true); sfxMiss(); later(() => { if (game.phase === 'reading' && game.index === i && performance.now() > game.penaltyUntil) setStatus(TXT.card(i + 1)); }, 1200); }
     // ロボットは奥から、近いほうの外側へ払う
     const side = target.x === 0 ? (Math.random() < 0.5 ? -1 : 1) : Math.sign(target.x);
     const sp = correct ? rand(320, 430) : rand(150, 230), a = rand(-0.2, 0.5);
@@ -555,10 +570,10 @@ function onTake(by) {
   updateScore();
   if (game.score[by] >= WIN) {                                              // 先に5枚で勝負あり
     game.phase = 'over';
-    setStatus('勝負あり');
+    setStatus(TXT.over);
     later(showResult, 1400);
   } else {
-    setStatus(by === 'me' ? '取りました！' : 'ロボットが取りました');
+    setStatus(by === 'me' ? TXT.took : TXT.cpuTook);
     later(() => startReading(game.index + 1), 1500);
   }
 }
@@ -568,10 +583,10 @@ function onMiss() {                                                         // �
   const i = game.index;
   game.penaltyUntil = performance.now() + 3000;
   document.body.classList.add('penalty');
-  setStatus('お手つき！ 3秒間待機', true);
+  setStatus(TXT.miss, true);
   later(() => {
     document.body.classList.remove('penalty');
-    if (game.phase === 'reading' && game.index === i) setStatus(`第 ${i + 1} 首`);
+    if (game.phase === 'reading' && game.index === i) setStatus(TXT.card(i + 1));
   }, 3000);
 }
 
@@ -609,7 +624,7 @@ function _getPixiApp() {
 function _sakuraEndGame() {
   const overlay = document.createElement('div');
   overlay.id = 'medetashi-overlay';
-  overlay.innerHTML = '<img src="/img/dango_win.webp" alt="喜ぶ猫キャラ"><span>めでたし！</span>';
+  overlay.innerHTML = `<img src="/img/dango_win.webp" alt="${TXT.winAlt}"><span>${TXT.win}</span>`;
   document.body.appendChild(overlay);
   overlay.addEventListener('animationend', () => overlay.remove());
 
@@ -659,7 +674,7 @@ function _sakuraEndGame() {
 function _defeatInkEffect() {
   const loseOverlay = document.createElement('div');
   loseOverlay.id = 'oshii-overlay';
-  loseOverlay.innerHTML = '<img src="/img/dango_lose.webp" alt="悲しむ猫キャラ"><span>惜しい！</span>';
+  loseOverlay.innerHTML = `<img src="/img/dango_lose.webp" alt="${TXT.loseAlt}"><span>${TXT.lose}</span>`;
   document.body.appendChild(loseOverlay);
   loseOverlay.addEventListener('animationend', () => loseOverlay.remove());
 
@@ -917,7 +932,7 @@ async function boot() {
   try {
     initScene();
   } catch (err) {
-    $('start').innerHTML = '<p>この端末・ブラウザでは 3D 表示（WebGL）が使えません。</p>';
+    $('start').innerHTML = `<p>${TXT.noWebgl}</p>`;
     toParent({ type: 'unsupported' });
     return;
   }
