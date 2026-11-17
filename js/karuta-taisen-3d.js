@@ -20,6 +20,7 @@ const MAX_SPEED = 480;
 const SWIPE_SCALE = 150;
 // 取った札・取られた札を見せる演出：払われて飛ぶ → 回りながら目の前（カメラの手前）へ浮き上がる → 少し見せる → 取った側へ去りながら消える
 const SHOW_AFTER = 0.22, SHOW_RISE = 0.42, SHOW_HOLD = 0.5, SHOW_OUT = 0.3;   // それぞれの秒数（合計で次の読みまでの1.5秒に収める）
+const KEEP_BACK = 0.4;                     // オンライン：見せた札が元の場所へ戻るまでの秒数
 const SHOW_SCALE = 2.2;                    // 見せるときの大きさ（並んでいる札の何倍に見えるか。画面が狭いときは収まるまで小さくする）
 const CPU_SETTINGS = {                     // karuta-taisen.html と同じ
   easy: { reactionTimeMin: 5000, reactionTimeMax: 7000, accuracy: 0.5 },
@@ -33,11 +34,15 @@ const DEBUG_SPEED = Number(PARAMS.get('speed')) || 1;
 // 開始画面を出さずにすぐ始める。終了・勝敗は親ページへ知らせる（ランキングの記録は親ページが行う）
 const EMBED = PARAMS.get('embed') === '1' && window.parent !== window;
 if (EMBED) document.documentElement.classList.add('embed');
+// オンライン対戦（?mode=online）：部屋・読み上げ・だれが取ったかは親ページ（Firebase）が決め、このページは札を見せて
+// 払いを親ページへ知らせるだけ。読み上げの音声も親ページが鳴らす（下の「オンライン対戦」を参照）
+const ONLINE = EMBED && PARAMS.get('mode') === 'online';
 // 表示の言語（karuta-taisen_en.html から開かれたときは ?lang=en）。ボタンなど HTML 側の文言は html の末尾で差し替える
 const EN = PARAMS.get('lang') === 'en';
 const TXT = EN ? {
   score: (me, cpu) => `You ${me} – ${cpu} Robot`, even: 'Deciding card',
   reachMe: 'One more card to win', reachCpu: 'One more and you lose',
+  players: (icons, me) => `Players: ${icons} · You: ${me}`, rivalTook: 'Your opponent took it', soon: 'Starting soon…',
   dealing: 'Dealing the cards…', startIn: sec => `Starting in… ${sec}`, card: n => `Card ${n}`,
   cpuMiss: 'Robot false-started. Your chance!', over: 'Game over', took: 'You got it!', cpuTook: 'The robot took it',
   miss: 'False start! Wait 3 seconds', win: 'Win!', lose: 'So close!', winAlt: 'Happy cat character', loseAlt: 'Sad cat character',
@@ -45,6 +50,7 @@ const TXT = EN ? {
 } : {
   score: (me, cpu) => `あなた ${me} － ${cpu} ロボット`, even: '勝敗の分かれ目',
   reachMe: 'あと一枚で勝利', reachCpu: 'あと一枚取られたら敗北',
+  players: (icons, me) => `参加者：${icons} ・ あなた：${me}`, rivalTook: '相手が取りました', soon: 'まもなく開始…',
   dealing: '札を並べています…', startIn: sec => `開始まで… ${sec}`, card: n => `第 ${n} 首`,
   cpuMiss: 'ロボットがお手つき。チャンスです！', over: '勝負あり', took: '取りました！', cpuTook: 'ロボットが取りました',
   miss: 'お手つき！ 3秒間待機', win: 'めでたし！', lose: '惜しい！', winAlt: '喜ぶ猫キャラ', loseAlt: '悲しむ猫キャラ',
@@ -64,7 +70,8 @@ let shakeOn = true;                        // 払ったときに画面をゆら�
 const game = {
   phase: 'title',                          // title → deal → memorize → countdown → reading ⇄ between → over
   difficulty: 'normal', order: [], index: -1, current: null,
-  score: { me: 0, cpu: 0 }, penaltyUntil: 0, timers: []
+  score: { me: 0, cpu: 0 }, penaltyUntil: 0, timers: [],
+  players: { icons: [], me: '' }           // オンライン：部屋にいる全員の動物バッジと、自分のバッジ
 };
 const audio = new Audio(); audio.preload = 'auto';
 const rand = (a, b) => a + Math.random() * (b - a);
@@ -314,7 +321,7 @@ function deal(keys) {
       vx: 0, vy: 0, vz: 0, yawVel: 0, flipVel: 0,
       state: 'deal', tw: { from: deck, to: { x: home.x, y: 0, z: home.z, yaw: home.yaw, flip: 0 },
         t0: simTime + 0.25 + i * stagger, dur: DEAL_DUR, arc: 5, ease: easeOutQuart, next: 'rest', sound: true },
-      role: null, owner: null, settled: 0, flyTime: 0, sweep: null, fade: -1, fadeMats: null, showTex: null, showT0: -1, showY: 0, showZ: 0
+      role: null, owner: null, settled: 0, flyTime: 0, sweep: null, fade: -1, fadeMats: null, showTex: null, icon: null, badge: null, showT0: -1, showY: 0, showZ: 0
     };
     applyPose(c);
     cards.push(c);
@@ -365,7 +372,7 @@ function overlap(a, b) {
 function baseHeight(c) {
   let base = 0;
   if (c.y > 4) return 0;
-  for (const o of cards) if (o !== c && o.state === 'rest' && overlap(c, o)) base = Math.max(base, o.y + T);
+  for (const o of cards) if (o !== c && (o.state === 'rest' || o.state === 'kept') && overlap(c, o)) base = Math.max(base, o.y + T);
   return base;
 }
 
@@ -382,13 +389,13 @@ function launch(c, vx, vz, role, rx = 0, rz = 0, spinBias = 0) {
 }
 
 /* by: 'me'（プレイヤー）か 'cpu'（ロボット）。正解なら取り札に、それ以外は飛んだあと元の場所へ戻る */
-function strike(c, hitX, hitZ, vx, vz, curve, by) {
+function strike(c, hitX, hitZ, vx, vz, curve, by, force = false) {
   let s = Math.hypot(vx, vz);
   if (s < 25) { vx = 0; vz = -110; s = 110; }                               // タップ：軽く奥へ押す
   if (s > MAX_SPEED) { vx *= MAX_SPEED / s; vz *= MAX_SPEED / s; s = MAX_SPEED; }
   const dx = vx / s, dz = vz / s, k = clamp((s - 60) / (MAX_SPEED - 60), 0, 1);
   const ox = c.x, oz = c.z;
-  const correct = game.phase === 'reading' && c.number === game.current;
+  const correct = force || (game.phase === 'reading' && c.number === game.current);
   launch(c, vx, vz, correct ? 'target' : 'swept', hitX - c.x, hitZ - c.z, curve * 5);
   if (correct) c.owner = by;
 
@@ -411,7 +418,13 @@ function strike(c, hitX, hitZ, vx, vz, curve, by) {
     const now = performance.now();
     freezeUntil = now + 45; slowUntil = now + 45 + 240;
   }
-  if (correct) onTake(by);
+  if (ONLINE) {
+    // オンライン：取れたかどうかは親ページが決める。札は先に飛ばしておき、結果はあとで受け取る（onlineResult / onlineTaken）
+    if (by === 'me' && game.phase === 'reading') {
+      toParent({ type: 'strike', num: c.number });
+      if (correct) game.phase = 'between'; else onMiss();
+    }
+  } else if (correct) onTake(by);
   else if (game.phase === 'reading' && by === 'me') onMiss();
 }
 
@@ -435,6 +448,7 @@ function updateTween(c) {
   if (k >= 1) {
     c.state = tw.next; c.tw = null;
     if (tw.sound) sfxPlace();
+    if (tw.next === 'kept') markKept(c);
   }
   applyPose(c);
 }
@@ -495,13 +509,53 @@ function startShow(c) {
   startTween(c, { x: 0, y: dist * (1 - 1 / s), z: camLook.z * (1 - 1 / s), yaw: 0, flip: 0 }, SHOW_RISE, 0, easeOutBack, 'show');
   c.tw.from.yaw += Math.PI * 2 * (c.owner === 'cpu' ? -1 : 1);
 }
+/* オンライン：取られた札は元の場所に置いたまま、少し暗くして、取った人の動物バッジを右上につける
+   （karuta-taisen.html の平面版と同じ見せ方。3人以上で遊んでも、だれが取ったかわかる） */
+const badgeMats = {};
+function badgeMaterial(icon) {
+  if (badgeMats[icon]) return badgeMats[icon];
+  const S = 160, c = document.createElement('canvas'); c.width = c.height = S;
+  const g = c.getContext('2d');
+  g.shadowColor = 'rgba(0,0,0,.35)'; g.shadowBlur = 8; g.shadowOffsetY = 3;
+  g.fillStyle = '#fff'; g.beginPath(); g.arc(S / 2, S / 2, S / 2 - 12, 0, Math.PI * 2); g.fill();
+  g.shadowColor = 'transparent';
+  g.font = `${S * 0.56}px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif`;
+  g.textAlign = 'center'; g.textBaseline = 'middle';
+  g.fillText(icon, S / 2, S / 2 + S * 0.04);
+  const tex = new THREE.CanvasTexture(c); tex.colorSpace = THREE.SRGBColorSpace;
+  tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+  return (badgeMats[icon] = new THREE.MeshBasicMaterial({ map: tex, transparent: true, depthWrite: false, fog: false }));
+}
+const BADGE = 2.7;                                                          // バッジの直径 cm
+let badgeGeo = null;
+function setBadge(c) {
+  if (!c.icon || c.badge) return;
+  badgeGeo = badgeGeo || new THREE.PlaneGeometry(BADGE, BADGE);
+  c.badge = new THREE.Mesh(badgeGeo, badgeMaterial(c.icon));
+  c.badge.rotation.x = -Math.PI / 2;
+  c.badge.position.set(W / 2 - 0.5, T / 2 + 0.05, -D / 2 + 0.5);            // 右上の角に、少しはみ出して
+  c.badge.renderOrder = 2;
+  c.mesh.add(c.badge);
+}
+function markKept(c) {
+  c.state = 'kept'; c.tw = null; c.vx = c.vy = c.vz = 0;
+  // 大きく見せるための細かい画像のままだと、小さく映したときに文字がちらつくので、並べるときの画像に戻す
+  const old = c.faceMat.map; c.faceMat.map = makeFaceTexture(c.torihuda); old.dispose();
+  c.faceMat.color.setScalar(0.6);
+  setBadge(c);
+}
+
 function updateShow(c) {
   if (c.showT0 < 0) { c.showT0 = simTime; c.showY = c.y; c.showZ = c.z; }
   const t = simTime - c.showT0, a = t * 5;
   // 見せている間は、傾きの向きをゆっくり回して立体に見せる
   c.axis.set(Math.cos(a), 0, Math.sin(a));
   c.flip = 0.16 * Math.min(1, t / 0.12);
-  if (t > SHOW_HOLD) {
+  if (t > SHOW_HOLD && ONLINE) {
+    // オンライン：見せ終わったら元の場所へ戻して置いておく（だれが取ったかは動物のバッジで示す）
+    startTween(c, { x: c.home.x, y: 0, z: c.home.z, yaw: c.home.yaw, flip: 0 }, KEEP_BACK, 0, easeOutCubic, 'kept');
+    c.tw.sound = true;
+  } else if (t > SHOW_HOLD) {
     // 取った側（自分＝手前、ロボット＝奥）へ下りながら消える
     const k = Math.min(1, (t - SHOW_HOLD) / SHOW_OUT), e = k * k;
     if (c.fade < 0) {
@@ -537,6 +591,11 @@ function step(dt) {
 // ===== ゲーム進行（karuta-taisen.html のロボット対戦と同じ流れ） =====
 function setStatus(text, warn) { $('status').textContent = text; $('status').classList.toggle('warn', !!warn); }
 function updateScore() {
+  if (ONLINE) {                                                             // オンライン：点数のかわりに「参加者：🐻🐼 ・ あなた：🐻」（動物バッジ）を出す
+    $('dots_me').textContent = $('dots_cpu').textContent = '';
+    $('score_text').textContent = game.players.icons.length ? TXT.players(game.players.icons.join(''), game.players.me) : '';
+    return;
+  }
   const { me, cpu } = game.score, R = WIN - 1;
   // あと1枚で決まる場面は、点数のかわりに赤い文字で知らせる（4－4／自分が先に4枚／ロボットが先に4枚）
   const alert = me === R && cpu === R ? 'even' : me === R && cpu < R ? 'reachMe' : cpu === R && me < R ? 'reachCpu' : '';
@@ -566,6 +625,10 @@ function newGame() {
 const audioUrl = n => `/sound/d_${String(n).padStart(3, '0')}.mp3?v=20260527`;
 
 function onDealt() {
+  if (ONLINE) {                                                             // オンライン：暗記の時間はなく、親ページからの読み上げ開始を待つ
+    if (game.phase === 'deal') { game.phase = 'memorize'; setStatus(TXT.soon); }
+    return;
+  }
   game.phase = 'memorize';
   setStatus('');
   $('actions').classList.remove('hide');
@@ -583,7 +646,14 @@ function startCountdown() {
 }
 
 function startReading(i) {
-  game.index = i; game.current = game.order[i]; game.phase = 'reading';
+  showReading(i, game.order[i]);
+  audio.src = audioUrl(game.current);
+  audio.play().catch(() => { });
+  scheduleCpu();
+}
+/* 読みはじめの表示（第○首・上の句を1文字ずつ）。音声は呼び出し側が鳴らす */
+function showReading(i, num) {
+  game.index = i; game.current = num; game.phase = 'reading';
   setStatus(TXT.card(i + 1));
   const target = cards.find(c => c.number === game.current);
   if (target) prepareShowTexture(target);
@@ -599,9 +669,6 @@ function startReading(i) {
   if (full > avail) kami.style.fontSize = Math.floor(parseFloat(getComputedStyle(kami).fontSize) * avail / full * 10) / 10 + 'px';
   kami.textContent = '';
   for (let n = 1; n <= text.length; n++) later(() => { if (game.phase === 'reading' && game.index === i) $('kami').textContent = text.slice(0, n); }, n * 120);
-  audio.src = audioUrl(game.current);
-  audio.play().catch(() => { });
-  scheduleCpu();
 }
 
 function scheduleCpu() {
@@ -614,11 +681,14 @@ function scheduleCpu() {
     if (!target) return;
     if (target.state !== 'rest') { later(act, 150); return; }              // 宙にある間は待つ
     if (!correct) { setStatus(TXT.cpuMiss, true); sfxMiss(); later(() => { if (game.phase === 'reading' && game.index === i && performance.now() > game.penaltyUntil) setStatus(TXT.card(i + 1)); }, 1200); }
-    // ロボットは奥から、近いほうの外側へ払う
-    const side = target.x === 0 ? (Math.random() < 0.5 ? -1 : 1) : Math.sign(target.x);
-    const sp = correct ? rand(320, 430) : rand(150, 230), a = rand(-0.2, 0.5);
-    strike(target, target.x - side * rand(0.5, 2), target.z + rand(-2.5, 2.5), side * Math.cos(a) * sp, Math.sin(a) * sp, rand(-0.3, 0.3), 'cpu');
+    rivalStrike(target, correct ? rand(320, 430) : rand(150, 230));
   }, s.reactionTimeMin + Math.random() * (s.reactionTimeMax - s.reactionTimeMin));
+}
+
+/* 相手（ロボット・オンラインの相手）は奥から、近いほうの外側へ払う。force：読まれている札でなくても取り札として扱う */
+function rivalStrike(target, sp, force = false) {
+  const side = target.x === 0 ? (Math.random() < 0.5 ? -1 : 1) : Math.sign(target.x), a = rand(-0.2, 0.5);
+  strike(target, target.x - side * rand(0.5, 2), target.z + rand(-2.5, 2.5), side * Math.cos(a) * sp, Math.sin(a) * sp, rand(-0.3, 0.3), 'cpu', force);
 }
 
 function onTake(by) {
@@ -639,13 +709,82 @@ function onTake(by) {
 function onMiss() {                                                         // お手つき：3秒間さわれない
   sfxMiss();
   const i = game.index;
-  game.penaltyUntil = performance.now() + 3000;
+  game.penaltyUntil = performance.now() + (ONLINE ? 3100 : 3000);           // オンライン：親ページ側の3秒が終わってから触れるように少し長く
   document.body.classList.add('penalty');
   setStatus(TXT.miss, true);
   later(() => {
     document.body.classList.remove('penalty');
     if (game.phase === 'reading' && game.index === i) setStatus(TXT.card(i + 1));
   }, 3000);
+}
+
+// ===== オンライン対戦（親ページ karuta-taisen.html からの知らせで動く） =====
+/* 親 → このページ：setup（札を並べる）／read（読みはじめ）／taken（だれかが取った）／result（自分の払いの結果）／over（終了）
+   このページ → 親：ready（準備できた）／strike（読み上げ中に札を払った） */
+function setOnlineScore(msg) {
+  if (msg.me == null) return;
+  game.score.me = msg.me; game.score.cpu = msg.other || 0;
+}
+function finishDealNow() {                                                  // 配っている途中の札を、すぐ置き場所へ
+  for (const c of cards) {
+    if (c.state !== 'deal') continue;
+    const b = c.tw.to;
+    c.x = b.x; c.y = b.y; c.z = b.z; c.yaw = b.yaw; c.flip = b.flip; c.state = 'rest'; c.tw = null;
+    applyPose(c);
+  }
+  if (dealing) { dealing = false; onDealt(); }
+}
+function onlineSetup(msg) {
+  const keys = (msg.keys || []).map(n => Object.keys(poems).find(k => String(poems[k].number) === String(n)));
+  if (keys.length !== TOTAL || keys.some(k => !k)) { toParent({ type: 'unsupported' }); return; }
+  clearTimers();
+  document.body.classList.remove('penalty');
+  $('result').classList.add('hide'); $('actions').classList.add('hide'); $('kami').textContent = '';
+  game.index = -1; game.current = null; game.penaltyUntil = 0; game.phase = 'deal';
+  setOnlineScore(msg); setStatus(TXT.dealing);
+  deal(keys);
+  const taken = msg.taken || {};                                            // 途中から参加したとき：もう取られた札は、バッジをつけて置いておく
+  cards.forEach(c => {
+    const t = taken[c.number]; if (!t) return;
+    const b = c.tw.to;
+    c.x = b.x; c.y = b.y; c.z = b.z; c.yaw = b.yaw; c.flip = b.flip; c.role = 'target'; c.owner = t.by === 'me' ? 'me' : 'cpu'; c.icon = t.icon || null;
+    applyPose(c); markKept(c);
+  });
+  if (msg.instant) finishDealNow();
+}
+function onlineRead(msg) {
+  if (game.phase === 'over' || !cards.length) return;
+  finishDealNow();
+  showReading(msg.index, String(msg.num));
+}
+function onlineTaken(msg) {
+  setOnlineScore(msg);
+  const num = String(msg.num), c = cards.find(c => c.number === num), by = msg.by === 'me' ? 'me' : 'cpu';
+  if (num === game.current && game.phase !== 'over') { game.phase = 'between'; setStatus(by === 'me' ? TXT.took : TXT.rivalTook); }
+  if (!c || c.state === 'taken') return;
+  if (msg.icon) c.icon = String(msg.icon);
+  if (c.state === 'kept') { c.owner = by; setBadge(c); return; }           // もう置いてある札：バッジだけ（まだなら）つける
+  if (c.role === 'target' && c.state !== 'rest') { c.owner = by; return; }  // 自分が払って飛んでいる札：だれの札になったかだけ決まる
+  if (c.state === 'rest' && by === 'cpu') { rivalStrike(c, rand(320, 430), true); return; }   // 相手に取られた：相手が払ったように飛ばす
+  c.owner = by; c.role = 'target';                                          // 巻き込まれて宙にある・戻る途中など：そのまま見せる演出へ
+  if (c.state !== 'fly') { prepareShowTexture(c); startShow(c); }
+}
+function onlineResult(msg) {
+  const num = String(msg.num), c = cards.find(c => c.number === num);
+  if (msg.result === 'lost') {                                              // わずかな差で相手が先に取っていた
+    if (c && c.role === 'target') c.owner = 'cpu';
+    if (num === game.current) setStatus(TXT.rivalTook);
+  } else if (msg.result === 'ignored' && c && c.role === 'target' && c.state !== 'taken' && c.state !== 'kept' && c.fade < 0) {
+    // 親ページが受け付けなかった（お手つきの待ち時間中など）：札を元の場所へ戻す
+    c.owner = null; c.role = 'swept';
+    if (c.state !== 'fly') { c.showT0 = -1; startTween(c, { x: c.home.x, y: 0, z: c.home.z, yaw: c.home.yaw, flip: 0 }, 0.36, 1.4, easeOutCubic, 'rest'); }
+    if (num === game.current && game.phase === 'between') game.phase = 'reading';
+  }
+}
+function onlineOver() {
+  game.phase = 'over';
+  document.body.classList.remove('penalty');
+  setStatus(TXT.over);
 }
 
 function showResult() {
@@ -993,6 +1132,13 @@ if (EMBED) {
   window.addEventListener('message', e => {
     if (e.origin !== location.origin || e.source !== window.parent || !e.data || e.data.source !== 'k3d-host') return;
     if (e.data.type === 'note' && game.phase === 'over') setStatus(String(e.data.text || ''));
+    if (!ONLINE || !poems) return;
+    if (e.data.type === 'players') { game.players = { icons: (e.data.icons || []).map(String), me: String(e.data.me || '') }; updateScore(); }
+    else if (e.data.type === 'setup') onlineSetup(e.data);
+    else if (e.data.type === 'read') onlineRead(e.data);
+    else if (e.data.type === 'taken') onlineTaken(e.data);
+    else if (e.data.type === 'result') onlineResult(e.data);
+    else if (e.data.type === 'over') onlineOver();
   });
 }
 
@@ -1013,7 +1159,8 @@ async function boot() {
   poems = await r1.json(); kimariji = await r2.json();
   $('loading').classList.add('hide');
   document.querySelectorAll('[data-difficulty]').forEach(b => { b.disabled = false; });
-  if (EMBED) begin(CPU_SETTINGS[PARAMS.get('difficulty')] ? PARAMS.get('difficulty') : 'normal');
+  if (ONLINE) { initAudio(); updateScore(); toParent({ type: 'ready' }); }   // オンライン：親ページからの setup を待つ
+  else if (EMBED) begin(CPU_SETTINGS[PARAMS.get('difficulty')] ? PARAMS.get('difficulty') : 'normal');
 }
 boot();
 

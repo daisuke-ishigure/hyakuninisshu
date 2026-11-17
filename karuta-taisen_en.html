@@ -1535,13 +1535,7 @@
       if (cpu3dFrame) return;
       // Create and unlock the sound-effect AudioContext inside this tap (the 3D game uses it via window.parent).
       // Nothing has been tapped inside the iframe yet, so one created there stays silent on phones while the cards are dealt.
-      try {
-        const AC = window.AudioContext || window.webkitAudioContext;
-        if (AC) {
-          if (!window._k3dAudioCtx || window._k3dAudioCtx.state === 'closed') window._k3dAudioCtx = new AC();
-          if (window._k3dAudioCtx.state !== 'running') window._k3dAudioCtx.resume().catch(() => { });
-        }
-      } catch (e) { }
+      ensureK3dAudio();
       const f = document.createElement('iframe');
       f.id = 'cpu3d_frame';
       f.title = 'Battle a Robot';
@@ -1558,7 +1552,95 @@
       cpu3dFrame = null;
       document.documentElement.style.overflow = '';
     }
+    // Create and unlock the sound-effect AudioContext inside a button tap (the 3D game uses it via window.parent)
+    function ensureK3dAudio() {
+      try {
+        const AC = window.AudioContext || window.webkitAudioContext;
+        if (AC) {
+          if (!window._k3dAudioCtx || window._k3dAudioCtx.state === 'closed') window._k3dAudioCtx = new AC();
+          if (window._k3dAudioCtx.state !== 'running') window._k3dAudioCtx.resume().catch(() => { });
+        }
+      } catch (e) { }
+    }
+
+    // ===== 3D view for online battles =====
+    // Rooms, reading and deciding who took a card stay on this page (Firebase) as before, and the flat cards are still built underneath.
+    // The 3D game (karuta-taisen-3d.html?mode=online) is laid over them: it shows the cards and reports swipes here (handleCardClick).
+    // Where 3D is unavailable or fails to load, the game simply continues with the flat cards.
+    const NEXT_READ_DELAY = 1500;   // from a card being taken to the next reading (time to show the taken card; same as the robot battle)
+    const FIRST_READ_DELAY = 3600;  // from laying out the cards to the first reading (time for the 3D game to deal them)
+    let online3dFrame = null, online3dReady = false, online3dShown = false, online3dFailed = false, online3dQueue = [];
+    let onlineTaken = {};           // latest taken cards (card number -> taker)
+    let stuckIndex = -1;            // index already being watched in case the taker leaves
+    let latestSongIndex = null;     // latest currentSongIndex seen in the room
+    let firstReadGameId = null;     // game whose first reading is already scheduled (never schedule twice for one game)
+    function online3dActive() { return !!online3dFrame && online3dShown; }
+    // Preload it hidden on entering a room, so it can be shown the moment the game starts
+    function openOnline3d() {
+      if (online3dFrame || online3dFailed || !canUse3d()) return;
+      const f = document.createElement('iframe');
+      f.id = 'online3d_frame';
+      f.title = 'Online battle';
+      f.allow = 'autoplay';
+      f.src = 'karuta-taisen-3d.html?embed=1&mode=online&lang=en';
+      Object.assign(f.style, { position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', border: '0', zIndex: '10000', background: '#bab37a url(img/tatami.webp)', visibility: 'hidden', pointerEvents: 'none' });
+      document.body.appendChild(f);
+      online3dFrame = f;
+    }
+    function showOnline3d() {
+      if (!online3dFrame || online3dShown) return;
+      online3dShown = true;
+      online3dFrame.style.visibility = 'visible';
+      online3dFrame.style.pointerEvents = 'auto';
+      document.documentElement.style.overflow = 'hidden';
+      // If it is still not ready after 6 seconds, give up and continue with the flat cards
+      const frame = online3dFrame;
+      setTimeout(() => { if (online3dFrame === frame && !online3dReady) { online3dFailed = true; closeOnline3d(); } }, 6000);
+    }
+    function closeOnline3d() {
+      if (!online3dFrame) return;
+      online3dFrame.remove();
+      online3dFrame = null; online3dReady = false; online3dShown = false; online3dQueue = [];
+      document.documentElement.style.overflow = '';
+    }
+    // Send a message to the 3D game (queued until it is ready)
+    function post3d(msg) {
+      if (!online3dFrame) return;
+      if (!online3dReady) { online3dQueue.push(msg); return; }
+      online3dFrame.contentWindow.postMessage({ source: 'k3d-host', ...msg }, location.origin);
+    }
+    // For the 3D score line: my count, and the highest count among the opponents
+    function online3dScore(taken, pIds) {
+      const counts = {};
+      Object.values(taken || {}).forEach(id => { counts[id] = (counts[id] || 0) + 1; });
+      const others = Object.keys(counts).filter(id => id !== myId).map(id => counts[id]);
+      return { me: counts[myId] || 0, other: others.length ? Math.max(...others) : 0, duo: pIds.length <= 2 };
+    }
+    // For the 3D view: the animal badges of everyone in the room, and mine (sent again whenever the players change)
+    let online3dPlayersKey = '';
+    function online3dPlayers(pIds) {
+      const key = pIds.join(',');
+      if (!online3dFrame || key === online3dPlayersKey) return;
+      online3dPlayersKey = key;
+      post3d({ type: 'players', icons: pIds.map(pid => getIcon(pid, pIds)), me: getIcon(myId, pIds) });
+    }
+    function online3dSetup(data, pIds) {
+      if (!online3dFrame) return;
+      showOnline3d();
+      const taken = {};
+      Object.keys(data.takenCards || {}).forEach(num => { taken[num] = { by: data.takenCards[num] === myId ? 'me' : 'other', icon: getIcon(data.takenCards[num], pIds) }; });
+      post3d({ type: 'setup', keys: data.config.selectedSongs.map(String), taken, instant: data.currentSongIndex >= 0, ...online3dScore(data.takenCards, pIds) });
+    }
+
     window.addEventListener('message', async (e) => {
+      if (online3dFrame && e.origin === location.origin && e.source === online3dFrame.contentWindow) {
+        const m = e.data;
+        if (!m || m.source !== 'k3d') return;
+        if (m.type === 'ready') { online3dReady = true; const q = online3dQueue; online3dQueue = []; q.forEach(post3d); }
+        else if (m.type === 'unsupported') { online3dFailed = true; closeOnline3d(); }
+        else if (m.type === 'strike') handleCardClick(String(m.num), true);
+        return;
+      }
       if (!cpu3dFrame || e.origin !== location.origin || e.source !== cpu3dFrame.contentWindow) return;
       const msg = e.data;
       if (!msg || msg.source !== 'k3d') return;
@@ -1592,6 +1674,7 @@
     document.getElementById('auto_join_button').onclick = async () => {
       if (!jsonData) return;
       unlockAudio();
+      ensureK3dAudio();
       isCpuMode = false;
 
       const snap = await get(ref(db, 'rooms_multi'));
@@ -1647,6 +1730,7 @@
       const val = document.getElementById('room_id_input').value;
       if (!val) return;
       unlockAudio();
+      ensureK3dAudio();
       isCpuMode = false;
       const rid = "manual-" + val;
       const result = await runTransaction(ref(db, `rooms_multi/${rid}/players`), (cp) => {
@@ -1669,6 +1753,7 @@
       // FIX②: show #player_info (now outside .section) for online mode
       document.getElementById('player_info').style.display = 'flex';
       document.getElementById('kami_no_ku_display').style.display = 'block';
+      openOnline3d();
       listenToGame();
     }
 
@@ -1946,6 +2031,7 @@
 
         roomListener = onValue(roomRef, (snapshot) => {
           const data = snapshot.val();
+          latestSongIndex = data && data.currentSongIndex !== undefined ? data.currentSongIndex : null;
 
           if (!data || !data.players) {
             if (!isGameOver) {
@@ -1968,6 +2054,7 @@
           document.getElementById('others_icons').innerText =
             otherIcons.length > 0 ? "Other players: " + otherIcons.join(' ') : "Waiting for an opponent...";
 
+          online3dPlayers(playerIds);
           const isHost = playerIds[0] === myId;
           const statusEl = document.getElementById('status_text');
 
@@ -1977,6 +2064,7 @@
               lastGameId = data.config.gameId;
               totalCards = data.config.selectedSongs.length;
               setupBoardLocal(data.config.selectedSongs, data.config.order);
+              online3dSetup(data, playerIds);
               // Only when starting from the top: warm globalAudio before card 1 is committed
               // (when joining mid-game the target card is played below instead)
               if (!(data.currentSongIndex >= 0)) primeReading(data.config.order[0]);
@@ -1995,12 +2083,17 @@
               statusEl.innerText = '⏳ Loading audio...';
               // Reduce the first-card delay: wait at most 0.9s before committing currentSongIndex
               // (playReadingWithRetry on each client covers a not-quite-ready first read).
-              Promise.race([
-                waitForAudio(data.config.order[0]),
-                new Promise(r => setTimeout(r, 900))
-              ]).then(() => {
-                update(ref(db, `rooms_multi/${currentRoomId}`), { currentSongIndex: 0 });
-              });
+              // Wait until the 3D game has dealt the cards before the first reading. Never schedule twice for one game
+              // (a late duplicate would reset an already advanced currentSongIndex to 0).
+              if (firstReadGameId !== data.config.gameId) {
+                firstReadGameId = data.config.gameId;
+                Promise.all([
+                  Promise.race([waitForAudio(data.config.order[0]), new Promise(r => setTimeout(r, 900))]),
+                  new Promise(r => setTimeout(r, FIRST_READ_DELAY))
+                ]).then(() => {
+                  if (latestSongIndex === -1) update(ref(db, `rooms_multi/${currentRoomId}`), { currentSongIndex: 0 });
+                });
+              }
             }
             if (data.currentSongIndex >= 0) {
               const targetIndex = data.currentSongIndex;
@@ -2008,6 +2101,13 @@
               if (targetIndex >= currentSongIndex && currentSongNumber !== targetNum) {
                 currentSongIndex = targetIndex;
                 playSongByIndex(targetIndex);
+              }
+              // If the taker leaves before moving on to the next poem, the host moves on instead (so the game cannot get stuck)
+              if (isHost && targetIndex < totalCards - 1 && (data.takenCards || {})[targetNum] && stuckIndex !== targetIndex) {
+                stuckIndex = targetIndex;
+                setTimeout(() => {
+                  if (!isGameOver && latestSongIndex === targetIndex) update(ref(db, `rooms_multi/${currentRoomId}`), { currentSongIndex: targetIndex + 1 });
+                }, NEXT_READ_DELAY + 2500);
               }
             }
           } else {
@@ -2031,6 +2131,7 @@
 
     document.getElementById('ready_button').onclick = async function () {
       unlockAudio();
+      ensureK3dAudio();
       if (this.classList.contains('ready-active')) {
         isLeavingIntentionally = true;
         if (roomListener) { off(ref(db, `rooms_multi/${currentRoomId}`)); roomListener = null; }
@@ -2126,18 +2227,23 @@
       if (currentSongNumber === num) return;
       currentSongNumber = num;
       _showKamiNoKu(num);
+      post3d({ type: 'read', num: String(num), index });
       globalAudio.pause();
       primeReading(num);
       playReadingWithRetry();
     }
 
-    async function handleCardClick(num) {
-      if (isGameOver || localPenaltyTimeout) return;
+    /* from3d: the card was swiped in the 3D game. The outcome is sent back (lost = an opponent got it first / ignored = not accepted, put the card back) */
+    async function handleCardClick(num, from3d) {
+      const reply = (result) => { if (from3d) post3d({ type: 'result', num: String(num), result }); };
+      if (isGameOver || localPenaltyTimeout) { reply('ignored'); return; }
       const cardEl = document.querySelector(`.karuta_card[data-number="${num}"]`);
-      if (cardEl && (cardEl.classList.contains('taken-by-me') || cardEl.classList.contains('taken-by-others'))) return;
+      if (cardEl && (cardEl.classList.contains('taken-by-me') || cardEl.classList.contains('taken-by-others'))) { reply('lost'); return; }
+      // Online: once this poem's card is taken, do nothing until the next reading (no false start either)
+      if (!isCpuMode && currentSongNumber != null && onlineTaken[currentSongNumber]) { reply('ignored'); return; }
 
       if (String(num) === String(currentSongNumber)) {
-        tapAudio.currentTime = 0; tapAudio.play().catch(() => { });
+        if (!online3dActive()) { tapAudio.currentTime = 0; tapAudio.play().catch(() => { }); }
         if (isCpuMode) {
           takenCards[num] = myId;
           updateBoardStateCpu();
@@ -2156,20 +2262,22 @@
             return curr === null ? myId : undefined;
           });
           if (res.committed) {
-            const nextIndex = playOrder.indexOf(currentSongNumber) + 1;
-            currentSongIndex = nextIndex;
-            if (nextIndex < totalCards) {
-              document.getElementById('status_text').innerText = `Card ${nextIndex + 1} / ${totalCards}`;
-              const nextNum = playOrder[nextIndex];
-              currentSongNumber = nextNum;
-              globalAudio.src = audioUrlCache[nextNum];
-              playReadingWithRetry();
-            }
-            await update(ref(db, `rooms_multi/${currentRoomId}`), { currentSongIndex: nextIndex });
-          }
+            const nextIndex = playOrder.findIndex(n => String(n) === String(num)) + 1;
+            // Pause to show the taken card, then move on (every client starts the next reading on this update)
+            const advance = () => {
+              currentSongIndex = nextIndex;
+              if (nextIndex < totalCards && !isGameOver) {
+                document.getElementById('status_text').innerText = `Card ${nextIndex + 1} / ${totalCards}`;
+                playSongByIndex(nextIndex);
+              }
+              // Only if nobody has moved on meanwhile (never push an already advanced index back)
+              if (latestSongIndex === nextIndex - 1) update(ref(db, `rooms_multi/${currentRoomId}`), { currentSongIndex: nextIndex });
+            };
+            if (nextIndex < totalCards) setTimeout(advance, NEXT_READ_DELAY); else advance();
+          } else reply('lost');
         }
       } else {
-        missAudio.currentTime = 0; missAudio.play().catch(() => { });
+        if (!online3dActive()) { missAudio.currentTime = 0; missAudio.play().catch(() => { }); }
         const container = document.getElementById('karuta_container');
         container.style.opacity = "0.4";
         container.style.pointerEvents = "none";
@@ -2336,13 +2444,15 @@
     }
 
     function updateBoardState(taken, pIds) {
+      onlineTaken = taken;
       Object.keys(taken).forEach(num => {
         const el = document.querySelector(`.karuta_card[data-number="${num}"]`);
         if (!el) return;
         const takerId = taken[num];
         if (!el.classList.contains('taken')) {
           el.classList.add('flash'); setTimeout(() => el.classList.remove('flash'), 500);
-          if (takerId !== myId) { robotAudio.currentTime = 0; robotAudio.play().catch(() => { }); }
+          if (takerId !== myId) { if (!online3dActive()) { robotAudio.currentTime = 0; robotAudio.play().catch(() => { }); } }
+          post3d({ type: 'taken', num: String(num), by: takerId === myId ? 'me' : 'other', icon: getIcon(takerId, pIds), ...online3dScore(taken, pIds) });
         }
         el.classList.add('taken', takerId === myId ? 'taken-by-me' : 'taken-by-others');
         if (!el.querySelector('.taker-icon')) {
@@ -2359,6 +2469,10 @@
         _hideKamiNoKu();
         clearInterval(heartbeatInterval);
         if (roomListener) { off(ref(db, `rooms_multi/${currentRoomId}`)); roomListener = null; }
+        globalAudio.pause();
+        // With the 3D view open, show the last taken card first, then close it and show the result
+        const showOnlineResult = () => {
+        closeOnline3d();
         document.getElementById('karuta_container').style.display = 'none';
         globalAudio.pause();
 
@@ -2391,6 +2505,8 @@
 
         const statusEl = document.getElementById('status_text');
         statusEl.style.display = 'none';
+        };
+        if (online3dActive()) { post3d({ type: 'over' }); setTimeout(showOnlineResult, 1600); } else showOnlineResult();
       }
     }
 

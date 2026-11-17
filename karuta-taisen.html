@@ -1620,13 +1620,7 @@
       if (cpu3dFrame) return;
       // 効果音用の AudioContext を、このタップの中で作って解錠しておく（3D版が window.parent から使う）。
       // iframe の中ではまだ操作が無いため、スマホでは中で作ると札を配る音が鳴らない。
-      try {
-        const AC = window.AudioContext || window.webkitAudioContext;
-        if (AC) {
-          if (!window._k3dAudioCtx || window._k3dAudioCtx.state === 'closed') window._k3dAudioCtx = new AC();
-          if (window._k3dAudioCtx.state !== 'running') window._k3dAudioCtx.resume().catch(() => { });
-        }
-      } catch (e) { }
+      ensureK3dAudio();
       const f = document.createElement('iframe');
       f.id = 'cpu3d_frame';
       f.title = 'ロボットと対戦';
@@ -1643,7 +1637,95 @@
       cpu3dFrame = null;
       document.documentElement.style.overflow = '';
     }
+    // 効果音用の AudioContext を、ボタンのタップの中で作って解錠しておく（3D版が window.parent から使う）
+    function ensureK3dAudio() {
+      try {
+        const AC = window.AudioContext || window.webkitAudioContext;
+        if (AC) {
+          if (!window._k3dAudioCtx || window._k3dAudioCtx.state === 'closed') window._k3dAudioCtx = new AC();
+          if (window._k3dAudioCtx.state !== 'running') window._k3dAudioCtx.resume().catch(() => { });
+        }
+      } catch (e) { }
+    }
+
+    // ===== オンライン対戦の3D表示 =====
+    // 部屋・読み上げ・だれが取ったかの判定は、これまでどおりこのページ（Firebase）が行い、平面の札も裏で作っておく。
+    // 3D版（karuta-taisen-3d.html?mode=online）はその上に重ねて札を見せ、払いをここへ知らせる（handleCardClick を呼ぶ）。
+    // 3D表示が使えない端末・読み込めなかったときは、これまでの平面版のまま遊ぶ。
+    const NEXT_READ_DELAY = 1500;   // 札が取られてから次の歌を読みはじめるまで（取られた札を見せる時間。ロボット対戦と同じ）
+    const FIRST_READ_DELAY = 3600;  // 札を並べてから1首目を読みはじめるまで（3D版が札を配り終える時間）
+    let online3dFrame = null, online3dReady = false, online3dShown = false, online3dFailed = false, online3dQueue = [];
+    let onlineTaken = {};           // 最新の「取られた札」（札の番号 → 取った人）
+    let stuckIndex = -1;            // 取った人が抜けたときに備えて見張っている歌の番号
+    let latestSongIndex = null;     // 部屋の最新の currentSongIndex（いま何首目か）
+    let firstReadGameId = null;     // 1首目の読みはじめを予約した試合（同じ試合で二重に予約しない）
+    function online3dActive() { return !!online3dFrame && online3dShown; }
+    // 部屋に入った時点で、見えない状態で読み込んでおく（試合が始まったらすぐ見せられるように）
+    function openOnline3d() {
+      if (online3dFrame || online3dFailed || !canUse3d()) return;
+      const f = document.createElement('iframe');
+      f.id = 'online3d_frame';
+      f.title = 'オンライン対戦';
+      f.allow = 'autoplay';
+      f.src = 'karuta-taisen-3d.html?embed=1&mode=online';
+      Object.assign(f.style, { position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', border: '0', zIndex: '10000', background: '#bab37a url(img/tatami.webp)', visibility: 'hidden', pointerEvents: 'none' });
+      document.body.appendChild(f);
+      online3dFrame = f;
+    }
+    function showOnline3d() {
+      if (!online3dFrame || online3dShown) return;
+      online3dShown = true;
+      online3dFrame.style.visibility = 'visible';
+      online3dFrame.style.pointerEvents = 'auto';
+      document.documentElement.style.overflow = 'hidden';
+      // 6秒たっても準備できなければあきらめて、平面版で続ける
+      const frame = online3dFrame;
+      setTimeout(() => { if (online3dFrame === frame && !online3dReady) { online3dFailed = true; closeOnline3d(); } }, 6000);
+    }
+    function closeOnline3d() {
+      if (!online3dFrame) return;
+      online3dFrame.remove();
+      online3dFrame = null; online3dReady = false; online3dShown = false; online3dQueue = [];
+      document.documentElement.style.overflow = '';
+    }
+    // 3D版へ知らせる（準備ができるまではためておく）
+    function post3d(msg) {
+      if (!online3dFrame) return;
+      if (!online3dReady) { online3dQueue.push(msg); return; }
+      online3dFrame.contentWindow.postMessage({ source: 'k3d-host', ...msg }, location.origin);
+    }
+    // 3D版の点数表示用：自分の枚数と、相手のうちいちばん多い人の枚数
+    function online3dScore(taken, pIds) {
+      const counts = {};
+      Object.values(taken || {}).forEach(id => { counts[id] = (counts[id] || 0) + 1; });
+      const others = Object.keys(counts).filter(id => id !== myId).map(id => counts[id]);
+      return { me: counts[myId] || 0, other: others.length ? Math.max(...others) : 0, duo: pIds.length <= 2 };
+    }
+    // 3D版の「参加者：… ・ あなた：…」用：部屋にいる全員の動物バッジと、自分のバッジ（顔ぶれが変わるたびに送る）
+    let online3dPlayersKey = '';
+    function online3dPlayers(pIds) {
+      const key = pIds.join(',');
+      if (!online3dFrame || key === online3dPlayersKey) return;
+      online3dPlayersKey = key;
+      post3d({ type: 'players', icons: pIds.map(pid => getIcon(pid, pIds)), me: getIcon(myId, pIds) });
+    }
+    function online3dSetup(data, pIds) {
+      if (!online3dFrame) return;
+      showOnline3d();
+      const taken = {};
+      Object.keys(data.takenCards || {}).forEach(num => { taken[num] = { by: data.takenCards[num] === myId ? 'me' : 'other', icon: getIcon(data.takenCards[num], pIds) }; });
+      post3d({ type: 'setup', keys: data.config.selectedSongs.map(String), taken, instant: data.currentSongIndex >= 0, ...online3dScore(data.takenCards, pIds) });
+    }
+
     window.addEventListener('message', async (e) => {
+      if (online3dFrame && e.origin === location.origin && e.source === online3dFrame.contentWindow) {
+        const m = e.data;
+        if (!m || m.source !== 'k3d') return;
+        if (m.type === 'ready') { online3dReady = true; const q = online3dQueue; online3dQueue = []; q.forEach(post3d); }
+        else if (m.type === 'unsupported') { online3dFailed = true; closeOnline3d(); }
+        else if (m.type === 'strike') handleCardClick(String(m.num), true);
+        return;
+      }
       if (!cpu3dFrame || e.origin !== location.origin || e.source !== cpu3dFrame.contentWindow) return;
       const msg = e.data;
       if (!msg || msg.source !== 'k3d') return;
@@ -1677,6 +1759,7 @@
     document.getElementById('auto_join_button').onclick = async () => {
       if (!jsonData) return;
       unlockAudio();
+      ensureK3dAudio();
       isCpuMode = false;
 
       const snap = await get(ref(db, 'rooms_multi'));
@@ -1732,6 +1815,7 @@
       const val = document.getElementById('room_id_input').value;
       if (!val) return;
       unlockAudio();
+      ensureK3dAudio();
       isCpuMode = false;
       const rid = "manual-" + val;
       const result = await runTransaction(ref(db, `rooms_multi/${rid}/players`), (cp) => {
@@ -1752,6 +1836,7 @@
       document.getElementById('karuta_container').style.display = 'flex';
       document.getElementById('operatin_area').style.display = 'block';
       document.getElementById('kami_no_ku_display').style.display = 'block';
+      openOnline3d();
       listenToGame();
     }
 
@@ -2000,6 +2085,7 @@
 
         roomListener = onValue(roomRef, (snapshot) => {
           const data = snapshot.val();
+          latestSongIndex = data && data.currentSongIndex !== undefined ? data.currentSongIndex : null;
 
           // ルームが存在しない場合
           if (!data || !data.players) {
@@ -2025,6 +2111,7 @@
           document.getElementById('others_icons').innerText =
             otherIcons.length > 0 ? "他の参加者： " + otherIcons.join(' ') : "対戦相手を待っています...";
 
+          online3dPlayers(playerIds);
           const isHost = playerIds[0] === myId;
           const statusEl = document.getElementById('status_text');
 
@@ -2035,6 +2122,7 @@
               totalCards = data.config.selectedSongs.length;
               resetCombo();
               setupBoardLocal(data.config.selectedSongs, data.config.order);
+              online3dSetup(data, playerIds);
               // 頭から始まる場合のみ、1首目確定前に globalAudio 自身を温める（途中参戦時は下で当該首を再生）
               if (!(data.currentSongIndex >= 0)) primeReading(data.config.order[0]);
               if (data.currentSongIndex >= 0) {
@@ -2052,12 +2140,17 @@
               statusEl.innerText = '⏳ 音声を読み込み中...';
               // 一枚目の出遅れ対策：最大 0.9 秒だけ待って currentSongIndex を確定させる
               // （間に合わなくても各クライアントの playReadingWithRetry がカバーする）。
-              Promise.race([
-                waitForAudio(data.config.order[0]),
-                new Promise(r => setTimeout(r, 900))
-              ]).then(() => {
-                update(ref(db, `rooms_multi/${currentRoomId}`), { currentSongIndex: 0 });
-              });
+              // 3D版が札を配り終えるまで待ってから1首目へ。同じ試合で二重に予約しない
+              // （あとから届いた予約が、進んだ currentSongIndex を 0 に戻してしまうのを防ぐ）
+              if (firstReadGameId !== data.config.gameId) {
+                firstReadGameId = data.config.gameId;
+                Promise.all([
+                  Promise.race([waitForAudio(data.config.order[0]), new Promise(r => setTimeout(r, 900))]),
+                  new Promise(r => setTimeout(r, FIRST_READ_DELAY))
+                ]).then(() => {
+                  if (latestSongIndex === -1) update(ref(db, `rooms_multi/${currentRoomId}`), { currentSongIndex: 0 });
+                });
+              }
             }
             if (data.currentSongIndex >= 0) {
               const targetIndex = data.currentSongIndex;
@@ -2066,6 +2159,13 @@
                 currentSongIndex = targetIndex;
                 // プリロード済みなので即座に再生
                 playSongByIndex(targetIndex);
+              }
+              // 札を取った人が、次の歌へ進める前に抜けてしまったとき：ホストが代わりに進める（試合が止まらないように）
+              if (isHost && targetIndex < totalCards - 1 && (data.takenCards || {})[targetNum] && stuckIndex !== targetIndex) {
+                stuckIndex = targetIndex;
+                setTimeout(() => {
+                  if (!isGameOver && latestSongIndex === targetIndex) update(ref(db, `rooms_multi/${currentRoomId}`), { currentSongIndex: targetIndex + 1 });
+                }, NEXT_READ_DELAY + 2500);
               }
             }
           } else {
@@ -2089,6 +2189,7 @@
 
     document.getElementById('ready_button').onclick = async function () {
       unlockAudio();
+      ensureK3dAudio();
       if (this.classList.contains('ready-active')) {
         isLeavingIntentionally = true;
         if (roomListener) { off(ref(db, `rooms_multi/${currentRoomId}`)); roomListener = null; }
@@ -2178,18 +2279,23 @@
       if (currentSongNumber === num) return;
       currentSongNumber = num;
       _showKamiNoKu(num);
+      post3d({ type: 'read', num: String(num), index });
       globalAudio.pause();
       primeReading(num);
       playReadingWithRetry();
     }
 
-    async function handleCardClick(num) {
-      if (isGameOver || localPenaltyTimeout) return;
+    /* from3d：3D版で払われた札。結果を 3D版へ返す（lost＝相手が先に取っていた／ignored＝受け付けなかったので札を戻す） */
+    async function handleCardClick(num, from3d) {
+      const reply = (result) => { if (from3d) post3d({ type: 'result', num: String(num), result }); };
+      if (isGameOver || localPenaltyTimeout) { reply('ignored'); return; }
       const cardEl = document.querySelector(`.karuta_card[data-number="${num}"]`);
-      if (cardEl && (cardEl.classList.contains('taken-by-me') || cardEl.classList.contains('taken-by-others'))) return;
+      if (cardEl && (cardEl.classList.contains('taken-by-me') || cardEl.classList.contains('taken-by-others'))) { reply('lost'); return; }
+      // オンライン：この歌の札がもう取られていて、次の歌を待っている間は何もしない（お手つきにもしない）
+      if (!isCpuMode && currentSongNumber != null && onlineTaken[currentSongNumber]) { reply('ignored'); return; }
 
       if (String(num) === String(currentSongNumber)) {
-        tapAudio.currentTime = 0; tapAudio.play().catch(() => { });
+        if (!online3dActive()) { tapAudio.currentTime = 0; tapAudio.play().catch(() => { }); }
         if (isCpuMode) {
           takenCards[num] = myId;
           registerMyTake();
@@ -2211,21 +2317,23 @@
           });
           if (res.committed) {
             registerMyTake();
-            const nextIndex = playOrder.indexOf(currentSongNumber) + 1;
-            currentSongIndex = nextIndex;
-            if (nextIndex < totalCards) {
-              document.getElementById('status_text').innerText = `第 ${nextIndex + 1} 首 / ${totalCards}首`;
-              const nextNum = playOrder[nextIndex];
-              currentSongNumber = nextNum;
-              globalAudio.src = audioUrlCache[nextNum];
-              playReadingWithRetry();
-            }
-            await update(ref(db, `rooms_multi/${currentRoomId}`), { currentSongIndex: nextIndex });
-          }
+            const nextIndex = playOrder.findIndex(n => String(n) === String(num)) + 1;
+            // 取った札を見せる間をおいてから次の歌へ進む（全員の画面が、この更新を受けて次の読み上げを始める）
+            const advance = () => {
+              currentSongIndex = nextIndex;
+              if (nextIndex < totalCards && !isGameOver) {
+                document.getElementById('status_text').innerText = `第 ${nextIndex + 1} 首 / ${totalCards}首`;
+                playSongByIndex(nextIndex);
+              }
+              // ほかの人がもう先へ進めていたら書かない（進んだ番号を戻さない）
+              if (latestSongIndex === nextIndex - 1) update(ref(db, `rooms_multi/${currentRoomId}`), { currentSongIndex: nextIndex });
+            };
+            if (nextIndex < totalCards) setTimeout(advance, NEXT_READ_DELAY); else advance();
+          } else reply('lost');
         }
       } else {
         resetCombo();
-        missAudio.currentTime = 0; missAudio.play().catch(() => { });
+        if (!online3dActive()) { missAudio.currentTime = 0; missAudio.play().catch(() => { }); }
         const container = document.getElementById('karuta_container');
         container.style.opacity = "0.4";
         container.style.pointerEvents = "none";
@@ -2564,13 +2672,15 @@
     }
 
     function updateBoardState(taken, pIds) {
+      onlineTaken = taken;
       Object.keys(taken).forEach(num => {
         const el = document.querySelector(`.karuta_card[data-number="${num}"]`);
         if (!el) return;
         const takerId = taken[num];
         if (!el.classList.contains('taken')) {
           el.classList.add('flash'); setTimeout(() => el.classList.remove('flash'), 500);
-          if (takerId !== myId) { resetCombo(); robotAudio.currentTime = 0; robotAudio.play().catch(() => { }); }
+          if (takerId !== myId) { resetCombo(); if (!online3dActive()) { robotAudio.currentTime = 0; robotAudio.play().catch(() => { }); } }
+          post3d({ type: 'taken', num: String(num), by: takerId === myId ? 'me' : 'other', icon: getIcon(takerId, pIds), ...online3dScore(taken, pIds) });
         }
         el.classList.add('taken', takerId === myId ? 'taken-by-me' : 'taken-by-others');
         if (!el.querySelector('.taker-icon')) {
@@ -2587,6 +2697,10 @@
         _hideKamiNoKu();
         clearInterval(heartbeatInterval);
         if (roomListener) { off(ref(db, `rooms_multi/${currentRoomId}`)); roomListener = null; }
+        globalAudio.pause();
+        // 3D表示中は、最後に取られた札を見せてから 3D を閉じて結果を出す
+        const showOnlineResult = () => {
+        closeOnline3d();
         document.getElementById('karuta_container').style.display = 'none';
         globalAudio.pause();
 
@@ -2619,6 +2733,8 @@
         // ユーザーがボタンで戻るまで待機
         const statusEl = document.getElementById('status_text');
         statusEl.style.display = 'none';
+        };
+        if (online3dActive()) { post3d({ type: 'over' }); setTimeout(showOnlineResult, 1600); } else showOnlineResult();
       }
     }
 
