@@ -18,7 +18,9 @@ const SWEEP_FROM = 110;                    // これより速いと、払った�
 const MAX_SPEED = 480;
 // 払いの強さは画面上の速さで測る（PC でもスマホでも同じ手ごたえ）：画面の短辺を1秒で横切る速さ = この値
 const SWIPE_SCALE = 150;
-const FADE_AFTER = 0.3, FADE_DUR = 0.28;    // 取った札：飛びはじめてから消えはじめるまで・消えるのにかかる時間
+// 取った札・取られた札を見せる演出：払われて飛ぶ → 回りながら目の前（カメラの手前）へ浮き上がる → 少し見せる → 取った側へ去りながら消える
+const SHOW_AFTER = 0.22, SHOW_RISE = 0.42, SHOW_HOLD = 0.5, SHOW_OUT = 0.3;   // それぞれの秒数（合計で次の読みまでの1.5秒に収める）
+const SHOW_SCALE = 2.2;                    // 見せるときの大きさ（並んでいる札の何倍に見えるか。画面が狭いときは収まるまで小さくする）
 const CPU_SETTINGS = {                     // karuta-taisen.html と同じ
   easy: { reactionTimeMin: 5000, reactionTimeMax: 7000, accuracy: 0.5 },
   normal: { reactionTimeMin: 3000, reactionTimeMax: 4500, accuracy: 0.75 },
@@ -69,6 +71,7 @@ const rand = (a, b) => a + Math.random() * (b - a);
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 const easeOutQuart = t => 1 - Math.pow(1 - t, 4);
 const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
+const easeOutBack = t => 1 + 2.3 * Math.pow(t - 1, 3) + 1.3 * Math.pow(t - 1, 2);   // 少し行きすぎて戻る
 const later = (fn, ms) => { const t = setTimeout(fn, ms); game.timers.push(t); return t; };
 
 // ===== 音（効果音は素材なしで合成） =====
@@ -104,7 +107,7 @@ function tone(vol, f0, f1, dur) {
   g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(0.001, t + dur);
   o.connect(g).connect(actx.destination); o.start(t); o.stop(t + dur + 0.02);
 }
-const sfxPlace = () => noise(0.24, 0.06, rand(2600, 3400), 1.2);          // スッ
+const sfxPlace = () => noise(0.7, 0.07, rand(2600, 3400), 1.2);         // スッ
 const sfxLand = v => noise(0.05 * v, 0.04, 1800, 1.0);                     // 札が畳に落ちる
 function sfxHit(k) {                                                       // 払い（k: 0〜1）
   noise(0.18 + 0.5 * k, 0.06 + 0.05 * k, 2200 - 600 * k, 0.8);
@@ -113,10 +116,10 @@ function sfxHit(k) {                                                       // �
 const sfxMiss = () => { tone(0.25, 150, 90, 0.35); noise(0.12, 0.25, 300, 0.7); };
 
 // ===== 札のテクスチャ =====
-function makeFaceTexture(torihuda) {
+function makeFaceTexture(torihuda, texW = faceTexW) {
   const cw = 312, ch = 438;
   // 文字がぼやけないよう、画面に映る札の大きさのちょうど2倍の細かさで描く（faceTexW は fitCamera が決める）
-  const K = faceTexW / cw;
+  const K = texW / cw;
   const c = document.createElement('canvas'); c.width = Math.round(cw * K); c.height = Math.round(ch * K);
   const g = c.getContext('2d');
   g.scale(K, K);
@@ -287,7 +290,7 @@ function layout() {
   return out;
 }
 function clearCards() {
-  cards.forEach(c => { scene.remove(c.mesh); c.faceMat.map.dispose(); c.faceMat.dispose(); if (c.fadeMats) c.fadeMats.forEach(m => m.dispose()); });
+  cards.forEach(c => { scene.remove(c.mesh); c.faceMat.map.dispose(); c.faceMat.dispose(); if (c.showTex) c.showTex.dispose(); if (c.fadeMats) c.fadeMats.forEach(m => m.dispose()); });
   cards = [];
 }
 
@@ -311,7 +314,7 @@ function deal(keys) {
       vx: 0, vy: 0, vz: 0, yawVel: 0, flipVel: 0,
       state: 'deal', tw: { from: deck, to: { x: home.x, y: 0, z: home.z, yaw: home.yaw, flip: 0 },
         t0: simTime + 0.25 + i * stagger, dur: DEAL_DUR, arc: 5, ease: easeOutQuart, next: 'rest', sound: true },
-      role: null, owner: null, settled: 0, flyTime: 0, sweep: null, fade: -1, fadeMats: null
+      role: null, owner: null, settled: 0, flyTime: 0, sweep: null, fade: -1, fadeMats: null, showTex: null, showT0: -1, showY: 0, showZ: 0
     };
     applyPose(c);
     cards.push(c);
@@ -464,16 +467,53 @@ function updateFly(c, dt) {
   if (c.role === 'swept' && (c.settled > 0.22 || c.flyTime > 2.2)) {
     // 巻き込まれた札・お手つきの札は、スッと元の場所へ戻る
     startTween(c, { x: c.home.x, y: 0, z: c.home.z, yaw: c.home.yaw, flip: 0 }, 0.36, 1.4, easeOutCubic, 'rest');
-  } else if (c.role === 'target' && c.flyTime > FADE_AFTER) {
-    // 取った札は、飛びながらスッと消える
+  } else if (c.role === 'target' && c.flyTime > SHOW_AFTER) {
+    startShow(c);                                                           // 取った札・取られた札を目の前に見せる
+  }
+  applyPose(c);
+}
+
+/* 取った札・取られた札：飛んでいる途中から、1回転しながらカメラの手前へ浮き上がらせる。
+   本当に高く持ち上げるので、遠近で大きく映り、畳に落ちる影も離れていく */
+function showScale() {                                                      // 見せるときに何倍に映すか
+  const visH = 2 * camBase.y * Math.tan(camera.fov * Math.PI / 360), visW = visH * camera.aspect;
+  return clamp(Math.min(0.58 * visW / W, 0.5 * visH / D), 1.3, SHOW_SCALE);
+}
+/* 大きく映しても文字がぼやけないよう、見せるとき専用の細かい画像を用意する（読みはじめに、その首の札のぶんだけ）。
+   faceTexW は「並んでいるときの札の幅の2倍」なので、見せるときの幅（showScale 倍）の2倍になるように描く */
+function prepareShowTexture(c) {
+  if (c.showTex) return;
+  const w = Math.min(Math.round(faceTexW * showScale()), 2048, renderer.capabilities.maxTextureSize);
+  if (w <= faceTexW) return;
+  c.showTex = makeFaceTexture(c.torihuda, w);
+  c.showTex.anisotropy = renderer.capabilities.getMaxAnisotropy();          // 傾けて見せるときも甘くならないように
+}
+function startShow(c) {
+  const dist = camBase.y, s = showScale();
+  if (c.showTex) { const old = c.faceMat.map; c.faceMat.map = c.showTex; c.showTex = null; old.dispose(); }
+  // 高さ y に置いた札は dist / (dist - y) 倍に映る。画面上で札の並びの中央に来るよう、前後の位置も合わせる
+  startTween(c, { x: 0, y: dist * (1 - 1 / s), z: camLook.z * (1 - 1 / s), yaw: 0, flip: 0 }, SHOW_RISE, 0, easeOutBack, 'show');
+  c.tw.from.yaw += Math.PI * 2 * (c.owner === 'cpu' ? -1 : 1);
+}
+function updateShow(c) {
+  if (c.showT0 < 0) { c.showT0 = simTime; c.showY = c.y; c.showZ = c.z; }
+  const t = simTime - c.showT0, a = t * 5;
+  // 見せている間は、傾きの向きをゆっくり回して立体に見せる
+  c.axis.set(Math.cos(a), 0, Math.sin(a));
+  c.flip = 0.16 * Math.min(1, t / 0.12);
+  if (t > SHOW_HOLD) {
+    // 取った側（自分＝手前、ロボット＝奥）へ下りながら消える
+    const k = Math.min(1, (t - SHOW_HOLD) / SHOW_OUT), e = k * k;
     if (c.fade < 0) {
       c.fade = 0; c.mesh.castShadow = false;
       c.fadeMats = c.mesh.material.map(m => { const n = m.clone(); n.transparent = true; return n; });
       c.mesh.material = c.fadeMats;
     }
-    c.fade = Math.min(1, c.fade + dt / FADE_DUR);
-    c.fadeMats.forEach(m => { m.opacity = 1 - c.fade; });
-    if (c.fade >= 1) { c.state = 'taken'; c.mesh.visible = false; }
+    c.fade = e;
+    c.fadeMats.forEach(m => { m.opacity = 1 - e; });
+    c.z = c.showZ + (c.owner === 'cpu' ? -1 : 1) * e * (halfD + 14);
+    c.y = c.showY * (1 - 0.75 * e);
+    if (k >= 1) { c.state = 'taken'; c.mesh.visible = false; }
   }
   applyPose(c);
 }
@@ -485,6 +525,7 @@ function step(dt) {
     if (c.state === 'deal') { stillDealing = true; updateTween(c); }
     else if (c.state === 'tween') updateTween(c);
     else if (c.state === 'fly') updateFly(c, dt);
+    else if (c.state === 'show') updateShow(c);
     else if (c.state === 'rest' && c.sweep && simTime >= c.sweep.at) {
       const s = c.sweep; launch(c, s.vx, s.vz, 'swept', 0, 0, s.spin);
       sfxLand(0.8);
@@ -499,7 +540,7 @@ function updateScore() {
   const { me, cpu } = game.score, R = WIN - 1;
   // あと1枚で決まる場面は、点数のかわりに赤い文字で知らせる（4－4／自分が先に4枚／ロボットが先に4枚）
   const alert = me === R && cpu === R ? 'even' : me === R && cpu < R ? 'reachMe' : cpu === R && me < R ? 'reachCpu' : '';
-  $('dots_me').textContent = '●'.repeat(me); $('dots_cpu').textContent = '●'.repeat(cpu);
+  $('dots_me').textContent = '■'.repeat(me); $('dots_cpu').textContent = '■'.repeat(cpu);
   $('score_text').textContent = alert ? TXT[alert] : TXT.score(me, cpu);
   const line = $('scoreline');
   if (line.dataset.alert !== alert) {                                       // 表示が切り替わった瞬間だけ点滅しなおす
@@ -544,6 +585,8 @@ function startCountdown() {
 function startReading(i) {
   game.index = i; game.current = game.order[i]; game.phase = 'reading';
   setStatus(TXT.card(i + 1));
+  const target = cards.find(c => c.number === game.current);
+  if (target) prepareShowTexture(target);
   const entry = kimariji.find(e => String(e.id) === game.current);
   // 上の句を1文字ずつ表示
   const text = entry.kami_no_ku_kana.replace(/<br\s*\/?>/gi, '　').replace(/<[^>]+>/g, '');

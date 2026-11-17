@@ -33,18 +33,20 @@
     body.penalty #stage { filter: brightness(.5) saturate(.6); }
     #trail, #vignette { pointer-events: none; }
     #vignette { background: radial-gradient(ellipse at 50% 55%, transparent 60%, rgba(0, 0, 0, .38) 100%); }
+    /* karuta-taisen.html / karuta-taisen_en.html に埋め込まれたときは、周辺を暗くせず均等の明るさにする */
+    html.embed #vignette { display: none; }
 
     #hud { position: fixed; top: 0; left: 0; right: 0; padding: calc(6px + env(safe-area-inset-top)) 10px 0;
       text-align: center; pointer-events: none; color: #2a2118; }
     #bar { display: flex; align-items: center; gap: 8px; font-size: 13px; pointer-events: auto; text-shadow: 0 0 3px rgba(255, 255, 255, .9), 0 0 6px rgba(255, 255, 255, .7); }
     #status { flex: 1; font-size: 13px; min-height: 1.5em; line-height: 1.5; }
     #status.warn { color: #b3261e; font-weight: bold; }
-    /* ●● あなた 2 － 3 ロボット ●●● */
+    /* ■■ あなた 2 － 3 ロボット ■■■ */
     #scoreline { margin-top: 6px; font-size: 16px; font-weight: bold; min-height: 1.5em; white-space: nowrap;
       text-shadow: 0 0 3px rgba(255, 255, 255, .9), 0 0 6px rgba(255, 255, 255, .7); }
-    /* 文字はつねに左右中央。● は文字の左（右づめ）と右（左づめ）にのびる */
+    /* 文字はつねに左右中央。■ は文字の左（右づめ）と右（左づめ）にのびる */
     #scoreline { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; }
-    #scoreline .dots { letter-spacing: .1em; }
+    #scoreline .dots { letter-spacing: .1em; color: #d0121b; }
     #dots_me { text-align: right; }
     #dots_cpu { text-align: left; }
     #score_text { margin: 0 .5em; }
@@ -187,7 +189,7 @@
     }
   </script>
   <script src="https://cdn.jsdelivr.net/npm/pixi.js@7.3.2/dist/pixi.min.js"></script>
-  <script type="module" src="/js/karuta-taisen-3d.js?20261117-11"></script>
+  <script type="module" src="/js/karuta-taisen-3d.js?20261117-15"></script>
 </body>
 
 </html>
