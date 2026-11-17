@@ -285,7 +285,7 @@ function layout() {
   const out = [];
   for (let i = 0; i < TOTAL; i++) {
     const r = Math.floor(i / cols), n = Math.min(cols, TOTAL - r * cols), k = i - r * cols;
-    out.push({ x: (k - (n - 1) / 2) * px, z: -halfD + D / 2 + r * pz, yaw: rand(-0.012, 0.012) });
+    out.push({ x: (k - (n - 1) / 2) * px, z: -halfD + D / 2 + r * pz, yaw: 0 });   // 縦・横の線に対してまっすぐ置く
   }
   return out;
 }
