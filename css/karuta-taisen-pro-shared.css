@@ -396,6 +396,16 @@ button {
   font-weight: 700;
 }
 
+/* 結果画面の札は大きく表示するので、21番「いてつるかな」も字間をつめずにほかの行と同じ字間で書く */
+.missed-card-front .mojikan {
+  letter-spacing: inherit;
+}
+
+/* 行の途中で折り返さない（枠に収まらないときは js 側で文字を小さくする） */
+.missed-card-front p {
+  white-space: nowrap;
+}
+
 @media (max-width: 500px) {
   .missed-card-front p {
     font-size: 30px !important;
@@ -603,14 +613,15 @@ button {
   animation: sent-card-arrive 0.5s ease-out;
 }
 
+/* 敵陣の札の180度回転（transform）を消さないよう、移動は translate で行う */
 @keyframes sent-card-arrive {
   from {
-    transform: translateY(-20px);
+    translate: 0 -20px;
     opacity: 0;
   }
 
   to {
-    transform: translateY(0);
+    translate: 0 0;
     opacity: 1;
   }
 }

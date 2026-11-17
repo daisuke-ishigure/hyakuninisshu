@@ -171,11 +171,10 @@ function fallback() {
 
 // ===== 札 =====
 function fieldRotation(el) {
-  // 敵陣の札は相手から読める向き（180度回転）で置かれる
-  const t = getComputedStyle(el).transform;
-  if (!t || t === 'none') return 0;
-  const m = t.match(/matrix\(([^,]+),/);
-  return m && parseFloat(m[1]) < 0 ? Math.PI : 0;
+  // 札はその陣の持ち主が読める天地で置く：敵陣（ロボット側）は180度回転、自陣はそのまま。
+  // 送り札も、移った先の陣の向きにくるりと回る。
+  // （CSS の transform は、送り札が届いたときのアニメーション中は回転を含まないので、陣で決める）
+  return el.closest('#pc_enemy_field') ? Math.PI : 0;
 }
 
 function makeCard(el) {

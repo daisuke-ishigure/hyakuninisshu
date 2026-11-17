@@ -1395,8 +1395,9 @@
       missAudio.currentTime = 0; missAudio.play().catch(() => { });
       const el = document.querySelector(`.karuta_card[data-number="${cardNumber}"]`);
       if (el && !el.classList.contains('taken')) {
-        el.style.border = "3px solid #f39c12"; el.style.transform = "scale(1.05)";
-        setTimeout(() => { el.style.border = ""; el.style.transform = ""; }, 500);
+        // scale で拡大する（transform を書きかえると、敵陣の札の180度回転が消えてしまう）
+        el.style.border = "3px solid #f39c12"; el.style.scale = "1.05";
+        setTimeout(() => { el.style.border = ""; el.style.scale = ""; }, 500);
       }
       // 正解と同じ陣の札をさわった → お手付きなし、フラッシュのみ
       if (nopenalty) {
@@ -2149,18 +2150,23 @@
       requestAnimationFrame(() => {
         const wrappers = list.querySelectorAll('.missed-card-wrapper');
 
-        // ① 全カードの表面フォントサイズを計算
-        const frontSizes = [];
-        wrappers.forEach(wrapper => {
-          const front = wrapper.querySelector('.missed-card-front');
-          const frontP = front.querySelector('p');
-          const size = calcFitSize(frontP, front, 28, 6);
-          frontSizes.push({ frontP, size });
-        });
-
-        // ② 最小フォントサイズに統一（全カードで同じ文字サイズにする）
-        const minFrontSize = Math.min(...frontSizes.map(x => x.size));
-        frontSizes.forEach(({ frontP }) => { frontP.style.fontSize = minFrontSize + 'px'; });
+        // ① 表面の文字は CSS の大きさのまま。札の枠からはみ出す札があるときだけ（21番「いてつるかな」の6文字の行など）
+        //    全部の札の文字を同じだけ小さくして、全カードで同じ文字サイズのまま枠に収める
+        const fronts = Array.from(wrappers, w => w.querySelector('.missed-card-front'));
+        const fits = front => {
+          const p = front.querySelector('p');
+          // 文字は上下中央にそろうので、左下の決まり字に重ならないよう、その高さの分を上下両方で空ける
+          const badge = front.querySelector('.kimariji-badge');
+          const room = front.clientHeight - 2 * (badge ? badge.offsetHeight + 6 : 6);
+          return p.scrollHeight <= room && p.scrollWidth <= front.clientWidth - 10;
+        };
+        if (fronts.length) {
+          let size = parseFloat(getComputedStyle(fronts[0].querySelector('p')).fontSize);
+          while (size > 10 && !fronts.every(fits)) {
+            size -= 1;
+            fronts.forEach(f => f.querySelector('p').style.setProperty('font-size', size + 'px', 'important'));
+          }
+        }
 
         // ③ 裏面は各カード個別にフィット
         wrappers.forEach(wrapper => {
