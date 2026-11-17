@@ -509,8 +509,8 @@ function startShow(c) {
   startTween(c, { x: 0, y: dist * (1 - 1 / s), z: camLook.z * (1 - 1 / s), yaw: 0, flip: 0 }, SHOW_RISE, 0, easeOutBack, 'show');
   c.tw.from.yaw += Math.PI * 2 * (c.owner === 'cpu' ? -1 : 1);
 }
-/* オンライン：取られた札は元の場所に置いたまま、少し暗くして、取った人の動物バッジを右上につける
-   （karuta-taisen.html の平面版と同じ見せ方。3人以上で遊んでも、だれが取ったかわかる） */
+/* 取られた札は元の場所に置いたまま、少し暗くして、取った側のバッジを右上につける
+   （karuta-taisen.html の平面版と同じ見せ方。オンラインで3人以上で遊んでも、だれが取ったかわかる） */
 const badgeMats = {};
 function badgeMaterial(icon) {
   if (badgeMats[icon]) return badgeMats[icon];
@@ -551,23 +551,12 @@ function updateShow(c) {
   // 見せている間は、傾きの向きをゆっくり回して立体に見せる
   c.axis.set(Math.cos(a), 0, Math.sin(a));
   c.flip = 0.16 * Math.min(1, t / 0.12);
-  if (t > SHOW_HOLD && ONLINE) {
-    // オンライン：見せ終わったら元の場所へ戻して置いておく（だれが取ったかは動物のバッジで示す）
+  if (t > SHOW_HOLD) {
+    // 見せ終わったら元の場所へ戻して置いておく。だれが取ったかはバッジで示す
+    // （オンライン：取った人の動物。ロボット対戦：自分は🐻、ロボットは👾。karuta-taisen.html の平面版と同じアイコン）
+    if (!ONLINE && !c.icon) c.icon = c.owner === 'cpu' ? '👾' : '🐻';
     startTween(c, { x: c.home.x, y: 0, z: c.home.z, yaw: c.home.yaw, flip: 0 }, KEEP_BACK, 0, easeOutCubic, 'kept');
     c.tw.sound = true;
-  } else if (t > SHOW_HOLD) {
-    // 取った側（自分＝手前、ロボット＝奥）へ下りながら消える
-    const k = Math.min(1, (t - SHOW_HOLD) / SHOW_OUT), e = k * k;
-    if (c.fade < 0) {
-      c.fade = 0; c.mesh.castShadow = false;
-      c.fadeMats = c.mesh.material.map(m => { const n = m.clone(); n.transparent = true; return n; });
-      c.mesh.material = c.fadeMats;
-    }
-    c.fade = e;
-    c.fadeMats.forEach(m => { m.opacity = 1 - e; });
-    c.z = c.showZ + (c.owner === 'cpu' ? -1 : 1) * e * (halfD + 14);
-    c.y = c.showY * (1 - 0.75 * e);
-    if (k >= 1) { c.state = 'taken'; c.mesh.visible = false; }
   }
   applyPose(c);
 }
