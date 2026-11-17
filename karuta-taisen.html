@@ -1355,6 +1355,8 @@
     // ===== ゲーム状態 =====
     let jsonData = null, currentSongNumber = null, lastGameId = null, playOrder = [];
     let currentRoomId = null, countdownStarted = false, isGameOver = false;
+    // ルームの最新状態（カウントダウン終了時に開始役を決め直すため）
+    let latestPlayerIds = [], latestReadyCount = 0, latestPlaying = false;
     let localPenaltyTimeout = null, heartbeatInterval = null;
     let isLeavingIntentionally = false;
     let roomListener = null; // onValueのリスナー管理用
@@ -2113,6 +2115,9 @@
 
           online3dPlayers(playerIds);
           const isHost = playerIds[0] === myId;
+          latestPlayerIds = playerIds;
+          latestReadyCount = Object.values(players).filter(p => p.ready).length;
+          latestPlaying = !!(data.config && data.config.state === 'playing');
           const statusEl = document.getElementById('status_text');
 
           if (data.config && data.config.state === 'playing') {
@@ -2171,19 +2176,27 @@
           } else {
             const readyCount = Object.values(players).filter(p => p.ready).length;
             document.getElementById('room_status').innerText = `待機中: ${readyCount}/${playerIds.length}人`;
-            if (readyCount >= 2 && playerIds.length >= 2) runCountdown(isHost);
+            if (readyCount >= 2 && playerIds.length >= 2) runCountdown();
           }
         });
       });
     }
 
-    function runCountdown(isHost) {
+    function runCountdown() {
       if (countdownStarted) return;
       countdownStarted = true;
       let sec = 3;
       const timer = setInterval(() => {
         document.getElementById('status_text').innerText = `🔥 開始まで... ${sec}`;
-        if (sec-- <= 0) { clearInterval(timer); if (isHost) startGame(); }
+        if (sec-- > 0) return;
+        clearInterval(timer);
+        // カウントダウン中に抜けた人がいて準備完了が2人未満になったら、やり直し（次にそろったとき再びカウントダウン）
+        if (latestReadyCount < 2 || latestPlayerIds.length < 2) { countdownStarted = false; document.getElementById('status_text').innerText = ''; return; }
+        // 開始役はカウントダウン終了時点でIDがいちばん小さい参加者（開始時に決めると、その人が途中で抜けたとき誰も始めない）。
+        // 開始役が応答しない（タブが裏に回って止まっている・接続が切れたまま残っている）ときに備え、
+        // 少し待っても始まらなければ他の参加者が代わりに始める。startGame はトランザクションで一度しか確定しない
+        if (latestPlayerIds[0] === myId) startGame();
+        else setTimeout(() => { if (!latestPlaying && !isGameOver && latestPlayerIds.includes(myId)) startGame(); }, 2500);
       }, 1000);
     }
 
