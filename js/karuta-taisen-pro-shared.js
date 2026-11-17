@@ -158,7 +158,7 @@
     }
 
     // 札枚数モードボタン（PCのみ表示）
-    const modeDefaultSec = { 0: 30, 1: 60, 2: 300, 3: 900 };
+    const modeDefaultSec = { 0: 60, 1: 60, 2: 300, 3: 900 };
     document.querySelectorAll('#card_mode_buttons .memory-time-btn').forEach(btn => {
       btn.addEventListener('click', function () {
         document.querySelectorAll('#card_mode_buttons .memory-time-btn').forEach(b => b.classList.remove('selected'));
@@ -771,23 +771,19 @@
       setTimeout(() => {
         if (card && cardMode === 3) _placeSentCardAuto(card, document.getElementById('pc_enemy_field'), currentEnemyPositions || ENEMY_POSITIONS);
         if (willWin) { sendCardCallback = null; scheduleEndGame(); return; }
-        if (sendCardCallback) {
-          const cb = sendCardCallback;
-          sendCardCallback = null;
-          pendingAdvance = false; // callback が advanceCpuGame を呼ぶので二重進行を防ぐ
-          cb();
-        } else if (pendingAdvance) {
-          pendingAdvance = false;
-          setTimeout(advanceCpuGame, 800);
-        } else if (isPcGame) {
-          scheduleCpuActions();
-        }
+        const cb = sendCardCallback;
+        sendCardCallback = null;
+        if (cb) cb();
+        resumeAfterWait();
       }, 1500);
     }
 
     function startPostSendPause(label) {
       label = label || LANG.statusPostSendDone;
       const statusEl = document.getElementById('status_text');
+      // 5秒の間にもう一度呼ばれた場合、前のカウントダウンは止める（残すと新しい札の配置待ちを先に打ち切ってしまう）
+      if (_postSendPauseTimer) { clearInterval(_postSendPauseTimer); _postSendPauseTimer = null; }
+      if (_postSendPauseTimeout) { clearTimeout(_postSendPauseTimeout); _postSendPauseTimeout = null; }
       isPostSendArrange = true;
       let remaining = 5;
       const tick = () => {
@@ -811,14 +807,8 @@
           if (pendingPlacementCard) pendingPlacementCard.classList.remove('incoming-sent-card');
           pendingCardPlacement = false;
           pendingPlacementCard = null;
-          if (pendingAdvance) { pendingAdvance = false; setTimeout(advanceCpuGame, 800); }
-          else if (sendCardCallback) { const cb = sendCardCallback; sendCardCallback = null; cb(); }
-          else if (isPcGame) { scheduleCpuActions(); }
-        } else if (pendingAdvance) {
-          // pendingCardPlacement がドラッグ配置で先に解除されたが pendingAdvance が残っている場合
-          pendingAdvance = false;
-          setTimeout(advanceCpuGame, 800);
         }
+        resumeAfterWait();
         if (!isArrangeMode) {
           statusEl.style.color = '#B82343';
           statusEl.innerText = LANG.statusCardDisplay(currentSongIndex, totalCards);
@@ -838,6 +828,10 @@
         if (cardMode === 3) {
           // mode3: 勝敗確定ならカード配置UIを出す前に即終了
           if (isPcGame && checkPcWin()) { scheduleEndGame(); return; }
+          // 前の送り札がまだ配置待ちなら、空いている場所へ自動で置く（中央に2枚たまって動かせなくなるのを防ぐ）
+          if (pendingCardPlacement && pendingPlacementCard && pendingPlacementCard !== card) {
+            _placeSentCardAuto(pendingPlacementCard, myField, MY_POSITIONS);
+          }
           const pos = _findFreeCenterPos(myField);
           card.style.gridColumn = String(pos.col);
           card.style.gridRow = String(pos.row);
@@ -997,7 +991,7 @@
         .filter(c => c !== excludeCard && !c.dataset.hidden && parseInt(c.style.gridRow) === row)
         .sort((a, b) => parseInt(a.style.gridColumn) - parseInt(b.style.gridColumn));
 
-      if (cardMode === 1) {
+      if (cardMode <= 1) {
         const cards = byRow(1);
         cards.forEach((c, i) => { c.style.gridColumn = String(i + 1); });
         field.style.gridTemplateColumns = `repeat(${Math.max(cards.length, 1)}, ${currentCardWidth}px)`;
@@ -1055,7 +1049,7 @@
       const maxCol = colMatch ? parseInt(colMatch[1]) : (isMobileTouch ? 3 : (cardMode === 1 ? 6 : cardMode === 2 ? 8 : 14));
       const maxRow = isMobileTouch
         ? (rowMatch ? parseInt(rowMatch[1]) : 2)
-        : (cardMode === 1 ? 1 : cardMode === 2 ? 2 : 3);
+        : (cardMode <= 1 ? 1 : cardMode === 2 ? 2 : 3);
       for (let r = 1; r <= maxRow; r++) {
         for (let c = 1; c <= maxCol; c++) {
           if (cardMode === 3 && (c === 7 || c === 8)) continue;
@@ -1141,7 +1135,7 @@
         if (pendingCardPlacement && droppedCard === pendingPlacementCard) {
           const col = parseInt(droppedCard.style.gridColumn);
           const row = parseInt(droppedCard.style.gridRow);
-          const maxRow = cardMode === 1 ? 1 : cardMode === 2 ? 2 : 3;
+          const maxRow = cardMode <= 1 ? 1 : cardMode === 2 ? 2 : 3;
           // mode3: center gap(col7-8)が一時置き場 / mode1-2: maxRowを超えた行が一時置き場
           const isAtTempPos = cardMode === 3 ? (col === 7 || col === 8) : (row > maxRow);
           if (col && !isAtTempPos) {
@@ -1151,9 +1145,7 @@
             const statusEl = document.getElementById('status_text');
             statusEl.style.color = '#B82343';
             statusEl.innerText = LANG.statusCardDisplay(currentSongIndex, totalCards);
-            if (pendingAdvance) { pendingAdvance = false; setTimeout(advanceCpuGame, 800); }
-            else if (sendCardCallback) { const cb = sendCardCallback; sendCardCallback = null; cb(); }
-            else if (isPcGame) { scheduleCpuActions(); }
+            resumeAfterWait();
           }
         }
       }
@@ -1196,7 +1188,31 @@
       return myLeft === 0 || enemyLeft === 0;
     }
 
-    function advanceCpuGame() {
+    // 「次の歌へ進む」を予約する。予約した時点の歌番号を覚えておき、
+    // 実行時にすでに別の歌へ進んでいたら何もしない（二重に進んで1首飛ばすのを防ぐ）。
+    function advanceLater(ms) {
+      const idx = currentSongIndex;
+      return setTimeout(() => advanceCpuGame(idx), ms);
+    }
+
+    // 送り札の選択・送り札の配置という「待ち」が終わったあとに進行を再開する。
+    // 読まれた札がすでに取られている（または次へ進む予約が保留されていた）なら次の歌へ、
+    // まだ場に残っているならロボットを動かし直す。
+    function resumeAfterWait() {
+      if (isGameOver || _scheduledGameWin !== null || currentSongIndex < 0) return;
+      if (pendingSendCard || pendingCardPlacement) return;
+      if (isPcGame && checkPcWin()) { scheduleEndGame(); return; }
+      if (pendingAdvance || takenCards[playOrder[currentSongIndex]]) {
+        pendingAdvance = false;
+        advanceLater(800);
+      } else {
+        scheduleCpuActions();
+      }
+    }
+
+    function advanceCpuGame(fromIndex) {
+      if (typeof fromIndex === 'number' && fromIndex !== currentSongIndex) return;
+      if (isGameOver) return;
       if (pendingSendCard || pendingCardPlacement) { pendingAdvance = true; return; }
       if (isPcGame && checkPcWin()) { scheduleEndGame(); return; }
       pendingAdvance = false;
@@ -1313,33 +1329,10 @@
         const reactionOffset = settings.reactionOffsetMin + Math.random() * (settings.reactionOffsetMax - settings.reactionOffsetMin);
         const reactionTime = kimarijiDelay + reactionOffset;
         const timer = setTimeout(() => {
-          if (isGameOver || takenCards[correctCard]) return;
-          if (pendingSendCard || pendingCardPlacement) {
-            // 送り札・配置待ち中はCPUアクションを少し遅らせて再試行
-            const retryTimer = setTimeout(() => {
-              if (isGameOver || takenCards[correctCard]) return;
-              if (pendingSendCard || pendingCardPlacement) {
-                // まだ待機中 → pendingAdvance を立てて解除側に委ねる
-                pendingAdvance = true;
-                return;
-              }
-              if (willTakeCorrect) {
-                cpuTakeCard(cpuId, correctCard);
-              } else {
-                const available = selectedSongs.filter(s => !takenCards[s] && s !== correctCard);
-                if (available.length > 0) {
-                  const wrongCard = available[Math.floor(Math.random() * available.length)];
-                  const sameField = cardFields[String(correctCard)] === cardFields[String(wrongCard)];
-                  cpuMistake(cpuId, wrongCard, sameField);
-                } else {
-                  // 取れる札がない場合は次へ進める
-                  setTimeout(advanceCpuGame, 800);
-                }
-              }
-            }, 1200);
-            cpuTimers.push(retryTimer);
-            return;
-          }
+          if (isGameOver || _scheduledGameWin !== null || takenCards[correctCard]) return;
+          // 送り札の選択・配置待ちの間はロボットは動かない。待ちが終わったら resumeAfterWait() が動かし直す。
+          if (pendingSendCard || pendingCardPlacement) return;
+          if (playOrder[currentSongIndex] !== correctCard) return;
           if (willTakeCorrect) {
             cpuTakeCard(cpuId, correctCard);
           } else {
@@ -1375,13 +1368,13 @@
           if (pendingCardPlacement) {
             pendingAdvance = true;
           } else {
-            cpuTimers.push(setTimeout(advanceCpuGame, 1000));
+            cpuTimers.push(advanceLater(1000));
           }
         }, 500);
         return;
       }
       if (isPcGame && checkPcWin()) { scheduleEndGame(); return; }
-      cpuTimers.push(setTimeout(advanceCpuGame, 1500));
+      cpuTimers.push(advanceLater(1500));
     }
 
     function cpuMistake(cpuId, cardNumber, nopenalty = false) {
@@ -1471,7 +1464,7 @@
     }
 
     function handleCardClick(num) {
-      if (isGameOver) return;
+      if (isGameOver || _scheduledGameWin !== null) return; // 勝敗が決まったあと（結果表示までの間）は札に触れても何も起きない
 
       if (isArrangeMode && isPcGame) return;
 
@@ -1509,13 +1502,13 @@
             if (myRemaining.length > 0) {
               // sendCardSelection 中に advanceCpuGame が二重起動しないよう pendingAdvance をリセット
               pendingAdvance = false;
-              showPcSendCardSelection(() => setTimeout(advanceCpuGame, 800));
+              showPcSendCardSelection(null); // 送り終わると resumeAfterWait() が次の歌へ進める
               return;
             }
           }
           // 送り札なしで敵陣が空になった場合など残余チェック
           if (isPcGame && checkPcWin()) { scheduleEndGame(); return; }
-          setTimeout(advanceCpuGame, 1500);
+          advanceLater(1500);
         }
       } else {
         if (isPcGame && isCpuMode) {
@@ -1544,10 +1537,7 @@
             localPenaltyTimeout = setTimeout(() => { localPenaltyTimeout = null; }, 1500);
             cpuSendToMyField();
             // mode3 では cpuSendToMyField が pendingCardPlacement を立てることがある。
-            // その場合は配置完了後にゲームを再開するよう pendingAdvance を立てる。
-            if (pendingCardPlacement) {
-              pendingAdvance = true;
-            }
+            // 配置が終わると resumeAfterWait() が同じ歌のまま再開する（読まれた札はまだ場にあるので、次の歌へは進めない）。
             setTimeout(() => {
               if (!isGameOver && !pendingSendCard && !pendingCardPlacement) {
                 statusEl.style.color = '#B82343';

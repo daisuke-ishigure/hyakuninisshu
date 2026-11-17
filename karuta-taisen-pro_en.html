@@ -257,8 +257,8 @@
           <li>For 5 seconds after receiving a sent card during the match, you can rearrange the cards in your territory.
           </li>
           <li>You can choose the total number of cards (your territory + opponent's territory): 6, 12, 24, or 50.</li>
-          <li>To prevent the playing area from expanding, you cannot send cards beyond the opponent's initial card
-            limit.</li>
+          <li>When you take a card from the opponent's territory, you cannot send a card if that territory already
+            holds its starting number of cards or more. When the robot commits a fault, you can always send a card.</li>
           <!-- <li>If the opponent's territory has reached the following number of cards, you cannot send any more cards:
             <ul style="font-size:0.9em; margin-left:0">
               <li>6-card mode (3 vs 3): when the opponent's territory has 3 cards</li>
@@ -269,8 +269,8 @@
           </li> -->
           <li>In actual competitive karuta, the first half and second half of the same poem are not read consecutively. When moving on to the next poem, the reader first recites the second half of the previous poem, and only then begins the first half of the next poem. However, in this game, the first and second halves of the same poem are read consecutively for the sake of clarity and ease of understanding.</li>
           <li>Winning in 24-card mode counts as 2 wins, and winning in 50-card mode counts as 5 wins.</li>
-          <li>On smartphones, only 6-card and 12-card modes are available. 24-card and 50-card modes require a PC in
-            landscape orientation.</li>
+          <li>On smartphones, only the 6-card mode is available. The 12-card mode requires a PC, and the 24-card and
+            50-card modes require a PC in landscape orientation.</li>
           <li>In 24-card and 50-card modes, poems with no corresponding card on the field (dead cards) are also read.
             Touching a card when a dead card is read counts as a fault.</li>
         </ul>
@@ -552,7 +552,7 @@
       rankingLoadErrorHtml: msg => `<div style="color:#e74c3c;text-align:center;padding:16px;">Failed to load ${msg}<br><small style="color:#aaa;">Check the browser console (F12) for errors</small></div>`,
     };
   </script>
-  <script src="../js/karuta-taisen-pro-shared.js?20261117-01"></script>
+  <script src="../js/karuta-taisen-pro-shared.js?20261117-03"></script>
   <script type="module" src="../js/karuta-taisen-pro-module.js?20261022-01"></script>
 </body>
 
