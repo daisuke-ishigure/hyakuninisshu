@@ -207,6 +207,7 @@
           _audioCtx.resume().catch(() => { });
         } catch (e) { _audioCtx = null; }
       }
+      window._proAudioCtx = _audioCtx; // 3D表示（js/karuta-taisen-pro-3d.js）が札を置く音に使う
 
       // ② globalAudio: 無音WAVでアンロック（後でplaySongByIndexが正しいsrcをセットする）
       globalAudio.src = SILENT_WAV;
@@ -338,6 +339,9 @@
 
       preloadSongs(keys);
       buildMemorizationBoard(fieldKeysForBoard, playOrder);
+      // 残り枚数のインジケーターは暗記タイムの最初から出しておく
+      // （試合開始の瞬間に出すと、その高さの分だけ札と中央の帯が下へずれるため）
+      updateCardIndicator();
       requestAnimationFrame(fitCardsToScreen);
 
       const container = document.getElementById('karuta_container');
@@ -580,6 +584,9 @@
       const centerLine = document.createElement('div');
       centerLine.id = 'pc_center_line';
       centerLine.innerHTML = LANG.centerLineHtml;
+      // 「設定に戻る」：暗記タイム（と序歌）の間だけ出ているボタン。最初の設定画面へ戻る
+      const backBtn = centerLine.querySelector('#memory_back_btn');
+      if (backBtn) backBtn.onclick = () => location.reload();
 
       const myField = document.createElement('div');
       myField.id = 'pc_my_field';
@@ -633,6 +640,9 @@
         card.style.gridRow = pos.row;
         enemyField.appendChild(card);
       });
+
+      // 3D表示：平面の札の真上に3Dの札を重ねて描く（使えない環境では何も起きず、平面のまま）
+      if (window.K3DPro) window.K3DPro.build();
     }
 
     function makePcCard(key, song) {
@@ -677,6 +687,7 @@
 
     function showTakenCardFlash(cardNumber) {
       if (!jsonData) return;
+      if (window.K3DPro && window.K3DPro.active) return; // 3D表示では、払われた札そのものが浮き上がって見せられる
       const song = Object.values(jsonData).find(s => String(s.number) === String(cardNumber));
       if (!song) return;
       const existing = document.getElementById('card-taken-overlay');
@@ -1535,6 +1546,7 @@
             statusEl.style.color = '#e74c3c';
             // お手付き後 1.5秒間はクリックを受け付けない
             localPenaltyTimeout = setTimeout(() => { localPenaltyTimeout = null; }, 1500);
+            if (window.K3DPro) window.K3DPro.miss(num);
             cpuSendToMyField();
             // mode3 では cpuSendToMyField が pendingCardPlacement を立てることがある。
             // 配置が終わると resumeAfterWait() が同じ歌のまま再開する（読まれた札はまだ場にあるので、次の歌へは進めない）。
@@ -1652,7 +1664,7 @@
       return _pixiApp;
     }
 
-    function _flyCardEffect(rect, withPetals = true) {
+    function _flyCardEffect(rect, withPetals = true, hideCard = false) {
       const app = _getPixiApp();
       if (!app) return;
 
@@ -1664,6 +1676,7 @@
       const root = new PIXI.Container();
       root.x = cx;
       root.y = cy;
+      root.visible = !hideCard;
 
       // カード面（和紙風）
       const face = new PIXI.Graphics();
@@ -2017,10 +2030,12 @@
             el.dataset.hidden = '1';
             const parentField = el.closest('#pc_enemy_field, #pc_my_field');
             if (parentField) _repackField(parentField, el);
+            // 3D表示では札そのものが払われて飛ぶので、Pixi の札の絵は出さない（花びらだけ出す）
+            const k3d = !!(window.K3DPro && window.K3DPro.take(num, takerId === myId));
             if (takerId === myId) {
-              _flyCardEffect(rect, true);  // プレイヤー → 花びらあり
+              _flyCardEffect(rect, true, k3d);  // プレイヤー → 花びらあり
             } else {
-              _flyCardEffect(rect, false); // ロボット → 花びらなし
+              if (!k3d) _flyCardEffect(rect, false); // ロボット → 花びらなし
               robotAudio.currentTime = 0;
               robotAudio.play().catch(() => { });
             }
@@ -2196,6 +2211,7 @@
       pendingSendCard = false;
       pendingCardPlacement = false;
       if (localPenaltyTimeout) { clearTimeout(localPenaltyTimeout); localPenaltyTimeout = null; }
+      if (window.K3DPro) window.K3DPro.end();
       document.getElementById('karuta_container').style.display = 'none';
       globalAudio.pause();
       if (isWin) { globalAudio.src = finishAudioSrc; globalAudio.play().catch(() => { }); }

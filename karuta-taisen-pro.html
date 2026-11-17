@@ -95,8 +95,10 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@500&family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap"
     rel="stylesheet">
+  <!-- 3D表示の札の文字（karuta-taisen-3d.html と同じ書体） -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap&text=あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわゐゑをんがぎぐげござじずぜぞだぢづでどばびぶべぼ">
   <script src="https://cdn.jsdelivr.net/npm/pixi.js@7.3.2/dist/pixi.min.js"></script>
-  <link rel="stylesheet" href="../css/karuta-taisen-pro-shared.css?20260525">
+  <link rel="stylesheet" href="../css/karuta-taisen-pro-shared.css?20261117-03">
   <style>
     #medetashi-overlay span {
       font-family: "Noto Serif JP", serif;
@@ -477,7 +479,7 @@
       statusLoadingAudio: '音声を読み込み中...',
       statusStartingIn: sec => `🔥 開始まで... ${sec}`,
       statusCardNumber: total => `第 1 首 / ${total}首`,
-      centerLineHtml: '<div id="memory_info_row"><span>暗記タイム 残り：</span><span id="memory_countdown_timer">3:00</span><button id="memory_skip_btn">今すぐ始める</button></div><div id="send_card_notice">自陣の1枚を敵陣に送ってください</div><div id="kami_no_ku_display" class="done"></div><div id="empty_card_notice">空札でした。次を読みます。</div>',
+      centerLineHtml: '<div id="memory_info_row"><span>暗記タイム 残り：</span><span id="memory_countdown_timer">3:00</span><button id="memory_skip_btn">今すぐ始める</button><button id="memory_back_btn">設定に戻る</button></div><div id="send_card_notice">自陣の1枚を敵陣に送ってください</div><div id="kami_no_ku_display" class="done"></div><div id="empty_card_notice">空札でした。次を読みます。</div>',
       arrangeHintText: '★ ドラッグして自陣の札を並び替えられます（暗記フェーズ中のみ）',
       statusSendCardPrompt: '自陣の1枚を敵陣に送ってください',
       statusPostSendDone: '送り完了',
@@ -528,7 +530,8 @@
       rankingLoadErrorHtml: msg => `<div style="color:#e74c3c;text-align:center;padding:16px;">読み込みに失敗しました ${msg}<br><small style="color:#aaa;">ブラウザのコンソール(F12)でエラーを確認してください</small></div>`,
     };
   </script>
-  <script src="../js/karuta-taisen-pro-shared.js?20261117-03"></script>
+  <script src="../js/karuta-taisen-pro-shared.js?20261117-06"></script>
+  <script type="module" src="../js/karuta-taisen-pro-3d.js?20261117-02"></script>
   <script type="module" src="../js/karuta-taisen-pro-module.js?20261022-01"></script>
 </body>
 

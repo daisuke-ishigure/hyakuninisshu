@@ -211,6 +211,67 @@ button {
   cursor: pointer;
 }
 
+/* 設定に戻る（「今すぐ始める」の隣。目立ちすぎないよう白地に枠線） */
+#memory_back_btn {
+  pointer-events: all;
+  margin: 0;
+  padding: 3px 13px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #B82343;
+  border: 1px solid rgba(184, 35, 67, 0.75);
+  border-radius: 20px;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+/* スマホ幅：暗記タイムの行（文字＋ボタン2つ）が画面幅からはみ出すと盤面が横へずれるので、少しつめる */
+@media (max-width: 500px) {
+  #memory_info_row {
+    gap: 5px;
+    font-size: 0.75rem;
+  }
+
+  #memory_countdown_timer {
+    font-size: 0.9rem;
+  }
+
+  #memory_skip_btn,
+  #memory_back_btn {
+    padding: 4px 8px;
+    font-size: 0.72rem;
+  }
+
+  #memory_back_btn {
+    padding: 3px 7px;
+  }
+
+  /* 暗記タイムの行と上の句の表示で、中央の帯の高さが変わらないようにそろえる。
+     帯は画面幅より広がらないようにする（広がると盤面が横へずれる） */
+  #karuta_container #pc_center_line {
+    min-height: 40px;
+    max-width: 100vw;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  /* 行が画面幅に収まらないとき（英語版の狭い画面など）は、ボタンを残して説明の文字のほうを省略する */
+  #memory_info_row {
+    min-width: 0;
+  }
+
+  #memory_info_row > span:first-child {
+    flex: 0 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  #memory_info_row > button,
+  #memory_countdown_timer {
+    flex: none;
+  }
+}
+
 /* ── 暗記時間セレクター ── */
 .memory-time-selector {
   margin: 10px 0 6px 0;
@@ -1202,4 +1263,10 @@ button {
   font-size: 32px !important;
   letter-spacing: 0.1em !important;
 }
-  </style>
+
+/* ===== 3D表示（js/karuta-taisen-pro-3d.js） =====
+   3Dの札を盤面の真上に重ねて描く間、平面の札は透明にする（タップやドラッグは平面の札が受け続ける） */
+body.k3dpro-on #karuta_container .karuta_card,
+body.k3dpro-on .arr-drag-clone {
+  opacity: 0 !important;
+}
