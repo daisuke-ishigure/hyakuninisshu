@@ -2118,7 +2118,8 @@
         if (hyakunin) {
           const utaP = document.createElement('p');
           utaP.className = 'missed-back-uta';
-          utaP.innerHTML = spaceToBreak(hyakunin.first) + '<br>' + spaceToBreak(hyakunin.second);
+          // hyakunin.json の first/second は <ruby>・<br> を含む HTML なのでエスケープせずそのまま使う
+          utaP.innerHTML = (hyakunin.first || '') + '<br>' + (hyakunin.second || '');
           backContent.appendChild(utaP);
         } else {
           backContent.innerHTML = spaceToBreak(song.uta);
