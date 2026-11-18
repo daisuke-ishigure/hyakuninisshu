@@ -59,6 +59,30 @@
     let localPenaltyTimeout = null;
 
     const isMobileTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+    // スマホ：ゲーム中（配札〜終了まで）は、盤面をスワイプしても画面がスクロールしないようにする
+    // （札を払う・送り札をドラッグするときに画面が動かないように。結果画面からは元どおりスクロールできる）
+    // 「hover: none」を正しく返さない機種もあるので、タッチ操作できる小さい画面もスマホとして扱う
+    const lockScrollDevice = isMobileTouch || (navigator.maxTouchPoints > 0 && Math.min(screen.width, screen.height) <= 600);
+    const isScrollLocked = () => document.documentElement.classList.contains('kpro-noscroll');
+    const scrollToTop = () => { if (window.scrollX || window.scrollY) window.scrollTo(0, 0); };
+    function setGameNoScroll(on) {
+      if (!lockScrollDevice) return;
+      document.documentElement.classList.toggle('kpro-noscroll', on);
+      if (on) {
+        // ヘッダーを隠したり盤面を作ったりしてレイアウトが変わったあとも一番上にそろえる
+        scrollToTop();
+        requestAnimationFrame(() => { scrollToTop(); requestAnimationFrame(scrollToTop); });
+        setTimeout(scrollToTop, 300);
+      }
+    }
+    document.addEventListener('touchmove', (e) => {
+      if (!isScrollLocked()) return;
+      if (e.target.closest && e.target.closest('#ranking_overlay_inner')) return;
+      if (e.cancelable) e.preventDefault();
+    }, { passive: false });
+    // それでも何かの拍子にスクロールしたら（ブラウザの慣性・アドレスバーの出し入れなど）すぐ一番上に戻す
+    window.addEventListener('scroll', () => { if (isScrollLocked()) scrollToTop(); }, { passive: true });
+    window.addEventListener('resize', () => { if (isScrollLocked()) scrollToTop(); });
 
     let isCpuMode = false;
     let cpuDifficulty = 'normal';
@@ -280,6 +304,7 @@
     function startCpuGame() {
       document.querySelectorAll('.header, footer').forEach(el => el.style.display = 'none');
       document.querySelector('.section').style.display = 'none';
+      setGameNoScroll(true);
       document.getElementById('room_setup').style.display = 'none';
       document.getElementById('login_area').style.display = 'none';
       document.getElementById('player_info').style.display = 'flex';
@@ -2196,6 +2221,7 @@
       if (isGameOver) return;
       isGameOver = true;
       _stopTypewriter();
+      setGameNoScroll(false);
       document.querySelectorAll('.header, footer').forEach(el => el.style.display = '');
       if (_reversalTimer) { clearTimeout(_reversalTimer); _reversalTimer = null; }
       const myLeftEnd = Object.keys(cardFields).filter(k => cardFields[k] === 'mine' && !takenCards[k]).length;

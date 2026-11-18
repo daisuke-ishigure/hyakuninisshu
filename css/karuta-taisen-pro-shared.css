@@ -1281,3 +1281,20 @@ body.k3dpro-on #karuta_container .karuta_card,
 body.k3dpro-on .arr-drag-clone {
   opacity: 0 !important;
 }
+
+/* スマホのゲーム中はスクロールさせない（js の setGameNoScroll で付け外し） */
+html.kpro-noscroll,
+html.kpro-noscroll body {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+/* 指でのスクロール（パン）をブラウザにさせない。タップ・ドラッグの操作は js 側で受けるので影響しない */
+html.kpro-noscroll {
+  touch-action: none;
+}
+
+/* ランキング一覧だけは中を縦にスクロールできるようにする */
+html.kpro-noscroll #ranking_overlay_inner {
+  touch-action: pan-y;
+}
