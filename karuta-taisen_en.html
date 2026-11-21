@@ -865,7 +865,7 @@
     </div>
   </header>
 <script src="../js/back-to-top.js?20261012-03"></script>
-<script src="../js/karuta-analysis.js?20261122-07"></script>
+<script src="../js/karuta-analysis.js?20261123-01"></script>
 
   <main class="main_about-main">
     <div class="section">
@@ -1552,6 +1552,7 @@
     }
     const cardStatusText = i => `Card ${i + 1} / ${playOrder.length}`;
     let fieldSet = new Set();                       // 場にある札（これ以外が読まれたら空札）
+    let cpuPenaltyIndex = -1;                       // ロボットが空札でお手付きしたとき、3秒待つ歌（次の歌）の番号
     let karafudaSkipping = false;                   // 「今のは空札でした」を出して次の歌へ移る間（札に触れても何もしない）
     const isKarafuda = num => fieldSet.size > 0 && !fieldSet.has(String(num));
     // 空札を読むかどうか（ロボット対戦だけ）。ページを開いたときは毎回「なし」から始める（前に選んだ設定は覚えておかない）
@@ -1614,7 +1615,7 @@
       f.id = 'cpu3d_frame';
       f.title = 'Battle a Robot';
       f.allow = 'autoplay';
-      f.src = `karuta-taisen-3d.html?v=20261122-05&embed=1&lang=en&difficulty=${cpuDifficulty}${karafudaOn() ? '&karafuda=1' : ''}`;
+      f.src = `karuta-taisen-3d.html?v=20261123-02&embed=1&lang=en&difficulty=${cpuDifficulty}${karafudaOn() ? '&karafuda=1' : ''}`;
       Object.assign(f.style, { position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', border: '0', zIndex: '10000', background: '#bab37a url(img/tatami.webp)' });
       document.body.appendChild(f);
       document.documentElement.style.overflow = 'hidden';
@@ -1656,7 +1657,7 @@
       f.id = 'online3d_frame';
       f.title = 'Online battle';
       f.allow = 'autoplay';
-      f.src = 'karuta-taisen-3d.html?v=20261122-05&embed=1&mode=online&lang=en';
+      f.src = 'karuta-taisen-3d.html?v=20261123-02&embed=1&mode=online&lang=en';
       Object.assign(f.style, { position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', border: '0', zIndex: '10000', background: '#bab37a url(img/tatami.webp)', visibility: 'hidden', pointerEvents: 'none' });
       document.body.appendChild(f);
       online3dFrame = f;
@@ -1854,6 +1855,7 @@
       const keys = allKeys.slice(0, totalCards);
       selectedSongs = keys;
       fieldSet = new Set(keys.map(String));
+      cpuPenaltyIndex = -1;
       playOrder = shuffle([...keys, ...(karafudaOn() ? allKeys.slice(totalCards, totalCards + karafudaCount()) : [])]);
       takenCards = {};
       currentSongIndex = -1;
@@ -2053,12 +2055,29 @@
         // 空札：ロボットは正確さに応じて、ときどき札に触れてお手付きする。読み終わったら次の歌へ
         const idx = currentSongIndex;
         cpuPlayers.forEach(cpuId => {
+          const reactionTime = cpuReactionTime(settings);   // お手付きの待ち時間中なら「3秒間待機」もここで出す
           if (Math.random() < settings.accuracy) return;
-          const reactionTime = settings.reactionTimeMin + Math.random() * (settings.reactionTimeMax - settings.reactionTimeMin);
           cpuTimers.push(setTimeout(() => {
             if (isGameOver || currentSongIndex !== idx) return;
             const available = selectedSongs.filter(s => !takenCards[s]);
-            if (available.length > 0) cpuMistake(cpuId, available[Math.floor(Math.random() * available.length)]);
+            if (!available.length || karafudaSkipping) return;
+            cpuMistake(cpuId, available[Math.floor(Math.random() * available.length)], "👾 Robot false-started! It waits 3 seconds");
+            // プレイヤーのお手付きと同じく、すぐ白い帯に「今のは空札でした」と出して読み上げをやめ、約1秒後に次の歌へ
+            karafudaSkipping = true;
+            globalAudio.pause();
+            cpuTimers.forEach(t => clearTimeout(t));
+            cpuTimers = [];
+            showKarafudaBand();
+            cpuPenaltyIndex = idx + 1;
+            setTimeout(() => {
+              karafudaSkipping = false;
+              if (isGameOver || currentSongIndex !== idx) return;
+              currentSongIndex++;
+              if (currentSongIndex >= playOrder.length) { endCpuGame(); return; }
+              if (!localPenaltyTimeout) document.getElementById('status_text').innerText = cardStatusText(currentSongIndex);
+              playSongByIndex(currentSongIndex);
+              scheduleCpuActions();
+            }, 1000);
           }, reactionTime));
         });
         afterKarafudaRead(correctCard, () => {
@@ -2080,7 +2099,7 @@
       cpuPlayers.forEach(cpuId => {
         if (takenCards[correctCard]) return;
         const willTakeCorrect = Math.random() < settings.accuracy;
-        const reactionTime = settings.reactionTimeMin + Math.random() * (settings.reactionTimeMax - settings.reactionTimeMin);
+        const reactionTime = cpuReactionTime(settings);
         const timer = setTimeout(() => {
           if (isGameOver || takenCards[correctCard]) return;
           if (willTakeCorrect) {
@@ -2108,19 +2127,38 @@
       }, 1500);
     }
 
-    function cpuMistake(cpuId, cardNumber) {
+    // ロボットのお手付き：プレイヤーのお手付きと同じく、#status_text に3秒間出す（text を省くと「チャンスです」）
+    function cpuMistake(cpuId, cardNumber, text) {
       const statusEl = document.getElementById('status_text');
-      const originalText = statusEl.innerText;
-      const originalColor = statusEl.style.color;
-      statusEl.innerText = "👾 Robot false-started. Your chance!";
-      statusEl.style.color = "#f39c12";
+      const idx = currentSongIndex;
+      if (!localPenaltyTimeout) {
+        statusEl.innerText = text || "👾 Robot false-started. Your chance!";
+        statusEl.style.color = "#f39c12";
+      }
       missAudio.currentTime = 0; missAudio.play().catch(() => { });
       const el = document.querySelector(`.karuta_card[data-number="${cardNumber}"]`);
       if (el && !el.classList.contains('taken')) {
         el.style.border = "3px solid #f39c12"; el.style.transform = "scale(1.05)";
         setTimeout(() => { el.style.border = ""; el.style.transform = ""; }, 500);
       }
-      setTimeout(() => { statusEl.innerText = originalText; statusEl.style.color = originalColor; }, 1000);
+      setTimeout(() => {
+        if (isGameOver || localPenaltyTimeout || currentSongIndex !== idx) return;
+        statusEl.innerText = cardStatusText(currentSongIndex);
+        statusEl.style.color = "";
+      }, 3000);
+    }
+    // ロボットが札に手を出すまでの時間。空札でお手付きした次の歌では、プレイヤーと同じく読みはじめから3秒間は触れない
+    function cpuReactionTime(settings) {
+      const t = settings.reactionTimeMin + Math.random() * (settings.reactionTimeMax - settings.reactionTimeMin);
+      if (cpuPenaltyIndex !== currentSongIndex) return t;
+      const statusEl = document.getElementById('status_text'), idx = currentSongIndex;
+      if (!localPenaltyTimeout) { statusEl.innerText = "👾 Robot false-started! It waits 3 seconds"; statusEl.style.color = "#f39c12"; }
+      setTimeout(() => {
+        if (isGameOver || localPenaltyTimeout || currentSongIndex !== idx) return;
+        statusEl.innerText = cardStatusText(currentSongIndex);
+        statusEl.style.color = "";
+      }, 3000);
+      return Math.max(t, 3000);
     }
 
     // ===== Online battle listener =====

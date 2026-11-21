@@ -1,4 +1,4 @@
-/* 対戦ゲームの「振り返り」：ゲーム中に出てきた札を「今回の札」として、list.html と同じ見た目の表で分類して見せる。
+/* 対戦ゲームの「振り返り」：ゲーム中に出てきた札を「今回の札一覧」として、list.html と同じ見た目の表で分類して見せる。
    karuta-taisen.html・karuta-taisen_en.html（平面版のロボット対戦・オンライン対戦）と
    karuta-taisen-3d.html（3D版のロボット対戦）が、終了画面の「振り返り」ボタンから呼ぶ。
 
@@ -23,13 +23,13 @@
   };
   const TEXT = {
     ja: {
-      title: '今回の札', close: '閉じる', loading: '読み込み中…', none: 'なし', error: '読み込めませんでした。通信状態を確かめて、もう一度お試しください。',
+      title: '今回の札一覧', close: '閉じる', loading: '読み込み中…', none: 'なし', error: '読み込めませんでした。通信状態を確かめて、もう一度お試しください。',
       hint: '歌番号を押すと、その歌の解説ページが新しいタブで開きます。和歌を押すと、現代語訳と決まり字が表示されます。',
       count: (n, kind) => `${n}${kind === 'empty' ? '首' : '枚'}`,
       th: ['番号', '和歌・作者'], open: '▼ 現代語訳', shut: '▲ 閉じる',
     },
     en: {
-      title: 'Cards in This Game', close: 'Close', loading: 'Loading…', none: 'None', error: 'Could not load the data. Please check your connection and try again.',
+      title: 'List of Cards in This Game', close: 'Close', loading: 'Loading…', none: 'None', error: 'Could not load the data. Please check your connection and try again.',
       hint: 'Tap a poem number to open that poem\'s page in a new tab. Tap a poem to show its translation and kimariji.',
       count: (n, kind) => kind === 'empty' ? `${n} poem${n === 1 ? '' : 's'}` : `${n} card${n === 1 ? '' : 's'}`,
       th: ['No.', 'Poem / Poet'], open: '▼ translation', shut: '▲ close',
