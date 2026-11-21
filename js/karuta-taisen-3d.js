@@ -676,15 +676,21 @@ function scheduleCpu() {
   const s = CPU_SETTINGS[game.difficulty], i = game.index;
   if (!ONLINE && !game.field.has(game.current)) { scheduleKarafuda(s, i); return; }
   const correct = Math.random() < s.accuracy;
-  later(function act() {
-    if (game.phase !== 'reading' || game.index !== i) return;
-    const free = cards.filter(c => c.state === 'rest');
-    const target = correct ? cards.find(c => c.number === game.current) : free.filter(c => c.number !== game.current)[Math.floor(Math.random() * Math.max(1, free.length - 1))];
-    if (!target) return;
-    if (target.state !== 'rest') { later(act, 150); return; }              // 宙にある間は待つ
-    if (!correct) { sfxMiss(); showCpuStatus(TXT.cpuMiss, i); }
-    rivalStrike(target, correct ? rand(320, 430) : rand(150, 230));
-  }, cpuWait(s, i));
+  later(() => cpuAct(i, correct), cpuWait(s, i));
+}
+/* ロボットが札に手を出す。correct=false はお手つき（読まれた札と違う札を払う）：プレイヤーと同じく3秒間待ってから、
+   まだ札が取られていなければ、読まれた札を取りに行く */
+function cpuAct(i, correct) {
+  if (game.phase !== 'reading' || game.index !== i) return;
+  const free = cards.filter(c => c.state === 'rest');
+  const target = correct ? cards.find(c => c.number === game.current) : free.filter(c => c.number !== game.current)[Math.floor(Math.random() * Math.max(1, free.length - 1))];
+  if (!target) return;
+  if (target.state !== 'rest') { later(() => cpuAct(i, correct), 150); return; }   // 宙にある間は待つ
+  if (!correct) {
+    sfxMiss(); showCpuStatus(TXT.cpuMissWait, i);
+    later(() => cpuAct(i, true), 3000);
+  }
+  rivalStrike(target, correct ? rand(320, 430) : rand(150, 230));
 }
 
 /* ロボットが札に手を出すまでの時間。空札でお手つきした次の歌では、プレイヤーと同じく読みはじめから3秒間は触れない */
