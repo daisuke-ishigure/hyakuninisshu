@@ -48,7 +48,7 @@ const TXT = EN ? {
   players: (icons, me) => `Players: ${icons} · You: ${me}`, rivalTook: 'Your opponent took it', soon: 'Starting soon…',
   dealing: 'Dealing the cards…', startIn: sec => `Starting in… ${sec}`, card: n => `Card ${n}`,
   cpuMiss: 'Robot false-started. Your chance!', cpuMissWait: 'Robot false-started! It waits 3 seconds', over: 'Game over', took: 'You got it!', cpuTook: 'The robot took it',
-  anTook: 'Cards you took', anLost: 'Cards taken by the robot', anLeft: 'Cards left on the field', anEmpty: 'Dead cards (read, but not on the field)',
+  anTook: 'Cards you took', anLost: 'Cards taken by the robot', anLeft: 'Cards left on the field', anEmpty: 'Dead cards (not on the field)',
   miss: 'False start! Wait 3 seconds', empty: 'That was a dead card.', win: 'Win!', lose: 'So close!', winAlt: 'Happy cat character', loseAlt: 'Sad cat character',
   noWebgl: '3D display (WebGL) is not available on this device or browser.',
 } : {
@@ -57,7 +57,7 @@ const TXT = EN ? {
   players: (icons, me) => `参加者：${icons} ・ あなた：${me}`, rivalTook: '相手が取りました', soon: 'まもなく開始…',
   dealing: '札を並べています…', startIn: sec => `開始まで… ${sec}`, card: n => `第 ${n} 首`,
   cpuMiss: 'ロボットがお手つき。チャンスです！', cpuMissWait: 'ロボットがお手つき！ 3秒間待機', over: '勝負あり', took: '取りました！', cpuTook: 'ロボットが取りました',
-  anTook: '取った札', anLost: '取られた札', anLeft: '場に残った札', anEmpty: '空札（読まれたが場になかった札）',
+  anTook: '取った札', anLost: '取られた札', anLeft: '場に残った札', anEmpty: '空札（場になかった札）',
   miss: 'お手つき！ 3秒間待機', empty: '今のは空札でした', win: 'めでたし！', lose: '惜しい！', winAlt: '喜ぶ猫キャラ', loseAlt: '悲しむ猫キャラ',
   noWebgl: 'この端末・ブラウザでは 3D 表示（WebGL）が使えません。',
 };

@@ -1679,7 +1679,7 @@
         { kind: 'lost', title: '取られた札', nums: order.filter(n => taken[n] && taken[n] !== myId) },
         { kind: 'left', title: '場に残った札', nums: order.filter(n => fieldSet.has(n) && !taken[n]).sort((a, b) => a - b) },
       ];
-      if (withEmpty) analysisGroups.push({ kind: 'empty', title: '空札（読まれたが場になかった札）', nums: read.filter(n => !fieldSet.has(n)) });
+      if (withEmpty) analysisGroups.push({ kind: 'empty', title: '空札（場になかった札）', nums: read.filter(n => !fieldSet.has(n)) });
       document.getElementById('analysis_button').style.display = '';
     }
     if (window.KarutaAnalysis && window.KarutaAnalysis.decorate) window.KarutaAnalysis.decorate(document.getElementById('analysis_button'));   // 枠を回る光
@@ -1700,7 +1700,7 @@
       f.id = 'cpu3d_frame';
       f.title = 'ロボットと対戦';
       f.allow = 'autoplay';
-      f.src = `karuta-taisen-3d.html?v=20261123-02&embed=1&difficulty=${cpuDifficulty}${karafudaOn() ? '&karafuda=1' : ''}`;
+      f.src = `karuta-taisen-3d.html?v=20261123-03&embed=1&difficulty=${cpuDifficulty}${karafudaOn() ? '&karafuda=1' : ''}`;
       Object.assign(f.style, { position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', border: '0', zIndex: '10000', background: '#bab37a url(img/tatami.webp)' });
       document.body.appendChild(f);
       document.documentElement.style.overflow = 'hidden';
@@ -1742,7 +1742,7 @@
       f.id = 'online3d_frame';
       f.title = 'オンライン対戦';
       f.allow = 'autoplay';
-      f.src = 'karuta-taisen-3d.html?v=20261123-02&embed=1&mode=online';
+      f.src = 'karuta-taisen-3d.html?v=20261123-03&embed=1&mode=online';
       Object.assign(f.style, { position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', border: '0', zIndex: '10000', background: '#bab37a url(img/tatami.webp)', visibility: 'hidden', pointerEvents: 'none' });
       document.body.appendChild(f);
       online3dFrame = f;
