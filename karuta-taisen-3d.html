@@ -66,7 +66,7 @@
       border: 1px solid rgba(244, 236, 216, .7); background: rgba(42, 33, 24, .88); color: #f4ecd8;
       box-shadow: 0 2px 8px rgba(0, 0, 0, .4); white-space: nowrap; text-decoration: none; }
     #actions #go, #result #again { background: #B82343; color: #fff; border-color: #B82343; font-weight: bold; }
-    @media (max-width: 420px) { #actions { gap: 6px; } #actions button { font-size: 12.5px; padding: 7px 10px; } }
+    @media (max-width: 420px) { #actions, #result { gap: 6px; } #actions button, #result button, #result a { font-size: 12.5px; padding: 7px 10px; } }
     /* 終了後の「もう一度」「戻る」は、演出（z-index 9999）の上に出して、すぐ押せるようにする */
     #result { z-index: 10000; }
     @media (max-width: 340px) { #actions { gap: 4px; } #actions button { font-size: 11.5px; padding: 6px 7px; } }
@@ -153,7 +153,8 @@
 
   <div id="result" class="hide">
     <button type="button" id="again">もう一度</button>
-    <a href="karuta-taisen.html" id="exit">戻る</a>
+    <button type="button" id="analysis">振り返り</button>
+    <a href="karuta-taisen.html" id="exit">設定に戻る</a>
   </div>
 
   <div id="start" class="overlay">
@@ -174,7 +175,7 @@
   <script>
     // 英語表示（?lang=en）：ボタンなどの文言を差し替える（ゲーム中の文言は js/karuta-taisen-3d.js の TXT）
     if (document.documentElement.lang === 'en') {
-      const t = { score_text: 'You 0 – 0 Robot', back: 'Settings', reroll: 'Redeal', go: 'Start', again: 'Play again', exit: 'Back', loading: 'Loading…' };
+      const t = { score_text: 'You 0 – 0 Robot', back: 'Settings', reroll: 'Redeal', go: 'Start', again: 'Play again', analysis: 'Review', exit: 'Back to Settings', loading: 'Loading…' };
       for (const id in t) document.getElementById(id).textContent = t[id];
       document.getElementById('exit').href = 'karuta-taisen_en.html';
       document.title = 'Competitive Karuta 3D (prototype) | Shigure\'s Hyakunin Isshu';
@@ -188,8 +189,9 @@
       start.querySelector('[data-shake="off"]').textContent = 'Off';
     }
   </script>
+  <script src="/js/karuta-analysis.js?20261122-07"></script>
   <script src="https://cdn.jsdelivr.net/npm/pixi.js@7.3.2/dist/pixi.min.js"></script>
-  <script type="module" src="/js/karuta-taisen-3d.js?20261117-20"></script>
+  <script type="module" src="/js/karuta-taisen-3d.js?20261122-04"></script>
 </body>
 
 </html>

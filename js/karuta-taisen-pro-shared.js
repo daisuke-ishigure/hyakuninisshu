@@ -1483,19 +1483,19 @@
       }).catch((err) => {
         if (!isGameOver && err.name === 'NotAllowedError') document.getElementById('audio_resume_btn').style.display = 'block';
       });
-      // 空札：3秒後にメッセージ0.5秒表示→次のターンへ
+      // 空札：3秒後に白い帯へ「今のは空札でした」を約1秒表示→次のターンへ
+      // 白い帯（上の句を出す帯）に「今のは空札でした」と出して、読めるだけの間をおいてから次へ
       if (isPcGame && !fieldCardSet.has(String(num))) {
         const t1 = setTimeout(() => {
-          if (!isGameOver && emptyNotice) emptyNotice.style.display = 'block';
           const kamiElT = document.getElementById('kami_no_ku_display');
-          if (kamiElT) kamiElT.style.display = 'none';
+          if (isGameOver || !kamiElT || !emptyNotice) return;
+          _stopTypewriter();
+          kamiElT.textContent = emptyNotice.textContent;
+          kamiElT.classList.add('done');
         }, 3000);
         const t2 = setTimeout(() => {
-          if (emptyNotice) emptyNotice.style.display = 'none';
-          const kamiElT2 = document.getElementById('kami_no_ku_display');
-          if (kamiElT2) kamiElT2.style.display = '';
           if (!isGameOver) advanceCpuGame();
-        }, 3500);
+        }, 4000);
         emptyCardTimers.push(t1, t2);
       }
     }

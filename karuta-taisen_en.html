@@ -300,7 +300,7 @@
       margin: 10px 0 6px 0;
     }
 
-    .memory-time-btn, .shake-btn {
+    .memory-time-btn, .shake-btn, .karafuda-btn {
       padding: 5px 10px;
       margin: 3px;
       background: #ecf0f1;
@@ -311,7 +311,7 @@
       transition: all 0.2s;
     }
 
-    .memory-time-btn.selected, .shake-btn.selected {
+    .memory-time-btn.selected, .shake-btn.selected, .karafuda-btn.selected {
       background: #2980b9;
       color: white;
       border-color: #2980b9;
@@ -865,6 +865,7 @@
     </div>
   </header>
 <script src="../js/back-to-top.js?20261012-03"></script>
+<script src="../js/karuta-analysis.js?20261122-07"></script>
 
   <main class="main_about-main">
     <div class="section">
@@ -927,6 +928,14 @@
             </div>
           </div>
 
+          <div class="memory-time-selector">
+            <label style="font-size:13px; color:#555; display:block; margin-bottom:4px;">Read dead cards:</label>
+            <div class="karafuda-buttons">
+              <button class="karafuda-btn" data-karafuda="on">On</button>
+              <button class="karafuda-btn selected" data-karafuda="off">Off</button>
+            </div>
+          </div>
+          <p class="karafuda-note" style="font-size:12px; color:#777; margin:2px 0 10px; text-align:center;">When on, 1–2 poems with no card on the field (dead cards) are mixed into the reading. Touching a card when a dead card is read is a fault.</p>
           <button id="cpu_battle_button">Battle a Robot</button>
 
           <hr style="margin: 20px 0; border: none; border-top: 1px solid #888;">
@@ -1139,6 +1148,7 @@
         </div>
         <div id="missed_cards_list"></div>
       </div>
+      <button class="btn-return" id="analysis_button" style="display:none; margin-top:18px; margin-right:8px;">Review</button>
       <button class="btn-return" onclick="location.reload()" style="margin-top:18px;">Return to Start Screen</button>
       <br>
       <a href="karuta-taisen-ranking_en.html"
@@ -1529,6 +1539,68 @@
 
     // ===== Robot Battle (opens the 3D game karuta-taisen-3d.html in a full-screen iframe) =====
     let cpu3dFrame = null;
+    // ===== 空札（ロボット対戦のときだけ。オンライン対戦・友達と遊ぶ では読まない） =====
+    // 空札は読む順番（playOrder）にだけ混ぜ、場の札（selectedSongs）には入れない
+    const karafudaCount = () => 1 + Math.floor(Math.random() * 2);   // 空札は1〜2首（試合ごとにランダム）
+    const KARAFUDA_TEXT = 'That was a dead card.';
+    // 空札を読み終えたら、上の句を出していた白い帯に「That was a dead card.」と出す（次の歌の上の句で上書きされる）
+    function showKarafudaBand() {
+      _kamiTimers.forEach(clearTimeout);
+      _kamiTimers = [];
+      const el = document.getElementById('kami_no_ku_display');
+      if (el) el.textContent = KARAFUDA_TEXT;
+    }
+    const cardStatusText = i => `Card ${i + 1} / ${playOrder.length}`;
+    let fieldSet = new Set();                       // 場にある札（これ以外が読まれたら空札）
+    let karafudaSkipping = false;                   // 「今のは空札でした」を出して次の歌へ移る間（札に触れても何もしない）
+    const isKarafuda = num => fieldSet.size > 0 && !fieldSet.has(String(num));
+    // 空札を読むかどうか（ロボット対戦だけ）。ページを開いたときは毎回「なし」から始める（前に選んだ設定は覚えておかない）
+    let karafudaSetting = false;
+    const karafudaOn = () => karafudaSetting;
+    document.querySelectorAll('.karafuda-btn').forEach(b => b.addEventListener('click', () => {
+      karafudaSetting = b.dataset.karafuda === 'on';
+      document.querySelectorAll('.karafuda-btn').forEach(o => o.classList.toggle('selected', o === b));
+    }));
+    // 空札の読み上げが終わったら cb を呼ぶ（音声が鳴らない端末でも止まらないよう、長さから決めた時間でも呼ぶ）
+    function afterKarafudaRead(num, cb) {
+      let done = false, fallback = null;
+      const finish = () => {
+        if (done) return;
+        done = true;
+        globalAudio.removeEventListener('ended', onEnded);
+        clearTimeout(fallback);
+        if (!isGameOver && String(currentSongNumber) === String(num)) cb();
+      };
+      const onEnded = () => setTimeout(finish, 800);
+      globalAudio.addEventListener('ended', onEnded);
+      const arm = () => {
+        const d = globalAudio.duration;
+        const ms = isFinite(d) && d > 0 ? Math.max(3000, (d - (globalAudio.currentTime || 0)) * 1000 + 2500) : 25000;
+        fallback = setTimeout(finish, ms);
+      };
+      setTimeout(arm, 1500);                         // 読み込みが進んで長さがわかってから
+    }
+
+    // ===== 振り返り（終了画面の「振り返り」ボタン。表は js/karuta-analysis.js が出す） =====
+    // ゲーム中に出てきた札（場の札と、読まれた空札）を、取った札・取られた札・場に残った札・空札に分けて見せる。
+    // 空札の分類は、空札を読む設定のロボット対戦のときだけ
+    let analysisGroups = null;
+    function setAnalysis(taken, withEmpty) {
+      const order = playOrder.map(String);
+      const read = order.slice(0, Math.max(0, currentSongIndex) + 1);
+      analysisGroups = [
+        { kind: 'took', title: 'Cards you took', nums: order.filter(n => taken[n] === myId) },
+        { kind: 'lost', title: 'Cards taken by your opponent', nums: order.filter(n => taken[n] && taken[n] !== myId) },
+        { kind: 'left', title: 'Cards left on the field', nums: order.filter(n => fieldSet.has(n) && !taken[n]).sort((a, b) => a - b) },
+      ];
+      if (withEmpty) analysisGroups.push({ kind: 'empty', title: 'Dead cards (read, but not on the field)', nums: read.filter(n => !fieldSet.has(n)) });
+      document.getElementById('analysis_button').style.display = '';
+    }
+    if (window.KarutaAnalysis && window.KarutaAnalysis.decorate) window.KarutaAnalysis.decorate(document.getElementById('analysis_button'));   // 枠を回る光
+    document.getElementById('analysis_button').onclick = () => {
+      if (analysisGroups && window.KarutaAnalysis) window.KarutaAnalysis.open({ lang: 'en', groups: analysisGroups });
+    };
+
     function canUse3d() {
       try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); }
       catch (e) { return false; }
@@ -1542,7 +1614,7 @@
       f.id = 'cpu3d_frame';
       f.title = 'Battle a Robot';
       f.allow = 'autoplay';
-      f.src = `karuta-taisen-3d.html?embed=1&lang=en&difficulty=${cpuDifficulty}`;
+      f.src = `karuta-taisen-3d.html?v=20261122-05&embed=1&lang=en&difficulty=${cpuDifficulty}${karafudaOn() ? '&karafuda=1' : ''}`;
       Object.assign(f.style, { position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', border: '0', zIndex: '10000', background: '#bab37a url(img/tatami.webp)' });
       document.body.appendChild(f);
       document.documentElement.style.overflow = 'hidden';
@@ -1584,7 +1656,7 @@
       f.id = 'online3d_frame';
       f.title = 'Online battle';
       f.allow = 'autoplay';
-      f.src = 'karuta-taisen-3d.html?embed=1&mode=online&lang=en';
+      f.src = 'karuta-taisen-3d.html?v=20261122-05&embed=1&mode=online&lang=en';
       Object.assign(f.style, { position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', border: '0', zIndex: '10000', background: '#bab37a url(img/tatami.webp)', visibility: 'hidden', pointerEvents: 'none' });
       document.body.appendChild(f);
       online3dFrame = f;
@@ -1778,14 +1850,16 @@
 
       // Pre-build the board so user can memorize while timer counts down
       totalCards = 9;
-      const keys = shuffle(Object.keys(jsonData)).slice(0, totalCards);
+      const allKeys = shuffle(Object.keys(jsonData));
+      const keys = allKeys.slice(0, totalCards);
       selectedSongs = keys;
-      playOrder = shuffle([...keys]);
+      fieldSet = new Set(keys.map(String));
+      playOrder = shuffle([...keys, ...(karafudaOn() ? allKeys.slice(totalCards, totalCards + karafudaCount()) : [])]);
       takenCards = {};
       currentSongIndex = -1;
       isGameOver = false;
 
-      preloadSongs(keys);
+      preloadSongs(playOrder);
       buildMemorizationBoard(keys, playOrder);
       // Wait one frame so the browser renders natural card sizes before we measure
       requestAnimationFrame(fitCardsToScreen);
@@ -1811,7 +1885,7 @@
             clearInterval(timer);
             container.style.pointerEvents = 'auto';
             currentSongIndex = 0;
-            statusEl.innerText = `Card 1 / ${totalCards}`;
+            statusEl.innerText = `Card 1 / ${playOrder.length}`;
             playSongByIndex(0);
             scheduleCpuActions();
           }
@@ -1972,9 +2046,37 @@
     function scheduleCpuActions() {
       cpuTimers.forEach(t => clearTimeout(t));
       cpuTimers = [];
-      if (isGameOver || currentSongIndex >= totalCards) return;
+      if (isGameOver || currentSongIndex >= playOrder.length) return;
       const correctCard = playOrder[currentSongIndex];
       const settings = CPU_SETTINGS[cpuDifficulty];
+      if (isKarafuda(correctCard)) {
+        // 空札：ロボットは正確さに応じて、ときどき札に触れてお手付きする。読み終わったら次の歌へ
+        const idx = currentSongIndex;
+        cpuPlayers.forEach(cpuId => {
+          if (Math.random() < settings.accuracy) return;
+          const reactionTime = settings.reactionTimeMin + Math.random() * (settings.reactionTimeMax - settings.reactionTimeMin);
+          cpuTimers.push(setTimeout(() => {
+            if (isGameOver || currentSongIndex !== idx) return;
+            const available = selectedSongs.filter(s => !takenCards[s]);
+            if (available.length > 0) cpuMistake(cpuId, available[Math.floor(Math.random() * available.length)]);
+          }, reactionTime));
+        });
+        afterKarafudaRead(correctCard, () => {
+          if (isGameOver || currentSongIndex !== idx || karafudaSkipping) return;
+          karafudaSkipping = true;
+          showKarafudaBand();
+          cpuTimers.push(setTimeout(() => {
+            karafudaSkipping = false;
+            if (isGameOver || currentSongIndex !== idx) return;
+            currentSongIndex++;
+            if (currentSongIndex >= playOrder.length) { endCpuGame(); return; }
+            document.getElementById('status_text').innerText = cardStatusText(currentSongIndex);
+            playSongByIndex(currentSongIndex);
+            scheduleCpuActions();
+          }, 1000));
+        });
+        return;
+      }
       cpuPlayers.forEach(cpuId => {
         if (takenCards[correctCard]) return;
         const willTakeCorrect = Math.random() < settings.accuracy;
@@ -2000,7 +2102,7 @@
       setTimeout(() => {
         if (Object.keys(takenCards).length >= totalCards) { endCpuGame(); return; }
         currentSongIndex++;
-        document.getElementById('status_text').innerText = `Card ${currentSongIndex + 1} / ${totalCards}`;
+        document.getElementById('status_text').innerText = `Card ${currentSongIndex + 1} / ${playOrder.length}`;
         playSongByIndex(currentSongIndex);
         scheduleCpuActions();
       }, 1500);
@@ -2082,7 +2184,7 @@
             if (!localPenaltyTimeout) {
               document.getElementById('karuta_container').style.opacity = "1";
               document.getElementById('karuta_container').style.pointerEvents = "auto";
-              statusEl.innerText = data.currentSongIndex === -1 ? "Starting soon..." : `Card ${data.currentSongIndex + 1} / ${totalCards}`;
+              statusEl.innerText = data.currentSongIndex === -1 ? "Starting soon..." : `Card ${data.currentSongIndex + 1} / ${playOrder.length}`;
             }
             if (data.currentSongIndex === -1 && isHost) {
               statusEl.innerText = '⏳ Loading audio...';
@@ -2108,7 +2210,7 @@
                 playSongByIndex(targetIndex);
               }
               // If the taker leaves before moving on to the next poem, the host moves on instead (so the game cannot get stuck)
-              if (isHost && targetIndex < totalCards - 1 && (data.takenCards || {})[targetNum] && stuckIndex !== targetIndex) {
+              if (isHost && targetIndex < playOrder.length - 1 && (data.takenCards || {})[targetNum] && stuckIndex !== targetIndex) {
                 stuckIndex = targetIndex;
                 setTimeout(() => {
                   if (!isGameOver && latestSongIndex === targetIndex) update(ref(db, `rooms_multi/${currentRoomId}`), { currentSongIndex: targetIndex + 1 });
@@ -2180,7 +2282,8 @@
 
     function setupBoardLocal(keys, order) {
       playOrder = order;
-      preloadSongs(keys);
+      fieldSet = new Set(keys.map(String));
+      preloadSongs(order);
       const container = document.getElementById('karuta_container');
       container.innerHTML = '';
       keys.forEach(key => {
@@ -2235,7 +2338,7 @@
     }
 
     function playSongByIndex(index) {
-      if (isGameOver || index >= totalCards) return;
+      if (isGameOver || index >= playOrder.length) return;
       const num = playOrder[index];
       if (currentSongNumber === num) return;
       currentSongNumber = num;
@@ -2249,7 +2352,7 @@
     /* from3d: the card was swiped in the 3D game. The outcome is sent back (lost = an opponent got it first / ignored = not accepted, put the card back) */
     async function handleCardClick(num, from3d) {
       const reply = (result) => { if (from3d) post3d({ type: 'result', num: String(num), result }); };
-      if (isGameOver || localPenaltyTimeout) { reply('ignored'); return; }
+      if (isGameOver || localPenaltyTimeout || karafudaSkipping) { reply('ignored'); return; }
       const cardEl = document.querySelector(`.karuta_card[data-number="${num}"]`);
       if (cardEl && (cardEl.classList.contains('taken-by-me') || cardEl.classList.contains('taken-by-others'))) { reply('lost'); return; }
       // Online: once this poem's card is taken, do nothing until the next reading (no false start either)
@@ -2265,7 +2368,7 @@
           setTimeout(() => {
             if (Object.keys(takenCards).length >= totalCards) { endCpuGame(); return; }
             currentSongIndex++;
-            document.getElementById('status_text').innerText = `Card ${currentSongIndex + 1} / ${totalCards}`;
+            document.getElementById('status_text').innerText = `Card ${currentSongIndex + 1} / ${playOrder.length}`;
             playSongByIndex(currentSongIndex);
             scheduleCpuActions();
           }, 1500);
@@ -2279,28 +2382,53 @@
             // Pause to show the taken card, then move on (every client starts the next reading on this update)
             const advance = () => {
               currentSongIndex = nextIndex;
-              if (nextIndex < totalCards && !isGameOver) {
-                document.getElementById('status_text').innerText = `Card ${nextIndex + 1} / ${totalCards}`;
+              if (nextIndex < playOrder.length && !isGameOver) {
+                document.getElementById('status_text').innerText = `Card ${nextIndex + 1} / ${playOrder.length}`;
                 playSongByIndex(nextIndex);
               }
               // Only if nobody has moved on meanwhile (never push an already advanced index back)
               if (latestSongIndex === nextIndex - 1) update(ref(db, `rooms_multi/${currentRoomId}`), { currentSongIndex: nextIndex });
             };
-            if (nextIndex < totalCards) setTimeout(advance, NEXT_READ_DELAY); else advance();
+            if (nextIndex < playOrder.length) setTimeout(advance, NEXT_READ_DELAY); else advance();
           } else reply('lost');
         }
       } else {
         if (!online3dActive()) { missAudio.currentTime = 0; missAudio.play().catch(() => { }); }
         const container = document.getElementById('karuta_container');
-        container.style.opacity = "0.4";
-        container.style.pointerEvents = "none";
-        document.getElementById('status_text').innerText = "❌ False start! Wait 3 seconds";
-        localPenaltyTimeout = setTimeout(() => {
-          localPenaltyTimeout = null;
-          container.style.opacity = "1";
-          container.style.pointerEvents = "auto";
-          if (isCpuMode) document.getElementById('status_text').innerText = `Card ${currentSongIndex + 1} / ${totalCards}`;
-        }, 3000);
+        const penalize = () => {
+          container.style.opacity = "0.4";
+          container.style.pointerEvents = "none";
+          document.getElementById('status_text').innerText = "❌ False start! Wait 3 seconds";
+          localPenaltyTimeout = setTimeout(() => {
+            localPenaltyTimeout = null;
+            container.style.opacity = "1";
+            container.style.pointerEvents = "auto";
+            if (isCpuMode) document.getElementById('status_text').innerText = `Card ${currentSongIndex + 1} / ${playOrder.length}`;
+          }, 3000);
+        };
+        // ロボット対戦で空札のときにお手付き：すぐ白い帯に「今のは空札でした」と出して読み上げをやめ、約1秒後に次の歌へ。
+        // 3秒間触れないお手付きの待ち時間は、次の歌を読みはじめてから
+        if (isCpuMode && isKarafuda(currentSongNumber)) {
+          const idx = currentSongIndex;
+          karafudaSkipping = true;
+          globalAudio.pause();
+          cpuTimers.forEach(t => clearTimeout(t));
+          cpuTimers = [];
+          showKarafudaBand();
+          document.getElementById('status_text').innerText = "❌ False start! Wait 3 seconds";
+          setTimeout(() => {
+            karafudaSkipping = false;
+            if (isGameOver || currentSongIndex !== idx) return;
+            currentSongIndex++;
+            if (currentSongIndex >= playOrder.length) { endCpuGame(); return; }
+            document.getElementById('status_text').innerText = cardStatusText(currentSongIndex);
+            playSongByIndex(currentSongIndex);
+            scheduleCpuActions();
+            penalize();
+          }, 1000);
+          return;
+        }
+        penalize();
       }
     }
 
@@ -2439,6 +2567,7 @@
         `<div style="font-size:2.5rem;color:#B82343;margin-bottom:10px;">${placeLabel} Place ${getIcon(myId, allPlayers)}</div>` +
         `<div style="font-size:1.1rem;line-height:1.6;">${rankListHtml}</div>`;
       document.getElementById('result_container').style.display = 'block';
+      setAnalysis(takenCards, playOrder.some(n => !fieldSet.has(String(n))));
 
       showMissedCards(takenCards, myId);
 
@@ -2508,6 +2637,7 @@
           `<div style="font-size:2.5rem;color:#B82343;margin-bottom:10px;">${placeLabel} Place ${getIcon(myId, pIds)}</div>` +
           `<div style="font-size:1.1rem;line-height:1.6;">${rankListHtml}</div>`;
         document.getElementById('result_container').style.display = 'block';
+        setAnalysis(taken, false);
 
         showMissedCards(taken, myId);
 

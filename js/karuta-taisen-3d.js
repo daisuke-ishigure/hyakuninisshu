@@ -37,6 +37,9 @@ if (EMBED) document.documentElement.classList.add('embed');
 // オンライン対戦（?mode=online）：部屋・読み上げ・だれが取ったかは親ページ（Firebase）が決め、このページは札を見せて
 // 払いを親ページへ知らせるだけ。読み上げの音声も親ページが鳴らす（下の「オンライン対戦」を参照）
 const ONLINE = EMBED && PARAMS.get('mode') === 'online';
+// 空札（?karafuda=1）：ロボット対戦で、場にない札も1〜2首（試合ごとにランダム）まぜて読む。空札のときに札に触れるとお手つき
+const KARAFUDA = !ONLINE && PARAMS.get('karafuda') === '1';
+const karafudaCount = () => 1 + Math.floor(Math.random() * 2);   // 空札は1〜2首（試合ごとにランダム）
 // 表示の言語（karuta-taisen_en.html から開かれたときは ?lang=en）。ボタンなど HTML 側の文言は html の末尾で差し替える
 const EN = PARAMS.get('lang') === 'en';
 const TXT = EN ? {
@@ -45,7 +48,8 @@ const TXT = EN ? {
   players: (icons, me) => `Players: ${icons} · You: ${me}`, rivalTook: 'Your opponent took it', soon: 'Starting soon…',
   dealing: 'Dealing the cards…', startIn: sec => `Starting in… ${sec}`, card: n => `Card ${n}`,
   cpuMiss: 'Robot false-started. Your chance!', over: 'Game over', took: 'You got it!', cpuTook: 'The robot took it',
-  miss: 'False start! Wait 3 seconds', win: 'Win!', lose: 'So close!', winAlt: 'Happy cat character', loseAlt: 'Sad cat character',
+  anTook: 'Cards you took', anLost: 'Cards taken by the robot', anLeft: 'Cards left on the field', anEmpty: 'Dead cards (read, but not on the field)',
+  miss: 'False start! Wait 3 seconds', empty: 'That was a dead card.', win: 'Win!', lose: 'So close!', winAlt: 'Happy cat character', loseAlt: 'Sad cat character',
   noWebgl: '3D display (WebGL) is not available on this device or browser.',
 } : {
   score: (me, cpu) => `あなた ${me} － ${cpu} ロボット`, even: '勝敗の分かれ目',
@@ -53,7 +57,8 @@ const TXT = EN ? {
   players: (icons, me) => `参加者：${icons} ・ あなた：${me}`, rivalTook: '相手が取りました', soon: 'まもなく開始…',
   dealing: '札を並べています…', startIn: sec => `開始まで… ${sec}`, card: n => `第 ${n} 首`,
   cpuMiss: 'ロボットがお手つき。チャンスです！', over: '勝負あり', took: '取りました！', cpuTook: 'ロボットが取りました',
-  miss: 'お手つき！ 3秒間待機', win: 'めでたし！', lose: '惜しい！', winAlt: '喜ぶ猫キャラ', loseAlt: '悲しむ猫キャラ',
+  anTook: '取った札', anLost: '取られた札', anLeft: '場に残った札', anEmpty: '空札（読まれたが場になかった札）',
+  miss: 'お手つき！ 3秒間待機', empty: '今のは空札でした', win: 'めでたし！', lose: '惜しい！', winAlt: '喜ぶ猫キャラ', loseAlt: '悲しむ猫キャラ',
   noWebgl: 'この端末・ブラウザでは 3D 表示（WebGL）が使えません。',
 };
 const toParent = msg => { if (EMBED) window.parent.postMessage({ source: 'k3d', ...msg }, location.origin); };
@@ -70,7 +75,9 @@ let shakeOn = true;                        // 払ったときに画面をゆら�
 const game = {
   phase: 'title',                          // title → deal → memorize → countdown → reading ⇄ between → over
   difficulty: 'normal', order: [], index: -1, current: null,
+  field: new Set(),                        // 場にある札（これ以外が読まれたら空札）
   score: { me: 0, cpu: 0 }, penaltyUntil: 0, timers: [],
+  takes: {},                               // 取られた札：歌番号 → 'me'（自分）／'cpu'（ロボット）。終了後の「振り返り」で使う
   players: { icons: [], me: '' }           // オンライン：部屋にいる全員の動物バッジと、自分のバッジ
 };
 const audio = new Audio(); audio.preload = 'auto';
@@ -425,7 +432,7 @@ function strike(c, hitX, hitZ, vx, vz, curve, by, force = false) {
       if (correct) game.phase = 'between'; else onMiss();
     }
   } else if (correct) onTake(by);
-  else if (game.phase === 'reading' && by === 'me') onMiss();
+  else if (game.phase === 'reading' && by === 'me') { if (!ONLINE && !game.field.has(game.current)) onKarafudaMiss(); else onMiss(); }
 }
 
 function startTween(c, to, dur, arc, ease, next) {
@@ -603,9 +610,12 @@ function newGame() {
   clearTimers(); audio.pause(); rainAudio.pause();
   document.body.classList.remove('penalty');
   $('result').classList.add('hide'); $('actions').classList.add('hide'); $('kami').textContent = '';
-  game.score.me = game.score.cpu = 0; game.index = -1; game.current = null; game.penaltyUntil = 0;
-  const keys = Object.keys(poems).sort(() => Math.random() - 0.5).slice(0, TOTAL);
-  game.order = keys.map(k => String(poems[k].number)).sort(() => Math.random() - 0.5);
+  game.score.me = game.score.cpu = 0; game.takes = {}; game.index = -1; game.current = null; game.penaltyUntil = 0;
+  const all = Object.keys(poems).sort(() => Math.random() - 0.5);
+  const keys = all.slice(0, TOTAL);
+  const empties = KARAFUDA ? all.slice(TOTAL, TOTAL + karafudaCount()) : [];
+  game.field = new Set(keys.map(k => String(poems[k].number)));
+  game.order = [...keys, ...empties].map(k => String(poems[k].number)).sort(() => Math.random() - 0.5);
   game.order.forEach(n => { const a = new Audio(); a.preload = 'auto'; a.src = audioUrl(n); });   // 先読み
   game.phase = 'deal';
   updateScore(); setStatus(TXT.dealing);
@@ -635,6 +645,7 @@ function startCountdown() {
 }
 
 function startReading(i) {
+  if (i >= game.order.length) { game.phase = 'over'; setStatus(TXT.over); later(showResult, 1400); return; }   // 念のため（ふつうは先に5枚で終わる）
   showReading(i, game.order[i]);
   audio.src = audioUrl(game.current);
   audio.play().catch(() => { });
@@ -662,6 +673,7 @@ function showReading(i, num) {
 
 function scheduleCpu() {
   const s = CPU_SETTINGS[game.difficulty], i = game.index;
+  if (!ONLINE && !game.field.has(game.current)) { scheduleKarafuda(s, i); return; }
   const correct = Math.random() < s.accuracy;
   later(function act() {
     if (game.phase !== 'reading' || game.index !== i) return;
@@ -674,6 +686,45 @@ function scheduleCpu() {
   }, s.reactionTimeMin + Math.random() * (s.reactionTimeMax - s.reactionTimeMin));
 }
 
+/* 空札を読み終えたら、上の句を出していた白い帯に「今のは空札でした」と出す（次の歌の上の句で上書きされる） */
+function showEmptyBand() {
+  const kami = $('kami');
+  kami.style.fontSize = '';
+  kami.textContent = TXT.empty;
+}
+/* 空札：ロボットは正確さに応じて、ときどき札に触れてお手つきする。読み終わったら「空札でした」と出して次の歌へ */
+function scheduleKarafuda(s, i) {
+  if (Math.random() >= s.accuracy) {
+    later(function act() {
+      if (game.phase !== 'reading' || game.index !== i) return;
+      const free = cards.filter(c => c.state === 'rest');
+      if (!free.length) { later(act, 150); return; }
+      setStatus(TXT.cpuMiss, true); sfxMiss();
+      later(() => { if (game.phase === 'reading' && game.index === i && performance.now() > game.penaltyUntil) setStatus(TXT.card(i + 1)); }, 1200);
+      rivalStrike(free[Math.floor(Math.random() * free.length)], rand(150, 230));
+    }, s.reactionTimeMin + Math.random() * (s.reactionTimeMax - s.reactionTimeMin));
+  }
+  let done = false;
+  const finish = () => {
+    if (done) return;
+    done = true;
+    audio.removeEventListener('ended', onEnded);
+    if (game.phase !== 'reading' || game.index !== i) return;
+    game.phase = 'between';
+    game.penaltyUntil = 0; document.body.classList.remove('penalty');
+    setStatus(TXT.card(i + 1));
+    showEmptyBand();
+    later(() => startReading(i + 1), 1000);                                 // 「今のは空札でした」は約1秒
+  };
+  const onEnded = () => later(finish, 800);
+  audio.addEventListener('ended', onEnded);
+  // 音声が鳴らない端末でも止まらないよう、長さから決めた時間でも進める
+  later(() => {
+    const d = audio.duration;
+    later(finish, isFinite(d) && d > 0 ? Math.max(3000, (d - (audio.currentTime || 0)) * 1000 + 2500) : 25000);
+  }, 1500);
+}
+
 /* 相手（ロボット・オンラインの相手）は奥から、近いほうの外側へ払う。force：読まれている札でなくても取り札として扱う */
 function rivalStrike(target, sp, force = false) {
   const side = target.x === 0 ? (Math.random() < 0.5 ? -1 : 1) : Math.sign(target.x), a = rand(-0.2, 0.5);
@@ -681,6 +732,7 @@ function rivalStrike(target, sp, force = false) {
 }
 
 function onTake(by) {
+  game.takes[game.current] = by;
   clearTimers(); audio.pause();
   game.score[by]++; game.phase = 'between';
   game.penaltyUntil = 0; document.body.classList.remove('penalty');
@@ -695,8 +747,8 @@ function onTake(by) {
   }
 }
 
-function onMiss() {                                                         // お手つき：3秒間さわれない
-  sfxMiss();
+function onMiss(silent = false) {                                           // お手つき：3秒間さわれない
+  if (!silent) sfxMiss();
   const i = game.index;
   game.penaltyUntil = performance.now() + (ONLINE ? 3100 : 3000);           // オンライン：親ページ側の3秒が終わってから触れるように少し長く
   document.body.classList.add('penalty');
@@ -705,6 +757,21 @@ function onMiss() {                                                         // �
     document.body.classList.remove('penalty');
     if (game.phase === 'reading' && game.index === i) setStatus(TXT.card(i + 1));
   }, 3000);
+}
+
+/* 空札のときにお手つき：すぐ白い帯に「今のは空札でした」と出して読み上げをやめ、約1秒後に次の歌へ。
+   3秒間さわれないお手つきの待ち時間は、次の歌を読みはじめてから */
+function onKarafudaMiss() {
+  sfxMiss();
+  const i = game.index;
+  game.phase = 'between';
+  audio.pause();
+  showEmptyBand();
+  setStatus(TXT.miss, true);
+  later(() => {
+    startReading(i + 1);
+    if (game.phase === 'reading') onMiss(true);
+  }, 1000);
 }
 
 // ===== オンライン対戦（親ページ karuta-taisen.html からの知らせで動く） =====
@@ -1097,6 +1164,20 @@ $('back').addEventListener('click', () => {
   $('actions').classList.add('hide'); $('start').classList.remove('hide');
 });
 $('again').addEventListener('click', () => { initAudio(); newGame(); });
+// 振り返り：ゲーム中に出てきた札（場の札と、読まれた空札）を、取った札・取られた札・場に残った札・空札に分けて
+// list.html と同じ見た目の表で見せる（js/karuta-analysis.js）。空札の分類は、空札を読む設定のときだけ
+if (window.KarutaAnalysis && window.KarutaAnalysis.decorate) window.KarutaAnalysis.decorate($('analysis'));   // 枠を回る光
+$('analysis').addEventListener('click', () => {
+  if (!window.KarutaAnalysis) return;
+  const read = game.order.slice(0, game.index + 1);
+  const groups = [
+    { kind: 'took', title: TXT.anTook, nums: read.filter(n => game.takes[n] === 'me') },
+    { kind: 'lost', title: TXT.anLost, nums: read.filter(n => game.takes[n] === 'cpu') },
+    { kind: 'left', title: TXT.anLeft, nums: [...game.field].filter(n => !game.takes[n]).sort((a, b) => a - b) },
+  ];
+  if (KARAFUDA) groups.push({ kind: 'empty', title: TXT.anEmpty, nums: read.filter(n => !game.field.has(n)) });
+  window.KarutaAnalysis.open({ lang: EN ? 'en' : 'ja', groups });
+});
 window.addEventListener('resize', () => { if (renderer) fitCamera(); });
 // 最初に画面に触れたときに音を解錠する（埋め込み時は、このページ内での操作がまだ無いまま始まるため）
 function unlockMedia() {
