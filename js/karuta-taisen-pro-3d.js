@@ -26,6 +26,10 @@ let W = 0, H = 0, D = 0;
 let cards = [];                 // 3Dの札
 let running = false, lastT = 0, snap = true, lastScrollX = 0, lastScrollY = 0;
 let failed = false;
+// 画面のゆれ（karuta-taisen.html のロボット対戦と同じ程度）。設定は karuta-taisen.html と同じ場所（localStorage の karuta3d_shake）
+let shake = 0;                  // ゆれの大きさ（画面のピクセル）。毎フレーム減っていく
+const shakeOn = () => { try { return localStorage.getItem('karuta3d_shake') !== 'off'; } catch (e) { return true; } };
+function addShake(px) { if (shakeOn()) shake = Math.max(shake, px); }
 
 // ===== 音（札を置く音だけ合成する。札を取る音は shared.js の音声を使う） =====
 let noiseBuf = null;
@@ -337,6 +341,10 @@ function frame(ms) {
   }
   cards = cards.filter(c => c.state !== 'gone');
   snap = false;
+  shake *= Math.exp(-9 * dt);
+  const ox = shake > 0.05 ? rand(-1, 1) * shake : 0, oy = shake > 0.05 ? rand(-1, 1) * shake : 0;
+  camera.position.set(W / 2 + ox, -H / 2 + oy, D);
+  camera.lookAt(W / 2 + ox, -H / 2 + oy, 0);
   renderer.render(scene, camera);
   if (!cards.length) { running = false; canvas.style.display = 'none'; return; }
   requestAnimationFrame(frame);
@@ -350,6 +358,7 @@ function start() {
 // ===== shared.js から呼ばれる入口 =====
 const api = {
   active: false,
+  get shakePx() { return shake; },   // 動作確認用：今の画面のゆれの大きさ（ピクセル）
 
   // 盤面（平面の札）ができた直後に呼ぶ。札を3Dで作り、1枚ずつ配る
   build() {
@@ -393,6 +402,7 @@ const api = {
     c.vx = dx / len * sp; c.vy = dy / len * sp;
     c.spin = (dx > 0 ? -1 : 1) * rand(9, 15);
     c.byMe = !!byMe; c.state = 'fly'; c.t0 = performance.now() / 1000;
+    addShake(rand(9, 17));          // karuta-taisen.html でロボットが払ったときと同じくらい
     return true;
   },
 
@@ -401,6 +411,7 @@ const api = {
     if (!api.active) return;
     const c = cards.find(c => c.num === String(num) && c.state === 'rest');
     if (c) c.shake = 0.4;
+    addShake(rand(6, 12));
   },
 
   // 試合が終わった。場に残っている札は片付け、見せている途中の札は最後まで見せる

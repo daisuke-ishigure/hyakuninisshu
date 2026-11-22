@@ -170,6 +170,14 @@
               <button class="memory-time-btn" data-sec="900">15:00</button>
             </div>
           </div>
+          <!-- 画面のゆれ（karuta-taisen.html と同じ設定。js/karuta-taisen-pro-shared.js が localStorage の karuta3d_shake に保存） -->
+          <div class="memory-time-selector">
+            <label style="font-size:13px; color:#555; display:block; margin-bottom:4px;">札を取ったときの画面のゆれ</label>
+            <div id="shake_buttons">
+              <button class="memory-time-btn selected" data-shake="on">あり</button>
+              <button class="memory-time-btn" data-shake="off">なし</button>
+            </div>
+          </div>
           <div
             style="margin-top:10px; margin-bottom:8px; display:flex; gap:16px; flex-wrap:wrap; justify-content:center;">
             <label
@@ -244,6 +252,7 @@
           <li>試合開始前の札を暗記する時間では、自陣の札を並び替えできます。</li>
           <li>試合中に送り札を受け取った直後の5秒間は、自陣の札を並び替えできます。</li>
           <li>札の枚数（自陣＋敵陣）を6枚・12枚・24枚・50枚から選べます。</li>
+          <li>没入感を高めるために、札を取ったときやお手付きをしたときに画面が揺れます。画面が揺れて気持ち悪くなる場合は、「札を取ったときの画面のゆれ」で「なし」を選んでください。</li>
           <li>敵陣の札を取ったときの送り札は、敵陣の枚数が初期枚数以上のときは送れません。ロボットがお手付きしたときの送り札は、枚数に関係なく送れます。</li>
           <!-- <li>相手陣が以下の枚数に達している場合は、それ以上札を送れません。
             <ul style="font-size:0.9em; margin-left:0">
@@ -530,8 +539,8 @@
       rankingLoadErrorHtml: msg => `<div style="color:#e74c3c;text-align:center;padding:16px;">読み込みに失敗しました ${msg}<br><small style="color:#aaa;">ブラウザのコンソール(F12)でエラーを確認してください</small></div>`,
     };
   </script>
-  <script src="../js/karuta-taisen-pro-shared.js?20261121-02"></script>
-  <script type="module" src="../js/karuta-taisen-pro-3d.js?20261117-03"></script>
+  <script src="../js/karuta-taisen-pro-shared.js?20261123-01"></script>
+  <script type="module" src="../js/karuta-taisen-pro-3d.js?20261123-01"></script>
   <script type="module" src="../js/karuta-taisen-pro-module.js?20261022-01"></script>
 </body>
 

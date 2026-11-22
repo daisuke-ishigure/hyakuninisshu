@@ -1615,7 +1615,7 @@
       f.id = 'cpu3d_frame';
       f.title = 'Battle a Robot';
       f.allow = 'autoplay';
-      f.src = `karuta-taisen-3d.html?v=20261123-04&embed=1&lang=en&difficulty=${cpuDifficulty}${karafudaOn() ? '&karafuda=1' : ''}`;
+      f.src = `karuta-taisen-3d.html?v=20261123-06&embed=1&lang=en&difficulty=${cpuDifficulty}${karafudaOn() ? '&karafuda=1' : ''}`;
       Object.assign(f.style, { position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', border: '0', zIndex: '10000', background: '#bab37a url(img/tatami.webp)' });
       document.body.appendChild(f);
       document.documentElement.style.overflow = 'hidden';
@@ -1657,7 +1657,7 @@
       f.id = 'online3d_frame';
       f.title = 'Online battle';
       f.allow = 'autoplay';
-      f.src = 'karuta-taisen-3d.html?v=20261123-04&embed=1&mode=online&lang=en';
+      f.src = 'karuta-taisen-3d.html?v=20261123-06&embed=1&mode=online&lang=en';
       Object.assign(f.style, { position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', border: '0', zIndex: '10000', background: '#bab37a url(img/tatami.webp)', visibility: 'hidden', pointerEvents: 'none' });
       document.body.appendChild(f);
       online3dFrame = f;

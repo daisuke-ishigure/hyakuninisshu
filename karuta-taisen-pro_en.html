@@ -171,6 +171,14 @@
               <button class="memory-time-btn" data-sec="900">15:00</button>
             </div>
           </div>
+          <!-- 画面のゆれ（karuta-taisen.html と同じ設定。js/karuta-taisen-pro-shared.js が localStorage の karuta3d_shake に保存） -->
+          <div class="memory-time-selector">
+            <label style="font-size:13px; color:#555; display:block; margin-bottom:4px;">Screen shake when a card is taken</label>
+            <div id="shake_buttons">
+              <button class="memory-time-btn selected" data-shake="on">On</button>
+              <button class="memory-time-btn" data-shake="off">Off</button>
+            </div>
+          </div>
           <div
             style="margin-top:10px; margin-bottom:8px; display:flex; gap:16px; flex-wrap:wrap; justify-content:center;">
             <label
@@ -259,6 +267,7 @@
           <li>For 5 seconds after receiving a sent card during the match, you can rearrange the cards in your territory.
           </li>
           <li>You can choose the total number of cards (your territory + opponent's territory): 6, 12, 24, or 50.</li>
+          <li>To heighten immersion, the screen shakes when a card is taken or a fault is made. If the shaking makes you feel unwell, select "Off" under "Screen shake when a card is taken".</li>
           <li>When you take a card from the opponent's territory, you cannot send a card if that territory already
             holds its starting number of cards or more. When the robot commits a fault, you can always send a card.</li>
           <!-- <li>If the opponent's territory has reached the following number of cards, you cannot send any more cards:
@@ -554,8 +563,8 @@
       rankingLoadErrorHtml: msg => `<div style="color:#e74c3c;text-align:center;padding:16px;">Failed to load ${msg}<br><small style="color:#aaa;">Check the browser console (F12) for errors</small></div>`,
     };
   </script>
-  <script src="../js/karuta-taisen-pro-shared.js?20261121-02"></script>
-  <script type="module" src="../js/karuta-taisen-pro-3d.js?20261117-03"></script>
+  <script src="../js/karuta-taisen-pro-shared.js?20261123-01"></script>
+  <script type="module" src="../js/karuta-taisen-pro-3d.js?20261123-01"></script>
   <script type="module" src="../js/karuta-taisen-pro-module.js?20261022-01"></script>
 </body>
 

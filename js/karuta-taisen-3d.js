@@ -18,6 +18,10 @@ const SWEEP_FROM = 110;                    // これより速いと、払った�
 const MAX_SPEED = 480;
 // 払いの強さは画面上の速さで測る（PC でもスマホでも同じ手ごたえ）：画面の短辺を1秒で横切る速さ = この値
 const SWIPE_SCALE = 150;
+// マウスで払うとき：パソコンの画面は大きく、ボタンを押したまま速く動かしにくいので、速さを2倍に数える
+const MOUSE_SWIPE_BOOST = 2;
+// マウスでクリックしただけ（ほとんど動かさない）のとき：「ふつうの強さ」で外側へ払う
+const MOUSE_CLICK_SPEED = 250;
 // 取った札・取られた札を見せる演出：払われて飛ぶ → 回りながら目の前（カメラの手前）へ浮き上がる → 少し見せる → 取った側へ去りながら消える
 const SHOW_AFTER = 0.22, SHOW_RISE = 0.42, SHOW_HOLD = 0.5, SHOW_OUT = 0.3;   // それぞれの秒数（合計で次の読みまでの1.5秒に収める）
 const KEEP_BACK = 0.4;                     // オンライン：見せた札が元の場所へ戻るまでの秒数
@@ -421,7 +425,7 @@ function strike(c, hitX, hitZ, vx, vz, curve, by, force = false) {
 
   sfxHit(k);
   if (by === 'me' && navigator.vibrate) navigator.vibrate(Math.round(8 + 28 * k));
-  if (shakeOn) shake = Math.max(shake, k * k * 0.9);
+  if (shakeOn) shake = Math.max(shake, k * k * 4.5);                      // 画面のゆれ（以前の 0.9 の5倍。払いが強いほど大きい）
   if (s > 300) {                                                            // ヒットストップ＋一瞬のスロー
     const now = performance.now();
     freezeUntil = now + 45; slowUntil = now + 45 + 240;
@@ -1117,8 +1121,12 @@ function fire() {
   const dtm = Math.max(8, last.t - first.t) / 1000;
   // 向きは畳の上での動き、強さは画面上の速さ（画面の大きさに対する割合）から決める
   const wx = last.x - first.x, wz = last.z - first.z, wl = Math.hypot(wx, wz);
-  const sp = wl < 1e-6 ? 0 : Math.hypot(last.px - first.px, last.py - first.py) / dtm / Math.min(canvas.clientWidth, canvas.clientHeight) * SWIPE_SCALE;
-  const vx = wl ? wx / wl * sp : 0, vz = wl ? wz / wl * sp : 0;
+  const sp = (wl < 1e-6 ? 0 : Math.hypot(last.px - first.px, last.py - first.py) / dtm / Math.min(canvas.clientWidth, canvas.clientHeight) * SWIPE_SCALE) * (ptr.mouse ? MOUSE_SWIPE_BOOST : 1);
+  let vx = wl ? wx / wl * sp : 0, vz = wl ? wz / wl * sp : 0;
+  if (ptr.mouse && sp < 25) {                                               // マウスのクリック：近いほうの外側へ、少し奥向きに払う
+    const side = Math.abs(p.card.x) < 0.5 ? (Math.random() < 0.5 ? -1 : 1) : Math.sign(p.card.x), a = rand(0.15, 0.45);
+    vx = side * Math.cos(a) * MOUSE_CLICK_SPEED; vz = -Math.sin(a) * MOUSE_CLICK_SPEED;
+  }
   // 軌跡の曲がり具合（弧を描く払いは札を回す）
   const mid = s[Math.max(0, s.length - 1 - Math.floor((s.length - s.indexOf(first)) / 2))];
   const ax = mid.x - first.x, az = mid.z - first.z, bx = last.x - mid.x, bz = last.z - mid.z;
@@ -1131,7 +1139,7 @@ canvas.addEventListener('pointerdown', e => {
   if (!canPlay() || ptr) return;
   const p = groundPoint(e); if (!p) return;
   canvas.setPointerCapture(e.pointerId);
-  ptr = { id: e.pointerId, samples: [p], pending: null, spent: false };
+  ptr = { id: e.pointerId, samples: [p], pending: null, spent: false, mouse: e.pointerType === 'mouse' };
   trail.push({ x: e.offsetX, y: e.offsetY, t: p.t, id: e.pointerId });
   const c = cards.find(c => c.state === 'rest' && contains(c, p.x, p.z));
   if (c) ptr.pending = { card: c, x: p.x, z: p.z, sx: p.x, sz: p.z };

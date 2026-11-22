@@ -172,6 +172,17 @@
       });
     });
 
+    // 画面のゆれ あり／なし（karuta-taisen.html と同じ場所に覚えておく。js/karuta-taisen-pro-3d.js がゆらすときに読む）
+    (() => {
+      const KEY = 'karuta3d_shake';
+      const set = (on, store) => {
+        document.querySelectorAll('#shake_buttons .memory-time-btn').forEach(b => b.classList.toggle('selected', (b.dataset.shake === 'on') === on));
+        if (store) { try { localStorage.setItem(KEY, on ? 'on' : 'off'); } catch (e) { } }
+      };
+      document.querySelectorAll('#shake_buttons .memory-time-btn').forEach(b => b.addEventListener('click', () => set(b.dataset.shake === 'on', true)));
+      try { set(localStorage.getItem(KEY) !== 'off', false); } catch (e) { set(true, false); }
+    })();
+
     // スマホではモード1・2・3（12枚・24枚・50枚）を非表示にして6枚のみ選択可能に
     if (isMobileTouch) {
       document.querySelectorAll('#card_mode_buttons .memory-time-btn').forEach(btn => {
