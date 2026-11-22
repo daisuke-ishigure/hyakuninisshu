@@ -51,7 +51,7 @@ const TXT = EN ? {
   reachMe: 'One more card to win', reachCpu: 'One more and you lose',
   players: (icons, me) => `Players: ${icons} · You: ${me}`, rivalTook: 'Your opponent took it', soon: 'Starting soon…',
   dealing: 'Dealing the cards…', startIn: sec => `Starting in… ${sec}`, card: n => `Card ${n}`,
-  cpuMiss: 'Robot false-started. Your chance!', cpuMissWait: 'Robot false-started! It waits 3 seconds', over: 'Game over', took: 'You got it!', cpuTook: 'The robot took it',
+  cpuMiss: 'The robot false-started. Your chance!', cpuMissWait: 'The robot false-started! It must wait 3 seconds', over: 'Game over', took: 'You got it!', cpuTook: 'The robot took it',
   anTook: 'Cards you took', anLost: 'Cards taken by the robot', anLeft: 'Cards left on the field', anEmpty: 'Dead cards (not on the field)',
   miss: 'False start! Wait 3 seconds', empty: 'That was a dead card.', win: 'Win!', lose: 'So close!', winAlt: 'Happy cat character', loseAlt: 'Sad cat character',
   noWebgl: '3D display (WebGL) is not available on this device or browser.',
@@ -87,6 +87,9 @@ const game = {
 };
 const audio = new Audio(); audio.preload = 'auto';
 const rand = (a, b) => a + Math.random() * (b - a);
+// 偏りのない並べ替え（Fisher–Yates。karuta-taisen.html の shuffle と同じ）。
+// sort(() => Math.random() - 0.5) は札ごとに出やすさが大きく偏る（1番が約2.4倍出やすい）ので使わない
+const shuffle = arr => { for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; };
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 const easeOutQuart = t => 1 - Math.pow(1 - t, 4);
 const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
@@ -616,11 +619,11 @@ function newGame() {
   document.body.classList.remove('penalty');
   $('result').classList.add('hide'); $('actions').classList.add('hide'); $('kami').textContent = '';
   game.score.me = game.score.cpu = 0; game.takes = {}; game.cpuPenaltyIndex = -1; game.index = -1; game.current = null; game.penaltyUntil = 0;
-  const all = Object.keys(poems).sort(() => Math.random() - 0.5);
+  const all = shuffle(Object.keys(poems));
   const keys = all.slice(0, TOTAL);
   const empties = KARAFUDA ? all.slice(TOTAL, TOTAL + karafudaCount()) : [];
   game.field = new Set(keys.map(k => String(poems[k].number)));
-  game.order = [...keys, ...empties].map(k => String(poems[k].number)).sort(() => Math.random() - 0.5);
+  game.order = shuffle([...keys, ...empties].map(k => String(poems[k].number)));
   game.order.forEach(n => { const a = new Audio(); a.preload = 'auto'; a.src = audioUrl(n); });   // 先読み
   game.phase = 'deal';
   updateScore(); setStatus(TXT.dealing);

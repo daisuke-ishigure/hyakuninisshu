@@ -25,10 +25,10 @@
   max-width: 900px;
   max-height: 100%;
   box-sizing: border-box;
-  background: #f7f1e0;
+  background: #382f21;
   border-radius: 10px;
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
-  color: #333;
+  color: #fff;
   /* 書体は list.html と同じ（style.css の body と同じ指定）。英語は下の .ka-overlay[lang=en] */
   font-family: "noto-sans-pro", sans-serif;
   font-weight: normal;
@@ -44,8 +44,9 @@
   justify-content: space-between;
   gap: 12px;
   padding: 10px 14px;
-  background: #ede6cc;
-  color: #333;
+  background: #382f21;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
 }
 
 .ka-title {
@@ -80,13 +81,13 @@
 .ka-msg {
   margin: 1.5em 0;
   text-align: center;
-  color: #7a6655;
+  color: #fff;
 }
 
 .ka-hint {
   margin: 0 0 0.8em;
   font-size: 0.85rem;
-  color: #7a6655;
+  color: #fff;
 }
 
 .ka-group {
@@ -123,18 +124,20 @@
 .ka-count {
   font-size: 0.85rem;
   font-weight: normal;
-  color: #7a6655;
+  color: #fff;
 }
 
 .ka-none {
   margin: 0;
   padding: 4px 0 0 15px;
   font-size: 0.9rem;
-  color: #999;
+  color: #fff;
 }
 
-/* ===== 表（css/list.css の table と同じ） ===== */
+/* ===== 表（css/list.css の table と同じ） =====
+   パネルの地は暗い色（文字は白）だが、表のセルは明るい地なので、表の中の文字は濃い色に戻す */
 .ka-overlay table {
+  color: #333;
   border-collapse: collapse;
   border: 1px solid #ddd6be;
   font-size: 1.1rem;
@@ -159,6 +162,8 @@
   padding: 10px 6px 10px;
   vertical-align: middle;
   cursor: pointer;
+  /* 番号の列は五色百人一首の色（js/list-rows.js が style で付ける）を使わず、1色にそろえる */
+  background-color: #f0e8d8 !important;
 }
 
 .ka-overlay table td:nth-child(1) .num-badge {

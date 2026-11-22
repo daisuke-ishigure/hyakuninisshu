@@ -259,7 +259,7 @@
     });
 
     /* 全チップをシャッフルして追加 */
-    allChips.sort(() => Math.random() - 0.5).forEach(chip => floatArea.appendChild(chip));
+    fyShuffle(allChips).forEach(chip => floatArea.appendChild(chip));
 
     /* 英語版：ローマ字切り替えボタン */
     if (document.documentElement.lang === 'en') {
@@ -1115,3 +1115,13 @@
   document.head.appendChild(_ldScript);
 
 })();
+
+// 偏りのない並べ替え（Fisher–Yates）。sort(() => Math.random() - 0.5) は並びに偏りが出る
+// （先頭の要素が残りやすい等）ので使わない。配列そのものを並べ替えて返す
+function fyShuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}

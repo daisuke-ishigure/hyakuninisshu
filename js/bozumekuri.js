@@ -33,7 +33,7 @@ function getCommonHeaderHTML(showTitle = true) {
     let html = `
     <nav>
         <ol class="breadcrumb">
-            <li><a href="index.html">トップ</a></li>
+            <li><a href="/">トップ</a></li>
             <li><a href="introduction-app.html">アプリ</a></li>
             <li>百人一首 神経衰弱</li>
         </ol>

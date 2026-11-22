@@ -7,7 +7,7 @@
           "markname": "小倉山",
           "kajin": "貞信公（小倉山）",
           "type": "type1",
-          "name": "<a href='../img/ogurayama_large.webp' data-lightbox='map' data-title='京都市右京区:小倉山'><img src='../img/ogurayama.webp' width='300'></a><h2 class='utamakura-name'>歌枕：小倉山</h2><p>京都市右京区にある標高296mの小倉山。一帯は京都随一の紅葉の名所で、百人一首が編纂された地としても知られています。</p><hr><a href='/26.html'>26番歌 貞信公へのリンク</a>"
+          "name": "<a href='../img/ogurayama_large.webp' data-lightbox='map' data-title='京都市右京区:小倉山'><img src='../img/ogurayama.webp' alt='小倉山' width='300'></a><h2 class='utamakura-name'>歌枕：小倉山</h2><p>京都市右京区にある標高296mの小倉山。一帯は京都随一の紅葉の名所で、百人一首が編纂された地としても知られています。</p><hr><a href='/26.html'>26番歌 貞信公へのリンク</a>"
         },
         "geometry": {
           "type": "Point",

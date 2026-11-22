@@ -1955,6 +1955,7 @@
 
       const loseImgEl = document.createElement('img');
       loseImgEl.src = '../img/dango_lose.webp';
+      loseImgEl.alt = '';
       loseImgEl.style.cssText = 'width:clamp(120px,40vw,200px);display:block;text-shadow:none;filter:none;';
       textEl.appendChild(loseImgEl);
 

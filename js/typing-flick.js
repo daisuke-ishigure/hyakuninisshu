@@ -158,7 +158,7 @@ document.addEventListener('click', (e) => {
       return;
     }
 
-    const shuffled = [...filteredSongs].sort(() => Math.random() - 0.5);
+    const shuffled = fyShuffle([...filteredSongs]);
     songQueue = shuffled.slice(0, TOTAL_QUESTIONS);
 
     solvedCount = 0;
@@ -511,4 +511,14 @@ function animateWpmChart(maxWpm) {
   }
 
   requestAnimationFrame(frame);
+}
+
+// 偏りのない並べ替え（Fisher–Yates）。sort(() => Math.random() - 0.5) は並びに偏りが出る
+// （先頭の要素が残りやすい等）ので使わない。配列そのものを並べ替えて返す
+function fyShuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
 }

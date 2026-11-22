@@ -68,7 +68,7 @@ function createSelectionScreen() {
         <div class="section">
         <nav>
         <ol class="breadcrumb">
-            <li><a href="index.html">トップ</a></li>
+            <li><a href="/">トップ</a></li>
             <li><a href="introduction-app.html">アプリ</a></li>
             <li>百人一首 ビンゴゲーム</li>
         </ol>

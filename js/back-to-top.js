@@ -185,8 +185,8 @@
 
   var lines = isEn
     ? ['This site has moved to a new address: https://hyakuninisshu.com/',
-       'This message is shown when you visit the old address.',
-       'If you have bookmarked the old address, we would appreciate it if you could replace it with the URL currently shown. Thank you for your continued support.']
+       'You are seeing this message because you came from the old address.',
+       'If you bookmarked the old address, please update your bookmark to the URL shown now. Thank you for your continued support.']
     : ['サイトのアドレスが https://hyakuninisshu.com/ に変わりました。',
        'このメッセージは旧アドレスにアクセスしていただいた場合に表示されます。',
        '旧アドレスをお気に入り登録してくださっている場合は、現在表示されているURLに置き換えていただけたら幸いです。今後ともよろしくお願いいたします。'];

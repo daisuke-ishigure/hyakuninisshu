@@ -7,7 +7,7 @@
         "markname": "Mt. Ogura",
         "kajin": "Teishin-kō (Mt. Ogura)",
         "type": "type1",
-        "name": "<a href='../img/ogurayama_large.webp' data-lightbox='map' data-title='Ukyo Ward, Kyoto: Mt. Ogura'><img src='../img/ogurayama.webp' width='300'></a><h2 class='utamakura-name'>Utamakura: Mt. Ogura</h2><p>Mt. Ogura, a 296m peak in Kyoto's Ukyo Ward, is one of the city's most celebrated spots for autumn foliage — and is also known as the place where the Hyakunin Isshu was compiled.</p><hr><a href='/26_en.html'>Link to Poem 26: Teishin-kō</a>"
+        "name": "<a href='../img/ogurayama_large.webp' data-lightbox='map' data-title='Ukyo Ward, Kyoto: Mt. Ogura'><img src='../img/ogurayama.webp' alt='Mt. Ogura' width='300'></a><h2 class='utamakura-name'>Utamakura: Mt. Ogura</h2><p>Mt. Ogura, a 296m peak in Kyoto's Ukyo Ward, is one of the city's most celebrated spots for autumn foliage — and is also known as the place where the Hyakunin Isshu was compiled.</p><hr><a href='/26_en.html'>Link to Poem 26: Teishin-kō</a>"
       },
       "geometry": { "type": "Point", "coordinates": [135.65913, 35.02348] }
     },

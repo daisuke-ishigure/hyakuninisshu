@@ -212,7 +212,7 @@ const KARUTA_FIREBASE_CONFIG = {
                         display:flex;align-items:center;justify-content:space-between;
                         flex-wrap:wrap;gap:8px;font-family:'Noto Sans JP',sans-serif;">
                 <div style="display:flex;align-items:center;gap:8px;">
-                    <img src="${_esc(currentUser.photoURL || '')}" width="32" height="32"
+                    <img src="${_esc(currentUser.photoURL || '')}" alt="" width="32" height="32"
                          style="border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid #81c784;"
                          onerror="this.style.display='none'">
                     <span style="font-weight:bold;color:#2d5a27;font-size:0.88rem;">

@@ -259,7 +259,7 @@ function setupGame(count) {
 
 function getRandomSongs(data, count) {
     const keys    = Object.keys(data);
-    const shuffled = keys.sort(() => 0.5 - Math.random());
+    const shuffled = fyShuffle(keys);
     return shuffled.slice(0, count).map(key => data[key]);
 }
 
@@ -763,3 +763,13 @@ function showConfetti() {
 }
 
 document.addEventListener('DOMContentLoaded', initialize);
+
+// 偏りのない並べ替え（Fisher–Yates）。sort(() => Math.random() - 0.5) は並びに偏りが出る
+// （先頭の要素が残りやすい等）ので使わない。配列そのものを並べ替えて返す
+function fyShuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
