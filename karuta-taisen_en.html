@@ -1552,7 +1552,7 @@
     }
     const cardStatusText = i => `Card ${i + 1} / ${playOrder.length}`;
     let fieldSet = new Set();                       // 場にある札（これ以外が読まれたら空札）
-    let cpuPenaltyIndex = -1;                       // ロボットが空札でお手付きしたとき、3秒待つ歌（次の歌）の番号
+    let cpuPenaltyIndex = -1;                       // ロボットが空札でお手つきしたとき、3秒待つ歌（次の歌）の番号
     let karafudaSkipping = false;                   // 「今のは空札でした」を出して次の歌へ移る間（札に触れても何もしない）
     const isKarafuda = num => fieldSet.size > 0 && !fieldSet.has(String(num));
     // 空札を読むかどうか（ロボット対戦だけ）。ページを開いたときは毎回「なし」から始める（前に選んだ設定は覚えておかない）
@@ -1615,7 +1615,7 @@
       f.id = 'cpu3d_frame';
       f.title = 'Battle a Robot';
       f.allow = 'autoplay';
-      f.src = `karuta-taisen-3d.html?v=20261123-09&embed=1&lang=en&difficulty=${cpuDifficulty}${karafudaOn() ? '&karafuda=1' : ''}`;
+      f.src = `karuta-taisen-3d.html?v=20261123-10&embed=1&lang=en&difficulty=${cpuDifficulty}${karafudaOn() ? '&karafuda=1' : ''}`;
       Object.assign(f.style, { position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', border: '0', zIndex: '10000', background: '#bab37a url(img/tatami.webp)' });
       document.body.appendChild(f);
       document.documentElement.style.overflow = 'hidden';
@@ -1657,7 +1657,7 @@
       f.id = 'online3d_frame';
       f.title = 'Online battle';
       f.allow = 'autoplay';
-      f.src = 'karuta-taisen-3d.html?v=20261123-09&embed=1&mode=online&lang=en';
+      f.src = 'karuta-taisen-3d.html?v=20261123-10&embed=1&mode=online&lang=en';
       Object.assign(f.style, { position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', border: '0', zIndex: '10000', background: '#bab37a url(img/tatami.webp)', visibility: 'hidden', pointerEvents: 'none' });
       document.body.appendChild(f);
       online3dFrame = f;
@@ -2052,17 +2052,17 @@
       const correctCard = playOrder[currentSongIndex];
       const settings = CPU_SETTINGS[cpuDifficulty];
       if (isKarafuda(correctCard)) {
-        // 空札：ロボットは正確さに応じて、ときどき札に触れてお手付きする。読み終わったら次の歌へ
+        // 空札：ロボットは正確さに応じて、ときどき札に触れてお手つきする。読み終わったら次の歌へ
         const idx = currentSongIndex;
         cpuPlayers.forEach(cpuId => {
-          const reactionTime = cpuReactionTime(settings);   // お手付きの待ち時間中なら「3秒間待機」もここで出す
+          const reactionTime = cpuReactionTime(settings);   // お手つきの待ち時間中なら「3秒間待機」もここで出す
           if (Math.random() < settings.accuracy) return;
           cpuTimers.push(setTimeout(() => {
             if (isGameOver || currentSongIndex !== idx) return;
             const available = selectedSongs.filter(s => !takenCards[s]);
             if (!available.length || karafudaSkipping) return;
             cpuMistake(cpuId, available[Math.floor(Math.random() * available.length)], "👾 Robot false-started! It waits 3 seconds");
-            // プレイヤーのお手付きと同じく、すぐ白い帯に「今のは空札でした」と出して読み上げをやめ、約1秒後に次の歌へ
+            // プレイヤーのお手つきと同じく、すぐ白い帯に「今のは空札でした」と出して読み上げをやめ、約1秒後に次の歌へ
             karafudaSkipping = true;
             globalAudio.pause();
             cpuTimers.forEach(t => clearTimeout(t));
@@ -2134,7 +2134,7 @@
       }, 1500);
     }
 
-    // ロボットのお手付き：プレイヤーのお手付きと同じく、#status_text に3秒間出す（text を省くと「チャンスです」）
+    // ロボットのお手つき：プレイヤーのお手つきと同じく、#status_text に3秒間出す（text を省くと「チャンスです」）
     function cpuMistake(cpuId, cardNumber, text) {
       const statusEl = document.getElementById('status_text');
       const idx = currentSongIndex;
@@ -2154,7 +2154,7 @@
         statusEl.style.color = "";
       }, 3000);
     }
-    // ロボットが札に手を出すまでの時間。空札でお手付きした次の歌では、プレイヤーと同じく読みはじめから3秒間は触れない
+    // ロボットが札に手を出すまでの時間。空札でお手つきした次の歌では、プレイヤーと同じく読みはじめから3秒間は触れない
     function cpuReactionTime(settings) {
       const t = settings.reactionTimeMin + Math.random() * (settings.reactionTimeMax - settings.reactionTimeMin);
       if (cpuPenaltyIndex !== currentSongIndex) return t;
@@ -2451,8 +2451,8 @@
             if (isCpuMode) document.getElementById('status_text').innerText = `Card ${currentSongIndex + 1} / ${playOrder.length}`;
           }, 3000);
         };
-        // ロボット対戦で空札のときにお手付き：すぐ白い帯に「今のは空札でした」と出して読み上げをやめ、約1秒後に次の歌へ。
-        // 3秒間触れないお手付きの待ち時間は、次の歌を読みはじめてから
+        // ロボット対戦で空札のときにお手つき：すぐ白い帯に「今のは空札でした」と出して読み上げをやめ、約1秒後に次の歌へ。
+        // 3秒間触れないお手つきの待ち時間は、次の歌を読みはじめてから
         if (isCpuMode && isKarafuda(currentSongNumber)) {
           const idx = currentSongIndex;
           karafudaSkipping = true;

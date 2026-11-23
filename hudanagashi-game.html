@@ -879,8 +879,8 @@
         <li>問題は五色百人一首の各色から均等に出されます。</li>
         <li>ゲーム終了後に、反応時間とランクが表示され、色ごとの反応時間がレーダーグラフで表示されます。</li>
         <li>反応時間は、正しい決まり字を選ぶまでにかかった時間です。</li>
-        <li>お手付き1回につき、反応時間に1秒のペナルティが加算されます。</li>
-        <li>2回以上プレイすると、反応時間とお手付き率の推移（直近20回分）がグラフで表示されます。</li>
+        <li>お手つき1回につき、反応時間に1秒のペナルティが加算されます。</li>
+        <li>2回以上プレイすると、反応時間とお手つき率の推移（直近20回分）がグラフで表示されます。</li>
         <li>ゲームの記録は、お使いのブラウザ内に保存されます。ブラウザのキャッシュを削除すると、記録も消去されるのであらかじめご了承ください。</li>
       </ul>
 
@@ -1518,7 +1518,7 @@
         document.getElementById('result-rank-text').textContent = `あなたは「${rank}」です！`;
         const penaltyEl = document.getElementById('result-penalty-text');
         if (totalWrongs > 0) {
-          penaltyEl.textContent = `お手付き${totalWrongs}回。${totalWrongs}秒加算しました。`;
+          penaltyEl.textContent = `お手つき${totalWrongs}回。${totalWrongs}秒加算しました。`;
         } else {
           penaltyEl.textContent = '';
         }
@@ -1547,7 +1547,7 @@
             <td style="text-align:center; color:#888; white-space:nowrap;">${i + 1}</td>
             <td class="poem-cell">${kamiHtml}</td>
             <td class="poem-cell">${r.poem.torihuda}</td>
-            <td class="time-cell">${r.timeSec.toFixed(2)}秒${r.wrongs > 0 ? `<br><span style="color:#e87722;font-size:0.85em;">お手付き${r.wrongs}回</span>` : ''}</td>`;
+            <td class="time-cell">${r.timeSec.toFixed(2)}秒${r.wrongs > 0 ? `<br><span style="color:#e87722;font-size:0.85em;">お手つき${r.wrongs}回</span>` : ''}</td>`;
           tbody.appendChild(tr);
         });
       }
@@ -1629,7 +1629,7 @@
               <td style="text-align:center; color:#888; font-size:0.85em; white-space:nowrap;">${card.number}</td>
               <td class="poem-cell" style="font-size:0.85em;">${kamiHtml}</td>
               <td class="poem-cell" style="font-size:0.85em;">${card.torihuda}</td>
-              <td class="time-cell">${card.avgTime.toFixed(2)}秒${diffIndicator(card.avgTime)}${card.totalWrongs > 0 ? `<span style="color:#e87722;font-size:0.8em;display:block;margin-top:2px;">お手付き${card.totalWrongs}回</span>` : ''}</td>`;
+              <td class="time-cell">${card.avgTime.toFixed(2)}秒${diffIndicator(card.avgTime)}${card.totalWrongs > 0 ? `<span style="color:#e87722;font-size:0.8em;display:block;margin-top:2px;">お手つき${card.totalWrongs}回</span>` : ''}</td>`;
             tbody.appendChild(tr);
           });
         }

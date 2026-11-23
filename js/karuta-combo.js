@@ -302,7 +302,7 @@
                 if (title) showComboTitle(title);
               }
 
-              /* ─ お手付き: wrong-flash ─ */
+              /* ─ お手つき: wrong-flash ─ */
               if (el.classList.contains('wrong-flash') && !el.dataset.comboFaulted) {
                 el.dataset.comboFaulted = '1';
                 if (combo >= 1) showComboBreak(combo);

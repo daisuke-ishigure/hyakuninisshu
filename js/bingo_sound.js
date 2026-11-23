@@ -201,7 +201,7 @@ function showResults() {
         <div class="section" style="text-align:center;">
             <h2 style='text-align:center;'>ゲームクリア！</h2>
             <p style="text-align:center;">クリアタイム: <strong>${finalTime}秒</strong></p>
-            <p style="font-size: 0.8rem; color: #666; text-align:center;">(かかった時間:${rawTime}秒 + お手付きのペナルティ:${penaltyTime}秒)</p>
+            <p style="font-size: 0.8rem; color: #666; text-align:center;">(かかった時間:${rawTime}秒 + お手つきのペナルティ:${penaltyTime}秒)</p>
             <button id='replay-button' style="margin: 20px auto; cursor: pointer; border:none;"></button>
             <p style="font-size: 0.8rem; color: #666; text-align:center;">5秒後に最初の画面に戻ります</p>
         </div>`;

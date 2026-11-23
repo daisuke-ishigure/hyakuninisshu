@@ -31,7 +31,7 @@ let shake = 0;                  // ゆれの大きさ（画面のピクセル）
 const shakeOn = () => { try { return localStorage.getItem('karuta3d_shake') !== 'off'; } catch (e) { return true; } };
 function addShake(px) { if (shakeOn()) { shake = Math.max(shake, px); vibrateShake(shake); } }
 
-/* 画面のゆれ（render() で shake *= exp(-9t) と減っていく）に合わせてスマホを振動させる（js/karuta-taisen-3d.js の vibrateShake と同じ考え方）。
+/* 画面のゆれ（frame() で shake *= exp(-9t) と減っていく）に合わせてスマホを振動させる（js/karuta-taisen-3d.js の vibrateShake と同じ考え方）。
    ブラウザの振動は強さを変えられないので、40ms ごとの「振動する長さの割合」で強さを表す
    （割合が小さいほどモーターが回りきらず弱く感じる）。
    強さ：その瞬間のゆれ ÷ ゆれの最大値（SHAKE_MAX px）。最大のゆれのときだけ連続で振動する。
@@ -258,7 +258,7 @@ function updateRest(c, dt, now, dragClone) {
   else if (cl.contains('send-card-highlight')) { lift = 5 + 3 * Math.sin(now * 7); tint = TINT_SEND; }
   else if (cl.contains('incoming-sent-card')) { lift = 12; tint = TINT_IN; }
   else if (cl.contains('drop-target')) { lift = 3; tint = TINT_DROP; }
-  if (el.style.border) { lift = 16; tint = TINT_ROBOT; }       // ロボットのお手付き（shared.js が枠を付ける）
+  if (el.style.border) { lift = 16; tint = TINT_ROBOT; }       // ロボットのお手つき（shared.js が枠を付ける）
   if (c.shake > 0) { c.shake -= dt; tint = TINT_MISS; }
   const k = snap ? 1 : 1 - Math.exp(-dt * 16);
   c.x += (tg.x - c.x) * k; c.y += (tg.y - c.y) * k;
@@ -427,7 +427,7 @@ const api = {
     return true;
   },
 
-  // お手付きで触れた札をふるわせる
+  // お手つきで触れた札をふるわせる
   miss(num) {
     if (!api.active) return;
     const c = cards.find(c => c.num === String(num) && c.state === 'rest');

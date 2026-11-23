@@ -1435,7 +1435,7 @@
         el.style.border = "3px solid #f39c12"; el.style.scale = "1.05";
         setTimeout(() => { el.style.border = ""; el.style.scale = ""; }, 500);
       }
-      // 正解と同じ陣の札をさわった → お手付きなし、フラッシュのみ
+      // 正解と同じ陣の札をさわった → お手つきなし、フラッシュのみ
       if (nopenalty) {
         if (isPcGame) {
           const correctCardNow = playOrder[currentSongIndex];
@@ -1448,7 +1448,7 @@
       statusEl.innerText = LANG.statusRobotMistake;
       statusEl.style.color = "#f39c12";
       if (isPcGame) {
-        // ロボットのお手付き → プレイヤーが自陣の1枚を敵陣に送れる（その後ゲーム続行）
+        // ロボットのお手つき → プレイヤーが自陣の1枚を敵陣に送れる（その後ゲーム続行）
         const correctCardAtMistake = playOrder[currentSongIndex]; // タイマー発火前に正解が取られた場合の判定用
         setTimeout(() => {
           // 正解がまだ取られていない場合のみ再スケジュール（取得済みなら advanceCpuGame が既に走っている）
@@ -1560,7 +1560,7 @@
         }
       } else {
         if (isPcGame && isCpuMode) {
-          // 新ルール：お手付き判定
+          // 新ルール：お手つき判定
           // ・空札クリック
           // ・正解が敵陣なのに自陣をクリック
           // ・正解が自陣なのに敵陣をクリック
@@ -1581,7 +1581,7 @@
             const statusEl = document.getElementById('status_text');
             statusEl.innerText = LANG.statusPlayerFalseStart;
             statusEl.style.color = '#e74c3c';
-            // お手付き後 1.5秒間はクリックを受け付けない
+            // お手つき後 1.5秒間はクリックを受け付けない
             localPenaltyTimeout = setTimeout(() => { localPenaltyTimeout = null; }, 1500);
             if (window.K3DPro) window.K3DPro.miss(num);
             cpuSendToMyField();
@@ -1594,7 +1594,7 @@
               }
             }, 1800);
           }
-          // 同じ陣地内の別の札クリック → お手付きでない、何もしない
+          // 同じ陣地内の別の札クリック → お手つきでない、何もしない
         }
       }
     }

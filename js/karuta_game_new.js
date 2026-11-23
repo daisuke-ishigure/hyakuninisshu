@@ -393,7 +393,7 @@ function cardClickHandler(song, element) {
         }, 560);
 
     } else {
-        resultText.textContent = 'お手付きです';
+        resultText.textContent = 'お手つきです';
         mistakeCount++;
 
         // Add to missed list only on the first fault for this card + record as incorrect in stats
@@ -434,7 +434,7 @@ function finishGame() {
     const finalScore = elapsedSec + penaltySec;
     const avgTime    = finalScore / totalCards;
 
-    const mistakeMsg = mistakeCount === 0 ? "完璧です！" : `お手付き: ${mistakeCount}回`;
+    const mistakeMsg = mistakeCount === 0 ? "完璧です！" : `お手つき: ${mistakeCount}回`;
 
     resultText.innerHTML = `
         <div style="font-size:1.4rem; font-weight:bold; margin-bottom:10px;">
@@ -465,7 +465,7 @@ function finishGame() {
         }
         missedSection.innerHTML = `
             <p class="missed-cards-heading" style="font-size:14px;font-weight:bold;color:#B82343;margin:24px 0 10px;text-align:center;">
-                ❌ お手付き札
+                ❌ お手つき札
             </p>
             <div id="karuta-missed-list"
                  style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;
@@ -616,7 +616,7 @@ function buildKimarijiChartHTML() {
     return `
     <div style="margin:20px auto 8px;max-width:600px;text-align:center;">
         <p style="font-size:0.85rem;font-weight:bold;color:#666;margin-bottom:10px;text-align:center;">
-            ── 決まり字別 正答率（お手付きなし） ──
+            ── 決まり字別 正答率（お手つきなし） ──
         </p>
         <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;
                     background:#f7f2e8;border-radius:10px;padding:14px;">
@@ -746,7 +746,7 @@ function setupShareButton(score, cards, mistakes) {
     shareButton.style.cssText = 'display:flex;justify-content:center;align-items:center;';
     shareButton.onclick = () => {
         const text = encodeURIComponent(
-            `[百人一首 かるたゲーム]\nクリアタイム: ${score}秒\n${cards}枚をお手付き${mistakes}回でクリア！\n`
+            `[百人一首 かるたゲーム]\nクリアタイム: ${score}秒\n${cards}枚をお手つき${mistakes}回でクリア！\n`
         );
         window.open(`https://twitter.com/intent/tweet?text=${text}&url=${encodeURIComponent(window.location.href)}`, '_blank');
     };
