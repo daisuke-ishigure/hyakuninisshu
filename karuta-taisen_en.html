@@ -1427,7 +1427,7 @@
       try {
         const [res1, res2] = await Promise.all([
           fetch("../js/karuta.json?v02=" + Date.now()),
-          fetch("../js/kimariji.json?20261028-01" + Date.now())
+          fetch("../js/kimariji.json?20261028-01")
         ]);
         jsonData = await res1.json();
         kimarijiData = await res2.json();
@@ -1519,7 +1519,7 @@
       unlockAudio();
       if (currentSongNumber) {
         globalAudio.src = audioUrlCache[currentSongNumber];
-        globalAudio.play().then(() => this.style.display = 'none');
+        globalAudio.play().then(() => this.style.display = 'none').catch(() => { });
       }
     };
 
@@ -1802,12 +1802,14 @@
 
     // ===== Passphrase Battle button =====
     document.getElementById('manual_join_button').onclick = async () => {
-      const val = document.getElementById('room_id_input').value;
+      const val = document.getElementById('room_id_input').value.trim();
       if (!val) return;
       unlockAudio();
       ensureK3dAudio();
       isCpuMode = false;
-      const rid = "manual-" + val;
+      // Characters Firebase paths cannot contain (. # $ [ ] /) become %2E etc. (% too, so two passphrases never share a room).
+      // Everything else is kept as is, so the room matches the Japanese page and existing passphrases
+      const rid = "manual-" + val.replace(/[.#$\[\]\/%]/g, c => '%' + c.charCodeAt(0).toString(16).toUpperCase().padStart(2, '0'));
       const result = await runTransaction(ref(db, `rooms_multi/${rid}/players`), (cp) => {
         if (cp === null) return { [myId]: { ready: false, lastActive: Date.now() } };
         if (Object.keys(cp).length >= 4) return undefined;
@@ -2400,8 +2402,8 @@
       if (isGameOver || localPenaltyTimeout || karafudaSkipping) { reply('ignored'); return; }
       const cardEl = document.querySelector(`.karuta_card[data-number="${num}"]`);
       if (cardEl && (cardEl.classList.contains('taken-by-me') || cardEl.classList.contains('taken-by-others'))) { reply('lost'); return; }
-      // Online: once this poem's card is taken, do nothing until the next reading (no false start either)
-      if (!isCpuMode && currentSongNumber != null && onlineTaken[currentSongNumber]) { reply('ignored'); return; }
+      // Once this poem's card is taken, do nothing until the next reading (no false start either)
+      if (currentSongNumber != null && (isCpuMode ? takenCards : onlineTaken)[currentSongNumber]) { reply('ignored'); return; }
 
       if (String(num) === String(currentSongNumber)) {
         if (!online3dActive()) { tapAudio.currentTime = 0; tapAudio.play().catch(() => { }); }
@@ -2663,8 +2665,10 @@
         document.getElementById('karuta_container').style.display = 'none';
         globalAudio.pause();
 
-        const scoreboard = pIds.map(pid => ({
-          id: pid, score: Object.values(taken).filter(id => id === pid).length, isMe: pid === myId
+        // Rank players who took cards and then left too (leaving them out could make a losing player 1st)
+        const leftIds = [...new Set(Object.values(taken))].filter(id => !pIds.includes(id));
+        const scoreboard = [...pIds, ...leftIds].map(pid => ({
+          id: pid, score: Object.values(taken).filter(id => id === pid).length, isMe: pid === myId, left: leftIds.includes(pid)
         })).sort((a, b) => b.score - a.score);
 
         let myRank = 1, rankListHtml = "", currentRank = 1;
@@ -2672,7 +2676,7 @@
           if (i > 0 && s.score < scoreboard[i - 1].score) currentRank = i + 1;
           if (s.isMe) myRank = currentRank;
           const style = s.isMe ? 'color:#ff4757;font-weight:bold;background:#fff;border-radius:5px;padding:2px 5px;' : '';
-          rankListHtml += `<div style="margin:5px 0;${style}">${currentRank}${currentRank === 1 ? 'st' : currentRank === 2 ? 'nd' : currentRank === 3 ? 'rd' : 'th'} place: ${s.isMe ? 'You' : s.id} ${getIcon(s.id, pIds)} (${s.score} cards)</div>`;
+          rankListHtml += `<div style="margin:5px 0;${style}">${currentRank}${currentRank === 1 ? 'st' : currentRank === 2 ? 'nd' : currentRank === 3 ? 'rd' : 'th'} place: ${s.isMe ? 'You' : s.id} ${getIcon(s.id, pIds)} (${s.score} cards)${s.left ? ' (left)' : ''}</div>`;
         });
         if (myRank === 1) { globalAudio.src = finishAudioSrc; globalAudio.play().catch(() => { }); }
         else { rainAudio.currentTime = 0; rainAudio.play().catch(() => { }); }
@@ -2686,8 +2690,15 @@
 
         showMissedCards(taken, myId);
 
+        // Record in the ranking only for a sole 1st place with an opponent still in the room at the end
+        const tiedTop = scoreboard.filter(s => s.score === scoreboard[0].score).length > 1;
+        const alone = pIds.length < 2;
         if (myRank === 1) {
-          recordWin('online');
+          if (!tiedTop && !alone) recordWin('online');
+          else {
+            const n = document.getElementById('easy_mode_result_notice');
+            if (n) { n.textContent = tiedTop ? '* Tied for 1st place, so this win is not recorded in the ranking.' : '* All opponents left, so this win is not recorded in the ranking.'; n.style.display = 'block'; }
+          }
           if (scoreboard.find(s => s.isMe).score > 0) { confetti({ particleCount: 200, spread: 80, origin: { y: 0.6 } }); _showWinOverlay(); }
         } else { _showLoseOverlay(); }
 
