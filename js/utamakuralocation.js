@@ -23,7 +23,7 @@
           "markname": "末の松山（宮城県多賀城市）",
           "kajin": "清原元輔（末の松山）",
           "type": "type1",
-          "name": "<a href='../img/suenomatsuyama_large.webp' data-lightbox='map' data-title='末の松山（宮城県多賀城市）'><img src='../img/suenomatsuyama.webp'  width='300' alt='末の松山（宮城県多賀城市）'></a><br><small>写真提供：宮城県観光プロモーション推進室</small><h2 class='utamakura-name'>歌枕：末の松山（宮城県多賀城市）</h2><p>宮城県多賀城市。「末の松山」は、海岸近くの丘陵地ですが、大津波が来ても波が超えることはないと言い伝えれてきました。実際に869年の貞観地震でも、2011年の東日本大震災でも「末の松山」は波をかぶることはありませんでした。</p><hr><a href='/42.html'>42番歌 清原元輔へのリンク</a>"
+          "name": "<a href='../img/suenomatsuyama_large.webp' data-lightbox='map' data-title='末の松山（宮城県多賀城市）'><img src='../img/suenomatsuyama.webp'  width='300' alt='末の松山（宮城県多賀城市）'></a><br><small>写真提供：宮城県観光プロモーション推進室</small><h2 class='utamakura-name'>歌枕：末の松山（宮城県多賀城市）</h2><p>宮城県多賀城市。「末の松山」は、海岸近くの丘陵地ですが、大津波が来ても波が超えることはないと言い伝えられてきました。実際に869年の貞観地震でも、2011年の東日本大震災でも「末の松山」は波をかぶることはありませんでした。</p><hr><a href='/42.html'>42番歌 清原元輔へのリンク</a>"
         },
         "geometry": {
           "type": "Point",
@@ -39,7 +39,7 @@
           "markname": "象潟（秋田県にかほ市）",
           "kajin": "能因法師（象潟）",
           "type": "type2",
-          "name": "<a href='../img/kujuukushima_large.webp' data-lightbox='map' data-title='末の松山（岩手県一戸町）'><img loading='lazy' src='../img/kujuukushima_small.webp'alt='象潟（秋田県にかほ市）' width='300'></a><br><small>写真:らんで, CC BY 4.0 , via Wikimedia Commons</small><h2 class='utamakura-name'>歌枕：象潟（秋田県にかほ市）</h2><p>秋田県にかほ市<ruby>象潟<rt>さきかた</rt></ruby>。かつて日本海の入り江に島々が浮かぶ景勝地でした。1804年の地震によって海底が隆起し、現在は水田の中に島々が点在する独特の景観となっています。</p><hr><a href='/69.html'>69番歌 能因法師へのリンク</a>"
+          "name": "<a href='../img/kujuukushima_large.webp' data-lightbox='map' data-title='象潟（秋田県にかほ市）'><img loading='lazy' src='../img/kujuukushima_small.webp'alt='象潟（秋田県にかほ市）' width='300'></a><br><small>写真:らんで, CC BY 4.0 , via Wikimedia Commons</small><h2 class='utamakura-name'>歌枕：象潟（秋田県にかほ市）</h2><p>秋田県にかほ市<ruby>象潟<rt>さきかた</rt></ruby>。かつて日本海の入り江に島々が浮かぶ景勝地でした。1804年の地震によって海底が隆起し、現在は水田の中に島々が点在する独特の景観となっています。</p><hr><a href='/69.html'>69番歌 能因法師へのリンク</a>"
         },
         "geometry": {
           "type": "Point",

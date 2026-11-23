@@ -1275,6 +1275,49 @@
       color: var(--home-beni);
     }
 
+    /* 「一番人気」などの小さなバッジ（見出しの右に添える）。karuta-taisen.html の「New」バッジと同じ見た目・動き */
+    .hub-link__badge {
+      display: inline-block;
+      margin-left: 6px;
+      padding: 2px 5px;
+      border-radius: 4px;
+      background: #ff1a1a;
+      font-size: 0.65rem;
+      font-weight: bold;
+      line-height: 1.4;
+      letter-spacing: 0.05em;
+      color: #fff;
+      vertical-align: 1px;
+      white-space: nowrap;
+      animation: hub-badge-pulse 1.6s ease-in-out infinite;
+    }
+
+    /* 人気順ではない案内のバッジ（例：「音声なしで楽しめる」）は常磐色（ときわいろ）にして、人気バッジと見分けられるようにする */
+    .hub-link__badge--info {
+      background: #007b43;
+    }
+
+    /* 「初心者向け」のバッジは白緑（びゃくろく）の薄い緑。白い文字では読みにくいので、文字は常磐色にする */
+    .hub-link__badge--beginner {
+      background: #d6e9ca;
+      color: #007b43;
+    }
+
+    /* 「おすすめ」のバッジは白藍（しらあい）の薄い青。白い文字では読みにくいので、文字は瑠璃色にする */
+    .hub-link__badge--recommend {
+      background: #c1e4e9;
+      color: #1e50a2;
+    }
+
+    @keyframes hub-badge-pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.07); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hub-link__badge { animation: none; }
+    }
+
     .hub-link__desc {
       display: block;
       font-size: 0.72rem;
@@ -1620,14 +1663,14 @@
           </div>
         </div>
         <ul class="hub-links">
-          <li><a href="karuta-taisen.html"><span class="hub-link__title">オンライン対戦</span><span class="hub-link__desc">誰かとリアルタイムで札を取り合う</span></a></li>
-          <li><a href="karuta-taisen-pro.html"><span class="hub-link__title">競技かるた対戦</span><span class="hub-link__desc">送り札に対応した本格ルール</span></a></li>
+          <li><a href="karuta-taisen.html"><span class="hub-link__title">オンライン対戦<span class="hub-link__badge">1番人気</span></span><span class="hub-link__desc">誰かとリアルタイムで札を取り合う</span></a></li>
+          <li><a href="karuta-taisen-pro.html"><span class="hub-link__title">競技かるた対戦<span class="hub-link__badge">3番人気</span></span><span class="hub-link__desc">送り札に対応した本格ルール</span></a></li>
           <li><a href="karuta.html"><span class="hub-link__title">かるたゲーム</span><span class="hub-link__desc">音声読み上げつき。一人で遊べる</span></a></li>
           <li><a href="otetsuki.html"><span class="hub-link__title">お手つき判定シミュレーション</span><span class="hub-link__desc">競技かるたのお手つきとは</span></a></li>
           <li><a href="hudanagashi-practice.html"><span class="hub-link__title">札流し</span><span class="hub-link__desc">札流しで決まり字を覚える</span></a></li>
           <li><a href="hudanagashi-game.html"><span class="hub-link__title">決まり字3択クイズ</span><span class="hub-link__desc">3択で決まり字をすばやく確認</span></a></li>
           <li><a href="hudanagashi-flash.html"><span class="hub-link__title">決まり字瞬間トレーニング</span><span class="hub-link__desc">瞬間的に決まり字を見極める</span></a></li>
-          <li><a href="kimariji-hanabi.html"><span class="hub-link__title">決まり字花火</span><span class="hub-link__desc">花火のゲームで決まり字を覚える</span></a></li>
+          <li><a href="kimariji-hanabi.html"><span class="hub-link__title">決まり字花火<span class="hub-link__badge hub-link__badge--recommend">おすすめ</span></span><span class="hub-link__desc">花火のゲームで決まり字を覚える</span></a></li>
         </ul>
       </section>
 
@@ -1642,13 +1685,13 @@
         <ul class="hub-links">
           <li><a href="mubeyama-sugoroku.html"><span class="hub-link__title">むべ山すごろく</span><span class="hub-link__desc">江戸時代の古典すごろくを現代に復活</span></a></li>
           <li><a href="intro-quiz.html"><span class="hub-link__title">イントロ歌人当てクイズ</span><span class="hub-link__desc">歌の出だしで歌人を当てる脳トレ</span></a></li>
-          <li><a href="gokunarabe_01.html"><span class="hub-link__title">歌人に会える五句並べ</span><span class="hub-link__desc">バラバラの五句を正しく並べる</span></a></li>
+          <li><a href="gokunarabe_01.html"><span class="hub-link__title">歌人に会える五句並べ<span class="hub-link__badge hub-link__badge--beginner">初心者向け</span></span><span class="hub-link__desc">バラバラの五句を正しく並べる</span></a></li>
           <li><a href="daruma-otoshi-01.html"><span class="hub-link__title">だるま落とし</span><span class="hub-link__desc">だるま落としで遊びながら一首を味わう</span></a></li>
           <li><a href="kaminoku-dango.html"><span class="hub-link__title">上の句だんご</span><span class="hub-link__desc">下の句から上の句を当てる串だんご</span></a></li>
           <li><a href="shimonoku-dango.html"><span class="hub-link__title">下の句だんご</span><span class="hub-link__desc">上の句から下の句を当てる串だんご</span></a></li>
           <li><a href="memory.html"><span class="hub-link__title">神経衰弱</span><span class="hub-link__desc">めくって揃えて、札を覚える</span></a></li>
           <li><a href="bingo.html"><span class="hub-link__title">ビンゴ</span><span class="hub-link__desc">暗記学習にぴったりのビンゴゲーム</span></a></li>
-          <li><a href="omikuji.html"><span class="hub-link__title">百人一首おみくじ</span><span class="hub-link__desc">今日の運勢を一首で占う</span></a></li>
+          <li><a href="omikuji.html"><span class="hub-link__title">百人一首おみくじ<span class="hub-link__badge">2番人気</span></span><span class="hub-link__desc">今日の運勢を一首で占う</span></a></li>
         </ul>
       </section>
 
@@ -1665,7 +1708,7 @@
           <li><a href="gihou-kakekotoba.html"><span class="hub-link__title">掛詞と縁語</span><span class="hub-link__desc">一つの言葉に二つの意味を重ねる技</span></a></li>
           <li><a href="gihou-jokotoba.html"><span class="hub-link__title">序詞</span><span class="hub-link__desc">景色から心へとつなぐ長い前置き</span></a></li>
           <li><a href="gihou-honkadori.html"><span class="hub-link__title">本歌取り</span><span class="hub-link__desc">よく知られた古い歌の言葉を取り入れて詠む技法</span></a></li>
-          <li><a href="utamakura.html"><span class="hub-link__title">歌枕</span><span class="hub-link__desc">和歌に繰り返し詠まれた名所</span></a></li>
+          <li><a href="utamakura.html"><span class="hub-link__title">歌枕<span class="hub-link__badge hub-link__badge--recommend">おすすめ</span></span><span class="hub-link__desc">和歌に繰り返し詠まれた名所</span></a></li>
           <li><a href="kakekotoba-game-001.html"><span class="hub-link__title">掛詞クルッと発見！</span><span class="hub-link__desc">歌に隠れた掛詞を見つけるゲーム</span></a></li>
           <li><a href="makurakotoba-game.html"><span class="hub-link__title">枕詞マスター</span><span class="hub-link__desc">枕詞とかかる言葉の3択クイズ</span></a></li>
           <li><a href="jokotoba-dango.html"><span class="hub-link__title">序詞だんご</span><span class="hub-link__desc">序詞を串だんごのゲームで覚える</span></a></li>
@@ -1726,7 +1769,7 @@
           </div>
         </div>
         <ul class="hub-links">
-          <li><a href="utamakura.html"><span class="hub-link__title">歌枕地図</span><span class="hub-link__desc">百人一首に登場する名所を地図で</span></a></li>
+          <li><a href="utamakura.html"><span class="hub-link__title">歌枕地図<span class="hub-link__badge hub-link__badge--recommend">おすすめ</span></span><span class="hub-link__desc">百人一首に登場する名所を地図で</span></a></li>
           <li><a href="utamakura-list.html"><span class="hub-link__title">歌枕一覧</span><span class="hub-link__desc">景勝地と詠まれた歌の一覧</span></a></li>
           <li><a href="kokoro-map.html"><span class="hub-link__title">感情マップ</span><span class="hub-link__desc">百首の感情を可視化</span></a></li>
           <li><a href="words.html"><span class="hub-link__title">頻出ワードマップ</span><span class="hub-link__desc">形態素解析でよく使われる言葉を</span></a></li>

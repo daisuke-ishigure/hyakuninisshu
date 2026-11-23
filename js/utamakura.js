@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
   let searchLayer; // searchLayerをここで定義
 
   // GeoJSON データを取得
-  fetch("../js/utamakuralocation.js?20261122-01")
+  fetch("../js/utamakuralocation.js?20261124-01")
     .then(response => response.json())
     .then(data => {
       L.geoJSON(data, {

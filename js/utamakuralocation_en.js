@@ -27,7 +27,7 @@
         "markname": "Kisakata (Nikaho, Akita)",
         "kajin": "Priest Nōin (Kisakata)",
         "type": "type2",
-        "name": "<a href='../img/kujuukushima_large.webp' data-lightbox='map' data-title='Suenomatsuyama (Ichinohe, Iwate)'><img loading='lazy' src='../img/kujuukushima_small.webp'alt='Kisakata (Nikaho, Akita)' width='300'></a><br><small>Photo: Rande, CC BY 4.0, via Wikimedia Commons</small><h2 class='utamakura-name'>Utamakura: Kisakata (Nikaho, Akita)</h2><p>Kisakata in Nikaho, Akita Prefecture. It was once a scenic inlet of the Sea of Japan dotted with small islands. A 1804 earthquake uplifted the seabed, and today the islands rise from rice paddies instead of the sea, creating a landscape found nowhere else.</p><hr><a href='/69_en.html'>Link to Poem 69: Priest Nōin</a>"
+        "name": "<a href='../img/kujuukushima_large.webp' data-lightbox='map' data-title='Kisakata (Nikaho, Akita)'><img loading='lazy' src='../img/kujuukushima_small.webp'alt='Kisakata (Nikaho, Akita)' width='300'></a><br><small>Photo: Rande, CC BY 4.0, via Wikimedia Commons</small><h2 class='utamakura-name'>Utamakura: Kisakata (Nikaho, Akita)</h2><p>Kisakata in Nikaho, Akita Prefecture. It was once a scenic inlet of the Sea of Japan dotted with small islands. A 1804 earthquake uplifted the seabed, and today the islands rise from rice paddies instead of the sea, creating a landscape found nowhere else.</p><hr><a href='/69_en.html'>Link to Poem 69: Priest Nōin</a>"
       },
       "geometry": { "type": "Point", "coordinates": [139.90780302689586, 39.21928667392155] }
     },
