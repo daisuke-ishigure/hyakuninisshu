@@ -29,7 +29,28 @@ let failed = false;
 // 画面のゆれ（karuta-taisen.html のロボット対戦と同じ程度）。設定は karuta-taisen.html と同じ場所（localStorage の karuta3d_shake）
 let shake = 0;                  // ゆれの大きさ（画面のピクセル）。毎フレーム減っていく
 const shakeOn = () => { try { return localStorage.getItem('karuta3d_shake') !== 'off'; } catch (e) { return true; } };
-function addShake(px) { if (shakeOn()) shake = Math.max(shake, px); }
+function addShake(px) { if (shakeOn()) { shake = Math.max(shake, px); vibrateShake(shake); } }
+
+/* 画面のゆれ（render() で shake *= exp(-9t) と減っていく）に合わせてスマホを振動させる（js/karuta-taisen-3d.js の vibrateShake と同じ考え方）。
+   ブラウザの振動は強さを変えられないので、40ms ごとの「振動する長さの割合」で強さを表す
+   （割合が小さいほどモーターが回りきらず弱く感じる）。
+   強さ：その瞬間のゆれ ÷ ゆれの最大値（SHAKE_MAX px）。最大のゆれのときだけ連続で振動する。
+   時間：ゆれが SHAKE_END px 未満（ほぼ見えない）になるまで。大きいゆれほど長く続く。iPhone（Safari）は振動に未対応 */
+const SHAKE_MAX = 17, SHAKE_END = 0.4;
+function vibrateShake(amp) {
+  if (!navigator.vibrate || amp < SHAKE_END) return false;
+  const SLOT = 40, pat = [];
+  for (let t = 0; t < 1000; t += SLOT) {
+    const a = amp * Math.exp(-9 * t / 1000);
+    if (a < SHAKE_END) break;
+    const on = Math.max(5, Math.round(SLOT * Math.min(1, Math.pow(a / SHAKE_MAX, 0.7))));
+    if (pat.length && pat[pat.length - 1] === 0) { pat[pat.length - 2] += on; pat[pat.length - 1] = SLOT - on; }  // 前のスロットが休みなしなら、つなげて1つの振動に
+    else pat.push(on, SLOT - on);
+  }
+  if (!pat.length) return false;
+  pat.pop();                                                                // 最後の休みは不要
+  try { return navigator.vibrate(pat); } catch (e) { return false; }
+}
 
 // ===== 音（札を置く音だけ合成する。札を取る音は shared.js の音声を使う） =====
 let noiseBuf = null;

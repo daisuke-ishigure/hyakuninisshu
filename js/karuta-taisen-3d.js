@@ -403,6 +403,27 @@ function launch(c, vx, vz, role, rx = 0, rz = 0, spinBias = 0) {
   c.flipVel = s > FLIP_FROM ? (s - FLIP_FROM) * 0.034 * rand(0.5, 1.25) : 0;                // 宙返り
 }
 
+/* 画面のゆれ（frame() で shake *= exp(-9t) と減っていく）に合わせてスマホを振動させる。
+   ブラウザの振動は強さを変えられないので、40ms ごとの「振動する長さの割合」で強さを表す
+   （割合が小さいほどモーターが回りきらず弱く感じる）。
+   強さ：その瞬間のゆれ ÷ ゆれの最大値（SHAKE_MAX）。最大のゆれのときだけ連続で振動する。
+   時間：ゆれが SHAKE_END 未満（ほぼ見えない）になるまで。大きいゆれほど長く続く。振動したら true */
+const SHAKE_MAX = 4.5, SHAKE_END = 0.1;
+function vibrateShake(amp) {
+  if (!navigator.vibrate || amp < SHAKE_END) return false;
+  const SLOT = 40, pat = [];
+  for (let t = 0; t < 1000; t += SLOT) {
+    const a = amp * Math.exp(-9 * t / 1000);
+    if (a < SHAKE_END) break;
+    const on = Math.max(5, Math.round(SLOT * Math.min(1, Math.pow(a / SHAKE_MAX, 0.7))));
+    if (pat.length && pat[pat.length - 1] === 0) { pat[pat.length - 2] += on; pat[pat.length - 1] = SLOT - on; }  // 前のスロットが休みなしなら、つなげて1つの振動に
+    else pat.push(on, SLOT - on);
+  }
+  if (!pat.length) return false;
+  pat.pop();                                                                // 最後の休みは不要
+  try { return navigator.vibrate(pat); } catch (e) { return false; }
+}
+
 /* by: 'me'（プレイヤー）か 'cpu'（ロボット）。正解なら取り札に、それ以外は飛んだあと元の場所へ戻る */
 function strike(c, hitX, hitZ, vx, vz, curve, by, force = false) {
   let s = Math.hypot(vx, vz);
@@ -427,8 +448,9 @@ function strike(c, hitX, hitZ, vx, vz, curve, by, force = false) {
   }
 
   sfxHit(k);
-  if (by === 'me' && navigator.vibrate) navigator.vibrate(Math.round(8 + 28 * k));
-  if (shakeOn) shake = Math.max(shake, k * k * 4.5);                      // 画面のゆれ（以前の 0.9 の5倍。払いが強いほど大きい）
+  if (shakeOn) shake = Math.max(shake, k * k * SHAKE_MAX);                     // 画面のゆれ（以前の 0.9 の5倍。払いが強いほど大きい）
+  // 振動：ゆれがあるときはゆれに合わせて（ロボットの払いも）、ないときは自分の払いだけ短く
+  if (!(shakeOn && vibrateShake(shake)) && by === 'me' && navigator.vibrate) navigator.vibrate(Math.round(8 + 28 * k));
   if (s > 300) {                                                            // ヒットストップ＋一瞬のスロー
     const now = performance.now();
     freezeUntil = now + 45; slowUntil = now + 45 + 240;
