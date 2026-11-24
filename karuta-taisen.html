@@ -473,12 +473,27 @@
     }
 
     .cpu-difficulty-selector {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px 10px;
       margin: 15px 0;
+    }
+
+    /* スマホでも4つのボタンが1行に並ぶよう、余白を詰める */
+    @media (max-width: 480px) {
+      .cpu-difficulty-selector {
+        gap: 6px;
+      }
+
+      .cpu-difficulty-selector .difficulty-btn {
+        padding: 8px 9px;
+      }
     }
 
     .difficulty-btn {
       padding: 8px 16px;
-      margin: 0 5px;
+      margin: 0;
       background: #ecf0f1;
       border: 2px solid #bdc3c7;
       border-radius: 8px;
@@ -498,9 +513,9 @@
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
 
-    /* やさしいモード選択時の注意書き */
-    #easy_mode_notice {
-      display: none;
+    /* 選んでいる強さで勝ったときの勝ち数 */
+    #cpu_points_notice {
+      text-align: center;
       font-size: 12px;
       color: #888;
       margin-top: 6px;
@@ -908,7 +923,7 @@
     </div>
   </header>
 <script src="../js/back-to-top.js?20261122-01"></script>
-<script src="../js/karuta-analysis.js?20261124-03"></script>
+<script src="../js/karuta-analysis.js?20261125-05"></script>
 
   <main class="main_about-main">
     <div class="section">
@@ -953,9 +968,10 @@
             <button class="difficulty-btn" data-level="easy">やさしい</button>
             <button class="difficulty-btn selected" data-level="normal">ふつう</button>
             <button class="difficulty-btn" data-level="hard">つよい</button>
+            <button class="difficulty-btn" data-level="master">名人</button>
           </div>
-          <!-- やさしいモード選択時の注意書き -->
-          <p id="easy_mode_notice">※ やさしいモードはランキング対象外です</p>
+          <!-- 選んでいる強さで勝ったときの勝ち数（CPU_POINTS_TEXT で切り替える） -->
+          <p id="cpu_points_notice">※ ランキング：勝つと1勝</p>
 
           <!-- 画面のゆれ（ロボット対戦用。3D版 karuta-taisen-3d.html と同じ設定を使う） -->
           <div class="memory-time-selector">
@@ -1036,8 +1052,9 @@
         <h2 class="section-subheading" style="margin-top:1.5em; margin-bottom:0.35em;">ランキング</h2>
         <ul class="em-usage-list">
           <li>
-            Googleアカウントでログインして「誰かと対戦（オンライン対戦）」および「ロボットと対戦（ロボット対戦）」（ふつう・つよい）において勝利すると、本日の勝ち数ランキングにリアルタイムで反映されます。ランキングは毎日0時（日本時間）にリセットされます。
+            Googleアカウントでログインして「誰かと対戦（オンライン対戦）」および「ロボットと対戦（ロボット対戦）」において勝利すると、本日の勝ち数ランキングにリアルタイムで反映されます。ランキングは毎日0時（日本時間）にリセットされます。
           </li>
+          <li>ロボット対戦では、強さによって1回の勝利で記録される勝ち数が変わります。やさしい・ふつうは1勝、つよいは2勝、名人は5勝です。ただし、やさしいの勝利が記録されるのは1日3勝までです。</li>
           <li>
             ログインすると、Googleアカウントの表示名・メールアドレス・プロフィール画像URLの情報を取得します。これらはログインの確認のためにFirebase（Google）の認証機能に保管されますが、ランキングには表示せず、ランキング用のデータにも保存しません（ランキングにはご自身で付けたニックネームが表示されます）。法令に基づく場合を除き、第三者に提供することはありません。詳しくは<a
               href="policy.html">プライバシーポリシー</a>をご参照ください。 </li>
@@ -1059,7 +1076,7 @@
             </button>
             <a href="karuta-taisen-ranking.html" class="ranking_link_btn"
               style="font-size:13px; color:#B82343; text-decoration:none;">📊 ランキングを見る</a>
-            <p>※「誰かと対戦」およびロボット対戦（ふつう・つよい）がランキング対象です。</p>
+            <p>※「誰かと対戦」およびロボット対戦がランキング対象です。</p>
           </div>
           <!-- ログイン済み -->
           <div id="user_info_box">
@@ -1171,7 +1188,7 @@
               </tr>
             </tbody>
           </table>
-          <p class="title-note">※ オンライン対戦・ロボット対戦（ふつう・つよい）の累計勝ち数が別々に集計されます。</p>
+          <p class="title-note">※ オンライン対戦・ロボット対戦の累計勝ち数が別々に集計されます。</p>
           <p class="title-note">※ 称号は菅原道真をモデルに構成しています。</p>
         </details>
       </div>
@@ -1185,6 +1202,8 @@
       <button id="ready_button" style="padding: 15px 30px; font-size: 16px; cursor:pointer;">準備できたら押してください</button>
     </div>
 
+    <!-- ロボット対戦（平面版）の強さ：やさしい・ふつう・つよい・名人 -->
+    <div id="mode_label" style="display:none; text-align:center; margin:4px 0 0;"></div>
     <div id="status_text"></div>
     <div style="text-align:center;"><button id="audio_resume_btn">音が鳴らない場合はここをタップ</button></div>
     <!-- 暗記カウントダウンオーバーレイ -->
@@ -1206,10 +1225,9 @@
       <div id="win_recorded_notice_result"
         style="display:none; margin: 10px 0; font-size:14px; color:#2d5a27; background:#e8f5e9; border-radius:8px; padding:8px;">
       </div>
-      <!-- やさしいモード時の非対象通知 -->
-      <div id="easy_mode_result_notice"
+      <!-- オンライン対戦で1位でもランキングに記録されないときの理由 -->
+      <div id="ranking_skip_notice"
         style="display:none; margin: 10px 0; font-size:13px; color:#888; background:#f5f5f5; border-radius:8px; padding:8px;">
-        ※ やさしいモードはランキング対象外です。ふつう・つよいモードで挑戦してみましょう！
       </div>
       <!-- 取られた札の一覧 -->
       <div id="missed_cards_section" style="display:none; margin-top:18px; text-align:left;">
@@ -1335,29 +1353,45 @@
     }
 
     // ===== ランキング記録 =====
-    async function recordWin(type) {
+    // ロボット対戦は強さによって1回の勝利で増える勝ち数が変わる。やさしいは1日3勝まで（その日の回数を easyWins に持つ）
+    // ※ easyWins は Realtime Database のルール（rankings）で許可しておくこと。許可されていないと、やさしいの勝利だけ記録されない
+    const CPU_WIN_POINTS = { easy: 1, normal: 1, hard: 2, master: 5 };
+    const EASY_DAILY_LIMIT = 3;
+    async function recordWin(type, difficulty) {
       if (!currentUser) return;
+      const isEasy = type === 'cpu' && difficulty === 'easy';
+      const points = type === 'cpu' ? (CPU_WIN_POINTS[difficulty] || 1) : 1;
+      const showNotice = (text) => {
+        const notice = document.getElementById('win_recorded_notice_result');
+        if (notice) { notice.style.display = 'block'; notice.innerText = text; }
+      };
       try {
         const jst = new Date(Date.now() + 9 * 60 * 60 * 1000);
         const dateKey = jst.toISOString().slice(0, 10);
         const rankRef = ref(db, `rankings/${type}/${dateKey}/${currentUser.uid}`);
         // Google の表示名・写真は保存しない（名前は本人が付けたニックネームのみ）
         const nick = await nickname.get();
-        await runTransaction(rankRef, (current) => {
+        let easyCount = 0;
+        const res = await runTransaction(rankRef, (current) => {
           const { displayName, photoURL, ...rest } = current || {};
-          return { ...rest, nickname: nick, wins: (rest.wins || 0) + 1, updatedAt: Date.now() };
+          if (!isEasy) return { ...rest, nickname: nick, wins: (rest.wins || 0) + points, updatedAt: Date.now() };
+          // やさしい：その日の上限に達していたら、何も書かずにやめる
+          easyCount = (rest.easyWins || 0) + 1;
+          if (easyCount > EASY_DAILY_LIMIT) return;
+          return { ...rest, nickname: nick, wins: (rest.wins || 0) + points, easyWins: easyCount, updatedAt: Date.now() };
         });
+        if (!res.committed) {
+          if (isEasy && easyCount > EASY_DAILY_LIMIT) showNotice(`※ やさしいの記録は1日${EASY_DAILY_LIMIT}勝までです（本日分は達成済み）`);
+          return;
+        }
         const totalKey = type === 'online' ? 'online_total_wins' : 'cpu_total_wins';
         const statsRef = ref(db, `user_stats/${currentUser.uid}`);
         await runTransaction(statsRef, (current) => {
           const { displayName, photoURL, ...rest } = current || {};
-          return { ...rest, [totalKey]: (rest[totalKey] || 0) + 1, nickname: nick };
+          return { ...rest, [totalKey]: (rest[totalKey] || 0) + points, nickname: nick };
         });
-        const notice = document.getElementById('win_recorded_notice_result');
-        if (notice) {
-          notice.style.display = 'block';
-          notice.innerText = `🏆 ${type === 'cpu' ? 'ロボット対戦' : 'オンライン対戦'}ランキングに勝利を記録しました！`;
-        }
+        showNotice(`🏆 ${type === 'cpu' ? 'ロボット対戦' : 'オンライン対戦'}ランキングに勝利を記録しました！` +
+          (isEasy ? `（やさしい：本日${easyCount}/${EASY_DAILY_LIMIT}勝）` : points > 1 ? `（${points}勝分）` : ''));
         await loadAndShowMyBadge();
       } catch (e) { console.error('ランキング記録エラー:', e); }
     }
@@ -1400,7 +1434,8 @@
     const CPU_SETTINGS = {
       easy: { reactionTimeMin: 5000, reactionTimeMax: 7000, accuracy: 0.5, mistakeChance: 0.3 },
       normal: { reactionTimeMin: 3000, reactionTimeMax: 4500, accuracy: 0.75, mistakeChance: 0.2 },
-      hard: { reactionTimeMin: 1600, reactionTimeMax: 2500, accuracy: 0.97, mistakeChance: 0.04 }
+      hard: { reactionTimeMin: 1600, reactionTimeMax: 2500, accuracy: 0.97, mistakeChance: 0.04 },
+      master: { reactionTimeMin: 1200, reactionTimeMax: 1500, accuracy: 0.99, mistakeChance: 0.01 }
     };
 
     // 暗記時間（秒）― デフォルト3分
@@ -1435,13 +1470,21 @@
       return icons[index % icons.length];
     }
 
+    // 選んでいる強さで勝ったときの勝ち数（CPU_WIN_POINTS・EASY_DAILY_LIMIT と合わせる）
+    const CPU_POINTS_TEXT = {
+      easy: '※ ランキング：勝つと1勝（1日3勝まで）',
+      normal: '※ ランキング：勝つと1勝',
+      hard: '※ ランキング：勝つと2勝分',
+      master: '※ ランキング：勝つと5勝分',
+    };
+
     // 難易度ボタン
     document.querySelectorAll('.difficulty-btn').forEach(btn => {
       btn.addEventListener('click', function () {
         document.querySelectorAll('.difficulty-btn').forEach(b => b.classList.remove('selected'));
         this.classList.add('selected');
         cpuDifficulty = this.dataset.level;
-        document.getElementById('easy_mode_notice').style.display = cpuDifficulty === 'easy' ? 'block' : 'none';
+        document.getElementById('cpu_points_notice').textContent = CPU_POINTS_TEXT[cpuDifficulty];
       });
     });
 
@@ -1684,7 +1727,7 @@
     }
     if (window.KarutaAnalysis && window.KarutaAnalysis.decorate) window.KarutaAnalysis.decorate(document.getElementById('analysis_button'));   // 枠を回る光
     document.getElementById('analysis_button').onclick = () => {
-      if (analysisGroups && window.KarutaAnalysis) window.KarutaAnalysis.open({ lang: 'ja', groups: analysisGroups });
+      if (analysisGroups && window.KarutaAnalysis) window.KarutaAnalysis.open({ lang: 'ja', groups: analysisGroups, difficulty: isCpuMode ? cpuDifficulty : null });
     };
 
     function canUse3d() {
@@ -1700,7 +1743,7 @@
       f.id = 'cpu3d_frame';
       f.title = 'ロボットと対戦';
       f.allow = 'autoplay';
-      f.src = `karuta-taisen-3d.html?v=20261124-03&embed=1&difficulty=${cpuDifficulty}${karafudaOn() ? '&karafuda=1' : ''}`;
+      f.src = `karuta-taisen-3d.html?v=20261125-06&embed=1&difficulty=${cpuDifficulty}${karafudaOn() ? '&karafuda=1' : ''}`;
       Object.assign(f.style, { position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', border: '0', zIndex: '10000', background: '#bab37a url(img/tatami.webp)' });
       document.body.appendChild(f);
       document.documentElement.style.overflow = 'hidden';
@@ -1742,7 +1785,7 @@
       f.id = 'online3d_frame';
       f.title = 'オンライン対戦';
       f.allow = 'autoplay';
-      f.src = 'karuta-taisen-3d.html?v=20261124-03&embed=1&mode=online';
+      f.src = 'karuta-taisen-3d.html?v=20261125-06&embed=1&mode=online';
       Object.assign(f.style, { position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', border: '0', zIndex: '10000', background: '#bab37a url(img/tatami.webp)', visibility: 'hidden', pointerEvents: 'none' });
       document.body.appendChild(f);
       online3dFrame = f;
@@ -1809,13 +1852,12 @@
       if (msg.type === 'close') closeCpu3d();
       else if (msg.type === 'unsupported') { closeCpu3d(); startCpuGame2d(); }
       else if (msg.type === 'result' && msg.win) {
-        // 勝利の記録はこれまでと同じ条件（ログイン中・ふつう／つよい）
-        if (msg.difficulty === 'easy') note('※ やさしいモードはランキング対象外です');
-        else if (currentUser) {
+        // ログイン中なら、どの強さでも勝利を記録する（勝ち数は CPU_WIN_POINTS）
+        if (currentUser) {
           const notice = document.getElementById('win_recorded_notice_result');
           if (notice) notice.style.display = 'none';
-          await recordWin('cpu');
-          if (notice && notice.style.display === 'block') note('🏆 ランキングに勝利を記録しました！');
+          await recordWin('cpu', msg.difficulty);
+          if (notice && notice.style.display === 'block') note(notice.innerText);
         }
       }
     });
@@ -1918,7 +1960,12 @@
     }
 
     // ===== ゲーム画面へ遷移（CPU） =====
+    // ロボット対戦の強さのバッジ（部品は js/karuta-analysis.js）
+    const cpuModeBadge = () => window.KarutaAnalysis && window.KarutaAnalysis.modeBadge ? window.KarutaAnalysis.modeBadge(cpuDifficulty, 'ja') : '';
     function startCpuGame() {
+      const modeEl = document.getElementById('mode_label');
+      modeEl.innerHTML = cpuModeBadge();
+      modeEl.style.display = modeEl.innerHTML ? 'block' : 'none';
       document.querySelector('.section').style.display = 'none';
       document.getElementById('room_setup').style.display = 'none';
       document.getElementById('login_area').style.display = 'none';
@@ -2067,7 +2114,7 @@
       const availW = document.documentElement.clientWidth - 4;
 
       let occupiedH = 0;
-      ['player_info', 'status_text'].forEach(id => {
+      ['player_info', 'mode_label', 'status_text'].forEach(id => {
         const el = document.getElementById(id);
         if (!el) return;
         const cs = getComputedStyle(el);
@@ -2821,6 +2868,7 @@
       cpuTimers = [];
       document.getElementById('karuta_container').style.display = 'none';
       globalAudio.pause();
+      document.getElementById('mode_label').style.display = 'none';
 
       const allPlayers = [myId, ...cpuPlayers];
       const scoreboard = allPlayers.map(pid => ({
@@ -2838,6 +2886,7 @@
       else { rainAudio.currentTime = 0; rainAudio.play().catch(() => { }); }
 
       document.getElementById('result_text').innerHTML =
+        `<div style="margin-bottom:6px;">${cpuModeBadge()}</div>` +
         `<div style="font-size:2.5rem;color:#B82343;margin-bottom:10px;">第 ${myRank} 位 ${getIcon(myId, allPlayers)}</div>` +
         `<div style="font-size:1.1rem;line-height:1.6;">${rankListHtml}</div>`;
       document.getElementById('result_container').style.display = 'block';
@@ -2845,13 +2894,9 @@
 
       showMissedCards(takenCards, myId);
 
-      if (myRank === 1 && cpuDifficulty !== 'easy') {
-        await recordWin('cpu');
+      if (myRank === 1) {
+        await recordWin('cpu', cpuDifficulty);
         if (scoreboard.find(s => s.isMe).score > 0) _sakuraEndGame();
-      } else if (cpuDifficulty === 'easy') {
-        const easyNotice = document.getElementById('easy_mode_result_notice');
-        if (easyNotice) easyNotice.style.display = 'block';
-        if (myRank === 1 && scoreboard.find(s => s.isMe).score > 0) _sakuraEndGame();
       }
       if (myRank !== 1) _defeatInkEffect();
 
@@ -2923,7 +2968,7 @@
         if (myRank === 1) {
           if (!tiedTop && !alone) recordWin('online');
           else {
-            const n = document.getElementById('easy_mode_result_notice');
+            const n = document.getElementById('ranking_skip_notice');
             if (n) { n.textContent = tiedTop ? '※ 同点の1位のため、ランキングには記録されません。' : '※ 対戦相手が全員退出したため、ランキングには記録されません。'; n.style.display = 'block'; }
           }
           if (scoreboard.find(s => s.isMe).score > 0) _sakuraEndGame();

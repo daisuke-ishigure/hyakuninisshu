@@ -38,8 +38,11 @@
 
     #hud { position: fixed; top: 0; left: 0; right: 0; padding: calc(6px + env(safe-area-inset-top)) 10px 0;
       text-align: center; pointer-events: none; color: #2a2118; }
-    #bar { display: flex; align-items: center; gap: 8px; font-size: 13px; pointer-events: auto; text-shadow: 0 0 3px rgba(255, 255, 255, .9), 0 0 6px rgba(255, 255, 255, .7); }
-    #status { flex: 1; font-size: 13px; min-height: 1.5em; line-height: 1.5; }
+    #bar { position: relative; display: flex; align-items: center; gap: 8px; font-size: 13px; pointer-events: auto; text-shadow: 0 0 3px rgba(255, 255, 255, .9), 0 0 6px rgba(255, 255, 255, .7); }
+    #status { flex: 1; min-width: 0; font-size: 13px; height: 20px; line-height: 20px; white-space: nowrap; display: flex; justify-content: center; }
+    /* ロボット対戦の強さのバッジ（左上）。状態表示がつねに画面の左右中央に来るよう、重ねて置く */
+    #mode { position: absolute; left: 0; top: 0; height: 20px; display: flex; align-items: center; }
+    #mode:empty { display: none; }
     #status.warn { color: #b3261e; font-weight: bold; }
     /* ■■ あなた 2 － 3 ロボット ■■■ */
     #scoreline { margin-top: 6px; font-size: 16px; font-weight: bold; min-height: 1.5em; white-space: nowrap;
@@ -140,6 +143,7 @@
 
   <div id="hud">
     <div id="bar">
+      <span id="mode"></span>
       <span id="status"></span>
     </div>
     <div id="scoreline"><span id="dots_me" class="dots"></span><span id="score_text">あなた 0 － 0 ロボット</span><span id="dots_cpu" class="dots"></span></div>
@@ -165,6 +169,7 @@
       <button type="button" data-difficulty="easy" disabled>やさしい</button>
       <button type="button" data-difficulty="normal" disabled>ふつう</button>
       <button type="button" data-difficulty="hard" disabled>つよい</button>
+      <button type="button" data-difficulty="master" disabled>名人</button>
     </div>
     <div class="option">
       <span>札を払ったときの画面のゆれ</span>
@@ -182,16 +187,16 @@
       const start = document.getElementById('start');
       start.querySelector('h1').textContent = 'Competitive Karuta 3D (prototype)';
       start.querySelector('p').innerHTML = 'Compete with a robot for 9 cards. The first to take 5 cards wins.<br>Swipe away the card with the second half of the poem being read.';
-      const d = { easy: 'Easy', normal: 'Normal', hard: 'Hard' };
+      const d = { easy: 'Easy', normal: 'Normal', hard: 'Hard', master: 'Master' };
       start.querySelectorAll('[data-difficulty]').forEach(b => { b.textContent = d[b.dataset.difficulty]; });
       start.querySelector('.option span').textContent = 'Screen shake when swiping a card';
       start.querySelector('[data-shake="on"]').textContent = 'On';
       start.querySelector('[data-shake="off"]').textContent = 'Off';
     }
   </script>
-  <script src="/js/karuta-analysis.js?20261124-03"></script>
+  <script src="/js/karuta-analysis.js?20261125-05"></script>
   <script src="https://cdn.jsdelivr.net/npm/pixi.js@7.3.2/dist/pixi.min.js"></script>
-  <script type="module" src="/js/karuta-taisen-3d.js?20261123-09"></script>
+  <script type="module" src="/js/karuta-taisen-3d.js?20261125-04"></script>
 </body>
 
 </html>

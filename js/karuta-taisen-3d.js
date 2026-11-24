@@ -29,7 +29,8 @@ const SHOW_SCALE = 2.2;                    // 見せるときの大きさ（並�
 const CPU_SETTINGS = {                     // karuta-taisen.html と同じ
   easy: { reactionTimeMin: 5000, reactionTimeMax: 7000, accuracy: 0.5 },
   normal: { reactionTimeMin: 3000, reactionTimeMax: 4500, accuracy: 0.75 },
-  hard: { reactionTimeMin: 1600, reactionTimeMax: 2500, accuracy: 0.97 }
+  hard: { reactionTimeMin: 1600, reactionTimeMax: 2500, accuracy: 0.97 },
+  master: { reactionTimeMin: 1200, reactionTimeMax: 1500, accuracy: 0.99 }
 };
 // 確認用：?speed=0.2 でスローモーション（動きを目で追える）
 const PARAMS = new URLSearchParams(location.search);
@@ -615,7 +616,23 @@ function step(dt) {
 }
 
 // ===== ゲーム進行（karuta-taisen.html のロボット対戦と同じ流れ） =====
-function setStatus(text, warn) { $('status').textContent = text; $('status').classList.toggle('warn', !!warn); }
+// 状態表示はつねに画面の左右中央に1行で出す（改行すると白い帯が下がって札に重なるため）。
+// 左上の強さのバッジに重なる長さなら文字を小さくし、10px でも重なるなら、その文言の間だけバッジを隠す
+function setStatus(text, warn) {
+  const el = $('status');
+  el.style.fontSize = '';
+  el.textContent = text;
+  el.classList.toggle('warn', !!warn);
+  const mode = $('mode'), range = document.createRange();
+  mode.style.visibility = '';
+  range.selectNodeContents(el);
+  const full = el.clientWidth, textW = range.getBoundingClientRect().width, base = parseFloat(getComputedStyle(el).fontSize);
+  const beside = full - (mode.offsetWidth ? (mode.offsetWidth + 6) * 2 : 0);   // 左右にバッジの幅ずつ空けた、中央の幅
+  if (!full || textW <= beside) return;
+  let size = base * beside / textW;
+  if (size < 10) { mode.style.visibility = 'hidden'; size = Math.min(base, base * full / textW); }
+  if (size < base) el.style.fontSize = Math.floor(size * 10) / 10 + 'px';
+}
 function updateScore() {
   if (ONLINE) {                                                             // オンライン：点数のかわりに「参加者：🐻🐼 ・ あなた：🐻」（動物バッジ）を出す
     $('dots_me').textContent = $('dots_cpu').textContent = '';
@@ -1207,6 +1224,7 @@ function begin(difficulty) {
   audio.play().catch(() => { }); audio.pause();
   unlockRain();                                                            // iOS：最初の操作で音声を解錠
   game.difficulty = difficulty;
+  if (window.KarutaAnalysis && window.KarutaAnalysis.modeBadge) $('mode').innerHTML = window.KarutaAnalysis.modeBadge(difficulty, EN ? 'en' : 'ja');   // 強さのバッジ（左上）
   $('start').classList.add('hide');
   newGame();
 }
@@ -1242,7 +1260,7 @@ $('analysis').addEventListener('click', () => {
     { kind: 'left', title: TXT.anLeft, nums: [...game.field].filter(n => !game.takes[n]).sort((a, b) => a - b) },
   ];
   if (KARAFUDA) groups.push({ kind: 'empty', title: TXT.anEmpty, nums: read.filter(n => !game.field.has(n)) });
-  window.KarutaAnalysis.open({ lang: EN ? 'en' : 'ja', groups });
+  window.KarutaAnalysis.open({ lang: EN ? 'en' : 'ja', groups, difficulty: game.difficulty });
 });
 window.addEventListener('resize', () => { if (renderer) fitCamera(); });
 // 最初に画面に触れたときに音を解錠する（埋め込み時は、このページ内での操作がまだ無いまま始まるため）

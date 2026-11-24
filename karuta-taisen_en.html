@@ -452,12 +452,27 @@
     }
 
     .cpu-difficulty-selector {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px 10px;
       margin: 15px 0;
+    }
+
+    /* スマホでも4つのボタンが1行に並ぶよう、余白を詰める */
+    @media (max-width: 480px) {
+      .cpu-difficulty-selector {
+        gap: 6px;
+      }
+
+      .cpu-difficulty-selector .difficulty-btn {
+        padding: 8px 9px;
+      }
     }
 
     .difficulty-btn {
       padding: 8px 16px;
-      margin: 0 5px;
+      margin: 0;
       background: #ecf0f1;
       border: 2px solid #bdc3c7;
       border-radius: 8px;
@@ -477,9 +492,9 @@
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
 
-    /* Notice shown when Easy mode is selected */
-    #easy_mode_notice {
-      display: none;
+    /* Wins earned at the selected robot level */
+    #cpu_points_notice {
+      text-align: center;
       font-size: 12px;
       color: #888;
       margin-top: 6px;
@@ -865,7 +880,7 @@
     </div>
   </header>
 <script src="../js/back-to-top.js?20261122-01"></script>
-<script src="../js/karuta-analysis.js?20261124-03"></script>
+<script src="../js/karuta-analysis.js?20261125-05"></script>
 
   <main class="main_about-main">
     <div class="section">
@@ -905,9 +920,10 @@
             <button class="difficulty-btn" data-level="easy">Easy</button>
             <button class="difficulty-btn selected" data-level="normal">Normal</button>
             <button class="difficulty-btn" data-level="hard">Hard</button>
+            <button class="difficulty-btn" data-level="master">Master</button>
           </div>
-          <!-- Notice shown when Easy mode is selected -->
-          <p id="easy_mode_notice">※ Easy mode does not count toward the ranking</p>
+          <!-- Wins earned at the selected robot level (switched with CPU_POINTS_TEXT) -->
+          <p id="cpu_points_notice">※ Ranking: a victory counts as 1 win</p>
 
           <!-- Screen shake (Robot mode; shares the setting with the 3D game karuta-taisen-3d.html) -->
           <div class="memory-time-selector">
@@ -960,9 +976,10 @@
         <ul class="em-usage-list">
           <li>
             Log in with a Google account and win in "Battle Someone (Online Battle)" or "Battle a Robot (Robot Battle)"
-            (Normal or Hard) to have your wins reflected in real time on Wins Leaderboard. The ranking resets daily at
+            to have your wins reflected in real time on Wins Leaderboard. The ranking resets daily at
             midnight (Japan Time).
           </li>
+          <li>In Robot Battle, the number of wins recorded for a victory depends on the level: Easy and Normal count as 1 win, Hard as 2, and Master as 5. Easy victories are recorded up to 3 times per day.</li>
           <li>When you sign in, we receive your Google account's display name, email address, and profile photo URL.
             This information is stored by Firebase (Google) Authentication to verify your sign-in, but it is not shown on the leaderboard or saved in the ranking data (the leaderboard shows the nickname you set). It will not be shared with third parties except as required by law. Please see the <a href="policy_en.html">Privacy Policy</a> for details.</li>
           <li>Once you sign in, a "Delete Data" button appears next to "Log Out." It deletes all your ranking data
@@ -985,7 +1002,7 @@
             </button>
             <a href="karuta-taisen-ranking_en.html" class="ranking_link_btn"
               style="font-size:13px; color:#B82343; text-decoration:none;">📊 View Wins Leaderboard</a>
-            <p>※ "Battle Someone" and Robot Battle (Normal/Hard) are eligible for the ranking.</p>
+            <p>※ "Battle Someone" and Robot Battle are eligible for the ranking.</p>
           </div>
           <!-- When logged in -->
           <div id="user_info_box">
@@ -1096,7 +1113,7 @@
               </tr>
             </tbody>
           </table>
-          <p class="title-note">※ Wins for Online Battle and Robot Battle (Normal/Hard) are counted separately.</p>
+          <p class="title-note">※ Wins for Online Battle and Robot Battle are counted separately.</p>
           <p class="title-note">※ The titles are modeled after Sugawara no Michizane.</p>
         </details>
       </div>
@@ -1116,6 +1133,8 @@
       <button id="ready_button" style="padding: 15px 30px; font-size: 16px; cursor:pointer;">Press when ready</button>
     </div>
 
+    <!-- ロボット対戦（平面版）の強さ：やさしい・ふつう・つよい・名人 -->
+    <div id="mode_label" style="display:none; text-align:center; margin:4px 0 0;"></div>
     <div id="status_text"></div>
     <div style="text-align:center;"><button id="audio_resume_btn">Tap here if no sound is playing</button></div>
     <!-- Memorization countdown overlay -->
@@ -1136,10 +1155,9 @@
       <div id="win_recorded_notice_result"
         style="display:none; margin: 10px 0; font-size:14px; color:#2d5a27; background:#e8f5e9; border-radius:8px; padding:8px;">
       </div>
-      <!-- Notice for Easy mode (not eligible for ranking) -->
-      <div id="easy_mode_result_notice"
+      <!-- Why a 1st place in Online Battle was not recorded in the ranking -->
+      <div id="ranking_skip_notice"
         style="display:none; margin: 10px 0; font-size:13px; color:#888; background:#f5f5f5; border-radius:8px; padding:8px;">
-        ※ Easy mode does not count toward the ranking. Try Normal or Hard mode next!
       </div>
       <!-- Missed cards list -->
       <div id="missed_cards_section" style="display:none; margin-top:18px; text-align:left;">
@@ -1265,29 +1283,45 @@
     }
 
     // ===== Ranking record =====
-    async function recordWin(type) {
+    // In Robot Battle a victory adds a different number of wins per level. Easy counts up to 3 a day (the day's count is kept in easyWins)
+    // Note: easyWins must be allowed in the Realtime Database rules (rankings); otherwise only Easy victories fail to be recorded
+    const CPU_WIN_POINTS = { easy: 1, normal: 1, hard: 2, master: 5 };
+    const EASY_DAILY_LIMIT = 3;
+    async function recordWin(type, difficulty) {
       if (!currentUser) return;
+      const isEasy = type === 'cpu' && difficulty === 'easy';
+      const points = type === 'cpu' ? (CPU_WIN_POINTS[difficulty] || 1) : 1;
+      const showNotice = (text) => {
+        const notice = document.getElementById('win_recorded_notice_result');
+        if (notice) { notice.style.display = 'block'; notice.innerText = text; }
+      };
       try {
         const jst = new Date(Date.now() + 9 * 60 * 60 * 1000);
         const dateKey = jst.toISOString().slice(0, 10);
         const rankRef = ref(db, `rankings/${type}/${dateKey}/${currentUser.uid}`);
         // Google の表示名・写真は保存しない（名前は本人が付けたニックネームのみ）
         const nick = await nickname.get();
-        await runTransaction(rankRef, (current) => {
+        let easyCount = 0;
+        const res = await runTransaction(rankRef, (current) => {
           const { displayName, photoURL, ...rest } = current || {};
-          return { ...rest, nickname: nick, wins: (rest.wins || 0) + 1, updatedAt: Date.now() };
+          if (!isEasy) return { ...rest, nickname: nick, wins: (rest.wins || 0) + points, updatedAt: Date.now() };
+          // Easy: once the daily limit is reached, stop without writing anything
+          easyCount = (rest.easyWins || 0) + 1;
+          if (easyCount > EASY_DAILY_LIMIT) return;
+          return { ...rest, nickname: nick, wins: (rest.wins || 0) + points, easyWins: easyCount, updatedAt: Date.now() };
         });
+        if (!res.committed) {
+          if (isEasy && easyCount > EASY_DAILY_LIMIT) showNotice(`※ Easy wins count up to ${EASY_DAILY_LIMIT} per day (limit reached today)`);
+          return;
+        }
         const totalKey = type === 'online' ? 'online_total_wins' : 'cpu_total_wins';
         const statsRef = ref(db, `user_stats/${currentUser.uid}`);
         await runTransaction(statsRef, (current) => {
           const { displayName, photoURL, ...rest } = current || {};
-          return { ...rest, [totalKey]: (rest[totalKey] || 0) + 1, nickname: nick };
+          return { ...rest, [totalKey]: (rest[totalKey] || 0) + points, nickname: nick };
         });
-        const notice = document.getElementById('win_recorded_notice_result');
-        if (notice) {
-          notice.style.display = 'block';
-          notice.innerText = `🏆 Your win has been recorded in the ${type === 'cpu' ? 'Robot Battle' : 'Online Battle'} ranking!`;
-        }
+        showNotice(`🏆 Your win has been recorded in the ${type === 'cpu' ? 'Robot Battle' : 'Online Battle'} ranking!` +
+          (isEasy ? ` (Easy: ${easyCount}/${EASY_DAILY_LIMIT} today)` : points > 1 ? ` (+${points} wins)` : ''));
         await loadAndShowMyBadge();
       } catch (e) { console.error('Ranking record error:', e); }
     }
@@ -1329,7 +1363,8 @@
     const CPU_SETTINGS = {
       easy: { reactionTimeMin: 5000, reactionTimeMax: 7000, accuracy: 0.5, mistakeChance: 0.3 },
       normal: { reactionTimeMin: 3000, reactionTimeMax: 4500, accuracy: 0.75, mistakeChance: 0.2 },
-      hard: { reactionTimeMin: 1600, reactionTimeMax: 2500, accuracy: 0.97, mistakeChance: 0.04 }
+      hard: { reactionTimeMin: 1600, reactionTimeMax: 2500, accuracy: 0.97, mistakeChance: 0.04 },
+      master: { reactionTimeMin: 1200, reactionTimeMax: 1500, accuracy: 0.99, mistakeChance: 0.01 }
       // Hard min bumped from 1500→2200ms so a human can physically react to the audio
     };
 
@@ -1346,13 +1381,21 @@
       return icons[index % icons.length];
     }
 
+    // Wins earned at the selected level (keep in step with CPU_WIN_POINTS and EASY_DAILY_LIMIT)
+    const CPU_POINTS_TEXT = {
+      easy: '※ Ranking: a victory counts as 1 win (up to 3 per day)',
+      normal: '※ Ranking: a victory counts as 1 win',
+      hard: '※ Ranking: a victory counts as 2 wins',
+      master: '※ Ranking: a victory counts as 5 wins',
+    };
+
     // Difficulty buttons
     document.querySelectorAll('.difficulty-btn').forEach(btn => {
       btn.addEventListener('click', function () {
         document.querySelectorAll('.difficulty-btn').forEach(b => b.classList.remove('selected'));
         this.classList.add('selected');
         cpuDifficulty = this.dataset.level;
-        document.getElementById('easy_mode_notice').style.display = cpuDifficulty === 'easy' ? 'block' : 'none';
+        document.getElementById('cpu_points_notice').textContent = CPU_POINTS_TEXT[cpuDifficulty];
       });
     });
 
@@ -1599,7 +1642,7 @@
     }
     if (window.KarutaAnalysis && window.KarutaAnalysis.decorate) window.KarutaAnalysis.decorate(document.getElementById('analysis_button'));   // 枠を回る光
     document.getElementById('analysis_button').onclick = () => {
-      if (analysisGroups && window.KarutaAnalysis) window.KarutaAnalysis.open({ lang: 'en', groups: analysisGroups });
+      if (analysisGroups && window.KarutaAnalysis) window.KarutaAnalysis.open({ lang: 'en', groups: analysisGroups, difficulty: isCpuMode ? cpuDifficulty : null });
     };
 
     function canUse3d() {
@@ -1615,7 +1658,7 @@
       f.id = 'cpu3d_frame';
       f.title = 'Battle a Robot';
       f.allow = 'autoplay';
-      f.src = `karuta-taisen-3d.html?v=20261124-03&embed=1&lang=en&difficulty=${cpuDifficulty}${karafudaOn() ? '&karafuda=1' : ''}`;
+      f.src = `karuta-taisen-3d.html?v=20261125-06&embed=1&lang=en&difficulty=${cpuDifficulty}${karafudaOn() ? '&karafuda=1' : ''}`;
       Object.assign(f.style, { position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', border: '0', zIndex: '10000', background: '#bab37a url(img/tatami.webp)' });
       document.body.appendChild(f);
       document.documentElement.style.overflow = 'hidden';
@@ -1657,7 +1700,7 @@
       f.id = 'online3d_frame';
       f.title = 'Online battle';
       f.allow = 'autoplay';
-      f.src = 'karuta-taisen-3d.html?v=20261124-03&embed=1&mode=online&lang=en';
+      f.src = 'karuta-taisen-3d.html?v=20261125-06&embed=1&mode=online&lang=en';
       Object.assign(f.style, { position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', border: '0', zIndex: '10000', background: '#bab37a url(img/tatami.webp)', visibility: 'hidden', pointerEvents: 'none' });
       document.body.appendChild(f);
       online3dFrame = f;
@@ -1724,13 +1767,12 @@
       if (msg.type === 'close') closeCpu3d();
       else if (msg.type === 'unsupported') { closeCpu3d(); startCpuGame2d(); }
       else if (msg.type === 'result' && msg.win) {
-        // Wins are recorded under the same conditions as before (logged in, Normal/Hard)
-        if (msg.difficulty === 'easy') note('※ Easy mode does not count toward the ranking');
-        else if (currentUser) {
+        // Logged-in players' wins are recorded at every level (number of wins: CPU_WIN_POINTS)
+        if (currentUser) {
           const notice = document.getElementById('win_recorded_notice_result');
           if (notice) notice.style.display = 'none';
-          await recordWin('cpu');
-          if (notice && notice.style.display === 'block') note('🏆 Your win has been recorded in the ranking!');
+          await recordWin('cpu', msg.difficulty);
+          if (notice && notice.style.display === 'block') note(notice.innerText);
         }
       }
     });
@@ -1835,7 +1877,12 @@
     }
 
     // ===== Transition to game screen (CPU) =====
+    // ロボット対戦の強さのバッジ（部品は js/karuta-analysis.js）
+    const cpuModeBadge = () => window.KarutaAnalysis && window.KarutaAnalysis.modeBadge ? window.KarutaAnalysis.modeBadge(cpuDifficulty, 'en') : '';
     function startCpuGame() {
+      const modeEl = document.getElementById('mode_label');
+      modeEl.innerHTML = cpuModeBadge();
+      modeEl.style.display = modeEl.innerHTML ? 'block' : 'none';
       document.querySelector('.section').style.display = 'none';
       document.getElementById('room_setup').style.display = 'none';
       document.getElementById('login_area').style.display = 'none';
@@ -2004,7 +2051,7 @@
       // Available height: viewport minus everything above the container
       // and the footer (which may be fixed/sticky at the bottom)
       let occupiedH = 0;
-      ['player_info', 'status_text'].forEach(id => {
+      ['player_info', 'mode_label', 'status_text'].forEach(id => {
         const el = document.getElementById(id);
         if (!el) return;
         const cs = getComputedStyle(el);
@@ -2593,6 +2640,7 @@
       cpuTimers = [];
       document.getElementById('karuta_container').style.display = 'none';
       globalAudio.pause();
+      document.getElementById('mode_label').style.display = 'none';
 
       const allPlayers = [myId, ...cpuPlayers];
       const scoreboard = allPlayers.map(pid => ({
@@ -2611,6 +2659,7 @@
 
       const placeLabel = myRank === 1 ? '1st' : myRank === 2 ? '2nd' : myRank === 3 ? '3rd' : `${myRank}th`;
       document.getElementById('result_text').innerHTML =
+        `<div style="margin-bottom:6px;">${cpuModeBadge()}</div>` +
         `<div style="font-size:2.5rem;color:#B82343;margin-bottom:10px;">${placeLabel} Place ${getIcon(myId, allPlayers)}</div>` +
         `<div style="font-size:1.1rem;line-height:1.6;">${rankListHtml}</div>`;
       document.getElementById('result_container').style.display = 'block';
@@ -2618,13 +2667,9 @@
 
       showMissedCards(takenCards, myId);
 
-      if (myRank === 1 && cpuDifficulty !== 'easy') {
-        await recordWin('cpu');
+      if (myRank === 1) {
+        await recordWin('cpu', cpuDifficulty);
         if (scoreboard.find(s => s.isMe).score > 0) { confetti({ particleCount: 200, spread: 80, origin: { y: 0.6 } }); _showWinOverlay(); }
-      } else if (cpuDifficulty === 'easy') {
-        const easyNotice = document.getElementById('easy_mode_result_notice');
-        if (easyNotice) easyNotice.style.display = 'block';
-        if (myRank === 1 && scoreboard.find(s => s.isMe).score > 0) confetti({ particleCount: 200, spread: 80, origin: { y: 0.6 } });
       }
       if (myRank !== 1) _showLoseOverlay();
 
@@ -2696,7 +2741,7 @@
         if (myRank === 1) {
           if (!tiedTop && !alone) recordWin('online');
           else {
-            const n = document.getElementById('easy_mode_result_notice');
+            const n = document.getElementById('ranking_skip_notice');
             if (n) { n.textContent = tiedTop ? '* Tied for 1st place, so this win is not recorded in the ranking.' : '* All opponents left, so this win is not recorded in the ranking.'; n.style.display = 'block'; }
           }
           if (scoreboard.find(s => s.isMe).score > 0) { confetti({ particleCount: 200, spread: 80, origin: { y: 0.6 } }); _showWinOverlay(); }

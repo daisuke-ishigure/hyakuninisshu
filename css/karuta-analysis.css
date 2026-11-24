@@ -137,6 +137,42 @@
   color: #333;
 }
 
+/* ロボット対戦の強さ（やさしい・ふつう・つよい・名人）のバッジ。対戦中の画面・結果画面・振り返りの見出しで共用
+   （js/karuta-analysis.js の modeBadge が作る） */
+.karuta-mode {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 999px;
+  /* 紫のロボット（👾）が見えやすいよう地は明るくし、強さの色は枠と文字に付ける */
+  background: #fffdf8;
+  border: 1.5px solid currentColor;
+  color: #1e50a2;
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+  text-shadow: none;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.karuta-mode[data-level=easy] {
+  color: #2e7d32;
+}
+
+.karuta-mode[data-level=hard] {
+  color: #b82343;
+}
+
+.karuta-mode[data-level=master] {
+  color: #6b2c91;
+}
+
+.ka-title .karuta-mode {
+  margin-left: 0.8em;
+  font-size: 0.8rem;
+}
+
 /* ===== 表（css/list.css の table と同じ） =====
    見出しの帯（.ka-head）は暗い色、本文（.ka-body）は明るい色（#fffdf8）。表の中の文字は濃い色 */
 .ka-overlay table {
