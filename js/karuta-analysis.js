@@ -13,7 +13,7 @@
 (() => {
   'use strict';
   const FILES = {
-    css: '/css/karuta-analysis.css?20261125-05',
+    css: '/css/karuta-analysis.css?20261125-06',
     // list.html・list_en.html が表の字に使っている書体（style.css の @import と、ページの Google Fonts）。
     // style.css を読み込んでいないページ（3D版）では、同じものをここで読み込む
     fonts: ['https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap',
@@ -128,7 +128,7 @@
     const T = TEXT[lang] || TEXT.ja;
     if (!Object.prototype.hasOwnProperty.call(T.mode, level)) return '';
     loadCss();
-    return `<span class="karuta-mode" data-level="${level}" role="img" aria-label="${T.modeLabel}${T.mode[level]}">👾 ${T.mode[level]}</span>`;
+    return `<span class="karuta-mode" data-level="${level}" role="img" aria-label="${T.modeLabel}${T.mode[level]}"><span class="karuta-mode-icon">👾</span> ${T.mode[level]}</span>`;
   }
 
   function open({ lang = 'ja', groups = [], difficulty = null } = {}) {

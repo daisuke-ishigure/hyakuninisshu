@@ -473,6 +473,7 @@
     }
 
     .cpu-difficulty-selector {
+      position: relative;   /* 名人の炎（js/karuta-flame.js）を重ねる基準 */
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -492,6 +493,8 @@
     }
 
     .difficulty-btn {
+      position: relative;
+      z-index: 1;           /* 炎がボタンの文字にかぶらないように */
       padding: 8px 16px;
       margin: 0;
       background: #ecf0f1;
@@ -506,6 +509,29 @@
       background: #27ae60;
       color: white;
       border-color: #27ae60;
+    }
+
+    /* 名人を選んでいる間：炎の色（下が金色、上へ橙・紅）がゆらめく */
+    .difficulty-btn.selected[data-level="master"] {
+      background: linear-gradient(to top, #f5a524 0%, #ee6a1a 22%, #d8341a 50%, #b3161b 75%, #d8341a 100%);
+      background-size: 100% 180%;
+      background-position: 0 100%;
+      border-color: #a3141a;
+      color: #fff;
+      font-weight: bold;
+      text-shadow: 0 0 3px #7a0c10, 0 1px 2px #7a0c10;
+      animation: master-fire 1.4s ease-in-out infinite alternate;
+    }
+
+    @keyframes master-fire {
+      0% { background-position: 0 100%; box-shadow: 0 0 5px rgba(238, 106, 26, 0.55); }
+      35% { background-position: 0 72%; box-shadow: 0 0 10px rgba(238, 106, 26, 0.8); }
+      60% { background-position: 0 88%; box-shadow: 0 0 6px rgba(238, 106, 26, 0.6); }
+      100% { background-position: 0 60%; box-shadow: 0 0 12px rgba(238, 106, 26, 0.85); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .difficulty-btn.selected[data-level="master"] { animation: none; }
     }
 
     .difficulty-btn:hover {
@@ -923,7 +949,9 @@
     </div>
   </header>
 <script src="../js/back-to-top.js?20261122-01"></script>
-<script src="../js/karuta-analysis.js?20261125-05"></script>
+<script src="../js/karuta-analysis.js?20261125-06"></script>
+<script src="../js/karuta-flame.js?20261125-06"></script>
+<script src="../js/karuta-hear.js?20261125-02"></script>
 
   <main class="main_about-main">
     <div class="section">
@@ -1485,6 +1513,7 @@
         this.classList.add('selected');
         cpuDifficulty = this.dataset.level;
         document.getElementById('cpu_points_notice').textContent = CPU_POINTS_TEXT[cpuDifficulty];
+        if (cpuDifficulty === 'master' && window.KarutaFlame) window.KarutaFlame.burst(this);   // 名人：炎が一瞬立ちのぼる
       });
     });
 
@@ -1743,7 +1772,7 @@
       f.id = 'cpu3d_frame';
       f.title = 'ロボットと対戦';
       f.allow = 'autoplay';
-      f.src = `karuta-taisen-3d.html?v=20261125-06&embed=1&difficulty=${cpuDifficulty}${karafudaOn() ? '&karafuda=1' : ''}`;
+      f.src = `karuta-taisen-3d.html?v=20261125-13&embed=1&difficulty=${cpuDifficulty}${karafudaOn() ? '&karafuda=1' : ''}`;
       Object.assign(f.style, { position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', border: '0', zIndex: '10000', background: '#bab37a url(img/tatami.webp)' });
       document.body.appendChild(f);
       document.documentElement.style.overflow = 'hidden';
@@ -1785,7 +1814,7 @@
       f.id = 'online3d_frame';
       f.title = 'オンライン対戦';
       f.allow = 'autoplay';
-      f.src = 'karuta-taisen-3d.html?v=20261125-06&embed=1&mode=online';
+      f.src = 'karuta-taisen-3d.html?v=20261125-13&embed=1&mode=online';
       Object.assign(f.style, { position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', border: '0', zIndex: '10000', background: '#bab37a url(img/tatami.webp)', visibility: 'hidden', pointerEvents: 'none' });
       document.body.appendChild(f);
       online3dFrame = f;
@@ -1999,7 +2028,12 @@
       const container = document.getElementById('karuta_container');
       container.style.pointerEvents = 'none';
 
+      // 始めるまでの間、白い帯に、強さに応じた助言を流す
+      const band = document.getElementById('kami_no_ku_display');
+      if (window.KarutaFlame) window.KarutaFlame.tip(band, 'ja', cpuDifficulty);
+
       startMemorizationCountdown(memoryTimeSec, async () => {
+        band.textContent = '';
         container.style.pointerEvents = 'none';
         statusEl.innerText = '音声を読み込み中...';
 
@@ -2201,8 +2235,12 @@
         if (takenCards[correctCard]) return;
         const willTakeCorrect = Math.random() < settings.accuracy;
         const reactionTime = cpuReactionTime(settings);
-        const timer = setTimeout(() => {
-          if (isGameOver || takenCards[correctCard]) return;
+        const readyAt = cpuReadyAt;
+        const act = (lagged) => {
+          if (isGameOver || takenCards[correctCard] || playOrder[currentSongIndex] !== correctCard) return;
+          // 音声の読み込みが遅れて、まだ聞き分けられるところまで読まれていなければ待つ（音声が止まっていても、長くて3秒まで）
+          const lag = window.KarutaHear && lagged < 3000 ? window.KarutaHear.audioLag(globalAudio, readyAt) : 0;
+          if (lag) { cpuTimers.push(setTimeout(() => act(lagged + lag), lag)); return; }
           if (willTakeCorrect) {
             cpuTakeCard(cpuId, correctCard);
           } else {
@@ -2216,8 +2254,8 @@
               }, 3000));
             }
           }
-        }, reactionTime);
-        cpuTimers.push(timer);
+        };
+        cpuTimers.push(setTimeout(() => act(0), reactionTime));
       });
     }
 
@@ -2257,8 +2295,17 @@
       }, 3000);
     }
     // ロボットが札に手を出すまでの時間。空札でお手つきした次の歌では、プレイヤーと同じく読みはじめから3秒間は触れない
+    // どの札かを聞き分けられる前には手を出さない（js/karuta-hear.js）
+    let cpuReadyAt = 0;                             // 読み上げの音声で、ロボットが手を出してよくなる時刻（ミリ秒）
     function cpuReactionTime(settings) {
-      const t = settings.reactionTimeMin + Math.random() * (settings.reactionTimeMax - settings.reactionTimeMin);
+      let t = settings.reactionTimeMin + Math.random() * (settings.reactionTimeMax - settings.reactionTimeMin);
+      if (window.KarutaHear && kimarijiData) {
+        // このあと読まれうる歌：空札を読むときは、まだ読まれていない百首すべて。読まないときは、場に残っている札だけ
+        const read = new Set(playOrder.slice(0, currentSongIndex).map(String));
+        const others = karafudaOn() ? kimarijiData.map(k => String(k.id)).filter(n => !read.has(n)) : selectedSongs.filter(n => !takenCards[n]);
+        cpuReadyAt = window.KarutaHear.readyAt(playOrder[currentSongIndex], others, kimarijiData, cpuDifficulty);
+        t = Math.max(t, cpuReadyAt);
+      }
       if (cpuPenaltyIndex !== currentSongIndex) return t;
       const statusEl = document.getElementById('status_text'), idx = currentSongIndex;
       if (!localPenaltyTimeout) { statusEl.innerText = "👾 ロボットがお手つき！3秒間待機"; statusEl.style.color = "#f39c12"; }

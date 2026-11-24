@@ -82,6 +82,7 @@ const game = {
   difficulty: 'normal', order: [], index: -1, current: null,
   field: new Set(),                        // 場にある札（これ以外が読まれたら空札）
   score: { me: 0, cpu: 0 }, penaltyUntil: 0, timers: [],
+  cpuReadyAt: 0,                           // 読み上げの音声で、ロボットが手を出してよくなる時刻（ミリ秒）
   cpuPenaltyIndex: -1,                     // ロボットが空札でお手つきしたとき、3秒待つ歌（次の歌）の番号
   takes: {},                               // 取られた札：歌番号 → 'me'（自分）／'cpu'（ロボット）。終了後の「振り返り」で使う
   players: { icons: [], me: '' }           // オンライン：部屋にいる全員の動物バッジと、自分のバッジ
@@ -667,6 +668,8 @@ function newGame() {
   game.phase = 'deal';
   updateScore(); setStatus(TXT.dealing);
   deal(keys);
+  // 始めるまでの間、白い帯に、強さに応じた助言を流す
+  if (window.KarutaFlame) window.KarutaFlame.tip($('kami'), EN ? 'en' : 'ja', game.difficulty);
 }
 const audioUrl = n => `/sound/d_${String(n).padStart(3, '0')}.mp3?v=20260527`;
 
@@ -682,6 +685,7 @@ function onDealt() {
 
 function startCountdown() {
   $('actions').classList.add('hide');
+  $('kami').textContent = '';                                              // 助言を消す
   game.phase = 'countdown';
   let sec = 3;
   const tick = () => {
@@ -726,8 +730,11 @@ function scheduleCpu() {
 }
 /* ロボットが札に手を出す。correct=false はお手つき（読まれた札と違う札を払う）：プレイヤーと同じく3秒間待ってから、
    まだ札が取られていなければ、読まれた札を取りに行く */
-function cpuAct(i, correct) {
+function cpuAct(i, correct, lagged = 0) {
   if (game.phase !== 'reading' || game.index !== i) return;
+  // 音声の読み込みが遅れて、まだ聞き分けられるところまで読まれていなければ待つ（音声が止まっていても、長くて3秒まで）
+  const lag = window.KarutaHear && lagged < 3000 ? window.KarutaHear.audioLag(audio, game.cpuReadyAt) : 0;
+  if (lag) { later(() => cpuAct(i, correct, lagged + lag), lag); return; }
   const free = cards.filter(c => c.state === 'rest');
   const target = correct ? cards.find(c => c.number === game.current) : free.filter(c => c.number !== game.current)[Math.floor(Math.random() * Math.max(1, free.length - 1))];
   if (!target) return;
@@ -739,9 +746,17 @@ function cpuAct(i, correct) {
   rivalStrike(target, correct ? rand(320, 430) : rand(150, 230));
 }
 
-/* ロボットが札に手を出すまでの時間。空札でお手つきした次の歌では、プレイヤーと同じく読みはじめから3秒間は触れない */
+/* ロボットが札に手を出すまでの時間。どの札かを聞き分けられる前には手を出さない（js/karuta-hear.js）。
+   空札でお手つきした次の歌では、プレイヤーと同じく読みはじめから3秒間は触れない */
 function cpuWait(s, i) {
-  const t = s.reactionTimeMin + Math.random() * (s.reactionTimeMax - s.reactionTimeMin);
+  let t = s.reactionTimeMin + Math.random() * (s.reactionTimeMax - s.reactionTimeMin);
+  if (window.KarutaHear) {
+    // このあと読まれうる歌：空札を読むときは、まだ読まれていない百首すべて。読まないときは、場に残っている札だけ
+    const read = new Set(game.order.slice(0, i));
+    const others = KARAFUDA ? kimariji.map(k => String(k.id)).filter(n => !read.has(n)) : [...game.field].filter(n => !game.takes[n]);
+    game.cpuReadyAt = window.KarutaHear.readyAt(game.current, others, kimariji, game.difficulty);
+    t = Math.max(t, game.cpuReadyAt);
+  }
   if (game.cpuPenaltyIndex !== i) return t;
   showCpuStatus(TXT.cpuMissWait, i);
   return Math.max(t, 3000);

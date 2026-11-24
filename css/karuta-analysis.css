@@ -164,8 +164,53 @@
   color: #b82343;
 }
 
+/* 名人：炎の色（下が金色、上へ橙・紅）がゆらめく。選択画面の「名人」ボタン（karuta-taisen.html の <style>）と同じ色。
+   紫のロボットは濃い赤の上では見えにくいので、明るい丸の上に載せる */
 .karuta-mode[data-level=master] {
-  color: #6b2c91;
+  padding-left: 2px;
+  background: linear-gradient(to top, #f5a524 0%, #ee6a1a 22%, #d8341a 50%, #b3161b 75%, #d8341a 100%);
+  background-size: 100% 180%;
+  background-position: 0 100%;
+  border-color: #a3141a;
+  color: #fff;
+  text-shadow: 0 0 2px #7a0c10, 0 1px 2px #7a0c10;
+  animation: karuta-mode-fire 1.4s ease-in-out infinite alternate;
+}
+
+.karuta-mode[data-level=master] .karuta-mode-icon {
+  display: inline-block;
+  width: 1.4em;
+  border-radius: 50%;
+  background: #fffdf8;
+  text-align: center;
+  text-indent: 0;
+  letter-spacing: 0;
+  text-shadow: none;
+}
+
+@keyframes karuta-mode-fire {
+  0% {
+    background-position: 0 100%;
+    box-shadow: 0 0 4px rgba(238, 106, 26, 0.6);
+  }
+  35% {
+    background-position: 0 72%;
+    box-shadow: 0 0 9px rgba(238, 106, 26, 0.9);
+  }
+  60% {
+    background-position: 0 88%;
+    box-shadow: 0 0 5px rgba(238, 106, 26, 0.65);
+  }
+  100% {
+    background-position: 0 60%;
+    box-shadow: 0 0 10px rgba(238, 106, 26, 0.95);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .karuta-mode[data-level=master] {
+    animation: none;
+  }
 }
 
 .ka-title .karuta-mode {
