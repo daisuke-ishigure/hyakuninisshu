@@ -907,7 +907,7 @@
   </header>
 <script src="../js/back-to-top.js?20261122-01"></script>
 <script src="../js/karuta-analysis.js?20261125-06"></script>
-<script src="../js/karuta-flame.js?20261125-06"></script>
+<script src="../js/karuta-flame.js?20261125-10"></script>
 <script src="../js/karuta-hear.js?20261125-03"></script>
 
   <main class="main_about-main">
@@ -1401,7 +1401,7 @@
     let memoryTimerActive = false;
 
     function getIcon(pid, allPids) {
-      if (pid === 'ロボット' || pid.startsWith('CPU-')) return '👾';
+      if (pid === 'Robot' || pid.startsWith('CPU-')) return '👾';
       const icons = ['🐻', '🐼', '🐰', '🐨', '🐱', '🦁', '🐶', '🦊', '🐵'];
       const sortedPids = [...allPids].sort();
       const index = sortedPids.indexOf(pid);
@@ -1605,7 +1605,7 @@
     // Where 3D (WebGL) is unavailable, fall back to the old 2D robot battle
     function startCpuGame2d() {
       isCpuMode = true;
-      cpuPlayers = ['ロボット'];
+      cpuPlayers = ['Robot'];
       startCpuGame();
     }
 
@@ -1676,7 +1676,7 @@
       f.id = 'cpu3d_frame';
       f.title = 'Battle a Robot';
       f.allow = 'autoplay';
-      f.src = `karuta-taisen-3d.html?v=20261125-14&embed=1&lang=en&difficulty=${cpuDifficulty}${karafudaOn() ? '&karafuda=1' : ''}`;
+      f.src = `karuta-taisen-3d.html?v=20261125-19&embed=1&lang=en&difficulty=${cpuDifficulty}${karafudaOn() ? '&karafuda=1' : ''}`;
       Object.assign(f.style, { position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', border: '0', zIndex: '10000', background: '#bab37a url(img/tatami.webp)' });
       document.body.appendChild(f);
       document.documentElement.style.overflow = 'hidden';
@@ -1718,7 +1718,7 @@
       f.id = 'online3d_frame';
       f.title = 'Online battle';
       f.allow = 'autoplay';
-      f.src = 'karuta-taisen-3d.html?v=20261125-14&embed=1&mode=online&lang=en';
+      f.src = 'karuta-taisen-3d.html?v=20261125-19&embed=1&mode=online&lang=en';
       Object.assign(f.style, { position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', border: '0', zIndex: '10000', background: '#bab37a url(img/tatami.webp)', visibility: 'hidden', pointerEvents: 'none' });
       document.body.appendChild(f);
       online3dFrame = f;
@@ -2185,12 +2185,13 @@
             const available = selectedSongs.filter(s => !takenCards[s] && s !== correctCard);
             if (available.length > 0) {
               cpuMistake(cpuId, available[Math.floor(Math.random() * available.length)], "👾 Robot false-started! It waits 3 seconds");
-              // プレイヤーと同じく3秒間待ってから、まだ取られていなければ読まれた札を取りに行く
-              cpuTimers.push(setTimeout(() => {
-                if (isGameOver || takenCards[correctCard] || playOrder[currentSongIndex] !== correctCard) return;
-                cpuTakeCard(cpuId, correctCard);
-              }, 3000));
             }
+            // プレイヤーと同じく3秒間待ってから、まだ取られていなければ読まれた札を取りに行く
+            // （最後の1枚で間違える札がないときも、同じだけ遅れて取りに行く）
+            cpuTimers.push(setTimeout(() => {
+              if (isGameOver || takenCards[correctCard] || playOrder[currentSongIndex] !== correctCard) return;
+              cpuTakeCard(cpuId, correctCard);
+            }, 3000));
           }
         };
         cpuTimers.push(setTimeout(() => act(0), reactionTime));
@@ -2604,10 +2605,11 @@
       overlay.addEventListener('animationend', () => overlay.remove());
     }
 
-    function _showLoseOverlay() {
+    function _showLoseOverlay(near = '') {
       const overlay = document.createElement('div');
       overlay.id = 'oshii-overlay';
       overlay.innerHTML = '<img src="../img/dango_lose.webp" alt="悲しむ猫キャラ"><span>So close!</span>';
+      if (near) window.KarutaFlame.nearMiss(overlay, near);
       document.body.appendChild(overlay);
       overlay.addEventListener('animationend', () => overlay.remove());
     }
@@ -2670,6 +2672,10 @@
       });
     }
 
+    // 1枚差で負けたときの文言（1枚差でなければ空文字。js/karuta-flame.js）。scoreboard は多い順
+    const nearMissText = (scoreboard) => window.KarutaFlame && window.KarutaFlame.nearText
+      ? window.KarutaFlame.nearText(scoreboard.find(s => s.isMe).score, scoreboard[0].score, scoreboard.length === 2, 'en') : '';
+    const nearMissHtml = (text) => text ? `<div style="margin:8px 0 2px;font-size:1.5rem;color:#c0392b;white-space:pre-wrap;">${text}</div>` : '';
     async function endCpuGame() {
       isGameOver = true;
       _hideKamiNoKu();
@@ -2698,6 +2704,7 @@
       document.getElementById('result_text').innerHTML =
         `<div style="margin-bottom:6px;">${cpuModeBadge()}</div>` +
         `<div style="font-size:2.5rem;color:#B82343;margin-bottom:10px;">${placeLabel} Place ${getIcon(myId, allPlayers)}</div>` +
+        nearMissHtml(nearMissText(scoreboard)) +
         `<div style="font-size:1.1rem;line-height:1.6;">${rankListHtml}</div>`;
       document.getElementById('result_container').style.display = 'block';
       setAnalysis(takenCards, playOrder.some(n => !fieldSet.has(String(n))));
@@ -2708,7 +2715,7 @@
         await recordWin('cpu', cpuDifficulty);
         if (scoreboard.find(s => s.isMe).score > 0) { confetti({ particleCount: 200, spread: 80, origin: { y: 0.6 } }); _showWinOverlay(); }
       }
-      if (myRank !== 1) _showLoseOverlay();
+      if (myRank !== 1) _showLoseOverlay(nearMissText(scoreboard));
 
       const statusEl = document.getElementById('status_text');
       statusEl.style.display = 'none';
@@ -2766,7 +2773,8 @@
         const placeLabel = myRank === 1 ? '1st' : myRank === 2 ? '2nd' : myRank === 3 ? '3rd' : `${myRank}th`;
         document.getElementById('result_text').innerHTML =
           `<div style="font-size:2.5rem;color:#B82343;margin-bottom:10px;">${placeLabel} Place ${getIcon(myId, pIds)}</div>` +
-          `<div style="font-size:1.1rem;line-height:1.6;">${rankListHtml}</div>`;
+          nearMissHtml(nearMissText(scoreboard)) +
+        `<div style="font-size:1.1rem;line-height:1.6;">${rankListHtml}</div>`;
         document.getElementById('result_container').style.display = 'block';
         setAnalysis(taken, false);
 
@@ -2782,7 +2790,7 @@
             if (n) { n.textContent = tiedTop ? '* Tied for 1st place, so this win is not recorded in the ranking.' : '* All opponents left, so this win is not recorded in the ranking.'; n.style.display = 'block'; }
           }
           if (scoreboard.find(s => s.isMe).score > 0) { confetti({ particleCount: 200, spread: 80, origin: { y: 0.6 } }); _showWinOverlay(); }
-        } else { _showLoseOverlay(); }
+        } else { _showLoseOverlay(nearMissText(scoreboard)); }
 
         const statusEl = document.getElementById('status_text');
         statusEl.style.display = 'none';

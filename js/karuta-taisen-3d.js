@@ -737,7 +737,8 @@ function cpuAct(i, correct, lagged = 0) {
   if (lag) { later(() => cpuAct(i, correct, lagged + lag), lag); return; }
   const free = cards.filter(c => c.state === 'rest');
   const target = correct ? cards.find(c => c.number === game.current) : free.filter(c => c.number !== game.current)[Math.floor(Math.random() * Math.max(1, free.length - 1))];
-  if (!target) return;
+  // 最後の1枚などで間違える札がないとき：お手つきの待ち時間と同じ3秒だけ遅れて、読まれた札を取りに行く
+  if (!target) { if (!correct) later(() => cpuAct(i, true), 3000); return; }
   if (target.state !== 'rest') { later(() => cpuAct(i, correct), 150); return; }   // 宙にある間は待つ
   if (!correct) {
     sfxMiss(); showCpuStatus(TXT.cpuMissWait, i);
@@ -941,7 +942,18 @@ function showResult() {
   toParent({ type: 'result', win, me: game.score.me, cpu: game.score.cpu, difficulty: game.difficulty });
   // 勝ち：終わりの音＋「めでたし！」＋桜吹雪／負け：雨の音＋「惜しい！」＋雨
   if (win) { audio.src = FINISH_AUDIO; audio.play().catch(() => { }); _sakuraEndGame(); }
-  else { rainAudio.muted = false; rainAudio.currentTime = 0; rainAudio.play().catch(() => { }); _defeatInkEffect(); }
+  else { rainAudio.muted = false; rainAudio.currentTime = 0; rainAudio.play().catch(() => { }); _defeatInkEffect(showNearMiss()); }
+}
+/* 1枚差で負けたとき：点数の行を「4対5　あと1枚！」にして残す（次の試合の updateScore で戻る）。文言を返す（1枚差でなければ空文字） */
+function showNearMiss() {
+  const text = window.KarutaFlame ? window.KarutaFlame.nearText(game.score.me, game.score.cpu, true, EN ? 'en' : 'ja') : '';
+  if (!text) return '';
+  const line = $('scoreline');
+  $('dots_me').textContent = $('dots_cpu').textContent = '';               // 枚数は文言に入っているので ■ は出さない
+  $('score_text').textContent = text;
+  line.dataset.alert = 'near';
+  line.classList.remove('alert'); void line.offsetWidth; line.classList.add('alert');
+  return text;
 }
 
 // ===== 勝ったとき・負けたときの演出（karuta-taisen.html と同じもの。PIXI は html で読み込む） =====
@@ -1015,10 +1027,11 @@ function _sakuraEndGame() {
   burst(SW * 0.5, SH * 0.5, 80);
 }
 
-function _defeatInkEffect() {
+function _defeatInkEffect(near = '') {
   const loseOverlay = document.createElement('div');
   loseOverlay.id = 'oshii-overlay';
   loseOverlay.innerHTML = `<img src="/img/dango_lose.webp" alt="${TXT.loseAlt}"><span>${TXT.lose}</span>`;
+  if (near) window.KarutaFlame.nearMiss(loseOverlay, near);
   document.body.appendChild(loseOverlay);
   loseOverlay.addEventListener('animationend', () => loseOverlay.remove());
 

@@ -1,6 +1,7 @@
-/* ロボット対戦の強さに応じた演出。
+/* 対戦ゲームの演出。
    burst：「名人」（英語版は Master）を選んだときに、ボタンの後ろから炎が一瞬立ちのぼる（karuta-taisen.html・karuta-taisen_en.html。画像は使わず canvas に描く）
    tip ：どの強さでも、ゲームを始める前（暗記中）に、上の句を出す白い帯へ助言を右から左へ流す（上の2ページの平面版と、3D版 karuta-taisen-3d.html）
+   nearText・nearMiss：1枚差で負けたときに「4対5　あと1枚！」と見せる（上の3ページ。オンライン対戦でも使う）
 
    使い方：KarutaFlame.tip(白い帯の要素, 'ja' | 'en', 'easy' | 'normal' | 'hard' | 'master')
      流すのをやめるには、帯の textContent を空にする。動きを減らす設定の端末では流さず、小さい文字で止めて見せる
@@ -141,5 +142,38 @@
       { duration: (band.clientWidth + span.offsetWidth) / TIP_SPEED * 1000, iterations: Infinity });
   }
 
-  window.KarutaFlame = { burst, tip };
+  /* 1枚差で負けたときの文言。1枚差でなければ空文字。
+     me：自分の枚数 ／ top：1位の枚数 ／ duo：2人の対戦か（3人以上では点数を並べず「1位まであと1枚！」） */
+  function nearText(me, top, duo, lang) {
+    if (top - me !== 1) return '';
+    if (lang === 'en') return duo ? `${me}–${top}  One card short!` : 'One card short of 1st!';
+    return duo ? `${me}対${top}　あと1枚！` : '1位まであと1枚！';
+  }
+  /* 負けたときの画面（#oshii-overlay）で、「惜しい！」の代わりにその文言を大きく出す（点数と「あと1枚！」の2行）。
+     overlay は animationend で消えるので、ここでは CSS アニメーションを使わない（子の animationend が伝わって、早く消えてしまう） */
+  function nearMiss(overlay, text) {
+    if (!overlay || !text) return;
+    const el = document.createElement('div');
+    el.className = 'near-miss';
+    el.textContent = text.replace(/\u3000| {2}/, '\n');
+    // 1行が画面の幅に収まる大きさにする（全角は1字ぶん、半角はおよそ0.58字ぶん）
+    const em = Math.max(...el.textContent.split('\n').map(l => [...l].reduce((n, c) => n + (/[\u0000-\u024f\u2013]/.test(c) ? 0.58 : 1.08), 0)));
+    const size = Math.min(80, Math.floor((window.innerWidth - 44) / em));
+    const lose = overlay.querySelector('span');
+    if (lose) lose.remove();
+    const w = '#fff';
+    Object.assign(el.style, {
+      marginTop: '6px', fontFamily: '"Noto Serif JP", serif', fontWeight: '700', color: '#c0392b', lineHeight: '1.2',
+      fontSize: size + 'px', letterSpacing: '0.04em', textAlign: 'center', whiteSpace: 'pre',
+      textShadow: `0 0 4px ${w}, 2px 2px 0 ${w}, -2px 2px 0 ${w}, 2px -2px 0 ${w}, -2px -2px 0 ${w}, 3px 0 0 ${w}, -3px 0 0 ${w}, 0 3px 0 ${w}, 0 -3px 0 ${w}`,
+    });
+    overlay.appendChild(el);
+    overlay.style.zIndex = '10000';          // 雨の暗い幕（9999）より手前に出して、文字をはっきり見せる
+    if (el.animate && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      el.animate([{ transform: 'scale(2.2)', opacity: 0 }, { transform: 'scale(0.92)', opacity: 1, offset: 0.7 }, { transform: 'scale(1)', opacity: 1 }],
+        { duration: 420, delay: 250, easing: 'ease-out', fill: 'backwards' });
+    }
+  }
+
+  window.KarutaFlame = { burst, tip, nearText, nearMiss };
 })();

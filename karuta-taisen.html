@@ -950,7 +950,7 @@
   </header>
 <script src="../js/back-to-top.js?20261122-01"></script>
 <script src="../js/karuta-analysis.js?20261125-06"></script>
-<script src="../js/karuta-flame.js?20261125-06"></script>
+<script src="../js/karuta-flame.js?20261125-10"></script>
 <script src="../js/karuta-hear.js?20261125-03"></script>
 
   <main class="main_about-main">
@@ -1761,7 +1761,7 @@
       f.id = 'cpu3d_frame';
       f.title = 'ロボットと対戦';
       f.allow = 'autoplay';
-      f.src = `karuta-taisen-3d.html?v=20261125-14&embed=1&difficulty=${cpuDifficulty}${karafudaOn() ? '&karafuda=1' : ''}`;
+      f.src = `karuta-taisen-3d.html?v=20261125-19&embed=1&difficulty=${cpuDifficulty}${karafudaOn() ? '&karafuda=1' : ''}`;
       Object.assign(f.style, { position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', border: '0', zIndex: '10000', background: '#bab37a url(img/tatami.webp)' });
       document.body.appendChild(f);
       document.documentElement.style.overflow = 'hidden';
@@ -1803,7 +1803,7 @@
       f.id = 'online3d_frame';
       f.title = 'オンライン対戦';
       f.allow = 'autoplay';
-      f.src = 'karuta-taisen-3d.html?v=20261125-14&embed=1&mode=online';
+      f.src = 'karuta-taisen-3d.html?v=20261125-19&embed=1&mode=online';
       Object.assign(f.style, { position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', border: '0', zIndex: '10000', background: '#bab37a url(img/tatami.webp)', visibility: 'hidden', pointerEvents: 'none' });
       document.body.appendChild(f);
       online3dFrame = f;
@@ -2237,12 +2237,13 @@
             const available = selectedSongs.filter(s => !takenCards[s] && s !== correctCard);
             if (available.length > 0) {
               cpuMistake(cpuId, available[Math.floor(Math.random() * available.length)], "👾 ロボットがお手つき！3秒間待機");
-              // プレイヤーと同じく3秒間待ってから、まだ取られていなければ読まれた札を取りに行く
-              cpuTimers.push(setTimeout(() => {
-                if (isGameOver || takenCards[correctCard] || playOrder[currentSongIndex] !== correctCard) return;
-                cpuTakeCard(cpuId, correctCard);
-              }, 3000));
             }
+            // プレイヤーと同じく3秒間待ってから、まだ取られていなければ読まれた札を取りに行く
+            // （最後の1枚で間違える札がないときも、同じだけ遅れて取りに行く）
+            cpuTimers.push(setTimeout(() => {
+              if (isGameOver || takenCards[correctCard] || playOrder[currentSongIndex] !== correctCard) return;
+              cpuTakeCard(cpuId, correctCard);
+            }, 3000));
           }
         };
         cpuTimers.push(setTimeout(() => act(0), reactionTime));
@@ -2779,10 +2780,11 @@
       burst(SW * 0.5, SH * 0.5, 80);
     }
 
-    function _defeatInkEffect() {
+    function _defeatInkEffect(near = '') {
       const loseOverlay = document.createElement('div');
       loseOverlay.id = 'oshii-overlay';
       loseOverlay.innerHTML = '<img src="../img/dango_lose.webp" alt="悲しむ猫キャラ"><span>惜しい！</span>';
+      if (near) window.KarutaFlame.nearMiss(loseOverlay, near);
       document.body.appendChild(loseOverlay);
       loseOverlay.addEventListener('animationend', () => loseOverlay.remove());
 
@@ -2898,6 +2900,10 @@
       if (el) { el.style.display = 'none'; el.textContent = ''; }
     }
 
+    // 1枚差で負けたときの文言（1枚差でなければ空文字。js/karuta-flame.js）。scoreboard は多い順
+    const nearMissText = (scoreboard) => window.KarutaFlame && window.KarutaFlame.nearText
+      ? window.KarutaFlame.nearText(scoreboard.find(s => s.isMe).score, scoreboard[0].score, scoreboard.length === 2, 'ja') : '';
+    const nearMissHtml = (text) => text ? `<div style="margin:8px 0 2px;font-size:1.5rem;color:#c0392b;white-space:pre-wrap;">${text}</div>` : '';
     async function endCpuGame() {
       isGameOver = true;
       _hideKamiNoKu();
@@ -2925,6 +2931,7 @@
       document.getElementById('result_text').innerHTML =
         `<div style="margin-bottom:6px;">${cpuModeBadge()}</div>` +
         `<div style="font-size:2.5rem;color:#B82343;margin-bottom:10px;">第 ${myRank} 位 ${getIcon(myId, allPlayers)}</div>` +
+        nearMissHtml(nearMissText(scoreboard)) +
         `<div style="font-size:1.1rem;line-height:1.6;">${rankListHtml}</div>`;
       document.getElementById('result_container').style.display = 'block';
       setAnalysis(takenCards, playOrder.some(n => !fieldSet.has(String(n))));
@@ -2935,7 +2942,7 @@
         await recordWin('cpu', cpuDifficulty);
         if (scoreboard.find(s => s.isMe).score > 0) _sakuraEndGame();
       }
-      if (myRank !== 1) _defeatInkEffect();
+      if (myRank !== 1) _defeatInkEffect(nearMissText(scoreboard));
 
       // ユーザーがボタンで戻るまで待機
       const statusEl = document.getElementById('status_text');
@@ -2996,7 +3003,8 @@
 
         document.getElementById('result_text').innerHTML =
           `<div style="font-size:2.5rem;color:#B82343;margin-bottom:10px;">第 ${myRank} 位 ${getIcon(myId, pIds)}</div>` +
-          `<div style="font-size:1.1rem;line-height:1.6;">${rankListHtml}</div>`;
+          nearMissHtml(nearMissText(scoreboard)) +
+        `<div style="font-size:1.1rem;line-height:1.6;">${rankListHtml}</div>`;
         document.getElementById('result_container').style.display = 'block';
         setAnalysis(taken, false);
 
@@ -3009,7 +3017,7 @@
             if (n) { n.textContent = tiedTop ? '※ 同点の1位のため、ランキングには記録されません。' : '※ 対戦相手が全員退出したため、ランキングには記録されません。'; n.style.display = 'block'; }
           }
           if (scoreboard.find(s => s.isMe).score > 0) _sakuraEndGame();
-        } else { _defeatInkEffect(); }
+        } else { _defeatInkEffect(nearMissText(scoreboard)); }
 
         // ユーザーがボタンで戻るまで待機
         const statusEl = document.getElementById('status_text');
