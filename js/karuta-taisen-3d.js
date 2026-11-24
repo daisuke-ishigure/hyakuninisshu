@@ -652,7 +652,7 @@ function updateScore() {
     if (alert) { void line.offsetWidth; line.classList.add('alert'); }
   }
 }
-function clearTimers() { game.timers.forEach(clearTimeout); game.timers = []; }
+function clearTimers() { game.timers.forEach(clearTimeout); game.timers = []; if (stopAfterKami) { stopAfterKami(); stopAfterKami = null; } }
 
 function newGame() {
   clearTimers(); audio.pause(); rainAudio.pause();
@@ -768,13 +768,14 @@ function showCpuStatus(text, i) {
   later(() => { if (game.phase === 'reading' && game.index === i && performance.now() >= game.penaltyUntil) setStatus(TXT.card(i + 1)); }, 3000);
 }
 
-/* 空札を読み終えたら、上の句を出していた白い帯に「今のは空札でした」と出す（次の歌の上の句で上書きされる） */
+/* 空札の上の句を読み終えたら、上の句を出していた白い帯に「今のは空札でした」と出す（次の歌の上の句で上書きされる） */
 function showEmptyBand() {
   const kami = $('kami');
   kami.style.fontSize = '';
   kami.textContent = TXT.empty;
 }
-/* 空札：ロボットは正確さに応じて、ときどき札に触れてお手つきする。読み終わったら「空札でした」と出して次の歌へ */
+/* 空札：ロボットは正確さに応じて、ときどき札に触れてお手つきする。上の句を読み終えたら（下の句は読まずに）「空札でした」と出して次の歌へ */
+let stopAfterKami = null;                                                   // 上の句の終わりを待つのをやめる関数（試合をやり直すとき用）
 function scheduleKarafuda(s, i) {
   const wait = cpuWait(s, i);
   if (Math.random() >= s.accuracy) {
@@ -791,21 +792,17 @@ function scheduleKarafuda(s, i) {
   const finish = () => {
     if (done) return;
     done = true;
-    audio.removeEventListener('ended', onEnded);
     if (game.phase !== 'reading' || game.index !== i) return;
+    audio.pause();
     game.phase = 'between';
     game.penaltyUntil = 0; document.body.classList.remove('penalty');
     setStatus(TXT.card(i + 1));
     showEmptyBand();
     later(() => startReading(i + 1), 1000);                                 // 「今のは空札でした」は約1秒
   };
-  const onEnded = () => later(finish, 800);
-  audio.addEventListener('ended', onEnded);
-  // 音声が鳴らない端末でも止まらないよう、長さから決めた時間でも進める
-  later(() => {
-    const d = audio.duration;
-    later(finish, isFinite(d) && d > 0 ? Math.max(3000, (d - (audio.currentTime || 0)) * 1000 + 2500) : 25000);
-  }, 1500);
+  if (stopAfterKami) stopAfterKami();
+  stopAfterKami = window.KarutaHear ? window.KarutaHear.afterKami(audio, Number(game.current), finish) : null;
+  if (!stopAfterKami) later(finish, 7500);                                  // karuta-hear.js が読み込めなかったとき（上の句のおよその長さ）
 }
 
 /* 相手（ロボット・オンラインの相手）は奥から、近いほうの外側へ払う。force：読まれている札でなくても取り札として扱う */

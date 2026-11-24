@@ -1,4 +1,6 @@
-/* ロボット対戦で、ロボットが「どの札かを聞き分けられる」前に札を取らないようにするための計算。
+/* ロボット対戦の、読み上げの音声の時間に関する計算。
+   ・ロボットが「どの札かを聞き分けられる」前に札を取らないようにする（heardAt・readyAt・audioLag）
+   ・空札のとき、上の句が読み終わったところで切り上げる（afterKami）
    karuta-taisen.html・karuta-taisen_en.html（平面版）と、3D版 karuta-taisen-3d.html が使う。
 
    聞き分けられる時刻は、読まれた歌と、まだ読まれる可能性のあるほかの歌の「出だしが何文字同じか」で決まる。
@@ -55,5 +57,29 @@
     return lag > 30 ? Math.min(lag, 300) : 0;
   }
 
-  window.KarutaHear = { heardAt, readyAt, audioLag };
+  // 上の句が読み終わる時刻（sound/d_001〜100.mp3 の先頭から、ミリ秒。上の句と下の句の間の無音の始まりを実測）
+  const KAMI_END = [
+    6630, 7310, 6850, 7080, 6970, 6800, 6600, 6530, 6950, 6810, 6390, 6700, 6630, 6610, 6110, 6730, 6580, 6640, 6730, 6940,
+    6640, 6400, 6950, 6950, 6310, 6480, 6390, 6620, 6780, 6820, 5870, 6600, 6640, 6560, 6900, 6690, 6960, 6590, 6630, 6870,
+    6630, 6860, 6670, 6540, 6660, 6820, 6750, 6630, 6520, 6270, 6600, 6440, 6410, 6690, 6530, 6430, 6930, 6630, 6610, 6740,
+    6800, 6850, 6530, 5900, 6190, 6650, 6850, 6200, 6370, 6720, 6780, 6930, 6590, 6550, 6850, 6220, 6610, 6500, 6280, 6380,
+    6530, 6720, 6550, 6270, 6620, 5960, 6580, 6770, 6560, 6480, 6400, 6540, 6510, 6580, 6540, 6420, 6410, 6500, 6750, 7110];
+  const TAIL = 150;                          // 余韻が切れないように足す時間
+
+  /* 上の句が読み終わったら cb を1回だけ呼ぶ（空札用）。返り値は、やめるときに呼ぶ関数。
+     音声が鳴らない端末でも止まらないよう、鳴っていなければ同じくらいの時間がたったところで呼ぶ
+     （読み込みが遅れて鳴っている途中なら、さらに8秒までは音声のほうを待つ） */
+  function afterKami(audio, num, cb) {
+    const end = (KAMI_END[num - 1] || 7000) + TAIL, start = performance.now();
+    let timer = setInterval(() => {
+      const t = performance.now() - start, playing = !audio.paused && !audio.ended && !audio.error;
+      if (audio.currentTime * 1000 < end && !(audio.ended && audio.currentTime > 0) && t < end + (playing ? 8000 : 2000)) return;
+      stop();
+      cb();
+    }, 50);
+    function stop() { clearInterval(timer); timer = null; }
+    return stop;
+  }
+
+  window.KarutaHear = { heardAt, readyAt, audioLag, afterKami };
 })();
