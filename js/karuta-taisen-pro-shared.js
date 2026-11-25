@@ -183,10 +183,27 @@
       try { set(localStorage.getItem(KEY) !== 'off', false); } catch (e) { set(true, false); }
     })();
 
-    // スマホではモード1・2・3（12枚・24枚・50枚）を非表示にして6枚のみ選択可能に
+    // スマホ：状態の表示（#status_text）が2行になると盤面が下へずれるので、1行に収まるまで文字を小さくする
+    if (isMobileTouch) {
+      const el = document.getElementById('status_text');
+      const fit = () => {
+        el.style.whiteSpace = 'nowrap';
+        el.style.fontSize = '';
+        const range = document.createRange();
+        range.selectNodeContents(el);
+        const w = range.getBoundingClientRect().width, avail = document.documentElement.clientWidth - 12;
+        const base = parseFloat(getComputedStyle(el).fontSize), h = getComputedStyle(el).lineHeight;
+        el.style.lineHeight = w > avail ? h : '';              // 文字を小さくしても行の高さ（＝盤面の位置）は変えない
+        if (w > avail) el.style.fontSize = Math.max(9, Math.floor(base * avail / w * 10) / 10) + 'px';
+      };
+      new MutationObserver(fit).observe(el, { childList: true, characterData: true, subtree: true });
+      window.addEventListener('resize', fit);
+    }
+
+    // スマホではモード2・3（24枚・50枚）を非表示にして、6枚か12枚を選べるように（はじめは6枚）
     if (isMobileTouch) {
       document.querySelectorAll('#card_mode_buttons .memory-time-btn').forEach(btn => {
-        if (parseInt(btn.dataset.mode) > 0) btn.style.display = 'none';
+        if (parseInt(btn.dataset.mode) > 1) btn.style.display = 'none';
         btn.classList.toggle('selected', parseInt(btn.dataset.mode) === 0);
       });
       cardMode = 0;
@@ -370,6 +387,7 @@
       _prevLeader = null;
       _prevMyLeft = -1;
       _scheduledGameWin = null;
+      _cpuNoTouchUntil = 0;
       cpuTimers.forEach(t => clearTimeout(t));
       cpuTimers = [];
 
@@ -504,35 +522,17 @@
       { col: 1, row: 3 }, { col: 2, row: 3 }, { col: 3, row: 3 }, { col: 13, row: 3 }, { col: 14, row: 3 }
     ]; // 11+9+5=25
 
-    // ── モバイル縦向き モード0（3枚/陣、1段、3列グリッド）──
-    const MY_POSITIONS_MOBILE_0 = [
-      { col: 1, row: 1 }, { col: 2, row: 1 }, { col: 3, row: 1 }
-    ];
-    const ENEMY_POSITIONS_MOBILE_0 = [
-      { col: 1, row: 1 }, { col: 2, row: 1 }, { col: 3, row: 1 }
-    ];
-    // ── モバイル縦向き モード1（6枚/陣、2段、3列グリッド）──
-    const MY_POSITIONS_MOBILE = [
-      { col: 1, row: 1 }, { col: 2, row: 1 }, { col: 3, row: 1 },
-      { col: 1, row: 2 }, { col: 2, row: 2 }, { col: 3, row: 2 }
-    ];
-    const ENEMY_POSITIONS_MOBILE = [
-      { col: 1, row: 1 }, { col: 2, row: 1 }, { col: 3, row: 1 },
-      { col: 1, row: 2 }, { col: 2, row: 2 }, { col: 3, row: 2 }
-    ];
-
     function buildPcBoard(keys, mode) {
       isPcGame = true;
       cardFields = {};
       fieldCardSet = new Set();
 
-      const mobilePortrait = isMobileTouch; // スマホは縦向き2段3列レイアウト
+      const mobilePortrait = isMobileTouch; // スマホのレイアウト（6枚：3列1段、12枚：縦向きは3列2段・横向きは6列1段）
+      _mobileWide = window.matchMedia('(orientation: landscape)').matches;
       let myPos, enemyPos, rowCount, colCount;
       if (mobilePortrait) {
-        myPos = mode === 0 ? MY_POSITIONS_MOBILE_0 : MY_POSITIONS_MOBILE;
-        enemyPos = mode === 0 ? ENEMY_POSITIONS_MOBILE_0 : ENEMY_POSITIONS_MOBILE;
-        colCount = 3;
-        rowCount = mode === 0 ? 1 : 2;
+        ({ cols: colCount, rows: rowCount } = _mobileLayout(Math.floor(keys.length / 2)));
+        myPos = enemyPos = _buildMobilePositions(colCount, rowCount);
       } else {
         myPos = mode === 0 ? MY_POSITIONS_0 : mode === 1 ? MY_POSITIONS_1 : mode === 2 ? MY_POSITIONS_2 : MY_POSITIONS;
         enemyPos = mode === 0 ? ENEMY_POSITIONS_0 : mode === 1 ? ENEMY_POSITIONS_1 : mode === 2 ? ENEMY_POSITIONS_2 : ENEMY_POSITIONS;
@@ -560,15 +560,7 @@
       } else if (isPortrait && !isMobileTouch) {
         cardW = 56;
       } else if (isMobileTouch) {
-        const viewW = container.clientWidth; // 実際の利用可能幅
-        const ptH = window.visualViewport?.height ?? window.innerHeight; // dvh 相当
-        const cardW_byWidth = Math.floor(
-          (viewW - 14 - (colCount - 1) * cardGap) / colCount
-        );
-        const cardW_byHeight = Math.floor(
-          0.7 * (ptH - 160 - (rowCount - 1) * cardGap * 2) / (rowCount * 2)
-        );
-        cardW = Math.max(30, Math.min(cardW_byWidth, cardW_byHeight, 130));
+        cardW = _mobileCardWidth(colCount, rowCount);
       } else {
         cardW = mode === 0 ? 130 : mode === 1 ? 130 : 100;
       }
@@ -604,6 +596,7 @@
       enemyField.style.gap = `${cardGap}px`;
       enemyField.style.gridTemplateColumns = gridCols;
       enemyField.style.gridTemplateRows = gridRows;
+      enemyField.style.setProperty('--mcw', cardW + 'px'); // 札の幅（スマホで文字の大きさを合わせるのに使う）
       if (mobilePortrait) {
         enemyField.style.boxSizing = 'border-box';
         enemyField.style.width = fw + 'px';
@@ -631,6 +624,7 @@
       myField.style.gap = `${cardGap}px`;
       myField.style.gridTemplateColumns = gridCols;
       myField.style.gridTemplateRows = gridRows;
+      myField.style.setProperty('--mcw', cardW + 'px');
       if (mobilePortrait) {
         myField.style.boxSizing = 'border-box';
         myField.style.width = fw + 'px';
@@ -864,6 +858,7 @@
     }
 
     function cpuSendToMyField() {
+      if (!canReceiveOnMobile('mine')) return;
       const available = Object.keys(cardFields).filter(k => cardFields[k] === 'enemy' && !takenCards[k]);
       if (!available.length) return;
       const chosen = available[Math.floor(Math.random() * available.length)];
@@ -935,10 +930,10 @@
 
     // カード枚数 → モバイルグリッドのcols/rows
     function _mobileLayout(count) {
-      // 6枚モードは通常3×1固定。ただし送り札で3枚を超える場合（自陣の札が
-      // 1枚も減っていない状態で送り札を受けた場合など）は既存カードと重ならないよう
-      // 3×2（6枠）へ広げる。6枚モードの1陣あたり最大枚数は6枚なのでこれで足りる。
+      // スマホでは送り札で最初の枚数を超えない（canReceiveOnMobile）ので、6枚モードは3枚、12枚モードは6枚まで。
+      // 枚数が減っても枠はそのままにして、札の大きさが試合中に変わらないようにする。
       if (cardMode === 0 && count <= 3) return { cols: 3, rows: 1 };
+      if (cardMode === 1 && _mobileWide) return { cols: 6, rows: 1 };
       if (count <= 6) return { cols: 3, rows: 2 };
       if (count <= 8) return { cols: 4, rows: 2 };
       return { cols: 3, rows: 3 };
@@ -953,15 +948,26 @@
       return positions;
     }
 
-    // モバイルフィールドのグリッドテンプレートと幅を更新
-    function _applyMobileFieldLayout(field, cols, rows) {
+    let _mobileWide = false; // スマホ：盤を作ったときに横向きだったか
+
+    // スマホの札の幅。両陣・中央の帯が、上の表示と画面下のメニューの間に収まる、いちばん大きい幅
+    function _mobileCardWidth(cols, rows) {
       const cardGap = 3;
       const viewW = document.documentElement.clientWidth;
       const ptH = window.visualViewport?.height ?? window.innerHeight; // dvh 相当
-      // スマホ全幅: viewport幅からfieldのpadding(6×2)+border(1×2)=14pxとgapだけ引く
-      const cardW_byWidth = Math.floor((viewW - 14 - (cols - 1) * cardGap) / cols);
-      const cardW_byHeight = Math.floor(0.7 * (ptH - 160 - (rows - 1) * cardGap * 2) / (rows * 2));
-      const cardW = Math.max(30, Math.min(cardW_byWidth, cardW_byHeight, 130));
+      const nav = document.querySelector('.sp-appbar');
+      // 上の表示 61px ＋ 中央の帯 40px ＋ 陣の余白と枠 14px×2 ＋ 下のすき間 4px ＋ 画面下のメニュー
+      const usedH = 61 + 40 + 28 + 4 + (nav ? nav.offsetHeight : 0);
+      const byWidth = Math.floor((viewW - 14 - (cols - 1) * cardGap) / cols);
+      const byHeight = Math.floor(0.7 * (ptH - usedH - (rows - 1) * cardGap * 2) / (rows * 2));
+      return Math.max(30, Math.min(byWidth, byHeight, 130));
+    }
+
+    // モバイルフィールドのグリッドテンプレートと幅を更新
+    function _applyMobileFieldLayout(field, cols, rows) {
+      const cardGap = 3;
+      const cardW = _mobileCardWidth(cols, rows);
+      field.style.setProperty('--mcw', cardW + 'px');
       const cardH2 = Math.round(cardW / 0.7);
       field.style.gridTemplateColumns = `repeat(${cols}, ${cardW}px)`;
       field.style.gridTemplateRows = `repeat(${rows}, ${cardH2}px)`;
@@ -1228,6 +1234,14 @@
       return Object.keys(cardFields).filter(k => cardFields[k] === field && !takenCards[k]).length < limit;
     }
 
+    const NO_SEND_PENALTY_MS = 3000; // スマホ：お手つきでも上限で送り札がないとき、かわりに札にさわれない時間
+    let _cpuNoTouchUntil = 0;        // それでロボットが札にさわれない間の終わり（performance.now）
+
+    // スマホだけの特別ルール：最初に配置された枚数を超えて札を送れない（お手つきの送り札も）。パソコンでは常に true
+    function canReceiveOnMobile(field) {
+      return !isMobileTouch || canSendTo(field);
+    }
+
     function checkPcWin() {
       if (!isPcGame) return false;
       const myLeft = Object.keys(cardFields).filter(k => cardFields[k] === 'mine' && !takenCards[k]).length;
@@ -1374,7 +1388,7 @@
         if (takenCards[correctCard]) return;
         const willTakeCorrect = Math.random() < settings.accuracy;
         const reactionOffset = settings.reactionOffsetMin + Math.random() * (settings.reactionOffsetMax - settings.reactionOffsetMin);
-        const reactionTime = kimarijiDelay + reactionOffset;
+        const reactionTime = Math.max(kimarijiDelay + reactionOffset, _cpuNoTouchUntil - performance.now());
         const timer = setTimeout(() => {
           if (isGameOver || _scheduledGameWin !== null || takenCards[correctCard]) return;
           // 送り札の選択・配置待ちの間はロボットは動かない。待ちが終わったら resumeAfterWait() が動かし直す。
@@ -1445,7 +1459,8 @@
         } else setTimeout(() => { statusEl.innerText = originalText; statusEl.style.color = originalColor; }, 1000);
         return;
       }
-      statusEl.innerText = LANG.statusRobotMistake;
+      statusEl.innerText = canReceiveOnMobile('enemy') ? LANG.statusRobotMistake : LANG.statusRobotMistakeNoSend;
+      if (!canReceiveOnMobile('enemy')) _cpuNoTouchUntil = performance.now() + NO_SEND_PENALTY_MS; // ロボットも3秒さわれない
       statusEl.style.color = "#f39c12";
       if (isPcGame) {
         // ロボットのお手つき → プレイヤーが自陣の1枚を敵陣に送れる（その後ゲーム続行）
@@ -1456,11 +1471,18 @@
           const myCards = Object.keys(cardFields).filter(k => cardFields[k] === 'mine' && !takenCards[k]);
           // ① pendingSendCard が true: プレイヤーが敵陣から正解を取った直後→上書きしない
           // ② correctCardAtMistake 取得済み: タイマー発火前にプレイヤー/CPUが正解を取った→ペナルティ不要
-          if (myCards.length > 0 && !pendingSendCard && !takenCards[correctCardAtMistake]) {
+          if (myCards.length > 0 && !pendingSendCard && !takenCards[correctCardAtMistake] && canReceiveOnMobile('enemy')) {
             showPcSendCardSelection(() => {
               statusEl.innerText = originalText;
               statusEl.style.color = originalColor;
             });
+          } else if (!canReceiveOnMobile('enemy') && !pendingSendCard && !takenCards[correctCardAtMistake]) {
+            // 送れないとき：理由を読めるだけ出してから戻す（その間に歌が進んでいたら、そのままにする）
+            setTimeout(() => {
+              if (isGameOver || pendingSendCard || playOrder[currentSongIndex] !== correctCardAtMistake || statusEl.innerText !== LANG.statusRobotMistakeNoSend) return;
+              statusEl.innerText = originalText;
+              statusEl.style.color = originalColor;
+            }, NO_SEND_PENALTY_MS - 700);
           } else {
             statusEl.innerText = originalText;
             statusEl.style.color = originalColor;
@@ -1579,10 +1601,11 @@
           if (isPenalty) {
             missAudio.currentTime = 0; missAudio.play().catch(() => { });
             const statusEl = document.getElementById('status_text');
-            statusEl.innerText = LANG.statusPlayerFalseStart;
+            const noSend = !canReceiveOnMobile('mine'); // スマホ：自陣が上限で送り札がないときは、かわりに3秒さわれない
+            statusEl.innerText = noSend ? LANG.statusPlayerFalseStartNoSend : LANG.statusPlayerFalseStart;
             statusEl.style.color = '#e74c3c';
-            // お手つき後 1.5秒間はクリックを受け付けない
-            localPenaltyTimeout = setTimeout(() => { localPenaltyTimeout = null; }, 1500);
+            // お手つき後 1.5秒間（送り札がないときは3秒間）はクリックを受け付けない
+            localPenaltyTimeout = setTimeout(() => { localPenaltyTimeout = null; }, noSend ? NO_SEND_PENALTY_MS : 1500);
             if (window.K3DPro) window.K3DPro.miss(num);
             cpuSendToMyField();
             // mode3 では cpuSendToMyField が pendingCardPlacement を立てることがある。
@@ -1592,7 +1615,7 @@
                 statusEl.style.color = '#B82343';
                 statusEl.innerText = LANG.statusCardDisplay(currentSongIndex, totalCards);
               }
-            }, 1800);
+            }, noSend ? NO_SEND_PENALTY_MS : 1800);
           }
           // 同じ陣地内の別の札クリック → お手つきでない、何もしない
         }

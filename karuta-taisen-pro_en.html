@@ -95,7 +95,7 @@
   <!-- 3D表示の札の文字（karuta-taisen-3d.html と同じ書体） -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap&text=あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわゐゑをんがぎぐげござじずぜぞだぢづでどばびぶべぼ">
   <script src="https://cdn.jsdelivr.net/npm/pixi.js@7.3.2/dist/pixi.min.js"></script>
-  <link rel="stylesheet" href="../css/karuta-taisen-pro-shared.css?20261118-02">
+  <link rel="stylesheet" href="../css/karuta-taisen-pro-shared.css?20261125-02">
   <style>
     #medetashi-overlay span {
       font-family: "Noto Serif JP", serif;
@@ -270,6 +270,7 @@
           <li>For a more immersive feel, the screen shakes when a card is taken or a false start is made. If the shaking makes you feel unwell, set "Screen shake when a card is taken" to "Off."</li>
           <li>When you take a card from your opponent's territory, you can't send a card if their territory already
             has as many cards as it started with. When the robot makes a false start, you can always send a card.</li>
+          <li>Special rule on smartphones: neither territory can receive more cards than it started with (3 in 6-card mode, 6 in 12-card mode). Even after a false start, no card is sent if the receiving territory is already at that number; instead, whoever made the false start can't touch any card for 3 seconds.</li>
           <!-- <li>If the opponent's territory has reached the following number of cards, you cannot send any more cards:
             <ul style="font-size:0.9em; margin-left:0">
               <li>6-card mode (3 vs 3): when the opponent's territory has 3 cards</li>
@@ -280,8 +281,7 @@
           </li> -->
           <li>In real competitive karuta, the two halves of a poem aren't read back to back: the reader recites the lower verse of the previous poem, then moves on to the upper verse of the next one. In this game, each poem's upper and lower verses are read back to back to keep things easy to follow.</li>
           <li>Winning in 24-card mode counts as 2 wins, and winning in 50-card mode counts as 5 wins.</li>
-          <li>On smartphones, only the 6-card mode is available. The 12-card mode needs a PC, and the 24-card and
-            50-card modes need a PC in landscape orientation.</li>
+          <li>On smartphones, the 6-card and 12-card modes are available. The 24-card and 50-card modes need a PC in landscape orientation.</li>
           <li>In 24-card and 50-card modes, poems with no corresponding card on the field (dead cards) are also read.
             Touching any card when a dead card is read is a false start.</li>
         </ul>
@@ -522,6 +522,9 @@
       statusCardReceived: 'Sent card received',
       statusRobotMistake: 'Robot false-started. Send 1 card from your field!',
       statusPlayerFalseStart: '❌ False start! Opponent sends you 1 card.',
+      // Smartphone rule: the receiving territory is already at its starting number of cards
+      statusRobotMistakeNoSend: 'Robot false-started! (field full) It waits 3 seconds',
+      statusPlayerFalseStartNoSend: '❌ False start! (field full) Wait 3 seconds',
       countSuffix: '',
       badgeAlmostWon: 'Almost there!',
       badgeReversal: 'Reversal!',
@@ -563,7 +566,7 @@
       rankingLoadErrorHtml: msg => `<div style="color:#e74c3c;text-align:center;padding:16px;">Failed to load ${msg}<br><small style="color:#aaa;">Check the browser console (F12) for errors</small></div>`,
     };
   </script>
-  <script src="../js/karuta-taisen-pro-shared.js?20261123-03"></script>
+  <script src="../js/karuta-taisen-pro-shared.js?20261125-02"></script>
   <script type="module" src="../js/karuta-taisen-pro-3d.js?20261123-04"></script>
   <script type="module" src="../js/karuta-taisen-pro-module.js?20261022-01"></script>
 </body>

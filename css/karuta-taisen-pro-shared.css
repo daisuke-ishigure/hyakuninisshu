@@ -1298,3 +1298,29 @@ html.kpro-noscroll {
 html.kpro-noscroll #ranking_overlay_inner {
   touch-action: pan-y;
 }
+
+/* ===== スマホ（タッチ端末） ===== */
+/* style.css はスマホ幅の main に justify-items: center を付けている。main はグリッドではない（display: block）ので本来は効かないが、
+   新しいブラウザではブロックの中身にも効き、盤面の枠の幅がつぶれて札が極端に小さくなるため、このゲームでは打ち消す */
+main.main_about-main {
+  justify-items: normal;
+}
+
+/* 札の文字は、札の幅（--mcw。js が入れる）に合わせて小さくする */
+@media (hover: none) and (pointer: coarse) {
+  #pc_enemy_field[data-card-mode="0"] .karuta_card p,
+  #pc_my_field[data-card-mode="0"] .karuta_card p {
+    font-size: min(24px, calc(var(--mcw, 130px) * 0.2)) !important;
+  }
+
+  #pc_enemy_field[data-card-mode="1"] .karuta_card p,
+  #pc_my_field[data-card-mode="1"] .karuta_card p {
+    font-size: min(19px, calc(var(--mcw, 130px) * 0.2)) !important;
+  }
+
+  /* 中央の帯の案内も1行に収める（2行になると盤面が下へずれるため） */
+  #send_card_notice {
+    font-size: min(13px, 3.3vw);
+    white-space: nowrap;
+  }
+}
