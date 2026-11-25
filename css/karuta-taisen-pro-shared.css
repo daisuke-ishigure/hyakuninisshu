@@ -1294,6 +1294,20 @@ html.kpro-noscroll {
   touch-action: none;
 }
 
+/* スマホのゲーム中（配札〜終了まで）は、画面下の共通ナビ（.sp-appbar）を隠し、その分を盤面に使う。
+   style.css がナビのために body の下に取っている余白もなくす */
+html.kpro-noscroll .sp-appbar {
+  display: none !important;
+}
+
+html.kpro-noscroll body:not(.no-sp-appbar) {
+  padding-bottom: 0;
+}
+
+html.kpro-noscroll body:not(.no-sp-appbar) .back-to-top {
+  bottom: 0.85rem;
+}
+
 /* ランキング一覧だけは中を縦にスクロールできるようにする */
 html.kpro-noscroll #ranking_overlay_inner {
   touch-action: pan-y;

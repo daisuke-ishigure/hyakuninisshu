@@ -950,14 +950,14 @@
 
     let _mobileWide = false; // スマホ：盤を作ったときに横向きだったか
 
-    // スマホの札の幅。両陣・中央の帯が、上の表示と画面下のメニューの間に収まる、いちばん大きい幅
+    // スマホの札の幅。両陣・中央の帯が、上の表示の下から画面の下端までに収まる、いちばん大きい幅
     function _mobileCardWidth(cols, rows) {
       const cardGap = 3;
       const viewW = document.documentElement.clientWidth;
       const ptH = window.visualViewport?.height ?? window.innerHeight; // dvh 相当
       const nav = document.querySelector('.sp-appbar');
-      // 上の表示 61px ＋ 中央の帯 40px ＋ 陣の余白と枠 14px×2 ＋ 下のすき間 4px ＋ 画面下のメニュー
-      const usedH = 61 + 40 + 28 + 4 + (nav ? nav.offsetHeight : 0);
+      // 上の表示 61px ＋ 中央の帯 40px ＋ 陣の余白と枠 14px×2 ＋ 下のすき間 8px ＋ 画面下のナビ（ゲーム中は隠すので 0）
+      const usedH = 61 + 40 + 28 + 8 + (nav ? nav.offsetHeight : 0);
       const byWidth = Math.floor((viewW - 14 - (cols - 1) * cardGap) / cols);
       const byHeight = Math.floor(0.7 * (ptH - usedH - (rows - 1) * cardGap * 2) / (rows * 2));
       return Math.max(30, Math.min(byWidth, byHeight, 130));
