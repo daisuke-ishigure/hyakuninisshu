@@ -950,11 +950,35 @@
 
     let _mobileWide = false; // スマホ：盤を作ったときに横向きだったか
 
+    // スマホで、つねに見えている画面の高さ。対戦を始める瞬間はブラウザのバー（戻るボタンなど）が縮んで画面が広いことがあり、
+    // そのときの高さで札の大きさを決めると、あとでバーが出たときに自陣が隠れる。
+    // そこで、バーがすべて出ているときの高さ（100svh）と今の高さの、小さいほうを使う
+    function _mobileViewHeight() {
+      const now = Math.min(window.visualViewport?.height ?? window.innerHeight, window.innerHeight);
+      const probe = document.createElement('div');
+      probe.style.cssText = 'position:fixed;top:0;left:0;width:0;height:100svh;visibility:hidden;pointer-events:none;';
+      document.body.appendChild(probe);
+      const svh = probe.offsetHeight; // 100svh を知らないブラウザでは 0
+      probe.remove();
+      return svh > 0 ? Math.min(svh, now) : now;
+    }
+
+    // スマホ：ゲーム中に画面の高さが変わったら、両陣の札の大きさを合わせ直す（札の並びは変えない）
+    function _relayoutMobile() {
+      if (!isMobileTouch || !isPcGame || isGameOver) return;
+      ['pc_enemy_field', 'pc_my_field'].forEach(id => {
+        const field = document.getElementById(id);
+        const cols = field && field.style.gridTemplateColumns.match(/repeat\((\d+)/);
+        const rows = field && field.style.gridTemplateRows.match(/repeat\((\d+)/);
+        if (cols && rows) _applyMobileFieldLayout(field, parseInt(cols[1]), parseInt(rows[1]));
+      });
+    }
+
     // スマホの札の幅。両陣・中央の帯が、上の表示の下から画面の下端までに収まる、いちばん大きい幅
     function _mobileCardWidth(cols, rows) {
       const cardGap = 3;
       const viewW = document.documentElement.clientWidth;
-      const ptH = window.visualViewport?.height ?? window.innerHeight; // dvh 相当
+      const ptH = _mobileViewHeight();
       const nav = document.querySelector('.sp-appbar');
       // 上の表示 61px ＋ 中央の帯 40px ＋ 陣の余白と枠 14px×2 ＋ 下のすき間 8px ＋ 画面下のナビ（ゲーム中は隠すので 0）
       const usedH = 61 + 40 + 28 + 8 + (nav ? nav.offsetHeight : 0);
@@ -1368,8 +1392,10 @@
     }
 
     window.addEventListener('resize', () => {
-      if (document.getElementById('karuta_container').children.length > 0) fitCardsToScreen();
+      if (document.getElementById('karuta_container').children.length > 0) { fitCardsToScreen(); _relayoutMobile(); }
     });
+    // ブラウザのバーの出し入れは、こちらの resize だけで知らされることがある
+    if (window.visualViewport) window.visualViewport.addEventListener('resize', _relayoutMobile);
 
     function initializeCpuGame() {
       // 暗記フェーズ内で初期化済み。互換性のため残す。
