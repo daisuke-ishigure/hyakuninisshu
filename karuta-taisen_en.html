@@ -1606,13 +1606,28 @@
     };
     // Where 3D (WebGL) is unavailable, fall back to the old 2D robot battle
     function startCpuGame2d() {
+      trackRobotStart('2d', 'no');
       isCpuMode = true;
       cpuPlayers = ['Robot'];
       startCpuGame();
     }
 
     // ===== Robot Battle (opens the 3D game karuta-taisen-3d.html in a full-screen iframe) =====
-    let cpu3dFrame = null;
+    // ===== 遊ばれ方の記録（Google アナリティクスのイベント） =====
+    // game_start：対戦が始まった ／ game_end：勝ち負けが決まった。個人を特定する情報（ニックネーム・合言葉など）は送らない。
+    //   mode：robot（ロボット対戦）／online（誰かと対戦）／passphrase（合言葉の対戦） level：easy／normal／hard／oni（ロボット対戦の強さ）
+    //   view：3d／2d（平面版） karafuda：on／off replay：yes（3D版の「もう一度」）／no result：win／lose／tie score：「自分-相手（1位）」
+    function track(name, params) {
+      try { if (typeof gtag === 'function') gtag('event', name, { ...params, lang: 'en' }); } catch (e) { }
+    }
+    const trackLevel = (d) => ({ easy: 'easy', normal: 'normal', hard: 'hard', master: 'oni' })[d] || String(d || '');
+    const trackRobotStart = (view, replay, level = cpuDifficulty) =>
+      track('game_start', { mode: 'robot', level: trackLevel(level), view, karafuda: karafudaOn() ? 'on' : 'off', replay });
+
+    let cpu3dFrame = null, cpu3dReady = false;
+    // 3D版の部品（three.js など、外部のサイトから読み込む）が読めないと、3D版は何も出せず止まってしまう。
+    // この時間までに3D版から「準備できた」が届かなければ、3D版を閉じて平面版で遊ぶ（学校などで外部のサイトが遮断されているとき・回線が切れたとき）
+    const CPU3D_READY_TIMEOUT = 10000;
     // ===== 空札（ロボット対戦のときだけ。オンライン対戦・友達と遊ぶ では読まない） =====
     // 空札は読む順番（playOrder）にだけ混ぜ、場の札（selectedSongs）には入れない
     const karafudaCount = () => 1 + Math.floor(Math.random() * 2);   // 空札は1〜2首（試合ごとにランダム）
@@ -1678,11 +1693,13 @@
       f.id = 'cpu3d_frame';
       f.title = 'Battle a Robot';
       f.allow = 'autoplay';
-      f.src = `karuta-taisen-3d.html?v=20261127-03&embed=1&lang=en&difficulty=${cpuDifficulty}${karafudaOn() ? '&karafuda=1' : ''}`;
+      f.src = `karuta-taisen-3d.html?v=20261127-05&embed=1&lang=en&difficulty=${cpuDifficulty}${karafudaOn() ? '&karafuda=1' : ''}`;
       Object.assign(f.style, { position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', border: '0', zIndex: '10000', background: '#bab37a url(img/tatami.webp)' });
       document.body.appendChild(f);
       document.documentElement.style.overflow = 'hidden';
       cpu3dFrame = f;
+      cpu3dReady = false;
+      setTimeout(() => { if (cpu3dFrame === f && !cpu3dReady) { closeCpu3d(); startCpuGame2d(); } }, CPU3D_READY_TIMEOUT);
     }
     function closeCpu3d() {
       if (!cpu3dFrame) return;
@@ -1720,7 +1737,7 @@
       f.id = 'online3d_frame';
       f.title = 'Online battle';
       f.allow = 'autoplay';
-      f.src = 'karuta-taisen-3d.html?v=20261127-03&embed=1&mode=online&lang=en';
+      f.src = 'karuta-taisen-3d.html?v=20261127-05&embed=1&mode=online&lang=en';
       Object.assign(f.style, { position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', border: '0', zIndex: '10000', background: '#bab37a url(img/tatami.webp)', visibility: 'hidden', pointerEvents: 'none' });
       document.body.appendChild(f);
       online3dFrame = f;
@@ -1784,7 +1801,10 @@
       if (!msg || msg.source !== 'k3d') return;
       const frame = cpu3dFrame;
       const note = (text) => { if (cpu3dFrame === frame) frame.contentWindow.postMessage({ source: 'k3d-host', type: 'note', text }, location.origin); };
-      if (msg.type === 'close') closeCpu3d();
+      if (msg.type === 'result') track('game_end', { mode: 'robot', level: trackLevel(msg.difficulty), view: '3d', karafuda: karafudaOn() ? 'on' : 'off', result: msg.win ? 'win' : 'lose', score: `${msg.me}-${msg.cpu}` });
+      if (msg.type === 'ready') { cpu3dReady = true; trackRobotStart('3d', 'no'); }
+      else if (msg.type === 'again') trackRobotStart('3d', 'yes', msg.difficulty);
+      else if (msg.type === 'close') closeCpu3d();
       else if (msg.type === 'unsupported') { closeCpu3d(); startCpuGame2d(); }
       else if (msg.type === 'result' && msg.win) {
         // Logged-in players' wins are recorded at every level (number of wins: CPU_WIN_POINTS)
@@ -2331,6 +2351,7 @@
             document.getElementById('operatin_area').style.display = 'none';
             if (lastGameId !== data.config.gameId) {
               lastGameId = data.config.gameId;
+              track('game_start', { mode: currentRoomId.startsWith('manual-') ? 'passphrase' : 'online', players: playerIds.length, view: online3dFrame && !online3dFailed ? '3d' : '2d', midjoin: data.currentSongIndex >= 0 ? 'yes' : 'no' });
               totalCards = data.config.selectedSongs.length;
               setupBoardLocal(data.config.selectedSongs, data.config.order);
               online3dSetup(data, playerIds);
@@ -2726,6 +2747,7 @@
       const res = window.KarutaFlame && window.KarutaFlame.result
         ? window.KarutaFlame.result({ me: myScore, other: cpuScore, level: cpuDifficulty, lang: 'en', ...window.KarutaFlame.flow(playOrder.map(String), takenCards, myId) })
         : { kind: myScore > cpuScore ? 'win' : 'lose', text: '' };
+      track('game_end', { mode: 'robot', level: trackLevel(cpuDifficulty), view: '2d', karafuda: karafudaOn() ? 'on' : 'off', result: myScore > cpuScore ? 'win' : 'lose', score: `${myScore}-${cpuScore}` });
 
       let myRank = 1, rankListHtml = "", currentRank = 1;
       scoreboard.forEach((s, i) => {
@@ -2840,6 +2862,7 @@
         const res = window.KarutaFlame && window.KarutaFlame.onlineResult
           ? window.KarutaFlame.onlineResult({ scoreboard, order: playOrder.map(String), taken, me: myId, lang: 'en' })
           : { kind: myRank === 1 ? 'win' : 'lose', text: '' };
+        track('game_end', { mode: currentRoomId.startsWith('manual-') ? 'passphrase' : 'online', players: scoreboard.length, result: myRank === 1 ? (tiedTop ? 'tie' : 'win') : 'lose', score: `${scoreboard.find(s => s.isMe).score}-${scoreboard[0].score}` });
         if (myRank === 1) {
           if (!tiedTop && !alone) recordWin('online');
           else {

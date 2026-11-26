@@ -1283,7 +1283,7 @@ $('back').addEventListener('click', () => {
   clearTimers(); game.phase = 'title';
   $('actions').classList.add('hide'); $('start').classList.remove('hide');
 });
-$('again').addEventListener('click', () => { initAudio(); newGame(); });
+$('again').addEventListener('click', () => { initAudio(); newGame(); if (EMBED && !ONLINE) toParent({ type: 'again', difficulty: game.difficulty }); });   // 親ページが遊ばれ方を記録する
 // 振り返り：ゲーム中に出てきた札（場の札と、読まれた空札）を、取った札・取られた札・場に残った札・空札に分けて
 // list.html と同じ見た目の表で見せる（js/karuta-analysis.js）。空札の分類は、空札を読む設定のときだけ
 if (window.KarutaAnalysis && window.KarutaAnalysis.decorate) window.KarutaAnalysis.decorate($('analysis'));   // 枠を回る光
@@ -1351,7 +1351,10 @@ async function boot() {
   $('loading').classList.add('hide');
   document.querySelectorAll('[data-difficulty]').forEach(b => { b.disabled = false; });
   if (ONLINE) { initAudio(); updateScore(); toParent({ type: 'ready' }); }   // オンライン：親ページからの setup を待つ
-  else if (EMBED) begin(CPU_SETTINGS[PARAMS.get('difficulty')] ? PARAMS.get('difficulty') : 'normal');
+  else if (EMBED) {
+    toParent({ type: 'ready' });                                            // ロボット対戦：準備ができた（親ページは、届かなければ平面版に切り替える）
+    begin(CPU_SETTINGS[PARAMS.get('difficulty')] ? PARAMS.get('difficulty') : 'normal');
+  }
 }
 boot();
 
