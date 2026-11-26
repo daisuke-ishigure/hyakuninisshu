@@ -85,7 +85,8 @@ const game = {
   cpuReadyAt: 0,                           // 読み上げの音声で、ロボットが手を出してよくなる時刻（ミリ秒）
   cpuPenaltyIndex: -1,                     // ロボットが空札でお手つきしたとき、3秒待つ歌（次の歌）の番号
   takes: {},                               // 取られた札：歌番号 → 'me'（自分）／'cpu'（ロボット）。終了後の「振り返り」で使う
-  players: { icons: [], me: '' }           // オンライン：部屋にいる全員の動物バッジと、自分のバッジ
+  players: { icons: [], me: '' },          // オンライン：部屋にいる全員の動物バッジと、自分のバッジ
+  reach: ''                                // オンライン：次の1枚で1位が決まる人（「🐻 あと1枚で勝ち！」。いなければ空）
 };
 const audio = new Audio(); audio.preload = 'auto';
 const rand = (a, b) => a + Math.random() * (b - a);
@@ -637,7 +638,10 @@ function setStatus(text, warn) {
 function updateScore() {
   if (ONLINE) {                                                             // オンライン：点数のかわりに「参加者：🐻🐼 ・ あなた：🐻」（動物バッジ）を出す
     $('dots_me').textContent = $('dots_cpu').textContent = '';
-    $('score_text').textContent = game.players.icons.length ? TXT.players(game.players.icons.join(''), game.players.me) : '';
+    // 次の1枚で1位が決まる人がいるときは、参加者のかわりにそれを赤く出す（親ページが type: 'reach' で知らせる）
+    $('score_text').textContent = game.reach || (game.players.icons.length ? TXT.players(game.players.icons.join(''), game.players.me) : '');
+    const line = $('scoreline'), alert = game.reach ? 'reach' : '';
+    if (line.dataset.alert !== alert) { line.dataset.alert = alert; line.classList.remove('alert'); if (alert) { void line.offsetWidth; line.classList.add('alert'); } }
     return;
   }
   const { me, cpu } = game.score, R = WIN - 1;
@@ -658,7 +662,7 @@ function newGame() {
   clearTimers(); audio.pause(); rainAudio.pause();
   document.body.classList.remove('penalty');
   $('result').classList.add('hide'); $('actions').classList.add('hide'); $('kami').textContent = '';
-  game.score.me = game.score.cpu = 0; game.takes = {}; game.cpuPenaltyIndex = -1; game.index = -1; game.current = null; game.penaltyUntil = 0;
+  game.score.me = game.score.cpu = 0; game.maxBehind = game.maxAhead = 0; game.takes = {}; game.cpuPenaltyIndex = -1; game.index = -1; game.current = null; game.penaltyUntil = 0;
   const all = shuffle(Object.keys(poems));
   const keys = all.slice(0, TOTAL);
   const empties = KARAFUDA ? all.slice(TOTAL, TOTAL + karafudaCount()) : [];
@@ -816,6 +820,8 @@ function onTake(by) {
   game.takes[game.current] = by;
   clearTimers(); audio.pause();
   game.score[by]++; game.phase = 'between';
+  game.maxBehind = Math.max(game.maxBehind, game.score.cpu - game.score.me);   // 点数の流れ（勝ち負けのメッセージに使う）
+  game.maxAhead = Math.max(game.maxAhead, game.score.me - game.score.cpu);
   game.penaltyUntil = 0; document.body.classList.remove('penalty');
   updateScore();
   if (game.score[by] >= WIN) {                                              // 先に5枚で勝負あり
@@ -940,13 +946,16 @@ function showResult() {
   $('result').classList.remove('hide');
   $('kami').textContent = '';
   toParent({ type: 'result', win, me: game.score.me, cpu: game.score.cpu, difficulty: game.difficulty });
-  // 勝ち：終わりの音＋「めでたし！」＋桜吹雪／負け：雨の音＋「惜しい！」＋雨
-  if (win) { audio.src = FINISH_AUDIO; audio.play().catch(() => { }); _sakuraEndGame(); }
-  else { rainAudio.muted = false; rainAudio.currentTime = 0; rainAudio.play().catch(() => { }); _defeatInkEffect(showNearMiss()); }
+  // 勝ち：終わりの音＋桜吹雪／負け：雨の音＋雨。メッセージは強さと試合の流れで選ぶ（js/karuta-flame.js の result）
+  const res = window.KarutaFlame && window.KarutaFlame.result
+    ? window.KarutaFlame.result({ me: game.score.me, other: game.score.cpu, level: game.difficulty, maxBehind: game.maxBehind, maxAhead: game.maxAhead, lang: EN ? 'en' : 'ja' })
+    : { kind: win ? 'win' : 'lose', text: win ? TXT.win : TXT.lose };
+  if (win) { audio.src = FINISH_AUDIO; audio.play().catch(() => { }); _sakuraEndGame(res.text); }
+  else { rainAudio.muted = false; rainAudio.currentTime = 0; rainAudio.play().catch(() => { }); _defeatInkEffect(showNearMiss(res), res.text); }
 }
 /* 1枚差で負けたとき：点数の行を「4対5　あと1枚！」にして残す（次の試合の updateScore で戻る）。文言を返す（1枚差でなければ空文字） */
-function showNearMiss() {
-  const text = window.KarutaFlame ? window.KarutaFlame.nearText(game.score.me, game.score.cpu, true, EN ? 'en' : 'ja') : '';
+function showNearMiss(res) {
+  const text = res && res.kind === 'near' ? res.text : '';
   if (!text) return '';
   const line = $('scoreline');
   $('dots_me').textContent = $('dots_cpu').textContent = '';               // 枚数は文言に入っているので ■ は出さない
@@ -977,10 +986,11 @@ function _getPixiApp() {
   } catch (e) { _pixiApp = null; }
   return _pixiApp;
 }
-function _sakuraEndGame() {
+function _sakuraEndGame(msg = '') {
   const overlay = document.createElement('div');
   overlay.id = 'medetashi-overlay';
   overlay.innerHTML = `<img src="/img/dango_win.webp" alt="${TXT.winAlt}"><span>${TXT.win}</span>`;
+  if (msg && window.KarutaFlame) window.KarutaFlame.setOverlayText(overlay, msg);
   document.body.appendChild(overlay);
   overlay.addEventListener('animationend', () => overlay.remove());
 
@@ -1027,10 +1037,11 @@ function _sakuraEndGame() {
   burst(SW * 0.5, SH * 0.5, 80);
 }
 
-function _defeatInkEffect(near = '') {
+function _defeatInkEffect(near = '', msg = '') {
   const loseOverlay = document.createElement('div');
   loseOverlay.id = 'oshii-overlay';
   loseOverlay.innerHTML = `<img src="/img/dango_lose.webp" alt="${TXT.loseAlt}"><span>${TXT.lose}</span>`;
+  if (!near && msg && window.KarutaFlame) window.KarutaFlame.setOverlayText(loseOverlay, msg);
   if (near) window.KarutaFlame.nearMiss(loseOverlay, near);
   document.body.appendChild(loseOverlay);
   loseOverlay.addEventListener('animationend', () => loseOverlay.remove());
@@ -1312,7 +1323,8 @@ if (EMBED) {
     if (e.origin !== location.origin || e.source !== window.parent || !e.data || e.data.source !== 'k3d-host') return;
     if (e.data.type === 'note' && game.phase === 'over') setStatus(String(e.data.text || ''));
     if (!ONLINE || !poems) return;
-    if (e.data.type === 'players') { game.players = { icons: (e.data.icons || []).map(String), me: String(e.data.me || '') }; updateScore(); }
+    if (e.data.type === 'reach') { game.reach = String(e.data.text || ''); updateScore(); }
+    else if (e.data.type === 'players') { game.players = { icons: (e.data.icons || []).map(String), me: String(e.data.me || '') }; updateScore(); }
     else if (e.data.type === 'setup') onlineSetup(e.data);
     else if (e.data.type === 'read') onlineRead(e.data);
     else if (e.data.type === 'taken') onlineTaken(e.data);

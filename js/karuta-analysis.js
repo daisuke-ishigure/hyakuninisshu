@@ -13,7 +13,7 @@
 (() => {
   'use strict';
   const FILES = {
-    css: '/css/karuta-analysis.css?20261125-06',
+    css: '/css/karuta-analysis.css?20261126-01',
     // list.html・list_en.html が表の字に使っている書体（style.css の @import と、ページの Google Fonts）。
     // style.css を読み込んでいないページ（3D版）では、同じものをここで読み込む
     fonts: ['https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap',
@@ -28,14 +28,14 @@
       hint: '歌番号を押すと、その歌の解説ページが新しいタブで開きます。和歌を押すと、現代語訳と決まり字が表示されます。',
       count: (n, kind) => `${n}${kind === 'empty' ? '首' : '枚'}`,
       th: ['番号', '和歌・作者'], open: '▼ 現代語訳', shut: '▲ 閉じる',
-      mode: { easy: 'やさしい', normal: 'ふつう', hard: 'つよい', master: '名人' }, modeLabel: 'ロボットの強さ：',
+      mode: { easy: 'やさしい', normal: 'ふつう', hard: 'つよい', master: '鬼' }, modeLabel: 'ロボットの強さ：',
     },
     en: {
       title: 'List of Cards in This Game', close: 'Close', loading: 'Loading…', none: 'None', error: 'Could not load the data. Please check your connection and try again.',
       hint: 'Tap a poem number to open that poem\'s page in a new tab. Tap a poem to show its translation and kimariji.',
       count: (n, kind) => kind === 'empty' ? `${n} poem${n === 1 ? '' : 's'}` : `${n} card${n === 1 ? '' : 's'}`,
       th: ['No.', 'Poem / Poet'], open: '▼ translation', shut: '▲ close',
-      mode: { easy: 'Easy', normal: 'Normal', hard: 'Hard', master: 'Master' }, modeLabel: 'Robot level: ',
+      mode: { easy: 'Easy', normal: 'Normal', hard: 'Hard', master: 'Oni' }, modeLabel: 'Robot level: ',
     },
   };
 

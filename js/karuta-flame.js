@@ -1,7 +1,9 @@
 /* 対戦ゲームの演出。
-   burst：「名人」（英語版は Master）を選んだときに、ボタンの後ろから炎が一瞬立ちのぼる（karuta-taisen.html・karuta-taisen_en.html。画像は使わず canvas に描く）
+   burst：「鬼」（英語版は Oni）を選んだときに、ボタンの後ろから炎が一瞬立ちのぼる（karuta-taisen.html・karuta-taisen_en.html。画像は使わず canvas に描く）
    tip ：どの強さでも、ゲームを始める前（暗記中）に、上の句を出す白い帯へ助言を右から左へ流す（上の2ページの平面版と、3D版 karuta-taisen-3d.html）
    nearText・nearMiss：1枚差で負けたときに「4対5　あと1枚！」と見せる（上の3ページ。オンライン対戦でも使う）
+   result・flow・setOverlayText：ロボット対戦の勝ち負けのメッセージを、強さと試合の流れで選んで出す（上の3ページ）
+   onlineResult・reach・streak・pop：オンライン対戦の結果のメッセージ・「あと1枚で勝ち」・取った人の表示（karuta-taisen.html・karuta-taisen_en.html）
 
    使い方：KarutaFlame.tip(白い帯の要素, 'ja' | 'en', 'easy' | 'normal' | 'hard' | 'master')
      流すのをやめるには、帯の textContent を空にする。動きを減らす設定の端末では流さず、小さい文字で止めて見せる
@@ -108,13 +110,13 @@
       easy: 'まずは気軽に一枚！ 上の句を聞いて、続く下の句の札をゆっくり探しましょう。',
       normal: '下の句が読まれるのを待たずに、上の句で取りにいきましょう！',
       hard: '決まり字を聞いたら、すかさず払う！ 一瞬の迷いが勝負を分けます。',
-      master: '名人に勝つ鍵は、対戦前の暗記にあり！ 札の配置を頭に入れてから挑戦しましょう。',
+      master: '鬼に勝つ鍵は、対戦前の暗記にあり！ 札の配置を頭に入れてから挑戦しましょう。',
     },
     en: {
       easy: 'Start by taking just one card! Listen to the first half of the poem and take your time finding the card with the second half.',
       normal: 'Don\'t wait for the second half of the poem! Go for the card while the first half is being read.',
       hard: 'Swipe the moment you hear the kimariji! A split second of hesitation decides the match.',
-      master: 'The key to beating the Master is memorizing before the match! Learn where every card is, then take on the challenge.',
+      master: 'The key to beating the Oni is memorizing before the match! Learn where every card is, then take on the challenge.',
     },
   };
   const TIP_SPEED = 110;                     // 文字の流れる速さ（1秒あたりの px）
@@ -156,9 +158,14 @@
     const el = document.createElement('div');
     el.className = 'near-miss';
     el.textContent = text.replace(/\u3000| {2}/, '\n');
-    // 1行が画面の幅に収まる大きさにする（全角は1字ぶん、半角はおよそ0.58字ぶん）
-    const em = Math.max(...el.textContent.split('\n').map(l => [...l].reduce((n, c) => n + (/[\u0000-\u024f\u2013]/.test(c) ? 0.58 : 1.08), 0)));
-    const size = Math.min(80, Math.floor((window.innerWidth - 44) / em));
+    // 1行が画面に収まる大きさにする（全角は1字ぶん、半角はおよそ0.58字ぶん）。
+    // スマホ縦向きの日本語は縦書き（ページの CSS）なので、高さと、猫の絵の横に残る幅で決める
+    const lines = el.textContent.split('\n');
+    const em = Math.max(...lines.map(l => [...l].reduce((n, c) => n + (/[\u0000-\u024f\u2013]/.test(c) ? 0.58 : 1.08), 0)));
+    const vertical = document.documentElement.lang !== 'en' && window.matchMedia('(max-width: 767px) and (orientation: portrait)').matches;
+    const size = vertical
+      ? Math.min(80, Math.floor(window.innerHeight * 0.6 / (em * 1.1)), Math.floor((window.innerWidth - Math.min(200, window.innerWidth * 0.4) - 40) / (lines.length * 1.2)))
+      : Math.min(80, Math.floor((window.innerWidth - 44) / em));
     const lose = overlay.querySelector('span');
     if (lose) lose.remove();
     const w = '#fff';
@@ -175,5 +182,187 @@
     }
   }
 
-  window.KarutaFlame = { burst, tip, nearText, nearMiss };
+  /* ===== ロボット対戦の、勝ち負けのメッセージ =====
+     強さ（easy／normal／hard／master＝鬼）と試合の流れで選ぶ。上から順に見て、最初に当てはまったものを出す。
+       勝ち：5対0（perfect）→ 2枚以上リードされてからの逆転（comeback）→ 1枚差で、途中でリードされた（grit）／されなかった（close）→ ふだん（usual）
+       負け：0対5（zero）→ 1枚差（点数を添えて「4対5　あと1枚！」。2枚以上リードしていたら「4対5　逆転された…」）→ 2枚以上リードしていた（overtaken）→ ふだん（usual） */
+  const RESULT = {
+    ja: {
+      win: {
+        perfect: { easy: '全部取れた！', normal: '全部取れた！', hard: 'パーフェクト！', master: '鬼に完勝！' },
+        comeback: { easy: '逆転！', normal: '逆転！', hard: '大逆転！', master: '大逆転！' },
+        grit: { easy: '最後に勝った！', normal: '最後に勝った！', hard: '粘り勝ち！', master: '鬼退治！' },
+        close: { easy: '最後に勝った！', normal: '最後に勝った！', hard: 'ギリギリ勝ち！', master: '鬼退治！' },
+        usual: { easy: 'よくできました！', normal: 'めでたし！', hard: 'すごい！', master: '鬼退治！' },
+      },
+      lose: {
+        zero: { easy: 'もう一回！', normal: 'もう一回！', hard: 'また挑戦！', master: '鬼は強い…' },
+        overtaken: { easy: '惜しい！', normal: '逆転された…', hard: '逆転された…', master: '鬼の逆転…' },
+        close: { easy: 'あと1枚！', normal: 'あと1枚！', hard: 'あと1枚！', master: 'あと1枚！' },
+        usual: { easy: '惜しい！', normal: '惜しい！', hard: '惜しい！', master: '鬼は強い…' },
+      },
+    },
+    en: {
+      win: {
+        perfect: { easy: 'Perfect!', normal: 'Perfect!', hard: 'Perfect!', master: 'Oni crushed!' },
+        comeback: { easy: 'Comeback!', normal: 'Comeback!', hard: 'Big comeback!', master: 'Big comeback!' },
+        grit: { easy: 'Last-card win!', normal: 'Last-card win!', hard: 'Never gave up!', master: 'Oni defeated!' },
+        close: { easy: 'Last-card win!', normal: 'Last-card win!', hard: 'Close win!', master: 'Oni defeated!' },
+        usual: { easy: 'Well done!', normal: 'Win!', hard: 'Amazing!', master: 'Oni defeated!' },
+      },
+      lose: {
+        zero: { easy: 'Try again!', normal: 'Try again!', hard: 'Keep at it!', master: 'The Oni is strong…' },
+        overtaken: { easy: 'So close!', normal: 'Overtaken…', hard: 'Overtaken…', master: 'Oni came back…' },
+        close: { easy: 'One card short!', normal: 'One card short!', hard: 'One card short!', master: 'One card short!' },
+        usual: { easy: 'So close!', normal: 'So close!', hard: 'So close!', master: 'The Oni is strong…' },
+      },
+    },
+  };
+  /* 点数の流れ：読んだ順（order）に、だれが取ったか（taken：歌番号 → 取った人）を見て、いちばん大きくリードされた枚数・した枚数を数える */
+  function flow(order, taken, me) {
+    let a = 0, b = 0, maxBehind = 0, maxAhead = 0;
+    order.forEach(n => {
+      const who = taken[n];
+      if (!who) return;
+      if (who === me) a++; else b++;
+      maxBehind = Math.max(maxBehind, b - a); maxAhead = Math.max(maxAhead, a - b);
+    });
+    return { maxBehind, maxAhead };
+  }
+  /* 結果のメッセージ。kind：'win'／'lose'／'near'（1枚差の負け。text は「4対5　あと1枚！」の形で、点数の行にも使う） */
+  function result({ me, other, level, maxBehind = 0, maxAhead = 0, lang = 'ja' }) {
+    const T = RESULT[lang] || RESULT.ja, lv = T.win.usual[level] ? level : 'normal';
+    if (me > other) {
+      const k = other === 0 ? 'perfect' : maxBehind >= 2 ? 'comeback' : me - other === 1 ? (maxBehind >= 1 ? 'grit' : 'close') : 'usual';
+      return { kind: 'win', text: T.win[k][lv] };
+    }
+    if (me === 0) return { kind: 'lose', text: T.lose.zero[lv] };
+    if (other - me === 1) {
+      const msg = maxAhead >= 2 ? T.lose.overtaken[lv] : T.lose.close[lv];
+      return { kind: 'near', text: lang === 'en' ? `${me}–${other}  ${msg}` : `${me}対${other}\u3000${msg}` };
+    }
+    return { kind: 'lose', text: T.lose[maxAhead >= 2 ? 'overtaken' : 'usual'][lv] };
+  }
+  /* 勝ち・負けの画面の大きな文字（span）を text にして、画面に収まる大きさにする（縦書きのスマホは高さで決める） */
+  function setOverlayText(overlay, text) {
+    const span = overlay && overlay.querySelector('span');
+    if (!span || !text) return;
+    span.textContent = text;
+    const em = [...text].reduce((n, c) => n + (/[\u0000-\u024f\u2013]/.test(c) ? 0.58 : 1.12), 0) * 1.12;   // 字の間（letter-spacing）のぶんも見込む
+    const vertical = document.documentElement.lang !== 'en' && window.matchMedia('(max-width: 767px) and (orientation: portrait)').matches;
+    const base = Math.min(80, Math.max(60, window.innerWidth * 0.15));
+    const fit = vertical ? Math.floor(window.innerHeight * 0.62 / em) : Math.floor((window.innerWidth - 32) / em);
+    if (fit < base) span.style.fontSize = fit + 'px';
+    span.style.whiteSpace = 'nowrap';
+    if (overlay.id === 'oshii-overlay') overlay.style.zIndex = '10000';   // 負け：雨の暗い幕（9999）より手前に出して、文字をはっきり見せる
+  }
+
+  /* ===== オンライン対戦 =====
+     onlineResult：結果のメッセージ（2人対戦と3〜4人で言葉を変える）。上から順に、最初に当てはまったものを出す。
+       1位：同点（tie）→ ほかの人が1枚も取れない（perfect）→ 2枚以上リードされてからの逆転（comeback）→ 2位と1枚差（close）→ ふだん（usual）
+       負け：0枚（zero）→ 1位と1枚差（nearText：「4対5　あと1枚！」／「1位まであと1枚！」）→ ふだん（usual）
+     reach：次の1枚で1位が決まる人（ほかの人が残りを全部取っても追いつけない）。オンラインは9枚すべてを取り合う
+     streak：いちばん新しく取った人が、続けて何枚取っているか
+     pop：画面の上のほうに大きく一瞬出す（「🐻 が取った！」など） */
+  const ONLINE = {
+    ja: {
+      tie: '同点1位！', perfect: '完勝！', comeback: ['逆転勝ち！', '逆転で1位！'], close: ['ギリギリ勝ち！', 'ギリギリ1位！'], usual: ['勝った！', '1位！'],
+      zero: '次こそ！', lose: '惜しい！',
+      took: icon => `${icon} が取った！`, tookMe: '取った！', streak: (icon, n) => `${icon} ${n}連取！`, streakMe: n => `🔥 ${n}連取！`,
+      reach: who => `${who} あと1枚で勝ち！`, you: 'あなた',
+    },
+    en: {
+      tie: 'Tied for 1st!', perfect: 'Flawless!', comeback: ['Comeback win!', 'Comeback to 1st!'], close: ['Close win!', 'Close 1st!'], usual: ['You win!', '1st place!'],
+      zero: 'Next time!', lose: 'So close!',
+      took: icon => `${icon} took it!`, tookMe: 'Got it!', streak: (icon, n) => `${icon} ${n} in a row!`, streakMe: n => `🔥 ${n} in a row!`,
+      reach: who => `${who} one card from winning!`, you: 'You',
+    },
+  };
+  // 読んだ順（order）に、だれが取ったか（taken：歌番号 → 取った人）を見た点数の流れ。me が1位の人にいちばん大きく離された枚数
+  function onlineFlow(order, taken, me) {
+    const score = {};
+    let maxBehind = 0;
+    order.forEach(n => {
+      const who = taken[n];
+      if (!who) return;
+      score[who] = (score[who] || 0) + 1;
+      const best = Math.max(0, ...Object.keys(score).filter(id => id !== me).map(id => score[id]));
+      maxBehind = Math.max(maxBehind, best - (score[me] || 0));
+    });
+    return maxBehind;
+  }
+  /* scoreboard：[{ score, isMe }]（多い順） ／ order・taken・me：点数の流れを数えるため */
+  function onlineResult({ scoreboard, order, taken, me, lang = 'ja' }) {
+    const T = ONLINE[lang] || ONLINE.ja, i = scoreboard.length === 2 ? 0 : 1;
+    const my = scoreboard.find(s => s.isMe).score, top = scoreboard[0].score;
+    const others = scoreboard.filter(s => !s.isMe).map(s => s.score), second = Math.max(0, ...others);
+    if (my === top) {
+      if (others.includes(my)) return { kind: 'win', text: T.tie };
+      if (second === 0) return { kind: 'win', text: T.perfect };
+      if (onlineFlow(order, taken, me) >= 2) return { kind: 'win', text: T.comeback[i] };
+      return { kind: 'win', text: my - second === 1 ? T.close[i] : T.usual[i] };
+    }
+    if (my === 0) return { kind: 'lose', text: T.zero };
+    const near = nearText(my, top, scoreboard.length === 2, lang);
+    return near ? { kind: 'near', text: near } : { kind: 'lose', text: T.lose };
+  }
+  /* 次の1枚で1位が決まる人の一覧。ids：参加者（途中で抜けた人も含める） ／ total：札の枚数 */
+  function reach(taken, ids, total) {
+    const score = {};
+    ids.forEach(id => { score[id] = 0; });
+    Object.values(taken).forEach(id => { score[id] = (score[id] || 0) + 1; });
+    const left = total - Object.keys(taken).length;
+    if (left <= 0) return [];
+    return Object.keys(score).filter(id => {
+      const best = Math.max(0, ...Object.keys(score).filter(o => o !== id).map(o => score[o]));
+      // 次の1枚を取ると、ほかの人が残り（left - 1 枚）を全部取っても上回る。ただし、もう決まっている人は出さない
+      return score[id] + 1 > best + left - 1 && score[id] <= best + left;
+    });
+  }
+  function reachText(ids, me, iconOf, lang = 'ja') {
+    if (!ids.length) return '';
+    const T = ONLINE[lang] || ONLINE.ja;
+    return T.reach(ids.map(id => id === me ? T.you : iconOf(id)).join(ids.length > 2 ? '' : (lang === 'en' ? ' & ' : '・')));
+  }
+  // いちばん新しく取った人と、その人が続けて取った枚数（読んだ順に数える）
+  function streak(order, taken) {
+    const seq = order.filter(n => taken[n]).map(n => taken[n]);
+    if (!seq.length) return { who: null, n: 0 };
+    const who = seq[seq.length - 1];
+    let n = 0;
+    for (let k = seq.length - 1; k >= 0 && seq[k] === who; k--) n++;
+    return { who, n };
+  }
+  function tookText(isMe, icon, n, lang = 'ja') {
+    const T = ONLINE[lang] || ONLINE.ja;
+    if (n >= 2) return isMe ? T.streakMe(n) : T.streak(icon, n);
+    return isMe ? T.tookMe : T.took(icon);
+  }
+  let popEl = null;
+  function pop(text, color = '#ff6b35') {
+    if (!text) return;
+    if (popEl) popEl.remove();
+    const el = popEl = document.createElement('div');
+    el.textContent = text;
+    el.setAttribute('aria-live', 'polite');
+    const w = '#fff';
+    Object.assign(el.style, {
+      position: 'fixed', top: '24%', left: '50%', transform: 'translate(-50%, -50%)', zIndex: '10002', pointerEvents: 'none',
+      fontFamily: '"Noto Serif JP", serif', fontWeight: '900', fontSize: 'clamp(28px, 8vw, 48px)', color, whiteSpace: 'nowrap', letterSpacing: '0.05em',
+      textShadow: `0 0 4px ${w}, 0 0 8px ${w}, 2px 2px 0 ${w}, -2px 2px 0 ${w}, 2px -2px 0 ${w}, -2px -2px 0 ${w}`,
+    });
+    document.body.appendChild(el);
+    const done = () => { if (el.parentNode) el.remove(); if (popEl === el) popEl = null; };
+    if (el.animate && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      el.animate([
+        { opacity: 0, transform: 'translate(-50%, -50%) scale(0.4)' },
+        { opacity: 1, transform: 'translate(-50%, -50%) scale(1.15)', offset: 0.15 },
+        { opacity: 1, transform: 'translate(-50%, -50%) scale(1)', offset: 0.3 },
+        { opacity: 1, transform: 'translate(-50%, -60%) scale(1)', offset: 0.75 },
+        { opacity: 0, transform: 'translate(-50%, -75%) scale(1)' },
+      ], { duration: 1300, easing: 'ease-out' }).onfinish = done;
+    } else setTimeout(done, 1300);
+  }
+
+  window.KarutaFlame = { burst, tip, nearText, nearMiss, flow, result, setOverlayText, onlineResult, reach, reachText, streak, tookText, pop };
 })();

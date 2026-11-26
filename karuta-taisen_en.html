@@ -452,7 +452,7 @@
     }
 
     .cpu-difficulty-selector {
-      position: relative;   /* 名人の炎（js/karuta-flame.js）を重ねる基準 */
+      position: relative;   /* 鬼の炎（js/karuta-flame.js）を重ねる基準 */
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -490,7 +490,7 @@
       border-color: #27ae60;
     }
 
-    /* 名人を選んでいる間：炎の色（下が金色、上へ橙・紅）がゆらめく */
+    /* 鬼を選んでいる間：炎の色（下が金色、上へ橙・紅）がゆらめく */
     .difficulty-btn.selected[data-level="master"] {
       background: linear-gradient(to top, #f5a524 0%, #ee6a1a 22%, #d8341a 50%, #b3161b 75%, #d8341a 100%);
       background-size: 100% 180%;
@@ -906,8 +906,8 @@
     </div>
   </header>
 <script src="../js/back-to-top.js?20261122-01"></script>
-<script src="../js/karuta-analysis.js?20261125-06"></script>
-<script src="../js/karuta-flame.js?20261125-10"></script>
+<script src="../js/karuta-analysis.js?20261126-01"></script>
+<script src="../js/karuta-flame.js?20261126-05"></script>
 <script src="../js/karuta-hear.js?20261125-03"></script>
 
   <main class="main_about-main">
@@ -948,7 +948,7 @@
             <button class="difficulty-btn" data-level="easy">Easy</button>
             <button class="difficulty-btn selected" data-level="normal">Normal</button>
             <button class="difficulty-btn" data-level="hard">Hard</button>
-            <button class="difficulty-btn" data-level="master">Master</button>
+            <button class="difficulty-btn" data-level="master">Oni</button>
           </div>
           <!-- Wins earned at the selected robot level (switched with CPU_POINTS_TEXT) -->
           <p id="cpu_points_notice">※ Ranking: a victory counts as 1 win</p>
@@ -1007,7 +1007,7 @@
             to have your wins reflected in real time on Wins Leaderboard. The ranking resets daily at
             midnight (Japan Time).
           </li>
-          <li>In Robot Battle, the number of wins recorded for a victory depends on the level: Easy and Normal count as 1 win, Hard as 2, and Master as 5. Easy victories are recorded up to 3 times per day.</li>
+          <li>In Robot Battle, the number of wins recorded for a victory depends on the level: Easy and Normal count as 1 win, Hard as 2, and Oni as 5. Easy victories are recorded up to 3 times per day.</li>
           <li>When you sign in, we receive your Google account's display name, email address, and profile photo URL.
             This information is stored by Firebase (Google) Authentication to verify your sign-in, but it is not shown on the leaderboard or saved in the ranking data (the leaderboard shows the nickname you set). It will not be shared with third parties except as required by law. Please see the <a href="policy_en.html">Privacy Policy</a> for details.</li>
           <li>Once you sign in, a "Delete Data" button appears next to "Log Out." It deletes all your ranking data
@@ -1159,9 +1159,11 @@
     <div id="operatin_area">
       <p id="room_status">Connecting...</p>
       <button id="ready_button" style="padding: 15px 30px; font-size: 16px; cursor:pointer;">Press when ready</button>
+      <!-- 合言葉の部屋：友達に送るリンク（開くと合言葉が入った状態になる） -->
+      <div><button id="invite_button" type="button" style="display:none; margin-top:10px; padding:8px 18px; font-size:14px; cursor:pointer; border-radius:999px; border:1px solid #B82343; background:#fff; color:#B82343;">🔗 Invite friends</button></div>
     </div>
 
-    <!-- ロボット対戦（平面版）の強さ：やさしい・ふつう・つよい・名人 -->
+    <!-- ロボット対戦（平面版）の強さ：やさしい・ふつう・つよい・鬼 -->
     <div id="mode_label" style="display:none; text-align:center; margin:4px 0 0;"></div>
     <div id="status_text"></div>
     <div style="text-align:center;"><button id="audio_resume_btn">Tap here if no sound is playing</button></div>
@@ -1424,7 +1426,7 @@
         this.classList.add('selected');
         cpuDifficulty = this.dataset.level;
         document.getElementById('cpu_points_notice').textContent = CPU_POINTS_TEXT[cpuDifficulty];
-        if (cpuDifficulty === 'master' && window.KarutaFlame) window.KarutaFlame.burst(this);   // 名人：炎が一瞬立ちのぼる
+        if (cpuDifficulty === 'master' && window.KarutaFlame) window.KarutaFlame.burst(this);   // 鬼：炎が一瞬立ちのぼる
       });
     });
 
@@ -1676,7 +1678,7 @@
       f.id = 'cpu3d_frame';
       f.title = 'Battle a Robot';
       f.allow = 'autoplay';
-      f.src = `karuta-taisen-3d.html?v=20261125-19&embed=1&lang=en&difficulty=${cpuDifficulty}${karafudaOn() ? '&karafuda=1' : ''}`;
+      f.src = `karuta-taisen-3d.html?v=20261126-05&embed=1&lang=en&difficulty=${cpuDifficulty}${karafudaOn() ? '&karafuda=1' : ''}`;
       Object.assign(f.style, { position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', border: '0', zIndex: '10000', background: '#bab37a url(img/tatami.webp)' });
       document.body.appendChild(f);
       document.documentElement.style.overflow = 'hidden';
@@ -1718,7 +1720,7 @@
       f.id = 'online3d_frame';
       f.title = 'Online battle';
       f.allow = 'autoplay';
-      f.src = 'karuta-taisen-3d.html?v=20261125-19&embed=1&mode=online&lang=en';
+      f.src = 'karuta-taisen-3d.html?v=20261126-05&embed=1&mode=online&lang=en';
       Object.assign(f.style, { position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', border: '0', zIndex: '10000', background: '#bab37a url(img/tatami.webp)', visibility: 'hidden', pointerEvents: 'none' });
       document.body.appendChild(f);
       online3dFrame = f;
@@ -1860,6 +1862,32 @@
       startSequence();
     };
 
+    // ===== 合言葉対戦：友達を招待 =====
+    // 合言葉の部屋に入ったら「友達を招待」を出す。リンク（?room=合言葉）を共有（スマホは共有メニュー、パソコンはコピー）する
+    let manualRoomName = '';
+    document.getElementById('invite_button').onclick = async function () {
+      const url = location.origin + location.pathname + '?room=' + encodeURIComponent(manualRoomName);
+      const text = `Let's play Hyakunin Isshu karuta! Passphrase: ${manualRoomName}`;
+      try {
+        if (navigator.share) { await navigator.share({ title: document.title, text, url }); return; }
+        await navigator.clipboard.writeText(text + '\n' + url);
+        const label = this.textContent; this.textContent = '✅ Link copied!';
+        setTimeout(() => { this.textContent = label; }, 2000);
+      } catch (e) { if (e && e.name !== 'AbortError') prompt('Send this link', url); }
+    };
+    // 招待のリンクから開いたとき：合言葉を入れて、その欄を見せる（音を鳴らすため、入るのは「ゲームへ」を押してから）
+    (() => {
+      const room = new URLSearchParams(location.search).get('room');
+      if (!room) return;
+      const input = document.getElementById('room_id_input');
+      input.value = room.slice(0, 50);
+      const note = document.createElement('p');
+      note.textContent = 'The passphrase from your invitation is filled in. Press "Join Game".';
+      note.style.cssText = 'margin:6px 0 0; font-size:13px; font-weight:bold; color:#B82343;';
+      input.parentNode.appendChild(note);
+      setTimeout(() => input.scrollIntoView({ block: 'center' }), 300);
+    })();
+
     // ===== Passphrase Battle button =====
     document.getElementById('manual_join_button').onclick = async () => {
       const val = document.getElementById('room_id_input').value.trim();
@@ -1869,6 +1897,7 @@
       isCpuMode = false;
       // Characters Firebase paths cannot contain (. # $ [ ] /) become %2E etc. (% too, so two passphrases never share a room).
       // Everything else is kept as is, so the room matches the Japanese page and existing passphrases
+      manualRoomName = val;
       const rid = "manual-" + val.replace(/[.#$\[\]\/%]/g, c => '%' + c.charCodeAt(0).toString(16).toUpperCase().padStart(2, '0'));
       const result = await runTransaction(ref(db, `rooms_multi/${rid}/players`), (cp) => {
         if (cp === null) return { [myId]: { ready: false, lastActive: Date.now() } };
@@ -1882,6 +1911,7 @@
 
     // ===== Transition to game screen (online) =====
     function startSequence() {
+      document.getElementById('invite_button').style.display = currentRoomId && currentRoomId.startsWith('manual-') ? '' : 'none';
       document.querySelector('.section').style.display = 'none';
       document.getElementById('room_setup').style.display = 'none';
       document.getElementById('login_area').style.display = 'none';
@@ -2316,7 +2346,7 @@
             if (!localPenaltyTimeout) {
               document.getElementById('karuta_container').style.opacity = "1";
               document.getElementById('karuta_container').style.pointerEvents = "auto";
-              statusEl.innerText = data.currentSongIndex === -1 ? "Starting soon..." : `Card ${data.currentSongIndex + 1} / ${playOrder.length}`;
+              statusEl.innerText = data.currentSongIndex === -1 ? "Starting soon..." : `Card ${data.currentSongIndex + 1} / ${playOrder.length}` + (reachLabel ? '　' + reachLabel : '');
             }
             if (data.currentSongIndex === -1 && isHost) {
               statusEl.innerText = '⏳ Loading audio...';
@@ -2597,18 +2627,20 @@
       });
     }
 
-    function _showWinOverlay() {
+    function _showWinOverlay(msg = '') {
       const overlay = document.createElement('div');
       overlay.id = 'win-overlay';
-      overlay.innerHTML = '<img src="../img/dango_win.webp" alt="喜ぶ猫キャラ"><span>Win!</span>';
+      overlay.innerHTML = '<img src="../img/dango_win.webp" alt="Happy cat character"><span>Win!</span>';
+      if (msg && window.KarutaFlame) window.KarutaFlame.setOverlayText(overlay, msg);
       document.body.appendChild(overlay);
       overlay.addEventListener('animationend', () => overlay.remove());
     }
 
-    function _showLoseOverlay(near = '') {
+    function _showLoseOverlay(near = '', msg = '') {
       const overlay = document.createElement('div');
       overlay.id = 'oshii-overlay';
-      overlay.innerHTML = '<img src="../img/dango_lose.webp" alt="悲しむ猫キャラ"><span>So close!</span>';
+      overlay.innerHTML = '<img src="../img/dango_lose.webp" alt="Sad cat character"><span>So close!</span>';
+      if (!near && msg && window.KarutaFlame) window.KarutaFlame.setOverlayText(overlay, msg);
       if (near) window.KarutaFlame.nearMiss(overlay, near);
       document.body.appendChild(overlay);
       overlay.addEventListener('animationend', () => overlay.remove());
@@ -2689,6 +2721,11 @@
       const scoreboard = allPlayers.map(pid => ({
         id: pid, score: Object.values(takenCards).filter(id => id === pid).length, isMe: pid === myId
       })).sort((a, b) => b.score - a.score);
+      // 勝ち負けのメッセージ：強さと試合の流れ（読んだ順にだれが取ったか）で選ぶ（js/karuta-flame.js）
+      const myScore = scoreboard.find(s => s.isMe).score, cpuScore = scoreboard.find(s => !s.isMe).score;
+      const res = window.KarutaFlame && window.KarutaFlame.result
+        ? window.KarutaFlame.result({ me: myScore, other: cpuScore, level: cpuDifficulty, lang: 'en', ...window.KarutaFlame.flow(playOrder.map(String), takenCards, myId) })
+        : { kind: myScore > cpuScore ? 'win' : 'lose', text: '' };
 
       let myRank = 1, rankListHtml = "", currentRank = 1;
       scoreboard.forEach((s, i) => {
@@ -2704,7 +2741,7 @@
       document.getElementById('result_text').innerHTML =
         `<div style="margin-bottom:6px;">${cpuModeBadge()}</div>` +
         `<div style="font-size:2.5rem;color:#B82343;margin-bottom:10px;">${placeLabel} Place ${getIcon(myId, allPlayers)}</div>` +
-        nearMissHtml(nearMissText(scoreboard)) +
+        nearMissHtml(res.kind === 'near' ? res.text : '') +
         `<div style="font-size:1.1rem;line-height:1.6;">${rankListHtml}</div>`;
       document.getElementById('result_container').style.display = 'block';
       setAnalysis(takenCards, playOrder.some(n => !fieldSet.has(String(n))));
@@ -2713,16 +2750,19 @@
 
       if (myRank === 1) {
         await recordWin('cpu', cpuDifficulty);
-        if (scoreboard.find(s => s.isMe).score > 0) { confetti({ particleCount: 200, spread: 80, origin: { y: 0.6 } }); _showWinOverlay(); }
+        if (scoreboard.find(s => s.isMe).score > 0) { confetti({ particleCount: 200, spread: 80, origin: { y: 0.6 } }); _showWinOverlay(res.text); }
       }
-      if (myRank !== 1) _showLoseOverlay(nearMissText(scoreboard));
+      if (myRank !== 1) _showLoseOverlay(res.kind === 'near' ? res.text : '', res.text);
 
       const statusEl = document.getElementById('status_text');
       statusEl.style.display = 'none';
     }
 
+    // オンライン：次の1枚で1位が決まる人（状態の表示・3D版の点数の行に出す）
+    let reachLabel = '';
     function updateBoardState(taken, pIds) {
       onlineTaken = taken;
+      let newTakes = Object.keys(taken).length;   // このたび新しく取られた札の数（途中参加で一度に届いたときは、取った人を出さない）
       Object.keys(taken).forEach(num => {
         const el = document.querySelector(`.karuta_card[data-number="${num}"]`);
         if (!el) return;
@@ -2732,6 +2772,7 @@
           if (takerId !== myId) { if (!online3dActive()) { robotAudio.currentTime = 0; robotAudio.play().catch(() => { }); } }
           post3d({ type: 'taken', num: String(num), by: takerId === myId ? 'me' : 'other', icon: getIcon(takerId, pIds), ...online3dScore(taken, pIds) });
         }
+        else newTakes--;
         el.classList.add('taken', takerId === myId ? 'taken-by-me' : 'taken-by-others');
         if (!el.querySelector('.taker-icon')) {
           const badge = document.createElement('div');
@@ -2741,6 +2782,18 @@
           el.appendChild(badge);
         }
       });
+
+      if (window.KarutaFlame && window.KarutaFlame.streak) {
+        const KF = window.KarutaFlame, ids = [...new Set([...pIds, ...Object.values(taken)])];
+        // 取った人を大きく一瞬出す（続けて取ったら「3連取！」）
+        if (newTakes === 1 && !isGameOver) {
+          const st = KF.streak(playOrder.map(String), taken);
+          if (st.who) KF.pop(KF.tookText(st.who === myId, getIcon(st.who, pIds), st.n, 'en'), st.who === myId ? '#ff6b35' : '#2c5f8a');
+        }
+        // 次の1枚で1位が決まる人
+        reachLabel = KF.reachText(KF.reach(taken, ids, totalCards), myId, id => getIcon(id, pIds), 'en');
+        post3d({ type: 'reach', text: reachLabel });
+      }
 
       if (Object.keys(taken).length >= totalCards && !isGameOver) {
         isGameOver = true;
@@ -2773,7 +2826,7 @@
         const placeLabel = myRank === 1 ? '1st' : myRank === 2 ? '2nd' : myRank === 3 ? '3rd' : `${myRank}th`;
         document.getElementById('result_text').innerHTML =
           `<div style="font-size:2.5rem;color:#B82343;margin-bottom:10px;">${placeLabel} Place ${getIcon(myId, pIds)}</div>` +
-          nearMissHtml(nearMissText(scoreboard)) +
+          nearMissHtml(res.kind === 'near' ? res.text : '') +
         `<div style="font-size:1.1rem;line-height:1.6;">${rankListHtml}</div>`;
         document.getElementById('result_container').style.display = 'block';
         setAnalysis(taken, false);
@@ -2783,14 +2836,18 @@
         // Record in the ranking only for a sole 1st place with an opponent still in the room at the end
         const tiedTop = scoreboard.filter(s => s.score === scoreboard[0].score).length > 1;
         const alone = pIds.length < 2;
+        // 結果のメッセージ（2人対戦と3〜4人で言葉を変える。js/karuta-flame.js）
+        const res = window.KarutaFlame && window.KarutaFlame.onlineResult
+          ? window.KarutaFlame.onlineResult({ scoreboard, order: playOrder.map(String), taken, me: myId, lang: 'en' })
+          : { kind: myRank === 1 ? 'win' : 'lose', text: '' };
         if (myRank === 1) {
           if (!tiedTop && !alone) recordWin('online');
           else {
             const n = document.getElementById('ranking_skip_notice');
             if (n) { n.textContent = tiedTop ? '* Tied for 1st place, so this win is not recorded in the ranking.' : '* All opponents left, so this win is not recorded in the ranking.'; n.style.display = 'block'; }
           }
-          if (scoreboard.find(s => s.isMe).score > 0) { confetti({ particleCount: 200, spread: 80, origin: { y: 0.6 } }); _showWinOverlay(); }
-        } else { _showLoseOverlay(nearMissText(scoreboard)); }
+          if (scoreboard.find(s => s.isMe).score > 0) { confetti({ particleCount: 200, spread: 80, origin: { y: 0.6 } }); _showWinOverlay(res.text); }
+        } else { _showLoseOverlay(res.kind === 'near' ? res.text : '', res.text); }
 
         const statusEl = document.getElementById('status_text');
         statusEl.style.display = 'none';
