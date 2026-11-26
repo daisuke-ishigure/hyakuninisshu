@@ -18,7 +18,7 @@
     // style.css を読み込んでいないページ（3D版）では、同じものをここで読み込む
     fonts: ['https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap',
       'https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@500&family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap'],
-    rows: '/js/list-rows.js?20261112-02',
+    rows: '/js/list-rows.js?20261127-03',
     rowsEn: '/js/list-rows_en.js?20261112-01',
     json: '/js/hyakunin.json?20261112-01',
   };

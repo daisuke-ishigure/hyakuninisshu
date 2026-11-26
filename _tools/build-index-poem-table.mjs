@@ -72,3 +72,57 @@ for (const { template, pages } of TARGETS) {
     console.log(`${page} の表を更新しました（${rows.length}首）`);
   }
 }
+
+// list.html・list_en.html の構造化データ：全100首を、それぞれの解説ページ（N.html／N_en.html）へのリンクとして並べた ItemList。
+// 「100首の一覧のページ」だと検索エンジンに伝えるためのもの。各ページの CollectionPage の mainEntity（@id）から指している。
+// <!-- POEM-ITEMLIST:START --> と <!-- POEM-ITEMLIST:END --> の間を書き換える。
+// 名前は表の行と同じもの：日本語は「1. 歌（作者）」、英語は「1. ローマ字の読み (英語の作者名)」（js/list-rows_en.js の関数で作る）
+{
+  const ISTART = "<!-- POEM-ITEMLIST:START -->";
+  const IEND = "<!-- POEM-ITEMLIST:END -->";
+  const en = vm.createContext({});
+  vm.runInContext(read("js/list-rows_en.js"), en);
+  const romaji = (p) => p.yomihuda.replace(/<br\s*\/?>/g, "\n").replace(/<[^>]+>/g, "").split("\n").map(en.hiraganaToRomaji).join(" ");
+  const LISTS = [
+    {
+      page: "list.html", id: "https://hyakuninisshu.com/list.html#poems", listName: "百人一首 一覧（全100首）",
+      url: (p) => `https://hyakuninisshu.com/${p.number}.html`,
+      // forConsole は「歌（句の間は空白）\n作者名」
+      name: (p) => { const [poem, poet] = p.forConsole.split("\n").map((s) => s.trim()); return `${p.number}. ${poem}（${poet}）`; },
+    },
+    {
+      page: "list_en.html", id: "https://hyakuninisshu.com/list_en.html#poems", listName: "Hyakunin Isshu – Complete Poem List (100 poems)",
+      url: (p) => `https://hyakuninisshu.com/${p.number}_en.html`,
+      name: (p) => `${p.number}. ${romaji(p)} (${p.name_en})`,
+    },
+  ];
+  for (const L of LISTS) {
+    const items = Object.values(data)
+      .sort((x, y) => Number(x.number) - Number(y.number))
+      .map((p) => ({ "@type": "ListItem", position: Number(p.number), url: L.url(p), name: L.name(p) }));
+    if (items.length !== 100 || items.some((it, i) => it.position !== i + 1)) throw new Error(`${L.page}: ItemList が1〜100番になっていません`);
+    if (items.some((it) => /undefined|\(\)|（）/.test(it.name))) throw new Error(`${L.page}: 名前の欠けている歌があります`);
+    const itemList = {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "@id": L.id,
+      name: L.listName,
+      numberOfItems: 100,
+      itemListOrder: "https://schema.org/ItemListOrderAscending",
+      itemListElement: items,
+    };
+    const block =
+      ISTART + "\n" +
+      '  <script type="application/ld+json">\n' +
+      JSON.stringify(itemList, null, 2).replace(/^/gm, "  ") + "\n" +
+      "  </script>\n" +
+      "  " + IEND;
+    const path = join(root, L.page);
+    const html = readFileSync(path, "utf8");
+    const a = html.indexOf(ISTART);
+    const b = html.indexOf(IEND);
+    if (a < 0 || b < a) throw new Error(`${L.page} に POEM-ITEMLIST のマーカーが見つかりません`);
+    writeFileSync(path, html.slice(0, a) + block + html.slice(b + IEND.length));
+    console.log(`${L.page} の構造化データ（ItemList）を更新しました（100首）`);
+  }
+}

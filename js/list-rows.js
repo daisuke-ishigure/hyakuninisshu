@@ -40,7 +40,19 @@ function buildPoemRowHTML(poem) {
   ].join(" ");
 
   // 上の句と下の句の間の改行は、画面幅960px未満だけCSS（list.css の .waka-br）で出す
-  const wakaHTML = flat(poem.first) + ' <br class="waka-br">' + flat(poem.second);
+  // 和歌は3通り：.waka-kanji（漢字かな交じり・ルビ付き。ふだんの表示）、.waka-yomi（読むときの音の全文ひらがな。yomi）、
+  // .waka-fuda（かるたの札と同じ書き方＝昔のかなづかいの全文ひらがな。yomihuda）。
+  // よみ・ふだは hidden で隠しておき、list.html の「漢字｜よみ｜ふだ」の切り替えで入れ替える（#table に .show-yomi／.show-fuda が付く）
+  // 句ごとに <span class="ku"> で包み、スマホで句の途中から折り返さないようにする（list.html の CSS）
+  const fudaLines = (poem.yomihuda || "").split(/<br\s*\/?>/).map((s) => '<span class="ku">' + escapeHTMLText(s.replace(/<[^>]*>/g, "").trim()) + "</span>");
+  // yomi は「上の句（句の間は半角空白）＋全角空白＋下の句」
+  const yomiHalves = (poem.yomi || "").split("\u3000").map((h) => h.split(" ").map((k) => '<span class="ku">' + escapeHTMLText(k) + "</span>").join(" "));
+  const wakaHTML =
+    '<span class="waka-kanji">' + flat(poem.first) + ' <br class="waka-br">' + flat(poem.second) + "</span>" +
+    (yomiHalves.length === 2 ? '<span class="waka-yomi" hidden>' + yomiHalves[0] + ' <br class="waka-br">' + yomiHalves[1] + "</span>" : "") +
+    (fudaLines.length === 5
+      ? '<span class="waka-fuda" hidden>' + fudaLines.slice(0, 3).join(" ") + ' <br class="waka-br">' + fudaLines.slice(3).join(" ") + "</span>"
+      : "");
 
   // 決まり字と歌人名・生没年（以前はここに解説ページ・各ゲームへのボタンも並べていたが、削除した）
   const gameLinksHTML =
