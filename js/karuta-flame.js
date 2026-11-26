@@ -191,8 +191,8 @@
       win: {
         perfect: { easy: '全部取れた！', normal: '全部取れた！', hard: 'パーフェクト！', master: '鬼に完勝！' },
         comeback: { easy: '逆転！', normal: '逆転！', hard: '大逆転！', master: '大逆転！' },
-        grit: { easy: '最後に勝った！', normal: '最後に勝った！', hard: '粘り勝ち！', master: '鬼退治！' },
-        close: { easy: '最後に勝った！', normal: '最後に勝った！', hard: 'ギリギリ勝ち！', master: '鬼退治！' },
+        grit: { easy: '粘り勝ち！', normal: '粘り勝ち！', hard: '粘り勝ち！', master: '鬼退治！' },
+        close: { easy: '粘り勝ち！', normal: '粘り勝ち！', hard: 'ギリギリ勝ち！', master: '鬼退治！' },
         usual: { easy: 'よくできました！', normal: 'めでたし！', hard: 'すごい！', master: '鬼退治！' },
       },
       lose: {
@@ -206,8 +206,8 @@
       win: {
         perfect: { easy: 'Perfect!', normal: 'Perfect!', hard: 'Perfect!', master: 'Oni crushed!' },
         comeback: { easy: 'Comeback!', normal: 'Comeback!', hard: 'Big comeback!', master: 'Big comeback!' },
-        grit: { easy: 'Last-card win!', normal: 'Last-card win!', hard: 'Never gave up!', master: 'Oni defeated!' },
-        close: { easy: 'Last-card win!', normal: 'Last-card win!', hard: 'Close win!', master: 'Oni defeated!' },
+        grit: { easy: 'Never gave up!', normal: 'Never gave up!', hard: 'Never gave up!', master: 'Oni defeated!' },
+        close: { easy: 'Never gave up!', normal: 'Never gave up!', hard: 'Close win!', master: 'Oni defeated!' },
         usual: { easy: 'Well done!', normal: 'Win!', hard: 'Amazing!', master: 'Oni defeated!' },
       },
       lose: {
