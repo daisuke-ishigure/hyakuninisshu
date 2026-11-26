@@ -153,11 +153,28 @@
   }
   /* 負けたときの画面（#oshii-overlay）で、「惜しい！」の代わりにその文言を大きく出す（点数と「あと1枚！」の2行）。
      overlay は animationend で消えるので、ここでは CSS アニメーションを使わない（子の animationend が伝わって、早く消えてしまう） */
+  /* el に text を入れる。「…」は縦中横（縦書きの中で1文字分だけ横に組む）にして、どの端末でも横に3つ並んだ点で見せる。
+     縦中横は縦書きのときだけ効くので、横書きでは何も変わらない */
+  function setText(el, text) {
+    el.textContent = '';
+    String(text).split('…').forEach((part, k) => {
+      if (k) {
+        const t = document.createElement('span');
+        t.className = 'tcy';
+        t.textContent = '…';
+        t.style.textCombineUpright = 'all';
+        t.style.webkitTextCombine = 'horizontal';            // 古い Safari 用
+        el.appendChild(t);
+      }
+      if (part) el.appendChild(document.createTextNode(part));
+    });
+  }
+
   function nearMiss(overlay, text) {
     if (!overlay || !text) return;
     const el = document.createElement('div');
     el.className = 'near-miss';
-    el.textContent = text.replace(/\u3000| {2}/, '\n');
+    setText(el, text.replace(/\u3000| {2}/, '\n'));
     // 1行が画面に収まる大きさにする（全角は1字ぶん、半角はおよそ0.58字ぶん）。
     // スマホ縦向きの日本語は縦書き（ページの CSS）なので、高さと、猫の絵の横に残る幅で決める
     const lines = el.textContent.split('\n');
@@ -247,7 +264,7 @@
   function setOverlayText(overlay, text) {
     const span = overlay && overlay.querySelector('span');
     if (!span || !text) return;
-    span.textContent = text;
+    setText(span, text);
     const em = [...text].reduce((n, c) => n + (/[\u0000-\u024f\u2013]/.test(c) ? 0.58 : 1.12), 0) * 1.12;   // 字の間（letter-spacing）のぶんも見込む
     const vertical = document.documentElement.lang !== 'en' && window.matchMedia('(max-width: 767px) and (orientation: portrait)').matches;
     const base = Math.min(80, Math.max(60, window.innerWidth * 0.15));
