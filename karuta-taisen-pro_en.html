@@ -95,7 +95,7 @@
   <!-- 3D表示の札の文字（karuta-taisen-3d.html と同じ書体） -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap&text=あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわゐゑをんがぎぐげござじずぜぞだぢづでどばびぶべぼ">
   <script src="https://cdn.jsdelivr.net/npm/pixi.js@7.3.2/dist/pixi.min.js"></script>
-  <link rel="stylesheet" href="../css/karuta-taisen-pro-shared.css?20261125-03">
+  <link rel="stylesheet" href="../css/karuta-taisen-pro-shared.css?20261127-02">
   <style>
     #medetashi-overlay span {
       font-family: "Noto Serif JP", serif;
@@ -467,6 +467,8 @@
     <div id="result_container"
       style="display:none; text-align:center; padding:20px; background:#fff9e6; border-radius:10px; margin:20px auto; max-width:800px;">
       <div id="result_text" style="font-weight:bold;"></div>
+      <!-- もう一度対戦する：同じ設定で次の試合をすぐ始める（js/karuta-taisen-pro-shared.js の retryCpuGame） -->
+      <button class="btn-return" id="retry_btn" type="button">Play Again</button>
       <!-- 取られた札の一覧 -->
       <div id="missed_cards_section" style="display:none; margin-top:18px; text-align:left;">
         <div style="font-size:14px; font-weight:bold; color:#B82343; margin-bottom:8px; text-align:center;">
@@ -481,7 +483,7 @@
         <div id="ranking_login_note" style="display:none; font-size:0.85rem; color:#888; margin-bottom:10px;">
           Sign in to record your wins in the ranking.</div>
       </div>
-      <button class="btn-return" onclick="location.reload()" style="margin-top:18px;">Return to Start</button>
+      <button class="btn-return btn-return--sub" onclick="location.reload()" style="margin-top:18px;">Return to Start</button>
       <button class="ranking-view-btn" id="ranking_view_btn" onclick="openRankingOverlay()"
         style="display:none; margin-top:10px;">📊 View Ranking</button>
     </div>
@@ -538,6 +540,26 @@
       defeatText: 'Too bad!',
       badgeWin: 'Excellent!',
       badgeLose: 'Too bad!',
+      // End-of-game messages (chosen by _endMessage in js/karuta-taisen-pro-shared.js from the level and how the game went)
+      endMessages: {
+        win: {
+          perfect: { easy: 'Perfect!', normal: 'Perfect!', hard: 'Perfect!' },
+          unmei: { easy: 'Final-card win!', normal: 'Final-card win!', hard: 'Final-card win!' },
+          comeback: { easy: 'Comeback!', normal: 'Comeback!', hard: 'Big comeback!' },
+          rout: { easy: 'Dominant win!', normal: 'Dominant win!', hard: 'Dominant win!' },
+          grit: { easy: 'Never gave up!', normal: 'Never gave up!', hard: 'Never gave up!' },
+          close: { easy: 'Never gave up!', normal: 'Close win!', hard: 'Close win!' },
+          usual: { easy: 'Well done!', normal: 'You win!', hard: 'Excellent!' },
+        },
+        lose: {
+          zero: { easy: 'Try again!', normal: 'Try again!', hard: 'Keep at it!' },
+          unmei: { easy: 'Final card lost…', normal: 'Final card lost…', hard: 'Final card lost…' },
+          overtaken: { easy: 'So close!', normal: 'Overtaken…', hard: 'Overtaken…' },
+          close: { easy: 'One card short!', normal: 'One card short!', hard: 'One card short!' },
+          usual: { easy: 'So close!', normal: 'Too bad!', hard: 'Too bad!' },
+        },
+      },
+      marginText: (n, win) => `${win ? 'Won' : 'Lost'} by ${n} card${n === 1 ? '' : 's'}`,
       rankListHtml: (enemyScore, myScore) => `<div style="font-size:1.1rem;">Robot: ${enemyScore}, You: ${myScore}</div>`,
       resultRank: (myRank, icon) => `<div style="font-size:2.5rem;color:#B82343;margin-bottom:10px;">Rank ${myRank} ${icon}</div>`,
       rankingLoadingHtml: '<div style="color:#aaa;font-size:0.9rem;text-align:center;padding:20px;">Loading...</div>',
@@ -566,7 +588,7 @@
       rankingLoadErrorHtml: msg => `<div style="color:#e74c3c;text-align:center;padding:16px;">Failed to load ${msg}<br><small style="color:#aaa;">Check the browser console (F12) for errors</small></div>`,
     };
   </script>
-  <script src="../js/karuta-taisen-pro-shared.js?20261125-04"></script>
+  <script src="../js/karuta-taisen-pro-shared.js?20261127-02"></script>
   <script type="module" src="../js/karuta-taisen-pro-3d.js?20261123-04"></script>
   <script type="module" src="../js/karuta-taisen-pro-module.js?20261022-01"></script>
 </body>

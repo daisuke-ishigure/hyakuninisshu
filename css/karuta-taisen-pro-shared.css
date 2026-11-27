@@ -800,6 +800,19 @@ button {
   font-size: 1rem;
 }
 
+/* 結果画面：「もう一度対戦する」を主ボタン、「最初の画面に戻る」は控えめに */
+#retry_btn {
+  display: block;
+  margin: 16px auto 0;
+  font-weight: bold;
+}
+
+.btn-return--sub {
+  background: #fff;
+  color: #B82343;
+  border: 1px solid #B82343;
+}
+
 #audio_resume_btn {
   display: none;
   margin: 10px auto;
@@ -1228,6 +1241,20 @@ button {
 #medetashi-overlay img {
   width: clamp(120px, 40vw, 200px);
   display: block;
+}
+
+/* スマホ（縦向き）の日本語では、勝ちのメッセージを猫の絵の右に縦書きで並べる（負けの画面は JS で同じようにする）。英語は横書きのまま */
+@media (max-width: 767px) and (orientation: portrait) {
+  html:not([lang="en"]) #medetashi-overlay {
+    flex-direction: row;
+    gap: 6px;
+  }
+
+  html:not([lang="en"]) #medetashi-overlay span {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    letter-spacing: 0.08em;
+  }
 }
 
 

@@ -113,6 +113,9 @@
     let _postSendPauseTimeout = null; // startPostSendPause の 5秒 setTimeout ハンドル
     let _shownAtoHitoki = false;
     let _scheduledGameWin = null; // scheduleEndGame()が確定させた勝敗（後からcardFields変更されても正しい値を保持）
+    // 試合の流れ（終わったときのメッセージを選ぶのに使う）。maxBehind／maxAhead：自陣の残りが敵陣より何枚多かった（＝リードされた）／少なかった（＝リードした）か の最大
+    // cnt：いまの残り枚数 [自陣, 敵陣] ／ cntBefore：その1つ前の残り枚数 ／ end：試合が決まった瞬間の残り枚数
+    let _flow = { maxBehind: 0, maxAhead: 0, cnt: null, cntBefore: null, end: null };
     let isArrangeMode = false;    // 暗記フェーズ中の配置変更モード
     let isPostSendArrange = false; // 送り札後5秒間の自陣整理モード
     let _arrDragCard = null, _arrDragClone = null, _arrOrigRect = null;
@@ -328,6 +331,27 @@
       startCpuGame();
     };
 
+    // ===== もう一度対戦する（結果画面のボタン）：ページを読み込み直さず、同じ設定（難易度・札の枚数・暗記時間など）で次の試合を始める =====
+    let _endFxStop = null; // 勝ち負けの演出を途中で止める関数（演出中だけ入る）
+    function retryCpuGame() {
+      if (!isGameOver || !isCpuMode) return;
+      unlockAudio();
+      if (_endFxStop) _endFxStop();
+      document.getElementById('medetashi-overlay')?.remove();
+      globalAudio.pause();
+      rainAudio.pause();
+      ['result_container', 'missed_cards_section', 'ranking_section', 'ranking_view_btn', 'win_recorded_notice', 'ranking_login_note'].forEach(id => {
+        const el = document.getElementById(id); if (el) el.style.display = 'none';
+      });
+      document.getElementById('missed_cards_list').innerHTML = '';
+      document.getElementById('status_text').style.color = '';
+      lastGameWon = null;
+      window.scrollTo(0, 0); // 結果画面を下までスクロールしていても、盤面の一番上から始める
+      startCpuGame();
+    }
+    const retryBtn = document.getElementById('retry_btn');
+    if (retryBtn) retryBtn.onclick = retryCpuGame;
+
     // ===== ゲーム画面へ遷移（CPU） =====
     function startCpuGame() {
       document.querySelectorAll('.header, footer').forEach(el => el.style.display = 'none');
@@ -388,6 +412,7 @@
       _prevMyLeft = -1;
       _scheduledGameWin = null;
       _cpuNoTouchUntil = 0;
+      _flow = { maxBehind: 0, maxAhead: 0, cnt: null, cntBefore: null, end: null };
       cpuTimers.forEach(t => clearTimeout(t));
       cpuTimers = [];
 
@@ -1662,6 +1687,7 @@
       const enemyLeft = Object.keys(cardFields).filter(k => cardFields[k] === 'enemy' && !takenCards[k]).length;
       const myEmpty = Math.max(0, _initialMyCount - myLeft);
       const enemyEmpty = Math.max(0, _initialEnemyCount - enemyLeft);
+      _trackFlow(myLeft, enemyLeft);
 
       // 送り札を受け取って自陣が増えた場合は「あと一息」フラグをリセット
       if (_prevMyLeft > 0 && myLeft > _prevMyLeft) {
@@ -1711,6 +1737,48 @@
         _setBadgeState(badgeEl, leader);
       }
       _prevLeader = isLastOne ? 'lastone' : leader;
+    }
+
+    function _trackFlow(myLeft, enemyLeft) {
+      const c = _flow.cnt;
+      if (c && c[0] === myLeft && c[1] === enemyLeft) return;
+      _flow.cntBefore = c;
+      _flow.cnt = [myLeft, enemyLeft];
+      _flow.maxBehind = Math.max(_flow.maxBehind, myLeft - enemyLeft);
+      _flow.maxAhead = Math.max(_flow.maxAhead, enemyLeft - myLeft);
+    }
+
+    /* 試合が終わったときのメッセージ（LANG.endMessages から、強さと試合の流れで選ぶ）。上から順に見て、最初に当てはまったものを出す。
+         勝ち：ロボットが1枚も取れなかった（perfect）→ 運命戦（1枚対1枚）から勝った（unmei）→ 大きくリードされてからの逆転（comeback）
+               → 敵陣が最初の枚数から減らなかった（rout）→ 1枚差で、途中でリードされた（grit）／されなかった（close）→ ふだん（usual）
+         負け：1枚も取れなかった（zero）→ 運命戦（1枚対1枚）で負けた（unmei）→ 大きくリードしていた（overtaken）→ 自陣があと1枚（close）→ ふだん（usual）
+       「大きく」は、最初の1陣の枚数の5分の1以上（2枚より少なくはしない：3枚・6枚の陣は2枚、12枚は3枚、25枚は5枚） */
+    function _endMessage(isWin, myLeft, enemyLeft, myScore, enemyScore) {
+      const T = LANG.endMessages, lv = T.win.usual[cpuDifficulty] ? cpuDifficulty : 'normal';
+      const big = Math.max(2, Math.ceil(Math.max(_initialMyCount, _initialEnemyCount) / 5));
+      const b = _flow.cntBefore, unmei = !!(b && b[0] === 1 && b[1] === 1);
+      let k;
+      if (isWin) {
+        k = enemyScore === 0 ? 'perfect' : unmei ? 'unmei' : _flow.maxBehind >= big ? 'comeback'
+          : enemyLeft >= _initialEnemyCount && enemyLeft > 1 ? 'rout' : enemyLeft === 1 ? (_flow.maxBehind >= 1 ? 'grit' : 'close') : 'usual';
+        return T.win[k][lv];
+      }
+      k = myScore === 0 ? 'zero' : unmei ? 'unmei' : _flow.maxAhead >= big ? 'overtaken' : myLeft === 1 ? 'close' : 'usual';
+      return T.lose[k][lv];
+    }
+
+    /* スマホ縦向きの日本語では、勝ち負けの大きな文字を縦書きにする（css/karuta-taisen-pro-shared.css と同じ条件） */
+    const _endVertical = () => document.documentElement.lang !== 'en' && window.matchMedia('(max-width: 767px) and (orientation: portrait)').matches;
+    /* 勝ち負けの大きな文字を入れて、画面に収まる大きさにする（縦書きは画面の高さ、横書きは幅で決める）。
+       縦書きでは「…」を縦向きの点「︙」にする（そのままだと横向きの点のまま並ぶ端末がある） */
+    function _setEndText(span, text) {
+      const vertical = _endVertical();
+      span.textContent = vertical ? text.replace(/…/g, '\uFE19') : text;
+      span.style.whiteSpace = 'nowrap';
+      const em = [...text].reduce((n, c) => n + (/[\u0000-\u024f\u2013]/.test(c) ? 0.58 : 1.12), 0) * 1.15;   // 字の間（letter-spacing）のぶんも見込む
+      const fit = Math.floor((vertical ? window.innerHeight * 0.62 : window.innerWidth - 32) / em);
+      const base = parseFloat(getComputedStyle(span).fontSize) || 80;
+      if (fit < base) span.style.fontSize = fit + 'px';
     }
 
     function _setBadgeState(el, leader) {
@@ -1865,11 +1933,12 @@
       };
       app.ticker.add(tick);
     }
-    function _sakuraEndGame() {
+    function _sakuraEndGame(text) {
       const overlay = document.createElement('div');
       overlay.id = 'medetashi-overlay';
-      overlay.innerHTML = '<img src="../img/dango_win.webp" alt="喜ぶ猫キャラ"><span>' + LANG.endGameVictory + '</span>';
+      overlay.innerHTML = '<img src="../img/dango_win.webp" alt="喜ぶ猫キャラ"><span></span>';
       document.body.appendChild(overlay);
+      _setEndText(overlay.querySelector('span'), text || LANG.endGameVictory);
       overlay.addEventListener('animationend', () => overlay.remove());
 
       const app = _getPixiApp();
@@ -1934,7 +2003,7 @@
       burst(SW * 0.5, SH * 0.5, 80);
     }
 
-    function _defeatInkEffect() {
+    function _defeatInkEffect(text) {
       const app = _getPixiApp();
       if (!app) return;
       const SW = window.innerWidth, SH = window.innerHeight;
@@ -2009,7 +2078,7 @@
       textEl.appendChild(loseImgEl);
 
       const loseTextEl = document.createElement('span');
-      loseTextEl.textContent = LANG.defeatText;
+      loseTextEl.textContent = text || LANG.defeatText;
       loseTextEl.style.cssText = [
         'display:block',
         'opacity:0',
@@ -2019,6 +2088,12 @@
       ].join(';');
       textEl.appendChild(loseTextEl);
       document.body.appendChild(textEl);
+      // スマホ縦向きの日本語：猫の絵の右に縦書きで並べる（勝ちの画面と同じ）
+      if (_endVertical()) {
+        Object.assign(textEl.style, { flexDirection: 'row', gap: '6px' });
+        Object.assign(loseTextEl.style, { writingMode: 'vertical-rl', textOrientation: 'upright', letterSpacing: '0.08em' });
+      }
+      _setEndText(loseTextEl, text || LANG.defeatText);
 
       requestAnimationFrame(() => requestAnimationFrame(() => {
         textEl.querySelectorAll('span').forEach(s => {
@@ -2096,8 +2171,12 @@
           app.stage.removeChild(container);
           container.destroy({ children: true });
           if (textEl.parentNode) textEl.parentNode.removeChild(textEl);
+          if (_endFxStop === stop) _endFxStop = null;
         }
       };
+      // 「もう一度対戦する」が押されたら、雨の演出をすぐに片付ける
+      const stop = () => { if (f < F_FADEOUT) { f = F_FADEOUT - 1; tick(); } };
+      _endFxStop = stop;
 
       app.ticker.add(tick);
     }
@@ -2267,6 +2346,9 @@
       if (_scheduledGameWin !== null || isGameOver) return; // 既に確定済み or 終了済みなら無視
       _scheduledGameWin = false; // 多重呼び出し防止: 計算前に仮値でフラグを立てる
       const myLeft = Object.keys(cardFields).filter(k => cardFields[k] === 'mine' && !takenCards[k]).length;
+      const enemyLeft = Object.keys(cardFields).filter(k => cardFields[k] === 'enemy' && !takenCards[k]).length;
+      _trackFlow(myLeft, enemyLeft);
+      _flow.end = [myLeft, enemyLeft];
       const isWin = myLeft === 0;
       _scheduledGameWin = isWin; // 確定した勝敗を保存。900ms後にcardFieldsが書き換えられても影響を受けない
       const badgeEl = document.getElementById('ci_badge');
@@ -2320,16 +2402,15 @@
       const enemyScore = scoreboard.find(s => !s.isMe)?.score ?? 0;
       if (myScore >= enemyScore) myRank = 1; else myRank = 2;
       const rankListHtml = LANG.rankListHtml(enemyScore, myScore);
+      const [myLeftF, enemyLeftF] = _flow.end || [myLeftEnd, Object.keys(cardFields).filter(k => cardFields[k] === 'enemy' && !takenCards[k]).length];
+      const endMsg = _endMessage(isWin, myLeftF, enemyLeftF, myScore, enemyScore);
+      const margin = isWin ? enemyLeftF : myLeftF;   // 競技かるたの「○枚差」：勝負がついたとき、負けた側の陣に残っていた枚数
 
       let resultHeader;
       if (isPcGame) {
-        if (isWin) {
-          resultHeader = ``;
-          myRank = 1;
-        } else {
-          resultHeader = `<div style="font-size:2rem;color:#555;margin-bottom:10px;">${LANG.badgeLose}</div>`;
-          myRank = 2;
-        }
+        const marginHtml = margin > 0 ? `<div style="font-size:0.95rem;color:#555;margin-bottom:6px;">${LANG.marginText(margin, isWin)}</div>` : '';
+        resultHeader = `<div style="font-size:2rem;color:${isWin ? '#B82343' : '#555'};margin-bottom:4px;">${endMsg}</div>` + marginHtml;
+        myRank = isWin ? 1 : 2;
       } else {
         resultHeader = LANG.resultRank(myRank, getIcon(myId, allPlayers));
       }
@@ -2342,10 +2423,10 @@
 
       showMissedCards(takenCards, myId);
 
-      if (myRank === 1 && scoreboard.find(s => s.isMe).score > 0) {
-        _sakuraEndGame();
-      } else if (myRank !== 1) {
-        _defeatInkEffect();
+      if (myRank === 1) {
+        _sakuraEndGame(endMsg);
+      } else {
+        _defeatInkEffect(endMsg);
       }
 
       // ランキングエリアを表示
