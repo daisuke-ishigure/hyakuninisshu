@@ -352,6 +352,14 @@
     const retryBtn = document.getElementById('retry_btn');
     if (retryBtn) retryBtn.onclick = retryCpuGame;
 
+    // ===== 結果を X に投稿する（js/karuta-share.js）。文面は試合が終わったときに作る =====
+    let shareText = '';
+    const shareBtn = document.getElementById('share_x_button');
+    if (shareBtn && window.KarutaShare) {
+      shareBtn.innerHTML = window.KarutaShare.label(document.documentElement.lang);
+      shareBtn.onclick = () => { if (shareText) window.KarutaShare.open(shareText, 'pro', 'pro'); };
+    } else if (shareBtn) shareBtn.style.display = 'none';
+
     // ===== ゲーム画面へ遷移（CPU） =====
     function startCpuGame() {
       document.querySelectorAll('.header, footer').forEach(el => el.style.display = 'none');
@@ -2405,6 +2413,7 @@
       const [myLeftF, enemyLeftF] = _flow.end || [myLeftEnd, Object.keys(cardFields).filter(k => cardFields[k] === 'enemy' && !takenCards[k]).length];
       const endMsg = _endMessage(isWin, myLeftF, enemyLeftF, myScore, enemyScore);
       const margin = isWin ? enemyLeftF : myLeftF;   // 競技かるたの「○枚差」：勝負がついたとき、負けた側の陣に残っていた枚数
+      shareText = window.KarutaShare ? window.KarutaShare.pro({ lang: document.documentElement.lang, win: isWin, margin, level: cpuDifficulty, cards: _initialMyCount + _initialEnemyCount, msg: endMsg }) : '';
 
       let resultHeader;
       if (isPcGame) {

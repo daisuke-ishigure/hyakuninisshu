@@ -427,6 +427,27 @@
       }
     }
 
+    /* 「Xでシェア」（js/karuta-share.js） */
+    .btn-share-x {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin: 14px auto 0;
+      padding: 10px 22px;
+      background: #000;
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: bold;
+      font-family: inherit;
+    }
+
+    .btn-share-x:hover {
+      background: #333;
+    }
+
     .btn-return {
       margin-top: 20px;
       padding: 12px 24px;
@@ -909,6 +930,7 @@
 <script src="../js/karuta-analysis.js?20261127-03"></script>
 <script src="../js/karuta-flame.js?20261127-06"></script>
 <script src="../js/karuta-hear.js?20261125-03"></script>
+<script src="../js/karuta-share.js?20261127-09"></script>
 
   <main class="main_about-main">
     <div class="section">
@@ -1189,6 +1211,8 @@
       <div id="ranking_skip_notice"
         style="display:none; margin: 10px 0; font-size:13px; color:#888; background:#f5f5f5; border-radius:8px; padding:8px;">
       </div>
+      <!-- 結果を X に投稿する（js/karuta-share.js） -->
+      <button type="button" class="btn-share-x" id="share_x_button"></button>
       <!-- Missed cards list -->
       <div id="missed_cards_section" style="display:none; margin-top:18px; text-align:left;">
         <div style="font-size:14px; font-weight:bold; color:#B82343; margin-bottom:8px; text-align:center;">
@@ -1624,6 +1648,14 @@
     const trackRobotStart = (view, replay, level = cpuDifficulty) =>
       track('game_start', { mode: 'robot', level: trackLevel(level), view, karafuda: karafudaOn() ? 'on' : 'off', replay });
 
+    // ===== 結果を X に投稿する（js/karuta-share.js）。文面は試合が終わったときに作る =====
+    let shareText = '';
+    const shareBtn = document.getElementById('share_x_button');
+    if (shareBtn && window.KarutaShare) {
+      shareBtn.innerHTML = window.KarutaShare.label('en');
+      shareBtn.onclick = () => { if (shareText) window.KarutaShare.open(shareText, 'taisen', currentRoomId ? 'online' : 'robot'); };
+    } else if (shareBtn) shareBtn.style.display = 'none';
+
     let cpu3dFrame = null, cpu3dReady = false;
     // 3D版の部品（three.js など、外部のサイトから読み込む）が読めないと、3D版は何も出せず止まってしまう。
     // この時間までに3D版から「準備できた」が届かなければ、3D版を閉じて平面版で遊ぶ（学校などで外部のサイトが遮断されているとき・回線が切れたとき）
@@ -1693,7 +1725,7 @@
       f.id = 'cpu3d_frame';
       f.title = 'Battle a Robot';
       f.allow = 'autoplay';
-      f.src = `karuta-taisen-3d.html?v=20261127-06&embed=1&lang=en&difficulty=${cpuDifficulty}${karafudaOn() ? '&karafuda=1' : ''}`;
+      f.src = `karuta-taisen-3d.html?v=20261127-07&embed=1&lang=en&difficulty=${cpuDifficulty}${karafudaOn() ? '&karafuda=1' : ''}`;
       Object.assign(f.style, { position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', border: '0', zIndex: '10000', background: '#bab37a url(img/tatami.webp)' });
       document.body.appendChild(f);
       document.documentElement.style.overflow = 'hidden';
@@ -1737,7 +1769,7 @@
       f.id = 'online3d_frame';
       f.title = 'Online battle';
       f.allow = 'autoplay';
-      f.src = 'karuta-taisen-3d.html?v=20261127-06&embed=1&mode=online&lang=en';
+      f.src = 'karuta-taisen-3d.html?v=20261127-07&embed=1&mode=online&lang=en';
       Object.assign(f.style, { position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', border: '0', zIndex: '10000', background: '#bab37a url(img/tatami.webp)', visibility: 'hidden', pointerEvents: 'none' });
       document.body.appendChild(f);
       online3dFrame = f;
@@ -1803,6 +1835,7 @@
       const note = (text) => { if (cpu3dFrame === frame) frame.contentWindow.postMessage({ source: 'k3d-host', type: 'note', text }, location.origin); };
       if (msg.type === 'result') track('game_end', { mode: 'robot', level: trackLevel(msg.difficulty), view: '3d', karafuda: karafudaOn() ? 'on' : 'off', result: msg.win ? 'win' : 'lose', score: `${msg.me}-${msg.cpu}` });
       if (msg.type === 'ready') { cpu3dReady = true; trackRobotStart('3d', 'no'); }
+      else if (msg.type === 'share') track('share', { method: 'x', content_type: 'game_result', item_id: 'robot' });
       else if (msg.type === 'again') trackRobotStart('3d', 'yes', msg.difficulty);
       else if (msg.type === 'close') closeCpu3d();
       else if (msg.type === 'unsupported') { closeCpu3d(); startCpuGame2d(); }
@@ -2767,6 +2800,7 @@
         `<div style="font-size:1.1rem;line-height:1.6;">${rankListHtml}</div>`;
       document.getElementById('result_container').style.display = 'block';
       setAnalysis(takenCards, playOrder.some(n => !fieldSet.has(String(n))));
+      shareText = window.KarutaShare ? window.KarutaShare.robot({ lang: 'en', me: myScore, cpu: cpuScore, level: cpuDifficulty, msg: res.text }) : '';
 
       showMissedCards(takenCards, myId);
 
@@ -2852,6 +2886,10 @@
         `<div style="font-size:1.1rem;line-height:1.6;">${rankListHtml}</div>`;
         document.getElementById('result_container').style.display = 'block';
         setAnalysis(taken, false);
+        {
+          const meS = scoreboard.find(s => s.isMe).score, others = scoreboard.filter(s => !s.isMe).map(s => s.score);
+          shareText = window.KarutaShare ? window.KarutaShare.online({ lang: 'en', rank: myRank, players: scoreboard.length, me: meS, top: scoreboard[0].score, second: Math.max(0, ...others), tied: tiedTop && myRank === 1, msg: res.text }) : '';
+        }
 
         showMissedCards(taken, myId);
 

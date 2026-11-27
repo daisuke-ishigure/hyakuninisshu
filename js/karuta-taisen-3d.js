@@ -950,6 +950,7 @@ function showResult() {
   const res = window.KarutaFlame && window.KarutaFlame.result
     ? window.KarutaFlame.result({ me: game.score.me, other: game.score.cpu, level: game.difficulty, maxBehind: game.maxBehind, maxAhead: game.maxAhead, lang: EN ? 'en' : 'ja' })
     : { kind: win ? 'win' : 'lose', text: win ? TXT.win : TXT.lose };
+  game.shareMsg = res.text;   // 「Xでシェア」の文面に使う
   if (win) { audio.src = FINISH_AUDIO; audio.play().catch(() => { }); _sakuraEndGame(res.text); }
   else { rainAudio.muted = false; rainAudio.currentTime = 0; rainAudio.play().catch(() => { }); _defeatInkEffect(showNearMiss(res), res.text); }
 }
@@ -1286,6 +1287,16 @@ $('back').addEventListener('click', () => {
 $('again').addEventListener('click', () => { initAudio(); newGame(); if (EMBED && !ONLINE) toParent({ type: 'again', difficulty: game.difficulty }); });   // 親ページが遊ばれ方を記録する
 // 振り返り：ゲーム中に出てきた札（場の札と、読まれた空札）を、取った札・取られた札・場に残った札・空札に分けて
 // list.html と同じ見た目の表で見せる（js/karuta-analysis.js）。空札の分類は、空札を読む設定のときだけ
+// 結果を X に投稿する（js/karuta-share.js）。ロボット対戦だけ（オンライン対戦の結果は親ページに出る）
+if (window.KarutaShare && !ONLINE) {
+  $('share_x').innerHTML = window.KarutaShare.label(EN ? 'en' : 'ja');
+  $('share_x').hidden = false;
+  $('share_x').addEventListener('click', () => {
+    const text = window.KarutaShare.robot({ lang: EN ? 'en' : 'ja', me: game.score.me, cpu: game.score.cpu, level: game.difficulty, msg: game.shareMsg });
+    window.KarutaShare.open(text, 'taisen', 'robot');
+    if (EMBED) toParent({ type: 'share' });   // 親ページが Google アナリティクスに記録する
+  });
+}
 if (window.KarutaAnalysis && window.KarutaAnalysis.decorate) window.KarutaAnalysis.decorate($('analysis'));   // 枠を回る光
 $('analysis').addEventListener('click', () => {
   if (!window.KarutaAnalysis) return;

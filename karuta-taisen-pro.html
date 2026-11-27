@@ -98,7 +98,7 @@
   <!-- 3D表示の札の文字（karuta-taisen-3d.html と同じ書体） -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap&text=あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわゐゑをんがぎぐげござじずぜぞだぢづでどばびぶべぼ">
   <script src="https://cdn.jsdelivr.net/npm/pixi.js@7.3.2/dist/pixi.min.js"></script>
-  <link rel="stylesheet" href="../css/karuta-taisen-pro-shared.css?20261127-02">
+  <link rel="stylesheet" href="../css/karuta-taisen-pro-shared.css?20261127-03">
   <style>
     #medetashi-overlay span {
       font-family: "Noto Serif JP", serif;
@@ -446,6 +446,8 @@
       <div id="result_text" style="font-weight:bold;"></div>
       <!-- もう一度対戦する：同じ設定で次の試合をすぐ始める（js/karuta-taisen-pro-shared.js の retryCpuGame） -->
       <button class="btn-return" id="retry_btn" type="button">もう一度対戦する</button>
+      <!-- 結果を X に投稿する（js/karuta-share.js） -->
+      <button type="button" class="btn-share-x" id="share_x_button"></button>
       <!-- 取られた札の一覧 -->
       <div id="missed_cards_section" style="display:none; margin-top:18px; text-align:left;">
         <div style="font-size:14px; font-weight:bold; color:#B82343; margin-bottom:8px; text-align:center;">
@@ -565,7 +567,8 @@
       rankingLoadErrorHtml: msg => `<div style="color:#e74c3c;text-align:center;padding:16px;">読み込みに失敗しました ${msg}<br><small style="color:#aaa;">ブラウザのコンソール(F12)でエラーを確認してください</small></div>`,
     };
   </script>
-  <script src="../js/karuta-taisen-pro-shared.js?20261127-02"></script>
+  <script src="../js/karuta-share.js?20261127-09"></script>
+  <script src="../js/karuta-taisen-pro-shared.js?20261127-03"></script>
   <script type="module" src="../js/karuta-taisen-pro-3d.js?20261123-04"></script>
   <script type="module" src="../js/karuta-taisen-pro-module.js?20261022-01"></script>
 </body>
