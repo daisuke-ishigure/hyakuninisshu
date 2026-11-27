@@ -153,21 +153,12 @@
   }
   /* 負けたときの画面（#oshii-overlay）で、「惜しい！」の代わりにその文言を大きく出す（点数と「あと1枚！」の2行）。
      overlay は animationend で消えるので、ここでは CSS アニメーションを使わない（子の animationend が伝わって、早く消えてしまう） */
-  /* el に text を入れる。「…」は縦中横（縦書きの中で1文字分だけ横に組む）にして、どの端末でも横に3つ並んだ点で見せる。
-     縦中横は縦書きのときだけ効くので、横書きでは何も変わらない */
-  function setText(el, text) {
-    el.textContent = '';
-    String(text).split('…').forEach((part, k) => {
-      if (k) {
-        const t = document.createElement('span');
-        t.className = 'tcy';
-        t.textContent = '…';
-        t.style.textCombineUpright = 'all';
-        t.style.webkitTextCombine = 'horizontal';            // 古い Safari 用
-        el.appendChild(t);
-      }
-      if (part) el.appendChild(document.createTextNode(part));
-    });
+  /* スマホ縦向きの日本語では、勝ち負けのメッセージを縦書きにする（ページの CSS と同じ条件） */
+  const isVertical = () => document.documentElement.lang !== 'en' && window.matchMedia('(max-width: 767px) and (orientation: portrait)').matches;
+  /* el に text を入れる。縦書きのときは「…」を縦向きの点「︙」（U+FE19）に置きかえる。
+     「…」のままだと、縦書きで縦向きの点にしてくれない端末（iPhone の Safari など）では横向きの点のまま並んでしまう */
+  function setText(el, text, vertical = isVertical()) {
+    el.textContent = vertical ? String(text).replace(/…/g, '\uFE19') : String(text);
   }
 
   function nearMiss(overlay, text) {
@@ -179,7 +170,7 @@
     // スマホ縦向きの日本語は縦書き（ページの CSS）なので、高さと、猫の絵の横に残る幅で決める
     const lines = el.textContent.split('\n');
     const em = Math.max(...lines.map(l => [...l].reduce((n, c) => n + (/[\u0000-\u024f\u2013]/.test(c) ? 0.58 : 1.08), 0)));
-    const vertical = document.documentElement.lang !== 'en' && window.matchMedia('(max-width: 767px) and (orientation: portrait)').matches;
+    const vertical = isVertical();
     const size = vertical
       ? Math.min(80, Math.floor(window.innerHeight * 0.6 / (em * 1.1)), Math.floor((window.innerWidth - Math.min(200, window.innerWidth * 0.4) - 40) / (lines.length * 1.2)))
       : Math.min(80, Math.floor((window.innerWidth - 44) / em));
@@ -266,7 +257,7 @@
     if (!span || !text) return;
     setText(span, text);
     const em = [...text].reduce((n, c) => n + (/[\u0000-\u024f\u2013]/.test(c) ? 0.58 : 1.12), 0) * 1.12;   // 字の間（letter-spacing）のぶんも見込む
-    const vertical = document.documentElement.lang !== 'en' && window.matchMedia('(max-width: 767px) and (orientation: portrait)').matches;
+    const vertical = isVertical();
     const base = Math.min(80, Math.max(60, window.innerWidth * 0.15));
     const fit = vertical ? Math.floor(window.innerHeight * 0.62 / em) : Math.floor((window.innerWidth - 32) / em);
     if (fit < base) span.style.fontSize = fit + 'px';
