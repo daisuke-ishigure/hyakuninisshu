@@ -800,10 +800,40 @@ button {
   font-size: 1rem;
 }
 
-/* 結果画面：「もう一度対戦する」を主ボタン、「最初の画面に戻る」は控えめに */
+/* 結果画面の下のボタン：左「設定画面に戻る」（控えめ）、右「もう一度対戦する」（主ボタン） */
+.result-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.result-actions .btn-return {
+  margin-top: 0;
+}
+
+/* スマホ：2つを同じ幅で横に並べる（入りきらないときはボタンの中で折り返す） */
+@media (max-width: 480px) {
+  .result-actions {
+    gap: 8px;
+  }
+
+  .result-actions .btn-return {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 190px;
+    padding: 12px 6px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 340px) {
+  .result-actions .btn-return {
+    font-size: 0.85rem;
+  }
+}
+
 #retry_btn {
-  display: block;
-  margin: 16px auto 0;
   font-weight: bold;
 }
 

@@ -95,7 +95,7 @@
   <!-- 3D表示の札の文字（karuta-taisen-3d.html と同じ書体） -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap&text=あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわゐゑをんがぎぐげござじずぜぞだぢづでどばびぶべぼ">
   <script src="https://cdn.jsdelivr.net/npm/pixi.js@7.3.2/dist/pixi.min.js"></script>
-  <link rel="stylesheet" href="../css/karuta-taisen-pro-shared.css?20261127-03">
+  <link rel="stylesheet" href="../css/karuta-taisen-pro-shared.css?20261128-01">
   <style>
     #medetashi-overlay span {
       font-family: "Noto Serif JP", serif;
@@ -467,8 +467,6 @@
     <div id="result_container"
       style="display:none; text-align:center; padding:20px; background:#fff9e6; border-radius:10px; margin:20px auto; max-width:800px;">
       <div id="result_text" style="font-weight:bold;"></div>
-      <!-- もう一度対戦する：同じ設定で次の試合をすぐ始める（js/karuta-taisen-pro-shared.js の retryCpuGame） -->
-      <button class="btn-return" id="retry_btn" type="button">Play Again</button>
       <!-- 結果を X に投稿する（js/karuta-share.js） -->
       <button type="button" class="btn-share-x" id="share_x_button"></button>
       <!-- 取られた札の一覧 -->
@@ -485,7 +483,11 @@
         <div id="ranking_login_note" style="display:none; font-size:0.85rem; color:#888; margin-bottom:10px;">
           Sign in to record your wins in the ranking.</div>
       </div>
-      <button class="btn-return btn-return--sub" onclick="location.reload()" style="margin-top:18px;">Return to Start</button>
+      <!-- 結果画面のボタン：左「設定画面に戻る」（ページを読み込み直す）、右「もう一度対戦する」（同じ設定で次の試合をすぐ始める。js/karuta-taisen-pro-shared.js の retryCpuGame） -->
+      <div class="result-actions">
+        <button class="btn-return btn-return--sub" onclick="location.reload()" type="button">Back to Settings</button>
+        <button class="btn-return" id="retry_btn" type="button">Play Again</button>
+      </div>
       <button class="ranking-view-btn" id="ranking_view_btn" onclick="openRankingOverlay()"
         style="display:none; margin-top:10px;">📊 View Ranking</button>
     </div>
